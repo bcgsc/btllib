@@ -57,8 +57,8 @@ public:
     BasicSequence& operator=(BasicSequence&& seq);
     BasicSequence& operator=(std::string&& bases);
 
-    operator std::string&();
-    operator const std::string&() const;
+    operator const std::string&() const noexcept;
+    operator const char*() const noexcept;
 
     using iterator = std::string::iterator;
     using const_iterator = std::string::const_iterator;
@@ -373,8 +373,8 @@ inline BasicSequence& BasicSequence::operator=(std::initializer_list<char> bases
 inline BasicSequence& BasicSequence::operator=(BasicSequence&& seq) { s = seq.s; return *this; }
 inline BasicSequence& BasicSequence::operator=(std::string&& bases) { validate(bases); s = bases; return *this; }
 
-inline BasicSequence::operator std::string&() { return s; }
-inline BasicSequence::operator const std::string&() const { return s; }
+inline BasicSequence::operator const std::string&() const noexcept { return s; }
+inline BasicSequence::operator const char*() const noexcept { return s.c_str(); }
 
 inline BasicSequence::iterator BasicSequence::begin() noexcept { return s.begin(); }
 inline BasicSequence::const_iterator BasicSequence::begin() const noexcept { return s.begin(); }

@@ -1,6 +1,7 @@
 #include "sequence.h"
 
 #include <string>
+#include <cstring>
 
 int main() {
     btl::Sequence seq1("BAR");
@@ -17,6 +18,7 @@ int main() {
     assert(~~seq3 == seq3);
 
     assert(seq3.size() == 16);
+    assert(std::strlen(seq3) == 16);
 
     seq2 += 'H';
     seq2 += 'A';
