@@ -1,14 +1,14 @@
-#include "sequence.h"
+#include "nt_sequence.h"
 
 #include <string>
 #include <cstring>
 
 int main() {
-    btl::Sequence seq1("BAR");
+    btl::NtSequence seq1("BAR");
     assert(seq1 == std::string("BAR"));
     seq1 = "GATTACA";
-    btl::Sequence seq2 = std::string("CAT");
-    btl::Sequence seq3 = seq1 + seq2;
+    btl::NtSequence seq2 = std::string("CAT");
+    btl::NtSequence seq3 = seq1 + seq2;
     assert(seq3 == "GATTACACAT");
 
     seq3 += "ATTACC";
@@ -23,7 +23,7 @@ int main() {
     seq2 += 'H';
     seq2 += 'A';
     seq2 += 'T';
-    assert(seq2 == btl::Sequence("CATHAT"));
+    assert(seq2 == btl::NtSequence("CATHAT"));
 
     return 0;
 }
