@@ -1,10 +1,10 @@
-nt_sequence1 = executable('nt_sequence1', 'nt_sequence1.cpp',
+sequence1 = executable('sequence1', 'sequence1.cpp',
                         include_directories : inc)
-nt_sequence2 = executable('nt_sequence2', 'nt_sequence2.cpp',
+sequence2 = executable('sequence2', 'sequence2.cpp',
                         include_directories : inc)
-nt_sequence3 = executable('nt_sequence3', 'nt_sequence3.cpp',
+sequence3 = executable('sequence3', 'sequence3.cpp',
                         include_directories : inc)
 
-test('nt_sequence1', nt_sequence1)
-test('nt_sequence2', nt_sequence2, should_fail : true)
-test('nt_sequence3', nt_sequence3, should_fail : true)
+test('sequence1', sequence1)
+test('sequence2', sequence2, should_fail : true)
+test('sequence3', sequence3, should_fail : true)

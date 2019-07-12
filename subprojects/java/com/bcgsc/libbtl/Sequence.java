@@ -1,6 +1,6 @@
 package com.bcgsc.libbtl;
  
-public class NtSequence {
+public class Sequence {
 
     static {
         System.loadLibrary("btl_java");
