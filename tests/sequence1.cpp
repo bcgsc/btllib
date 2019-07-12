@@ -7,7 +7,9 @@ int main() {
     btl::Sequence seq1("BAR");
     assert(seq1 == std::string("BAR"));
     seq1 = "GATTACA";
+
     btl::Sequence seq2 = std::string("CAT");
+    
     btl::Sequence seq3 = seq1 + seq2;
     assert(seq3 == "GATTACACAT");
 
@@ -24,6 +26,13 @@ int main() {
     seq2 += 'A';
     seq2 += 'T';
     assert(seq2 == btl::Sequence("CATHAT"));
+
+    seq1 = "actg";
+    seq2 = "ACTG";
+    assert(seq1 == seq2);
+
+    seq3 = "ac" + btl::Sequence("TG");
+    assert(seq1 == seq3);
 
     return 0;
 }

@@ -17,22 +17,27 @@ public:
     public:
 
         Base& operator=(char base);
-        Base& operator=(Base base);
+        Base& operator=(const Base& base);
 
         operator char() const;
 
         void complement();
         char operator~() const;
 
+        void validate();
+        void capitalize();
+
         static inline void validate(char base);
+        static inline char capitalize(char base);
 
         friend class BasicSequence;
 
         Base(char& base);
-        Base(Base& base);
+        Base(const Base& base);
 
         char& b;
         static const char COMPLEMENTS[256];
+        static const char CAPITALS[256];
     };
 
     static inline const size_t& npos = std::string::npos;
@@ -294,11 +299,14 @@ public:
     friend std::istream& getline(std::istream& is, BasicSequence& seq);
     friend std::istream& getline(std::istream&& is, BasicSequence& seq);
 
+protected:
+
     static void validate(const std::string& bases);
     static void validate(const char* bases);
     static void validate(std::initializer_list<char> bases);
 
-protected:
+    void validate();
+    void capitalize();
 
     // No validation
     void set(std::string bases);
@@ -309,17 +317,21 @@ protected:
 };
 
 inline BasicSequence::Base& BasicSequence::Base::operator=(char base) { validate(base); b = base; return *this; }
-inline BasicSequence::Base& BasicSequence::Base::operator=(Base base) { b = base.b; return *this; }
+inline BasicSequence::Base& BasicSequence::Base::operator=(const Base& base) { b = base.b; return *this; }
         
 inline BasicSequence::Base::operator char() const { return b; }
 
 inline void BasicSequence::Base::complement() { b = COMPLEMENTS[(unsigned char)b]; }
 inline char BasicSequence::Base::operator~() const { return COMPLEMENTS[(unsigned char)b]; }
 
+inline void BasicSequence::Base::validate() { validate(b); }
+inline void BasicSequence::Base::capitalize() { b = CAPITALS[(unsigned char)b]; }
+
 inline void BasicSequence::Base::validate(char base) { assert(COMPLEMENTS[(unsigned char)base]); }
+inline char BasicSequence::Base::capitalize(char base) { return CAPITALS[(unsigned char)base]; }
 
 inline BasicSequence::Base::Base(char& base): b(base) { validate(base); }
-inline BasicSequence::Base::Base(Base& base): b(base.b) {}
+inline BasicSequence::Base::Base(const Base& base): b(base.b) {}
 
 const inline char BasicSequence::Base::COMPLEMENTS[256] = {
     0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
@@ -335,13 +347,45 @@ const inline char BasicSequence::Base::COMPLEMENTS[256] = {
     0 , 'T', 'V', 'G', 'H',  0 ,  0 , 'C', 'D',  0 ,  0 , 'M',  0 , 'K', 'N',  0 , 
 
 //  P    Q    R    S    T    U    V    W    X    Y    Z    [    \    ]    ^    _
-    0 ,  0 , 'Y', 'S', 'A', 'U' , 'B', 'W',  0 , 'R',  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+    0 ,  0 , 'Y', 'S', 'A', 'U', 'B', 'W',  0 , 'R',  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
 
 //  `    a    b    c    d    e    f    g    h    i    j    k    l    m    n    o
     0 , 't', 'v', 'g', 'h',  0 ,  0 , 'c', 'd',  0 ,  0 , 'm',  0 , 'k', 'n',  0 ,
 
 //  p    q    r    s    t    u    v    w    x    y    z    {    |    }    ~   DEL
-    0 ,  0 , 'y', 's', 'a', 'u' , 'b', 'w',  0 , 'r',  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+    0 ,  0 , 'y', 's', 'a', 'u', 'b', 'w',  0 , 'r',  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+
+    0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+    0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+    0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+    0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+    0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+    0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+    0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+    0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0
+};
+
+const inline char BasicSequence::Base::CAPITALS[256] = {
+    0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+    0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+
+//       !    "    #    $    %    &    '    (    )    *    +    ,    -    .    /
+    0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 , '-' , '.',  0 ,
+
+//  0    1    2    3    4    5    6    7    8    9    :    ;    <    =    >    ?
+    0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
+
+//  @    A    B    C    D    E    F    G    H    I    J    K    L    M    N    O
+    0 , 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 
+
+//  P    Q    R    S    T    U    V    W    X    Y    Z    [    \    ]    ^    _
+   'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',  0 ,  0 ,  0 ,  0 ,  0 ,
+
+//  `    a    b    c    d    e    f    g    h    i    j    k    l    m    n    o
+    0 , 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+
+//  p    q    r    s    t    u    v    w    x    y    z    {    |    }    ~   DEL
+   'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',  0 ,  0 ,  0 ,  0 ,  0 ,
 
     0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
     0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
@@ -355,23 +399,23 @@ const inline char BasicSequence::Base::COMPLEMENTS[256] = {
 
 inline BasicSequence::BasicSequence() = default;
 inline BasicSequence::BasicSequence(const BasicSequence& seq): s(seq.s) {}
-inline BasicSequence::BasicSequence(std::string bases): s(std::move(bases)) { validate(s); }
+inline BasicSequence::BasicSequence(std::string bases): s(std::move(bases)) { validate(); capitalize(); }
 inline BasicSequence::BasicSequence(const BasicSequence& seq, size_t pos, size_t len): s(seq.s, pos, len) {}
-inline BasicSequence::BasicSequence(const std::string& bases, size_t pos, size_t len): s(bases, pos, len) { validate(s); }
-inline BasicSequence::BasicSequence(const char* bases): s(bases) { validate(s); }
-inline BasicSequence::BasicSequence(const char* bases, size_t n): s(bases, n) { validate(s); }
-inline BasicSequence::BasicSequence(size_t n, char base): s(n, base) { Base::validate(base); }
+inline BasicSequence::BasicSequence(const std::string& bases, size_t pos, size_t len): s(bases, pos, len) { validate(); capitalize(); }
+inline BasicSequence::BasicSequence(const char* bases): s(bases) { validate(); capitalize(); }
+inline BasicSequence::BasicSequence(const char* bases, size_t n): s(bases, n) { validate(); capitalize(); }
+inline BasicSequence::BasicSequence(size_t n, char base): s(n, base) { validate(); capitalize(); }
 template <class InputIterator>
-inline BasicSequence::BasicSequence(InputIterator first, InputIterator last): s(first, last) { validate(s); }
-inline BasicSequence::BasicSequence(std::initializer_list<char> bases): s(bases) { validate(s); }
+inline BasicSequence::BasicSequence(InputIterator first, InputIterator last): s(first, last) { validate(); capitalize(); }
+inline BasicSequence::BasicSequence(std::initializer_list<char> bases): s(bases) { validate(); capitalize(); }
 inline BasicSequence::BasicSequence(BasicSequence&& seq): s(seq.s) {}
 
 inline BasicSequence& BasicSequence::operator=(const BasicSequence& seq) { s = seq.s; return *this; }
-inline BasicSequence& BasicSequence::operator=(std::string bases) { validate(bases); s = std::move(bases); return *this; }
-inline BasicSequence& BasicSequence::operator=(const char* bases) { validate(bases); s = bases; return *this; }
-inline BasicSequence& BasicSequence::operator=(std::initializer_list<char> bases) { validate(bases); s = bases; return *this; }
+inline BasicSequence& BasicSequence::operator=(std::string bases) { validate(bases); s = std::move(bases); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::operator=(const char* bases) { validate(bases); s = bases; capitalize(); return *this; }
+inline BasicSequence& BasicSequence::operator=(std::initializer_list<char> bases) { validate(bases); s = bases; capitalize(); return *this; }
 inline BasicSequence& BasicSequence::operator=(BasicSequence&& seq) { s = seq.s; return *this; }
-inline BasicSequence& BasicSequence::operator=(std::string&& bases) { validate(bases); s = bases; return *this; }
+inline BasicSequence& BasicSequence::operator=(std::string&& bases) { validate(bases); s = bases; capitalize(); return *this; }
 
 inline BasicSequence::operator const std::string&() const noexcept { return s; }
 inline BasicSequence::operator const char*() const noexcept { return s.c_str(); }
@@ -393,7 +437,7 @@ inline size_t BasicSequence::size() const noexcept { return s.size(); }
 inline size_t BasicSequence::length() const noexcept { return s.length(); }
 inline size_t BasicSequence::max_size() const noexcept { return s.max_size(); }
 inline void BasicSequence::resize (size_t n) { s.resize(n); }
-inline void BasicSequence::resize (size_t n, char base) { Base::validate(base); s.resize(n, base); }
+inline void BasicSequence::resize (size_t n, char base) { Base::validate(base); s.resize(n, Base::capitalize(base)); }
 inline size_t BasicSequence::capacity() const noexcept { return s.capacity(); }
 inline void BasicSequence::reserve(size_t n) { s.reserve(n); }
 inline void BasicSequence::clear() noexcept { s.clear(); }
@@ -410,70 +454,70 @@ inline BasicSequence::Base BasicSequence::front() { return Base(s.front()); }
 inline const char& BasicSequence::front() const { return s.front(); }
 
 inline BasicSequence& BasicSequence::operator+=(const BasicSequence& rhs) { s += rhs.s; return *this; }
-inline BasicSequence& BasicSequence::operator+=(const std::string& rhs) { validate(rhs); s += rhs; return *this; }
-inline BasicSequence& BasicSequence::operator+=(const char* rhs) { validate(rhs); s += rhs; return *this; }
-inline BasicSequence& BasicSequence::operator+=(char rhs) { Base::validate(rhs); s += rhs; return *this; }
-inline BasicSequence& BasicSequence::operator+=(std::initializer_list<char> rhs) { validate(rhs); s += rhs; return *this; }
+inline BasicSequence& BasicSequence::operator+=(const std::string& rhs) { validate(rhs); s += rhs; capitalize(); return *this; }
+inline BasicSequence& BasicSequence::operator+=(const char* rhs) { validate(rhs); s += rhs; capitalize(); return *this; }
+inline BasicSequence& BasicSequence::operator+=(char rhs) { Base::validate(rhs); s += Base::capitalize(rhs); return *this; }
+inline BasicSequence& BasicSequence::operator+=(std::initializer_list<char> rhs) { validate(rhs); s += rhs; capitalize(); return *this; }
 
 inline BasicSequence& BasicSequence::append(const BasicSequence& seq) { s.append(seq.s); return *this; }
 inline BasicSequence& BasicSequence::append(const BasicSequence& seq, size_t subpos, size_t sublen) { s.append(seq.s, subpos, sublen); return *this; }
-inline BasicSequence& BasicSequence::append(const std::string& bases) { validate(bases); s.append(bases); return *this; }
-inline BasicSequence& BasicSequence::append(const std::string& bases, size_t subpos, size_t sublen) { validate(bases); s.append(bases, subpos, sublen); return *this; }
-inline BasicSequence& BasicSequence::append(const char* bases) { validate(bases); s.append(bases); return *this; }
-inline BasicSequence& BasicSequence::append(const char* bases, size_t n) { validate(bases); s.append(bases, n); return *this; }
-inline BasicSequence& BasicSequence::append(size_t n, char base) { Base::validate(base); s.append(n, base); return *this; }
+inline BasicSequence& BasicSequence::append(const std::string& bases) { validate(bases); s.append(bases); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::append(const std::string& bases, size_t subpos, size_t sublen) { validate(bases); s.append(bases, subpos, sublen); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::append(const char* bases) { validate(bases); s.append(bases); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::append(const char* bases, size_t n) { validate(bases); s.append(bases, n); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::append(size_t n, char base) { Base::validate(base); s.append(n, Base::capitalize(base)); return *this; }
 template <class InputIterator>
-inline BasicSequence& BasicSequence::append(InputIterator first, InputIterator last) { s.append(first, last); validate(s); return *this; }
-inline BasicSequence& BasicSequence::append(std::initializer_list<char> bases) { validate(bases); s.append(bases); return *this; }
-inline void BasicSequence::push_back(char base) { Base::validate(base); s.push_back(base); }
+inline BasicSequence& BasicSequence::append(InputIterator first, InputIterator last) { s.append(first, last); validate(); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::append(std::initializer_list<char> bases) { validate(bases); s.append(bases); capitalize(); return *this; }
+inline void BasicSequence::push_back(char base) { Base::validate(base); s.push_back(Base::capitalize(base)); }
 inline BasicSequence& BasicSequence::assign(const BasicSequence& seq) { s.assign(seq.s); return *this; }
 inline BasicSequence& BasicSequence::assign(const BasicSequence& seq, size_t subpos, size_t sublen) { s.assign(seq.s, subpos, sublen); return *this; }
-inline BasicSequence& BasicSequence::assign(const std::string& bases) { validate(bases); s.assign(bases); return *this; }
-inline BasicSequence& BasicSequence::assign(const std::string& bases, size_t subpos, size_t sublen) { validate(bases); s.assign(bases, subpos, npos); return *this; }
-inline BasicSequence& BasicSequence::assign(const char* bases) { validate(bases); s.assign(bases); return *this; }
-inline BasicSequence& BasicSequence::assign(const char* bases, size_t n) { validate(bases); s.assign(bases, n); return *this; }
-inline BasicSequence& BasicSequence::assign(size_t n, char base) { Base::validate(base); s.assign(n, base); return *this; }
+inline BasicSequence& BasicSequence::assign(const std::string& bases) { validate(bases); s.assign(bases); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::assign(const std::string& bases, size_t subpos, size_t sublen) { validate(bases); s.assign(bases, subpos, npos); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::assign(const char* bases) { validate(bases); s.assign(bases); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::assign(const char* bases, size_t n) { validate(bases); s.assign(bases, n); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::assign(size_t n, char base) { Base::validate(base); s.assign(n, Base::capitalize(base)); return *this; }
 template <class InputIterator>
-inline BasicSequence& BasicSequence::assign(InputIterator first, InputIterator last) { s.assign(first, last); validate(s); return *this; }
-inline BasicSequence& BasicSequence::assign(std::initializer_list<char> bases) { validate(bases); s.assign(bases); return *this; }
+inline BasicSequence& BasicSequence::assign(InputIterator first, InputIterator last) { s.assign(first, last); validate(); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::assign(std::initializer_list<char> bases) { validate(bases); s.assign(bases); capitalize(); return *this; }
 inline BasicSequence& BasicSequence::assign(BasicSequence&& seq) noexcept { s.assign(seq.s); return *this; }
-inline BasicSequence& BasicSequence::assign(std::string&& bases) noexcept { validate(bases); s.assign(bases); return *this; }
+inline BasicSequence& BasicSequence::assign(std::string&& bases) noexcept { validate(bases); s.assign(bases); capitalize(); return *this; }
 
 inline BasicSequence& BasicSequence::insert(size_t pos, const BasicSequence& seq) { s.insert(pos, seq.s); return *this; }
 inline BasicSequence& BasicSequence::insert(size_t pos, const BasicSequence& seq, size_t subpos, size_t sublen) { s.insert(pos, seq.s, subpos, sublen); return *this; }
-inline BasicSequence& BasicSequence::insert(size_t pos, const std::string& bases) { validate(bases); s.insert(pos, bases); return *this; }
-inline BasicSequence& BasicSequence::insert(size_t pos, const std::string& bases, size_t subpos, size_t sublen) { validate(bases); s.insert(pos, bases, subpos, sublen); return *this; }
-inline BasicSequence& BasicSequence::insert(size_t pos, const char* bases) { validate(bases); s.insert(pos, bases); return *this; }
-inline BasicSequence& BasicSequence::insert(size_t pos, const char* bases, size_t n) { validate(bases); s.insert(pos,bases, n); return *this; }
-inline BasicSequence& BasicSequence::insert(size_t pos, size_t n, char base) { Base::validate(base); s.insert(pos, n, base); return *this; }
-inline BasicSequence::iterator BasicSequence::insert(const_iterator p, size_t n, char base) { Base::validate(base); return s.insert(p, n, base); }
-inline BasicSequence::iterator BasicSequence::insert(const_iterator p, char base) { Base::validate(base); return s.insert(p, base); }
+inline BasicSequence& BasicSequence::insert(size_t pos, const std::string& bases) { validate(bases); s.insert(pos, bases); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::insert(size_t pos, const std::string& bases, size_t subpos, size_t sublen) { validate(bases); s.insert(pos, bases, subpos, sublen); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::insert(size_t pos, const char* bases) { validate(bases); s.insert(pos, bases); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::insert(size_t pos, const char* bases, size_t n) { validate(bases); s.insert(pos,bases, n); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::insert(size_t pos, size_t n, char base) { Base::validate(base); s.insert(pos, n, Base::capitalize(base)); return *this; }
+inline BasicSequence::iterator BasicSequence::insert(const_iterator p, size_t n, char base) { Base::validate(base); return s.insert(p, n, Base::capitalize(base)); }
+inline BasicSequence::iterator BasicSequence::insert(const_iterator p, char base) { Base::validate(base); return s.insert(p, Base::capitalize(base)); }
 template <class InputIterator>
-inline BasicSequence::iterator BasicSequence::insert(iterator p, InputIterator first, InputIterator last) { auto ret = s.insert(p, first, last); validate(s); return ret; }
-inline BasicSequence& BasicSequence::insert(const_iterator p, std::initializer_list<char> bases) { validate(bases); s.insert(p, bases); return *this; }
+inline BasicSequence::iterator BasicSequence::insert(iterator p, InputIterator first, InputIterator last) { auto ret = s.insert(p, first, last); validate(); capitalize(); return ret; }
+inline BasicSequence& BasicSequence::insert(const_iterator p, std::initializer_list<char> bases) { validate(bases); s.insert(p, bases); capitalize(); return *this; }
 
 inline BasicSequence& BasicSequence::erase (size_t pos, size_t len) { s.erase(pos, len); return *this; }
 inline BasicSequence::iterator BasicSequence::erase (iterator p) { return s.erase(p); }
 inline BasicSequence::iterator BasicSequence::erase (iterator first, iterator last) { return s.erase(first, last); }
 
 inline BasicSequence& BasicSequence::replace(size_t pos, size_t len, const BasicSequence& seq) { s.replace(pos, len, seq.s); return *this; }
-inline BasicSequence& BasicSequence::replace(size_t pos, size_t len, const std::string& bases) { validate(bases); s.replace(pos, len, bases); return *this; }
+inline BasicSequence& BasicSequence::replace(size_t pos, size_t len, const std::string& bases) { validate(bases); s.replace(pos, len, bases); capitalize(); return *this; }
 inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, const BasicSequence& seq) { s.replace(i1, i2, seq.s); return *this; }
-inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, const std::string& bases) { validate(bases); s.replace(i1, i2, bases); return *this; }
+inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, const std::string& bases) { validate(bases); s.replace(i1, i2, bases); capitalize(); return *this; }
 inline BasicSequence& BasicSequence::replace(size_t pos, size_t len, const BasicSequence& seq, size_t subpos, size_t sublen) { s.replace(pos, len, seq.s, subpos, sublen); return *this; }
-inline BasicSequence& BasicSequence::replace(size_t pos, size_t len, const std::string& bases, size_t subpos, size_t sublen) { validate(bases); s.replace(pos, len, bases, subpos, sublen); return *this; }
-inline BasicSequence& BasicSequence::replace(size_t pos, size_t len, const char* bases) { validate(bases); s.replace(pos, len, bases); return *this; }
-inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, const char* bases) { validate(bases); s.replace(i1, i2, bases); return *this; }
-inline BasicSequence& BasicSequence::replace(size_t pos, size_t len, const char* bases, size_t n) { validate(bases); s.replace(pos, len, bases, n); return *this; }
-inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, const char* bases, size_t n) { validate(bases); s.replace(i1, i2, bases, n); return *this; }
-inline BasicSequence& BasicSequence::replace(size_t pos, size_t len, size_t n, char base) { Base::validate(base); s.replace(pos, len, n, base); return *this; }
-inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, size_t n, char base) { Base::validate(base); s.replace(i1, i2, n, base); return *this; }
+inline BasicSequence& BasicSequence::replace(size_t pos, size_t len, const std::string& bases, size_t subpos, size_t sublen) { validate(bases); s.replace(pos, len, bases, subpos, sublen); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::replace(size_t pos, size_t len, const char* bases) { validate(bases); s.replace(pos, len, bases); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, const char* bases) { validate(bases); s.replace(i1, i2, bases); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::replace(size_t pos, size_t len, const char* bases, size_t n) { validate(bases); s.replace(pos, len, bases, n); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, const char* bases, size_t n) { validate(bases); s.replace(i1, i2, bases, n); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::replace(size_t pos, size_t len, size_t n, char base) { Base::validate(base); s.replace(pos, len, n, Base::capitalize(base)); return *this; }
+inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, size_t n, char base) { Base::validate(base); s.replace(i1, i2, n, Base::capitalize(base)); return *this; }
 template <class InputIterator>
-inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, InputIterator first, InputIterator last) { s.replace(i1, i2, first, last); validate(s); return *this; }
-inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, std::initializer_list<char> bases) { validate(bases); s.replace(i1, i2, bases); return *this; }
+inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, InputIterator first, InputIterator last) { s.replace(i1, i2, first, last); validate(); capitalize(); return *this; }
+inline BasicSequence& BasicSequence::replace(const_iterator i1, const_iterator i2, std::initializer_list<char> bases) { validate(bases); s.replace(i1, i2, bases); capitalize(); return *this; }
 
 inline void BasicSequence::swap(BasicSequence& seq) { s.swap(seq.s); }
-inline void BasicSequence::swap(std::string& bases) { validate(bases); s.swap(bases); }
+inline void BasicSequence::swap(std::string& bases) { validate(bases); s.swap(bases); capitalize(); }
 
 inline void BasicSequence::pop_back() { s.pop_back(); }
 
@@ -594,10 +638,10 @@ inline void swap(BasicSequence& x, BasicSequence& y) { swap(x.s, y.s); }
 inline std::istream& operator>>(std::istream& is, BasicSequence& rhs) { is >> rhs.s; return is; }
 inline std::ostream& operator<<(std::ostream& os, const BasicSequence& rhs) { os << rhs.s; return os; }
 
-inline std::istream& getline(std::istream& is, BasicSequence& seq, char delim) { auto& ret = getline(is, seq.s, delim); BasicSequence::validate(seq.s); return ret; }
-inline std::istream& getline(std::istream&& is, BasicSequence& seq, char delim) { auto& ret = getline(is, seq.s, delim); BasicSequence::validate(seq.s); return ret; }
-inline std::istream& getline(std::istream& is, BasicSequence& seq) { auto& ret = getline(is, seq.s); BasicSequence::validate(seq.s); return ret; }
-inline std::istream& getline(std::istream&& is, BasicSequence& seq) { auto& ret = getline(is, seq.s); BasicSequence::validate(seq.s); return ret; }
+inline std::istream& getline(std::istream& is, BasicSequence& seq, char delim) { auto& ret = getline(is, seq.s, delim); seq.validate(); seq.capitalize(); return ret; }
+inline std::istream& getline(std::istream&& is, BasicSequence& seq, char delim) { auto& ret = getline(is, seq.s, delim); seq.validate(); seq.capitalize(); return ret; }
+inline std::istream& getline(std::istream& is, BasicSequence& seq) { auto& ret = getline(is, seq.s); seq.validate(); seq.capitalize(); return ret; }
+inline std::istream& getline(std::istream&& is, BasicSequence& seq) { auto& ret = getline(is, seq.s); seq.validate(); seq.capitalize(); return ret; }
 
 inline void BasicSequence::validate(const std::string& bases) {
     std::for_each(bases.begin(), bases.end(),
@@ -614,6 +658,14 @@ inline void BasicSequence::validate(const char* bases) {
 inline void BasicSequence::validate(std::initializer_list<char> bases) {
     std::for_each(bases.begin(), bases.end(),
         [] (char base) { Base::validate(base); }
+    );
+}
+
+inline void BasicSequence::validate() { validate(s); }
+
+inline void BasicSequence::capitalize() {
+    std::for_each(s.begin(), s.end(),
+        [] (Base base) { base.capitalize(); }
     );
 }
 
