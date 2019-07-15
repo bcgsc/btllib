@@ -11,28 +11,17 @@ public:
 
     using Base = BasicSequence::Base;
 
-    Sequence() {}
     Sequence(const BasicSequence& seq): BasicSequence(seq) {}
     Sequence(const Sequence& seq): BasicSequence(seq) {}
-    Sequence(std::string bases): BasicSequence(bases) {}
-    Sequence(const Sequence& seq, size_t pos, size_t len = npos): BasicSequence(seq, pos, len) {}
-    Sequence(const std::string& bases, size_t pos, size_t len = npos): BasicSequence(bases, pos, len) {}
-    Sequence(const char* bases): BasicSequence(bases) {}
-    Sequence(const char* bases, size_t n): BasicSequence(bases, n) {}
-    Sequence(size_t n, char base): BasicSequence(n, base) {}
-    template <class InputIterator>
-    Sequence(InputIterator first, InputIterator last): BasicSequence(first, last) {}
-    Sequence(std::initializer_list<char> bases): BasicSequence(bases) {}
     Sequence(BasicSequence&& seq): BasicSequence(seq) {}
     Sequence(Sequence&& seq): BasicSequence(seq) {}
+    using BasicSequence::BasicSequence;
 
+    Sequence& operator=(const BasicSequence& seq) { BasicSequence::operator=(seq); return *this; }
     Sequence& operator=(const Sequence& seq) { BasicSequence::operator=(seq); return *this; }
-    Sequence& operator=(std::string bases) { BasicSequence::operator=(bases); return *this; }
-    Sequence& operator=(const char* bases) { BasicSequence::operator=(bases); return *this; }
-    Sequence& operator=(std::initializer_list<char> bases) { BasicSequence::operator=(bases); return *this; }
     Sequence& operator=(BasicSequence&& seq) { BasicSequence::operator=(seq); return *this; }
     Sequence& operator=(Sequence&& seq) { BasicSequence::operator=(seq); return *this; }
-    Sequence& operator=(std::string&& bases) { BasicSequence::operator=(bases); return *this; }
+    using BasicSequence::operator=;
 
     void reverseComplement();
     Sequence getReverseComplement();

@@ -40,7 +40,7 @@ public:
         static const char CAPITALS[256];
     };
 
-    static inline const size_t& npos = std::string::npos;
+    static inline const size_t npos = std::string::npos;
 
     BasicSequence();
     BasicSequence(const BasicSequence& seq);
@@ -95,13 +95,13 @@ public:
     void shrink_to_fit();
 
     Base operator[](size_t pos);
-    const char& operator[](size_t pos) const;
+    char operator[](size_t pos) const;
     Base at(size_t pos);
-    const char& at(size_t pos) const;
+    char at(size_t pos) const;
     Base back();
-    const char& back() const;
+    char back() const;
     Base front();
-    const char& front() const;
+    char front() const;
 
     BasicSequence& operator+=(const BasicSequence& rhs);
     BasicSequence& operator+=(const std::string& rhs);
@@ -445,13 +445,13 @@ inline bool BasicSequence::empty() const noexcept { return s.empty(); }
 inline void BasicSequence::shrink_to_fit() { s.shrink_to_fit(); }
 
 inline BasicSequence::Base BasicSequence::operator[](size_t pos) { return Base(s[pos]); }
-inline const char& BasicSequence::operator[](size_t pos) const { return s[pos]; }
+inline char BasicSequence::operator[](size_t pos) const { return s[pos]; }
 inline BasicSequence::Base BasicSequence::at(size_t pos) { return Base(s.at(pos)); }
-inline const char& BasicSequence::at(size_t pos) const { return s.at(pos); }
+inline char BasicSequence::at(size_t pos) const { return s.at(pos); }
 inline BasicSequence::Base BasicSequence::back() { return Base(s.back()); }
-inline const char& BasicSequence::back() const { return s.back(); }
+inline char BasicSequence::back() const { return s.back(); }
 inline BasicSequence::Base BasicSequence::front() { return Base(s.front()); }
-inline const char& BasicSequence::front() const { return s.front(); }
+inline char BasicSequence::front() const { return s.front(); }
 
 inline BasicSequence& BasicSequence::operator+=(const BasicSequence& rhs) { s += rhs.s; return *this; }
 inline BasicSequence& BasicSequence::operator+=(const std::string& rhs) { validate(rhs); s += rhs; capitalize(); return *this; }
