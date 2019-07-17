@@ -22,6 +22,7 @@ public:
         operator char() const;
 
         void complement();
+        char getComplement() const;
         char operator~() const;
 
         void validate();
@@ -322,7 +323,8 @@ inline BasicSequence::Base& BasicSequence::Base::operator=(const Base& base) { b
 inline BasicSequence::Base::operator char() const { return b; }
 
 inline void BasicSequence::Base::complement() { b = COMPLEMENTS[(unsigned char)b]; }
-inline char BasicSequence::Base::operator~() const { return COMPLEMENTS[(unsigned char)b]; }
+inline char BasicSequence::Base::getComplement() const { return COMPLEMENTS[(unsigned char)b]; }
+inline char BasicSequence::Base::operator~() const { return getComplement(); }
 
 inline void BasicSequence::Base::validate() { validate(b); }
 inline void BasicSequence::Base::capitalize() { b = CAPITALS[(unsigned char)b]; }
