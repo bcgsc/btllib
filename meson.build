@@ -10,5 +10,3 @@ inc = include_directories('include')
 subdir('include')
 subdir('tests')
 subdir('extras')
-
-java_subproject = subproject('java')

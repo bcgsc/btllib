@@ -1,4 +1,4 @@
-header_files = ['basic_sequence.h', 'sequence.h']
+header_files = ['sequence.h']
 
 install_headers(header_files, subdir : 'btl')
 
