@@ -169,4 +169,6 @@
 %ignore getline(std::istream&, Sequence&);
 %ignore getline(std::istream&&, Sequence&);
 
+%ignore btl::Sequence::operator~();
+
 %include "sequence.h"

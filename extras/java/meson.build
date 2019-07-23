@@ -8,4 +8,5 @@ libbtl_java = shared_library('btl',
                              install : true,
                              install_dir : 'java')
 
-#install_data('btl.py', install_dir : 'py')
+java_files = ['btl.java']
+install_data(java_files, install_dir : 'java')

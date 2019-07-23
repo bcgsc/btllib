@@ -12,4 +12,5 @@ libbtl_py = shared_library('_btl',
                            install_dir : 'py',
                            name_prefix : '')
 
-install_data('btl.py', install_dir : 'py')
+python_files = ['btl.py']
+install_data(python_files, install_dir : 'py')
