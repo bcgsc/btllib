@@ -1,6 +1,5 @@
 cpp_extra_args = ['-I/usr/include/python3.7m']
-link_extra_args = ['-L/usr/lib', '-lpython3.7m', '-lcrypt',
-                   '-lpthread', '-ldl', '-lutil', '-lm', '-Xlinker', '-export-dynamic']
+link_extra_args = ['-lpython3.7m', '-lcrypt', '-lpthread', '-ldl', '-lutil', '-lm', '-Xlinker', '-export-dynamic']
 
 py_sources = ['btl_wrap.cxx']
 libbtl_py = shared_library('_btl',
