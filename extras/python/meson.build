@@ -13,5 +13,3 @@ libbtl_py = shared_library('_btl',
                            name_prefix : '')
 
 install_data('btl.py', install_dir : 'py')
-
-run_target('wrap-python', command: './gen.sh')

@@ -9,5 +9,3 @@ libbtl_java = shared_library('btl',
                              install_dir : 'java')
 
 #install_data('btl.py', install_dir : 'py')
-
-run_target('wrap-java', command: './gen.sh')
