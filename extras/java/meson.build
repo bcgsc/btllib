@@ -1,9 +1,23 @@
-cpp_extra_args = ['-I/usr/lib/jvm/default/include', '-I/usr/lib/jvm/default/include/linux']
+jni_include = java_home + '/include'
+
+jni_include_extra_find = '''
+import os
+prefix = "@0@"
+for file in os.listdir(prefix):
+    if os.path.isdir(os.path.join(prefix, file)): print(os.path.join(prefix, file))
+'''.format(jni_include)
+jni_include_extra = run_command(python3, '-c', jni_include_extra_find).stdout().strip().split()
+
+jni_include_list = [ jni_include ] + jni_include_extra
+cpp_extra_args = []
+foreach inc : jni_include_list
+    cpp_extra_args += '-I' + inc
+endforeach
 
 java_sources = ['btl_wrap.cxx']
 libbtl_java = shared_library('btl',
                              java_sources,
-                             include_directories : inc,
+                             include_directories : btl_include,
                              cpp_args : cpp_extra_args,
                              install : true,
                              install_dir : 'java')

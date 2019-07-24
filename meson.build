@@ -5,7 +5,7 @@ project('libbtl', 'cpp',
 
 thread_dep = dependency('threads')
 
-inc = include_directories('include')
+btl_include = include_directories('include')
 
 subdir('include')
 subdir('tests')
