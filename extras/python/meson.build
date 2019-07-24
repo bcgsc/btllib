@@ -1,5 +1,5 @@
-cpp_extra_args = run_command('python-config', '--cflags').stdout().strip().split()
-link_extra_args = run_command('python-config', '--ldflags').stdout().strip().split()
+cpp_extra_args = run_command('python-config', '--includes').stdout().strip().split()
+link_extra_args = run_command('python-config', '--libs').stdout().strip().split()
 
 cpp_extra_args += ['-w']
 
