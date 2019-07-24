@@ -1,10 +1,10 @@
 #ifndef SEQUENCE_H
 #define SEQUENCE_H
 
-#include <string>
 #include <algorithm>
 #include <cassert>
 #include <iostream>
+#include <string>
 
 namespace btl {
 
@@ -12,9 +12,10 @@ class Sequence {
 
 public:
 
-    class Base {
+    struct Base {
 
-    public:
+        Base(char& base);
+        Base(const Base& base);
 
         Base& operator=(char base);
         Base& operator=(const Base& base);
@@ -32,9 +33,6 @@ public:
         static inline char capitalize(char base);
 
         friend class Sequence;
-
-        Base(char& base);
-        Base(const Base& base);
 
         char& b;
         static const char COMPLEMENTS[256];
@@ -54,7 +52,7 @@ public:
     template <class InputIterator>
     Sequence(InputIterator first, InputIterator last);
     Sequence(std::initializer_list<char> bases);
-    Sequence(Sequence&& seq);
+    Sequence(Sequence&& seq) noexcept;
 
     virtual ~Sequence() {}
 
@@ -62,7 +60,7 @@ public:
     Sequence& operator=(std::string bases);
     Sequence& operator=(const char* bases);
     Sequence& operator=(std::initializer_list<char> bases);
-    Sequence& operator=(Sequence&& seq);
+    Sequence& operator=(Sequence&& seq) noexcept;
     Sequence& operator=(std::string&& bases);
 
     operator const std::string&() const noexcept;
@@ -306,7 +304,7 @@ public:
     Sequence getReverseComplement();
     Sequence operator~();
 
-protected:
+private:
 
     static void validate(const std::string& bases);
     static void validate(const char* bases);
@@ -323,9 +321,12 @@ protected:
 
 };
 
+inline Sequence::Base::Base(char& base): b(base) { validate(base); }
+inline Sequence::Base::Base(const Base& base) = default;
+
 inline Sequence::Base& Sequence::Base::operator=(char base) { validate(base); b = base; return *this; }
 inline Sequence::Base& Sequence::Base::operator=(const Base& base) { b = base.b; return *this; }
-        
+
 inline Sequence::Base::operator char() const { return b; }
 
 inline void Sequence::Base::complement() { b = COMPLEMENTS[(unsigned char)b]; }
@@ -337,9 +338,6 @@ inline void Sequence::Base::capitalize() { b = CAPITALS[(unsigned char)b]; }
 
 inline void Sequence::Base::validate(char base) { assert(COMPLEMENTS[(unsigned char)base]); }
 inline char Sequence::Base::capitalize(char base) { return CAPITALS[(unsigned char)base]; }
-
-inline Sequence::Base::Base(char& base): b(base) { validate(base); }
-inline Sequence::Base::Base(const Base& base): b(base.b) {}
 
 const inline char Sequence::Base::COMPLEMENTS[256] = {
     0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,
@@ -406,7 +404,7 @@ const inline char Sequence::Base::CAPITALS[256] = {
 };
 
 inline Sequence::Sequence() = default;
-inline Sequence::Sequence(const Sequence& seq): s(seq.s) {}
+inline Sequence::Sequence(const Sequence& seq) = default;
 inline Sequence::Sequence(std::string bases): s(std::move(bases)) { validate(); capitalize(); }
 inline Sequence::Sequence(const Sequence& seq, size_t pos, size_t len): s(seq.s, pos, len) {}
 inline Sequence::Sequence(const std::string& bases, size_t pos, size_t len): s(bases, pos, len) { validate(); capitalize(); }
@@ -416,13 +414,13 @@ inline Sequence::Sequence(size_t n, char base): s(n, base) { validate(); capital
 template <class InputIterator>
 inline Sequence::Sequence(InputIterator first, InputIterator last): s(first, last) { validate(); capitalize(); }
 inline Sequence::Sequence(std::initializer_list<char> bases): s(bases) { validate(); capitalize(); }
-inline Sequence::Sequence(Sequence&& seq): s(seq.s) {}
+inline Sequence::Sequence(Sequence&& seq) noexcept: s(std::move(seq.s)) {}
 
-inline Sequence& Sequence::operator=(const Sequence& seq) { s = seq.s; return *this; }
+inline Sequence& Sequence::operator=(const Sequence& seq) = default;
 inline Sequence& Sequence::operator=(std::string bases) { validate(bases); s = std::move(bases); capitalize(); return *this; }
 inline Sequence& Sequence::operator=(const char* bases) { validate(bases); s = bases; capitalize(); return *this; }
 inline Sequence& Sequence::operator=(std::initializer_list<char> bases) { validate(bases); s = bases; capitalize(); return *this; }
-inline Sequence& Sequence::operator=(Sequence&& seq) { s = seq.s; return *this; }
+inline Sequence& Sequence::operator=(Sequence&& seq) noexcept { s = std::move(seq.s); return *this; }
 inline Sequence& Sequence::operator=(std::string&& bases) { validate(bases); s = bases; capitalize(); return *this; }
 
 inline Sequence::operator const std::string&() const noexcept { return s; }
@@ -481,7 +479,7 @@ inline void Sequence::push_back(char base) { Base::validate(base); s.push_back(B
 inline Sequence& Sequence::assign(const Sequence& seq) { s.assign(seq.s); return *this; }
 inline Sequence& Sequence::assign(const Sequence& seq, size_t subpos, size_t sublen) { s.assign(seq.s, subpos, sublen); return *this; }
 inline Sequence& Sequence::assign(const std::string& bases) { validate(bases); s.assign(bases); capitalize(); return *this; }
-inline Sequence& Sequence::assign(const std::string& bases, size_t subpos, size_t sublen) { validate(bases); s.assign(bases, subpos, npos); capitalize(); return *this; }
+inline Sequence& Sequence::assign(const std::string& bases, size_t subpos, size_t sublen) { validate(bases); s.assign(bases, subpos, sublen); capitalize(); return *this; }
 inline Sequence& Sequence::assign(const char* bases) { validate(bases); s.assign(bases); capitalize(); return *this; }
 inline Sequence& Sequence::assign(const char* bases, size_t n) { validate(bases); s.assign(bases, n); capitalize(); return *this; }
 inline Sequence& Sequence::assign(size_t n, char base) { Base::validate(base); s.assign(n, Base::capitalize(base)); return *this; }
