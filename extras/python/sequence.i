@@ -6,6 +6,7 @@
 %include <pyopers.swg>
 %include <std_common.i>
 %include <cstring.i>
+%include <exception.i>
 %include <std_string.i>
 %include <std_iostream.i>
 

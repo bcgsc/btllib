@@ -321,7 +321,7 @@ private:
 
 };
 
-inline Sequence::Base::Base(char& base): b(base) { validate(base); }
+inline Sequence::Base::Base(char& base): b(base) {}
 inline Sequence::Base::Base(const Base& base) = default;
 
 inline Sequence::Base& Sequence::Base::operator=(char base) { validate(base); b = base; return *this; }
@@ -691,7 +691,7 @@ inline void Sequence::validate() { validate(s); }
 
 inline void Sequence::capitalize() {
     std::for_each(s.begin(), s.end(),
-        [] (Base base) { base.capitalize(); }
+        [] (char& base) { base = Base::capitalize(base); }
     );
 }
 

@@ -1,6 +1,8 @@
 cpp_extra_args = run_command('python-config', '--cflags').stdout().strip().split()
 link_extra_args = run_command('python-config', '--ldflags').stdout().strip().split()
 
+cpp_extra_args += ['-w']
+
 py_sources = ['btl_wrap.cxx']
 libbtl_py = shared_library('_btl',
                            py_sources,

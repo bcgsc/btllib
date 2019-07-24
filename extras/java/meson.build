@@ -14,6 +14,8 @@ foreach inc : jni_include_list
     cpp_extra_args += '-I' + inc
 endforeach
 
+cpp_extra_args += ['-w']
+
 java_sources = ['btl_wrap.cxx']
 libbtl_java = shared_library('btl',
                              java_sources,
