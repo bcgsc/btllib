@@ -35,6 +35,10 @@ public class Base {
     }
   }
 
+  public Base(Base base) {
+    this(btlJNI.new_Base(Base.getCPtr(base), base), true);
+  }
+
   public void complement() {
     btlJNI.Base_complement(swigCPtr, this);
   }
@@ -57,30 +61,6 @@ public class Base {
 
   public static char capitalize(char base) {
     return btlJNI.Base_capitalize__SWIG_1(base);
-  }
-
-  public Base(SWIGTYPE_p_char base) {
-    this(btlJNI.new_Base__SWIG_0(SWIGTYPE_p_char.getCPtr(base)), true);
-  }
-
-  public Base(Base base) {
-    this(btlJNI.new_Base__SWIG_1(Base.getCPtr(base), base), true);
-  }
-
-  public void setB(SWIGTYPE_p_char value) {
-    btlJNI.Base_b_set(swigCPtr, this, SWIGTYPE_p_char.getCPtr(value));
-  }
-
-  public SWIGTYPE_p_char getB() {
-    return new SWIGTYPE_p_char(btlJNI.Base_b_get(swigCPtr, this), false);
-  }
-
-  public static String getCOMPLEMENTS() {
-    return btlJNI.Base_COMPLEMENTS_get();
-  }
-
-  public static String getCAPITALS() {
-    return btlJNI.Base_CAPITALS_get();
   }
 
 }

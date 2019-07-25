@@ -145,17 +145,12 @@ public class btlJNI {
   public final static native int Sequence_compare__SWIG_7(long jarg1, Sequence jarg1_, long jarg2, long jarg3, String jarg4, long jarg5);
   public final static native void Sequence_reverseComplement(long jarg1, Sequence jarg1_);
   public final static native long Sequence_getReverseComplement(long jarg1, Sequence jarg1_);
+  public final static native long new_Base(long jarg1, Base jarg1_);
   public final static native void Base_complement(long jarg1, Base jarg1_);
   public final static native char Base_getComplement(long jarg1, Base jarg1_);
   public final static native void Base_validate__SWIG_0(long jarg1, Base jarg1_);
   public final static native void Base_capitalize__SWIG_0(long jarg1, Base jarg1_);
   public final static native void Base_validate__SWIG_1(char jarg1);
   public final static native char Base_capitalize__SWIG_1(char jarg1);
-  public final static native long new_Base__SWIG_0(long jarg1);
-  public final static native long new_Base__SWIG_1(long jarg1, Base jarg1_);
-  public final static native void Base_b_set(long jarg1, Base jarg1_, long jarg2);
-  public final static native long Base_b_get(long jarg1, Base jarg1_);
-  public final static native String Base_COMPLEMENTS_get();
-  public final static native String Base_CAPITALS_get();
   public final static native void delete_Base(long jarg1);
 }

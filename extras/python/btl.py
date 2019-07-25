@@ -517,8 +517,8 @@ class Base(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
-        _btl.Base_swiginit(self, _btl.new_Base(*args))
+    def __init__(self, base: 'Base'):
+        _btl.Base_swiginit(self, _btl.new_Base(base))
 
     def complement(self) -> "void":
         return _btl.Base_complement(self)
@@ -536,7 +536,6 @@ class Base(object):
     @staticmethod
     def capitalize(*args) -> "char":
         return _btl.Base_capitalize(*args)
-    b = property(_btl.Base_b_get, _btl.Base_b_set)
     __swig_destroy__ = _btl.delete_Base
 
 # Register Base in _btl:
@@ -547,8 +546,6 @@ def Base_validate(*args) -> "void":
 
 def Base_capitalize(*args) -> "char":
     return _btl.Base_capitalize(*args)
-Base.COMPLEMENTS = _btl.cvar.Base_COMPLEMENTS
-Base.CAPITALS = _btl.cvar.Base_CAPITALS
 
 
 def __eq__(*args) -> "bool":

@@ -12,9 +12,10 @@ class Sequence {
 
 public:
 
-    struct Base {
+    class Base {
 
-        Base(char& base);
+    public:
+
         Base(const Base& base);
 
         Base& operator=(char base);
@@ -32,11 +33,17 @@ public:
         static inline void validate(char base);
         static inline char capitalize(char base);
 
+    private:
+
         friend class Sequence;
 
-        char& b;
+        Base(char& base);
+
         static const char COMPLEMENTS[256];
         static const char CAPITALS[256];
+
+        char& b;
+
     };
 
     static inline const size_t npos = std::string::npos;

@@ -3240,6 +3240,25 @@ SWIGEXPORT jlong JNICALL Java_btlJNI_Sequence_1getReverseComplement(JNIEnv *jenv
 }
 
 
+SWIGEXPORT jlong JNICALL Java_btlJNI_new_1Base(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btl::Sequence::Base *arg1 = 0 ;
+  btl::Sequence::Base *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btl::Sequence::Base **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "btl::Sequence::Base const & reference is null");
+    return 0;
+  } 
+  result = (btl::Sequence::Base *)new btl::Sequence::Base((btl::Sequence::Base const &)*arg1);
+  *(btl::Sequence::Base **)&jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_btlJNI_Base_1complement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   btl::Sequence::Base *arg1 = (btl::Sequence::Base *) 0 ;
   
@@ -3308,99 +3327,6 @@ SWIGEXPORT jchar JNICALL Java_btlJNI_Base_1capitalize_1_1SWIG_11(JNIEnv *jenv, j
   arg1 = (char)jarg1; 
   result = (char)btl::Sequence::Base::capitalize(arg1);
   jresult = (jchar)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btlJNI_new_1Base_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  jlong jresult = 0 ;
-  char *arg1 = 0 ;
-  btl::Sequence::Base *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(char **)&jarg1;
-  if (!arg1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "char & reference is null");
-    return 0;
-  } 
-  result = (btl::Sequence::Base *)new btl::Sequence::Base(*arg1);
-  *(btl::Sequence::Base **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btlJNI_new_1Base_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  btl::Sequence::Base *arg1 = 0 ;
-  btl::Sequence::Base *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btl::Sequence::Base **)&jarg1;
-  if (!arg1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "btl::Sequence::Base const & reference is null");
-    return 0;
-  } 
-  result = (btl::Sequence::Base *)new btl::Sequence::Base((btl::Sequence::Base const &)*arg1);
-  *(btl::Sequence::Base **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btlJNI_Base_1b_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
-  btl::Sequence::Base *arg1 = (btl::Sequence::Base *) 0 ;
-  char *arg2 = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btl::Sequence::Base **)&jarg1; 
-  arg2 = *(char **)&jarg2;
-  if (!arg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "char & reference is null");
-    return ;
-  } 
-  if (arg1) (arg1)->b = *arg2;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btlJNI_Base_1b_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  btl::Sequence::Base *arg1 = (btl::Sequence::Base *) 0 ;
-  char *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btl::Sequence::Base **)&jarg1; 
-  result = (char *) &(char &) ((arg1)->b);
-  *(char **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jstring JNICALL Java_btlJNI_Base_1COMPLEMENTS_1get(JNIEnv *jenv, jclass jcls) {
-  jstring jresult = 0 ;
-  char *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (char *)(char *)btl::Sequence::Base::COMPLEMENTS;
-  if (result) jresult = jenv->NewStringUTF((const char *)result);
-  return jresult;
-}
-
-
-SWIGEXPORT jstring JNICALL Java_btlJNI_Base_1CAPITALS_1get(JNIEnv *jenv, jclass jcls) {
-  jstring jresult = 0 ;
-  char *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (char *)(char *)btl::Sequence::Base::CAPITALS;
-  if (result) jresult = jenv->NewStringUTF((const char *)result);
   return jresult;
 }
 

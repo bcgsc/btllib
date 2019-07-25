@@ -3619,16 +3619,6 @@ SWIGINTERN bool btl_Sequence___lt____SWIG_2(btl::Sequence *self,char const *seq)
 SWIGINTERN bool btl_Sequence___le____SWIG_0(btl::Sequence *self,btl::Sequence const &seq){ return *self <= seq; }
 SWIGINTERN bool btl_Sequence___le____SWIG_1(btl::Sequence *self,std::string const &seq){ return *self <= seq; }
 SWIGINTERN bool btl_Sequence___le____SWIG_2(btl::Sequence *self,char const *seq){ return *self <= seq; }
-
-SWIGINTERN size_t
-SWIG_strnlen(const char* s, size_t maxlen)
-{
-  const char *p;
-  for (p = s; maxlen-- && *p; p++)
-    ;
-  return p - s;
-}
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -19662,38 +19652,16 @@ SWIGINTERN PyObject *Sequence_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject 
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_Base__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  char *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  btl::Sequence::Base *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_char,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Base" "', argument " "1"" of type '" "char &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Base" "', argument " "1"" of type '" "char &""'"); 
-  }
-  arg1 = reinterpret_cast< char * >(argp1);
-  result = (btl::Sequence::Base *)new btl::Sequence::Base(*arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btl__Sequence__Base, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Base__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_Base(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   btl::Sequence::Base *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject *swig_obj[1] ;
   btl::Sequence::Base *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_btl__Sequence__Base,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Base" "', argument " "1"" of type '" "btl::Sequence::Base const &""'"); 
@@ -19707,41 +19675,6 @@ SWIGINTERN PyObject *_wrap_new_Base__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_s
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Base(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[2] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_Base", 0, 1, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_char, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_Base__SWIG_0(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_btl__Sequence__Base, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_Base__SWIG_1(self, argc, argv);
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Base'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    btl::Sequence::Base::Base(char &)\n"
-    "    btl::Sequence::Base::Base(btl::Sequence::Base const &)\n");
-  return 0;
 }
 
 
@@ -19965,101 +19898,6 @@ fail:
     "    btl::Sequence::Base::capitalize()\n"
     "    btl::Sequence::Base::capitalize(char)\n");
   return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_Base_b_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  btl::Sequence::Base *arg1 = (btl::Sequence::Base *) 0 ;
-  char *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "Base_b_set", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_btl__Sequence__Base, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Base_b_set" "', argument " "1"" of type '" "btl::Sequence::Base *""'"); 
-  }
-  arg1 = reinterpret_cast< btl::Sequence::Base * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_char,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Base_b_set" "', argument " "2"" of type '" "char &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Base_b_set" "', argument " "2"" of type '" "char &""'"); 
-  }
-  arg2 = reinterpret_cast< char * >(argp2);
-  if (arg1) (arg1)->b = *arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Base_b_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  btl::Sequence::Base *arg1 = (btl::Sequence::Base *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  char *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_btl__Sequence__Base, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Base_b_get" "', argument " "1"" of type '" "btl::Sequence::Base *""'"); 
-  }
-  arg1 = reinterpret_cast< btl::Sequence::Base * >(argp1);
-  result = (char *) &(char &) ((arg1)->b);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_char, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN int Swig_var_Base_COMPLEMENTS_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable Base_COMPLEMENTS is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_Base_COMPLEMENTS_get(void) {
-  PyObject *pyobj = 0;
-  
-  {
-    size_t size = SWIG_strnlen(btl::Sequence::Base::COMPLEMENTS, 256);
-    
-    
-    
-    pyobj = SWIG_FromCharPtrAndSize(btl::Sequence::Base::COMPLEMENTS, size);
-  }
-  return pyobj;
-}
-
-
-SWIGINTERN int Swig_var_Base_CAPITALS_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable Base_CAPITALS is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_Base_CAPITALS_get(void) {
-  PyObject *pyobj = 0;
-  
-  {
-    size_t size = SWIG_strnlen(btl::Sequence::Base::CAPITALS, 256);
-    
-    
-    
-    pyobj = SWIG_FromCharPtrAndSize(btl::Sequence::Base::CAPITALS, size);
-  }
-  return pyobj;
 }
 
 
@@ -21908,14 +21746,12 @@ static PyMethodDef SwigMethods[] = {
 	 { "Sequence___le__", _wrap_Sequence___le__, METH_VARARGS, NULL},
 	 { "Sequence_swigregister", Sequence_swigregister, METH_O, NULL},
 	 { "Sequence_swiginit", Sequence_swiginit, METH_VARARGS, NULL},
-	 { "new_Base", _wrap_new_Base, METH_VARARGS, NULL},
+	 { "new_Base", _wrap_new_Base, METH_O, NULL},
 	 { "Base_complement", _wrap_Base_complement, METH_O, NULL},
 	 { "Base_getComplement", _wrap_Base_getComplement, METH_O, NULL},
 	 { "Base___invert__", _wrap_Base___invert__, METH_O, NULL},
 	 { "Base_validate", _wrap_Base_validate, METH_VARARGS, NULL},
 	 { "Base_capitalize", _wrap_Base_capitalize, METH_VARARGS, NULL},
-	 { "Base_b_set", _wrap_Base_b_set, METH_VARARGS, NULL},
-	 { "Base_b_get", _wrap_Base_b_get, METH_O, NULL},
 	 { "delete_Base", _wrap_delete_Base, METH_O, NULL},
 	 { "Base_swigregister", Base_swigregister, METH_O, NULL},
 	 { "Base_swiginit", Base_swiginit, METH_VARARGS, NULL},
@@ -23038,8 +22874,6 @@ SWIG_init(void) {
   
   
   SWIG_Python_SetConstant(d, "Sequence_npos",SWIG_From_size_t(static_cast< size_t >(btl::Sequence::npos)));
-  SWIG_addvarlink(globals, "Base_COMPLEMENTS", Swig_var_Base_COMPLEMENTS_get, Swig_var_Base_COMPLEMENTS_set);
-  SWIG_addvarlink(globals, "Base_CAPITALS", Swig_var_Base_CAPITALS_get, Swig_var_Base_CAPITALS_set);
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else
