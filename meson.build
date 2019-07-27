@@ -21,6 +21,11 @@ if cat.found() and diff.found() and clang_format.found()
     run_target('format', command: ['scripts/format.sh'] + format_files)
 endif
 
+cppcheck = find_program('cppcheck', required: false)
+if cppcheck.found()
+    run_target('cppcheck', command: 'scripts/cppcheck.sh')
+endif
+
 subdir('include')
 subdir('tests')
 subdir('extras')
