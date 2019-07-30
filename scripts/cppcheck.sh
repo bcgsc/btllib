@@ -1,11 +1,10 @@
 #!/bin/bash
 
-files=$(find include -type f | grep "\(.*\.h\)\|\(.*\.cpp\)\|\(.*\.cxx\)")
-files+=" "
-files+=$(find extras/python -type f | grep "\(.*\.h\)\|\(.*\.cpp\)\|\(.*\.cxx\)")
-files+=" "
-files+=$(find extras/java -type f | grep "\(.*\.h\)\|\(.*\.cpp\)\|\(.*\.cxx\)")
+cd "${MESON_SOURCE_ROOT}"
 
+files=$(scripts/get_include_files.sh)
+files+=" "
+files+=$(scripts/get_wrapper_files.sh)
 output=$(cppcheck $files --language=c++ --force)
 echo "$output"
 

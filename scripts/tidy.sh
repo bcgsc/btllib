@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "${MESON_BUILD_ROOT}"
+cd "${MESON_SOURCE_ROOT}"
 
 tidy_checks="*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-hicpp-no-array-decay, \
     -fuchsia-default-arguments,-fuchsia-overloaded-operator,-cppcoreguidelines-pro-bounds-pointer-arithmetic, \
@@ -10,4 +10,5 @@ tidy_checks="*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-hicpp-no-ar
     -misc-non-private-member-variables-in-classes,-cppcoreguidelines-special-member-functions,-modernize-use-nodiscard, \
     -hicpp-special-member-functions,-llvm-header-guard"
 
-clang-tidy -checks="$tidy_checks" $@
+files=$(scripts/get_include_files.sh)
+clang-tidy -checks="$tidy_checks" $files

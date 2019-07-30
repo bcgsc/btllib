@@ -1,3 +1,3 @@
-header_files = ['sequence.h', 'sequence_reader.h', 'check.h']
+header_files = ['sequence_reader.h', 'check.hpp']
 
 install_headers(header_files, subdir : 'btl')

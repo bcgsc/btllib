@@ -1,7 +1,8 @@
 #!/bin/bash
 
-cd "${MESON_BUILD_ROOT}"
+cd "${MESON_SOURCE_ROOT}"
 
-for file in "$@"; do
+files=$(scripts/get_include_files.sh)
+for file in $files; do
     diff <(cat $file) <(clang-format -style=mozilla $file)
 done
