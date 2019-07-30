@@ -12,7 +12,6 @@ if clang_tidy.found()
     run_target('tidy', command: 'scripts/tidy.sh')
 endif
 
-cat = find_program('cat', required : false)
 diff = find_program('diff', required : false)
 clang_format = find_program('clang-format', required: false)
 if cat.found() and diff.found() and clang_format.found()
