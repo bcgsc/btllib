@@ -8,6 +8,6 @@ tidy_checks="*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-hicpp-no-ar
     -modernize-avoid-c-arrays,-cppcoreguidelines-avoid-c-arrays,-modernize-use-equals-default,-hicpp-use-equals-default, \
     -google-runtime-references,-google-explicit-constructor,-hicpp-explicit-conversions, \
     -misc-non-private-member-variables-in-classes,-cppcoreguidelines-special-member-functions,-modernize-use-nodiscard, \
-    -hicpp-special-member-functions"
+    -hicpp-special-member-functions,-llvm-header-guard"
 
 clang-tidy -checks="$tidy_checks" $@

@@ -1,33 +1,39 @@
-#ifndef SEQUENCE_READER_H
-#define SEQUENCE_READER_H
+// #ifndef BTL_SEQUENCE_READER_H
+// #define BTL_SEQUENCE_READER_H
 
-#include <iostream>
-#include <fstream>
-#include <cstring>
+// #include <iostream>
+// #include <fstream>
+// #include <cstring>
+// #include <thread>
 
-namespace btl {
+// namespace btl {
 
-class SequenceReader {
+// class SequenceReader {
 
-public:
+// public:
 
-    SequenceReader(const char* filepath);
+//     SequenceReader(const char* filepath);
 
-private:
+// private:
 
-    std::ifstream ifs;
-    std::istream& is;
+//     static const size_t BUFFER_SIZE = 1024 * 1024;
 
-};
+//     const char buffer[BUFFER_SIZE];
 
-SequenceReader::SequenceReader(const char* filepath):
-    ifs(filepath),
-    is(strcmp(filepath, "-") == 0 ? std::cin : ifs)
-{
-    if (strcmp(filepath, "-") != 0) {
-    }
-}
+//     std::ifstream ifs;
+//     std::istream& is;
+//     std::thread worker;
 
-} // namespace btl
+// };
 
-#endif
+// SequenceReader::SequenceReader(const char* filepath):
+//     ifs(filepath),
+//     is(strcmp(filepath, "-") == 0 ? std::cin : ifs)
+// {
+//     if (strcmp(filepath, "-") != 0) {
+//     }
+// }
+
+// } // namespace btl
+
+// #endif

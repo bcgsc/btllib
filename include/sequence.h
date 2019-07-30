@@ -1,8 +1,9 @@
-#ifndef SEQUENCE_H
-#define SEQUENCE_H
+#ifndef BTL_SEQUENCE_H
+#define BTL_SEQUENCE_H
+
+#include "check.h"
 
 #include <algorithm>
-#include <cassert>
 #include <iostream>
 #include <string>
 
@@ -343,7 +344,11 @@ inline char Sequence::Base::operator~() const { return getComplement(); }
 inline void Sequence::Base::validate() { validate(b); }
 inline void Sequence::Base::capitalize() { b = CAPITALS[(unsigned char)b]; }
 
-inline void Sequence::Base::validate(char base) { assert(COMPLEMENTS[(unsigned char)base]); }
+inline void Sequence::Base::validate(char base) {
+    check_error(COMPLEMENTS[(unsigned char)base] == 0,
+        "Invalid character in sequence: ", base
+    );
+}
 inline char Sequence::Base::capitalize(char base) { return CAPITALS[(unsigned char)base]; }
 
 const inline char Sequence::Base::COMPLEMENTS[256] = {

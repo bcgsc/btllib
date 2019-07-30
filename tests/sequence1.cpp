@@ -2,6 +2,7 @@
 
 #include <string>
 #include <cstring>
+#include <cassert>
 
 int main() {
     btl::Sequence seq1("BAR");
