@@ -16,4 +16,4 @@ tidy_checks="*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-hicpp-no-ar
     -hicpp-special-member-functions,-llvm-header-guard"
 
 files=$(scripts/get_include_files.sh)
-clang-tidy -checks="$tidy_checks" $files -- -std=c++17
+clang-tidy -warnings-as-errors='*' -checks="$tidy_checks" $files -- -std=c++17
