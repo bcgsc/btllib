@@ -14,7 +14,7 @@ endif
 
 diff = find_program('diff', required : false)
 clang_format = find_program('clang-format', required: false)
-if cat.found() and diff.found() and clang_format.found()
+if diff.found() and clang_format.found()
     run_target('format', command: 'scripts/format.sh')
 endif
 

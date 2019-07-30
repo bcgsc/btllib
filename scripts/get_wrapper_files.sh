@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -z "${MESON_SOURCE_ROOT}" ]; then
+    echo "[ERROR] This script can only be ran with meson!"
+    exit 1
+fi
+
 cd "${MESON_SOURCE_ROOT}"
 
 files=$(find extras/python -type f | grep "\(.*\.h\)\|\(.*\.cpp\)\|\(.*\.cxx\)")
