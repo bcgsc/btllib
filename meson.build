@@ -24,7 +24,7 @@ if cppcheck.found()
     run_target('cppcheck', command: 'scripts/cppcheck.sh')
 endif
 
-run_target('wrap', command: 'wrap.sh')
+run_target('wrap', command: 'scripts/wrap.sh')
 
 subdir('include')
 subdir('tests')
