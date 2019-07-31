@@ -22,16 +22,8 @@ steps:
     meson setup build
     cd build
     ninja
+    ninja format
+    ninja tidy
+    ninja cppcheck
+    ninja test
   displayName: 'Build the project'
-
-- script: cd build && ninja format
-  displayName: 'Do clang-format'
-
-- script: cd build && ninja tidy
-  displayName: 'Do clang-tidy'
-
-- script: cd build && ninja cppcheck
-  displayName: 'Do cppcheck'
-
-- script: cd build && ninja test
-  displayName: 'Do tests'
