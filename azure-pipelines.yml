@@ -29,7 +29,7 @@ steps:
 - script: cd build && ninja format
   displayName: 'Run clang-format'
   
-- script: cd build && ninja-tidy
+- script: cd build && ninja tidy
   displayName: 'Run clang-tidy'
   
 - script: cd build && ninja cppcheck
