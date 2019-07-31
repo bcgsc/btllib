@@ -6,12 +6,16 @@ pool:
 
 steps:
 
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.7' 
+
 - script: |
     wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
     sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-8 main"
     sudo apt-get update
     sudo apt-get install --yes --no-install-recommends clang-format-8 clang-tidy-8 cppcheck
-    sudo pip3 install setuptools meson
+    sudo pip3 install meson
   displayName: 'Install required software'
 
 - script: |
