@@ -8,7 +8,8 @@ steps:
 
 - script: |
     sudo apt-get update
-    sudo apt-get install --yes --no-install-recommends meson clang-format clang-tidy cppcheck
+    sudo apt-get install --yes --no-install-recommends clang-format clang-tidy cppcheck
+    sudo pip3 install meson
   displayName: 'Install required software'
 
 - script: |
