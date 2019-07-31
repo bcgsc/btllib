@@ -1,19 +1,34 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-
-trigger:
-- master
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    sudo apt-get update
+    sudo apt-get install --yes --no-install-recommends meson clang-format-8 clang-tidy-8 cppcheck
+  displayName: 'Install required software'
+
+- script: |
+    meson setup build
+    cd build
+    ninja
+  displayName: 'Build the project'
+
+- script: |
+    ninja format
+  displayName: 'Do clang-format'
+
+- script: |
+    ninja tidy
+  displayName: 'Do clang-tidy'
+
+- script: |
+    ninja cppcheck
+  displayName: 'Do cppcheck'
+
+- script: |
+    ninja test
+  displayName: 'Do tests'
