@@ -7,9 +7,11 @@ pool:
 steps:
 
 - script: |
+    wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+    sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-8 main"
     sudo apt-get update
-    sudo apt-get install --yes --no-install-recommends clang-format clang-tidy cppcheck
-    sudo pip3 install meson
+    sudo apt-get install --yes --no-install-recommends clang-format-8 clang-tidy-8 cppcheck
+    sudo pip3 install setuptools meson
   displayName: 'Install required software'
 
 - script: |
