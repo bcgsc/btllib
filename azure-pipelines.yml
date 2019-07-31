@@ -15,6 +15,8 @@ steps:
     sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-8 main"
     sudo apt-get update
     sudo apt-get install --yes --no-install-recommends clang-format-8 clang-tidy-8 cppcheck python3-setuptools
+    sudo ln -s clang-format-8 /usr/bin/clang-format
+    sudo ln -s clang-tidy-8 /usr/bin/clang-tidy
     sudo pip3 install ninja meson
   displayName: 'Install required software'
 
@@ -22,8 +24,16 @@ steps:
     meson setup build
     cd build
     ninja
-    ninja format
-    ninja tidy
-    ninja cppcheck
-    ninja test
   displayName: 'Build the project'
+  
+- script: cd build && ninja format
+  displayName: 'Run clang-format'
+  
+- script: cd build && ninja-tidy
+  displayName: 'Run clang-tidy'
+  
+- script: cd build && ninja cppcheck
+  displayName: 'Run cppcheck'
+  
+- script: cd build && ninja test
+  displayName: 'Run tests'
