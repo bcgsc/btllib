@@ -14,7 +14,7 @@ steps:
     wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
     sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-8 main"
     sudo apt-get update
-    sudo apt-get install --yes --no-install-recommends clang-format-8 clang-tidy-8 cppcheck
+    sudo apt-get install --yes --no-install-recommends clang-format-8 clang-tidy-8 cppcheck python3-setuptools
     sudo pip3 install meson
   displayName: 'Install required software'
 
