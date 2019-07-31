@@ -11,7 +11,6 @@ namespace btl {
 
 class SequenceReader
 {
-
 public:
   enum Flags
   {
