@@ -27,5 +27,5 @@ echo "$meson_build" | sed "s~java_files.*=.*\[.*\]~java_files = [$java_files]~" 
 cd ${MESON_SOURCE_ROOT}
 ln -sf $PWD/include extras/python/
 cd extras/python
-swig -python -py3 -c++ -Iinclude btl.i
+swig -python -py3 -builtin -c++ -Iinclude btl.i
 rm include
