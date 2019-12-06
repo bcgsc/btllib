@@ -19,7 +19,7 @@ raise_error(Arg&& arg, Args&&... args) {
 
 template<typename Arg, typename... Args>
 inline void
-raise_warning() {
+raise_warning(Arg&& arg, Args&&... args) {
     std::cerr << "[WARNING] " << std::forward<Arg>(arg);
     ((std::cerr << std::forward<Args>(args)), ...);
     std::cerr << std::endl;
@@ -30,7 +30,7 @@ inline void
 check_error(bool condition, Arg&& arg, Args&&... args)
 {
     if (condition) {
-        raise_error(args, args);
+        raise_error(arg, args...);
     }
 }
 
@@ -39,7 +39,7 @@ inline void
 check_warning(bool condition, Arg&& arg, Args&&... args)
 {
     if (condition) {
-        raise_warning(arg, args);
+        raise_warning(arg, args...);
     }
 }
 

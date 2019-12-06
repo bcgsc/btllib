@@ -1,7 +1,7 @@
 #ifndef BTL_SEQ_READER_HPP
 #define BTL_SEQ_READER_HPP
 
-#include "btl/util/status.hpp"
+#include "status.hpp"
 #include "seq.hpp"
 
 #include <cassert>
@@ -179,7 +179,7 @@ inline SeqReader& SeqReader::operator>>(std::string& seq)
 	  return *this;
 }
 
-inline std::string get_qual() {
+inline std::string SeqReader::get_qual() {
 
 }
 
