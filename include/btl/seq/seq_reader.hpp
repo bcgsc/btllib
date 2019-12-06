@@ -1,8 +1,8 @@
-#ifndef BTL_SEQUENCE_READER_HPP
-#define BTL_SEQUENCE_READER_HPP
+#ifndef BTL_SEQ_READER_HPP
+#define BTL_SEQ_READER_HPP
 
-#include "status.hpp"
-#include "sequence.hpp"
+#include "btl/util/status.hpp"
+#include "seq.hpp"
 
 #include <cassert>
 #include <cstring>
@@ -16,7 +16,7 @@
 namespace btl {
 
 /** Read a FASTA, FASTQ, or SAM file. */
-class SequenceReader
+class SeqReader
 {
 public:
     enum Flags
@@ -33,7 +33,7 @@ public:
         TRIM_MASKED = 4
     };
 
-    SequenceReader(const char* input_path, int flags = 0);
+    SeqReader(const char* input_path, int flags = 0);
 
   	bool flagFoldCase() const { return ~flags & NO_FOLD_CASE; }
   	bool flagConvertQual() const { return flags & CONVERT_QUALITY; }
@@ -62,10 +62,10 @@ public:
     int peek() { return is.peek(); }
 
     /** Interface for manipulators. */
-    SequenceReader& operator<<(std::istream& (*f)(std::istream&));
+    SeqReader& operator<<(std::istream& (*f)(std::istream&));
 
     /** Read operator. */
-    SequenceReader& operator>>(std::string& seq);
+    SeqReader& operator>>(std::string& seq);
 
     /** Quality of the last read sequence. */
     std::string get_qual();
@@ -82,7 +82,7 @@ private:
     void determine_format();
 };
 
-inline SequenceReader::SequenceReader(const char* input_path, int flags)
+inline SeqReader::SeqReader(const char* input_path, int flags)
     : input_path(input_path)
     , ifs(input_path)
     , is(strcmp(input_path, "-") == 0 ? std::cin : ifs)
@@ -147,7 +147,7 @@ inline bool is_sam(const char* input, size_t n) {
     return false;
 }
 
-inline void SequenceReader::determine_format() {
+inline void SeqReader::determine_format() {
     std::ifstream ifs(input_path);
     std::istream& is(strcmp(input_path, "-") == 0 ? std::cin : ifs);
 
@@ -166,13 +166,13 @@ inline void SequenceReader::determine_format() {
     }
 }
 
-inline SequenceReader& SequenceReader::operator<<(std::istream& (*f)(std::istream&))
+inline SeqReader& SeqReader::operator<<(std::istream& (*f)(std::istream&))
 {
   	f(is);
   	return *this;
 }
 
-inline SequenceReader& SequenceReader::operator>>(std::string& seq)
+inline SeqReader& SeqReader::operator>>(std::string& seq)
 {
 	  std::string id, comment, qual;
 	  char anchor;

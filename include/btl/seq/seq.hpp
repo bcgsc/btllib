@@ -1,5 +1,5 @@
-#ifndef BTL_SEQUENCE_HPP
-#define BTL_SEQUENCE_HPP
+#ifndef BTL_SEQ_HPP
+#define BTL_SEQ_HPP
 
 namespace btl {
 
