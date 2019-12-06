@@ -8,7 +8,4 @@ fi
 cd "${MESON_SOURCE_ROOT}"
 
 files=$(scripts/get_include_files.sh)
-files+=" "
-files+=$(scripts/get_wrapper_files.sh)
-
 cppcheck $files --language=c++ --force --error-exitcode=1
