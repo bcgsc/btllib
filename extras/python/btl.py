@@ -8,11 +8,11 @@ from sys import version_info as _swig_python_version_info
 if _swig_python_version_info < (2, 7, 0):
     raise RuntimeError('Python 2.7 or later required')
 
-# Import the low-level C/C++ module
+# Pull in all the attributes from the low-level C/C++ module
 if __package__ or '.' in __name__:
-    from . import _btl
+    from ._btl import *
 else:
-    import _btl
+    from _btl import *
 
 try:
     import builtins as __builtin__
@@ -88,6 +88,15 @@ def _swig_add_metaclass(metaclass):
 class _SwigNonDynamicMeta(type):
     """Meta class to enforce nondynamic attributes (no new attributes) for a class"""
     __setattr__ = _swig_setattr_nondynamic_class_variable(type.__setattr__)
+
+
+
+
+
+
+
+
+
 
 
 

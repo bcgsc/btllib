@@ -8,4 +8,35 @@
 
 
 public class btlJNI {
+  public final static native void delete_Vertex(long jarg1);
+  public final static native void delete_Edge(long jarg1);
+  public final static native long new_Graph();
+  public final static native long Graph_add_vertex(long jarg1, Graph jarg1_);
+  public final static native void Graph_remove_vertex(long jarg1, Graph jarg1_, long jarg2, Vertex jarg2_);
+  public final static native long Graph_add_edge(long jarg1, Graph jarg1_, long jarg2, Vertex jarg2_, long jarg3, Vertex jarg3_);
+  public final static native void Graph_remove_edge(long jarg1, Graph jarg1_, long jarg2, Edge jarg2_);
+  public final static native void delete_Graph(long jarg1);
+  public final static native int SeqReader_FOLD_CASE_get();
+  public final static native int SeqReader_NO_FOLD_CASE_get();
+  public final static native int SeqReader_NO_CONVERT_QUALITY_get();
+  public final static native int SeqReader_CONVERT_QUALITY_get();
+  public final static native int SeqReader_NO_TRIM_MASKED_get();
+  public final static native int SeqReader_TRIM_MASKED_get();
+  public final static native long new_SeqReader__SWIG_0(String jarg1, int jarg2);
+  public final static native long new_SeqReader__SWIG_1(String jarg1);
+  public final static native boolean SeqReader_flagFoldCase(long jarg1, SeqReader jarg1_);
+  public final static native boolean SeqReader_flagConvertQual(long jarg1, SeqReader jarg1_);
+  public final static native boolean SeqReader_flagTrimMasked(long jarg1, SeqReader jarg1_);
+  public final static native int SeqReader_get_format(long jarg1, SeqReader jarg1_);
+  public final static native boolean SeqReader_eof(long jarg1, SeqReader jarg1_);
+  public final static native boolean SeqReader_fail(long jarg1, SeqReader jarg1_);
+  public final static native int SeqReader_peek(long jarg1, SeqReader jarg1_);
+  public final static native String SeqReader_get_qual(long jarg1, SeqReader jarg1_);
+  public final static native void delete_SeqReader(long jarg1);
+  public final static native boolean is_fasta(String jarg1, long jarg2);
+  public final static native boolean is_fastq(String jarg1, long jarg2);
+  public final static native boolean is_sam(String jarg1, long jarg2);
+  public final static native String COMPLEMENTS_get();
+  public final static native String CAPITALS_get();
+  public final static native void check_stream(long jarg1, String jarg2);
 }
