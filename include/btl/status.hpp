@@ -3,51 +3,52 @@
 
 #include <cstdlib>
 #include <cstring>
+#include <chrono>
 #include <iostream>
 #include <string>
 
 namespace btl {
-  
-template<typename Arg, typename... Args>
+
 inline void
-raise_error(Arg&& arg, Args&&... args) {
-    std::cerr << "[ERROR] " << std::forward<Arg>(arg);
-    ((std::cerr << std::forward<Args>(args)), ...);
-    std::cerr << std::endl;
-    std::exit(EXIT_FAILURE);
+log_info(const std::string& msg) {
+    std::cerr << std::chrono::system_clock::to_time_t(std::chrono::system_clock::now())
+        << "[INFO] " << msg << std::endl;
 }
 
-template<typename Arg, typename... Args>
 inline void
-raise_warning(Arg&& arg, Args&&... args) {
-    std::cerr << "[WARNING] " << std::forward<Arg>(arg);
-    ((std::cerr << std::forward<Args>(args)), ...);
-    std::cerr << std::endl;
+log_warning(const std::string& msg) {
+    std::cerr << std::chrono::system_clock::to_time_t(std::chrono::system_clock::now())
+        << "[WARNING] " << msg << std::endl;
 }
 
-template<typename Arg, typename... Args>
 inline void
-check_error(bool condition, Arg&& arg, Args&&... args)
+log_error(const std::string& msg) {
+    std::cerr << std::chrono::system_clock::to_time_t(std::chrono::system_clock::now())
+        << "[ERROR] " << msg << std::endl;
+}
+
+inline void
+check_error(bool condition, const std::string& msg)
 {
     if (condition) {
-        raise_error(arg, args...);
-    }
-}
-
-template<typename Arg, typename... Args>
-inline void
-check_warning(bool condition, Arg&& arg, Args&&... args)
-{
-    if (condition) {
-        raise_warning(arg, args...);
+        log_error(msg);
+        std::exit(EXIT_FAILURE);
     }
 }
 
 inline void
-check_stream(const std::ios& stream, const char* name)
+check_warning(bool condition, const std::string& msg)
+{
+    if (condition) {
+        log_warning(msg);
+    }
+}
+
+inline void
+check_stream(const std::ios& stream, const std::string& name)
 {
   check_error(
-    !stream.good(), "'", name, "' stream error: ", std::strerror(errno));
+    !stream.good(), "'" + name + "' stream error: " + std::strerror(errno));
 }
 
 } // namespace btl
