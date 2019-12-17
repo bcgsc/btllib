@@ -1,0 +1,1 @@
+test('seq_reader', executable('seq_reader', 'seq_reader.cpp'))

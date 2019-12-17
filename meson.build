@@ -9,21 +9,21 @@ btl_include = include_directories('include')
 
 clang_tidy = find_program('clang-tidy', required: false)
 if clang_tidy.found()
-    run_target('tidy', command: 'scripts/tidy.sh')
+    run_target('tidy', command: 'scripts/tidy')
 endif
 
 diff = find_program('diff', required : false)
 clang_format = find_program('clang-format', required: false)
 if diff.found() and clang_format.found()
-    run_target('format', command: 'scripts/format.sh')
+    run_target('format', command: 'scripts/format')
 endif
 
 cppcheck = find_program('cppcheck', required: false)
 if cppcheck.found()
-    run_target('cppcheck', command: 'scripts/cppcheck.sh')
+    run_target('cppcheck', command: 'scripts/cppcheck')
 endif
 
-run_target('wrap', command: 'scripts/wrap.sh')
+run_target('wrap', command: 'scripts/wrap')
 
 subdir('include')
 subdir('tests')
