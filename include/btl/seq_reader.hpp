@@ -6,13 +6,13 @@
 
 #include <algorithm>
 #include <cassert>
-#include <cstring>
 #include <cctype>
+#include <cstring>
 #include <fstream>
-#include <sstream>
-#include <limits>
-#include <string>
 #include <iostream>
+#include <limits>
+#include <sstream>
+#include <string>
 
 namespace btl {
 
@@ -33,8 +33,8 @@ public:
 
     SeqReader(const char* input_path, int flags = 0);
 
-  	bool flagFoldCase() const { return ~flags & NO_FOLD_CASE; }
-    bool flagTrimMasked() const { return flags & TRIM_MASKED; }
+  	bool flagFoldCase() const { return bool(~flags & NO_FOLD_CASE); }
+    bool flagTrimMasked() const { return bool(flags & TRIM_MASKED); }
 
     enum Format {
         UNKNOWN,
@@ -53,7 +53,7 @@ public:
     bool fail() const { return is.fail(); };
 
     /** Return whether this stream is good. */
-    operator const void*() const { return is ? this : NULL; }
+    operator const void*() const { return is ? this : nullptr; }
 
     /** Return the next character of this stream. */
     int peek() { return is.peek(); }
@@ -73,7 +73,7 @@ private:
     const char* input_path;
     std::ifstream ifs; // If reading from a file
     std::istream& is; // Ref to the input stream (file or stdin)
-    int flags;
+    unsigned flags;
     Format format; // Format of the input file
 
     void (SeqReader::*read_impl)(std::string& seq);
@@ -131,7 +131,7 @@ inline bool SeqReader::is_fasta(const char* input, size_t n) {
             case IN_SEQ:
                 if (c == '\n') {
                     state = IN_HEADER_1;
-                } else if (!COMPLEMENTS[c]) {
+                } else if (!bool(COMPLEMENTS[c])) {
                     return false;
                 }
                 break;
@@ -164,7 +164,7 @@ inline bool SeqReader::is_fastq(const char* input, size_t n) {
             case IN_SEQ:
                 if (c == '\n') {
                     state = IN_PLUS_1;
-                } else if (!COMPLEMENTS[c]) {
+                } else if (!bool(COMPLEMENTS[c])) {
                     return false;
                 }
                 break;
@@ -194,6 +194,8 @@ inline bool SeqReader::is_fastq(const char* input, size_t n) {
 }
 
 inline bool SeqReader::is_sam(const char* input, size_t n) {
+    enum Column { QNAME = 1, FLAG, RNAME, POS, MAPQ, CIGAR, RNEXT, PNEXT, TLEN, SEQ, QUAL };
+
     size_t current = 0;
 
     while (current < n && input[current] == '@') {
@@ -209,35 +211,33 @@ inline bool SeqReader::is_sam(const char* input, size_t n) {
         c = input[current];
         if (c == '\n') {
             break;
-        } else if (c == '\t') {
-            if (current > 0 && !std::isspace(input[current - 1])) {
+        }
+        if (c == '\t') {
+            if (current > 0 && !bool(std::isspace(input[current - 1]))) {
                 column++;
             } else {
                 return false;
             }
         } else {
-            switch (column) {
-                case 1: if (std::isspace(c)) { return false; } break;
-                case 2: if (!std::isdigit(c)) { return false; } break;
-                case 3: if (std::isspace(c)) { return false; } break;
-                case 4: if (!std::isdigit(c)) { return false; } break;
-                case 5: if (!std::isdigit(c)) { return false; } break;
-                case 6: if (std::isspace(c)) { return false; } break;
-                case 7: if (std::isspace(c)) { return false; } break;
-                case 8: if (!std::isdigit(c)) { return false; } break;
-                case 9: if (!std::isdigit(c)) { return false; } break;
-                case 10: if (!COMPLEMENTS[c]) { return false; } break;
-                case 11: if (std::isspace(c)) { return false; } break;
+            switch (Column(column)) {
+                case QNAME: if (bool(std::isspace(c))) { return false; } break;
+                case FLAG: if (!bool(std::isdigit(c))) { return false; } break;
+                case RNAME: if (bool(std::isspace(c))) { return false; } break;
+                case POS: if (!bool(std::isdigit(c))) { return false; } break;
+                case MAPQ: if (!bool(std::isdigit(c))) { return false; } break;
+                case CIGAR: if (bool(std::isspace(c))) { return false; } break;
+                case RNEXT: if (bool(std::isspace(c))) { return false; } break;
+                case PNEXT: if (!bool(std::isdigit(c))) { return false; } break;
+                case TLEN: if (!bool(std::isdigit(c))) { return false; } break;
+                case SEQ: if (!bool(COMPLEMENTS[c])) { return false; } break;
+                case QUAL: if (bool(std::isspace(c))) { return false; } break;
                 default: break;
             }
         }
         current++;
     }
-    if (current >= n || column >= 11) {
-        return true;
-    }
-
-    return false;
+    
+    return current >= n || column >= QUAL;
 }
 
 inline void SeqReader::determine_format() {
@@ -263,24 +263,28 @@ inline void SeqReader::determine_format() {
     }
 }
 
-void SeqReader::read_fasta(std::string& seq) {
+inline void
+SeqReader::read_fasta(std::string& seq) {
     std::getline(is, tmp);
     std::getline(is, seq);
 }
 
-void SeqReader::read_fastq(std::string& seq) {
+inline void
+SeqReader::read_fastq(std::string& seq) {
     std::getline(is, tmp);
     std::getline(is, seq);
     std::getline(is, tmp);
     std::getline(is, qual);
 }
 
-void SeqReader::read_sam(std::string& seq) {
+inline void
+SeqReader::read_sam(std::string& seq) {
+    enum Column { QNAME = 1, FLAG, RNAME, POS, MAPQ, CIGAR, RNEXT, PNEXT, TLEN, SEQ, QUAL };
     for (;;) {
         std::getline(is, tmp);
         if (tmp.length() > 0 && tmp[0] != '@') {
             size_t pos = 0, pos2 = 0, pos3 = 0;
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < int(SEQ) - 1; i++) {
                 pos = tmp.find('\t', pos + 1);
             }
             pos2 = tmp.find('\t', pos + 1);
@@ -298,22 +302,24 @@ void SeqReader::read_sam(std::string& seq) {
     }
 }
 
-inline SeqReader& SeqReader::manip(std::istream& (*f)(std::istream&))
+inline SeqReader&
+SeqReader::manip(std::istream& (*f)(std::istream&))
 {
   	f(is);
   	return *this;
 }
 
-inline SeqReader& SeqReader::read(std::string& seq)
+inline SeqReader&
+SeqReader::read(std::string& seq)
 {
     (this->*read_impl)(seq);
     if (flagTrimMasked()) {
         const auto len = seq.length();
         size_t trim_start = 0, trim_end = seq.length();
-        while (trim_start <= len && islower(seq[trim_start])) {
+        while (trim_start <= len && bool(islower(seq[trim_start]))) {
             trim_start++;
         }
-        while (trim_end > 0 && islower(seq[trim_end - 1])) {
+        while (trim_end > 0 && bool(islower(seq[trim_end - 1]))) {
             trim_end--;
         }
         seq.erase(trim_end);
@@ -329,7 +335,8 @@ inline SeqReader& SeqReader::read(std::string& seq)
 	return *this;
 }
 
-inline std::string SeqReader::get_qual() {
+inline std::string
+SeqReader::get_qual() {
     return qual;
 }
 

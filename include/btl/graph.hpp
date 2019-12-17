@@ -68,13 +68,14 @@ inline void Graph::remove_vertex(Vertex v) {
 
 inline Edge Graph::add_edge(Vertex u, Vertex v) {
     boost::add_edge(u.id, v.id, graph);
+    return Edge(u, v);
 }
 
 inline void Graph::remove_edge(Edge e) {
     boost::remove_edge(e.u.id, e.v.id, graph);
 }
 
-inline std::ostream& operator<<(std::ostream& os, const Graph& g) { boost::write_graphviz(os, g.graph); }
+inline std::ostream& operator<<(std::ostream& os, const Graph& g) { boost::write_graphviz(os, g.graph); return os; }
 
 } // namespace btl
 
