@@ -3,10 +3,10 @@
 %{
 #define SWIG_FILE_WITH_INIT
 
-#include "btl/graph.hpp"
 #include "btl/seq_reader.hpp"
-#include "btl/seq.hpp"
+#include "btl/graph.hpp"
 #include "btl/status.hpp"
+#include "btl/seq.hpp"
 %}
 
 %include <pyprimtypes.swg>
@@ -19,7 +19,7 @@
 
 %include "extra.i"
 
-%include "btl/graph.hpp"
 %include "btl/seq_reader.hpp"
-%include "btl/seq.hpp"
+%include "btl/graph.hpp"
 %include "btl/status.hpp"
+%include "btl/seq.hpp"

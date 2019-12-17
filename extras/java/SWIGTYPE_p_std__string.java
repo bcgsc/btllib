@@ -7,18 +7,18 @@
  * ----------------------------------------------------------------------------- */
 
 
-public class SWIGTYPE_p_std__ios {
+public class SWIGTYPE_p_std__string {
   private transient long swigCPtr;
 
-  protected SWIGTYPE_p_std__ios(long cPtr, @SuppressWarnings("unused") boolean futureUse) {
+  protected SWIGTYPE_p_std__string(long cPtr, @SuppressWarnings("unused") boolean futureUse) {
     swigCPtr = cPtr;
   }
 
-  protected SWIGTYPE_p_std__ios() {
+  protected SWIGTYPE_p_std__string() {
     swigCPtr = 0;
   }
 
-  protected static long getCPtr(SWIGTYPE_p_std__ios obj) {
+  protected static long getCPtr(SWIGTYPE_p_std__string obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 }

@@ -1,10 +1,10 @@
 %module btl
 
 %{
-#include "btl/graph.hpp"
 #include "btl/seq_reader.hpp"
-#include "btl/seq.hpp"
+#include "btl/graph.hpp"
 #include "btl/status.hpp"
+#include "btl/seq.hpp"
 %}
 
 %include <java.swg>
@@ -13,7 +13,7 @@
 
 %include "extra.i"
 
-%include "btl/graph.hpp"
 %include "btl/seq_reader.hpp"
-%include "btl/seq.hpp"
+%include "btl/graph.hpp"
 %include "btl/status.hpp"
+%include "btl/seq.hpp"

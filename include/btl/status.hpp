@@ -3,28 +3,34 @@
 
 #include <cstdlib>
 #include <cstring>
-#include <chrono>
+#include <ctime>
 #include <iostream>
 #include <string>
 
 namespace btl {
 
+inline std::string
+get_time() {
+    time_t now;
+    time(&now);
+    char buf[sizeof("2011-10-08T07:07:09Z")];
+    strftime(buf, sizeof buf, "%F %T", localtime(&now));
+    return std::string(buf);
+}
+
 inline void
 log_info(const std::string& msg) {
-    std::cerr << std::chrono::system_clock::to_time_t(std::chrono::system_clock::now())
-        << "[INFO] " << msg << std::endl;
+    std::cerr << '[' << get_time() << "] [INFO] " << msg << std::endl;
 }
 
 inline void
 log_warning(const std::string& msg) {
-    std::cerr << std::chrono::system_clock::to_time_t(std::chrono::system_clock::now())
-        << "[WARNING] " << msg << std::endl;
+    std::cerr << '[' << get_time() << "] [WARNING] " << msg << std::endl;
 }
 
 inline void
 log_error(const std::string& msg) {
-    std::cerr << std::chrono::system_clock::to_time_t(std::chrono::system_clock::now())
-        << "[ERROR] " << msg << std::endl;
+    std::cerr << '[' << get_time() << "] [ERROR] " << msg << std::endl;
 }
 
 inline void

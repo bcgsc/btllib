@@ -1,6 +1,9 @@
 cpp_extra_args = run_command('python3-config', '--includes').stdout().strip().split()
 link_extra_args = run_command('python3-config', '--libs').stdout().strip().split()
 
+libpython = run_command('../../scripts/get_libpython').stdout().strip()
+link_extra_args += [ libpython ]
+
 cpp_extra_args += ['-w']
 
 py_sources = ['btl_wrap.cxx']
