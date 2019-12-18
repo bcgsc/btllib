@@ -5,8 +5,8 @@
 #include <boost/graph/graphviz.hpp>
 
 #include <iostream>
-#include <string>
 #include <sstream>
+#include <string>
 
 namespace btl {
 

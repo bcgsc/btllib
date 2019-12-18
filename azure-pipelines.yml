@@ -26,10 +26,10 @@ steps:
     ninja
   displayName: 'Build the project'
   
-- script: cd build && ninja format
+- script: cd build && ninja formatcheck
   displayName: 'Run clang-format'
   
-- script: cd build && ninja tidy
+- script: cd build && ninja tidycheck
   displayName: 'Run clang-tidy'
   
 - script: cd build && ninja cppcheck

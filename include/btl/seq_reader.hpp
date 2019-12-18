@@ -317,7 +317,7 @@ SeqReader::is_sam(const char* input, size_t n)
 
 inline bool
 SeqReader::is_gfa2(const char* input, size_t n) {
-  const char specs[] = { 'H', 'S', 'F', 'E', 'G', 'O', 'U' };
+  const unsigned char specs[] = { 'H', 'S', 'F', 'E', 'G', 'O', 'U' };
 
   enum State
   {
@@ -327,10 +327,10 @@ SeqReader::is_gfa2(const char* input, size_t n) {
     IN_IGNORED
   };
 
-  auto is_a_spec = [&] (char c) {
+  auto is_a_spec = [&] (unsigned char c) {
     bool found = false;
-    for (size_t i = 0; i < sizeof(specs) / sizeof(char); i++) {
-      if (c == specs[i]) {
+    for (unsigned char spec : specs) {
+      if (c == spec) {
         found = true;
         break;
       }
