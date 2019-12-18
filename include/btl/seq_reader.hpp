@@ -57,7 +57,8 @@ public:
   /** Get the last read sequence. Cannot be called multiple times per read. */
   std::string seq();
 
-  /** Quality of the last read sequence. Cannot be called multiple times per read. */
+  /** Quality of the last read sequence. Cannot be called multiple times per
+   * read. */
   std::string qual();
 
   /** Interface for manipulators. */
@@ -316,7 +317,8 @@ SeqReader::is_sam(const char* input, size_t n)
 }
 
 inline bool
-SeqReader::is_gfa2(const char* input, size_t n) {
+SeqReader::is_gfa2(const char* input, size_t n)
+{
   const unsigned char specs[] = { 'H', 'S', 'F', 'E', 'G', 'O', 'U' };
 
   enum State
@@ -327,7 +329,7 @@ SeqReader::is_gfa2(const char* input, size_t n) {
     IN_IGNORED
   };
 
-  auto is_a_spec = [&] (unsigned char c) {
+  auto is_a_spec = [&](unsigned char c) {
     bool found = false;
     for (unsigned char spec : specs) {
       if (c == spec) {
@@ -346,12 +348,16 @@ SeqReader::is_gfa2(const char* input, size_t n) {
     c = input[current];
     switch (state) {
       case IN_ID:
-        if (!is_a_spec(c)) { return false; }
+        if (!is_a_spec(c)) {
+          return false;
+        }
         has_id = true;
         state = IN_ID_TAB;
         break;
       case IN_ID_TAB:
-        if (c != '\t') { return false; }
+        if (c != '\t') {
+          return false;
+        }
         state = IN_REST;
         break;
       case IN_REST:
@@ -464,10 +470,14 @@ SeqReader::read_sam()
 }
 
 inline void
-SeqReader::read_gfa2() {
+SeqReader::read_gfa2()
+{
   enum Column
   {
-    S = 1, ID, LEN, SEQ
+    S = 1,
+    ID,
+    LEN,
+    SEQ
   };
   for (;;) {
     std::getline(is, tmp);
@@ -496,7 +506,9 @@ SeqReader::read()
 {
   if (is.good() && is.peek() != std::istream::traits_type::eof()) {
     (this->*read_impl)();
-    if (s.empty()) { return false; }
+    if (s.empty()) {
+      return false;
+    }
     if (flagTrimMasked()) {
       const auto len = s.length();
       size_t trim_start = 0, trim_end = s.length();
