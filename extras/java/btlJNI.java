@@ -17,12 +17,11 @@ public class btlJNI {
   public final static native boolean SeqReader_flagFoldCase(long jarg1, SeqReader jarg1_);
   public final static native boolean SeqReader_flagTrimMasked(long jarg1, SeqReader jarg1_);
   public final static native int SeqReader_get_format(long jarg1, SeqReader jarg1_);
-  public final static native boolean SeqReader_eof(long jarg1, SeqReader jarg1_);
-  public final static native boolean SeqReader_fail(long jarg1, SeqReader jarg1_);
   public final static native int SeqReader_peek(long jarg1, SeqReader jarg1_);
-  public final static native long SeqReader_read(long jarg1, SeqReader jarg1_, long jarg2);
-  public final static native long SeqReader_manip(long jarg1, SeqReader jarg1_, long jarg2);
-  public final static native String SeqReader_get_qual(long jarg1, SeqReader jarg1_);
+  public final static native boolean SeqReader_read(long jarg1, SeqReader jarg1_);
+  public final static native String SeqReader_seq(long jarg1, SeqReader jarg1_);
+  public final static native String SeqReader_qual(long jarg1, SeqReader jarg1_);
+  public final static native void SeqReader_manip(long jarg1, SeqReader jarg1_, long jarg2);
   public final static native void delete_SeqReader(long jarg1);
   public final static native void delete_Vertex(long jarg1);
   public final static native void delete_Edge(long jarg1);
@@ -31,6 +30,7 @@ public class btlJNI {
   public final static native void Graph_remove_vertex(long jarg1, Graph jarg1_, long jarg2, Vertex jarg2_);
   public final static native long Graph_add_edge(long jarg1, Graph jarg1_, long jarg2, Vertex jarg2_, long jarg3, Vertex jarg3_);
   public final static native void Graph_remove_edge(long jarg1, Graph jarg1_, long jarg2, Edge jarg2_);
+  public final static native String Graph_to_string(long jarg1, Graph jarg1_);
   public final static native void delete_Graph(long jarg1);
   public final static native String get_time();
   public final static native void log_info(String jarg1);

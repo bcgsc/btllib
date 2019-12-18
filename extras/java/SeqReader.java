@@ -55,28 +55,24 @@ public class SeqReader {
     return SeqReader.Format.swigToEnum(btlJNI.SeqReader_get_format(swigCPtr, this));
   }
 
-  public boolean eof() {
-    return btlJNI.SeqReader_eof(swigCPtr, this);
-  }
-
-  public boolean fail() {
-    return btlJNI.SeqReader_fail(swigCPtr, this);
-  }
-
   public int peek() {
     return btlJNI.SeqReader_peek(swigCPtr, this);
   }
 
-  public SeqReader read(SWIGTYPE_p_std__string seq) {
-    return new SeqReader(btlJNI.SeqReader_read(swigCPtr, this, SWIGTYPE_p_std__string.getCPtr(seq)), false);
+  public boolean read() {
+    return btlJNI.SeqReader_read(swigCPtr, this);
   }
 
-  public SeqReader manip(SWIGTYPE_p_f_r_std__istream__r_std__istream f) {
-    return new SeqReader(btlJNI.SeqReader_manip(swigCPtr, this, SWIGTYPE_p_f_r_std__istream__r_std__istream.getCPtr(f)), false);
+  public String seq() {
+    return btlJNI.SeqReader_seq(swigCPtr, this);
   }
 
-  public String get_qual() {
-    return btlJNI.SeqReader_get_qual(swigCPtr, this);
+  public String qual() {
+    return btlJNI.SeqReader_qual(swigCPtr, this);
+  }
+
+  public void manip(SWIGTYPE_p_f_r_std__istream__r_std__istream f) {
+    btlJNI.SeqReader_manip(swigCPtr, this, SWIGTYPE_p_f_r_std__istream__r_std__istream.getCPtr(f));
   }
 
   public final static class Flag {
@@ -130,6 +126,7 @@ public class SeqReader {
     public final static SeqReader.Format FASTA = new SeqReader.Format("FASTA");
     public final static SeqReader.Format FASTQ = new SeqReader.Format("FASTQ");
     public final static SeqReader.Format SAM = new SeqReader.Format("SAM");
+    public final static SeqReader.Format GFA2 = new SeqReader.Format("GFA2");
     public final static SeqReader.Format INVALID = new SeqReader.Format("INVALID");
 
     public final int swigValue() {
@@ -166,7 +163,7 @@ public class SeqReader {
       swigNext = this.swigValue+1;
     }
 
-    private static Format[] swigValues = { UNKNOWN, FASTA, FASTQ, SAM, INVALID };
+    private static Format[] swigValues = { UNKNOWN, FASTA, FASTQ, SAM, GFA2, INVALID };
     private static int swigNext = 0;
     private final int swigValue;
     private final String swigName;

@@ -55,4 +55,8 @@ public class Graph {
     btlJNI.Graph_remove_edge(swigCPtr, this, Edge.getCPtr(e), e);
   }
 
+  public String to_string() {
+    return btlJNI.Graph_to_string(swigCPtr, this);
+  }
+
 }

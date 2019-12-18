@@ -1,5 +1,5 @@
 project('libbtl', 'cpp',
-        version : '0.1.0',
+        version : '0.1.1',
         license : 'GPL3',
         default_options : [ 'cpp_std=c++17' ])
 
@@ -9,13 +9,17 @@ btl_include = include_directories('include')
 
 clang_tidy = find_program('clang-tidy', required: false)
 if clang_tidy.found()
-    run_target('tidy', command: 'scripts/tidy')
+    run_target('tidycheck', command: 'scripts/tidycheck')
+endif
+
+clang_format = find_program('clang-format', required: false)
+if clang_format.found()
+    run_target('format', command: 'scripts/format')
 endif
 
 diff = find_program('diff', required : false)
-clang_format = find_program('clang-format', required: false)
 if diff.found() and clang_format.found()
-    run_target('format', command: 'scripts/format')
+    run_target('formatcheck', command: 'scripts/formatcheck')
 endif
 
 cppcheck = find_program('cppcheck', required: false)

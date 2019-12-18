@@ -16,7 +16,7 @@
 
 namespace btl {
 
-/** Read a FASTA, FASTQ, or SAM file. */
+/** Read a FASTA, FASTQ, SAM, or GFA2 file. */
 class SeqReader
 {
 public:
@@ -42,33 +42,27 @@ public:
     FASTA,
     FASTQ,
     SAM,
+    GFA2,
     INVALID
   };
 
   Format get_format() const { return format; }
 
-  /** Return whether this stream is at end-of-file. */
-  bool eof() const { return is.eof(); };
-
-  /** Return true if failbit or badbit of stream is set. */
-  bool fail() const { return is.fail(); };
-
-  /** Return whether this stream is good. */
-  operator const void*() const { return is ? this : nullptr; }
-
   /** Return the next character of this stream. */
   int peek() { return is.peek(); }
 
   /** Read operator. */
-  SeqReader& read(std::string& seq);
-  SeqReader& operator>>(std::string& seq) { return read(seq); }
+  bool read();
+
+  /** Get the last read sequence. Cannot be called multiple times per read. */
+  std::string seq();
+
+  /** Quality of the last read sequence. Cannot be called multiple times per
+   * read. */
+  std::string qual();
 
   /** Interface for manipulators. */
-  SeqReader& manip(std::istream& (*f)(std::istream&));
-  SeqReader& operator<<(std::istream& (*f)(std::istream&)) { return manip(f); }
-
-  /** Quality of the last read sequence. */
-  std::string get_qual();
+  void manip(std::istream& (*f)(std::istream&));
 
 private:
   const char* input_path;
@@ -77,21 +71,25 @@ private:
   unsigned flags;
   Format format; // Format of the input file
 
-  void (SeqReader::*read_impl)(std::string& seq);
-  std::string qual;
-  std::string tmp;
-
   static const std::streamsize DETERMINE_FORMAT_MAX_READ_CHARS = 4096;
 
   static bool is_fasta(const char* input, size_t n);
   static bool is_fastq(const char* input, size_t n);
   static bool is_sam(const char* input, size_t n);
+  static bool is_gfa2(const char* input, size_t n);
 
   void determine_format();
 
-  void read_fasta(std::string& seq);
-  void read_fastq(std::string& seq);
-  void read_sam(std::string& seq);
+  void read_fasta();
+  void read_fastq();
+  void read_sam();
+  void read_gfa2();
+
+  void (SeqReader::*read_impl)();
+
+  std::string s;
+  std::string q;
+  std::string tmp;
 };
 
 inline SeqReader::SeqReader(const char* input_path, int flags)
@@ -318,6 +316,73 @@ SeqReader::is_sam(const char* input, size_t n)
   return current >= n || column >= QUAL;
 }
 
+inline bool
+SeqReader::is_gfa2(const char* input, size_t n)
+{
+  const unsigned char specs[] = { 'H', 'S', 'F', 'E', 'G', 'O', 'U' };
+
+  enum State
+  {
+    IN_ID,
+    IN_ID_TAB,
+    IN_REST,
+    IN_IGNORED
+  };
+
+  auto is_a_spec = [&](unsigned char c) {
+    bool found = false;
+    for (unsigned char spec : specs) {
+      if (c == spec) {
+        found = true;
+        break;
+      }
+    }
+    return found;
+  };
+
+  State state = is_a_spec(input[0]) ? IN_ID : IN_IGNORED;
+  bool has_id = false;
+  size_t current = 0;
+  unsigned char c;
+  while (current < n) {
+    c = input[current];
+    switch (state) {
+      case IN_ID:
+        if (!is_a_spec(c)) {
+          return false;
+        }
+        has_id = true;
+        state = IN_ID_TAB;
+        break;
+      case IN_ID_TAB:
+        if (c != '\t') {
+          return false;
+        }
+        state = IN_REST;
+        break;
+      case IN_REST:
+        if (c == '\n') {
+          if (current + 1 < n) {
+            state = is_a_spec(input[current + 1]) ? IN_ID : IN_IGNORED;
+          }
+        }
+        break;
+      case IN_IGNORED:
+        if (c == '\n') {
+          if (current + 1 < n) {
+            state = is_a_spec(input[current + 1]) ? IN_ID : IN_IGNORED;
+          }
+        }
+        break;
+      default:
+        break;
+    }
+    current++;
+  }
+
+  return has_id;
+}
+
 inline void
 SeqReader::determine_format()
 {
@@ -327,15 +392,19 @@ SeqReader::determine_format()
   char buffer[DETERMINE_FORMAT_MAX_READ_CHARS];
   is.read(buffer, DETERMINE_FORMAT_MAX_READ_CHARS);
 
-  if (is_fasta(buffer, is.gcount())) {
+  const auto n = is.gcount();
+  if (is_fasta(buffer, n)) {
     format = Format::FASTA;
     read_impl = &SeqReader::read_fasta;
-  } else if (is_fastq(buffer, is.gcount())) {
+  } else if (is_fastq(buffer, n)) {
     format = Format::FASTQ;
     read_impl = &SeqReader::read_fastq;
-  } else if (is_sam(buffer, is.gcount())) {
+  } else if (is_sam(buffer, n)) {
     format = Format::SAM;
     read_impl = &SeqReader::read_sam;
+  } else if (is_gfa2(buffer, n)) {
+    format = Format::GFA2;
+    read_impl = &SeqReader::read_gfa2;
   } else {
     format = Format::INVALID;
     log_error(std::string(input_path) + " input file is in invalid format!");
@@ -344,23 +413,23 @@ SeqReader::determine_format()
 }
 
 inline void
-SeqReader::read_fasta(std::string& seq)
+SeqReader::read_fasta()
 {
   std::getline(is, tmp);
-  std::getline(is, seq);
+  std::getline(is, s);
 }
 
 inline void
-SeqReader::read_fastq(std::string& seq)
+SeqReader::read_fastq()
 {
   std::getline(is, tmp);
-  std::getline(is, seq);
+  std::getline(is, s);
   std::getline(is, tmp);
-  std::getline(is, qual);
+  std::getline(is, q);
 }
 
 inline void
-SeqReader::read_sam(std::string& seq)
+SeqReader::read_sam()
 {
   enum Column
   {
@@ -389,8 +458,8 @@ SeqReader::read_sam(std::string& seq)
         pos3 = tmp.length();
       }
 
-      seq = tmp.substr(pos + 1, pos2 - pos - 1);
-      qual = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
+      s = tmp.substr(pos + 1, pos2 - pos - 1);
+      q = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
 
       break;
     }
@@ -400,43 +469,86 @@ SeqReader::read_sam(std::string& seq)
   }
 }
 
-inline SeqReader&
-SeqReader::manip(std::istream& (*f)(std::istream&))
+inline void
+SeqReader::read_gfa2()
 {
-  f(is);
-  return *this;
+  enum Column
+  {
+    S = 1,
+    ID,
+    LEN,
+    SEQ
+  };
+  for (;;) {
+    std::getline(is, tmp);
+    if (tmp.length() > 0 && tmp[0] == 'S') {
+      size_t pos = 0, pos2 = 0;
+      for (int i = 0; i < int(SEQ) - 1; i++) {
+        pos = tmp.find('\t', pos + 1);
+      }
+      pos2 = tmp.find('\t', pos + 1);
+      if (pos2 == std::string::npos) {
+        pos2 = tmp.length();
+      }
+
+      s = tmp.substr(pos + 1, pos2 - pos - 1);
+
+      break;
+    }
+    if (is.eof()) {
+      break;
+    }
+  }
 }
 
-inline SeqReader&
-SeqReader::read(std::string& seq)
+inline bool
+SeqReader::read()
 {
-  (this->*read_impl)(seq);
-  if (flagTrimMasked()) {
-    const auto len = seq.length();
-    size_t trim_start = 0, trim_end = seq.length();
-    while (trim_start <= len && bool(islower(seq[trim_start]))) {
-      trim_start++;
+  if (is.good() && is.peek() != std::istream::traits_type::eof()) {
+    (this->*read_impl)();
+    if (s.empty()) {
+      return false;
     }
-    while (trim_end > 0 && bool(islower(seq[trim_end - 1]))) {
-      trim_end--;
+    if (flagTrimMasked()) {
+      const auto len = s.length();
+      size_t trim_start = 0, trim_end = s.length();
+      while (trim_start <= len && bool(islower(s[trim_start]))) {
+        trim_start++;
+      }
+      while (trim_end > 0 && bool(islower(s[trim_end - 1]))) {
+        trim_end--;
+      }
+      s.erase(trim_end);
+      s.erase(0, trim_start);
+      if (!q.empty()) {
+        q.erase(trim_end);
+        q.erase(0, trim_start);
+      }
     }
-    seq.erase(trim_end);
-    seq.erase(0, trim_start);
-    if (!qual.empty()) {
-      qual.erase(trim_end);
-      qual.erase(0, trim_start);
+    if (flagFoldCase()) {
+      std::transform(s.begin(), s.end(), s.begin(), ::toupper);
     }
+    return true;
   }
-  if (flagFoldCase()) {
-    std::transform(seq.begin(), seq.end(), seq.begin(), ::toupper);
-  }
-  return *this;
+  return false;
 }
 
 inline std::string
-SeqReader::get_qual()
+SeqReader::seq()
 {
-  return qual;
+  return std::move(s);
+}
+
+inline std::string
+SeqReader::qual()
+{
+  return std::move(q);
+}
+
+inline void
+SeqReader::manip(std::istream& (*f)(std::istream&))
+{
+  f(is);
 }
 
 } // namespace btl

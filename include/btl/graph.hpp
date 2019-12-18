@@ -5,6 +5,8 @@
 #include <boost/graph/graphviz.hpp>
 
 #include <iostream>
+#include <sstream>
+#include <string>
 
 namespace btl {
 
@@ -51,7 +53,7 @@ public:
   Edge add_edge(Vertex u, Vertex v);
   void remove_edge(Edge e);
 
-  friend std::ostream& operator<<(std::ostream& os, const Graph& g);
+  std::string to_string();
 
 private:
   boost::adjacency_list<boost::vecS, boost::vecS, boost::bidirectionalS> graph;
@@ -80,11 +82,12 @@ Graph::remove_edge(Edge e)
   boost::remove_edge(e.u.id, e.v.id, graph);
 }
 
-inline std::ostream&
-operator<<(std::ostream& os, const Graph& g)
+inline std::string
+Graph::to_string()
 {
-  boost::write_graphviz(os, g.graph);
-  return os;
+  std::stringstream ss;
+  boost::write_graphviz(ss, graph);
+  return ss.str();
 }
 
 } // namespace btl
