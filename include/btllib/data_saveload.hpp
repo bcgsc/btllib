@@ -157,11 +157,15 @@ get_saveload_cmd(const std::string& path, const bool save) {
                         close(null_fd);
 
                         switch (args.size()) {
+                            case 1: execlp(args[0].c_str(), args[0].c_str(), NULL);
                             case 2: execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), NULL);
                             case 3: execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), args[2].c_str(), NULL);
                             case 4: execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), args[2].c_str(), args[3].c_str(), NULL);
-                            default: log_error("Too many arguments supplied to execlp."); std::exit(EXIT_FAILURE);
+                            default:
+                                log_error("Invalid number of arguments supplied to execlp (" + std::to_string(args.size()) + ").");
+                                std::exit(EXIT_FAILURE);
                         }
+                        log_error("execlp failed.");
                         std::exit(EXIT_FAILURE);
                     } else {
                         int status;
@@ -246,11 +250,15 @@ data_saveload(const std::string& cmd, const bool save)
             }
 
             switch (args.size()) {
+                case 1: execlp(args[0].c_str(), args[0].c_str(), NULL);
                 case 2: execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), NULL);
                 case 3: execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), args[2].c_str(), NULL);
                 case 4: execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), args[2].c_str(), args[3].c_str(), NULL);
-                default: log_error("Too many arguments supplied to execlp."); std::exit(EXIT_FAILURE);
+                default:
+                    log_error("Invalid number of arguments supplied to execlp (" + std::to_string(args.size()) + ").");
+                    std::exit(EXIT_FAILURE);
             }
+            log_error("execlp failed.");
             exit(EXIT_FAILURE);
         } else {
             dup2(fd[WRITE_END], STDOUT_FILENO);
@@ -258,11 +266,15 @@ data_saveload(const std::string& cmd, const bool save)
 		    close(fd[WRITE_END]);
 
             switch (args.size()) {
+                case 1: execlp(args[0].c_str(), args[0].c_str(), NULL);
                 case 2: execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), NULL);
                 case 3: execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), args[2].c_str(), NULL);
                 case 4: execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), args[2].c_str(), args[3].c_str(), NULL);
-                default: log_error("Too many arguments supplied to execlp."); std::exit(EXIT_FAILURE);
+                default:
+                    log_error("Invalid number of arguments supplied to execlp (" + std::to_string(args.size()) + ").");
+                    std::exit(EXIT_FAILURE);
             }
+            log_error("execlp failed.");
             exit(EXIT_FAILURE);
         }
 	} else {
