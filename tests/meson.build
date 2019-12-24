@@ -1,1 +1,6 @@
-test('seq_reader', executable('seq_reader', 'seq_reader.cpp'))
+tests_files = run_command('../scripts/get_tests_files').stdout().strip().split()
+
+foreach file : tests_files
+    t = file.split('.cpp')[0].split('.cxx')[0].split('/')[-1]
+    test(t, executable(t, file))
+endforeach

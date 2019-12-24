@@ -49,7 +49,8 @@ static inline bool
 ends_with(std::string s, std::string suffix) {
     std::transform(s.begin(), s.end(), s.begin(), ::tolower);
     std::transform(suffix.begin(), suffix.end(), suffix.begin(), ::tolower);
-    return s.rfind(suffix) == s.size() - suffix.size();
+    auto pos = s.rfind(suffix);
+    return (pos != std::string::npos) && (pos == s.size() - suffix.size());
 };
 
 #endif
