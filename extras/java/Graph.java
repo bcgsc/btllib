@@ -29,34 +29,34 @@ public class Graph {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        btlJNI.delete_Graph(swigCPtr);
+        btllibJNI.delete_Graph(swigCPtr);
       }
       swigCPtr = 0;
     }
   }
 
   public Graph() {
-    this(btlJNI.new_Graph(), true);
+    this(btllibJNI.new_Graph(), true);
   }
 
   public Vertex add_vertex() {
-    return new Vertex(btlJNI.Graph_add_vertex(swigCPtr, this), true);
+    return new Vertex(btllibJNI.Graph_add_vertex(swigCPtr, this), true);
   }
 
   public void remove_vertex(Vertex v) {
-    btlJNI.Graph_remove_vertex(swigCPtr, this, Vertex.getCPtr(v), v);
+    btllibJNI.Graph_remove_vertex(swigCPtr, this, Vertex.getCPtr(v), v);
   }
 
   public Edge add_edge(Vertex u, Vertex v) {
-    return new Edge(btlJNI.Graph_add_edge(swigCPtr, this, Vertex.getCPtr(u), u, Vertex.getCPtr(v), v), true);
+    return new Edge(btllibJNI.Graph_add_edge(swigCPtr, this, Vertex.getCPtr(u), u, Vertex.getCPtr(v), v), true);
   }
 
   public void remove_edge(Edge e) {
-    btlJNI.Graph_remove_edge(swigCPtr, this, Edge.getCPtr(e), e);
+    btllibJNI.Graph_remove_edge(swigCPtr, this, Edge.getCPtr(e), e);
   }
 
   public String to_string() {
-    return btlJNI.Graph_to_string(swigCPtr, this);
+    return btllibJNI.Graph_to_string(swigCPtr, this);
   }
 
 }

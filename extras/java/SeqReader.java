@@ -29,57 +29,57 @@ public class SeqReader {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        btlJNI.delete_SeqReader(swigCPtr);
+        btllibJNI.delete_SeqReader(swigCPtr);
       }
       swigCPtr = 0;
     }
   }
 
   public SeqReader(String input_path, int flags) {
-    this(btlJNI.new_SeqReader__SWIG_0(input_path, flags), true);
+    this(btllibJNI.new_SeqReader__SWIG_0(input_path, flags), true);
   }
 
   public SeqReader(String input_path) {
-    this(btlJNI.new_SeqReader__SWIG_1(input_path), true);
+    this(btllibJNI.new_SeqReader__SWIG_1(input_path), true);
   }
 
   public boolean flagFoldCase() {
-    return btlJNI.SeqReader_flagFoldCase(swigCPtr, this);
+    return btllibJNI.SeqReader_flagFoldCase(swigCPtr, this);
   }
 
   public boolean flagTrimMasked() {
-    return btlJNI.SeqReader_flagTrimMasked(swigCPtr, this);
+    return btllibJNI.SeqReader_flagTrimMasked(swigCPtr, this);
   }
 
   public SeqReader.Format get_format() {
-    return SeqReader.Format.swigToEnum(btlJNI.SeqReader_get_format(swigCPtr, this));
+    return SeqReader.Format.swigToEnum(btllibJNI.SeqReader_get_format(swigCPtr, this));
   }
 
   public int peek() {
-    return btlJNI.SeqReader_peek(swigCPtr, this);
+    return btllibJNI.SeqReader_peek(swigCPtr, this);
   }
 
   public boolean read() {
-    return btlJNI.SeqReader_read(swigCPtr, this);
+    return btllibJNI.SeqReader_read(swigCPtr, this);
   }
 
   public String seq() {
-    return btlJNI.SeqReader_seq(swigCPtr, this);
+    return btllibJNI.SeqReader_seq(swigCPtr, this);
   }
 
   public String qual() {
-    return btlJNI.SeqReader_qual(swigCPtr, this);
+    return btllibJNI.SeqReader_qual(swigCPtr, this);
   }
 
   public void manip(SWIGTYPE_p_f_r_std__istream__r_std__istream f) {
-    btlJNI.SeqReader_manip(swigCPtr, this, SWIGTYPE_p_f_r_std__istream__r_std__istream.getCPtr(f));
+    btllibJNI.SeqReader_manip(swigCPtr, this, SWIGTYPE_p_f_r_std__istream__r_std__istream.getCPtr(f));
   }
 
   public final static class Flag {
-    public final static SeqReader.Flag FOLD_CASE = new SeqReader.Flag("FOLD_CASE", btlJNI.SeqReader_FOLD_CASE_get());
-    public final static SeqReader.Flag NO_FOLD_CASE = new SeqReader.Flag("NO_FOLD_CASE", btlJNI.SeqReader_NO_FOLD_CASE_get());
-    public final static SeqReader.Flag NO_TRIM_MASKED = new SeqReader.Flag("NO_TRIM_MASKED", btlJNI.SeqReader_NO_TRIM_MASKED_get());
-    public final static SeqReader.Flag TRIM_MASKED = new SeqReader.Flag("TRIM_MASKED", btlJNI.SeqReader_TRIM_MASKED_get());
+    public final static SeqReader.Flag FOLD_CASE = new SeqReader.Flag("FOLD_CASE", btllibJNI.SeqReader_FOLD_CASE_get());
+    public final static SeqReader.Flag NO_FOLD_CASE = new SeqReader.Flag("NO_FOLD_CASE", btllibJNI.SeqReader_NO_FOLD_CASE_get());
+    public final static SeqReader.Flag NO_TRIM_MASKED = new SeqReader.Flag("NO_TRIM_MASKED", btllibJNI.SeqReader_NO_TRIM_MASKED_get());
+    public final static SeqReader.Flag TRIM_MASKED = new SeqReader.Flag("TRIM_MASKED", btllibJNI.SeqReader_TRIM_MASKED_get());
 
     public final int swigValue() {
       return swigValue;

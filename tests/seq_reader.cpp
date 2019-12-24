@@ -1,6 +1,7 @@
-#include "../include/btl/seq_reader.hpp"
+#include "../include/btllib/seq_reader.hpp"
 
-#include <iostream>
+#include <cassert>
+#include <string>
 
 int main() {
     std::string seq, qual;
@@ -11,8 +12,8 @@ int main() {
     int i;
 
     // Test FASTA
-    btl::SeqReader reader_fasta("../tests/input.fa");
-    assert(reader_fasta.get_format() == btl::SeqReader::Format::FASTA);
+    btllib::SeqReader reader_fasta("../tests/input.fa.gz");
+    assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
 
     i = 0;
 	while (reader_fasta.read()) {
@@ -26,8 +27,8 @@ int main() {
     assert(i == 2);
 
     // Test FASTQ
-    btl::SeqReader reader_fastq("../tests/input.fq");
-    assert(reader_fastq.get_format() == btl::SeqReader::Format::FASTQ);
+    btllib::SeqReader reader_fastq("../tests/input.fq.tar.xz");
+    assert(reader_fastq.get_format() == btllib::SeqReader::Format::FASTQ);
 
     i = 0;
 	while (reader_fastq.read()) {
@@ -42,8 +43,8 @@ int main() {
     assert(i == 2);
 
     // Test SAM
-    btl::SeqReader reader_sam("../tests/input.sam");
-    assert(reader_sam.get_format() == btl::SeqReader::Format::SAM);
+    btllib::SeqReader reader_sam("../tests/input.bam");
+    assert(reader_sam.get_format() == btllib::SeqReader::Format::SAM);
 
     i = 0;
 	while (reader_sam.read()) {
@@ -58,8 +59,8 @@ int main() {
     assert(i == 2);
 
     // Test GFA2
-    btl::SeqReader reader_gfa2("../tests/input.gfa2");
-    assert(reader_gfa2.get_format() == btl::SeqReader::Format::GFA2);
+    btllib::SeqReader reader_gfa2("../tests/input.gfa2");
+    assert(reader_gfa2.get_format() == btllib::SeqReader::Format::GFA2);
 
     i = 0;
 	while (reader_gfa2.read()) {

@@ -16,14 +16,14 @@ cd ${MESON_SOURCE_ROOT}
 
 include_files=$(scripts/get_include_files)
 
-echo "%module btl
+echo "%module btllib
 
-%{" > extras/java/btl.i
+%{" > extras/java/btllib.i
 
 for file in ${include_files}; do
     relative=$(scripts/get_include_relative ${file})
     path="${relative}/$(basename ${file})"
-    echo "#include \"$path\"" >> extras/java/btl.i
+    echo "#include \"$path\"" >> extras/java/btllib.i
 done
 
 echo "%}
@@ -33,17 +33,17 @@ echo "%}
 %include <std_string.i>
 
 %include \"extra.i\"
-" >> extras/java/btl.i
+" >> extras/java/btllib.i
 
 for file in ${include_files}; do
     relative=$(scripts/get_include_relative ${file})
     path="${relative}/$(basename ${file})"
-    echo "%include \"$path\"" >> extras/java/btl.i
+    echo "%include \"$path\"" >> extras/java/btllib.i
 done
 
 ln -sf $PWD/include extras/java/
 cd extras/java
-swig -java -c++ -Iinclude btl.i
+swig -java -c++ -Iinclude btllib.i
 rm include
 
 # Add java files to meson build
@@ -56,16 +56,16 @@ cd ${MESON_SOURCE_ROOT}
 
 include_files=$(scripts/get_include_files)
 
-echo "%module btl
+echo "%module btllib
 
 %{
 #define SWIG_FILE_WITH_INIT
-" > extras/python/btl.i
+" > extras/python/btllib.i
 
 for file in ${include_files}; do
     relative=$(scripts/get_include_relative ${file})
     path="${relative}/$(basename ${file})"
-    echo "#include \"$path\"" >> extras/python/btl.i
+    echo "#include \"$path\"" >> extras/python/btllib.i
 done
 
 echo "%}
@@ -79,15 +79,15 @@ echo "%}
 %include <std_iostream.i>
 
 %include \"extra.i\"
-" >> extras/python/btl.i
+" >> extras/python/btllib.i
 
 for file in ${include_files}; do
     relative=$(scripts/get_include_relative ${file})
     path="${relative}/$(basename ${file})"
-    echo "%include \"$path\"" >> extras/python/btl.i
+    echo "%include \"$path\"" >> extras/python/btllib.i
 done
 
 ln -sf $PWD/include extras/python/
 cd extras/python
-swig -python -py3 -builtin -c++ -Iinclude btl.i
+swig -python -py3 -builtin -c++ -Iinclude btllib.i
 rm include

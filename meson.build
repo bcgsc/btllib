@@ -1,11 +1,12 @@
-project('libbtl', 'cpp',
-        version : '0.1.1',
+project('btllib', 'cpp',
+        version : '0.2.0',
         license : 'GPL3',
         default_options : [ 'cpp_std=c++17' ])
+add_global_link_arguments('-ldl', language : 'cpp')
 
 thread_dep = dependency('threads')
 
-btl_include = include_directories('include')
+btllib_include = include_directories('include')
 
 clang_tidy = find_program('clang-tidy', required: false)
 if clang_tidy.found()

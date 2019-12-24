@@ -1,7 +1,7 @@
-#ifndef BTL_SEQ_HPP
-#define BTL_SEQ_HPP
+#ifndef BTLLIB_SEQ_HPP
+#define BTLLIB_SEQ_HPP
 
-namespace btl {
+namespace btllib {
 
 // clang-format off
 const inline char COMPLEMENTS[256] = {
@@ -69,6 +69,6 @@ const inline char CAPITALS[256] = {
 };
 // clang-format on
 
-} // namespace btl
+} // namespace btllib
 
 #endif

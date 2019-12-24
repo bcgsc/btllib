@@ -1,5 +1,5 @@
-#ifndef BTL_STATUS_HPP
-#define BTL_STATUS_HPP
+#ifndef BTLLIB_STATUS_HPP
+#define BTLLIB_STATUS_HPP
 
 #include <cstdlib>
 #include <cstring>
@@ -7,7 +7,7 @@
 #include <iostream>
 #include <string>
 
-namespace btl {
+namespace btllib {
 
 inline std::string
 get_time()
@@ -61,6 +61,6 @@ check_stream(const std::ios& stream, const std::string& name)
               "'" + name + "' stream error: " + std::strerror(errno));
 }
 
-} // namespace btl
+} // namespace btllib
 
 #endif

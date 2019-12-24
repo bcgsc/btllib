@@ -1,6 +1,7 @@
-#ifndef BTL_SEQ_READER_HPP
-#define BTL_SEQ_READER_HPP
+#ifndef BTLLIB_SEQ_READER_HPP
+#define BTLLIB_SEQ_READER_HPP
 
+#include "data_saveload.hpp"
 #include "seq.hpp"
 #include "status.hpp"
 
@@ -14,7 +15,7 @@
 #include <sstream>
 #include <string>
 
-namespace btl {
+namespace btllib {
 
 /** Read a FASTA, FASTQ, SAM, or GFA2 file. */
 class SeqReader
@@ -551,6 +552,6 @@ SeqReader::manip(std::istream& (*f)(std::istream&))
   f(is);
 }
 
-} // namespace btl
+} // namespace btllib
 
 #endif
