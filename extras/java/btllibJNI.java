@@ -7,7 +7,7 @@
  * ----------------------------------------------------------------------------- */
 
 
-public class btlJNI {
+public class btllibJNI {
   public final static native int SeqReader_FOLD_CASE_get();
   public final static native int SeqReader_NO_FOLD_CASE_get();
   public final static native int SeqReader_NO_TRIM_MASKED_get();
@@ -32,6 +32,33 @@ public class btlJNI {
   public final static native void Graph_remove_edge(long jarg1, Graph jarg1_, long jarg2, Edge jarg2_);
   public final static native String Graph_to_string(long jarg1, Graph jarg1_);
   public final static native void delete_Graph(long jarg1);
+  public final static native long split(String jarg1, String jarg2);
+  public final static native void ltrim(long jarg1);
+  public final static native void rtrim(long jarg1);
+  public final static native void trim(long jarg1);
+  public final static native boolean starts_with(String jarg1, String jarg2);
+  public final static native boolean ends_with(String jarg1, String jarg2);
+  public final static native void orig_open_set(long jarg1);
+  public final static native long orig_open_get();
+  public final static native void orig_open64_set(long jarg1);
+  public final static native long orig_open64_get();
+  public final static native void orig_creat_set(long jarg1);
+  public final static native long orig_creat_get();
+  public final static native void orig_fopen_set(long jarg1);
+  public final static native long orig_fopen_get();
+  public final static native void orig_fopen64_set(long jarg1);
+  public final static native long orig_fopen64_get();
+  public final static native void sigchld_handler(int jarg1);
+  public final static native boolean data_saveload_init();
+  public final static native boolean data_saveload_initialized_get();
+  public final static native String get_saveload_cmd(String jarg1, boolean jarg2);
+  public final static native int data_saveload(String jarg1, boolean jarg2);
+  public final static native long fdata_saveload(String jarg1, boolean jarg2);
+  public final static native int open(String jarg1, int jarg2);
+  public final static native int open64(String jarg1, int jarg2);
+  public final static native int creat(String jarg1, long jarg2);
+  public final static native long fopen(String jarg1, String jarg2);
+  public final static native long fopen64(String jarg1, String jarg2);
   public final static native String get_time();
   public final static native void log_info(String jarg1);
   public final static native void log_warning(String jarg1);

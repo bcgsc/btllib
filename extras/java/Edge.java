@@ -29,7 +29,7 @@ public class Edge {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        btlJNI.delete_Edge(swigCPtr);
+        btllibJNI.delete_Edge(swigCPtr);
       }
       swigCPtr = 0;
     }

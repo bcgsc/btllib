@@ -1,5 +1,5 @@
-#ifndef BTL_GRAPH_HPP
-#define BTL_GRAPH_HPP
+#ifndef BTLLIB_GRAPH_HPP
+#define BTLLIB_GRAPH_HPP
 
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graphviz.hpp>
@@ -8,7 +8,7 @@
 #include <sstream>
 #include <string>
 
-namespace btl {
+namespace btllib {
 
 class Graph;
 
@@ -90,6 +90,6 @@ Graph::to_string()
   return ss.str();
 }
 
-} // namespace btl
+} // namespace btllib
 
 #endif

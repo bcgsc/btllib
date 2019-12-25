@@ -10,9 +10,9 @@ if _swig_python_version_info < (2, 7, 0):
 
 # Pull in all the attributes from the low-level C/C++ module
 if __package__ or "." in __name__:
-    from ._btl import *
+    from ._btllib import *
 else:
-    from _btl import *
+    from _btllib import *
 
 try:
     import builtins as __builtin__

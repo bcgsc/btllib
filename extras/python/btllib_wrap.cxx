@@ -3402,62 +3402,69 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_SwigPyObject swig_types[0]
-#define SWIGTYPE_p_bool swig_types[1]
-#define SWIGTYPE_p_btl__Edge swig_types[2]
-#define SWIGTYPE_p_btl__Graph swig_types[3]
-#define SWIGTYPE_p_btl__SeqReader swig_types[4]
-#define SWIGTYPE_p_btl__Vertex swig_types[5]
-#define SWIGTYPE_p_char swig_types[6]
-#define SWIGTYPE_p_char_type swig_types[7]
-#define SWIGTYPE_p_double swig_types[8]
-#define SWIGTYPE_p_f_enum_std__ios_base__event_r_std__ios_base_int__void swig_types[9]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[10]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[11]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[12]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[13]
-#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[14]
-#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[15]
-#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[16]
-#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[17]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[18]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[19]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[20]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[21]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__ios_base swig_types[22]
-#define SWIGTYPE_p_float swig_types[23]
-#define SWIGTYPE_p_fmtflags swig_types[24]
-#define SWIGTYPE_p_int swig_types[25]
-#define SWIGTYPE_p_int_type swig_types[26]
-#define SWIGTYPE_p_iostate swig_types[27]
-#define SWIGTYPE_p_long swig_types[28]
-#define SWIGTYPE_p_long_double swig_types[29]
-#define SWIGTYPE_p_long_long swig_types[30]
-#define SWIGTYPE_p_off_type swig_types[31]
-#define SWIGTYPE_p_openmode swig_types[32]
-#define SWIGTYPE_p_p_void swig_types[33]
-#define SWIGTYPE_p_pos_type swig_types[34]
-#define SWIGTYPE_p_seekdir swig_types[35]
-#define SWIGTYPE_p_short swig_types[36]
-#define SWIGTYPE_p_size_t swig_types[37]
-#define SWIGTYPE_p_state_type swig_types[38]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[39]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[40]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[41]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[42]
-#define SWIGTYPE_p_std__basic_streambufT_char_std__char_traitsT_char_t_t swig_types[43]
-#define SWIGTYPE_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t swig_types[44]
-#define SWIGTYPE_p_std__ios_base swig_types[45]
-#define SWIGTYPE_p_std__locale swig_types[46]
-#define SWIGTYPE_p_streamoff swig_types[47]
-#define SWIGTYPE_p_streampos swig_types[48]
-#define SWIGTYPE_p_traits_type swig_types[49]
-#define SWIGTYPE_p_unsigned_int swig_types[50]
-#define SWIGTYPE_p_unsigned_long swig_types[51]
-#define SWIGTYPE_p_unsigned_long_long swig_types[52]
-#define SWIGTYPE_p_unsigned_short swig_types[53]
-static swig_type_info *swig_types[55];
-static swig_module_info swig_module = {swig_types, 54, 0, 0, 0, 0};
+#define SWIGTYPE_p_FILE swig_types[0]
+#define SWIGTYPE_p_SwigPyObject swig_types[1]
+#define SWIGTYPE_p_bool swig_types[2]
+#define SWIGTYPE_p_btllib__Edge swig_types[3]
+#define SWIGTYPE_p_btllib__Graph swig_types[4]
+#define SWIGTYPE_p_btllib__SeqReader swig_types[5]
+#define SWIGTYPE_p_btllib__Vertex swig_types[6]
+#define SWIGTYPE_p_char swig_types[7]
+#define SWIGTYPE_p_char_type swig_types[8]
+#define SWIGTYPE_p_double swig_types[9]
+#define SWIGTYPE_p_f_enum_std__ios_base__event_r_std__ios_base_int__void swig_types[10]
+#define SWIGTYPE_p_f_p_q_const__char_int_v_______int swig_types[11]
+#define SWIGTYPE_p_f_p_q_const__char_mode_t__int swig_types[12]
+#define SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE swig_types[13]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[14]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[15]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[16]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[17]
+#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[18]
+#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[19]
+#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[20]
+#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[21]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[22]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[23]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[24]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[25]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__ios_base swig_types[26]
+#define SWIGTYPE_p_float swig_types[27]
+#define SWIGTYPE_p_fmtflags swig_types[28]
+#define SWIGTYPE_p_int swig_types[29]
+#define SWIGTYPE_p_int_type swig_types[30]
+#define SWIGTYPE_p_iostate swig_types[31]
+#define SWIGTYPE_p_long swig_types[32]
+#define SWIGTYPE_p_long_double swig_types[33]
+#define SWIGTYPE_p_long_long swig_types[34]
+#define SWIGTYPE_p_mode_t swig_types[35]
+#define SWIGTYPE_p_off_type swig_types[36]
+#define SWIGTYPE_p_openmode swig_types[37]
+#define SWIGTYPE_p_p_void swig_types[38]
+#define SWIGTYPE_p_pos_type swig_types[39]
+#define SWIGTYPE_p_seekdir swig_types[40]
+#define SWIGTYPE_p_short swig_types[41]
+#define SWIGTYPE_p_size_t swig_types[42]
+#define SWIGTYPE_p_state_type swig_types[43]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[44]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[45]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[46]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[47]
+#define SWIGTYPE_p_std__basic_streambufT_char_std__char_traitsT_char_t_t swig_types[48]
+#define SWIGTYPE_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t swig_types[49]
+#define SWIGTYPE_p_std__ios_base swig_types[50]
+#define SWIGTYPE_p_std__locale swig_types[51]
+#define SWIGTYPE_p_std__string swig_types[52]
+#define SWIGTYPE_p_std__vectorT_std__string_t swig_types[53]
+#define SWIGTYPE_p_streamoff swig_types[54]
+#define SWIGTYPE_p_streampos swig_types[55]
+#define SWIGTYPE_p_traits_type swig_types[56]
+#define SWIGTYPE_p_unsigned_int swig_types[57]
+#define SWIGTYPE_p_unsigned_long swig_types[58]
+#define SWIGTYPE_p_unsigned_long_long swig_types[59]
+#define SWIGTYPE_p_unsigned_short swig_types[60]
+static swig_type_info *swig_types[62];
+static swig_module_info swig_module = {swig_types, 61, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3469,16 +3476,16 @@ static swig_module_info swig_module = {swig_types, 54, 0, 0, 0, 0};
 #define SWIG_TypeQuery SWIG_Python_TypeQuery
 
 /*-----------------------------------------------
-              @(target):= _btl.so
+              @(target):= _btllib.so
   ------------------------------------------------*/
 #if PY_VERSION_HEX >= 0x03000000
-#  define SWIG_init    PyInit__btl
+#  define SWIG_init    PyInit__btllib
 
 #else
-#  define SWIG_init    init_btl
+#  define SWIG_init    init_btllib
 
 #endif
-#define SWIG_name    "_btl"
+#define SWIG_name    "_btllib"
 
 #define SWIGVERSION 0x040001 
 #define SWIG_VERSION SWIGVERSION
@@ -3566,10 +3573,12 @@ namespace swig {
 
 #define SWIG_FILE_WITH_INIT
 
-#include "btl/seq_reader.hpp"
-#include "btl/graph.hpp"
-#include "btl/status.hpp"
-#include "btl/seq.hpp"
+#include "btllib/seq_reader.hpp"
+#include "btllib/graph.hpp"
+#include "btllib/util.hpp"
+#include "btllib/data_saveload.hpp"
+#include "btllib/status.hpp"
+#include "btllib/seq.hpp"
 
 
 #include <typeinfo>
@@ -9625,7 +9634,7 @@ SWIGINTERN int _wrap_new_SeqReader__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyO
   int alloc1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  btl::SeqReader *result = 0 ;
+  btllib::SeqReader *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
@@ -9638,8 +9647,8 @@ SWIGINTERN int _wrap_new_SeqReader__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyO
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SeqReader" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  result = (btl::SeqReader *)new btl::SeqReader((char const *)arg1,arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btl__SeqReader, SWIG_BUILTIN_INIT |  0 );
+  result = (btllib::SeqReader *)new btllib::SeqReader((char const *)arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeqReader, SWIG_BUILTIN_INIT |  0 );
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   return resultobj == Py_None ? -1 : 0;
 fail:
@@ -9654,7 +9663,7 @@ SWIGINTERN int _wrap_new_SeqReader__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyO
   int res1 ;
   char *buf1 = 0 ;
   int alloc1 = 0 ;
-  btl::SeqReader *result = 0 ;
+  btllib::SeqReader *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
@@ -9662,8 +9671,8 @@ SWIGINTERN int _wrap_new_SeqReader__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyO
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeqReader" "', argument " "1"" of type '" "char const *""'");
   }
   arg1 = reinterpret_cast< char * >(buf1);
-  result = (btl::SeqReader *)new btl::SeqReader((char const *)arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btl__SeqReader, SWIG_BUILTIN_INIT |  0 );
+  result = (btllib::SeqReader *)new btllib::SeqReader((char const *)arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeqReader, SWIG_BUILTIN_INIT |  0 );
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   return resultobj == Py_None ? -1 : 0;
 fail:
@@ -9706,27 +9715,27 @@ SWIGINTERN int _wrap_new_SeqReader(PyObject *self, PyObject *args, PyObject *SWI
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_SeqReader'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btl::SeqReader::SeqReader(char const *,int)\n"
-    "    btl::SeqReader::SeqReader(char const *)\n");
+    "    btllib::SeqReader::SeqReader(char const *,int)\n"
+    "    btllib::SeqReader::SeqReader(char const *)\n");
   return -1;
 }
 
 
 SWIGINTERN PyObject *_wrap_SeqReader_flagFoldCase(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::SeqReader *arg1 = (btl::SeqReader *) 0 ;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   bool result;
   
   if (!SWIG_Python_UnpackTuple(args, "SeqReader_flagFoldCase", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__SeqReader, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_flagFoldCase" "', argument " "1"" of type '" "btl::SeqReader const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_flagFoldCase" "', argument " "1"" of type '" "btllib::SeqReader const *""'"); 
   }
-  arg1 = reinterpret_cast< btl::SeqReader * >(argp1);
-  result = (bool)((btl::SeqReader const *)arg1)->flagFoldCase();
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
+  result = (bool)((btllib::SeqReader const *)arg1)->flagFoldCase();
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -9736,19 +9745,19 @@ fail:
 
 SWIGINTERN PyObject *_wrap_SeqReader_flagTrimMasked(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::SeqReader *arg1 = (btl::SeqReader *) 0 ;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   bool result;
   
   if (!SWIG_Python_UnpackTuple(args, "SeqReader_flagTrimMasked", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__SeqReader, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_flagTrimMasked" "', argument " "1"" of type '" "btl::SeqReader const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_flagTrimMasked" "', argument " "1"" of type '" "btllib::SeqReader const *""'"); 
   }
-  arg1 = reinterpret_cast< btl::SeqReader * >(argp1);
-  result = (bool)((btl::SeqReader const *)arg1)->flagTrimMasked();
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
+  result = (bool)((btllib::SeqReader const *)arg1)->flagTrimMasked();
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -9758,19 +9767,19 @@ fail:
 
 SWIGINTERN PyObject *_wrap_SeqReader_get_format(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::SeqReader *arg1 = (btl::SeqReader *) 0 ;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  btl::SeqReader::Format result;
+  btllib::SeqReader::Format result;
   
   if (!SWIG_Python_UnpackTuple(args, "SeqReader_get_format", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__SeqReader, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_get_format" "', argument " "1"" of type '" "btl::SeqReader const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_get_format" "', argument " "1"" of type '" "btllib::SeqReader const *""'"); 
   }
-  arg1 = reinterpret_cast< btl::SeqReader * >(argp1);
-  result = (btl::SeqReader::Format)((btl::SeqReader const *)arg1)->get_format();
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
+  result = (btllib::SeqReader::Format)((btllib::SeqReader const *)arg1)->get_format();
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -9780,18 +9789,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_SeqReader_peek(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::SeqReader *arg1 = (btl::SeqReader *) 0 ;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   int result;
   
   if (!SWIG_Python_UnpackTuple(args, "SeqReader_peek", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__SeqReader, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_peek" "', argument " "1"" of type '" "btl::SeqReader *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_peek" "', argument " "1"" of type '" "btllib::SeqReader *""'"); 
   }
-  arg1 = reinterpret_cast< btl::SeqReader * >(argp1);
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
   result = (int)(arg1)->peek();
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -9802,18 +9811,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_SeqReader_read(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::SeqReader *arg1 = (btl::SeqReader *) 0 ;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   bool result;
   
   if (!SWIG_Python_UnpackTuple(args, "SeqReader_read", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__SeqReader, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_read" "', argument " "1"" of type '" "btl::SeqReader *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_read" "', argument " "1"" of type '" "btllib::SeqReader *""'"); 
   }
-  arg1 = reinterpret_cast< btl::SeqReader * >(argp1);
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
   result = (bool)(arg1)->read();
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -9824,18 +9833,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_SeqReader_seq(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::SeqReader *arg1 = (btl::SeqReader *) 0 ;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   std::string result;
   
   if (!SWIG_Python_UnpackTuple(args, "SeqReader_seq", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__SeqReader, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_seq" "', argument " "1"" of type '" "btl::SeqReader *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_seq" "', argument " "1"" of type '" "btllib::SeqReader *""'"); 
   }
-  arg1 = reinterpret_cast< btl::SeqReader * >(argp1);
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
   result = (arg1)->seq();
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
@@ -9846,18 +9855,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_SeqReader_qual(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::SeqReader *arg1 = (btl::SeqReader *) 0 ;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   std::string result;
   
   if (!SWIG_Python_UnpackTuple(args, "SeqReader_qual", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__SeqReader, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_qual" "', argument " "1"" of type '" "btl::SeqReader *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_qual" "', argument " "1"" of type '" "btllib::SeqReader *""'"); 
   }
-  arg1 = reinterpret_cast< btl::SeqReader * >(argp1);
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
   result = (arg1)->qual();
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
@@ -9868,7 +9877,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_SeqReader_manip(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::SeqReader *arg1 = (btl::SeqReader *) 0 ;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   std::istream &(*arg2)(std::istream &) = (std::istream &(*)(std::istream &)) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -9876,11 +9885,11 @@ SWIGINTERN PyObject *_wrap_SeqReader_manip(PyObject *self, PyObject *args) {
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__SeqReader, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_manip" "', argument " "1"" of type '" "btl::SeqReader *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_manip" "', argument " "1"" of type '" "btllib::SeqReader *""'"); 
   }
-  arg1 = reinterpret_cast< btl::SeqReader * >(argp1);
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
   {
     int res = SWIG_ConvertFunctionPtr(swig_obj[0], (void**)(&arg2), SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t);
     if (!SWIG_IsOK(res)) {
@@ -9897,17 +9906,17 @@ fail:
 
 SWIGINTERN PyObject *_wrap_delete_SeqReader(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::SeqReader *arg1 = (btl::SeqReader *) 0 ;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!SWIG_Python_UnpackTuple(args, "delete_SeqReader", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__SeqReader, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeqReader" "', argument " "1"" of type '" "btl::SeqReader *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeqReader" "', argument " "1"" of type '" "btllib::SeqReader *""'"); 
   }
-  arg1 = reinterpret_cast< btl::SeqReader * >(argp1);
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9920,17 +9929,17 @@ SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeqReader) /* defines _wrap_delete_SeqRea
 
 SWIGINTERN PyObject *_wrap_delete_Vertex(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::Vertex *arg1 = (btl::Vertex *) 0 ;
+  btllib::Vertex *arg1 = (btllib::Vertex *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!SWIG_Python_UnpackTuple(args, "delete_Vertex", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__Vertex, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Vertex, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Vertex" "', argument " "1"" of type '" "btl::Vertex *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Vertex" "', argument " "1"" of type '" "btllib::Vertex *""'"); 
   }
-  arg1 = reinterpret_cast< btl::Vertex * >(argp1);
+  arg1 = reinterpret_cast< btllib::Vertex * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9943,17 +9952,17 @@ SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Vertex) /* defines _wrap_delete_Vertex_de
 
 SWIGINTERN PyObject *_wrap_delete_Edge(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::Edge *arg1 = (btl::Edge *) 0 ;
+  btllib::Edge *arg1 = (btllib::Edge *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!SWIG_Python_UnpackTuple(args, "delete_Edge", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__Edge, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Edge, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Edge" "', argument " "1"" of type '" "btl::Edge *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Edge" "', argument " "1"" of type '" "btllib::Edge *""'"); 
   }
-  arg1 = reinterpret_cast< btl::Edge * >(argp1);
+  arg1 = reinterpret_cast< btllib::Edge * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9966,11 +9975,11 @@ SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Edge) /* defines _wrap_delete_Edge_destru
 
 SWIGINTERN int _wrap_new_Graph(PyObject *self, PyObject *args, PyObject *SWIGUNUSEDPARM(kwargs)) {
   PyObject *resultobj = 0;
-  btl::Graph *result = 0 ;
+  btllib::Graph *result = 0 ;
   
   if (!SWIG_Python_UnpackTuple(args, "new_Graph", 0, 0, 0)) SWIG_fail;
-  result = (btl::Graph *)new btl::Graph();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btl__Graph, SWIG_BUILTIN_INIT |  0 );
+  result = (btllib::Graph *)new btllib::Graph();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__Graph, SWIG_BUILTIN_INIT |  0 );
   return resultobj == Py_None ? -1 : 0;
 fail:
   return -1;
@@ -9979,20 +9988,20 @@ fail:
 
 SWIGINTERN PyObject *_wrap_Graph_add_vertex(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::Graph *arg1 = (btl::Graph *) 0 ;
+  btllib::Graph *arg1 = (btllib::Graph *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  SwigValueWrapper< btl::Vertex > result;
+  SwigValueWrapper< btllib::Vertex > result;
   
   if (!SWIG_Python_UnpackTuple(args, "Graph_add_vertex", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__Graph, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Graph, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Graph_add_vertex" "', argument " "1"" of type '" "btl::Graph *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Graph_add_vertex" "', argument " "1"" of type '" "btllib::Graph *""'"); 
   }
-  arg1 = reinterpret_cast< btl::Graph * >(argp1);
+  arg1 = reinterpret_cast< btllib::Graph * >(argp1);
   result = (arg1)->add_vertex();
-  resultobj = SWIG_NewPointerObj((new btl::Vertex(static_cast< const btl::Vertex& >(result))), SWIGTYPE_p_btl__Vertex, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new btllib::Vertex(static_cast< const btllib::Vertex& >(result))), SWIGTYPE_p_btllib__Vertex, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -10001,8 +10010,8 @@ fail:
 
 SWIGINTERN PyObject *_wrap_Graph_remove_vertex(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::Graph *arg1 = (btl::Graph *) 0 ;
-  SwigValueWrapper< btl::Vertex > arg2 ;
+  btllib::Graph *arg1 = (btllib::Graph *) 0 ;
+  SwigValueWrapper< btllib::Vertex > arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -10011,20 +10020,20 @@ SWIGINTERN PyObject *_wrap_Graph_remove_vertex(PyObject *self, PyObject *args) {
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__Graph, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Graph, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Graph_remove_vertex" "', argument " "1"" of type '" "btl::Graph *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Graph_remove_vertex" "', argument " "1"" of type '" "btllib::Graph *""'"); 
   }
-  arg1 = reinterpret_cast< btl::Graph * >(argp1);
+  arg1 = reinterpret_cast< btllib::Graph * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(swig_obj[0], &argp2, SWIGTYPE_p_btl__Vertex,  0  | 0);
+    res2 = SWIG_ConvertPtr(swig_obj[0], &argp2, SWIGTYPE_p_btllib__Vertex,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Graph_remove_vertex" "', argument " "2"" of type '" "btl::Vertex""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Graph_remove_vertex" "', argument " "2"" of type '" "btllib::Vertex""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Graph_remove_vertex" "', argument " "2"" of type '" "btl::Vertex""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Graph_remove_vertex" "', argument " "2"" of type '" "btllib::Vertex""'");
     } else {
-      btl::Vertex * temp = reinterpret_cast< btl::Vertex * >(argp2);
+      btllib::Vertex * temp = reinterpret_cast< btllib::Vertex * >(argp2);
       arg2 = *temp;
       if (SWIG_IsNewObj(res2)) delete temp;
     }
@@ -10039,9 +10048,9 @@ fail:
 
 SWIGINTERN PyObject *_wrap_Graph_add_edge(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::Graph *arg1 = (btl::Graph *) 0 ;
-  SwigValueWrapper< btl::Vertex > arg2 ;
-  SwigValueWrapper< btl::Vertex > arg3 ;
+  btllib::Graph *arg1 = (btllib::Graph *) 0 ;
+  SwigValueWrapper< btllib::Vertex > arg2 ;
+  SwigValueWrapper< btllib::Vertex > arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -10049,42 +10058,42 @@ SWIGINTERN PyObject *_wrap_Graph_add_edge(PyObject *self, PyObject *args) {
   void *argp3 ;
   int res3 = 0 ;
   PyObject *swig_obj[3] ;
-  SwigValueWrapper< btl::Edge > result;
+  SwigValueWrapper< btllib::Edge > result;
   
   if (!SWIG_Python_UnpackTuple(args, "Graph_add_edge", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__Graph, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Graph, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Graph_add_edge" "', argument " "1"" of type '" "btl::Graph *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Graph_add_edge" "', argument " "1"" of type '" "btllib::Graph *""'"); 
   }
-  arg1 = reinterpret_cast< btl::Graph * >(argp1);
+  arg1 = reinterpret_cast< btllib::Graph * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(swig_obj[0], &argp2, SWIGTYPE_p_btl__Vertex,  0  | 0);
+    res2 = SWIG_ConvertPtr(swig_obj[0], &argp2, SWIGTYPE_p_btllib__Vertex,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Graph_add_edge" "', argument " "2"" of type '" "btl::Vertex""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Graph_add_edge" "', argument " "2"" of type '" "btllib::Vertex""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Graph_add_edge" "', argument " "2"" of type '" "btl::Vertex""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Graph_add_edge" "', argument " "2"" of type '" "btllib::Vertex""'");
     } else {
-      btl::Vertex * temp = reinterpret_cast< btl::Vertex * >(argp2);
+      btllib::Vertex * temp = reinterpret_cast< btllib::Vertex * >(argp2);
       arg2 = *temp;
       if (SWIG_IsNewObj(res2)) delete temp;
     }
   }
   {
-    res3 = SWIG_ConvertPtr(swig_obj[1], &argp3, SWIGTYPE_p_btl__Vertex,  0  | 0);
+    res3 = SWIG_ConvertPtr(swig_obj[1], &argp3, SWIGTYPE_p_btllib__Vertex,  0  | 0);
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Graph_add_edge" "', argument " "3"" of type '" "btl::Vertex""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Graph_add_edge" "', argument " "3"" of type '" "btllib::Vertex""'"); 
     }  
     if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Graph_add_edge" "', argument " "3"" of type '" "btl::Vertex""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Graph_add_edge" "', argument " "3"" of type '" "btllib::Vertex""'");
     } else {
-      btl::Vertex * temp = reinterpret_cast< btl::Vertex * >(argp3);
+      btllib::Vertex * temp = reinterpret_cast< btllib::Vertex * >(argp3);
       arg3 = *temp;
       if (SWIG_IsNewObj(res3)) delete temp;
     }
   }
   result = (arg1)->add_edge(arg2,arg3);
-  resultobj = SWIG_NewPointerObj((new btl::Edge(static_cast< const btl::Edge& >(result))), SWIGTYPE_p_btl__Edge, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new btllib::Edge(static_cast< const btllib::Edge& >(result))), SWIGTYPE_p_btllib__Edge, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -10093,8 +10102,8 @@ fail:
 
 SWIGINTERN PyObject *_wrap_Graph_remove_edge(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::Graph *arg1 = (btl::Graph *) 0 ;
-  SwigValueWrapper< btl::Edge > arg2 ;
+  btllib::Graph *arg1 = (btllib::Graph *) 0 ;
+  SwigValueWrapper< btllib::Edge > arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -10103,20 +10112,20 @@ SWIGINTERN PyObject *_wrap_Graph_remove_edge(PyObject *self, PyObject *args) {
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__Graph, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Graph, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Graph_remove_edge" "', argument " "1"" of type '" "btl::Graph *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Graph_remove_edge" "', argument " "1"" of type '" "btllib::Graph *""'"); 
   }
-  arg1 = reinterpret_cast< btl::Graph * >(argp1);
+  arg1 = reinterpret_cast< btllib::Graph * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(swig_obj[0], &argp2, SWIGTYPE_p_btl__Edge,  0  | 0);
+    res2 = SWIG_ConvertPtr(swig_obj[0], &argp2, SWIGTYPE_p_btllib__Edge,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Graph_remove_edge" "', argument " "2"" of type '" "btl::Edge""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Graph_remove_edge" "', argument " "2"" of type '" "btllib::Edge""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Graph_remove_edge" "', argument " "2"" of type '" "btl::Edge""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Graph_remove_edge" "', argument " "2"" of type '" "btllib::Edge""'");
     } else {
-      btl::Edge * temp = reinterpret_cast< btl::Edge * >(argp2);
+      btllib::Edge * temp = reinterpret_cast< btllib::Edge * >(argp2);
       arg2 = *temp;
       if (SWIG_IsNewObj(res2)) delete temp;
     }
@@ -10131,18 +10140,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_Graph_to_string(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::Graph *arg1 = (btl::Graph *) 0 ;
+  btllib::Graph *arg1 = (btllib::Graph *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   std::string result;
   
   if (!SWIG_Python_UnpackTuple(args, "Graph_to_string", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__Graph, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Graph, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Graph_to_string" "', argument " "1"" of type '" "btl::Graph *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Graph_to_string" "', argument " "1"" of type '" "btllib::Graph *""'"); 
   }
-  arg1 = reinterpret_cast< btl::Graph * >(argp1);
+  arg1 = reinterpret_cast< btllib::Graph * >(argp1);
   result = (arg1)->to_string();
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
@@ -10153,17 +10162,17 @@ fail:
 
 SWIGINTERN PyObject *_wrap_delete_Graph(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btl::Graph *arg1 = (btl::Graph *) 0 ;
+  btllib::Graph *arg1 = (btllib::Graph *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!SWIG_Python_UnpackTuple(args, "delete_Graph", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btl__Graph, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Graph, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Graph" "', argument " "1"" of type '" "btl::Graph *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Graph" "', argument " "1"" of type '" "btllib::Graph *""'"); 
   }
-  arg1 = reinterpret_cast< btl::Graph * >(argp1);
+  arg1 = reinterpret_cast< btllib::Graph * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10172,16 +10181,689 @@ fail:
 }
 
 
-SWIGPY_REPRFUNC_CLOSURE(_wrap_Graph_to_string) /* defines _wrap_Graph_to_string_reprfunc_closure */
-
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Graph) /* defines _wrap_delete_Graph_destructor_closure */
+
+SWIGINTERN PyObject *_wrap_split(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  SwigValueWrapper< std::vector< std::string > > result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "split", 2, 2, swig_obj)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "split" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "split" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "split" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "split" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = split((std::string const &)*arg1,(std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj((new std::vector< std::string >(static_cast< const std::vector< std::string >& >(result))), SWIGTYPE_p_std__vectorT_std__string_t, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ltrim(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__string,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ltrim" "', argument " "1"" of type '" "std::string &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ltrim" "', argument " "1"" of type '" "std::string &""'"); 
+  }
+  arg1 = reinterpret_cast< std::string * >(argp1);
+  ltrim(*arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rtrim(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__string,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rtrim" "', argument " "1"" of type '" "std::string &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "rtrim" "', argument " "1"" of type '" "std::string &""'"); 
+  }
+  arg1 = reinterpret_cast< std::string * >(argp1);
+  rtrim(*arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_trim(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__string,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "trim" "', argument " "1"" of type '" "std::string &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "trim" "', argument " "1"" of type '" "std::string &""'"); 
+  }
+  arg1 = reinterpret_cast< std::string * >(argp1);
+  trim(*arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_starts_with(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  std::string arg2 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "starts_with", 2, 2, swig_obj)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "starts_with" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "starts_with" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (bool)starts_with(arg1,arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ends_with(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  std::string arg2 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ends_with", 2, 2, swig_obj)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ends_with" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ends_with" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (bool)ends_with(arg1,arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int Swig_var_orig_open_set(PyObject *_val) {
+  {
+    int res = SWIG_ConvertFunctionPtr(_val, (void**)(&btllib::orig_open), SWIGTYPE_p_f_p_q_const__char_int_v_______int);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""btllib::orig_open""' of type '""btllib::open_t""'"); 
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_orig_open_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewFunctionPtrObj((void *)(btllib::orig_open), SWIGTYPE_p_f_p_q_const__char_int_v_______int);
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_orig_open64_set(PyObject *_val) {
+  {
+    int res = SWIG_ConvertFunctionPtr(_val, (void**)(&btllib::orig_open64), SWIGTYPE_p_f_p_q_const__char_int_v_______int);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""btllib::orig_open64""' of type '""btllib::open_t""'"); 
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_orig_open64_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewFunctionPtrObj((void *)(btllib::orig_open64), SWIGTYPE_p_f_p_q_const__char_int_v_______int);
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_orig_creat_set(PyObject *_val) {
+  {
+    int res = SWIG_ConvertFunctionPtr(_val, (void**)(&btllib::orig_creat), SWIGTYPE_p_f_p_q_const__char_mode_t__int);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""btllib::orig_creat""' of type '""btllib::creat_t""'"); 
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_orig_creat_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewFunctionPtrObj((void *)(btllib::orig_creat), SWIGTYPE_p_f_p_q_const__char_mode_t__int);
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_orig_fopen_set(PyObject *_val) {
+  {
+    int res = SWIG_ConvertFunctionPtr(_val, (void**)(&btllib::orig_fopen), SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""btllib::orig_fopen""' of type '""btllib::fopen_t""'"); 
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_orig_fopen_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewFunctionPtrObj((void *)(btllib::orig_fopen), SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE);
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_orig_fopen64_set(PyObject *_val) {
+  {
+    int res = SWIG_ConvertFunctionPtr(_val, (void**)(&btllib::orig_fopen64), SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""btllib::orig_fopen64""' of type '""btllib::fopen_t""'"); 
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_orig_fopen64_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewFunctionPtrObj((void *)(btllib::orig_fopen64), SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE);
+  return pyobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_sigchld_handler(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "sigchld_handler" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  btllib::sigchld_handler(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_data_saveload_init(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "data_saveload_init", 0, 0, 0)) SWIG_fail;
+  result = (bool)btllib::data_saveload_init();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int Swig_var_data_saveload_initialized_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable data_saveload_initialized is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_data_saveload_initialized_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_bool(static_cast< bool >(btllib::data_saveload_initialized));
+  return pyobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_saveload_cmd(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  bool arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  std::string result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "get_saveload_cmd", 2, 2, swig_obj)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "get_saveload_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "get_saveload_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "get_saveload_cmd" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  result = btllib::get_saveload_cmd((std::string const &)*arg1,arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_data_saveload(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  bool arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "data_saveload", 2, 2, swig_obj)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "data_saveload" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "data_saveload" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "data_saveload" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  result = (int)btllib::data_saveload((std::string const &)*arg1,arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_fdata_saveload(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  bool arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  FILE *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "fdata_saveload", 2, 2, swig_obj)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "fdata_saveload" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "fdata_saveload" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "fdata_saveload" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  result = (FILE *)btllib::fdata_saveload((std::string const &)*arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_open__varargs__(PyObject *self, PyObject *args, PyObject *varargs) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int arg2 ;
+  void *arg3 = 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_UnpackTuple(args, "open", 2, 2, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "open" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "open" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (int)btllib::open((char const *)arg1,arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_open(PyObject *self, PyObject *args) {
+  PyObject *resultobj;
+  PyObject *varargs;
+  PyObject *newargs;
+  
+  newargs = PyTuple_GetSlice(args,0,2);
+  varargs = PyTuple_GetSlice(args,2,PyTuple_Size(args));
+  resultobj = _wrap_open__varargs__(self,newargs,varargs);
+  Py_XDECREF(newargs);
+  Py_XDECREF(varargs);
+  return resultobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_open64__varargs__(PyObject *self, PyObject *args, PyObject *varargs) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int arg2 ;
+  void *arg3 = 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_UnpackTuple(args, "open64", 2, 2, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "open64" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "open64" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (int)btllib::open64((char const *)arg1,arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_open64(PyObject *self, PyObject *args) {
+  PyObject *resultobj;
+  PyObject *varargs;
+  PyObject *newargs;
+  
+  newargs = PyTuple_GetSlice(args,0,2);
+  varargs = PyTuple_GetSlice(args,2,PyTuple_Size(args));
+  resultobj = _wrap_open64__varargs__(self,newargs,varargs);
+  Py_XDECREF(newargs);
+  Py_XDECREF(varargs);
+  return resultobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_creat(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  mode_t arg2 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "creat", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "creat" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mode_t,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "creat" "', argument " "2"" of type '" "mode_t""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "creat" "', argument " "2"" of type '" "mode_t""'");
+    } else {
+      mode_t * temp = reinterpret_cast< mode_t * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  result = (int)btllib::creat((char const *)arg1,arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_fopen(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject *swig_obj[2] ;
+  FILE *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "fopen", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "fopen" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "fopen" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (FILE *)btllib::fopen((char const *)arg1,(char const *)arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_fopen64(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject *swig_obj[2] ;
+  FILE *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "fopen64", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "fopen64" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "fopen64" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (FILE *)btllib::fopen64((char const *)arg1,(char const *)arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
 
 SWIGINTERN PyObject *_wrap_get_time(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   std::string result;
   
   if (!SWIG_Python_UnpackTuple(args, "get_time", 0, 0, 0)) SWIG_fail;
-  result = btl::get_time();
+  result = btllib::get_time();
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
@@ -10208,7 +10890,7 @@ SWIGINTERN PyObject *_wrap_log_info(PyObject *self, PyObject *args) {
     }
     arg1 = ptr;
   }
-  btl::log_info((std::string const &)*arg1);
+  btllib::log_info((std::string const &)*arg1);
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
@@ -10237,7 +10919,7 @@ SWIGINTERN PyObject *_wrap_log_warning(PyObject *self, PyObject *args) {
     }
     arg1 = ptr;
   }
-  btl::log_warning((std::string const &)*arg1);
+  btllib::log_warning((std::string const &)*arg1);
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
@@ -10266,7 +10948,7 @@ SWIGINTERN PyObject *_wrap_log_error(PyObject *self, PyObject *args) {
     }
     arg1 = ptr;
   }
-  btl::log_error((std::string const &)*arg1);
+  btllib::log_error((std::string const &)*arg1);
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
@@ -10302,7 +10984,7 @@ SWIGINTERN PyObject *_wrap_check_error(PyObject *self, PyObject *args) {
     }
     arg2 = ptr;
   }
-  btl::check_error(arg1,(std::string const &)*arg2);
+  btllib::check_error(arg1,(std::string const &)*arg2);
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -10338,7 +11020,7 @@ SWIGINTERN PyObject *_wrap_check_warning(PyObject *self, PyObject *args) {
     }
     arg2 = ptr;
   }
-  btl::check_warning(arg1,(std::string const &)*arg2);
+  btllib::check_warning(arg1,(std::string const &)*arg2);
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -10377,7 +11059,7 @@ SWIGINTERN PyObject *_wrap_check_stream(PyObject *self, PyObject *args) {
     }
     arg2 = ptr;
   }
-  btl::check_stream((std::basic_ios< char,std::char_traits< char > > const &)*arg1,(std::string const &)*arg2);
+  btllib::check_stream((std::basic_ios< char,std::char_traits< char > > const &)*arg1,(std::string const &)*arg2);
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -10399,11 +11081,11 @@ SWIGINTERN PyObject *Swig_var_COMPLEMENTS_get(void) {
   
   (void)self;
   {
-    size_t size = SWIG_strnlen(btl::COMPLEMENTS, 256);
+    size_t size = SWIG_strnlen(btllib::COMPLEMENTS, 256);
     
     
     
-    pyobj = SWIG_FromCharPtrAndSize(btl::COMPLEMENTS, size);
+    pyobj = SWIG_FromCharPtrAndSize(btllib::COMPLEMENTS, size);
   }
   return pyobj;
 }
@@ -10421,11 +11103,11 @@ SWIGINTERN PyObject *Swig_var_CAPITALS_get(void) {
   
   (void)self;
   {
-    size_t size = SWIG_strnlen(btl::CAPITALS, 256);
+    size_t size = SWIG_strnlen(btllib::CAPITALS, 256);
     
     
     
-    pyobj = SWIG_FromCharPtrAndSize(btl::CAPITALS, size);
+    pyobj = SWIG_FromCharPtrAndSize(btllib::CAPITALS, size);
   }
   return pyobj;
 }
@@ -10469,6 +11151,22 @@ static PyMethodDef SwigMethods[] = {
 	 { "endl", _wrap_endl, METH_O, "swig_ptr: endl_cb_ptr"},
 	 { "ends", _wrap_ends, METH_O, "swig_ptr: ends_cb_ptr"},
 	 { "flush", _wrap_flush, METH_O, "swig_ptr: flush_cb_ptr"},
+	 { "split", _wrap_split, METH_VARARGS, NULL},
+	 { "ltrim", _wrap_ltrim, METH_O, NULL},
+	 { "rtrim", _wrap_rtrim, METH_O, NULL},
+	 { "trim", _wrap_trim, METH_O, NULL},
+	 { "starts_with", _wrap_starts_with, METH_VARARGS, NULL},
+	 { "ends_with", _wrap_ends_with, METH_VARARGS, NULL},
+	 { "sigchld_handler", _wrap_sigchld_handler, METH_O, NULL},
+	 { "data_saveload_init", _wrap_data_saveload_init, METH_NOARGS, NULL},
+	 { "get_saveload_cmd", _wrap_get_saveload_cmd, METH_VARARGS, NULL},
+	 { "data_saveload", _wrap_data_saveload, METH_VARARGS, NULL},
+	 { "fdata_saveload", _wrap_fdata_saveload, METH_VARARGS, NULL},
+	 { "open", _wrap_open, METH_VARARGS, NULL},
+	 { "open64", _wrap_open64, METH_VARARGS, NULL},
+	 { "creat", _wrap_creat, METH_VARARGS, NULL},
+	 { "fopen", _wrap_fopen, METH_VARARGS, NULL},
+	 { "fopen64", _wrap_fopen64, METH_VARARGS, NULL},
 	 { "get_time", _wrap_get_time, METH_NOARGS, NULL},
 	 { "log_info", _wrap_log_info, METH_O, NULL},
 	 { "log_warning", _wrap_log_warning, METH_O, NULL},
@@ -10589,7 +11287,7 @@ static PyHeapTypeObject SwigPyBuiltin__std__ios_base_type = {
     PyObject_HEAD_INIT(NULL)
     0,                                        /* ob_size */
 #endif
-    "btl.ios_base",                           /* tp_name */
+    "btllib.ios_base",                        /* tp_name */
     sizeof(SwigPyObject),                     /* tp_basicsize */
     0,                                        /* tp_itemsize */
     _wrap_delete_ios_base_destructor_closure, /* tp_dealloc */
@@ -10810,7 +11508,7 @@ static PyHeapTypeObject SwigPyBuiltin__std__basic_iosT_char_t_type = {
     PyObject_HEAD_INIT(NULL)
     0,                                        /* ob_size */
 #endif
-    "btl.ios",                                /* tp_name */
+    "btllib.ios",                             /* tp_name */
     sizeof(SwigPyObject),                     /* tp_basicsize */
     0,                                        /* tp_itemsize */
     _wrap_delete_ios_destructor_closure,      /* tp_dealloc */
@@ -11022,7 +11720,7 @@ static PyHeapTypeObject SwigPyBuiltin__std__basic_ostreamT_char_t_type = {
     PyObject_HEAD_INIT(NULL)
     0,                                        /* ob_size */
 #endif
-    "btl.ostream",                            /* tp_name */
+    "btllib.ostream",                         /* tp_name */
     sizeof(SwigPyObject),                     /* tp_basicsize */
     0,                                        /* tp_itemsize */
     _wrap_delete_ostream_destructor_closure,  /* tp_dealloc */
@@ -11241,7 +11939,7 @@ static PyHeapTypeObject SwigPyBuiltin__std__basic_istreamT_char_t_type = {
     PyObject_HEAD_INIT(NULL)
     0,                                        /* ob_size */
 #endif
-    "btl.istream",                            /* tp_name */
+    "btllib.istream",                         /* tp_name */
     sizeof(SwigPyObject),                     /* tp_basicsize */
     0,                                        /* tp_itemsize */
     _wrap_delete_istream_destructor_closure,  /* tp_dealloc */
@@ -11447,7 +12145,7 @@ static PyHeapTypeObject SwigPyBuiltin__std__basic_iostreamT_char_t_type = {
     PyObject_HEAD_INIT(NULL)
     0,                                        /* ob_size */
 #endif
-    "btl.iostream",                           /* tp_name */
+    "btllib.iostream",                        /* tp_name */
     sizeof(SwigPyObject),                     /* tp_basicsize */
     0,                                        /* tp_itemsize */
     _wrap_delete_iostream_destructor_closure, /* tp_dealloc */
@@ -11622,13 +12320,13 @@ static PyHeapTypeObject SwigPyBuiltin__std__basic_iostreamT_char_t_type = {
 SWIGINTERN SwigPyClientData SwigPyBuiltin__std__basic_iostreamT_char_t_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__std__basic_iostreamT_char_t_type};
 
 static SwigPyGetSet SeqReader___dict___getset = { SwigPyObject_get___dict__, 0 };
-SWIGINTERN PyGetSetDef SwigPyBuiltin__btl__SeqReader_getset[] = {
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__SeqReader_getset[] = {
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &SeqReader___dict___getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };
 
 SWIGINTERN PyObject *
-SwigPyBuiltin__btl__SeqReader_richcompare(PyObject *self, PyObject *other, int op) {
+SwigPyBuiltin__btllib__SeqReader_richcompare(PyObject *self, PyObject *other, int op) {
   PyObject *result = NULL;
   if (!result) {
     if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
@@ -11641,7 +12339,7 @@ SwigPyBuiltin__btl__SeqReader_richcompare(PyObject *self, PyObject *other, int o
   return result;
 }
 
-SWIGINTERN PyMethodDef SwigPyBuiltin__btl__SeqReader_methods[] = {
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeqReader_methods[] = {
   { "flagFoldCase", _wrap_SeqReader_flagFoldCase, METH_NOARGS, "" },
   { "flagTrimMasked", _wrap_SeqReader_flagTrimMasked, METH_NOARGS, "" },
   { "get_format", _wrap_SeqReader_get_format, METH_NOARGS, "" },
@@ -11653,7 +12351,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btl__SeqReader_methods[] = {
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
-static PyHeapTypeObject SwigPyBuiltin__btl__SeqReader_type = {
+static PyHeapTypeObject SwigPyBuiltin__btllib__SeqReader_type = {
   {
 #if PY_VERSION_HEX >= 0x03000000
     PyVarObject_HEAD_INIT(NULL, 0)
@@ -11661,7 +12359,7 @@ static PyHeapTypeObject SwigPyBuiltin__btl__SeqReader_type = {
     PyObject_HEAD_INIT(NULL)
     0,                                        /* ob_size */
 #endif
-    "btl.SeqReader",                          /* tp_name */
+    "btllib.SeqReader",                       /* tp_name */
     sizeof(SwigPyObject),                     /* tp_basicsize */
     0,                                        /* tp_itemsize */
     _wrap_delete_SeqReader_destructor_closure,/* tp_dealloc */
@@ -11674,30 +12372,30 @@ static PyHeapTypeObject SwigPyBuiltin__btl__SeqReader_type = {
     (cmpfunc) 0,                              /* tp_compare */
 #endif
     (reprfunc) 0,                             /* tp_repr */
-    &SwigPyBuiltin__btl__SeqReader_type.as_number,                /* tp_as_number */
-    &SwigPyBuiltin__btl__SeqReader_type.as_sequence,              /* tp_as_sequence */
-    &SwigPyBuiltin__btl__SeqReader_type.as_mapping,               /* tp_as_mapping */
+    &SwigPyBuiltin__btllib__SeqReader_type.as_number,             /* tp_as_number */
+    &SwigPyBuiltin__btllib__SeqReader_type.as_sequence,           /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__SeqReader_type.as_mapping,            /* tp_as_mapping */
     SwigPyObject_hash,                        /* tp_hash */
     (ternaryfunc) 0,                          /* tp_call */
     (reprfunc) 0,                             /* tp_str */
     (getattrofunc) 0,                         /* tp_getattro */
     (setattrofunc) 0,                         /* tp_setattro */
-    &SwigPyBuiltin__btl__SeqReader_type.as_buffer,                /* tp_as_buffer */
+    &SwigPyBuiltin__btllib__SeqReader_type.as_buffer,             /* tp_as_buffer */
 #if PY_VERSION_HEX >= 0x03000000
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
 #else
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
 #endif
-    "btl::SeqReader",                         /* tp_doc */
+    "btllib::SeqReader",                      /* tp_doc */
     (traverseproc) 0,                         /* tp_traverse */
     (inquiry) 0,                              /* tp_clear */
-    SwigPyBuiltin__btl__SeqReader_richcompare,/* tp_richcompare */
+    SwigPyBuiltin__btllib__SeqReader_richcompare,                 /* tp_richcompare */
     0,                                        /* tp_weaklistoffset */
     (getiterfunc) 0,                          /* tp_iter */
     (iternextfunc) 0,                         /* tp_iternext */
-    SwigPyBuiltin__btl__SeqReader_methods,    /* tp_methods */
+    SwigPyBuiltin__btllib__SeqReader_methods, /* tp_methods */
     0,                                        /* tp_members */
-    SwigPyBuiltin__btl__SeqReader_getset,     /* tp_getset */
+    SwigPyBuiltin__btllib__SeqReader_getset,  /* tp_getset */
     0,                                        /* tp_base */
     0,                                        /* tp_dict */
     (descrgetfunc) 0,                         /* tp_descr_get */
@@ -11833,16 +12531,16 @@ static PyHeapTypeObject SwigPyBuiltin__btl__SeqReader_type = {
 #endif
 };
 
-SWIGINTERN SwigPyClientData SwigPyBuiltin__btl__SeqReader_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btl__SeqReader_type};
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeqReader_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReader_type};
 
 static SwigPyGetSet Vertex___dict___getset = { SwigPyObject_get___dict__, 0 };
-SWIGINTERN PyGetSetDef SwigPyBuiltin__btl__Vertex_getset[] = {
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__Vertex_getset[] = {
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &Vertex___dict___getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };
 
 SWIGINTERN PyObject *
-SwigPyBuiltin__btl__Vertex_richcompare(PyObject *self, PyObject *other, int op) {
+SwigPyBuiltin__btllib__Vertex_richcompare(PyObject *self, PyObject *other, int op) {
   PyObject *result = NULL;
   if (!result) {
     if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
@@ -11855,11 +12553,11 @@ SwigPyBuiltin__btl__Vertex_richcompare(PyObject *self, PyObject *other, int op) 
   return result;
 }
 
-SWIGINTERN PyMethodDef SwigPyBuiltin__btl__Vertex_methods[] = {
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__Vertex_methods[] = {
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
-static PyHeapTypeObject SwigPyBuiltin__btl__Vertex_type = {
+static PyHeapTypeObject SwigPyBuiltin__btllib__Vertex_type = {
   {
 #if PY_VERSION_HEX >= 0x03000000
     PyVarObject_HEAD_INIT(NULL, 0)
@@ -11867,7 +12565,7 @@ static PyHeapTypeObject SwigPyBuiltin__btl__Vertex_type = {
     PyObject_HEAD_INIT(NULL)
     0,                                        /* ob_size */
 #endif
-    "btl.Vertex",                             /* tp_name */
+    "btllib.Vertex",                          /* tp_name */
     sizeof(SwigPyObject),                     /* tp_basicsize */
     0,                                        /* tp_itemsize */
     _wrap_delete_Vertex_destructor_closure,   /* tp_dealloc */
@@ -11880,30 +12578,30 @@ static PyHeapTypeObject SwigPyBuiltin__btl__Vertex_type = {
     (cmpfunc) 0,                              /* tp_compare */
 #endif
     (reprfunc) 0,                             /* tp_repr */
-    &SwigPyBuiltin__btl__Vertex_type.as_number,                   /* tp_as_number */
-    &SwigPyBuiltin__btl__Vertex_type.as_sequence,                 /* tp_as_sequence */
-    &SwigPyBuiltin__btl__Vertex_type.as_mapping,                  /* tp_as_mapping */
+    &SwigPyBuiltin__btllib__Vertex_type.as_number,                /* tp_as_number */
+    &SwigPyBuiltin__btllib__Vertex_type.as_sequence,              /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__Vertex_type.as_mapping,               /* tp_as_mapping */
     SwigPyObject_hash,                        /* tp_hash */
     (ternaryfunc) 0,                          /* tp_call */
     (reprfunc) 0,                             /* tp_str */
     (getattrofunc) 0,                         /* tp_getattro */
     (setattrofunc) 0,                         /* tp_setattro */
-    &SwigPyBuiltin__btl__Vertex_type.as_buffer,                   /* tp_as_buffer */
+    &SwigPyBuiltin__btllib__Vertex_type.as_buffer,                /* tp_as_buffer */
 #if PY_VERSION_HEX >= 0x03000000
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
 #else
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
 #endif
-    "btl::Vertex",                            /* tp_doc */
+    "btllib::Vertex",                         /* tp_doc */
     (traverseproc) 0,                         /* tp_traverse */
     (inquiry) 0,                              /* tp_clear */
-    SwigPyBuiltin__btl__Vertex_richcompare,   /* tp_richcompare */
+    SwigPyBuiltin__btllib__Vertex_richcompare,/* tp_richcompare */
     0,                                        /* tp_weaklistoffset */
     (getiterfunc) 0,                          /* tp_iter */
     (iternextfunc) 0,                         /* tp_iternext */
-    SwigPyBuiltin__btl__Vertex_methods,       /* tp_methods */
+    SwigPyBuiltin__btllib__Vertex_methods,    /* tp_methods */
     0,                                        /* tp_members */
-    SwigPyBuiltin__btl__Vertex_getset,        /* tp_getset */
+    SwigPyBuiltin__btllib__Vertex_getset,     /* tp_getset */
     0,                                        /* tp_base */
     0,                                        /* tp_dict */
     (descrgetfunc) 0,                         /* tp_descr_get */
@@ -12039,16 +12737,16 @@ static PyHeapTypeObject SwigPyBuiltin__btl__Vertex_type = {
 #endif
 };
 
-SWIGINTERN SwigPyClientData SwigPyBuiltin__btl__Vertex_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btl__Vertex_type};
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__Vertex_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__Vertex_type};
 
 static SwigPyGetSet Edge___dict___getset = { SwigPyObject_get___dict__, 0 };
-SWIGINTERN PyGetSetDef SwigPyBuiltin__btl__Edge_getset[] = {
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__Edge_getset[] = {
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &Edge___dict___getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };
 
 SWIGINTERN PyObject *
-SwigPyBuiltin__btl__Edge_richcompare(PyObject *self, PyObject *other, int op) {
+SwigPyBuiltin__btllib__Edge_richcompare(PyObject *self, PyObject *other, int op) {
   PyObject *result = NULL;
   if (!result) {
     if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
@@ -12061,11 +12759,11 @@ SwigPyBuiltin__btl__Edge_richcompare(PyObject *self, PyObject *other, int op) {
   return result;
 }
 
-SWIGINTERN PyMethodDef SwigPyBuiltin__btl__Edge_methods[] = {
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__Edge_methods[] = {
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
-static PyHeapTypeObject SwigPyBuiltin__btl__Edge_type = {
+static PyHeapTypeObject SwigPyBuiltin__btllib__Edge_type = {
   {
 #if PY_VERSION_HEX >= 0x03000000
     PyVarObject_HEAD_INIT(NULL, 0)
@@ -12073,7 +12771,7 @@ static PyHeapTypeObject SwigPyBuiltin__btl__Edge_type = {
     PyObject_HEAD_INIT(NULL)
     0,                                        /* ob_size */
 #endif
-    "btl.Edge",                               /* tp_name */
+    "btllib.Edge",                            /* tp_name */
     sizeof(SwigPyObject),                     /* tp_basicsize */
     0,                                        /* tp_itemsize */
     _wrap_delete_Edge_destructor_closure,     /* tp_dealloc */
@@ -12086,30 +12784,30 @@ static PyHeapTypeObject SwigPyBuiltin__btl__Edge_type = {
     (cmpfunc) 0,                              /* tp_compare */
 #endif
     (reprfunc) 0,                             /* tp_repr */
-    &SwigPyBuiltin__btl__Edge_type.as_number, /* tp_as_number */
-    &SwigPyBuiltin__btl__Edge_type.as_sequence,                   /* tp_as_sequence */
-    &SwigPyBuiltin__btl__Edge_type.as_mapping,/* tp_as_mapping */
+    &SwigPyBuiltin__btllib__Edge_type.as_number,                  /* tp_as_number */
+    &SwigPyBuiltin__btllib__Edge_type.as_sequence,                /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__Edge_type.as_mapping,                 /* tp_as_mapping */
     SwigPyObject_hash,                        /* tp_hash */
     (ternaryfunc) 0,                          /* tp_call */
     (reprfunc) 0,                             /* tp_str */
     (getattrofunc) 0,                         /* tp_getattro */
     (setattrofunc) 0,                         /* tp_setattro */
-    &SwigPyBuiltin__btl__Edge_type.as_buffer, /* tp_as_buffer */
+    &SwigPyBuiltin__btllib__Edge_type.as_buffer,                  /* tp_as_buffer */
 #if PY_VERSION_HEX >= 0x03000000
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
 #else
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
 #endif
-    "btl::Edge",                              /* tp_doc */
+    "btllib::Edge",                           /* tp_doc */
     (traverseproc) 0,                         /* tp_traverse */
     (inquiry) 0,                              /* tp_clear */
-    SwigPyBuiltin__btl__Edge_richcompare,     /* tp_richcompare */
+    SwigPyBuiltin__btllib__Edge_richcompare,  /* tp_richcompare */
     0,                                        /* tp_weaklistoffset */
     (getiterfunc) 0,                          /* tp_iter */
     (iternextfunc) 0,                         /* tp_iternext */
-    SwigPyBuiltin__btl__Edge_methods,         /* tp_methods */
+    SwigPyBuiltin__btllib__Edge_methods,      /* tp_methods */
     0,                                        /* tp_members */
-    SwigPyBuiltin__btl__Edge_getset,          /* tp_getset */
+    SwigPyBuiltin__btllib__Edge_getset,       /* tp_getset */
     0,                                        /* tp_base */
     0,                                        /* tp_dict */
     (descrgetfunc) 0,                         /* tp_descr_get */
@@ -12245,16 +12943,16 @@ static PyHeapTypeObject SwigPyBuiltin__btl__Edge_type = {
 #endif
 };
 
-SWIGINTERN SwigPyClientData SwigPyBuiltin__btl__Edge_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btl__Edge_type};
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__Edge_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__Edge_type};
 
 static SwigPyGetSet Graph___dict___getset = { SwigPyObject_get___dict__, 0 };
-SWIGINTERN PyGetSetDef SwigPyBuiltin__btl__Graph_getset[] = {
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__Graph_getset[] = {
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &Graph___dict___getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };
 
 SWIGINTERN PyObject *
-SwigPyBuiltin__btl__Graph_richcompare(PyObject *self, PyObject *other, int op) {
+SwigPyBuiltin__btllib__Graph_richcompare(PyObject *self, PyObject *other, int op) {
   PyObject *result = NULL;
   if (!result) {
     if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
@@ -12267,7 +12965,7 @@ SwigPyBuiltin__btl__Graph_richcompare(PyObject *self, PyObject *other, int op) {
   return result;
 }
 
-SWIGINTERN PyMethodDef SwigPyBuiltin__btl__Graph_methods[] = {
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__Graph_methods[] = {
   { "add_vertex", _wrap_Graph_add_vertex, METH_NOARGS, "" },
   { "remove_vertex", _wrap_Graph_remove_vertex, METH_O, "" },
   { "add_edge", _wrap_Graph_add_edge, METH_VARARGS, "" },
@@ -12276,7 +12974,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btl__Graph_methods[] = {
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
-static PyHeapTypeObject SwigPyBuiltin__btl__Graph_type = {
+static PyHeapTypeObject SwigPyBuiltin__btllib__Graph_type = {
   {
 #if PY_VERSION_HEX >= 0x03000000
     PyVarObject_HEAD_INIT(NULL, 0)
@@ -12284,7 +12982,7 @@ static PyHeapTypeObject SwigPyBuiltin__btl__Graph_type = {
     PyObject_HEAD_INIT(NULL)
     0,                                        /* ob_size */
 #endif
-    "btl.Graph",                              /* tp_name */
+    "btllib.Graph",                           /* tp_name */
     sizeof(SwigPyObject),                     /* tp_basicsize */
     0,                                        /* tp_itemsize */
     _wrap_delete_Graph_destructor_closure,    /* tp_dealloc */
@@ -12297,30 +12995,30 @@ static PyHeapTypeObject SwigPyBuiltin__btl__Graph_type = {
     (cmpfunc) 0,                              /* tp_compare */
 #endif
     (reprfunc) 0,                             /* tp_repr */
-    &SwigPyBuiltin__btl__Graph_type.as_number,/* tp_as_number */
-    &SwigPyBuiltin__btl__Graph_type.as_sequence,                  /* tp_as_sequence */
-    &SwigPyBuiltin__btl__Graph_type.as_mapping,                   /* tp_as_mapping */
+    &SwigPyBuiltin__btllib__Graph_type.as_number,                 /* tp_as_number */
+    &SwigPyBuiltin__btllib__Graph_type.as_sequence,               /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__Graph_type.as_mapping,                /* tp_as_mapping */
     SwigPyObject_hash,                        /* tp_hash */
     (ternaryfunc) 0,                          /* tp_call */
-    _wrap_Graph_to_string_reprfunc_closure,   /* tp_str */
+    (reprfunc) 0,                             /* tp_str */
     (getattrofunc) 0,                         /* tp_getattro */
     (setattrofunc) 0,                         /* tp_setattro */
-    &SwigPyBuiltin__btl__Graph_type.as_buffer,/* tp_as_buffer */
+    &SwigPyBuiltin__btllib__Graph_type.as_buffer,                 /* tp_as_buffer */
 #if PY_VERSION_HEX >= 0x03000000
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
 #else
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
 #endif
-    "btl::Graph",                             /* tp_doc */
+    "btllib::Graph",                          /* tp_doc */
     (traverseproc) 0,                         /* tp_traverse */
     (inquiry) 0,                              /* tp_clear */
-    SwigPyBuiltin__btl__Graph_richcompare,    /* tp_richcompare */
+    SwigPyBuiltin__btllib__Graph_richcompare, /* tp_richcompare */
     0,                                        /* tp_weaklistoffset */
     (getiterfunc) 0,                          /* tp_iter */
     (iternextfunc) 0,                         /* tp_iternext */
-    SwigPyBuiltin__btl__Graph_methods,        /* tp_methods */
+    SwigPyBuiltin__btllib__Graph_methods,     /* tp_methods */
     0,                                        /* tp_members */
-    SwigPyBuiltin__btl__Graph_getset,         /* tp_getset */
+    SwigPyBuiltin__btllib__Graph_getset,      /* tp_getset */
     0,                                        /* tp_base */
     0,                                        /* tp_dict */
     (descrgetfunc) 0,                         /* tp_descr_get */
@@ -12456,7 +13154,7 @@ static PyHeapTypeObject SwigPyBuiltin__btl__Graph_type = {
 #endif
 };
 
-SWIGINTERN SwigPyClientData SwigPyBuiltin__btl__Graph_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btl__Graph_type};
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__Graph_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__Graph_type};
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
@@ -12515,16 +13213,20 @@ static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__ba
 static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_istreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_istream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
 }
+static swig_type_info _swigt__p_FILE = {"_p_FILE", "FILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SwigPyObject = {"_p_SwigPyObject", "SwigPyObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_btl__Edge = {"_p_btl__Edge", "btl::Edge *", 0, 0, (void*)&SwigPyBuiltin__btl__Edge_clientdata, 0};
-static swig_type_info _swigt__p_btl__Graph = {"_p_btl__Graph", "btl::Graph *", 0, 0, (void*)&SwigPyBuiltin__btl__Graph_clientdata, 0};
-static swig_type_info _swigt__p_btl__SeqReader = {"_p_btl__SeqReader", "btl::SeqReader *", 0, 0, (void*)&SwigPyBuiltin__btl__SeqReader_clientdata, 0};
-static swig_type_info _swigt__p_btl__Vertex = {"_p_btl__Vertex", "btl::Vertex *", 0, 0, (void*)&SwigPyBuiltin__btl__Vertex_clientdata, 0};
+static swig_type_info _swigt__p_btllib__Edge = {"_p_btllib__Edge", "btllib::Edge *", 0, 0, (void*)&SwigPyBuiltin__btllib__Edge_clientdata, 0};
+static swig_type_info _swigt__p_btllib__Graph = {"_p_btllib__Graph", "btllib::Graph *", 0, 0, (void*)&SwigPyBuiltin__btllib__Graph_clientdata, 0};
+static swig_type_info _swigt__p_btllib__SeqReader = {"_p_btllib__SeqReader", "btllib::SeqReader *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqReader_clientdata, 0};
+static swig_type_info _swigt__p_btllib__Vertex = {"_p_btllib__Vertex", "btllib::Vertex *", 0, 0, (void*)&SwigPyBuiltin__btllib__Vertex_clientdata, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "std::basic_istream< char >::char_type *|char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char_type = {"_p_char_type", "char_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_f_enum_std__ios_base__event_r_std__ios_base_int__void = {"_p_f_enum_std__ios_base__event_r_std__ios_base_int__void", "void (*)(enum std::ios_base::event,std::ios_base &,int)|std::ios_base::event_callback", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_f_p_q_const__char_int_v_______int = {"_p_f_p_q_const__char_int_v_______int", "btllib::open_t|int (*)(char const *,int,...)", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_f_p_q_const__char_mode_t__int = {"_p_f_p_q_const__char_mode_t__int", "int (*)(char const *,mode_t)|btllib::creat_t", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_f_p_q_const__char_p_q_const__char__p_FILE = {"_p_f_p_q_const__char_p_q_const__char__p_FILE", "btllib::fopen_t|FILE *(*)(char const *,char const *)", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t = {"_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t", "std::basic_ios< char,std::char_traits< char > > &(*)(std::basic_ios< char,std::char_traits< char > > &)", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t = {"_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t = {"_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t", 0, 0, 0, 0, 0};
@@ -12546,6 +13248,7 @@ static swig_type_info _swigt__p_iostate = {"_p_iostate", "iostate *", 0, 0, (voi
 static swig_type_info _swigt__p_long = {"_p_long", "long *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_long_double = {"_p_long_double", "long double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_long_long = {"_p_long_long", "long long *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mode_t = {"_p_mode_t", "mode_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_off_type = {"_p_off_type", "off_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_openmode = {"_p_openmode", "openmode *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_void = {"_p_p_void", "void **", 0, 0, (void*)0, 0};
@@ -12562,6 +13265,8 @@ static swig_type_info _swigt__p_std__basic_streambufT_char_std__char_traitsT_cha
 static swig_type_info _swigt__p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t = {"_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t", "std::basic_string< char,std::char_traits< char >,std::allocator< char > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ios_base = {"_p_std__ios_base", "std::ios_base *", 0, 0, (void*)&SwigPyBuiltin__std__ios_base_clientdata, 0};
 static swig_type_info _swigt__p_std__locale = {"_p_std__locale", "std::locale *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_std__string_t = {"_p_std__vectorT_std__string_t", "std::vector< std::string > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_streamoff = {"_p_streamoff", "std::basic_ostream< char >::off_type *|std::basic_istream< char >::off_type *|streamoff *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_streampos = {"_p_streampos", "std::basic_ostream< char >::pos_type *|std::basic_istream< char >::pos_type *|streampos *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_traits_type = {"_p_traits_type", "traits_type *", 0, 0, (void*)0, 0};
@@ -12571,16 +13276,20 @@ static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "
 static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "unsigned short *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_FILE,
   &_swigt__p_SwigPyObject,
   &_swigt__p_bool,
-  &_swigt__p_btl__Edge,
-  &_swigt__p_btl__Graph,
-  &_swigt__p_btl__SeqReader,
-  &_swigt__p_btl__Vertex,
+  &_swigt__p_btllib__Edge,
+  &_swigt__p_btllib__Graph,
+  &_swigt__p_btllib__SeqReader,
+  &_swigt__p_btllib__Vertex,
   &_swigt__p_char,
   &_swigt__p_char_type,
   &_swigt__p_double,
   &_swigt__p_f_enum_std__ios_base__event_r_std__ios_base_int__void,
+  &_swigt__p_f_p_q_const__char_int_v_______int,
+  &_swigt__p_f_p_q_const__char_mode_t__int,
+  &_swigt__p_f_p_q_const__char_p_q_const__char__p_FILE,
   &_swigt__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t,
   &_swigt__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t,
   &_swigt__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t,
@@ -12602,6 +13311,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_long,
   &_swigt__p_long_double,
   &_swigt__p_long_long,
+  &_swigt__p_mode_t,
   &_swigt__p_off_type,
   &_swigt__p_openmode,
   &_swigt__p_p_void,
@@ -12618,6 +13328,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t,
   &_swigt__p_std__ios_base,
   &_swigt__p_std__locale,
+  &_swigt__p_std__string,
+  &_swigt__p_std__vectorT_std__string_t,
   &_swigt__p_streamoff,
   &_swigt__p_streampos,
   &_swigt__p_traits_type,
@@ -12627,16 +13339,20 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_unsigned_short,
 };
 
+static swig_cast_info _swigc__p_FILE[] = {  {&_swigt__p_FILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SwigPyObject[] = {  {&_swigt__p_SwigPyObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_btl__Edge[] = {  {&_swigt__p_btl__Edge, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_btl__Graph[] = {  {&_swigt__p_btl__Graph, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_btl__SeqReader[] = {  {&_swigt__p_btl__SeqReader, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_btl__Vertex[] = {  {&_swigt__p_btl__Vertex, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__Edge[] = {  {&_swigt__p_btllib__Edge, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__Graph[] = {  {&_swigt__p_btllib__Graph, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__SeqReader[] = {  {&_swigt__p_btllib__SeqReader, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__Vertex[] = {  {&_swigt__p_btllib__Vertex, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char_type[] = {  {&_swigt__p_char_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_f_enum_std__ios_base__event_r_std__ios_base_int__void[] = {  {&_swigt__p_f_enum_std__ios_base__event_r_std__ios_base_int__void, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_f_p_q_const__char_int_v_______int[] = {  {&_swigt__p_f_p_q_const__char_int_v_______int, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_f_p_q_const__char_mode_t__int[] = {  {&_swigt__p_f_p_q_const__char_mode_t__int, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_f_p_q_const__char_p_q_const__char__p_FILE[] = {  {&_swigt__p_f_p_q_const__char_p_q_const__char__p_FILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t[] = {{&_swigt__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t[] = {{&_swigt__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t[] = {{&_swigt__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -12658,6 +13374,7 @@ static swig_cast_info _swigc__p_iostate[] = {  {&_swigt__p_iostate, 0, 0, 0},{0,
 static swig_cast_info _swigc__p_long[] = {  {&_swigt__p_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_long_double[] = {  {&_swigt__p_long_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mode_t[] = {  {&_swigt__p_mode_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_off_type[] = {  {&_swigt__p_off_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_openmode[] = {  {&_swigt__p_openmode, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_void[] = {  {&_swigt__p_p_void, 0, 0, 0},{0, 0, 0, 0}};
@@ -12674,6 +13391,8 @@ static swig_cast_info _swigc__p_std__basic_streambufT_char_std__char_traitsT_cha
 static swig_cast_info _swigc__p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t[] = {  {&_swigt__p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__ios_base[] = {  {&_swigt__p_std__basic_iosT_char_std__char_traitsT_char_t_t, _p_std__basic_iosT_char_std__char_traitsT_char_t_tTo_p_std__ios_base, 0, 0},  {&_swigt__p_std__ios_base, 0, 0, 0},  {&_swigt__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_ostreamT_char_std__char_traitsT_char_t_tTo_p_std__ios_base, 0, 0},  {&_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__ios_base, 0, 0},  {&_swigt__p_std__basic_istreamT_char_std__char_traitsT_char_t_t, _p_std__basic_istreamT_char_std__char_traitsT_char_t_tTo_p_std__ios_base, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__locale[] = {  {&_swigt__p_std__locale, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_std__string_t[] = {  {&_swigt__p_std__vectorT_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_streamoff[] = {  {&_swigt__p_streamoff, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_streampos[] = {  {&_swigt__p_streampos, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_traits_type[] = {  {&_swigt__p_traits_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -12683,16 +13402,20 @@ static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_l
 static swig_cast_info _swigc__p_unsigned_short[] = {  {&_swigt__p_unsigned_short, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_FILE,
   _swigc__p_SwigPyObject,
   _swigc__p_bool,
-  _swigc__p_btl__Edge,
-  _swigc__p_btl__Graph,
-  _swigc__p_btl__SeqReader,
-  _swigc__p_btl__Vertex,
+  _swigc__p_btllib__Edge,
+  _swigc__p_btllib__Graph,
+  _swigc__p_btllib__SeqReader,
+  _swigc__p_btllib__Vertex,
   _swigc__p_char,
   _swigc__p_char_type,
   _swigc__p_double,
   _swigc__p_f_enum_std__ios_base__event_r_std__ios_base_int__void,
+  _swigc__p_f_p_q_const__char_int_v_______int,
+  _swigc__p_f_p_q_const__char_mode_t__int,
+  _swigc__p_f_p_q_const__char_p_q_const__char__p_FILE,
   _swigc__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t,
   _swigc__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t,
   _swigc__p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t,
@@ -12714,6 +13437,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_long,
   _swigc__p_long_double,
   _swigc__p_long_long,
+  _swigc__p_mode_t,
   _swigc__p_off_type,
   _swigc__p_openmode,
   _swigc__p_p_void,
@@ -12730,6 +13454,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t,
   _swigc__p_std__ios_base,
   _swigc__p_std__locale,
+  _swigc__p_std__string,
+  _swigc__p_std__vectorT_std__string_t,
   _swigc__p_streamoff,
   _swigc__p_streampos,
   _swigc__p_traits_type,
@@ -13796,19 +14522,19 @@ SWIG_init(void) {
   
   
   
-  /* type 'btl::SeqReader' */
-  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btl__SeqReader_type;
+  /* type 'btllib::SeqReader' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReader_type;
   builtin_pytype->tp_dict = d = PyDict_New();
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FOLD_CASE",SWIG_From_int(static_cast< int >(btl::SeqReader::FOLD_CASE)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_FOLD_CASE",SWIG_From_int(static_cast< int >(btl::SeqReader::NO_FOLD_CASE)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_TRIM_MASKED",SWIG_From_int(static_cast< int >(btl::SeqReader::NO_TRIM_MASKED)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "TRIM_MASKED",SWIG_From_int(static_cast< int >(btl::SeqReader::TRIM_MASKED)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "UNKNOWN",SWIG_From_int(static_cast< int >(btl::SeqReader::UNKNOWN)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FASTA",SWIG_From_int(static_cast< int >(btl::SeqReader::FASTA)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FASTQ",SWIG_From_int(static_cast< int >(btl::SeqReader::FASTQ)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SAM",SWIG_From_int(static_cast< int >(btl::SeqReader::SAM)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "GFA2",SWIG_From_int(static_cast< int >(btl::SeqReader::GFA2)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "INVALID",SWIG_From_int(static_cast< int >(btl::SeqReader::INVALID)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FOLD_CASE",SWIG_From_int(static_cast< int >(btllib::SeqReader::FOLD_CASE)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_FOLD_CASE",SWIG_From_int(static_cast< int >(btllib::SeqReader::NO_FOLD_CASE)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_TRIM_MASKED",SWIG_From_int(static_cast< int >(btllib::SeqReader::NO_TRIM_MASKED)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "TRIM_MASKED",SWIG_From_int(static_cast< int >(btllib::SeqReader::TRIM_MASKED)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "UNKNOWN",SWIG_From_int(static_cast< int >(btllib::SeqReader::UNKNOWN)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FASTA",SWIG_From_int(static_cast< int >(btllib::SeqReader::FASTA)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FASTQ",SWIG_From_int(static_cast< int >(btllib::SeqReader::FASTQ)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SAM",SWIG_From_int(static_cast< int >(btllib::SeqReader::SAM)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "GFA2",SWIG_From_int(static_cast< int >(btllib::SeqReader::GFA2)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "INVALID",SWIG_From_int(static_cast< int >(btllib::SeqReader::INVALID)));
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;
@@ -13829,8 +14555,8 @@ SWIG_init(void) {
   SwigPyBuiltin_AddPublicSymbol(public_interface, "SeqReader");
   d = md;
   
-  /* type 'btl::Vertex' */
-  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btl__Vertex_type;
+  /* type 'btllib::Vertex' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__Vertex_type;
   builtin_pytype->tp_dict = d = PyDict_New();
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
@@ -13852,8 +14578,8 @@ SWIG_init(void) {
   SwigPyBuiltin_AddPublicSymbol(public_interface, "Vertex");
   d = md;
   
-  /* type 'btl::Edge' */
-  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btl__Edge_type;
+  /* type 'btllib::Edge' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__Edge_type;
   builtin_pytype->tp_dict = d = PyDict_New();
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
@@ -13875,8 +14601,8 @@ SWIG_init(void) {
   SwigPyBuiltin_AddPublicSymbol(public_interface, "Edge");
   d = md;
   
-  /* type 'btl::Graph' */
-  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btl__Graph_type;
+  /* type 'btllib::Graph' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__Graph_type;
   builtin_pytype->tp_dict = d = PyDict_New();
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
@@ -13897,6 +14623,14 @@ SWIG_init(void) {
   PyModule_AddObject(m, "Graph", (PyObject *)builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "Graph");
   d = md;
+  SWIG_addvarlink(globals, "orig_open", Swig_var_orig_open_get, Swig_var_orig_open_set);
+  SWIG_addvarlink(globals, "orig_open64", Swig_var_orig_open64_get, Swig_var_orig_open64_set);
+  SWIG_addvarlink(globals, "orig_creat", Swig_var_orig_creat_get, Swig_var_orig_creat_set);
+  SWIG_addvarlink(globals, "orig_fopen", Swig_var_orig_fopen_get, Swig_var_orig_fopen_set);
+  SWIG_addvarlink(globals, "orig_fopen64", Swig_var_orig_fopen64_get, Swig_var_orig_fopen64_set);
+  SWIG_addvarlink(globals, "data_saveload_initialized", Swig_var_data_saveload_initialized_get, Swig_var_data_saveload_initialized_set);
+  PyDict_SetItemString(md, "data_saveload_initialized", PyObject_GetAttrString(globals, "data_saveload_initialized"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "data_saveload_initialized");
   SWIG_addvarlink(globals, "COMPLEMENTS", Swig_var_COMPLEMENTS_get, Swig_var_COMPLEMENTS_set);
   PyDict_SetItemString(md, "COMPLEMENTS", PyObject_GetAttrString(globals, "COMPLEMENTS"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "COMPLEMENTS");

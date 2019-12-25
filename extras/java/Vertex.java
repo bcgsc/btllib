@@ -29,7 +29,7 @@ public class Vertex {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        btlJNI.delete_Vertex(swigCPtr);
+        btllibJNI.delete_Vertex(swigCPtr);
       }
       swigCPtr = 0;
     }
