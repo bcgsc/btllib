@@ -1,6 +1,8 @@
 #include "../include/btllib/data_saveload.hpp"
 
 #include <fstream>
+#include <chrono>
+#include <thread>
 
 int main() {
     // Data loading is already tested in `seq_reader.cpp`, so saving primarily is tested here.
@@ -31,6 +33,9 @@ int main() {
     getline(xz_istream, line);
     xz_istream.close();
     assert(line == txt);
+
+    // Meson deletes test files, so wait a bit for the pipes to close
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
     return 0;
 }

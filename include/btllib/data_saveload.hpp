@@ -25,12 +25,15 @@ namespace btllib {
 using open_t = int (*)(const char* __file, int __oflag, ...);
 using creat_t = int (*)(const char* __file, mode_t __mode);
 using fopen_t = FILE* (*)(const char* __filename, const char* __modes);
+using openat_t = int (*)(int __fd, const char *__file, int __oflag, ...);
 
 static open_t orig_open = nullptr;
 static open_t orig_open64 = nullptr;
 static creat_t orig_creat = nullptr;
 static fopen_t orig_fopen = nullptr;
 static fopen_t orig_fopen64 = nullptr;
+static openat_t orig_openat = nullptr;
+static openat_t orig_openat64 = nullptr;
 
 /** SIGCHLD handler. Reap child processes and report an error if any
  * fail. */
@@ -73,37 +76,22 @@ data_saveload_init()
   action.sa_flags = SA_RESTART;
   sigaction(SIGCHLD, &action, nullptr);
 
-  const char* err;
+  #define BTLLIB_SETUP_ORIG_FUNC(type, func) \
+    dlerror(); \
+    orig_##func = (type)dlsym(RTLD_NEXT, #func); \
+    const char* func##_err = dlerror(); \
+    check_error(orig_##func == nullptr && func##_err != nullptr, \
+              "dlsym " #func ": " + (func##_err != nullptr ? std::string(func##_err) : ""));
 
-  dlerror();
-  orig_open = (open_t)dlsym(RTLD_NEXT, "open");
-  err = dlerror();
-  check_error(orig_open == nullptr && err != nullptr,
-              "dlsym open: " + (err != nullptr ? std::string(err) : ""));
+  BTLLIB_SETUP_ORIG_FUNC(open_t, open)
+  BTLLIB_SETUP_ORIG_FUNC(open_t, open64)
+  BTLLIB_SETUP_ORIG_FUNC(creat_t, creat)
+  BTLLIB_SETUP_ORIG_FUNC(fopen_t, fopen)
+  BTLLIB_SETUP_ORIG_FUNC(fopen_t, fopen64)
+  BTLLIB_SETUP_ORIG_FUNC(openat_t, openat)
+  BTLLIB_SETUP_ORIG_FUNC(openat_t, openat64)
 
-  dlerror();
-  orig_open64 = (open_t)dlsym(RTLD_NEXT, "open64");
-  err = dlerror();
-  check_error(orig_open64 == nullptr && err != nullptr,
-              "dlsym open64: " + (err != nullptr ? std::string(err) : ""));
-
-  dlerror();
-  orig_creat = (creat_t)dlsym(RTLD_NEXT, "creat");
-  err = dlerror();
-  check_error(orig_creat == nullptr && err != nullptr,
-              "dlsym creat: " + (err != nullptr ? std::string(err) : ""));
-
-  dlerror();
-  orig_fopen = (fopen_t)dlsym(RTLD_NEXT, "fopen");
-  err = dlerror();
-  check_error(orig_fopen == nullptr && err != nullptr,
-              "dlsym fopen: " + (err != nullptr ? std::string(err) : ""));
-
-  dlerror();
-  orig_fopen64 = (fopen_t)dlsym(RTLD_NEXT, "fopen64");
-  err = dlerror();
-  check_error(orig_fopen64 == nullptr && err != nullptr,
-              "dlsym fopen64: " + (err != nullptr ? std::string(err) : ""));
+  #undef BTLLIB_SETUP_ORIG_FUNC
 
   return true;
 }
@@ -454,6 +442,44 @@ extern "C"
       }
     }
     return orig_fopen64(__filename, __modes);
+  }
+
+  int openat(int __fd, const char *__file, int __oflag, ...)
+  {
+    if (__fd == AT_FDCWD || __file[0] == '/') {
+      if ((bool(__oflag | O_RDONLY) || bool(__oflag | O_WRONLY)) &&
+          !bool(__oflag | O_RDWR)) {
+        bool save = bool(__oflag | O_WRONLY);
+        auto cmd = get_saveload_cmd(__file, save);
+        if (!cmd.empty()) {
+          return data_saveload(cmd, save);
+        }
+      }
+    }
+    va_list args;
+    va_start(args, __oflag);
+    int ret = orig_openat(__fd, __file, __oflag, va_arg(args, mode_t));
+    va_end(args);
+    return ret;
+  }
+
+  int openat64(int __fd, const char *__file, int __oflag, ...)
+  {
+    if (__fd == AT_FDCWD || __file[0] == '/') {
+      if ((bool(__oflag | O_RDONLY) || bool(__oflag | O_WRONLY)) &&
+          !bool(__oflag | O_RDWR)) {
+        bool save = bool(__oflag | O_WRONLY);
+        auto cmd = get_saveload_cmd(__file, save);
+        if (!cmd.empty()) {
+          return data_saveload(cmd, save);
+        }
+      }
+    }
+    va_list args;
+    va_start(args, __oflag);
+    int ret = orig_openat64(__fd, __file, __oflag, va_arg(args, mode_t));
+    va_end(args);
+    return ret;
   }
 
 } // extern "C"
