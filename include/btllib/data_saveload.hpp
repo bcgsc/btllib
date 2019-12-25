@@ -299,7 +299,7 @@ static FILE* fdata_saveload(const std::string& cmd, const bool save)
 		perror(cmd.c_str());
 		std::exit(EXIT_FAILURE);
 	}
-	return fdopen(fd, "r");
+	return fdopen(fd, save ? "w" : "r");
 }
 
 extern "C" {
