@@ -110,41 +110,23 @@ get_saveload_cmd(const std::string& path, const bool save)
     std::vector<std::string> save_cmds;
   };
 
+  // clang-format off
   static const Datatype DATATYPES[]{
-    { { "http://", "https://", "ftp://" },
-      {},
-      { "wget --version" },
-      { "wget -O-" },
-      { "" } },
+    { { "http://", "https://", "ftp://" }, {}, { "wget --version" }, { "wget -O-" }, { "" } },
     { {}, { ".url" }, { "wget --version" }, { "wget -O- -i" }, { "" } },
     { {}, { ".ar" }, { "ar --version" }, { "ar -p" }, { "" } },
     { {}, { ".tar" }, { "tar --version" }, { "tar -xOf" }, { "" } },
-    { {},
-      { ".tar.z", ".tar.gz", ".tgz" },
-      { "tar --version" },
-      { "tar -xzOf" },
-      { "" } },
+    { {}, { ".tar.z", ".tar.gz", ".tgz" }, { "tar --version" }, { "tar -xzOf" }, { "" } },
     { {}, { ".tar.bz2" }, { "tar --version" }, { "tar -xjOf" }, { "" } },
-    { {},
-      { ".tar.xz" },
-      { "tar --version && unxz --version" },
-      { "tar --use-compress-program=unxz -xOf" },
-      { "" } },
-    { {},
-      { ".gz", ".z" },
-      { "pigz --version", "gzip --version" },
-      { "pigz -dc", "gzip -dc" },
-      { "pigz >", "gzip >" } },
+    { {}, { ".tar.xz" }, { "tar --version && unxz --version" }, { "tar --use-compress-program=unxz -xOf" }, { "" } },
+    { {}, { ".gz", ".z" }, { "pigz --version", "gzip --version" }, { "pigz -dc", "gzip -dc" }, { "pigz >", "gzip >" } },
     { {}, { ".bz2" }, { "bzip2 --version" }, { "bunzip2 -dc" }, { "bzip2 >" } },
     { {}, { ".xz" }, { "xz --version" }, { "unxz -dc" }, { "xz -T0 >" } },
     { {}, { ".7z" }, { "7z" }, { "7z -so e" }, { "7z -si a" } },
     { {}, { ".zip" }, { "zip --version" }, { "unzip -p" }, { "" } },
-    { {},
-      { ".bam", ".cram" },
-      { "samtools --version" },
-      { "samtools view -h" },
-      { "samtool -Sb - >" } },
+    { {}, { ".bam", ".cram" }, { "samtools --version" }, { "samtools view -h" }, { "samtool -Sb - >" } },
   };
+  // clang-format on
 
   for (const auto& datatype : DATATYPES) {
     bool found_datatype = false;
