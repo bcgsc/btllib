@@ -32,22 +32,22 @@ public class btllib {
     return btllibJNI.ends_with(s, suffix);
   }
 
-  public static void setOrig_open(SWIGTYPE_p_f_p_q_const__char_int_mode_t__int value) {
-    btllibJNI.orig_open_set(SWIGTYPE_p_f_p_q_const__char_int_mode_t__int.getCPtr(value));
+  public static void setOrig_open(SWIGTYPE_p_f_p_q_const__char_int_v_______int value) {
+    btllibJNI.orig_open_set(SWIGTYPE_p_f_p_q_const__char_int_v_______int.getCPtr(value));
   }
 
-  public static SWIGTYPE_p_f_p_q_const__char_int_mode_t__int getOrig_open() {
+  public static SWIGTYPE_p_f_p_q_const__char_int_v_______int getOrig_open() {
     long cPtr = btllibJNI.orig_open_get();
-    return (cPtr == 0) ? null : new SWIGTYPE_p_f_p_q_const__char_int_mode_t__int(cPtr, false);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_f_p_q_const__char_int_v_______int(cPtr, false);
   }
 
-  public static void setOrig_open64(SWIGTYPE_p_f_p_q_const__char_int_mode_t__int value) {
-    btllibJNI.orig_open64_set(SWIGTYPE_p_f_p_q_const__char_int_mode_t__int.getCPtr(value));
+  public static void setOrig_open64(SWIGTYPE_p_f_p_q_const__char_int_v_______int value) {
+    btllibJNI.orig_open64_set(SWIGTYPE_p_f_p_q_const__char_int_v_______int.getCPtr(value));
   }
 
-  public static SWIGTYPE_p_f_p_q_const__char_int_mode_t__int getOrig_open64() {
+  public static SWIGTYPE_p_f_p_q_const__char_int_v_______int getOrig_open64() {
     long cPtr = btllibJNI.orig_open64_get();
-    return (cPtr == 0) ? null : new SWIGTYPE_p_f_p_q_const__char_int_mode_t__int(cPtr, false);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_f_p_q_const__char_int_v_______int(cPtr, false);
   }
 
   public static void setOrig_creat(SWIGTYPE_p_f_p_q_const__char_mode_t__int value) {
@@ -102,25 +102,25 @@ public class btllib {
     return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
   }
 
-  public static int open(String pathname, int flags, SWIGTYPE_p_mode_t mode) {
-    return btllibJNI.open(pathname, flags, SWIGTYPE_p_mode_t.getCPtr(mode));
+  public static int open(String __file, int __oflag) {
+    return btllibJNI.open(__file, __oflag);
   }
 
-  public static int open64(String pathname, int flags, SWIGTYPE_p_mode_t mode) {
-    return btllibJNI.open64(pathname, flags, SWIGTYPE_p_mode_t.getCPtr(mode));
+  public static int open64(String __file, int __oflag) {
+    return btllibJNI.open64(__file, __oflag);
   }
 
-  public static int creat(String pathname, SWIGTYPE_p_mode_t mode) {
-    return btllibJNI.creat(pathname, SWIGTYPE_p_mode_t.getCPtr(mode));
+  public static int creat(String __file, SWIGTYPE_p_mode_t __mode) {
+    return btllibJNI.creat(__file, SWIGTYPE_p_mode_t.getCPtr(__mode));
   }
 
-  public static SWIGTYPE_p_FILE fopen(String pathname, String mode) {
-    long cPtr = btllibJNI.fopen(pathname, mode);
+  public static SWIGTYPE_p_FILE fopen(String __filename, String __modes) {
+    long cPtr = btllibJNI.fopen(__filename, __modes);
     return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
   }
 
-  public static SWIGTYPE_p_FILE fopen64(String pathname, String mode) {
-    long cPtr = btllibJNI.fopen64(pathname, mode);
+  public static SWIGTYPE_p_FILE fopen64(String __filename, String __modes) {
+    long cPtr = btllibJNI.fopen64(__filename, __modes);
     return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
   }
 

@@ -54,8 +54,8 @@ public class btllibJNI {
   public final static native String get_saveload_cmd(String jarg1, boolean jarg2);
   public final static native int data_saveload(String jarg1, boolean jarg2);
   public final static native long fdata_saveload(String jarg1, boolean jarg2);
-  public final static native int open(String jarg1, int jarg2, long jarg3);
-  public final static native int open64(String jarg1, int jarg2, long jarg3);
+  public final static native int open(String jarg1, int jarg2);
+  public final static native int open64(String jarg1, int jarg2);
   public final static native int creat(String jarg1, long jarg2);
   public final static native long fopen(String jarg1, String jarg2);
   public final static native long fopen64(String jarg1, String jarg2);

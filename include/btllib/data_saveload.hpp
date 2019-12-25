@@ -24,8 +24,7 @@ namespace btllib {
 
 using open_t = int (*)(const char* __file, int __oflag, ...);
 using creat_t = int (*)(const char* __file, mode_t __mode);
-using fopen_t = FILE* (*)(const char* __restrict __filename,
-                          const char* __restrict __modes);
+using fopen_t = FILE* (*)(const char* __filename, const char* __modes);
 
 static open_t orig_open = nullptr;
 static open_t orig_open64 = nullptr;
@@ -433,7 +432,7 @@ extern "C"
     return orig_creat(__file, __mode);
   }
 
-  FILE* fopen(const char* __restrict __filename, const char* __restrict __modes)
+  FILE* fopen(const char* __filename, const char* __modes)
   {
     if ((strcmp(__modes, "r") == 0) || (strcmp(__modes, "w") == 0)) {
       bool save = (strcmp(__modes, "w") == 0);
@@ -445,8 +444,7 @@ extern "C"
     return orig_fopen(__filename, __modes);
   }
 
-  FILE* fopen64(const char* __restrict __filename,
-                const char* __restrict __modes)
+  FILE* fopen64(const char* __filename, const char* __modes)
   {
     if ((strcmp(__modes, "r") == 0) || (strcmp(__modes, "w") == 0)) {
       bool save = (strcmp(__modes, "w") == 0);

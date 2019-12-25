@@ -958,12 +958,11 @@ SWIGEXPORT jlong JNICALL Java_btllibJNI_fdata_1saveload(JNIEnv *jenv, jclass jcl
 }
 
 
-SWIGEXPORT jint JNICALL Java_btllibJNI_open(JNIEnv *jenv, jclass jcls, jstring jarg1, jint jarg2, jlong jarg3) {
+SWIGEXPORT jint JNICALL Java_btllibJNI_open(JNIEnv *jenv, jclass jcls, jstring jarg1, jint jarg2) {
   jint jresult = 0 ;
   char *arg1 = (char *) 0 ;
   int arg2 ;
-  mode_t arg3 ;
-  mode_t *argp3 ;
+  void *arg3 = 0 ;
   int result;
   
   (void)jenv;
@@ -974,12 +973,6 @@ SWIGEXPORT jint JNICALL Java_btllibJNI_open(JNIEnv *jenv, jclass jcls, jstring j
     if (!arg1) return 0;
   }
   arg2 = (int)jarg2; 
-  argp3 = *(mode_t **)&jarg3; 
-  if (!argp3) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null mode_t");
-    return 0;
-  }
-  arg3 = *argp3; 
   result = (int)btllib::open((char const *)arg1,arg2,arg3);
   jresult = (jint)result; 
   if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
@@ -987,12 +980,11 @@ SWIGEXPORT jint JNICALL Java_btllibJNI_open(JNIEnv *jenv, jclass jcls, jstring j
 }
 
 
-SWIGEXPORT jint JNICALL Java_btllibJNI_open64(JNIEnv *jenv, jclass jcls, jstring jarg1, jint jarg2, jlong jarg3) {
+SWIGEXPORT jint JNICALL Java_btllibJNI_open64(JNIEnv *jenv, jclass jcls, jstring jarg1, jint jarg2) {
   jint jresult = 0 ;
   char *arg1 = (char *) 0 ;
   int arg2 ;
-  mode_t arg3 ;
-  mode_t *argp3 ;
+  void *arg3 = 0 ;
   int result;
   
   (void)jenv;
@@ -1003,12 +995,6 @@ SWIGEXPORT jint JNICALL Java_btllibJNI_open64(JNIEnv *jenv, jclass jcls, jstring
     if (!arg1) return 0;
   }
   arg2 = (int)jarg2; 
-  argp3 = *(mode_t **)&jarg3; 
-  if (!argp3) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null mode_t");
-    return 0;
-  }
-  arg3 = *argp3; 
   result = (int)btllib::open64((char const *)arg1,arg2,arg3);
   jresult = (jint)result; 
   if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
