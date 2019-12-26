@@ -85,19 +85,19 @@ get_saveload_cmd(const std::string& path, const bool save)
 
   // clang-format off
   static const Datatype DATATYPES[]{
-    { { "http://", "https://", "ftp://" }, {}, { "wget --version" }, { "wget -O-" }, { "" } },
-    { {}, { ".url" }, { "wget --version" }, { "wget -O- -i" }, { "" } },
-    { {}, { ".ar" }, { "ar --version" }, { "ar -p" }, { "" } },
-    { {}, { ".tar" }, { "tar --version" }, { "tar -xOf" }, { "" } },
-    { {}, { ".tar.z", ".tar.gz", ".tgz" }, { "tar --version" }, { "tar -xzOf" }, { "" } },
-    { {}, { ".tar.bz2" }, { "tar --version" }, { "tar -xjOf" }, { "" } },
-    { {}, { ".tar.xz" }, { "tar --version && unxz --version" }, { "tar --use-compress-program=unxz -xOf" }, { "" } },
-    { {}, { ".gz", ".z" }, { "pigz --version", "gzip --version" }, { "pigz -dc", "gzip -dc" }, { "pigz >", "gzip >" } },
-    { {}, { ".bz2" }, { "bzip2 --version" }, { "bunzip2 -dc" }, { "bzip2 >" } },
-    { {}, { ".xz" }, { "xz --version" }, { "unxz -dc" }, { "xz -T0 >" } },
-    { {}, { ".7z" }, { "7z" }, { "7z -so e" }, { "7z -si a" } },
-    { {}, { ".zip" }, { "zip --version" }, { "unzip -p" }, { "" } },
-    { {}, { ".bam", ".cram" }, { "samtools --version" }, { "samtools view -h" }, { "samtool -Sb - >" } },
+    { { "http://", "https://", "ftp://" }, {}, { "which wget" }, { "wget -O-" }, { "" } },
+    { {}, { ".url" }, { "which wget" }, { "wget -O- -i" }, { "" } },
+    { {}, { ".ar" }, { "which ar" }, { "ar -p" }, { "" } },
+    { {}, { ".tar" }, { "which tar" }, { "tar -xOf" }, { "" } },
+    { {}, { ".tar.z", ".tar.gz", ".tgz" }, { "which tar" }, { "tar -xzOf" }, { "" } },
+    { {}, { ".tar.bz2" }, { "which tar" }, { "tar -xjOf" }, { "" } },
+    { {}, { ".tar.xz" }, { "which tar && which unxz" }, { "tar --use-compress-program=unxz -xOf" }, { "" } },
+    { {}, { ".gz", ".z" }, { "which pigz", "which gzip" }, { "pigz -dc", "gzip -dc" }, { "pigz >", "gzip >" } },
+    { {}, { ".bz2" }, { "which bzip2" }, { "bunzip2 -dc" }, { "bzip2 >" } },
+    { {}, { ".xz" }, { "which xz" }, { "unxz -dc" }, { "xz -T0 >" } },
+    { {}, { ".7z" }, { "which 7z" }, { "7z -so e" }, { "7z -si a" } },
+    { {}, { ".zip" }, { "which zip" }, { "unzip -p" }, { "" } },
+    { {}, { ".bam", ".cram" }, { "which samtools" }, { "samtools view -h" }, { "samtool -Sb - >" } },
   };
   // clang-format on
 
