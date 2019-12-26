@@ -43,7 +43,7 @@ int main() {
     assert(i == 2);
 
     // Test SAM
-    btllib::SeqReader reader_sam("../tests/input.sam");
+    btllib::SeqReader reader_sam("../tests/input.bam");
     assert(reader_sam.get_format() == btllib::SeqReader::Format::SAM);
 
     i = 0;

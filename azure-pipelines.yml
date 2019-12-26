@@ -15,7 +15,7 @@ steps:
     sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-8 main"
     sudo apt-get update
     sudo apt-get install --yes --no-install-recommends clang-format-8 clang-tidy-8 cppcheck \
-      python3-setuptools libboost-dev
+      python3-setuptools libboost-dev samtools
     sudo ln -s clang-format-8 /usr/bin/clang-format
     sudo ln -s clang-tidy-8 /usr/bin/clang-tidy
     sudo pip3 install ninja meson
