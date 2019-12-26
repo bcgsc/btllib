@@ -194,12 +194,10 @@ get_saveload_cmd(const std::string& path, const bool save)
           cmd += path;
         }
         return cmd;
-      } else {
-        log_warning("Filetype recognized for '" + path +
-                      "', but no tool available to work with it.");
-        return "";
       }
-      break;
+      log_warning("Filetype recognized for '" + path +
+                  "', but no tool available to work with it.");
+      return "";
     }
   }
 
