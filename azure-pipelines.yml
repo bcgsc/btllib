@@ -8,14 +8,14 @@ steps:
 
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: '3.8'
+    versionSpec: '3.5'
 
 - script: |
     wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-    sudo apt-add-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main"
+    sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-8 main"
     sudo apt-get update
     sudo apt-get install --yes --no-install-recommends clang-format-8 clang-tidy-8 cppcheck \
-      python3-setuptools libpython3.8 libboost-dev
+      python3-setuptools libpython3.5 libboost-dev
     sudo ln -s clang-format-8 /usr/bin/clang-format
     sudo ln -s clang-tidy-8 /usr/bin/clang-tidy
     sudo pip3 install ninja meson
