@@ -6,6 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
+package btllib;
 
 public class Vertex {
   private transient long swigCPtr;

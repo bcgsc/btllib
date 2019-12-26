@@ -6,6 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
+package btllib;
 
 public class btllib {
   public static SWIGTYPE_p_std__vectorT_std__string_t split(String s, String delim) {

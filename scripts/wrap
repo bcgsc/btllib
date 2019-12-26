@@ -43,7 +43,7 @@ done
 
 ln -sf $PWD/include extras/java/
 cd extras/java
-swig -java -c++ -Iinclude btllib.i
+swig -java -package btllib -c++ -Iinclude btllib.i
 rm include
 
 # Add java files to meson build

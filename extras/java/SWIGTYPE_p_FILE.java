@@ -6,6 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
+package btllib;
 
 public class SWIGTYPE_p_FILE {
   private transient long swigCPtr;

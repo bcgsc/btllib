@@ -247,7 +247,7 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 extern "C" {
 #endif
 
-SWIGEXPORT jint JNICALL Java_btllibJNI_SeqReader_1FOLD_1CASE_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_SeqReader_1FOLD_1CASE_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   btllib::SeqReader::Flag result;
   
@@ -259,7 +259,7 @@ SWIGEXPORT jint JNICALL Java_btllibJNI_SeqReader_1FOLD_1CASE_1get(JNIEnv *jenv, 
 }
 
 
-SWIGEXPORT jint JNICALL Java_btllibJNI_SeqReader_1NO_1FOLD_1CASE_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_SeqReader_1NO_1FOLD_1CASE_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   btllib::SeqReader::Flag result;
   
@@ -271,7 +271,7 @@ SWIGEXPORT jint JNICALL Java_btllibJNI_SeqReader_1NO_1FOLD_1CASE_1get(JNIEnv *je
 }
 
 
-SWIGEXPORT jint JNICALL Java_btllibJNI_SeqReader_1NO_1TRIM_1MASKED_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_SeqReader_1NO_1TRIM_1MASKED_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   btllib::SeqReader::Flag result;
   
@@ -283,7 +283,7 @@ SWIGEXPORT jint JNICALL Java_btllibJNI_SeqReader_1NO_1TRIM_1MASKED_1get(JNIEnv *
 }
 
 
-SWIGEXPORT jint JNICALL Java_btllibJNI_SeqReader_1TRIM_1MASKED_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_SeqReader_1TRIM_1MASKED_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   btllib::SeqReader::Flag result;
   
@@ -295,7 +295,7 @@ SWIGEXPORT jint JNICALL Java_btllibJNI_SeqReader_1TRIM_1MASKED_1get(JNIEnv *jenv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllibJNI_new_1SeqReader_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jstring jarg1, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jstring jarg1, jint jarg2) {
   jlong jresult = 0 ;
   char *arg1 = (char *) 0 ;
   int arg2 ;
@@ -316,7 +316,7 @@ SWIGEXPORT jlong JNICALL Java_btllibJNI_new_1SeqReader_1_1SWIG_10(JNIEnv *jenv, 
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllibJNI_new_1SeqReader_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   jlong jresult = 0 ;
   char *arg1 = (char *) 0 ;
   btllib::SeqReader *result = 0 ;
@@ -335,7 +335,7 @@ SWIGEXPORT jlong JNICALL Java_btllibJNI_new_1SeqReader_1_1SWIG_11(JNIEnv *jenv, 
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_btllibJNI_SeqReader_1flagFoldCase(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_SeqReader_1flagFoldCase(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   bool result;
@@ -350,7 +350,7 @@ SWIGEXPORT jboolean JNICALL Java_btllibJNI_SeqReader_1flagFoldCase(JNIEnv *jenv,
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_btllibJNI_SeqReader_1flagTrimMasked(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_SeqReader_1flagTrimMasked(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   bool result;
@@ -365,7 +365,7 @@ SWIGEXPORT jboolean JNICALL Java_btllibJNI_SeqReader_1flagTrimMasked(JNIEnv *jen
 }
 
 
-SWIGEXPORT jint JNICALL Java_btllibJNI_SeqReader_1get_1format(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_SeqReader_1get_1format(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   btllib::SeqReader::Format result;
@@ -380,7 +380,7 @@ SWIGEXPORT jint JNICALL Java_btllibJNI_SeqReader_1get_1format(JNIEnv *jenv, jcla
 }
 
 
-SWIGEXPORT jint JNICALL Java_btllibJNI_SeqReader_1peek(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_SeqReader_1peek(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   int result;
@@ -395,7 +395,7 @@ SWIGEXPORT jint JNICALL Java_btllibJNI_SeqReader_1peek(JNIEnv *jenv, jclass jcls
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_btllibJNI_SeqReader_1read(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_SeqReader_1read(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   bool result;
@@ -410,7 +410,7 @@ SWIGEXPORT jboolean JNICALL Java_btllibJNI_SeqReader_1read(JNIEnv *jenv, jclass 
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllibJNI_SeqReader_1name(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1name(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   std::string result;
@@ -425,7 +425,7 @@ SWIGEXPORT jstring JNICALL Java_btllibJNI_SeqReader_1name(JNIEnv *jenv, jclass j
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllibJNI_SeqReader_1comment(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1comment(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   std::string result;
@@ -440,7 +440,7 @@ SWIGEXPORT jstring JNICALL Java_btllibJNI_SeqReader_1comment(JNIEnv *jenv, jclas
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllibJNI_SeqReader_1seq(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1seq(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   std::string result;
@@ -455,7 +455,7 @@ SWIGEXPORT jstring JNICALL Java_btllibJNI_SeqReader_1seq(JNIEnv *jenv, jclass jc
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllibJNI_SeqReader_1qual(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1qual(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   std::string result;
@@ -470,7 +470,7 @@ SWIGEXPORT jstring JNICALL Java_btllibJNI_SeqReader_1qual(JNIEnv *jenv, jclass j
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_delete_1SeqReader(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
   
   (void)jenv;
@@ -480,7 +480,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_delete_1SeqReader(JNIEnv *jenv, jclass jc
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_delete_1Vertex(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1Vertex(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   btllib::Vertex *arg1 = (btllib::Vertex *) 0 ;
   
   (void)jenv;
@@ -490,7 +490,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_delete_1Vertex(JNIEnv *jenv, jclass jcls,
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_delete_1Edge(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1Edge(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   btllib::Edge *arg1 = (btllib::Edge *) 0 ;
   
   (void)jenv;
@@ -500,7 +500,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_delete_1Edge(JNIEnv *jenv, jclass jcls, j
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllibJNI_new_1Graph(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Graph(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   btllib::Graph *result = 0 ;
   
@@ -512,7 +512,7 @@ SWIGEXPORT jlong JNICALL Java_btllibJNI_new_1Graph(JNIEnv *jenv, jclass jcls) {
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllibJNI_Graph_1add_1vertex(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Graph_1add_1vertex(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   btllib::Graph *arg1 = (btllib::Graph *) 0 ;
   SwigValueWrapper< btllib::Vertex > result;
@@ -527,7 +527,7 @@ SWIGEXPORT jlong JNICALL Java_btllibJNI_Graph_1add_1vertex(JNIEnv *jenv, jclass 
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_Graph_1remove_1vertex(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Graph_1remove_1vertex(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   btllib::Graph *arg1 = (btllib::Graph *) 0 ;
   SwigValueWrapper< btllib::Vertex > arg2 ;
   btllib::Vertex *argp2 ;
@@ -547,7 +547,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_Graph_1remove_1vertex(JNIEnv *jenv, jclas
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllibJNI_Graph_1add_1edge(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Graph_1add_1edge(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   jlong jresult = 0 ;
   btllib::Graph *arg1 = (btllib::Graph *) 0 ;
   SwigValueWrapper< btllib::Vertex > arg2 ;
@@ -580,7 +580,7 @@ SWIGEXPORT jlong JNICALL Java_btllibJNI_Graph_1add_1edge(JNIEnv *jenv, jclass jc
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_Graph_1remove_1edge(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Graph_1remove_1edge(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   btllib::Graph *arg1 = (btllib::Graph *) 0 ;
   SwigValueWrapper< btllib::Edge > arg2 ;
   btllib::Edge *argp2 ;
@@ -600,7 +600,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_Graph_1remove_1edge(JNIEnv *jenv, jclass 
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllibJNI_Graph_1to_1string(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_Graph_1to_1string(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   btllib::Graph *arg1 = (btllib::Graph *) 0 ;
   std::string result;
@@ -615,7 +615,7 @@ SWIGEXPORT jstring JNICALL Java_btllibJNI_Graph_1to_1string(JNIEnv *jenv, jclass
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_delete_1Graph(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1Graph(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   btllib::Graph *arg1 = (btllib::Graph *) 0 ;
   
   (void)jenv;
@@ -625,7 +625,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_delete_1Graph(JNIEnv *jenv, jclass jcls, 
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllibJNI_split(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_split(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   std::string *arg2 = 0 ;
@@ -657,7 +657,7 @@ SWIGEXPORT jlong JNICALL Java_btllibJNI_split(JNIEnv *jenv, jclass jcls, jstring
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_ltrim(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_ltrim(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   std::string *arg1 = 0 ;
   
   (void)jenv;
@@ -671,7 +671,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_ltrim(JNIEnv *jenv, jclass jcls, jlong ja
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_rtrim(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_rtrim(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   std::string *arg1 = 0 ;
   
   (void)jenv;
@@ -685,7 +685,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_rtrim(JNIEnv *jenv, jclass jcls, jlong ja
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_trim(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_trim(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   std::string *arg1 = 0 ;
   
   (void)jenv;
@@ -699,7 +699,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_trim(JNIEnv *jenv, jclass jcls, jlong jar
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_btllibJNI_starts_1with(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_starts_1with(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
   jboolean jresult = 0 ;
   std::string arg1 ;
   std::string arg2 ;
@@ -729,7 +729,7 @@ SWIGEXPORT jboolean JNICALL Java_btllibJNI_starts_1with(JNIEnv *jenv, jclass jcl
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_btllibJNI_ends_1with(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_ends_1with(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
   jboolean jresult = 0 ;
   std::string arg1 ;
   std::string arg2 ;
@@ -759,7 +759,7 @@ SWIGEXPORT jboolean JNICALL Java_btllibJNI_ends_1with(JNIEnv *jenv, jclass jcls,
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllibJNI_data_1load(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_data_1load(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   FILE *result = 0 ;
@@ -781,7 +781,7 @@ SWIGEXPORT jlong JNICALL Java_btllibJNI_data_1load(JNIEnv *jenv, jclass jcls, js
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllibJNI_data_1save(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_data_1save(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   FILE *result = 0 ;
@@ -803,7 +803,7 @@ SWIGEXPORT jlong JNICALL Java_btllibJNI_data_1save(JNIEnv *jenv, jclass jcls, js
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_sigchld_1handler(JNIEnv *jenv, jclass jcls, jint jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_sigchld_1handler(JNIEnv *jenv, jclass jcls, jint jarg1) {
   int arg1 ;
   
   (void)jenv;
@@ -813,7 +813,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_sigchld_1handler(JNIEnv *jenv, jclass jcl
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_btllibJNI_data_1saveload_1init(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_data_1saveload_1init(JNIEnv *jenv, jclass jcls) {
   jboolean jresult = 0 ;
   bool result;
   
@@ -825,7 +825,7 @@ SWIGEXPORT jboolean JNICALL Java_btllibJNI_data_1saveload_1init(JNIEnv *jenv, jc
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_btllibJNI_data_1saveload_1initialized_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_data_1saveload_1initialized_1get(JNIEnv *jenv, jclass jcls) {
   jboolean jresult = 0 ;
   bool result;
   
@@ -837,7 +837,7 @@ SWIGEXPORT jboolean JNICALL Java_btllibJNI_data_1saveload_1initialized_1get(JNIE
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllibJNI_get_1saveload_1cmd(JNIEnv *jenv, jclass jcls, jstring jarg1, jboolean jarg2) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_get_1saveload_1cmd(JNIEnv *jenv, jclass jcls, jstring jarg1, jboolean jarg2) {
   jstring jresult = 0 ;
   std::string *arg1 = 0 ;
   bool arg2 ;
@@ -861,7 +861,7 @@ SWIGEXPORT jstring JNICALL Java_btllibJNI_get_1saveload_1cmd(JNIEnv *jenv, jclas
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllibJNI_run_1saveload_1cmd(JNIEnv *jenv, jclass jcls, jstring jarg1, jboolean jarg2) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_run_1saveload_1cmd(JNIEnv *jenv, jclass jcls, jstring jarg1, jboolean jarg2) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   bool arg2 ;
@@ -885,7 +885,7 @@ SWIGEXPORT jlong JNICALL Java_btllibJNI_run_1saveload_1cmd(JNIEnv *jenv, jclass 
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllibJNI_get_1time(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_get_1time(JNIEnv *jenv, jclass jcls) {
   jstring jresult = 0 ;
   std::string result;
   
@@ -897,7 +897,7 @@ SWIGEXPORT jstring JNICALL Java_btllibJNI_get_1time(JNIEnv *jenv, jclass jcls) {
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_log_1info(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_log_1info(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   std::string *arg1 = 0 ;
   
   (void)jenv;
@@ -915,7 +915,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_log_1info(JNIEnv *jenv, jclass jcls, jstr
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_log_1warning(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_log_1warning(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   std::string *arg1 = 0 ;
   
   (void)jenv;
@@ -933,7 +933,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_log_1warning(JNIEnv *jenv, jclass jcls, j
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_log_1error(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_log_1error(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   std::string *arg1 = 0 ;
   
   (void)jenv;
@@ -951,7 +951,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_log_1error(JNIEnv *jenv, jclass jcls, jst
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_check_1error(JNIEnv *jenv, jclass jcls, jboolean jarg1, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_check_1error(JNIEnv *jenv, jclass jcls, jboolean jarg1, jstring jarg2) {
   bool arg1 ;
   std::string *arg2 = 0 ;
   
@@ -971,7 +971,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_check_1error(JNIEnv *jenv, jclass jcls, j
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_check_1warning(JNIEnv *jenv, jclass jcls, jboolean jarg1, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_check_1warning(JNIEnv *jenv, jclass jcls, jboolean jarg1, jstring jarg2) {
   bool arg1 ;
   std::string *arg2 = 0 ;
   
@@ -991,7 +991,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_check_1warning(JNIEnv *jenv, jclass jcls,
 }
 
 
-SWIGEXPORT void JNICALL Java_btllibJNI_check_1stream(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_check_1stream(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2) {
   std::ios *arg1 = 0 ;
   std::string *arg2 = 0 ;
   
@@ -1015,7 +1015,7 @@ SWIGEXPORT void JNICALL Java_btllibJNI_check_1stream(JNIEnv *jenv, jclass jcls, 
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllibJNI_COMPLEMENTS_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_COMPLEMENTS_1get(JNIEnv *jenv, jclass jcls) {
   jstring jresult = 0 ;
   char *result = 0 ;
   
@@ -1027,7 +1027,7 @@ SWIGEXPORT jstring JNICALL Java_btllibJNI_COMPLEMENTS_1get(JNIEnv *jenv, jclass 
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllibJNI_CAPITALS_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_CAPITALS_1get(JNIEnv *jenv, jclass jcls) {
   jstring jresult = 0 ;
   char *result = 0 ;
   

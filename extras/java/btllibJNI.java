@@ -6,6 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
+package btllib;
 
 public class btllibJNI {
   public final static native int SeqReader_FOLD_CASE_get();
