@@ -1,0 +1,5 @@
+@HD	VN:1.6	SO:coordinate
+@SQ	SN:ref	LN:4
+@PG	ID:samtools	PN:samtools	VN:1.10	CL:samtools view -h input.bam
+q1	2	ref	6	20	4M	=	7	10	ACTG	!@^&	NM:i:1
+q2	3	ref	7	21	4S	*	8	11	TGCA	(#&$
