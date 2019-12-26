@@ -16,6 +16,7 @@ steps:
     sudo apt-get update
     sudo apt-get install --yes --no-install-recommends clang-format-8 clang-tidy-8 cppcheck \
       python3-setuptools libpython3.5 libboost-dev
+    sudo find / -iname "libpython3*"
     sudo ln -s clang-format-8 /usr/bin/clang-format
     sudo ln -s clang-tidy-8 /usr/bin/clang-tidy
     sudo pip3 install ninja meson
