@@ -32,49 +32,14 @@ public class btllib {
     return btllibJNI.ends_with(s, suffix);
   }
 
-  public static void setOrig_open(SWIGTYPE_p_f_p_q_const__char_int_v_______int value) {
-    btllibJNI.orig_open_set(SWIGTYPE_p_f_p_q_const__char_int_v_______int.getCPtr(value));
+  public static SWIGTYPE_p_FILE data_load(String source) {
+    long cPtr = btllibJNI.data_load(source);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
   }
 
-  public static SWIGTYPE_p_f_p_q_const__char_int_v_______int getOrig_open() {
-    long cPtr = btllibJNI.orig_open_get();
-    return (cPtr == 0) ? null : new SWIGTYPE_p_f_p_q_const__char_int_v_______int(cPtr, false);
-  }
-
-  public static void setOrig_open64(SWIGTYPE_p_f_p_q_const__char_int_v_______int value) {
-    btllibJNI.orig_open64_set(SWIGTYPE_p_f_p_q_const__char_int_v_______int.getCPtr(value));
-  }
-
-  public static SWIGTYPE_p_f_p_q_const__char_int_v_______int getOrig_open64() {
-    long cPtr = btllibJNI.orig_open64_get();
-    return (cPtr == 0) ? null : new SWIGTYPE_p_f_p_q_const__char_int_v_______int(cPtr, false);
-  }
-
-  public static void setOrig_creat(SWIGTYPE_p_f_p_q_const__char_mode_t__int value) {
-    btllibJNI.orig_creat_set(SWIGTYPE_p_f_p_q_const__char_mode_t__int.getCPtr(value));
-  }
-
-  public static SWIGTYPE_p_f_p_q_const__char_mode_t__int getOrig_creat() {
-    long cPtr = btllibJNI.orig_creat_get();
-    return (cPtr == 0) ? null : new SWIGTYPE_p_f_p_q_const__char_mode_t__int(cPtr, false);
-  }
-
-  public static void setOrig_fopen(SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE value) {
-    btllibJNI.orig_fopen_set(SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE.getCPtr(value));
-  }
-
-  public static SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE getOrig_fopen() {
-    long cPtr = btllibJNI.orig_fopen_get();
-    return (cPtr == 0) ? null : new SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE(cPtr, false);
-  }
-
-  public static void setOrig_fopen64(SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE value) {
-    btllibJNI.orig_fopen64_set(SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE.getCPtr(value));
-  }
-
-  public static SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE getOrig_fopen64() {
-    long cPtr = btllibJNI.orig_fopen64_get();
-    return (cPtr == 0) ? null : new SWIGTYPE_p_f_p_q_const__char_p_q_const__char__p_FILE(cPtr, false);
+  public static SWIGTYPE_p_FILE data_save(String sink) {
+    long cPtr = btllibJNI.data_save(sink);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
   }
 
   public static void sigchld_handler(int sig) {
@@ -93,34 +58,8 @@ public class btllib {
     return btllibJNI.get_saveload_cmd(path, save);
   }
 
-  public static int data_saveload(String cmd, boolean save) {
-    return btllibJNI.data_saveload(cmd, save);
-  }
-
-  public static SWIGTYPE_p_FILE fdata_saveload(String cmd, boolean save) {
-    long cPtr = btllibJNI.fdata_saveload(cmd, save);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
-  }
-
-  public static int open(String __file, int __oflag) {
-    return btllibJNI.open(__file, __oflag);
-  }
-
-  public static int open64(String __file, int __oflag) {
-    return btllibJNI.open64(__file, __oflag);
-  }
-
-  public static int creat(String __file, SWIGTYPE_p_mode_t __mode) {
-    return btllibJNI.creat(__file, SWIGTYPE_p_mode_t.getCPtr(__mode));
-  }
-
-  public static SWIGTYPE_p_FILE fopen(String __filename, String __modes) {
-    long cPtr = btllibJNI.fopen(__filename, __modes);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
-  }
-
-  public static SWIGTYPE_p_FILE fopen64(String __filename, String __modes) {
-    long cPtr = btllibJNI.fopen64(__filename, __modes);
+  public static SWIGTYPE_p_FILE run_saveload_cmd(String cmd, boolean save) {
+    long cPtr = btllibJNI.run_saveload_cmd(cmd, save);
     return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
   }
 

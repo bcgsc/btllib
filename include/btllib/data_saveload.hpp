@@ -12,7 +12,6 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <iostream>
 #include <string>
 
 #include <dlfcn.h>
@@ -22,22 +21,14 @@
 
 namespace btllib {
 
-using open_t = int (*)(const char* __file, int __oflag, ...);
-using creat_t = int (*)(const char* __file, mode_t __mode);
-using fopen_t = FILE* (*)(const char* __filename, const char* __modes);
-using openat_t = int (*)(int __fd, const char *__file, int __oflag, ...);
-
-static open_t orig_open = nullptr;
-static open_t orig_open64 = nullptr;
-static creat_t orig_creat = nullptr;
-static fopen_t orig_fopen = nullptr;
-static fopen_t orig_fopen64 = nullptr;
-static openat_t orig_openat = nullptr;
-static openat_t orig_openat64 = nullptr;
+inline FILE*
+data_load(const std::string& source);
+inline FILE*
+data_save(const std::string& sink);
 
 /** SIGCHLD handler. Reap child processes and report an error if any
  * fail. */
-static void
+inline void
 sigchld_handler(const int sig)
 {
   assert(sig == SIGCHLD);
@@ -67,7 +58,7 @@ sigchld_handler(const int sig)
   }
 }
 
-static bool
+inline bool
 data_saveload_init()
 {
   struct sigaction action; // NOLINT
@@ -75,30 +66,12 @@ data_saveload_init()
   sigemptyset(&action.sa_mask);
   action.sa_flags = SA_RESTART;
   sigaction(SIGCHLD, &action, nullptr);
-
-  #define BTLLIB_SETUP_ORIG_FUNC(type, func) \
-    dlerror(); \
-    orig_##func = (type)dlsym(RTLD_NEXT, #func); \
-    const char* func##_err = dlerror(); \
-    check_error(orig_##func == nullptr && func##_err != nullptr, \
-              "dlsym " #func ": " + (func##_err != nullptr ? std::string(func##_err) : ""));
-
-  BTLLIB_SETUP_ORIG_FUNC(open_t, open)
-  BTLLIB_SETUP_ORIG_FUNC(open_t, open64)
-  BTLLIB_SETUP_ORIG_FUNC(creat_t, creat)
-  BTLLIB_SETUP_ORIG_FUNC(fopen_t, fopen)
-  BTLLIB_SETUP_ORIG_FUNC(fopen_t, fopen64)
-  BTLLIB_SETUP_ORIG_FUNC(openat_t, openat)
-  BTLLIB_SETUP_ORIG_FUNC(openat_t, openat64)
-
-  #undef BTLLIB_SETUP_ORIG_FUNC
-
   return true;
 }
 
 static const bool data_saveload_initialized = data_saveload_init();
 
-static inline std::string
+inline std::string
 get_saveload_cmd(const std::string& path, const bool save)
 {
   struct Datatype
@@ -156,7 +129,7 @@ get_saveload_cmd(const std::string& path, const bool save)
 
           pid_t pid = fork();
           if (pid == 0) {
-            int null_fd = orig_open("/dev/null", O_WRONLY, 0);
+            int null_fd = open("/dev/null", O_WRONLY, 0);
             dup2(null_fd, STDOUT_FILENO);
             dup2(null_fd, STDERR_FILENO);
             close(null_fd);
@@ -229,12 +202,8 @@ get_saveload_cmd(const std::string& path, const bool save)
   return "";
 }
 
-/** Open a pipe to save/load the specified file.
- * Not thread safe.
- * @return a file descriptor
- */
-static int
-data_saveload(const std::string& cmd, const bool save)
+inline FILE*
+run_saveload_cmd(const std::string& cmd, const bool save)
 {
   static const int READ_END = 0;
   static const int WRITE_END = 1;
@@ -268,9 +237,9 @@ data_saveload(const std::string& cmd, const bool save)
 
       if (!stdout_to_file.empty()) {
         int outfd =
-          orig_open(stdout_to_file.c_str(),
-                    O_WRONLY | O_CREAT,
-                    S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+          open(stdout_to_file.c_str(),
+               O_WRONLY | O_CREAT,
+               S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
         dup2(outfd, STDOUT_FILENO);
         close(outfd);
       }
@@ -334,137 +303,39 @@ data_saveload(const std::string& cmd, const bool save)
   } else {
     if (save) {
       close(fd[READ_END]);
-      return fd[WRITE_END];
+      return fdopen(fd[WRITE_END], "w");
     }
     close(fd[WRITE_END]);
-    return fd[READ_END];
+    return fdopen(fd[READ_END], "r");
   }
-  return -1;
+  return nullptr;
 }
 
-/** Open a pipe to uncompress the specified file.
- * @return a FILE pointer
- */
-static FILE*
-fdata_saveload(const std::string& cmd, const bool save)
+inline FILE*
+data_load(const std::string& source)
 {
-  int fd = data_saveload(cmd, save);
-  if (fd == -1) {
-    perror(cmd.c_str());
-    std::exit(EXIT_FAILURE);
+  if (source == "-") {
+    return stdin;
   }
-  return fdopen(fd, save ? "w" : "r");
+  auto cmd = get_saveload_cmd(source, false);
+  if (cmd.empty()) {
+    return fopen(source.c_str(), "re");
+  }
+  return run_saveload_cmd(cmd, false);
 }
 
-extern "C"
+inline FILE*
+data_save(const std::string& sink)
 {
-
-  int open(const char* __file, int __oflag, ...)
-  {
-    if ((bool(__oflag | O_RDONLY) || bool(__oflag | O_WRONLY)) &&
-        !bool(__oflag | O_RDWR)) {
-      bool save = bool(__oflag | O_WRONLY);
-      auto cmd = get_saveload_cmd(__file, save);
-      if (!cmd.empty()) {
-        return data_saveload(cmd, save);
-      }
-    }
-    va_list args;
-    va_start(args, __oflag);
-    int ret = orig_open(__file, __oflag, va_arg(args, mode_t));
-    va_end(args);
-    return ret;
+  if (sink == "-") {
+    return stdout;
   }
-
-  int open64(const char* __file, int __oflag, ...)
-  {
-    if ((bool(__oflag | O_RDONLY) || bool(__oflag | O_WRONLY)) &&
-        !bool(__oflag | O_RDWR)) {
-      bool save = bool(__oflag | O_WRONLY);
-      auto cmd = get_saveload_cmd(__file, save);
-      if (!cmd.empty()) {
-        return data_saveload(cmd, save);
-      }
-    }
-    va_list args;
-    va_start(args, __oflag);
-    int ret = orig_open64(__file, __oflag, va_arg(args, mode_t));
-    va_end(args);
-    return ret;
+  auto cmd = get_saveload_cmd(sink, true);
+  if (cmd.empty()) {
+    return fopen(sink.c_str(), "we");
   }
-
-  int creat(const char* __file, mode_t __mode)
-  {
-    auto cmd = get_saveload_cmd(__file, true);
-    if (!cmd.empty()) {
-      return data_saveload(cmd, true);
-    }
-    return orig_creat(__file, __mode);
-  }
-
-  FILE* fopen(const char* __filename, const char* __modes)
-  {
-    if ((strcmp(__modes, "r") == 0) || (strcmp(__modes, "w") == 0)) {
-      bool save = (strcmp(__modes, "w") == 0);
-      auto cmd = get_saveload_cmd(__filename, save);
-      if (!cmd.empty()) {
-        return fdata_saveload(cmd, save);
-      }
-    }
-    return orig_fopen(__filename, __modes);
-  }
-
-  FILE* fopen64(const char* __filename, const char* __modes)
-  {
-    if ((strcmp(__modes, "r") == 0) || (strcmp(__modes, "w") == 0)) {
-      bool save = (strcmp(__modes, "w") == 0);
-      auto cmd = get_saveload_cmd(__filename, save);
-      if (!cmd.empty()) {
-        return fdata_saveload(cmd, save);
-      }
-    }
-    return orig_fopen64(__filename, __modes);
-  }
-
-  int openat(int __fd, const char *__file, int __oflag, ...)
-  {
-    if (__fd == AT_FDCWD || __file[0] == '/') {
-      if ((bool(__oflag | O_RDONLY) || bool(__oflag | O_WRONLY)) &&
-          !bool(__oflag | O_RDWR)) {
-        bool save = bool(__oflag | O_WRONLY);
-        auto cmd = get_saveload_cmd(__file, save);
-        if (!cmd.empty()) {
-          return data_saveload(cmd, save);
-        }
-      }
-    }
-    va_list args;
-    va_start(args, __oflag);
-    int ret = orig_openat(__fd, __file, __oflag, va_arg(args, mode_t));
-    va_end(args);
-    return ret;
-  }
-
-  int openat64(int __fd, const char *__file, int __oflag, ...)
-  {
-    if (__fd == AT_FDCWD || __file[0] == '/') {
-      if ((bool(__oflag | O_RDONLY) || bool(__oflag | O_WRONLY)) &&
-          !bool(__oflag | O_RDWR)) {
-        bool save = bool(__oflag | O_WRONLY);
-        auto cmd = get_saveload_cmd(__file, save);
-        if (!cmd.empty()) {
-          return data_saveload(cmd, save);
-        }
-      }
-    }
-    va_list args;
-    va_start(args, __oflag);
-    int ret = orig_openat64(__fd, __file, __oflag, va_arg(args, mode_t));
-    va_end(args);
-    return ret;
-  }
-
-} // extern "C"
+  return run_saveload_cmd(cmd, true);
+}
 
 } // namespace btllib
 

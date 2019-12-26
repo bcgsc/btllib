@@ -63,16 +63,20 @@ public class SeqReader {
     return btllibJNI.SeqReader_read(swigCPtr, this);
   }
 
+  public String name() {
+    return btllibJNI.SeqReader_name(swigCPtr, this);
+  }
+
+  public String comment() {
+    return btllibJNI.SeqReader_comment(swigCPtr, this);
+  }
+
   public String seq() {
     return btllibJNI.SeqReader_seq(swigCPtr, this);
   }
 
   public String qual() {
     return btllibJNI.SeqReader_qual(swigCPtr, this);
-  }
-
-  public void manip(SWIGTYPE_p_f_r_std__istream__r_std__istream f) {
-    btllibJNI.SeqReader_manip(swigCPtr, this, SWIGTYPE_p_f_r_std__istream__r_std__istream.getCPtr(f));
   }
 
   public final static class Flag {

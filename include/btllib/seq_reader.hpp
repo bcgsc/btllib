@@ -8,11 +8,8 @@
 #include <algorithm>
 #include <cassert>
 #include <cctype>
+#include <cstdio>
 #include <cstring>
-#include <fstream>
-#include <iostream>
-#include <limits>
-#include <sstream>
 #include <string>
 
 namespace btllib {
@@ -50,29 +47,32 @@ public:
   Format get_format() const { return format; }
 
   /** Return the next character of this stream. */
-  int peek() { return is.peek(); }
+  int peek();
 
   /** Read operator. */
   bool read();
 
-  /** Get the last read sequence. Cannot be called multiple times per read. */
+  /** Last read sequence name. Cannot be called multiple times per read. */
+  std::string name();
+
+  /** Last read sequence comment. Cannot be called multiple times per read. */
+  std::string comment();
+
+  /** Last read sequence. Cannot be called multiple times per read. */
   std::string seq();
 
-  /** Quality of the last read sequence. Cannot be called multiple times per
+  /** Last read sequence quality. Cannot be called multiple times per
    * read. */
   std::string qual();
 
-  /** Interface for manipulators. */
-  void manip(std::istream& (*f)(std::istream&));
-
 private:
   const char* input_path;
-  std::ifstream ifs; // If reading from a file
-  std::istream& is;  // Ref to the input stream (file or stdin)
+  std::FILE* input;
   unsigned flags;
   Format format; // Format of the input file
 
   static const std::streamsize DETERMINE_FORMAT_MAX_READ_CHARS = 4096;
+  static const size_t RESERVE_SIZE_FOR_STRINGS = 1024;
 
   static bool is_fasta(const char* input, size_t n);
   static bool is_fastq(const char* input, size_t n);
@@ -81,6 +81,8 @@ private:
 
   void determine_format();
 
+  void getline(std::string& line);
+
   void read_fasta();
   void read_fastq();
   void read_sam();
@@ -88,24 +90,26 @@ private:
 
   void (SeqReader::*read_impl)();
 
-  std::string s;
-  std::string q;
+  std::string name_str;
+  std::string comment_str;
+  std::string seq_str;
+  std::string qual_str;
   std::string tmp;
 };
 
 inline SeqReader::SeqReader(const char* input_path, int flags)
   : input_path(input_path)
-  , ifs(input_path)
-  , is(strcmp(input_path, "-") == 0 ? std::cin : ifs)
+  , input(data_load(input_path))
   , flags(flags)
   , format(Format::UNKNOWN)
   , read_impl(nullptr)
 {
-  if (strcmp(input_path, "-") != 0) {
-    check_stream(ifs, input_path);
-  }
-  check_warning(is.eof(), std::string(input_path) + " is empty.");
   determine_format();
+  name_str.reserve(RESERVE_SIZE_FOR_STRINGS);
+  comment_str.reserve(RESERVE_SIZE_FOR_STRINGS);
+  seq_str.reserve(RESERVE_SIZE_FOR_STRINGS);
+  qual_str.reserve(RESERVE_SIZE_FOR_STRINGS);
+  tmp.reserve(RESERVE_SIZE_FOR_STRINGS);
 }
 
 inline bool
@@ -387,13 +391,12 @@ SeqReader::is_gfa2(const char* input, size_t n)
 inline void
 SeqReader::determine_format()
 {
-  std::ifstream ifs(input_path);
-  std::istream& is(strcmp(input_path, "-") == 0 ? std::cin : ifs);
+  std::FILE* f = data_load(input_path);
 
   char buffer[DETERMINE_FORMAT_MAX_READ_CHARS];
-  is.read(buffer, DETERMINE_FORMAT_MAX_READ_CHARS);
+  const auto n = fread(buffer, 1, DETERMINE_FORMAT_MAX_READ_CHARS, f);
+  check_warning(n == 0, std::string(input_path) + " is empty.");
 
-  const auto n = is.gcount();
   if (is_fasta(buffer, n)) {
     format = Format::FASTA;
     read_impl = &SeqReader::read_fasta;
@@ -414,19 +417,48 @@ SeqReader::determine_format()
 }
 
 inline void
+SeqReader::getline(std::string& line)
+{
+  line.clear();
+  for (int c = fgetc(input); c != '\n' && c != EOF; c = fgetc(input)) {
+    line += char(c);
+  }
+}
+
+inline void
 SeqReader::read_fasta()
 {
-  std::getline(is, tmp);
-  std::getline(is, s);
+  getline(tmp);
+  auto pos = tmp.find(' ');
+  name_str = tmp.substr(1, pos - 1);
+  while (pos < tmp.size() && tmp[pos] == ' ') {
+    pos++;
+  }
+  if (pos < tmp.size()) {
+    comment_str = tmp.substr(pos);
+  } else {
+    comment_str = "";
+  }
+  getline(seq_str);
 }
 
 inline void
 SeqReader::read_fastq()
 {
-  std::getline(is, tmp);
-  std::getline(is, s);
-  std::getline(is, tmp);
-  std::getline(is, q);
+  getline(tmp);
+  auto pos = tmp.find(' ');
+  name_str = tmp.substr(1, pos - 1);
+  while (pos < tmp.size() && tmp[pos] == ' ') {
+    pos++;
+  }
+  if (pos < tmp.size()) {
+    comment_str = tmp.substr(pos);
+  } else {
+    comment_str = "";
+  }
+  getline(seq_str);
+  getline(tmp);
+  getline(qual_str);
 }
 
 inline void
@@ -447,9 +479,11 @@ SeqReader::read_sam()
     QUAL
   };
   for (;;) {
-    std::getline(is, tmp);
+    getline(tmp);
     if (tmp.length() > 0 && tmp[0] != '@') {
       size_t pos = 0, pos2 = 0, pos3 = 0;
+      pos2 = tmp.find('\t');
+      name_str = tmp.substr(0, pos2);
       for (int i = 0; i < int(SEQ) - 1; i++) {
         pos = tmp.find('\t', pos + 1);
       }
@@ -459,12 +493,12 @@ SeqReader::read_sam()
         pos3 = tmp.length();
       }
 
-      s = tmp.substr(pos + 1, pos2 - pos - 1);
-      q = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
+      seq_str = tmp.substr(pos + 1, pos2 - pos - 1);
+      qual_str = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
 
       break;
     }
-    if (is.eof()) {
+    if (bool(feof(input))) {
       break;
     }
   }
@@ -481,9 +515,11 @@ SeqReader::read_gfa2()
     SEQ
   };
   for (;;) {
-    std::getline(is, tmp);
+    getline(tmp);
     if (tmp.length() > 0 && tmp[0] == 'S') {
       size_t pos = 0, pos2 = 0;
+      pos2 = tmp.find('\t', 1);
+      name_str = tmp.substr(1, pos2 - 1);
       for (int i = 0; i < int(SEQ) - 1; i++) {
         pos = tmp.find('\t', pos + 1);
       }
@@ -492,42 +528,58 @@ SeqReader::read_gfa2()
         pos2 = tmp.length();
       }
 
-      s = tmp.substr(pos + 1, pos2 - pos - 1);
+      seq_str = tmp.substr(pos + 1, pos2 - pos - 1);
 
       break;
     }
-    if (is.eof()) {
+    if (bool(feof(input))) {
       break;
     }
   }
 }
 
+inline int
+SeqReader::peek()
+{
+  int p = std::fgetc(input);
+  std::ungetc(p, input);
+  return p;
+}
+
 inline bool
 SeqReader::read()
 {
-  if (is.good() && is.peek() != std::istream::traits_type::eof()) {
-    (this->*read_impl)();
-    if (s.empty()) {
+  if (std::ferror(input) == 0 && std::feof(input) == 0) {
+    int p = std::fgetc(input);
+    if (p == EOF) {
       return false;
     }
+    std::ungetc(p, input);
+
+    (this->*read_impl)();
+    if (seq_str.empty()) {
+      return false;
+    }
+
     if (flagTrimMasked()) {
-      const auto len = s.length();
-      size_t trim_start = 0, trim_end = s.length();
-      while (trim_start <= len && bool(islower(s[trim_start]))) {
+      const auto len = seq_str.length();
+      size_t trim_start = 0, trim_end = seq_str.length();
+      while (trim_start <= len && bool(islower(seq_str[trim_start]))) {
         trim_start++;
       }
-      while (trim_end > 0 && bool(islower(s[trim_end - 1]))) {
+      while (trim_end > 0 && bool(islower(seq_str[trim_end - 1]))) {
         trim_end--;
       }
-      s.erase(trim_end);
-      s.erase(0, trim_start);
-      if (!q.empty()) {
-        q.erase(trim_end);
-        q.erase(0, trim_start);
+      seq_str.erase(trim_end);
+      seq_str.erase(0, trim_start);
+      if (!qual_str.empty()) {
+        qual_str.erase(trim_end);
+        qual_str.erase(0, trim_start);
       }
     }
     if (flagFoldCase()) {
-      std::transform(s.begin(), s.end(), s.begin(), ::toupper);
+      std::transform(
+        seq_str.begin(), seq_str.end(), seq_str.begin(), ::toupper);
     }
     return true;
   }
@@ -535,21 +587,27 @@ SeqReader::read()
 }
 
 inline std::string
+SeqReader::name()
+{
+  return std::move(name_str);
+}
+
+inline std::string
+SeqReader::comment()
+{
+  return std::move(comment_str);
+}
+
+inline std::string
 SeqReader::seq()
 {
-  return std::move(s);
+  return std::move(seq_str);
 }
 
 inline std::string
 SeqReader::qual()
 {
-  return std::move(q);
-}
-
-inline void
-SeqReader::manip(std::istream& (*f)(std::istream&))
-{
-  f(is);
+  return std::move(qual_str);
 }
 
 } // namespace btllib

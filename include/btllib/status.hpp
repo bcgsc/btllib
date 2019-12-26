@@ -10,6 +10,21 @@
 namespace btllib {
 
 inline std::string
+get_time();
+inline void
+log_info(const std::string& msg);
+inline void
+log_warning(const std::string& msg);
+inline void
+log_error(const std::string& msg);
+inline void
+check_error(bool condition, const std::string& msg);
+inline void
+check_warning(bool condition, const std::string& msg);
+inline void
+check_stream(const std::ios& stream, const std::string& name);
+
+inline std::string
 get_time()
 {
   time_t now;

@@ -18,7 +18,7 @@ tidy_checks="*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-hicpp-no-ar
     -fuchsia-default-arguments-declarations,-cppcoreguidelines-pro-type-union-access,\
     -cppcoreguidelines-pro-type-cstyle-cast,-cppcoreguidelines-pro-type-vararg,-android-cloexec-pipe,\
     -hicpp-signed-bitwise,-cert-err58-cpp,-hicpp-vararg,-abseil-string-find-startswith,-misc-definitions-in-headers,\
-    -clang-analyzer-valist.Uninitialized"
+    -clang-analyzer-valist.Uninitialized,-android-cloexec-open,-cppcoreguidelines-owning-memory"
 
 files=$(scripts/get_include_files)
 clang-tidy -warnings-as-errors='*' -checks="$tidy_checks" $files -- -std=c++17
