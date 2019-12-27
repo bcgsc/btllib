@@ -17,6 +17,8 @@ int main() {
     gz_ostream << txt;
     gz_ostream.close();
 
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
     std::ifstream gz_istream(gz_filename);
     getline(gz_istream, line);
     gz_istream.close();
@@ -28,6 +30,8 @@ int main() {
     std::ofstream xz_ostream(xz_filename);
     xz_ostream << txt;
     xz_ostream.close();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
     std::ifstream xz_istream(xz_filename);
     getline(xz_istream, line);
