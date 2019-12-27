@@ -1,6 +1,10 @@
 #ifndef BTLLIB_SEQ_HPP
 #define BTLLIB_SEQ_HPP
 
+#include "status.hpp"
+
+#include <string>
+
 namespace btllib {
 
 // clang-format off
@@ -68,6 +72,17 @@ static const char CAPITALS[256] = {
     0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0
 };
 // clang-format on
+
+inline void
+verify_iupac(const std::string& seq)
+{
+  for (const auto& c : seq) {
+    if (!bool(COMPLEMENTS[unsigned(c)])) {
+      log_error("A sequence contains invalid IUPAC character: " + c);
+      std::exit(EXIT_FAILURE);
+    }
+  }
+}
 
 } // namespace btllib
 

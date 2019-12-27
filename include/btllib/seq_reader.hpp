@@ -131,6 +131,14 @@ SeqReader::close()
   closed = true;
 }
 
+inline int
+SeqReader::peek()
+{
+  int p = std::fgetc(input);
+  std::ungetc(p, input);
+  return p;
+}
+
 inline bool
 SeqReader::is_fasta(const char* input, size_t n)
 {
@@ -557,14 +565,6 @@ SeqReader::read_gfa2()
   }
 }
 
-inline int
-SeqReader::peek()
-{
-  int p = std::fgetc(input);
-  std::ungetc(p, input);
-  return p;
-}
-
 inline bool
 SeqReader::read()
 {
@@ -579,6 +579,7 @@ SeqReader::read()
     if (seq_str.empty()) {
       return false;
     }
+    verify_iupac(seq_str);
 
     if (flagTrimMasked()) {
       const auto len = seq_str.length();

@@ -64,6 +64,9 @@ SeqWriter::write(const std::string& name,
                  const std::string& seq,
                  const std::string& qual)
 {
+  check_error(seq.empty(), "Attempted to write empty sequence.");
+  verify_iupac(seq);
+
   fwrite(&headerchar, 1, 1, output);
   if (!name.empty()) {
     fwrite(name.c_str(), 1, name.size(), output);
@@ -73,7 +76,6 @@ SeqWriter::write(const std::string& name,
     fwrite(comment.c_str(), 1, comment.size(), output);
     fwrite("\n", 1, 1, output);
   }
-  check_error(seq.empty(), "Attempted to write empty sequence.");
   fwrite(seq.c_str(), 1, seq.size(), output);
   fwrite("\n", 1, 1, output);
   if (format == FASTQ) {
