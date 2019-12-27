@@ -13,11 +13,11 @@ class KmerSet
 public:
   KmerSet(unsigned k, size_t bytes);
 
-  void insert(const std::string& kmer);
-  void insert(const char* kmer);
+  void insert(const std::string& seq);
+  void insert(const char* seq);
 
-  bool contains(const std::string& kmer);
-  bool contains(const char* kmer);
+  bool contains(const std::string& seq);
+  bool contains(const char* seq);
 
 private:
   unsigned k;
@@ -30,22 +30,22 @@ inline KmerSet::KmerSet(unsigned k, size_t bytes)
 {}
 
 inline void
-KmerSet::insert(const std::string& kmer)
+KmerSet::insert(const std::string& seq)
 {
-  insert(kmer.c_str());
+  insert(seq.c_str());
 }
 
 inline void
-KmerSet::insert(const char* kmer)
+KmerSet::insert(const char* seq)
 {}
 
 inline bool
-KmerSet::contains(const std::string& kmer)
+KmerSet::contains(const std::string& seq)
 {
-  return contains(kmer.c_str());
+  return contains(seq.c_str());
 }
 inline bool
-KmerSet::contains(const char* kmer)
+KmerSet::contains(const char* seq)
 {
   return false;
 }

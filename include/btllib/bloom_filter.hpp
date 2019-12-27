@@ -22,7 +22,9 @@ private:
   size_t size;
 };
 
-inline BloomFilter::BloomFilter(size_t size): size(size) {}
+inline BloomFilter::BloomFilter(size_t size)
+  : size(size)
+{}
 
 inline void
 BloomFilter::insert(const std::vector<uint64_t>& hashes)
@@ -35,12 +37,12 @@ BloomFilter::insert(const uint64_t* hashes)
 inline bool
 BloomFilter::contains(const std::vector<uint64_t>& hashes)
 {
-    return contains(hashes.data());
+  return contains(hashes.data());
 }
 inline bool
 BloomFilter::contains(const uint64_t* hashes)
 {
-    return false;
+  return false;
 }
 
 } // namespace btllib

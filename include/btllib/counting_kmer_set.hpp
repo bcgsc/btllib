@@ -13,11 +13,11 @@ class CountingKmerSet
 public:
   CountingKmerSet(unsigned k, size_t bytes);
 
-  void insert(const std::string& kmer);
-  void insert(const char* kmer);
+  void insert(const std::string& seq);
+  void insert(const char* seq);
 
-  unsigned count(const std::string& kmer);
-  unsigned count(const char* kmer);
+  unsigned count(const std::string& seq);
+  unsigned count(const char* seq);
 
 private:
   unsigned k;
@@ -30,23 +30,23 @@ inline CountingKmerSet::CountingKmerSet(unsigned k, size_t bytes)
 {}
 
 inline void
-CountingKmerSet::insert(const std::string& kmer)
+CountingKmerSet::insert(const std::string& seq)
 {
-  insert(kmer.c_str());
+  insert(seq.c_str());
 }
 
 inline void
-CountingKmerSet::insert(const char* kmer)
+CountingKmerSet::insert(const char* seq)
 {}
 
 inline unsigned
-CountingKmerSet::count(const std::string& kmer)
+CountingKmerSet::count(const std::string& seq)
 {
-  return count(kmer.c_str());
+  return count(seq.c_str());
 }
 
 inline unsigned
-CountingKmerSet::count(const char* kmer)
+CountingKmerSet::count(const char* seq)
 {
   return 0;
 }

@@ -40,12 +40,12 @@ public class CountingKmerSet {
     this(btllibJNI.new_CountingKmerSet(k, bytes), true);
   }
 
-  public void insert(String kmer) {
-    btllibJNI.CountingKmerSet_insert(swigCPtr, this, kmer);
+  public void insert(String seq) {
+    btllibJNI.CountingKmerSet_insert(swigCPtr, this, seq);
   }
 
-  public long count(String kmer) {
-    return btllibJNI.CountingKmerSet_count(swigCPtr, this, kmer);
+  public long count(String seq) {
+    return btllibJNI.CountingKmerSet_count(swigCPtr, this, seq);
   }
 
 }

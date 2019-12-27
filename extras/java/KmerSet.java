@@ -40,12 +40,12 @@ public class KmerSet {
     this(btllibJNI.new_KmerSet(k, bytes), true);
   }
 
-  public void insert(String kmer) {
-    btllibJNI.KmerSet_insert(swigCPtr, this, kmer);
+  public void insert(String seq) {
+    btllibJNI.KmerSet_insert(swigCPtr, this, seq);
   }
 
-  public boolean contains(String kmer) {
-    return btllibJNI.KmerSet_contains(swigCPtr, this, kmer);
+  public boolean contains(String seq) {
+    return btllibJNI.KmerSet_contains(swigCPtr, this, seq);
   }
 
 }

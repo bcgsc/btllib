@@ -22,7 +22,9 @@ private:
   size_t size;
 };
 
-inline CountingBloomFilter::CountingBloomFilter(size_t size): size(size) {}
+inline CountingBloomFilter::CountingBloomFilter(size_t size)
+  : size(size)
+{}
 
 inline void
 CountingBloomFilter::insert(const std::vector<uint64_t>& hashes)
