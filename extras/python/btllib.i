@@ -8,6 +8,7 @@
 #include "btllib/util.hpp"
 #include "btllib/data_saveload.hpp"
 #include "btllib/status.hpp"
+#include "btllib/seq_writer.hpp"
 #include "btllib/seq.hpp"
 %}
 
@@ -26,4 +27,5 @@
 %include "btllib/util.hpp"
 %include "btllib/data_saveload.hpp"
 %include "btllib/status.hpp"
+%include "btllib/seq_writer.hpp"
 %include "btllib/seq.hpp"

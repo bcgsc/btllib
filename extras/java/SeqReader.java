@@ -36,12 +36,12 @@ public class SeqReader {
     }
   }
 
-  public SeqReader(String input_path, int flags) {
-    this(btllibJNI.new_SeqReader__SWIG_0(input_path, flags), true);
+  public SeqReader(String source, int flags) {
+    this(btllibJNI.new_SeqReader__SWIG_0(source, flags), true);
   }
 
-  public SeqReader(String input_path) {
-    this(btllibJNI.new_SeqReader__SWIG_1(input_path), true);
+  public SeqReader(String source) {
+    this(btllibJNI.new_SeqReader__SWIG_1(source), true);
   }
 
   public boolean flagFoldCase() {
@@ -50,6 +50,10 @@ public class SeqReader {
 
   public boolean flagTrimMasked() {
     return btllibJNI.SeqReader_flagTrimMasked(swigCPtr, this);
+  }
+
+  public void close() {
+    btllibJNI.SeqReader_close(swigCPtr, this);
   }
 
   public SeqReader.Format get_format() {

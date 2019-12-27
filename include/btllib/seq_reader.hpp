@@ -29,7 +29,8 @@ public:
     TRIM_MASKED = 2
   };
 
-  SeqReader(const char* input_path, int flags = 0);
+  SeqReader(const char* source, int flags = 0);
+  ~SeqReader();
 
   bool flagFoldCase() const { return bool(~flags & NO_FOLD_CASE); }
   bool flagTrimMasked() const { return bool(flags & TRIM_MASKED); }
@@ -43,6 +44,8 @@ public:
     GFA2,
     INVALID
   };
+
+  void close();
 
   Format get_format() const { return format; }
 
@@ -66,8 +69,9 @@ public:
   std::string qual();
 
 private:
-  const char* input_path;
+  const char* source;
   std::FILE* input;
+  bool closed;
   unsigned flags;
   Format format; // Format of the input file
 
@@ -97,9 +101,10 @@ private:
   std::string tmp;
 };
 
-inline SeqReader::SeqReader(const char* input_path, int flags)
-  : input_path(input_path)
-  , input(data_load(input_path))
+inline SeqReader::SeqReader(const char* source, int flags)
+  : source(source)
+  , input(data_load(source))
+  , closed(false)
   , flags(flags)
   , format(Format::UNKNOWN)
   , read_impl(nullptr)
@@ -110,6 +115,20 @@ inline SeqReader::SeqReader(const char* input_path, int flags)
   seq_str.reserve(RESERVE_SIZE_FOR_STRINGS);
   qual_str.reserve(RESERVE_SIZE_FOR_STRINGS);
   tmp.reserve(RESERVE_SIZE_FOR_STRINGS);
+}
+
+inline SeqReader::~SeqReader()
+{
+  close();
+}
+
+inline void
+SeqReader::close()
+{
+  if (!closed) {
+    fclose(input);
+  }
+  closed = true;
 }
 
 inline bool
@@ -171,7 +190,7 @@ SeqReader::is_fastq(const char* input, size_t n)
     c = input[current];
     switch (state) {
       case IN_HEADER_1:
-        if (c == '>') {
+        if (c == '@') {
           state = IN_HEADER_2;
         } else {
           return false;
@@ -391,11 +410,11 @@ SeqReader::is_gfa2(const char* input, size_t n)
 inline void
 SeqReader::determine_format()
 {
-  std::FILE* f = data_load(input_path);
+  std::FILE* f = data_load(source);
 
   char buffer[DETERMINE_FORMAT_MAX_READ_CHARS];
   const auto n = fread(buffer, 1, DETERMINE_FORMAT_MAX_READ_CHARS, f);
-  check_warning(n == 0, std::string(input_path) + " is empty.");
+  check_warning(n == 0, std::string(source) + " is empty.");
 
   if (is_fasta(buffer, n)) {
     format = Format::FASTA;
@@ -411,7 +430,7 @@ SeqReader::determine_format()
     read_impl = &SeqReader::read_gfa2;
   } else {
     format = Format::INVALID;
-    log_error(std::string(input_path) + " input file is in invalid format!");
+    log_error(std::string(source) + " input file is in invalid format!");
     std::exit(EXIT_FAILURE);
   }
 }

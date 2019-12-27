@@ -38,8 +38,8 @@ public class btllib {
     return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
   }
 
-  public static SWIGTYPE_p_FILE data_save(String sink) {
-    long cPtr = btllibJNI.data_save(sink);
+  public static SWIGTYPE_p_FILE data_save(String sink, boolean append) {
+    long cPtr = btllibJNI.data_save(sink, append);
     return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
   }
 
@@ -55,12 +55,12 @@ public class btllib {
     return btllibJNI.data_saveload_initialized_get();
   }
 
-  public static String get_saveload_cmd(String path, boolean save) {
-    return btllibJNI.get_saveload_cmd(path, save);
+  public static String get_saveload_cmd(String path, SaveloadOp op) {
+    return btllibJNI.get_saveload_cmd(path, op.swigValue());
   }
 
-  public static SWIGTYPE_p_FILE run_saveload_cmd(String cmd, boolean save) {
-    long cPtr = btllibJNI.run_saveload_cmd(cmd, save);
+  public static SWIGTYPE_p_FILE run_saveload_cmd(String cmd, SaveloadOp op) {
+    long cPtr = btllibJNI.run_saveload_cmd(cmd, op.swigValue());
     return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
   }
 

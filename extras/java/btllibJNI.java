@@ -15,8 +15,10 @@ public class btllibJNI {
   public final static native int SeqReader_TRIM_MASKED_get();
   public final static native long new_SeqReader__SWIG_0(String jarg1, int jarg2);
   public final static native long new_SeqReader__SWIG_1(String jarg1);
+  public final static native void delete_SeqReader(long jarg1);
   public final static native boolean SeqReader_flagFoldCase(long jarg1, SeqReader jarg1_);
   public final static native boolean SeqReader_flagTrimMasked(long jarg1, SeqReader jarg1_);
+  public final static native void SeqReader_close(long jarg1, SeqReader jarg1_);
   public final static native int SeqReader_get_format(long jarg1, SeqReader jarg1_);
   public final static native int SeqReader_peek(long jarg1, SeqReader jarg1_);
   public final static native boolean SeqReader_read(long jarg1, SeqReader jarg1_);
@@ -24,7 +26,6 @@ public class btllibJNI {
   public final static native String SeqReader_comment(long jarg1, SeqReader jarg1_);
   public final static native String SeqReader_seq(long jarg1, SeqReader jarg1_);
   public final static native String SeqReader_qual(long jarg1, SeqReader jarg1_);
-  public final static native void delete_SeqReader(long jarg1);
   public final static native void delete_Vertex(long jarg1);
   public final static native void delete_Edge(long jarg1);
   public final static native long new_Graph();
@@ -41,12 +42,12 @@ public class btllibJNI {
   public final static native boolean starts_with(String jarg1, String jarg2);
   public final static native boolean ends_with(String jarg1, String jarg2);
   public final static native long data_load(String jarg1);
-  public final static native long data_save(String jarg1);
+  public final static native long data_save(String jarg1, boolean jarg2);
   public final static native void sigchld_handler(int jarg1);
   public final static native boolean data_saveload_init();
   public final static native boolean data_saveload_initialized_get();
-  public final static native String get_saveload_cmd(String jarg1, boolean jarg2);
-  public final static native long run_saveload_cmd(String jarg1, boolean jarg2);
+  public final static native String get_saveload_cmd(String jarg1, int jarg2);
+  public final static native long run_saveload_cmd(String jarg1, int jarg2);
   public final static native String get_time();
   public final static native void log_info(String jarg1);
   public final static native void log_warning(String jarg1);
@@ -54,6 +55,11 @@ public class btllibJNI {
   public final static native void check_error(boolean jarg1, String jarg2);
   public final static native void check_warning(boolean jarg1, String jarg2);
   public final static native void check_stream(long jarg1, String jarg2);
+  public final static native long new_SeqWriter__SWIG_0(String jarg1, int jarg2, boolean jarg3);
+  public final static native long new_SeqWriter__SWIG_1(String jarg1, int jarg2);
+  public final static native void delete_SeqWriter(long jarg1);
+  public final static native void SeqWriter_close(long jarg1, SeqWriter jarg1_);
+  public final static native void SeqWriter_write(long jarg1, SeqWriter jarg1_, String jarg2, String jarg3, String jarg4, String jarg5);
   public final static native String COMPLEMENTS_get();
   public final static native String CAPITALS_get();
 }

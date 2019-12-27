@@ -35,7 +35,7 @@ int main() {
     assert(line == txt);
 
     // Meson deletes test files, so wait a bit for the pipes to close
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
     return 0;
 }

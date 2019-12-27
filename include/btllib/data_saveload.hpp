@@ -22,9 +22,9 @@
 namespace btllib {
 
 inline FILE*
-data_load(const std::string& source);
+data_load(const char* source);
 inline FILE*
-data_save(const std::string& sink);
+data_save(const char* sink, bool append);
 
 /** SIGCHLD handler. Reap child processes and report an error if any
  * fail. */
@@ -71,33 +71,41 @@ data_saveload_init()
 
 static const bool data_saveload_initialized = data_saveload_init();
 
+enum SaveloadOp
+{
+  READ,
+  WRITE,
+  APPEND
+};
+
 inline std::string
-get_saveload_cmd(const std::string& path, const bool save)
+get_saveload_cmd(const char* path, const SaveloadOp op)
 {
   struct Datatype
   {
     std::vector<std::string> prefixes;
     std::vector<std::string> suffixes;
     std::vector<std::string> cmds_check_existence;
-    std::vector<std::string> load_cmds;
-    std::vector<std::string> save_cmds;
+    std::vector<std::string> read_cmds;
+    std::vector<std::string> write_cmds;
+    std::vector<std::string> append_cmds;
   };
 
   // clang-format off
   static const Datatype DATATYPES[]{
-    { { "http://", "https://", "ftp://" }, {}, { "which wget" }, { "wget -O-" }, { "" } },
-    { {}, { ".url" }, { "which wget" }, { "wget -O- -i" }, { "" } },
-    { {}, { ".ar" }, { "which ar" }, { "ar -p" }, { "" } },
-    { {}, { ".tar" }, { "which tar" }, { "tar -xOf" }, { "" } },
-    { {}, { ".tar.z", ".tar.gz", ".tgz" }, { "which tar" }, { "tar -xzOf" }, { "" } },
-    { {}, { ".tar.bz2" }, { "which tar" }, { "tar -xjOf" }, { "" } },
-    { {}, { ".tar.xz" }, { "which tar && which unxz" }, { "tar --use-compress-program=unxz -xOf" }, { "" } },
-    { {}, { ".gz", ".z" }, { "which pigz", "which gzip" }, { "pigz -dc", "gzip -dc" }, { "pigz >", "gzip >" } },
-    { {}, { ".bz2" }, { "which bzip2" }, { "bunzip2 -dc" }, { "bzip2 >" } },
-    { {}, { ".xz" }, { "which xz" }, { "unxz -dc" }, { "xz -T0 >" } },
-    { {}, { ".7z" }, { "which 7z" }, { "7z -so e" }, { "7z -si a" } },
-    { {}, { ".zip" }, { "which zip" }, { "unzip -p" }, { "" } },
-    { {}, { ".bam", ".cram" }, { "which samtools" }, { "samtools view -h" }, { "samtool -Sb - >" } },
+    { { "http://", "https://", "ftp://" }, {}, { "which wget" }, { "wget -O-" }, { "" }, { "" } },
+    { {}, { ".url" }, { "which wget" }, { "wget -O- -i" }, { "" }, { "" } },
+    { {}, { ".ar" }, { "which ar" }, { "ar -p" }, { "" }, { "" } },
+    { {}, { ".tar" }, { "which tar" }, { "tar -xOf" }, { "" }, { "" } },
+    { {}, { ".tar.z", ".tar.gz", ".tgz" }, { "which tar" }, { "tar -xzOf" }, { "" }, { "" } },
+    { {}, { ".tar.bz2" }, { "which tar" }, { "tar -xjOf" }, { "" }, { "" } },
+    { {}, { ".tar.xz" }, { "which tar && which unxz" }, { "tar --use-compress-program=unxz -xOf" }, { "" }, { "" } },
+    { {}, { ".gz", ".z" }, { "which pigz", "which gzip" }, { "pigz -dc", "gzip -dc" }, { "pigz >", "gzip >" }, { "pigz >>", "gzip >>" } },
+    { {}, { ".bz2" }, { "which bzip2" }, { "bunzip2 -dc" }, { "bzip2 >" }, { "bzip2 >>" } },
+    { {}, { ".xz" }, { "which xz" }, { "unxz -dc" }, { "xz -T0 >" }, { "xz -T0 >>" } },
+    { {}, { ".7z" }, { "which 7z" }, { "7z -so e" }, { "7z -si a" }, { "7z -si a" } },
+    { {}, { ".zip" }, { "which zip" }, { "unzip -p" }, { "" }, { "" } },
+    { {}, { ".bam", ".cram" }, { "which samtools" }, { "samtools view -h" }, { "samtools -Sb - >" }, { "samtools -Sb - >>" } },
   };
   // clang-format on
 
@@ -177,13 +185,19 @@ get_saveload_cmd(const std::string& path, const bool save)
 
       if (found_cmd) {
         std::string cmd;
-        if (save) {
-          cmd = datatype.save_cmds[cmd_idx];
-        } else {
-          cmd = datatype.load_cmds[cmd_idx];
+        switch (op) {
+          case READ:
+            cmd = datatype.read_cmds[cmd_idx];
+            break;
+          case WRITE:
+            cmd = datatype.write_cmds[cmd_idx];
+            break;
+          case APPEND:
+            cmd = datatype.append_cmds[cmd_idx];
+            break;
         }
         if (cmd.empty()) {
-          log_warning("Filetype recognized for '" + path +
+          log_warning("Filetype recognized for '" + std::string(path) +
                       "', but no tool available to work with it.");
           return "";
         }
@@ -195,7 +209,7 @@ get_saveload_cmd(const std::string& path, const bool save)
         }
         return cmd;
       }
-      log_warning("Filetype recognized for '" + path +
+      log_warning("Filetype recognized for '" + std::string(path) +
                   "', but no tool available to work with it.");
       return "";
     }
@@ -205,7 +219,7 @@ get_saveload_cmd(const std::string& path, const bool save)
 }
 
 inline FILE*
-run_saveload_cmd(const std::string& cmd, const bool save)
+run_saveload_cmd(const std::string& cmd, SaveloadOp op)
 {
   static const int READ_END = 0;
   static const int WRITE_END = 1;
@@ -232,7 +246,7 @@ run_saveload_cmd(const std::string& cmd, const bool save)
   check_error(pid == -1, "Error on fork.");
 
   if (pid == 0) {
-    if (save) {
+    if (op == WRITE || op == APPEND) {
       dup2(fd[READ_END], STDIN_FILENO);
       close(fd[READ_END]);
       close(fd[WRITE_END]);
@@ -240,7 +254,7 @@ run_saveload_cmd(const std::string& cmd, const bool save)
       if (!stdout_to_file.empty()) {
         int outfd =
           open(stdout_to_file.c_str(),
-               O_WRONLY | O_CREAT,
+               O_WRONLY | O_CREAT | (op == APPEND ? O_APPEND : 0),
                S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
         dup2(outfd, STDOUT_FILENO);
         close(outfd);
@@ -303,7 +317,7 @@ run_saveload_cmd(const std::string& cmd, const bool save)
       exit(EXIT_FAILURE);
     }
   } else {
-    if (save) {
+    if (op == WRITE || op == APPEND) {
       close(fd[READ_END]);
       return fdopen(fd[WRITE_END], "w");
     }
@@ -314,29 +328,29 @@ run_saveload_cmd(const std::string& cmd, const bool save)
 }
 
 inline FILE*
-data_load(const std::string& source)
+data_load(const char* source)
 {
-  if (source == "-") {
+  if (strcmp(source, "-") == 0) {
     return stdin;
   }
-  auto cmd = get_saveload_cmd(source, false);
+  const auto cmd = get_saveload_cmd(source, READ);
   if (cmd.empty()) {
-    return fopen(source.c_str(), "re");
+    return fopen(source, "re");
   }
-  return run_saveload_cmd(cmd, false);
+  return run_saveload_cmd(cmd, READ);
 }
 
 inline FILE*
-data_save(const std::string& sink)
+data_save(const char* sink, bool append)
 {
-  if (sink == "-") {
+  if (strcmp(sink, "-") == 0) {
     return stdout;
   }
-  auto cmd = get_saveload_cmd(sink, true);
+  const auto cmd = get_saveload_cmd(sink, append ? APPEND : WRITE);
   if (cmd.empty()) {
-    return fopen(sink.c_str(), "we");
+    return fopen(sink, append ? "ae" : "we");
   }
-  return run_saveload_cmd(cmd, true);
+  return run_saveload_cmd(cmd, append ? APPEND : WRITE);
 }
 
 } // namespace btllib
