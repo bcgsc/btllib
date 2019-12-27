@@ -55,6 +55,12 @@ public class btllibJNI {
   public final static native void check_error(boolean jarg1, String jarg2);
   public final static native void check_warning(boolean jarg1, String jarg2);
   public final static native void check_stream(long jarg1, String jarg2);
+  public final static native long new_CountingBloomFilter(long jarg1);
+  public final static native void CountingBloomFilter_insert__SWIG_0(long jarg1, CountingBloomFilter jarg1_, long jarg2);
+  public final static native void CountingBloomFilter_insert__SWIG_1(long jarg1, CountingBloomFilter jarg1_, long jarg2);
+  public final static native long CountingBloomFilter_count__SWIG_0(long jarg1, CountingBloomFilter jarg1_, long jarg2);
+  public final static native long CountingBloomFilter_count__SWIG_1(long jarg1, CountingBloomFilter jarg1_, long jarg2);
+  public final static native void delete_CountingBloomFilter(long jarg1);
   public final static native long new_SeqWriter__SWIG_0(String jarg1, int jarg2, boolean jarg3);
   public final static native long new_SeqWriter__SWIG_1(String jarg1, int jarg2);
   public final static native void delete_SeqWriter(long jarg1);
@@ -62,4 +68,18 @@ public class btllibJNI {
   public final static native void SeqWriter_write(long jarg1, SeqWriter jarg1_, String jarg2, String jarg3, String jarg4, String jarg5);
   public final static native String COMPLEMENTS_get();
   public final static native String CAPITALS_get();
+  public final static native long new_CountingKmerSet(long jarg1, long jarg2);
+  public final static native void CountingKmerSet_insert(long jarg1, CountingKmerSet jarg1_, String jarg2);
+  public final static native long CountingKmerSet_count(long jarg1, CountingKmerSet jarg1_, String jarg2);
+  public final static native void delete_CountingKmerSet(long jarg1);
+  public final static native long new_BloomFilter(long jarg1);
+  public final static native void BloomFilter_insert__SWIG_0(long jarg1, BloomFilter jarg1_, long jarg2);
+  public final static native void BloomFilter_insert__SWIG_1(long jarg1, BloomFilter jarg1_, long jarg2);
+  public final static native boolean BloomFilter_contains__SWIG_0(long jarg1, BloomFilter jarg1_, long jarg2);
+  public final static native boolean BloomFilter_contains__SWIG_1(long jarg1, BloomFilter jarg1_, long jarg2);
+  public final static native void delete_BloomFilter(long jarg1);
+  public final static native long new_KmerSet(long jarg1, long jarg2);
+  public final static native void KmerSet_insert(long jarg1, KmerSet jarg1_, String jarg2);
+  public final static native boolean KmerSet_contains(long jarg1, KmerSet jarg1_, String jarg2);
+  public final static native void delete_KmerSet(long jarg1);
 }

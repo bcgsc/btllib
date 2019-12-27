@@ -22,9 +22,9 @@
 namespace btllib {
 
 inline FILE*
-data_load(const char* source);
+data_load(const std::string& source);
 inline FILE*
-data_save(const char* sink, bool append);
+data_save(const std::string& sink, bool append);
 
 /** SIGCHLD handler. Reap child processes and report an error if any
  * fail. */
@@ -79,7 +79,7 @@ enum SaveloadOp
 };
 
 inline std::string
-get_saveload_cmd(const char* path, const SaveloadOp op)
+get_saveload_cmd(const std::string& path, const SaveloadOp op)
 {
   struct Datatype
   {
@@ -197,7 +197,7 @@ get_saveload_cmd(const char* path, const SaveloadOp op)
             break;
         }
         if (cmd.empty()) {
-          log_warning("Filetype recognized for '" + std::string(path) +
+          log_warning("Filetype recognized for '" + path +
                       "', but no tool available to work with it.");
           return "";
         }
@@ -209,7 +209,7 @@ get_saveload_cmd(const char* path, const SaveloadOp op)
         }
         return cmd;
       }
-      log_warning("Filetype recognized for '" + std::string(path) +
+      log_warning("Filetype recognized for '" + path +
                   "', but no tool available to work with it.");
       return "";
     }
@@ -328,27 +328,27 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
 }
 
 inline FILE*
-data_load(const char* source)
+data_load(const std::string& source)
 {
-  if (strcmp(source, "-") == 0) {
+  if (source == "-") {
     return stdin;
   }
   const auto cmd = get_saveload_cmd(source, READ);
   if (cmd.empty()) {
-    return fopen(source, "re");
+    return fopen(source.c_str(), "re");
   }
   return run_saveload_cmd(cmd, READ);
 }
 
 inline FILE*
-data_save(const char* sink, bool append)
+data_save(const std::string& sink, bool append)
 {
-  if (strcmp(sink, "-") == 0) {
+  if (sink == "-") {
     return stdout;
   }
   const auto cmd = get_saveload_cmd(sink, append ? APPEND : WRITE);
   if (cmd.empty()) {
-    return fopen(sink, append ? "ae" : "we");
+    return fopen(sink.c_str(), append ? "ae" : "we");
   }
   return run_saveload_cmd(cmd, append ? APPEND : WRITE);
 }

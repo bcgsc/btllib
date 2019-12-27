@@ -18,7 +18,7 @@ public:
     FASTQ
   };
 
-  SeqWriter(const char* sink, Format format, bool append = false);
+  SeqWriter(const std::string& sink, Format format, bool append = false);
   ~SeqWriter();
 
   void close();
@@ -29,14 +29,14 @@ public:
              const std::string& qual);
 
 private:
-  const char* sink;
+  const std::string sink;
   std::FILE* output;
   bool closed;
   Format format;
   char headerchar;
 };
 
-inline SeqWriter::SeqWriter(const char* sink, Format format, bool append)
+inline SeqWriter::SeqWriter(const std::string& sink, Format format, bool append)
   : sink(sink)
   , output(data_save(sink, append))
   , closed(false)

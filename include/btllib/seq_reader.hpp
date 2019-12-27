@@ -29,7 +29,7 @@ public:
     TRIM_MASKED = 2
   };
 
-  SeqReader(const char* source, int flags = 0);
+  SeqReader(const std::string& source, int flags = 0);
   ~SeqReader();
 
   bool flagFoldCase() const { return bool(~flags & NO_FOLD_CASE); }
@@ -69,7 +69,7 @@ public:
   std::string qual();
 
 private:
-  const char* source;
+  const std::string& source;
   std::FILE* input;
   bool closed;
   unsigned flags;
@@ -101,7 +101,7 @@ private:
   std::string tmp;
 };
 
-inline SeqReader::SeqReader(const char* source, int flags)
+inline SeqReader::SeqReader(const std::string& source, int flags)
   : source(source)
   , input(data_load(source))
   , closed(false)

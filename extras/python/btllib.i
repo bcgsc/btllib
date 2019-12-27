@@ -8,8 +8,12 @@
 #include "btllib/util.hpp"
 #include "btllib/data_saveload.hpp"
 #include "btllib/status.hpp"
+#include "btllib/counting_bloom_filter.hpp"
 #include "btllib/seq_writer.hpp"
 #include "btllib/seq.hpp"
+#include "btllib/counting_kmer_set.hpp"
+#include "btllib/bloom_filter.hpp"
+#include "btllib/kmer_set.hpp"
 %}
 
 %include <pyprimtypes.swg>
@@ -27,5 +31,9 @@
 %include "btllib/util.hpp"
 %include "btllib/data_saveload.hpp"
 %include "btllib/status.hpp"
+%include "btllib/counting_bloom_filter.hpp"
 %include "btllib/seq_writer.hpp"
 %include "btllib/seq.hpp"
+%include "btllib/counting_kmer_set.hpp"
+%include "btllib/bloom_filter.hpp"
+%include "btllib/kmer_set.hpp"
