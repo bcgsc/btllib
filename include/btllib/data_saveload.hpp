@@ -199,7 +199,7 @@ get_saveload_cmd(const std::string& path, const SaveloadOp op)
         if (cmd.empty()) {
           log_warning("Filetype recognized for '" + path +
                       "', but no tool available to work with it.");
-          return "";
+          return "cat " + path;
         }
         if (cmd.back() == '>') {
           cmd += path;
@@ -211,11 +211,11 @@ get_saveload_cmd(const std::string& path, const SaveloadOp op)
       }
       log_warning("Filetype recognized for '" + path +
                   "', but no tool available to work with it.");
-      return "";
+      return "cat " + path;
     }
   }
 
-  return "";
+  return "cat " + path;
 }
 
 inline FILE*
@@ -334,9 +334,7 @@ data_load(const std::string& source)
     return stdin;
   }
   const auto cmd = get_saveload_cmd(source, READ);
-  if (cmd.empty()) {
-    return fopen(source.c_str(), "re");
-  }
+  check_error(cmd.empty(), "Error loading from " + source);
   return run_saveload_cmd(cmd, READ);
 }
 
@@ -347,9 +345,7 @@ data_save(const std::string& sink, bool append)
     return stdout;
   }
   const auto cmd = get_saveload_cmd(sink, append ? APPEND : WRITE);
-  if (cmd.empty()) {
-    return fopen(sink.c_str(), append ? "ae" : "we");
-  }
+  check_error(cmd.empty(), "Error saving to " + sink);
   return run_saveload_cmd(cmd, append ? APPEND : WRITE);
 }
 
