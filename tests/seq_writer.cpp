@@ -13,7 +13,7 @@ int main() {
     const char* quals[] = { "!@^&", "(#&$" };
 
     // Test FASTA
-    btllib::SeqWriter writer_fasta("output.fa.gz", btllib::SeqWriter::FASTA);
+    btllib::SeqWriter writer_fasta("output.fa", btllib::SeqWriter::FASTA);
     for (int i = 0; i < 2; i++) {
         writer_fasta.write(names[i], comments[i], seqs[i], "");
     }

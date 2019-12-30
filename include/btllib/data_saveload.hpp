@@ -108,6 +108,14 @@ get_saveload_cmd(const std::string& path, const SaveloadOp op)
     { {}, { ".bam", ".cram" }, { "which samtools" }, { "samtools view -h" }, { "samtools -Sb - >" }, { "samtools -Sb - >>" } },
   };
   // clang-format on
+  std::string default_cmd = "cat ";
+  if (op == WRITE) {
+    default_cmd += ">" + path;
+  } else if (op == APPEND) {
+    default_cmd += ">>" + path;
+  } else {
+    default_cmd += path;
+  }
 
   for (const auto& datatype : DATATYPES) {
     bool found_datatype = false;
@@ -199,7 +207,7 @@ get_saveload_cmd(const std::string& path, const SaveloadOp op)
         if (cmd.empty()) {
           log_warning("Filetype recognized for '" + path +
                       "', but no tool available to work with it.");
-          return "cat " + path;
+          return default_cmd;
         }
         if (cmd.back() == '>') {
           cmd += path;
@@ -211,11 +219,11 @@ get_saveload_cmd(const std::string& path, const SaveloadOp op)
       }
       log_warning("Filetype recognized for '" + path +
                   "', but no tool available to work with it.");
-      return "cat " + path;
+      return default_cmd;
     }
   }
 
-  return "cat " + path;
+  return default_cmd;
 }
 
 inline FILE*
