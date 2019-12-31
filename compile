@@ -2,6 +2,19 @@
 
 set -e
 
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+cd $SCRIPTPATH
+
+rm -rf venv
+in_venv=false
+if [[ ! $(which meson) || ! $(which ninja) ]]; then
+  python3 -m venv venv
+  source venv/bin/activate
+  which pip3
+  pip3 install meson ninja
+  in_venv=true
+fi
+
 py_version1=$(python --version 2>&1)
 py_version2=$(python3 --version 2>&1)
 
@@ -59,9 +72,13 @@ if [[ ! $(echo $py_version1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
   fi
 fi
 
-SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
-cd $SCRIPTPATH
-rm -r build python java
+rm -rf build python java
 meson build --prefix=$SCRIPTPATH
 cd build
 ninja install
+
+cd $SCRIPTPATH
+if [[ $in_venv == true ]]; then
+  deactivate
+  rm -rf venv
+fi
