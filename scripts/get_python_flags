@@ -28,11 +28,11 @@ if [[ $found_libpython == false ]]; then
   else
     py_version=python$(python3 --version | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
   fi
-  ld -l$py_version 2>/dev/null -o get_python_flags.tmp
+  ld -l$py_version -o get_python_flags.tmp
   if [[ $? -eq 0 ]]; then
     libpythonflag="-l${py_version}"
   else
-    libpythonflag="-l${py_version}"
+    libpythonflag="-l${py_version}m"
   fi
   rm get_python_flags.tmp
   ldflags+=$libpythonflag
