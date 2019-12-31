@@ -1,53 +1,15 @@
 #!/bin/bash
 
-version1=$(python --version 2>&1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
-version2=$(python3 --version 2>&1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
-
-if [[ ! "$version1" < "3.0" && ! "$version2" < "3.0" ]]; then
-  ldflags1=$(python-config --ldflags)
-  ldflags2=$(python3-config --ldflags)
-  for flag in $ldflags1; do
-    if [[ $flag == "-L"* ]]; then
-      Lpaths1+=($flag)
-    fi
-  done
-  for flag in $ldflags2; do
-    if [[ $flag == "-L"* ]]; then
-      Lpaths2+=($flag)
-    fi
-  done
-  old_IFS=$IFS
-  IFS=$'\n'
-  Lpaths1=($(sort <<<"${Lpaths1[*]}"))
-  Lpaths2=($(sort <<<"${Lpaths2[*]}"))
-  IFS=$old_IFS
-  if [[ "$version2" != "$version2" || (! -z "${Lpaths1}" && ! -z "${Lpaths2}" && "${Lpaths1}" != "${Lpaths2}") ]]; then
-    PS3='Multiple Pythons found, pick one for build: '
-    if [[ "$version2" != "$version2" && ! (! -z "${Lpaths1}" && ! -z "${Lpaths2}" && "${Lpaths1}" != "${Lpaths2}") ]]; then
-      option1="$version1"
-      option2="$version2"
-    else
-      option1="$version1 (${Lpaths1})"
-      option2="$version2 (${Lpaths2})"
-    fi
-    options=("${option1}" "${option2}")
-    select opt in "${options[@]}"; do
-      case $opt in
-        "${option1}")
-            echo "Using ${option1}"; selected="1"; break;;
-        "${option2}")
-            echo "Using ${option2}"; selected="2"; break;;
-        *) echo "Invalid option $REPLY";;
-      esac
-    done
-  fi
-else
-  selected="2"
+if [ -z "${MESON_SOURCE_ROOT}" ]; then
+    echo "[ERROR] This script can only be ran with meson!"
+    exit 1
 fi
 
-if [[ "$selected" == "1" ]]; then
-  cflags=$(python-config --cflags)
-  ldflags=$(python-config --ldflags)
+cd "${MESON_SOURCE_ROOT}"
+
+if [[ -n "$BTLLIB_PYTHON_CFLAGS" ]]; then
+  cflags=$BTLLIB_PYTHON_CFLAGS
+  ldflags=$BTLLIB_PYTHON_LDFLAGS
 else
   cflags=$(python3-config --cflags)
   ldflags=$(python3-config --ldflags)
@@ -61,19 +23,20 @@ for flag in $ldflags; do
 done
 
 if [[ $found_libpython == false ]]; then
-  if [[ "$selected" == "1" ]]; then
-    pyver="python${version1}"
+  if [[ -n "$BTLLIB_PYTHON_VERSION" ]]; then
+    py_version="python$BTLLIB_PYTHON_VERSION"
   else
-    pyver="python${version2}"
+    py_version=python$(python3 --version | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
   fi
-  exists=$(ldconfig -p | grep "lib$pyver")
-  if [[ -z "$exists" ]]; then
-    libpythonflag="-l${pyver}m"
+  ld -l$py_version 2>/dev/null -o get_python_flags.tmp
+  rm get_python_flags.tmp
+  if [[ $? -eq 0 ]]; then
+    libpythonflag="-l${py_version}"
   else
-    libpythonflag="-l${pyver}"
+    libpythonflag="-l${py_version}m"
   fi
   ldflags+=$libpythonflag
 fi
 
->&2 echo "$cflags"
->&2 echo "$ldflags"
+echo "$cflags"
+echo "$ldflags"

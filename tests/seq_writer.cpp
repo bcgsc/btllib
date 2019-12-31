@@ -21,7 +21,7 @@ int main() {
 
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     
-    btllib::SeqReader reader_fasta("output.fa.gz");
+    btllib::SeqReader reader_fasta("output.fa");
     assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
 
     int j;

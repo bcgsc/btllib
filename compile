@@ -1,0 +1,65 @@
+#!/bin/bash
+
+py_version1=$(python --version 2>&1)
+py_version2=$(python3 --version 2>&1)
+
+if [[ ! $(echo $py_version1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}') < "3.0" && \
+! $(echo $py_version2 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}') < "3.0" ]]; then
+  py_cflags1=$(python-config --cflags)
+  py_cflags2=$(python3-config --cflags)
+  py_ldflags1=$(python-config --ldflags)
+  py_ldflags2=$(python3-config --ldflags)
+
+  py_Lpaths1=()
+  py_Lpaths2=()
+  for flag in $py_ldflags1; do
+    if [[ $flag == "-L"* ]]; then
+      py_Lpaths1+=($flag)
+    fi
+  done
+  for flag in $py_ldflags2; do
+    if [[ $flag == "-L"* ]]; then
+      py_Lpaths2+=($flag)
+    fi
+  done
+  old_IFS="$IFS"
+  IFS=$'\n'
+  py_Lpaths1_sorted=($(sort <<<"${py_Lpaths1[*]}"))
+  py_Lpaths2_sorted=($(sort <<<"${py_Lpaths2[*]}"))
+  IFS="$old_IFS"
+  
+  if [[ "$py_version1" != "$py_version2" || \
+  ( ! -z "${py_Lpaths1_sorted}" && ! -z "${py_Lpaths2_sorted}" && "${py_Lpaths1_sorted}" != "${py_Lpaths2_sorted}" ) ]]; then
+    if [[ "$py_version1" != "$py_version2" && \
+    ! (! -z "${py_Lpaths1_sorted}" && ! -z "${py_Lpaths2_sorted}" && "${py_Lpaths1_sorted}" != "${py_Lpaths2_sorted}") ]]; then
+      option1="$py_version1 (${py_Lpaths1})"
+      option2="$py_version2 (${py_Lpaths2})"
+    else
+      option1="$py_version1"
+      option2="$py_version2"
+    fi
+
+    PS3='Multiple Pythons found, pick one for build: '
+    options=("${option1}" "${option2}")
+    select opt in "${options[@]}"; do
+      case $opt in
+        "${option1}")
+            echo "Using ${option1}";
+            export BTLLIB_PYTHON_CFLAGS="$py_cflags1"
+            export BTLLIB_PYTHON_LDFLAGS="$py_ldflags1"
+            export BTLLIB_PYTHON_VERSION=$(echo $py_version1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
+            break;;
+        "${option2}")
+            echo "Using ${option2}"; break;;
+        *) echo "Invalid option $REPLY";;
+      esac
+    done
+  fi
+fi
+
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+cd $SCRIPTPATH
+rm -r build
+meson build
+cd build
+ninja #install
