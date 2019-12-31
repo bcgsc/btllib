@@ -59,7 +59,7 @@ fi
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd $SCRIPTPATH
-rm -r build
-meson build
+rm -r build python java
+meson build --prefix=$SCRIPTPATH
 cd build
-ninja #install
+ninja install
