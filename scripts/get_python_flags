@@ -32,7 +32,7 @@ if [[ $found_libpython == false ]]; then
   if [[ $? -eq 0 ]]; then
     libpythonflag="-l${py_version}"
   else
-    libpythonflag="-l${py_version}m"
+    libpythonflag="-l${py_version}"
   fi
   rm get_python_flags.tmp
   ldflags+=$libpythonflag
