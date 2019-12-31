@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version1=$(python --version | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
-version2=$(python3 --version | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
+version1=$(python --version 2>&1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
+version2=$(python3 --version 2>&1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
 
 if [[ ! "$version1" < "3.0" && ! "$version2" < "3.0" ]]; then
   ldflags1=$(python-config --ldflags)
@@ -42,7 +42,7 @@ if [[ ! "$version1" < "3.0" && ! "$version2" < "3.0" ]]; then
     done
   fi
 else
-  selected="1"
+  selected="2"
 fi
 
 if [[ "$selected" == "1" ]]; then
