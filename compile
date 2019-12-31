@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 py_version1=$(python --version 2>&1)
 py_version2=$(python3 --version 2>&1)
 
