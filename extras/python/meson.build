@@ -1,5 +1,6 @@
-cpp_extra_args = run_command('python3-config', '--cflags').stdout().strip().split()
-link_extra_args = run_command('python3-config', '--ldflags').stdout().strip().split()
+pyflags = run_command('../../scripts/get_python_flags').stderr().split('\n')
+cpp_extra_args = pyflags[0].strip().split()
+link_extra_args = pyflags[1].strip().split()
 
 cpp_extra_args += ['-w']
 
