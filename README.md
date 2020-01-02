@@ -8,5 +8,5 @@ Python and Java
 ---
 To use with Python or Java, libbtl needs to compile the C++ code. Run
 `./compile`
-which will create `python and `java` directories in libbtl with the corresponding language files.
+which will create `python` and `java` directories in libbtl with the corresponding language files.
 The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name.S
