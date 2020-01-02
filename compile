@@ -47,7 +47,7 @@ if [[ ! "$py_version1_num" < "3.0" && "$py_version1_num" < "4.0" ]]; then
     fi
 
     echo "Multiple Pythons found"
-    PS3="Select which to build with: "
+    PS3="Select which one to build with: "
     options=("${option1}" "${option2}")
     select opt in "${options[@]}"; do
       case $opt in
