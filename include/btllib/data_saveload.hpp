@@ -21,21 +21,36 @@
 
 namespace btllib {
 
-class DataSource
-{
+class _Data {
 
 public:
-  DataSource(FILE* file, pid_t pid)
+
+  _Data(FILE* file, pid_t pid)
     : file(file)
     , pid(pid)
     , closed(false)
   {}
+
+  FILE* operator*() { return file; }
+  FILE* operator->() { return file; }
+  operator FILE*() { return file; }
+
+  FILE* file;
+  pid_t pid;
+  bool closed;
+
+};
+
+class DataSource: public _Data
+{
+public:
+  DataSource(FILE* file, pid_t pid): _Data(file, pid) {}
+  DataSource(const _Data& d): DataSource(d.file, d.pid) {}
   ~DataSource() { close(); }
 
   void close()
   {
     if (!closed && file != stdin && file != stdout && pid > 0) {
-      std::fflush(file);
       int status;
       kill(pid, SIGTERM);
       waitpid(pid, &status, 0);
@@ -43,17 +58,26 @@ public:
       closed = true;
     }
   }
-
-  FILE* operator*() { return file; }
-  FILE* operator->() { return file; }
-  operator FILE*() { return file; }
-
-private:
-  FILE* file;
-  pid_t pid;
-  bool closed;
 };
-using DataSink = DataSource;
+
+class DataSink: public _Data {
+
+public:
+
+  DataSink(FILE* file, pid_t pid): _Data(file, pid) {}
+  DataSink(const _Data& d): DataSink(d.file, d.pid) {}
+  ~DataSink() { close(); }
+
+  void close()
+  {
+    if (!closed && file != stdin && file != stdout && pid > 0) {
+      std::fclose(file);
+      int status;
+      waitpid(pid, &status, 0);
+      closed = true;
+    }
+  }
+};
 
 inline DataSource
 data_load(const std::string& source);
@@ -260,7 +284,7 @@ get_saveload_cmd(const std::string& path, const SaveloadOp op)
   return default_cmd;
 }
 
-inline DataSource
+inline _Data
 run_saveload_cmd(const std::string& cmd, SaveloadOp op)
 {
   static const int READ_END = 0;
@@ -361,12 +385,12 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
   } else {
     if (op == WRITE || op == APPEND) {
       close(fd[READ_END]);
-      return DataSource(fdopen(fd[WRITE_END], "w"), pid);
+      return _Data(fdopen(fd[WRITE_END], "w"), pid);
     }
     close(fd[WRITE_END]);
-    return DataSource(fdopen(fd[READ_END], "r"), pid);
+    return _Data(fdopen(fd[READ_END], "r"), pid);
   }
-  return DataSource(nullptr, -1);
+  return _Data(nullptr, -1);
 }
 
 inline DataSource

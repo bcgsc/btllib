@@ -37,8 +37,8 @@ public class btllib {
     return new DataSource(btllibJNI.data_load(source), true);
   }
 
-  public static DataSource data_save(String sink, boolean append) {
-    return new DataSource(btllibJNI.data_save(sink, append), true);
+  public static DataSink data_save(String sink, boolean append) {
+    return new DataSink(btllibJNI.data_save(sink, append), true);
   }
 
   public static void sigchld_handler(int sig) {
@@ -57,8 +57,8 @@ public class btllib {
     return btllibJNI.get_saveload_cmd(path, op.swigValue());
   }
 
-  public static DataSource run_saveload_cmd(String cmd, SaveloadOp op) {
-    return new DataSource(btllibJNI.run_saveload_cmd(cmd, op.swigValue()), true);
+  public static _Data run_saveload_cmd(String cmd, SaveloadOp op) {
+    return new _Data(btllibJNI.run_saveload_cmd(cmd, op.swigValue()), true);
   }
 
   public static String get_time() {

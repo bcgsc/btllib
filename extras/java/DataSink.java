@@ -8,15 +8,15 @@
 
 package btllib;
 
-public class DataSource extends _Data {
+public class DataSink extends _Data {
   private transient long swigCPtr;
 
-  protected DataSource(long cPtr, boolean cMemoryOwn) {
-    super(btllibJNI.DataSource_SWIGUpcast(cPtr), cMemoryOwn);
+  protected DataSink(long cPtr, boolean cMemoryOwn) {
+    super(btllibJNI.DataSink_SWIGUpcast(cPtr), cMemoryOwn);
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(DataSource obj) {
+  protected static long getCPtr(DataSink obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
@@ -29,23 +29,23 @@ public class DataSource extends _Data {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        btllibJNI.delete_DataSource(swigCPtr);
+        btllibJNI.delete_DataSink(swigCPtr);
       }
       swigCPtr = 0;
     }
     super.delete();
   }
 
-  public DataSource(SWIGTYPE_p_FILE file, SWIGTYPE_p_pid_t pid) {
-    this(btllibJNI.new_DataSource__SWIG_0(SWIGTYPE_p_FILE.getCPtr(file), SWIGTYPE_p_pid_t.getCPtr(pid)), true);
+  public DataSink(SWIGTYPE_p_FILE file, SWIGTYPE_p_pid_t pid) {
+    this(btllibJNI.new_DataSink__SWIG_0(SWIGTYPE_p_FILE.getCPtr(file), SWIGTYPE_p_pid_t.getCPtr(pid)), true);
   }
 
-  public DataSource(_Data d) {
-    this(btllibJNI.new_DataSource__SWIG_1(_Data.getCPtr(d), d), true);
+  public DataSink(_Data d) {
+    this(btllibJNI.new_DataSink__SWIG_1(_Data.getCPtr(d), d), true);
   }
 
   public void close() {
-    btllibJNI.DataSource_close(swigCPtr, this);
+    btllibJNI.DataSink_close(swigCPtr, this);
   }
 
 }

@@ -781,7 +781,159 @@ SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_ends_1with(JNIEnv *jenv, jclas
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1DataSource(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1_1Data(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
+  jlong jresult = 0 ;
+  FILE *arg1 = (FILE *) 0 ;
+  pid_t arg2 ;
+  pid_t *argp2 ;
+  btllib::_Data *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(FILE **)&jarg1; 
+  argp2 = *(pid_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null pid_t");
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (btllib::_Data *)new btllib::_Data(arg1,arg2);
+  *(btllib::_Data **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI__1Data_1_1_1ref_1_1(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  FILE *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::_Data **)&jarg1; 
+  result = (FILE *)(arg1)->operator *();
+  *(FILE **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI__1Data_1_1_1deref_1_1(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  FILE *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::_Data **)&jarg1; 
+  result = (FILE *)(arg1)->operator ->();
+  *(FILE **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI__1Data_1file_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  FILE *arg2 = (FILE *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::_Data **)&jarg1; 
+  arg2 = *(FILE **)&jarg2; 
+  if (arg1) (arg1)->file = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI__1Data_1file_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  FILE *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::_Data **)&jarg1; 
+  result = (FILE *) ((arg1)->file);
+  *(FILE **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI__1Data_1pid_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  pid_t arg2 ;
+  pid_t *argp2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::_Data **)&jarg1; 
+  argp2 = *(pid_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null pid_t");
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->pid = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI__1Data_1pid_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  pid_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::_Data **)&jarg1; 
+  result =  ((arg1)->pid);
+  *(pid_t **)&jresult = new pid_t((const pid_t &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI__1Data_1closed_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::_Data **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->closed = arg2;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI__1Data_1closed_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::_Data **)&jarg1; 
+  result = (bool) ((arg1)->closed);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1_1Data(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::_Data **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1DataSource_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
   jlong jresult = 0 ;
   FILE *arg1 = (FILE *) 0 ;
   pid_t arg2 ;
@@ -798,6 +950,25 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1DataSource(JNIEnv *jenv, jcl
   }
   arg2 = *argp2; 
   result = (btllib::DataSource *)new btllib::DataSource(arg1,arg2);
+  *(btllib::DataSource **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1DataSource_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::_Data *arg1 = 0 ;
+  btllib::DataSource *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::_Data **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "btllib::_Data const & reference is null");
+    return 0;
+  } 
+  result = (btllib::DataSource *)new btllib::DataSource((btllib::_Data const &)*arg1);
   *(btllib::DataSource **)&jresult = result; 
   return jresult;
 }
@@ -824,33 +995,65 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_DataSource_1close(JNIEnv *jenv, jc
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSource_1_1_1ref_1_1(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1DataSink_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
   jlong jresult = 0 ;
-  btllib::DataSource *arg1 = (btllib::DataSource *) 0 ;
-  FILE *result = 0 ;
+  FILE *arg1 = (FILE *) 0 ;
+  pid_t arg2 ;
+  pid_t *argp2 ;
+  btllib::DataSink *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::DataSource **)&jarg1; 
-  result = (FILE *)(arg1)->operator *();
-  *(FILE **)&jresult = result; 
+  arg1 = *(FILE **)&jarg1; 
+  argp2 = *(pid_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null pid_t");
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (btllib::DataSink *)new btllib::DataSink(arg1,arg2);
+  *(btllib::DataSink **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSource_1_1_1deref_1_1(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1DataSink_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  btllib::DataSource *arg1 = (btllib::DataSource *) 0 ;
-  FILE *result = 0 ;
+  btllib::_Data *arg1 = 0 ;
+  btllib::DataSink *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(btllib::DataSource **)&jarg1; 
-  result = (FILE *)(arg1)->operator ->();
-  *(FILE **)&jresult = result; 
+  arg1 = *(btllib::_Data **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "btllib::_Data const & reference is null");
+    return 0;
+  } 
+  result = (btllib::DataSink *)new btllib::DataSink((btllib::_Data const &)*arg1);
+  *(btllib::DataSink **)&jresult = result; 
   return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1DataSink(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::DataSink *arg1 = (btllib::DataSink *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::DataSink **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_DataSink_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  btllib::DataSink *arg1 = (btllib::DataSink *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::DataSink **)&jarg1; 
+  (arg1)->close();
 }
 
 
@@ -880,7 +1083,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_data_1save(JNIEnv *jenv, jclass j
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   bool arg2 ;
-  SwigValueWrapper< btllib::DataSource > result;
+  SwigValueWrapper< btllib::DataSink > result;
   
   (void)jenv;
   (void)jcls;
@@ -962,7 +1165,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_run_1saveload_1cmd(JNIEnv *jenv, 
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   btllib::SaveloadOp arg2 ;
-  SwigValueWrapper< btllib::DataSource > result;
+  SwigValueWrapper< btllib::_Data > result;
   
   (void)jenv;
   (void)jcls;
@@ -977,7 +1180,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_run_1saveload_1cmd(JNIEnv *jenv, 
   jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
   arg2 = (btllib::SaveloadOp)jarg2; 
   result = btllib::run_saveload_cmd((std::string const &)*arg1,arg2);
-  *(btllib::DataSource **)&jresult = new btllib::DataSource((const btllib::DataSource &)result); 
+  *(btllib::_Data **)&jresult = new btllib::_Data((const btllib::_Data &)result); 
   return jresult;
 }
 
@@ -1603,6 +1806,22 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1KmerSet(JNIEnv *jenv, jcla
   delete arg1;
 }
 
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSource_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+    jlong baseptr = 0;
+    (void)jenv;
+    (void)jcls;
+    *(btllib::_Data **)&baseptr = *(btllib::DataSource **)&jarg1;
+    return baseptr;
+}
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSink_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+    jlong baseptr = 0;
+    (void)jenv;
+    (void)jcls;
+    *(btllib::_Data **)&baseptr = *(btllib::DataSink **)&jarg1;
+    return baseptr;
+}
 
 #ifdef __cplusplus
 }

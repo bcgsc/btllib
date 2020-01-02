@@ -70,28 +70,37 @@ public:
 private:
   const std::string& source;
   DataSource input;
-  bool closed;
+  bool closed = false;
   unsigned flags;
-  Format format; // Format of the input file
+  Format format = UNKNOWN; // Format of the input file
 
-  static const std::streamsize DETERMINE_FORMAT_MAX_READ_CHARS = 2048;
   static const size_t RESERVE_SIZE_FOR_STRINGS = 1024;
 
-  static bool is_fasta(const char* input, size_t n);
-  static bool is_fastq(const char* input, size_t n);
-  static bool is_sam(const char* input, size_t n);
-  static bool is_gfa2(const char* input, size_t n);
+  static const size_t BUFFER_SIZE = 2048;
+  char buffer[BUFFER_SIZE];
+  size_t buffer_start = 0;
+  size_t buffer_end = 0;
+  bool eof_newline_inserted = false;
+
+  bool load_buffer();
+
+  bool is_fasta();
+  bool is_fastq();
+  bool is_sam();
+  bool is_gfa2();
 
   void determine_format();
 
-  void getline(std::string& line);
+  bool getline(std::string& line);
+  char getsection(std::string& section);
 
-  void read_fasta();
-  void read_fastq();
-  void read_sam();
-  void read_gfa2();
+  int read_stage = 0;
+  bool read_fasta();
+  bool read_fastq();
+  bool read_sam();
+  bool read_gfa2();
 
-  void (SeqReader::*read_impl)();
+  bool (SeqReader::*read_impl)() = nullptr;
 
   std::string name_str;
   std::string comment_str;
@@ -103,10 +112,7 @@ private:
 inline SeqReader::SeqReader(const std::string& source, int flags)
   : source(source)
   , input(data_load(source))
-  , closed(false)
   , flags(flags)
-  , format(Format::UNKNOWN)
-  , read_impl(nullptr)
 {
   determine_format();
   name_str.reserve(RESERVE_SIZE_FOR_STRINGS);
@@ -134,9 +140,27 @@ SeqReader::peek()
 }
 
 inline bool
-SeqReader::is_fasta(const char* input, size_t n)
+SeqReader::load_buffer() {
+  buffer_start = 0;
+  while ((buffer_end = fread(buffer, 1, BUFFER_SIZE, input)) == 0 && !bool(std::feof(input))) {}
+  if (bool(std::feof(input)) && !eof_newline_inserted) {
+    if (buffer_end < BUFFER_SIZE) {
+      if (buffer_end == 0 || (buffer_end > 0 && buffer[buffer_end - 1] != '\n')) {
+        buffer[buffer_end++] = '\n';
+      }
+      eof_newline_inserted = true;
+    } else if (buffer[BUFFER_SIZE - 1] == '\n') {
+      eof_newline_inserted = true;
+    }
+    return true;
+  }
+  return bool(buffer_end);
+}
+
+inline bool
+SeqReader::is_fasta()
 {
-  size_t current = 0;
+  size_t current = buffer_start;
   unsigned char c;
   enum State
   {
@@ -145,8 +169,8 @@ SeqReader::is_fasta(const char* input, size_t n)
     IN_SEQ
   };
   State state = IN_HEADER_1;
-  while (current < n) {
-    c = input[current];
+  while (current < buffer_end) {
+    c = buffer[current];
     switch (state) {
       case IN_HEADER_1:
         if (c == '>') {
@@ -174,9 +198,9 @@ SeqReader::is_fasta(const char* input, size_t n)
 }
 
 inline bool
-SeqReader::is_fastq(const char* input, size_t n)
+SeqReader::is_fastq()
 {
-  size_t current = 0;
+  size_t current = buffer_start;
   unsigned char c;
   enum State
   {
@@ -188,8 +212,8 @@ SeqReader::is_fastq(const char* input, size_t n)
     IN_QUAL
   };
   State state = IN_HEADER_1;
-  while (current < n) {
-    c = input[current];
+  while (current < buffer_end) {
+    c = buffer[current];
     switch (state) {
       case IN_HEADER_1:
         if (c == '@') {
@@ -236,7 +260,7 @@ SeqReader::is_fastq(const char* input, size_t n)
 }
 
 inline bool
-SeqReader::is_sam(const char* input, size_t n)
+SeqReader::is_sam()
 {
   enum Column
   {
@@ -253,10 +277,10 @@ SeqReader::is_sam(const char* input, size_t n)
     QUAL
   };
 
-  size_t current = 0;
+  size_t current = buffer_start;
 
-  while (current < n && input[current] == '@') {
-    while (current < n && input[current] != '\n') {
+  while (current < buffer_end && buffer[current] == '@') {
+    while (current < buffer_end && buffer[current] != '\n') {
       current++;
     }
     current++;
@@ -264,13 +288,13 @@ SeqReader::is_sam(const char* input, size_t n)
 
   int column = 1;
   unsigned char c;
-  while (current < n) {
-    c = input[current];
+  while (current < buffer_end) {
+    c = buffer[current];
     if (c == '\n') {
       break;
     }
     if (c == '\t') {
-      if (current > 0 && !bool(std::isspace(input[current - 1]))) {
+      if (current > 0 && !bool(std::isspace(buffer[current - 1]))) {
         column++;
       } else {
         return false;
@@ -339,11 +363,11 @@ SeqReader::is_sam(const char* input, size_t n)
     current++;
   }
 
-  return current >= n || column >= QUAL;
+  return current >= buffer_end || column >= QUAL;
 }
 
 inline bool
-SeqReader::is_gfa2(const char* input, size_t n)
+SeqReader::is_gfa2()
 {
   const unsigned char specs[] = { 'H', 'S', 'F', 'E', 'G', 'O', 'U' };
 
@@ -366,12 +390,12 @@ SeqReader::is_gfa2(const char* input, size_t n)
     return found;
   };
 
-  State state = is_a_spec(input[0]) ? IN_ID : IN_IGNORED;
+  State state = is_a_spec(buffer[0]) ? IN_ID : IN_IGNORED;
   bool has_id = false;
-  size_t current = 0;
+  size_t current = buffer_start;
   unsigned char c;
-  while (current < n) {
-    c = input[current];
+  while (current < buffer_end) {
+    c = buffer[current];
     switch (state) {
       case IN_ID:
         if (!is_a_spec(c)) {
@@ -388,15 +412,15 @@ SeqReader::is_gfa2(const char* input, size_t n)
         break;
       case IN_REST:
         if (c == '\n') {
-          if (current + 1 < n) {
-            state = is_a_spec(input[current + 1]) ? IN_ID : IN_IGNORED;
+          if (current + 1 < buffer_end) {
+            state = is_a_spec(buffer[current + 1]) ? IN_ID : IN_IGNORED;
           }
         }
         break;
       case IN_IGNORED:
         if (c == '\n') {
-          if (current + 1 < n) {
-            state = is_a_spec(input[current + 1]) ? IN_ID : IN_IGNORED;
+          if (current + 1 < buffer_end) {
+            state = is_a_spec(buffer[current + 1]) ? IN_ID : IN_IGNORED;
           }
         }
         break;
@@ -412,22 +436,19 @@ SeqReader::is_gfa2(const char* input, size_t n)
 inline void
 SeqReader::determine_format()
 {
-  auto f = data_load(source);
+  load_buffer();
+  check_warning(buffer_end - buffer_start == 1, std::string(source) + " is empty.");
 
-  char buffer[DETERMINE_FORMAT_MAX_READ_CHARS];
-  const auto n = fread(buffer, 1, DETERMINE_FORMAT_MAX_READ_CHARS, f);
-  check_warning(n == 0, std::string(source) + " is empty.");
-
-  if (is_fasta(buffer, n)) {
+  if (is_fasta()) {
     format = Format::FASTA;
     read_impl = &SeqReader::read_fasta;
-  } else if (is_fastq(buffer, n)) {
+  } else if (is_fastq()) {
     format = Format::FASTQ;
     read_impl = &SeqReader::read_fastq;
-  } else if (is_sam(buffer, n)) {
+  } else if (is_sam()) {
     format = Format::SAM;
     read_impl = &SeqReader::read_sam;
-  } else if (is_gfa2(buffer, n)) {
+  } else if (is_gfa2()) {
     format = Format::GFA2;
     read_impl = &SeqReader::read_gfa2;
   } else {
@@ -437,52 +458,106 @@ SeqReader::determine_format()
   }
 }
 
-inline void
+inline bool
 SeqReader::getline(std::string& line)
 {
-  line.clear();
-  for (int c = fgetc(input); c != '\n' && c != EOF; c = fgetc(input)) {
-    line += char(c);
+  char c;
+  for (; buffer_start < buffer_end && (c = buffer[buffer_start]) != '\n'; ++buffer_start) {
+    line += c;
   }
+  if (c == '\n') {
+    ++buffer_start;
+    return true;
+  }
+  return false;
 }
 
-inline void
+inline char
+SeqReader::getsection(std::string& section)
+{
+  char c;
+  for (; buffer_start < buffer_end && (c = buffer[buffer_start]) != '\n' && c != ' '; ++buffer_start) {
+    section += c;
+  }
+  if (c == '\n' || c == ' ') {
+    ++buffer_start;
+    return c;
+  }
+  return char(0);
+}
+
+inline bool
 SeqReader::read_fasta()
 {
-  getline(tmp);
-  auto pos = tmp.find(' ');
-  name_str = tmp.substr(1, pos - 1);
-  while (pos < tmp.size() && tmp[pos] == ' ') {
-    pos++;
+  switch (read_stage) {
+    case 0: {
+      if (!getline(tmp)) { return false; }
+      auto pos = tmp.find(' ');
+      name_str = tmp.substr(1, pos - 1);
+      while (pos < tmp.size() && tmp[pos] == ' ') {
+        pos++;
+      }
+      if (pos < tmp.size()) {
+        comment_str = tmp.substr(pos);
+      } else {
+        comment_str = "";
+      }
+      ++read_stage;
+      tmp.clear();
+    }
+    case 1: {
+      if (!getline(tmp)) { return false; }
+      seq_str = std::move(tmp);
+      read_stage = 0;
+      tmp.clear();
+      return true;    
+    }
   }
-  if (pos < tmp.size()) {
-    comment_str = tmp.substr(pos);
-  } else {
-    comment_str = "";
-  }
-  getline(seq_str);
+  return false;
 }
 
-inline void
+inline bool
 SeqReader::read_fastq()
 {
-  getline(tmp);
-  auto pos = tmp.find(' ');
-  name_str = tmp.substr(1, pos - 1);
-  while (pos < tmp.size() && tmp[pos] == ' ') {
-    pos++;
+  switch (read_stage) {
+    case 0: {
+      if (!getline(tmp)) { return false; }
+      auto pos = tmp.find(' ');
+      name_str = tmp.substr(1, pos - 1);
+      while (pos < tmp.size() && tmp[pos] == ' ') {
+        pos++;
+      }
+      if (pos < tmp.size()) {
+        comment_str = tmp.substr(pos);
+      } else {
+        comment_str = "";
+      }
+      ++read_stage;
+      tmp.clear();
+    }
+    case 1: {
+      if (!getline(tmp)) { return false; }
+      seq_str = std::move(tmp);
+      ++read_stage;
+      tmp.clear();
+    }
+    case 2: {
+      if (!getline(tmp)) { return false; }
+      ++read_stage;
+      tmp.clear();
+    }
+    case 3: {
+      if (!getline(tmp)) { return false; }
+      qual_str = std::move(tmp);
+      read_stage = 0;
+      tmp.clear();
+      return true;
+    }
   }
-  if (pos < tmp.size()) {
-    comment_str = tmp.substr(pos);
-  } else {
-    comment_str = "";
-  }
-  getline(seq_str);
-  getline(tmp);
-  getline(qual_str);
+  return false;
 }
 
-inline void
+inline bool
 SeqReader::read_sam()
 {
   enum Column
@@ -500,7 +575,7 @@ SeqReader::read_sam()
     QUAL
   };
   for (;;) {
-    getline(tmp);
+    if (!getline(tmp)) { return false; }
     if (tmp.length() > 0 && tmp[0] != '@') {
       size_t pos = 0, pos2 = 0, pos3 = 0;
       pos2 = tmp.find('\t');
@@ -517,15 +592,17 @@ SeqReader::read_sam()
       seq_str = tmp.substr(pos + 1, pos2 - pos - 1);
       qual_str = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
 
-      break;
+      tmp.clear();
+      return true;
     }
-    if (bool(feof(input))) {
-      break;
+    tmp.clear();
+    if (buffer_start >= buffer_end) {
+      return false;
     }
   }
 }
 
-inline void
+inline bool
 SeqReader::read_gfa2()
 {
   enum Column
@@ -536,7 +613,7 @@ SeqReader::read_gfa2()
     SEQ
   };
   for (;;) {
-    getline(tmp);
+    if (!getline(tmp)) { return false; }
     if (tmp.length() > 0 && tmp[0] == 'S') {
       size_t pos = 0, pos2 = 0;
       pos2 = tmp.find('\t', 1);
@@ -551,10 +628,12 @@ SeqReader::read_gfa2()
 
       seq_str = tmp.substr(pos + 1, pos2 - pos - 1);
 
-      break;
+      tmp.clear();
+      return true;
     }
-    if (bool(feof(input))) {
-      break;
+    tmp.clear();
+    if (buffer_start >= buffer_end) {
+      return false;
     }
   }
 }
@@ -562,14 +641,14 @@ SeqReader::read_gfa2()
 inline bool
 SeqReader::read()
 {
-  if (std::ferror(input) == 0 && std::feof(input) == 0) {
-    int p = std::fgetc(input);
-    if (p == EOF) {
-      return false;
+  if (buffer_start < buffer_end) {
+    while (!(this->*read_impl)()) {
+      if (!load_buffer()) { return false; }
     }
-    std::ungetc(p, input);
+    if (buffer_start >= buffer_end) {
+      load_buffer();
+    }
 
-    (this->*read_impl)();
     if (seq_str.empty()) {
       return false;
     }

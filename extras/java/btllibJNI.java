@@ -41,11 +41,24 @@ public class btllibJNI {
   public final static native void trim(long jarg1);
   public final static native boolean starts_with(String jarg1, String jarg2);
   public final static native boolean ends_with(String jarg1, String jarg2);
-  public final static native long new_DataSource(long jarg1, long jarg2);
+  public final static native long new__Data(long jarg1, long jarg2);
+  public final static native long _Data___ref__(long jarg1, _Data jarg1_);
+  public final static native long _Data___deref__(long jarg1, _Data jarg1_);
+  public final static native void _Data_file_set(long jarg1, _Data jarg1_, long jarg2);
+  public final static native long _Data_file_get(long jarg1, _Data jarg1_);
+  public final static native void _Data_pid_set(long jarg1, _Data jarg1_, long jarg2);
+  public final static native long _Data_pid_get(long jarg1, _Data jarg1_);
+  public final static native void _Data_closed_set(long jarg1, _Data jarg1_, boolean jarg2);
+  public final static native boolean _Data_closed_get(long jarg1, _Data jarg1_);
+  public final static native void delete__Data(long jarg1);
+  public final static native long new_DataSource__SWIG_0(long jarg1, long jarg2);
+  public final static native long new_DataSource__SWIG_1(long jarg1, _Data jarg1_);
   public final static native void delete_DataSource(long jarg1);
   public final static native void DataSource_close(long jarg1, DataSource jarg1_);
-  public final static native long DataSource___ref__(long jarg1, DataSource jarg1_);
-  public final static native long DataSource___deref__(long jarg1, DataSource jarg1_);
+  public final static native long new_DataSink__SWIG_0(long jarg1, long jarg2);
+  public final static native long new_DataSink__SWIG_1(long jarg1, _Data jarg1_);
+  public final static native void delete_DataSink(long jarg1);
+  public final static native void DataSink_close(long jarg1, DataSink jarg1_);
   public final static native long data_load(String jarg1);
   public final static native long data_save(String jarg1, boolean jarg2);
   public final static native void sigchld_handler(int jarg1);
@@ -88,4 +101,6 @@ public class btllibJNI {
   public final static native void KmerSet_insert(long jarg1, KmerSet jarg1_, String jarg2);
   public final static native boolean KmerSet_contains(long jarg1, KmerSet jarg1_, String jarg2);
   public final static native void delete_KmerSet(long jarg1);
+  public final static native long DataSource_SWIGUpcast(long jarg1);
+  public final static native long DataSink_SWIGUpcast(long jarg1);
 }
