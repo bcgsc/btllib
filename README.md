@@ -1,5 +1,3 @@
-btllib
-
 BTL common code library in C++ with Python and Java wrappers.
 
 C++
