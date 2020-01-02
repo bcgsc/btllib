@@ -30,7 +30,6 @@ public:
   };
 
   SeqReader(const std::string& source, int flags = 0);
-  ~SeqReader();
 
   bool flagFoldCase() const { return bool(~flags & NO_FOLD_CASE); }
   bool flagTrimMasked() const { return bool(flags & TRIM_MASKED); }
@@ -70,12 +69,12 @@ public:
 
 private:
   const std::string& source;
-  std::FILE* input;
+  DataSource input;
   bool closed;
   unsigned flags;
   Format format; // Format of the input file
 
-  static const std::streamsize DETERMINE_FORMAT_MAX_READ_CHARS = 4096;
+  static const std::streamsize DETERMINE_FORMAT_MAX_READ_CHARS = 2048;
   static const size_t RESERVE_SIZE_FOR_STRINGS = 1024;
 
   static bool is_fasta(const char* input, size_t n);
@@ -117,18 +116,13 @@ inline SeqReader::SeqReader(const std::string& source, int flags)
   tmp.reserve(RESERVE_SIZE_FOR_STRINGS);
 }
 
-inline SeqReader::~SeqReader()
-{
-  close();
-}
-
 inline void
 SeqReader::close()
 {
   if (!closed) {
-    fclose(input);
+    input.close();
+    closed = true;
   }
-  closed = true;
 }
 
 inline int
@@ -418,7 +412,7 @@ SeqReader::is_gfa2(const char* input, size_t n)
 inline void
 SeqReader::determine_format()
 {
-  std::FILE* f = data_load(source);
+  auto f = data_load(source);
 
   char buffer[DETERMINE_FORMAT_MAX_READ_CHARS];
   const auto n = fread(buffer, 1, DETERMINE_FORMAT_MAX_READ_CHARS, f);

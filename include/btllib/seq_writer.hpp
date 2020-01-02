@@ -19,7 +19,6 @@ public:
   };
 
   SeqWriter(const std::string& sink, Format format, bool append = false);
-  ~SeqWriter();
 
   void close();
 
@@ -30,7 +29,7 @@ public:
 
 private:
   const std::string sink;
-  std::FILE* output;
+  DataSink output;
   bool closed;
   Format format;
   char headerchar;
@@ -44,18 +43,13 @@ inline SeqWriter::SeqWriter(const std::string& sink, Format format, bool append)
   , headerchar(format == FASTA ? '>' : '@')
 {}
 
-inline SeqWriter::~SeqWriter()
-{
-  close();
-}
-
 inline void
 SeqWriter::close()
 {
   if (!closed) {
-    fclose(output);
+    output.close();
+    closed = true;
   }
-  closed = true;
 }
 
 inline void

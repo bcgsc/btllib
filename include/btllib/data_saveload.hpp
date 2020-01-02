@@ -21,9 +21,43 @@
 
 namespace btllib {
 
-inline FILE*
+class DataSource
+{
+
+public:
+  DataSource(FILE* file, pid_t pid)
+    : file(file)
+    , pid(pid)
+    , closed(false)
+  {}
+  ~DataSource() { close(); }
+
+  void close()
+  {
+    if (!closed && file != stdin && file != stdout && pid > 0) {
+      std::fflush(file);
+      int status;
+      kill(pid, SIGTERM);
+      waitpid(pid, &status, 0);
+      std::fclose(file);
+      closed = true;
+    }
+  }
+
+  FILE* operator*() { return file; }
+  FILE* operator->() { return file; }
+  operator FILE*() { return file; }
+
+private:
+  FILE* file;
+  pid_t pid;
+  bool closed;
+};
+using DataSink = DataSource;
+
+inline DataSource
 data_load(const std::string& source);
-inline FILE*
+inline DataSink
 data_save(const std::string& sink, bool append);
 
 /** SIGCHLD handler. Reap child processes and report an error if any
@@ -226,7 +260,7 @@ get_saveload_cmd(const std::string& path, const SaveloadOp op)
   return default_cmd;
 }
 
-inline FILE*
+inline DataSource
 run_saveload_cmd(const std::string& cmd, SaveloadOp op)
 {
   static const int READ_END = 0;
@@ -327,30 +361,30 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
   } else {
     if (op == WRITE || op == APPEND) {
       close(fd[READ_END]);
-      return fdopen(fd[WRITE_END], "w");
+      return DataSource(fdopen(fd[WRITE_END], "w"), pid);
     }
     close(fd[WRITE_END]);
-    return fdopen(fd[READ_END], "r");
+    return DataSource(fdopen(fd[READ_END], "r"), pid);
   }
-  return nullptr;
+  return DataSource(nullptr, -1);
 }
 
-inline FILE*
+inline DataSource
 data_load(const std::string& source)
 {
   if (source == "-") {
-    return stdin;
+    return DataSource(stdin, -1);
   }
   const auto cmd = get_saveload_cmd(source, READ);
   check_error(cmd.empty(), "Error loading from " + source);
   return run_saveload_cmd(cmd, READ);
 }
 
-inline FILE*
+inline DataSink
 data_save(const std::string& sink, bool append)
 {
   if (sink == "-") {
-    return stdout;
+    return DataSink(stdout, -1);
   }
   const auto cmd = get_saveload_cmd(sink, append ? APPEND : WRITE);
   check_error(cmd.empty(), "Error saving to " + sink);

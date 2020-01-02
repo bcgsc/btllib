@@ -15,7 +15,6 @@ public class btllibJNI {
   public final static native int SeqReader_TRIM_MASKED_get();
   public final static native long new_SeqReader__SWIG_0(String jarg1, int jarg2);
   public final static native long new_SeqReader__SWIG_1(String jarg1);
-  public final static native void delete_SeqReader(long jarg1);
   public final static native boolean SeqReader_flagFoldCase(long jarg1, SeqReader jarg1_);
   public final static native boolean SeqReader_flagTrimMasked(long jarg1, SeqReader jarg1_);
   public final static native void SeqReader_close(long jarg1, SeqReader jarg1_);
@@ -26,6 +25,7 @@ public class btllibJNI {
   public final static native String SeqReader_comment(long jarg1, SeqReader jarg1_);
   public final static native String SeqReader_seq(long jarg1, SeqReader jarg1_);
   public final static native String SeqReader_qual(long jarg1, SeqReader jarg1_);
+  public final static native void delete_SeqReader(long jarg1);
   public final static native void delete_Vertex(long jarg1);
   public final static native void delete_Edge(long jarg1);
   public final static native long new_Graph();
@@ -41,6 +41,11 @@ public class btllibJNI {
   public final static native void trim(long jarg1);
   public final static native boolean starts_with(String jarg1, String jarg2);
   public final static native boolean ends_with(String jarg1, String jarg2);
+  public final static native long new_DataSource(long jarg1, long jarg2);
+  public final static native void delete_DataSource(long jarg1);
+  public final static native void DataSource_close(long jarg1, DataSource jarg1_);
+  public final static native long DataSource___ref__(long jarg1, DataSource jarg1_);
+  public final static native long DataSource___deref__(long jarg1, DataSource jarg1_);
   public final static native long data_load(String jarg1);
   public final static native long data_save(String jarg1, boolean jarg2);
   public final static native void sigchld_handler(int jarg1);
@@ -63,11 +68,12 @@ public class btllibJNI {
   public final static native void delete_CountingBloomFilter(long jarg1);
   public final static native long new_SeqWriter__SWIG_0(String jarg1, int jarg2, boolean jarg3);
   public final static native long new_SeqWriter__SWIG_1(String jarg1, int jarg2);
-  public final static native void delete_SeqWriter(long jarg1);
   public final static native void SeqWriter_close(long jarg1, SeqWriter jarg1_);
   public final static native void SeqWriter_write(long jarg1, SeqWriter jarg1_, String jarg2, String jarg3, String jarg4, String jarg5);
+  public final static native void delete_SeqWriter(long jarg1);
   public final static native String COMPLEMENTS_get();
   public final static native String CAPITALS_get();
+  public final static native void verify_iupac(String jarg1);
   public final static native long new_CountingKmerSet(long jarg1, long jarg2);
   public final static native void CountingKmerSet_insert(long jarg1, CountingKmerSet jarg1_, String jarg2);
   public final static native long CountingKmerSet_count(long jarg1, CountingKmerSet jarg1_, String jarg2);

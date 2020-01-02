@@ -33,14 +33,12 @@ public class btllib {
     return btllibJNI.ends_with(s, suffix);
   }
 
-  public static SWIGTYPE_p_FILE data_load(String source) {
-    long cPtr = btllibJNI.data_load(source);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
+  public static DataSource data_load(String source) {
+    return new DataSource(btllibJNI.data_load(source), true);
   }
 
-  public static SWIGTYPE_p_FILE data_save(String sink, boolean append) {
-    long cPtr = btllibJNI.data_save(sink, append);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
+  public static DataSource data_save(String sink, boolean append) {
+    return new DataSource(btllibJNI.data_save(sink, append), true);
   }
 
   public static void sigchld_handler(int sig) {
@@ -59,9 +57,8 @@ public class btllib {
     return btllibJNI.get_saveload_cmd(path, op.swigValue());
   }
 
-  public static SWIGTYPE_p_FILE run_saveload_cmd(String cmd, SaveloadOp op) {
-    long cPtr = btllibJNI.run_saveload_cmd(cmd, op.swigValue());
-    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
+  public static DataSource run_saveload_cmd(String cmd, SaveloadOp op) {
+    return new DataSource(btllibJNI.run_saveload_cmd(cmd, op.swigValue()), true);
   }
 
   public static String get_time() {
@@ -98,6 +95,10 @@ public class btllib {
 
   public static String getCAPITALS() {
     return btllibJNI.CAPITALS_get();
+  }
+
+  public static void verify_iupac(String seq) {
+    btllibJNI.verify_iupac(seq);
   }
 
 }

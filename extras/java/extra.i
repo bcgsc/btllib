@@ -3,3 +3,5 @@
 
 %ignore btllib::CountingKmerSet::insert(const char*);
 %ignore btllib::CountingKmerSet::count(const char*);
+
+%ignore btllib::DataSource::operator FILE*();

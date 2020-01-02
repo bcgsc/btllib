@@ -78,6 +78,8 @@ rm -rf build python java
 meson build --prefix=$SCRIPTPATH
 cd build
 ninja install
+cd ..
+rm -r build
 
 cd $SCRIPTPATH
 if [[ $in_venv == true ]]; then
