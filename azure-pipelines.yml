@@ -19,10 +19,6 @@ steps:
     sudo ln -s clang-format-8 /usr/bin/clang-format
     sudo ln -s clang-tidy-8 /usr/bin/clang-tidy
     sudo pip3 install ninja meson
-    echo test1
-    ld -lpython3.8
-    python3-config --ldflags
-    echo test2
   displayName: 'Install required software'
 
 - script: |

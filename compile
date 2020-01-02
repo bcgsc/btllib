@@ -5,21 +5,13 @@ set -e
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd $SCRIPTPATH
 
-rm -rf venv
-in_venv=false
-if [[ ! $(which meson) || ! $(which ninja) ]]; then
-  python3 -m venv venv
-  source venv/bin/activate
-  which pip3
-  pip3 install meson ninja
-  in_venv=true
-fi
-
 py_version1=$(python --version 2>&1)
 py_version2=$(python3 --version 2>&1)
 
-if [[ ! $(echo $py_version1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}') < "3.0" && \
-! $(echo $py_version2 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}') < "3.0" ]]; then
+py_version1_num=$(echo $py_version1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
+py_version2_num=$(echo $py_version2 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
+
+if [[ ! "$py_version1_num" < "3.0" && "$py_version1_num" < "4.0" ]]; then
   py_cflags1=$(python-config --cflags)
   py_cflags2=$(python3-config --cflags)
   py_ldflags1=$(python-config --ldflags)
@@ -54,7 +46,8 @@ if [[ ! $(echo $py_version1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
       option2="$py_version2"
     fi
 
-    PS3='Multiple Pythons found, pick one for build: '
+    echo "Multiple Pythons found"
+    PS3="Select which to build with: "
     options=("${option1}" "${option2}")
     select opt in "${options[@]}"; do
       case $opt in
@@ -62,7 +55,7 @@ if [[ ! $(echo $py_version1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
             echo "Using ${option1}";
             export BTLLIB_PYTHON_CFLAGS="$py_cflags1"
             export BTLLIB_PYTHON_LDFLAGS="$py_ldflags1"
-            export BTLLIB_PYTHON_VERSION=$(echo $py_version1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
+            export BTLLIB_PYTHON_VERSION="$py_version1_num"
             break;;
         "${option2}")
             echo "Using ${option2}"; break;;
@@ -70,6 +63,15 @@ if [[ ! $(echo $py_version1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
       esac
     done
   fi
+fi
+
+rm -rf venv
+in_venv=false
+if [[ ! $(which meson) || ! $(which ninja) ]]; then
+  python3 -m venv venv
+  source venv/bin/activate
+  pip3 install meson ninja
+  in_venv=true
 fi
 
 rm -rf build python java
