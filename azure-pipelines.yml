@@ -21,6 +21,7 @@ steps:
     sudo pip3 install ninja meson
     echo test1
     ld -lpython3.8
+    python3-config --ldflags
     echo test2
   displayName: 'Install required software'
 
