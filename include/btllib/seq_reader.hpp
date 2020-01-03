@@ -75,8 +75,8 @@ private:
   Format format = UNKNOWN; // Format of the input file
 
   static const size_t RESERVE_SIZE_FOR_STRINGS = 1024;
-
-  static const size_t BUFFER_SIZE = 1024;
+  static const size_t DETERMINE_FORMAT_CHARS = 2048;
+  static const size_t BUFFER_SIZE = 65536;
   char buffer[BUFFER_SIZE];
   size_t buffer_start = 0;
   size_t buffer_end = 0;
@@ -170,7 +170,7 @@ SeqReader::is_fasta()
     IN_SEQ
   };
   State state = IN_HEADER_1;
-  while (current < buffer_end) {
+  while (current < buffer_start + DETERMINE_FORMAT_CHARS && current < buffer_end) {
     c = buffer[current];
     switch (state) {
       case IN_HEADER_1:
@@ -213,7 +213,7 @@ SeqReader::is_fastq()
     IN_QUAL
   };
   State state = IN_HEADER_1;
-  while (current < buffer_end) {
+  while (current < buffer_start + DETERMINE_FORMAT_CHARS && current < buffer_end) {
     c = buffer[current];
     switch (state) {
       case IN_HEADER_1:
@@ -280,8 +280,8 @@ SeqReader::is_sam()
 
   size_t current = buffer_start;
 
-  while (current < buffer_end && buffer[current] == '@') {
-    while (current < buffer_end && buffer[current] != '\n') {
+  while (current < buffer_start + DETERMINE_FORMAT_CHARS && current < buffer_end && buffer[current] == '@') {
+    while (current < buffer_start + DETERMINE_FORMAT_CHARS && current < buffer_end && buffer[current] != '\n') {
       current++;
     }
     current++;
@@ -289,7 +289,7 @@ SeqReader::is_sam()
 
   int column = 1;
   unsigned char c;
-  while (current < buffer_end) {
+  while (current < buffer_start + DETERMINE_FORMAT_CHARS && current < buffer_end) {
     c = buffer[current];
     if (c == '\n') {
       break;
@@ -395,7 +395,7 @@ SeqReader::is_gfa2()
   bool has_id = false;
   size_t current = buffer_start;
   unsigned char c;
-  while (current < buffer_end) {
+  while (current < buffer_start + DETERMINE_FORMAT_CHARS && current < buffer_end) {
     c = buffer[current];
     switch (state) {
       case IN_ID:
