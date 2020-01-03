@@ -21,75 +21,107 @@
 
 namespace btllib {
 
-class _Data
+enum SaveloadOp
 {
-
-public:
-  _Data(FILE* file, pid_t pid)
-    : file(file)
-    , pid(pid)
-    , closed(false)
-  {}
-
-  FILE* operator*() { return file; }
-  FILE* operator->() { return file; }
-  operator FILE*() { return file; }
-
-  FILE* file;
-  pid_t pid;
-  bool closed;
+  READ,
+  WRITE,
+  APPEND
 };
 
-class DataSource : public _Data
+class _Pipe
+{
+
+public:
+  _Pipe() {}
+
+  _Pipe(FILE* file, pid_t pid)
+    : file(file)
+    , pid(pid)
+  {}
+
+  FILE* file = nullptr;
+  pid_t pid = -1;
+};
+
+inline std::string
+get_saveload_cmd(const std::string& path, SaveloadOp op);
+inline _Pipe
+run_saveload_cmd(const std::string& cmd, SaveloadOp op);
+
+class DataSource
 {
 public:
-  DataSource(FILE* file, pid_t pid)
-    : _Data(file, pid)
-  {}
-  DataSource(const _Data& d)
-    : DataSource(d.file, d.pid)
-  {}
+  DataSource(const std::string& source)
+  {
+    if (source == "-") {
+      pipe.file = stdin;
+      pipe.pid = -1;
+    } else {
+      const auto cmd = get_saveload_cmd(source, READ);
+      check_error(cmd.empty(), "Error loading from " + source);
+      pipe = run_saveload_cmd(cmd, READ);
+    }
+  }
+
   ~DataSource() { close(); }
 
   void close()
   {
-    if (!closed && file != stdin && file != stdout && pid > 0) {
-      int status;
-      kill(pid, SIGTERM);
-      waitpid(pid, &status, 0);
-      std::fclose(file);
+    if (!closed) {
+      if (pipe.file != stdin && pipe.pid > 0) {
+        int status;
+        kill(pipe.pid, SIGTERM);
+        waitpid(pipe.pid, &status, 0);
+        std::fclose(pipe.file);
+      }
       closed = true;
     }
   }
+
+  FILE* operator*() { return pipe.file; }
+  FILE* operator->() { return pipe.file; }
+  operator FILE*() { return pipe.file; }
+
+  _Pipe pipe;
+  bool closed = false;
 };
 
-class DataSink : public _Data
+class DataSink
 {
-
 public:
-  DataSink(FILE* file, pid_t pid)
-    : _Data(file, pid)
-  {}
-  DataSink(const _Data& d)
-    : DataSink(d.file, d.pid)
-  {}
+  DataSink(const std::string& sink, bool append)
+  {
+    if (sink == "-") {
+      pipe.file = stdout;
+      pipe.pid = -1;
+    } else {
+      const auto cmd = get_saveload_cmd(sink, append ? APPEND : WRITE);
+      check_error(cmd.empty(), "Error saving to " + sink);
+      pipe = run_saveload_cmd(cmd, append ? APPEND : WRITE);
+    }
+  }
+
   ~DataSink() { close(); }
 
   void close()
   {
-    if (!closed && file != stdin && file != stdout && pid > 0) {
-      std::fclose(file);
-      int status;
-      waitpid(pid, &status, 0);
+    if (!closed) {
+      if (pipe.file != stdout && pipe.pid > 0) {
+        std::fclose(pipe.file);
+        int status;
+        waitpid(pipe.pid, &status, 0);
+      }
       closed = true;
     }
   }
-};
 
-inline DataSource
-data_load(const std::string& source);
-inline DataSink
-data_save(const std::string& sink, bool append);
+  FILE* operator*() { return pipe.file; }
+  FILE* operator->() { return pipe.file; }
+  operator FILE*() { return pipe.file; }
+
+  _Pipe pipe;
+  bool closed = false;
+};
 
 /** SIGCHLD handler. Reap child processes and report an error if any
  * fail. */
@@ -135,13 +167,6 @@ data_saveload_init()
 }
 
 static const bool data_saveload_initialized = data_saveload_init();
-
-enum SaveloadOp
-{
-  READ,
-  WRITE,
-  APPEND
-};
 
 inline std::string
 get_saveload_cmd(const std::string& path, const SaveloadOp op)
@@ -291,8 +316,8 @@ get_saveload_cmd(const std::string& path, const SaveloadOp op)
   return default_cmd;
 }
 
-inline _Data
-run_saveload_cmd(const std::string& cmd, SaveloadOp op)
+inline _Pipe
+run_saveload_cmd(const std::string& cmd, const SaveloadOp op)
 {
   static const int READ_END = 0;
   static const int WRITE_END = 1;
@@ -392,34 +417,12 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
   } else {
     if (op == WRITE || op == APPEND) {
       close(fd[READ_END]);
-      return _Data(fdopen(fd[WRITE_END], "w"), pid);
+      return _Pipe(fdopen(fd[WRITE_END], "w"), pid);
     }
     close(fd[WRITE_END]);
-    return _Data(fdopen(fd[READ_END], "r"), pid);
+    return _Pipe(fdopen(fd[READ_END], "r"), pid);
   }
-  return _Data(nullptr, -1);
-}
-
-inline DataSource
-data_load(const std::string& source)
-{
-  if (source == "-") {
-    return DataSource(stdin, -1);
-  }
-  const auto cmd = get_saveload_cmd(source, READ);
-  check_error(cmd.empty(), "Error loading from " + source);
-  return run_saveload_cmd(cmd, READ);
-}
-
-inline DataSink
-data_save(const std::string& sink, bool append)
-{
-  if (sink == "-") {
-    return DataSink(stdout, -1);
-  }
-  const auto cmd = get_saveload_cmd(sink, append ? APPEND : WRITE);
-  check_error(cmd.empty(), "Error saving to " + sink);
-  return run_saveload_cmd(cmd, append ? APPEND : WRITE);
+  return _Pipe(nullptr, -1);
 }
 
 } // namespace btllib

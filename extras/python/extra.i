@@ -1,3 +1,4 @@
 %feature("python:slot", "tp_str", functype="reprfunc") btl::Graph::to_string;
 
-%ignore btllib::_Data::operator FILE*();
+%ignore btllib::DataSource::operator FILE*();
+%ignore btllib::DataSink::operator FILE*();

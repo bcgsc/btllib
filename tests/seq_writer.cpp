@@ -18,8 +18,6 @@ int main() {
         writer_fasta.write(names[i], comments[i], seqs[i], "");
     }
     writer_fasta.close();
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     
     btllib::SeqReader reader_fasta("output.fa");
     assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
@@ -47,8 +45,6 @@ int main() {
         writer_fastq.write(names[i], comments[i], seqs[i], quals[i]);
     }
     writer_fastq.close();
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     
     btllib::SeqReader reader_fastq("output.fq.bz2");
     assert(reader_fastq.get_format() == btllib::SeqReader::Format::FASTQ);
@@ -68,9 +64,6 @@ int main() {
         j++;
 	}
     assert(j == 2);
-
-    // Meson deletes test files, so wait a bit for the pipes to close
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
 	return 0;
 }

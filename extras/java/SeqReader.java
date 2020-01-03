@@ -36,12 +36,16 @@ public class SeqReader {
     }
   }
 
-  public SeqReader(String source, int flags) {
-    this(btllibJNI.new_SeqReader__SWIG_0(source, flags), true);
+  public SeqReader(String source_path, int flags) {
+    this(btllibJNI.new_SeqReader__SWIG_0(source_path, flags), true);
   }
 
-  public SeqReader(String source) {
-    this(btllibJNI.new_SeqReader__SWIG_1(source), true);
+  public SeqReader(String source_path) {
+    this(btllibJNI.new_SeqReader__SWIG_1(source_path), true);
+  }
+
+  public void close() {
+    btllibJNI.SeqReader_close(swigCPtr, this);
   }
 
   public boolean flagFoldCase() {
@@ -52,16 +56,8 @@ public class SeqReader {
     return btllibJNI.SeqReader_flagTrimMasked(swigCPtr, this);
   }
 
-  public void close() {
-    btllibJNI.SeqReader_close(swigCPtr, this);
-  }
-
   public SeqReader.Format get_format() {
     return SeqReader.Format.swigToEnum(btllibJNI.SeqReader_get_format(swigCPtr, this));
-  }
-
-  public int peek() {
-    return btllibJNI.SeqReader_peek(swigCPtr, this);
   }
 
   public boolean read() {
@@ -131,7 +127,7 @@ public class SeqReader {
   }
 
   public final static class Format {
-    public final static SeqReader.Format UNKNOWN = new SeqReader.Format("UNKNOWN");
+    public final static SeqReader.Format UNDETERMINED = new SeqReader.Format("UNDETERMINED");
     public final static SeqReader.Format FASTA = new SeqReader.Format("FASTA");
     public final static SeqReader.Format FASTQ = new SeqReader.Format("FASTQ");
     public final static SeqReader.Format SAM = new SeqReader.Format("SAM");
@@ -172,7 +168,7 @@ public class SeqReader {
       swigNext = this.swigValue+1;
     }
 
-    private static Format[] swigValues = { UNKNOWN, FASTA, FASTQ, SAM, GFA2, INVALID };
+    private static Format[] swigValues = { UNDETERMINED, FASTA, FASTQ, SAM, GFA2, INVALID };
     private static int swigNext = 0;
     private final int swigValue;
     private final String swigName;
