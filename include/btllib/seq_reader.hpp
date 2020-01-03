@@ -81,6 +81,7 @@ private:
   static const size_t RESERVE_SIZE_FOR_STRINGS = 1024;
   static const size_t DETERMINE_FORMAT_CHARS = 2048;
   static const size_t BUFFER_SIZE = 65536;
+  static const size_t RECORD_BLOCK_SIZE = 128;
   char buffer[BUFFER_SIZE];
   size_t buffer_start = 0;
   size_t buffer_end = 0;
@@ -109,16 +110,24 @@ private:
   bool (SeqReader::*read_impl)() = nullptr;
 
   struct Record {
-    size_t num;
     std::string name;
     std::string comment;
     std::string seq;
     std::string qual;
   };
-  Record worker_record, ready_record;
+
+  struct RecordBlock {
+    size_t num = 0;
+    Record records[RECORD_BLOCK_SIZE];
+    size_t current = 0;
+    size_t count = 0;
+  };
+
   std::thread* worker_thread = nullptr;
   std::string tmp;
-  InputNumQueue<Record> queue;
+  RecordBlock worker_records, ready_records;
+  Record *current_worker_record, *current_ready_record;
+  InputNumQueue<RecordBlock> queue;
 };
 
 inline SeqReader::SeqReader(const std::string& source, int flags)
@@ -522,14 +531,14 @@ SeqReader::read_fasta()
         return false;
       }
       auto pos = tmp.find(' ');
-      worker_record.name = tmp.substr(1, pos - 1);
+      current_worker_record->name = tmp.substr(1, pos - 1);
       while (pos < tmp.size() && tmp[pos] == ' ') {
         pos++;
       }
       if (pos < tmp.size()) {
-        worker_record.comment = tmp.substr(pos);
+        current_worker_record->comment = tmp.substr(pos);
       } else {
-        worker_record.comment = "";
+        current_worker_record->comment = "";
       }
       ++read_stage;
       tmp.clear();
@@ -538,7 +547,7 @@ SeqReader::read_fasta()
       if (!getline(tmp)) {
         return false;
       }
-      worker_record.seq = std::move(tmp);
+      current_worker_record->seq = std::move(tmp);
       read_stage = 0;
       tmp.clear();
       return true;
@@ -556,14 +565,14 @@ SeqReader::read_fastq()
         return false;
       }
       auto pos = tmp.find(' ');
-      worker_record.name = tmp.substr(1, pos - 1);
+      current_worker_record->name = tmp.substr(1, pos - 1);
       while (pos < tmp.size() && tmp[pos] == ' ') {
         pos++;
       }
       if (pos < tmp.size()) {
-        worker_record.comment = tmp.substr(pos);
+        current_worker_record->comment = tmp.substr(pos);
       } else {
-        worker_record.comment = "";
+        current_worker_record->comment = "";
       }
       ++read_stage;
       tmp.clear();
@@ -572,7 +581,7 @@ SeqReader::read_fastq()
       if (!getline(tmp)) {
         return false;
       }
-      worker_record.seq = std::move(tmp);
+      current_worker_record->seq = std::move(tmp);
       ++read_stage;
       tmp.clear();
     }
@@ -587,7 +596,7 @@ SeqReader::read_fastq()
       if (!getline(tmp)) {
         return false;
       }
-      worker_record.qual = std::move(tmp);
+      current_worker_record->qual = std::move(tmp);
       read_stage = 0;
       tmp.clear();
       return true;
@@ -620,7 +629,7 @@ SeqReader::read_sam()
     if (tmp.length() > 0 && tmp[0] != '@') {
       size_t pos = 0, pos2 = 0, pos3 = 0;
       pos2 = tmp.find('\t');
-      worker_record.name = tmp.substr(0, pos2);
+      current_worker_record->name = tmp.substr(0, pos2);
       for (int i = 0; i < int(SEQ) - 1; i++) {
         pos = tmp.find('\t', pos + 1);
       }
@@ -630,8 +639,8 @@ SeqReader::read_sam()
         pos3 = tmp.length();
       }
 
-      worker_record.seq = tmp.substr(pos + 1, pos2 - pos - 1);
-      worker_record.qual = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
+      current_worker_record->seq = tmp.substr(pos + 1, pos2 - pos - 1);
+      current_worker_record->qual = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
 
       tmp.clear();
       return true;
@@ -660,7 +669,7 @@ SeqReader::read_gfa2()
     if (tmp.length() > 0 && tmp[0] == 'S') {
       size_t pos = 0, pos2 = 0;
       pos2 = tmp.find('\t', 1);
-      worker_record.name = tmp.substr(1, pos2 - 1);
+      current_worker_record->name = tmp.substr(1, pos2 - 1);
       for (int i = 0; i < int(SEQ) - 1; i++) {
         pos = tmp.find('\t', pos + 1);
       }
@@ -669,7 +678,7 @@ SeqReader::read_gfa2()
         pos2 = tmp.length();
       }
 
-      worker_record.seq = tmp.substr(pos + 1, pos2 - pos - 1);
+      current_worker_record->seq = tmp.substr(pos + 1, pos2 - pos - 1);
 
       tmp.clear();
       return true;
@@ -686,6 +695,7 @@ SeqReader::start_worker() {
   worker_thread = new std::thread([=] () {
     size_t counter = 0;
     for (; buffer_start < buffer_end && !end;) {
+      current_worker_record = &(worker_records.records[worker_records.current]);
       while (!(this->*read_impl)()) {
         if (!load_buffer()) {
           break;
@@ -695,71 +705,88 @@ SeqReader::start_worker() {
         load_buffer();
       }
 
-      if (worker_record.seq.empty()) {
+      if (current_worker_record->seq.empty()) {
         break;
       }
-      verify_iupac(worker_record.seq);
-      worker_record.num = counter++;
+      verify_iupac(current_worker_record->seq);
 
       if (flagTrimMasked()) {
-        const auto len = worker_record.seq.length();
-        size_t trim_start = 0, trim_end = worker_record.seq.length();
-        while (trim_start <= len && bool(islower(worker_record.seq[trim_start]))) {
+        const auto len = current_worker_record->seq.length();
+        size_t trim_start = 0, trim_end = current_worker_record->seq.length();
+        while (trim_start <= len && bool(islower(current_worker_record->seq[trim_start]))) {
           trim_start++;
         }
-        while (trim_end > 0 && bool(islower(worker_record.seq[trim_end - 1]))) {
+        while (trim_end > 0 && bool(islower(current_worker_record->seq[trim_end - 1]))) {
           trim_end--;
         }
-        worker_record.seq.erase(trim_end);
-        worker_record.seq.erase(0, trim_start);
-        if (!worker_record.qual.empty()) {
-          worker_record.qual.erase(trim_end);
-          worker_record.qual.erase(0, trim_start);
+        current_worker_record->seq.erase(trim_end);
+        current_worker_record->seq.erase(0, trim_start);
+        if (!current_worker_record->qual.empty()) {
+          current_worker_record->qual.erase(trim_end);
+          current_worker_record->qual.erase(0, trim_start);
         }
       }
       if (flagFoldCase()) {
         std::transform(
-          worker_record.seq.begin(), worker_record.seq.end(), worker_record.seq.begin(), ::toupper);
+          current_worker_record->seq.begin(), current_worker_record->seq.end(), current_worker_record->seq.begin(), ::toupper);
       }
-      queue.write(worker_record);
-      worker_record = Record();
+      worker_records.current++;
+      worker_records.count++;
+      if (worker_records.current == RECORD_BLOCK_SIZE) {
+        worker_records.current = 0;
+        worker_records.num = counter++;
+        queue.write(worker_records);
+        worker_records = RecordBlock();
+      }
     }
     end = true;
-    Record sentinel;
-    sentinel.num = counter;
-    queue.write(sentinel);
+    worker_records.current = 0;
+    worker_records.num = counter++;
+    size_t last_count = worker_records.count;
+    queue.write(worker_records);
+    if (last_count > 0) {
+      RecordBlock dummy;
+      dummy.num = counter++;
+      dummy.count = 0;
+      queue.write(dummy);
+    }
   });
 }
 
 inline bool
 SeqReader::read()
 {
-  queue.read(ready_record);
-  return !ready_record.seq.empty();
+  if (ready_records.count <= ready_records.current + 1) {
+    queue.read(ready_records);
+    current_ready_record = &(ready_records.records[0]);
+  } else {
+    current_ready_record = &(ready_records.records[++ready_records.current]);
+  }
+  return ready_records.count > 0;
 }
 
 inline std::string
 SeqReader::name()
 {
-  return std::move(ready_record.name);
+  return std::move(current_ready_record->name);
 }
 
 inline std::string
 SeqReader::comment()
 {
-  return std::move(ready_record.comment);
+  return std::move(current_ready_record->comment);
 }
 
 inline std::string
 SeqReader::seq()
 {
-  return std::move(ready_record.seq);
+  return std::move(current_ready_record->seq);
 }
 
 inline std::string
 SeqReader::qual()
 {
-  return std::move(ready_record.qual);
+  return std::move(current_ready_record->qual);
 }
 
 } // namespace btllib
