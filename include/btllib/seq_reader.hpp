@@ -4,13 +4,16 @@
 #include "data_saveload.hpp"
 #include "seq.hpp"
 #include "status.hpp"
+#include "num_queue.hpp"
 
+#include <atomic>
 #include <algorithm>
 #include <cassert>
 #include <cctype>
 #include <cstdio>
 #include <cstring>
 #include <string>
+#include <thread>
 
 namespace btllib {
 
@@ -71,6 +74,7 @@ private:
   const std::string& source;
   DataSource input;
   bool closed = false;
+  std::atomic<bool> end = false;
   unsigned flags;
   Format format = UNKNOWN; // Format of the input file
 
@@ -91,6 +95,8 @@ private:
 
   void determine_format();
 
+  void start_worker();
+
   bool getline(std::string& line);
   char getsection(std::string& section);
 
@@ -102,11 +108,17 @@ private:
 
   bool (SeqReader::*read_impl)() = nullptr;
 
-  std::string name_str;
-  std::string comment_str;
-  std::string seq_str;
-  std::string qual_str;
+  struct Record {
+    size_t num;
+    std::string name;
+    std::string comment;
+    std::string seq;
+    std::string qual;
+  };
+  Record worker_record, ready_record;
+  std::thread* worker_thread = nullptr;
   std::string tmp;
+  InputNumQueue<Record> queue;
 };
 
 inline SeqReader::SeqReader(const std::string& source, int flags)
@@ -115,11 +127,8 @@ inline SeqReader::SeqReader(const std::string& source, int flags)
   , flags(flags)
 {
   determine_format();
-  name_str.reserve(RESERVE_SIZE_FOR_STRINGS);
-  comment_str.reserve(RESERVE_SIZE_FOR_STRINGS);
-  seq_str.reserve(RESERVE_SIZE_FOR_STRINGS);
-  qual_str.reserve(RESERVE_SIZE_FOR_STRINGS);
   tmp.reserve(RESERVE_SIZE_FOR_STRINGS);
+  start_worker();
 }
 
 inline void
@@ -127,6 +136,9 @@ SeqReader::close()
 {
   if (!closed) {
     input.close();
+    end = true;
+    queue.close();
+    worker_thread->join();
     closed = true;
   }
 }
@@ -510,14 +522,14 @@ SeqReader::read_fasta()
         return false;
       }
       auto pos = tmp.find(' ');
-      name_str = tmp.substr(1, pos - 1);
+      worker_record.name = tmp.substr(1, pos - 1);
       while (pos < tmp.size() && tmp[pos] == ' ') {
         pos++;
       }
       if (pos < tmp.size()) {
-        comment_str = tmp.substr(pos);
+        worker_record.comment = tmp.substr(pos);
       } else {
-        comment_str = "";
+        worker_record.comment = "";
       }
       ++read_stage;
       tmp.clear();
@@ -526,7 +538,7 @@ SeqReader::read_fasta()
       if (!getline(tmp)) {
         return false;
       }
-      seq_str = std::move(tmp);
+      worker_record.seq = std::move(tmp);
       read_stage = 0;
       tmp.clear();
       return true;
@@ -544,14 +556,14 @@ SeqReader::read_fastq()
         return false;
       }
       auto pos = tmp.find(' ');
-      name_str = tmp.substr(1, pos - 1);
+      worker_record.name = tmp.substr(1, pos - 1);
       while (pos < tmp.size() && tmp[pos] == ' ') {
         pos++;
       }
       if (pos < tmp.size()) {
-        comment_str = tmp.substr(pos);
+        worker_record.comment = tmp.substr(pos);
       } else {
-        comment_str = "";
+        worker_record.comment = "";
       }
       ++read_stage;
       tmp.clear();
@@ -560,7 +572,7 @@ SeqReader::read_fastq()
       if (!getline(tmp)) {
         return false;
       }
-      seq_str = std::move(tmp);
+      worker_record.seq = std::move(tmp);
       ++read_stage;
       tmp.clear();
     }
@@ -575,7 +587,7 @@ SeqReader::read_fastq()
       if (!getline(tmp)) {
         return false;
       }
-      qual_str = std::move(tmp);
+      worker_record.qual = std::move(tmp);
       read_stage = 0;
       tmp.clear();
       return true;
@@ -608,7 +620,7 @@ SeqReader::read_sam()
     if (tmp.length() > 0 && tmp[0] != '@') {
       size_t pos = 0, pos2 = 0, pos3 = 0;
       pos2 = tmp.find('\t');
-      name_str = tmp.substr(0, pos2);
+      worker_record.name = tmp.substr(0, pos2);
       for (int i = 0; i < int(SEQ) - 1; i++) {
         pos = tmp.find('\t', pos + 1);
       }
@@ -618,8 +630,8 @@ SeqReader::read_sam()
         pos3 = tmp.length();
       }
 
-      seq_str = tmp.substr(pos + 1, pos2 - pos - 1);
-      qual_str = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
+      worker_record.seq = tmp.substr(pos + 1, pos2 - pos - 1);
+      worker_record.qual = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
 
       tmp.clear();
       return true;
@@ -648,7 +660,7 @@ SeqReader::read_gfa2()
     if (tmp.length() > 0 && tmp[0] == 'S') {
       size_t pos = 0, pos2 = 0;
       pos2 = tmp.find('\t', 1);
-      name_str = tmp.substr(1, pos2 - 1);
+      worker_record.name = tmp.substr(1, pos2 - 1);
       for (int i = 0; i < int(SEQ) - 1; i++) {
         pos = tmp.find('\t', pos + 1);
       }
@@ -657,7 +669,7 @@ SeqReader::read_gfa2()
         pos2 = tmp.length();
       }
 
-      seq_str = tmp.substr(pos + 1, pos2 - pos - 1);
+      worker_record.seq = tmp.substr(pos + 1, pos2 - pos - 1);
 
       tmp.clear();
       return true;
@@ -669,71 +681,85 @@ SeqReader::read_gfa2()
   }
 }
 
+inline void
+SeqReader::start_worker() {
+  worker_thread = new std::thread([=] () {
+    size_t counter = 0;
+    for (; buffer_start < buffer_end && !end;) {
+      while (!(this->*read_impl)()) {
+        if (!load_buffer()) {
+          break;
+        }
+      }
+      if (buffer_start >= buffer_end) {
+        load_buffer();
+      }
+
+      if (worker_record.seq.empty()) {
+        break;
+      }
+      verify_iupac(worker_record.seq);
+      worker_record.num = counter++;
+
+      if (flagTrimMasked()) {
+        const auto len = worker_record.seq.length();
+        size_t trim_start = 0, trim_end = worker_record.seq.length();
+        while (trim_start <= len && bool(islower(worker_record.seq[trim_start]))) {
+          trim_start++;
+        }
+        while (trim_end > 0 && bool(islower(worker_record.seq[trim_end - 1]))) {
+          trim_end--;
+        }
+        worker_record.seq.erase(trim_end);
+        worker_record.seq.erase(0, trim_start);
+        if (!worker_record.qual.empty()) {
+          worker_record.qual.erase(trim_end);
+          worker_record.qual.erase(0, trim_start);
+        }
+      }
+      if (flagFoldCase()) {
+        std::transform(
+          worker_record.seq.begin(), worker_record.seq.end(), worker_record.seq.begin(), ::toupper);
+      }
+      queue.write(worker_record);
+      worker_record = Record();
+    }
+    end = true;
+    Record sentinel;
+    sentinel.num = counter;
+    queue.write(sentinel);
+  });
+}
+
 inline bool
 SeqReader::read()
 {
-  if (buffer_start < buffer_end) {
-    while (!(this->*read_impl)()) {
-      if (!load_buffer()) {
-        return false;
-      }
-    }
-    if (buffer_start >= buffer_end) {
-      load_buffer();
-    }
-
-    if (seq_str.empty()) {
-      return false;
-    }
-    verify_iupac(seq_str);
-
-    if (flagTrimMasked()) {
-      const auto len = seq_str.length();
-      size_t trim_start = 0, trim_end = seq_str.length();
-      while (trim_start <= len && bool(islower(seq_str[trim_start]))) {
-        trim_start++;
-      }
-      while (trim_end > 0 && bool(islower(seq_str[trim_end - 1]))) {
-        trim_end--;
-      }
-      seq_str.erase(trim_end);
-      seq_str.erase(0, trim_start);
-      if (!qual_str.empty()) {
-        qual_str.erase(trim_end);
-        qual_str.erase(0, trim_start);
-      }
-    }
-    if (flagFoldCase()) {
-      std::transform(
-        seq_str.begin(), seq_str.end(), seq_str.begin(), ::toupper);
-    }
-    return true;
-  }
-  return false;
+  queue.read(ready_record);
+  return !ready_record.seq.empty();
 }
 
 inline std::string
 SeqReader::name()
 {
-  return std::move(name_str);
+  return std::move(ready_record.name);
 }
 
 inline std::string
 SeqReader::comment()
 {
-  return std::move(comment_str);
+  return std::move(ready_record.comment);
 }
 
 inline std::string
 SeqReader::seq()
 {
-  return std::move(seq_str);
+  return std::move(ready_record.seq);
 }
 
 inline std::string
 SeqReader::qual()
 {
-  return std::move(qual_str);
+  return std::move(ready_record.qual);
 }
 
 } // namespace btllib
