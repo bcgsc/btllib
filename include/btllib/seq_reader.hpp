@@ -84,7 +84,7 @@ private:
   size_t buffer_end = 0;
   bool eof_newline_inserted = false;
 
-  static const size_t RECORD_QUEUE_SIZE = 4096;
+  static const size_t RECORD_QUEUE_SIZE = 8192;
   static const size_t RECORD_BLOCK_SIZE = 128;
 
   struct Record
@@ -700,7 +700,7 @@ SeqReader::read_fasta_file()
 {
   switch (read_stage) {
     case 0: {
-      readline_buffer(tmp);
+      readline_file(tmp);
       auto pos = tmp.find(' ');
       current_worker_record->name = tmp.substr(1, pos - 1);
       while (pos < tmp.size() && tmp[pos] == ' ') {
@@ -715,7 +715,7 @@ SeqReader::read_fasta_file()
       tmp.clear();
     }
     case 1: {
-      readline_buffer(tmp);
+      readline_file(tmp);
       current_worker_record->seq = std::move(tmp);
       read_stage = 0;
       tmp.clear();
@@ -749,12 +749,12 @@ SeqReader::read_fastq_file()
       tmp.clear();
     }
     case 2: {
-      readline_buffer(tmp);
+      readline_file(tmp);
       ++read_stage;
       tmp.clear();
     }
     case 3: {
-      readline_buffer(tmp);
+      readline_file(tmp);
       current_worker_record->qual = std::move(tmp);
       read_stage = 0;
       tmp.clear();
@@ -896,6 +896,12 @@ SeqReader::start_worker()
 
     // Read from file (more efficient, less copying involved)
     for (; std::ferror(source) == 0 && std::feof(source) == 0 && !worker_end;) {
+      int p = std::fgetc(source);
+      if (p == EOF) {
+        break;
+      }
+      std::ungetc(p, source);
+      current_worker_record = &(worker_records.records[worker_records.current]);
       (this->*read_format_file_impl)();
       if (current_worker_record->seq.empty()) {
         break;
