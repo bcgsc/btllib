@@ -95,7 +95,7 @@ private:
     std::string qual;
   };
 
-  struct RecordBlock
+  struct RecordBlock // NOLINT
   {
     size_t num = 0;
     Record records[RECORD_BLOCK_SIZE];

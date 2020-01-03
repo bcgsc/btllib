@@ -169,7 +169,7 @@ data_saveload_init()
 static const bool data_saveload_initialized = data_saveload_init();
 
 inline std::string
-get_saveload_cmd(const std::string& path, const SaveloadOp op)
+get_saveload_cmd(const std::string& path, SaveloadOp op)
 {
   struct Datatype
   {
@@ -317,7 +317,7 @@ get_saveload_cmd(const std::string& path, const SaveloadOp op)
 }
 
 inline _Pipe
-run_saveload_cmd(const std::string& cmd, const SaveloadOp op)
+run_saveload_cmd(const std::string& cmd, SaveloadOp op)
 {
   static const int READ_END = 0;
   static const int WRITE_END = 1;
