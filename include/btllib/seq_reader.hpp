@@ -76,7 +76,7 @@ private:
 
   static const size_t RESERVE_SIZE_FOR_STRINGS = 1024;
 
-  static const size_t BUFFER_SIZE = 2048;
+  static const size_t BUFFER_SIZE = 1024;
   char buffer[BUFFER_SIZE];
   size_t buffer_start = 0;
   size_t buffer_end = 0;
@@ -142,10 +142,11 @@ SeqReader::peek()
 inline bool
 SeqReader::load_buffer() {
   buffer_start = 0;
+  char last = buffer_end > 0 ? buffer[buffer_end - 1] : 0;
   while ((buffer_end = fread(buffer, 1, BUFFER_SIZE, input)) == 0 && !bool(std::feof(input))) {}
   if (bool(std::feof(input)) && !eof_newline_inserted) {
     if (buffer_end < BUFFER_SIZE) {
-      if (buffer_end == 0 || (buffer_end > 0 && buffer[buffer_end - 1] != '\n')) {
+      if ((buffer_end == 0 && last != '\n') || (buffer_end > 0 && buffer[buffer_end - 1] != '\n')) {
         buffer[buffer_end++] = '\n';
       }
       eof_newline_inserted = true;
