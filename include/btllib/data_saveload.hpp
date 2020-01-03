@@ -21,10 +21,10 @@
 
 namespace btllib {
 
-class _Data {
+class _Data
+{
 
 public:
-
   _Data(FILE* file, pid_t pid)
     : file(file)
     , pid(pid)
@@ -38,14 +38,17 @@ public:
   FILE* file;
   pid_t pid;
   bool closed;
-
 };
 
-class DataSource: public _Data
+class DataSource : public _Data
 {
 public:
-  DataSource(FILE* file, pid_t pid): _Data(file, pid) {}
-  DataSource(const _Data& d): DataSource(d.file, d.pid) {}
+  DataSource(FILE* file, pid_t pid)
+    : _Data(file, pid)
+  {}
+  DataSource(const _Data& d)
+    : DataSource(d.file, d.pid)
+  {}
   ~DataSource() { close(); }
 
   void close()
@@ -60,12 +63,16 @@ public:
   }
 };
 
-class DataSink: public _Data {
+class DataSink : public _Data
+{
 
 public:
-
-  DataSink(FILE* file, pid_t pid): _Data(file, pid) {}
-  DataSink(const _Data& d): DataSink(d.file, d.pid) {}
+  DataSink(FILE* file, pid_t pid)
+    : _Data(file, pid)
+  {}
+  DataSink(const _Data& d)
+    : DataSink(d.file, d.pid)
+  {}
   ~DataSink() { close(); }
 
   void close()

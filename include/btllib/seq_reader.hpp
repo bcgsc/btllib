@@ -140,13 +140,17 @@ SeqReader::peek()
 }
 
 inline bool
-SeqReader::load_buffer() {
+SeqReader::load_buffer()
+{
   buffer_start = 0;
-  char last = buffer_end > 0 ? buffer[buffer_end - 1] : 0;
-  while ((buffer_end = fread(buffer, 1, BUFFER_SIZE, input)) == 0 && !bool(std::feof(input))) {}
+  char last = buffer_end > 0 ? buffer[buffer_end - 1] : char(0);
+  while ((buffer_end = fread(buffer, 1, BUFFER_SIZE, input)) == 0 &&
+         !bool(std::feof(input))) {
+  }
   if (bool(std::feof(input)) && !eof_newline_inserted) {
     if (buffer_end < BUFFER_SIZE) {
-      if ((buffer_end == 0 && last != '\n') || (buffer_end > 0 && buffer[buffer_end - 1] != '\n')) {
+      if ((buffer_end == 0 && last != '\n') ||
+          (buffer_end > 0 && buffer[buffer_end - 1] != '\n')) {
         buffer[buffer_end++] = '\n';
       }
       eof_newline_inserted = true;
@@ -170,7 +174,8 @@ SeqReader::is_fasta()
     IN_SEQ
   };
   State state = IN_HEADER_1;
-  while (current < buffer_start + DETERMINE_FORMAT_CHARS && current < buffer_end) {
+  while (current < buffer_start + DETERMINE_FORMAT_CHARS &&
+         current < buffer_end) {
     c = buffer[current];
     switch (state) {
       case IN_HEADER_1:
@@ -213,7 +218,8 @@ SeqReader::is_fastq()
     IN_QUAL
   };
   State state = IN_HEADER_1;
-  while (current < buffer_start + DETERMINE_FORMAT_CHARS && current < buffer_end) {
+  while (current < buffer_start + DETERMINE_FORMAT_CHARS &&
+         current < buffer_end) {
     c = buffer[current];
     switch (state) {
       case IN_HEADER_1:
@@ -280,8 +286,10 @@ SeqReader::is_sam()
 
   size_t current = buffer_start;
 
-  while (current < buffer_start + DETERMINE_FORMAT_CHARS && current < buffer_end && buffer[current] == '@') {
-    while (current < buffer_start + DETERMINE_FORMAT_CHARS && current < buffer_end && buffer[current] != '\n') {
+  while (current < buffer_start + DETERMINE_FORMAT_CHARS &&
+         current < buffer_end && buffer[current] == '@') {
+    while (current < buffer_start + DETERMINE_FORMAT_CHARS &&
+           current < buffer_end && buffer[current] != '\n') {
       current++;
     }
     current++;
@@ -289,7 +297,8 @@ SeqReader::is_sam()
 
   int column = 1;
   unsigned char c;
-  while (current < buffer_start + DETERMINE_FORMAT_CHARS && current < buffer_end) {
+  while (current < buffer_start + DETERMINE_FORMAT_CHARS &&
+         current < buffer_end) {
     c = buffer[current];
     if (c == '\n') {
       break;
@@ -395,7 +404,8 @@ SeqReader::is_gfa2()
   bool has_id = false;
   size_t current = buffer_start;
   unsigned char c;
-  while (current < buffer_start + DETERMINE_FORMAT_CHARS && current < buffer_end) {
+  while (current < buffer_start + DETERMINE_FORMAT_CHARS &&
+         current < buffer_end) {
     c = buffer[current];
     switch (state) {
       case IN_ID:
@@ -438,7 +448,8 @@ inline void
 SeqReader::determine_format()
 {
   load_buffer();
-  check_warning(buffer_end - buffer_start == 1, std::string(source) + " is empty.");
+  check_warning(buffer_end - buffer_start == 1,
+                std::string(source) + " is empty.");
 
   if (is_fasta()) {
     format = Format::FASTA;
@@ -462,8 +473,9 @@ SeqReader::determine_format()
 inline bool
 SeqReader::getline(std::string& line)
 {
-  char c;
-  for (; buffer_start < buffer_end && (c = buffer[buffer_start]) != '\n'; ++buffer_start) {
+  char c = char(0);
+  for (; buffer_start < buffer_end && (c = buffer[buffer_start]) != '\n';
+       ++buffer_start) {
     line += c;
   }
   if (c == '\n') {
@@ -476,8 +488,10 @@ SeqReader::getline(std::string& line)
 inline char
 SeqReader::getsection(std::string& section)
 {
-  char c;
-  for (; buffer_start < buffer_end && (c = buffer[buffer_start]) != '\n' && c != ' '; ++buffer_start) {
+  char c = char(0);
+  for (; buffer_start < buffer_end && (c = buffer[buffer_start]) != '\n' &&
+         c != ' ';
+       ++buffer_start) {
     section += c;
   }
   if (c == '\n' || c == ' ') {
@@ -492,7 +506,9 @@ SeqReader::read_fasta()
 {
   switch (read_stage) {
     case 0: {
-      if (!getline(tmp)) { return false; }
+      if (!getline(tmp)) {
+        return false;
+      }
       auto pos = tmp.find(' ');
       name_str = tmp.substr(1, pos - 1);
       while (pos < tmp.size() && tmp[pos] == ' ') {
@@ -507,11 +523,13 @@ SeqReader::read_fasta()
       tmp.clear();
     }
     case 1: {
-      if (!getline(tmp)) { return false; }
+      if (!getline(tmp)) {
+        return false;
+      }
       seq_str = std::move(tmp);
       read_stage = 0;
       tmp.clear();
-      return true;    
+      return true;
     }
   }
   return false;
@@ -522,7 +540,9 @@ SeqReader::read_fastq()
 {
   switch (read_stage) {
     case 0: {
-      if (!getline(tmp)) { return false; }
+      if (!getline(tmp)) {
+        return false;
+      }
       auto pos = tmp.find(' ');
       name_str = tmp.substr(1, pos - 1);
       while (pos < tmp.size() && tmp[pos] == ' ') {
@@ -537,18 +557,24 @@ SeqReader::read_fastq()
       tmp.clear();
     }
     case 1: {
-      if (!getline(tmp)) { return false; }
+      if (!getline(tmp)) {
+        return false;
+      }
       seq_str = std::move(tmp);
       ++read_stage;
       tmp.clear();
     }
     case 2: {
-      if (!getline(tmp)) { return false; }
+      if (!getline(tmp)) {
+        return false;
+      }
       ++read_stage;
       tmp.clear();
     }
     case 3: {
-      if (!getline(tmp)) { return false; }
+      if (!getline(tmp)) {
+        return false;
+      }
       qual_str = std::move(tmp);
       read_stage = 0;
       tmp.clear();
@@ -576,7 +602,9 @@ SeqReader::read_sam()
     QUAL
   };
   for (;;) {
-    if (!getline(tmp)) { return false; }
+    if (!getline(tmp)) {
+      return false;
+    }
     if (tmp.length() > 0 && tmp[0] != '@') {
       size_t pos = 0, pos2 = 0, pos3 = 0;
       pos2 = tmp.find('\t');
@@ -614,7 +642,9 @@ SeqReader::read_gfa2()
     SEQ
   };
   for (;;) {
-    if (!getline(tmp)) { return false; }
+    if (!getline(tmp)) {
+      return false;
+    }
     if (tmp.length() > 0 && tmp[0] == 'S') {
       size_t pos = 0, pos2 = 0;
       pos2 = tmp.find('\t', 1);
@@ -644,7 +674,9 @@ SeqReader::read()
 {
   if (buffer_start < buffer_end) {
     while (!(this->*read_impl)()) {
-      if (!load_buffer()) { return false; }
+      if (!load_buffer()) {
+        return false;
+      }
     }
     if (buffer_start >= buffer_end) {
       load_buffer();

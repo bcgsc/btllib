@@ -2,6 +2,7 @@
 #define BTLLIB_SEQ_WRITER_HPP
 
 #include "data_saveload.hpp"
+#include "seq.hpp"
 
 #include <cstdio>
 #include <string>
