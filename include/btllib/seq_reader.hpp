@@ -98,7 +98,7 @@ private:
   };
 
   std::thread* worker_thread = nullptr;
-  std::atomic<bool> worker_end = false;
+  std::atomic<bool> worker_end;
   std::string tmp;
   RecordBlock worker_records, ready_records;
   Record *current_worker_record = nullptr, *current_ready_record = nullptr;
@@ -139,6 +139,7 @@ inline SeqReader::SeqReader(const std::string& source_path, int flags)
   : source_path(source_path)
   , source(source_path)
   , flags(flags)
+  , worker_end(false)
 {
   buffer = new char[BUFFER_SIZE];
   line_buffer = (char*)std::malloc(line_buffer_size); // NOLINT
