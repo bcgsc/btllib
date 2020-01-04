@@ -60,24 +60,74 @@ public class SeqReader {
     return SeqReader.Format.swigToEnum(btllibJNI.SeqReader_get_format(swigCPtr, this));
   }
 
-  public boolean read() {
-    return btllibJNI.SeqReader_read(swigCPtr, this);
+  static public class Record {
+    private transient long swigCPtr;
+    protected transient boolean swigCMemOwn;
+  
+    protected Record(long cPtr, boolean cMemoryOwn) {
+      swigCMemOwn = cMemoryOwn;
+      swigCPtr = cPtr;
+    }
+  
+    protected static long getCPtr(Record obj) {
+      return (obj == null) ? 0 : obj.swigCPtr;
+    }
+  
+    @SuppressWarnings("deprecation")
+    protected void finalize() {
+      delete();
+    }
+  
+    public synchronized void delete() {
+      if (swigCPtr != 0) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          btllibJNI.delete_SeqReader_Record(swigCPtr);
+        }
+        swigCPtr = 0;
+      }
+    }
+  
+    public void setName(String value) {
+      btllibJNI.SeqReader_Record_name_set(swigCPtr, this, value);
+    }
+  
+    public String getName() {
+      return btllibJNI.SeqReader_Record_name_get(swigCPtr, this);
+    }
+  
+    public void setComment(String value) {
+      btllibJNI.SeqReader_Record_comment_set(swigCPtr, this, value);
+    }
+  
+    public String getComment() {
+      return btllibJNI.SeqReader_Record_comment_get(swigCPtr, this);
+    }
+  
+    public void setSeq(String value) {
+      btllibJNI.SeqReader_Record_seq_set(swigCPtr, this, value);
+    }
+  
+    public String getSeq() {
+      return btllibJNI.SeqReader_Record_seq_get(swigCPtr, this);
+    }
+  
+    public void setQual(String value) {
+      btllibJNI.SeqReader_Record_qual_set(swigCPtr, this, value);
+    }
+  
+    public String getQual() {
+      return btllibJNI.SeqReader_Record_qual_get(swigCPtr, this);
+    }
+  
+    public Record() {
+      this(btllibJNI.new_SeqReader_Record(), true);
+    }
+  
   }
 
-  public String name() {
-    return btllibJNI.SeqReader_name(swigCPtr, this);
-  }
-
-  public String comment() {
-    return btllibJNI.SeqReader_comment(swigCPtr, this);
-  }
-
-  public String seq() {
-    return btllibJNI.SeqReader_seq(swigCPtr, this);
-  }
-
-  public String qual() {
-    return btllibJNI.SeqReader_qual(swigCPtr, this);
+  public SeqReader.Record read() {
+    return new SeqReader.Record(btllibJNI.SeqReader_read(swigCPtr, this), true);
   }
 
   public final static class Flag {

@@ -5,8 +5,6 @@
 #include <thread>
 
 int main() {
-    std::string name, comment, seq, qual;
-
     const char* names[] = { "1", "2" };
     const char* comments[] = { "comment1", "comment2" };
     const char* seqs[] = { "ACTG", "TGCA" };
@@ -23,17 +21,14 @@ int main() {
     assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
 
     int j;
+    btllib::SeqReader::Record record;
 
     j = 0;
-	while (reader_fasta.read()) {
-        name = reader_fasta.name();
-        comment = reader_fasta.comment();
-        seq = reader_fasta.seq();
-
-        assert(name == names[j]);
-        assert(comment == comments[j]);
-        assert(seq == seqs[j]);
-        assert(qual.empty());
+	while (record = reader_fasta.read()) {
+        assert(record.name == names[j]);
+        assert(record.comment == comments[j]);
+        assert(record.seq == seqs[j]);
+        assert(record.qual.empty());
 
         j++;
 	}
@@ -50,16 +45,11 @@ int main() {
     assert(reader_fastq.get_format() == btllib::SeqReader::Format::FASTQ);
 
     j = 0;
-	while (reader_fastq.read()) {
-        name = reader_fastq.name();
-        comment = reader_fastq.comment();
-        seq = reader_fastq.seq();
-        qual = reader_fastq.qual();
-
-        assert(name == names[j]);
-        assert(comment == comments[j]);
-        assert(seq == seqs[j]);
-        assert(qual == quals[j]);
+	while (record = reader_fastq.read()) {
+        assert(record.name == names[j]);
+        assert(record.comment == comments[j]);
+        assert(record.seq == seqs[j]);
+        assert(record.qual == quals[j]);
 
         j++;
 	}

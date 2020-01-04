@@ -413,77 +413,183 @@ SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_SeqReader_1get_1format(JNIEnv *jen
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_SeqReader_1read(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jboolean jresult = 0 ;
-  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
-  bool result;
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_SeqReader_1Record_1name_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
+  std::string *arg2 = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(btllib::SeqReader **)&jarg1; 
-  result = (bool)(arg1)->read();
-  jresult = (jboolean)result; 
+  arg1 = *(btllib::SeqReader::Record **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if (arg1) (arg1)->name = *arg2;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1Record_1name_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
+  std::string *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeqReader::Record **)&jarg1; 
+  result = (std::string *) & ((arg1)->name);
+  jresult = jenv->NewStringUTF(result->c_str()); 
   return jresult;
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1name(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jstring jresult = 0 ;
-  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
-  std::string result;
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_SeqReader_1Record_1comment_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
+  std::string *arg2 = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(btllib::SeqReader **)&jarg1; 
-  result = (arg1)->name();
-  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  arg1 = *(btllib::SeqReader::Record **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if (arg1) (arg1)->comment = *arg2;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1Record_1comment_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
+  std::string *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeqReader::Record **)&jarg1; 
+  result = (std::string *) & ((arg1)->comment);
+  jresult = jenv->NewStringUTF(result->c_str()); 
   return jresult;
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1comment(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jstring jresult = 0 ;
-  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
-  std::string result;
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_SeqReader_1Record_1seq_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
+  std::string *arg2 = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(btllib::SeqReader **)&jarg1; 
-  result = (arg1)->comment();
-  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  arg1 = *(btllib::SeqReader::Record **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if (arg1) (arg1)->seq = *arg2;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1Record_1seq_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
+  std::string *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeqReader::Record **)&jarg1; 
+  result = (std::string *) & ((arg1)->seq);
+  jresult = jenv->NewStringUTF(result->c_str()); 
   return jresult;
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1seq(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jstring jresult = 0 ;
-  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
-  std::string result;
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_SeqReader_1Record_1qual_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
+  std::string *arg2 = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(btllib::SeqReader **)&jarg1; 
-  result = (arg1)->seq();
-  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  arg1 = *(btllib::SeqReader::Record **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if (arg1) (arg1)->qual = *arg2;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1Record_1qual_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
+  std::string *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeqReader::Record **)&jarg1; 
+  result = (std::string *) & ((arg1)->qual);
+  jresult = jenv->NewStringUTF(result->c_str()); 
   return jresult;
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1qual(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jstring jresult = 0 ;
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1Record(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::Record *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::Record *)new btllib::SeqReader::Record();
+  *(btllib::SeqReader::Record **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1Record(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::Record **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1read(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
-  std::string result;
+  btllib::SeqReader::Record result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(btllib::SeqReader **)&jarg1; 
-  result = (arg1)->qual();
-  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  result = (arg1)->read();
+  *(btllib::SeqReader::Record **)&jresult = new btllib::SeqReader::Record((const btllib::SeqReader::Record &)result); 
   return jresult;
 }
 

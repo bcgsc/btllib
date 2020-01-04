@@ -12,6 +12,7 @@
 #include <cctype>
 #include <cstdio>
 #include <cstring>
+#include <mutex>
 #include <string>
 #include <thread>
 
@@ -52,21 +53,18 @@ public:
 
   Format get_format() const { return format; }
 
+  struct Record
+  {
+    std::string name;
+    std::string comment;
+    std::string seq;
+    std::string qual;
+
+    operator bool() { return !seq.empty(); }
+  };
+
   /** Read operator. */
-  bool read();
-
-  /** Last read sequence name. Cannot be called multiple times per read. */
-  std::string name();
-
-  /** Last read sequence comment. Cannot be called multiple times per read. */
-  std::string comment();
-
-  /** Last read sequence. Cannot be called multiple times per read. */
-  std::string seq();
-
-  /** Last read sequence quality. Cannot be called multiple times per
-   * read. */
-  std::string qual();
+  Record read();
 
 private:
   const std::string& source_path;
@@ -74,6 +72,7 @@ private:
   unsigned flags = 0;
   Format format = UNDETERMINED; // Format of the source file
   bool closed = false;
+  std::mutex read_mutex;
 
   static const size_t RESERVE_SIZE_FOR_STRINGS = 1024;
   static const size_t DETERMINE_FORMAT_CHARS = 2048;
@@ -89,14 +88,6 @@ private:
 
   static const size_t RECORD_QUEUE_SIZE = 128;
   static const size_t RECORD_BLOCK_SIZE = 64;
-
-  struct Record
-  {
-    std::string name;
-    std::string comment;
-    std::string seq;
-    std::string qual;
-  };
 
   struct RecordBlock // NOLINT
   {
@@ -950,40 +941,20 @@ SeqReader::start_worker()
   });
 }
 
-inline bool
+inline SeqReader::Record
 SeqReader::read()
 {
+  std::unique_lock<std::mutex> lock(read_mutex);
   if (ready_records.count <= ready_records.current + 1) {
     queue.read(ready_records);
     current_ready_record = &(ready_records.records[0]);
   } else {
     current_ready_record = &(ready_records.records[++ready_records.current]);
   }
-  return ready_records.count > 0;
-}
-
-inline std::string
-SeqReader::name()
-{
-  return std::move(current_ready_record->name);
-}
-
-inline std::string
-SeqReader::comment()
-{
-  return std::move(current_ready_record->comment);
-}
-
-inline std::string
-SeqReader::seq()
-{
-  return std::move(current_ready_record->seq);
-}
-
-inline std::string
-SeqReader::qual()
-{
-  return std::move(current_ready_record->qual);
+  if (ready_records.count == 0) {
+    close();
+  }
+  return std::move(*current_ready_record);
 }
 
 } // namespace btllib
