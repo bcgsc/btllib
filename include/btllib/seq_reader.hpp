@@ -85,7 +85,7 @@ private:
   bool eof_newline_inserted = false;
 
   static const size_t LINE_BUFFER_SIZE = 32768;
-  char *line_buffer;
+  char* line_buffer;
 
   static const size_t RECORD_QUEUE_SIZE = 128;
   static const size_t RECORD_BLOCK_SIZE = 64;
