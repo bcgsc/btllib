@@ -84,8 +84,8 @@ private:
   size_t buffer_end = 0;
   bool eof_newline_inserted = false;
 
-  static const size_t LINE_BUFFER_SIZE = 32768;
   char* line_buffer;
+  size_t line_buffer_size = 65536;
 
   static const size_t RECORD_QUEUE_SIZE = 128;
   static const size_t RECORD_BLOCK_SIZE = 64;
@@ -150,7 +150,7 @@ inline SeqReader::SeqReader(const std::string& source_path, int flags)
   , flags(flags)
 {
   buffer = new char[BUFFER_SIZE];
-  line_buffer = new char[LINE_BUFFER_SIZE];
+  line_buffer = (char*)std::malloc(line_buffer_size);
   tmp.reserve(RESERVE_SIZE_FOR_STRINGS);
   determine_format();
   start_worker();
@@ -158,7 +158,7 @@ inline SeqReader::SeqReader(const std::string& source_path, int flags)
 
 inline SeqReader::~SeqReader()
 {
-  delete[] line_buffer;
+  free(line_buffer);
   close();
 }
 
@@ -527,9 +527,22 @@ SeqReader::readline_buffer(std::string& line)
 inline void
 SeqReader::readline_file(std::string& line)
 {
-  fgets(line_buffer, LINE_BUFFER_SIZE, source);
+  size_t p = 0;
+  for (;;) {
+    line_buffer[line_buffer_size - 1] = 255;
+    fgets(line_buffer + p, line_buffer_size - p, source);
+    if (line_buffer[line_buffer_size - 1] == 0) {
+      p = line_buffer_size - 1;
+      line_buffer_size *= 2;
+      line_buffer = (char*)std::realloc((char*)line_buffer, line_buffer_size);
+    } else {
+      break;
+    }
+  }
   line += line_buffer;
-  line.pop_back();
+  if (line.back() == '\n') {
+    line.pop_back();
+  }
 }
 
 inline bool
