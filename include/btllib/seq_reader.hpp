@@ -84,8 +84,11 @@ private:
   size_t buffer_end = 0;
   bool eof_newline_inserted = false;
 
-  static const size_t RECORD_QUEUE_SIZE = 8192;
-  static const size_t RECORD_BLOCK_SIZE = 128;
+  static const size_t LINE_BUFFER_SIZE = 32768;
+  char *line_buffer;
+
+  static const size_t RECORD_QUEUE_SIZE = 128;
+  static const size_t RECORD_BLOCK_SIZE = 64;
 
   struct Record
   {
@@ -147,6 +150,7 @@ inline SeqReader::SeqReader(const std::string& source_path, int flags)
   , flags(flags)
 {
   buffer = new char[BUFFER_SIZE];
+  line_buffer = new char[LINE_BUFFER_SIZE];
   tmp.reserve(RESERVE_SIZE_FOR_STRINGS);
   determine_format();
   start_worker();
@@ -154,6 +158,7 @@ inline SeqReader::SeqReader(const std::string& source_path, int flags)
 
 inline SeqReader::~SeqReader()
 {
+  delete[] line_buffer;
   close();
 }
 
@@ -522,9 +527,9 @@ SeqReader::readline_buffer(std::string& line)
 inline void
 SeqReader::readline_file(std::string& line)
 {
-  for (int c = fgetc(source); c != '\n' && c != EOF; c = fgetc(source)) {
-    line += char(c);
-  }
+  fgets(line_buffer, LINE_BUFFER_SIZE, source);
+  line += line_buffer;
+  line.pop_back();
 }
 
 inline bool
