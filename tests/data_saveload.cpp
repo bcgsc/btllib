@@ -3,43 +3,38 @@
 #include <fstream>
 #include <chrono>
 #include <thread>
+#include <cstring>
 
 int main() {
     // Data loading is already tested in `seq_reader.cpp`, so saving primarily is tested here.
 
-    std::string txt = "data_saveload test";
-    std::string line;
+    const char* txt = "data_saveload test";
+    char* line = new char[128];
+    size_t line_len;
 
     // Test .gz
     const char* gz_filename = "test.gz";
 
-    std::ofstream gz_ostream(gz_filename);
-    gz_ostream << txt;
-    gz_ostream.close();
+    auto gz_sink = btllib::DataSink(gz_filename, false);
+    fwrite(txt, strlen(txt), 1, gz_sink);
+    gz_sink.close();
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-
-    std::ifstream gz_istream(gz_filename);
-    getline(gz_istream, line);
-    gz_istream.close();
-    assert(line == txt);
+    auto gz_source = btllib::DataSource(gz_filename);
+    getline(&line, &line_len, gz_source);
+    gz_source.close();
+    assert(strcmp(line, txt) == 0);
 
     // Test .xz
     const char* xz_filename = "test.xz";
-    
-    std::ofstream xz_ostream(xz_filename);
-    xz_ostream << txt;
-    xz_ostream.close();
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    auto xz_sink = btllib::DataSink(xz_filename, false);
+    fwrite(txt, strlen(txt), 1, xz_sink);
+    xz_sink.close();
 
-    std::ifstream xz_istream(xz_filename);
-    getline(xz_istream, line);
-    xz_istream.close();
-    assert(line == txt);
-
-    // Meson deletes test files, so wait a bit for the pipes to close
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    auto xz_source = btllib::DataSource(xz_filename);
+    getline(&line, &line_len, xz_source);
+    xz_source.close();
+    assert(strcmp(line, txt) == 0);
 
     return 0;
 }

@@ -73,18 +73,6 @@ static const char CAPITALS[256] = {
 };
 // clang-format on
 
-inline void
-verify_iupac(const std::string& seq)
-{
-  for (const auto& c : seq) {
-    if (!bool(COMPLEMENTS[unsigned(c)])) {
-      log_error(std::string("A sequence contains invalid IUPAC character: ") +
-                c);
-      std::exit(EXIT_FAILURE);
-    }
-  }
-}
-
 } // namespace btllib
 
 #endif

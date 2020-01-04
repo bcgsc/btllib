@@ -33,12 +33,12 @@ public class btllib {
     return btllibJNI.ends_with(s, suffix);
   }
 
-  public static DataSource data_load(String source) {
-    return new DataSource(btllibJNI.data_load(source), true);
+  public static String get_saveload_cmd(String path, SaveloadOp op) {
+    return btllibJNI.get_saveload_cmd(path, op.swigValue());
   }
 
-  public static DataSink data_save(String sink, boolean append) {
-    return new DataSink(btllibJNI.data_save(sink, append), true);
+  public static _Pipe run_saveload_cmd(String cmd, SaveloadOp op) {
+    return new _Pipe(btllibJNI.run_saveload_cmd(cmd, op.swigValue()), true);
   }
 
   public static void sigchld_handler(int sig) {
@@ -51,14 +51,6 @@ public class btllib {
 
   public static boolean getData_saveload_initialized() {
     return btllibJNI.data_saveload_initialized_get();
-  }
-
-  public static String get_saveload_cmd(String path, SaveloadOp op) {
-    return btllibJNI.get_saveload_cmd(path, op.swigValue());
-  }
-
-  public static _Data run_saveload_cmd(String cmd, SaveloadOp op) {
-    return new _Data(btllibJNI.run_saveload_cmd(cmd, op.swigValue()), true);
   }
 
   public static String get_time() {
@@ -95,10 +87,6 @@ public class btllib {
 
   public static String getCAPITALS() {
     return btllibJNI.CAPITALS_get();
-  }
-
-  public static void verify_iupac(String seq) {
-    btllibJNI.verify_iupac(seq);
   }
 
 }

@@ -14,6 +14,7 @@
 #include "btllib/counting_kmer_set.hpp"
 #include "btllib/bloom_filter.hpp"
 #include "btllib/kmer_set.hpp"
+#include "btllib/num_queue.hpp"
 %}
 
 %include <pyprimtypes.swg>
@@ -37,3 +38,4 @@
 %include "btllib/counting_kmer_set.hpp"
 %include "btllib/bloom_filter.hpp"
 %include "btllib/kmer_set.hpp"
+%include "btllib/num_queue.hpp"

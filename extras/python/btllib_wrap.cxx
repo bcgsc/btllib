@@ -3416,7 +3416,7 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_btllib__SeqReader swig_types[11]
 #define SWIGTYPE_p_btllib__SeqWriter swig_types[12]
 #define SWIGTYPE_p_btllib__Vertex swig_types[13]
-#define SWIGTYPE_p_btllib___Data swig_types[14]
+#define SWIGTYPE_p_btllib___Pipe swig_types[14]
 #define SWIGTYPE_p_char swig_types[15]
 #define SWIGTYPE_p_char_type swig_types[16]
 #define SWIGTYPE_p_double swig_types[17]
@@ -3591,6 +3591,7 @@ namespace swig {
 #include "btllib/counting_kmer_set.hpp"
 #include "btllib/bloom_filter.hpp"
 #include "btllib/kmer_set.hpp"
+#include "btllib/num_queue.hpp"
 
 
 #include <typeinfo>
@@ -9748,6 +9749,48 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_delete_SeqReader(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "delete_SeqReader", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeqReader" "', argument " "1"" of type '" "btllib::SeqReader *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeqReader_close(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeqReader_close", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_close" "', argument " "1"" of type '" "btllib::SeqReader *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
+  (arg1)->close();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SeqReader_flagFoldCase(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
@@ -9792,27 +9835,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SeqReader_close(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "SeqReader_close", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_close" "', argument " "1"" of type '" "btllib::SeqReader *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
-  (arg1)->close();
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_SeqReader_get_format(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
@@ -9828,28 +9850,6 @@ SWIGINTERN PyObject *_wrap_SeqReader_get_format(PyObject *self, PyObject *args) 
   }
   arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
   result = (btllib::SeqReader::Format)((btllib::SeqReader const *)arg1)->get_format();
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeqReader_peek(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!SWIG_Python_UnpackTuple(args, "SeqReader_peek", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_peek" "', argument " "1"" of type '" "btllib::SeqReader *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
-  result = (int)(arg1)->peek();
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -9961,27 +9961,6 @@ SWIGINTERN PyObject *_wrap_SeqReader_qual(PyObject *self, PyObject *args) {
   arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
   result = (arg1)->qual();
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_SeqReader(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "delete_SeqReader", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeqReader" "', argument " "1"" of type '" "btllib::SeqReader *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
-  delete arg1;
-  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -10433,7 +10412,20 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new__Data(PyObject *self, PyObject *args, PyObject *SWIGUNUSEDPARM(kwargs)) {
+SWIGINTERN int _wrap_new__Pipe__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::_Pipe *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  result = (btllib::_Pipe *)new btllib::_Pipe();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib___Pipe, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new__Pipe__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FILE *arg1 = (FILE *) 0 ;
   pid_t arg2 ;
@@ -10441,85 +10433,72 @@ SWIGINTERN int _wrap_new__Data(PyObject *self, PyObject *args, PyObject *SWIGUNU
   int res1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
-  btllib::_Data *result = 0 ;
+  btllib::_Pipe *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new__Data", 2, 2, swig_obj)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FILE, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new__Data" "', argument " "1"" of type '" "FILE *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new__Pipe" "', argument " "1"" of type '" "FILE *""'"); 
   }
   arg1 = reinterpret_cast< FILE * >(argp1);
   {
     res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_pid_t,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new__Data" "', argument " "2"" of type '" "pid_t""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new__Pipe" "', argument " "2"" of type '" "pid_t""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new__Data" "', argument " "2"" of type '" "pid_t""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new__Pipe" "', argument " "2"" of type '" "pid_t""'");
     } else {
       pid_t * temp = reinterpret_cast< pid_t * >(argp2);
       arg2 = *temp;
       if (SWIG_IsNewObj(res2)) delete temp;
     }
   }
-  result = (btllib::_Data *)new btllib::_Data(arg1,arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib___Data, SWIG_BUILTIN_INIT |  0 );
+  result = (btllib::_Pipe *)new btllib::_Pipe(arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib___Pipe, SWIG_BUILTIN_INIT |  0 );
   return resultobj == Py_None ? -1 : 0;
 fail:
   return -1;
 }
 
 
-SWIGINTERN PyObject *_wrap__Data___ref__(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FILE *result = 0 ;
+SWIGINTERN int _wrap_new__Pipe(PyObject *self, PyObject *args, PyObject *SWIGUNUSEDPARM(kwargs)) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "_Data___ref__", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Data, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Data___ref__" "', argument " "1"" of type '" "btllib::_Data *""'"); 
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new__Pipe", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new__Pipe__SWIG_0(self, argc, argv);
   }
-  arg1 = reinterpret_cast< btllib::_Data * >(argp1);
-  result = (FILE *)(arg1)->operator *();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
-  return resultobj;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_FILE, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_pid_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new__Pipe__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  
 fail:
-  PyErr_Clear();
-  Py_INCREF(Py_NotImplemented);
-  return Py_NotImplemented;
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new__Pipe'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::_Pipe::_Pipe()\n"
+    "    btllib::_Pipe::_Pipe(FILE *,pid_t)\n");
+  return -1;
 }
 
 
-SWIGINTERN PyObject *_wrap__Data___deref__(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap__Pipe_file_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FILE *result = 0 ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "_Data___deref__", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Data, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Data___deref__" "', argument " "1"" of type '" "btllib::_Data *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::_Data * >(argp1);
-  result = (FILE *)(arg1)->operator ->();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap__Data_file_set(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  btllib::_Pipe *arg1 = (btllib::_Pipe *) 0 ;
   FILE *arg2 = (FILE *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -10529,14 +10508,14 @@ SWIGINTERN PyObject *_wrap__Data_file_set(PyObject *self, PyObject *args) {
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Data, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Pipe, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Data_file_set" "', argument " "1"" of type '" "btllib::_Data *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Pipe_file_set" "', argument " "1"" of type '" "btllib::_Pipe *""'"); 
   }
-  arg1 = reinterpret_cast< btllib::_Data * >(argp1);
+  arg1 = reinterpret_cast< btllib::_Pipe * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[0], &argp2,SWIGTYPE_p_FILE, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "_Data_file_set" "', argument " "2"" of type '" "FILE *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "_Pipe_file_set" "', argument " "2"" of type '" "FILE *""'"); 
   }
   arg2 = reinterpret_cast< FILE * >(argp2);
   if (arg1) (arg1)->file = arg2;
@@ -10547,20 +10526,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap__Data_file_get(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap__Pipe_file_get(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  btllib::_Pipe *arg1 = (btllib::_Pipe *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   FILE *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "_Data_file_get", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Data, 0 |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "_Pipe_file_get", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Pipe, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Data_file_get" "', argument " "1"" of type '" "btllib::_Data *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Pipe_file_get" "', argument " "1"" of type '" "btllib::_Pipe *""'"); 
   }
-  arg1 = reinterpret_cast< btllib::_Data * >(argp1);
+  arg1 = reinterpret_cast< btllib::_Pipe * >(argp1);
   result = (FILE *) ((arg1)->file);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
   return resultobj;
@@ -10569,9 +10548,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap__Data_pid_set(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap__Pipe_pid_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  btllib::_Pipe *arg1 = (btllib::_Pipe *) 0 ;
   pid_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -10581,18 +10560,18 @@ SWIGINTERN PyObject *_wrap__Data_pid_set(PyObject *self, PyObject *args) {
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Data, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Pipe, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Data_pid_set" "', argument " "1"" of type '" "btllib::_Data *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Pipe_pid_set" "', argument " "1"" of type '" "btllib::_Pipe *""'"); 
   }
-  arg1 = reinterpret_cast< btllib::_Data * >(argp1);
+  arg1 = reinterpret_cast< btllib::_Pipe * >(argp1);
   {
     res2 = SWIG_ConvertPtr(swig_obj[0], &argp2, SWIGTYPE_p_pid_t,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "_Data_pid_set" "', argument " "2"" of type '" "pid_t""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "_Pipe_pid_set" "', argument " "2"" of type '" "pid_t""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "_Data_pid_set" "', argument " "2"" of type '" "pid_t""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "_Pipe_pid_set" "', argument " "2"" of type '" "pid_t""'");
     } else {
       pid_t * temp = reinterpret_cast< pid_t * >(argp2);
       arg2 = *temp;
@@ -10607,20 +10586,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap__Data_pid_get(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap__Pipe_pid_get(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  btllib::_Pipe *arg1 = (btllib::_Pipe *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   pid_t result;
   
-  if (!SWIG_Python_UnpackTuple(args, "_Data_pid_get", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Data, 0 |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "_Pipe_pid_get", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Pipe, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Data_pid_get" "', argument " "1"" of type '" "btllib::_Data *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Pipe_pid_get" "', argument " "1"" of type '" "btllib::_Pipe *""'"); 
   }
-  arg1 = reinterpret_cast< btllib::_Data * >(argp1);
+  arg1 = reinterpret_cast< btllib::_Pipe * >(argp1);
   result =  ((arg1)->pid);
   resultobj = SWIG_NewPointerObj((new pid_t(static_cast< const pid_t& >(result))), SWIGTYPE_p_pid_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -10629,71 +10608,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap__Data_closed_set(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete__Pipe(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
-  bool arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Data, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Data_closed_set" "', argument " "1"" of type '" "btllib::_Data *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::_Data * >(argp1);
-  ecode2 = SWIG_AsVal_bool(swig_obj[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "_Data_closed_set" "', argument " "2"" of type '" "bool""'");
-  } 
-  arg2 = static_cast< bool >(val2);
-  if (arg1) (arg1)->closed = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap__Data_closed_get(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  bool result;
-  
-  if (!SWIG_Python_UnpackTuple(args, "_Data_closed_get", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Data, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Data_closed_get" "', argument " "1"" of type '" "btllib::_Data *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::_Data * >(argp1);
-  result = (bool) ((arg1)->closed);
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete__Data(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::_Data *arg1 = (btllib::_Data *) 0 ;
+  btllib::_Pipe *arg1 = (btllib::_Pipe *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "delete__Data", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Data, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "delete__Pipe", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Pipe, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete__Data" "', argument " "1"" of type '" "btllib::_Data *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete__Pipe" "', argument " "1"" of type '" "btllib::_Pipe *""'"); 
   }
-  arg1 = reinterpret_cast< btllib::_Data * >(argp1);
+  arg1 = reinterpret_cast< btllib::_Pipe * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10702,104 +10629,107 @@ fail:
 }
 
 
-SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete__Data) /* defines _wrap_delete__Data_destructor_closure */
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete__Pipe) /* defines _wrap_delete__Pipe_destructor_closure */
 
-SWIGINTERN int _wrap_new_DataSource__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_get_saveload_cmd(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  FILE *arg1 = (FILE *) 0 ;
-  pid_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  btllib::DataSource *result = 0 ;
+  std::string *arg1 = 0 ;
+  btllib::SaveloadOp arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  std::string result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FILE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DataSource" "', argument " "1"" of type '" "FILE *""'"); 
-  }
-  arg1 = reinterpret_cast< FILE * >(argp1);
+  if (!SWIG_Python_UnpackTuple(args, "get_saveload_cmd", 2, 2, swig_obj)) SWIG_fail;
   {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_pid_t,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_DataSource" "', argument " "2"" of type '" "pid_t""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DataSource" "', argument " "2"" of type '" "pid_t""'");
-    } else {
-      pid_t * temp = reinterpret_cast< pid_t * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "get_saveload_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
     }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "get_saveload_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
-  result = (btllib::DataSource *)new btllib::DataSource(arg1,arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__DataSource, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? -1 : 0;
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "get_saveload_cmd" "', argument " "2"" of type '" "btllib::SaveloadOp""'");
+  } 
+  arg2 = static_cast< btllib::SaveloadOp >(val2);
+  result = btllib::get_saveload_cmd((std::string const &)*arg1,arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
 fail:
-  return -1;
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
 }
 
 
-SWIGINTERN int _wrap_new_DataSource__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_run_saveload_cmd(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btllib::_Data *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  btllib::DataSource *result = 0 ;
+  std::string *arg1 = 0 ;
+  btllib::SaveloadOp arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  btllib::_Pipe result;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_btllib___Data,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DataSource" "', argument " "1"" of type '" "btllib::_Data const &""'"); 
+  if (!SWIG_Python_UnpackTuple(args, "run_saveload_cmd", 2, 2, swig_obj)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "run_saveload_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "run_saveload_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DataSource" "', argument " "1"" of type '" "btllib::_Data const &""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::_Data * >(argp1);
-  result = (btllib::DataSource *)new btllib::DataSource((btllib::_Data const &)*arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__DataSource, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? -1 : 0;
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "run_saveload_cmd" "', argument " "2"" of type '" "btllib::SaveloadOp""'");
+  } 
+  arg2 = static_cast< btllib::SaveloadOp >(val2);
+  result = btllib::run_saveload_cmd((std::string const &)*arg1,arg2);
+  resultobj = SWIG_NewPointerObj((new btllib::_Pipe(static_cast< const btllib::_Pipe& >(result))), SWIGTYPE_p_btllib___Pipe, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
 fail:
-  return -1;
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
 }
 
 
 SWIGINTERN int _wrap_new_DataSource(PyObject *self, PyObject *args, PyObject *SWIGUNUSEDPARM(kwargs)) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[1] ;
+  btllib::DataSource *result = 0 ;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_DataSource", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_btllib___Data, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_DataSource__SWIG_1(self, argc, argv);
+  if (!SWIG_Python_UnpackTuple(args, "new_DataSource", 1, 1, swig_obj)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DataSource" "', argument " "1"" of type '" "std::string const &""'"); 
     }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_FILE, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_pid_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_DataSource__SWIG_0(self, argc, argv);
-      }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DataSource" "', argument " "1"" of type '" "std::string const &""'"); 
     }
+    arg1 = ptr;
   }
-  
+  result = (btllib::DataSource *)new btllib::DataSource((std::string const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__DataSource, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj == Py_None ? -1 : 0;
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_DataSource'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    btllib::DataSource::DataSource(FILE *,pid_t)\n"
-    "    btllib::DataSource::DataSource(btllib::_Data const &)\n");
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return -1;
 }
 
@@ -10846,104 +10776,191 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_DataSource___ref__(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::DataSource *arg1 = (btllib::DataSource *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FILE *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "DataSource___ref__", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSource___ref__" "', argument " "1"" of type '" "btllib::DataSource *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::DataSource * >(argp1);
+  result = (FILE *)(arg1)->operator *();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
+  return resultobj;
+fail:
+  PyErr_Clear();
+  Py_INCREF(Py_NotImplemented);
+  return Py_NotImplemented;
+}
+
+
+SWIGINTERN PyObject *_wrap_DataSource___deref__(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::DataSource *arg1 = (btllib::DataSource *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FILE *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "DataSource___deref__", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSource___deref__" "', argument " "1"" of type '" "btllib::DataSource *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::DataSource * >(argp1);
+  result = (FILE *)(arg1)->operator ->();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DataSource_pipe_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::DataSource *arg1 = (btllib::DataSource *) 0 ;
+  btllib::_Pipe *arg2 = (btllib::_Pipe *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSource_pipe_set" "', argument " "1"" of type '" "btllib::DataSource *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::DataSource * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[0], &argp2,SWIGTYPE_p_btllib___Pipe, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataSource_pipe_set" "', argument " "2"" of type '" "btllib::_Pipe *""'"); 
+  }
+  arg2 = reinterpret_cast< btllib::_Pipe * >(argp2);
+  if (arg1) (arg1)->pipe = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DataSource_pipe_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::DataSource *arg1 = (btllib::DataSource *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  btllib::_Pipe *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "DataSource_pipe_get", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSource_pipe_get" "', argument " "1"" of type '" "btllib::DataSource *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::DataSource * >(argp1);
+  result = (btllib::_Pipe *)& ((arg1)->pipe);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib___Pipe, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DataSource_closed_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::DataSource *arg1 = (btllib::DataSource *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSource_closed_set" "', argument " "1"" of type '" "btllib::DataSource *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::DataSource * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DataSource_closed_set" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  if (arg1) (arg1)->closed = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DataSource_closed_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::DataSource *arg1 = (btllib::DataSource *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "DataSource_closed_get", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSource_closed_get" "', argument " "1"" of type '" "btllib::DataSource *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::DataSource * >(argp1);
+  result = (bool) ((arg1)->closed);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_DataSource) /* defines _wrap_delete_DataSource_destructor_closure */
 
-SWIGINTERN int _wrap_new_DataSink__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  FILE *arg1 = (FILE *) 0 ;
-  pid_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  btllib::DataSink *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FILE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DataSink" "', argument " "1"" of type '" "FILE *""'"); 
-  }
-  arg1 = reinterpret_cast< FILE * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_pid_t,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_DataSink" "', argument " "2"" of type '" "pid_t""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DataSink" "', argument " "2"" of type '" "pid_t""'");
-    } else {
-      pid_t * temp = reinterpret_cast< pid_t * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
-  }
-  result = (btllib::DataSink *)new btllib::DataSink(arg1,arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__DataSink, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_DataSink__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  btllib::_Data *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  btllib::DataSink *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_btllib___Data,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DataSink" "', argument " "1"" of type '" "btllib::_Data const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DataSink" "', argument " "1"" of type '" "btllib::_Data const &""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::_Data * >(argp1);
-  result = (btllib::DataSink *)new btllib::DataSink((btllib::_Data const &)*arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__DataSink, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  return -1;
-}
-
-
 SWIGINTERN int _wrap_new_DataSink(PyObject *self, PyObject *args, PyObject *SWIGUNUSEDPARM(kwargs)) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  bool arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  btllib::DataSink *result = 0 ;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_DataSink", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_btllib___Data, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_DataSink__SWIG_1(self, argc, argv);
+  if (!SWIG_Python_UnpackTuple(args, "new_DataSink", 2, 2, swig_obj)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DataSink" "', argument " "1"" of type '" "std::string const &""'"); 
     }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_FILE, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_pid_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_DataSink__SWIG_0(self, argc, argv);
-      }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DataSink" "', argument " "1"" of type '" "std::string const &""'"); 
     }
+    arg1 = ptr;
   }
-  
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_DataSink" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  result = (btllib::DataSink *)new btllib::DataSink((std::string const &)*arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__DataSink, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj == Py_None ? -1 : 0;
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_DataSink'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    btllib::DataSink::DataSink(FILE *,pid_t)\n"
-    "    btllib::DataSink::DataSink(btllib::_Data const &)\n");
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return -1;
 }
 
@@ -10990,74 +11007,157 @@ fail:
 }
 
 
-SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_DataSink) /* defines _wrap_delete_DataSink_destructor_closure */
-
-SWIGINTERN PyObject *_wrap_data_load(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_DataSink___ref__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  int res1 = SWIG_OLDOBJ ;
+  btllib::DataSink *arg1 = (btllib::DataSink *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  SwigValueWrapper< btllib::DataSource > result;
+  FILE *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "DataSink___ref__", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSink, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSink___ref__" "', argument " "1"" of type '" "btllib::DataSink *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::DataSink * >(argp1);
+  result = (FILE *)(arg1)->operator *();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
+  return resultobj;
+fail:
+  PyErr_Clear();
+  Py_INCREF(Py_NotImplemented);
+  return Py_NotImplemented;
+}
+
+
+SWIGINTERN PyObject *_wrap_DataSink___deref__(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::DataSink *arg1 = (btllib::DataSink *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FILE *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "DataSink___deref__", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSink, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSink___deref__" "', argument " "1"" of type '" "btllib::DataSink *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::DataSink * >(argp1);
+  result = (FILE *)(arg1)->operator ->();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DataSink_pipe_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::DataSink *arg1 = (btllib::DataSink *) 0 ;
+  btllib::_Pipe *arg2 = (btllib::_Pipe *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "data_load" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "data_load" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSink, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSink_pipe_set" "', argument " "1"" of type '" "btllib::DataSink *""'"); 
   }
-  result = btllib::data_load((std::string const &)*arg1);
-  resultobj = SWIG_NewPointerObj((new btllib::DataSource(static_cast< const btllib::DataSource& >(result))), SWIGTYPE_p_btllib__DataSource, SWIG_POINTER_OWN |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
+  arg1 = reinterpret_cast< btllib::DataSink * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[0], &argp2,SWIGTYPE_p_btllib___Pipe, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataSink_pipe_set" "', argument " "2"" of type '" "btllib::_Pipe *""'"); 
+  }
+  arg2 = reinterpret_cast< btllib::_Pipe * >(argp2);
+  if (arg1) (arg1)->pipe = *arg2;
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_data_save(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_DataSink_pipe_get(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
+  btllib::DataSink *arg1 = (btllib::DataSink *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  btllib::_Pipe *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "DataSink_pipe_get", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSink, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSink_pipe_get" "', argument " "1"" of type '" "btllib::DataSink *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::DataSink * >(argp1);
+  result = (btllib::_Pipe *)& ((arg1)->pipe);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib___Pipe, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DataSink_closed_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::DataSink *arg1 = (btllib::DataSink *) 0 ;
   bool arg2 ;
-  int res1 = SWIG_OLDOBJ ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
-  SwigValueWrapper< btllib::DataSink > result;
   
-  if (!SWIG_Python_UnpackTuple(args, "data_save", 2, 2, swig_obj)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "data_save" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "data_save" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSink, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSink_closed_set" "', argument " "1"" of type '" "btllib::DataSink *""'"); 
   }
-  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  arg1 = reinterpret_cast< btllib::DataSink * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[0], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "data_save" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DataSink_closed_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  result = btllib::data_save((std::string const &)*arg1,arg2);
-  resultobj = SWIG_NewPointerObj((new btllib::DataSink(static_cast< const btllib::DataSink& >(result))), SWIGTYPE_p_btllib__DataSink, SWIG_POINTER_OWN |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (arg1) (arg1)->closed = arg2;
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
+
+SWIGINTERN PyObject *_wrap_DataSink_closed_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::DataSink *arg1 = (btllib::DataSink *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "DataSink_closed_get", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSink, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSink_closed_get" "', argument " "1"" of type '" "btllib::DataSink *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::DataSink * >(argp1);
+  result = (bool) ((arg1)->closed);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_DataSink) /* defines _wrap_delete_DataSink_destructor_closure */
 
 SWIGINTERN PyObject *_wrap_sigchld_handler(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
@@ -11107,80 +11207,6 @@ SWIGINTERN PyObject *Swig_var_data_saveload_initialized_get(void) {
   (void)self;
   pyobj = SWIG_From_bool(static_cast< bool >(btllib::data_saveload_initialized));
   return pyobj;
-}
-
-
-SWIGINTERN PyObject *_wrap_get_saveload_cmd(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  btllib::SaveloadOp arg2 ;
-  int res1 = SWIG_OLDOBJ ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  std::string result;
-  
-  if (!SWIG_Python_UnpackTuple(args, "get_saveload_cmd", 2, 2, swig_obj)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "get_saveload_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "get_saveload_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "get_saveload_cmd" "', argument " "2"" of type '" "btllib::SaveloadOp""'");
-  } 
-  arg2 = static_cast< btllib::SaveloadOp >(val2);
-  result = btllib::get_saveload_cmd((std::string const &)*arg1,arg2);
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_run_saveload_cmd(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  btllib::SaveloadOp arg2 ;
-  int res1 = SWIG_OLDOBJ ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  SwigValueWrapper< btllib::_Data > result;
-  
-  if (!SWIG_Python_UnpackTuple(args, "run_saveload_cmd", 2, 2, swig_obj)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "run_saveload_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "run_saveload_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "run_saveload_cmd" "', argument " "2"" of type '" "btllib::SaveloadOp""'");
-  } 
-  arg2 = static_cast< btllib::SaveloadOp >(val2);
-  result = btllib::run_saveload_cmd((std::string const &)*arg1,arg2);
-  resultobj = SWIG_NewPointerObj((new btllib::_Data(static_cast< const btllib::_Data& >(result))), SWIGTYPE_p_btllib___Data, SWIG_POINTER_OWN |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return NULL;
 }
 
 
@@ -11948,35 +11974,6 @@ SWIGINTERN PyObject *Swig_var_CAPITALS_get(void) {
     pyobj = SWIG_FromCharPtrAndSize(btllib::CAPITALS, size);
   }
   return pyobj;
-}
-
-
-SWIGINTERN PyObject *_wrap_verify_iupac(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  int res1 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "verify_iupac" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "verify_iupac" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  btllib::verify_iupac((std::string const &)*arg1);
-  resultobj = SWIG_Py_Void();
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return NULL;
 }
 
 
@@ -12829,12 +12826,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "trim", _wrap_trim, METH_O, NULL},
 	 { "starts_with", _wrap_starts_with, METH_VARARGS, NULL},
 	 { "ends_with", _wrap_ends_with, METH_VARARGS, NULL},
-	 { "data_load", _wrap_data_load, METH_O, NULL},
-	 { "data_save", _wrap_data_save, METH_VARARGS, NULL},
-	 { "sigchld_handler", _wrap_sigchld_handler, METH_O, NULL},
-	 { "data_saveload_init", _wrap_data_saveload_init, METH_NOARGS, NULL},
 	 { "get_saveload_cmd", _wrap_get_saveload_cmd, METH_VARARGS, NULL},
 	 { "run_saveload_cmd", _wrap_run_saveload_cmd, METH_VARARGS, NULL},
+	 { "sigchld_handler", _wrap_sigchld_handler, METH_O, NULL},
+	 { "data_saveload_init", _wrap_data_saveload_init, METH_NOARGS, NULL},
 	 { "get_time", _wrap_get_time, METH_NOARGS, NULL},
 	 { "log_info", _wrap_log_info, METH_O, NULL},
 	 { "log_warning", _wrap_log_warning, METH_O, NULL},
@@ -12842,7 +12837,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "check_error", _wrap_check_error, METH_VARARGS, NULL},
 	 { "check_warning", _wrap_check_warning, METH_VARARGS, NULL},
 	 { "check_stream", _wrap_check_stream, METH_VARARGS, NULL},
-	 { "verify_iupac", _wrap_verify_iupac, METH_O, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -14009,11 +14003,10 @@ SwigPyBuiltin__btllib__SeqReader_richcompare(PyObject *self, PyObject *other, in
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeqReader_methods[] = {
+  { "close", _wrap_SeqReader_close, METH_NOARGS, "" },
   { "flagFoldCase", _wrap_SeqReader_flagFoldCase, METH_NOARGS, "" },
   { "flagTrimMasked", _wrap_SeqReader_flagTrimMasked, METH_NOARGS, "" },
-  { "close", _wrap_SeqReader_close, METH_NOARGS, "" },
   { "get_format", _wrap_SeqReader_get_format, METH_NOARGS, "" },
-  { "peek", _wrap_SeqReader_peek, METH_NOARGS, "" },
   { "read", _wrap_SeqReader_read, METH_NOARGS, "" },
   { "name", _wrap_SeqReader_name, METH_NOARGS, "" },
   { "comment", _wrap_SeqReader_comment, METH_NOARGS, "" },
@@ -14827,20 +14820,18 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__Graph_type = {
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__Graph_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__Graph_type};
 
-static SwigPyGetSet _Data___dict___getset = { SwigPyObject_get___dict__, 0 };
-static SwigPyGetSet _Data_closed_getset = { _wrap__Data_closed_get, _wrap__Data_closed_set };
-static SwigPyGetSet _Data_pid_getset = { _wrap__Data_pid_get, _wrap__Data_pid_set };
-static SwigPyGetSet _Data_file_getset = { _wrap__Data_file_get, _wrap__Data_file_set };
-SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib___Data_getset[] = {
-    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &_Data___dict___getset },
-    { (char *)"closed", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &_Data_closed_getset },
-    { (char *)"pid", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &_Data_pid_getset },
-    { (char *)"file", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &_Data_file_getset },
+static SwigPyGetSet _Pipe___dict___getset = { SwigPyObject_get___dict__, 0 };
+static SwigPyGetSet _Pipe_pid_getset = { _wrap__Pipe_pid_get, _wrap__Pipe_pid_set };
+static SwigPyGetSet _Pipe_file_getset = { _wrap__Pipe_file_get, _wrap__Pipe_file_set };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib___Pipe_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &_Pipe___dict___getset },
+    { (char *)"pid", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &_Pipe_pid_getset },
+    { (char *)"file", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &_Pipe_file_getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };
 
 SWIGINTERN PyObject *
-SwigPyBuiltin__btllib___Data_richcompare(PyObject *self, PyObject *other, int op) {
+SwigPyBuiltin__btllib___Pipe_richcompare(PyObject *self, PyObject *other, int op) {
   PyObject *result = NULL;
   if (!result) {
     if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
@@ -14853,13 +14844,11 @@ SwigPyBuiltin__btllib___Data_richcompare(PyObject *self, PyObject *other, int op
   return result;
 }
 
-SWIGINTERN PyMethodDef SwigPyBuiltin__btllib___Data_methods[] = {
-  { "__ref__", _wrap__Data___ref__, METH_NOARGS, "" },
-  { "__deref__", _wrap__Data___deref__, METH_NOARGS, "" },
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib___Pipe_methods[] = {
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
-static PyHeapTypeObject SwigPyBuiltin__btllib___Data_type = {
+static PyHeapTypeObject SwigPyBuiltin__btllib___Pipe_type = {
   {
 #if PY_VERSION_HEX >= 0x03000000
     PyVarObject_HEAD_INIT(NULL, 0)
@@ -14867,10 +14856,10 @@ static PyHeapTypeObject SwigPyBuiltin__btllib___Data_type = {
     PyObject_HEAD_INIT(NULL)
     0,                                        /* ob_size */
 #endif
-    "btllib._Data",                           /* tp_name */
+    "btllib._Pipe",                           /* tp_name */
     sizeof(SwigPyObject),                     /* tp_basicsize */
     0,                                        /* tp_itemsize */
-    _wrap_delete__Data_destructor_closure,    /* tp_dealloc */
+    _wrap_delete__Pipe_destructor_closure,    /* tp_dealloc */
     (printfunc) 0,                            /* tp_print */
     (getattrfunc) 0,                          /* tp_getattr */
     (setattrfunc) 0,                          /* tp_setattr */
@@ -14880,36 +14869,36 @@ static PyHeapTypeObject SwigPyBuiltin__btllib___Data_type = {
     (cmpfunc) 0,                              /* tp_compare */
 #endif
     (reprfunc) 0,                             /* tp_repr */
-    &SwigPyBuiltin__btllib___Data_type.as_number,                 /* tp_as_number */
-    &SwigPyBuiltin__btllib___Data_type.as_sequence,               /* tp_as_sequence */
-    &SwigPyBuiltin__btllib___Data_type.as_mapping,                /* tp_as_mapping */
+    &SwigPyBuiltin__btllib___Pipe_type.as_number,                 /* tp_as_number */
+    &SwigPyBuiltin__btllib___Pipe_type.as_sequence,               /* tp_as_sequence */
+    &SwigPyBuiltin__btllib___Pipe_type.as_mapping,                /* tp_as_mapping */
     SwigPyObject_hash,                        /* tp_hash */
     (ternaryfunc) 0,                          /* tp_call */
     (reprfunc) 0,                             /* tp_str */
     (getattrofunc) 0,                         /* tp_getattro */
     (setattrofunc) 0,                         /* tp_setattro */
-    &SwigPyBuiltin__btllib___Data_type.as_buffer,                 /* tp_as_buffer */
+    &SwigPyBuiltin__btllib___Pipe_type.as_buffer,                 /* tp_as_buffer */
 #if PY_VERSION_HEX >= 0x03000000
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
 #else
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
 #endif
-    "btllib::_Data",                          /* tp_doc */
+    "btllib::_Pipe",                          /* tp_doc */
     (traverseproc) 0,                         /* tp_traverse */
     (inquiry) 0,                              /* tp_clear */
-    SwigPyBuiltin__btllib___Data_richcompare, /* tp_richcompare */
+    SwigPyBuiltin__btllib___Pipe_richcompare, /* tp_richcompare */
     0,                                        /* tp_weaklistoffset */
     (getiterfunc) 0,                          /* tp_iter */
     (iternextfunc) 0,                         /* tp_iternext */
-    SwigPyBuiltin__btllib___Data_methods,     /* tp_methods */
+    SwigPyBuiltin__btllib___Pipe_methods,     /* tp_methods */
     0,                                        /* tp_members */
-    SwigPyBuiltin__btllib___Data_getset,      /* tp_getset */
+    SwigPyBuiltin__btllib___Pipe_getset,      /* tp_getset */
     0,                                        /* tp_base */
     0,                                        /* tp_dict */
     (descrgetfunc) 0,                         /* tp_descr_get */
     (descrsetfunc) 0,                         /* tp_descr_set */
     offsetof(SwigPyObject, dict),             /* tp_dictoffset */
-    _wrap_new__Data,                          /* tp_init */
+    _wrap_new__Pipe,                          /* tp_init */
     (allocfunc) 0,                            /* tp_alloc */
     (newfunc) 0,                              /* tp_new */
     (freefunc) 0,                             /* tp_free */
@@ -14942,7 +14931,7 @@ static PyHeapTypeObject SwigPyBuiltin__btllib___Data_type = {
   {
     (binaryfunc) 0,                           /* nb_add */
     (binaryfunc) 0,                           /* nb_subtract */
-    _wrap__Data___ref__,                      /* nb_multiply */
+    (binaryfunc) 0,                           /* nb_multiply */
 #if PY_VERSION_HEX < 0x03000000
     (binaryfunc) 0,                           /* nb_divide */
 #endif
@@ -15039,11 +15028,15 @@ static PyHeapTypeObject SwigPyBuiltin__btllib___Data_type = {
 #endif
 };
 
-SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib___Data_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib___Data_type};
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib___Pipe_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib___Pipe_type};
 
 static SwigPyGetSet DataSource___dict___getset = { SwigPyObject_get___dict__, 0 };
+static SwigPyGetSet DataSource_closed_getset = { _wrap_DataSource_closed_get, _wrap_DataSource_closed_set };
+static SwigPyGetSet DataSource_pipe_getset = { _wrap_DataSource_pipe_get, _wrap_DataSource_pipe_set };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__DataSource_getset[] = {
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &DataSource___dict___getset },
+    { (char *)"closed", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &DataSource_closed_getset },
+    { (char *)"pipe", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &DataSource_pipe_getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };
 
@@ -15063,6 +15056,8 @@ SwigPyBuiltin__btllib__DataSource_richcompare(PyObject *self, PyObject *other, i
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__DataSource_methods[] = {
   { "close", _wrap_DataSource_close, METH_NOARGS, "" },
+  { "__ref__", _wrap_DataSource___ref__, METH_NOARGS, "" },
+  { "__deref__", _wrap_DataSource___deref__, METH_NOARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -15149,7 +15144,7 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__DataSource_type = {
   {
     (binaryfunc) 0,                           /* nb_add */
     (binaryfunc) 0,                           /* nb_subtract */
-    (binaryfunc) 0,                           /* nb_multiply */
+    _wrap_DataSource___ref__,                 /* nb_multiply */
 #if PY_VERSION_HEX < 0x03000000
     (binaryfunc) 0,                           /* nb_divide */
 #endif
@@ -15249,8 +15244,12 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__DataSource_type = {
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__DataSource_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__DataSource_type};
 
 static SwigPyGetSet DataSink___dict___getset = { SwigPyObject_get___dict__, 0 };
+static SwigPyGetSet DataSink_closed_getset = { _wrap_DataSink_closed_get, _wrap_DataSink_closed_set };
+static SwigPyGetSet DataSink_pipe_getset = { _wrap_DataSink_pipe_get, _wrap_DataSink_pipe_set };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__DataSink_getset[] = {
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &DataSink___dict___getset },
+    { (char *)"closed", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &DataSink_closed_getset },
+    { (char *)"pipe", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &DataSink_pipe_getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };
 
@@ -15270,6 +15269,8 @@ SwigPyBuiltin__btllib__DataSink_richcompare(PyObject *self, PyObject *other, int
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__DataSink_methods[] = {
   { "close", _wrap_DataSink_close, METH_NOARGS, "" },
+  { "__ref__", _wrap_DataSink___ref__, METH_NOARGS, "" },
+  { "__deref__", _wrap_DataSink___deref__, METH_NOARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -15356,7 +15357,7 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__DataSink_type = {
   {
     (binaryfunc) 0,                           /* nb_add */
     (binaryfunc) 0,                           /* nb_subtract */
-    (binaryfunc) 0,                           /* nb_multiply */
+    _wrap_DataSink___ref__,                   /* nb_multiply */
 #if PY_VERSION_HEX < 0x03000000
     (binaryfunc) 0,                           /* nb_divide */
 #endif
@@ -16498,12 +16499,6 @@ SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__KmerSet_clientdata = {0, 0, 0
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_btllib__DataSinkTo_p_btllib___Data(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((btllib::_Data *)  ((btllib::DataSink *) x));
-}
-static void *_p_btllib__DataSourceTo_p_btllib___Data(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((btllib::_Data *)  ((btllib::DataSource *) x));
-}
 static void *_p_std__basic_ostreamT_char_std__char_traitsT_char_t_tTo_p_std__ios_base(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::ios_base *) (std::basic_ios< char > *) ((std::basic_ostream< char,std::char_traits< char > > *) x));
 }
@@ -16572,7 +16567,7 @@ static swig_type_info _swigt__p_btllib__KmerSet = {"_p_btllib__KmerSet", "btllib
 static swig_type_info _swigt__p_btllib__SeqReader = {"_p_btllib__SeqReader", "btllib::SeqReader *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqReader_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeqWriter = {"_p_btllib__SeqWriter", "btllib::SeqWriter *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqWriter_clientdata, 0};
 static swig_type_info _swigt__p_btllib__Vertex = {"_p_btllib__Vertex", "btllib::Vertex *", 0, 0, (void*)&SwigPyBuiltin__btllib__Vertex_clientdata, 0};
-static swig_type_info _swigt__p_btllib___Data = {"_p_btllib___Data", "btllib::_Data *", 0, 0, (void*)&SwigPyBuiltin__btllib___Data_clientdata, 0};
+static swig_type_info _swigt__p_btllib___Pipe = {"_p_btllib___Pipe", "btllib::_Pipe *", 0, 0, (void*)&SwigPyBuiltin__btllib___Pipe_clientdata, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "std::basic_istream< char >::char_type *|char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char_type = {"_p_char_type", "char_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
@@ -16642,7 +16637,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_btllib__SeqReader,
   &_swigt__p_btllib__SeqWriter,
   &_swigt__p_btllib__Vertex,
-  &_swigt__p_btllib___Data,
+  &_swigt__p_btllib___Pipe,
   &_swigt__p_char,
   &_swigt__p_char_type,
   &_swigt__p_double,
@@ -16712,7 +16707,7 @@ static swig_cast_info _swigc__p_btllib__KmerSet[] = {  {&_swigt__p_btllib__KmerS
 static swig_cast_info _swigc__p_btllib__SeqReader[] = {  {&_swigt__p_btllib__SeqReader, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeqWriter[] = {  {&_swigt__p_btllib__SeqWriter, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__Vertex[] = {  {&_swigt__p_btllib__Vertex, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_btllib___Data[] = {  {&_swigt__p_btllib__DataSink, _p_btllib__DataSinkTo_p_btllib___Data, 0, 0},  {&_swigt__p_btllib__DataSource, _p_btllib__DataSourceTo_p_btllib___Data, 0, 0},  {&_swigt__p_btllib___Data, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib___Pipe[] = {  {&_swigt__p_btllib___Pipe, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char_type[] = {  {&_swigt__p_char_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
@@ -16782,7 +16777,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_btllib__SeqReader,
   _swigc__p_btllib__SeqWriter,
   _swigc__p_btllib__Vertex,
-  _swigc__p_btllib___Data,
+  _swigc__p_btllib___Pipe,
   _swigc__p_char,
   _swigc__p_char_type,
   _swigc__p_double,
@@ -17902,7 +17897,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_FOLD_CASE",SWIG_From_int(static_cast< int >(btllib::SeqReader::NO_FOLD_CASE)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_TRIM_MASKED",SWIG_From_int(static_cast< int >(btllib::SeqReader::NO_TRIM_MASKED)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "TRIM_MASKED",SWIG_From_int(static_cast< int >(btllib::SeqReader::TRIM_MASKED)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "UNKNOWN",SWIG_From_int(static_cast< int >(btllib::SeqReader::UNKNOWN)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "UNDETERMINED",SWIG_From_int(static_cast< int >(btllib::SeqReader::UNDETERMINED)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FASTA",SWIG_From_int(static_cast< int >(btllib::SeqReader::FASTA)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FASTQ",SWIG_From_int(static_cast< int >(btllib::SeqReader::FASTQ)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SAM",SWIG_From_int(static_cast< int >(btllib::SeqReader::SAM)));
@@ -17996,9 +17991,12 @@ SWIG_init(void) {
   PyModule_AddObject(m, "Graph", (PyObject *)builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "Graph");
   d = md;
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "READ",SWIG_From_int(static_cast< int >(btllib::READ)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "WRITE",SWIG_From_int(static_cast< int >(btllib::WRITE)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "APPEND",SWIG_From_int(static_cast< int >(btllib::APPEND)));
   
-  /* type 'btllib::_Data' */
-  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib___Data_type;
+  /* type 'btllib::_Pipe' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib___Pipe_type;
   builtin_pytype->tp_dict = d = PyDict_New();
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
@@ -18008,7 +18006,7 @@ SWIG_init(void) {
   PyDict_SetItemString(d, "this", this_descr);
   PyDict_SetItemString(d, "thisown", thisown_descr);
   if (PyType_Ready(builtin_pytype) < 0) {
-    PyErr_SetString(PyExc_TypeError, "Could not create type '_Data'.");
+    PyErr_SetString(PyExc_TypeError, "Could not create type '_Pipe'.");
 #if PY_VERSION_HEX >= 0x03000000
     return NULL;
 #else
@@ -18016,8 +18014,8 @@ SWIG_init(void) {
 #endif
   }
   Py_INCREF(builtin_pytype);
-  PyModule_AddObject(m, "_Data", (PyObject *)builtin_pytype);
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "_Data");
+  PyModule_AddObject(m, "_Pipe", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "_Pipe");
   d = md;
   
   /* type 'btllib::DataSource' */
@@ -18026,17 +18024,6 @@ SWIG_init(void) {
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;
-  builtin_basetype = SWIG_MangledTypeQuery("_p_btllib___Data");
-  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData *) builtin_basetype->clientdata)->pytype) {
-    builtin_bases[builtin_base_count++] = ((SwigPyClientData *) builtin_basetype->clientdata)->pytype;
-  } else {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'DataSource' as base 'btllib::_Data' has not been initialized.\n");
-#if PY_VERSION_HEX >= 0x03000000
-    return NULL;
-#else
-    return;
-#endif
-  }
   builtin_bases[builtin_base_count] = NULL;
   SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
   PyDict_SetItemString(d, "this", this_descr);
@@ -18060,17 +18047,6 @@ SWIG_init(void) {
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;
-  builtin_basetype = SWIG_MangledTypeQuery("_p_btllib___Data");
-  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData *) builtin_basetype->clientdata)->pytype) {
-    builtin_bases[builtin_base_count++] = ((SwigPyClientData *) builtin_basetype->clientdata)->pytype;
-  } else {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'DataSink' as base 'btllib::_Data' has not been initialized.\n");
-#if PY_VERSION_HEX >= 0x03000000
-    return NULL;
-#else
-    return;
-#endif
-  }
   builtin_bases[builtin_base_count] = NULL;
   SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
   PyDict_SetItemString(d, "this", this_descr);
@@ -18090,9 +18066,6 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "data_saveload_initialized", Swig_var_data_saveload_initialized_get, Swig_var_data_saveload_initialized_set);
   PyDict_SetItemString(md, "data_saveload_initialized", PyObject_GetAttrString(globals, "data_saveload_initialized"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "data_saveload_initialized");
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "READ",SWIG_From_int(static_cast< int >(btllib::READ)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "WRITE",SWIG_From_int(static_cast< int >(btllib::WRITE)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "APPEND",SWIG_From_int(static_cast< int >(btllib::APPEND)));
   
   /* type 'btllib::CountingBloomFilter' */
   builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__CountingBloomFilter_type;

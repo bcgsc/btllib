@@ -8,11 +8,12 @@
 
 package btllib;
 
-public class DataSource extends _Data {
+public class DataSource {
   private transient long swigCPtr;
+  protected transient boolean swigCMemOwn;
 
   protected DataSource(long cPtr, boolean cMemoryOwn) {
-    super(btllibJNI.DataSource_SWIGUpcast(cPtr), cMemoryOwn);
+    swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
@@ -33,19 +34,41 @@ public class DataSource extends _Data {
       }
       swigCPtr = 0;
     }
-    super.delete();
   }
 
-  public DataSource(SWIGTYPE_p_FILE file, SWIGTYPE_p_pid_t pid) {
-    this(btllibJNI.new_DataSource__SWIG_0(SWIGTYPE_p_FILE.getCPtr(file), SWIGTYPE_p_pid_t.getCPtr(pid)), true);
-  }
-
-  public DataSource(_Data d) {
-    this(btllibJNI.new_DataSource__SWIG_1(_Data.getCPtr(d), d), true);
+  public DataSource(String source) {
+    this(btllibJNI.new_DataSource(source), true);
   }
 
   public void close() {
     btllibJNI.DataSource_close(swigCPtr, this);
+  }
+
+  public SWIGTYPE_p_FILE __ref__() {
+    long cPtr = btllibJNI.DataSource___ref__(swigCPtr, this);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
+  }
+
+  public SWIGTYPE_p_FILE __deref__() {
+    long cPtr = btllibJNI.DataSource___deref__(swigCPtr, this);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
+  }
+
+  public void setPipe(_Pipe value) {
+    btllibJNI.DataSource_pipe_set(swigCPtr, this, _Pipe.getCPtr(value), value);
+  }
+
+  public _Pipe getPipe() {
+    long cPtr = btllibJNI.DataSource_pipe_get(swigCPtr, this);
+    return (cPtr == 0) ? null : new _Pipe(cPtr, false);
+  }
+
+  public void setClosed(boolean value) {
+    btllibJNI.DataSource_closed_set(swigCPtr, this, value);
+  }
+
+  public boolean getClosed() {
+    return btllibJNI.DataSource_closed_get(swigCPtr, this);
   }
 
 }

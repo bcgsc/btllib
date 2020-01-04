@@ -19,7 +19,7 @@ public:
     FASTQ
   };
 
-  SeqWriter(const std::string& sink, Format format, bool append = false);
+  SeqWriter(const std::string& sink_path, Format format, bool append = false);
 
   void close();
 
@@ -29,16 +29,18 @@ public:
              const std::string& qual);
 
 private:
-  const std::string sink;
-  DataSink output;
+  const std::string sink_path;
+  DataSink sink;
   bool closed;
   Format format;
   char headerchar;
 };
 
-inline SeqWriter::SeqWriter(const std::string& sink, Format format, bool append)
-  : sink(sink)
-  , output(data_save(sink, append))
+inline SeqWriter::SeqWriter(const std::string& sink_path,
+                            Format format,
+                            bool append)
+  : sink_path(sink_path)
+  , sink(sink_path, append)
   , closed(false)
   , format(format)
   , headerchar(format == FASTA ? '>' : '@')
@@ -48,7 +50,7 @@ inline void
 SeqWriter::close()
 {
   if (!closed) {
-    output.close();
+    sink.close();
     closed = true;
   }
 }
@@ -60,25 +62,31 @@ SeqWriter::write(const std::string& name,
                  const std::string& qual)
 {
   check_error(seq.empty(), "Attempted to write empty sequence.");
-  verify_iupac(seq);
+  for (const auto& c : seq) {
+    if (!bool(COMPLEMENTS[unsigned(c)])) {
+      log_error(std::string("A sequence contains invalid IUPAC character: ") +
+                c);
+      std::exit(EXIT_FAILURE);
+    }
+  }
 
-  fwrite(&headerchar, 1, 1, output);
+  fwrite(&headerchar, 1, 1, sink);
   if (!name.empty()) {
-    fwrite(name.c_str(), 1, name.size(), output);
+    fwrite(name.c_str(), 1, name.size(), sink);
   }
   if (!comment.empty()) {
-    fwrite(" ", 1, 1, output);
-    fwrite(comment.c_str(), 1, comment.size(), output);
-    fwrite("\n", 1, 1, output);
+    fwrite(" ", 1, 1, sink);
+    fwrite(comment.c_str(), 1, comment.size(), sink);
+    fwrite("\n", 1, 1, sink);
   }
-  fwrite(seq.c_str(), 1, seq.size(), output);
-  fwrite("\n", 1, 1, output);
+  fwrite(seq.c_str(), 1, seq.size(), sink);
+  fwrite("\n", 1, 1, sink);
   if (format == FASTQ) {
     check_error(seq.size() != qual.size(),
                 "Quality must be the same length as sequence.");
-    fwrite("+\n", 1, 2, output);
-    fwrite(qual.c_str(), 1, qual.size(), output);
-    fwrite("\n", 1, 1, output);
+    fwrite("+\n", 1, 2, sink);
+    fwrite(qual.c_str(), 1, qual.size(), sink);
+    fwrite("\n", 1, 1, sink);
   }
 }
 

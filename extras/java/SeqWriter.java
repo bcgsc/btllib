@@ -36,12 +36,12 @@ public class SeqWriter {
     }
   }
 
-  public SeqWriter(String sink, SeqWriter.Format format, boolean append) {
-    this(btllibJNI.new_SeqWriter__SWIG_0(sink, format.swigValue(), append), true);
+  public SeqWriter(String sink_path, SeqWriter.Format format, boolean append) {
+    this(btllibJNI.new_SeqWriter__SWIG_0(sink_path, format.swigValue(), append), true);
   }
 
-  public SeqWriter(String sink, SeqWriter.Format format) {
-    this(btllibJNI.new_SeqWriter__SWIG_1(sink, format.swigValue()), true);
+  public SeqWriter(String sink_path, SeqWriter.Format format) {
+    this(btllibJNI.new_SeqWriter__SWIG_1(sink_path, format.swigValue()), true);
   }
 
   public void close() {
