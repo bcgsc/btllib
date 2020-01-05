@@ -87,7 +87,7 @@ int main() {
         for (int n = 0; n < 64; n++) {
             random_filename += char(gen_random_alphabet());
         }
-        btllib::SeqWriter random_seqs(random_filename, btllib::SeqWriter::FASTQ, false);
+        btllib::SeqWriter random_seqs(random_filename + ".gz.xz", btllib::SeqWriter::FASTQ, false);
         for (int s = 0; s < 500; s++) {
             std::string name, comment, seq, qual;
 
@@ -113,7 +113,7 @@ int main() {
         }
         random_seqs.close();
 
-        btllib::SeqReader random_reader(random_filename);
+        btllib::SeqReader random_reader(random_filename + ".gz.xz");
         for (int n = 0; record = random_reader.read(); n++) {
             if (record.name != generated_names[n]) { std::cerr << record.name << " | " << generated_names[n] << std::endl; }
             assert(record.name == generated_names[n]);

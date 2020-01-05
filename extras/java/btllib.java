@@ -37,8 +37,8 @@ public class btllib {
     return btllibJNI.get_saveload_cmd(path, op.swigValue());
   }
 
-  public static _Pipe run_saveload_cmd(String cmd, SaveloadOp op) {
-    return new _Pipe(btllibJNI.run_saveload_cmd(cmd, op.swigValue()), true);
+  public static _Pipeline run_saveload_cmd(String cmd, SaveloadOp op) {
+    return new _Pipeline(btllibJNI.run_saveload_cmd(cmd, op.swigValue()), true);
   }
 
   public static void sigchld_handler(int sig) {

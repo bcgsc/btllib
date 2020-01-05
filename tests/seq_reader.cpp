@@ -25,7 +25,7 @@ int main() {
 
         // Test FASTA
         std::cerr << "Test FASTA" << std::endl;
-        btllib::SeqReader reader_fasta("../tests/input.fa.gz");
+        btllib::SeqReader reader_fasta("../tests/input.fa.gz.bz2");
         assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
 
         i = 0;

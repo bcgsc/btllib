@@ -44,6 +44,10 @@ public class SeqWriter {
     this(btllibJNI.new_SeqWriter__SWIG_1(sink_path, format.swigValue()), true);
   }
 
+  public SeqWriter(String sink_path) {
+    this(btllibJNI.new_SeqWriter__SWIG_2(sink_path), true);
+  }
+
   public void close() {
     btllibJNI.SeqWriter_close(swigCPtr, this);
   }

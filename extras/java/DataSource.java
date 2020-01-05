@@ -54,13 +54,13 @@ public class DataSource {
     return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
   }
 
-  public void setPipe(_Pipe value) {
-    btllibJNI.DataSource_pipe_set(swigCPtr, this, _Pipe.getCPtr(value), value);
+  public void setPipeline(_Pipeline value) {
+    btllibJNI.DataSource_pipeline_set(swigCPtr, this, _Pipeline.getCPtr(value), value);
   }
 
-  public _Pipe getPipe() {
-    long cPtr = btllibJNI.DataSource_pipe_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new _Pipe(cPtr, false);
+  public _Pipeline getPipeline() {
+    long cPtr = btllibJNI.DataSource_pipeline_get(swigCPtr, this);
+    return (cPtr == 0) ? null : new _Pipeline(cPtr, false);
   }
 
   public void setClosed(boolean value) {
