@@ -19,7 +19,7 @@ public:
     FASTQ
   };
 
-  SeqWriter(const std::string& sink_path, Format format, bool append = false);
+  SeqWriter(const std::string& sink_path, Format format = FASTA, bool append = false);
 
   void close();
 
