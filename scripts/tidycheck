@@ -24,4 +24,5 @@ tidy_checks="*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-hicpp-no-ar
 tidy_options="[]"
 
 files=$(scripts/get_include_files)
-clang-tidy -warnings-as-errors='*' -config="{Checks: '$tidy_checks', CheckOptions: $tidy_options}" $files -- -std=c++17
+clang-tidy -warnings-as-errors='*' -config="{Checks: '$tidy_checks', CheckOptions: $tidy_options}" $files -- \
+-std=c++17 -Iinclude

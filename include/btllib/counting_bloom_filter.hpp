@@ -28,18 +28,26 @@ inline CountingBloomFilter::CountingBloomFilter(size_t size)
 
 inline void
 CountingBloomFilter::insert(const std::vector<uint64_t>& hashes)
-{}
+{
+  insert(hashes.data());
+}
 
 inline void
 CountingBloomFilter::insert(const uint64_t* hashes)
-{}
+{
+  (void)hashes;
+}
 
 inline unsigned
 CountingBloomFilter::count(const std::vector<uint64_t>& hashes)
-{}
+{
+  return count(hashes.data());
+}
 inline unsigned
 CountingBloomFilter::count(const uint64_t* hashes)
-{}
+{
+  (void)hashes;
+}
 
 } // namespace btllib
 

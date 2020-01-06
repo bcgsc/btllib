@@ -22,11 +22,12 @@ public:
 private:
   unsigned k;
   BloomFilter bf;
+  static const size_t HASH_NUM = 4;
 };
 
 inline KmerSet::KmerSet(unsigned k, size_t bytes)
   : k(k)
-  , bf(bytes)
+  , bf(bytes, HASH_NUM)
 {}
 
 inline void
@@ -37,7 +38,9 @@ KmerSet::insert(const std::string& seq)
 
 inline void
 KmerSet::insert(const char* seq)
-{}
+{
+  (void)seq;
+}
 
 inline bool
 KmerSet::contains(const std::string& seq)
@@ -47,6 +50,7 @@ KmerSet::contains(const std::string& seq)
 inline bool
 KmerSet::contains(const char* seq)
 {
+  (void)seq;
   return false;
 }
 

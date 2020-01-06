@@ -37,7 +37,9 @@ CountingKmerSet::insert(const std::string& seq)
 
 inline void
 CountingKmerSet::insert(const char* seq)
-{}
+{
+  (void)seq;
+}
 
 inline unsigned
 CountingKmerSet::count(const std::string& seq)
@@ -48,6 +50,7 @@ CountingKmerSet::count(const std::string& seq)
 inline unsigned
 CountingKmerSet::count(const char* seq)
 {
+  (void)seq;
   return 0;
 }
 

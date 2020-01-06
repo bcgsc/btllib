@@ -36,8 +36,16 @@ public class BloomFilter {
     }
   }
 
-  public BloomFilter(long size) {
-    this(btllibJNI.new_BloomFilter(size), true);
+  public BloomFilter() {
+    this(btllibJNI.new_BloomFilter__SWIG_0(), true);
+  }
+
+  public BloomFilter(long size, long hash_num) {
+    this(btllibJNI.new_BloomFilter__SWIG_1(size, hash_num), true);
+  }
+
+  public BloomFilter(String path) {
+    this(btllibJNI.new_BloomFilter__SWIG_2(path), true);
   }
 
   public void insert(SWIGTYPE_p_std__vectorT_uint64_t_t hashes) {
@@ -54,6 +62,26 @@ public class BloomFilter {
 
   public boolean contains(SWIGTYPE_p_uint64_t hashes) {
     return btllibJNI.BloomFilter_contains__SWIG_1(swigCPtr, this, SWIGTYPE_p_uint64_t.getCPtr(hashes));
+  }
+
+  public long get_size() {
+    return btllibJNI.BloomFilter_get_size(swigCPtr, this);
+  }
+
+  public SWIGTYPE_p_uint64_t get_pop_cnt() {
+    return new SWIGTYPE_p_uint64_t(btllibJNI.BloomFilter_get_pop_cnt(swigCPtr, this), true);
+  }
+
+  public long get_hash_num() {
+    return btllibJNI.BloomFilter_get_hash_num(swigCPtr, this);
+  }
+
+  public double get_fpr() {
+    return btllibJNI.BloomFilter_get_fpr(swigCPtr, this);
+  }
+
+  public void write(String path) {
+    btllibJNI.BloomFilter_write(swigCPtr, this, path);
   }
 
 }
