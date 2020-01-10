@@ -549,8 +549,6 @@ SeqReader::readline_file_append(std::string& line)
   }
 }
 
-static char buf[1024];
-
 inline void
 SeqReader::readline_file(std::string& line)
 {

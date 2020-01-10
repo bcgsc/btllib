@@ -4,6 +4,7 @@
 #include <chrono>
 #include <thread>
 #include <cstring>
+#include <cstdio>
 
 int main() {
     // Data loading is already tested in `seq_reader.cpp`, so saving primarily is tested here.
@@ -23,6 +24,9 @@ int main() {
     getline(&line, &line_len, gz_source);
     gz_source.close();
     assert(strcmp(line, txt) == 0);
+    gz_source.close();
+
+    std::remove("test.gz");
 
     // Test .xz
     const char* xz_filename = "test.xz";
@@ -35,6 +39,9 @@ int main() {
     getline(&line, &line_len, xz_source);
     xz_source.close();
     assert(strcmp(line, txt) == 0);
+    xz_source.close();
+
+    std::remove("test.xz");
 
     return 0;
 }

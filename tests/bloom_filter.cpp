@@ -2,6 +2,7 @@
 
 #include <random>
 #include <chrono>
+#include <cstdio>
 
 int main() {
     std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count() + 7777777);
@@ -28,6 +29,8 @@ int main() {
     assert(bf2.contains({ 1, 10, 100 }));
     assert(bf2.contains({ 100, 200, 300 }));
     assert(!bf2.contains({ 1, 20, 100 }));
+
+    std::remove(random_filename.c_str());
 
     return 0;
 }

@@ -5,6 +5,7 @@
 #include <fstream>
 #include <random>
 #include <chrono>
+#include <cstdio>
 
 int main() {
     const char* seqs[] = { "ACTG", "TGCA" };
@@ -122,6 +123,9 @@ int main() {
             assert(record.seq == generated_seqs[n]);
             assert(record.qual == generated_quals[n]);
         }
+        
+        random_reader.close();
+        std::remove(random_filename.c_str());
     }
 
 	return 0;
