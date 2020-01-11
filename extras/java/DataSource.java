@@ -44,16 +44,6 @@ public class DataSource {
     btllibJNI.DataSource_close(swigCPtr, this);
   }
 
-  public SWIGTYPE_p_FILE __ref__() {
-    long cPtr = btllibJNI.DataSource___ref__(swigCPtr, this);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
-  }
-
-  public SWIGTYPE_p_FILE __deref__() {
-    long cPtr = btllibJNI.DataSource___deref__(swigCPtr, this);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
-  }
-
   public void setPipeline(_Pipeline value) {
     btllibJNI.DataSource_pipeline_set(swigCPtr, this, _Pipeline.getCPtr(value), value);
   }

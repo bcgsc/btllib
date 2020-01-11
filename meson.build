@@ -3,7 +3,7 @@ project('btllib', 'cpp',
         license : 'GPL3',
         default_options : [ 'cpp_std=c++17' ])
 add_global_arguments([ '-pthread', '-fopenmp' ], language : 'cpp')
-add_global_link_arguments([ '-ldl', '-lpthread', '-fopenmp' ], language : 'cpp')
+add_global_link_arguments([ '-ldl', '-lpthread', '-fopenmp', '-lboost_iostreams' ], language : 'cpp')
 
 thread_dep = dependency('threads')
 

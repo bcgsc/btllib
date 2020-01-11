@@ -9,6 +9,12 @@
 
 namespace btllib {
 
+static inline ssize_t
+fd_write(int fd, const void* buf, size_t count)
+{
+  return write(fd, buf, count);
+}
+
 class SeqWriter
 {
 
@@ -72,24 +78,31 @@ SeqWriter::write(const std::string& name,
     }
   }
 
-  fwrite(&headerchar, 1, 1, sink);
+  std::string output;
+  output.reserve(1 + name.size() + 1 + comment.size() + 1 + seq.size() + 3 +
+                 qual.size() + 1);
+  output += headerchar;
   if (!name.empty()) {
-    fwrite(name.c_str(), 1, name.size(), sink);
+    output += name;
   }
   if (!comment.empty()) {
-    fwrite(" ", 1, 1, sink);
-    fwrite(comment.c_str(), 1, comment.size(), sink);
-    fwrite("\n", 1, 1, sink);
+    output += " ";
+    output += comment;
+    output += '\n';
   }
-  fwrite(seq.c_str(), 1, seq.size(), sink);
-  fwrite("\n", 1, 1, sink);
+
+  output += seq;
+  output += '\n';
+
   if (format == FASTQ) {
     check_error(seq.size() != qual.size(),
                 "Quality must be the same length as sequence.");
-    fwrite("+\n", 1, 2, sink);
-    fwrite(qual.c_str(), 1, qual.size(), sink);
-    fwrite("\n", 1, 1, sink);
+    output += "+\n";
+    output += qual;
+    output += '\n';
   }
+
+  fd_write(sink, output.c_str(), output.size());
 }
 
 } // namespace btllib

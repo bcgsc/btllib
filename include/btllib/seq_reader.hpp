@@ -6,12 +6,17 @@
 #include "seq.hpp"
 #include "status.hpp"
 
+#include <boost/iostreams/device/file_descriptor.hpp>
+#include <boost/iostreams/stream.hpp>
+
 #include <algorithm>
 #include <atomic>
 #include <cassert>
 #include <cctype>
+#include <condition_variable>
 #include <cstdio>
 #include <cstring>
+#include <iostream>
 #include <mutex>
 #include <string>
 #include <thread>
@@ -69,10 +74,12 @@ public:
 private:
   const std::string& source_path;
   DataSource source;
+  boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source>
+    fd_stream;
+  std::istream input_stream;
   unsigned flags = 0;
   Format format = UNDETERMINED; // Format of the source file
   bool closed = false;
-  std::mutex read_mutex;
 
   static const size_t RESERVE_SIZE_FOR_STRINGS = 1024;
   static const size_t DETERMINE_FORMAT_CHARS = 2048;
@@ -82,9 +89,6 @@ private:
   size_t buffer_start = 0;
   size_t buffer_end = 0;
   bool eof_newline_inserted = false;
-
-  char* line_buffer;
-  size_t line_buffer_size = 65536; // NOLINT
 
   static const size_t RECORD_QUEUE_SIZE = 128;
   static const size_t RECORD_BLOCK_SIZE = 64;
@@ -98,6 +102,8 @@ private:
   };
 
   std::thread* worker_thread = nullptr;
+  std::mutex format_mutex;
+  std::condition_variable format_cv;
   std::atomic<bool> worker_end;
   std::string tmp;
   RecordBlock worker_records, ready_records;
@@ -145,19 +151,20 @@ private:
 inline SeqReader::SeqReader(const std::string& source_path, int flags)
   : source_path(source_path)
   , source(source_path)
+  , fd_stream(source, boost::iostreams::never_close_handle)
+  , input_stream(&fd_stream)
   , flags(flags)
   , worker_end(false)
 {
   buffer = new char[BUFFER_SIZE];
-  line_buffer = (char*)std::malloc(line_buffer_size); // NOLINT
   tmp.reserve(RESERVE_SIZE_FOR_STRINGS);
-  determine_format();
+  std::unique_lock<std::mutex> lock(format_mutex);
   start_worker();
+  format_cv.wait(lock);
 }
 
 inline SeqReader::~SeqReader()
 {
-  free(line_buffer); // NOLINT
   close();
 }
 
@@ -165,10 +172,10 @@ inline void
 SeqReader::close()
 {
   if (!closed) {
-    source.close();
     worker_end = true;
     queue.close();
     worker_thread->join();
+    source.close();
     closed = true;
   }
 }
@@ -178,10 +185,12 @@ SeqReader::load_buffer()
 {
   buffer_start = 0;
   char last = buffer_end > 0 ? buffer[buffer_end - 1] : char(0);
-  while ((buffer_end = fread(buffer, 1, BUFFER_SIZE, source)) == 0 &&
-         !bool(std::feof(source))) {
+  buffer_end = 0;
+  while (buffer_end < BUFFER_SIZE && input_stream.good()) {
+    buffer_end += (input_stream.read(buffer, BUFFER_SIZE - buffer_end),
+                   input_stream.gcount());
   }
-  if (bool(std::feof(source)) && !eof_newline_inserted) {
+  if (!input_stream.good() && !eof_newline_inserted) {
     if (buffer_end < BUFFER_SIZE) {
       if ((buffer_end == 0 && last != '\n') ||
           (buffer_end > 0 && buffer[buffer_end - 1] != '\n')) {
@@ -530,45 +539,15 @@ SeqReader::readline_buffer_append(std::string& line)
 inline void
 SeqReader::readline_file_append(std::string& line)
 {
-  size_t p = 0;
-  for (;;) {
-    line_buffer[line_buffer_size - 1] = char(255); // NOLINT
-    fgets(line_buffer + p, int(line_buffer_size - p), source);
-    if (line_buffer[line_buffer_size - 1] == 0) {
-      p = line_buffer_size - 1;
-      line_buffer_size *= 2;
-      line_buffer =
-        (char*)std::realloc((char*)line_buffer, line_buffer_size); // NOLINT
-    } else {
-      break;
-    }
-  }
-  line += line_buffer;
-  if (line.back() == '\n') {
-    line.pop_back();
-  }
+  std::string newline;
+  std::getline(input_stream, newline);
+  line += newline;
 }
 
 inline void
 SeqReader::readline_file(std::string& line)
 {
-  size_t p = 0;
-  for (;;) {
-    line_buffer[line_buffer_size - 1] = char(255); // NOLINT
-    fgets(line_buffer + p, int(line_buffer_size - p), source);
-    if (line_buffer[line_buffer_size - 1] == 0) {
-      p = line_buffer_size - 1;
-      line_buffer_size *= 2;
-      line_buffer =
-        (char*)std::realloc((char*)line_buffer, line_buffer_size); // NOLINT
-    } else {
-      break;
-    }
-  }
-  line = line_buffer;
-  if (line.back() == '\n') {
-    line.pop_back();
-  }
+  std::getline(input_stream, line);
 }
 
 inline bool
@@ -842,7 +821,7 @@ SeqReader::read_sam_transition()
       current_worker_record->qual = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
     }
     tmp.clear();
-    if (bool(feof(source))) {
+    if (!input_stream.good()) {
       break;
     }
   }
@@ -875,7 +854,7 @@ SeqReader::read_gfa2_transition()
       current_worker_record->seq = tmp.substr(pos + 1, pos2 - pos - 1);
     }
     tmp.clear();
-    if (bool(feof(source))) {
+    if (!input_stream.good()) {
       break;
     }
   }
@@ -953,7 +932,7 @@ SeqReader::read_sam_file()
       current_worker_record->seq = tmp.substr(pos + 1, pos2 - pos - 1);
       current_worker_record->qual = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
     }
-    if (bool(feof(source))) {
+    if (!input_stream.good()) {
       break;
     }
   }
@@ -985,7 +964,7 @@ SeqReader::read_gfa2_file()
 
       current_worker_record->seq = tmp.substr(pos + 1, pos2 - pos - 1);
     }
-    if (bool(feof(source))) {
+    if (!input_stream.good()) {
       break;
     }
   }
@@ -1027,6 +1006,11 @@ inline void
 SeqReader::start_worker()
 {
   worker_thread = new std::thread([this]() {
+    {
+      std::unique_lock<std::mutex> lock;
+      determine_format();
+      format_cv.notify_all();
+    }
     size_t counter = 0;
 
     // Read from buffer
@@ -1048,11 +1032,11 @@ SeqReader::start_worker()
     }
     delete[] buffer;
 
-    if (std::ferror(source) == 0 && std::feof(source) == 0 && !worker_end) {
-      int p = std::fgetc(source);
-      if (p != EOF) {
-        std::ungetc(p, source);
-        current_worker_record = &(worker_records.records[worker_records.current]);
+    if (input_stream.good() && !worker_end) {
+      if (input_stream.get() != EOF) {
+        input_stream.unget();
+        current_worker_record =
+          &(worker_records.records[worker_records.current]);
         (this->*read_format_transition_impl)();
         if (!current_worker_record->seq.empty()) {
           postprocess();
@@ -1069,12 +1053,11 @@ SeqReader::start_worker()
     }
 
     // Read from file (more efficient, less copying involved)
-    for (; std::ferror(source) == 0 && std::feof(source) == 0 && !worker_end;) {
-      int p = std::fgetc(source);
-      if (p == EOF) {
+    for (; input_stream.good() && !worker_end;) {
+      if (input_stream.get() == EOF) {
         break;
       }
-      std::ungetc(p, source);
+      input_stream.unget();
       current_worker_record = &(worker_records.records[worker_records.current]);
       (this->*read_format_file_impl)();
       if (current_worker_record->seq.empty()) {
@@ -1108,7 +1091,6 @@ SeqReader::start_worker()
 inline SeqReader::Record
 SeqReader::read()
 {
-  //std::unique_lock<std::mutex> lock(read_mutex);
   if (ready_records.count <= ready_records.current + 1) {
     queue.read(ready_records);
     current_ready_record = &(ready_records.records[0]);
