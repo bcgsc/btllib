@@ -97,13 +97,13 @@ int main() {
         random_seqs.close();
 
         btllib::SeqReader random_reader(filename);
-        for (int n = 0; record = random_reader.read(); n++) {
-            if (record.name != generated_names[n]) { std::cerr << record.name << " | " << generated_names[n] << std::endl; }
-            assert(record.name == generated_names[n]);
-            assert(record.comment == generated_comments[n]);
-            assert(record.seq == generated_seqs[n]);
-            assert(record.qual == generated_quals[n]);
+        for (j = 0; record = random_reader.read(); j++) {
+            assert(record.name == generated_names[j]);
+            assert(record.comment == generated_comments[j]);
+            assert(record.seq == generated_seqs[j]);
+            assert(record.qual == generated_quals[j]);
         }
+        assert(j == 500);
 
         random_reader.close();
         std::remove(filename.c_str());

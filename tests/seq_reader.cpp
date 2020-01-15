@@ -100,12 +100,13 @@ int main() {
         random_seqs.close();
 
         btllib::SeqReader random_reader(random_filename);
-        for (int n = 0; record = random_reader.read(); n++) {
-            assert(record.name == generated_names[n]);
-            assert(record.comment == generated_comments[n]);
-            assert(record.seq == generated_seqs[n]);
-            assert(record.qual == generated_quals[n]);
+        for (i = 0; record = random_reader.read(); i++) {
+            assert(record.name == generated_names[i]);
+            assert(record.comment == generated_comments[i]);
+            assert(record.seq == generated_seqs[i]);
+            assert(record.qual == generated_quals[i]);
         }
+        assert(i == 500);
         
         random_reader.close();
         std::remove(random_filename.c_str());
