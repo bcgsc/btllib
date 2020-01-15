@@ -40,16 +40,17 @@ public class _Pipeline {
     this(btllibJNI.new__Pipeline__SWIG_0(), true);
   }
 
-  public _Pipeline(int fd, SWIGTYPE_p_pid_t pid_first, SWIGTYPE_p_pid_t pid_last) {
-    this(btllibJNI.new__Pipeline__SWIG_1(fd, SWIGTYPE_p_pid_t.getCPtr(pid_first), SWIGTYPE_p_pid_t.getCPtr(pid_last)), true);
+  public _Pipeline(SWIGTYPE_p_FILE file, SWIGTYPE_p_pid_t pid_first, SWIGTYPE_p_pid_t pid_last) {
+    this(btllibJNI.new__Pipeline__SWIG_1(SWIGTYPE_p_FILE.getCPtr(file), SWIGTYPE_p_pid_t.getCPtr(pid_first), SWIGTYPE_p_pid_t.getCPtr(pid_last)), true);
   }
 
-  public void setFd(int value) {
-    btllibJNI._Pipeline_fd_set(swigCPtr, this, value);
+  public void setFile(SWIGTYPE_p_FILE value) {
+    btllibJNI._Pipeline_file_set(swigCPtr, this, SWIGTYPE_p_FILE.getCPtr(value));
   }
 
-  public int getFd() {
-    return btllibJNI._Pipeline_fd_get(swigCPtr, this);
+  public SWIGTYPE_p_FILE getFile() {
+    long cPtr = btllibJNI._Pipeline_file_get(swigCPtr, this);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
   }
 
   public void setPid_first(SWIGTYPE_p_pid_t value) {

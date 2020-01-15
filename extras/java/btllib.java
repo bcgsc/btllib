@@ -33,10 +33,6 @@ public class btllib {
     return btllibJNI.ends_with(s, suffix);
   }
 
-  public static int fd_close(int fd) {
-    return btllibJNI.fd_close(fd);
-  }
-
   public static String get_saveload_cmd(String path, SaveloadOp op) {
     return btllibJNI.get_saveload_cmd(path, op.swigValue());
   }
@@ -83,10 +79,6 @@ public class btllib {
 
   public static void check_stream(SWIGTYPE_p_std__ios stream, String name) {
     btllibJNI.check_stream(SWIGTYPE_p_std__ios.getCPtr(stream), name);
-  }
-
-  public static SWIGTYPE_p_ssize_t fd_write(int fd, SWIGTYPE_p_void buf, long count) {
-    return new SWIGTYPE_p_ssize_t(btllibJNI.fd_write(fd, SWIGTYPE_p_void.getCPtr(buf), count), true);
   }
 
   public static String getCOMPLEMENTS() {

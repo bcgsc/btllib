@@ -65,24 +65,24 @@ if [[ ! "$py_version1_num" < "3.0" && "$py_version1_num" < "4.0" ]]; then
   fi
 fi
 
-rm -rf venv
 in_venv=false
 if [[ ! $(which meson) || ! $(which ninja) ]]; then
-  python3 -m venv venv
+  if [[ ! -f venv ]]; then
+    python3 -m venv venv
+  fi
   source venv/bin/activate
   pip3 install meson ninja
   in_venv=true
 fi
 
-rm -rf build python java
-meson build --prefix=$SCRIPTPATH
+if [[ ! -f build || ! -f python || ! -f java ]]; then
+  meson build --prefix=$SCRIPTPATH
+fi
 cd build
 ninja install
 cd ..
-rm -r build
 
 cd $SCRIPTPATH
 if [[ $in_venv == true ]]; then
   deactivate
-  rm -rf venv
 fi

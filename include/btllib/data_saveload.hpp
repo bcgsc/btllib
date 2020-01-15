@@ -28,25 +28,19 @@ enum SaveloadOp
   APPEND
 };
 
-static inline int
-fd_close(int fd)
-{
-  return close(fd);
-}
-
 class _Pipeline
 {
 
 public:
   _Pipeline() {}
 
-  _Pipeline(int fd, pid_t pid_first, pid_t pid_last)
-    : fd(fd)
+  _Pipeline(FILE* file, pid_t pid_first, pid_t pid_last)
+    : file(file)
     , pid_first(pid_first)
     , pid_last(pid_last)
   {}
 
-  int fd = -1;
+  FILE* file = nullptr;
   pid_t pid_first = -1;
   pid_t pid_last = -1;
 };
@@ -62,7 +56,7 @@ public:
   DataSource(const std::string& source)
   {
     if (source == "-") {
-      pipeline.fd = STDIN_FILENO;
+      pipeline.file = stdin;
       pipeline.pid_first = -1;
       pipeline.pid_last = -1;
     } else {
@@ -77,17 +71,19 @@ public:
   void close()
   {
     if (!closed) {
-      if (pipeline.fd != STDIN_FILENO) {
+      if (pipeline.file != stdin) {
         int status;
         kill(pipeline.pid_first, SIGTERM);
         waitpid(pipeline.pid_last, &status, 0);
-        fd_close(pipeline.fd);
+        std::fclose(pipeline.file);
       }
       closed = true;
     }
   }
 
-  operator int() { return pipeline.fd; }
+  FILE* operator*() { return pipeline.file; }
+  FILE* operator->() { return pipeline.file; }
+  operator FILE*() { return pipeline.file; }
 
   _Pipeline pipeline;
   bool closed = false;
@@ -99,7 +95,7 @@ public:
   DataSink(const std::string& sink, bool append)
   {
     if (sink == "-") {
-      pipeline.fd = STDOUT_FILENO;
+      pipeline.file = stdout;
       pipeline.pid_first = -1;
       pipeline.pid_last = -1;
     } else {
@@ -114,8 +110,8 @@ public:
   void close()
   {
     if (!closed) {
-      if (pipeline.fd != STDOUT_FILENO) {
-        fd_close(pipeline.fd);
+      if (pipeline.file != stdout) {
+        fclose(pipeline.file);
         int status;
         waitpid(pipeline.pid_last, &status, 0);
       }
@@ -123,7 +119,9 @@ public:
     }
   }
 
-  operator int() { return pipeline.fd; }
+  FILE* operator*() { return pipeline.file; }
+  FILE* operator->() { return pipeline.file; }
+  operator FILE*() { return pipeline.file; }
 
   _Pipeline pipeline;
   bool closed = false;
@@ -521,10 +519,12 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
 
   if (op == READ) {
     close(fds.front()[WRITE_END]);
-    return _Pipeline(fds.front()[READ_END], pids.back(), pids.front());
+        return _Pipeline(
+      fdopen(fds.front()[READ_END], "r"), pids.back(), pids.front());
   }
   close(fds.back()[READ_END]);
-  return _Pipeline(fds.back()[WRITE_END], pids.back(), pids.front());
+  return _Pipeline(
+    fdopen(fds.back()[WRITE_END], "w"), pids.back(), pids.front());
 }
 
 } // namespace btllib

@@ -9,12 +9,6 @@
 
 namespace btllib {
 
-static inline ssize_t
-fd_write(int fd, const void* buf, size_t count)
-{
-  return write(fd, buf, count);
-}
-
 class SeqWriter
 {
 
@@ -102,7 +96,7 @@ SeqWriter::write(const std::string& name,
     output += '\n';
   }
 
-  fd_write(sink, output.c_str(), output.size());
+  fwrite(output.c_str(), 1, output.size(), sink);
 }
 
 } // namespace btllib

@@ -8,18 +8,18 @@
 
 package btllib;
 
-public class SWIGTYPE_p_ssize_t {
+public class SWIGTYPE_p_FILE {
   private transient long swigCPtr;
 
-  protected SWIGTYPE_p_ssize_t(long cPtr, @SuppressWarnings("unused") boolean futureUse) {
+  protected SWIGTYPE_p_FILE(long cPtr, @SuppressWarnings("unused") boolean futureUse) {
     swigCPtr = cPtr;
   }
 
-  protected SWIGTYPE_p_ssize_t() {
+  protected SWIGTYPE_p_FILE() {
     swigCPtr = 0;
   }
 
-  protected static long getCPtr(SWIGTYPE_p_ssize_t obj) {
+  protected static long getCPtr(SWIGTYPE_p_FILE obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 }

@@ -1,22 +1,15 @@
 #include "../include/btllib/seq_reader.hpp"
 
+#include "helpers.hpp"
+
 #include <cassert>
 #include <string>
 #include <fstream>
-#include <random>
-#include <chrono>
 #include <cstdio>
 
 int main() {
     const char* seqs[] = { "ACTG", "TGCA" };
     const char* quals[] = { "!@^&", "(#&$" };
-
-    std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count());
-    std::uniform_int_distribution<int> distribution_actg(0, 3);
-    std::uniform_int_distribution<int> distribution_alphabet(65, 90);
-    auto gen_random_actg = std::bind(distribution_actg, generator);
-    auto gen_random_alphabet = std::bind(distribution_alphabet, generator);
-    std::string random_filename;
 
     for (int iteration = 0; iteration < 3; iteration++) {
         std::cerr << "Iteration " << iteration + 1 << std::endl;
@@ -86,25 +79,15 @@ int main() {
         std::vector<std::string> generated_comments;
         std::vector<std::string> generated_seqs;
         std::vector<std::string> generated_quals;
-        for (int n = 0; n < 64; n++) {
-            random_filename += char(gen_random_alphabet());
-        }
+        auto random_filename = get_random_name(64);
         std::ofstream random_seqs(random_filename);
         for (int s = 0; s < 500; s++) {
             std::string name, comment, seq, qual;
 
-            for (int n = 0; n < 10; n++) {
-                name += char(gen_random_alphabet());
-            }
-            for (int n = 0; n < 20; n++) {
-                comment += char(gen_random_alphabet());
-            }
-            for (int n = 0; n < 200; n++) {
-                seq += "ACTG"[(gen_random_actg())];
-            }
-            for (int n = 0; n < 200; n++) {
-                qual += char(gen_random_alphabet());
-            }
+            name = get_random_name(10);
+            comment = get_random_name(20);
+            seq = get_random_sequence(200);
+            qual = get_random_name(200);
 
             random_seqs << '@' << name << ' ' << comment << '\n'
               << seq << "\n+\n" << qual << '\n';

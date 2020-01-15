@@ -1,10 +1,9 @@
 #include "../include/btllib/seq_reader.hpp"
 #include "../include/btllib/seq_writer.hpp"
 
-#include <chrono>
-#include <thread>
+#include "helpers.hpp"
+
 #include <fstream>
-#include <random>
 #include <cstdio>
 
 int main() {
@@ -12,30 +11,21 @@ int main() {
     const char* comments[] = { "comment1", "comment2" };
     const char* seqs[] = { "ACTG", "TGCA" };
     const char* quals[] = { "!@^&", "(#&$" };
-
-    std::default_random_engine generator(std::chrono::system_clock::now().time_since_epoch().count() + 9999999);
-    std::uniform_int_distribution<int> distribution_actg(0, 3);
-    std::uniform_int_distribution<int> distribution_alphabet(65, 90);
-    auto gen_random_actg = std::bind(distribution_actg, generator);
-    auto gen_random_alphabet = std::bind(distribution_alphabet, generator);
-    std::string random_filename;
+    std::string filename;
 
     for (int iteration = 0; iteration < 3; iteration++) {
         std::cerr << "Iteration " << iteration + 1 << std::endl;
 
         // Test FASTA
-        random_filename.clear();
-        for (int n = 0; n < 64; n++) {
-            random_filename += char(gen_random_alphabet());
-        }
+        filename = get_random_name(64);
         std::cerr << "Test FASTA" << std::endl;
-        btllib::SeqWriter writer_fasta(random_filename, btllib::SeqWriter::FASTA);
+        btllib::SeqWriter writer_fasta(filename, btllib::SeqWriter::FASTA);
         for (int i = 0; i < 2; i++) {
             writer_fasta.write(names[i], comments[i], seqs[i], "");
         }
         writer_fasta.close();
         
-        btllib::SeqReader reader_fasta(random_filename);
+        btllib::SeqReader reader_fasta(filename);
         assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
 
         int j;
@@ -53,22 +43,18 @@ int main() {
         assert(j == 2);
 
         reader_fasta.close();
-        std::remove(random_filename.c_str());
+        std::remove(filename.c_str());
 
         // Test FASTQ
-        random_filename.clear();
-        for (int n = 0; n < 64; n++) {
-            random_filename += char(gen_random_alphabet());
-        }
-        random_filename += ".bz2";
+        filename = get_random_name(64) + ".bz2";
         std::cerr << "Test FASTQ" << std::endl;
-        btllib::SeqWriter writer_fastq(random_filename, btllib::SeqWriter::FASTQ);
+        btllib::SeqWriter writer_fastq(filename, btllib::SeqWriter::FASTQ);
         for (int i = 0; i < 2; i++) {
             writer_fastq.write(names[i], comments[i], seqs[i], quals[i]);
         }
         writer_fastq.close();
         
-        btllib::SeqReader reader_fastq(random_filename);
+        btllib::SeqReader reader_fastq(filename);
         assert(reader_fastq.get_format() == btllib::SeqReader::Format::FASTQ);
 
         j = 0;
@@ -83,7 +69,7 @@ int main() {
         assert(j == 2);
 
         reader_fastq.close();
-        std::remove(random_filename.c_str());
+        std::remove(filename.c_str());
 
         // Test larger randomly generated file
         std::cerr << "Test random file" << std::endl;
@@ -91,27 +77,15 @@ int main() {
         std::vector<std::string> generated_comments;
         std::vector<std::string> generated_seqs;
         std::vector<std::string> generated_quals;
-        random_filename.clear();
-        for (int n = 0; n < 64; n++) {
-            random_filename += char(gen_random_alphabet());
-        }
-        random_filename += ".gz.xz";
-        btllib::SeqWriter random_seqs(random_filename, btllib::SeqWriter::FASTQ, false);
+        filename = get_random_name(64) + ".gz.xz";
+        btllib::SeqWriter random_seqs(filename, btllib::SeqWriter::FASTQ, false);
         for (int s = 0; s < 500; s++) {
             std::string name, comment, seq, qual;
 
-            for (int n = 0; n < 10; n++) {
-                name += char(gen_random_alphabet());
-            }
-            for (int n = 0; n < 20; n++) {
-                comment += char(gen_random_alphabet());
-            }
-            for (int n = 0; n < 200; n++) {
-                seq += "ACTG"[(gen_random_actg())];
-            }
-            for (int n = 0; n < 200; n++) {
-                qual += char(gen_random_alphabet());
-            }
+            name = get_random_name(10);
+            comment = get_random_name(20);
+            seq = get_random_sequence(200);
+            qual = get_random_name(200);
 
             random_seqs.write(name, comment, seq, qual);
 
@@ -122,7 +96,7 @@ int main() {
         }
         random_seqs.close();
 
-        btllib::SeqReader random_reader(random_filename);
+        btllib::SeqReader random_reader(filename);
         for (int n = 0; record = random_reader.read(); n++) {
             if (record.name != generated_names[n]) { std::cerr << record.name << " | " << generated_names[n] << std::endl; }
             assert(record.name == generated_names[n]);
@@ -132,7 +106,7 @@ int main() {
         }
 
         random_reader.close();
-        std::remove(random_filename.c_str());
+        std::remove(filename.c_str());
     }
 
 	return 0;

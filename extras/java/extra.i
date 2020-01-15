@@ -4,5 +4,5 @@
 %ignore btllib::CountingKmerSet::insert(const char*);
 %ignore btllib::CountingKmerSet::count(const char*);
 
-%ignore btllib::DataSource::operator int();
-%ignore btllib::DataSink::operator int();
+%ignore btllib::DataSource::operator FILE*();
+%ignore btllib::DataSink::operator FILE*();

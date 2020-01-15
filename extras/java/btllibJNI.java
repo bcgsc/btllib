@@ -46,11 +46,10 @@ public class btllibJNI {
   public final static native void trim(long jarg1);
   public final static native boolean starts_with(String jarg1, String jarg2);
   public final static native boolean ends_with(String jarg1, String jarg2);
-  public final static native int fd_close(int jarg1);
   public final static native long new__Pipeline__SWIG_0();
-  public final static native long new__Pipeline__SWIG_1(int jarg1, long jarg2, long jarg3);
-  public final static native void _Pipeline_fd_set(long jarg1, _Pipeline jarg1_, int jarg2);
-  public final static native int _Pipeline_fd_get(long jarg1, _Pipeline jarg1_);
+  public final static native long new__Pipeline__SWIG_1(long jarg1, long jarg2, long jarg3);
+  public final static native void _Pipeline_file_set(long jarg1, _Pipeline jarg1_, long jarg2);
+  public final static native long _Pipeline_file_get(long jarg1, _Pipeline jarg1_);
   public final static native void _Pipeline_pid_first_set(long jarg1, _Pipeline jarg1_, long jarg2);
   public final static native long _Pipeline_pid_first_get(long jarg1, _Pipeline jarg1_);
   public final static native void _Pipeline_pid_last_set(long jarg1, _Pipeline jarg1_, long jarg2);
@@ -61,6 +60,8 @@ public class btllibJNI {
   public final static native long new_DataSource(String jarg1);
   public final static native void delete_DataSource(long jarg1);
   public final static native void DataSource_close(long jarg1, DataSource jarg1_);
+  public final static native long DataSource___ref__(long jarg1, DataSource jarg1_);
+  public final static native long DataSource___deref__(long jarg1, DataSource jarg1_);
   public final static native void DataSource_pipeline_set(long jarg1, DataSource jarg1_, long jarg2, _Pipeline jarg2_);
   public final static native long DataSource_pipeline_get(long jarg1, DataSource jarg1_);
   public final static native void DataSource_closed_set(long jarg1, DataSource jarg1_, boolean jarg2);
@@ -68,6 +69,8 @@ public class btllibJNI {
   public final static native long new_DataSink(String jarg1, boolean jarg2);
   public final static native void delete_DataSink(long jarg1);
   public final static native void DataSink_close(long jarg1, DataSink jarg1_);
+  public final static native long DataSink___ref__(long jarg1, DataSink jarg1_);
+  public final static native long DataSink___deref__(long jarg1, DataSink jarg1_);
   public final static native void DataSink_pipeline_set(long jarg1, DataSink jarg1_, long jarg2, _Pipeline jarg2_);
   public final static native long DataSink_pipeline_get(long jarg1, DataSink jarg1_);
   public final static native void DataSink_closed_set(long jarg1, DataSink jarg1_, boolean jarg2);
@@ -88,7 +91,6 @@ public class btllibJNI {
   public final static native long CountingBloomFilter_count__SWIG_0(long jarg1, CountingBloomFilter jarg1_, long jarg2);
   public final static native long CountingBloomFilter_count__SWIG_1(long jarg1, CountingBloomFilter jarg1_, long jarg2);
   public final static native void delete_CountingBloomFilter(long jarg1);
-  public final static native long fd_write(int jarg1, long jarg2, long jarg3);
   public final static native long new_SeqWriter__SWIG_0(String jarg1, int jarg2, boolean jarg3);
   public final static native long new_SeqWriter__SWIG_1(String jarg1, int jarg2);
   public final static native long new_SeqWriter__SWIG_2(String jarg1);
