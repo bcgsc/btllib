@@ -86,8 +86,8 @@ private:
   char* line_buffer;
   size_t line_buffer_size = 65536;
 
-  static const size_t RECORD_QUEUE_SIZE = 128;
-  static const size_t RECORD_BLOCK_SIZE = 64;
+  static const size_t RECORD_QUEUE_SIZE = 256;
+  static const size_t RECORD_BLOCK_SIZE = 128;
 
   struct RecordBlock // NOLINT
   {
