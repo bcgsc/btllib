@@ -2,7 +2,7 @@
 #define BTLLIB_SEQ_READER_HPP
 
 #include "data_saveload.hpp"
-#include "num_queue.hpp"
+#include "index_queue.hpp"
 #include "seq.hpp"
 #include "status.hpp"
 
@@ -89,24 +89,18 @@ private:
   static const size_t RECORD_QUEUE_SIZE = 256;
   static const size_t RECORD_BLOCK_SIZE = 128;
 
-  struct RecordBlock // NOLINT
-  {
-    size_t num = 0;
-    Record records[RECORD_BLOCK_SIZE];
-    size_t current = 0;
-    size_t count = 0;
-  };
-
   std::thread* reader_thread = nullptr;
   std::thread* postprocessor_thread = nullptr;
   std::mutex format_mutex;
   std::condition_variable format_cv;
   std::atomic<bool> reader_end;
   std::string tmp;
-  RecordBlock ready_records;
+  InputIndexQueue<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
+    ready_records;
   Record *reader_record = nullptr, *ready_record = nullptr;
-  InputNumQueue<RecordBlock, RECORD_QUEUE_SIZE> reader_queue;
-  InputNumQueue<RecordBlock, RECORD_QUEUE_SIZE> postprocessor_queue;
+  InputIndexQueue<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE> reader_queue;
+  InputIndexQueue<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
+    postprocessor_queue;
 
   void determine_format();
   void start_reader();
@@ -1019,11 +1013,11 @@ SeqReader::start_reader()
     }
     size_t counter = 0;
 
-    RecordBlock records;
+    decltype(reader_queue)::Block records;
     if (format != UNDETERMINED) {
       // Read from buffer
       for (; buffer_start < buffer_end && !reader_end;) {
-        reader_record = &(records.records[records.current]);
+        reader_record = &(records.data[records.current]);
         if (!(this->*read_format_buffer_impl)() || reader_record->seq.empty()) {
           break;
         }
@@ -1031,9 +1025,9 @@ SeqReader::start_reader()
         records.count++;
         if (records.current == RECORD_BLOCK_SIZE) {
           records.current = 0;
-          records.num = counter++;
+          records.index = counter++;
           reader_queue.write(records);
-          records = RecordBlock();
+          records = decltype(reader_queue)::Block();
         }
       }
 
@@ -1042,16 +1036,16 @@ SeqReader::start_reader()
         int p = std::fgetc(source);
         if (p != EOF) {
           std::ungetc(p, source);
-          reader_record = &(records.records[records.current]);
+          reader_record = &(records.data[records.current]);
           (this->*read_format_transition_impl)();
           if (!reader_record->seq.empty()) {
             records.current++;
             records.count++;
             if (records.current == RECORD_BLOCK_SIZE) {
               records.current = 0;
-              records.num = counter++;
+              records.index = counter++;
               reader_queue.write(records);
-              records = RecordBlock();
+              records = decltype(reader_queue)::Block();
             }
           }
         }
@@ -1065,7 +1059,7 @@ SeqReader::start_reader()
           break;
         }
         std::ungetc(p, source);
-        reader_record = &(records.records[records.current]);
+        reader_record = &(records.data[records.current]);
         (this->*read_format_file_impl)();
         if (reader_record->seq.empty()) {
           break;
@@ -1074,21 +1068,21 @@ SeqReader::start_reader()
         records.count++;
         if (records.current == RECORD_BLOCK_SIZE) {
           records.current = 0;
-          records.num = counter++;
+          records.index = counter++;
           reader_queue.write(records);
-          records = RecordBlock();
+          records = decltype(reader_queue)::Block();
         }
       }
     }
 
     reader_end = true;
     records.current = 0;
-    records.num = counter++;
+    records.index = counter++;
     size_t last_count = records.count;
     reader_queue.write(records);
     if (last_count > 0) {
-      RecordBlock dummy;
-      dummy.num = counter++;
+      decltype(reader_queue)::Block dummy;
+      dummy.index = counter++;
       dummy.current = 0;
       dummy.count = 0;
       reader_queue.write(dummy);
@@ -1100,12 +1094,12 @@ inline void
 SeqReader::start_postprocessor()
 {
   postprocessor_thread = new std::thread([this]() {
-    RecordBlock records;
+    decltype(reader_queue)::Block records;
     for (;;) {
       reader_queue.read(records);
       for (size_t i = 0; i < records.count; i++) {
-        auto& seq = records.records[i].seq;
-        auto& qual = records.records[i].qual;
+        auto& seq = records.data[i].seq;
+        auto& qual = records.data[i].qual;
         if (flagTrimMasked()) {
           const auto len = seq.length();
           size_t trim_start = 0, trim_end = seq.length();
@@ -1150,7 +1144,7 @@ SeqReader::read()
   if (ready_records.count <= ready_records.current) {
     postprocessor_queue.read(ready_records);
   }
-  ready_record = &(ready_records.records[ready_records.current++]);
+  ready_record = &(ready_records.data[ready_records.current++]);
   if (ready_records.count == 0) {
     close();
   }

@@ -3582,6 +3582,7 @@ namespace swig {
 
 #define SWIG_FILE_WITH_INIT
 
+#include "btllib/index_queue.hpp"
 #include "btllib/seq_reader.hpp"
 #include "btllib/graph.hpp"
 #include "btllib/util.hpp"
@@ -3593,7 +3594,6 @@ namespace swig {
 #include "btllib/counting_kmer_set.hpp"
 #include "btllib/bloom_filter.hpp"
 #include "btllib/kmer_set.hpp"
-#include "btllib/num_queue.hpp"
 
 
 #include <typeinfo>

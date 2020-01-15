@@ -232,6 +232,7 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_JavaThrowException(jenv, SWIG_JavaIllegalArgumentException, msg); return nullreturn; } else
 
 
+#include "btllib/index_queue.hpp"
 #include "btllib/seq_reader.hpp"
 #include "btllib/graph.hpp"
 #include "btllib/util.hpp"
@@ -243,7 +244,6 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #include "btllib/counting_kmer_set.hpp"
 #include "btllib/bloom_filter.hpp"
 #include "btllib/kmer_set.hpp"
-#include "btllib/num_queue.hpp"
 
 
 #include <string>

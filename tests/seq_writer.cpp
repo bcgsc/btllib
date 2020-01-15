@@ -28,19 +28,19 @@ int main() {
         btllib::SeqReader reader_fasta(filename);
         assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
 
-        int j;
+        int i;
         btllib::SeqReader::Record record;
 
-        j = 0;
+        i = 0;
         while (record = reader_fasta.read()) {
-            assert(record.name == names[j]);
-            assert(record.comment == comments[j]);
-            assert(record.seq == seqs[j]);
+            assert(record.name == names[i]);
+            assert(record.comment == comments[i]);
+            assert(record.seq == seqs[i]);
             assert(record.qual.empty());
 
-            j++;
+            i++;
         }
-        assert(j == 2);
+        assert(i == 2);
 
         reader_fasta.close();
         std::remove(filename.c_str());
@@ -49,24 +49,24 @@ int main() {
         filename = get_random_name(64) + ".bz2";
         std::cerr << "Test FASTQ" << std::endl;
         btllib::SeqWriter writer_fastq(filename, btllib::SeqWriter::FASTQ);
-        for (int i = 0; i < 2; i++) {
-            writer_fastq.write(names[i], comments[i], seqs[i], quals[i]);
+        for (int j = 0; j < 2; j++) {
+            writer_fastq.write(names[j], comments[j], seqs[j], quals[j]);
         }
         writer_fastq.close();
         
         btllib::SeqReader reader_fastq(filename);
         assert(reader_fastq.get_format() == btllib::SeqReader::Format::FASTQ);
 
-        j = 0;
+        i = 0;
         while (record = reader_fastq.read()) {
-            assert(record.name == names[j]);
-            assert(record.comment == comments[j]);
-            assert(record.seq == seqs[j]);
-            assert(record.qual == quals[j]);
+            assert(record.name == names[i]);
+            assert(record.comment == comments[i]);
+            assert(record.seq == seqs[i]);
+            assert(record.qual == quals[i]);
 
-            j++;
+            i++;
         }
-        assert(j == 2);
+        assert(i == 2);
 
         reader_fastq.close();
         std::remove(filename.c_str());
@@ -97,13 +97,13 @@ int main() {
         random_seqs.close();
 
         btllib::SeqReader random_reader(filename);
-        for (j = 0; record = random_reader.read(); j++) {
-            assert(record.name == generated_names[j]);
-            assert(record.comment == generated_comments[j]);
-            assert(record.seq == generated_seqs[j]);
-            assert(record.qual == generated_quals[j]);
+        for (i = 0; record = random_reader.read(); i++) {
+            assert(record.name == generated_names[i]);
+            assert(record.comment == generated_comments[i]);
+            assert(record.seq == generated_seqs[i]);
+            assert(record.qual == generated_quals[i]);
         }
-        assert(j == 500);
+        assert(i == 500);
 
         random_reader.close();
         std::remove(filename.c_str());

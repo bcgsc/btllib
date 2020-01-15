@@ -5,8 +5,6 @@ project('btllib', 'cpp',
 add_global_arguments([ '-pthread', '-fopenmp' ], language : 'cpp')
 add_global_link_arguments([ '-ldl', '-lpthread', '-fopenmp' ], language : 'cpp')
 
-thread_dep = dependency('threads')
-
 btllib_include = include_directories('include')
 
 clang_tidy = find_program('clang-tidy', required: false)

@@ -1,6 +1,7 @@
 %module btllib
 
 %{
+#include "btllib/index_queue.hpp"
 #include "btllib/seq_reader.hpp"
 #include "btllib/graph.hpp"
 #include "btllib/util.hpp"
@@ -12,7 +13,6 @@
 #include "btllib/counting_kmer_set.hpp"
 #include "btllib/bloom_filter.hpp"
 #include "btllib/kmer_set.hpp"
-#include "btllib/num_queue.hpp"
 %}
 
 %include <java.swg>
@@ -21,6 +21,7 @@
 
 %include "extra.i"
 
+%include "btllib/index_queue.hpp"
 %include "btllib/seq_reader.hpp"
 %include "btllib/graph.hpp"
 %include "btllib/util.hpp"
@@ -32,4 +33,3 @@
 %include "btllib/counting_kmer_set.hpp"
 %include "btllib/bloom_filter.hpp"
 %include "btllib/kmer_set.hpp"
-%include "btllib/num_queue.hpp"
