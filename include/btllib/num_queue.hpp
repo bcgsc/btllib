@@ -65,7 +65,6 @@ public:
 
   void read(T& data)
   {
-    static std::mutex read_mutex;
     std::unique_lock<std::mutex> read_lock(read_mutex);
 
     Slot<T>& target = this->slots[this->read_counter % SIZE];
@@ -84,6 +83,9 @@ public:
     target.occupancyChanged.notify_one();
     --(this->element_count);
   }
+
+private:
+  std::mutex read_mutex;
 };
 
 template<typename T, unsigned SIZE>

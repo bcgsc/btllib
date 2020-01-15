@@ -519,7 +519,7 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
 
   if (op == READ) {
     close(fds.front()[WRITE_END]);
-        return _Pipeline(
+    return _Pipeline(
       fdopen(fds.front()[READ_END], "r"), pids.back(), pids.front());
   }
   close(fds.back()[READ_END]);

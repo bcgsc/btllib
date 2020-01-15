@@ -86,8 +86,8 @@ private:
   char* line_buffer;
   size_t line_buffer_size = 65536;
 
-  static const size_t RECORD_QUEUE_SIZE = 512;
-  static const size_t RECORD_BLOCK_SIZE = 128;
+  static const size_t RECORD_QUEUE_SIZE = 128;
+  static const size_t RECORD_BLOCK_SIZE = 64;
 
   struct RecordBlock // NOLINT
   {
@@ -103,8 +103,8 @@ private:
   std::condition_variable format_cv;
   std::atomic<bool> reader_end;
   std::string tmp;
-  RecordBlock reader_records, postprocessor_records, ready_records;
-  Record *reader_record = nullptr, *postprocessor_record = nullptr, *ready_record = nullptr;
+  RecordBlock ready_records;
+  Record *reader_record = nullptr, *ready_record = nullptr;
   InputNumQueue<RecordBlock, RECORD_QUEUE_SIZE> reader_queue;
   InputNumQueue<RecordBlock, RECORD_QUEUE_SIZE> postprocessor_queue;
 
@@ -190,7 +190,8 @@ SeqReader::load_buffer()
   char last = buffer_end > 0 ? buffer[buffer_end - 1] : char(0);
   buffer_end = 0;
   do {
-    buffer_end += fread(buffer + buffer_end, 1, BUFFER_SIZE - buffer_end, source);
+    buffer_end +=
+      fread(buffer + buffer_end, 1, BUFFER_SIZE - buffer_end, source);
   } while (buffer_end < BUFFER_SIZE && !bool(std::feof(source)));
 
   if (bool(std::feof(source)) && !eof_newline_inserted) {
@@ -497,7 +498,9 @@ SeqReader::determine_format()
   bool empty = buffer_end - buffer_start == 1;
   check_warning(empty, std::string(source_path) + " is empty.");
 
-  if (empty) { return; }
+  if (empty) {
+    return;
+  }
 
   if (is_fasta_buffer()) {
     format = Format::FASTA;
@@ -1006,39 +1009,6 @@ SeqReader::read_gfa2_file()
 }
 
 inline void
-SeqReader::postprocess()
-{
-  auto& seq = postprocessor_record->seq;
-  auto& qual = postprocessor_record->qual;
-  if (flagTrimMasked()) {
-    const auto len = seq.length();
-    size_t trim_start = 0, trim_end = seq.length();
-    while (trim_start <= len && bool(islower(seq[trim_start]))) {
-      trim_start++;
-    }
-    while (trim_end > 0 && bool(islower(seq[trim_end - 1]))) {
-      trim_end--;
-    }
-    seq.erase(trim_end);
-    seq.erase(0, trim_start);
-    if (!qual.empty()) {
-      qual.erase(trim_end);
-      qual.erase(0, trim_start);
-    }
-  }
-  if (flagFoldCase()) {
-    for (auto& c : seq) {
-      c = CAPITALS[unsigned(c)];
-      if (!bool(c)) {
-        log_error(std::string("A sequence contains invalid IUPAC character: ") +
-                  c);
-        std::exit(EXIT_FAILURE);
-      }
-    }
-  }
-}
-
-inline void
 SeqReader::start_reader()
 {
   reader_thread = new std::thread([this]() {
@@ -1049,21 +1019,21 @@ SeqReader::start_reader()
     }
     size_t counter = 0;
 
+    RecordBlock records;
     if (format != UNDETERMINED) {
       // Read from buffer
       for (; buffer_start < buffer_end && !reader_end;) {
-        reader_record = &(reader_records.records[reader_records.current]);
-        if (!(this->*read_format_buffer_impl)() ||
-            reader_record->seq.empty()) {
+        reader_record = &(records.records[records.current]);
+        if (!(this->*read_format_buffer_impl)() || reader_record->seq.empty()) {
           break;
         }
-        reader_records.current++;
-        reader_records.count++;
-        if (reader_records.current == RECORD_BLOCK_SIZE) {
-          reader_records.current = 0;
-          reader_records.num = counter++;
-          reader_queue.write(reader_records);
-          reader_records = RecordBlock();
+        records.current++;
+        records.count++;
+        if (records.current == RECORD_BLOCK_SIZE) {
+          records.current = 0;
+          records.num = counter++;
+          reader_queue.write(records);
+          records = RecordBlock();
         }
       }
 
@@ -1072,52 +1042,54 @@ SeqReader::start_reader()
         int p = std::fgetc(source);
         if (p != EOF) {
           std::ungetc(p, source);
-          reader_record = &(reader_records.records[reader_records.current]);
+          reader_record = &(records.records[records.current]);
           (this->*read_format_transition_impl)();
           if (!reader_record->seq.empty()) {
-            reader_records.current++;
-            reader_records.count++;
-            if (reader_records.current == RECORD_BLOCK_SIZE) {
-              reader_records.current = 0;
-              reader_records.num = counter++;
-              reader_queue.write(reader_records);
-              reader_records = RecordBlock();
+            records.current++;
+            records.count++;
+            if (records.current == RECORD_BLOCK_SIZE) {
+              records.current = 0;
+              records.num = counter++;
+              reader_queue.write(records);
+              records = RecordBlock();
             }
           }
         }
       }
 
       // Read from file
-      for (; std::ferror(source) == 0 && std::feof(source) == 0 && !reader_end;) {
+      for (;
+           std::ferror(source) == 0 && std::feof(source) == 0 && !reader_end;) {
         int p = std::fgetc(source);
         if (p == EOF) {
           break;
         }
         std::ungetc(p, source);
-        reader_record = &(reader_records.records[reader_records.current]);
+        reader_record = &(records.records[records.current]);
         (this->*read_format_file_impl)();
         if (reader_record->seq.empty()) {
           break;
         }
-        reader_records.current++;
-        reader_records.count++;
-        if (reader_records.current == RECORD_BLOCK_SIZE) {
-          reader_records.current = 0;
-          reader_records.num = counter++;
-          reader_queue.write(reader_records);
-          reader_records = RecordBlock();
+        records.current++;
+        records.count++;
+        if (records.current == RECORD_BLOCK_SIZE) {
+          records.current = 0;
+          records.num = counter++;
+          reader_queue.write(records);
+          records = RecordBlock();
         }
       }
     }
 
     reader_end = true;
-    reader_records.current = 0;
-    reader_records.num = counter++;
-    size_t last_count = reader_records.count;
-    reader_queue.write(reader_records);
+    records.current = 0;
+    records.num = counter++;
+    size_t last_count = records.count;
+    reader_queue.write(records);
     if (last_count > 0) {
       RecordBlock dummy;
       dummy.num = counter++;
+      dummy.current = 0;
       dummy.count = 0;
       reader_queue.write(dummy);
     }
@@ -1125,21 +1097,60 @@ SeqReader::start_reader()
 }
 
 inline void
-SeqReader::start_postprocessor() {
+SeqReader::start_postprocessor()
+{
   postprocessor_thread = new std::thread([this]() {
-    //postprocess();
+    RecordBlock records;
+    for (;;) {
+      reader_queue.read(records);
+      for (size_t i = 0; i < records.count; i++) {
+        auto& seq = records.records[i].seq;
+        auto& qual = records.records[i].qual;
+        if (flagTrimMasked()) {
+          const auto len = seq.length();
+          size_t trim_start = 0, trim_end = seq.length();
+          while (trim_start <= len && bool(islower(seq[trim_start]))) {
+            trim_start++;
+          }
+          while (trim_end > 0 && bool(islower(seq[trim_end - 1]))) {
+            trim_end--;
+          }
+          seq.erase(trim_end);
+          seq.erase(0, trim_start);
+          if (!qual.empty()) {
+            qual.erase(trim_end);
+            qual.erase(0, trim_start);
+          }
+        }
+        if (flagFoldCase()) {
+          for (auto& c : seq) {
+            c = CAPITALS[unsigned(c)];
+            if (!bool(c)) {
+              log_error(
+                std::string("A sequence contains invalid IUPAC character: ") +
+                c);
+              std::exit(EXIT_FAILURE);
+            }
+          }
+        }
+      }
+      if (records.count == 0) {
+        postprocessor_queue.write(records);
+        break;
+      } else {
+        postprocessor_queue.write(records);
+      }
+    }
   });
 }
 
 inline SeqReader::Record
 SeqReader::read()
 {
-  if (ready_records.count <= ready_records.current + 1) {
-    reader_queue.read(ready_records);
-    ready_record = &(ready_records.records[0]);
-  } else {
-    ready_record = &(ready_records.records[++ready_records.current]);
+  if (ready_records.count <= ready_records.current) {
+    postprocessor_queue.read(ready_records);
   }
+  ready_record = &(ready_records.records[ready_records.current++]);
   if (ready_records.count == 0) {
     close();
   }
