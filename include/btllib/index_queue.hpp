@@ -1,8 +1,8 @@
 #ifndef BTLLIB_INDEX_QUEUE_HPP
 #define BTLLIB_INDEX_QUEUE_HPP
 
-#include <atomic>
 #include <algorithm>
+#include <atomic>
 #include <condition_variable>
 #include <mutex>
 #include <string>
@@ -25,7 +25,10 @@ public:
 
     Block(const Block&) = default;
 
-    Block(Block&& block): current(block.current), count(block.count), index(block.index)
+    Block(Block&& block)
+      : current(block.current)
+      , count(block.count)
+      , index(block.index)
     {
       std::swap(data, block.data);
     }

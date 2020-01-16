@@ -74,7 +74,6 @@ private:
   Format format = UNDETERMINED; // Format of the source file
   bool closed = false;
 
-  static const size_t RESERVE_SIZE_FOR_STRINGS = 1024;
   static const size_t DETERMINE_FORMAT_CHARS = 2048;
   static const size_t BUFFER_SIZE = DETERMINE_FORMAT_CHARS;
 
@@ -83,22 +82,94 @@ private:
   size_t buffer_end = 0;
   bool eof_newline_inserted = false;
 
-  char* line_buffer;
-  size_t line_buffer_size = 65536;
+  static const size_t RECORD_QUEUE_SIZE = 128;
+  static const size_t RECORD_BLOCK_SIZE = 64;
 
-  static const size_t RECORD_QUEUE_SIZE = 256;
-  static const size_t RECORD_BLOCK_SIZE = 128;
+  static const size_t NAME_DEFAULT_CAPACITY = 4096;
+  static const size_t COMMENT_DEFAULT_CAPACITY = NAME_DEFAULT_CAPACITY;
+  static const size_t SEQ_DEFAULT_CAPACITY = NAME_DEFAULT_CAPACITY;
+  static const size_t QUAL_DEFAULT_CAPACITY = SEQ_DEFAULT_CAPACITY;
+
+  struct RecordCString
+  {
+
+    RecordCString()
+      : name((char*)std::malloc(NAME_DEFAULT_CAPACITY))
+      , name_cap(NAME_DEFAULT_CAPACITY)
+      , comment((char*)std::malloc(COMMENT_DEFAULT_CAPACITY))
+      , comment_cap(COMMENT_DEFAULT_CAPACITY)
+      , seq((char*)std::malloc(SEQ_DEFAULT_CAPACITY))
+      , seq_cap(SEQ_DEFAULT_CAPACITY)
+      , qual((char*)std::malloc(QUAL_DEFAULT_CAPACITY))
+      , qual_cap(QUAL_DEFAULT_CAPACITY)
+    {
+      name[0] = '\0';
+      comment[0] = '\0';
+      seq[0] = '\0';
+      qual[0] = '\0';
+    }
+
+    RecordCString(const RecordCString&) = delete;
+
+    RecordCString(RecordCString&& record)
+    {
+      std::swap(name, record.name);
+      std::swap(name_cap, record.name_cap);
+      std::swap(comment, record.comment);
+      std::swap(comment_cap, record.comment_cap);
+      std::swap(seq, record.seq);
+      std::swap(seq_cap, record.seq_cap);
+      std::swap(qual, record.qual);
+      std::swap(qual_cap, record.qual_cap);
+    }
+
+    RecordCString& operator=(const RecordCString&) = delete;
+
+    RecordCString& operator=(RecordCString&& record)
+    {
+      std::swap(name, record.name);
+      std::swap(name_cap, record.name_cap);
+      std::swap(comment, record.comment);
+      std::swap(comment_cap, record.comment_cap);
+      std::swap(seq, record.seq);
+      std::swap(seq_cap, record.seq_cap);
+      std::swap(qual, record.qual);
+      std::swap(qual_cap, record.qual_cap);
+      return *this;
+    }
+
+    ~RecordCString()
+    {
+      free(name);
+      free(comment);
+      free(seq);
+      free(qual);
+    }
+
+    char* name = nullptr;
+    size_t name_cap = 0;
+    char* comment = nullptr;
+    size_t comment_cap = 0;
+    char* seq = nullptr;
+    size_t seq_cap = 0;
+    char* qual = nullptr;
+    size_t qual_cap = 0;
+  };
+
+  char* tmp = nullptr;
+  size_t tmp_cap = 0;
 
   std::thread* reader_thread = nullptr;
   std::thread* postprocessor_thread = nullptr;
   std::mutex format_mutex;
   std::condition_variable format_cv;
   std::atomic<bool> reader_end;
-  std::string tmp;
   InputIndexQueue<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
     ready_records;
-  Record *reader_record = nullptr, *ready_record = nullptr;
-  InputIndexQueue<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE> reader_queue;
+  RecordCString* reader_record = nullptr;
+  Record* ready_record = nullptr;
+  InputIndexQueue<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
+    reader_queue;
   InputIndexQueue<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     postprocessor_queue;
 
@@ -113,9 +184,9 @@ private:
   bool is_sam_buffer();
   bool is_gfa2_buffer();
 
-  bool readline_buffer_append(std::string& line);
-  void readline_file_append(std::string& line);
-  void readline_file(std::string& line);
+  bool readline_buffer_append(char*& ptr, size_t& cap);
+  void readline_file(char*& ptr, size_t& cap);
+  void readline_file_append(char*& ptr, size_t& cap);
 
   int read_stage = 0;
 
@@ -148,8 +219,9 @@ inline SeqReader::SeqReader(const std::string& source_path, int flags)
   , reader_end(false)
 {
   buffer = new char[BUFFER_SIZE];
-  line_buffer = (char*)std::malloc(line_buffer_size); // NOLINT
-  tmp.reserve(RESERVE_SIZE_FOR_STRINGS);
+  tmp = (char*)std::malloc(SEQ_DEFAULT_CAPACITY); // NOLINT
+  tmp_cap = SEQ_DEFAULT_CAPACITY;
+  tmp[0] = '\0';
   start_postprocessor();
   std::unique_lock<std::mutex> lock(format_mutex);
   start_reader();
@@ -160,7 +232,7 @@ inline SeqReader::~SeqReader()
 {
   close();
   delete[] buffer;
-  free(line_buffer);
+  free(tmp);
 }
 
 inline void
@@ -524,13 +596,23 @@ SeqReader::determine_format()
 }
 
 inline bool
-SeqReader::readline_buffer_append(std::string& line)
+SeqReader::readline_buffer_append(char*& ptr, size_t& cap)
 {
   char c = char(0);
+  size_t size = std::strlen(ptr);
   for (; buffer_start < buffer_end && (c = buffer[buffer_start]) != '\n';
        ++buffer_start) {
-    line += c;
+    if (size >= cap) {
+      cap *= 2;
+      ptr = (char*)std::realloc((char*)ptr, cap);
+    }
+    ptr[size++] = c;
   }
+  if (size >= cap) {
+    cap *= 2;
+    ptr = (char*)std::realloc((char*)ptr, cap);
+  }
+  ptr[size++] = '\0';
   if (c == '\n') {
     ++buffer_start;
     return true;
@@ -539,77 +621,168 @@ SeqReader::readline_buffer_append(std::string& line)
 }
 
 inline void
-SeqReader::readline_file_append(std::string& line)
+SeqReader::readline_file(char*& ptr, size_t& cap)
 {
-  size_t p = 0;
-  for (;;) {
-    line_buffer[line_buffer_size - 1] = char(255); // NOLINT
-    fgets(line_buffer + p, int(line_buffer_size - p), source);
-    if (line_buffer[line_buffer_size - 1] == 0) {
-      p = line_buffer_size - 1;
-      line_buffer_size *= 2;
-      line_buffer =
-        (char*)std::realloc((char*)line_buffer, line_buffer_size); // NOLINT
-    } else {
-      break;
-    }
-  }
-  line += line_buffer;
-  if (line.back() == '\n') {
-    line.pop_back();
-  }
+  getline(&ptr, &cap, source);
 }
 
 inline void
-SeqReader::readline_file(std::string& line)
+SeqReader::readline_file_append(char*& ptr, size_t& cap)
 {
-  size_t p = 0;
-  for (;;) {
-    line_buffer[line_buffer_size - 1] = char(255); // NOLINT
-    fgets(line_buffer + p, int(line_buffer_size - p), source);
-    if (line_buffer[line_buffer_size - 1] == 0) {
-      p = line_buffer_size - 1;
-      line_buffer_size *= 2;
-      line_buffer =
-        (char*)std::realloc((char*)line_buffer, line_buffer_size); // NOLINT
-    } else {
-      break;
-    }
+  readline_file(tmp, tmp_cap);
+  size_t tmp_size = std::strlen(tmp);
+  size_t ptr_size = std::strlen(ptr);
+  while (tmp_size + ptr_size > cap) {
+    cap *= 2;
+    ptr = (char*)std::realloc((char*)ptr, cap);
   }
-  line = line_buffer;
-  if (line.back() == '\n') {
-    line.pop_back();
-  }
+  strcat(ptr, tmp);
 }
+
+#define READ_FASTA_NAME_COMMENT(READLINE_SECTION, END_SECTION)                 \
+  READLINE_SECTION                                                             \
+  size_t tmp_size = strlen(tmp);                                               \
+  while (tmp_size > reader_record->name_cap) {                                 \
+    reader_record->name_cap *= 2;                                              \
+    reader_record->name = (char*)std::realloc((char*)reader_record->name,      \
+                                              reader_record->name_cap);        \
+  }                                                                            \
+  while (tmp_size > reader_record->comment_cap) {                              \
+    reader_record->comment_cap *= 2;                                           \
+    reader_record->comment = (char*)std::realloc(                              \
+      (char*)reader_record->comment, reader_record->comment_cap);              \
+  }                                                                            \
+  bool in_name = true;                                                         \
+  char c;                                                                      \
+  int i, j;                                                                    \
+  for (i = 0, j = 0, c = tmp[1]; c != '\0'; c = tmp[++i + 1]) {                \
+    if (in_name) {                                                             \
+      if (c == ' ') {                                                          \
+        reader_record->name[i] = '\0';                                         \
+        in_name = false;                                                       \
+      } else {                                                                 \
+        reader_record->name[i] = c;                                            \
+      }                                                                        \
+    } else {                                                                   \
+      reader_record->comment[j++] = c;                                         \
+    }                                                                          \
+  }                                                                            \
+  if (in_name) {                                                               \
+    reader_record->name[++i] = '\0';                                           \
+  }                                                                            \
+  reader_record->comment[j] = '\0';                                            \
+  END_SECTION
+
+#define READ_SAM(READLINE_SECTION, MIDEND_SECTION, END_SECTION)                \
+  enum Column                                                                  \
+  {                                                                            \
+    QNAME = 1,                                                                 \
+    FLAG,                                                                      \
+    RNAME,                                                                     \
+    POS,                                                                       \
+    MAPQ,                                                                      \
+    CIGAR,                                                                     \
+    RNEXT,                                                                     \
+    PNEXT,                                                                     \
+    TLEN,                                                                      \
+    SEQ,                                                                       \
+    QUAL                                                                       \
+  };                                                                           \
+  for (;;) {                                                                   \
+    READLINE_SECTION                                                           \
+    std::string tmp_string = tmp;                                              \
+    if (tmp_string.length() > 0 && tmp_string[0] != '@') {                     \
+      size_t pos = 0, pos2 = 0, pos3 = 0;                                      \
+      pos2 = tmp_string.find('\t');                                            \
+      while (tmp_cap > reader_record->name_cap) {                              \
+        reader_record->name_cap *= 2;                                          \
+        reader_record->name = (char*)std::realloc((char*)reader_record->name,  \
+                                                  reader_record->name_cap);    \
+      }                                                                        \
+      strcpy(reader_record->name, tmp_string.substr(0, pos2).c_str());         \
+      for (int i = 0; i < int(SEQ) - 1; i++) {                                 \
+        pos = tmp_string.find('\t', pos + 1);                                  \
+      }                                                                        \
+      pos2 = tmp_string.find('\t', pos + 1);                                   \
+      pos3 = tmp_string.find('\t', pos2 + 1);                                  \
+      if (pos3 == std::string::npos) {                                         \
+        pos3 = tmp_string.length();                                            \
+      }                                                                        \
+      while (tmp_cap > reader_record->seq_cap) {                               \
+        reader_record->seq_cap *= 2;                                           \
+        reader_record->seq = (char*)std::realloc((char*)reader_record->seq,    \
+                                                 reader_record->seq_cap);      \
+      }                                                                        \
+      while (tmp_cap > reader_record->qual_cap) {                              \
+        reader_record->qual_cap *= 2;                                          \
+        reader_record->qual = (char*)std::realloc((char*)reader_record->qual,  \
+                                                  reader_record->qual_cap);    \
+      }                                                                        \
+      strcpy(reader_record->seq,                                               \
+             tmp_string.substr(pos + 1, pos2 - pos - 1).c_str());              \
+      strcpy(reader_record->qual,                                              \
+             tmp_string.substr(pos2 + 1, pos3 - pos2 - 1).c_str());            \
+      MIDEND_SECTION                                                           \
+    }                                                                          \
+    tmp[0] = '\0';                                                             \
+    END_SECTION                                                                \
+  }
+
+#define READ_GFA2(READLINE_SECTION, MIDEND_SECTION, END_SECTION)               \
+  enum Column                                                                  \
+  {                                                                            \
+    S = 1,                                                                     \
+    ID,                                                                        \
+    LEN,                                                                       \
+    SEQ                                                                        \
+  };                                                                           \
+  for (;;) {                                                                   \
+    READLINE_SECTION                                                           \
+    std::string tmp_string = tmp;                                              \
+    if (tmp_string.length() > 0 && tmp_string[0] == 'S') {                     \
+      size_t pos = 0, pos2 = 0;                                                \
+      pos2 = tmp_string.find('\t', 1);                                         \
+      while (tmp_cap > reader_record->name_cap) {                              \
+        reader_record->name_cap *= 2;                                          \
+        reader_record->name = (char*)std::realloc((char*)reader_record->name,  \
+                                                  reader_record->name_cap);    \
+      }                                                                        \
+      strcpy(reader_record->name, tmp_string.substr(1, pos2 - 1).c_str());     \
+      for (int i = 0; i < int(SEQ) - 1; i++) {                                 \
+        pos = tmp_string.find('\t', pos + 1);                                  \
+      }                                                                        \
+      pos2 = tmp_string.find('\t', pos + 1);                                   \
+      if (pos2 == std::string::npos) {                                         \
+        pos2 = tmp_string.length();                                            \
+      }                                                                        \
+      while (tmp_cap > reader_record->seq_cap) {                               \
+        reader_record->seq_cap *= 2;                                           \
+        reader_record->seq = (char*)std::realloc((char*)reader_record->seq,    \
+                                                 reader_record->seq_cap);      \
+      }                                                                        \
+      strcpy(reader_record->seq,                                               \
+             tmp_string.substr(pos + 1, pos2 - pos - 1).c_str());              \
+      MIDEND_SECTION                                                           \
+    }                                                                          \
+    tmp[0] = '\0';                                                             \
+    END_SECTION                                                                \
+  }
 
 inline bool
 SeqReader::read_fasta_buffer()
 {
   switch (read_stage) {
     case 0: {
-      if (!readline_buffer_append(tmp)) {
-        return false;
-      }
-      auto pos = tmp.find(' ');
-      reader_record->name = tmp.substr(1, pos - 1);
-      while (pos < tmp.size() && tmp[pos] == ' ') {
-        pos++;
-      }
-      if (pos < tmp.size()) {
-        reader_record->comment = tmp.substr(pos);
-      } else {
-        reader_record->comment = "";
-      }
-      ++read_stage;
-      tmp.clear();
+      READ_FASTA_NAME_COMMENT(
+        if (!readline_buffer_append(tmp, tmp_cap)) { return false; },
+        ++read_stage;
+        tmp[0] = '\0';)
     }
     case 1: {
-      if (!readline_buffer_append(tmp)) {
+      if (!readline_buffer_append(reader_record->seq, reader_record->seq_cap)) {
         return false;
       }
-      reader_record->seq = std::move(tmp);
       read_stage = 0;
-      tmp.clear();
       return true;
     }
   }
@@ -621,44 +794,30 @@ SeqReader::read_fastq_buffer()
 {
   switch (read_stage) {
     case 0: {
-      if (!readline_buffer_append(tmp)) {
-        return false;
-      }
-      auto pos = tmp.find(' ');
-      reader_record->name = tmp.substr(1, pos - 1);
-      while (pos < tmp.size() && tmp[pos] == ' ') {
-        pos++;
-      }
-      if (pos < tmp.size()) {
-        reader_record->comment = tmp.substr(pos);
-      } else {
-        reader_record->comment = "";
-      }
-      ++read_stage;
-      tmp.clear();
+      READ_FASTA_NAME_COMMENT(
+        if (!readline_buffer_append(tmp, tmp_cap)) { return false; },
+        ++read_stage;
+        tmp[0] = '\0';)
     }
     case 1: {
-      if (!readline_buffer_append(tmp)) {
+      if (!readline_buffer_append(reader_record->seq, reader_record->seq_cap)) {
         return false;
       }
-      reader_record->seq = std::move(tmp);
       ++read_stage;
-      tmp.clear();
     }
     case 2: {
-      if (!readline_buffer_append(tmp)) {
+      if (!readline_buffer_append(tmp, tmp_cap)) {
         return false;
       }
       ++read_stage;
-      tmp.clear();
+      tmp[0] = '\0';
     }
     case 3: {
-      if (!readline_buffer_append(tmp)) {
+      if (!readline_buffer_append(reader_record->qual,
+                                  reader_record->qual_cap)) {
         return false;
       }
-      reader_record->qual = std::move(tmp);
       read_stage = 0;
-      tmp.clear();
       return true;
     }
   }
@@ -668,86 +827,19 @@ SeqReader::read_fastq_buffer()
 inline bool
 SeqReader::read_sam_buffer()
 {
-  enum Column
-  {
-    QNAME = 1,
-    FLAG,
-    RNAME,
-    POS,
-    MAPQ,
-    CIGAR,
-    RNEXT,
-    PNEXT,
-    TLEN,
-    SEQ,
-    QUAL
-  };
-  for (;;) {
-    if (!readline_buffer_append(tmp)) {
-      return false;
-    }
-    if (tmp.length() > 0 && tmp[0] != '@') {
-      size_t pos = 0, pos2 = 0, pos3 = 0;
-      pos2 = tmp.find('\t');
-      reader_record->name = tmp.substr(0, pos2);
-      for (int i = 0; i < int(SEQ) - 1; i++) {
-        pos = tmp.find('\t', pos + 1);
-      }
-      pos2 = tmp.find('\t', pos + 1);
-      pos3 = tmp.find('\t', pos2 + 1);
-      if (pos3 == std::string::npos) {
-        pos3 = tmp.length();
-      }
-
-      reader_record->seq = tmp.substr(pos + 1, pos2 - pos - 1);
-      reader_record->qual = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
-
-      tmp.clear();
-      return true;
-    }
-    tmp.clear();
-    if (buffer_start >= buffer_end) {
-      return false;
-    }
-  }
+  READ_SAM(
+    if (!readline_buffer_append(tmp, tmp_cap)) { return false; }, tmp[0] = '\0';
+    return true;
+    , if (buffer_start >= buffer_end) { return false; })
 }
 
 inline bool
 SeqReader::read_gfa2_buffer()
 {
-  enum Column
-  {
-    S = 1,
-    ID,
-    LEN,
-    SEQ
-  };
-  for (;;) {
-    if (!readline_buffer_append(tmp)) {
-      return false;
-    }
-    if (tmp.length() > 0 && tmp[0] == 'S') {
-      size_t pos = 0, pos2 = 0;
-      pos2 = tmp.find('\t', 1);
-      reader_record->name = tmp.substr(1, pos2 - 1);
-      for (int i = 0; i < int(SEQ) - 1; i++) {
-        pos = tmp.find('\t', pos + 1);
-      }
-      pos2 = tmp.find('\t', pos + 1);
-      if (pos2 == std::string::npos) {
-        pos2 = tmp.length();
-      }
-
-      reader_record->seq = tmp.substr(pos + 1, pos2 - pos - 1);
-
-      tmp.clear();
-      return true;
-    }
-    tmp.clear();
-    if (buffer_start >= buffer_end) {
-      return false;
-    }
-  }
+  READ_GFA2(
+    if (!readline_buffer_append(tmp, tmp_cap)) { return false; }, tmp[0] = '\0';
+    return true;
+    , if (buffer_start >= buffer_end) { return false; })
 }
 
 inline void
@@ -755,25 +847,12 @@ SeqReader::read_fasta_transition()
 {
   switch (read_stage) {
     case 0: {
-      readline_file_append(tmp);
-      auto pos = tmp.find(' ');
-      reader_record->name = tmp.substr(1, pos - 1);
-      while (pos < tmp.size() && tmp[pos] == ' ') {
-        pos++;
-      }
-      if (pos < tmp.size()) {
-        reader_record->comment = tmp.substr(pos);
-      } else {
-        reader_record->comment = "";
-      }
-      ++read_stage;
-      tmp.clear();
+      READ_FASTA_NAME_COMMENT(readline_file_append(tmp, tmp_cap);, ++read_stage;
+                              tmp[0] = '\0';)
     }
     case 1: {
-      readline_file_append(tmp);
-      reader_record->seq = std::move(tmp);
+      readline_file_append(reader_record->name, reader_record->name_cap);
       read_stage = 0;
-      tmp.clear();
     }
   }
 }
@@ -783,36 +862,21 @@ SeqReader::read_fastq_transition()
 {
   switch (read_stage) {
     case 0: {
-      readline_file_append(tmp);
-      auto pos = tmp.find(' ');
-      reader_record->name = tmp.substr(1, pos - 1);
-      while (pos < tmp.size() && tmp[pos] == ' ') {
-        pos++;
-      }
-      if (pos < tmp.size()) {
-        reader_record->comment = tmp.substr(pos);
-      } else {
-        reader_record->comment = "";
-      }
-      ++read_stage;
-      tmp.clear();
+      READ_FASTA_NAME_COMMENT(readline_file_append(tmp, tmp_cap);, ++read_stage;
+                              tmp[0] = '\0';)
     }
     case 1: {
-      readline_file_append(tmp);
-      reader_record->seq = std::move(tmp);
+      readline_file_append(reader_record->seq, reader_record->seq_cap);
       ++read_stage;
-      tmp.clear();
     }
     case 2: {
-      readline_file_append(tmp);
+      readline_file_append(tmp, tmp_cap);
       ++read_stage;
-      tmp.clear();
+      tmp[0] = '\0';
     }
     case 3: {
-      readline_file_append(tmp);
-      reader_record->qual = std::move(tmp);
+      readline_file_append(reader_record->qual, reader_record->qual_cap);
       read_stage = 0;
-      tmp.clear();
     }
   }
 }
@@ -820,186 +884,45 @@ SeqReader::read_fastq_transition()
 inline void
 SeqReader::read_sam_transition()
 {
-  enum Column
-  {
-    QNAME = 1,
-    FLAG,
-    RNAME,
-    POS,
-    MAPQ,
-    CIGAR,
-    RNEXT,
-    PNEXT,
-    TLEN,
-    SEQ,
-    QUAL
-  };
-  for (;;) {
-    readline_file_append(tmp);
-    if (tmp.length() > 0 && tmp[0] != '@') {
-      size_t pos = 0, pos2 = 0, pos3 = 0;
-      pos2 = tmp.find('\t');
-      reader_record->name = tmp.substr(0, pos2);
-      for (int i = 0; i < int(SEQ) - 1; i++) {
-        pos = tmp.find('\t', pos + 1);
-      }
-      pos2 = tmp.find('\t', pos + 1);
-      pos3 = tmp.find('\t', pos2 + 1);
-      if (pos3 == std::string::npos) {
-        pos3 = tmp.length();
-      }
-
-      reader_record->seq = tmp.substr(pos + 1, pos2 - pos - 1);
-      reader_record->qual = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
-    }
-    tmp.clear();
-    if (bool(feof(source))) {
-      break;
-    }
-  }
+  READ_SAM(
+    readline_file_append(tmp, tmp_cap);, , if (bool(feof(source))) { break; })
 }
 
 inline void
 SeqReader::read_gfa2_transition()
 {
-  enum Column
-  {
-    S = 1,
-    ID,
-    LEN,
-    SEQ
-  };
-  for (;;) {
-    readline_file_append(tmp);
-    if (tmp.length() > 0 && tmp[0] == 'S') {
-      size_t pos = 0, pos2 = 0;
-      pos2 = tmp.find('\t', 1);
-      reader_record->name = tmp.substr(1, pos2 - 1);
-      for (int i = 0; i < int(SEQ) - 1; i++) {
-        pos = tmp.find('\t', pos + 1);
-      }
-      pos2 = tmp.find('\t', pos + 1);
-      if (pos2 == std::string::npos) {
-        pos2 = tmp.length();
-      }
-
-      reader_record->seq = tmp.substr(pos + 1, pos2 - pos - 1);
-    }
-    tmp.clear();
-    if (bool(feof(source))) {
-      break;
-    }
-  }
+  READ_GFA2(
+    readline_file_append(tmp, tmp_cap);, , if (bool(feof(source))) { break; })
 }
 
 inline void
 SeqReader::read_fasta_file()
 {
-  readline_file(tmp);
-  auto pos = tmp.find(' ');
-  reader_record->name = tmp.substr(1, pos - 1);
-  while (pos < tmp.size() && tmp[pos] == ' ') {
-    pos++;
-  }
-  if (pos < tmp.size()) {
-    reader_record->comment = tmp.substr(pos);
-  } else {
-    reader_record->comment = "";
-  }
-  readline_file(tmp);
-  reader_record->seq = std::move(tmp);
+  READ_FASTA_NAME_COMMENT(readline_file(tmp, tmp_cap);, )
+  readline_file(reader_record->seq, reader_record->seq_cap);
 }
 
 inline void
 SeqReader::read_fastq_file()
 {
-  readline_file(tmp);
-  auto pos = tmp.find(' ');
-  reader_record->name = tmp.substr(1, pos - 1);
-  while (pos < tmp.size() && tmp[pos] == ' ') {
-    pos++;
-  }
-  if (pos < tmp.size()) {
-    reader_record->comment = tmp.substr(pos);
-  } else {
-    reader_record->comment = "";
-  }
-  readline_file(reader_record->seq);
-  readline_file(tmp);
-  readline_file(reader_record->qual);
+  READ_FASTA_NAME_COMMENT(readline_file(tmp, tmp_cap);, )
+  readline_file(reader_record->seq, reader_record->seq_cap);
+  readline_file(tmp, tmp_cap);
+  readline_file(reader_record->qual, reader_record->qual_cap);
 }
 
 inline void
 SeqReader::read_sam_file()
 {
-  enum Column
-  {
-    QNAME = 1,
-    FLAG,
-    RNAME,
-    POS,
-    MAPQ,
-    CIGAR,
-    RNEXT,
-    PNEXT,
-    TLEN,
-    SEQ,
-    QUAL
-  };
-  for (;;) {
-    readline_file(tmp);
-    if (tmp.length() > 0 && tmp[0] != '@') {
-      size_t pos = 0, pos2 = 0, pos3 = 0;
-      pos2 = tmp.find('\t');
-      reader_record->name = tmp.substr(0, pos2);
-      for (int i = 0; i < int(SEQ) - 1; i++) {
-        pos = tmp.find('\t', pos + 1);
-      }
-      pos2 = tmp.find('\t', pos + 1);
-      pos3 = tmp.find('\t', pos2 + 1);
-      if (pos3 == std::string::npos) {
-        pos3 = tmp.length();
-      }
-
-      reader_record->seq = tmp.substr(pos + 1, pos2 - pos - 1);
-      reader_record->qual = tmp.substr(pos2 + 1, pos3 - pos2 - 1);
-    }
-    if (bool(feof(source))) {
-      break;
-    }
-  }
+  READ_SAM(
+    readline_file(tmp, tmp_cap);, , if (bool(feof(source))) { break; })
 }
 
 inline void
 SeqReader::read_gfa2_file()
 {
-  enum Column
-  {
-    S = 1,
-    ID,
-    LEN,
-    SEQ
-  };
-  for (;;) {
-    readline_file(tmp);
-    if (tmp.length() > 0 && tmp[0] == 'S') {
-      size_t pos = 0, pos2 = 0;
-      pos2 = tmp.find('\t', 1);
-      reader_record->name = tmp.substr(1, pos2 - 1);
-      for (int i = 0; i < int(SEQ) - 1; i++) {
-        pos = tmp.find('\t', pos + 1);
-      }
-      pos2 = tmp.find('\t', pos + 1);
-      if (pos2 == std::string::npos) {
-        pos2 = tmp.length();
-      }
-
-      reader_record->seq = tmp.substr(pos + 1, pos2 - pos - 1);
-    }
-    if (bool(feof(source))) {
-      break;
-    }
-  }
+  READ_GFA2(
+    readline_file(tmp, tmp_cap);, , if (bool(feof(source))) { break; })
 }
 
 inline void
@@ -1018,7 +941,8 @@ SeqReader::start_reader()
       // Read from buffer
       for (; buffer_start < buffer_end && !reader_end;) {
         reader_record = &(records.data[records.current]);
-        if (!(this->*read_format_buffer_impl)() || reader_record->seq.empty()) {
+        if (!(this->*read_format_buffer_impl)() ||
+            reader_record->seq[0] == '\0') {
           break;
         }
         records.current++;
@@ -1038,7 +962,7 @@ SeqReader::start_reader()
           std::ungetc(p, source);
           reader_record = &(records.data[records.current]);
           (this->*read_format_transition_impl)();
-          if (!reader_record->seq.empty()) {
+          if (reader_record->seq[0] != '\0') {
             records.current++;
             records.count++;
             if (records.current == RECORD_BLOCK_SIZE) {
@@ -1061,7 +985,7 @@ SeqReader::start_reader()
         std::ungetc(p, source);
         reader_record = &(records.data[records.current]);
         (this->*read_format_file_impl)();
-        if (reader_record->seq.empty()) {
+        if (reader_record->seq[0] == '\0') {
           break;
         }
         records.current++;
@@ -1094,12 +1018,31 @@ inline void
 SeqReader::start_postprocessor()
 {
   postprocessor_thread = new std::thread([this]() {
-    decltype(reader_queue)::Block records;
+    decltype(reader_queue)::Block records_reader;
+    decltype(postprocessor_queue)::Block records_postprocessor;
     for (;;) {
-      reader_queue.read(records);
-      for (size_t i = 0; i < records.count; i++) {
-        auto& seq = records.data[i].seq;
-        auto& qual = records.data[i].qual;
+      reader_queue.read(records_reader);
+      for (size_t i = 0; i < records_reader.count; i++) {
+        records_postprocessor.data[i].name = records_reader.data[i].name;
+        records_postprocessor.data[i].comment = records_reader.data[i].comment;
+        records_postprocessor.data[i].seq = records_reader.data[i].seq;
+        records_postprocessor.data[i].qual = records_reader.data[i].qual;
+        auto& name = records_postprocessor.data[i].name;
+        auto& comment = records_postprocessor.data[i].comment;
+        auto& seq = records_postprocessor.data[i].seq;
+        auto& qual = records_postprocessor.data[i].qual;
+        if (!name.empty() && name.back() == '\n') {
+          name.pop_back();
+        }
+        if (!comment.empty() && comment.back() == '\n') {
+          comment.pop_back();
+        }
+        if (!seq.empty() && seq.back() == '\n') {
+          seq.pop_back();
+        }
+        if (!qual.empty() && qual.back() == '\n') {
+          qual.pop_back();
+        }
         if (flagTrimMasked()) {
           const auto len = seq.length();
           size_t trim_start = 0, trim_end = seq.length();
@@ -1118,21 +1061,29 @@ SeqReader::start_postprocessor()
         }
         if (flagFoldCase()) {
           for (auto& c : seq) {
+            char old = c;
             c = CAPITALS[unsigned(c)];
             if (!bool(c)) {
               log_error(
                 std::string("A sequence contains invalid IUPAC character: ") +
-                c);
+                old);
               std::exit(EXIT_FAILURE);
             }
           }
         }
+        records_reader.data[i].name[0] = '\0';
+        records_reader.data[i].comment[0] = '\0';
+        records_reader.data[i].seq[0] = '\0';
+        records_reader.data[i].qual[0] = '\0';
       }
-      if (records.count == 0) {
-        postprocessor_queue.write(records);
+      records_postprocessor.count = records_reader.count;
+      records_postprocessor.current = records_reader.current;
+      records_postprocessor.index = records_reader.index;
+      if (records_postprocessor.count == 0) {
+        postprocessor_queue.write(records_postprocessor);
         break;
       } else {
-        postprocessor_queue.write(records);
+        postprocessor_queue.write(records_postprocessor);
       }
     }
   });
