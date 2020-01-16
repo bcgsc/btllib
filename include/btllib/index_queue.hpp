@@ -2,6 +2,7 @@
 #define BTLLIB_INDEX_QUEUE_HPP
 
 #include <atomic>
+#include <algorithm>
 #include <condition_variable>
 #include <mutex>
 #include <string>
@@ -22,26 +23,21 @@ public:
       : data(new T[BLOCK_SIZE])
     {}
 
-    Block(const Block& block) = default;
+    Block(const Block&) = default;
 
-    Block(Block&& block)
-      : data(block.data)
-      , current(block.current)
-      , count(block.count)
-      , index(block.index)
+    Block(Block&& block): current(block.current), count(block.count), index(block.index)
     {
-      block.data = nullptr;
+      std::swap(data, block.data);
     }
 
-    Block& operator=(const Block& block) = default;
+    Block& operator=(const Block&) = default;
 
     Block& operator=(Block&& block)
     {
-      data = block.data;
+      std::swap(data, block.data);
       current = block.current;
       count = block.count;
       index = block.index;
-      block.data = nullptr;
       return *this;
     }
 
