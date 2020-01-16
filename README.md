@@ -8,11 +8,12 @@ Dependencies
 
 C++
 ---
-- Copy the libbtl directory in your project
+- Copy the btllib directory in your project
 - Use any header from the `btllib/include` directory
 
 Python and Java
 ---
+- Copy the btllib directory in your project
 - Run `btllib/compile`
 - The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name.
 - Python
