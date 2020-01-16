@@ -39,8 +39,8 @@ public:
 private:
   static unsigned pop_cnt_byte(unsigned char x);
 
-  inline static unsigned BITS_IN_BYTE = 8; // NOLINT
-  inline static unsigned char BIT_MASKS[] = {
+  static constexpr unsigned BITS_IN_BYTE = 8; // NOLINT
+  static constexpr unsigned char BIT_MASKS[] = {
     // NOLINT
     0x01, 0x02, 0x04, 0x08, // NOLINT
     0x10, 0x20, 0x40, 0x80  // NOLINT

@@ -5,6 +5,16 @@ project('btllib', 'cpp',
 add_global_arguments([ '-pthread', '-fopenmp' ], language : 'cpp')
 add_global_link_arguments([ '-ldl', '-lpthread', '-fopenmp' ], language : 'cpp')
 
+compiler = meson.get_compiler('cpp')
+compiler_id = compiler.get_id()
+compiler_version = compiler.version()
+if compiler_id == 'gcc' and compiler_version.version_compare('<7.0.0')
+  error('GCC ' + compiler_version + ' doesn\'t fully support C++17')
+endif
+if compiler_id == 'clang' and compiler_version.version_compare('<5.0.0')
+  error('Clang ' + compiler_version + ' doesn\'t fully support C++17')
+endif
+
 btllib_include = include_directories('include')
 
 clang_tidy = find_program('clang-tidy', required: false)
