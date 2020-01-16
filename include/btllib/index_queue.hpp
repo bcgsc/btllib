@@ -25,7 +25,7 @@ public:
 
     Block(const Block&) = default;
 
-    Block(Block&& block)
+    Block(Block&& block) noexcept
       : current(block.current)
       , count(block.count)
       , index(block.index)
@@ -35,7 +35,7 @@ public:
 
     Block& operator=(const Block&) = default;
 
-    Block& operator=(Block&& block)
+    Block& operator=(Block&& block) noexcept
     {
       std::swap(data, block.data);
       current = block.current;

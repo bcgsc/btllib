@@ -39,11 +39,13 @@ public:
 private:
   static unsigned pop_cnt_byte(unsigned char x);
 
-  static constexpr unsigned BITS_IN_BYTE = 8;
-  static constexpr unsigned char BIT_MASKS[BITS_IN_BYTE] = { 0x01, 0x02, 0x04,
-                                                             0x08, 0x10, 0x20,
-                                                             0x40, 0x80 };
-  static constexpr const char* MAGIC_HEADER = "BTLBloomFilter_v1";
+  inline static unsigned BITS_IN_BYTE = 8; // NOLINT
+  inline static unsigned char BIT_MASKS[] = {
+    // NOLINT
+    0x01, 0x02, 0x04, 0x08, // NOLINT
+    0x10, 0x20, 0x40, 0x80  // NOLINT
+  };
+  inline static const char* MAGIC_HEADER = "BTLBloomFilter_v1";
 
   unsigned char* bitarray = nullptr;
   size_t size = 0; // In bytes

@@ -2,10 +2,13 @@
 
 #include "helpers.hpp"
 
+#include <algorithm>
 #include <cassert>
 #include <string>
 #include <fstream>
 #include <cstdio>
+
+#include <omp.h>
 
 int main() {
     const char* seqs[] = { "ACTG", "TGCA" };
@@ -14,7 +17,7 @@ int main() {
     for (int iteration = 0; iteration < 3; iteration++) {
         std::cerr << "Iteration " << iteration + 1 << std::endl;
 
-        int i;
+        size_t i;
         btllib::SeqReader::Record record;
 
         // Test FASTA
@@ -109,6 +112,45 @@ int main() {
         assert(i == 500);
         
         random_reader.close();
+
+        std::cerr << "Test random file in parallel" << std::endl;
+        std::vector<std::string> parallel_names;
+        std::vector<std::string> parallel_comments;
+        std::vector<std::string> parallel_seqs;
+        std::vector<std::string> parallel_quals;
+
+        btllib::SeqReader random_reader2(random_filename);
+        #pragma omp parallel private(record) shared(random_reader2)
+        {
+            while (record = random_reader2.read()) {
+                #pragma omp critical
+                {
+                    parallel_names.push_back(record.name);
+                    parallel_comments.push_back(record.comment);
+                    parallel_seqs.push_back(record.seq);
+                    parallel_quals.push_back(record.qual);
+                }
+            }
+        }
+
+        std::sort(generated_names.begin(), generated_names.end());
+        std::sort(generated_comments.begin(), generated_comments.end());
+        std::sort(generated_seqs.begin(), generated_seqs.end());
+        std::sort(generated_quals.begin(), generated_quals.end());
+
+        std::sort(parallel_names.begin(), parallel_names.end());
+        std::sort(parallel_comments.begin(), parallel_comments.end());
+        std::sort(parallel_seqs.begin(), parallel_seqs.end());
+        std::sort(parallel_quals.begin(), parallel_quals.end());
+
+        for (i = 0; i < parallel_names.size(); i++) {
+            assert(parallel_names[i] == generated_names[i]);
+            assert(parallel_comments[i] == generated_comments[i]);
+            assert(parallel_seqs[i] == generated_seqs[i]);
+            assert(parallel_quals[i] == generated_quals[i]);
+        }
+        assert(i == 500);
+
         std::remove(random_filename.c_str());
     }
 

@@ -14,12 +14,13 @@
 #include <cstdio>
 #include <cstring>
 #include <mutex>
+#include <stack>
 #include <string>
 #include <thread>
 
 namespace btllib {
 
-/** Read a FASTA, FASTQ, SAM, or GFA2 file. */
+/** Read a FASTA, FASTQ, SAM, or GFA2 file. Threadsafe. */
 class SeqReader
 {
 public:
@@ -90,17 +91,19 @@ private:
   static const size_t SEQ_DEFAULT_CAPACITY = NAME_DEFAULT_CAPACITY;
   static const size_t QUAL_DEFAULT_CAPACITY = SEQ_DEFAULT_CAPACITY;
 
+  static const size_t MAX_SIMULTANEOUS_SEQREADERS = 128;
+
   struct RecordCString
   {
 
     RecordCString()
-      : name((char*)std::malloc(NAME_DEFAULT_CAPACITY))
+      : name((char*)std::malloc(NAME_DEFAULT_CAPACITY)) // NOLINT
       , name_cap(NAME_DEFAULT_CAPACITY)
-      , comment((char*)std::malloc(COMMENT_DEFAULT_CAPACITY))
+      , comment((char*)std::malloc(COMMENT_DEFAULT_CAPACITY)) // NOLINT
       , comment_cap(COMMENT_DEFAULT_CAPACITY)
-      , seq((char*)std::malloc(SEQ_DEFAULT_CAPACITY))
+      , seq((char*)std::malloc(SEQ_DEFAULT_CAPACITY)) // NOLINT
       , seq_cap(SEQ_DEFAULT_CAPACITY)
-      , qual((char*)std::malloc(QUAL_DEFAULT_CAPACITY))
+      , qual((char*)std::malloc(QUAL_DEFAULT_CAPACITY)) // NOLINT
       , qual_cap(QUAL_DEFAULT_CAPACITY)
     {
       name[0] = '\0';
@@ -111,7 +114,7 @@ private:
 
     RecordCString(const RecordCString&) = delete;
 
-    RecordCString(RecordCString&& record)
+    RecordCString(RecordCString&& record) noexcept
     {
       std::swap(name, record.name);
       std::swap(name_cap, record.name_cap);
@@ -125,7 +128,7 @@ private:
 
     RecordCString& operator=(const RecordCString&) = delete;
 
-    RecordCString& operator=(RecordCString&& record)
+    RecordCString& operator=(RecordCString&& record) noexcept
     {
       std::swap(name, record.name);
       std::swap(name_cap, record.name_cap);
@@ -140,10 +143,10 @@ private:
 
     ~RecordCString()
     {
-      free(name);
-      free(comment);
-      free(seq);
-      free(qual);
+      free(name);    // NOLINT
+      free(comment); // NOLINT
+      free(seq);     // NOLINT
+      free(qual);    // NOLINT
     }
 
     char* name = nullptr;
@@ -164,14 +167,23 @@ private:
   std::mutex format_mutex;
   std::condition_variable format_cv;
   std::atomic<bool> reader_end;
-  IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
-    ready_records;
   RecordCString* reader_record = nullptr;
-  Record* ready_record = nullptr;
   IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     reader_queue;
   IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     postprocessor_queue;
+
+  thread_local inline static IndexQueueSPMC<Record,
+                                            RECORD_QUEUE_SIZE,
+                                            RECORD_BLOCK_SIZE>::Block
+    ready_records_array[MAX_SIMULTANEOUS_SEQREADERS];
+  thread_local inline static Record*
+    ready_record_array[MAX_SIMULTANEOUS_SEQREADERS];
+
+  inline static std::stack<unsigned> recycled_ids;
+  inline static std::mutex recycled_ids_mutex;
+  inline static unsigned last_id = 0;
+  unsigned id = 0;
 
   void determine_format();
   void start_reader();
@@ -242,29 +254,44 @@ inline SeqReader::SeqReader(const std::string& source_path, int flags)
   tmp_cap = SEQ_DEFAULT_CAPACITY;
   tmp[0] = '\0';
   start_postprocessor();
-  std::unique_lock<std::mutex> lock(format_mutex);
-  start_reader();
-  format_cv.wait(lock);
+  {
+    std::unique_lock<std::mutex> lock(recycled_ids_mutex);
+    if (recycled_ids.empty()) {
+      id = ++last_id;
+    } else {
+      id = recycled_ids.top();
+      recycled_ids.pop();
+    }
+  }
+  {
+    std::unique_lock<std::mutex> lock(format_mutex);
+    start_reader();
+    format_cv.wait(lock);
+  }
 }
 
 inline SeqReader::~SeqReader()
 {
+  {
+    std::unique_lock<std::mutex> lock(recycled_ids_mutex);
+    recycled_ids.push(id);
+  }
   close();
   delete[] buffer;
-  free(tmp);
+  free(tmp); // NOLINT
 }
 
 inline void
 SeqReader::close()
 {
   if (!closed) {
+    closed = true;
     reader_end = true;
     reader_queue.close();
     postprocessor_queue.close();
     reader_thread->join();
     postprocessor_thread->join();
     source.close();
-    closed = true;
   }
 }
 
@@ -611,13 +638,13 @@ SeqReader::readline_buffer_append(char*& ptr, size_t& cap)
        ++buffer_start) {
     if (size >= cap) {
       cap *= 2;
-      ptr = (char*)std::realloc((char*)ptr, cap);
+      ptr = (char*)std::realloc((char*)ptr, cap); // NOLINT
     }
     ptr[size++] = c;
   }
   if (size >= cap) {
     cap *= 2;
-    ptr = (char*)std::realloc((char*)ptr, cap);
+    ptr = (char*)std::realloc((char*)ptr, cap); // NOLINT
   }
   ptr[size++] = '\0';
   if (c == '\n') {
@@ -641,11 +668,12 @@ SeqReader::readline_file_append(char*& ptr, size_t& cap)
   size_t ptr_size = std::strlen(ptr);
   while (tmp_size + ptr_size > cap) {
     cap *= 2;
-    ptr = (char*)std::realloc((char*)ptr, cap);
+    ptr = (char*)std::realloc((char*)ptr, cap); // NOLINT
   }
-  strcat(ptr, tmp);
+  strcat(ptr, tmp); // NOLINT
 }
 
+// NOLINTNEXTLINE
 #define READ_FASTA_NAME_COMMENT(READLINE_SECTION, END_SECTION)                 \
   READLINE_SECTION                                                             \
   size_t tmp_size = strlen(seq_reader.tmp);                                    \
@@ -657,7 +685,7 @@ SeqReader::readline_file_append(char*& ptr, size_t& cap)
   }                                                                            \
   while (tmp_size > seq_reader.reader_record->comment_cap) {                   \
     seq_reader.reader_record->comment_cap *= 2;                                \
-    seq_reader.reader_record->comment =                                        \
+    seq_reader.reader_record->comment = /* NOLINTNEXTLINE */                   \
       (char*)std::realloc((char*)seq_reader.reader_record->comment,            \
                           seq_reader.reader_record->comment_cap);              \
   }                                                                            \
@@ -683,6 +711,7 @@ SeqReader::readline_file_append(char*& ptr, size_t& cap)
   seq_reader.reader_record->comment[j] = '\0';                                 \
   END_SECTION
 
+// NOLINTNEXTLINE
 #define READ_SAM(READLINE_SECTION, MIDEND_SECTION, END_SECTION)                \
   enum Column                                                                  \
   {                                                                            \
@@ -742,6 +771,7 @@ SeqReader::readline_file_append(char*& ptr, size_t& cap)
     END_SECTION                                                                \
   }
 
+// NOLINTNEXTLINE
 #define READ_GFA2(READLINE_SECTION, MIDEND_SECTION, END_SECTION)               \
   enum Column                                                                  \
   {                                                                            \
@@ -791,11 +821,12 @@ struct SeqReader::read_fasta_buffer
   {
     switch (seq_reader.read_stage) {
       case 0: {
-        READ_FASTA_NAME_COMMENT(
-          if (!seq_reader.readline_buffer_append(
-                seq_reader.tmp, seq_reader.tmp_cap)) { return false; },
-          ++seq_reader.read_stage;
-          seq_reader.tmp[0] = '\0';)
+        READ_FASTA_NAME_COMMENT(                        // NOLINT
+          if (!seq_reader.readline_buffer_append(       // NOLINT
+                seq_reader.tmp,                         // NOLINT
+                seq_reader.tmp_cap)) { return false; }, // NOLINT
+          ++seq_reader.read_stage;                      // NOLINT
+          seq_reader.tmp[0] = '\0';)                    // NOLINT
       }
       case 1: {
         if (!seq_reader.readline_buffer_append(
@@ -817,11 +848,12 @@ struct SeqReader::read_fastq_buffer
   {
     switch (seq_reader.read_stage) {
       case 0: {
-        READ_FASTA_NAME_COMMENT(
-          if (!seq_reader.readline_buffer_append(
-                seq_reader.tmp, seq_reader.tmp_cap)) { return false; },
-          ++seq_reader.read_stage;
-          seq_reader.tmp[0] = '\0';)
+        READ_FASTA_NAME_COMMENT(                        // NOLINT
+          if (!seq_reader.readline_buffer_append(       // NOLINT
+                seq_reader.tmp,                         // NOLINT
+                seq_reader.tmp_cap)) { return false; }, // NOLINT
+          ++seq_reader.read_stage;                      // NOLINT
+          seq_reader.tmp[0] = '\0';)                    // NOLINT
       }
       case 1: {
         if (!seq_reader.readline_buffer_append(
@@ -857,12 +889,16 @@ struct SeqReader::read_sam_buffer
 {
   bool operator()(SeqReader& seq_reader)
   {
-    READ_SAM(
-      if (!seq_reader.readline_buffer_append(
-            seq_reader.tmp, seq_reader.tmp_cap)) { return false; },
-      seq_reader.tmp[0] = '\0';
-      return true;
-      , if (seq_reader.buffer_start >= seq_reader.buffer_end) { return false; })
+    READ_SAM(                                       // NOLINT
+      if (!seq_reader.readline_buffer_append(       // NOLINT
+            seq_reader.tmp,                         // NOLINT
+            seq_reader.tmp_cap)) { return false; }, // NOLINT
+      seq_reader.tmp[0] = '\0';                     // NOLINT
+      return true;                                  // NOLINT
+      ,
+      if (seq_reader.buffer_start >= seq_reader.buffer_end) {
+        return false;
+      }) // NOLINT
   }
 };
 
@@ -870,12 +906,16 @@ struct SeqReader::read_gfa2_buffer
 {
   bool operator()(SeqReader& seq_reader)
   {
-    READ_GFA2(
-      if (!seq_reader.readline_buffer_append(
-            seq_reader.tmp, seq_reader.tmp_cap)) { return false; },
-      seq_reader.tmp[0] = '\0';
-      return true;
-      , if (seq_reader.buffer_start >= seq_reader.buffer_end) { return false; })
+    READ_GFA2(                                // NOLINT
+      if (!seq_reader.readline_buffer_append( // NOLINT
+            seq_reader.tmp,
+            seq_reader.tmp_cap)) { return false; }, // NOLINT
+      seq_reader.tmp[0] = '\0';                     // NOLINT
+      return true;                                  // NOLINT
+      ,
+      if (seq_reader.buffer_start >= seq_reader.buffer_end) {
+        return false;
+      }) // NOLINT
   }
 };
 
@@ -885,10 +925,11 @@ struct SeqReader::read_fasta_transition
   {
     switch (seq_reader.read_stage) {
       case 0: {
-        READ_FASTA_NAME_COMMENT(
-          seq_reader.readline_file_append(seq_reader.tmp, seq_reader.tmp_cap);
-          , ++seq_reader.read_stage;
-          seq_reader.tmp[0] = '\0';)
+        READ_FASTA_NAME_COMMENT(                               // NOLINT
+          seq_reader.readline_file_append(seq_reader.tmp,      // NOLINT
+                                          seq_reader.tmp_cap); // NOLINT
+          , ++seq_reader.read_stage;                           // NOLINT
+          seq_reader.tmp[0] = '\0';)                           // NOLINT
       }
       case 1: {
         seq_reader.readline_file_append(seq_reader.reader_record->name,
@@ -905,10 +946,11 @@ struct SeqReader::read_fastq_transition
   {
     switch (seq_reader.read_stage) {
       case 0: {
-        READ_FASTA_NAME_COMMENT(
-          seq_reader.readline_file_append(seq_reader.tmp, seq_reader.tmp_cap);
-          , ++seq_reader.read_stage;
-          seq_reader.tmp[0] = '\0';)
+        READ_FASTA_NAME_COMMENT(                               // NOLINT
+          seq_reader.readline_file_append(seq_reader.tmp,      // NOLINT
+                                          seq_reader.tmp_cap); // NOLINT
+          , ++seq_reader.read_stage;                           // NOLINT
+          seq_reader.tmp[0] = '\0';)                           // NOLINT
       }
       case 1: {
         seq_reader.readline_file_append(seq_reader.reader_record->seq,
@@ -933,9 +975,10 @@ struct SeqReader::read_sam_transition
 {
   void operator()(SeqReader& seq_reader)
   {
-    READ_SAM(
-      seq_reader.readline_file_append(seq_reader.tmp, seq_reader.tmp_cap);
-      , , if (bool(feof(seq_reader.source))) { break; })
+    READ_SAM(                                              // NOLINT
+      seq_reader.readline_file_append(seq_reader.tmp,      // NOLINT
+                                      seq_reader.tmp_cap); // NOLINT
+      , , if (bool(feof(seq_reader.source))) { break; })   // NOLINT
   }
 };
 
@@ -943,9 +986,10 @@ struct SeqReader::read_gfa2_transition
 {
   void operator()(SeqReader& seq_reader)
   {
-    READ_GFA2(
-      seq_reader.readline_file_append(seq_reader.tmp, seq_reader.tmp_cap);
-      , , if (bool(feof(seq_reader.source))) { break; })
+    READ_GFA2(                                             // NOLINT
+      seq_reader.readline_file_append(seq_reader.tmp,      // NOLINT
+                                      seq_reader.tmp_cap); // NOLINT
+      , , if (bool(feof(seq_reader.source))) { break; })   // NOLINT
   }
 };
 
@@ -953,8 +997,8 @@ struct SeqReader::read_fasta_file
 {
   void operator()(SeqReader& seq_reader)
   {
-    READ_FASTA_NAME_COMMENT(
-      seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap);, )
+    READ_FASTA_NAME_COMMENT(                                           // NOLINT
+      seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap);, ) // NOLINT
     seq_reader.readline_file(seq_reader.reader_record->seq,
                              seq_reader.reader_record->seq_cap);
   }
@@ -964,8 +1008,8 @@ struct SeqReader::read_fastq_file
 {
   void operator()(SeqReader& seq_reader)
   {
-    READ_FASTA_NAME_COMMENT(
-      seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap);, )
+    READ_FASTA_NAME_COMMENT(                                           // NOLINT
+      seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap);, ) // NOLINT
     seq_reader.readline_file(seq_reader.reader_record->seq,
                              seq_reader.reader_record->seq_cap);
     seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap);
@@ -978,9 +1022,9 @@ struct SeqReader::read_sam_file
 {
   void operator()(SeqReader& seq_reader)
   {
-    READ_SAM(
-      seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap);
-      , , if (bool(feof(seq_reader.source))) { break; })
+    READ_SAM(                                                       // NOLINT
+      seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap); // NOLINT
+      , , if (bool(feof(seq_reader.source))) { break; })            // NOLINT
   }
 };
 
@@ -988,9 +1032,9 @@ struct SeqReader::read_gfa2_file
 {
   void operator()(SeqReader& seq_reader)
   {
-    READ_GFA2(
-      seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap);
-      , , if (bool(feof(seq_reader.source))) { break; })
+    READ_GFA2(                                                      // NOLINT
+      seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap); // NOLINT
+      , , if (bool(feof(seq_reader.source))) { break; })            // NOLINT
   }
 };
 
@@ -1192,9 +1236,9 @@ SeqReader::start_postprocessor()
             char old = c;
             c = CAPITALS[unsigned(c)];
             if (!bool(c)) {
-              log_error(
-                std::string("A sequence contains invalid IUPAC character: ") +
-                old);
+              log_error(std::string("A sequence contains invalid "
+                                    "IUPAC character: ") +
+                        old);
               std::exit(EXIT_FAILURE);
             }
           }
@@ -1210,9 +1254,8 @@ SeqReader::start_postprocessor()
       if (records_postprocessor.count == 0) {
         postprocessor_queue.write(records_postprocessor);
         break;
-      } else {
-        postprocessor_queue.write(records_postprocessor);
       }
+      postprocessor_queue.write(records_postprocessor);
     }
   });
 }
@@ -1220,13 +1263,16 @@ SeqReader::start_postprocessor()
 inline SeqReader::Record
 SeqReader::read()
 {
+  auto& ready_records = ready_records_array[id];
+  auto& ready_record = ready_record_array[id];
   if (ready_records.count <= ready_records.current) {
     postprocessor_queue.read(ready_records);
+    if (ready_records.count <= ready_records.current) {
+      close();
+      return Record();
+    }
   }
   ready_record = &(ready_records.data[ready_records.current++]);
-  if (ready_records.count == 0) {
-    close();
-  }
   return std::move(*ready_record);
 }
 

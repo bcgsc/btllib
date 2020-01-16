@@ -28,7 +28,7 @@ int main() {
         btllib::SeqReader reader_fasta(filename);
         assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
 
-        int i;
+        size_t i;
         btllib::SeqReader::Record record;
 
         i = 0;

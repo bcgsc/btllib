@@ -47,6 +47,7 @@ inline unsigned
 CountingBloomFilter::count(const uint64_t* hashes)
 {
   (void)hashes;
+  return 0;
 }
 
 } // namespace btllib

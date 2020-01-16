@@ -162,9 +162,14 @@ sigchld_handler(const int sig)
   }
 }
 
+bool
+data_saveload_init();
+static const bool data_saveload_initialized = data_saveload_init();
+
 inline bool
 data_saveload_init()
 {
+  (void)data_saveload_initialized;
   struct sigaction action; // NOLINT
   action.sa_handler = sigchld_handler;
   sigemptyset(&action.sa_mask);
@@ -172,8 +177,6 @@ data_saveload_init()
   sigaction(SIGCHLD, &action, nullptr);
   return true;
 }
-
-static const bool data_saveload_initialized = data_saveload_init();
 
 inline std::string
 get_saveload_cmd(const std::string& path, SaveloadOp op)
