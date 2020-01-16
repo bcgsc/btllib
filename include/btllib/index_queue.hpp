@@ -98,7 +98,7 @@ protected:
 };
 
 template<typename T, unsigned QUEUE_SIZE, unsigned BLOCK_SIZE>
-class InputIndexQueue : public IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>
+class IndexQueueSPMC : public IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>
 {
 
 public:
@@ -143,7 +143,45 @@ private:
 };
 
 template<typename T, unsigned QUEUE_SIZE, unsigned BLOCK_SIZE>
-class OutputIndexQueue : public IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>
+class IndexQueueSPSC : public IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>
+{
+
+public:
+  using Block = typename IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Block;
+  using Slot = typename IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Slot;
+
+  void write(Block& block)
+  {
+    auto index = block.index;
+    auto& target = this->slots[index % QUEUE_SIZE];
+    std::unique_lock<std::mutex> busy_lock(target.busy);
+    target.occupancy_changed.wait(busy_lock, [&] { return !target.occupied; });
+    target.block = std::move(block);
+    target.occupied = true;
+    target.occupancy_changed.notify_one();
+    ++(this->element_count);
+  }
+
+  void read(Block& block)
+  {
+    auto& target = this->slots[this->read_counter % QUEUE_SIZE];
+    std::unique_lock<std::mutex> busy_lock(target.busy);
+    target.occupancy_changed.wait(
+      busy_lock, [&] { return target.occupied || this->closed; });
+    if (this->closed) {
+      return;
+    }
+    ++(this->read_counter);
+
+    block = std::move(target.block);
+    target.occupied = false;
+    target.occupancy_changed.notify_one();
+    --(this->element_count);
+  }
+};
+
+template<typename T, unsigned QUEUE_SIZE, unsigned BLOCK_SIZE>
+class IndexQueueMPSC : public IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>
 {
 
 public:

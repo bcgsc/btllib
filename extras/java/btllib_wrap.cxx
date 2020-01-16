@@ -594,6 +594,270 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1read(JNIEnv *jenv, jcl
 }
 
 
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1read_1fasta_1buffer(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::read_fasta_buffer *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::read_fasta_buffer *)new btllib::SeqReader::read_fasta_buffer();
+  *(btllib::SeqReader::read_fasta_buffer **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1read_1fasta_1buffer(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::read_fasta_buffer *arg1 = (btllib::SeqReader::read_fasta_buffer *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::read_fasta_buffer **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1read_1fastq_1buffer(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::read_fastq_buffer *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::read_fastq_buffer *)new btllib::SeqReader::read_fastq_buffer();
+  *(btllib::SeqReader::read_fastq_buffer **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1read_1fastq_1buffer(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::read_fastq_buffer *arg1 = (btllib::SeqReader::read_fastq_buffer *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::read_fastq_buffer **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1read_1sam_1buffer(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::read_sam_buffer *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::read_sam_buffer *)new btllib::SeqReader::read_sam_buffer();
+  *(btllib::SeqReader::read_sam_buffer **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1read_1sam_1buffer(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::read_sam_buffer *arg1 = (btllib::SeqReader::read_sam_buffer *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::read_sam_buffer **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1read_1gfa2_1buffer(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::read_gfa2_buffer *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::read_gfa2_buffer *)new btllib::SeqReader::read_gfa2_buffer();
+  *(btllib::SeqReader::read_gfa2_buffer **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1read_1gfa2_1buffer(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::read_gfa2_buffer *arg1 = (btllib::SeqReader::read_gfa2_buffer *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::read_gfa2_buffer **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1read_1fasta_1transition(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::read_fasta_transition *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::read_fasta_transition *)new btllib::SeqReader::read_fasta_transition();
+  *(btllib::SeqReader::read_fasta_transition **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1read_1fasta_1transition(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::read_fasta_transition *arg1 = (btllib::SeqReader::read_fasta_transition *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::read_fasta_transition **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1read_1fastq_1transition(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::read_fastq_transition *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::read_fastq_transition *)new btllib::SeqReader::read_fastq_transition();
+  *(btllib::SeqReader::read_fastq_transition **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1read_1fastq_1transition(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::read_fastq_transition *arg1 = (btllib::SeqReader::read_fastq_transition *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::read_fastq_transition **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1read_1sam_1transition(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::read_sam_transition *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::read_sam_transition *)new btllib::SeqReader::read_sam_transition();
+  *(btllib::SeqReader::read_sam_transition **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1read_1sam_1transition(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::read_sam_transition *arg1 = (btllib::SeqReader::read_sam_transition *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::read_sam_transition **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1read_1gfa2_1transition(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::read_gfa2_transition *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::read_gfa2_transition *)new btllib::SeqReader::read_gfa2_transition();
+  *(btllib::SeqReader::read_gfa2_transition **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1read_1gfa2_1transition(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::read_gfa2_transition *arg1 = (btllib::SeqReader::read_gfa2_transition *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::read_gfa2_transition **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1read_1fasta_1file(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::read_fasta_file *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::read_fasta_file *)new btllib::SeqReader::read_fasta_file();
+  *(btllib::SeqReader::read_fasta_file **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1read_1fasta_1file(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::read_fasta_file *arg1 = (btllib::SeqReader::read_fasta_file *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::read_fasta_file **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1read_1fastq_1file(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::read_fastq_file *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::read_fastq_file *)new btllib::SeqReader::read_fastq_file();
+  *(btllib::SeqReader::read_fastq_file **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1read_1fastq_1file(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::read_fastq_file *arg1 = (btllib::SeqReader::read_fastq_file *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::read_fastq_file **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1read_1sam_1file(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::read_sam_file *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::read_sam_file *)new btllib::SeqReader::read_sam_file();
+  *(btllib::SeqReader::read_sam_file **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1read_1sam_1file(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::read_sam_file *arg1 = (btllib::SeqReader::read_sam_file *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::read_sam_file **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1read_1gfa2_1file(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::read_gfa2_file *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReader::read_gfa2_file *)new btllib::SeqReader::read_gfa2_file();
+  *(btllib::SeqReader::read_gfa2_file **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1read_1gfa2_1file(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::read_gfa2_file *arg1 = (btllib::SeqReader::read_gfa2_file *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::read_gfa2_file **)&jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1Vertex(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   btllib::Vertex *arg1 = (btllib::Vertex *) 0 ;
   

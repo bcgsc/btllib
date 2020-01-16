@@ -164,13 +164,13 @@ private:
   std::mutex format_mutex;
   std::condition_variable format_cv;
   std::atomic<bool> reader_end;
-  InputIndexQueue<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
+  IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
     ready_records;
   RecordCString* reader_record = nullptr;
   Record* ready_record = nullptr;
-  InputIndexQueue<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
+  IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     reader_queue;
-  InputIndexQueue<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
+  IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     postprocessor_queue;
 
   void determine_format();
@@ -190,24 +190,43 @@ private:
 
   int read_stage = 0;
 
-  bool read_fasta_buffer();
-  bool read_fastq_buffer();
-  bool read_sam_buffer();
-  bool read_gfa2_buffer();
+public:
+  struct read_fasta_buffer;
+  struct read_fastq_buffer;
+  struct read_sam_buffer;
+  struct read_gfa2_buffer;
 
-  void read_fasta_transition();
-  void read_fastq_transition();
-  void read_sam_transition();
-  void read_gfa2_transition();
+  struct read_fasta_transition;
+  struct read_fastq_transition;
+  struct read_sam_transition;
+  struct read_gfa2_transition;
 
-  void read_fasta_file();
-  void read_fastq_file();
-  void read_sam_file();
-  void read_gfa2_file();
+  struct read_fasta_file;
+  struct read_fastq_file;
+  struct read_sam_file;
+  struct read_gfa2_file;
 
-  bool (SeqReader::*read_format_buffer_impl)() = nullptr;
-  void (SeqReader::*read_format_transition_impl)() = nullptr;
-  void (SeqReader::*read_format_file_impl)() = nullptr;
+private:
+  template<typename F>
+  void read_from_buffer(
+    F f,
+    IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
+      records,
+    size_t& counter);
+
+  template<typename F>
+  void read_transition(
+    F f,
+    IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
+      records,
+    size_t& counter);
+
+  template<typename F>
+  void read_from_file(
+    F f,
+    IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
+      records,
+    size_t& counter);
 
   void postprocess();
 };
@@ -570,24 +589,12 @@ SeqReader::determine_format()
 
   if (is_fasta_buffer()) {
     format = Format::FASTA;
-    read_format_buffer_impl = &SeqReader::read_fasta_buffer;
-    read_format_transition_impl = &SeqReader::read_fasta_transition;
-    read_format_file_impl = &SeqReader::read_fasta_file;
   } else if (is_fastq_buffer()) {
     format = Format::FASTQ;
-    read_format_buffer_impl = &SeqReader::read_fastq_buffer;
-    read_format_transition_impl = &SeqReader::read_fastq_transition;
-    read_format_file_impl = &SeqReader::read_fastq_file;
   } else if (is_sam_buffer()) {
     format = Format::SAM;
-    read_format_buffer_impl = &SeqReader::read_sam_buffer;
-    read_format_transition_impl = &SeqReader::read_sam_transition;
-    read_format_file_impl = &SeqReader::read_sam_file;
   } else if (is_gfa2_buffer()) {
     format = Format::GFA2;
-    read_format_buffer_impl = &SeqReader::read_gfa2_buffer;
-    read_format_transition_impl = &SeqReader::read_gfa2_transition;
-    read_format_file_impl = &SeqReader::read_gfa2_file;
   } else {
     format = Format::INVALID;
     log_error(std::string(source_path) + " source file is in invalid format!");
@@ -641,36 +648,39 @@ SeqReader::readline_file_append(char*& ptr, size_t& cap)
 
 #define READ_FASTA_NAME_COMMENT(READLINE_SECTION, END_SECTION)                 \
   READLINE_SECTION                                                             \
-  size_t tmp_size = strlen(tmp);                                               \
-  while (tmp_size > reader_record->name_cap) {                                 \
-    reader_record->name_cap *= 2;                                              \
-    reader_record->name = (char*)std::realloc((char*)reader_record->name,      \
-                                              reader_record->name_cap);        \
+  size_t tmp_size = strlen(seq_reader.tmp);                                    \
+  while (tmp_size > seq_reader.reader_record->name_cap) {                      \
+    seq_reader.reader_record->name_cap *= 2;                                   \
+    seq_reader.reader_record->name =                                           \
+      (char*)std::realloc((char*)seq_reader.reader_record->name,               \
+                          seq_reader.reader_record->name_cap);                 \
   }                                                                            \
-  while (tmp_size > reader_record->comment_cap) {                              \
-    reader_record->comment_cap *= 2;                                           \
-    reader_record->comment = (char*)std::realloc(                              \
-      (char*)reader_record->comment, reader_record->comment_cap);              \
+  while (tmp_size > seq_reader.reader_record->comment_cap) {                   \
+    seq_reader.reader_record->comment_cap *= 2;                                \
+    seq_reader.reader_record->comment =                                        \
+      (char*)std::realloc((char*)seq_reader.reader_record->comment,            \
+                          seq_reader.reader_record->comment_cap);              \
   }                                                                            \
   bool in_name = true;                                                         \
   char c;                                                                      \
   int i, j;                                                                    \
-  for (i = 0, j = 0, c = tmp[1]; c != '\0'; c = tmp[++i + 1]) {                \
+  for (i = 0, j = 0, c = seq_reader.tmp[1]; c != '\0';                         \
+       c = seq_reader.tmp[++i + 1]) {                                          \
     if (in_name) {                                                             \
       if (c == ' ') {                                                          \
-        reader_record->name[i] = '\0';                                         \
+        seq_reader.reader_record->name[i] = '\0';                              \
         in_name = false;                                                       \
       } else {                                                                 \
-        reader_record->name[i] = c;                                            \
+        seq_reader.reader_record->name[i] = c;                                 \
       }                                                                        \
     } else {                                                                   \
-      reader_record->comment[j++] = c;                                         \
+      seq_reader.reader_record->comment[j++] = c;                              \
     }                                                                          \
   }                                                                            \
   if (in_name) {                                                               \
-    reader_record->name[++i] = '\0';                                           \
+    seq_reader.reader_record->name[++i] = '\0';                                \
   }                                                                            \
-  reader_record->comment[j] = '\0';                                            \
+  seq_reader.reader_record->comment[j] = '\0';                                 \
   END_SECTION
 
 #define READ_SAM(READLINE_SECTION, MIDEND_SECTION, END_SECTION)                \
@@ -690,16 +700,18 @@ SeqReader::readline_file_append(char*& ptr, size_t& cap)
   };                                                                           \
   for (;;) {                                                                   \
     READLINE_SECTION                                                           \
-    std::string tmp_string = tmp;                                              \
+    std::string tmp_string = seq_reader.tmp;                                   \
     if (tmp_string.length() > 0 && tmp_string[0] != '@') {                     \
       size_t pos = 0, pos2 = 0, pos3 = 0;                                      \
       pos2 = tmp_string.find('\t');                                            \
-      while (tmp_cap > reader_record->name_cap) {                              \
-        reader_record->name_cap *= 2;                                          \
-        reader_record->name = (char*)std::realloc((char*)reader_record->name,  \
-                                                  reader_record->name_cap);    \
+      while (tmp_string.size() > seq_reader.reader_record->name_cap) {         \
+        seq_reader.reader_record->name_cap *= 2;                               \
+        seq_reader.reader_record->name =                                       \
+          (char*)std::realloc((char*)seq_reader.reader_record->name,           \
+                              seq_reader.reader_record->name_cap);             \
       }                                                                        \
-      strcpy(reader_record->name, tmp_string.substr(0, pos2).c_str());         \
+      strcpy(seq_reader.reader_record->name,                                   \
+             tmp_string.substr(0, pos2).c_str());                              \
       for (int i = 0; i < int(SEQ) - 1; i++) {                                 \
         pos = tmp_string.find('\t', pos + 1);                                  \
       }                                                                        \
@@ -708,23 +720,25 @@ SeqReader::readline_file_append(char*& ptr, size_t& cap)
       if (pos3 == std::string::npos) {                                         \
         pos3 = tmp_string.length();                                            \
       }                                                                        \
-      while (tmp_cap > reader_record->seq_cap) {                               \
-        reader_record->seq_cap *= 2;                                           \
-        reader_record->seq = (char*)std::realloc((char*)reader_record->seq,    \
-                                                 reader_record->seq_cap);      \
+      while (tmp_string.size() > seq_reader.reader_record->seq_cap) {          \
+        seq_reader.reader_record->seq_cap *= 2;                                \
+        seq_reader.reader_record->seq =                                        \
+          (char*)std::realloc((char*)seq_reader.reader_record->seq,            \
+                              seq_reader.reader_record->seq_cap);              \
       }                                                                        \
-      while (tmp_cap > reader_record->qual_cap) {                              \
-        reader_record->qual_cap *= 2;                                          \
-        reader_record->qual = (char*)std::realloc((char*)reader_record->qual,  \
-                                                  reader_record->qual_cap);    \
+      while (tmp_string.size() > seq_reader.reader_record->qual_cap) {         \
+        seq_reader.reader_record->qual_cap *= 2;                               \
+        seq_reader.reader_record->qual =                                       \
+          (char*)std::realloc((char*)seq_reader.reader_record->qual,           \
+                              seq_reader.reader_record->qual_cap);             \
       }                                                                        \
-      strcpy(reader_record->seq,                                               \
+      strcpy(seq_reader.reader_record->seq,                                    \
              tmp_string.substr(pos + 1, pos2 - pos - 1).c_str());              \
-      strcpy(reader_record->qual,                                              \
+      strcpy(seq_reader.reader_record->qual,                                   \
              tmp_string.substr(pos2 + 1, pos3 - pos2 - 1).c_str());            \
       MIDEND_SECTION                                                           \
     }                                                                          \
-    tmp[0] = '\0';                                                             \
+    seq_reader.tmp[0] = '\0';                                                  \
     END_SECTION                                                                \
   }
 
@@ -738,16 +752,18 @@ SeqReader::readline_file_append(char*& ptr, size_t& cap)
   };                                                                           \
   for (;;) {                                                                   \
     READLINE_SECTION                                                           \
-    std::string tmp_string = tmp;                                              \
+    std::string tmp_string = seq_reader.tmp;                                   \
     if (tmp_string.length() > 0 && tmp_string[0] == 'S') {                     \
       size_t pos = 0, pos2 = 0;                                                \
       pos2 = tmp_string.find('\t', 1);                                         \
-      while (tmp_cap > reader_record->name_cap) {                              \
-        reader_record->name_cap *= 2;                                          \
-        reader_record->name = (char*)std::realloc((char*)reader_record->name,  \
-                                                  reader_record->name_cap);    \
+      while (tmp_string.size() > seq_reader.reader_record->name_cap) {         \
+        seq_reader.reader_record->name_cap *= 2;                               \
+        seq_reader.reader_record->name =                                       \
+          (char*)std::realloc((char*)seq_reader.reader_record->name,           \
+                              seq_reader.reader_record->name_cap);             \
       }                                                                        \
-      strcpy(reader_record->name, tmp_string.substr(1, pos2 - 1).c_str());     \
+      strcpy(seq_reader.reader_record->name,                                   \
+             tmp_string.substr(1, pos2 - 1).c_str());                          \
       for (int i = 0; i < int(SEQ) - 1; i++) {                                 \
         pos = tmp_string.find('\t', pos + 1);                                  \
       }                                                                        \
@@ -755,174 +771,315 @@ SeqReader::readline_file_append(char*& ptr, size_t& cap)
       if (pos2 == std::string::npos) {                                         \
         pos2 = tmp_string.length();                                            \
       }                                                                        \
-      while (tmp_cap > reader_record->seq_cap) {                               \
-        reader_record->seq_cap *= 2;                                           \
-        reader_record->seq = (char*)std::realloc((char*)reader_record->seq,    \
-                                                 reader_record->seq_cap);      \
+      while (tmp_string.size() > seq_reader.reader_record->seq_cap) {          \
+        seq_reader.reader_record->seq_cap *= 2;                                \
+        seq_reader.reader_record->seq =                                        \
+          (char*)std::realloc((char*)seq_reader.reader_record->seq,            \
+                              seq_reader.reader_record->seq_cap);              \
       }                                                                        \
-      strcpy(reader_record->seq,                                               \
+      strcpy(seq_reader.reader_record->seq,                                    \
              tmp_string.substr(pos + 1, pos2 - pos - 1).c_str());              \
       MIDEND_SECTION                                                           \
     }                                                                          \
-    tmp[0] = '\0';                                                             \
+    seq_reader.tmp[0] = '\0';                                                  \
     END_SECTION                                                                \
   }
 
-inline bool
-SeqReader::read_fasta_buffer()
+struct SeqReader::read_fasta_buffer
 {
-  switch (read_stage) {
-    case 0: {
-      READ_FASTA_NAME_COMMENT(
-        if (!readline_buffer_append(tmp, tmp_cap)) { return false; },
-        ++read_stage;
-        tmp[0] = '\0';)
-    }
-    case 1: {
-      if (!readline_buffer_append(reader_record->seq, reader_record->seq_cap)) {
-        return false;
+  bool operator()(SeqReader& seq_reader)
+  {
+    switch (seq_reader.read_stage) {
+      case 0: {
+        READ_FASTA_NAME_COMMENT(
+          if (!seq_reader.readline_buffer_append(
+                seq_reader.tmp, seq_reader.tmp_cap)) { return false; },
+          ++seq_reader.read_stage;
+          seq_reader.tmp[0] = '\0';)
       }
-      read_stage = 0;
+      case 1: {
+        if (!seq_reader.readline_buffer_append(
+              seq_reader.reader_record->seq,
+              seq_reader.reader_record->seq_cap)) {
+          return false;
+        }
+        seq_reader.read_stage = 0;
+        return true;
+      }
+    }
+    return false;
+  }
+};
+
+struct SeqReader::read_fastq_buffer
+{
+  bool operator()(SeqReader& seq_reader)
+  {
+    switch (seq_reader.read_stage) {
+      case 0: {
+        READ_FASTA_NAME_COMMENT(
+          if (!seq_reader.readline_buffer_append(
+                seq_reader.tmp, seq_reader.tmp_cap)) { return false; },
+          ++seq_reader.read_stage;
+          seq_reader.tmp[0] = '\0';)
+      }
+      case 1: {
+        if (!seq_reader.readline_buffer_append(
+              seq_reader.reader_record->seq,
+              seq_reader.reader_record->seq_cap)) {
+          return false;
+        }
+        ++seq_reader.read_stage;
+      }
+      case 2: {
+        if (!seq_reader.readline_buffer_append(seq_reader.tmp,
+                                               seq_reader.tmp_cap)) {
+          return false;
+        }
+        ++seq_reader.read_stage;
+        seq_reader.tmp[0] = '\0';
+      }
+      case 3: {
+        if (!seq_reader.readline_buffer_append(
+              seq_reader.reader_record->qual,
+              seq_reader.reader_record->qual_cap)) {
+          return false;
+        }
+        seq_reader.read_stage = 0;
+        return true;
+      }
+    }
+    return false;
+  }
+};
+
+struct SeqReader::read_sam_buffer
+{
+  bool operator()(SeqReader& seq_reader)
+  {
+    READ_SAM(
+      if (!seq_reader.readline_buffer_append(
+            seq_reader.tmp, seq_reader.tmp_cap)) { return false; },
+      seq_reader.tmp[0] = '\0';
       return true;
-    }
+      , if (seq_reader.buffer_start >= seq_reader.buffer_end) { return false; })
   }
-  return false;
-}
+};
 
-inline bool
-SeqReader::read_fastq_buffer()
+struct SeqReader::read_gfa2_buffer
 {
-  switch (read_stage) {
-    case 0: {
-      READ_FASTA_NAME_COMMENT(
-        if (!readline_buffer_append(tmp, tmp_cap)) { return false; },
-        ++read_stage;
-        tmp[0] = '\0';)
-    }
-    case 1: {
-      if (!readline_buffer_append(reader_record->seq, reader_record->seq_cap)) {
-        return false;
-      }
-      ++read_stage;
-    }
-    case 2: {
-      if (!readline_buffer_append(tmp, tmp_cap)) {
-        return false;
-      }
-      ++read_stage;
-      tmp[0] = '\0';
-    }
-    case 3: {
-      if (!readline_buffer_append(reader_record->qual,
-                                  reader_record->qual_cap)) {
-        return false;
-      }
-      read_stage = 0;
+  bool operator()(SeqReader& seq_reader)
+  {
+    READ_GFA2(
+      if (!seq_reader.readline_buffer_append(
+            seq_reader.tmp, seq_reader.tmp_cap)) { return false; },
+      seq_reader.tmp[0] = '\0';
       return true;
+      , if (seq_reader.buffer_start >= seq_reader.buffer_end) { return false; })
+  }
+};
+
+struct SeqReader::read_fasta_transition
+{
+  void operator()(SeqReader& seq_reader)
+  {
+    switch (seq_reader.read_stage) {
+      case 0: {
+        READ_FASTA_NAME_COMMENT(
+          seq_reader.readline_file_append(seq_reader.tmp, seq_reader.tmp_cap);
+          , ++seq_reader.read_stage;
+          seq_reader.tmp[0] = '\0';)
+      }
+      case 1: {
+        seq_reader.readline_file_append(seq_reader.reader_record->name,
+                                        seq_reader.reader_record->name_cap);
+        seq_reader.read_stage = 0;
+      }
     }
   }
-  return false;
-}
+};
 
-inline bool
-SeqReader::read_sam_buffer()
+struct SeqReader::read_fastq_transition
 {
-  READ_SAM(
-    if (!readline_buffer_append(tmp, tmp_cap)) { return false; }, tmp[0] = '\0';
-    return true;
-    , if (buffer_start >= buffer_end) { return false; })
-}
-
-inline bool
-SeqReader::read_gfa2_buffer()
-{
-  READ_GFA2(
-    if (!readline_buffer_append(tmp, tmp_cap)) { return false; }, tmp[0] = '\0';
-    return true;
-    , if (buffer_start >= buffer_end) { return false; })
-}
-
-inline void
-SeqReader::read_fasta_transition()
-{
-  switch (read_stage) {
-    case 0: {
-      READ_FASTA_NAME_COMMENT(readline_file_append(tmp, tmp_cap);, ++read_stage;
-                              tmp[0] = '\0';)
+  void operator()(SeqReader& seq_reader)
+  {
+    switch (seq_reader.read_stage) {
+      case 0: {
+        READ_FASTA_NAME_COMMENT(
+          seq_reader.readline_file_append(seq_reader.tmp, seq_reader.tmp_cap);
+          , ++seq_reader.read_stage;
+          seq_reader.tmp[0] = '\0';)
+      }
+      case 1: {
+        seq_reader.readline_file_append(seq_reader.reader_record->seq,
+                                        seq_reader.reader_record->seq_cap);
+        ++seq_reader.read_stage;
+      }
+      case 2: {
+        seq_reader.readline_file_append(seq_reader.tmp, seq_reader.tmp_cap);
+        ++seq_reader.read_stage;
+        seq_reader.tmp[0] = '\0';
+      }
+      case 3: {
+        seq_reader.readline_file_append(seq_reader.reader_record->qual,
+                                        seq_reader.reader_record->qual_cap);
+        seq_reader.read_stage = 0;
+      }
     }
-    case 1: {
-      readline_file_append(reader_record->name, reader_record->name_cap);
-      read_stage = 0;
+  }
+};
+
+struct SeqReader::read_sam_transition
+{
+  void operator()(SeqReader& seq_reader)
+  {
+    READ_SAM(
+      seq_reader.readline_file_append(seq_reader.tmp, seq_reader.tmp_cap);
+      , , if (bool(feof(seq_reader.source))) { break; })
+  }
+};
+
+struct SeqReader::read_gfa2_transition
+{
+  void operator()(SeqReader& seq_reader)
+  {
+    READ_GFA2(
+      seq_reader.readline_file_append(seq_reader.tmp, seq_reader.tmp_cap);
+      , , if (bool(feof(seq_reader.source))) { break; })
+  }
+};
+
+struct SeqReader::read_fasta_file
+{
+  void operator()(SeqReader& seq_reader)
+  {
+    READ_FASTA_NAME_COMMENT(
+      seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap);, )
+    seq_reader.readline_file(seq_reader.reader_record->seq,
+                             seq_reader.reader_record->seq_cap);
+  }
+};
+
+struct SeqReader::read_fastq_file
+{
+  void operator()(SeqReader& seq_reader)
+  {
+    READ_FASTA_NAME_COMMENT(
+      seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap);, )
+    seq_reader.readline_file(seq_reader.reader_record->seq,
+                             seq_reader.reader_record->seq_cap);
+    seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap);
+    seq_reader.readline_file(seq_reader.reader_record->qual,
+                             seq_reader.reader_record->qual_cap);
+  }
+};
+
+struct SeqReader::read_sam_file
+{
+  void operator()(SeqReader& seq_reader)
+  {
+    READ_SAM(
+      seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap);
+      , , if (bool(feof(seq_reader.source))) { break; })
+  }
+};
+
+struct SeqReader::read_gfa2_file
+{
+  void operator()(SeqReader& seq_reader)
+  {
+    READ_GFA2(
+      seq_reader.readline_file(seq_reader.tmp, seq_reader.tmp_cap);
+      , , if (bool(feof(seq_reader.source))) { break; })
+  }
+};
+
+template<typename F>
+inline void
+SeqReader::read_from_buffer(
+  F f,
+  IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
+    records,
+  size_t& counter)
+{
+  for (; buffer_start < buffer_end && !reader_end;) {
+    reader_record = &(records.data[records.current]);
+    if (!f(*this) || reader_record->seq[0] == '\0') {
+      break;
+    }
+    records.current++;
+    records.count++;
+    if (records.current == RECORD_BLOCK_SIZE) {
+      records.current = 0;
+      records.index = counter++;
+      reader_queue.write(records);
+      records = IndexQueueSPSC<RecordCString,
+                               RECORD_QUEUE_SIZE,
+                               RECORD_BLOCK_SIZE>::Block();
     }
   }
 }
 
+template<typename F>
 inline void
-SeqReader::read_fastq_transition()
+SeqReader::read_transition(
+  F f,
+  IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
+    records,
+  size_t& counter)
 {
-  switch (read_stage) {
-    case 0: {
-      READ_FASTA_NAME_COMMENT(readline_file_append(tmp, tmp_cap);, ++read_stage;
-                              tmp[0] = '\0';)
-    }
-    case 1: {
-      readline_file_append(reader_record->seq, reader_record->seq_cap);
-      ++read_stage;
-    }
-    case 2: {
-      readline_file_append(tmp, tmp_cap);
-      ++read_stage;
-      tmp[0] = '\0';
-    }
-    case 3: {
-      readline_file_append(reader_record->qual, reader_record->qual_cap);
-      read_stage = 0;
+  if (std::ferror(source) == 0 && std::feof(source) == 0 && !reader_end) {
+    int p = std::fgetc(source);
+    if (p != EOF) {
+      std::ungetc(p, source);
+      reader_record = &(records.data[records.current]);
+      f(*this);
+      if (reader_record->seq[0] != '\0') {
+        records.current++;
+        records.count++;
+        if (records.current == RECORD_BLOCK_SIZE) {
+          records.current = 0;
+          records.index = counter++;
+          reader_queue.write(records);
+          records = IndexQueueSPSC<RecordCString,
+                                   RECORD_QUEUE_SIZE,
+                                   RECORD_BLOCK_SIZE>::Block();
+        }
+      }
     }
   }
 }
 
+template<typename F>
 inline void
-SeqReader::read_sam_transition()
+SeqReader::read_from_file(
+  F f,
+  IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
+    records,
+  size_t& counter)
 {
-  READ_SAM(
-    readline_file_append(tmp, tmp_cap);, , if (bool(feof(source))) { break; })
-}
-
-inline void
-SeqReader::read_gfa2_transition()
-{
-  READ_GFA2(
-    readline_file_append(tmp, tmp_cap);, , if (bool(feof(source))) { break; })
-}
-
-inline void
-SeqReader::read_fasta_file()
-{
-  READ_FASTA_NAME_COMMENT(readline_file(tmp, tmp_cap);, )
-  readline_file(reader_record->seq, reader_record->seq_cap);
-}
-
-inline void
-SeqReader::read_fastq_file()
-{
-  READ_FASTA_NAME_COMMENT(readline_file(tmp, tmp_cap);, )
-  readline_file(reader_record->seq, reader_record->seq_cap);
-  readline_file(tmp, tmp_cap);
-  readline_file(reader_record->qual, reader_record->qual_cap);
-}
-
-inline void
-SeqReader::read_sam_file()
-{
-  READ_SAM(
-    readline_file(tmp, tmp_cap);, , if (bool(feof(source))) { break; })
-}
-
-inline void
-SeqReader::read_gfa2_file()
-{
-  READ_GFA2(
-    readline_file(tmp, tmp_cap);, , if (bool(feof(source))) { break; })
+  for (; std::ferror(source) == 0 && std::feof(source) == 0 && !reader_end;) {
+    int p = std::fgetc(source);
+    if (p == EOF) {
+      break;
+    }
+    std::ungetc(p, source);
+    reader_record = &(records.data[records.current]);
+    f(*this);
+    if (reader_record->seq[0] == '\0') {
+      break;
+    }
+    records.current++;
+    records.count++;
+    if (records.current == RECORD_BLOCK_SIZE) {
+      records.current = 0;
+      records.index = counter++;
+      reader_queue.write(records);
+      records = IndexQueueSPSC<RecordCString,
+                               RECORD_QUEUE_SIZE,
+                               RECORD_BLOCK_SIZE>::Block();
+    }
+  }
 }
 
 inline void
@@ -934,68 +1091,37 @@ SeqReader::start_reader()
       determine_format();
       format_cv.notify_all();
     }
+
     size_t counter = 0;
-
-    decltype(reader_queue)::Block records;
-    if (format != UNDETERMINED) {
-      // Read from buffer
-      for (; buffer_start < buffer_end && !reader_end;) {
-        reader_record = &(records.data[records.current]);
-        if (!(this->*read_format_buffer_impl)() ||
-            reader_record->seq[0] == '\0') {
-          break;
-        }
-        records.current++;
-        records.count++;
-        if (records.current == RECORD_BLOCK_SIZE) {
-          records.current = 0;
-          records.index = counter++;
-          reader_queue.write(records);
-          records = decltype(reader_queue)::Block();
-        }
+    IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
+      records;
+    switch (format) {
+      case FASTA: {
+        read_from_buffer(read_fasta_buffer(), records, counter);
+        read_transition(read_fasta_transition(), records, counter);
+        read_from_file(read_fasta_file(), records, counter);
+        break;
       }
-
-      // Transition from buffer to file
-      if (std::ferror(source) == 0 && std::feof(source) == 0 && !reader_end) {
-        int p = std::fgetc(source);
-        if (p != EOF) {
-          std::ungetc(p, source);
-          reader_record = &(records.data[records.current]);
-          (this->*read_format_transition_impl)();
-          if (reader_record->seq[0] != '\0') {
-            records.current++;
-            records.count++;
-            if (records.current == RECORD_BLOCK_SIZE) {
-              records.current = 0;
-              records.index = counter++;
-              reader_queue.write(records);
-              records = decltype(reader_queue)::Block();
-            }
-          }
-        }
+      case FASTQ: {
+        read_from_buffer(read_fastq_buffer(), records, counter);
+        read_transition(read_fastq_transition(), records, counter);
+        read_from_file(read_fastq_file(), records, counter);
+        break;
       }
-
-      // Read from file
-      for (;
-           std::ferror(source) == 0 && std::feof(source) == 0 && !reader_end;) {
-        int p = std::fgetc(source);
-        if (p == EOF) {
-          break;
-        }
-        std::ungetc(p, source);
-        reader_record = &(records.data[records.current]);
-        (this->*read_format_file_impl)();
-        if (reader_record->seq[0] == '\0') {
-          break;
-        }
-        records.current++;
-        records.count++;
-        if (records.current == RECORD_BLOCK_SIZE) {
-          records.current = 0;
-          records.index = counter++;
-          reader_queue.write(records);
-          records = decltype(reader_queue)::Block();
-        }
+      case SAM: {
+        read_from_buffer(read_sam_buffer(), records, counter);
+        read_transition(read_sam_transition(), records, counter);
+        read_from_file(read_sam_file(), records, counter);
+        break;
+      }
+      case GFA2: {
+        read_from_buffer(read_gfa2_buffer(), records, counter);
+        read_transition(read_gfa2_transition(), records, counter);
+        read_from_file(read_gfa2_file(), records, counter);
+        break;
+      }
+      default: {
+        break;
       }
     }
 
@@ -1005,7 +1131,8 @@ SeqReader::start_reader()
     size_t last_count = records.count;
     reader_queue.write(records);
     if (last_count > 0) {
-      decltype(reader_queue)::Block dummy;
+      IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
+        dummy;
       dummy.index = counter++;
       dummy.current = 0;
       dummy.count = 0;
@@ -1018,7 +1145,8 @@ inline void
 SeqReader::start_postprocessor()
 {
   postprocessor_thread = new std::thread([this]() {
-    decltype(reader_queue)::Block records_reader;
+    IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
+      records_reader;
     decltype(postprocessor_queue)::Block records_postprocessor;
     for (;;) {
       reader_queue.read(records_reader);

@@ -8,3 +8,19 @@
 %ignore btllib::DataSink::operator FILE*();
 
 %ignore btllib::SeqReader::Record::operator bool;
+
+%ignore btllib::SeqReader::read_fasta_buffer::operator();
+%ignore btllib::SeqReader::read_fasta_transition::operator();
+%ignore btllib::SeqReader::read_fasta_file::operator();
+
+%ignore btllib::SeqReader::read_fastq_buffer::operator();
+%ignore btllib::SeqReader::read_fastq_transition::operator();
+%ignore btllib::SeqReader::read_fastq_file::operator();
+
+%ignore btllib::SeqReader::read_sam_buffer::operator();
+%ignore btllib::SeqReader::read_sam_transition::operator();
+%ignore btllib::SeqReader::read_sam_file::operator();
+
+%ignore btllib::SeqReader::read_gfa2_buffer::operator();
+%ignore btllib::SeqReader::read_gfa2_transition::operator();
+%ignore btllib::SeqReader::read_gfa2_file::operator();

@@ -7,3 +7,4 @@
 %ignore btllib::DataSink::operator FILE*();
 
 %ignore btllib::IndexQueue::Block::operator=;
+%ignore btllib::SeqReader::RecordCString::operator=;
