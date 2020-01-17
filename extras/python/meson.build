@@ -1,6 +1,6 @@
 pyflags = run_command('../../scripts/get_python_flags').stdout().split('\n')
 cpp_extra_args = pyflags[0].strip().split()
-link_extra_args = pyflags[1].strip().split() + [ '-Xlinker', '-export-dynamic' ]
+link_extra_args = pyflags[1].strip().split()
 
 cpp_extra_args += ['-w']
 
