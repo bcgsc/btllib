@@ -23,7 +23,7 @@ public:
       : data(new T[BLOCK_SIZE])
     {}
 
-    Block(const Block&) = default;
+    Block(const Block&) = delete;
 
     Block(Block&& block) noexcept
       : current(block.current)
@@ -33,7 +33,7 @@ public:
       std::swap(data, block.data);
     }
 
-    Block& operator=(const Block&) = default;
+    Block& operator=(const Block&) = delete;
 
     Block& operator=(Block&& block) noexcept
     {
@@ -70,14 +70,6 @@ public:
     size_t last_tenant = -1; // Required to ensure read order
   };
 
-  IndexQueue()
-  {
-    slots.reserve(QUEUE_SIZE);
-    for (size_t i = 0; i < QUEUE_SIZE; i++) {
-      slots.emplace_back();
-    }
-  }
-
   size_t elements() const { return element_count; }
 
   void close()
@@ -91,7 +83,7 @@ public:
   bool is_closed() const { return closed; }
 
 protected:
-  std::vector<Slot> slots;
+  std::vector<Slot> slots { QUEUE_SIZE };
   size_t read_counter = 0;
   std::atomic<size_t> element_count{ 0 };
   std::atomic<bool> closed{ false };
