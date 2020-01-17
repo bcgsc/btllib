@@ -83,15 +83,15 @@ private:
   size_t buffer_end = 0;
   bool eof_newline_inserted = false;
 
-  static const size_t RECORD_QUEUE_SIZE = 128;
-  static const size_t RECORD_BLOCK_SIZE = 64;
+  static const size_t RECORD_QUEUE_SIZE = 64;
+  static const size_t RECORD_BLOCK_SIZE = 128;
 
   static const size_t NAME_DEFAULT_CAPACITY = 4096;
   static const size_t COMMENT_DEFAULT_CAPACITY = NAME_DEFAULT_CAPACITY;
   static const size_t SEQ_DEFAULT_CAPACITY = NAME_DEFAULT_CAPACITY;
   static const size_t QUAL_DEFAULT_CAPACITY = SEQ_DEFAULT_CAPACITY;
 
-  static const size_t MAX_SIMULTANEOUS_SEQREADERS = 128;
+  static const size_t MAX_SIMULTANEOUS_SEQREADERS = 256;
 
   struct RecordCString
   {
@@ -1057,9 +1057,8 @@ SeqReader::read_from_buffer(
       records.current = 0;
       records.index = counter++;
       reader_queue.write(records);
-      records = IndexQueueSPSC<RecordCString,
-                               RECORD_QUEUE_SIZE,
-                               RECORD_BLOCK_SIZE>::Block();
+      records.current = 0;
+      records.count = 0;
     }
   }
 }
@@ -1085,9 +1084,8 @@ SeqReader::read_transition(
           records.current = 0;
           records.index = counter++;
           reader_queue.write(records);
-          records = IndexQueueSPSC<RecordCString,
-                                   RECORD_QUEUE_SIZE,
-                                   RECORD_BLOCK_SIZE>::Block();
+          records.current = 0;
+          records.count = 0;
         }
       }
     }
@@ -1119,9 +1117,8 @@ SeqReader::read_from_file(
       records.current = 0;
       records.index = counter++;
       reader_queue.write(records);
-      records = IndexQueueSPSC<RecordCString,
-                               RECORD_QUEUE_SIZE,
-                               RECORD_BLOCK_SIZE>::Block();
+      records.current = 0;
+      records.count = 0;
     }
   }
 }
