@@ -83,7 +83,7 @@ private:
   size_t buffer_end = 0;
   bool eof_newline_inserted = false;
 
-  static const size_t RECORD_QUEUE_SIZE = 64;
+  static const size_t RECORD_QUEUE_SIZE = 32;
   static const size_t RECORD_BLOCK_SIZE = 128;
 
   static const size_t NAME_DEFAULT_CAPACITY = 4096;
@@ -159,10 +159,123 @@ private:
     size_t qual_cap = 0;
   };
 
+  struct RecordCString2
+  {
+
+    RecordCString2()
+      : name((char*)std::malloc(NAME_DEFAULT_CAPACITY)) // NOLINT
+      , name_cap(NAME_DEFAULT_CAPACITY)
+      , comment((char*)std::malloc(COMMENT_DEFAULT_CAPACITY)) // NOLINT
+      , comment_cap(COMMENT_DEFAULT_CAPACITY)
+      , qual((char*)std::malloc(QUAL_DEFAULT_CAPACITY)) // NOLINT
+      , qual_cap(QUAL_DEFAULT_CAPACITY)
+    {
+      name[0] = '\0';
+      comment[0] = '\0';
+      qual[0] = '\0';
+    }
+
+    RecordCString2(const RecordCString2&) = delete;
+
+    RecordCString2(RecordCString2&& record) noexcept
+    {
+      std::swap(name, record.name);
+      std::swap(name_cap, record.name_cap);
+      std::swap(comment, record.comment);
+      std::swap(comment_cap, record.comment_cap);
+      seq = std::move(record.seq);
+      std::swap(qual, record.qual);
+      std::swap(qual_cap, record.qual_cap);
+    }
+
+    RecordCString2& operator=(const RecordCString2&) = delete;
+
+    RecordCString2& operator=(RecordCString2&& record) noexcept
+    {
+      std::swap(name, record.name);
+      std::swap(name_cap, record.name_cap);
+      std::swap(comment, record.comment);
+      std::swap(comment_cap, record.comment_cap);
+      seq = std::move(record.seq);
+      std::swap(qual, record.qual);
+      std::swap(qual_cap, record.qual_cap);
+      return *this;
+    }
+
+    ~RecordCString2()
+    {
+      free(name);    // NOLINT
+      free(comment); // NOLINT
+      free(qual);    // NOLINT
+    }
+
+    char* name = nullptr;
+    size_t name_cap = 0;
+    char* comment = nullptr;
+    size_t comment_cap = 0;
+    std::string seq;
+    char* qual = nullptr;
+    size_t qual_cap = 0;
+  };
+
+  struct RecordCString3
+  {
+
+    RecordCString3()
+      : name((char*)std::malloc(NAME_DEFAULT_CAPACITY)) // NOLINT
+      , name_cap(NAME_DEFAULT_CAPACITY)
+      , comment((char*)std::malloc(COMMENT_DEFAULT_CAPACITY)) // NOLINT
+      , comment_cap(COMMENT_DEFAULT_CAPACITY)
+    {
+      name[0] = '\0';
+      comment[0] = '\0';
+    }
+
+    RecordCString3(const RecordCString3&) = delete;
+
+    RecordCString3(RecordCString3&& record) noexcept
+    {
+      std::swap(name, record.name);
+      std::swap(name_cap, record.name_cap);
+      std::swap(comment, record.comment);
+      std::swap(comment_cap, record.comment_cap);
+      seq = std::move(record.seq);
+      qual = std::move(record.qual);
+    }
+
+    RecordCString3& operator=(const RecordCString3&) = delete;
+
+    RecordCString3& operator=(RecordCString3&& record) noexcept
+    {
+      std::swap(name, record.name);
+      std::swap(name_cap, record.name_cap);
+      std::swap(comment, record.comment);
+      std::swap(comment_cap, record.comment_cap);
+      seq = std::move(record.seq);
+      qual = std::move(record.qual);
+      return *this;
+    }
+
+    ~RecordCString3()
+    {
+      free(name);    // NOLINT
+      free(comment); // NOLINT
+    }
+
+    char* name = nullptr;
+    size_t name_cap = 0;
+    char* comment = nullptr;
+    size_t comment_cap = 0;
+    std::string seq;
+    std::string qual;
+  };
+
   char* tmp = nullptr;
   size_t tmp_cap = 0;
 
   std::thread* reader_thread = nullptr;
+  std::thread* seq_copier_thread = nullptr;
+  std::thread* qual_copier_thread = nullptr;
   std::thread* postprocessor_thread = nullptr;
   std::mutex format_mutex;
   std::condition_variable format_cv;
@@ -170,6 +283,10 @@ private:
   RecordCString* reader_record = nullptr;
   IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     reader_queue;
+  IndexQueueSPMC<RecordCString2, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
+    seq_copier_queue;
+  IndexQueueSPMC<RecordCString3, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
+    qual_copier_queue;
   IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     postprocessor_queue;
 
@@ -187,6 +304,8 @@ private:
 
   void determine_format();
   void start_reader();
+  void start_seq_copier();
+  void start_qual_copier();
   void start_postprocessor();
 
   bool load_buffer();
@@ -253,6 +372,8 @@ inline SeqReader::SeqReader(const std::string& source_path, int flags)
   tmp = (char*)std::malloc(SEQ_DEFAULT_CAPACITY); // NOLINT
   tmp_cap = SEQ_DEFAULT_CAPACITY;
   tmp[0] = '\0';
+  start_seq_copier();
+  start_qual_copier();
   start_postprocessor();
   {
     std::unique_lock<std::mutex> lock(recycled_ids_mutex);
@@ -279,6 +400,10 @@ inline SeqReader::~SeqReader()
   close();
   delete[] buffer;
   free(tmp); // NOLINT
+  delete reader_thread;
+  delete seq_copier_thread;
+  delete qual_copier_thread;
+  delete postprocessor_thread;
 }
 
 inline void
@@ -288,9 +413,13 @@ SeqReader::close()
     closed = true;
     reader_end = true;
     reader_queue.close();
-    postprocessor_queue.close();
     reader_thread->join();
+    seq_copier_thread->join();
+    seq_copier_queue.close();
+    qual_copier_thread->join();
+    qual_copier_queue.close();
     postprocessor_thread->join();
+    postprocessor_queue.close();
     source.close();
   }
 }
@@ -1183,34 +1312,102 @@ SeqReader::start_reader()
 }
 
 inline void
+SeqReader::start_seq_copier()
+{
+  seq_copier_thread = new std::thread([this]() {
+    IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
+      records_in;
+    decltype(seq_copier_queue)::Block records_out;
+    for (;;) {
+      reader_queue.read(records_in);
+      for (size_t i = 0; i < records_in.count; i++) {
+        std::swap(records_out.data[i].name, records_in.data[i].name);
+        std::swap(records_out.data[i].name_cap, records_in.data[i].name_cap);
+        std::swap(records_out.data[i].comment, records_in.data[i].comment);
+        std::swap(records_out.data[i].comment_cap,
+                  records_in.data[i].comment_cap);
+        records_out.data[i].seq = records_in.data[i].seq;
+        std::swap(records_out.data[i].qual, records_in.data[i].qual);
+        std::swap(records_out.data[i].qual_cap, records_in.data[i].qual_cap);
+        auto& seq = records_out.data[i].seq;
+        if (!seq.empty() && seq.back() == '\n') {
+          seq.pop_back();
+        }
+        records_in.data[i].name[0] = '\0';
+        records_in.data[i].comment[0] = '\0';
+        records_in.data[i].seq[0] = '\0';
+        records_in.data[i].qual[0] = '\0';
+      }
+      records_out.count = records_in.count;
+      records_out.current = records_in.current;
+      records_out.index = records_in.index;
+      if (records_out.count == 0) {
+        seq_copier_queue.write(records_out);
+        break;
+      }
+      seq_copier_queue.write(records_out);
+    }
+  });
+}
+
+inline void
+SeqReader::start_qual_copier()
+{
+  qual_copier_thread = new std::thread([this]() {
+    decltype(seq_copier_queue)::Block records_in;
+    decltype(qual_copier_queue)::Block records_out;
+    for (;;) {
+      seq_copier_queue.read(records_in);
+      for (size_t i = 0; i < records_in.count; i++) {
+        std::swap(records_out.data[i].name, records_in.data[i].name);
+        std::swap(records_out.data[i].name_cap, records_in.data[i].name_cap);
+        std::swap(records_out.data[i].comment, records_in.data[i].comment);
+        std::swap(records_out.data[i].comment_cap,
+                  records_in.data[i].comment_cap);
+        records_out.data[i].seq = std::move(records_in.data[i].seq); // NOLINT
+        records_out.data[i].qual = records_in.data[i].qual;
+        auto& qual = records_out.data[i].qual;
+        if (!qual.empty() && qual.back() == '\n') {
+          qual.pop_back();
+        }
+        records_in.data[i].name[0] = '\0';
+        records_in.data[i].comment[0] = '\0';
+        records_in.data[i].qual[0] = '\0';
+      }
+      records_out.count = records_in.count;
+      records_out.current = records_in.current;
+      records_out.index = records_in.index;
+      if (records_out.count == 0) {
+        qual_copier_queue.write(records_out);
+        break;
+      }
+      qual_copier_queue.write(records_out);
+    }
+  });
+}
+
+inline void
 SeqReader::start_postprocessor()
 {
   postprocessor_thread = new std::thread([this]() {
-    IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
-      records_reader;
-    decltype(postprocessor_queue)::Block records_postprocessor;
+    decltype(qual_copier_queue)::Block records_in;
+    decltype(postprocessor_queue)::Block records_out;
     for (;;) {
-      reader_queue.read(records_reader);
-      for (size_t i = 0; i < records_reader.count; i++) {
-        records_postprocessor.data[i].name = records_reader.data[i].name;
-        records_postprocessor.data[i].comment = records_reader.data[i].comment;
-        records_postprocessor.data[i].seq = records_reader.data[i].seq;
-        records_postprocessor.data[i].qual = records_reader.data[i].qual;
-        auto& name = records_postprocessor.data[i].name;
-        auto& comment = records_postprocessor.data[i].comment;
-        auto& seq = records_postprocessor.data[i].seq;
-        auto& qual = records_postprocessor.data[i].qual;
+      qual_copier_queue.read(records_in);
+      for (size_t i = 0; i < records_in.count; i++) {
+        records_out.data[i].name = records_in.data[i].name;
+        records_out.data[i].comment = records_in.data[i].comment;
+        records_out.data[i].seq = std::move(records_in.data[i].seq); // NOLINT
+        records_out.data[i].qual = std::move(records_in.data[i].qual); // NOLINT
+        auto& name = records_out.data[i].name;
+        auto& comment = records_out.data[i].comment;
+        auto& seq = records_out.data[i].seq;
+        auto& qual = records_out.data[i].qual;
         if (!name.empty() && name.back() == '\n') {
           name.pop_back();
         }
         if (!comment.empty() && comment.back() == '\n') {
           comment.pop_back();
-        }
-        if (!seq.empty() && seq.back() == '\n') {
-          seq.pop_back();
-        }
-        if (!qual.empty() && qual.back() == '\n') {
-          qual.pop_back();
         }
         if (flagTrimMasked()) {
           const auto len = seq.length();
@@ -1240,19 +1437,17 @@ SeqReader::start_postprocessor()
             }
           }
         }
-        records_reader.data[i].name[0] = '\0';
-        records_reader.data[i].comment[0] = '\0';
-        records_reader.data[i].seq[0] = '\0';
-        records_reader.data[i].qual[0] = '\0';
+        records_in.data[i].name[0] = '\0';
+        records_in.data[i].comment[0] = '\0';
       }
-      records_postprocessor.count = records_reader.count;
-      records_postprocessor.current = records_reader.current;
-      records_postprocessor.index = records_reader.index;
-      if (records_postprocessor.count == 0) {
-        postprocessor_queue.write(records_postprocessor);
+      records_out.count = records_in.count;
+      records_out.current = records_in.current;
+      records_out.index = records_in.index;
+      if (records_out.count == 0) {
+        postprocessor_queue.write(records_out);
         break;
       }
-      postprocessor_queue.write(records_postprocessor);
+      postprocessor_queue.write(records_out);
     }
   });
 }

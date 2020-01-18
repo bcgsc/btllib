@@ -83,7 +83,7 @@ public:
   bool is_closed() const { return closed; }
 
 protected:
-  std::vector<Slot> slots { QUEUE_SIZE };
+  std::vector<Slot> slots{ QUEUE_SIZE };
   size_t read_counter = 0;
   std::atomic<size_t> element_count{ 0 };
   std::atomic<bool> closed{ false };
