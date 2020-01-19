@@ -45,7 +45,7 @@ private:
     0x01, 0x02, 0x04, 0x08, // NOLINT
     0x10, 0x20, 0x40, 0x80  // NOLINT
   };
-  inline static const char* MAGIC_HEADER = "BTLBloomFilter_v1";
+  inline static const char* MAGIC_HEADER = "BTLBloomFilter_v2";
 
   unsigned char* bitarray = nullptr;
   size_t size = 0; // In bytes
