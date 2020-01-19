@@ -6,6 +6,7 @@
 
 #include <cstdio>
 #include <string>
+#include <mutex>
 
 namespace btllib {
 
@@ -36,6 +37,7 @@ private:
   bool closed;
   Format format;
   char headerchar;
+  std::mutex mutex;
 };
 
 inline SeqWriter::SeqWriter(const std::string& sink_path,
@@ -96,7 +98,10 @@ SeqWriter::write(const std::string& name,
     output += '\n';
   }
 
-  fwrite(output.c_str(), 1, output.size(), sink);
+  {
+    std::unique_lock<std::mutex> lock(mutex);
+    fwrite(output.c_str(), 1, output.size(), sink);
+  }
 }
 
 } // namespace btllib

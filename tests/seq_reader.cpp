@@ -13,6 +13,7 @@
 int main() {
     const char* seqs[] = { "ACTG", "TGCA" };
     const char* quals[] = { "!@^&", "(#&$" };
+    std::string random_filename;
 
     for (int iteration = 0; iteration < 3; iteration++) {
         std::cerr << "Iteration " << iteration + 1 << std::endl;
@@ -82,7 +83,7 @@ int main() {
         std::vector<std::string> generated_comments;
         std::vector<std::string> generated_seqs;
         std::vector<std::string> generated_quals;
-        auto random_filename = get_random_name(64);
+        random_filename = get_random_name(64);
         std::ofstream random_seqs(random_filename);
         for (int s = 0; s < 500; s++) {
             std::string name, comment, seq, qual;
