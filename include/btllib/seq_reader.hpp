@@ -139,7 +139,7 @@ private:
       s[0] = '\0';
       size = 0;
     }
-    bool empty() { return size == 0; }
+    bool empty() { return (ssize_t)size <= 0; }
 
     operator char*() { return s; }
 
@@ -1025,13 +1025,12 @@ SeqReader::read_from_buffer(
   size_t& counter)
 {
   for (; buffer_start < buffer_end && !reader_end;) {
-    reader_record = &(records.data[records.current]);
+    reader_record = &(records.data[records.count]);
     if (!f(*this) || reader_record->seq.empty()) {
       break;
     }
-    records.current++;
     records.count++;
-    if (records.current == RECORD_BLOCK_SIZE) {
+    if (records.count == RECORD_BLOCK_SIZE) {
       records.current = 0;
       records.index = counter++;
       reader_queue.write(records);
@@ -1053,12 +1052,11 @@ SeqReader::read_transition(
     int p = std::fgetc(source);
     if (p != EOF) {
       std::ungetc(p, source);
-      reader_record = &(records.data[records.current]);
+      reader_record = &(records.data[records.count]);
       f(*this);
       if (!reader_record->seq.empty()) {
-        records.current++;
         records.count++;
-        if (records.current == RECORD_BLOCK_SIZE) {
+        if (records.count == RECORD_BLOCK_SIZE) {
           records.current = 0;
           records.index = counter++;
           reader_queue.write(records);
@@ -1079,19 +1077,13 @@ SeqReader::read_from_file(
   size_t& counter)
 {
   for (; std::ferror(source) == 0 && std::feof(source) == 0 && !reader_end;) {
-    int p = std::fgetc(source);
-    if (p == EOF) {
-      break;
-    }
-    std::ungetc(p, source);
-    reader_record = &(records.data[records.current]);
+    reader_record = &(records.data[records.count]);
     f(*this);
     if (reader_record->seq.empty()) {
       break;
     }
-    records.current++;
     records.count++;
-    if (records.current == RECORD_BLOCK_SIZE) {
+    if (records.count == RECORD_BLOCK_SIZE) {
       records.current = 0;
       records.index = counter++;
       reader_queue.write(records);
