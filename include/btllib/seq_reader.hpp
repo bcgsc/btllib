@@ -214,18 +214,24 @@ private:
   IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     postprocessor_queue;
 
-  thread_local inline static IndexQueueSPMC<Record,
-                                            RECORD_QUEUE_SIZE,
-                                            RECORD_BLOCK_SIZE>::Block
-    ready_records_array[MAX_SIMULTANEOUS_SEQREADERS];
-  thread_local inline static Record*
-    ready_record_array[MAX_SIMULTANEOUS_SEQREADERS];
+  static IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block* ready_records_array() {
+    thread_local static IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block _ready_records_array[MAX_SIMULTANEOUS_SEQREADERS];
+    return _ready_records_array;
+  }
 
-  inline static std::stack<unsigned> recycled_ids;
-  inline static std::mutex recycled_ids_mutex;
-  inline static unsigned last_id = 0;
+  static Record** ready_record_array() {
+    thread_local static Record* _ready_record_array[MAX_SIMULTANEOUS_SEQREADERS];
+    return _ready_record_array;
+  }
+
+  static std::stack<unsigned>& recycled_ids() { static std::stack<unsigned> _recycled_ids; return _recycled_ids; }
+  static std::mutex& recycled_ids_mutex() { static std::mutex _recycled_ids_mutex; return _recycled_ids_mutex; };
+  static unsigned& last_id() { static unsigned _last_id = 0; return _last_id; }
+
+  void generate_id();
+  void recycle_id();
   unsigned id = 0;
-
+  
   void determine_format();
   void start_reader();
   void start_seq_copier();
@@ -293,18 +299,10 @@ inline SeqReader::SeqReader(const std::string& source_path, int flags)
   , reader_end(false)
 {
   buffer = new char[BUFFER_SIZE];
+  generate_id();
   start_seq_copier();
   start_qual_copier();
   start_postprocessor();
-  {
-    std::unique_lock<std::mutex> lock(recycled_ids_mutex);
-    if (recycled_ids.empty()) {
-      id = ++last_id;
-    } else {
-      id = recycled_ids.top();
-      recycled_ids.pop();
-    }
-  }
   {
     std::unique_lock<std::mutex> lock(format_mutex);
     start_reader();
@@ -314,16 +312,30 @@ inline SeqReader::SeqReader(const std::string& source_path, int flags)
 
 inline SeqReader::~SeqReader()
 {
-  {
-    std::unique_lock<std::mutex> lock(recycled_ids_mutex);
-    recycled_ids.push(id);
-  }
+  recycle_id();
   close();
   delete[] buffer;
   delete reader_thread;
   delete seq_copier_thread;
   delete qual_copier_thread;
   delete postprocessor_thread;
+}
+
+inline void
+SeqReader::generate_id() {
+  std::unique_lock<std::mutex> lock(recycled_ids_mutex());
+  if (recycled_ids().empty()) {
+    id = ++last_id();
+  } else {
+    id = recycled_ids().top();
+    recycled_ids().pop();
+  }
+}
+
+inline void
+SeqReader::recycle_id() {
+  std::unique_lock<std::mutex> lock(recycled_ids_mutex());
+  recycled_ids().push(id);
 }
 
 inline void
@@ -1288,8 +1300,8 @@ SeqReader::start_postprocessor()
 inline SeqReader::Record
 SeqReader::read()
 {
-  auto& ready_records = ready_records_array[id];
-  auto& ready_record = ready_record_array[id];
+  auto& ready_records = ready_records_array()[id];
+  auto& ready_record = ready_record_array()[id];
   if (ready_records.count <= ready_records.current) {
     postprocessor_queue.read(ready_records);
     if (ready_records.count <= ready_records.current) {

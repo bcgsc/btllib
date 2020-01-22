@@ -39,13 +39,17 @@ public:
 private:
   static unsigned pop_cnt_byte(unsigned char x);
 
-  static constexpr unsigned BITS_IN_BYTE = 8; // NOLINT
-  static constexpr unsigned char BIT_MASKS[] = {
-    // NOLINT
-    0x01, 0x02, 0x04, 0x08, // NOLINT
-    0x10, 0x20, 0x40, 0x80  // NOLINT
-  };
-  inline static const char* MAGIC_HEADER = "BTLBloomFilter_v2";
+  static const unsigned BITS_IN_BYTE = 8; // NOLINT
+  static const unsigned char* BIT_MASKS() {
+    static const unsigned char _BIT_MASKS[] = {
+      // NOLINT
+      0x01, 0x02, 0x04, 0x08, // NOLINT
+      0x10, 0x20, 0x40, 0x80  // NOLINT
+    };
+    return _BIT_MASKS;
+  }
+  
+  static const constexpr char* MAGIC_HEADER = "BTLBloomFilter_v2";
 
   unsigned char* bitarray = nullptr;
   size_t size = 0; // In bytes
@@ -129,7 +133,7 @@ BloomFilter::insert(const uint64_t* hashes)
   for (unsigned i = 0; i < hash_num; ++i) {
     auto normalized = hashes[i] % size;
     __sync_or_and_fetch(&(bitarray[normalized / BITS_IN_BYTE]),
-                        BIT_MASKS[normalized % BITS_IN_BYTE]);
+                        BIT_MASKS()[normalized % BITS_IN_BYTE]);
   }
 }
 
@@ -144,7 +148,7 @@ BloomFilter::contains(const uint64_t* hashes)
 {
   for (unsigned i = 0; i < hash_num; ++i) {
     auto normalized = hashes[i] % size;
-    auto mask = BIT_MASKS[normalized % BITS_IN_BYTE];
+    auto mask = BIT_MASKS()[normalized % BITS_IN_BYTE];
     if (!bool(bitarray[normalized / BITS_IN_BYTE] & mask)) {
       return false;
     }
