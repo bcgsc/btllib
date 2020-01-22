@@ -115,6 +115,8 @@ int main() {
         random_reader.close();
 
         std::cerr << "Test random file in parallel" << std::endl;
+        std::vector<long> read_nums;
+
         std::vector<std::string> parallel_names;
         std::vector<std::string> parallel_comments;
         std::vector<std::string> parallel_seqs;
@@ -126,6 +128,7 @@ int main() {
             while (record = random_reader2.read()) {
                 #pragma omp critical
                 {
+                    read_nums.push_back(record.num);
                     parallel_names.push_back(record.name);
                     parallel_comments.push_back(record.comment);
                     parallel_seqs.push_back(record.seq);
@@ -133,6 +136,8 @@ int main() {
                 }
             }
         }
+
+        std::sort(read_nums.begin(), read_nums.end());
 
         std::sort(generated_names.begin(), generated_names.end());
         std::sort(generated_comments.begin(), generated_comments.end());
@@ -145,12 +150,14 @@ int main() {
         std::sort(parallel_quals.begin(), parallel_quals.end());
 
         for (i = 0; i < parallel_names.size(); i++) {
+            assert(read_nums[i] == long(i));
             assert(parallel_names[i] == generated_names[i]);
             assert(parallel_comments[i] == generated_comments[i]);
             assert(parallel_seqs[i] == generated_seqs[i]);
             assert(parallel_quals[i] == generated_quals[i]);
         }
         assert(i == 500);
+        assert(size_t(i) == read_nums.size());
 
         std::remove(random_filename.c_str());
     }

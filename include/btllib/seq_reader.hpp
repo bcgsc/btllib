@@ -57,6 +57,7 @@ public:
 
   struct Record
   {
+    long num;
     std::string name;
     std::string comment;
     std::string seq;
@@ -1270,6 +1271,7 @@ SeqReader::start_postprocessor()
             }
           }
         }
+        records_out.data[i].num = records_in.index * RECORD_BLOCK_SIZE + i;
       }
       records_out.count = records_in.count;
       records_out.current = records_in.current;
