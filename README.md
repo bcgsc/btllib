@@ -2,7 +2,7 @@ BTL common code library in C++ with Python and Java wrappers.
 
 Dependencies
 ---
-- GCC 7.0.0+ or Clang 5.0.0+
+- GCC 4.8.1+ or Clang 3.3.0+
 - Python 3.5+
 - Meson and Ninja Python3 packages (if they are missing, they will be automatically downloaded in a temporary directory)
 
