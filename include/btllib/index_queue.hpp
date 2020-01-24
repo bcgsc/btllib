@@ -102,7 +102,11 @@ public:
     auto index = block.index;
     auto& target = this->slots[index % QUEUE_SIZE];
     std::unique_lock<std::mutex> busy_lock(target.busy);
-    target.occupancy_changed.wait(busy_lock, [&] { return !target.occupied; });
+    target.occupancy_changed.wait(
+      busy_lock, [&] { return !target.occupied || this->closed; });
+    if (this->closed) {
+      return;
+    }
     target.block = std::move(block);
     target.occupied = true;
     target.occupancy_changed.notify_one();
@@ -147,7 +151,11 @@ public:
     auto index = block.index;
     auto& target = this->slots[index % QUEUE_SIZE];
     std::unique_lock<std::mutex> busy_lock(target.busy);
-    target.occupancy_changed.wait(busy_lock, [&] { return !target.occupied; });
+    target.occupancy_changed.wait(
+      busy_lock, [&] { return !target.occupied || this->closed; });
+    if (this->closed) {
+      return;
+    }
     target.block = std::move(block);
     target.occupied = true;
     target.occupancy_changed.notify_one();
@@ -186,8 +194,12 @@ public:
     auto& target = this->slots[index % QUEUE_SIZE];
     std::unique_lock<std::mutex> busy_lock(target.busy);
     target.occupancy_changed.wait(busy_lock, [&] {
-      return !target.occupied && (index - target.last_tenant <= QUEUE_SIZE);
+      return (!target.occupied && (index - target.last_tenant <= QUEUE_SIZE)) ||
+             this->closed;
     });
+    if (this->closed) {
+      return;
+    }
     target.block = std::move(block);
     target.occupied = true;
     target.last_tenant = index;

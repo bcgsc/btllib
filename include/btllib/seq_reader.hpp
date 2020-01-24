@@ -214,24 +214,51 @@ private:
   IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     postprocessor_queue;
 
-  static IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block* ready_records_array() {
-    thread_local static IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block _ready_records_array[MAX_SIMULTANEOUS_SEQREADERS];
+  // I am crying at this code, but until C++17 compliant compilers are
+  // widespread, this cannot be a static inline variable
+  static IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block*
+  ready_records_array()
+  {
+    thread_local static IndexQueueSPMC<Record,
+                                       RECORD_QUEUE_SIZE,
+                                       RECORD_BLOCK_SIZE>::Block
+      _ready_records_array[MAX_SIMULTANEOUS_SEQREADERS];
     return _ready_records_array;
   }
 
-  static Record** ready_record_array() {
-    thread_local static Record* _ready_record_array[MAX_SIMULTANEOUS_SEQREADERS];
+  // Also cry worthy
+  static Record** ready_record_array()
+  {
+    thread_local static Record*
+      _ready_record_array[MAX_SIMULTANEOUS_SEQREADERS];
     return _ready_record_array;
   }
 
-  static std::stack<unsigned>& recycled_ids() { static std::stack<unsigned> _recycled_ids; return _recycled_ids; }
-  static std::mutex& recycled_ids_mutex() { static std::mutex _recycled_ids_mutex; return _recycled_ids_mutex; };
-  static unsigned& last_id() { static unsigned _last_id = 0; return _last_id; }
+  // Bad code bad
+  static std::stack<unsigned>& recycled_ids()
+  {
+    static std::stack<unsigned> _recycled_ids;
+    return _recycled_ids;
+  }
+
+  // ;-;
+  static std::mutex& recycled_ids_mutex()
+  {
+    static std::mutex _recycled_ids_mutex;
+    return _recycled_ids_mutex;
+  };
+
+  // :(
+  static unsigned& last_id()
+  {
+    static unsigned _last_id = 0;
+    return _last_id;
+  }
 
   void generate_id();
   void recycle_id();
   unsigned id = 0;
-  
+
   void determine_format();
   void start_reader();
   void start_seq_copier();
@@ -322,7 +349,8 @@ inline SeqReader::~SeqReader()
 }
 
 inline void
-SeqReader::generate_id() {
+SeqReader::generate_id()
+{
   std::unique_lock<std::mutex> lock(recycled_ids_mutex());
   if (recycled_ids().empty()) {
     id = ++last_id();
@@ -333,7 +361,8 @@ SeqReader::generate_id() {
 }
 
 inline void
-SeqReader::recycle_id() {
+SeqReader::recycle_id()
+{
   std::unique_lock<std::mutex> lock(recycled_ids_mutex());
   recycled_ids().push(id);
 }
@@ -344,14 +373,14 @@ SeqReader::close()
   if (!closed) {
     closed = true;
     reader_end = true;
+    postprocessor_queue.close();
+    postprocessor_thread->join();
+    qual_copier_queue.close();
+    qual_copier_thread->join();
+    seq_copier_queue.close();
+    seq_copier_thread->join();
     reader_queue.close();
     reader_thread->join();
-    seq_copier_thread->join();
-    seq_copier_queue.close();
-    qual_copier_thread->join();
-    qual_copier_queue.close();
-    postprocessor_thread->join();
-    postprocessor_queue.close();
     source.close();
   }
 }
@@ -754,13 +783,13 @@ SeqReader::readline_file_append(CString& s)
     if (tmp_string.length() > 0 && tmp_string[0] != '@') {                     \
       size_t pos = 0, pos2 = 0, pos3 = 0;                                      \
       pos2 = tmp_string.find('\t');                                            \
-      if (tmp_string.size() + 1 > seq_reader.reader_record->header.cap) {        \
-        seq_reader.reader_record->header.cap = tmp_string.size() + 1;            \
-        seq_reader.reader_record->header.s =                                     \
-          (char*)std::realloc((char*)(seq_reader.reader_record->header),         \
-                              seq_reader.reader_record->header.cap);             \
+      if (tmp_string.size() + 1 > seq_reader.reader_record->header.cap) {      \
+        seq_reader.reader_record->header.cap = tmp_string.size() + 1;          \
+        seq_reader.reader_record->header.s =                                   \
+          (char*)std::realloc((char*)(seq_reader.reader_record->header),       \
+                              seq_reader.reader_record->header.cap);           \
       }                                                                        \
-      seq_reader.reader_record->header = tmp_string.substr(0, pos2);             \
+      seq_reader.reader_record->header = tmp_string.substr(0, pos2);           \
       for (int i = 0; i < int(SEQ) - 1; i++) {                                 \
         pos = tmp_string.find('\t', pos + 1);                                  \
       }                                                                        \
@@ -806,13 +835,13 @@ SeqReader::readline_file_append(CString& s)
     if (tmp_string.length() > 0 && tmp_string[0] == 'S') {                     \
       size_t pos = 0, pos2 = 0;                                                \
       pos2 = tmp_string.find('\t', 1);                                         \
-      if (tmp_string.size() + 1 > seq_reader.reader_record->header.cap) {        \
-        seq_reader.reader_record->header.cap = tmp_string.size() + 1;            \
-        seq_reader.reader_record->header.s =                                     \
-          (char*)std::realloc((char*)(seq_reader.reader_record->header.s),       \
-                              seq_reader.reader_record->header.cap);             \
+      if (tmp_string.size() + 1 > seq_reader.reader_record->header.cap) {      \
+        seq_reader.reader_record->header.cap = tmp_string.size() + 1;          \
+        seq_reader.reader_record->header.s =                                   \
+          (char*)std::realloc((char*)(seq_reader.reader_record->header.s),     \
+                              seq_reader.reader_record->header.cap);           \
       }                                                                        \
-      seq_reader.reader_record->header = tmp_string.substr(1, pos2 - 1);         \
+      seq_reader.reader_record->header = tmp_string.substr(1, pos2 - 1);       \
       for (int i = 0; i < int(SEQ) - 1; i++) {                                 \
         pos = tmp_string.find('\t', pos + 1);                                  \
       }                                                                        \
@@ -840,7 +869,8 @@ struct SeqReader::read_fasta_buffer
   {
     switch (seq_reader.read_stage) {
       case 0: {
-        if (!seq_reader.readline_buffer_append(seq_reader.reader_record->header)) {
+        if (!seq_reader.readline_buffer_append(
+              seq_reader.reader_record->header)) {
           return false;
         }
         ++seq_reader.read_stage;
@@ -864,7 +894,8 @@ struct SeqReader::read_fastq_buffer
   {
     switch (seq_reader.read_stage) {
       case 0: {
-        if (!seq_reader.readline_buffer_append(seq_reader.reader_record->header)) {
+        if (!seq_reader.readline_buffer_append(
+              seq_reader.reader_record->header)) {
           return false;
         }
         ++seq_reader.read_stage;
@@ -1184,7 +1215,8 @@ SeqReader::start_seq_copier()
       reader_queue.read(records_in);
       for (size_t i = 0; i < records_in.count; i++) {
         records_out.data[i].header = std::move(records_in.data[i].header);
-        records_out.data[i].seq = std::string(records_in.data[i].seq.s, records_in.data[i].seq.size);
+        records_out.data[i].seq =
+          std::string(records_in.data[i].seq.s, records_in.data[i].seq.size);
         records_out.data[i].qual = std::move(records_in.data[i].qual);
         auto& seq = records_out.data[i].seq;
         if (!seq.empty() && seq.back() == '\n') {
@@ -1214,7 +1246,8 @@ SeqReader::start_qual_copier()
       for (size_t i = 0; i < records_in.count; i++) {
         records_out.data[i].header = std::move(records_in.data[i].header);
         records_out.data[i].seq = std::move(records_in.data[i].seq);
-        records_out.data[i].qual = std::string(records_in.data[i].qual.s, records_in.data[i].qual.size);
+        records_out.data[i].qual =
+          std::string(records_in.data[i].qual.s, records_in.data[i].qual.size);
         auto& qual = records_out.data[i].qual;
         if (!qual.empty() && qual.back() == '\n') {
           qual.pop_back();
@@ -1237,18 +1270,25 @@ SeqReader::start_postprocessor()
 {
   postprocessor_thread = new std::thread([this]() {
     decltype(qual_copier_queue)::Block records_in;
-    decltype(postprocessor_queue)::Block records_out; 
+    decltype(postprocessor_queue)::Block records_out;
     for (;;) {
       qual_copier_queue.read(records_in);
       for (size_t i = 0; i < records_in.count; i++) {
         char* space = std::strstr(records_in.data[i].header, " ");
         size_t name_start = (format == FASTA || format == FASTQ) ? 1 : 0;
         if (space == nullptr) {
-          records_out.data[i].name = std::string(records_in.data[i].header.s + name_start, records_in.data[i].header.size - name_start);
+          records_out.data[i].name =
+            std::string(records_in.data[i].header.s + name_start,
+                        records_in.data[i].header.size - name_start);
           records_out.data[i].comment = "";
         } else {
-          records_out.data[i].name = std::string(records_in.data[i].header.s + name_start, space - records_in.data[i].header.s - name_start);
-          records_out.data[i].comment = std::string(space + 1, records_in.data[i].header.size - (space - records_in.data[i].header.s) - 1);
+          records_out.data[i].name =
+            std::string(records_in.data[i].header.s + name_start,
+                        space - records_in.data[i].header.s - name_start);
+          records_out.data[i].comment =
+            std::string(space + 1,
+                        records_in.data[i].header.size -
+                          (space - records_in.data[i].header.s) - 1);
         }
         records_in.data[i].header.clear();
         records_out.data[i].seq = std::move(records_in.data[i].seq);

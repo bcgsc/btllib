@@ -5,6 +5,8 @@
 
 #include "btllib/index_queue.hpp"
 #include "btllib/seq_reader.hpp"
+#include "btllib/nthash.hpp"
+#include "btllib/nthash_iterator.hpp"
 #include "btllib/graph.hpp"
 #include "btllib/util.hpp"
 #include "btllib/data_saveload.hpp"
@@ -32,6 +34,8 @@
 
 %include "btllib/index_queue.hpp"
 %include "btllib/seq_reader.hpp"
+%include "btllib/nthash.hpp"
+%include "btllib/nthash_iterator.hpp"
 %include "btllib/graph.hpp"
 %include "btllib/util.hpp"
 %include "btllib/data_saveload.hpp"

@@ -19,6 +19,7 @@ static const unsigned char BIT_MASKS[BITS_IN_BYTE] = {
   0x01, 0x02, 0x04, 0x08, // NOLINT
   0x10, 0x20, 0x40, 0x80  // NOLINT
 };
+static const char* BLOOM_FILTER_MAGIC_HEADER = "BTLBloomFilter_v2";
 
 class BloomFilter
 {
@@ -45,8 +46,6 @@ public:
 
 private:
   static unsigned pop_cnt_byte(unsigned char x);
-  
-  static const constexpr char* MAGIC_HEADER = "BTLBloomFilter_v2";
 
   unsigned char* bitarray = nullptr;
   size_t size = 0; // In bytes
@@ -69,7 +68,8 @@ inline BloomFilter::BloomFilter(const std::string& path)
 {
   std::ifstream file(path);
 
-  std::string magic_with_brackets = std::string("[") + MAGIC_HEADER + "]";
+  std::string magic_with_brackets =
+    std::string("[") + BLOOM_FILTER_MAGIC_HEADER + "]";
 
   std::string line;
   std::getline(file, line);
@@ -104,7 +104,7 @@ inline BloomFilter::BloomFilter(const std::string& path)
   auto header_config = toml_parser.parse();
 
   // Obtain header values from toml parser and assign them to class members
-  auto table = header_config->get_table(MAGIC_HEADER);
+  auto table = header_config->get_table(BLOOM_FILTER_MAGIC_HEADER);
   size = *table->get_as<size_t>("size");
   hash_num = *table->get_as<unsigned>("hash_num");
 
@@ -198,7 +198,7 @@ BloomFilter::write(const std::string& path)
   auto header = cpptoml::make_table();
   header->insert("size", size);
   header->insert("hash_num", hash_num);
-  root->insert(MAGIC_HEADER, header);
+  root->insert(BLOOM_FILTER_MAGIC_HEADER, header);
   file << *root << "[HeaderEnd]\n";
 
   file.write((char*)bitarray, size);

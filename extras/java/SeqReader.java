@@ -88,6 +88,14 @@ public class SeqReader {
       }
     }
   
+    public void setNum(int value) {
+      btllibJNI.SeqReader_Record_num_set(swigCPtr, this, value);
+    }
+  
+    public int getNum() {
+      return btllibJNI.SeqReader_Record_num_get(swigCPtr, this);
+    }
+  
     public void setName(String value) {
       btllibJNI.SeqReader_Record_name_set(swigCPtr, this, value);
     }

@@ -5,8 +5,8 @@
 #include "seq.hpp"
 
 #include <cstdio>
-#include <string>
 #include <mutex>
+#include <string>
 
 namespace btllib {
 
