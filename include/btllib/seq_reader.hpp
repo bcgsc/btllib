@@ -845,6 +845,7 @@ struct SeqReader::read_fasta_buffer
         }
         ++seq_reader.read_stage;
       }
+      // fall through
       case 1: {
         if (!seq_reader.readline_buffer_append(seq_reader.reader_record->seq)) {
           return false;
@@ -868,12 +869,14 @@ struct SeqReader::read_fastq_buffer
         }
         ++seq_reader.read_stage;
       }
+      // fall through
       case 1: {
         if (!seq_reader.readline_buffer_append(seq_reader.reader_record->seq)) {
           return false;
         }
         ++seq_reader.read_stage;
       }
+      // fall through
       case 2: {
         if (!seq_reader.readline_buffer_append(seq_reader.tmp)) {
           return false;
@@ -881,6 +884,7 @@ struct SeqReader::read_fastq_buffer
         ++seq_reader.read_stage;
         seq_reader.tmp.clear();
       }
+      // fall through
       case 3: {
         if (!seq_reader.readline_buffer_append(
               seq_reader.reader_record->qual)) {
@@ -935,6 +939,7 @@ struct SeqReader::read_fasta_transition
         seq_reader.readline_file_append(seq_reader.reader_record->header);
         ++seq_reader.read_stage;
       }
+      // fall through
       case 1: {
         seq_reader.readline_file_append(seq_reader.reader_record->seq);
         seq_reader.read_stage = 0;
@@ -952,15 +957,18 @@ struct SeqReader::read_fastq_transition
         seq_reader.readline_file_append(seq_reader.reader_record->header);
         ++seq_reader.read_stage;
       }
+      // fall through
       case 1: {
         seq_reader.readline_file_append(seq_reader.reader_record->seq);
         ++seq_reader.read_stage;
       }
+      // fall through
       case 2: {
         seq_reader.readline_file_append(seq_reader.tmp);
         ++seq_reader.read_stage;
         seq_reader.tmp.clear();
       }
+      // fall through
       case 3: {
         seq_reader.readline_file_append(seq_reader.reader_record->qual);
         seq_reader.read_stage = 0;

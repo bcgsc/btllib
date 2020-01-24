@@ -257,15 +257,18 @@ get_saveload_cmd(const std::string& path, SaveloadOp op)
               switch (args.size()) {
                 case 1:
                   execlp(args[0].c_str(), args[0].c_str(), NULL);
+                // fall through
                 case 2:
                   execlp(
                     args[0].c_str(), args[0].c_str(), args[1].c_str(), NULL);
+                // fall through
                 case 3:
                   execlp(args[0].c_str(),
                          args[0].c_str(),
                          args[1].c_str(),
                          args[2].c_str(),
                          NULL);
+                // fall through
                 case 4:
                   execlp(args[0].c_str(),
                          args[0].c_str(),
@@ -273,6 +276,7 @@ get_saveload_cmd(const std::string& path, SaveloadOp op)
                          args[2].c_str(),
                          args[3].c_str(),
                          NULL);
+                // fall through
                 default:
                   log_error("Invalid number of arguments supplied to execlp (" +
                             std::to_string(args.size()) + ").");
@@ -438,14 +442,17 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
         switch (args.size()) {
           case 1:
             execlp(args[0].c_str(), args[0].c_str(), NULL);
+          // fall through
           case 2:
             execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), NULL);
+          // fall through
           case 3:
             execlp(args[0].c_str(),
                    args[0].c_str(),
                    args[1].c_str(),
                    args[2].c_str(),
                    NULL);
+          // fall through
           case 4:
             execlp(args[0].c_str(),
                    args[0].c_str(),
@@ -453,6 +460,7 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
                    args[2].c_str(),
                    args[3].c_str(),
                    NULL);
+          // fall through
           default:
             log_error("Invalid number of arguments supplied to execlp (" +
                       std::to_string(args.size()) + ").");
@@ -481,14 +489,17 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
         switch (args.size()) {
           case 1:
             execlp(args[0].c_str(), args[0].c_str(), NULL);
+          // fall through
           case 2:
             execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), NULL);
+          // fall through
           case 3:
             execlp(args[0].c_str(),
                    args[0].c_str(),
                    args[1].c_str(),
                    args[2].c_str(),
                    NULL);
+          // fall through
           case 4:
             execlp(args[0].c_str(),
                    args[0].c_str(),
@@ -496,6 +507,7 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
                    args[2].c_str(),
                    args[3].c_str(),
                    NULL);
+          // fall through
           default:
             log_error("Invalid number of arguments supplied to execlp (" +
                       std::to_string(args.size()) + ").");
