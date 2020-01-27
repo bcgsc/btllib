@@ -374,12 +374,12 @@ SeqReader::close()
     closed = true;
     reader_end = true;
     postprocessor_queue.close();
-    postprocessor_thread->join();
     qual_copier_queue.close();
-    qual_copier_thread->join();
     seq_copier_queue.close();
-    seq_copier_thread->join();
     reader_queue.close();
+    postprocessor_thread->join();
+    qual_copier_thread->join();
+    seq_copier_thread->join();
     reader_thread->join();
     source.close();
   }
