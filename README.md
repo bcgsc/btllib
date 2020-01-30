@@ -28,3 +28,13 @@ Python and Java
   * Add `btllib/java` to classpath
   * Include classes with `import btllib.*`
 
+Contributing
+---
+If you want to contribute code to this repo, before making a pull request, make sure to:
+- Create a build directory with `meson build` in `btllib`
+- Run `ninja wrap` to wrap any new C++ code for Python and Java
+- Run `ninja` to build the wrapper libraries / make sure they compile
+- Run `ninja test` to run the tests
+- Run `ninja format` to format the whitespace in code
+- Run `ninja tidycheck` to run clang-tidy on C++ code and make sure it passes
+- Run `ninja cppcheck` to run cppcheck on C++ code and make sure it passes
