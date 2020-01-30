@@ -1,18 +1,23 @@
 BTL common code library in C++ with Python and Java wrappers.
 
-Dependencies
+Platforms
 ---
-- GCC 4.8.1+ or Clang 3.3.0+
-- Python 3.5+
-- Meson and Ninja Python3 packages (if they are missing, they will be automatically downloaded in a temporary directory)
+- Linux
+- MacOS
 
 C++
 ---
+- #### Dependencies
+  * GCC 4.8.1+ or Clang 3.3.0+
 - Copy the btllib directory in your project
 - Use any header from the `btllib/include` directory
 
 Python and Java
 ---
+- #### Dependencies
+  * GCC 4.8.1+ or Clang 3.3.0+
+  * Python 3.5+
+  * Meson and Ninja Python3 packages (if they are missing, they will be automatically downloaded in a temporary directory)
 - Copy the btllib directory in your project
 - Run `btllib/compile`
 - The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name.
