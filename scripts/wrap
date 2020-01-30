@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ -z "${MESON_SOURCE_ROOT}" ]; then
-    echo "[ERROR] This script can only be ran with meson!"
-    exit 1
+  echo "[ERROR] This script can only be ran with meson!"
+  exit 1
 fi
 
 set -e
@@ -21,9 +21,9 @@ echo "%module btllib
 %{" > extras/java/btllib.i
 
 for file in ${include_files}; do
-    relative=$(scripts/get_include_relative ${file})
-    path="${relative}/$(basename ${file})"
-    echo "#include \"$path\"" >> extras/java/btllib.i
+  relative=$(scripts/get_include_relative ${file})
+  path="${relative}/$(basename ${file})"
+  echo "#include \"$path\"" >> extras/java/btllib.i
 done
 
 echo "%}
@@ -36,9 +36,9 @@ echo "%}
 " >> extras/java/btllib.i
 
 for file in ${include_files}; do
-    relative=$(scripts/get_include_relative ${file})
-    path="${relative}/$(basename ${file})"
-    echo "%include \"$path\"" >> extras/java/btllib.i
+  relative=$(scripts/get_include_relative ${file})
+  path="${relative}/$(basename ${file})"
+  echo "%include \"$path\"" >> extras/java/btllib.i
 done
 
 ln -sf $PWD/include extras/java/
@@ -63,9 +63,9 @@ echo "%module btllib
 " > extras/python/btllib.i
 
 for file in ${include_files}; do
-    relative=$(scripts/get_include_relative ${file})
-    path="${relative}/$(basename ${file})"
-    echo "#include \"$path\"" >> extras/python/btllib.i
+  relative=$(scripts/get_include_relative ${file})
+  path="${relative}/$(basename ${file})"
+  echo "#include \"$path\"" >> extras/python/btllib.i
 done
 
 echo "%}
@@ -85,9 +85,9 @@ echo "%}
 " >> extras/python/btllib.i
 
 for file in ${include_files}; do
-    relative=$(scripts/get_include_relative ${file})
-    path="${relative}/$(basename ${file})"
-    echo "%include \"$path\"" >> extras/python/btllib.i
+  relative=$(scripts/get_include_relative ${file})
+  path="${relative}/$(basename ${file})"
+  echo "%include \"$path\"" >> extras/python/btllib.i
 done
 
 ln -sf $PWD/include extras/python/

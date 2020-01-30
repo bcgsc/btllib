@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ -z "${MESON_SOURCE_ROOT}" ]; then
-    echo "[ERROR] This script can only be ran with meson!"
-    exit 1
+  echo "[ERROR] This script can only be ran with meson!"
+  exit 1
 fi
 
 cd "${MESON_SOURCE_ROOT}"
@@ -11,5 +11,5 @@ files=$(find extras/python -type f | grep "\(.*\.h\)\|\(.*\.cpp\)\|\(.*\.cxx\)")
 files+=" "
 files+=$(find extras/java -type f | grep "\(.*\.h\)\|\(.*\.cpp\)\|\(.*\.cxx\)")
 for file in $files; do
-    echo -n "$(realpath $file) "
+  echo -n "$(realpath $file) "
 done

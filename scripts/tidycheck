@@ -19,7 +19,8 @@ tidy_checks="*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-hicpp-no-ar
 -cppcoreguidelines-pro-type-cstyle-cast,-cppcoreguidelines-pro-type-vararg,-android-cloexec-pipe,\
 -hicpp-signed-bitwise,-cert-err58-cpp,-hicpp-vararg,-abseil-string-find-startswith,-misc-definitions-in-headers,\
 -clang-analyzer-valist.Uninitialized,-android-cloexec-open,-cppcoreguidelines-owning-memory,\
--cppcoreguidelines-non-private-member-variables-in-classes,-fuchsia-statically-constructed-objects"
+-cppcoreguidelines-non-private-member-variables-in-classes,-fuchsia-statically-constructed-objects,\
+-modernize-return-braced-init-list"
 
 tidy_options="[]"
 

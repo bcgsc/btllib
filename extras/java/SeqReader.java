@@ -88,11 +88,11 @@ public class SeqReader {
       }
     }
   
-    public void setNum(int value) {
+    public void setNum(long value) {
       btllibJNI.SeqReader_Record_num_set(swigCPtr, this, value);
     }
   
-    public int getNum() {
+    public long getNum() {
       return btllibJNI.SeqReader_Record_num_get(swigCPtr, this);
     }
   

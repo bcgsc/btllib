@@ -2,6 +2,7 @@
 #define BTLLIB_KMER_SET_HPP
 
 #include "bloom_filter.hpp"
+#include "rolling_hash.hpp"
 
 #include <string>
 
@@ -11,47 +12,55 @@ class KmerSet
 {
 
 public:
-  KmerSet(unsigned k, size_t bytes);
+  KmerSet(unsigned k, size_t bytes, unsigned hash_num = 4);
 
   void insert(const std::string& seq);
-  void insert(const char* seq);
+  void insert(const char* seq, size_t seq_len);
 
-  bool contains(const std::string& seq);
-  bool contains(const char* seq);
+  unsigned contains(const std::string& seq);
+  unsigned contains(const char* seq, size_t seq_len);
 
 private:
   unsigned k;
   BloomFilter bf;
-  static const size_t HASH_NUM = 4;
 };
 
-inline KmerSet::KmerSet(unsigned k, size_t bytes)
+inline KmerSet::KmerSet(unsigned k, size_t bytes, unsigned hash_num)
   : k(k)
-  , bf(bytes, HASH_NUM)
+  , bf(bytes, hash_num)
 {}
 
 inline void
 KmerSet::insert(const std::string& seq)
 {
-  insert(seq.c_str());
+  insert(seq.c_str(), seq.size());
 }
 
 inline void
-KmerSet::insert(const char* seq)
+KmerSet::insert(const char* seq, size_t seq_len)
 {
-  (void)seq;
+  RollingHash rolling_hash(seq, seq_len, k, bf.get_hash_num());
+  while (rolling_hash.roll()) {
+    bf.insert(rolling_hash.hashes());
+  }
 }
 
-inline bool
+inline unsigned
 KmerSet::contains(const std::string& seq)
 {
-  return contains(seq.c_str());
+  return contains(seq.c_str(), seq.size());
 }
-inline bool
-KmerSet::contains(const char* seq)
+inline unsigned
+KmerSet::contains(const char* seq, size_t seq_len)
 {
-  (void)seq;
-  return false;
+  unsigned count = 0;
+  RollingHash rolling_hash(seq, seq_len, k, bf.get_hash_num());
+  while (rolling_hash.roll()) {
+    if (bf.contains(rolling_hash.hashes())) {
+      count++;
+    }
+  }
+  return count;
 }
 
 } // namespace btllib

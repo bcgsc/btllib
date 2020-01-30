@@ -36,16 +36,28 @@ public class KmerSet {
     }
   }
 
+  public KmerSet(long k, long bytes, long hash_num) {
+    this(btllibJNI.new_KmerSet__SWIG_0(k, bytes, hash_num), true);
+  }
+
   public KmerSet(long k, long bytes) {
-    this(btllibJNI.new_KmerSet(k, bytes), true);
+    this(btllibJNI.new_KmerSet__SWIG_1(k, bytes), true);
   }
 
   public void insert(String seq) {
-    btllibJNI.KmerSet_insert(swigCPtr, this, seq);
+    btllibJNI.KmerSet_insert__SWIG_0(swigCPtr, this, seq);
   }
 
-  public boolean contains(String seq) {
-    return btllibJNI.KmerSet_contains(swigCPtr, this, seq);
+  public void insert(String seq, long seq_len) {
+    btllibJNI.KmerSet_insert__SWIG_1(swigCPtr, this, seq, seq_len);
+  }
+
+  public long contains(String seq) {
+    return btllibJNI.KmerSet_contains__SWIG_0(swigCPtr, this, seq);
+  }
+
+  public long contains(String seq, long seq_len) {
+    return btllibJNI.KmerSet_contains__SWIG_1(swigCPtr, this, seq, seq_len);
   }
 
 }

@@ -57,7 +57,7 @@ public:
 
   struct Record
   {
-    long num;
+    size_t num = -1;
     std::string name;
     std::string comment;
     std::string seq;
@@ -96,7 +96,7 @@ private:
 
     CString() { s[0] = '\0'; }
     CString(const CString&) = delete;
-    CString(CString&& cstring)
+    CString(CString&& cstring) noexcept
     {
       std::swap(s, cstring.s);
       size = cstring.size;
@@ -107,14 +107,14 @@ private:
     {
       if (str.size() + 1 > cap) {
         cap = str.size() + 1;
-        s = (char*)std::realloc((char*)s, cap);
+        s = (char*)std::realloc((char*)s, cap); // NOLINT
       }
       size = str.size();
       memcpy(s, str.c_str(), size + 1);
     }
 
     CString& operator=(const CString&) = delete;
-    CString& operator=(CString&& cstring)
+    CString& operator=(CString&& cstring) noexcept
     {
       std::swap(s, cstring.s);
       size = cstring.size;
@@ -126,7 +126,7 @@ private:
     {
       if (str.size() + 1 > cap) {
         cap = str.size() + 1;
-        s = (char*)std::realloc((char*)s, cap);
+        s = (char*)std::realloc((char*)s, cap); // NOLINT
       }
       size = str.size();
       memcpy(s, str.c_str(), size + 1);
