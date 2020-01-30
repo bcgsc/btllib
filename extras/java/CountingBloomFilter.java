@@ -36,8 +36,16 @@ public class CountingBloomFilter {
     }
   }
 
-  public CountingBloomFilter(long size) {
-    this(btllibJNI.new_CountingBloomFilter(size), true);
+  public CountingBloomFilter() {
+    this(btllibJNI.new_CountingBloomFilter__SWIG_0(), true);
+  }
+
+  public CountingBloomFilter(long bytes, long hash_num) {
+    this(btllibJNI.new_CountingBloomFilter__SWIG_1(bytes, hash_num), true);
+  }
+
+  public CountingBloomFilter(String path) {
+    this(btllibJNI.new_CountingBloomFilter__SWIG_2(path), true);
   }
 
   public void insert(SWIGTYPE_p_std__vectorT_uint64_t_t hashes) {
@@ -48,12 +56,32 @@ public class CountingBloomFilter {
     btllibJNI.CountingBloomFilter_insert__SWIG_1(swigCPtr, this, SWIGTYPE_p_uint64_t.getCPtr(hashes));
   }
 
-  public long count(SWIGTYPE_p_std__vectorT_uint64_t_t hashes) {
-    return btllibJNI.CountingBloomFilter_count__SWIG_0(swigCPtr, this, SWIGTYPE_p_std__vectorT_uint64_t_t.getCPtr(hashes));
+  public long contains(SWIGTYPE_p_std__vectorT_uint64_t_t hashes) {
+    return btllibJNI.CountingBloomFilter_contains__SWIG_0(swigCPtr, this, SWIGTYPE_p_std__vectorT_uint64_t_t.getCPtr(hashes));
   }
 
-  public long count(SWIGTYPE_p_uint64_t hashes) {
-    return btllibJNI.CountingBloomFilter_count__SWIG_1(swigCPtr, this, SWIGTYPE_p_uint64_t.getCPtr(hashes));
+  public long contains(SWIGTYPE_p_uint64_t hashes) {
+    return btllibJNI.CountingBloomFilter_contains__SWIG_1(swigCPtr, this, SWIGTYPE_p_uint64_t.getCPtr(hashes));
+  }
+
+  public long get_bytes() {
+    return btllibJNI.CountingBloomFilter_get_bytes(swigCPtr, this);
+  }
+
+  public SWIGTYPE_p_uint64_t get_pop_cnt() {
+    return new SWIGTYPE_p_uint64_t(btllibJNI.CountingBloomFilter_get_pop_cnt(swigCPtr, this), true);
+  }
+
+  public long get_hash_num() {
+    return btllibJNI.CountingBloomFilter_get_hash_num(swigCPtr, this);
+  }
+
+  public double get_fpr() {
+    return btllibJNI.CountingBloomFilter_get_fpr(swigCPtr, this);
+  }
+
+  public void write(String path) {
+    btllibJNI.CountingBloomFilter_write(swigCPtr, this, path);
   }
 
 }

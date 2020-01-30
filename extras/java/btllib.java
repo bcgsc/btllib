@@ -359,12 +359,8 @@ public class btllib {
     return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_char(cPtr, false);
   }
 
-  public static void setBLOOM_FILTER_MAGIC_HEADER(String value) {
-    btllibJNI.BLOOM_FILTER_MAGIC_HEADER_set(value);
-  }
-
-  public static String getBLOOM_FILTER_MAGIC_HEADER() {
-    return btllibJNI.BLOOM_FILTER_MAGIC_HEADER_get();
+  public static long pop_cnt_byte(short x) {
+    return btllibJNI.pop_cnt_byte(x);
   }
 
 }

@@ -24,3 +24,6 @@
 %ignore btllib::SeqReader::read_gfa2_buffer::operator();
 %ignore btllib::SeqReader::read_gfa2_transition::operator();
 %ignore btllib::SeqReader::read_gfa2_file::operator();
+
+%ignore btllib::BLOOM_FILTER_MAGIC_HEADER;
+%ignore btllib::COUNTING_BLOOM_FILTER_MAGIC_HEADER;

@@ -40,8 +40,8 @@ public class BloomFilter {
     this(btllibJNI.new_BloomFilter__SWIG_0(), true);
   }
 
-  public BloomFilter(long size, long hash_num) {
-    this(btllibJNI.new_BloomFilter__SWIG_1(size, hash_num), true);
+  public BloomFilter(long bytes, long hash_num) {
+    this(btllibJNI.new_BloomFilter__SWIG_1(bytes, hash_num), true);
   }
 
   public BloomFilter(String path) {
@@ -64,8 +64,8 @@ public class BloomFilter {
     return btllibJNI.BloomFilter_contains__SWIG_1(swigCPtr, this, SWIGTYPE_p_uint64_t.getCPtr(hashes));
   }
 
-  public long get_size() {
-    return btllibJNI.BloomFilter_get_size(swigCPtr, this);
+  public long get_bytes() {
+    return btllibJNI.BloomFilter_get_bytes(swigCPtr, this);
   }
 
   public SWIGTYPE_p_uint64_t get_pop_cnt() {

@@ -8,16 +8,16 @@
 
 package btllib;
 
-public class KmerSet {
+public class KmerBloomFilter {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
-  protected KmerSet(long cPtr, boolean cMemoryOwn) {
+  protected KmerBloomFilter(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(KmerSet obj) {
+  protected static long getCPtr(KmerBloomFilter obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
@@ -30,34 +30,34 @@ public class KmerSet {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        btllibJNI.delete_KmerSet(swigCPtr);
+        btllibJNI.delete_KmerBloomFilter(swigCPtr);
       }
       swigCPtr = 0;
     }
   }
 
-  public KmerSet(long k, long bytes, long hash_num) {
-    this(btllibJNI.new_KmerSet__SWIG_0(k, bytes, hash_num), true);
+  public KmerBloomFilter(long k, long bytes, long hash_num) {
+    this(btllibJNI.new_KmerBloomFilter__SWIG_0(k, bytes, hash_num), true);
   }
 
-  public KmerSet(long k, long bytes) {
-    this(btllibJNI.new_KmerSet__SWIG_1(k, bytes), true);
+  public KmerBloomFilter(long k, long bytes) {
+    this(btllibJNI.new_KmerBloomFilter__SWIG_1(k, bytes), true);
   }
 
   public void insert(String seq) {
-    btllibJNI.KmerSet_insert__SWIG_0(swigCPtr, this, seq);
+    btllibJNI.KmerBloomFilter_insert__SWIG_0(swigCPtr, this, seq);
   }
 
   public void insert(String seq, long seq_len) {
-    btllibJNI.KmerSet_insert__SWIG_1(swigCPtr, this, seq, seq_len);
+    btllibJNI.KmerBloomFilter_insert__SWIG_1(swigCPtr, this, seq, seq_len);
   }
 
   public long contains(String seq) {
-    return btllibJNI.KmerSet_contains__SWIG_0(swigCPtr, this, seq);
+    return btllibJNI.KmerBloomFilter_contains__SWIG_0(swigCPtr, this, seq);
   }
 
   public long contains(String seq, long seq_len) {
-    return btllibJNI.KmerSet_contains__SWIG_1(swigCPtr, this, seq, seq_len);
+    return btllibJNI.KmerBloomFilter_contains__SWIG_1(swigCPtr, this, seq, seq_len);
   }
 
 }

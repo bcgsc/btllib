@@ -11,3 +11,6 @@
 %ignore btllib::SeqReader::RecordCString::operator=;
 %ignore btllib::SeqReader::RecordCString2::operator=;
 %ignore btllib::SeqReader::RecordCString3::operator=;
+
+%ignore btllib::BLOOM_FILTER_MAGIC_HEADER;
+%ignore btllib::COUNTING_BLOOM_FILTER_MAGIC_HEADER;
