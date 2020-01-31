@@ -17,7 +17,7 @@ Python and Java
 - #### Dependencies
   * GCC 4.8.1+ or Clang 3.3.0+
   * Python 3.5+
-  * Meson and Ninja Python3 packages (if they are missing, they will be automatically downloaded in a temporary directory)
+  * Meson and Ninja Python3 packages (optional - if they are missing, they will be automatically downloaded to a temporary directory)
 - Copy the btllib directory in your project
 - Run `btllib/compile`
 - The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name.
@@ -32,9 +32,9 @@ Contributing
 ---
 If you want to contribute code to this repo, before making a pull request, make sure to:
 - Create a build directory with `meson build` in `btllib`
-- Run `ninja wrap` to wrap any new C++ code for Python and Java
+- Run `ninja format` to format the whitespace in code
+- Run `ninja wrap` to wrap any new C++ code for Python and Java (requires SWIG 4.0+)
 - Run `ninja` to build the wrapper libraries / make sure they compile
 - Run `ninja test` to run the tests
-- Run `ninja format` to format the whitespace in code
 - Run `ninja tidycheck` to run clang-tidy on C++ code and make sure it passes
 - Run `ninja cppcheck` to run cppcheck on C++ code and make sure it passes
