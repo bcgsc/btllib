@@ -3,6 +3,7 @@
 
 #include "status.hpp"
 
+#include <algorithm>
 #include <string>
 
 namespace btllib {
@@ -72,6 +73,23 @@ static const char CAPITALS[256] = {
     0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0 ,  0
 };
 // clang-format on
+
+inline void
+reverse_complement(std::string& seq)
+{
+  std::reverse(seq.begin(), seq.end());
+  std::transform(seq.begin(), seq.end(), seq.begin(), [](char c) {
+    return COMPLEMENTS[unsigned(c)];
+  });
+}
+
+inline std::string
+get_reverse_complement(const std::string& seq)
+{
+  std::string rc(seq);
+  reverse_complement(rc);
+  return rc;
+}
 
 } // namespace btllib
 

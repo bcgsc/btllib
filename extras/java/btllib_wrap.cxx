@@ -3684,6 +3684,42 @@ SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_CAPITALS_1get(JNIEnv *jenv, jcl
 }
 
 
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_reverse_1complement(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  std::string *arg1 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(std::string **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::string & reference is null");
+    return ;
+  } 
+  btllib::reverse_complement(*arg1);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_get_1reverse_1complement(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jstring jresult = 0 ;
+  std::string *arg1 = 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = btllib::get_reverse_complement((std::string const &)*arg1);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1BloomFilter_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   btllib::BloomFilter *result = 0 ;
@@ -3893,215 +3929,6 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1BloomFilter(JNIEnv *jenv, 
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1CountingBloomFilter_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  btllib::CountingBloomFilter *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (btllib::CountingBloomFilter *)new btllib::CountingBloomFilter();
-  *(btllib::CountingBloomFilter **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1CountingBloomFilter_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
-  jlong jresult = 0 ;
-  size_t arg1 ;
-  unsigned int arg2 ;
-  btllib::CountingBloomFilter *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = (size_t)jarg1; 
-  arg2 = (unsigned int)jarg2; 
-  result = (btllib::CountingBloomFilter *)new btllib::CountingBloomFilter(arg1,arg2);
-  *(btllib::CountingBloomFilter **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1CountingBloomFilter_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jstring jarg1) {
-  jlong jresult = 0 ;
-  std::string *arg1 = 0 ;
-  btllib::CountingBloomFilter *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  if(!jarg1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
-    return 0;
-  }
-  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
-  if (!arg1_pstr) return 0;
-  std::string arg1_str(arg1_pstr);
-  arg1 = &arg1_str;
-  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
-  result = (btllib::CountingBloomFilter *)new btllib::CountingBloomFilter((std::string const &)*arg1);
-  *(btllib::CountingBloomFilter **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_CountingBloomFilter_1insert_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
-  btllib::CountingBloomFilter *arg1 = (btllib::CountingBloomFilter *) 0 ;
-  std::vector< uint64_t > *arg2 = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::CountingBloomFilter **)&jarg1; 
-  arg2 = *(std::vector< uint64_t > **)&jarg2;
-  if (!arg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< uint64_t > const & reference is null");
-    return ;
-  } 
-  (arg1)->insert((std::vector< uint64_t > const &)*arg2);
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_CountingBloomFilter_1insert_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
-  btllib::CountingBloomFilter *arg1 = (btllib::CountingBloomFilter *) 0 ;
-  uint64_t *arg2 = (uint64_t *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::CountingBloomFilter **)&jarg1; 
-  arg2 = *(uint64_t **)&jarg2; 
-  (arg1)->insert((uint64_t const *)arg2);
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_CountingBloomFilter_1contains_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
-  jlong jresult = 0 ;
-  btllib::CountingBloomFilter *arg1 = (btllib::CountingBloomFilter *) 0 ;
-  std::vector< uint64_t > *arg2 = 0 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::CountingBloomFilter **)&jarg1; 
-  arg2 = *(std::vector< uint64_t > **)&jarg2;
-  if (!arg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< uint64_t > const & reference is null");
-    return 0;
-  } 
-  result = (unsigned int)(arg1)->contains((std::vector< uint64_t > const &)*arg2);
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_CountingBloomFilter_1contains_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
-  jlong jresult = 0 ;
-  btllib::CountingBloomFilter *arg1 = (btllib::CountingBloomFilter *) 0 ;
-  uint64_t *arg2 = (uint64_t *) 0 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::CountingBloomFilter **)&jarg1; 
-  arg2 = *(uint64_t **)&jarg2; 
-  result = (unsigned int)(arg1)->contains((uint64_t const *)arg2);
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_CountingBloomFilter_1get_1bytes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  btllib::CountingBloomFilter *arg1 = (btllib::CountingBloomFilter *) 0 ;
-  size_t result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::CountingBloomFilter **)&jarg1; 
-  result = ((btllib::CountingBloomFilter const *)arg1)->get_bytes();
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_CountingBloomFilter_1get_1pop_1cnt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  btllib::CountingBloomFilter *arg1 = (btllib::CountingBloomFilter *) 0 ;
-  uint64_t result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::CountingBloomFilter **)&jarg1; 
-  result = ((btllib::CountingBloomFilter const *)arg1)->get_pop_cnt();
-  *(uint64_t **)&jresult = new uint64_t((const uint64_t &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_CountingBloomFilter_1get_1hash_1num(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  btllib::CountingBloomFilter *arg1 = (btllib::CountingBloomFilter *) 0 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::CountingBloomFilter **)&jarg1; 
-  result = (unsigned int)((btllib::CountingBloomFilter const *)arg1)->get_hash_num();
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jdouble JNICALL Java_btllib_btllibJNI_CountingBloomFilter_1get_1fpr(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jdouble jresult = 0 ;
-  btllib::CountingBloomFilter *arg1 = (btllib::CountingBloomFilter *) 0 ;
-  double result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::CountingBloomFilter **)&jarg1; 
-  result = (double)((btllib::CountingBloomFilter const *)arg1)->get_fpr();
-  jresult = (jdouble)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_CountingBloomFilter_1write(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  btllib::CountingBloomFilter *arg1 = (btllib::CountingBloomFilter *) 0 ;
-  std::string *arg2 = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::CountingBloomFilter **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
-    return ;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return ;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  (arg1)->write((std::string const &)*arg2);
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1CountingBloomFilter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::CountingBloomFilter *arg1 = (btllib::CountingBloomFilter *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::CountingBloomFilter **)&jarg1; 
-  delete arg1;
-}
-
-
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1KmerBloomFilter_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3) {
   jlong jresult = 0 ;
   unsigned int arg1 ;
@@ -4232,140 +4059,6 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1KmerBloomFilter(JNIEnv *je
   (void)jenv;
   (void)jcls;
   arg1 = *(btllib::KmerBloomFilter **)&jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1KmerCountingBloomFilter_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3) {
-  jlong jresult = 0 ;
-  unsigned int arg1 ;
-  size_t arg2 ;
-  unsigned int arg3 ;
-  btllib::KmerCountingBloomFilter *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = (unsigned int)jarg1; 
-  arg2 = (size_t)jarg2; 
-  arg3 = (unsigned int)jarg3; 
-  result = (btllib::KmerCountingBloomFilter *)new btllib::KmerCountingBloomFilter(arg1,arg2,arg3);
-  *(btllib::KmerCountingBloomFilter **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1KmerCountingBloomFilter_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
-  jlong jresult = 0 ;
-  unsigned int arg1 ;
-  size_t arg2 ;
-  btllib::KmerCountingBloomFilter *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = (unsigned int)jarg1; 
-  arg2 = (size_t)jarg2; 
-  result = (btllib::KmerCountingBloomFilter *)new btllib::KmerCountingBloomFilter(arg1,arg2);
-  *(btllib::KmerCountingBloomFilter **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerCountingBloomFilter_1insert_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  btllib::KmerCountingBloomFilter *arg1 = (btllib::KmerCountingBloomFilter *) 0 ;
-  std::string *arg2 = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::KmerCountingBloomFilter **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
-    return ;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return ;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  (arg1)->insert((std::string const &)*arg2);
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerCountingBloomFilter_1insert_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3) {
-  btllib::KmerCountingBloomFilter *arg1 = (btllib::KmerCountingBloomFilter *) 0 ;
-  char *arg2 = (char *) 0 ;
-  size_t arg3 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::KmerCountingBloomFilter **)&jarg1; 
-  arg2 = 0;
-  if (jarg2) {
-    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
-    if (!arg2) return ;
-  }
-  arg3 = (size_t)jarg3; 
-  (arg1)->insert((char const *)arg2,arg3);
-  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerCountingBloomFilter_1contains_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  jlong jresult = 0 ;
-  btllib::KmerCountingBloomFilter *arg1 = (btllib::KmerCountingBloomFilter *) 0 ;
-  std::string *arg2 = 0 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::KmerCountingBloomFilter **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
-    return 0;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return 0;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (unsigned int)(arg1)->contains((std::string const &)*arg2);
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerCountingBloomFilter_1contains_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3) {
-  jlong jresult = 0 ;
-  btllib::KmerCountingBloomFilter *arg1 = (btllib::KmerCountingBloomFilter *) 0 ;
-  char *arg2 = (char *) 0 ;
-  size_t arg3 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::KmerCountingBloomFilter **)&jarg1; 
-  arg2 = 0;
-  if (jarg2) {
-    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
-    if (!arg2) return 0;
-  }
-  arg3 = (size_t)jarg3; 
-  result = (unsigned int)(arg1)->contains((char const *)arg2,arg3);
-  jresult = (jlong)result; 
-  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1KmerCountingBloomFilter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::KmerCountingBloomFilter *arg1 = (btllib::KmerCountingBloomFilter *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::KmerCountingBloomFilter **)&jarg1; 
   delete arg1;
 }
 

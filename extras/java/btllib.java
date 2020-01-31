@@ -350,6 +350,14 @@ public class btllib {
     return btllibJNI.CAPITALS_get();
   }
 
+  public static void reverse_complement(SWIGTYPE_p_std__string seq) {
+    btllibJNI.reverse_complement(SWIGTYPE_p_std__string.getCPtr(seq));
+  }
+
+  public static String get_reverse_complement(String seq) {
+    return btllibJNI.get_reverse_complement(seq);
+  }
+
   public static long getBITS_IN_BYTE() {
     return btllibJNI.BITS_IN_BYTE_get();
   }
