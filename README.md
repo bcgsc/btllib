@@ -32,7 +32,7 @@ Contributing
 ---
 If you want to contribute code to this repo, before making a pull request, make sure to:
 - Create a build directory with `meson build` in `btllib`
-- Run `ninja wrap` to wrap any new C++ code for Python and Java
+- Run `ninja wrap` to wrap any new C++ code for Python and Java (requires SWIG 4.0+)
 - Run `ninja` to build the wrapper libraries / make sure they compile
 - Run `ninja test` to run the tests
 - Run `ninja format` to format the whitespace in code
