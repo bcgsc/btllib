@@ -1,5 +1,5 @@
 project('btllib', 'cpp',
-        version : '0.2.1',
+        version : '0.3.0',
         license : 'GPL3',
         default_options : [ 'cpp_std=c++11' ])
 add_global_arguments([ '-pthread', '-fopenmp' ], language : 'cpp')
@@ -19,25 +19,33 @@ btllib_include = include_directories('include')
 
 clang_tidy = find_program('clang-tidy', required: false)
 if clang_tidy.found()
-    run_target('tidycheck', command: 'scripts/tidycheck')
+  run_target('tidycheck', command: 'scripts/tidycheck')
 endif
 
 clang_format = find_program('clang-format', required: false)
 if clang_format.found()
-    run_target('format', command: 'scripts/format')
+  run_target('format', command: 'scripts/format')
 endif
 
 diff = find_program('diff', required : false)
 if diff.found() and clang_format.found()
-    run_target('formatcheck', command: 'scripts/formatcheck')
+  run_target('formatcheck', command: 'scripts/formatcheck')
 endif
 
 cppcheck = find_program('cppcheck', required: false)
 if cppcheck.found()
-    run_target('cppcheck', command: 'scripts/cppcheck')
+  run_target('cppcheck', command: 'scripts/cppcheck')
 endif
 
-run_target('wrap', command: 'scripts/wrap')
+doxygen = find_program('doxygen', required: false)
+if doxygen.found()
+  run_target('docs', command: 'scripts/docs')
+endif
+
+swig = find_program('swig', required: false)
+if doxygen.found()
+  run_target('wrap', command: 'scripts/wrap')
+endif
 
 subdir('include')
 subdir('tests')

@@ -7,14 +7,14 @@ Platforms
 
 C++
 ---
-- #### Dependencies
+- Dependencies
   * GCC 4.8.1+ or Clang 3.3.0+
 - Copy the btllib directory in your project
 - Use any header from the `btllib/include` directory
 
 Python and Java
 ---
-- #### Dependencies
+- Dependencies
   * GCC 4.8.1+ or Clang 3.3.0+
   * Python 3.5+
   * Meson and Ninja Python3 packages (optional - if they are missing, they will be automatically downloaded to a temporary directory)
@@ -38,3 +38,4 @@ If you want to contribute code to this repo, before making a pull request, make 
 - Run `ninja test` to run the tests
 - Run `ninja tidycheck` to run clang-tidy on C++ code and make sure it passes
 - Run `ninja cppcheck` to run cppcheck on C++ code and make sure it passes
+- Run `ninja doc` to generate code documentation

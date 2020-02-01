@@ -278,7 +278,6 @@ private:
 
   int read_stage = 0;
 
-public:
   struct read_fasta_buffer;
   struct read_fastq_buffer;
   struct read_sam_buffer;
@@ -294,7 +293,6 @@ public:
   struct read_sam_file;
   struct read_gfa2_file;
 
-private:
   template<typename F>
   void read_from_buffer(
     F f,

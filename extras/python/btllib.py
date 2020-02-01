@@ -79,18 +79,3 @@ class _SwigNonDynamicMeta(type):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

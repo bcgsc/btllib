@@ -14,3 +14,18 @@
 
 %ignore btllib::BLOOM_FILTER_MAGIC_HEADER;
 %ignore btllib::COUNTING_BLOOM_FILTER_MAGIC_HEADER;
+
+%ignore btllib::SeqReader::read_fasta_buffer;
+%ignore btllib::SeqReader::read_fastq_buffer;
+%ignore btllib::SeqReader::read_sam_buffer;
+%ignore btllib::SeqReader::read_gfa2_buffer;
+
+%ignore btllib::SeqReader::read_fasta_transition;
+%ignore btllib::SeqReader::read_fastq_transition;
+%ignore btllib::SeqReader::read_sam_transition;
+%ignore btllib::SeqReader::read_gfa2_transition;
+
+%ignore btllib::SeqReader::read_fasta_file;
+%ignore btllib::SeqReader::read_fastq_file;
+%ignore btllib::SeqReader::read_sam_file;
+%ignore btllib::SeqReader::read_gfa2_file;
