@@ -38,4 +38,4 @@ If you want to contribute code to this repo, before making a pull request, make 
 - Run `ninja test` to run the tests
 - Run `ninja tidycheck` to run clang-tidy on C++ code and make sure it passes
 - Run `ninja cppcheck` to run cppcheck on C++ code and make sure it passes
-- Run `ninja doc` to generate code documentation
+- Run `ninja docs` to generate code documentation
