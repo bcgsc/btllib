@@ -6,6 +6,7 @@
 
 #include "vendor/cpptoml.hpp"
 
+#include <climits>
 #include <cmath>
 #include <cstdint>
 #include <fstream>
@@ -113,8 +114,7 @@ using KmerCountingBloomFilter8 = KmerCountingBloomFilter<uint8_t>;
 using KmerCountingBloomFilter16 = KmerCountingBloomFilter<uint16_t>;
 using KmerCountingBloomFilter32 = KmerCountingBloomFilter<uint32_t>;
 
-static const unsigned BITS_IN_BYTE = 8; // NOLINT
-static const unsigned char BIT_MASKS[BITS_IN_BYTE] = {
+static const unsigned char BIT_MASKS[CHAR_BIT] = {
   // NOLINT
   0x01, 0x02, 0x04, 0x08, // NOLINT
   0x10, 0x20, 0x40, 0x80  // NOLINT
@@ -198,8 +198,8 @@ BloomFilter::insert(const uint64_t* hashes)
 {
   for (unsigned i = 0; i < hash_num; ++i) {
     auto normalized = hashes[i] % bytes;
-    __sync_or_and_fetch(&(bytearray[normalized / BITS_IN_BYTE]),
-                        BIT_MASKS[normalized % BITS_IN_BYTE]);
+    __sync_or_and_fetch(&(bytearray[normalized / CHAR_BIT]),
+                        BIT_MASKS[normalized % CHAR_BIT]);
   }
 }
 
@@ -214,8 +214,8 @@ BloomFilter::contains(const uint64_t* hashes)
 {
   for (unsigned i = 0; i < hash_num; ++i) {
     auto normalized = hashes[i] % bytes;
-    auto mask = BIT_MASKS[normalized % BITS_IN_BYTE];
-    if (!bool(bytearray[normalized / BITS_IN_BYTE] & mask)) {
+    auto mask = BIT_MASKS[normalized % CHAR_BIT];
+    if (!bool(bytearray[normalized / CHAR_BIT] & mask)) {
       return false;
     }
   }
@@ -316,9 +316,8 @@ inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path)
   bytes = *table->get_as<size_t>("bytes");
   hash_num = *table->get_as<unsigned>("hash_num");
   counters = bytes / sizeof(T);
-  check_error(sizeof(T) * BITS_IN_BYTE !=
-                *table->get_as<size_t>("counter_bits"),
-              "CountingBloomFilter" + std::to_string(sizeof(T) * BITS_IN_BYTE) +
+  check_error(sizeof(T) * CHAR_BIT != *table->get_as<size_t>("counter_bits"),
+              "CountingBloomFilter" + std::to_string(sizeof(T) * CHAR_BIT) +
                 " tried to load a file of CountingBloomFilter" +
                 std::to_string(*table->get_as<size_t>("counter_bits")));
 
@@ -422,7 +421,7 @@ CountingBloomFilter<T>::write(const std::string& path)
   auto header = cpptoml::make_table();
   header->insert("bytes", bytes);
   header->insert("hash_num", hash_num);
-  header->insert("counter_bits", size_t(sizeof(T) * BITS_IN_BYTE));
+  header->insert("counter_bits", size_t(sizeof(T) * CHAR_BIT));
   root->insert(COUNTING_BLOOM_FILTER_MAGIC_HEADER, header);
   file << *root << "[HeaderEnd]\n";
 

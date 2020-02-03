@@ -185,7 +185,6 @@ public class btllibJNI {
   public final static native long KmerBloomFilter_contains__SWIG_0(long jarg1, KmerBloomFilter jarg1_, String jarg2);
   public final static native long KmerBloomFilter_contains__SWIG_1(long jarg1, KmerBloomFilter jarg1_, String jarg2, long jarg3);
   public final static native void delete_KmerBloomFilter(long jarg1);
-  public final static native long BITS_IN_BYTE_get();
   public final static native long BIT_MASKS_get();
   public final static native long pop_cnt_byte(short jarg1);
   public final static native long SeedRollingHash_SWIGUpcast(long jarg1);

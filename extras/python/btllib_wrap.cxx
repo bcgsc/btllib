@@ -18049,22 +18049,6 @@ fail:
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_KmerBloomFilter) /* defines _wrap_delete_KmerBloomFilter_destructor_closure */
 
-SWIGINTERN int Swig_var_BITS_IN_BYTE_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable BITS_IN_BYTE is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_BITS_IN_BYTE_get(void) {
-  PyObject *pyobj = 0;
-  PyObject *self = 0;
-  
-  (void)self;
-  pyobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::BITS_IN_BYTE));
-  return pyobj;
-}
-
-
 SWIGINTERN int Swig_var_BIT_MASKS_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable BIT_MASKS is read-only.");
   return 1;
@@ -23458,9 +23442,6 @@ SWIG_init(void) {
   PyModule_AddObject(m, "KmerBloomFilter", (PyObject *)builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "KmerBloomFilter");
   d = md;
-  SWIG_addvarlink(globals, "BITS_IN_BYTE", Swig_var_BITS_IN_BYTE_get, Swig_var_BITS_IN_BYTE_set);
-  PyDict_SetItemString(md, "BITS_IN_BYTE", PyObject_GetAttrString(globals, "BITS_IN_BYTE"));
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "BITS_IN_BYTE");
   SWIG_addvarlink(globals, "BIT_MASKS", Swig_var_BIT_MASKS_get, Swig_var_BIT_MASKS_set);
   PyDict_SetItemString(md, "BIT_MASKS", PyObject_GetAttrString(globals, "BIT_MASKS"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "BIT_MASKS");

@@ -3654,18 +3654,6 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1KmerBloomFilter(JNIEnv *je
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_BITS_1IN_1BYTE_1get(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (unsigned int)(unsigned int)btllib::BITS_IN_BYTE;
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_BIT_1MASKS_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   unsigned char *result = 0 ;

@@ -358,10 +358,6 @@ public class btllib {
     return btllibJNI.get_reverse_complement(seq);
   }
 
-  public static long getBITS_IN_BYTE() {
-    return btllibJNI.BITS_IN_BYTE_get();
-  }
-
   public static SWIGTYPE_p_unsigned_char getBIT_MASKS() {
     long cPtr = btllibJNI.BIT_MASKS_get();
     return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_char(cPtr, false);
