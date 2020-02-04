@@ -146,7 +146,6 @@ private:
 
     char* s = (char*)std::malloc(CSTRING_DEFAULT_CAP); // NOLINT
     size_t size = 0;
-    ;
     size_t cap = CSTRING_DEFAULT_CAP;
   };
 
