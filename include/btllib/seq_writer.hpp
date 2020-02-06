@@ -10,6 +10,7 @@
 
 namespace btllib {
 
+/** Write FASTA or FASTQ sequences to a file. Threadsafe. */
 class SeqWriter
 {
 
