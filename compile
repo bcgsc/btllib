@@ -65,7 +65,6 @@ if [[ ! "$py_version1_num" < "3.0" && "$py_version1_num" < "4.0" ]]; then
   fi
 fi
 
-rm -rf venv
 in_venv=false
 if [[ ! $(which meson) || ! $(which ninja) ]]; then
   if [[ ! -f venv ]]; then
@@ -76,7 +75,6 @@ if [[ ! $(which meson) || ! $(which ninja) ]]; then
   in_venv=true
 fi
 
-rm -rf build
 if [[ ! -d build || ! -d python || ! -d java ]]; then
   meson build --prefix=$SCRIPTPATH
 fi
