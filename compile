@@ -1,15 +1,37 @@
 #!/bin/bash
 
+command -v python >/dev/null
+python_exists=$?
+
+command -v python-config >/dev/null
+python_config_exists=$?
+
+command -v python3 >/dev/null
+python3_exists=$?
+
+command -v python3-config >/dev/null
+python3_config_exists=$?
+
 set -e
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd $SCRIPTPATH
 
-py_version1=$(python --version 2>&1)
-py_version2=$(python3 --version 2>&1)
+if [[ $python_exists -eq 0 && $python_config_exists -eq 0 ]]; then
+  py_version1=$(python --version 2>&1)
+  py_version1_num=$(echo $py_version1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
+else
+  py_version1=""
+  py_version1_num=-1
+fi
 
-py_version1_num=$(echo $py_version1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
-py_version2_num=$(echo $py_version2 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
+if [[ $python_exists -eq 0 && $python_config_exists -eq 0 ]]; then
+  py_version2=$(python3 --version 2>&1)
+  py_version2_num=$(echo $py_version2 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
+else
+  py_version2=""
+  py_version2_num=-1
+fi
 
 if [[ ! "$py_version1_num" < "3.0" && "$py_version1_num" < "4.0" ]]; then
   py_cflags1=$(python-config --cflags)
@@ -75,6 +97,7 @@ if [[ ! $(which meson) || ! $(which ninja) ]]; then
   in_venv=true
 fi
 
+rm -rf build
 if [[ ! -d build || ! -d python || ! -d java ]]; then
   meson build --prefix=$SCRIPTPATH
 fi
