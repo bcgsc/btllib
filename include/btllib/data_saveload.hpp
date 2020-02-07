@@ -285,6 +285,7 @@ get_saveload_cmd(const std::string& path, SaveloadOp op)
               log_error("execlp failed.");
               std::exit(EXIT_FAILURE);
             } else {
+              check_error(pid == -1, "Error on fork.");
               int status;
               waitpid(pid, &status, 0);
               if (WIFEXITED(status) && WEXITSTATUS(status) != 0) { // NOLINT
@@ -420,8 +421,6 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
     }
 
     pid_t pid = fork();
-    check_error(pid == -1, "Error on fork.");
-
     if (pid == 0) {
       if (op == READ) {
         dup2(output_fd[WRITE_END], STDOUT_FILENO);
@@ -517,6 +516,7 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
         exit(EXIT_FAILURE);
       }
     }
+    check_error(pid == -1, "Error on fork.");
     pids.push_back(pid);
     if (op == READ) {
       fds.push_back({ output_fd[READ_END], output_fd[WRITE_END] });
