@@ -71,16 +71,50 @@ private:
   unsigned hash_num = 0;
 };
 
+/**
+ * Bloom filter data structure that kmerizes and hashes given sequences,
+ * storing the results.
+ */
 class KmerBloomFilter
 {
 
 public:
+  /**
+   * Constructor.
+   * @param k kmer size
+   * @param bytes bytes to allocate for the filter
+   * @param hash_num number of hashes
+   */
   KmerBloomFilter(unsigned k, size_t bytes, unsigned hash_num = 4);
 
+  /**
+   * Store the kmers of a sequence.
+   * @param seq sequence to kmerize
+   */
   void insert(const std::string& seq);
+
+  /**
+   * Store the kmers of a sequence.
+   * @param seq sequence to kmerize
+   * @param seq_len length of seq
+   */
   void insert(const char* seq, size_t seq_len);
 
+  /**
+   * Query the kmers of a sequence.
+   * @param seq sequence to kmerize
+   *
+   * @return number of kmers found in seq
+   */
   unsigned contains(const std::string& seq);
+
+  /**
+   * Query the kmers of a sequence.
+   * @param seq sequence to kmerize
+   * @param seq_len length of seq
+   *
+   * @return number of kmers found in seq
+   */
   unsigned contains(const char* seq, size_t seq_len);
 
 private:

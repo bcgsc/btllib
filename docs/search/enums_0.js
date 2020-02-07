@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['flag_26',['Flag',['../classbtllib_1_1SeqReader.html#a36e075566d2d4a217933f9a9d6fe7e7d',1,'btllib::SeqReader']]]
+  ['flag_31',['Flag',['../classbtllib_1_1SeqReader.html#a36e075566d2d4a217933f9a9d6fe7e7d',1,'btllib::SeqReader']]]
 ];
