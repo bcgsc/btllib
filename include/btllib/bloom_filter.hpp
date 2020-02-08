@@ -62,6 +62,10 @@ public:
   unsigned get_hash_num() const { return hash_num; }
   double get_fpr() const;
 
+  /**
+   * Write bloom filter data to a file
+   * @param path output filepath
+   */
   void write(const std::string& path);
 
 private:

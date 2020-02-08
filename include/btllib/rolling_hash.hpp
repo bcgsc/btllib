@@ -44,6 +44,10 @@ public:
    */
   RollingHash(const std::string& seq, unsigned k, unsigned hash_num);
 
+  /**
+   * Calculate the next hash value
+   * @return true on success and false otherwise
+   */
   bool roll();
 
   const uint64_t* hashes() const;
