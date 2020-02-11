@@ -5,6 +5,10 @@ Platforms
 - Linux
 - MacOS
 
+Documentation
+---
+Open `docs/index.html` with a browser and look up any classes/functions you need.
+
 C++
 ---
 - Dependencies
