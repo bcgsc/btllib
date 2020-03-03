@@ -1,7 +1,7 @@
 #ifndef BTLLIB_BLOOM_FILTER_HPP
 #define BTLLIB_BLOOM_FILTER_HPP
 
-#include "rolling_hash.hpp"
+#include "nthash.hpp"
 #include "status.hpp"
 
 #include "vendor/cpptoml.hpp"
@@ -482,9 +482,9 @@ KmerBloomFilter::insert(const std::string& seq)
 inline void
 KmerBloomFilter::insert(const char* seq, size_t seq_len)
 {
-  RollingHash rolling_hash(seq, seq_len, k, bf.get_hash_num());
-  while (rolling_hash.roll()) {
-    bf.insert(rolling_hash.hashes());
+  NtHash nthash(seq, seq_len, k, bf.get_hash_num());
+  while (nthash.roll()) {
+    bf.insert(nthash.hashes());
   }
 }
 
@@ -497,9 +497,9 @@ inline unsigned
 KmerBloomFilter::contains(const char* seq, size_t seq_len)
 {
   unsigned count = 0;
-  RollingHash rolling_hash(seq, seq_len, k, bf.get_hash_num());
-  while (rolling_hash.roll()) {
-    if (bf.contains(rolling_hash.hashes())) {
+  NtHash nthash(seq, seq_len, k, bf.get_hash_num());
+  while (nthash.roll()) {
+    if (bf.contains(nthash.hashes())) {
       count++;
     }
   }
@@ -525,9 +525,9 @@ template<typename T>
 inline void
 KmerCountingBloomFilter<T>::insert(const char* seq, size_t seq_len)
 {
-  RollingHash rolling_hash(seq, seq_len, k, bf.get_hash_num());
-  while (rolling_hash.roll()) {
-    bf.insert(rolling_hash.hashes());
+  NtHash nthash(seq, seq_len, k, bf.get_hash_num());
+  while (nthash.roll()) {
+    bf.insert(nthash.hashes());
   }
 }
 
@@ -543,9 +543,9 @@ inline uint64_t
 KmerCountingBloomFilter<T>::contains(const char* seq, size_t seq_len)
 {
   uint64_t count = 0;
-  RollingHash rolling_hash(seq, seq_len, k, bf.get_hash_num());
-  while (rolling_hash.roll()) {
-    count += bf.contains(rolling_hash.hashes());
+  NtHash nthash(seq, seq_len, k, bf.get_hash_num());
+  while (nthash.roll()) {
+    count += bf.contains(nthash.hashes());
   }
   return count;
 }

@@ -8,16 +8,16 @@
 
 package btllib;
 
-public class RollingHash {
+public class NtHash {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
-  protected RollingHash(long cPtr, boolean cMemoryOwn) {
+  protected NtHash(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(RollingHash obj) {
+  protected static long getCPtr(NtHash obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
@@ -30,39 +30,39 @@ public class RollingHash {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        btllibJNI.delete_RollingHash(swigCPtr);
+        btllibJNI.delete_NtHash(swigCPtr);
       }
       swigCPtr = 0;
     }
   }
 
-  public RollingHash(String seq, long seq_len, long k, long hash_num) {
-    this(btllibJNI.new_RollingHash__SWIG_0(seq, seq_len, k, hash_num), true);
+  public NtHash(String seq, long seq_len, long k, long hash_num) {
+    this(btllibJNI.new_NtHash__SWIG_0(seq, seq_len, k, hash_num), true);
   }
 
-  public RollingHash(String seq, long k, long hash_num) {
-    this(btllibJNI.new_RollingHash__SWIG_1(seq, k, hash_num), true);
+  public NtHash(String seq, long k, long hash_num) {
+    this(btllibJNI.new_NtHash__SWIG_1(seq, k, hash_num), true);
   }
 
   public boolean roll() {
-    return btllibJNI.RollingHash_roll(swigCPtr, this);
+    return btllibJNI.NtHash_roll(swigCPtr, this);
   }
 
   public SWIGTYPE_p_uint64_t hashes() {
-    long cPtr = btllibJNI.RollingHash_hashes(swigCPtr, this);
+    long cPtr = btllibJNI.NtHash_hashes(swigCPtr, this);
     return (cPtr == 0) ? null : new SWIGTYPE_p_uint64_t(cPtr, false);
   }
 
   public long get_pos() {
-    return btllibJNI.RollingHash_get_pos(swigCPtr, this);
+    return btllibJNI.NtHash_get_pos(swigCPtr, this);
   }
 
   public long get_k() {
-    return btllibJNI.RollingHash_get_k(swigCPtr, this);
+    return btllibJNI.NtHash_get_k(swigCPtr, this);
   }
 
   public long get_hash_num() {
-    return btllibJNI.RollingHash_get_hash_num(swigCPtr, this);
+    return btllibJNI.NtHash_get_hash_num(swigCPtr, this);
   }
 
 }

@@ -17,14 +17,19 @@ endif
 
 btllib_include = include_directories('include')
 
-clang_tidy = find_program('clang-tidy', required: false)
-if clang_tidy.found()
-  run_target('tidycheck', command: 'scripts/tidycheck')
-endif
-
 clang_format = find_program('clang-format', required: false)
 if clang_format.found()
   run_target('format', command: 'scripts/format')
+endif
+
+swig = find_program('swig', required: false)
+if swig.found()
+  run_target('wrap', command: 'scripts/wrap')
+endif
+
+clang_tidy = find_program('clang-tidy', required: false)
+if clang_tidy.found()
+  run_target('tidycheck', command: 'scripts/tidycheck')
 endif
 
 diff = find_program('diff', required : false)
@@ -42,10 +47,7 @@ if doxygen.found()
   run_target('docs', command: 'scripts/docs')
 endif
 
-swig = find_program('swig', required: false)
-if doxygen.found()
-  run_target('wrap', command: 'scripts/wrap')
-endif
+run_target('complete', command: 'scripts/complete')
 
 subdir('include')
 subdir('tests')

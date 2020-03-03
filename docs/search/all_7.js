@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['seedrollinghash_13',['SeedRollingHash',['../classbtllib_1_1SeedRollingHash.html',1,'btllib']]],
-  ['seqreader_14',['SeqReader',['../classbtllib_1_1SeqReader.html',1,'btllib']]],
-  ['seqwriter_15',['SeqWriter',['../classbtllib_1_1SeqWriter.html',1,'btllib']]]
+  ['seednthash_14',['SeedNtHash',['../classbtllib_1_1SeedNtHash.html',1,'btllib']]],
+  ['seqreader_15',['SeqReader',['../classbtllib_1_1SeqReader.html',1,'btllib']]],
+  ['seqwriter_16',['SeqWriter',['../classbtllib_1_1SeqWriter.html',1,'btllib']]]
 ];
