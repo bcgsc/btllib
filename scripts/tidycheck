@@ -20,7 +20,8 @@ tidy_checks="*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-hicpp-no-ar
 -hicpp-signed-bitwise,-cert-err58-cpp,-hicpp-vararg,-abseil-string-find-startswith,-misc-definitions-in-headers,\
 -clang-analyzer-valist.Uninitialized,-android-cloexec-open,-cppcoreguidelines-owning-memory,\
 -cppcoreguidelines-non-private-member-variables-in-classes,-fuchsia-statically-constructed-objects,\
--modernize-return-braced-init-list"
+-modernize-return-braced-init-list,-clang-analyzer-unix.Vfork,-clang-analyzer-security.insecureAPI.vfork,\
+-cppcoreguidelines-init-variables"
 
 tidy_options="[]"
 

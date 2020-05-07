@@ -63,7 +63,7 @@ public:
     std::string seq;
     std::string qual;
 
-    operator bool() { return !seq.empty(); }
+    operator bool() const { return !seq.empty(); }
   };
 
   /** Read operator. */
@@ -140,9 +140,9 @@ private:
       s[0] = '\0';
       size = 0;
     }
-    bool empty() { return (ssize_t)size <= 0; }
+    bool empty() const { return (ssize_t)size <= 0; }
 
-    operator char*() { return s; }
+    operator char*() const { return s; }
 
     char* s = (char*)std::malloc(CSTRING_DEFAULT_CAP); // NOLINT
     size_t size = 0;
@@ -255,7 +255,7 @@ private:
   }
 
   void generate_id();
-  void recycle_id();
+  void recycle_id() const;
   unsigned id = 0;
 
   void determine_format();
@@ -358,7 +358,7 @@ SeqReader::generate_id()
 }
 
 inline void
-SeqReader::recycle_id()
+SeqReader::recycle_id() const
 {
   std::unique_lock<std::mutex> lock(recycled_ids_mutex());
   recycled_ids().push(id);
