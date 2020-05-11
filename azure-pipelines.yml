@@ -36,5 +36,5 @@ steps:
 - script: cd build && ninja cppcheck
   displayName: 'Run cppcheck'
   
-- script: cd build && meson test --repeat=100
+- script: cd build && meson test --repeat=10
   displayName: 'Run tests'
