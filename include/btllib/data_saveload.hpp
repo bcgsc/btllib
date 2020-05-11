@@ -247,7 +247,7 @@ get_saveload_cmd(const std::string& path, SaveloadOp op)
             auto args = split(sub_cmd, " ");
             std::for_each(args.begin(), args.end(), trim);
 
-            pid_t pid = vfork();
+            pid_t pid = fork();
             if (pid == 0) {
               int null_fd = open("/dev/null", O_WRONLY, 0);
               dup2(null_fd, STDOUT_FILENO);
@@ -420,7 +420,7 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
       check_error(pipe2(input_fd, O_CLOEXEC) == -1, "Error opening a pipe.");
     }
 
-    pid_t pid = vfork();
+    pid_t pid = fork();
     if (pid == 0) {
       if (op == READ) {
         dup2(output_fd[WRITE_END], STDOUT_FILENO);
