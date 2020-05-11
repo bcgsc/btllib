@@ -247,6 +247,11 @@ get_saveload_cmd(const std::string& path, SaveloadOp op)
             auto args = split(sub_cmd, " ");
             std::for_each(args.begin(), args.end(), trim);
 
+            char* const* argv = new char*[args.size() + 2];
+            ((char*&)(argv[0])) = (char*)(args[0].c_str());
+            for (size_t i = 0; i < args.size(); i++) { ((char*&)(argv[i + 1])) = (char*)(args[i].c_str()); }
+            ((char*&)(argv[args.size() + 1])) = nullptr;
+
             pid_t pid = fork();
             if (pid == 0) {
               int null_fd = open("/dev/null", O_WRONLY, 0);
@@ -254,35 +259,8 @@ get_saveload_cmd(const std::string& path, SaveloadOp op)
               dup2(null_fd, STDERR_FILENO);
               close(null_fd);
 
-              switch (args.size()) {
-                case 1:
-                  execlp(args[0].c_str(), args[0].c_str(), NULL);
-                // fall through
-                case 2:
-                  execlp(
-                    args[0].c_str(), args[0].c_str(), args[1].c_str(), NULL);
-                // fall through
-                case 3:
-                  execlp(args[0].c_str(),
-                         args[0].c_str(),
-                         args[1].c_str(),
-                         args[2].c_str(),
-                         NULL);
-                // fall through
-                case 4:
-                  execlp(args[0].c_str(),
-                         args[0].c_str(),
-                         args[1].c_str(),
-                         args[2].c_str(),
-                         args[3].c_str(),
-                         NULL);
-                // fall through
-                default:
-                  log_error("Invalid number of arguments supplied to execlp (" +
-                            std::to_string(args.size()) + ").");
-                  std::exit(EXIT_FAILURE);
-              }
-              log_error("execlp failed.");
+              execvp(argv[0], argv + 1);
+              log_error("exec failed.");
               std::exit(EXIT_FAILURE);
             } else {
               check_error(pid == -1, "Error on fork.");
@@ -293,6 +271,8 @@ get_saveload_cmd(const std::string& path, SaveloadOp op)
                 break;
               }
             }
+
+            delete[] argv;
           }
           if (good) {
             found_cmd = true;
@@ -412,6 +392,11 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
       args.erase(it);
     }
 
+    char* const* argv = new char*[args.size() + 2];
+    ((char*&)(argv[0])) = (char*)(args[0].c_str());
+    for (size_t i = 0; i < args.size(); i++) { ((char*&)(argv[i + 1])) = (char*)(args[i].c_str()); }
+    ((char*&)(argv[args.size() + 1])) = nullptr;
+
     if (op == READ) {
       if (i < individual_cmds.size() - 1) {
         check_error(pipe2(input_fd, O_CLOEXEC) == -1, "Error opening a pipe.");
@@ -438,34 +423,8 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
           close(input_fd[WRITE_END]);
         }
 
-        switch (args.size()) {
-          case 1:
-            execlp(args[0].c_str(), args[0].c_str(), NULL);
-          // fall through
-          case 2:
-            execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), NULL);
-          // fall through
-          case 3:
-            execlp(args[0].c_str(),
-                   args[0].c_str(),
-                   args[1].c_str(),
-                   args[2].c_str(),
-                   NULL);
-          // fall through
-          case 4:
-            execlp(args[0].c_str(),
-                   args[0].c_str(),
-                   args[1].c_str(),
-                   args[2].c_str(),
-                   args[3].c_str(),
-                   NULL);
-          // fall through
-          default:
-            log_error("Invalid number of arguments supplied to execlp (" +
-                      std::to_string(args.size()) + ").");
-            std::exit(EXIT_FAILURE);
-        }
-        log_error("execlp failed.");
+        execvp(argv[0], argv + 1);
+        log_error("exec failed.");
         std::exit(EXIT_FAILURE);
       } else {
         dup2(input_fd[READ_END], STDIN_FILENO);
@@ -485,34 +444,8 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
           close(output_fd[WRITE_END]);
         }
 
-        switch (args.size()) {
-          case 1:
-            execlp(args[0].c_str(), args[0].c_str(), NULL);
-          // fall through
-          case 2:
-            execlp(args[0].c_str(), args[0].c_str(), args[1].c_str(), NULL);
-          // fall through
-          case 3:
-            execlp(args[0].c_str(),
-                   args[0].c_str(),
-                   args[1].c_str(),
-                   args[2].c_str(),
-                   NULL);
-          // fall through
-          case 4:
-            execlp(args[0].c_str(),
-                   args[0].c_str(),
-                   args[1].c_str(),
-                   args[2].c_str(),
-                   args[3].c_str(),
-                   NULL);
-          // fall through
-          default:
-            log_error("Invalid number of arguments supplied to execlp (" +
-                      std::to_string(args.size()) + ").");
-            std::exit(EXIT_FAILURE);
-        }
-        log_error("execlp failed.");
+        execvp(argv[0], argv + 1);
+        log_error("exec failed.");
         exit(EXIT_FAILURE);
       }
     }
@@ -530,6 +463,8 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
     output_fd[READ_END] = input_fd[READ_END];
     output_fd[WRITE_END] = input_fd[WRITE_END];
     i++;
+
+    delete[] argv;
   }
 
   if (op == READ) {
