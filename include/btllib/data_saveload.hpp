@@ -249,7 +249,9 @@ get_saveload_cmd(const std::string& path, SaveloadOp op)
 
             char* const* argv = new char*[args.size() + 2];
             ((char*&)(argv[0])) = (char*)(args[0].c_str());
-            for (size_t i = 0; i < args.size(); i++) { ((char*&)(argv[i + 1])) = (char*)(args[i].c_str()); }
+            for (size_t i = 0; i < args.size(); i++) {
+              ((char*&)(argv[i + 1])) = (char*)(args[i].c_str());
+            }
             ((char*&)(argv[args.size() + 1])) = nullptr;
 
             pid_t pid = fork();
@@ -263,6 +265,7 @@ get_saveload_cmd(const std::string& path, SaveloadOp op)
               log_error("exec failed.");
               std::exit(EXIT_FAILURE);
             } else {
+              delete[] argv;
               check_error(pid == -1, "Error on fork.");
               int status;
               waitpid(pid, &status, 0);
@@ -271,8 +274,6 @@ get_saveload_cmd(const std::string& path, SaveloadOp op)
                 break;
               }
             }
-
-            delete[] argv;
           }
           if (good) {
             found_cmd = true;
@@ -394,7 +395,9 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
 
     char* const* argv = new char*[args.size() + 2];
     ((char*&)(argv[0])) = (char*)(args[0].c_str());
-    for (size_t i = 0; i < args.size(); i++) { ((char*&)(argv[i + 1])) = (char*)(args[i].c_str()); }
+    for (size_t i = 0; i < args.size(); i++) {
+      ((char*&)(argv[i + 1])) = (char*)(args[i].c_str());
+    }
     ((char*&)(argv[args.size() + 1])) = nullptr;
 
     if (op == READ) {

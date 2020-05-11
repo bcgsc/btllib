@@ -2732,7 +2732,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSource_1_1_1ref_1_1(JNIEnv *j
   (void)jcls;
   (void)jarg1_;
   arg1 = *(btllib::DataSource **)&jarg1; 
-  result = (FILE *)(arg1)->operator *();
+  result = (FILE *)((btllib::DataSource const *)arg1)->operator *();
   *(FILE **)&jresult = result; 
   return jresult;
 }
@@ -2747,7 +2747,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSource_1_1_1deref_1_1(JNIEnv 
   (void)jcls;
   (void)jarg1_;
   arg1 = *(btllib::DataSource **)&jarg1; 
-  result = (FILE *)(arg1)->operator ->();
+  result = (FILE *)((btllib::DataSource const *)arg1)->operator ->();
   *(FILE **)&jresult = result; 
   return jresult;
 }
@@ -2864,7 +2864,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSink_1_1_1ref_1_1(JNIEnv *jen
   (void)jcls;
   (void)jarg1_;
   arg1 = *(btllib::DataSink **)&jarg1; 
-  result = (FILE *)(arg1)->operator *();
+  result = (FILE *)((btllib::DataSink const *)arg1)->operator *();
   *(FILE **)&jresult = result; 
   return jresult;
 }
@@ -2879,7 +2879,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSink_1_1_1deref_1_1(JNIEnv *j
   (void)jcls;
   (void)jarg1_;
   arg1 = *(btllib::DataSink **)&jarg1; 
-  result = (FILE *)(arg1)->operator ->();
+  result = (FILE *)((btllib::DataSink const *)arg1)->operator ->();
   *(FILE **)&jresult = result; 
   return jresult;
 }

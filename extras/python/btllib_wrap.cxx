@@ -11193,7 +11193,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Record___bool__(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Record___nonzero__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
   void *argp1 = 0 ;
@@ -11201,13 +11201,13 @@ SWIGINTERN PyObject *_wrap_Record___bool__(PyObject *self, PyObject *args) {
   PyObject *swig_obj[1] ;
   bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "Record___bool__", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "Record___nonzero__", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record___bool__" "', argument " "1"" of type '" "btllib::SeqReader::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record___nonzero__" "', argument " "1"" of type '" "btllib::SeqReader::Record const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::SeqReader::Record * >(argp1);
-  result = (bool)(arg1)->operator bool();
+  result = (bool)((btllib::SeqReader::Record const *)arg1)->operator bool();
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -11251,7 +11251,7 @@ fail:
 }
 
 
-SWIGPY_INQUIRY_CLOSURE(_wrap_Record___bool__) /* defines _wrap_Record___bool___inquiry_closure */
+SWIGPY_INQUIRY_CLOSURE(_wrap_Record___nonzero__) /* defines _wrap_Record___nonzero___inquiry_closure */
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Record) /* defines _wrap_delete_Record_destructor_closure */
 
@@ -16152,10 +16152,10 @@ SWIGINTERN PyObject *_wrap_DataSource___ref__(PyObject *self, PyObject *args) {
   if (!SWIG_Python_UnpackTuple(args, "DataSource___ref__", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSource, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSource___ref__" "', argument " "1"" of type '" "btllib::DataSource *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSource___ref__" "', argument " "1"" of type '" "btllib::DataSource const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::DataSource * >(argp1);
-  result = (FILE *)(arg1)->operator *();
+  result = (FILE *)((btllib::DataSource const *)arg1)->operator *();
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
   return resultobj;
 fail:
@@ -16176,10 +16176,10 @@ SWIGINTERN PyObject *_wrap_DataSource___deref__(PyObject *self, PyObject *args) 
   if (!SWIG_Python_UnpackTuple(args, "DataSource___deref__", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSource, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSource___deref__" "', argument " "1"" of type '" "btllib::DataSource *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSource___deref__" "', argument " "1"" of type '" "btllib::DataSource const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::DataSource * >(argp1);
-  result = (FILE *)(arg1)->operator ->();
+  result = (FILE *)((btllib::DataSource const *)arg1)->operator ->();
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
   return resultobj;
 fail:
@@ -16383,10 +16383,10 @@ SWIGINTERN PyObject *_wrap_DataSink___ref__(PyObject *self, PyObject *args) {
   if (!SWIG_Python_UnpackTuple(args, "DataSink___ref__", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSink, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSink___ref__" "', argument " "1"" of type '" "btllib::DataSink *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSink___ref__" "', argument " "1"" of type '" "btllib::DataSink const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::DataSink * >(argp1);
-  result = (FILE *)(arg1)->operator *();
+  result = (FILE *)((btllib::DataSink const *)arg1)->operator *();
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
   return resultobj;
 fail:
@@ -16407,10 +16407,10 @@ SWIGINTERN PyObject *_wrap_DataSink___deref__(PyObject *self, PyObject *args) {
   if (!SWIG_Python_UnpackTuple(args, "DataSink___deref__", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__DataSink, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSink___deref__" "', argument " "1"" of type '" "btllib::DataSink *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataSink___deref__" "', argument " "1"" of type '" "btllib::DataSink const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::DataSink * >(argp1);
-  result = (FILE *)(arg1)->operator ->();
+  result = (FILE *)((btllib::DataSink const *)arg1)->operator ->();
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
   return resultobj;
 fail:
@@ -19779,7 +19779,7 @@ SwigPyBuiltin__btllib__SeqReader__Record_richcompare(PyObject *self, PyObject *o
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeqReader__Record_methods[] = {
-  { "__bool__", _wrap_Record___bool__, METH_NOARGS, "" },
+  { "__nonzero__", _wrap_Record___nonzero__, METH_NOARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -19876,7 +19876,7 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__SeqReader__Record_type = {
     (unaryfunc) 0,                            /* nb_negative */
     (unaryfunc) 0,                            /* nb_positive */
     (unaryfunc) 0,                            /* nb_absolute */
-    _wrap_Record___bool___inquiry_closure,    /* nb_nonzero */
+    _wrap_Record___nonzero___inquiry_closure, /* nb_nonzero */
     (unaryfunc) 0,                            /* nb_invert */
     (binaryfunc) 0,                           /* nb_lshift */
     (binaryfunc) 0,                           /* nb_rshift */
