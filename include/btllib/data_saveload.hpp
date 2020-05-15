@@ -374,7 +374,10 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
   output_fd[READ_END] = -1;
   output_fd[WRITE_END] = -1;
   if (op == READ) {
-    check_error(pipe2(output_fd, O_CLOEXEC) == -1, "Error opening a pipe.");
+    auto ret = pipe(output_fd);
+    check_error(ret == -1, "Error opening a pipe.");
+    fcntl(output_fd[0], F_SETFD, FD_CLOEXEC);
+    fcntl(output_fd[1], F_SETFD, FD_CLOEXEC);
   }
   size_t i = 0;
   for (const auto& individual_cmd : individual_cmds) {
@@ -402,10 +405,16 @@ run_saveload_cmd(const std::string& cmd, SaveloadOp op)
 
     if (op == READ) {
       if (i < individual_cmds.size() - 1) {
-        check_error(pipe2(input_fd, O_CLOEXEC) == -1, "Error opening a pipe.");
+        auto ret = pipe(input_fd);
+        check_error(ret == -1, "Error opening a pipe.");
+        fcntl(input_fd[0], F_SETFD, FD_CLOEXEC);
+        fcntl(input_fd[1], F_SETFD, FD_CLOEXEC);
       }
     } else {
-      check_error(pipe2(input_fd, O_CLOEXEC) == -1, "Error opening a pipe.");
+      auto ret = pipe(input_fd);
+      check_error(ret == -1, "Error opening a pipe.");
+      fcntl(input_fd[0], F_SETFD, FD_CLOEXEC);
+      fcntl(input_fd[1], F_SETFD, FD_CLOEXEC);
     }
 
     pid_t pid = fork();
