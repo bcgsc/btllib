@@ -368,17 +368,22 @@ inline void
 SeqReader::close()
 {
   if (!closed) {
-    closed = true;
-    reader_end = true;
-    postprocessor_queue.close();
-    postprocessor_thread->join();
-    qual_copier_queue.close();
-    qual_copier_thread->join();
-    seq_copier_queue.close();
-    seq_copier_thread->join();
-    reader_queue.close();
-    reader_thread->join();
-    source.close();
+    try {
+      closed = true;
+      reader_end = true;
+      postprocessor_queue.close();
+      postprocessor_thread->join();
+      qual_copier_queue.close();
+      qual_copier_thread->join();
+      seq_copier_queue.close();
+      seq_copier_thread->join();
+      reader_queue.close();
+      reader_thread->join();
+      source.close();
+    } catch (const std::system_error& e) {
+      log_error("SeqReader thread join failure: " + std::string(e.what()));
+      std::exit(EXIT_FAILURE);
+    }
   }
 }
 

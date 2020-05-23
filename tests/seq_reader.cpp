@@ -29,7 +29,7 @@ main()
     assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
 
     i = 0;
-    while (record = reader_fasta.read()) {
+    while ((record = reader_fasta.read())) {
       assert(record.seq == seqs[i]);
       assert(record.qual.empty());
 
@@ -43,7 +43,7 @@ main()
     assert(reader_fastq.get_format() == btllib::SeqReader::Format::FASTQ);
 
     i = 0;
-    while (record = reader_fastq.read()) {
+    while ((record = reader_fastq.read())) {
       assert(record.seq == seqs[i]);
       assert(record.qual == quals[i]);
 
@@ -57,7 +57,7 @@ main()
     assert(reader_sam.get_format() == btllib::SeqReader::Format::SAM);
 
     i = 0;
-    while (record = reader_sam.read()) {
+    while ((record = reader_sam.read())) {
       assert(record.seq == seqs[i]);
       assert(record.qual == quals[i]);
 
@@ -71,7 +71,7 @@ main()
     assert(reader_gfa2.get_format() == btllib::SeqReader::Format::GFA2);
 
     i = 0;
-    while (record = reader_gfa2.read()) {
+    while ((record = reader_gfa2.read())) {
       assert(record.seq == seqs[i]);
       assert(record.qual.empty());
 
@@ -107,7 +107,7 @@ main()
     random_seqs.close();
 
     btllib::SeqReader random_reader(random_filename);
-    for (i = 0; record = random_reader.read(); i++) {
+    for (i = 0; (record = random_reader.read()); i++) {
       assert(record.name == generated_names[i]);
       assert(record.comment == generated_comments[i]);
       assert(record.seq == generated_seqs[i]);
@@ -128,7 +128,7 @@ main()
     btllib::SeqReader random_reader2(random_filename);
 #pragma omp parallel private(record) shared(random_reader2)
     {
-      while (record = random_reader2.read()) {
+      while ((record = random_reader2.read())) {
 #pragma omp critical
         {
           read_nums.push_back(record.num);

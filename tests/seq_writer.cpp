@@ -34,7 +34,7 @@ main()
     btllib::SeqReader::Record record;
 
     i = 0;
-    while (record = reader_fasta.read()) {
+    while ((record = reader_fasta.read())) {
       assert(record.name == names[i]);
       assert(record.comment == comments[i]);
       assert(record.seq == seqs[i]);
@@ -60,7 +60,7 @@ main()
     assert(reader_fastq.get_format() == btllib::SeqReader::Format::FASTQ);
 
     i = 0;
-    while (record = reader_fastq.read()) {
+    while ((record = reader_fastq.read())) {
       assert(record.name == names[i]);
       assert(record.comment == comments[i]);
       assert(record.seq == seqs[i]);
@@ -100,7 +100,7 @@ main()
     random_seqs.close();
 
     btllib::SeqReader random_reader(random_filename);
-    for (i = 0; record = random_reader.read(); i++) {
+    for (i = 0; (record = random_reader.read()); i++) {
       assert(record.name == generated_names[i]);
       assert(record.comment == generated_comments[i]);
       assert(record.seq == generated_seqs[i]);
@@ -146,7 +146,7 @@ main()
     std::vector<std::string> parallel_seqs;
     std::vector<std::string> parallel_quals;
     btllib::SeqReader random_reader2(random_filename2);
-    while (record = random_reader2.read()) {
+    while ((record = random_reader2.read())) {
       parallel_names.push_back(record.name);
       parallel_comments.push_back(record.comment);
       parallel_seqs.push_back(record.seq);
