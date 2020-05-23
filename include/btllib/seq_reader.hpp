@@ -38,7 +38,7 @@ public:
   SeqReader(const std::string& source_path, int flags = 0);
   ~SeqReader();
 
-  void close();
+  void close() noexcept;
 
   bool flagFoldCase() const { return bool(~flags & NO_FOLD_CASE); }
   bool flagTrimMasked() const { return bool(flags & TRIM_MASKED); }
@@ -255,7 +255,7 @@ private:
   }
 
   void generate_id();
-  void recycle_id() const;
+  void recycle_id() const noexcept;
   unsigned id = 0;
 
   void determine_format();
@@ -358,7 +358,7 @@ SeqReader::generate_id()
 }
 
 inline void
-SeqReader::recycle_id() const
+SeqReader::recycle_id() const noexcept
 {
   std::unique_lock<std::mutex> lock(recycled_ids_mutex());
   try {
@@ -370,7 +370,7 @@ SeqReader::recycle_id() const
 }
 
 inline void
-SeqReader::close()
+SeqReader::close() noexcept
 {
   if (!closed) {
     try {
