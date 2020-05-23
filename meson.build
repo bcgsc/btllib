@@ -2,8 +2,18 @@ project('btllib', 'cpp',
         version : '0.3.0',
         license : 'GPL3',
         default_options : [ 'cpp_std=c++11' ])
-add_global_arguments([ '-pthread', '-fopenmp' ], language : 'cpp')
-add_global_link_arguments([ '-ldl', '-lpthread', '-fopenmp' ], language : 'cpp')
+
+global_args = [ '-pthread' ]
+global_link_args = [ '-ldl', '-lpthread' ]
+if build_machine.system() == 'darwin'
+  global_args += [ '-Xpreprocessor', '-fopenmp', '-lomp' ]
+  global_link_args += [ '-Xpreprocessor', '-fopenmp', '-lomp' ]
+else
+  global_args += [ '-fopenmp' ]
+  global_link_args += [ '-fopenmp' ]
+endif
+add_global_arguments(global_args, language : 'cpp')
+add_global_link_arguments(global_link_args, language : 'cpp')
 
 compiler = meson.get_compiler('cpp')
 compiler_id = compiler.get_id()
