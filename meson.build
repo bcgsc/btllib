@@ -7,7 +7,7 @@ global_args = [ '-pthread' ]
 global_link_args = [ '-ldl', '-lpthread' ]
 if build_machine.system() == 'darwin'
   global_args += [ '-Xpreprocessor', '-fopenmp' ]
-  global_link_args += [ '-Xpreprocessor', '-fopenmp' ]
+  global_link_args += [ '-Xpreprocessor', '-fopenmp', '-lomp' ]
 else
   global_args += [ '-fopenmp' ]
   global_link_args += [ '-fopenmp' ]
