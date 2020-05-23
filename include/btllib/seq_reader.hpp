@@ -234,14 +234,14 @@ private:
   }
 
   // Bad code bad
-  static std::stack<unsigned>& recycled_ids()
+  static std::stack<unsigned>& recycled_ids() noexcept
   {
     static std::stack<unsigned> _recycled_ids;
     return _recycled_ids;
   }
 
   // ;-;
-  static std::mutex& recycled_ids_mutex()
+  static std::mutex& recycled_ids_mutex() noexcept
   {
     static std::mutex _recycled_ids_mutex;
     return _recycled_ids_mutex;
@@ -360,10 +360,10 @@ SeqReader::generate_id()
 inline void
 SeqReader::recycle_id() const noexcept
 {
-  std::unique_lock<std::mutex> lock(recycled_ids_mutex());
   try {
+    std::unique_lock<std::mutex> lock(recycled_ids_mutex());
     recycled_ids().push(id);
-  } catch (const std::bad_alloc& e) {
+  } catch (const std::exception& e) {
     log_error("SeqReader id recycle error: " + std::string(e.what()));
     std::exit(EXIT_FAILURE);
   }
