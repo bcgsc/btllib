@@ -361,7 +361,12 @@ inline void
 SeqReader::recycle_id() const
 {
   std::unique_lock<std::mutex> lock(recycled_ids_mutex());
-  recycled_ids().push(id);
+  try {
+    recycled_ids().push(id);
+  } catch (const std::bad_alloc& e) {
+    log_error("SeqReader id recycle error: " + std::string(e.what()));
+    std::exit(EXIT_FAILURE);
+  }
 }
 
 inline void
