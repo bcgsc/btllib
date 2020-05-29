@@ -332,6 +332,10 @@ public class btllib {
     return new _Pipeline(btllibJNI.run_pipeline_cmd(cmd, op.swigValue()), true);
   }
 
+  public static void sigchld_handler(int sig) {
+    btllibJNI.sigchld_handler(sig);
+  }
+
   public static SWIGTYPE_p_std__vectorT_std__string_t split(String s, String delim) {
     return new SWIGTYPE_p_std__vectorT_std__string_t(btllibJNI.split(s, delim), true);
   }

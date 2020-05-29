@@ -255,6 +255,9 @@ get_pipeline_cmd(const std::string& path, DataStream::Operation op);
 static inline _Pipeline
 run_pipeline_cmd(const std::string& cmd, DataStream::Operation op);
 
+inline void
+sigchld_handler(const int sig) {}
+
 static inline bool
 process_spawner_init()
 {
@@ -274,6 +277,12 @@ process_spawner_init()
     if (pid == 0) {
       close(process_spawner_parent2child_fd()[PIPE_WRITE_END]);
       close(process_spawner_child2parent_fd()[PIPE_READ_END]);
+
+      struct sigaction action; // NOLINT
+      action.sa_handler = sigchld_handler;
+      sigemptyset(&action.sa_mask);
+      action.sa_flags = SA_RESTART;
+      sigaction(SIGCHLD, &action, nullptr);
 
       DataStream::Operation op;
       char buf[COMM_BUFFER_SIZE];
@@ -392,21 +401,18 @@ get_pipeline_cmd(const std::string& path, DataStream::Operation op)
         for (const auto& existence_cmd : datatype.cmds_check_existence) {
           pid_t pid = fork();
           if (pid == 0) {
-            //int null_fd = open("/dev/null", O_WRONLY, 0);
-            //dup2(null_fd, STDOUT_FILENO);
-            //dup2(null_fd, STDERR_FILENO);
-            //close(null_fd);
+            int null_fd = open("/dev/null", O_WRONLY, 0);
+            dup2(null_fd, STDOUT_FILENO);
+            dup2(null_fd, STDERR_FILENO);
+            close(null_fd);
 
-            execlp("which", "which", "sh");
-            //execl("sh", "sh", "-c", existence_cmd.c_str());
+            execlp("sh", "sh", "-c", existence_cmd.c_str());
             log_error("exec failed: sh -c \"" + existence_cmd + "\'");
             std::exit(EXIT_FAILURE);
           } else {
             check_error(pid == -1, "Error on fork.");
             int status;
             check_error(waitpid(pid, &status, 0) != pid, "waitpid error.");
-            std::cerr << existence_cmd << std::endl;
-            std::cerr << status << std::endl;
             if (!WIFSIGNALED(status) &&
                 (!WIFEXITED(status) || WEXITSTATUS(status) == 0)) { // NOLINT
               found_cmd = true;
