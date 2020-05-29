@@ -12,7 +12,7 @@ Open `docs/index.html` with a browser and look up any classes/functions you need
 C++
 ---
 - Dependencies
-  * GCC 4.8.1+ or Clang 3.3.0+
+  * GCC 4.8.1+ or Clang 3.3.0+ with OpenMP
 - Copy the btllib directory in your project
 - Use any header from the `btllib/include` directory
 
@@ -35,13 +35,15 @@ Python and Java
 Contributing
 ---
 If you want to contribute code to this repo, before making a pull request, make sure to:
-- Create a build directory with `meson build` in `btllib`
-- Run `ninja format` to format the whitespace in code
-- Run `ninja wrap` to wrap any new C++ code for Python and Java (requires SWIG 4.0+)
-- Run `ninja` to build the wrapper libraries / make sure they compile
-- Run `ninja test` to run the tests
-- Run `ninja tidycheck` to run clang-tidy on C++ code and make sure it passes
-- Run `ninja cppcheck` to run cppcheck on C++ code and make sure it passes
-- Run `ninja docs` to generate code documentation
+- Create a build directory by running `meson build` in `btllib` directory
+- Run `ninja complete` in the `build` directory to generate wrappers, docs, format the code, check for any errors, etc.
 
-Or simply run `ninja complete` to do all of the steps above after `meson build`
+`ninja complete` does the following steps, in order:
+- `ninja format` formats the whitespace in code
+- `ninja wrap` wraps C++ code for Python and Java (requires SWIG 4.0+)
+- `ninja` builds the tests and wrapper libraries / makes sure they compile
+- `ninja test` runs the tests
+- `ninja tidycheck` runs clang-tidy on C++ code and makes sure it passes
+- `ninja cppcheck` runs cppcheck on C++ code and makes sure it passes
+- `ninja docs` generates code documentation from comments
+Any of these can be run individually within `build` directory.
