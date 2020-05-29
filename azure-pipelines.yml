@@ -26,14 +26,14 @@ jobs:
       ninja
     displayName: 'Build the project'
 
-  - script: cd build && ninja formatcheck
-    displayName: 'Run clang-format'
+  # - script: cd build && ninja formatcheck
+  #   displayName: 'Run clang-format'
 
-  - script: cd build && ninja tidycheck
-    displayName: 'Run clang-tidy'
+  # - script: cd build && ninja tidycheck
+  #   displayName: 'Run clang-tidy'
 
-  - script: cd build && ninja cppcheck
-    displayName: 'Run cppcheck'
+  # - script: cd build && ninja cppcheck
+  #   displayName: 'Run cppcheck'
 
   - script: |
       cd build
@@ -64,14 +64,14 @@ jobs:
       ninja
     displayName: 'Build the project'
 
-  - script: cd build && ninja formatcheck
-    displayName: 'Run clang-format'
+  # - script: cd build && ninja formatcheck
+  #   displayName: 'Run clang-format'
 
-  - script: cd build && ninja tidycheck
-    displayName: 'Run clang-tidy'
+  # - script: cd build && ninja tidycheck
+  #   displayName: 'Run clang-tidy'
 
-  - script: cd build && ninja cppcheck
-    displayName: 'Run cppcheck'
+  # - script: cd build && ninja cppcheck
+  #   displayName: 'Run cppcheck'
 
   - script: |
       cd build
