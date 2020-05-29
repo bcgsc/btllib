@@ -15985,6 +15985,18 @@ fail:
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_DataSink) /* defines _wrap_delete_DataSink_destructor_closure */
 
+SWIGINTERN PyObject *_wrap_check_children_failures(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  
+  if (!SWIG_Python_UnpackTuple(args, "check_children_failures", 0, 0, 0)) SWIG_fail;
+  btllib::check_children_failures();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN int _wrap_new__Pipeline__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
   btllib::_Pipeline *result = 0 ;
@@ -18320,6 +18332,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_pipe_id", _wrap_new_pipe_id, METH_NOARGS, NULL},
 	 { "pipeline_map", _wrap_pipeline_map, METH_NOARGS, NULL},
 	 { "get_pipepath", _wrap_get_pipepath, METH_O, NULL},
+	 { "check_children_failures", _wrap_check_children_failures, METH_NOARGS, NULL},
 	 { "process_spawner_init", _wrap_process_spawner_init, METH_NOARGS, NULL},
 	 { "get_pipeline_cmd", _wrap_get_pipeline_cmd, METH_VARARGS, NULL},
 	 { "run_pipeline_cmd", _wrap_run_pipeline_cmd, METH_VARARGS, NULL},

@@ -131,6 +131,7 @@ public class btllibJNI {
   public final static native long new_DataSink__SWIG_0(String jarg1, boolean jarg2);
   public final static native long new_DataSink__SWIG_1(String jarg1);
   public final static native void delete_DataSink(long jarg1);
+  public final static native void check_children_failures();
   public final static native long new__Pipeline__SWIG_0();
   public final static native long new__Pipeline__SWIG_1(String jarg1, int jarg2, long jarg3, long jarg4);
   public final static native void _Pipeline_finish(long jarg1, _Pipeline jarg1_);

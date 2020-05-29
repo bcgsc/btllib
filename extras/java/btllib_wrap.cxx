@@ -2647,6 +2647,13 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1DataSink(JNIEnv *jenv, jcl
 }
 
 
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_check_1children_1failures(JNIEnv *jenv, jclass jcls) {
+  (void)jenv;
+  (void)jcls;
+  btllib::check_children_failures();
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1_1Pipeline_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   btllib::_Pipeline *result = 0 ;

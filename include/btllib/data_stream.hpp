@@ -174,6 +174,33 @@ DataStream::close()
   }
 }
 
+static inline void
+check_children_failures()
+{
+  // Checks if any children have failed so the caller can be a disappointed
+  // parent.
+  int status;
+  pid_t pid;
+  while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
+    if (status != 0) {
+      std::cerr << "Helper process failed before data stream was closed:"
+                << std::endl;
+      if (WIFEXITED(status)) { // NOLINT
+        std::cerr << "PID " << pid << " exited with status "
+                  << WEXITSTATUS(status) << std::endl; // NOLINT
+      } else if (WIFSIGNALED(status)) {                // NOLINT
+        std::cerr << "PID " << pid << " killed by signal "
+                  << WTERMSIG(status) // NOLINT
+                  << std::endl;
+      } else {
+        std::cerr << "PID " << pid << " exited with code " << status
+                  << std::endl;
+      }
+      std::exit(EXIT_FAILURE);
+    }
+  }
+}
+
 class _Pipeline
 {
 
@@ -216,25 +243,7 @@ _Pipeline::finish()
     }
     waitpid(pid_last, &status, 0);
 
-    pid_t pid;
-    while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
-      if (status != 0) {
-        std::cerr << "Helper process failed before data stream was closed:"
-                  << std::endl;
-        if (WIFEXITED(status)) { // NOLINT
-          std::cerr << "PID " << pid << " exited with status "
-                    << WEXITSTATUS(status) << std::endl; // NOLINT
-        } else if (WIFSIGNALED(status)) {                // NOLINT
-          std::cerr << "PID " << pid << " killed by signal "
-                    << WTERMSIG(status) // NOLINT
-                    << std::endl;
-        } else {
-          std::cerr << "PID " << pid << " exited with code " << status
-                    << std::endl;
-        }
-        std::exit(EXIT_FAILURE);
-      }
-    }
+    check_children_failures();
 
     closed = true;
   }
@@ -251,8 +260,9 @@ get_pipeline_cmd(const std::string& path, DataStream::Operation op);
 static inline _Pipeline
 run_pipeline_cmd(const std::string& cmd, DataStream::Operation op);
 
-inline void
-sigchld_handler(const int sig) {}
+static inline void
+sigchld_handler(const int sig)
+{}
 
 static inline bool
 process_spawner_init()
@@ -288,6 +298,7 @@ process_spawner_init()
         if (read(process_spawner_parent2child_fd()[PIPE_READ_END],
                  &op,
                  sizeof(op)) <= 0) {
+          check_children_failures();
           kill(0, SIGTERM);
           std::exit(EXIT_SUCCESS);
         }
@@ -402,7 +413,7 @@ get_pipeline_cmd(const std::string& path, DataStream::Operation op)
             dup2(null_fd, STDERR_FILENO);
             close(null_fd);
 
-            execlp("sh", "sh", "-c", existence_cmd.c_str(), nullptr);
+            execlp("sh", "sh", "-c", existence_cmd.c_str(), NULL);
             log_error("exec failed: sh -c \"" + existence_cmd + "\'");
             std::exit(EXIT_FAILURE);
           } else {
@@ -604,8 +615,8 @@ run_pipeline_cmd(const std::string& cmd, DataStream::Operation op)
         }
 
         execvp(argv[0], argv + 1);
-        std::string argv_print;
-        for (int i = 0; argv[i] != nullptr; i++) {
+        std::string argv_print = argv[0];
+        for (int i = 1; argv[i] != nullptr; i++) {
           argv_print += " " + std::string(argv[i]);
         }
         log_error("exec failed: " + argv_print);

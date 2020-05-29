@@ -316,6 +316,10 @@ public class btllib {
     return btllibJNI.get_pipepath(id);
   }
 
+  public static void check_children_failures() {
+    btllibJNI.check_children_failures();
+  }
+
   public static boolean process_spawner_init() {
     return btllibJNI.process_spawner_init();
   }
