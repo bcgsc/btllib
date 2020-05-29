@@ -402,7 +402,7 @@ get_pipeline_cmd(const std::string& path, DataStream::Operation op)
             dup2(null_fd, STDERR_FILENO);
             close(null_fd);
 
-            execlp("sh", "sh", "-c", existence_cmd.c_str());
+            execlp("sh", "sh", "-c", existence_cmd.c_str(), nullptr);
             log_error("exec failed: sh -c \"" + existence_cmd + "\'");
             std::exit(EXIT_FAILURE);
           } else {
