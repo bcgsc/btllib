@@ -79,7 +79,7 @@ main()
     std::vector<std::string> generated_comments;
     std::vector<std::string> generated_seqs;
     std::vector<std::string> generated_quals;
-    random_filename = get_random_name(64) + ".gz.xz";
+    random_filename = get_random_name(64) + ".gz.xz.bz2";
     btllib::SeqWriter random_seqs(
       random_filename, btllib::SeqWriter::FASTQ, false);
     for (int s = 0; s < 500; s++) {

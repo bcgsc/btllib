@@ -1,7 +1,7 @@
 #ifndef BTLLIB_SEQ_WRITER_HPP
 #define BTLLIB_SEQ_WRITER_HPP
 
-#include "data_saveload.hpp"
+#include "data_stream.hpp"
 #include "seq.hpp"
 
 #include <cstdio>

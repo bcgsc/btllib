@@ -3,6 +3,7 @@
 
 %feature("flatnested", "1");
 
+%ignore btllib::DataStream::operator FILE*() const;
 %ignore btllib::DataSource::operator FILE*() const;
 %ignore btllib::DataSink::operator FILE*() const;
 

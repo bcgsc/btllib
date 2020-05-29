@@ -1,7 +1,7 @@
 #ifndef BTLLIB_SEQ_READER_HPP
 #define BTLLIB_SEQ_READER_HPP
 
-#include "data_saveload.hpp"
+#include "data_stream.hpp"
 #include "index_queue.hpp"
 #include "seq.hpp"
 #include "status.hpp"

@@ -8,12 +8,11 @@
 
 package btllib;
 
-public class DataSink {
+public class DataSink extends DataStream {
   private transient long swigCPtr;
-  protected transient boolean swigCMemOwn;
 
   protected DataSink(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
+    super(btllibJNI.DataSink_SWIGUpcast(cPtr), cMemoryOwn);
     swigCPtr = cPtr;
   }
 
@@ -34,41 +33,15 @@ public class DataSink {
       }
       swigCPtr = 0;
     }
+    super.delete();
   }
 
-  public DataSink(String sink, boolean append) {
-    this(btllibJNI.new_DataSink(sink, append), true);
+  public DataSink(String path, boolean append) {
+    this(btllibJNI.new_DataSink__SWIG_0(path, append), true);
   }
 
-  public void close() {
-    btllibJNI.DataSink_close(swigCPtr, this);
-  }
-
-  public SWIGTYPE_p_FILE __ref__() {
-    long cPtr = btllibJNI.DataSink___ref__(swigCPtr, this);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
-  }
-
-  public SWIGTYPE_p_FILE __deref__() {
-    long cPtr = btllibJNI.DataSink___deref__(swigCPtr, this);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
-  }
-
-  public void setPipeline(_Pipeline value) {
-    btllibJNI.DataSink_pipeline_set(swigCPtr, this, _Pipeline.getCPtr(value), value);
-  }
-
-  public _Pipeline getPipeline() {
-    long cPtr = btllibJNI.DataSink_pipeline_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new _Pipeline(cPtr, false);
-  }
-
-  public void setClosed(boolean value) {
-    btllibJNI.DataSink_closed_set(swigCPtr, this, value);
-  }
-
-  public boolean getClosed() {
-    return btllibJNI.DataSink_closed_get(swigCPtr, this);
+  public DataSink(String path) {
+    this(btllibJNI.new_DataSink__SWIG_1(path), true);
   }
 
 }

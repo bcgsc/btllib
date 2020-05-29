@@ -40,17 +40,28 @@ public class _Pipeline {
     this(btllibJNI.new__Pipeline__SWIG_0(), true);
   }
 
-  public _Pipeline(SWIGTYPE_p_FILE file, SWIGTYPE_p_pid_t pid_first, SWIGTYPE_p_pid_t pid_last) {
-    this(btllibJNI.new__Pipeline__SWIG_1(SWIGTYPE_p_FILE.getCPtr(file), SWIGTYPE_p_pid_t.getCPtr(pid_first), SWIGTYPE_p_pid_t.getCPtr(pid_last)), true);
+  public _Pipeline(String pipepath, _Pipeline.Direction direction, SWIGTYPE_p_pid_t pid_first, SWIGTYPE_p_pid_t pid_last) {
+    this(btllibJNI.new__Pipeline__SWIG_1(pipepath, direction.swigValue(), SWIGTYPE_p_pid_t.getCPtr(pid_first), SWIGTYPE_p_pid_t.getCPtr(pid_last)), true);
   }
 
-  public void setFile(SWIGTYPE_p_FILE value) {
-    btllibJNI._Pipeline_file_set(swigCPtr, this, SWIGTYPE_p_FILE.getCPtr(value));
+  public void finish() {
+    btllibJNI._Pipeline_finish(swigCPtr, this);
   }
 
-  public SWIGTYPE_p_FILE getFile() {
-    long cPtr = btllibJNI._Pipeline_file_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
+  public void setPipepath(String value) {
+    btllibJNI._Pipeline_pipepath_set(swigCPtr, this, value);
+  }
+
+  public String getPipepath() {
+    return btllibJNI._Pipeline_pipepath_get(swigCPtr, this);
+  }
+
+  public void setDirection(_Pipeline.Direction value) {
+    btllibJNI._Pipeline_direction_set(swigCPtr, this, value.swigValue());
+  }
+
+  public _Pipeline.Direction getDirection() {
+    return _Pipeline.Direction.swigToEnum(btllibJNI._Pipeline_direction_get(swigCPtr, this));
   }
 
   public void setPid_first(SWIGTYPE_p_pid_t value) {
@@ -67,6 +78,58 @@ public class _Pipeline {
 
   public SWIGTYPE_p_pid_t getPid_last() {
     return new SWIGTYPE_p_pid_t(btllibJNI._Pipeline_pid_last_get(swigCPtr, this), true);
+  }
+
+  public void setClosed(boolean value) {
+    btllibJNI._Pipeline_closed_set(swigCPtr, this, value);
+  }
+
+  public boolean getClosed() {
+    return btllibJNI._Pipeline_closed_get(swigCPtr, this);
+  }
+
+  public final static class Direction {
+    public final static _Pipeline.Direction SOURCE = new _Pipeline.Direction("SOURCE");
+    public final static _Pipeline.Direction SINK = new _Pipeline.Direction("SINK");
+
+    public final int swigValue() {
+      return swigValue;
+    }
+
+    public String toString() {
+      return swigName;
+    }
+
+    public static Direction swigToEnum(int swigValue) {
+      if (swigValue < swigValues.length && swigValue >= 0 && swigValues[swigValue].swigValue == swigValue)
+        return swigValues[swigValue];
+      for (int i = 0; i < swigValues.length; i++)
+        if (swigValues[i].swigValue == swigValue)
+          return swigValues[i];
+      throw new IllegalArgumentException("No enum " + Direction.class + " with value " + swigValue);
+    }
+
+    private Direction(String swigName) {
+      this.swigName = swigName;
+      this.swigValue = swigNext++;
+    }
+
+    private Direction(String swigName, int swigValue) {
+      this.swigName = swigName;
+      this.swigValue = swigValue;
+      swigNext = swigValue+1;
+    }
+
+    private Direction(String swigName, Direction swigEnum) {
+      this.swigName = swigName;
+      this.swigValue = swigEnum.swigValue;
+      swigNext = this.swigValue+1;
+    }
+
+    private static Direction[] swigValues = { SOURCE, SINK };
+    private static int swigNext = 0;
+    private final int swigValue;
+    private final String swigName;
   }
 
 }

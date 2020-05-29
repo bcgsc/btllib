@@ -8,12 +8,11 @@
 
 package btllib;
 
-public class DataSource {
+public class DataSource extends DataStream {
   private transient long swigCPtr;
-  protected transient boolean swigCMemOwn;
 
   protected DataSource(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
+    super(btllibJNI.DataSource_SWIGUpcast(cPtr), cMemoryOwn);
     swigCPtr = cPtr;
   }
 
@@ -34,41 +33,11 @@ public class DataSource {
       }
       swigCPtr = 0;
     }
+    super.delete();
   }
 
-  public DataSource(String source) {
-    this(btllibJNI.new_DataSource(source), true);
-  }
-
-  public void close() {
-    btllibJNI.DataSource_close(swigCPtr, this);
-  }
-
-  public SWIGTYPE_p_FILE __ref__() {
-    long cPtr = btllibJNI.DataSource___ref__(swigCPtr, this);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
-  }
-
-  public SWIGTYPE_p_FILE __deref__() {
-    long cPtr = btllibJNI.DataSource___deref__(swigCPtr, this);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_FILE(cPtr, false);
-  }
-
-  public void setPipeline(_Pipeline value) {
-    btllibJNI.DataSource_pipeline_set(swigCPtr, this, _Pipeline.getCPtr(value), value);
-  }
-
-  public _Pipeline getPipeline() {
-    long cPtr = btllibJNI.DataSource_pipeline_get(swigCPtr, this);
-    return (cPtr == 0) ? null : new _Pipeline(cPtr, false);
-  }
-
-  public void setClosed(boolean value) {
-    btllibJNI.DataSource_closed_set(swigCPtr, this, value);
-  }
-
-  public boolean getClosed() {
-    return btllibJNI.DataSource_closed_get(swigCPtr, this);
+  public DataSource(String path) {
+    this(btllibJNI.new_DataSource(path), true);
   }
 
 }
