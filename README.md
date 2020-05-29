@@ -46,4 +46,5 @@ If you want to contribute code to this repo, before making a pull request, make 
 - `ninja tidycheck` runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+)
 - `ninja cppcheck` runs cppcheck on C++ code and makes sure it passes (requires cppcheck)
 - `ninja docs` generates code documentation from comments (requires Doxygen)
+
 Any of these can be run individually within `build` directory.
