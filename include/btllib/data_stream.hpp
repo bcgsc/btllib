@@ -392,12 +392,13 @@ get_pipeline_cmd(const std::string& path, DataStream::Operation op)
         for (const auto& existence_cmd : datatype.cmds_check_existence) {
           pid_t pid = fork();
           if (pid == 0) {
-            int null_fd = open("/dev/null", O_WRONLY, 0);
-            dup2(null_fd, STDOUT_FILENO);
-            dup2(null_fd, STDERR_FILENO);
-            close(null_fd);
+            //int null_fd = open("/dev/null", O_WRONLY, 0);
+            //dup2(null_fd, STDOUT_FILENO);
+            //dup2(null_fd, STDERR_FILENO);
+            //close(null_fd);
 
-            execlp("sh", "sh", "-c", existence_cmd.c_str());
+            execlp("which", "which", "sh");
+            //execl("sh", "sh", "-c", existence_cmd.c_str());
             log_error("exec failed: sh -c \"" + existence_cmd + "\'");
             std::exit(EXIT_FAILURE);
           } else {
