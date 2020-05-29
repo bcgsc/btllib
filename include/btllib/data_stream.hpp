@@ -404,10 +404,10 @@ get_pipeline_cmd(const std::string& path, DataStream::Operation op)
             check_error(pid == -1, "Error on fork.");
             int status;
             check_error(waitpid(pid, &status, 0) != pid, "waitpid error.");
+            std::cerr << existence_cmd << std::endl;
+            std::cerr << status << std::endl;
             if (!WIFSIGNALED(status) &&
                 (!WIFEXITED(status) || WEXITSTATUS(status) == 0)) { // NOLINT
-              std::cerr << existence_cmd << std::endl;
-              std::cerr << status << std::endl;
               found_cmd = true;
               break;
             }
