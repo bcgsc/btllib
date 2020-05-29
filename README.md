@@ -39,11 +39,11 @@ If you want to contribute code to this repo, before making a pull request, make 
 - Run `ninja complete` in the `build` directory to generate wrappers, docs, format the code, check for any errors, etc.
 
 `ninja complete` does the following steps, in order:
-- `ninja format` formats the whitespace in code
+- `ninja format` formats the whitespace in code (requires clang-format 8+)
 - `ninja wrap` wraps C++ code for Python and Java (requires SWIG 4.0+)
 - `ninja` builds the tests and wrapper libraries / makes sure they compile
 - `ninja test` runs the tests
-- `ninja tidycheck` runs clang-tidy on C++ code and makes sure it passes
-- `ninja cppcheck` runs cppcheck on C++ code and makes sure it passes
-- `ninja docs` generates code documentation from comments
+- `ninja tidycheck` runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+)
+- `ninja cppcheck` runs cppcheck on C++ code and makes sure it passes (requires cppcheck)
+- `ninja docs` generates code documentation from comments (requires Doxygen)
 Any of these can be run individually within `build` directory.
