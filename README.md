@@ -19,7 +19,7 @@ C++
 Python and Java
 ---
 - Dependencies
-  * GCC 4.8.1+ or Clang 3.3.0+
+  * GCC 4.8.1+ or Clang 3.3.0+ with OpenMP
   * Python 3.5+
   * Meson and Ninja Python3 packages (optional - if they are missing, they will be automatically downloaded to a temporary directory)
 - Copy the btllib directory in your project

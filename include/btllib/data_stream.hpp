@@ -209,18 +209,14 @@ inline void
 _Pipeline::finish()
 {
   if (!closed) {
+    int status;
     if (direction == SOURCE) {
       kill(pid_first, SIGTERM);
-      int status;
       waitpid(pid_first, &status, 0);
-      waitpid(pid_last, &status, 0);
-    } else if (direction == SINK) {
-      int status;
-      waitpid(pid_last, &status, 0);
     }
+    waitpid(pid_last, &status, 0);
 
     pid_t pid;
-    int status;
     while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
       if (status != 0) {
         std::cerr << "Helper process failed before data stream was closed:"
@@ -413,8 +409,8 @@ get_pipeline_cmd(const std::string& path, DataStream::Operation op)
             check_error(pid == -1, "Error on fork.");
             int status;
             check_error(waitpid(pid, &status, 0) != pid, "waitpid error.");
-            if (!WIFSIGNALED(status) &&
-                (!WIFEXITED(status) || WEXITSTATUS(status) == 0)) { // NOLINT
+            if (!(WIFSIGNALED(status)) &&
+                ((WIFEXITED(status)) && (WEXITSTATUS(status) == 0))) { // NOLINT
               found_cmd = true;
               break;
             }
