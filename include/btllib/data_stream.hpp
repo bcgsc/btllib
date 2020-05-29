@@ -390,8 +390,7 @@ get_pipeline_cmd(const std::string& path, DataStream::Operation op)
         bool found_cmd = false;
         int cmd_idx = 0;
         for (const auto& existence_cmd : datatype.cmds_check_existence) {
-          pid_t pid;
-          pid = fork();
+          pid_t pid = fork();
           if (pid == 0) {
             int null_fd = open("/dev/null", O_WRONLY, 0);
             dup2(null_fd, STDOUT_FILENO);
@@ -407,6 +406,8 @@ get_pipeline_cmd(const std::string& path, DataStream::Operation op)
             check_error(waitpid(pid, &status, 0) != pid, "waitpid error.");
             if (!WIFSIGNALED(status) &&
                 (!WIFEXITED(status) || WEXITSTATUS(status) == 0)) { // NOLINT
+              std::cerr << existence_cmd << std::endl;
+              std::cerr << status << std::endl;
               found_cmd = true;
               break;
             }
