@@ -281,29 +281,34 @@ process_spawner_init()
       close(process_spawner_parent2child_fd()[PIPE_WRITE_END]);
       close(process_spawner_child2parent_fd()[PIPE_READ_END]);
 
-      struct sigaction action; // NOLINT
-      action.sa_handler = [](const int sig) { (void)sig; };
-      sigemptyset(&action.sa_mask);
-      action.sa_flags = SA_RESTART;
-      sigaction(SIGCHLD, &action, nullptr);
+      {
+        struct sigaction action; // NOLINT
+        action.sa_handler = [](const int sig) { (void)sig; };
+        sigemptyset(&action.sa_mask);
+        action.sa_flags = SA_RESTART;
+        sigaction(SIGCHLD, &action, nullptr);
+      }
 
-      action.sa_handler = [](const int sig) {
-        (void)sig;
-        for (PipeId last_id = new_pipe_id(), id = 0; id < last_id; id++) {
-          unlink(get_pipepath(id).c_str());
-        }
-        std::exit(EXIT_FAILURE);
-      };
-      sigemptyset(&action.sa_mask);
-      action.sa_flags = SA_RESTART;
-      sigaction(SIGHUP, &action, nullptr);
-      sigaction(SIGQUIT, &action, nullptr);
-      sigaction(SIGILL, &action, nullptr);
-      sigaction(SIGABRT, &action, nullptr);
-      sigaction(SIGBUS, &action, nullptr);
-      sigaction(SIGSEGV, &action, nullptr);
-      sigaction(SIGPIPE, &action, nullptr);
-      sigaction(SIGTERM, &action, nullptr);
+      {
+        struct sigaction action; // NOLINT
+        action.sa_handler = [](const int sig) {
+          (void)sig;
+          for (PipeId last_id = new_pipe_id(), id = 0; id < last_id; id++) {
+            unlink(get_pipepath(id).c_str());
+          }
+          std::exit(EXIT_FAILURE);
+        };
+        sigemptyset(&action.sa_mask);
+        action.sa_flags = SA_RESTART;
+        sigaction(SIGHUP, &action, nullptr);
+        sigaction(SIGQUIT, &action, nullptr);
+        sigaction(SIGILL, &action, nullptr);
+        sigaction(SIGABRT, &action, nullptr);
+        sigaction(SIGBUS, &action, nullptr);
+        sigaction(SIGSEGV, &action, nullptr);
+        sigaction(SIGPIPE, &action, nullptr);
+        sigaction(SIGTERM, &action, nullptr);
+      }
 
       DataStream::Operation op;
       char buf[COMM_BUFFER_SIZE];
