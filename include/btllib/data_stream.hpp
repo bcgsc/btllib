@@ -269,6 +269,7 @@ sigchld_handler(const int sig)
 static inline bool
 process_spawner_init()
 {
+  (void)process_spawner_initializer;
   if (!process_spawner_initialized()) {
     process_spawner_initialized() = true;
 
