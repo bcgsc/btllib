@@ -2958,16 +2958,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_run_1pipeline_1cmd(JNIEnv *jenv, 
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_sigchld_1handler(JNIEnv *jenv, jclass jcls, jint jarg1) {
-  int arg1 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = (int)jarg1; 
-  btllib::sigchld_handler(arg1);
-}
-
-
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_split(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;

@@ -260,12 +260,6 @@ get_pipeline_cmd(const std::string& path, DataStream::Operation op);
 static inline _Pipeline
 run_pipeline_cmd(const std::string& cmd, DataStream::Operation op);
 
-static inline void
-sigchld_handler(const int sig)
-{
-  (void)sig;
-}
-
 static inline bool
 process_spawner_init()
 {
@@ -288,7 +282,7 @@ process_spawner_init()
       close(process_spawner_child2parent_fd()[PIPE_READ_END]);
 
       struct sigaction action; // NOLINT
-      action.sa_handler = sigchld_handler;
+      action.sa_handler = [](const int sig) { (void)sig; };
       sigemptyset(&action.sa_mask);
       action.sa_flags = SA_RESTART;
       sigaction(SIGCHLD, &action, nullptr);
@@ -302,7 +296,9 @@ process_spawner_init()
                  &op,
                  sizeof(op)) <= 0) {
           check_children_failures();
-          kill(0, SIGTERM);
+          for (PipeId id = 0; id < new_pipe_id(); id++) {
+            unlink(get_pipepath(id).c_str());
+          }
           std::exit(EXIT_SUCCESS);
         }
 

@@ -16546,28 +16546,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_sigchld_handler(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "sigchld_handler" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
-  btllib::sigchld_handler(arg1);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_split(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
@@ -18336,7 +18314,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "process_spawner_init", _wrap_process_spawner_init, METH_NOARGS, NULL},
 	 { "get_pipeline_cmd", _wrap_get_pipeline_cmd, METH_VARARGS, NULL},
 	 { "run_pipeline_cmd", _wrap_run_pipeline_cmd, METH_VARARGS, NULL},
-	 { "sigchld_handler", _wrap_sigchld_handler, METH_O, NULL},
 	 { "split", _wrap_split, METH_VARARGS, NULL},
 	 { "ltrim", _wrap_ltrim, METH_O, NULL},
 	 { "rtrim", _wrap_rtrim, METH_O, NULL},

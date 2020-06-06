@@ -150,7 +150,6 @@ public class btllibJNI {
   public final static native boolean process_spawner_initializer_get();
   public final static native String get_pipeline_cmd(String jarg1, int jarg2);
   public final static native long run_pipeline_cmd(String jarg1, int jarg2);
-  public final static native void sigchld_handler(int jarg1);
   public final static native long split(String jarg1, String jarg2);
   public final static native void ltrim(long jarg1);
   public final static native void rtrim(long jarg1);
