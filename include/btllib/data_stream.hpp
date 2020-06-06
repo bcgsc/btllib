@@ -296,7 +296,7 @@ process_spawner_init()
                  &op,
                  sizeof(op)) <= 0) {
           check_children_failures();
-          for (PipeId id = 0; id < new_pipe_id(); id++) {
+          for (PipeId last_id = new_pipe_id(), id = 0; id < last_id; id++) {
             unlink(get_pipepath(id).c_str());
           }
           std::exit(EXIT_SUCCESS);
