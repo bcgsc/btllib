@@ -79,7 +79,7 @@ Documentation</h2>
 C++</h2>
 <ul>
 <li>Dependencies<ul>
-<li>GCC 4.8.1+ or Clang 3.3.0+</li>
+<li>GCC 4.8.1+ or Clang 3.3.0+ with OpenMP</li>
 </ul>
 </li>
 <li>Copy the btllib directory in your project</li>
@@ -111,16 +111,19 @@ Python and Java</h2>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Contributing</h2>
 <p>If you want to contribute code to this repo, before making a pull request, make sure to:</p><ul>
-<li>Create a build directory with <code>meson build</code> in <code>btllib</code></li>
-<li>Run <code>ninja format</code> to format the whitespace in code</li>
-<li>Run <code>ninja wrap</code> to wrap any new C++ code for Python and Java (requires SWIG 4.0+)</li>
-<li>Run <code>ninja</code> to build the wrapper libraries / make sure they compile</li>
-<li>Run <code>ninja test</code> to run the tests</li>
-<li>Run <code>ninja tidycheck</code> to run clang-tidy on C++ code and make sure it passes</li>
-<li>Run <code>ninja cppcheck</code> to run cppcheck on C++ code and make sure it passes</li>
-<li>Run <code>ninja docs</code> to generate code documentation</li>
+<li>Create a build directory by running <code>meson build</code> in <code>btllib</code> directory</li>
+<li>Run <code>ninja complete</code> in the <code>build</code> directory to generate wrappers, docs, format the code, check for any errors, etc.</li>
 </ul>
-<p>Or simply run <code>ninja complete</code> to do all of the steps above after <code>meson build</code> </p>
+<p><code>ninja complete</code> does the following steps, in order:</p><ul>
+<li><code>ninja format</code> formats the whitespace in code (requires clang-format 8+)</li>
+<li><code>ninja wrap</code> wraps C++ code for Python and Java (requires SWIG 4.0+)</li>
+<li><code>ninja</code> builds the tests and wrapper libraries / makes sure they compile</li>
+<li><code>ninja test</code> runs the tests</li>
+<li><code>ninja tidycheck</code> runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+)</li>
+<li><code>ninja cppcheck</code> runs cppcheck on C++ code and makes sure it passes (requires cppcheck)</li>
+<li><code>ninja docs</code> generates code documentation from comments (requires Doxygen)</li>
+</ul>
+<p>Any of these can be run individually within <code>build</code> directory. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

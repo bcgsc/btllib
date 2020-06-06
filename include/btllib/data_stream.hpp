@@ -262,7 +262,9 @@ run_pipeline_cmd(const std::string& cmd, DataStream::Operation op);
 
 static inline void
 sigchld_handler(const int sig)
-{}
+{
+  (void)sig;
+}
 
 static inline bool
 process_spawner_init()
