@@ -16012,33 +16012,36 @@ fail:
 
 SWIGINTERN int _wrap_new__Pipeline__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::string arg1 ;
-  btllib::_Pipeline::Direction arg2 ;
+  btllib::_Pipeline::Direction arg1 ;
+  pid_t arg2 ;
   pid_t arg3 ;
-  pid_t arg4 ;
-  int val2 ;
-  int ecode2 = 0 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
   void *argp3 ;
   int res3 = 0 ;
-  void *argp4 ;
-  int res4 = 0 ;
   btllib::_Pipeline *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new__Pipeline" "', argument " "1"" of type '" "std::string""'"); 
-    }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new__Pipeline" "', argument " "2"" of type '" "btllib::_Pipeline::Direction""'");
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new__Pipeline" "', argument " "1"" of type '" "btllib::_Pipeline::Direction""'");
   } 
-  arg2 = static_cast< btllib::_Pipeline::Direction >(val2);
+  arg1 = static_cast< btllib::_Pipeline::Direction >(val1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_pid_t,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new__Pipeline" "', argument " "2"" of type '" "pid_t""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new__Pipeline" "', argument " "2"" of type '" "pid_t""'");
+    } else {
+      pid_t * temp = reinterpret_cast< pid_t * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
   {
     res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_pid_t,  0  | 0);
     if (!SWIG_IsOK(res3)) {
@@ -16052,20 +16055,7 @@ SWIGINTERN int _wrap_new__Pipeline__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyO
       if (SWIG_IsNewObj(res3)) delete temp;
     }
   }
-  {
-    res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_pid_t,  0  | 0);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new__Pipeline" "', argument " "4"" of type '" "pid_t""'"); 
-    }  
-    if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new__Pipeline" "', argument " "4"" of type '" "pid_t""'");
-    } else {
-      pid_t * temp = reinterpret_cast< pid_t * >(argp4);
-      arg4 = *temp;
-      if (SWIG_IsNewObj(res4)) delete temp;
-    }
-  }
-  result = (btllib::_Pipeline *)new btllib::_Pipeline(arg1,arg2,arg3,arg4);
+  result = (btllib::_Pipeline *)new btllib::_Pipeline(arg1,arg2,arg3);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib___Pipeline, SWIG_BUILTIN_INIT |  0 );
   return resultobj == Py_None ? -1 : 0;
 fail:
@@ -16075,33 +16065,29 @@ fail:
 
 SWIGINTERN int _wrap_new__Pipeline(PyObject *self, PyObject *args, PyObject *SWIGUNUSEDPARM(kwargs)) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[4] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new__Pipeline", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new__Pipeline", 0, 3, argv))) SWIG_fail;
   --argc;
   if (argc == 0) {
     return _wrap_new__Pipeline__SWIG_0(self, argc, argv);
   }
-  if (argc == 4) {
+  if (argc == 3) {
     int _v;
-    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
-    _v = SWIG_CheckState(res);
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
     if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_pid_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
       if (_v) {
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_pid_t, SWIG_POINTER_NO_NULL | 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_pid_t, SWIG_POINTER_NO_NULL | 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            return _wrap_new__Pipeline__SWIG_1(self, argc, argv);
-          }
+          return _wrap_new__Pipeline__SWIG_1(self, argc, argv);
         }
       }
     }
@@ -16111,7 +16097,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new__Pipeline'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    btllib::_Pipeline::_Pipeline()\n"
-    "    btllib::_Pipeline::_Pipeline(std::string,btllib::_Pipeline::Direction,pid_t,pid_t)\n");
+    "    btllib::_Pipeline::_Pipeline(btllib::_Pipeline::Direction,pid_t,pid_t)\n");
   return -1;
 }
 
@@ -16131,65 +16117,6 @@ SWIGINTERN PyObject *_wrap__Pipeline_finish(PyObject *self, PyObject *args) {
   arg1 = reinterpret_cast< btllib::_Pipeline * >(argp1);
   (arg1)->finish();
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap__Pipeline_pipepath_set(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::_Pipeline *arg1 = (btllib::_Pipeline *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[2] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Pipeline, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Pipeline_pipepath_set" "', argument " "1"" of type '" "btllib::_Pipeline *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::_Pipeline * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "_Pipeline_pipepath_set" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "_Pipeline_pipepath_set" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  if (arg1) (arg1)->pipepath = *arg2;
-  resultobj = SWIG_Py_Void();
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap__Pipeline_pipepath_get(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::_Pipeline *arg1 = (btllib::_Pipeline *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string *result = 0 ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "_Pipeline_pipepath_get", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib___Pipeline, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_Pipeline_pipepath_get" "', argument " "1"" of type '" "btllib::_Pipeline *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::_Pipeline * >(argp1);
-  result = (std::string *) & ((arg1)->pipepath);
-  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
   return NULL;
@@ -16513,13 +16440,16 @@ SWIGINTERN PyObject *_wrap_run_pipeline_cmd(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
   btllib::DataStream::Operation arg2 ;
+  int arg3 ;
   int res1 = SWIG_OLDOBJ ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
   btllib::_Pipeline result;
   
-  if (!SWIG_Python_UnpackTuple(args, "run_pipeline_cmd", 2, 2, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "run_pipeline_cmd", 3, 3, swig_obj)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
     res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
@@ -16536,7 +16466,12 @@ SWIGINTERN PyObject *_wrap_run_pipeline_cmd(PyObject *self, PyObject *args) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "run_pipeline_cmd" "', argument " "2"" of type '" "btllib::DataStream::Operation""'");
   } 
   arg2 = static_cast< btllib::DataStream::Operation >(val2);
-  result = btllib::run_pipeline_cmd((std::string const &)*arg1,arg2);
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "run_pipeline_cmd" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = btllib::run_pipeline_cmd((std::string const &)*arg1,arg2,arg3);
   resultobj = SWIG_NewPointerObj((new btllib::_Pipeline(static_cast< const btllib::_Pipeline& >(result))), SWIGTYPE_p_btllib___Pipeline, SWIG_POINTER_OWN |  0 );
   if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
@@ -21174,14 +21109,12 @@ static SwigPyGetSet _Pipeline_direction_getset = { _wrap__Pipeline_direction_get
 static SwigPyGetSet _Pipeline_pid_last_getset = { _wrap__Pipeline_pid_last_get, _wrap__Pipeline_pid_last_set };
 static SwigPyGetSet _Pipeline_pid_first_getset = { _wrap__Pipeline_pid_first_get, _wrap__Pipeline_pid_first_set };
 static SwigPyGetSet _Pipeline___dict___getset = { SwigPyObject_get___dict__, 0 };
-static SwigPyGetSet _Pipeline_pipepath_getset = { _wrap__Pipeline_pipepath_get, _wrap__Pipeline_pipepath_set };
 static SwigPyGetSet _Pipeline_closed_getset = { _wrap__Pipeline_closed_get, _wrap__Pipeline_closed_set };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib___Pipeline_getset[] = {
     { (char *)"direction", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &_Pipeline_direction_getset },
     { (char *)"pid_last", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &_Pipeline_pid_last_getset },
     { (char *)"pid_first", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &_Pipeline_pid_first_getset },
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &_Pipeline___dict___getset },
-    { (char *)"pipepath", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &_Pipeline_pipepath_getset },
     { (char *)"closed", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &_Pipeline_closed_getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };

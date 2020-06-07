@@ -119,7 +119,6 @@ inline DataStream::DataStream(const std::string& path, Operation op)
   pipepath = buf;
 
   file = fopen(pipepath.c_str(), op == READ ? "r" : "w");
-  unlink(pipepath.c_str());
 }
 
 inline void
@@ -128,6 +127,7 @@ DataStream::close()
   if (!closed) {
     std::unique_lock<std::mutex> lock(process_spawner_comm_mutex());
 
+    char confirmation = 0;
     if (op == READ) {
       op = CLOSE;
       if (file != stdin) {
@@ -144,7 +144,9 @@ DataStream::close()
               pipepath.c_str(),
               pathlen);
 
-        read(process_spawner_child2parent_fd()[PIPE_READ_END], &op, 1);
+        read(process_spawner_child2parent_fd()[PIPE_READ_END],
+             &confirmation,
+             sizeof(confirmation));
 
         std::fclose(file);
       }
@@ -166,7 +168,9 @@ DataStream::close()
               pipepath.c_str(),
               pathlen);
 
-        read(process_spawner_child2parent_fd()[PIPE_READ_END], &op, 1);
+        read(process_spawner_child2parent_fd()[PIPE_READ_END],
+             &confirmation,
+             sizeof(confirmation));
       }
     }
 
@@ -213,19 +217,14 @@ public:
 
   _Pipeline() {}
 
-  _Pipeline(std::string pipepath,
-            Direction direction,
-            pid_t pid_first,
-            pid_t pid_last)
-    : pipepath(std::move(pipepath))
-    , direction(direction)
+  _Pipeline(Direction direction, pid_t pid_first, pid_t pid_last)
+    : direction(direction)
     , pid_first(pid_first)
     , pid_last(pid_last)
   {}
 
   void finish();
 
-  std::string pipepath;
   Direction direction = SOURCE;
   pid_t pid_first = -1;
   pid_t pid_last = -1;
@@ -258,7 +257,7 @@ static inline std::string
 get_pipeline_cmd(const std::string& path, DataStream::Operation op);
 
 static inline _Pipeline
-run_pipeline_cmd(const std::string& cmd, DataStream::Operation op);
+run_pipeline_cmd(const std::string& cmd, DataStream::Operation op, int pipe_fd);
 
 static inline bool
 process_spawner_init()
@@ -311,9 +310,12 @@ process_spawner_init()
       }
 
       DataStream::Operation op;
+      std::string pipepath;
+      int pipe_fd;
       char buf[COMM_BUFFER_SIZE];
       size_t pathlen;
       _Pipeline pipeline;
+      char confirmation = 0;
       for (;;) {
         if (read(process_spawner_parent2child_fd()[PIPE_READ_END],
                  &op,
@@ -334,25 +336,38 @@ process_spawner_init()
           case DataStream::Operation::READ:
           case DataStream::Operation::WRITE:
           case DataStream::Operation::APPEND:
-            pipeline = run_pipeline_cmd(get_pipeline_cmd(buf, op), op);
+            pipepath = get_pipepath(new_pipe_id());
+            unlink(pipepath.c_str());
+            mkfifo(pipepath.c_str(), PIPE_PERMISSIONS);
 
-            pathlen = pipeline.pipepath.size() + 1;
+            pathlen = pipepath.size() + 1;
             check_error(pathlen > COMM_BUFFER_SIZE,
                         "Stream path length too large for the buffer.");
             write(process_spawner_child2parent_fd()[PIPE_WRITE_END],
                   &pathlen,
                   sizeof(pathlen));
             write(process_spawner_child2parent_fd()[PIPE_WRITE_END],
-                  pipeline.pipepath.c_str(),
+                  pipepath.c_str(),
                   pathlen);
 
-            pipeline_map()[pipeline.pipepath] = pipeline;
+            pipe_fd =
+              open(pipepath.c_str(),
+                   (op == DataStream::Operation::READ ? O_WRONLY : O_RDONLY) |
+                     O_CLOEXEC);
+            unlink(pipepath.c_str());
+
+            pipeline = run_pipeline_cmd(get_pipeline_cmd(buf, op), op, pipe_fd);
+            close(pipe_fd);
+
+            pipeline_map()[pipepath] = pipeline;
             break;
           case DataStream::Operation::CLOSE:
             pipeline = pipeline_map()[std::string(buf)];
             pipeline.finish();
             pipeline_map().erase(std::string(buf));
-            write(process_spawner_child2parent_fd()[PIPE_WRITE_END], &op, 1);
+            write(process_spawner_child2parent_fd()[PIPE_WRITE_END],
+                  &confirmation,
+                  sizeof(confirmation));
             break;
           default:
             log_error("Invalid stream operation.");
@@ -536,12 +551,8 @@ get_pipeline_cmd(const std::string& path, DataStream::Operation op)
 }
 
 static inline _Pipeline
-run_pipeline_cmd(const std::string& cmd, DataStream::Operation op)
+run_pipeline_cmd(const std::string& cmd, DataStream::Operation op, int pipe_fd)
 {
-  std::string pipepath = get_pipepath(new_pipe_id());
-  unlink(pipepath.c_str());
-  mkfifo(pipepath.c_str(), PIPE_PERMISSIONS);
-
   auto individual_cmds = split(cmd, " | ");
   check_error(individual_cmds.empty(),
               "Error processing data stream commands.");
@@ -589,9 +600,8 @@ run_pipeline_cmd(const std::string& cmd, DataStream::Operation op)
     if (pid == 0) {
       if (op == DataStream::Operation::READ) {
         if (i == 0) {
-          int fd = open(pipepath.c_str(), O_WRONLY);
-          dup2(fd, STDOUT_FILENO);
-          close(fd);
+          dup2(pipe_fd, STDOUT_FILENO);
+          close(pipe_fd);
         } else {
           dup2(output_fd[PIPE_WRITE_END], STDOUT_FILENO);
           close(output_fd[PIPE_READ_END]);
@@ -613,9 +623,8 @@ run_pipeline_cmd(const std::string& cmd, DataStream::Operation op)
         std::exit(EXIT_FAILURE);
       } else {
         if (i == individual_cmds.size() - 1) {
-          int fd = open(pipepath.c_str(), O_RDONLY);
-          dup2(fd, STDIN_FILENO);
-          close(fd);
+          dup2(pipe_fd, STDIN_FILENO);
+          close(pipe_fd);
         } else {
           dup2(input_fd[PIPE_READ_END], STDIN_FILENO);
           close(input_fd[PIPE_READ_END]);
@@ -664,8 +673,7 @@ run_pipeline_cmd(const std::string& cmd, DataStream::Operation op)
     i++;
   }
 
-  return _Pipeline(pipepath,
-                   op == DataStream::Operation::READ
+  return _Pipeline(op == DataStream::Operation::READ
                      ? _Pipeline::Direction::SOURCE
                      : _Pipeline::Direction::SINK,
                    pids.back(),

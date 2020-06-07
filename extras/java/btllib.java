@@ -332,8 +332,8 @@ public class btllib {
     return btllibJNI.get_pipeline_cmd(path, op.swigValue());
   }
 
-  public static _Pipeline run_pipeline_cmd(String cmd, DataStream.Operation op) {
-    return new _Pipeline(btllibJNI.run_pipeline_cmd(cmd, op.swigValue()), true);
+  public static _Pipeline run_pipeline_cmd(String cmd, DataStream.Operation op, int pipe_fd) {
+    return new _Pipeline(btllibJNI.run_pipeline_cmd(cmd, op.swigValue(), pipe_fd), true);
   }
 
   public static SWIGTYPE_p_std__vectorT_std__string_t split(String s, String delim) {

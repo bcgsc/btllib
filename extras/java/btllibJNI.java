@@ -133,10 +133,8 @@ public class btllibJNI {
   public final static native void delete_DataSink(long jarg1);
   public final static native void check_children_failures();
   public final static native long new__Pipeline__SWIG_0();
-  public final static native long new__Pipeline__SWIG_1(String jarg1, int jarg2, long jarg3, long jarg4);
+  public final static native long new__Pipeline__SWIG_1(int jarg1, long jarg2, long jarg3);
   public final static native void _Pipeline_finish(long jarg1, _Pipeline jarg1_);
-  public final static native void _Pipeline_pipepath_set(long jarg1, _Pipeline jarg1_, String jarg2);
-  public final static native String _Pipeline_pipepath_get(long jarg1, _Pipeline jarg1_);
   public final static native void _Pipeline_direction_set(long jarg1, _Pipeline jarg1_, int jarg2);
   public final static native int _Pipeline_direction_get(long jarg1, _Pipeline jarg1_);
   public final static native void _Pipeline_pid_first_set(long jarg1, _Pipeline jarg1_, long jarg2);
@@ -149,7 +147,7 @@ public class btllibJNI {
   public final static native boolean process_spawner_init();
   public final static native boolean process_spawner_initializer_get();
   public final static native String get_pipeline_cmd(String jarg1, int jarg2);
-  public final static native long run_pipeline_cmd(String jarg1, int jarg2);
+  public final static native long run_pipeline_cmd(String jarg1, int jarg2, int jarg3);
   public final static native long split(String jarg1, String jarg2);
   public final static native void ltrim(long jarg1);
   public final static native void rtrim(long jarg1);

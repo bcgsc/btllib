@@ -40,20 +40,12 @@ public class _Pipeline {
     this(btllibJNI.new__Pipeline__SWIG_0(), true);
   }
 
-  public _Pipeline(String pipepath, _Pipeline.Direction direction, SWIGTYPE_p_pid_t pid_first, SWIGTYPE_p_pid_t pid_last) {
-    this(btllibJNI.new__Pipeline__SWIG_1(pipepath, direction.swigValue(), SWIGTYPE_p_pid_t.getCPtr(pid_first), SWIGTYPE_p_pid_t.getCPtr(pid_last)), true);
+  public _Pipeline(_Pipeline.Direction direction, SWIGTYPE_p_pid_t pid_first, SWIGTYPE_p_pid_t pid_last) {
+    this(btllibJNI.new__Pipeline__SWIG_1(direction.swigValue(), SWIGTYPE_p_pid_t.getCPtr(pid_first), SWIGTYPE_p_pid_t.getCPtr(pid_last)), true);
   }
 
   public void finish() {
     btllibJNI._Pipeline_finish(swigCPtr, this);
-  }
-
-  public void setPipepath(String value) {
-    btllibJNI._Pipeline_pipepath_set(swigCPtr, this, value);
-  }
-
-  public String getPipepath() {
-    return btllibJNI._Pipeline_pipepath_get(swigCPtr, this);
   }
 
   public void setDirection(_Pipeline.Direction value) {

@@ -2666,40 +2666,31 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1_1Pipeline_1_1SWIG_10(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1_1Pipeline_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1, jint jarg2, jlong jarg3, jlong jarg4) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1_1Pipeline_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jint jarg1, jlong jarg2, jlong jarg3) {
   jlong jresult = 0 ;
-  std::string arg1 ;
-  btllib::_Pipeline::Direction arg2 ;
+  btllib::_Pipeline::Direction arg1 ;
+  pid_t arg2 ;
   pid_t arg3 ;
-  pid_t arg4 ;
+  pid_t *argp2 ;
   pid_t *argp3 ;
-  pid_t *argp4 ;
   btllib::_Pipeline *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  if(!jarg1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+  arg1 = (btllib::_Pipeline::Direction)jarg1; 
+  argp2 = *(pid_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null pid_t");
     return 0;
-  } 
-  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
-  if (!arg1_pstr) return 0;
-  (&arg1)->assign(arg1_pstr);
-  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
-  arg2 = (btllib::_Pipeline::Direction)jarg2; 
+  }
+  arg2 = *argp2; 
   argp3 = *(pid_t **)&jarg3; 
   if (!argp3) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null pid_t");
     return 0;
   }
   arg3 = *argp3; 
-  argp4 = *(pid_t **)&jarg4; 
-  if (!argp4) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null pid_t");
-    return 0;
-  }
-  arg4 = *argp4; 
-  result = (btllib::_Pipeline *)new btllib::_Pipeline(arg1,arg2,arg3,arg4);
+  result = (btllib::_Pipeline *)new btllib::_Pipeline(arg1,arg2,arg3);
   *(btllib::_Pipeline **)&jresult = result; 
   return jresult;
 }
@@ -2713,42 +2704,6 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI__1Pipeline_1finish(JNIEnv *jenv, j
   (void)jarg1_;
   arg1 = *(btllib::_Pipeline **)&jarg1; 
   (arg1)->finish();
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI__1Pipeline_1pipepath_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  btllib::_Pipeline *arg1 = (btllib::_Pipeline *) 0 ;
-  std::string *arg2 = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::_Pipeline **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
-    return ;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return ;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  if (arg1) (arg1)->pipepath = *arg2;
-}
-
-
-SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI__1Pipeline_1pipepath_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jstring jresult = 0 ;
-  btllib::_Pipeline *arg1 = (btllib::_Pipeline *) 0 ;
-  std::string *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::_Pipeline **)&jarg1; 
-  result = (std::string *) & ((arg1)->pipepath);
-  jresult = jenv->NewStringUTF(result->c_str()); 
-  return jresult;
 }
 
 
@@ -2934,10 +2889,11 @@ SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_get_1pipeline_1cmd(JNIEnv *jenv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_run_1pipeline_1cmd(JNIEnv *jenv, jclass jcls, jstring jarg1, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_run_1pipeline_1cmd(JNIEnv *jenv, jclass jcls, jstring jarg1, jint jarg2, jint jarg3) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   btllib::DataStream::Operation arg2 ;
+  int arg3 ;
   btllib::_Pipeline result;
   
   (void)jenv;
@@ -2952,7 +2908,8 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_run_1pipeline_1cmd(JNIEnv *jenv, 
   arg1 = &arg1_str;
   jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
   arg2 = (btllib::DataStream::Operation)jarg2; 
-  result = btllib::run_pipeline_cmd((std::string const &)*arg1,arg2);
+  arg3 = (int)jarg3; 
+  result = btllib::run_pipeline_cmd((std::string const &)*arg1,arg2,arg3);
   *(btllib::_Pipeline **)&jresult = new btllib::_Pipeline((const btllib::_Pipeline &)result); 
   return jresult;
 }
