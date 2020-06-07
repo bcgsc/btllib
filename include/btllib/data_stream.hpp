@@ -57,9 +57,7 @@ read_from_child(void* buf, size_t count)
     ret = read(process_spawner_child2parent_fd()[PIPE_READ_END],
                (uint8_t*)(buf) + so_far,
                count - so_far);
-    if (ret <= 0) {
-      break;
-    }
+    check_error(ret <= 0, "Error communicating with helper process.");
     so_far += ret;
   }
 }
@@ -72,9 +70,7 @@ write_to_child(const void* buf, size_t count)
     ret = write(process_spawner_parent2child_fd()[PIPE_WRITE_END],
                 (uint8_t*)(buf) + so_far,
                 count - so_far);
-    if (ret <= 0) {
-      break;
-    }
+    check_error(ret <= 0, "Error communicating with helper process.");
     so_far += ret;
   }
 }
@@ -212,7 +208,19 @@ inline DataStream::DataStream(const std::string& path, Operation op)
   read_from_child(buf, pathlen);
   pipepath = buf;
 
-  file = fopen(pipepath.c_str(), op == READ ? "r" : "w");
+  char confirmation = 0;
+  if (op != READ) {
+    read_from_child(&confirmation, sizeof(confirmation));
+  }
+  int pipe_fd =
+    open(pipepath.c_str(), (op == READ ? O_RDONLY : O_WRONLY) | O_NONBLOCK);
+  write_to_child(&confirmation, sizeof(confirmation));
+
+  if (op == READ) {
+    read_from_child(&confirmation, sizeof(confirmation));
+  }
+  fcntl(pipe_fd, F_SETFL, fcntl(pipe_fd, F_GETFL) & ~O_NONBLOCK);
+  file = fdopen(pipe_fd, op == READ ? "r" : "w");
 }
 
 inline void
@@ -389,12 +397,24 @@ process_spawner_init()
             write_to_parent(&pathlen, sizeof(pathlen));
             write_to_parent(pipepath.c_str(), pathlen);
 
+            if (op == DataStream::Operation::READ) {
+              read_from_parent(&confirmation, sizeof(confirmation));
+            }
             pipe_fd =
               open(pipepath.c_str(),
                    (op == DataStream::Operation::READ ? O_WRONLY : O_RDONLY) |
-                     O_CLOEXEC);
+                     O_NONBLOCK | O_CLOEXEC);
+            if (op != DataStream::Operation::READ) {
+              write_to_parent(&confirmation, sizeof(confirmation));
+              read_from_parent(&confirmation, sizeof(confirmation));
+            }
+
             unlink(pipepath.c_str());
 
+            if (op == DataStream::Operation::READ) {
+              write_to_parent(&confirmation, sizeof(confirmation));
+            }
+            fcntl(pipe_fd, F_SETFL, fcntl(pipe_fd, F_GETFL) & ~O_NONBLOCK);
             pipeline = run_pipeline_cmd(get_pipeline_cmd(buf, op), op, pipe_fd);
             close(pipe_fd);
 
