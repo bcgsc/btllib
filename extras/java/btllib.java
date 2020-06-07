@@ -316,8 +316,28 @@ public class btllib {
     return btllibJNI.get_pipepath(id);
   }
 
+  public static void read_from_child(SWIGTYPE_p_void buf, long count) {
+    btllibJNI.read_from_child(SWIGTYPE_p_void.getCPtr(buf), count);
+  }
+
+  public static void write_to_child(SWIGTYPE_p_void buf, long count) {
+    btllibJNI.write_to_child(SWIGTYPE_p_void.getCPtr(buf), count);
+  }
+
   public static void check_children_failures() {
     btllibJNI.check_children_failures();
+  }
+
+  public static void end_child() {
+    btllibJNI.end_child();
+  }
+
+  public static void read_from_parent(SWIGTYPE_p_void buf, long count) {
+    btllibJNI.read_from_parent(SWIGTYPE_p_void.getCPtr(buf), count);
+  }
+
+  public static void write_to_parent(SWIGTYPE_p_void buf, long count) {
+    btllibJNI.write_to_parent(SWIGTYPE_p_void.getCPtr(buf), count);
   }
 
   public static boolean process_spawner_init() {

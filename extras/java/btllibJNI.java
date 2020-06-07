@@ -121,6 +121,12 @@ public class btllibJNI {
   public final static native long new_pipe_id();
   public final static native long pipeline_map();
   public final static native String get_pipepath(long jarg1);
+  public final static native void read_from_child(long jarg1, long jarg2);
+  public final static native void write_to_child(long jarg1, long jarg2);
+  public final static native void check_children_failures();
+  public final static native void end_child();
+  public final static native void read_from_parent(long jarg1, long jarg2);
+  public final static native void write_to_parent(long jarg1, long jarg2);
   public final static native long new_DataStream(String jarg1, int jarg2);
   public final static native void delete_DataStream(long jarg1);
   public final static native void DataStream_close(long jarg1, DataStream jarg1_);
@@ -131,7 +137,6 @@ public class btllibJNI {
   public final static native long new_DataSink__SWIG_0(String jarg1, boolean jarg2);
   public final static native long new_DataSink__SWIG_1(String jarg1);
   public final static native void delete_DataSink(long jarg1);
-  public final static native void check_children_failures();
   public final static native long new__Pipeline__SWIG_0();
   public final static native long new__Pipeline__SWIG_1(int jarg1, long jarg2, long jarg3);
   public final static native void _Pipeline_finish(long jarg1, _Pipeline jarg1_);

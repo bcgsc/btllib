@@ -49,6 +49,105 @@ get_pipepath(const PipeId id)
   return "btllib-" + std::to_string(getpid()) + "-" + std::to_string(id);
 }
 
+void
+read_from_child(void* buf, size_t count)
+{
+  size_t so_far = 0, ret;
+  while (so_far < count) {
+    ret = read(process_spawner_child2parent_fd()[PIPE_READ_END],
+               (uint8_t*)(buf) + so_far,
+               count - so_far);
+    if (ret <= 0) {
+      break;
+    }
+    so_far += ret;
+  }
+}
+
+void
+write_to_child(const void* buf, size_t count)
+{
+  size_t so_far = 0, ret;
+  while (so_far < count) {
+    ret = write(process_spawner_parent2child_fd()[PIPE_WRITE_END],
+                (uint8_t*)(buf) + so_far,
+                count - so_far);
+    if (ret <= 0) {
+      break;
+    }
+    so_far += ret;
+  }
+}
+
+static inline void
+check_children_failures()
+{
+  // Checks if any children have failed so the caller can be a disappointed
+  // parent.
+  int status;
+  pid_t pid;
+  while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
+    if (status != 0) {
+      std::cerr << "Helper process failed before data stream was closed:"
+                << std::endl;
+      if (WIFEXITED(status)) { // NOLINT
+        std::cerr << "PID " << pid << " exited with status "
+                  << WEXITSTATUS(status) << std::endl; // NOLINT
+      } else if (WIFSIGNALED(status)) {                // NOLINT
+        std::cerr << "PID " << pid << " killed by signal "
+                  << WTERMSIG(status) // NOLINT
+                  << std::endl;
+      } else {
+        std::cerr << "PID " << pid << " exited with code " << status
+                  << std::endl;
+      }
+      std::exit(EXIT_FAILURE);
+    }
+  }
+}
+
+void
+end_child()
+{
+  check_children_failures();
+  for (PipeId last_id = new_pipe_id(), id = 0; id < last_id; id++) {
+    unlink(get_pipepath(id).c_str());
+  }
+  std::exit(EXIT_SUCCESS);
+}
+
+void
+read_from_parent(void* buf, size_t count)
+{
+  size_t so_far = 0, ret;
+  while (so_far < count) {
+    ret = read(process_spawner_parent2child_fd()[PIPE_READ_END],
+               (uint8_t*)(buf) + so_far,
+               count - so_far);
+    if (ret <= 0) {
+      end_child();
+      break;
+    }
+    so_far += ret;
+  }
+}
+
+void
+write_to_parent(const void* buf, size_t count)
+{
+  size_t so_far = 0, ret;
+  while (so_far < count) {
+    ret = write(process_spawner_child2parent_fd()[PIPE_WRITE_END],
+                (uint8_t*)(buf) + so_far,
+                count - so_far);
+    if (ret <= 0) {
+      end_child();
+      break;
+    }
+    so_far += ret;
+  }
+}
+
 class DataStream
 {
 public:
@@ -100,22 +199,17 @@ inline DataStream::DataStream(const std::string& path, Operation op)
 {
   std::unique_lock<std::mutex> lock(process_spawner_comm_mutex());
 
-  write(process_spawner_parent2child_fd()[PIPE_WRITE_END], &op, sizeof(op));
+  write_to_child(&op, sizeof(op));
 
   size_t pathlen = path.size() + 1;
   check_error(pathlen > COMM_BUFFER_SIZE,
               "Stream path length too large for the buffer.");
-  write(process_spawner_parent2child_fd()[PIPE_WRITE_END],
-        &pathlen,
-        sizeof(pathlen));
-  write(
-    process_spawner_parent2child_fd()[PIPE_WRITE_END], path.c_str(), pathlen);
+  write_to_child(&pathlen, sizeof(pathlen));
+  write_to_child(path.c_str(), pathlen);
 
   char buf[COMM_BUFFER_SIZE];
-  read(process_spawner_child2parent_fd()[PIPE_READ_END],
-       &pathlen,
-       sizeof(pathlen));
-  read(process_spawner_child2parent_fd()[PIPE_READ_END], buf, pathlen);
+  read_from_child(&pathlen, sizeof(pathlen));
+  read_from_child(buf, pathlen);
   pipepath = buf;
 
   file = fopen(pipepath.c_str(), op == READ ? "r" : "w");
@@ -131,22 +225,15 @@ DataStream::close()
     if (op == READ) {
       op = CLOSE;
       if (file != stdin) {
-        write(
-          process_spawner_parent2child_fd()[PIPE_WRITE_END], &op, sizeof(op));
+        write_to_child(&op, sizeof(op));
 
         size_t pathlen = pipepath.size() + 1;
         check_error(pathlen > COMM_BUFFER_SIZE,
                     "Stream path length too large for the buffer.");
-        write(process_spawner_parent2child_fd()[PIPE_WRITE_END],
-              &pathlen,
-              sizeof(pathlen));
-        write(process_spawner_parent2child_fd()[PIPE_WRITE_END],
-              pipepath.c_str(),
-              pathlen);
+        write_to_child(&pathlen, sizeof(pathlen));
+        write_to_child(pipepath.c_str(), pathlen);
 
-        read(process_spawner_child2parent_fd()[PIPE_READ_END],
-             &confirmation,
-             sizeof(confirmation));
+        read_from_child(&confirmation, sizeof(confirmation));
 
         std::fclose(file);
       }
@@ -155,53 +242,19 @@ DataStream::close()
       if (file != stdout) {
         std::fclose(file);
 
-        write(
-          process_spawner_parent2child_fd()[PIPE_WRITE_END], &op, sizeof(op));
+        write_to_child(&op, sizeof(op));
 
         size_t pathlen = pipepath.size() + 1;
         check_error(pathlen > COMM_BUFFER_SIZE,
                     "Stream path length too large for the buffer.");
-        write(process_spawner_parent2child_fd()[PIPE_WRITE_END],
-              &pathlen,
-              sizeof(pathlen));
-        write(process_spawner_parent2child_fd()[PIPE_WRITE_END],
-              pipepath.c_str(),
-              pathlen);
+        write_to_child(&pathlen, sizeof(pathlen));
+        write_to_child(pipepath.c_str(), pathlen);
 
-        read(process_spawner_child2parent_fd()[PIPE_READ_END],
-             &confirmation,
-             sizeof(confirmation));
+        read_from_child(&confirmation, sizeof(confirmation));
       }
     }
 
     closed = true;
-  }
-}
-
-static inline void
-check_children_failures()
-{
-  // Checks if any children have failed so the caller can be a disappointed
-  // parent.
-  int status;
-  pid_t pid;
-  while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
-    if (status != 0) {
-      std::cerr << "Helper process failed before data stream was closed:"
-                << std::endl;
-      if (WIFEXITED(status)) { // NOLINT
-        std::cerr << "PID " << pid << " exited with status "
-                  << WEXITSTATUS(status) << std::endl; // NOLINT
-      } else if (WIFSIGNALED(status)) {                // NOLINT
-        std::cerr << "PID " << pid << " killed by signal "
-                  << WTERMSIG(status) // NOLINT
-                  << std::endl;
-      } else {
-        std::cerr << "PID " << pid << " exited with code " << status
-                  << std::endl;
-      }
-      std::exit(EXIT_FAILURE);
-    }
   }
 }
 
@@ -317,20 +370,10 @@ process_spawner_init()
       _Pipeline pipeline;
       char confirmation = 0;
       for (;;) {
-        if (read(process_spawner_parent2child_fd()[PIPE_READ_END],
-                 &op,
-                 sizeof(op)) <= 0) {
-          check_children_failures();
-          for (PipeId last_id = new_pipe_id(), id = 0; id < last_id; id++) {
-            unlink(get_pipepath(id).c_str());
-          }
-          std::exit(EXIT_SUCCESS);
-        }
+        read_from_parent(&op, sizeof(op));
 
-        read(process_spawner_parent2child_fd()[PIPE_READ_END],
-             &pathlen,
-             sizeof(pathlen));
-        read(process_spawner_parent2child_fd()[PIPE_READ_END], buf, pathlen);
+        read_from_parent(&pathlen, sizeof(pathlen));
+        read_from_parent(buf, pathlen);
 
         switch (op) {
           case DataStream::Operation::READ:
@@ -343,12 +386,8 @@ process_spawner_init()
             pathlen = pipepath.size() + 1;
             check_error(pathlen > COMM_BUFFER_SIZE,
                         "Stream path length too large for the buffer.");
-            write(process_spawner_child2parent_fd()[PIPE_WRITE_END],
-                  &pathlen,
-                  sizeof(pathlen));
-            write(process_spawner_child2parent_fd()[PIPE_WRITE_END],
-                  pipepath.c_str(),
-                  pathlen);
+            write_to_parent(&pathlen, sizeof(pathlen));
+            write_to_parent(pipepath.c_str(), pathlen);
 
             pipe_fd =
               open(pipepath.c_str(),
@@ -365,9 +404,7 @@ process_spawner_init()
             pipeline = pipeline_map()[std::string(buf)];
             pipeline.finish();
             pipeline_map().erase(std::string(buf));
-            write(process_spawner_child2parent_fd()[PIPE_WRITE_END],
-                  &confirmation,
-                  sizeof(confirmation));
+            write_to_parent(&confirmation, sizeof(confirmation));
             break;
           default:
             log_error("Invalid stream operation.");
