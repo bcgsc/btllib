@@ -49,7 +49,7 @@ get_pipepath(const PipeId id)
   return "btllib-" + std::to_string(getpid()) + "-" + std::to_string(id);
 }
 
-void
+static inline void
 read_from_child(void* buf, size_t count)
 {
   size_t so_far = 0, ret;
@@ -64,7 +64,7 @@ read_from_child(void* buf, size_t count)
   }
 }
 
-void
+static inline void
 write_to_child(const void* buf, size_t count)
 {
   size_t so_far = 0, ret;
@@ -106,7 +106,7 @@ check_children_failures()
   }
 }
 
-void
+static inline void
 end_child()
 {
   check_children_failures();
@@ -116,7 +116,7 @@ end_child()
   std::exit(EXIT_SUCCESS);
 }
 
-void
+static inline void
 read_from_parent(void* buf, size_t count)
 {
   size_t so_far = 0, ret;
@@ -132,7 +132,7 @@ read_from_parent(void* buf, size_t count)
   }
 }
 
-void
+static inline void
 write_to_parent(const void* buf, size_t count)
 {
   size_t so_far = 0, ret;
