@@ -107,7 +107,10 @@ end_child()
 {
   check_children_failures();
   for (PipeId last_id = new_pipe_id(), id = 0; id < last_id; id++) {
-    unlink(get_pipepath(id).c_str());
+    const auto fname = get_pipepath(id);
+    if (access(fname.c_str(), F_OK) != -1) {
+      unlink(fname.c_str());
+    }
   }
   std::exit(EXIT_SUCCESS);
 }
@@ -354,7 +357,10 @@ process_spawner_init()
         action.sa_handler = [](const int sig) {
           (void)sig;
           for (PipeId last_id = new_pipe_id(), id = 0; id < last_id; id++) {
-            unlink(get_pipepath(id).c_str());
+            const auto fname = get_pipepath(id);
+            if (access(fname.c_str(), F_OK) != -1) {
+              unlink(fname.c_str());
+            }
           }
           std::exit(EXIT_FAILURE);
         };
@@ -388,7 +394,9 @@ process_spawner_init()
           case DataStream::Operation::WRITE:
           case DataStream::Operation::APPEND:
             pipepath = get_pipepath(new_pipe_id());
-            unlink(pipepath.c_str());
+            if (access(pipepath.c_str(), F_OK) != -1) {
+              unlink(pipepath.c_str());
+            }
             mkfifo(pipepath.c_str(), PIPE_PERMISSIONS);
 
             pathlen = pipepath.size() + 1;
