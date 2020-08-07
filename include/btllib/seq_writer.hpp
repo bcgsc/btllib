@@ -10,6 +10,11 @@
 
 namespace btllib {
 
+/**
+ * @example seq_writer.cpp
+ * An example of writing a gzipped fastq file.
+ */
+
 /** Write FASTA or FASTQ sequences to a file. Threadsafe. */
 class SeqWriter
 {

@@ -20,6 +20,11 @@
 
 namespace btllib {
 
+/**
+ * @example seq_reader.cpp
+ * An example of reading a gzipped fastq file.
+ */
+
 /** Read a FASTA, FASTQ, SAM, or GFA2 file. Threadsafe. */
 class SeqReader
 {
@@ -277,6 +282,7 @@ private:
 
   int read_stage = 0;
 
+  /// @cond HIDDEN_SYMBOLS
   struct read_fasta_buffer;
   struct read_fastq_buffer;
   struct read_sam_buffer;
@@ -291,6 +297,7 @@ private:
   struct read_fastq_file;
   struct read_sam_file;
   struct read_gfa2_file;
+  /// @endcond
 
   template<typename F>
   void read_from_buffer(
@@ -870,6 +877,7 @@ SeqReader::readline_file_append(CString& s)
     END_SECTION                                                                \
   }
 
+/// @cond HIDDEN_SYMBOLS
 struct SeqReader::read_fasta_buffer
 {
   bool operator()(SeqReader& seq_reader)
@@ -1074,6 +1082,7 @@ struct SeqReader::read_gfa2_file
       , , if (bool(feof(seq_reader.source))) { break; }) // NOLINT
   }
 };
+/// @endcond
 
 template<typename F>
 inline void
