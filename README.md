@@ -13,7 +13,7 @@ C++
 ---
 - Dependencies
   * GCC 4.8.1+ or Clang 3.3.0+ with OpenMP
-- Copy the btllib directory into your project
+- Copy the root btllib directory into your project
 - Use any header from the `btllib/include` directory
 
 Python and Java
@@ -22,7 +22,7 @@ Python and Java
   * GCC 4.8.1+ or Clang 3.3.0+ with OpenMP
   * Python 3.5+
   * Meson and Ninja Python3 packages (optional - if they are missing, they will be automatically downloaded to a temporary directory)
-- Copy the btllib directory into your project
+- Copy the root btllib directory into your project
 - Run `btllib/compile`
 - The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name.
 - Python
