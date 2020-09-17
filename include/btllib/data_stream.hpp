@@ -35,12 +35,12 @@ using PipeId = unsigned long;
 class _Pipeline;
 
 // clang-format off
-inline bool& process_spawner_initialized() { static bool _process_spawner_initialized; return _process_spawner_initialized; }
-inline int* process_spawner_parent2child_fd() { static int _process_spawner_parent2child_fd[2]; return _process_spawner_parent2child_fd; }
-inline int* process_spawner_child2parent_fd() { static int _process_spawner_child2parent_fd[2]; return _process_spawner_child2parent_fd; }
-inline std::mutex& process_spawner_comm_mutex() { static std::mutex _process_spawner_comm_mutex; return _process_spawner_comm_mutex; };
-inline PipeId new_pipe_id() { static PipeId _last_pipe_id = 0; return _last_pipe_id++; }
-inline std::map<std::string, _Pipeline>& pipeline_map() { static std::map<std::string, _Pipeline> _pipeline_map; return _pipeline_map; }
+inline bool& process_spawner_initialized() { static bool var; return var; }
+inline int* process_spawner_parent2child_fd() { static int var[2]; return var; }
+inline int* process_spawner_child2parent_fd() { static int var[2]; return var; }
+inline std::mutex& process_spawner_comm_mutex() { static std::mutex var; return var; };
+inline PipeId new_pipe_id() { static PipeId last_pipe_id = 0; return last_pipe_id++; }
+inline std::map<std::string, _Pipeline>& pipeline_map() { static std::map<std::string, _Pipeline> var; return var; }
 // clang-format on
 
 static inline std::string
@@ -315,7 +315,7 @@ _Pipeline::finish()
 static inline bool
 process_spawner_init();
 
-static const bool process_spawner_initializer = process_spawner_init();
+static const bool PROCESS_SPAWNER_INITIALIZER = process_spawner_init();
 
 static inline std::string
 get_pipeline_cmd(const std::string& path, DataStream::Operation op);
@@ -326,7 +326,7 @@ run_pipeline_cmd(const std::string& cmd, DataStream::Operation op, int pipe_fd);
 static inline bool
 process_spawner_init()
 {
-  (void)process_spawner_initializer;
+  (void)PROCESS_SPAWNER_INITIALIZER;
   if (!process_spawner_initialized()) {
     process_spawner_initialized() = true;
 

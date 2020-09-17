@@ -48,12 +48,12 @@ public class SeqReader {
     btllibJNI.SeqReader_close(swigCPtr, this);
   }
 
-  public boolean flagFoldCase() {
-    return btllibJNI.SeqReader_flagFoldCase(swigCPtr, this);
+  public boolean flag_fold_case() {
+    return btllibJNI.SeqReader_flag_fold_case(swigCPtr, this);
   }
 
-  public boolean flagTrimMasked() {
-    return btllibJNI.SeqReader_flagTrimMasked(swigCPtr, this);
+  public boolean flag_trim_masked() {
+    return btllibJNI.SeqReader_flag_trim_masked(swigCPtr, this);
   }
 
   public SeqReader.Format get_format() {

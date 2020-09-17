@@ -45,8 +45,8 @@ public:
 
   void close() noexcept;
 
-  bool flagFoldCase() const { return bool(~flags & NO_FOLD_CASE); }
-  bool flagTrimMasked() const { return bool(flags & TRIM_MASKED); }
+  bool flag_fold_case() const { return bool(~flags & NO_FOLD_CASE); }
+  bool flag_trim_masked() const { return bool(flags & TRIM_MASKED); }
 
   enum Format
   {
@@ -226,37 +226,36 @@ private:
     thread_local static IndexQueueSPMC<Record,
                                        RECORD_QUEUE_SIZE,
                                        RECORD_BLOCK_SIZE>::Block
-      _ready_records_array[MAX_SIMULTANEOUS_SEQREADERS];
-    return _ready_records_array;
+      var[MAX_SIMULTANEOUS_SEQREADERS];
+    return var;
   }
 
   // Also cry worthy
   static Record** ready_record_array()
   {
-    thread_local static Record*
-      _ready_record_array[MAX_SIMULTANEOUS_SEQREADERS];
-    return _ready_record_array;
+    thread_local static Record* var[MAX_SIMULTANEOUS_SEQREADERS];
+    return var;
   }
 
   // Bad code bad
   static std::stack<unsigned>& recycled_ids() noexcept
   {
-    static std::stack<unsigned> _recycled_ids;
-    return _recycled_ids;
+    static std::stack<unsigned> var;
+    return var;
   }
 
   // ;-;
   static std::mutex& recycled_ids_mutex() noexcept
   {
-    static std::mutex _recycled_ids_mutex;
-    return _recycled_ids_mutex;
+    static std::mutex var;
+    return var;
   };
 
   // :(
   static unsigned& last_id()
   {
-    static unsigned _last_id = 0;
-    return _last_id;
+    static unsigned var = 0;
+    return var;
   }
 
   void generate_id();
@@ -1319,7 +1318,7 @@ SeqReader::start_postprocessor()
         if (!comment.empty() && comment.back() == '\n') {
           comment.pop_back();
         }
-        if (flagTrimMasked()) {
+        if (flag_trim_masked()) {
           const auto len = seq.length();
           size_t trim_start = 0, trim_end = seq.length();
           while (trim_start <= len && bool(islower(seq[trim_start]))) {
@@ -1335,7 +1334,7 @@ SeqReader::start_postprocessor()
             qual.erase(0, trim_start);
           }
         }
-        if (flagFoldCase()) {
+        if (flag_fold_case()) {
           for (auto& c : seq) {
             char old = c;
             c = CAPITALS[unsigned(c)];

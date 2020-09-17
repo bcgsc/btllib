@@ -157,8 +157,8 @@ static const unsigned char BIT_MASKS[CHAR_BIT] = {
   0x01, 0x02, 0x04, 0x08, // NOLINT
   0x10, 0x20, 0x40, 0x80  // NOLINT
 };
-static const char* BLOOM_FILTER_MAGIC_HEADER = "BTLBloomFilter_v2";
-static const char* COUNTING_BLOOM_FILTER_MAGIC_HEADER =
+static const char* const BLOOM_FILTER_MAGIC_HEADER = "BTLBloomFilter_v2";
+static const char* const COUNTING_BLOOM_FILTER_MAGIC_HEADER =
   "BTLCountingBloomFilter_v2";
 
 inline unsigned
