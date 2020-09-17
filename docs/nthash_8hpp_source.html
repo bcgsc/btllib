@@ -104,7 +104,7 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> ASCII_SIZE = 256;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> uint64_t seed_tab[ASCII_SIZE] = {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> uint64_t SEED_TAB[ASCII_SIZE] = {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  SEED_N, SEED_T, SEED_N, SEED_G, SEED_A, SEED_A, SEED_N, SEED_C, <span class="comment">// 0..7</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, <span class="comment">// 8..15</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, <span class="comment">// 16..23</span></div>
@@ -599,7 +599,7 @@ $(function() {
 <div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                        CONVERT_TAB[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[k - 1]];</div>
 <div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    h_val ^= DIMER_TAB[dimer_loc];</div>
 <div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (remainder == 1) {</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    h_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1]];</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    h_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1]];</div>
 <div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;  }</div>
 <div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;  <span class="keywordflow">return</span> h_val;</div>
 <div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;}</div>
@@ -621,7 +621,7 @@ $(function() {
 <div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                        RC_CONVERT_TAB[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[k - 2]];</div>
 <div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;    h_val ^= DIMER_TAB[dimer_loc];</div>
 <div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (remainder == 1) {</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    h_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1] &amp; CP_OFF];</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    h_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1] &amp; CP_OFF];</div>
 <div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;  }</div>
 <div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; k / 4; i++) {</div>
 <div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;    h_val = rolx(h_val, 4);</div>
@@ -646,7 +646,7 @@ $(function() {
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;{</div>
 <div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;  uint64_t h_val = rol1(fh_val);</div>
 <div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;  h_val = swapbits033(h_val);</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;  h_val ^= seed_tab[char_in];</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;  h_val ^= SEED_TAB[char_in];</div>
 <div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;  h_val ^=</div>
 <div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    (ms_tab_31l[char_out][k % 31] | ms_tab_33r[char_out][k % 33]); <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;  <span class="keywordflow">return</span> h_val;</div>
@@ -661,7 +661,7 @@ $(function() {
 <div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;{</div>
 <div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;  uint64_t h_val = rh_val ^ (ms_tab_31l[char_in &amp; CP_OFF][k % 31] | <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;                             ms_tab_33r[char_in &amp; CP_OFF][k % 33]); <span class="comment">// NOLINT</span></div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;  h_val ^= seed_tab[char_out &amp; CP_OFF];</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;  h_val ^= SEED_TAB[char_out &amp; CP_OFF];</div>
 <div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;  h_val = ror1(h_val);</div>
 <div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;  h_val = swapbits3263(h_val);</div>
 <div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;  <span class="keywordflow">return</span> h_val;</div>
@@ -711,7 +711,7 @@ $(function() {
 <div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;{</div>
 <div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;  uint64_t h_val = rh_val ^ (ms_tab_31l[char_in][k % 31] | <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;                             ms_tab_33r[char_in][k % 33]); <span class="comment">// NOLINT</span></div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;  h_val ^= seed_tab[char_out];</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;  h_val ^= SEED_TAB[char_out];</div>
 <div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;  h_val = ror1(h_val);</div>
 <div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;  h_val = swapbits3263(h_val);</div>
 <div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;  <span class="keywordflow">return</span> h_val;</div>
@@ -726,7 +726,7 @@ $(function() {
 <div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;{</div>
 <div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;  uint64_t h_val = rol1(fh_val);</div>
 <div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;  h_val = swapbits033(h_val);</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  h_val ^= seed_tab[char_in &amp; CP_OFF];</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  h_val ^= SEED_TAB[char_in &amp; CP_OFF];</div>
 <div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;  h_val ^= (ms_tab_31l[char_out &amp; CP_OFF][k % 31] | <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;            ms_tab_33r[char_out &amp; CP_OFF][k % 33]); <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;  <span class="keywordflow">return</span> h_val;</div>
@@ -881,17 +881,17 @@ $(function() {
 <div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;  loc_n = 0;</div>
 <div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;  uint64_t fh_val = 0, rh_val = 0;</div>
 <div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <span class="keywordtype">int</span>(k - 1); i &gt;= 0; i--) {</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    <span class="keywordflow">if</span> (seed_tab[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    <span class="keywordflow">if</span> (SEED_TAB[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
 <div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;      loc_n = i;</div>
 <div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;    }</div>
 <div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;    fh_val = rol1(fh_val);</div>
 <div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;    fh_val = swapbits033(fh_val);</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;    fh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;    fh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
 <div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160; </div>
 <div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;    rh_val = rol1(rh_val);</div>
 <div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;    rh_val = swapbits033(rh_val);</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;    rh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;    rh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
 <div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;  }</div>
 <div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;  h_val = (rh_val &lt; fh_val) ? rh_val : fh_val;</div>
 <div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -908,17 +908,17 @@ $(function() {
 <div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;  uint64_t b_val = 0, t_val = 0, fh_val = 0, rh_val = 0;</div>
 <div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;  loc_n = 0;</div>
 <div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <span class="keywordtype">int</span>(k - 1); i &gt;= 0; i--) {</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;    <span class="keywordflow">if</span> (seed_tab[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;    <span class="keywordflow">if</span> (SEED_TAB[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
 <div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;      loc_n = i;</div>
 <div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;    }</div>
 <div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;    fh_val = rol1(fh_val);</div>
 <div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;    fh_val = swapbits033(fh_val);</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;    fh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;    fh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
 <div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160; </div>
 <div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;    rh_val = rol1(rh_val);</div>
 <div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;    rh_val = swapbits033(rh_val);</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;    rh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;    rh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
 <div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;  }</div>
 <div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;  b_val = (rh_val &lt; fh_val) ? rh_val : fh_val;</div>
 <div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;  h_val[0] = b_val;</div>
@@ -942,17 +942,17 @@ $(function() {
 <div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;  h_val = fh_val = rh_val = 0;</div>
 <div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;  loc_n = 0;</div>
 <div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <span class="keywordtype">int</span>(k - 1); i &gt;= 0; i--) {</div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;    <span class="keywordflow">if</span> (seed_tab[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;    <span class="keywordflow">if</span> (SEED_TAB[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
 <div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;      loc_n = i;</div>
 <div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;    }</div>
 <div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    fh_val = rol1(fh_val);</div>
 <div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;    fh_val = swapbits033(fh_val);</div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;    fh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;    fh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
 <div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160; </div>
 <div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;    rh_val = rol1(rh_val);</div>
 <div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    rh_val = swapbits033(rh_val);</div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;    rh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;    rh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
 <div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;  }</div>
 <div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;  h_val = (rh_val &lt; fh_val) ? rh_val : fh_val;</div>
 <div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -972,17 +972,17 @@ $(function() {
 <div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;  uint64_t b_val = 0, t_val = 0;</div>
 <div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;  loc_n = 0;</div>
 <div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <span class="keywordtype">int</span>(k - 1); i &gt;= 0; i--) {</div>
-<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;    <span class="keywordflow">if</span> (seed_tab[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
+<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;    <span class="keywordflow">if</span> (SEED_TAB[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
 <div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;      loc_n = i;</div>
 <div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;    }</div>
 <div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;    fh_val = rol1(fh_val);</div>
 <div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;    fh_val = swapbits033(fh_val);</div>
-<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;    fh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
+<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;    fh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
 <div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160; </div>
 <div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;    rh_val = rol1(rh_val);</div>
 <div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;    rh_val = swapbits033(rh_val);</div>
-<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;    rh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
+<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;    rh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
 <div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;  }</div>
 <div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;  b_val = (rh_val &lt; fh_val) ? rh_val : fh_val;</div>
 <div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;  h_val[0] = b_val;</div>
@@ -1009,17 +1009,17 @@ $(function() {
 <div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;  uint64_t b_val = 0, t_val = 0;</div>
 <div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;  loc_n = 0;</div>
 <div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <span class="keywordtype">int</span>(k - 1); i &gt;= 0; i--) {</div>
-<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;    <span class="keywordflow">if</span> (seed_tab[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
+<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;    <span class="keywordflow">if</span> (SEED_TAB[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
 <div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;      loc_n = i;</div>
 <div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;    }</div>
 <div class="line"><a name="l00945"></a><span class="lineno">  945</span>&#160;    fh_val = rol1(fh_val);</div>
 <div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160;    fh_val = swapbits033(fh_val);</div>
-<div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160;    fh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
+<div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160;    fh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
 <div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160; </div>
 <div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;    rh_val = rol1(rh_val);</div>
 <div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;    rh_val = swapbits033(rh_val);</div>
-<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;    rh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
+<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;    rh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
 <div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;  }</div>
 <div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;  h_stn = rh_val &lt; fh_val;</div>
 <div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;  b_val = h_stn ? rh_val : fh_val;</div>
@@ -1089,7 +1089,7 @@ $(function() {
 <div class="line"><a name="l01018"></a><span class="lineno"> 1018</span>&#160;    h_val = rol1(h_val);</div>
 <div class="line"><a name="l01019"></a><span class="lineno"> 1019</span>&#160;    h_val = swapbits033(h_val);</div>
 <div class="line"><a name="l01020"></a><span class="lineno"> 1020</span>&#160;    s_val = h_val;</div>
-<div class="line"><a name="l01021"></a><span class="lineno"> 1021</span>&#160;    h_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[i]];</div>
+<div class="line"><a name="l01021"></a><span class="lineno"> 1021</span>&#160;    h_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[i]];</div>
 <div class="line"><a name="l01022"></a><span class="lineno"> 1022</span>&#160;    <span class="keywordflow">if</span> (seed[i]) {</div>
 <div class="line"><a name="l01023"></a><span class="lineno"> 1023</span>&#160;      s_val = h_val;</div>
 <div class="line"><a name="l01024"></a><span class="lineno"> 1024</span>&#160;    }</div>
@@ -1132,17 +1132,17 @@ $(function() {
 <div class="line"><a name="l01061"></a><span class="lineno"> 1061</span>&#160;  fh_val = rh_val = 0;</div>
 <div class="line"><a name="l01062"></a><span class="lineno"> 1062</span>&#160;  loc_n = 0;</div>
 <div class="line"><a name="l01063"></a><span class="lineno"> 1063</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <span class="keywordtype">int</span>(k - 1); i &gt;= 0; i--) {</div>
-<div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160;    <span class="keywordflow">if</span> (seed_tab[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
+<div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160;    <span class="keywordflow">if</span> (SEED_TAB[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
 <div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;      loc_n = i;</div>
 <div class="line"><a name="l01066"></a><span class="lineno"> 1066</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l01067"></a><span class="lineno"> 1067</span>&#160;    }</div>
 <div class="line"><a name="l01068"></a><span class="lineno"> 1068</span>&#160;    fh_val = rol1(fh_val);</div>
 <div class="line"><a name="l01069"></a><span class="lineno"> 1069</span>&#160;    fh_val = swapbits033(fh_val);</div>
-<div class="line"><a name="l01070"></a><span class="lineno"> 1070</span>&#160;    fh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
+<div class="line"><a name="l01070"></a><span class="lineno"> 1070</span>&#160;    fh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
 <div class="line"><a name="l01071"></a><span class="lineno"> 1071</span>&#160; </div>
 <div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;    rh_val = rol1(rh_val);</div>
 <div class="line"><a name="l01073"></a><span class="lineno"> 1073</span>&#160;    rh_val = swapbits033(rh_val);</div>
-<div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160;    rh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
+<div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160;    rh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
 <div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;  }</div>
 <div class="line"><a name="l01076"></a><span class="lineno"> 1076</span>&#160; </div>
 <div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 0; j &lt; m; j++) {</div>
@@ -1211,17 +1211,17 @@ $(function() {
 <div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;  fh_val = rh_val = 0;</div>
 <div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;  loc_n = 0;</div>
 <div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <span class="keywordtype">int</span>(k - 1); i &gt;= 0; i--) {</div>
-<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;    <span class="keywordflow">if</span> (seed_tab[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
+<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;    <span class="keywordflow">if</span> (SEED_TAB[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[i]] == SEED_N) {</div>
 <div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;      loc_n = i;</div>
 <div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;    }</div>
 <div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;    fh_val = rol1(fh_val);</div>
 <div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;    fh_val = swapbits033(fh_val);</div>
-<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;    fh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
+<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;    fh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[k - 1 - i]];</div>
 <div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160; </div>
 <div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;    rh_val = rol1(rh_val);</div>
 <div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;    rh_val = swapbits033(rh_val);</div>
-<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;    rh_val ^= seed_tab[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
+<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;    rh_val ^= SEED_TAB[(<span class="keywordtype">unsigned</span> char)kmer_seq[i] &amp; CP_OFF];</div>
 <div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;  }</div>
 <div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160; </div>
 <div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 0; j &lt; m; j++) {</div>
@@ -1292,231 +1292,248 @@ $(function() {
 <div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;{</div>
 <div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160; </div>
 <div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;  <a class="code" href="classbtllib_1_1NtHash.html#a91f7290f4a2e540099ee7ee0f2a0716d">NtHash</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* seq, <span class="keywordtype">size_t</span> seq_len, <span class="keywordtype">unsigned</span> k, <span class="keywordtype">unsigned</span> hash_num);</div>
-<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160; </div>
-<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;  <a class="code" href="classbtllib_1_1NtHash.html#a91f7290f4a2e540099ee7ee0f2a0716d">NtHash</a>(<span class="keyword">const</span> std::string&amp; seq, <span class="keywordtype">unsigned</span> k, <span class="keywordtype">unsigned</span> hash_num);</div>
-<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160; </div>
-<div class="line"><a name="l01253"></a><span class="lineno"><a class="line" href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05"> 1253</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05">roll</a>();</div>
-<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160; </div>
-<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;  <span class="keyword">const</span> uint64_t* hashes() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160; </div>
-<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;  <span class="keywordtype">size_t</span> get_pos()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> pos; }</div>
-<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;  <span class="keywordtype">unsigned</span> get_k()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> k; }</div>
-<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;  <span class="keywordtype">unsigned</span> get_hash_num()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> hash_num; }</div>
+<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;  <a class="code" href="classbtllib_1_1NtHash.html#af0ccb96bbce8f6edeb5943c2c5df1281">NtHash</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* seq,</div>
+<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;         <span class="keywordtype">size_t</span> seq_len,</div>
+<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;         <span class="keywordtype">unsigned</span> k,</div>
+<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;         <span class="keywordtype">unsigned</span> hash_num,</div>
+<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;         <span class="keywordtype">size_t</span> pos = 0);</div>
+<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160; </div>
+<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;  <a class="code" href="classbtllib_1_1NtHash.html#af0ccb96bbce8f6edeb5943c2c5df1281">NtHash</a>(<span class="keyword">const</span> std::string&amp; seq, <span class="keywordtype">unsigned</span> k, <span class="keywordtype">unsigned</span> hash_num, <span class="keywordtype">size_t</span> pos = 0);</div>
+<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160; </div>
+<div class="line"><a name="l01257"></a><span class="lineno"><a class="line" href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05"> 1257</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05">roll</a>();</div>
+<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160; </div>
+<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;  <span class="keyword">const</span> uint64_t* hashes() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160; </div>
-<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l01263"></a><span class="lineno"><a class="line" href="classbtllib_1_1NtHash.html#a278021e6ec59943587eaee438b5cb78b"> 1263</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classbtllib_1_1NtHash.html#a278021e6ec59943587eaee438b5cb78b">init</a>();</div>
+<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;  <span class="keywordtype">size_t</span> get_pos()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> pos; }</div>
+<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;  <span class="keywordtype">unsigned</span> get_k()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> k; }</div>
+<div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;  <span class="keywordtype">unsigned</span> get_hash_num()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> hash_num; }</div>
 <div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160; </div>
-<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span>* seq;</div>
-<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">size_t</span> seq_len;</div>
-<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">unsigned</span> k;</div>
-<div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">unsigned</span> hash_num;</div>
-<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;  <span class="keywordtype">size_t</span> pos = 0;</div>
-<div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;  std::vector&lt;uint64_t&gt; hashes_vector;</div>
-<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;  uint64_t forward_hash = 0;</div>
-<div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;  uint64_t reverse_hash = 0;</div>
-<div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160;};</div>
-<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160; </div>
-<div class="line"><a name="l01275"></a><span class="lineno"><a class="line" href="classbtllib_1_1SeedNtHash.html"> 1275</a></span>&#160;<span class="keyword">class </span><a class="code" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a> : <span class="keyword">public</span> <a class="code" href="classbtllib_1_1NtHash.html">NtHash</a></div>
-<div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;{</div>
-<div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160; </div>
-<div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;  <a class="code" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* seq,</div>
-<div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;             <span class="keywordtype">size_t</span> seq_len,</div>
-<div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160;             <span class="keywordtype">unsigned</span> k,</div>
-<div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;             <span class="keyword">const</span> std::vector&lt;SpacedSeed&gt;&amp; seeds,</div>
-<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;             <span class="keywordtype">unsigned</span> hash_num_per_seed);</div>
-<div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;  <a class="code" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>(<span class="keyword">const</span> std::string&amp; seq,</div>
+<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l01267"></a><span class="lineno"><a class="line" href="classbtllib_1_1NtHash.html#a278021e6ec59943587eaee438b5cb78b"> 1267</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classbtllib_1_1NtHash.html#a278021e6ec59943587eaee438b5cb78b">init</a>();</div>
+<div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160; </div>
+<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span>* seq;</div>
+<div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">size_t</span> seq_len;</div>
+<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">unsigned</span> k;</div>
+<div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">unsigned</span> hash_num;</div>
+<div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160;  <span class="keywordtype">size_t</span> pos;</div>
+<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;  std::vector&lt;uint64_t&gt; hashes_vector;</div>
+<div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160;  uint64_t forward_hash = 0;</div>
+<div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;  uint64_t reverse_hash = 0;</div>
+<div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160;};</div>
+<div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160; </div>
+<div class="line"><a name="l01279"></a><span class="lineno"><a class="line" href="classbtllib_1_1SeedNtHash.html"> 1279</a></span>&#160;<span class="keyword">class </span><a class="code" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a> : <span class="keyword">public</span> <a class="code" href="classbtllib_1_1NtHash.html">NtHash</a></div>
+<div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;{</div>
+<div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160; </div>
+<div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;  <a class="code" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* seq,</div>
+<div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;             <span class="keywordtype">size_t</span> seq_len,</div>
 <div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160;             <span class="keywordtype">unsigned</span> k,</div>
 <div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;             <span class="keyword">const</span> std::vector&lt;SpacedSeed&gt;&amp; seeds,</div>
-<div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;             <span class="keywordtype">unsigned</span> hash_num_per_seed);</div>
-<div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;  <a class="code" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* seq,</div>
-<div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;             <span class="keywordtype">size_t</span> seq_len,</div>
+<div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;             <span class="keywordtype">unsigned</span> hash_num_per_seed,</div>
+<div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;             <span class="keywordtype">size_t</span> pos = 0);</div>
+<div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;  <a class="code" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>(<span class="keyword">const</span> std::string&amp; seq,</div>
 <div class="line"><a name="l01290"></a><span class="lineno"> 1290</span>&#160;             <span class="keywordtype">unsigned</span> k,</div>
-<div class="line"><a name="l01291"></a><span class="lineno"> 1291</span>&#160;             <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; seeds,</div>
-<div class="line"><a name="l01292"></a><span class="lineno"> 1292</span>&#160;             <span class="keywordtype">unsigned</span> hash_num_per_seed);</div>
-<div class="line"><a name="l01293"></a><span class="lineno"> 1293</span>&#160;  <a class="code" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>(<span class="keyword">const</span> std::string&amp; seq,</div>
-<div class="line"><a name="l01294"></a><span class="lineno"> 1294</span>&#160;             <span class="keywordtype">unsigned</span> k,</div>
-<div class="line"><a name="l01295"></a><span class="lineno"> 1295</span>&#160;             <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; seeds,</div>
-<div class="line"><a name="l01296"></a><span class="lineno"> 1296</span>&#160;             <span class="keywordtype">unsigned</span> hash_num_per_seed);</div>
-<div class="line"><a name="l01297"></a><span class="lineno"> 1297</span>&#160; </div>
-<div class="line"><a name="l01298"></a><span class="lineno"> 1298</span>&#160;  <span class="keywordtype">unsigned</span> get_hash_num_per_seed()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> hash_num_per_seed; }</div>
-<div class="line"><a name="l01299"></a><span class="lineno"> 1299</span>&#160; </div>
-<div class="line"><a name="l01300"></a><span class="lineno"> 1300</span>&#160;  <span class="keywordtype">bool</span> roll();</div>
-<div class="line"><a name="l01301"></a><span class="lineno"> 1301</span>&#160; </div>
-<div class="line"><a name="l01302"></a><span class="lineno"> 1302</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l01303"></a><span class="lineno"> 1303</span>&#160;  <span class="keywordtype">bool</span> init();</div>
-<div class="line"><a name="l01304"></a><span class="lineno"> 1304</span>&#160; </div>
-<div class="line"><a name="l01305"></a><span class="lineno"> 1305</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">unsigned</span> hash_num_per_seed;</div>
-<div class="line"><a name="l01306"></a><span class="lineno"> 1306</span>&#160;  std::vector&lt;SpacedSeed&gt; seeds;</div>
-<div class="line"><a name="l01307"></a><span class="lineno"> 1307</span>&#160;};</div>
-<div class="line"><a name="l01308"></a><span class="lineno"> 1308</span>&#160; </div>
-<div class="line"><a name="l01309"></a><span class="lineno"><a class="line" href="classbtllib_1_1NtHash.html#a91f7290f4a2e540099ee7ee0f2a0716d"> 1309</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="classbtllib_1_1NtHash.html#a91f7290f4a2e540099ee7ee0f2a0716d">NtHash::NtHash</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* seq,</div>
-<div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;                      <span class="keywordtype">size_t</span> seq_len,</div>
-<div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;                      <span class="keywordtype">unsigned</span> k,</div>
-<div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160;                      <span class="keywordtype">unsigned</span> hash_num)</div>
-<div class="line"><a name="l01313"></a><span class="lineno"> 1313</span>&#160;  : seq(seq)</div>
-<div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160;  , seq_len(seq_len)</div>
-<div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160;  , k(k)</div>
-<div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160;  , hash_num(hash_num)</div>
-<div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;{</div>
-<div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;  hashes_vector.resize(hash_num);</div>
-<div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;}</div>
-<div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160; </div>
-<div class="line"><a name="l01321"></a><span class="lineno"><a class="line" href="classbtllib_1_1NtHash.html#a8f6f18f33b4908903303be73336a7aa7"> 1321</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="classbtllib_1_1NtHash.html#a91f7290f4a2e540099ee7ee0f2a0716d">NtHash::NtHash</a>(<span class="keyword">const</span> std::string&amp; seq, <span class="keywordtype">unsigned</span> k, <span class="keywordtype">unsigned</span> hash_num)</div>
-<div class="line"><a name="l01322"></a><span class="lineno"> 1322</span>&#160;  : <a class="code" href="classbtllib_1_1NtHash.html">NtHash</a>(seq.c_str(), seq.size(), k, hash_num)</div>
-<div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160;{}</div>
-<div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160; </div>
-<div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160;<span class="keyword">inline</span> SeedNtHash::SeedNtHash(<span class="keyword">const</span> <span class="keywordtype">char</span>* seq,</div>
-<div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;                              <span class="keywordtype">size_t</span> seq_len,</div>
-<div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;                              <span class="keywordtype">unsigned</span> k,</div>
-<div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160;                              <span class="keyword">const</span> std::vector&lt;SpacedSeed&gt;&amp; seeds,</div>
-<div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;                              <span class="keywordtype">unsigned</span> hash_num_per_seed)</div>
-<div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160;  : <a class="code" href="classbtllib_1_1NtHash.html">NtHash</a>(seq, seq_len, k, seeds.size() * hash_num_per_seed)</div>
-<div class="line"><a name="l01331"></a><span class="lineno"> 1331</span>&#160;  , hash_num_per_seed(hash_num_per_seed)</div>
-<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;  , seeds(seeds)</div>
-<div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;{}</div>
-<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160; </div>
-<div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;<span class="keyword">inline</span> SeedNtHash::SeedNtHash(<span class="keyword">const</span> std::string&amp; seq,</div>
-<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;                              <span class="keywordtype">unsigned</span> k,</div>
-<div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160;                              <span class="keyword">const</span> std::vector&lt;SpacedSeed&gt;&amp; seeds,</div>
-<div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;                              <span class="keywordtype">unsigned</span> hash_num_per_seed)</div>
-<div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;  : NtHash(seq, k, seeds.size() * hash_num_per_seed)</div>
-<div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160;  , hash_num_per_seed(hash_num_per_seed)</div>
-<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;  , seeds(seeds)</div>
-<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;{}</div>
-<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160; </div>
-<div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;<span class="keyword">inline</span> SeedNtHash::SeedNtHash(<span class="keyword">const</span> <span class="keywordtype">char</span>* seq,</div>
-<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;                              <span class="keywordtype">size_t</span> seq_len,</div>
-<div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160;                              <span class="keywordtype">unsigned</span> k,</div>
-<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;                              <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; seeds,</div>
-<div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;                              <span class="keywordtype">unsigned</span> hash_num_per_seed)</div>
-<div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;  : NtHash(seq, seq_len, k, seeds.size() * hash_num_per_seed)</div>
-<div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;  , hash_num_per_seed(hash_num_per_seed)</div>
-<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;  , seeds(parse_seeds(seeds))</div>
-<div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160;{}</div>
-<div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160; </div>
-<div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160;<span class="keyword">inline</span> SeedNtHash::SeedNtHash(<span class="keyword">const</span> std::string&amp; seq,</div>
-<div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160;                              <span class="keywordtype">unsigned</span> k,</div>
-<div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;                              <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; seeds,</div>
-<div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;                              <span class="keywordtype">unsigned</span> hash_num_per_seed)</div>
-<div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;  : NtHash(seq, k, seeds.size() * hash_num_per_seed)</div>
-<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;  , hash_num_per_seed(hash_num_per_seed)</div>
-<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;  , seeds(parse_seeds(seeds))</div>
-<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;{}</div>
-<div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160; </div>
-<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;<span class="keyword">static</span> std::vector&lt;SpacedSeed&gt;</div>
-<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;parse_seeds(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; seed_strings)</div>
-<div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;{</div>
-<div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160;  std::vector&lt;SpacedSeed&gt; seed_set;</div>
-<div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; seed_string : seed_strings) {</div>
-<div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;    SpacedSeed seed;</div>
-<div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160;    <span class="keywordtype">size_t</span> pos = 0;</div>
-<div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; c : seed_string) {</div>
-<div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;      <span class="keywordflow">if</span> (c != <span class="charliteral">&#39;1&#39;</span>) {</div>
-<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;        seed.push_back(pos);</div>
-<div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;      }</div>
-<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;      ++pos;</div>
-<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;    }</div>
-<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;    seed_set.push_back(seed);</div>
-<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160;  }</div>
-<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;  <span class="keywordflow">return</span> seed_set;</div>
-<div class="line"><a name="l01379"></a><span class="lineno"> 1379</span>&#160;}</div>
-<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160; </div>
-<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;<span class="comment">// NOLINTNEXTLINE</span></div>
-<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;<span class="preprocessor">#define NT_HASH_INIT(CLASS, NTHASH_CALL)                                       \</span></div>
-<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;<span class="preprocessor">  inline bool CLASS::init()                                                    \</span></div>
-<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;<span class="preprocessor">  {                                                                            \</span></div>
-<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160;<span class="preprocessor">    if (k &gt; seq_len) {                                                         \</span></div>
-<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;<span class="preprocessor">      pos = std::numeric_limits&lt;std::size_t&gt;::max();                           \</span></div>
-<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;<span class="preprocessor">      return false;                                                            \</span></div>
-<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
-<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;<span class="preprocessor">    unsigned posN = 0;                                                         \</span></div>
-<div class="line"><a name="l01390"></a><span class="lineno"> 1390</span>&#160;<span class="preprocessor">    while ((pos &lt; seq_len - k + 1) &amp;&amp; !(NTHASH_CALL)) {                        \</span></div>
-<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;<span class="preprocessor">      pos += posN + 1;                                                         \</span></div>
-<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
-<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;<span class="preprocessor">    if (pos &gt; seq_len - k) {                                                   \</span></div>
-<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;<span class="preprocessor">      pos = std::numeric_limits&lt;std::size_t&gt;::max();                           \</span></div>
-<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;<span class="preprocessor">      return false;                                                            \</span></div>
-<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
-<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;<span class="preprocessor">    ++pos;                                                                     \</span></div>
-<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;<span class="preprocessor">    return true;                                                               \</span></div>
-<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160;<span class="preprocessor">  }</span></div>
-<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160; </div>
-<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;<span class="comment">// NOLINTNEXTLINE</span></div>
-<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;<span class="preprocessor">#define NT_HASH_ROLL(CLASS, NTHASH_CALL)                                       \</span></div>
-<div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160;<span class="preprocessor">  inline bool CLASS::roll()                                                    \</span></div>
-<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;<span class="preprocessor">  {                                                                            \</span></div>
-<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160;<span class="preprocessor">    if (pos == 0) {                                                            \</span></div>
-<div class="line"><a name="l01406"></a><span class="lineno"> 1406</span>&#160;<span class="preprocessor">      return init();                                                           \</span></div>
-<div class="line"><a name="l01407"></a><span class="lineno"> 1407</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
-<div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;<span class="preprocessor">    if (pos &gt; seq_len - k) {                                                   \</span></div>
-<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;<span class="preprocessor">      return false;                                                            \</span></div>
-<div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
-<div class="line"><a name="l01411"></a><span class="lineno"> 1411</span>&#160;<span class="preprocessor">    if (seed_tab[(unsigned char)(seq[pos + k - 1])] == SEED_N) {               \</span></div>
-<div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;<span class="preprocessor">      pos += k;                                                                \</span></div>
-<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;<span class="preprocessor">      return init();                                                           \</span></div>
-<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
-<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;<span class="preprocessor">    (NTHASH_CALL);                                                             \</span></div>
-<div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;<span class="preprocessor">    ++pos;                                                                     \</span></div>
-<div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160;<span class="preprocessor">    return true;                                                               \</span></div>
-<div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;<span class="preprocessor">  }</span></div>
-<div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160; </div>
-<div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160;NT_HASH_INIT(NtHash,</div>
-<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160;             ntmc64(seq + pos,</div>
-<div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160;                    k,</div>
-<div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160;                    hash_num,</div>
-<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;                    forward_hash,</div>
-<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160;                    reverse_hash,</div>
-<div class="line"><a name="l01426"></a><span class="lineno"> 1426</span>&#160;                    posN,</div>
-<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;                    hashes_vector.data()))</div>
-<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;NT_HASH_ROLL(NtHash,</div>
-<div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;             ntmc64(seq[pos - 1],</div>
-<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;                    seq[pos - 1 + k],</div>
-<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;                    k,</div>
-<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;                    hash_num,</div>
-<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;                    forward_hash,</div>
-<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;                    reverse_hash,</div>
-<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;                    hashes_vector.data()))</div>
+<div class="line"><a name="l01291"></a><span class="lineno"> 1291</span>&#160;             <span class="keyword">const</span> std::vector&lt;SpacedSeed&gt;&amp; seeds,</div>
+<div class="line"><a name="l01292"></a><span class="lineno"> 1292</span>&#160;             <span class="keywordtype">unsigned</span> hash_num_per_seed,</div>
+<div class="line"><a name="l01293"></a><span class="lineno"> 1293</span>&#160;             <span class="keywordtype">size_t</span> pos = 0);</div>
+<div class="line"><a name="l01294"></a><span class="lineno"> 1294</span>&#160;  <a class="code" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* seq,</div>
+<div class="line"><a name="l01295"></a><span class="lineno"> 1295</span>&#160;             <span class="keywordtype">size_t</span> seq_len,</div>
+<div class="line"><a name="l01296"></a><span class="lineno"> 1296</span>&#160;             <span class="keywordtype">unsigned</span> k,</div>
+<div class="line"><a name="l01297"></a><span class="lineno"> 1297</span>&#160;             <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; seeds,</div>
+<div class="line"><a name="l01298"></a><span class="lineno"> 1298</span>&#160;             <span class="keywordtype">unsigned</span> hash_num_per_seed,</div>
+<div class="line"><a name="l01299"></a><span class="lineno"> 1299</span>&#160;             <span class="keywordtype">size_t</span> pos = 0);</div>
+<div class="line"><a name="l01300"></a><span class="lineno"> 1300</span>&#160;  <a class="code" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>(<span class="keyword">const</span> std::string&amp; seq,</div>
+<div class="line"><a name="l01301"></a><span class="lineno"> 1301</span>&#160;             <span class="keywordtype">unsigned</span> k,</div>
+<div class="line"><a name="l01302"></a><span class="lineno"> 1302</span>&#160;             <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; seeds,</div>
+<div class="line"><a name="l01303"></a><span class="lineno"> 1303</span>&#160;             <span class="keywordtype">unsigned</span> hash_num_per_seed,</div>
+<div class="line"><a name="l01304"></a><span class="lineno"> 1304</span>&#160;             <span class="keywordtype">size_t</span> pos = 0);</div>
+<div class="line"><a name="l01305"></a><span class="lineno"> 1305</span>&#160; </div>
+<div class="line"><a name="l01306"></a><span class="lineno"> 1306</span>&#160;  <span class="keywordtype">unsigned</span> get_hash_num_per_seed()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> hash_num_per_seed; }</div>
+<div class="line"><a name="l01307"></a><span class="lineno"> 1307</span>&#160; </div>
+<div class="line"><a name="l01308"></a><span class="lineno"> 1308</span>&#160;  <span class="keywordtype">bool</span> roll();</div>
+<div class="line"><a name="l01309"></a><span class="lineno"> 1309</span>&#160; </div>
+<div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;  <span class="keywordtype">bool</span> init();</div>
+<div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160; </div>
+<div class="line"><a name="l01313"></a><span class="lineno"> 1313</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">unsigned</span> hash_num_per_seed;</div>
+<div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160;  std::vector&lt;SpacedSeed&gt; seeds;</div>
+<div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160;};</div>
+<div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160; </div>
+<div class="line"><a name="l01317"></a><span class="lineno"><a class="line" href="classbtllib_1_1NtHash.html#af0ccb96bbce8f6edeb5943c2c5df1281"> 1317</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="classbtllib_1_1NtHash.html#af0ccb96bbce8f6edeb5943c2c5df1281">NtHash::NtHash</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* seq,</div>
+<div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;                      <span class="keywordtype">size_t</span> seq_len,</div>
+<div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;                      <span class="keywordtype">unsigned</span> k,</div>
+<div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160;                      <span class="keywordtype">unsigned</span> hash_num,</div>
+<div class="line"><a name="l01321"></a><span class="lineno"> 1321</span>&#160;                      <span class="keywordtype">size_t</span> pos)</div>
+<div class="line"><a name="l01322"></a><span class="lineno"> 1322</span>&#160;  : seq(seq)</div>
+<div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160;  , seq_len(seq_len)</div>
+<div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160;  , k(k)</div>
+<div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160;  , hash_num(hash_num)</div>
+<div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;  , pos(pos)</div>
+<div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;{</div>
+<div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160;  hashes_vector.resize(hash_num);</div>
+<div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;}</div>
+<div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160; </div>
+<div class="line"><a name="l01331"></a><span class="lineno"><a class="line" href="classbtllib_1_1NtHash.html#a6553cdbd058890caa8e2028592cb709b"> 1331</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="classbtllib_1_1NtHash.html#af0ccb96bbce8f6edeb5943c2c5df1281">NtHash::NtHash</a>(<span class="keyword">const</span> std::string&amp; seq,</div>
+<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;                      <span class="keywordtype">unsigned</span> k,</div>
+<div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;                      <span class="keywordtype">unsigned</span> hash_num,</div>
+<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;                      <span class="keywordtype">size_t</span> pos)</div>
+<div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;  : <a class="code" href="classbtllib_1_1NtHash.html">NtHash</a>(seq.c_str(), seq.size(), k, hash_num, pos)</div>
+<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;{}</div>
+<div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160; </div>
+<div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;<span class="keyword">inline</span> SeedNtHash::SeedNtHash(<span class="keyword">const</span> <span class="keywordtype">char</span>* seq,</div>
+<div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;                              <span class="keywordtype">size_t</span> seq_len,</div>
+<div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160;                              <span class="keywordtype">unsigned</span> k,</div>
+<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;                              <span class="keyword">const</span> std::vector&lt;SpacedSeed&gt;&amp; seeds,</div>
+<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;                              <span class="keywordtype">unsigned</span> hash_num_per_seed,</div>
+<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;                              <span class="keywordtype">size_t</span> pos)</div>
+<div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;  : <a class="code" href="classbtllib_1_1NtHash.html">NtHash</a>(seq, seq_len, k, seeds.size() * hash_num_per_seed, pos)</div>
+<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;  , hash_num_per_seed(hash_num_per_seed)</div>
+<div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160;  , seeds(seeds)</div>
+<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;{}</div>
+<div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160; </div>
+<div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;<span class="keyword">inline</span> SeedNtHash::SeedNtHash(<span class="keyword">const</span> std::string&amp; seq,</div>
+<div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;                              <span class="keywordtype">unsigned</span> k,</div>
+<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;                              <span class="keyword">const</span> std::vector&lt;SpacedSeed&gt;&amp; seeds,</div>
+<div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160;                              <span class="keywordtype">unsigned</span> hash_num_per_seed,</div>
+<div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160;                              <span class="keywordtype">size_t</span> pos)</div>
+<div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160;  : NtHash(seq, k, seeds.size() * hash_num_per_seed, pos)</div>
+<div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160;  , hash_num_per_seed(hash_num_per_seed)</div>
+<div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;  , seeds(seeds)</div>
+<div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;{}</div>
+<div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160; </div>
+<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;<span class="keyword">inline</span> SeedNtHash::SeedNtHash(<span class="keyword">const</span> <span class="keywordtype">char</span>* seq,</div>
+<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;                              <span class="keywordtype">size_t</span> seq_len,</div>
+<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;                              <span class="keywordtype">unsigned</span> k,</div>
+<div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;                              <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; seeds,</div>
+<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;                              <span class="keywordtype">unsigned</span> hash_num_per_seed,</div>
+<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;                              <span class="keywordtype">size_t</span> pos)</div>
+<div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;  : NtHash(seq, seq_len, k, seeds.size() * hash_num_per_seed, pos)</div>
+<div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160;  , hash_num_per_seed(hash_num_per_seed)</div>
+<div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160;  , seeds(parse_seeds(seeds))</div>
+<div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;{}</div>
+<div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160; </div>
+<div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160;<span class="keyword">inline</span> SeedNtHash::SeedNtHash(<span class="keyword">const</span> std::string&amp; seq,</div>
+<div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;                              <span class="keywordtype">unsigned</span> k,</div>
+<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;                              <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; seeds,</div>
+<div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;                              <span class="keywordtype">unsigned</span> hash_num_per_seed,</div>
+<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;                              <span class="keywordtype">size_t</span> pos)</div>
+<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;  : NtHash(seq, k, seeds.size() * hash_num_per_seed, pos)</div>
+<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;  , hash_num_per_seed(hash_num_per_seed)</div>
+<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160;  , seeds(parse_seeds(seeds))</div>
+<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;{}</div>
+<div class="line"><a name="l01379"></a><span class="lineno"> 1379</span>&#160; </div>
+<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;<span class="keyword">static</span> std::vector&lt;SpacedSeed&gt;</div>
+<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;parse_seeds(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; seed_strings)</div>
+<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;{</div>
+<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;  std::vector&lt;SpacedSeed&gt; seed_set;</div>
+<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; seed_string : seed_strings) {</div>
+<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160;    SpacedSeed seed;</div>
+<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;    <span class="keywordtype">size_t</span> pos = 0;</div>
+<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; c : seed_string) {</div>
+<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;      <span class="keywordflow">if</span> (c != <span class="charliteral">&#39;1&#39;</span>) {</div>
+<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;        seed.push_back(pos);</div>
+<div class="line"><a name="l01390"></a><span class="lineno"> 1390</span>&#160;      }</div>
+<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;      ++pos;</div>
+<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;    }</div>
+<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;    seed_set.push_back(seed);</div>
+<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;  }</div>
+<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;  <span class="keywordflow">return</span> seed_set;</div>
+<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;}</div>
+<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160; </div>
+<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;<span class="comment">// NOLINTNEXTLINE</span></div>
+<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160;<span class="preprocessor">#define NT_HASH_INIT(CLASS, NTHASH_CALL)                                       \</span></div>
+<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160;<span class="preprocessor">  inline bool CLASS::init()                                                    \</span></div>
+<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;<span class="preprocessor">  {                                                                            \</span></div>
+<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;<span class="preprocessor">    if (k &gt; seq_len) {                                                         \</span></div>
+<div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160;<span class="preprocessor">      pos = std::numeric_limits&lt;std::size_t&gt;::max();                           \</span></div>
+<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;<span class="preprocessor">      return false;                                                            \</span></div>
+<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
+<div class="line"><a name="l01406"></a><span class="lineno"> 1406</span>&#160;<span class="preprocessor">    unsigned posN = 0;                                                         \</span></div>
+<div class="line"><a name="l01407"></a><span class="lineno"> 1407</span>&#160;<span class="preprocessor">    while ((pos &lt; seq_len - k + 1) &amp;&amp; !(NTHASH_CALL)) {                        \</span></div>
+<div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;<span class="preprocessor">      pos += posN + 1;                                                         \</span></div>
+<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
+<div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;<span class="preprocessor">    if (pos &gt; seq_len - k) {                                                   \</span></div>
+<div class="line"><a name="l01411"></a><span class="lineno"> 1411</span>&#160;<span class="preprocessor">      pos = std::numeric_limits&lt;std::size_t&gt;::max();                           \</span></div>
+<div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;<span class="preprocessor">      return false;                                                            \</span></div>
+<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
+<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;<span class="preprocessor">    ++pos;                                                                     \</span></div>
+<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;<span class="preprocessor">    return true;                                                               \</span></div>
+<div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;<span class="preprocessor">  }</span></div>
+<div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160; </div>
+<div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;<span class="comment">// NOLINTNEXTLINE</span></div>
+<div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160;<span class="preprocessor">#define NT_HASH_ROLL(CLASS, NTHASH_CALL)                                       \</span></div>
+<div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160;<span class="preprocessor">  inline bool CLASS::roll()                                                    \</span></div>
+<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160;<span class="preprocessor">  {                                                                            \</span></div>
+<div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160;<span class="preprocessor">    if (pos == 0) {                                                            \</span></div>
+<div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160;<span class="preprocessor">      return init();                                                           \</span></div>
+<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
+<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160;<span class="preprocessor">    if (pos &gt; seq_len - k) {                                                   \</span></div>
+<div class="line"><a name="l01426"></a><span class="lineno"> 1426</span>&#160;<span class="preprocessor">      return false;                                                            \</span></div>
+<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
+<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;<span class="preprocessor">    if (SEED_TAB[(unsigned char)(seq[pos + k - 1])] == SEED_N) {               \</span></div>
+<div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;<span class="preprocessor">      pos += k;                                                                \</span></div>
+<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;<span class="preprocessor">      return init();                                                           \</span></div>
+<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
+<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;<span class="preprocessor">    (NTHASH_CALL);                                                             \</span></div>
+<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;<span class="preprocessor">    ++pos;                                                                     \</span></div>
+<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;<span class="preprocessor">    return true;                                                               \</span></div>
+<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;<span class="preprocessor">  }</span></div>
 <div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160; </div>
-<div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160;NT_HASH_INIT(SeedNtHash,</div>
-<div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160;             ntmsm64(seq + pos,</div>
-<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;                     seeds,</div>
-<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;                     k,</div>
-<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;                     seeds.size(),</div>
-<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;                     hash_num_per_seed,</div>
-<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;                     forward_hash,</div>
-<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;                     reverse_hash,</div>
-<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;                     posN,</div>
-<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;                     hashes_vector.data()))</div>
-<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;NT_HASH_ROLL(SeedNtHash,</div>
-<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;             ntmsm64(seq + pos,</div>
-<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;                     seeds,</div>
-<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;                     seq[pos - 1],</div>
-<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;                     seq[pos - 1 + k],</div>
-<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;                     k,</div>
-<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;                     seeds.size(),</div>
-<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;                     hash_num_per_seed,</div>
-<div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160;                     forward_hash,</div>
-<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;                     reverse_hash,</div>
-<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;                     hashes_vector.data()))</div>
-<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160; </div>
-<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;<span class="preprocessor">#undef NT_HASH_INIT</span></div>
-<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;<span class="preprocessor">#undef NT_HASH_ROLL</span></div>
-<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160; </div>
-<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> uint64_t*</div>
-<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;NtHash::hashes()<span class="keyword"> const</span></div>
-<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;  <span class="keywordflow">return</span> hashes_vector.data();</div>
-<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;}</div>
-<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160; </div>
-<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;} <span class="comment">// namespace btllib</span></div>
-<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160; </div>
-<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160;NT_HASH_INIT(NtHash,</div>
+<div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160;             ntmc64(seq + pos,</div>
+<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;                    k,</div>
+<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;                    hash_num,</div>
+<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;                    forward_hash,</div>
+<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;                    reverse_hash,</div>
+<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;                    posN,</div>
+<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;                    hashes_vector.data()))</div>
+<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;NT_HASH_ROLL(NtHash,</div>
+<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;             ntmc64(seq[pos - 1],</div>
+<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;                    seq[pos - 1 + k],</div>
+<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;                    k,</div>
+<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;                    hash_num,</div>
+<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;                    forward_hash,</div>
+<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;                    reverse_hash,</div>
+<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;                    hashes_vector.data()))</div>
+<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160; </div>
+<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;NT_HASH_INIT(SeedNtHash,</div>
+<div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160;             ntmsm64(seq + pos,</div>
+<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;                     seeds,</div>
+<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;                     k,</div>
+<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;                     seeds.size(),</div>
+<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;                     hash_num_per_seed,</div>
+<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;                     forward_hash,</div>
+<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160;                     reverse_hash,</div>
+<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;                     posN,</div>
+<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;                     hashes_vector.data()))</div>
+<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;NT_HASH_ROLL(SeedNtHash,</div>
+<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;             ntmsm64(seq + pos,</div>
+<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;                     seeds,</div>
+<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;                     seq[pos - 1],</div>
+<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;                     seq[pos - 1 + k],</div>
+<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;                     k,</div>
+<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;                     seeds.size(),</div>
+<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;                     hash_num_per_seed,</div>
+<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;                     forward_hash,</div>
+<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;                     reverse_hash,</div>
+<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;                     hashes_vector.data()))</div>
+<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160; </div>
+<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;<span class="preprocessor">#undef NT_HASH_INIT</span></div>
+<div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;<span class="preprocessor">#undef NT_HASH_ROLL</span></div>
+<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160; </div>
+<div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> uint64_t*</div>
+<div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160;NtHash::hashes()<span class="keyword"> const</span></div>
+<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160;  <span class="keywordflow">return</span> hashes_vector.data();</div>
+<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160;}</div>
+<div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160; </div>
+<div class="line"><a name="l01485"></a><span class="lineno"> 1485</span>&#160;} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a name="l01486"></a><span class="lineno"> 1486</span>&#160; </div>
+<div class="line"><a name="l01487"></a><span class="lineno"> 1487</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassbtllib_1_1NtHash_html_a278021e6ec59943587eaee438b5cb78b"><div class="ttname"><a href="classbtllib_1_1NtHash.html#a278021e6ec59943587eaee438b5cb78b">btllib::NtHash::init</a></div><div class="ttdeci">bool init()</div></div>
-<div class="ttc" id="aclassbtllib_1_1NtHash_html_a91f7290f4a2e540099ee7ee0f2a0716d"><div class="ttname"><a href="classbtllib_1_1NtHash.html#a91f7290f4a2e540099ee7ee0f2a0716d">btllib::NtHash::NtHash</a></div><div class="ttdeci">NtHash(const char *seq, size_t seq_len, unsigned k, unsigned hash_num)</div><div class="ttdef"><b>Definition:</b> nthash.hpp:1309</div></div>
-<div class="ttc" id="aclassbtllib_1_1SeedNtHash_html"><div class="ttname"><a href="classbtllib_1_1SeedNtHash.html">btllib::SeedNtHash</a></div><div class="ttdef"><b>Definition:</b> nthash.hpp:1276</div></div>
+<div class="ttc" id="aclassbtllib_1_1NtHash_html_af0ccb96bbce8f6edeb5943c2c5df1281"><div class="ttname"><a href="classbtllib_1_1NtHash.html#af0ccb96bbce8f6edeb5943c2c5df1281">btllib::NtHash::NtHash</a></div><div class="ttdeci">NtHash(const char *seq, size_t seq_len, unsigned k, unsigned hash_num, size_t pos=0)</div><div class="ttdef"><b>Definition:</b> nthash.hpp:1317</div></div>
+<div class="ttc" id="aclassbtllib_1_1SeedNtHash_html"><div class="ttname"><a href="classbtllib_1_1SeedNtHash.html">btllib::SeedNtHash</a></div><div class="ttdef"><b>Definition:</b> nthash.hpp:1280</div></div>
 <div class="ttc" id="aclassbtllib_1_1NtHash_html_a244c0c11655b6e1c52dd7c4528b8ed05"><div class="ttname"><a href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05">btllib::NtHash::roll</a></div><div class="ttdeci">bool roll()</div></div>
 <div class="ttc" id="aclassbtllib_1_1NtHash_html"><div class="ttname"><a href="classbtllib_1_1NtHash.html">btllib::NtHash</a></div><div class="ttdef"><b>Definition:</b> nthash.hpp:1229</div></div>
 <!-- start footer part -->

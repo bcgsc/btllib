@@ -728,13 +728,13 @@ SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_ASCII_1SIZE_1get(JNIEnv *jenv, jcl
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_seed_1tab_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SEED_1TAB_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   uint64_t *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (uint64_t *)(uint64_t *)btllib::seed_tab;
+  result = (uint64_t *)(uint64_t *)btllib::SEED_TAB;
   *(uint64_t **)&jresult = result; 
   return jresult;
 }
@@ -2154,25 +2154,28 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_parse_1seeds(JNIEnv *jenv, jclass
 
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1NtHash_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4) {
   jlong jresult = 0 ;
-  char *arg1 = (char *) 0 ;
-  size_t arg2 ;
+  std::string *arg1 = 0 ;
+  unsigned int arg2 ;
   unsigned int arg3 ;
-  unsigned int arg4 ;
+  size_t arg4 ;
   btllib::NtHash *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = 0;
-  if (jarg1) {
-    arg1 = (char *)jenv->GetStringUTFChars(jarg1, 0);
-    if (!arg1) return 0;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return 0;
   }
-  arg2 = (size_t)jarg2; 
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  arg2 = (unsigned int)jarg2; 
   arg3 = (unsigned int)jarg3; 
-  arg4 = (unsigned int)jarg4; 
-  result = (btllib::NtHash *)new btllib::NtHash((char const *)arg1,arg2,arg3,arg4);
+  arg4 = (size_t)jarg4; 
+  result = (btllib::NtHash *)new btllib::NtHash((std::string const &)*arg1,arg2,arg3,arg4);
   *(btllib::NtHash **)&jresult = result; 
-  if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
   return jresult;
 }
 
@@ -2288,7 +2291,40 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1NtHash(JNIEnv *jenv, jclas
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5, jlong jarg6) {
+  jlong jresult = 0 ;
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  unsigned int arg3 ;
+  std::vector< btllib::SpacedSeed > *arg4 = 0 ;
+  unsigned int arg5 ;
+  size_t arg6 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = 0;
+  if (jarg1) {
+    arg1 = (char *)jenv->GetStringUTFChars(jarg1, 0);
+    if (!arg1) return 0;
+  }
+  arg2 = (size_t)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = *(std::vector< btllib::SpacedSeed > **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< btllib::SpacedSeed > const & reference is null");
+    return 0;
+  } 
+  arg5 = (unsigned int)jarg5; 
+  arg6 = (size_t)jarg6; 
+  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((char const *)arg1,arg2,arg3,(std::vector< btllib::SpacedSeed > const &)*arg4,arg5,arg6);
+  *(btllib::SeedNtHash **)&jresult = result; 
+  if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
   jlong jresult = 0 ;
   char *arg1 = (char *) 0 ;
   size_t arg2 ;
@@ -2319,7 +2355,41 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_10(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
+  jlong jresult = 0 ;
+  std::string *arg1 = 0 ;
+  unsigned int arg2 ;
+  std::vector< btllib::SpacedSeed > *arg3 = 0 ;
+  unsigned int arg4 ;
+  size_t arg5 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = *(std::vector< btllib::SpacedSeed > **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< btllib::SpacedSeed > const & reference is null");
+    return 0;
+  } 
+  arg4 = (unsigned int)jarg4; 
+  arg5 = (size_t)jarg5; 
+  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((std::string const &)*arg1,arg2,(std::vector< btllib::SpacedSeed > const &)*arg3,arg4,arg5);
+  *(btllib::SeedNtHash **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   unsigned int arg2 ;
@@ -2351,7 +2421,40 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_11(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5, jlong jarg6) {
+  jlong jresult = 0 ;
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  unsigned int arg3 ;
+  std::vector< std::string > *arg4 = 0 ;
+  unsigned int arg5 ;
+  size_t arg6 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = 0;
+  if (jarg1) {
+    arg1 = (char *)jenv->GetStringUTFChars(jarg1, 0);
+    if (!arg1) return 0;
+  }
+  arg2 = (size_t)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = *(std::vector< std::string > **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< std::string > const & reference is null");
+    return 0;
+  } 
+  arg5 = (unsigned int)jarg5; 
+  arg6 = (size_t)jarg6; 
+  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((char const *)arg1,arg2,arg3,(std::vector< std::string > const &)*arg4,arg5,arg6);
+  *(btllib::SeedNtHash **)&jresult = result; 
+  if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_15(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
   jlong jresult = 0 ;
   char *arg1 = (char *) 0 ;
   size_t arg2 ;
@@ -2382,7 +2485,41 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_12(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_16(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
+  jlong jresult = 0 ;
+  std::string *arg1 = 0 ;
+  unsigned int arg2 ;
+  std::vector< std::string > *arg3 = 0 ;
+  unsigned int arg4 ;
+  size_t arg5 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = *(std::vector< std::string > **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< std::string > const & reference is null");
+    return 0;
+  } 
+  arg4 = (unsigned int)jarg4; 
+  arg5 = (size_t)jarg5; 
+  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((std::string const &)*arg1,arg2,(std::vector< std::string > const &)*arg3,arg4,arg5);
+  *(btllib::SeedNtHash **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_17(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   unsigned int arg2 ;

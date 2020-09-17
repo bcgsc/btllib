@@ -42,7 +42,7 @@ public class btllibJNI {
   public final static native long SEED_T_get();
   public final static native long SEED_N_get();
   public final static native int ASCII_SIZE_get();
-  public final static native long seed_tab_get();
+  public final static native long SEED_TAB_get();
   public final static native long A33R_get();
   public final static native long A31L_get();
   public final static native long C33R_get();
@@ -110,10 +110,14 @@ public class btllibJNI {
   public final static native long NtHash_get_k(long jarg1, NtHash jarg1_);
   public final static native long NtHash_get_hash_num(long jarg1, NtHash jarg1_);
   public final static native void delete_NtHash(long jarg1);
-  public final static native long new_SeedNtHash__SWIG_0(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
-  public final static native long new_SeedNtHash__SWIG_1(String jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long new_SeedNtHash__SWIG_0(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native long new_SeedNtHash__SWIG_1(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
   public final static native long new_SeedNtHash__SWIG_2(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
   public final static native long new_SeedNtHash__SWIG_3(String jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long new_SeedNtHash__SWIG_4(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
+  public final static native long new_SeedNtHash__SWIG_5(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native long new_SeedNtHash__SWIG_6(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native long new_SeedNtHash__SWIG_7(String jarg1, long jarg2, long jarg3, long jarg4);
   public final static native long SeedNtHash_get_hash_num_per_seed(long jarg1, SeedNtHash jarg1_);
   public final static native boolean SeedNtHash_roll(long jarg1, SeedNtHash jarg1_);
   public final static native void delete_SeedNtHash(long jarg1);

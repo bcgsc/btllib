@@ -43,3 +43,5 @@
 %ignore btllib::SeqReader::read_fastq_file;
 %ignore btllib::SeqReader::read_sam_file;
 %ignore btllib::SeqReader::read_gfa2_file;
+
+%ignore btllib::NtHash::NtHash(const char*, size_t, unsigned, unsigned, size_t pos = 0);

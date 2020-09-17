@@ -88,10 +88,10 @@ Inheritance diagram for btllib::NtHash:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a91f7290f4a2e540099ee7ee0f2a0716d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#a91f7290f4a2e540099ee7ee0f2a0716d">NtHash</a> (const char *seq, size_t seq_len, unsigned k, unsigned hash_num)</td></tr>
-<tr class="separator:a91f7290f4a2e540099ee7ee0f2a0716d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f6f18f33b4908903303be73336a7aa7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#a8f6f18f33b4908903303be73336a7aa7">NtHash</a> (const std::string &amp;seq, unsigned k, unsigned hash_num)</td></tr>
-<tr class="separator:a8f6f18f33b4908903303be73336a7aa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0ccb96bbce8f6edeb5943c2c5df1281"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#af0ccb96bbce8f6edeb5943c2c5df1281">NtHash</a> (const char *seq, size_t seq_len, unsigned k, unsigned hash_num, size_t pos=0)</td></tr>
+<tr class="separator:af0ccb96bbce8f6edeb5943c2c5df1281"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6553cdbd058890caa8e2028592cb709b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#a6553cdbd058890caa8e2028592cb709b">NtHash</a> (const std::string &amp;seq, unsigned k, unsigned hash_num, size_t pos=0)</td></tr>
+<tr class="separator:a6553cdbd058890caa8e2028592cb709b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a244c0c11655b6e1c52dd7c4528b8ed05"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05">roll</a> ()</td></tr>
 <tr class="separator:a244c0c11655b6e1c52dd7c4528b8ed05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef7590869c7406282bbb8b0e0f284688"><td class="memItemLeft" align="right" valign="top"><a id="aef7590869c7406282bbb8b0e0f284688"></a>
@@ -127,7 +127,7 @@ const unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>k</b></td><
 const unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>hash_num</b></td></tr>
 <tr class="separator:a8c43183a89cdde5c8f33bebb6cadf6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06df51ef38222ec4823572d37bb68276"><td class="memItemLeft" align="right" valign="top"><a id="a06df51ef38222ec4823572d37bb68276"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pos</b> = 0</td></tr>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>pos</b></td></tr>
 <tr class="separator:a06df51ef38222ec4823572d37bb68276"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32d331568ef5140bbf2db5611c12c634"><td class="memItemLeft" align="right" valign="top"><a id="a32d331568ef5140bbf2db5611c12c634"></a>
 std::vector&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>hashes_vector</b></td></tr>
@@ -143,8 +143,8 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>reverse_hash</b> 
 <div class="textblock"><p>Iterate over hash values for k-mers in a given DNA sequence.</p>
 <p>This implementation uses ntHash function to efficiently calculate hash values for successive k-mers. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a91f7290f4a2e540099ee7ee0f2a0716d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91f7290f4a2e540099ee7ee0f2a0716d">&#9670;&nbsp;</a></span>NtHash() <span class="overload">[1/2]</span></h2>
+<a id="af0ccb96bbce8f6edeb5943c2c5df1281"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0ccb96bbce8f6edeb5943c2c5df1281">&#9670;&nbsp;</a></span>NtHash() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,7 +174,13 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>reverse_hash</b> 
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>hash_num</em>&#160;</td>
+          <td class="paramname"><em>hash_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -200,8 +206,8 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>reverse_hash</b> 
 
 </div>
 </div>
-<a id="a8f6f18f33b4908903303be73336a7aa7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f6f18f33b4908903303be73336a7aa7">&#9670;&nbsp;</a></span>NtHash() <span class="overload">[2/2]</span></h2>
+<a id="a6553cdbd058890caa8e2028592cb709b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6553cdbd058890caa8e2028592cb709b">&#9670;&nbsp;</a></span>NtHash() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,7 +231,13 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>reverse_hash</b> 
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>hash_num</em>&#160;</td>
+          <td class="paramname"><em>hash_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

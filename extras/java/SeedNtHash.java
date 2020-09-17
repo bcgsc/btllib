@@ -36,20 +36,36 @@ public class SeedNtHash extends NtHash {
     super.delete();
   }
 
+  public SeedNtHash(String seq, long seq_len, long k, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t seeds, long hash_num_per_seed, long pos) {
+    this(btllibJNI.new_SeedNtHash__SWIG_0(seq, seq_len, k, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t.getCPtr(seeds), hash_num_per_seed, pos), true);
+  }
+
   public SeedNtHash(String seq, long seq_len, long k, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t seeds, long hash_num_per_seed) {
-    this(btllibJNI.new_SeedNtHash__SWIG_0(seq, seq_len, k, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t.getCPtr(seeds), hash_num_per_seed), true);
+    this(btllibJNI.new_SeedNtHash__SWIG_1(seq, seq_len, k, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t.getCPtr(seeds), hash_num_per_seed), true);
+  }
+
+  public SeedNtHash(String seq, long k, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t seeds, long hash_num_per_seed, long pos) {
+    this(btllibJNI.new_SeedNtHash__SWIG_2(seq, k, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t.getCPtr(seeds), hash_num_per_seed, pos), true);
   }
 
   public SeedNtHash(String seq, long k, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t seeds, long hash_num_per_seed) {
-    this(btllibJNI.new_SeedNtHash__SWIG_1(seq, k, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t.getCPtr(seeds), hash_num_per_seed), true);
+    this(btllibJNI.new_SeedNtHash__SWIG_3(seq, k, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t.getCPtr(seeds), hash_num_per_seed), true);
+  }
+
+  public SeedNtHash(String seq, long seq_len, long k, SWIGTYPE_p_std__vectorT_std__string_t seeds, long hash_num_per_seed, long pos) {
+    this(btllibJNI.new_SeedNtHash__SWIG_4(seq, seq_len, k, SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seeds), hash_num_per_seed, pos), true);
   }
 
   public SeedNtHash(String seq, long seq_len, long k, SWIGTYPE_p_std__vectorT_std__string_t seeds, long hash_num_per_seed) {
-    this(btllibJNI.new_SeedNtHash__SWIG_2(seq, seq_len, k, SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seeds), hash_num_per_seed), true);
+    this(btllibJNI.new_SeedNtHash__SWIG_5(seq, seq_len, k, SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seeds), hash_num_per_seed), true);
+  }
+
+  public SeedNtHash(String seq, long k, SWIGTYPE_p_std__vectorT_std__string_t seeds, long hash_num_per_seed, long pos) {
+    this(btllibJNI.new_SeedNtHash__SWIG_6(seq, k, SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seeds), hash_num_per_seed, pos), true);
   }
 
   public SeedNtHash(String seq, long k, SWIGTYPE_p_std__vectorT_std__string_t seeds, long hash_num_per_seed) {
-    this(btllibJNI.new_SeedNtHash__SWIG_3(seq, k, SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seeds), hash_num_per_seed), true);
+    this(btllibJNI.new_SeedNtHash__SWIG_7(seq, k, SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seeds), hash_num_per_seed), true);
   }
 
   public long get_hash_num_per_seed() {

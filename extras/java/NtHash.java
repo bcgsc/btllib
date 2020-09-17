@@ -36,8 +36,8 @@ public class NtHash {
     }
   }
 
-  public NtHash(String seq, long seq_len, long k, long hash_num) {
-    this(btllibJNI.new_NtHash__SWIG_0(seq, seq_len, k, hash_num), true);
+  public NtHash(String seq, long k, long hash_num, long pos) {
+    this(btllibJNI.new_NtHash__SWIG_0(seq, k, hash_num, pos), true);
   }
 
   public NtHash(String seq, long k, long hash_num) {

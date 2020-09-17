@@ -45,8 +45,8 @@ public class btllib {
     return btllibJNI.ASCII_SIZE_get();
   }
 
-  public static SWIGTYPE_p_uint64_t getSeed_tab() {
-    long cPtr = btllibJNI.seed_tab_get();
+  public static SWIGTYPE_p_uint64_t getSEED_TAB() {
+    long cPtr = btllibJNI.SEED_TAB_get();
     return (cPtr == 0) ? null : new SWIGTYPE_p_uint64_t(cPtr, false);
   }
 
