@@ -7,7 +7,7 @@ Platforms
 
 Documentation
 ---
-Open `docs/index.html` with a browser and look up any classes/functions you need.
+[Docs page](https://bcgsc.github.io/btllib/)
 
 C++
 ---
