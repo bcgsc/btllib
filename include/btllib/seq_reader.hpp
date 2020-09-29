@@ -2,7 +2,7 @@
 #define BTLLIB_SEQ_READER_HPP
 
 #include "data_stream.hpp"
-#include "index_queue.hpp"
+#include "order_queue.hpp"
 #include "seq.hpp"
 #include "status.hpp"
 
@@ -209,21 +209,21 @@ private:
   std::condition_variable format_cv;
   std::atomic<bool> reader_end;
   RecordCString* reader_record = nullptr;
-  IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
+  OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     reader_queue;
-  IndexQueueSPMC<RecordCString2, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
+  OrderQueueSPMC<RecordCString2, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     seq_copier_queue;
-  IndexQueueSPMC<RecordCString3, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
+  OrderQueueSPMC<RecordCString3, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     qual_copier_queue;
-  IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
+  OrderQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
     postprocessor_queue;
 
   // I am crying at this code, but until C++17 compliant compilers are
   // widespread, this cannot be a static inline variable
-  static IndexQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block*
+  static OrderQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block*
   ready_records_array()
   {
-    thread_local static IndexQueueSPMC<Record,
+    thread_local static OrderQueueSPMC<Record,
                                        RECORD_QUEUE_SIZE,
                                        RECORD_BLOCK_SIZE>::Block
       var[MAX_SIMULTANEOUS_SEQREADERS];
@@ -301,21 +301,21 @@ private:
   template<typename F>
   void read_from_buffer(
     F f,
-    IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
+    OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
       records,
     size_t& counter);
 
   template<typename F>
   void read_transition(
     F f,
-    IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
+    OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
       records,
     size_t& counter);
 
   template<typename F>
   void read_from_file(
     F f,
-    IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
+    OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
       records,
     size_t& counter);
 
@@ -1087,7 +1087,7 @@ template<typename F>
 inline void
 SeqReader::read_from_buffer(
   F f,
-  IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
+  OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
     records,
   size_t& counter)
 {
@@ -1099,7 +1099,7 @@ SeqReader::read_from_buffer(
     records.count++;
     if (records.count == RECORD_BLOCK_SIZE) {
       records.current = 0;
-      records.index = counter++;
+      records.num = counter++;
       reader_queue.write(records);
       records.current = 0;
       records.count = 0;
@@ -1111,7 +1111,7 @@ template<typename F>
 inline void
 SeqReader::read_transition(
   F f,
-  IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
+  OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
     records,
   size_t& counter)
 {
@@ -1125,7 +1125,7 @@ SeqReader::read_transition(
         records.count++;
         if (records.count == RECORD_BLOCK_SIZE) {
           records.current = 0;
-          records.index = counter++;
+          records.num = counter++;
           reader_queue.write(records);
           records.current = 0;
           records.count = 0;
@@ -1139,7 +1139,7 @@ template<typename F>
 inline void
 SeqReader::read_from_file(
   F f,
-  IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
+  OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block&
     records,
   size_t& counter)
 {
@@ -1152,7 +1152,7 @@ SeqReader::read_from_file(
     records.count++;
     if (records.count == RECORD_BLOCK_SIZE) {
       records.current = 0;
-      records.index = counter++;
+      records.num = counter++;
       reader_queue.write(records);
       records.current = 0;
       records.count = 0;
@@ -1171,7 +1171,7 @@ SeqReader::start_reader()
     }
 
     size_t counter = 0;
-    IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
+    OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
       records;
     switch (format) {
       case FASTA: {
@@ -1205,13 +1205,13 @@ SeqReader::start_reader()
 
     reader_end = true;
     records.current = 0;
-    records.index = counter++;
+    records.num = counter++;
     size_t last_count = records.count;
     reader_queue.write(records);
     if (last_count > 0) {
-      IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
+      OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
         dummy;
-      dummy.index = counter++;
+      dummy.num = counter++;
       dummy.current = 0;
       dummy.count = 0;
       reader_queue.write(dummy);
@@ -1223,7 +1223,7 @@ inline void
 SeqReader::start_seq_copier()
 {
   seq_copier_thread = new std::thread([this]() {
-    IndexQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
+    OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
       records_in;
     decltype(seq_copier_queue)::Block records_out;
     for (;;) {
@@ -1240,7 +1240,7 @@ SeqReader::start_seq_copier()
       }
       records_out.count = records_in.count;
       records_out.current = records_in.current;
-      records_out.index = records_in.index;
+      records_out.num = records_in.num;
       if (records_out.count == 0) {
         seq_copier_queue.write(records_out);
         break;
@@ -1270,7 +1270,7 @@ SeqReader::start_qual_copier()
       }
       records_out.count = records_in.count;
       records_out.current = records_in.current;
-      records_out.index = records_in.index;
+      records_out.num = records_in.num;
       if (records_out.count == 0) {
         qual_copier_queue.write(records_out);
         break;
@@ -1346,11 +1346,11 @@ SeqReader::start_postprocessor()
             }
           }
         }
-        records_out.data[i].num = records_in.index * RECORD_BLOCK_SIZE + i;
+        records_out.data[i].num = records_in.num * RECORD_BLOCK_SIZE + i;
       }
       records_out.count = records_in.count;
       records_out.current = records_in.current;
-      records_out.index = records_in.index;
+      records_out.num = records_in.num;
       if (records_out.count == 0) {
         postprocessor_queue.write(records_out);
         break;

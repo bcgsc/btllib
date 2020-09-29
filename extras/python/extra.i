@@ -7,7 +7,7 @@
 %ignore btllib::DataSource::operator FILE*() const;
 %ignore btllib::DataSink::operator FILE*() const;
 
-%ignore btllib::IndexQueue::Block::operator=;
+%ignore btllib::OrderQueue::Block::operator=;
 %ignore btllib::SeqReader::CString::operator=;
 %ignore btllib::SeqReader::RecordCString::operator=;
 %ignore btllib::SeqReader::RecordCString2::operator=;

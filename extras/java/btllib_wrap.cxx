@@ -232,8 +232,8 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_JavaThrowException(jenv, SWIG_JavaIllegalArgumentException, msg); return nullreturn; } else
 
 
-#include "btllib/index_queue.hpp"
 #include "btllib/seq_reader.hpp"
+#include "btllib/order_queue.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/data_stream.hpp"
 #include "btllib/graph.hpp"

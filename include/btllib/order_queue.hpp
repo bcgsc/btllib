@@ -1,5 +1,5 @@
-#ifndef BTLLIB_INDEX_QUEUE_HPP
-#define BTLLIB_INDEX_QUEUE_HPP
+#ifndef BTLLIB_ORDER_QUEUE_HPP
+#define BTLLIB_ORDER_QUEUE_HPP
 
 #include <algorithm>
 #include <atomic>
@@ -12,7 +12,7 @@
 namespace btllib {
 
 template<typename T, unsigned QUEUE_SIZE, unsigned BLOCK_SIZE>
-class IndexQueue
+class OrderQueue
 {
 
 public:
@@ -28,7 +28,7 @@ public:
     Block(Block&& block) noexcept
       : current(block.current)
       , count(block.count)
-      , index(block.index)
+      , num(block.num)
     {
       std::swap(data, block.data);
     }
@@ -40,7 +40,7 @@ public:
       std::swap(data, block.data);
       current = block.current;
       count = block.count;
-      index = block.index;
+      num = block.num;
       return *this;
     }
 
@@ -49,7 +49,7 @@ public:
     T* data = nullptr;
     size_t current = 0;
     size_t count = 0;
-    size_t index = 0;
+    size_t num = 0;
   };
 
   // Surrounds pieces of data in the buffer with a busy mutex
@@ -63,7 +63,7 @@ public:
       , last_tenant(slot.last_tenant)
     {}
 
-    typename IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Block block;
+    typename OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Block block;
     std::mutex busy;
     bool occupied = false;
     std::condition_variable occupancy_changed;
@@ -90,17 +90,17 @@ protected:
 };
 
 template<typename T, unsigned QUEUE_SIZE, unsigned BLOCK_SIZE>
-class IndexQueueSPMC : public IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>
+class OrderQueueSPMC : public OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>
 {
 
 public:
-  using Block = typename IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Block;
-  using Slot = typename IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Slot;
+  using Block = typename OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Block;
+  using Slot = typename OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Slot;
 
   void write(Block& block)
   {
-    auto index = block.index;
-    auto& target = this->slots[index % QUEUE_SIZE];
+    auto num = block.num;
+    auto& target = this->slots[num % QUEUE_SIZE];
     std::unique_lock<std::mutex> busy_lock(target.busy);
     target.occupancy_changed.wait(
       busy_lock, [&] { return !target.occupied || this->closed; });
@@ -139,17 +139,17 @@ private:
 };
 
 template<typename T, unsigned QUEUE_SIZE, unsigned BLOCK_SIZE>
-class IndexQueueSPSC : public IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>
+class OrderQueueSPSC : public OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>
 {
 
 public:
-  using Block = typename IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Block;
-  using Slot = typename IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Slot;
+  using Block = typename OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Block;
+  using Slot = typename OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Slot;
 
   void write(Block& block)
   {
-    auto index = block.index;
-    auto& target = this->slots[index % QUEUE_SIZE];
+    auto num = block.num;
+    auto& target = this->slots[num % QUEUE_SIZE];
     std::unique_lock<std::mutex> busy_lock(target.busy);
     target.occupancy_changed.wait(
       busy_lock, [&] { return !target.occupied || this->closed; });
@@ -181,20 +181,20 @@ public:
 };
 
 template<typename T, unsigned QUEUE_SIZE, unsigned BLOCK_SIZE>
-class IndexQueueMPSC : public IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>
+class OrderQueueMPSC : public OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>
 {
 
 public:
-  using Block = typename IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Block;
-  using Slot = typename IndexQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Slot;
+  using Block = typename OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Block;
+  using Slot = typename OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Slot;
 
   void write(Block& block)
   {
-    auto index = block.index;
-    auto& target = this->slots[index % QUEUE_SIZE];
+    auto num = block.num;
+    auto& target = this->slots[num % QUEUE_SIZE];
     std::unique_lock<std::mutex> busy_lock(target.busy);
     target.occupancy_changed.wait(busy_lock, [&] {
-      return (!target.occupied && (index - target.last_tenant <= QUEUE_SIZE)) ||
+      return (!target.occupied && (num - target.last_tenant <= QUEUE_SIZE)) ||
              this->closed;
     });
     if (this->closed) {
@@ -202,7 +202,7 @@ public:
     }
     target.block = std::move(block);
     target.occupied = true;
-    target.last_tenant = index;
+    target.last_tenant = num;
     target.occupancy_changed.notify_all();
     ++(this->element_count);
   }

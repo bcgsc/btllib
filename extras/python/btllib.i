@@ -3,8 +3,8 @@
 %{
 #define SWIG_FILE_WITH_INIT
 
-#include "btllib/index_queue.hpp"
 #include "btllib/seq_reader.hpp"
+#include "btllib/order_queue.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/data_stream.hpp"
 #include "btllib/graph.hpp"
@@ -28,8 +28,8 @@
 
 %include "extra.i"
 
-%include "btllib/index_queue.hpp"
 %include "btllib/seq_reader.hpp"
+%include "btllib/order_queue.hpp"
 %include "btllib/nthash.hpp"
 %include "btllib/data_stream.hpp"
 %include "btllib/graph.hpp"
