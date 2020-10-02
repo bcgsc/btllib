@@ -230,13 +230,6 @@ private:
     return var;
   }
 
-  // Also cry worthy
-  static Record** ready_record_array()
-  {
-    thread_local static Record* var[MAX_SIMULTANEOUS_SEQREADERS];
-    return var;
-  }
-
   // Bad code bad
   static std::stack<unsigned>& recycled_ids() noexcept
   {
@@ -1364,7 +1357,6 @@ inline SeqReader::Record
 SeqReader::read()
 {
   auto& ready_records = ready_records_array()[id];
-  auto& ready_record = ready_record_array()[id];
   if (ready_records.count <= ready_records.current) {
     postprocessor_queue.read(ready_records);
     if (ready_records.count <= ready_records.current) {
@@ -1372,8 +1364,7 @@ SeqReader::read()
       return Record();
     }
   }
-  ready_record = &(ready_records.data[ready_records.current++]);
-  return std::move(*ready_record);
+  return std::move(ready_records.data[ready_records.current++]);
 }
 
 } // namespace btllib
