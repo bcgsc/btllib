@@ -1398,7 +1398,7 @@ parse_seeds(const std::vector<std::string>& seed_strings)
 }
 
 // NOLINTNEXTLINE
-#define NT_HASH_INIT(CLASS, NTHASH_CALL)                                       \
+#define NTHASH_INIT(CLASS, NTHASH_CALL)                                        \
   inline bool CLASS::init()                                                    \
   {                                                                            \
     if (k > seq_len) {                                                         \
@@ -1418,7 +1418,7 @@ parse_seeds(const std::vector<std::string>& seed_strings)
   }
 
 // NOLINTNEXTLINE
-#define NT_HASH_ROLL(CLASS, NTHASH_CALL)                                       \
+#define NTHASH_ROLL(CLASS, NTHASH_CALL)                                        \
   inline bool CLASS::roll()                                                    \
   {                                                                            \
     if (!initialized) {                                                        \
@@ -1436,47 +1436,47 @@ parse_seeds(const std::vector<std::string>& seed_strings)
     return true;                                                               \
   }
 
-NT_HASH_INIT(NtHash,
-             ntmc64(seq + pos,
+NTHASH_INIT(NtHash,
+            ntmc64(seq + pos,
+                   k,
+                   hash_num,
+                   forward_hash,
+                   reverse_hash,
+                   posN,
+                   hashes_vector.data()))
+NTHASH_ROLL(NtHash,
+            ntmc64(seq[pos - 1],
+                   seq[pos - 1 + k],
+                   k,
+                   hash_num,
+                   forward_hash,
+                   reverse_hash,
+                   hashes_vector.data()))
+
+NTHASH_INIT(SeedNtHash,
+            ntmsm64(seq + pos,
+                    seeds,
                     k,
-                    hash_num,
+                    seeds.size(),
+                    hash_num_per_seed,
                     forward_hash,
                     reverse_hash,
                     posN,
                     hashes_vector.data()))
-NT_HASH_ROLL(NtHash,
-             ntmc64(seq[pos - 1],
+NTHASH_ROLL(SeedNtHash,
+            ntmsm64(seq + pos,
+                    seeds,
+                    seq[pos - 1],
                     seq[pos - 1 + k],
                     k,
-                    hash_num,
+                    seeds.size(),
+                    hash_num_per_seed,
                     forward_hash,
                     reverse_hash,
                     hashes_vector.data()))
 
-NT_HASH_INIT(SeedNtHash,
-             ntmsm64(seq + pos,
-                     seeds,
-                     k,
-                     seeds.size(),
-                     hash_num_per_seed,
-                     forward_hash,
-                     reverse_hash,
-                     posN,
-                     hashes_vector.data()))
-NT_HASH_ROLL(SeedNtHash,
-             ntmsm64(seq + pos,
-                     seeds,
-                     seq[pos - 1],
-                     seq[pos - 1 + k],
-                     k,
-                     seeds.size(),
-                     hash_num_per_seed,
-                     forward_hash,
-                     reverse_hash,
-                     hashes_vector.data()))
-
-#undef NT_HASH_INIT
-#undef NT_HASH_ROLL
+#undef NTHASH_INIT
+#undef NTHASH_ROLL
 
 inline const uint64_t*
 NtHash::hashes() const

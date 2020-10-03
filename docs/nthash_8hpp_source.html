@@ -1443,7 +1443,7 @@ $(function() {
 <div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;}</div>
 <div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160; </div>
 <div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160;<span class="comment">// NOLINTNEXTLINE</span></div>
-<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;<span class="preprocessor">#define NT_HASH_INIT(CLASS, NTHASH_CALL)                                       \</span></div>
+<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;<span class="preprocessor">#define NTHASH_INIT(CLASS, NTHASH_CALL)                                        \</span></div>
 <div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;<span class="preprocessor">  inline bool CLASS::init()                                                    \</span></div>
 <div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160;<span class="preprocessor">  {                                                                            \</span></div>
 <div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;<span class="preprocessor">    if (k &gt; seq_len) {                                                         \</span></div>
@@ -1463,7 +1463,7 @@ $(function() {
 <div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;<span class="preprocessor">  }</span></div>
 <div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160; </div>
 <div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160;<span class="comment">// NOLINTNEXTLINE</span></div>
-<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160;<span class="preprocessor">#define NT_HASH_ROLL(CLASS, NTHASH_CALL)                                       \</span></div>
+<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160;<span class="preprocessor">#define NTHASH_ROLL(CLASS, NTHASH_CALL)                                        \</span></div>
 <div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160;<span class="preprocessor">  inline bool CLASS::roll()                                                    \</span></div>
 <div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160;<span class="preprocessor">  {                                                                            \</span></div>
 <div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;<span class="preprocessor">    if (!initialized) {                                                        \</span></div>
@@ -1481,47 +1481,47 @@ $(function() {
 <div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160;<span class="preprocessor">    return true;                                                               \</span></div>
 <div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160;<span class="preprocessor">  }</span></div>
 <div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160; </div>
-<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;NT_HASH_INIT(NtHash,</div>
-<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;             ntmc64(seq + pos,</div>
-<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;                    k,</div>
-<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;                    hash_num,</div>
-<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;                    forward_hash,</div>
-<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;                    reverse_hash,</div>
-<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;                    posN,</div>
-<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;                    hashes_vector.data()))</div>
-<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;NT_HASH_ROLL(NtHash,</div>
-<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;             ntmc64(seq[pos - 1],</div>
-<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;                    seq[pos - 1 + k],</div>
-<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;                    k,</div>
-<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;                    hash_num,</div>
-<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;                    forward_hash,</div>
-<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;                    reverse_hash,</div>
-<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;                    hashes_vector.data()))</div>
+<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;NTHASH_INIT(NtHash,</div>
+<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;            ntmc64(seq + pos,</div>
+<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;                   k,</div>
+<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;                   hash_num,</div>
+<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;                   forward_hash,</div>
+<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;                   reverse_hash,</div>
+<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;                   posN,</div>
+<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;                   hashes_vector.data()))</div>
+<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;NTHASH_ROLL(NtHash,</div>
+<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;            ntmc64(seq[pos - 1],</div>
+<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;                   seq[pos - 1 + k],</div>
+<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;                   k,</div>
+<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;                   hash_num,</div>
+<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;                   forward_hash,</div>
+<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;                   reverse_hash,</div>
+<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;                   hashes_vector.data()))</div>
 <div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160; </div>
-<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;NT_HASH_INIT(SeedNtHash,</div>
-<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;             ntmsm64(seq + pos,</div>
-<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;                     seeds,</div>
-<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;                     k,</div>
-<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;                     seeds.size(),</div>
-<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160;                     hash_num_per_seed,</div>
-<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;                     forward_hash,</div>
-<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;                     reverse_hash,</div>
-<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;                     posN,</div>
-<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;                     hashes_vector.data()))</div>
-<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;NT_HASH_ROLL(SeedNtHash,</div>
-<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;             ntmsm64(seq + pos,</div>
-<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;                     seeds,</div>
-<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;                     seq[pos - 1],</div>
-<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;                     seq[pos - 1 + k],</div>
-<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;                     k,</div>
-<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;                     seeds.size(),</div>
-<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;                     hash_num_per_seed,</div>
-<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;                     forward_hash,</div>
-<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;                     reverse_hash,</div>
-<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;                     hashes_vector.data()))</div>
+<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;NTHASH_INIT(SeedNtHash,</div>
+<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;            ntmsm64(seq + pos,</div>
+<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;                    seeds,</div>
+<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;                    k,</div>
+<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;                    seeds.size(),</div>
+<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160;                    hash_num_per_seed,</div>
+<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;                    forward_hash,</div>
+<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;                    reverse_hash,</div>
+<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;                    posN,</div>
+<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;                    hashes_vector.data()))</div>
+<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;NTHASH_ROLL(SeedNtHash,</div>
+<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;            ntmsm64(seq + pos,</div>
+<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;                    seeds,</div>
+<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;                    seq[pos - 1],</div>
+<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;                    seq[pos - 1 + k],</div>
+<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;                    k,</div>
+<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;                    seeds.size(),</div>
+<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;                    hash_num_per_seed,</div>
+<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;                    forward_hash,</div>
+<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;                    reverse_hash,</div>
+<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;                    hashes_vector.data()))</div>
 <div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160; </div>
-<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;<span class="preprocessor">#undef NT_HASH_INIT</span></div>
-<div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160;<span class="preprocessor">#undef NT_HASH_ROLL</span></div>
+<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;<span class="preprocessor">#undef NTHASH_INIT</span></div>
+<div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160;<span class="preprocessor">#undef NTHASH_ROLL</span></div>
 <div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160; </div>
 <div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> uint64_t*</div>
 <div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160;NtHash::hashes()<span class="keyword"> const</span></div>
