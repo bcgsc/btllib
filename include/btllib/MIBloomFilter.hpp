@@ -58,9 +58,7 @@ class MIBloomFilter
 			for (unsigned j = 0; j < ss.size(); ++j) 
 			{
 				if (ss.at(j) == '0') 
-				{
-					seeds[i].push_back(j);
-				}
+				{seeds[i].push_back(j);}
 			}
 		}
 		return seeds;
@@ -160,20 +158,26 @@ class MIBloomFilter
 	MIBloomFilter<T>(const string& filter_file_path)
 	{
 #pragma omp parallel for
-		for (unsigned i = 0; i < 2; ++i) {
-			if (i == 0) {
+		for (unsigned i = 0; i < 2; ++i) 
+		{
+			if (i == 0) 
+			{
 				FILE* file = fopen(filter_file_path.c_str(), "rb");
-				if (file == NULL) {
+				if (file == NULL) 
+				{
 #pragma omp critical(stderr)
 					cerr << "file \"" << filter_file_path << "\" could not be read." << endl;
 					exit(1);
 				}
 
 				file_header header;
-				if (fread(&header, sizeof(struct file_header), 1, file) == 1) {
+				if (fread(&header, sizeof(struct file_header), 1, file) == 1) 
+				{
 #pragma omp critical(stderr)
 					cerr << "Loading header..." << endl;
-				} else {
+				} 
+				else 
+				{
 #pragma omp critical(stderr)
 					cerr << "Failed to Load header" << endl;
 					exit(1);
@@ -193,15 +197,20 @@ class MIBloomFilter
 				m_d_size = header.size;
 				m_data = new T[m_d_size]();
 
-				if (header.hlen > sizeof(struct file_header)) {
+				if (header.hlen > sizeof(struct file_header)) 
+				{
 					// load seeds
-					for (unsigned i = 0; i < header.nhash; ++i) {
+					for (unsigned i = 0; i < header.nhash; ++i) 
+					{
 						char temp[header.kmer];
 
-						if (fread(temp, header.kmer, 1, file) != 1) {
+						if (fread(temp, header.kmer, 1, file) != 1) 
+						{
 							cerr << "Failed to load spaced seed string" << endl;
 							exit(1);
-						} else {
+						} 
+						else 
+						{
 							cerr << "Spaced Seed " << i << ": " << string(temp, header.kmer)
 							     << endl;
 						}
@@ -212,13 +221,15 @@ class MIBloomFilter
 					assert(m_sseeds[0].size() == m_kmer_size);
 					for (vector<string>::const_iterator itr = m_sseeds.begin();
 					     itr != m_sseeds.end();
-					     ++itr) {
+					     ++itr) 
+					{
 						// check if spaced seeds are all the same length
 						assert(m_kmer_size == itr->size());
 					}
 				}
 
-				if (header.hlen != (sizeof(file_header) + m_kmer_size * m_sseeds.size())) {
+				if (header.hlen != (sizeof(file_header) + m_kmer_size * m_sseeds.size())) 
+				{
 					cerr << "Multi Index Bloom Filter header length: " << header.hlen
 					     << " does not match expected length: "
 					     << (sizeof(file_header) + m_kmer_size * m_sseeds.size())
@@ -226,12 +237,14 @@ class MIBloomFilter
 					exit(1);
 				}
 
-				if (strcmp(magic, "MIBLOOMF")) {
+				if (strcmp(magic, "MIBLOOMF")) 
+				{
 					cerr << "Bloom Filter type does not match " << endl;
 					exit(1);
 				}
 
-				if (header.version != MIBloomFilter_VERSION) {
+				if (header.version != MIBloomFilter_VERSION) 
+				{
 					cerr << "Multi Index Bloom Filter version does not match: " << header.version
 					     << " expected: " << MIBloomFilter_VERSION << endl;
 					exit(1);
@@ -244,7 +257,9 @@ class MIBloomFilter
 				fseek(file, 0, 2);
 				size_t file_size = ftell(file) - header.hlen;
 				fseek(file, l_cur_pos, 0);
-				if (file_size != m_d_size * sizeof(T)) {
+
+				if (file_size != m_d_size * sizeof(T)) 
+				{
 					cerr << "Error: " << filter_file_path
 					     << " does not match size given by its header. Size: " << file_size << " vs "
 					     << m_d_size * sizeof(T) << " bytes." << endl;
@@ -252,11 +267,16 @@ class MIBloomFilter
 				}
 
 				size_t count_read = fread(m_data, file_size, 1, file);
-				if (count_read != 1 && fclose(file) != 0) {
+
+				if (count_read != 1 && fclose(file) != 0) 
+				{
 					cerr << "file \"" << filter_file_path << "\" could not be read." << endl;
 					exit(1);
 				}
-			} else {
+			} 
+
+			else 
+			{
 				string bv_filename = filter_file_path + ".sdsl";
 #pragma omp critical(stderr)
 				cerr << "Loading sdsl interleaved bit vector from: " << bv_filename << endl;
@@ -280,8 +300,10 @@ class MIBloomFilter
 	{
 
 #pragma omp parallel for
-		for (unsigned i = 0; i < 2; ++i) {
-			if (i == 0) {
+		for (unsigned i = 0; i < 2; ++i) 
+		{
+			if (i == 0) 
+			{
 				ofstream my_file(filter_file_path.c_str(), ios::out | ios::binary);
 
 				assert(my_file);
@@ -301,7 +323,9 @@ class MIBloomFilter
 					cerr << "file \"" << filter_file_path << "\" could not be read." << endl;
 					exit(1);
 				}
-			} else {
+			} 
+			else 
+			{
 				string bv_filename = filter_file_path + ".sdsl";
 				//				cerr << "Storing sdsl interleaved bit vector to: " << bv_filename
 				//						<< endl;
@@ -330,22 +354,32 @@ class MIBloomFilter
 		bool strand_dir = max % 2;
 
 		// check values and if value set
-		for (unsigned i = 0; i < m_hash_num; ++i) {
+		for (unsigned i = 0; i < m_hash_num; ++i) 
+		{
 			// check if values are already set
 			uint64_t pos = m_rank_support(hashes[i] % m_bv.size());
 			T value = strand_dir ^ strand[i] ? val | strand : val;
 			// check for saturation
 			T old_val = m_data[pos];
-			if (old_val > mask) {
+
+			if (old_val > mask) 
+			{
 				old_val = old_val & anti_mask;
-			} else {
+			} 
+			else 
+			{
 				saturated = false;
 			}
-			if (old_val == value) {
+
+			if (old_val == value) 
+			{
 				++count;
-			} else {
+			} 
+			else 
+			{
 				hash_order.push_back(i);
 			}
+
 			if (count >= max) {
 				return true;
 			}
@@ -356,25 +390,30 @@ class MIBloomFilter
 
 		// insert seeds in random order
 		for (std::vector<unsigned>::iterator itr = hash_order.begin(); itr != hash_order.end();
-		     ++itr) {
+		     ++itr) 
+		{
 			uint64_t pos = m_rank_support(hashes[*itr] % m_bv.size());
 			T value = strand_dir ^ strand[*itr] ? val | strand : val;
 			// check for saturation
 			T old_val = set_val(&m_data[pos], value);
+
 			if (old_val > mask) {
 				old_val = old_val & anti_mask;
-			} else {
-				saturated = false;
-			}
-			if (old_val == 0) {
-				++count;
-			}
-			if (count >= max) {
-				return true;
-			}
+			} 
+			else 
+			{saturated = false;}
+
+			if (old_val == 0) 
+			{++count;}
+
+			if (count >= max) 
+			{return true;}
 		}
-		if (count == 0) {
-			if (!saturated) {
+
+		if (count == 0) 
+		{
+			if (!saturated) 
+			{
 				assert(max == 1); // if this triggers then spaced seed is probably not symmetric
 				saturate(hashes);
 			}
@@ -397,24 +436,25 @@ class MIBloomFilter
 		bool saturated = true;
 
 		// check values and if value set
-		for (unsigned i = 0; i < m_hash_num; ++i) {
+		for (unsigned i = 0; i < m_hash_num; ++i) 
+		{
 			// check if values are already set
 			uint64_t pos = m_rank_support(hashes[i] % m_bv.size());
 			// check for saturation
 			T old_val = m_data[pos];
-			if (old_val > mask) {
-				old_val = old_val & anti_mask;
-			} else {
-				saturated = false;
-			}
-			if (old_val == value) {
-				++count;
-			} else {
-				hash_order.push_back(i);
-			}
-			if (count >= max) {
-				return true;
-			}
+
+			if (old_val > mask) 
+			{old_val = old_val & anti_mask;} 
+			else 
+			{saturated = false;}
+
+			if (old_val == value) 
+			{++count;}
+			else {hash_order.push_back(i);}
+
+			if (count >= max) 
+			{return true;}
+
 			rand_value ^= hashes[i];
 		}
 		std::minstd_rand g(rand_value);
@@ -427,6 +467,7 @@ class MIBloomFilter
 			uint64_t pos = m_rank_support(hashes[*itr] % m_bv.size());
 			// check for saturation
 			T old_val = set_val(&m_data[pos], value);
+
 			if (old_val > mask) 
 			{old_val = old_val & anti_mask;} 
 			else 
@@ -434,6 +475,7 @@ class MIBloomFilter
 
 			if (old_val == 0) 
 			{++count;}
+
 			if (count >= max) 
 			{return true;}
 		}
