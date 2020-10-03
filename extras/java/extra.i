@@ -9,6 +9,7 @@
 %ignore btllib::DataSink::operator FILE*() const;
 
 %ignore btllib::SeqReader::Record::operator bool;
+%ignore btllib::Indexlr::Record::operator bool;
 
 %ignore btllib::SeqReader::read_fasta_buffer::operator();
 %ignore btllib::SeqReader::read_fasta_transition::operator();

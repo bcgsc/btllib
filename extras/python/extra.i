@@ -1,5 +1,9 @@
 %rename(__str__) btllib::Graph::to_string;
 %rename(__bool__) btllib::SeqReader::Record::operator bool();
+%rename(__bool__) btllib::Indexlr::Record::operator bool();
+
+%rename (SeqReaderRecord) btllib::SeqReader::Record;
+%rename (IndexlrRecord) btllib::Indexlr::Record;
 
 %feature("flatnested", "1");
 

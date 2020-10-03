@@ -45,8 +45,8 @@ public:
 
   void close() noexcept;
 
-  bool flag_fold_case() const { return bool(~flags & NO_FOLD_CASE); }
-  bool flag_trim_masked() const { return bool(flags & TRIM_MASKED); }
+  bool fold_case() const { return bool(~flags & NO_FOLD_CASE); }
+  bool trim_masked() const { return bool(flags & TRIM_MASKED); }
 
   enum Format
   {
@@ -1311,7 +1311,7 @@ SeqReader::start_postprocessor()
         if (!comment.empty() && comment.back() == '\n') {
           comment.pop_back();
         }
-        if (flag_trim_masked()) {
+        if (trim_masked()) {
           const auto len = seq.length();
           size_t trim_start = 0, trim_end = seq.length();
           while (trim_start <= len && bool(islower(seq[trim_start]))) {
@@ -1327,7 +1327,7 @@ SeqReader::start_postprocessor()
             qual.erase(0, trim_start);
           }
         }
-        if (flag_fold_case()) {
+        if (fold_case()) {
           for (auto& c : seq) {
             char old = c;
             c = CAPITALS[unsigned(c)];
@@ -1361,6 +1361,7 @@ SeqReader::read()
     postprocessor_queue.read(ready_records);
     if (ready_records.count <= ready_records.current) {
       close();
+      ready_records = decltype(postprocessor_queue)::Block();
       return Record();
     }
   }

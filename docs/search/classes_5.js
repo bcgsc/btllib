@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['record_50',['Record',['../structbtllib_1_1SeqReader_1_1Record.html',1,'btllib::SeqReader']]]
+  ['nthash_45',['NtHash',['../classbtllib_1_1NtHash.html',1,'btllib']]]
 ];

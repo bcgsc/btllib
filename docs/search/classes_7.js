@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['seednthash_32',['SeedNtHash',['../classbtllib_1_1SeedNtHash.html',1,'btllib']]],
-  ['seqreader_33',['SeqReader',['../classbtllib_1_1SeqReader.html',1,'btllib']]],
-  ['seqwriter_34',['SeqWriter',['../classbtllib_1_1SeqWriter.html',1,'btllib']]]
+  ['read_62',['Read',['../structbtllib_1_1Indexlr_1_1Read.html',1,'btllib::Indexlr']]],
+  ['record_63',['Record',['../structbtllib_1_1Indexlr_1_1Record.html',1,'btllib::Indexlr::Record'],['../structbtllib_1_1SeqReader_1_1Record.html',1,'btllib::SeqReader::Record']]]
 ];

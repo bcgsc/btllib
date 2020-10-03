@@ -1271,6 +1271,7 @@ protected:
   const unsigned k;
   const unsigned hash_num;
   size_t pos;
+  bool initialized;
   std::vector<uint64_t> hashes_vector;
   uint64_t forward_hash = 0;
   uint64_t reverse_hash = 0;
@@ -1324,6 +1325,7 @@ inline NtHash::NtHash(const char* seq,
   , k(k)
   , hash_num(hash_num)
   , pos(pos)
+  , initialized(false)
 {
   hashes_vector.resize(hash_num);
 }
@@ -1411,7 +1413,7 @@ parse_seeds(const std::vector<std::string>& seed_strings)
       pos = std::numeric_limits<std::size_t>::max();                           \
       return false;                                                            \
     }                                                                          \
-    ++pos;                                                                     \
+    initialized = true;                                                        \
     return true;                                                               \
   }
 
@@ -1419,9 +1421,10 @@ parse_seeds(const std::vector<std::string>& seed_strings)
 #define NT_HASH_ROLL(CLASS, NTHASH_CALL)                                       \
   inline bool CLASS::roll()                                                    \
   {                                                                            \
-    if (pos == 0) {                                                            \
+    if (!initialized) {                                                        \
       return init();                                                           \
     }                                                                          \
+    ++pos;                                                                     \
     if (pos > seq_len - k) {                                                   \
       return false;                                                            \
     }                                                                          \
@@ -1430,7 +1433,6 @@ parse_seeds(const std::vector<std::string>& seed_strings)
       return init();                                                           \
     }                                                                          \
     (NTHASH_CALL);                                                             \
-    ++pos;                                                                     \
     return true;                                                               \
   }
 
