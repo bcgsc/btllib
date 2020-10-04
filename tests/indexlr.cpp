@@ -40,8 +40,9 @@ main()
   btllib::Indexlr indexlr2("../tests/indexlr.fq",
                            100,
                            5,
-                           btllib::Indexlr::ID | btllib::Indexlr::BX |
-                             btllib::Indexlr::SEQ,
+                           btllib::Indexlr::Flag::ID |
+                             btllib::Indexlr::Flag::BX |
+                             btllib::Indexlr::Flag::SEQ,
                            1);
 
   ss.str("");

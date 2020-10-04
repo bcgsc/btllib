@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['indexlr_26',['Indexlr',['../classbtllib_1_1Indexlr.html',1,'btllib']]]
+  ['flag_26',['Flag',['../structbtllib_1_1SeqReader_1_1Flag.html',1,'btllib::SeqReader::Flag'],['../structbtllib_1_1Indexlr_1_1Flag.html',1,'btllib::Indexlr::Flag']]]
 ];

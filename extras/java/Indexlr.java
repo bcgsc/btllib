@@ -36,6 +36,46 @@ public class Indexlr {
     }
   }
 
+  static public class Flag {
+    private transient long swigCPtr;
+    protected transient boolean swigCMemOwn;
+  
+    protected Flag(long cPtr, boolean cMemoryOwn) {
+      swigCMemOwn = cMemoryOwn;
+      swigCPtr = cPtr;
+    }
+  
+    protected static long getCPtr(Flag obj) {
+      return (obj == null) ? 0 : obj.swigCPtr;
+    }
+  
+    @SuppressWarnings("deprecation")
+    protected void finalize() {
+      delete();
+    }
+  
+    public synchronized void delete() {
+      if (swigCPtr != 0) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          btllibJNI.delete_Indexlr_Flag(swigCPtr);
+        }
+        swigCPtr = 0;
+      }
+    }
+  
+    public Flag() {
+      this(btllibJNI.new_Indexlr_Flag(), true);
+    }
+  
+    public final static long ID = btllibJNI.Indexlr_Flag_ID_get();
+    public final static long NO_ID = btllibJNI.Indexlr_Flag_NO_ID_get();
+    public final static long BX = btllibJNI.Indexlr_Flag_BX_get();
+    public final static long NO_BX = btllibJNI.Indexlr_Flag_NO_BX_get();
+    public final static long SEQ = btllibJNI.Indexlr_Flag_SEQ_get();
+    public final static long NO_SEQ = btllibJNI.Indexlr_Flag_NO_SEQ_get();
+  }
+
   public boolean output_id() {
     return btllibJNI.Indexlr_output_id(swigCPtr, this);
   }
@@ -269,54 +309,6 @@ public class Indexlr {
 
   public Indexlr(String seqfile, long k, long w) {
     this(btllibJNI.new_Indexlr__SWIG_2(seqfile, k, w), true);
-  }
-
-  public final static class Flag {
-    public final static Indexlr.Flag ID = new Indexlr.Flag("ID", btllibJNI.Indexlr_ID_get());
-    public final static Indexlr.Flag NO_ID = new Indexlr.Flag("NO_ID", btllibJNI.Indexlr_NO_ID_get());
-    public final static Indexlr.Flag BX = new Indexlr.Flag("BX", btllibJNI.Indexlr_BX_get());
-    public final static Indexlr.Flag NO_BX = new Indexlr.Flag("NO_BX", btllibJNI.Indexlr_NO_BX_get());
-    public final static Indexlr.Flag SEQ = new Indexlr.Flag("SEQ", btllibJNI.Indexlr_SEQ_get());
-    public final static Indexlr.Flag NO_SEQ = new Indexlr.Flag("NO_SEQ", btllibJNI.Indexlr_NO_SEQ_get());
-
-    public final int swigValue() {
-      return swigValue;
-    }
-
-    public String toString() {
-      return swigName;
-    }
-
-    public static Flag swigToEnum(int swigValue) {
-      if (swigValue < swigValues.length && swigValue >= 0 && swigValues[swigValue].swigValue == swigValue)
-        return swigValues[swigValue];
-      for (int i = 0; i < swigValues.length; i++)
-        if (swigValues[i].swigValue == swigValue)
-          return swigValues[i];
-      throw new IllegalArgumentException("No enum " + Flag.class + " with value " + swigValue);
-    }
-
-    private Flag(String swigName) {
-      this.swigName = swigName;
-      this.swigValue = swigNext++;
-    }
-
-    private Flag(String swigName, int swigValue) {
-      this.swigName = swigName;
-      this.swigValue = swigValue;
-      swigNext = swigValue+1;
-    }
-
-    private Flag(String swigName, Flag swigEnum) {
-      this.swigName = swigName;
-      this.swigValue = swigEnum.swigValue;
-      swigNext = this.swigValue+1;
-    }
-
-    private static Flag[] swigValues = { ID, NO_ID, BX, NO_BX, SEQ, NO_SEQ };
-    private static int swigNext = 0;
-    private final int swigValue;
-    private final String swigName;
   }
 
 }

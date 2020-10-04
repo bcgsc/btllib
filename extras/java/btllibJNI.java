@@ -9,10 +9,12 @@
 package btllib;
 
 public class btllibJNI {
-  public final static native int SeqReader_FOLD_CASE_get();
-  public final static native int SeqReader_NO_FOLD_CASE_get();
-  public final static native int SeqReader_NO_TRIM_MASKED_get();
-  public final static native int SeqReader_TRIM_MASKED_get();
+  public final static native long SeqReader_Flag_FOLD_CASE_get();
+  public final static native long SeqReader_Flag_NO_FOLD_CASE_get();
+  public final static native long SeqReader_Flag_NO_TRIM_MASKED_get();
+  public final static native long SeqReader_Flag_TRIM_MASKED_get();
+  public final static native long new_SeqReader_Flag();
+  public final static native void delete_SeqReader_Flag(long jarg1);
   public final static native long new_SeqReader__SWIG_0(String jarg1, int jarg2);
   public final static native long new_SeqReader__SWIG_1(String jarg1);
   public final static native void delete_SeqReader(long jarg1);
@@ -172,12 +174,14 @@ public class btllibJNI {
   public final static native boolean ends_with(String jarg1, String jarg2);
   public final static native long BUFFER_SIZE_get();
   public final static native long BLOCK_SIZE_get();
-  public final static native int Indexlr_ID_get();
-  public final static native int Indexlr_NO_ID_get();
-  public final static native int Indexlr_BX_get();
-  public final static native int Indexlr_NO_BX_get();
-  public final static native int Indexlr_SEQ_get();
-  public final static native int Indexlr_NO_SEQ_get();
+  public final static native long Indexlr_Flag_ID_get();
+  public final static native long Indexlr_Flag_NO_ID_get();
+  public final static native long Indexlr_Flag_BX_get();
+  public final static native long Indexlr_Flag_NO_BX_get();
+  public final static native long Indexlr_Flag_SEQ_get();
+  public final static native long Indexlr_Flag_NO_SEQ_get();
+  public final static native long new_Indexlr_Flag();
+  public final static native void delete_Indexlr_Flag(long jarg1);
   public final static native boolean Indexlr_output_id(long jarg1, Indexlr jarg1_);
   public final static native boolean Indexlr_output_bx(long jarg1, Indexlr jarg1_);
   public final static native boolean Indexlr_output_seq(long jarg1, Indexlr jarg1_);

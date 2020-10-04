@@ -27,19 +27,23 @@ class Indexlr
 {
 
 public:
-  enum Flag
+  /* Has to be a struct and not an enum because:
+   * 1) Non-class enums are not name qualified and can collide
+   * 2) class enums can't be implicitly converted into integers
+   */
+  struct Flag
   {
-    ID = 0,
-    NO_ID = 1,
-    BX = 2,
-    NO_BX = 0,
-    SEQ = 4,
-    NO_SEQ = 0
+    static const unsigned ID = 0;
+    static const unsigned NO_ID = 1;
+    static const unsigned BX = 2;
+    static const unsigned NO_BX = 0;
+    static const unsigned SEQ = 4;
+    static const unsigned NO_SEQ = 0;
   };
 
-  bool output_id() const { return bool(~flags & NO_ID); }
-  bool output_bx() const { return bool(flags & BX); }
-  bool output_seq() const { return bool(flags & SEQ); }
+  bool output_id() const { return bool(~flags & Flag::NO_ID); }
+  bool output_bx() const { return bool(flags & Flag::BX); }
+  bool output_seq() const { return bool(flags & Flag::SEQ); }
 
   struct Read
   {
@@ -322,7 +326,7 @@ inline void
 Indexlr::InputWorker::work()
 {
   SeqReader reader(indexlr.seqfile);
-  if (reader.get_format() == reader.FASTA) {
+  if (reader.get_format() == SeqReader::Format::FASTA) {
     indexlr.fasta = true;
   } else {
     indexlr.fasta = false;

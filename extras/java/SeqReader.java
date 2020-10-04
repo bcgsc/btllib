@@ -36,6 +36,44 @@ public class SeqReader {
     }
   }
 
+  static public class Flag {
+    private transient long swigCPtr;
+    protected transient boolean swigCMemOwn;
+  
+    protected Flag(long cPtr, boolean cMemoryOwn) {
+      swigCMemOwn = cMemoryOwn;
+      swigCPtr = cPtr;
+    }
+  
+    protected static long getCPtr(Flag obj) {
+      return (obj == null) ? 0 : obj.swigCPtr;
+    }
+  
+    @SuppressWarnings("deprecation")
+    protected void finalize() {
+      delete();
+    }
+  
+    public synchronized void delete() {
+      if (swigCPtr != 0) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          btllibJNI.delete_SeqReader_Flag(swigCPtr);
+        }
+        swigCPtr = 0;
+      }
+    }
+  
+    public Flag() {
+      this(btllibJNI.new_SeqReader_Flag(), true);
+    }
+  
+    public final static long FOLD_CASE = btllibJNI.SeqReader_Flag_FOLD_CASE_get();
+    public final static long NO_FOLD_CASE = btllibJNI.SeqReader_Flag_NO_FOLD_CASE_get();
+    public final static long NO_TRIM_MASKED = btllibJNI.SeqReader_Flag_NO_TRIM_MASKED_get();
+    public final static long TRIM_MASKED = btllibJNI.SeqReader_Flag_TRIM_MASKED_get();
+  }
+
   public SeqReader(String source_path, int flags) {
     this(btllibJNI.new_SeqReader__SWIG_0(source_path, flags), true);
   }
@@ -136,52 +174,6 @@ public class SeqReader {
 
   public SeqReader.Record read() {
     return new SeqReader.Record(btllibJNI.SeqReader_read(swigCPtr, this), true);
-  }
-
-  public final static class Flag {
-    public final static SeqReader.Flag FOLD_CASE = new SeqReader.Flag("FOLD_CASE", btllibJNI.SeqReader_FOLD_CASE_get());
-    public final static SeqReader.Flag NO_FOLD_CASE = new SeqReader.Flag("NO_FOLD_CASE", btllibJNI.SeqReader_NO_FOLD_CASE_get());
-    public final static SeqReader.Flag NO_TRIM_MASKED = new SeqReader.Flag("NO_TRIM_MASKED", btllibJNI.SeqReader_NO_TRIM_MASKED_get());
-    public final static SeqReader.Flag TRIM_MASKED = new SeqReader.Flag("TRIM_MASKED", btllibJNI.SeqReader_TRIM_MASKED_get());
-
-    public final int swigValue() {
-      return swigValue;
-    }
-
-    public String toString() {
-      return swigName;
-    }
-
-    public static Flag swigToEnum(int swigValue) {
-      if (swigValue < swigValues.length && swigValue >= 0 && swigValues[swigValue].swigValue == swigValue)
-        return swigValues[swigValue];
-      for (int i = 0; i < swigValues.length; i++)
-        if (swigValues[i].swigValue == swigValue)
-          return swigValues[i];
-      throw new IllegalArgumentException("No enum " + Flag.class + " with value " + swigValue);
-    }
-
-    private Flag(String swigName) {
-      this.swigName = swigName;
-      this.swigValue = swigNext++;
-    }
-
-    private Flag(String swigName, int swigValue) {
-      this.swigName = swigName;
-      this.swigValue = swigValue;
-      swigNext = swigValue+1;
-    }
-
-    private Flag(String swigName, Flag swigEnum) {
-      this.swigName = swigName;
-      this.swigValue = swigEnum.swigValue;
-      swigNext = this.swigValue+1;
-    }
-
-    private static Flag[] swigValues = { FOLD_CASE, NO_FOLD_CASE, NO_TRIM_MASKED, TRIM_MASKED };
-    private static int swigNext = 0;
-    private final int swigValue;
-    private final String swigName;
   }
 
   public final static class Format {

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nthash_30',['NtHash',['../classbtllib_1_1NtHash.html',1,'btllib']]]
+  ['minimizer_30',['Minimizer',['../structbtllib_1_1Indexlr_1_1Minimizer.html',1,'btllib::Indexlr']]]
 ];

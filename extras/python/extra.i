@@ -3,7 +3,9 @@
 %rename(__bool__) btllib::Indexlr::Record::operator bool();
 
 %rename (SeqReaderRecord) btllib::SeqReader::Record;
+%rename (SeqReaderFlag) btllib::SeqReader::Flag;
 %rename (IndexlrRecord) btllib::Indexlr::Record;
+%rename (IndexlrFlag) btllib::Indexlr::Flag;
 
 %feature("flatnested", "1");
 

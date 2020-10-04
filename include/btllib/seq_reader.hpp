@@ -29,15 +29,19 @@ namespace btllib {
 class SeqReader
 {
 public:
-  enum Flag
+  /* Has to be a struct and not an enum because:
+   * 1) Non-class enums are not name qualified and can collide
+   * 2) class enums can't be implicitly converted into integers
+   */
+  struct Flag
   {
     /** Fold lower-case characters to upper-case. */
-    FOLD_CASE = 0,
-    NO_FOLD_CASE = 1,
+    static const unsigned FOLD_CASE = 0;
+    static const unsigned NO_FOLD_CASE = 1;
     /** Trim masked (lower case) characters from the ends of
      * sequences. */
-    NO_TRIM_MASKED = 0,
-    TRIM_MASKED = 2
+    static const unsigned NO_TRIM_MASKED = 0;
+    static const unsigned TRIM_MASKED = 2;
   };
 
   SeqReader(const std::string& source_path, int flags = 0);
@@ -45,10 +49,10 @@ public:
 
   void close() noexcept;
 
-  bool fold_case() const { return bool(~flags & NO_FOLD_CASE); }
-  bool trim_masked() const { return bool(flags & TRIM_MASKED); }
+  bool fold_case() const { return bool(~flags & Flag::NO_FOLD_CASE); }
+  bool trim_masked() const { return bool(flags & Flag::TRIM_MASKED); }
 
-  enum Format
+  enum class Format
   {
     UNDETERMINED,
     FASTA,
@@ -78,7 +82,7 @@ private:
   const std::string& source_path;
   DataSource source;
   unsigned flags = 0;
-  Format format = UNDETERMINED; // Format of the source file
+  Format format = Format::UNDETERMINED; // Format of the source file
   bool closed = false;
 
   static const size_t DETERMINE_FORMAT_CHARS = 2048;
@@ -1167,25 +1171,25 @@ SeqReader::start_reader()
     OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
       records;
     switch (format) {
-      case FASTA: {
+      case Format::FASTA: {
         read_from_buffer(read_fasta_buffer(), records, counter);
         read_transition(read_fasta_transition(), records, counter);
         read_from_file(read_fasta_file(), records, counter);
         break;
       }
-      case FASTQ: {
+      case Format::FASTQ: {
         read_from_buffer(read_fastq_buffer(), records, counter);
         read_transition(read_fastq_transition(), records, counter);
         read_from_file(read_fastq_file(), records, counter);
         break;
       }
-      case SAM: {
+      case Format::SAM: {
         read_from_buffer(read_sam_buffer(), records, counter);
         read_transition(read_sam_transition(), records, counter);
         read_from_file(read_sam_file(), records, counter);
         break;
       }
-      case GFA2: {
+      case Format::GFA2: {
         read_from_buffer(read_gfa2_buffer(), records, counter);
         read_transition(read_gfa2_transition(), records, counter);
         read_from_file(read_gfa2_file(), records, counter);
@@ -1283,7 +1287,8 @@ SeqReader::start_postprocessor()
       qual_copier_queue.read(records_in);
       for (size_t i = 0; i < records_in.count; i++) {
         char* space = std::strstr(records_in.data[i].header, " ");
-        size_t name_start = (format == FASTA || format == FASTQ) ? 1 : 0;
+        size_t name_start =
+          (format == Format::FASTA || format == Format::FASTQ) ? 1 : 0;
         if (space == nullptr) {
           records_out.data[i].name =
             std::string(records_in.data[i].header.s + name_start,
