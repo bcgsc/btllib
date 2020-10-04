@@ -15,8 +15,9 @@ public class btllibJNI {
   public final static native long SeqReader_Flag_TRIM_MASKED_get();
   public final static native long new_SeqReader_Flag();
   public final static native void delete_SeqReader_Flag(long jarg1);
-  public final static native long new_SeqReader__SWIG_0(String jarg1, int jarg2);
-  public final static native long new_SeqReader__SWIG_1(String jarg1);
+  public final static native long new_SeqReader__SWIG_0(String jarg1, long jarg2, long jarg3);
+  public final static native long new_SeqReader__SWIG_1(String jarg1, long jarg2);
+  public final static native long new_SeqReader__SWIG_2(String jarg1);
   public final static native void delete_SeqReader(long jarg1);
   public final static native void SeqReader_close(long jarg1, SeqReader jarg1_);
   public final static native boolean SeqReader_fold_case(long jarg1, SeqReader jarg1_);

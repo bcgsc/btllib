@@ -322,10 +322,11 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1Flag(JNIEnv *je
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jstring jarg1, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
-  int arg2 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
   btllib::SeqReader *result = 0 ;
   
   (void)jenv;
@@ -339,14 +340,39 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1_1SWIG_10(JNIEnv 
   std::string arg1_str(arg1_pstr);
   arg1 = &arg1_str;
   jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
-  arg2 = (int)jarg2; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  result = (btllib::SeqReader *)new btllib::SeqReader((std::string const &)*arg1,arg2,arg3);
+  *(btllib::SeqReader **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2) {
+  jlong jresult = 0 ;
+  std::string *arg1 = 0 ;
+  unsigned int arg2 ;
+  btllib::SeqReader *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  arg2 = (unsigned int)jarg2; 
   result = (btllib::SeqReader *)new btllib::SeqReader((std::string const &)*arg1,arg2);
   *(btllib::SeqReader **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReader_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   btllib::SeqReader *result = 0 ;

@@ -99,7 +99,7 @@ public:
           size_t k,
           size_t w,
           unsigned flags = 0,
-          unsigned thread = 1);
+          unsigned thread = 5);
 
 private:
   static std::string extract_barcode(std::string comment);

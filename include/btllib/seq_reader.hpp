@@ -13,10 +13,12 @@
 #include <condition_variable>
 #include <cstdio>
 #include <cstring>
+#include <memory>
 #include <mutex>
 #include <stack>
 #include <string>
 #include <thread>
+#include <vector>
 
 namespace btllib {
 
@@ -44,7 +46,9 @@ public:
     static const unsigned TRIM_MASKED = 2;
   };
 
-  SeqReader(const std::string& source_path, int flags = 0);
+  SeqReader(const std::string& source_path,
+            unsigned flags = 0,
+            unsigned threads = 3);
   ~SeqReader();
 
   void close() noexcept;
@@ -81,14 +85,15 @@ public:
 private:
   const std::string& source_path;
   DataSource source;
-  unsigned flags = 0;
+  unsigned flags;
+  unsigned threads;
   Format format = Format::UNDETERMINED; // Format of the source file
   bool closed = false;
 
   static const size_t DETERMINE_FORMAT_CHARS = 2048;
   static const size_t BUFFER_SIZE = DETERMINE_FORMAT_CHARS;
 
-  char* buffer = nullptr;
+  std::vector<char> buffer;
   size_t buffer_start = 0;
   size_t buffer_end = 0;
   bool eof_newline_inserted = false;
@@ -173,54 +178,17 @@ private:
     CString qual;
   };
 
-  struct RecordCString2
-  {
-
-    RecordCString2() = default;
-    RecordCString2(const RecordCString2&) = delete;
-    RecordCString2(RecordCString2&& record) = default;
-
-    RecordCString2& operator=(const RecordCString2&) = delete;
-    RecordCString2& operator=(RecordCString2&& record) = default;
-
-    CString header;
-    std::string seq;
-    CString qual;
-  };
-
-  struct RecordCString3
-  {
-
-    RecordCString3() = default;
-    RecordCString3(const RecordCString3&) = delete;
-    RecordCString3(RecordCString3&& record) = default;
-
-    RecordCString3& operator=(const RecordCString3&) = delete;
-    RecordCString3& operator=(RecordCString3&& record) = default;
-
-    CString header;
-    std::string seq;
-    std::string qual;
-  };
-
   CString tmp;
 
-  std::thread* reader_thread = nullptr;
-  std::thread* seq_copier_thread = nullptr;
-  std::thread* qual_copier_thread = nullptr;
-  std::thread* postprocessor_thread = nullptr;
+  std::unique_ptr<std::thread> reader_thread;
+  std::vector<std::unique_ptr<std::thread>> processor_threads;
   std::mutex format_mutex;
   std::condition_variable format_cv;
   std::atomic<bool> reader_end;
   RecordCString* reader_record = nullptr;
-  OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
-    reader_queue;
-  OrderQueueSPMC<RecordCString2, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
-    seq_copier_queue;
-  OrderQueueSPMC<RecordCString3, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
-    qual_copier_queue;
-  OrderQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
-    postprocessor_queue;
+  OrderQueueSPMC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>
+    cstring_queue;
+  OrderQueueMPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE> output_queue;
 
   // I am crying at this code, but until C++17 compliant compilers are
   // widespread, this cannot be a static inline variable
@@ -261,9 +229,7 @@ private:
 
   void determine_format();
   void start_reader();
-  void start_seq_copier();
-  void start_qual_copier();
-  void start_postprocessor();
+  void start_processor();
 
   bool load_buffer();
 
@@ -327,17 +293,18 @@ private:
   void postprocess();
 };
 
-inline SeqReader::SeqReader(const std::string& source_path, int flags)
+inline SeqReader::SeqReader(const std::string& source_path,
+                            const unsigned flags,
+                            const unsigned threads)
   : source_path(source_path)
   , source(source_path)
   , flags(flags)
+  , threads(threads)
   , reader_end(false)
 {
-  buffer = new char[BUFFER_SIZE];
+  buffer = std::vector<char>(BUFFER_SIZE);
   generate_id();
-  start_seq_copier();
-  start_qual_copier();
-  start_postprocessor();
+  start_processor();
   {
     std::unique_lock<std::mutex> lock(format_mutex);
     start_reader();
@@ -349,11 +316,6 @@ inline SeqReader::~SeqReader()
 {
   recycle_id();
   close();
-  delete[] buffer;
-  delete reader_thread;
-  delete seq_copier_thread;
-  delete qual_copier_thread;
-  delete postprocessor_thread;
 }
 
 inline void
@@ -387,13 +349,11 @@ SeqReader::close() noexcept
     try {
       closed = true;
       reader_end = true;
-      postprocessor_queue.close();
-      postprocessor_thread->join();
-      qual_copier_queue.close();
-      qual_copier_thread->join();
-      seq_copier_queue.close();
-      seq_copier_thread->join();
-      reader_queue.close();
+      output_queue.close();
+      for (auto& pt : processor_threads) {
+        pt->join();
+      }
+      cstring_queue.close();
       reader_thread->join();
       source.close();
     } catch (const std::system_error& e) {
@@ -411,7 +371,7 @@ SeqReader::load_buffer()
   buffer_end = 0;
   do {
     buffer_end +=
-      fread(buffer + buffer_end, 1, BUFFER_SIZE - buffer_end, source);
+      fread(buffer.data() + buffer_end, 1, BUFFER_SIZE - buffer_end, source);
   } while (buffer_end < BUFFER_SIZE && !bool(std::feof(source)));
 
   if (bool(std::feof(source)) && !eof_newline_inserted) {
@@ -1113,7 +1073,7 @@ SeqReader::read_from_buffer(
     if (records.count == RECORD_BLOCK_SIZE) {
       records.current = 0;
       records.num = counter++;
-      reader_queue.write(records);
+      cstring_queue.write(records);
       records.current = 0;
       records.count = 0;
     }
@@ -1139,7 +1099,7 @@ SeqReader::read_transition(
         if (records.count == RECORD_BLOCK_SIZE) {
           records.current = 0;
           records.num = counter++;
-          reader_queue.write(records);
+          cstring_queue.write(records);
           records.current = 0;
           records.count = 0;
         }
@@ -1166,7 +1126,7 @@ SeqReader::read_from_file(
     if (records.count == RECORD_BLOCK_SIZE) {
       records.current = 0;
       records.num = counter++;
-      reader_queue.write(records);
+      cstring_queue.write(records);
       records.current = 0;
       records.count = 0;
     }
@@ -1176,7 +1136,7 @@ SeqReader::read_from_file(
 inline void
 SeqReader::start_reader()
 {
-  reader_thread = new std::thread([this]() {
+  reader_thread = std::unique_ptr<std::thread>(new std::thread([this]() {
     {
       std::unique_lock<std::mutex> lock(format_mutex);
       determine_format();
@@ -1184,8 +1144,7 @@ SeqReader::start_reader()
     }
 
     size_t counter = 0;
-    OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
-      records;
+    decltype(cstring_queue)::Block records;
     switch (format) {
       case Format::FASTA: {
         read_from_buffer(read_fasta_buffer(), records, counter);
@@ -1217,161 +1176,114 @@ SeqReader::start_reader()
     }
 
     reader_end = true;
-    records.current = 0;
-    records.num = counter++;
-    size_t last_count = records.count;
-    reader_queue.write(records);
-    if (last_count > 0) {
-      OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
-        dummy;
+    if (records.count > 0) {
+      records.current = 0;
+      records.num = counter++;
+      cstring_queue.write(records);
+    }
+    for (unsigned i = 0; i < threads; i++) {
+      decltype(cstring_queue)::Block dummy;
       dummy.num = counter++;
       dummy.current = 0;
       dummy.count = 0;
-      reader_queue.write(dummy);
+      cstring_queue.write(dummy);
     }
-  });
+  }));
 }
 
 inline void
-SeqReader::start_seq_copier()
+SeqReader::start_processor()
 {
-  seq_copier_thread = new std::thread([this]() {
-    OrderQueueSPSC<RecordCString, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block
-      records_in;
-    decltype(seq_copier_queue)::Block records_out;
-    for (;;) {
-      reader_queue.read(records_in);
-      for (size_t i = 0; i < records_in.count; i++) {
-        records_out.data[i].header = std::move(records_in.data[i].header);
-        records_out.data[i].seq =
-          std::string(records_in.data[i].seq.s, records_in.data[i].seq.size);
-        records_out.data[i].qual = std::move(records_in.data[i].qual);
-        auto& seq = records_out.data[i].seq;
-        if (!seq.empty() && seq.back() == '\n') {
-          seq.pop_back();
-        }
-      }
-      records_out.count = records_in.count;
-      records_out.current = records_in.current;
-      records_out.num = records_in.num;
-      if (records_out.count == 0) {
-        seq_copier_queue.write(records_out);
-        break;
-      }
-      seq_copier_queue.write(records_out);
-    }
-  });
-}
-
-inline void
-SeqReader::start_qual_copier()
-{
-  qual_copier_thread = new std::thread([this]() {
-    decltype(seq_copier_queue)::Block records_in;
-    decltype(qual_copier_queue)::Block records_out;
-    for (;;) {
-      seq_copier_queue.read(records_in);
-      for (size_t i = 0; i < records_in.count; i++) {
-        records_out.data[i].header = std::move(records_in.data[i].header);
-        records_out.data[i].seq = std::move(records_in.data[i].seq);
-        records_out.data[i].qual =
-          std::string(records_in.data[i].qual.s, records_in.data[i].qual.size);
-        auto& qual = records_out.data[i].qual;
-        if (!qual.empty() && qual.back() == '\n') {
-          qual.pop_back();
-        }
-      }
-      records_out.count = records_in.count;
-      records_out.current = records_in.current;
-      records_out.num = records_in.num;
-      if (records_out.count == 0) {
-        qual_copier_queue.write(records_out);
-        break;
-      }
-      qual_copier_queue.write(records_out);
-    }
-  });
-}
-
-inline void
-SeqReader::start_postprocessor()
-{
-  postprocessor_thread = new std::thread([this]() {
-    decltype(qual_copier_queue)::Block records_in;
-    decltype(postprocessor_queue)::Block records_out;
-    for (;;) {
-      qual_copier_queue.read(records_in);
-      for (size_t i = 0; i < records_in.count; i++) {
-        char* space = std::strstr(records_in.data[i].header, " ");
-        size_t name_start =
-          (format == Format::FASTA || format == Format::FASTQ) ? 1 : 0;
-        if (space == nullptr) {
-          records_out.data[i].name =
-            std::string(records_in.data[i].header.s + name_start,
-                        records_in.data[i].header.size - name_start);
-          records_out.data[i].comment = "";
-        } else {
-          records_out.data[i].name =
-            std::string(records_in.data[i].header.s + name_start,
-                        space - records_in.data[i].header.s - name_start);
-          records_out.data[i].comment =
-            std::string(space + 1,
-                        records_in.data[i].header.size -
-                          (space - records_in.data[i].header.s) - 1);
-        }
-        records_in.data[i].header.clear();
-        records_out.data[i].seq = std::move(records_in.data[i].seq);
-        records_out.data[i].qual = std::move(records_in.data[i].qual);
-        auto& name = records_out.data[i].name;
-        auto& comment = records_out.data[i].comment;
-        auto& seq = records_out.data[i].seq;
-        auto& qual = records_out.data[i].qual;
-        if (!name.empty() && name.back() == '\n') {
-          name.pop_back();
-        }
-        if (!comment.empty() && comment.back() == '\n') {
-          comment.pop_back();
-        }
-        if (trim_masked()) {
-          const auto len = seq.length();
-          size_t trim_start = 0, trim_end = seq.length();
-          while (trim_start <= len && bool(islower(seq[trim_start]))) {
-            trim_start++;
-          }
-          while (trim_end > 0 && bool(islower(seq[trim_end - 1]))) {
-            trim_end--;
-          }
-          seq.erase(trim_end);
-          seq.erase(0, trim_start);
-          if (!qual.empty()) {
-            qual.erase(trim_end);
-            qual.erase(0, trim_start);
-          }
-        }
-        if (fold_case()) {
-          for (auto& c : seq) {
-            char old = c;
-            c = CAPITALS[unsigned(c)];
-            if (!bool(c)) {
-              log_error(std::string("A sequence contains invalid "
-                                    "IUPAC character: ") +
-                        old);
-              std::exit(EXIT_FAILURE);
+  processor_threads.reserve(threads);
+  for (unsigned i = 0; i < threads; i++) {
+    processor_threads.push_back(
+      std::unique_ptr<std::thread>(new std::thread([this]() {
+        decltype(cstring_queue)::Block records_in;
+        decltype(output_queue)::Block records_out;
+        for (;;) {
+          cstring_queue.read(records_in);
+          for (size_t i = 0; i < records_in.count; i++) {
+            records_out.data[i].seq = std::string(records_in.data[i].seq.s,
+                                                  records_in.data[i].seq.size);
+            auto& seq = records_out.data[i].seq;
+            if (!seq.empty() && seq.back() == '\n') {
+              seq.pop_back();
             }
+
+            records_out.data[i].qual = std::string(
+              records_in.data[i].qual.s, records_in.data[i].qual.size);
+            auto& qual = records_out.data[i].qual;
+            if (!qual.empty() && qual.back() == '\n') {
+              qual.pop_back();
+            }
+
+            char* space = std::strstr(records_in.data[i].header, " ");
+            size_t name_start =
+              (format == Format::FASTA || format == Format::FASTQ) ? 1 : 0;
+            if (space == nullptr) {
+              records_out.data[i].name =
+                std::string(records_in.data[i].header.s + name_start,
+                            records_in.data[i].header.size - name_start);
+              records_out.data[i].comment = "";
+            } else {
+              records_out.data[i].name =
+                std::string(records_in.data[i].header.s + name_start,
+                            space - records_in.data[i].header.s - name_start);
+              records_out.data[i].comment =
+                std::string(space + 1,
+                            records_in.data[i].header.size -
+                              (space - records_in.data[i].header.s) - 1);
+            }
+            records_in.data[i].header.clear();
+            auto& name = records_out.data[i].name;
+            auto& comment = records_out.data[i].comment;
+            if (!name.empty() && name.back() == '\n') {
+              name.pop_back();
+            }
+            if (!comment.empty() && comment.back() == '\n') {
+              comment.pop_back();
+            }
+            if (trim_masked()) {
+              const auto len = seq.length();
+              size_t trim_start = 0, trim_end = seq.length();
+              while (trim_start <= len && bool(islower(seq[trim_start]))) {
+                trim_start++;
+              }
+              while (trim_end > 0 && bool(islower(seq[trim_end - 1]))) {
+                trim_end--;
+              }
+              seq.erase(trim_end);
+              seq.erase(0, trim_start);
+              if (!qual.empty()) {
+                qual.erase(trim_end);
+                qual.erase(0, trim_start);
+              }
+            }
+            if (fold_case()) {
+              for (auto& c : seq) {
+                char old = c;
+                c = CAPITALS[unsigned(c)];
+                if (!bool(c)) {
+                  log_error(std::string("A sequence contains invalid "
+                                        "IUPAC character: ") +
+                            old);
+                  std::exit(EXIT_FAILURE);
+                }
+              }
+            }
+            records_out.data[i].num = records_in.num * RECORD_BLOCK_SIZE + i;
           }
+          records_out.count = records_in.count;
+          records_out.current = records_in.current;
+          records_out.num = records_in.num;
+          if (records_out.count == 0) {
+            output_queue.write(records_out);
+            break;
+          }
+          output_queue.write(records_out);
         }
-        records_out.data[i].num = records_in.num * RECORD_BLOCK_SIZE + i;
-      }
-      records_out.count = records_in.count;
-      records_out.current = records_in.current;
-      records_out.num = records_in.num;
-      if (records_out.count == 0) {
-        postprocessor_queue.write(records_out);
-        break;
-      }
-      postprocessor_queue.write(records_out);
-    }
-  });
+      })));
+  }
 }
 
 inline SeqReader::Record
@@ -1379,10 +1291,10 @@ SeqReader::read()
 {
   auto& ready_records = ready_records_array()[id];
   if (ready_records.count <= ready_records.current) {
-    postprocessor_queue.read(ready_records);
+    output_queue.read(ready_records);
     if (ready_records.count <= ready_records.current) {
       close();
-      ready_records = decltype(postprocessor_queue)::Block();
+      ready_records = decltype(output_queue)::Block();
       return Record();
     }
   }

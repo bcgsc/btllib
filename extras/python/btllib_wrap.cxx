@@ -10735,9 +10735,53 @@ SWIGPY_BINARYFUNC_CLOSURE(_wrap_SwigPyIterator___sub__) /* defines _wrap_SwigPyI
 SWIGINTERN int _wrap_new_SeqReader__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
-  int arg2 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
   int res1 = SWIG_OLDOBJ ;
-  int val2 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  btllib::SeqReader *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeqReader" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeqReader" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SeqReader" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeqReader" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  result = (btllib::SeqReader *)new btllib::SeqReader((std::string const &)*arg1,arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeqReader, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeqReader__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  unsigned int arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  unsigned int val2 ;
   int ecode2 = 0 ;
   btllib::SeqReader *result = 0 ;
   
@@ -10753,11 +10797,11 @@ SWIGINTERN int _wrap_new_SeqReader__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyO
     }
     arg1 = ptr;
   }
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SeqReader" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SeqReader" "', argument " "2"" of type '" "unsigned int""'");
   } 
-  arg2 = static_cast< int >(val2);
+  arg2 = static_cast< unsigned int >(val2);
   result = (btllib::SeqReader *)new btllib::SeqReader((std::string const &)*arg1,arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeqReader, SWIG_BUILTIN_INIT |  0 );
   if (SWIG_IsNewObj(res1)) delete arg1;
@@ -10768,7 +10812,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_SeqReader__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_SeqReader__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
   int res1 = SWIG_OLDOBJ ;
@@ -10798,19 +10842,19 @@ fail:
 
 SWIGINTERN int _wrap_new_SeqReader(PyObject *self, PyObject *args, PyObject *kwargs) {
   Py_ssize_t argc;
-  PyObject *argv[3] = {
+  PyObject *argv[4] = {
     0
   };
   
   if (!SWIG_Python_CheckNoKeywords(kwargs, "new_SeqReader")) SWIG_fail;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_SeqReader", 0, 2, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_SeqReader", 0, 3, argv))) SWIG_fail;
   --argc;
   if (argc == 1) {
     int _v;
     int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_SeqReader__SWIG_1(self, argc, argv);
+      return _wrap_new_SeqReader__SWIG_2(self, argc, argv);
     }
   }
   if (argc == 2) {
@@ -10819,11 +10863,31 @@ SWIGINTERN int _wrap_new_SeqReader(PyObject *self, PyObject *args, PyObject *kwa
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
+        int res = SWIG_AsVal_unsigned_SS_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_new_SeqReader__SWIG_0(self, argc, argv);
+        return _wrap_new_SeqReader__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_unsigned_SS_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_unsigned_SS_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_SeqReader__SWIG_0(self, argc, argv);
+        }
       }
     }
   }
@@ -10831,7 +10895,8 @@ SWIGINTERN int _wrap_new_SeqReader(PyObject *self, PyObject *args, PyObject *kwa
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_SeqReader'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::SeqReader::SeqReader(std::string const &,int)\n"
+    "    btllib::SeqReader::SeqReader(std::string const &,unsigned int,unsigned int)\n"
+    "    btllib::SeqReader::SeqReader(std::string const &,unsigned int)\n"
     "    btllib::SeqReader::SeqReader(std::string const &)\n");
   return -1;
 }
