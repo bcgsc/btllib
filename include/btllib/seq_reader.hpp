@@ -276,7 +276,15 @@ private:
   void readline_file(CString& s);
   void readline_file_append(CString& s);
 
-  int read_stage = 0;
+  enum class ReadStage
+  {
+    HEADER,
+    SEQ,
+    SEP,
+    QUAL
+  };
+
+  ReadStage read_stage = ReadStage::HEADER;
 
   /// @cond HIDDEN_SYMBOLS
   struct read_fasta_buffer;
@@ -879,20 +887,24 @@ struct SeqReader::read_fasta_buffer
   bool operator()(SeqReader& seq_reader)
   {
     switch (seq_reader.read_stage) {
-      case 0: {
+      case ReadStage::HEADER: {
         if (!seq_reader.readline_buffer_append(
               seq_reader.reader_record->header)) {
           return false;
         }
-        ++seq_reader.read_stage;
+        seq_reader.read_stage = ReadStage::SEQ;
       }
       // fall through
-      case 1: {
+      case ReadStage::SEQ: {
         if (!seq_reader.readline_buffer_append(seq_reader.reader_record->seq)) {
           return false;
         }
-        seq_reader.read_stage = 0;
+        seq_reader.read_stage = ReadStage::HEADER;
         return true;
+      }
+      default: {
+        log_error("SeqReader has entered an invalid state.");
+        std::exit(EXIT_FAILURE);
       }
     }
     return false;
@@ -904,35 +916,35 @@ struct SeqReader::read_fastq_buffer
   bool operator()(SeqReader& seq_reader)
   {
     switch (seq_reader.read_stage) {
-      case 0: {
+      case ReadStage::HEADER: {
         if (!seq_reader.readline_buffer_append(
               seq_reader.reader_record->header)) {
           return false;
         }
-        ++seq_reader.read_stage;
+        seq_reader.read_stage = ReadStage::SEQ;
       }
       // fall through
-      case 1: {
+      case ReadStage::SEQ: {
         if (!seq_reader.readline_buffer_append(seq_reader.reader_record->seq)) {
           return false;
         }
-        ++seq_reader.read_stage;
+        seq_reader.read_stage = ReadStage::SEP;
       }
       // fall through
-      case 2: {
+      case ReadStage::SEP: {
         if (!seq_reader.readline_buffer_append(seq_reader.tmp)) {
           return false;
         }
-        ++seq_reader.read_stage;
+        seq_reader.read_stage = ReadStage::QUAL;
         seq_reader.tmp.clear();
       }
       // fall through
-      case 3: {
+      case ReadStage::QUAL: {
         if (!seq_reader.readline_buffer_append(
               seq_reader.reader_record->qual)) {
           return false;
         }
-        seq_reader.read_stage = 0;
+        seq_reader.read_stage = ReadStage::HEADER;
         return true;
       }
     }
@@ -977,14 +989,18 @@ struct SeqReader::read_fasta_transition
   void operator()(SeqReader& seq_reader)
   {
     switch (seq_reader.read_stage) {
-      case 0: {
+      case ReadStage::HEADER: {
         seq_reader.readline_file_append(seq_reader.reader_record->header);
-        ++seq_reader.read_stage;
+        seq_reader.read_stage = ReadStage::SEQ;
       }
       // fall through
-      case 1: {
+      case ReadStage::SEQ: {
         seq_reader.readline_file_append(seq_reader.reader_record->seq);
-        seq_reader.read_stage = 0;
+        seq_reader.read_stage = ReadStage::HEADER;
+      }
+      default: {
+        log_error("SeqReader has entered an invalid state.");
+        std::exit(EXIT_FAILURE);
       }
     }
   }
@@ -995,25 +1011,25 @@ struct SeqReader::read_fastq_transition
   void operator()(SeqReader& seq_reader)
   {
     switch (seq_reader.read_stage) {
-      case 0: {
+      case ReadStage::HEADER: {
         seq_reader.readline_file_append(seq_reader.reader_record->header);
-        ++seq_reader.read_stage;
+        seq_reader.read_stage = ReadStage::SEQ;
       }
       // fall through
-      case 1: {
+      case ReadStage::SEQ: {
         seq_reader.readline_file_append(seq_reader.reader_record->seq);
-        ++seq_reader.read_stage;
+        seq_reader.read_stage = ReadStage::SEP;
       }
       // fall through
-      case 2: {
+      case ReadStage::SEP: {
         seq_reader.readline_file_append(seq_reader.tmp);
-        ++seq_reader.read_stage;
+        seq_reader.read_stage = ReadStage::QUAL;
         seq_reader.tmp.clear();
       }
       // fall through
-      case 3: {
+      case ReadStage::QUAL: {
         seq_reader.readline_file_append(seq_reader.reader_record->qual);
-        seq_reader.read_stage = 0;
+        seq_reader.read_stage = ReadStage::HEADER;
       }
     }
   }
