@@ -252,7 +252,7 @@ Indexlr::extract_barcode(std::string comment)
   } else {
     comment = "NA";
   }
-  return std::move(comment);
+  return comment;
 }
 
 inline std::vector<Indexlr::HashedKmer>
