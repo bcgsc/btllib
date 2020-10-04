@@ -421,10 +421,6 @@ public class btllib {
     return btllibJNI.BLOCK_SIZE_get();
   }
 
-  public static String getEND_TOKEN() {
-    return btllibJNI.END_TOKEN_get();
-  }
-
   public static String get_time() {
     return btllibJNI.get_time();
   }

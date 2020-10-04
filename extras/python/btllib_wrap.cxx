@@ -17441,22 +17441,6 @@ SWIGINTERN PyObject *Swig_var_BLOCK_SIZE_get(void) {
 }
 
 
-SWIGINTERN int Swig_var_END_TOKEN_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable END_TOKEN is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_END_TOKEN_get(void) {
-  PyObject *pyobj = 0;
-  PyObject *self = 0;
-  
-  (void)self;
-  pyobj = SWIG_From_std_string(static_cast< std::string >(btllib::END_TOKEN));
-  return pyobj;
-}
-
-
 SWIGINTERN PyObject *_wrap_Indexlr_output_id(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
@@ -26951,9 +26935,6 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "BLOCK_SIZE", Swig_var_BLOCK_SIZE_get, Swig_var_BLOCK_SIZE_set);
   PyDict_SetItemString(md, "BLOCK_SIZE", PyObject_GetAttrString(globals, "BLOCK_SIZE"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "BLOCK_SIZE");
-  SWIG_addvarlink(globals, "END_TOKEN", Swig_var_END_TOKEN_get, Swig_var_END_TOKEN_set);
-  PyDict_SetItemString(md, "END_TOKEN", PyObject_GetAttrString(globals, "END_TOKEN"));
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "END_TOKEN");
   
   /* type 'btllib::Indexlr' */
   builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__Indexlr_type;

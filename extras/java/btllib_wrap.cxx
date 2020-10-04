@@ -3370,18 +3370,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_BLOCK_1SIZE_1get(JNIEnv *jenv, jc
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_END_1TOKEN_1get(JNIEnv *jenv, jclass jcls) {
-  jstring jresult = 0 ;
-  std::string *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (std::string *) &btllib::END_TOKEN;
-  jresult = jenv->NewStringUTF(result->c_str()); 
-  return jresult;
-}
-
-
 SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_Indexlr_1ID_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   btllib::Indexlr::Flag result;

@@ -172,7 +172,6 @@ public class btllibJNI {
   public final static native boolean ends_with(String jarg1, String jarg2);
   public final static native long BUFFER_SIZE_get();
   public final static native long BLOCK_SIZE_get();
-  public final static native String END_TOKEN_get();
   public final static native int Indexlr_ID_get();
   public final static native int Indexlr_NO_ID_get();
   public final static native int Indexlr_BX_get();

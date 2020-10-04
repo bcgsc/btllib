@@ -21,8 +21,6 @@ namespace btllib {
 static const unsigned BUFFER_SIZE = 512;
 static const unsigned BLOCK_SIZE = 64;
 
-static const std::string END_TOKEN = "01a44a7c-d9b6-4994-a49d-b1811f92c6e1";
-
 // TODO: Allow multiple Indexlr objects to be instantiated (by assigning ID to
 // each instance / indexing static members based on ID)
 class Indexlr
@@ -311,18 +309,13 @@ Indexlr::get_minimizers()
   thread_local static decltype(output_queue)::Block block;
   if (block.count <= block.current) {
     output_queue.read(block);
-    if (block.count < block.current) {
+    if (block.count <= block.current) {
+      output_queue.close();
       block = decltype(output_queue)::Block();
       return Record();
     }
   }
-  auto& record = block.data[block.current];
-  if (record.id == END_TOKEN) {
-    block = decltype(output_queue)::Block();
-    return Record();
-  }
-  block.current++;
-  return std::move(record);
+  return std::move(block.data[block.current++]);
 }
 
 inline void
@@ -350,14 +343,15 @@ Indexlr::InputWorker::work()
       block.count = 0;
     }
   }
+  if (block.count > 0) {
+    block.num = current_block_num++;
+    indexlr.input_queue.write(block);
+  }
   for (unsigned i = 0; i < indexlr.threads; i++) {
-    block.data[block.count++] = Read(0, END_TOKEN, "", "");
-    if (block.count == BLOCK_SIZE || i == indexlr.threads - 1) {
-      block.num = current_block_num++;
-      indexlr.input_queue.write(block);
-      block.current = 0;
-      block.count = 0;
-    }
+    block.num = current_block_num++;
+    block.current = 0;
+    block.count = 0;
+    indexlr.input_queue.write(block);
   }
 }
 
@@ -369,16 +363,22 @@ Indexlr::MinimizeWorker::work()
 
   for (;;) {
     if (input_block.current == input_block.count) {
+      if (output_block.count > 0) {
+        output_block.num = input_block.num;
+        indexlr.output_queue.write(output_block);
+        output_block.current = 0;
+        output_block.count = 0;
+      }
       indexlr.input_queue.read(input_block);
     }
-    Read& read = input_block.data[input_block.current++];
-    if (read.id == END_TOKEN) {
-      output_block.data[output_block.count++] =
-        Record(read.num, std::move(read.id), std::move(read.comment), {});
+    if (input_block.count == 0) {
       output_block.num = input_block.num;
+      output_block.current = 0;
+      output_block.count = 0;
       indexlr.output_queue.write(output_block);
       break;
     }
+    Read& read = input_block.data[input_block.current++];
     Record record;
     record.num = read.num;
     if (indexlr.output_id()) {
@@ -415,12 +415,6 @@ Indexlr::MinimizeWorker::work()
     }
 
     output_block.data[output_block.count++] = std::move(record);
-    if (output_block.count == BLOCK_SIZE) {
-      output_block.num = input_block.num;
-      indexlr.output_queue.write(output_block);
-      output_block.current = 0;
-      output_block.count = 0;
-    }
   }
 }
 
