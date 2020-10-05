@@ -101,6 +101,8 @@ public:
           unsigned flags = 0,
           unsigned thread = 5);
 
+  static const size_t MAX_SIMULTANEOUS_INDEXLRS = 256;
+
 private:
   static std::string extract_barcode(std::string comment);
   std::vector<HashedKmer> hash_kmers(const std::string& seq, size_t k) const;
@@ -112,10 +114,25 @@ private:
   const size_t k, w;
   unsigned flags;
   unsigned threads;
+  unsigned id;
 
   std::atomic<bool> fasta{ false };
   OrderQueueSPMC<Read, BUFFER_SIZE, BLOCK_SIZE> input_queue;
   OrderQueueMPSC<Record, BUFFER_SIZE, BLOCK_SIZE> output_queue;
+
+  using OutputQueueType = decltype(output_queue);
+  static OutputQueueType::Block* ready_blocks_array()
+  {
+    thread_local static decltype(
+      output_queue)::Block var[MAX_SIMULTANEOUS_INDEXLRS];
+    return var;
+  }
+
+  static std::atomic<unsigned>& last_id()
+  {
+    static std::atomic<unsigned> var(0);
+    return var;
+  }
 
   class Worker
   {
@@ -199,6 +216,7 @@ inline Indexlr::Indexlr(const std::string& seqfile,
   , w(w)
   , flags(flags)
   , threads(threads)
+  , id(last_id()++)
 {
   InputWorker iw(*this);
   iw.start();
@@ -310,7 +328,7 @@ Indexlr::minimize_hashed_kmers(
 inline Indexlr::Record
 Indexlr::get_minimizers()
 {
-  thread_local static decltype(output_queue)::Block block;
+  auto& block = ready_blocks_array()[id % MAX_SIMULTANEOUS_INDEXLRS];
   if (block.count <= block.current) {
     output_queue.read(block);
     if (block.count <= block.current) {

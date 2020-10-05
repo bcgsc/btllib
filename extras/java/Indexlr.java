@@ -311,4 +311,5 @@ public class Indexlr {
     this(btllibJNI.new_Indexlr__SWIG_2(seqfile, k, w), true);
   }
 
+  public final static long MAX_SIMULTANEOUS_INDEXLRS = btllibJNI.Indexlr_MAX_SIMULTANEOUS_INDEXLRS_get();
 }

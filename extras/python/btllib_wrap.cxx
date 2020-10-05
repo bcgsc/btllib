@@ -27187,6 +27187,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Format_SAM",SWIG_From_int(static_cast< int >(btllib::SeqReader::Format::SAM)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Format_GFA2",SWIG_From_int(static_cast< int >(btllib::SeqReader::Format::GFA2)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Format_INVALID",SWIG_From_int(static_cast< int >(btllib::SeqReader::Format::INVALID)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "MAX_SIMULTANEOUS_SEQREADERS",SWIG_From_size_t(static_cast< size_t >(btllib::SeqReader::MAX_SIMULTANEOUS_SEQREADERS)));
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;
@@ -27535,6 +27536,7 @@ SWIG_init(void) {
   /* type 'btllib::Indexlr' */
   builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__Indexlr_type;
   builtin_pytype->tp_dict = d = PyDict_New();
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "MAX_SIMULTANEOUS_INDEXLRS",SWIG_From_size_t(static_cast< size_t >(btllib::Indexlr::MAX_SIMULTANEOUS_INDEXLRS)));
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;

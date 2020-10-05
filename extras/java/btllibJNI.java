@@ -36,6 +36,7 @@ public class btllibJNI {
   public final static native long new_SeqReader_Record();
   public final static native void delete_SeqReader_Record(long jarg1);
   public final static native long SeqReader_read(long jarg1, SeqReader jarg1_);
+  public final static native long SeqReader_MAX_SIMULTANEOUS_SEQREADERS_get();
   public final static native long CP_OFF_get();
   public final static native int MULTISHIFT_get();
   public final static native long MULTISEED_get();
@@ -222,6 +223,7 @@ public class btllibJNI {
   public final static native long new_Indexlr__SWIG_0(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
   public final static native long new_Indexlr__SWIG_1(String jarg1, long jarg2, long jarg3, long jarg4);
   public final static native long new_Indexlr__SWIG_2(String jarg1, long jarg2, long jarg3);
+  public final static native long Indexlr_MAX_SIMULTANEOUS_INDEXLRS_get();
   public final static native void delete_Indexlr(long jarg1);
   public final static native String get_time();
   public final static native void log_info(String jarg1);

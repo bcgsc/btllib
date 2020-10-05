@@ -82,6 +82,8 @@ public:
   /** Read operator. */
   Record read();
 
+  static const size_t MAX_SIMULTANEOUS_SEQREADERS = 256;
+
 private:
   const std::string& source_path;
   DataSource source;
@@ -102,8 +104,6 @@ private:
   static const size_t RECORD_BLOCK_SIZE = 128;
 
   static const size_t CSTRING_DEFAULT_CAP = 4096;
-
-  static const size_t MAX_SIMULTANEOUS_SEQREADERS = 256;
 
   struct CString
   {
@@ -192,40 +192,22 @@ private:
 
   // I am crying at this code, but until C++17 compliant compilers are
   // widespread, this cannot be a static inline variable
-  static OrderQueueSPMC<Record, RECORD_QUEUE_SIZE, RECORD_BLOCK_SIZE>::Block*
-  ready_records_array()
+  using OutputQueueType = decltype(output_queue);
+  static OutputQueueType::Block* ready_records_array()
   {
-    thread_local static OrderQueueSPMC<Record,
-                                       RECORD_QUEUE_SIZE,
-                                       RECORD_BLOCK_SIZE>::Block
-      var[MAX_SIMULTANEOUS_SEQREADERS];
+    thread_local static decltype(
+      output_queue)::Block var[MAX_SIMULTANEOUS_SEQREADERS];
     return var;
   }
-
-  // Bad code bad
-  static std::stack<unsigned>& recycled_ids() noexcept
-  {
-    static std::stack<unsigned> var;
-    return var;
-  }
-
-  // ;-;
-  static std::mutex& recycled_ids_mutex() noexcept
-  {
-    static std::mutex var;
-    return var;
-  };
 
   // :(
-  static unsigned& last_id()
+  static std::atomic<unsigned>& last_id()
   {
-    static unsigned var = 0;
+    static std::atomic<unsigned> var(0);
     return var;
   }
 
-  void generate_id();
-  void recycle_id() const noexcept;
-  unsigned id = 0;
+  unsigned id;
 
   void determine_format();
   void start_reader();
@@ -300,10 +282,10 @@ inline SeqReader::SeqReader(const std::string& source_path,
   , source(source_path)
   , flags(flags)
   , threads(threads)
+  , buffer(std::vector<char>(BUFFER_SIZE))
   , reader_end(false)
+  , id(last_id()++)
 {
-  buffer = std::vector<char>(BUFFER_SIZE);
-  generate_id();
   start_processor();
   {
     std::unique_lock<std::mutex> lock(format_mutex);
@@ -314,32 +296,7 @@ inline SeqReader::SeqReader(const std::string& source_path,
 
 inline SeqReader::~SeqReader()
 {
-  recycle_id();
   close();
-}
-
-inline void
-SeqReader::generate_id()
-{
-  std::unique_lock<std::mutex> lock(recycled_ids_mutex());
-  if (recycled_ids().empty()) {
-    id = ++last_id();
-  } else {
-    id = recycled_ids().top();
-    recycled_ids().pop();
-  }
-}
-
-inline void
-SeqReader::recycle_id() const noexcept
-{
-  try {
-    std::unique_lock<std::mutex> lock(recycled_ids_mutex());
-    recycled_ids().push(id);
-  } catch (const std::exception& e) {
-    log_error("SeqReader id recycle error: " + std::string(e.what()));
-    std::exit(EXIT_FAILURE);
-  }
 }
 
 inline void
@@ -1289,7 +1246,7 @@ SeqReader::start_processor()
 inline SeqReader::Record
 SeqReader::read()
 {
-  auto& ready_records = ready_records_array()[id];
+  auto& ready_records = ready_records_array()[id % MAX_SIMULTANEOUS_SEQREADERS];
   if (ready_records.count <= ready_records.current) {
     output_queue.read(ready_records);
     if (ready_records.count <= ready_records.current) {

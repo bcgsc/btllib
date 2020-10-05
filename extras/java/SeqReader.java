@@ -228,4 +228,5 @@ public class SeqReader {
     private final String swigName;
   }
 
+  public final static long MAX_SIMULTANEOUS_SEQREADERS = btllibJNI.SeqReader_MAX_SIMULTANEOUS_SEQREADERS_get();
 }

@@ -669,6 +669,18 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1read(JNIEnv *jenv, jcl
 }
 
 
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1MAX_1SIMULTANEOUS_1SEQREADERS_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  size_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = btllib::SeqReader::MAX_SIMULTANEOUS_SEQREADERS;
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_CP_1OFF_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   uint8_t result;
@@ -4195,6 +4207,18 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_12(JNIEnv *j
   arg3 = (size_t)jarg3; 
   result = (btllib::Indexlr *)new btllib::Indexlr((std::string const &)*arg1,arg2,arg3);
   *(btllib::Indexlr **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1MAX_1SIMULTANEOUS_1INDEXLRS_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  size_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = btllib::Indexlr::MAX_SIMULTANEOUS_INDEXLRS;
+  jresult = (jlong)result; 
   return jresult;
 }
 

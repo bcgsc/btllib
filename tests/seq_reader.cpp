@@ -23,33 +23,34 @@ main()
     size_t i;
     btllib::SeqReader::Record record;
 
-    // Test FASTA
-    std::cerr << "Test FASTA" << std::endl;
+    // Test FASTA and FASTQ (simultaneously)
+    std::cerr << "Test FASTA and FASTQ" << std::endl;
     btllib::SeqReader reader_fasta("../tests/input.fa.gz.bz2.xz");
-    assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
-
-    i = 0;
-    while ((record = reader_fasta.read())) {
-      assert(record.seq == seqs[i]);
-      assert(record.qual.empty());
-
-      i++;
-    }
-    assert(i == 2);
-
-    // Test FASTQ
-    std::cerr << "Test FASTQ" << std::endl;
     btllib::SeqReader reader_fastq("../tests/input.fq.tar.xz");
+
+    assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
     assert(reader_fastq.get_format() == btllib::SeqReader::Format::FASTQ);
 
     i = 0;
-    while ((record = reader_fastq.read())) {
-      assert(record.seq == seqs[i]);
-      assert(record.qual == quals[i]);
+    bool success_fasta = false, success_fastq = false;
+    for (;;) {
+      if ((success_fasta = (record = reader_fasta.read()))) {
+        assert(record.seq == seqs[i]);
+        assert(record.qual.empty());
+      }
 
-      i++;
+      if ((success_fastq = (record = reader_fastq.read()))) {
+        assert(record.seq == seqs[i]);
+        assert(record.qual == quals[i]);
+      }
+
+      if (++i == 3) {
+        assert(success_fasta == false && success_fastq == false);
+        break;
+      } else {
+        assert(success_fasta == true && success_fastq == true);
+      }
     }
-    assert(i == 2);
 
     // Test SAM
     std::cerr << "Test SAM" << std::endl;
