@@ -338,13 +338,13 @@ Indexlr::minimize_hashed_kmers(
   }
   std::vector<Minimizer> minimizers;
   minimizers.reserve(2 * hashed_kmers.size() / w);
-  int i = -1, prev = -1;
+  int candidate_min_pos = -1, prev_min_pos = -1;
   const auto first_it = hashed_kmers.begin();
   auto min_it = hashed_kmers.end();
   for (auto left_it = first_it; left_it < hashed_kmers.end() - w + 1;
        ++left_it) {
-    auto right_it = left_it + w;
-    if (i < left_it - first_it) {
+    const auto right_it = left_it + w;
+    if (candidate_min_pos < left_it - first_it) {
       // Use of operator '<=' returns the minimum that is furthest from left.
       min_it = std::min_element(
         left_it, right_it, [](const HashedKmer& a, const HashedKmer& b) {
@@ -353,9 +353,9 @@ Indexlr::minimize_hashed_kmers(
     } else if (right_it[-1].hash1 <= min_it->hash1) {
       min_it = right_it - 1;
     }
-    i = min_it - first_it;
-    if (i > prev && min_it->hash1 != UINT64_MAX) {
-      prev = i;
+    candidate_min_pos = min_it - first_it;
+    if (candidate_min_pos > prev_min_pos && min_it->hash1 != UINT64_MAX) {
+      prev_min_pos = candidate_min_pos;
       minimizers.push_back(*min_it);
     }
   }
