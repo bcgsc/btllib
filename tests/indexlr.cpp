@@ -6,14 +6,13 @@
 int
 main()
 {
-  btllib::Indexlr indexlr("../tests/indexlr.fa", 100, 5, 0, 1);
+  btllib::Indexlr indexlr("../tests/indexlr.fa", 100, 5, 0);
   btllib::Indexlr indexlr2("../tests/indexlr.fq",
                            100,
                            5,
                            btllib::Indexlr::Flag::ID |
                              btllib::Indexlr::Flag::BX |
-                             btllib::Indexlr::Flag::SEQ,
-                           1);
+                             btllib::Indexlr::Flag::SEQ);
 
   std::ifstream correct_output_file("../tests/indexlr.fa.correct");
   std::string correct_output;
