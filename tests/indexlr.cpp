@@ -1,4 +1,5 @@
 #include "../include/btllib/indexlr.hpp"
+#include "../include/btllib/bloom_filter.hpp"
 
 #include <fstream>
 #include <sstream>
@@ -73,6 +74,90 @@ main()
 
   assert(ss.str() == correct_output);
   assert(ss2.str() == correct_output2);
+
+  btllib::BloomFilter filter_in_bf(1024 * 1024 * 256, 1);
+  btllib::BloomFilter filter_out_bf(1024 * 1024 * 256, 1);
+
+  std::vector<uint64_t> filter_in_hashes = { 430447521414431149ULL,
+                                             3146270839399521840ULL,
+                                             161808173335193798ULL };
+  std::vector<uint64_t> filter_out_hashes = { 1672947938795563804ULL,
+                                              2858314356342515870ULL,
+                                              1712341822067595113ULL };
+
+  for (const auto h : filter_in_hashes) {
+    filter_in_bf.insert({ h });
+  }
+  for (const auto h : filter_out_hashes) {
+    filter_out_bf.insert({ h });
+  }
+
+  btllib::Indexlr indexlr3("../tests/indexlr.fq",
+                           100,
+                           5,
+                           btllib::Indexlr::Flag::FILTER_IN,
+                           3,
+                           filter_in_bf);
+  size_t mins_found = 0;
+  while ((record = indexlr3.get_minimizers())) {
+    for (const auto& min : record.minimizers) {
+      bool found = false;
+      for (const auto h : filter_in_hashes) {
+        if (min.hash1 == h || min.hash1 == UINT64_MAX) {
+          found = true;
+          break;
+        }
+      }
+      assert(found);
+      std::cerr << "found" << std::endl;
+      mins_found++;
+    }
+  }
+  assert(mins_found >= filter_in_hashes.size());
+
+  btllib::Indexlr indexlr4("../tests/indexlr.fq",
+                           100,
+                           5,
+                           btllib::Indexlr::Flag::FILTER_OUT,
+                           3,
+                           filter_out_bf);
+  mins_found = 0;
+  while ((record = indexlr4.get_minimizers())) {
+    for (const auto& min : record.minimizers) {
+      for (const auto h : filter_out_hashes) {
+        assert(min.hash1 != h);
+      }
+      mins_found++;
+    }
+  }
+  assert(mins_found >= filter_in_hashes.size());
+
+  btllib::Indexlr indexlr5("../tests/indexlr.fq",
+                           100,
+                           5,
+                           btllib::Indexlr::Flag::FILTER_IN |
+                             btllib::Indexlr::Flag::FILTER_OUT,
+                           3,
+                           filter_in_bf,
+                           filter_out_bf);
+  mins_found = 0;
+  while ((record = indexlr5.get_minimizers())) {
+    for (const auto& min : record.minimizers) {
+      bool found = false;
+      for (const auto h : filter_in_hashes) {
+        if (min.hash1 == h || min.hash1 == UINT64_MAX) {
+          found = true;
+          break;
+        }
+      }
+      assert(found);
+      for (const auto h : filter_out_hashes) {
+        assert(min.hash2 != h);
+      }
+      mins_found++;
+    }
+  }
+  assert(mins_found >= filter_in_hashes.size());
 
   return 0;
 }
