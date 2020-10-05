@@ -109,7 +109,6 @@ main()
         }
       }
       assert(found);
-      std::cerr << "found" << std::endl;
       mins_found++;
     }
   }
