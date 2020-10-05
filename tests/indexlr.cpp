@@ -103,7 +103,7 @@ main()
     for (const auto& min : record.minimizers) {
       bool found = false;
       for (const auto h : filter_in_hashes) {
-        if (min.hash1 == h || min.hash1 == UINT64_MAX) {
+        if (min.hash1 == h) {
           found = true;
           break;
         }
@@ -145,7 +145,7 @@ main()
     for (const auto& min : record.minimizers) {
       bool found = false;
       for (const auto h : filter_in_hashes) {
-        if (min.hash1 == h || min.hash1 == UINT64_MAX) {
+        if (min.hash1 == h) {
           found = true;
           break;
         }

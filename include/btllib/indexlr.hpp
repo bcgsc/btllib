@@ -339,7 +339,7 @@ Indexlr::minimize_hashed_kmers(
   std::vector<Minimizer> minimizers;
   minimizers.reserve(2 * hashed_kmers.size() / w);
   int i = -1, prev = -1;
-  auto first_it = hashed_kmers.begin();
+  const auto first_it = hashed_kmers.begin();
   auto min_it = hashed_kmers.end();
   for (auto left_it = first_it; left_it < hashed_kmers.end() - w + 1;
        ++left_it) {
@@ -354,7 +354,7 @@ Indexlr::minimize_hashed_kmers(
       min_it = right_it - 1;
     }
     i = min_it - first_it;
-    if (i > prev) {
+    if (i > prev && min_it->hash1 != UINT64_MAX) {
       prev = i;
       minimizers.push_back(*min_it);
     }
