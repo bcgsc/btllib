@@ -3502,6 +3502,54 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1Flag_1NO_1SEQ_1get(JNIEn
 }
 
 
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1Flag_1FILTER_1IN_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (unsigned int)btllib::Indexlr::Flag::FILTER_IN;
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1Flag_1NO_1FILTER_1IN_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (unsigned int)btllib::Indexlr::Flag::NO_FILTER_IN;
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1Flag_1FILTER_1OUT_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (unsigned int)btllib::Indexlr::Flag::FILTER_OUT;
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1Flag_1NO_1FILTER_1OUT_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (unsigned int)btllib::Indexlr::Flag::NO_FILTER_OUT;
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1Flag(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   btllib::Indexlr::Flag *result = 0 ;
@@ -3564,6 +3612,36 @@ SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_Indexlr_1output_1seq(JNIEnv *j
   (void)jarg1_;
   arg1 = *(btllib::Indexlr **)&jarg1; 
   result = (bool)((btllib::Indexlr const *)arg1)->output_seq();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_Indexlr_1filter_1in(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::Indexlr **)&jarg1; 
+  result = (bool)((btllib::Indexlr const *)arg1)->filter_in();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_Indexlr_1filter_1out(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::Indexlr **)&jarg1; 
+  result = (bool)((btllib::Indexlr const *)arg1)->filter_out();
   jresult = (jboolean)result; 
   return jresult;
 }
@@ -4127,7 +4205,86 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1get_1minimizers(JNIEnv *
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5, jlong jarg6, jobject jarg6_, jlong jarg7, jobject jarg7_) {
+  jlong jresult = 0 ;
+  std::string arg1 ;
+  size_t arg2 ;
+  size_t arg3 ;
+  unsigned int arg4 ;
+  unsigned int arg5 ;
+  btllib::BloomFilter *arg6 = 0 ;
+  btllib::BloomFilter *arg7 = 0 ;
+  btllib::Indexlr *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg6_;
+  (void)jarg7_;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return 0;
+  } 
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  (&arg1)->assign(arg1_pstr);
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  arg2 = (size_t)jarg2; 
+  arg3 = (size_t)jarg3; 
+  arg4 = (unsigned int)jarg4; 
+  arg5 = (unsigned int)jarg5; 
+  arg6 = *(btllib::BloomFilter **)&jarg6;
+  if (!arg6) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "btllib::BloomFilter const & reference is null");
+    return 0;
+  } 
+  arg7 = *(btllib::BloomFilter **)&jarg7;
+  if (!arg7) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "btllib::BloomFilter const & reference is null");
+    return 0;
+  } 
+  result = (btllib::Indexlr *)new btllib::Indexlr(arg1,arg2,arg3,arg4,arg5,(btllib::BloomFilter const &)*arg6,(btllib::BloomFilter const &)*arg7);
+  *(btllib::Indexlr **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5, jlong jarg6, jobject jarg6_) {
+  jlong jresult = 0 ;
+  std::string arg1 ;
+  size_t arg2 ;
+  size_t arg3 ;
+  unsigned int arg4 ;
+  unsigned int arg5 ;
+  btllib::BloomFilter *arg6 = 0 ;
+  btllib::Indexlr *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg6_;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return 0;
+  } 
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  (&arg1)->assign(arg1_pstr);
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  arg2 = (size_t)jarg2; 
+  arg3 = (size_t)jarg3; 
+  arg4 = (unsigned int)jarg4; 
+  arg5 = (unsigned int)jarg5; 
+  arg6 = *(btllib::BloomFilter **)&jarg6;
+  if (!arg6) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "btllib::BloomFilter const & reference is null");
+    return 0;
+  } 
+  result = (btllib::Indexlr *)new btllib::Indexlr(arg1,arg2,arg3,arg4,arg5,(btllib::BloomFilter const &)*arg6);
+  *(btllib::Indexlr **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
   jlong jresult = 0 ;
   std::string arg1 ;
   size_t arg2 ;
@@ -4156,7 +4313,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_10(JNIEnv *j
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4) {
   jlong jresult = 0 ;
   std::string arg1 ;
   size_t arg2 ;
@@ -4183,7 +4340,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_11(JNIEnv *j
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3) {
   jlong jresult = 0 ;
   std::string arg1 ;
   size_t arg2 ;
@@ -4659,7 +4816,7 @@ SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_BloomFilter_1contains_1_1SWIG_
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< uint64_t > const & reference is null");
     return 0;
   } 
-  result = (bool)(arg1)->contains((std::vector< uint64_t > const &)*arg2);
+  result = (bool)((btllib::BloomFilter const *)arg1)->contains((std::vector< uint64_t > const &)*arg2);
   jresult = (jboolean)result; 
   return jresult;
 }
@@ -4676,7 +4833,7 @@ SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_BloomFilter_1contains_1_1SWIG_
   (void)jarg1_;
   arg1 = *(btllib::BloomFilter **)&jarg1; 
   arg2 = *(uint64_t **)&jarg2; 
-  result = (bool)(arg1)->contains((uint64_t const *)arg2);
+  result = (bool)((btllib::BloomFilter const *)arg1)->contains((uint64_t const *)arg2);
   jresult = (jboolean)result; 
   return jresult;
 }
@@ -4867,7 +5024,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1contains_1_1SWIG
   std::string arg2_str(arg2_pstr);
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (unsigned int)(arg1)->contains((std::string const &)*arg2);
+  result = (unsigned int)((btllib::KmerBloomFilter const *)arg1)->contains((std::string const &)*arg2);
   jresult = (jlong)result; 
   return jresult;
 }
@@ -4890,7 +5047,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1contains_1_1SWIG
     if (!arg2) return 0;
   }
   arg3 = (size_t)jarg3; 
-  result = (unsigned int)(arg1)->contains((char const *)arg2,arg3);
+  result = (unsigned int)((btllib::KmerBloomFilter const *)arg1)->contains((char const *)arg2,arg3);
   jresult = (jlong)result; 
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
   return jresult;
@@ -4954,6 +5111,14 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSink_1SWIGUpcast(JNIEnv *jenv
     (void)jenv;
     (void)jcls;
     *(btllib::DataStream **)&baseptr = *(btllib::DataSink **)&jarg1;
+    return baseptr;
+}
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+    jlong baseptr = 0;
+    (void)jenv;
+    (void)jcls;
+    *(btllib::BloomFilter **)&baseptr = *(btllib::KmerBloomFilter **)&jarg1;
     return baseptr;
 }
 

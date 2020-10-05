@@ -8,12 +8,11 @@
 
 package btllib;
 
-public class KmerBloomFilter {
+public class KmerBloomFilter extends BloomFilter {
   private transient long swigCPtr;
-  protected transient boolean swigCMemOwn;
 
   protected KmerBloomFilter(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
+    super(btllibJNI.KmerBloomFilter_SWIGUpcast(cPtr), cMemoryOwn);
     swigCPtr = cPtr;
   }
 
@@ -34,6 +33,7 @@ public class KmerBloomFilter {
       }
       swigCPtr = 0;
     }
+    super.delete();
   }
 
   public KmerBloomFilter(long k, long bytes, long hash_num) {

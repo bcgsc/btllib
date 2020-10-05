@@ -182,11 +182,17 @@ public class btllibJNI {
   public final static native long Indexlr_Flag_NO_BX_get();
   public final static native long Indexlr_Flag_SEQ_get();
   public final static native long Indexlr_Flag_NO_SEQ_get();
+  public final static native long Indexlr_Flag_FILTER_IN_get();
+  public final static native long Indexlr_Flag_NO_FILTER_IN_get();
+  public final static native long Indexlr_Flag_FILTER_OUT_get();
+  public final static native long Indexlr_Flag_NO_FILTER_OUT_get();
   public final static native long new_Indexlr_Flag();
   public final static native void delete_Indexlr_Flag(long jarg1);
   public final static native boolean Indexlr_output_id(long jarg1, Indexlr jarg1_);
   public final static native boolean Indexlr_output_bx(long jarg1, Indexlr jarg1_);
   public final static native boolean Indexlr_output_seq(long jarg1, Indexlr jarg1_);
+  public final static native boolean Indexlr_filter_in(long jarg1, Indexlr jarg1_);
+  public final static native boolean Indexlr_filter_out(long jarg1, Indexlr jarg1_);
   public final static native long new_Indexlr_Read__SWIG_0();
   public final static native long new_Indexlr_Read__SWIG_1(long jarg1, String jarg2, String jarg3, String jarg4);
   public final static native void Indexlr_Read_num_set(long jarg1, Indexlr.Read jarg1_, long jarg2);
@@ -220,9 +226,11 @@ public class btllibJNI {
   public final static native long Indexlr_Record_minimizers_get(long jarg1, Indexlr.Record jarg1_);
   public final static native void delete_Indexlr_Record(long jarg1);
   public final static native long Indexlr_get_minimizers(long jarg1, Indexlr jarg1_);
-  public final static native long new_Indexlr__SWIG_0(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
-  public final static native long new_Indexlr__SWIG_1(String jarg1, long jarg2, long jarg3, long jarg4);
-  public final static native long new_Indexlr__SWIG_2(String jarg1, long jarg2, long jarg3);
+  public final static native long new_Indexlr__SWIG_0(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6, BloomFilter jarg6_, long jarg7, BloomFilter jarg7_);
+  public final static native long new_Indexlr__SWIG_1(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6, BloomFilter jarg6_);
+  public final static native long new_Indexlr__SWIG_2(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native long new_Indexlr__SWIG_3(String jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long new_Indexlr__SWIG_4(String jarg1, long jarg2, long jarg3);
   public final static native void delete_Indexlr(long jarg1);
   public final static native long Indexlr_MAX_SIMULTANEOUS_INDEXLRS_get();
   public final static native String get_time();
@@ -267,4 +275,5 @@ public class btllibJNI {
   public final static native long SeedNtHash_SWIGUpcast(long jarg1);
   public final static native long DataSource_SWIGUpcast(long jarg1);
   public final static native long DataSink_SWIGUpcast(long jarg1);
+  public final static native long KmerBloomFilter_SWIGUpcast(long jarg1);
 }

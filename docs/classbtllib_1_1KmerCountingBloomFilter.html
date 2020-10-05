@@ -72,6 +72,15 @@ $(function() {
 <div class="title">btllib::KmerCountingBloomFilter&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Inheritance diagram for btllib::KmerCountingBloomFilter&lt; T &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classbtllib_1_1KmerCountingBloomFilter.png" usemap="#btllib::KmerCountingBloomFilter_3C_20T_20_3E_map" alt=""/>
+  <map id="btllib::KmerCountingBloomFilter_3C_20T_20_3E_map" name="btllib::KmerCountingBloomFilter_3C_20T_20_3E_map">
+<area href="classbtllib_1_1CountingBloomFilter.html" alt="btllib::CountingBloomFilter&lt; T &gt;" shape="rect" coords="0,0,217,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -84,12 +93,45 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const std
 <tr class="memitem:a9f5ab29059b0fa1cc5b076520639f14c"><td class="memItemLeft" align="right" valign="top"><a id="a9f5ab29059b0fa1cc5b076520639f14c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const char *seq, size_t seq_len)</td></tr>
 <tr class="separator:a9f5ab29059b0fa1cc5b076520639f14c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ea315b6814bd48fdc23bbefb3e6c4b6"><td class="memItemLeft" align="right" valign="top"><a id="a2ea315b6814bd48fdc23bbefb3e6c4b6"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>contains</b> (const std::string &amp;seq)</td></tr>
-<tr class="separator:a2ea315b6814bd48fdc23bbefb3e6c4b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d3f18ca644ec3925fc201e591e21147"><td class="memItemLeft" align="right" valign="top"><a id="a4d3f18ca644ec3925fc201e591e21147"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>contains</b> (const char *seq, size_t seq_len)</td></tr>
-<tr class="separator:a4d3f18ca644ec3925fc201e591e21147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adba8bea01031c479a8fc930881c4e981"><td class="memItemLeft" align="right" valign="top"><a id="adba8bea01031c479a8fc930881c4e981"></a>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>contains</b> (const std::string &amp;seq) const</td></tr>
+<tr class="separator:adba8bea01031c479a8fc930881c4e981"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00dedb8babe37a3c5e86a9e2bcaed86e"><td class="memItemLeft" align="right" valign="top"><a id="a00dedb8babe37a3c5e86a9e2bcaed86e"></a>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>contains</b> (const char *seq, size_t seq_len) const</td></tr>
+<tr class="separator:a00dedb8babe37a3c5e86a9e2bcaed86e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classbtllib_1_1CountingBloomFilter"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classbtllib_1_1CountingBloomFilter')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classbtllib_1_1CountingBloomFilter.html">btllib::CountingBloomFilter&lt; T &gt;</a></td></tr>
+<tr class="memitem:a661e6ac98df6eec07757a49c9ccb0c8b inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memItemLeft" align="right" valign="top"><a id="a661e6ac98df6eec07757a49c9ccb0c8b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>CountingBloomFilter</b> (size_t bytes, unsigned hash_num)</td></tr>
+<tr class="separator:a661e6ac98df6eec07757a49c9ccb0c8b inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cb12da1f8fbf5fd769f08820c58719d inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memItemLeft" align="right" valign="top"><a id="a5cb12da1f8fbf5fd769f08820c58719d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>CountingBloomFilter</b> (const std::string &amp;path)</td></tr>
+<tr class="separator:a5cb12da1f8fbf5fd769f08820c58719d inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a154fa80d30a1019a71a2206ff15fc8fe inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memItemLeft" align="right" valign="top"><a id="a154fa80d30a1019a71a2206ff15fc8fe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const std::vector&lt; uint64_t &gt; &amp;hashes)</td></tr>
+<tr class="separator:a154fa80d30a1019a71a2206ff15fc8fe inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad11f2a8c8dbc742f35726f57f7181760 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memItemLeft" align="right" valign="top"><a id="ad11f2a8c8dbc742f35726f57f7181760"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const uint64_t *hashes)</td></tr>
+<tr class="separator:ad11f2a8c8dbc742f35726f57f7181760 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bfc4da639fae3746c7fd66eba756bf8 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memItemLeft" align="right" valign="top"><a id="a6bfc4da639fae3746c7fd66eba756bf8"></a>
+T&#160;</td><td class="memItemRight" valign="bottom"><b>contains</b> (const std::vector&lt; uint64_t &gt; &amp;hashes) const</td></tr>
+<tr class="separator:a6bfc4da639fae3746c7fd66eba756bf8 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a951e4a020cc28cf1e4e1cf6cc09d314b inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memItemLeft" align="right" valign="top"><a id="a951e4a020cc28cf1e4e1cf6cc09d314b"></a>
+T&#160;</td><td class="memItemRight" valign="bottom"><b>contains</b> (const uint64_t *hashes) const</td></tr>
+<tr class="separator:a951e4a020cc28cf1e4e1cf6cc09d314b inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a757657b6cdee481025be9535d003e7d6 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memItemLeft" align="right" valign="top"><a id="a757657b6cdee481025be9535d003e7d6"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_bytes</b> () const</td></tr>
+<tr class="separator:a757657b6cdee481025be9535d003e7d6 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69c657ea3b384c52f5d49bdb7255d2f6 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memItemLeft" align="right" valign="top"><a id="a69c657ea3b384c52f5d49bdb7255d2f6"></a>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_pop_cnt</b> () const</td></tr>
+<tr class="separator:a69c657ea3b384c52f5d49bdb7255d2f6 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92536bbe784a710cf27abec895d2ac44 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memItemLeft" align="right" valign="top"><a id="a92536bbe784a710cf27abec895d2ac44"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_hash_num</b> () const</td></tr>
+<tr class="separator:a92536bbe784a710cf27abec895d2ac44 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a172db896b1c6d60a5ae4727df1cd33a5 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memItemLeft" align="right" valign="top"><a id="a172db896b1c6d60a5ae4727df1cd33a5"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>get_fpr</b> () const</td></tr>
+<tr class="separator:a172db896b1c6d60a5ae4727df1cd33a5 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a786558fc9b82feac48066dd40c4283 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a2a786558fc9b82feac48066dd40c4283">write</a> (const std::string &amp;path)</td></tr>
+<tr class="separator:a2a786558fc9b82feac48066dd40c4283 inherit pub_methods_classbtllib_1_1CountingBloomFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/btllib/<a class="el" href="bloom__filter_8hpp_source.html">bloom_filter.hpp</a></li>

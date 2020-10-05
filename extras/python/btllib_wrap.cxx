@@ -17611,6 +17611,50 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Indexlr_filter_in(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Indexlr_filter_in", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Indexlr, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Indexlr_filter_in" "', argument " "1"" of type '" "btllib::Indexlr const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::Indexlr * >(argp1);
+  result = (bool)((btllib::Indexlr const *)arg1)->filter_in();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Indexlr_filter_out(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Indexlr_filter_out", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Indexlr, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Indexlr_filter_out" "', argument " "1"" of type '" "btllib::Indexlr const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::Indexlr * >(argp1);
+  result = (bool)((btllib::Indexlr const *)arg1)->filter_out();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Indexlr_get_minimizers(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
@@ -17634,6 +17678,149 @@ fail:
 
 
 SWIGINTERN int _wrap_new_Indexlr__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  size_t arg2 ;
+  size_t arg3 ;
+  unsigned int arg4 ;
+  unsigned int arg5 ;
+  btllib::BloomFilter *arg6 = 0 ;
+  btllib::BloomFilter *arg7 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  btllib::Indexlr *result = 0 ;
+  
+  if ((nobjs < 7) || (nobjs > 7)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_Indexlr" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Indexlr" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Indexlr" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Indexlr" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_btllib__BloomFilter,  0  | 0);
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "new_Indexlr" "', argument " "6"" of type '" "btllib::BloomFilter const &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Indexlr" "', argument " "6"" of type '" "btllib::BloomFilter const &""'"); 
+  }
+  arg6 = reinterpret_cast< btllib::BloomFilter * >(argp6);
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7, SWIGTYPE_p_btllib__BloomFilter,  0  | 0);
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "new_Indexlr" "', argument " "7"" of type '" "btllib::BloomFilter const &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Indexlr" "', argument " "7"" of type '" "btllib::BloomFilter const &""'"); 
+  }
+  arg7 = reinterpret_cast< btllib::BloomFilter * >(argp7);
+  result = (btllib::Indexlr *)new btllib::Indexlr(arg1,arg2,arg3,arg4,arg5,(btllib::BloomFilter const &)*arg6,(btllib::BloomFilter const &)*arg7);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__Indexlr, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_Indexlr__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  size_t arg2 ;
+  size_t arg3 ;
+  unsigned int arg4 ;
+  unsigned int arg5 ;
+  btllib::BloomFilter *arg6 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  btllib::Indexlr *result = 0 ;
+  
+  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_Indexlr" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Indexlr" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Indexlr" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Indexlr" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_btllib__BloomFilter,  0  | 0);
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "new_Indexlr" "', argument " "6"" of type '" "btllib::BloomFilter const &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Indexlr" "', argument " "6"" of type '" "btllib::BloomFilter const &""'"); 
+  }
+  arg6 = reinterpret_cast< btllib::BloomFilter * >(argp6);
+  result = (btllib::Indexlr *)new btllib::Indexlr(arg1,arg2,arg3,arg4,arg5,(btllib::BloomFilter const &)*arg6);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__Indexlr, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_Indexlr__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::string arg1 ;
   size_t arg2 ;
@@ -17688,7 +17875,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_Indexlr__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_Indexlr__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::string arg1 ;
   size_t arg2 ;
@@ -17735,7 +17922,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_Indexlr__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_Indexlr__SWIG_4(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::string arg1 ;
   size_t arg2 ;
@@ -17776,12 +17963,12 @@ fail:
 
 SWIGINTERN int _wrap_new_Indexlr(PyObject *self, PyObject *args, PyObject *kwargs) {
   Py_ssize_t argc;
-  PyObject *argv[6] = {
+  PyObject *argv[8] = {
     0
   };
   
   if (!SWIG_Python_CheckNoKeywords(kwargs, "new_Indexlr")) SWIG_fail;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_Indexlr", 0, 5, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_Indexlr", 0, 7, argv))) SWIG_fail;
   --argc;
   if (argc == 3) {
     int _v;
@@ -17798,7 +17985,7 @@ SWIGINTERN int _wrap_new_Indexlr(PyObject *self, PyObject *args, PyObject *kwarg
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_new_Indexlr__SWIG_2(self, argc, argv);
+          return _wrap_new_Indexlr__SWIG_4(self, argc, argv);
         }
       }
     }
@@ -17823,7 +18010,7 @@ SWIGINTERN int _wrap_new_Indexlr(PyObject *self, PyObject *args, PyObject *kwarg
             _v = SWIG_CheckState(res);
           }
           if (_v) {
-            return _wrap_new_Indexlr__SWIG_1(self, argc, argv);
+            return _wrap_new_Indexlr__SWIG_3(self, argc, argv);
           }
         }
       }
@@ -17854,7 +18041,83 @@ SWIGINTERN int _wrap_new_Indexlr(PyObject *self, PyObject *args, PyObject *kwarg
               _v = SWIG_CheckState(res);
             }
             if (_v) {
-              return _wrap_new_Indexlr__SWIG_0(self, argc, argv);
+              return _wrap_new_Indexlr__SWIG_2(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_size_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_size_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_unsigned_SS_int(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_unsigned_SS_int(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              int res = SWIG_ConvertPtr(argv[5], 0, SWIGTYPE_p_btllib__BloomFilter, SWIG_POINTER_NO_NULL | 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                return _wrap_new_Indexlr__SWIG_1(self, argc, argv);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 7) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_size_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_size_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_unsigned_SS_int(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_unsigned_SS_int(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              int res = SWIG_ConvertPtr(argv[5], 0, SWIGTYPE_p_btllib__BloomFilter, SWIG_POINTER_NO_NULL | 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                int res = SWIG_ConvertPtr(argv[6], 0, SWIGTYPE_p_btllib__BloomFilter, SWIG_POINTER_NO_NULL | 0);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  return _wrap_new_Indexlr__SWIG_0(self, argc, argv);
+                }
+              }
             }
           }
         }
@@ -17865,6 +18128,8 @@ SWIGINTERN int _wrap_new_Indexlr(PyObject *self, PyObject *args, PyObject *kwarg
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Indexlr'.\n"
     "  Possible C/C++ prototypes are:\n"
+    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,unsigned int,unsigned int,btllib::BloomFilter const &,btllib::BloomFilter const &)\n"
+    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,unsigned int,unsigned int,btllib::BloomFilter const &)\n"
     "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,unsigned int,unsigned int)\n"
     "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,unsigned int)\n"
     "    btllib::Indexlr::Indexlr(std::string,size_t,size_t)\n");
@@ -19784,7 +20049,7 @@ SWIGINTERN PyObject *_wrap_BloomFilter_contains__SWIG_0(PyObject *self, Py_ssize
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BloomFilter, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BloomFilter_contains" "', argument " "1"" of type '" "btllib::BloomFilter *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BloomFilter_contains" "', argument " "1"" of type '" "btllib::BloomFilter const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::BloomFilter * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t,  0  | 0);
@@ -19795,7 +20060,7 @@ SWIGINTERN PyObject *_wrap_BloomFilter_contains__SWIG_0(PyObject *self, Py_ssize
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BloomFilter_contains" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
   }
   arg2 = reinterpret_cast< std::vector< uint64_t,std::allocator< uint64_t > > * >(argp2);
-  result = (bool)(arg1)->contains((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  result = (bool)((btllib::BloomFilter const *)arg1)->contains((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -19816,7 +20081,7 @@ SWIGINTERN PyObject *_wrap_BloomFilter_contains__SWIG_1(PyObject *self, Py_ssize
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BloomFilter, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BloomFilter_contains" "', argument " "1"" of type '" "btllib::BloomFilter *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BloomFilter_contains" "', argument " "1"" of type '" "btllib::BloomFilter const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::BloomFilter * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_uint64_t, 0 |  0 );
@@ -19824,7 +20089,7 @@ SWIGINTERN PyObject *_wrap_BloomFilter_contains__SWIG_1(PyObject *self, Py_ssize
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BloomFilter_contains" "', argument " "2"" of type '" "uint64_t const *""'"); 
   }
   arg2 = reinterpret_cast< uint64_t * >(argp2);
-  result = (bool)(arg1)->contains((uint64_t const *)arg2);
+  result = (bool)((btllib::BloomFilter const *)arg1)->contains((uint64_t const *)arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -19871,8 +20136,8 @@ SWIGINTERN PyObject *_wrap_BloomFilter_contains(PyObject *self, PyObject *args) 
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BloomFilter_contains'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::BloomFilter::contains(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n"
-    "    btllib::BloomFilter::contains(uint64_t const *)\n");
+    "    btllib::BloomFilter::contains(std::vector< uint64_t,std::allocator< uint64_t > > const &) const\n"
+    "    btllib::BloomFilter::contains(uint64_t const *) const\n");
   return 0;
 }
 
@@ -20284,7 +20549,7 @@ SWIGINTERN PyObject *_wrap_KmerBloomFilter_contains__SWIG_0(PyObject *self, Py_s
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerBloomFilter, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_contains" "', argument " "1"" of type '" "btllib::KmerBloomFilter *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_contains" "', argument " "1"" of type '" "btllib::KmerBloomFilter const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::KmerBloomFilter * >(argp1);
   {
@@ -20298,7 +20563,7 @@ SWIGINTERN PyObject *_wrap_KmerBloomFilter_contains__SWIG_0(PyObject *self, Py_s
     }
     arg2 = ptr;
   }
-  result = (unsigned int)(arg1)->contains((std::string const &)*arg2);
+  result = (unsigned int)((btllib::KmerBloomFilter const *)arg1)->contains((std::string const &)*arg2);
   resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -20325,7 +20590,7 @@ SWIGINTERN PyObject *_wrap_KmerBloomFilter_contains__SWIG_1(PyObject *self, Py_s
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerBloomFilter, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_contains" "', argument " "1"" of type '" "btllib::KmerBloomFilter *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_contains" "', argument " "1"" of type '" "btllib::KmerBloomFilter const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::KmerBloomFilter * >(argp1);
   res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
@@ -20338,7 +20603,7 @@ SWIGINTERN PyObject *_wrap_KmerBloomFilter_contains__SWIG_1(PyObject *self, Py_s
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KmerBloomFilter_contains" "', argument " "3"" of type '" "size_t""'");
   } 
   arg3 = static_cast< size_t >(val3);
-  result = (unsigned int)(arg1)->contains((char const *)arg2,arg3);
+  result = (unsigned int)((btllib::KmerBloomFilter const *)arg1)->contains((char const *)arg2,arg3);
   resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
@@ -20392,8 +20657,8 @@ SWIGINTERN PyObject *_wrap_KmerBloomFilter_contains(PyObject *self, PyObject *ar
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'KmerBloomFilter_contains'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::KmerBloomFilter::contains(std::string const &)\n"
-    "    btllib::KmerBloomFilter::contains(char const *,size_t)\n");
+    "    btllib::KmerBloomFilter::contains(std::string const &) const\n"
+    "    btllib::KmerBloomFilter::contains(char const *,size_t) const\n");
   return 0;
 }
 
@@ -23927,6 +24192,8 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__Indexlr_methods[] = {
   { "output_id", _wrap_Indexlr_output_id, METH_NOARGS, "" },
   { "output_bx", _wrap_Indexlr_output_bx, METH_NOARGS, "" },
   { "output_seq", _wrap_Indexlr_output_seq, METH_NOARGS, "" },
+  { "filter_in", _wrap_Indexlr_filter_in, METH_NOARGS, "" },
+  { "filter_out", _wrap_Indexlr_filter_out, METH_NOARGS, "" },
   { "get_minimizers", _wrap_Indexlr_get_minimizers, METH_NOARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
@@ -25666,6 +25933,9 @@ static void *_p_f_r_std__ios_base__r_std__basic_iostreamT_char_std__char_traitsT
 static void *_p_f_r_std__ios_base__r_std__basic_iosT_char_std__char_traitsT_char_t_tTo_p_f_r_std__ios_base__r_std__ios_base(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::ios_base &(*)(std::ios_base &))  ((std::basic_ios< char,std::char_traits< char > > &(*)(std::ios_base &)) x));
 }
+static void *_p_btllib__KmerBloomFilterTo_p_btllib__BloomFilter(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((btllib::BloomFilter *)  ((btllib::KmerBloomFilter *) x));
+}
 static void *_p_btllib__DataSinkTo_p_btllib__DataStream(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((btllib::DataStream *)  ((btllib::DataSink *) x));
 }
@@ -25895,7 +26165,7 @@ static swig_cast_info _swigc__p_FILE[] = {  {&_swigt__p_FILE, 0, 0, 0},{0, 0, 0,
 static swig_cast_info _swigc__p_HashedKmer[] = {  {&_swigt__p_HashedKmer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SwigPyObject[] = {  {&_swigt__p_SwigPyObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_btllib__BloomFilter[] = {  {&_swigt__p_btllib__BloomFilter, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__BloomFilter[] = {  {&_swigt__p_btllib__BloomFilter, 0, 0, 0},  {&_swigt__p_btllib__KmerBloomFilter, _p_btllib__KmerBloomFilterTo_p_btllib__BloomFilter, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__CountingBloomFilterT_uint16_t_t[] = {  {&_swigt__p_btllib__CountingBloomFilterT_uint16_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__CountingBloomFilterT_uint32_t_t[] = {  {&_swigt__p_btllib__CountingBloomFilterT_uint32_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__CountingBloomFilterT_uint8_t_t[] = {  {&_swigt__p_btllib__CountingBloomFilterT_uint8_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -27551,6 +27821,10 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_BX",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::NO_BX)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SEQ",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::SEQ)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_SEQ",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::NO_SEQ)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FILTER_IN",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::FILTER_IN)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_FILTER_IN",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::NO_FILTER_IN)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FILTER_OUT",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::FILTER_OUT)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_FILTER_OUT",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::NO_FILTER_OUT)));
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;
@@ -27700,6 +27974,17 @@ SWIG_init(void) {
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_btllib__BloomFilter");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData *) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData *) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'KmerBloomFilter' as base 'btllib::BloomFilter' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
   builtin_bases[builtin_base_count] = NULL;
   SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
   PyDict_SetItemString(d, "this", this_descr);

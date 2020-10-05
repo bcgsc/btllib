@@ -1,6 +1,7 @@
 #ifndef BTLLIB_INDEXLR_HPP
 #define BTLLIB_INDEXLR_HPP
 
+#include "bloom_filter.hpp"
 #include "nthash.hpp"
 #include "order_queue.hpp"
 #include "seq_reader.hpp"
@@ -11,6 +12,7 @@
 #include <atomic>
 #include <cstdlib>
 #include <cstring>
+#include <functional>
 #include <iostream>
 #include <string>
 #include <thread>
@@ -39,11 +41,17 @@ public:
     static const unsigned NO_BX = 0;
     static const unsigned SEQ = 4;
     static const unsigned NO_SEQ = 0;
+    static const unsigned FILTER_IN = 8;
+    static const unsigned NO_FILTER_IN = 0;
+    static const unsigned FILTER_OUT = 16;
+    static const unsigned NO_FILTER_OUT = 0;
   };
 
   bool output_id() const { return bool(~flags & Flag::NO_ID); }
   bool output_bx() const { return bool(flags & Flag::BX); }
   bool output_seq() const { return bool(flags & Flag::SEQ); }
+  bool filter_in() const { return bool(flags & Flag::FILTER_IN); }
+  bool filter_out() const { return bool(flags & Flag::FILTER_OUT); }
 
   struct Read
   {
@@ -99,7 +107,9 @@ public:
           size_t k,
           size_t w,
           unsigned flags = 0,
-          unsigned thread = 5);
+          unsigned threads = 5,
+          const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
+          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf());
 
   ~Indexlr();
 
@@ -117,6 +127,17 @@ private:
   const unsigned flags;
   const unsigned threads;
   const unsigned id;
+
+  static const BloomFilter& dummy_bf()
+  {
+    static const BloomFilter VAR;
+    return VAR;
+  }
+
+  const std::reference_wrapper<const BloomFilter> bf1;
+  const std::reference_wrapper<const BloomFilter> bf2;
+  bool filter_in_enabled;
+  bool filter_out_enabled;
 
   std::atomic<bool> fasta{ false };
   OrderQueueSPMC<Read, BUFFER_SIZE, BLOCK_SIZE> input_queue;
@@ -215,13 +236,19 @@ inline Indexlr::Indexlr(std::string seqfile,
                         const size_t k,
                         const size_t w,
                         const unsigned flags,
-                        const unsigned threads)
+                        const unsigned threads,
+                        const BloomFilter& bf1,
+                        const BloomFilter& bf2)
   : seqfile(std::move(seqfile))
   , k(k)
   , w(w)
   , flags(flags)
   , threads(threads)
   , id(last_id()++)
+  , bf1(bf1)
+  , bf2(bf2)
+  , filter_in_enabled(filter_in())
+  , filter_out_enabled(filter_out())
   , input_worker(*this)
   , minimize_workers(
       std::vector<MinimizeWorker>(threads, MinimizeWorker(*this)))
@@ -437,11 +464,35 @@ Indexlr::MinimizeWorker::work()
           std::to_string(read.num * (indexlr.fasta ? 2 : 4) + 2) + "; w (" +
           std::to_string(indexlr.w) + ") > # of hashes (" +
           std::to_string(hashed_kmers.size()) + ")");
-    }
+      if (indexlr.w <= hashed_kmers.size()) {
+        if (indexlr.filter_in() && indexlr.filter_out()) {
+          std::vector<uint64_t> tmp;
+          for (auto& hk : hashed_kmers) {
+            tmp = { hk.hash1 };
+            if (!indexlr.bf1.get().contains(tmp) ||
+                indexlr.bf2.get().contains(tmp)) {
+              hk.hash1 = UINT64_MAX;
+            }
+          }
+        } else if (indexlr.filter_in()) {
+          for (auto& hk : hashed_kmers) {
+            if (!indexlr.bf1.get().contains({ hk.hash1 })) {
+              hk.hash1 = UINT64_MAX;
+            }
+          }
+        } else if (indexlr.filter_out()) {
+          for (auto& hk : hashed_kmers) {
+            if (indexlr.bf1.get().contains({ hk.hash1 })) {
+              hk.hash1 = UINT64_MAX;
+            }
+          }
+        }
 
-    if (indexlr.w <= hashed_kmers.size() && read.seq.size() >= indexlr.k) {
-      record.minimizers =
-        indexlr.minimize_hashed_kmers(hashed_kmers, indexlr.w);
+        record.minimizers =
+          indexlr.minimize_hashed_kmers(hashed_kmers, indexlr.w);
+      } else {
+        record.minimizers = {};
+      }
     } else {
       record.minimizers = {};
     }
