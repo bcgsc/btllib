@@ -95,11 +95,13 @@ public:
 
   Record get_minimizers();
 
-  Indexlr(const std::string& seqfile,
+  Indexlr(std::string seqfile,
           size_t k,
           size_t w,
           unsigned flags = 0,
           unsigned thread = 5);
+
+  ~Indexlr();
 
   static const size_t MAX_SIMULTANEOUS_INDEXLRS = 256;
 
@@ -110,11 +112,11 @@ private:
     const std::vector<HashedKmer>& hashed_kmers,
     size_t w);
 
-  const std::string& seqfile;
+  const std::string seqfile;
   const size_t k, w;
-  unsigned flags;
-  unsigned threads;
-  unsigned id;
+  const unsigned flags;
+  const unsigned threads;
+  const unsigned id;
 
   std::atomic<bool> fasta{ false };
   OrderQueueSPMC<Read, BUFFER_SIZE, BLOCK_SIZE> input_queue;
@@ -204,30 +206,38 @@ private:
 
     void work() override;
   };
+
+  InputWorker input_worker;
+  std::vector<MinimizeWorker> minimize_workers;
 };
 
-inline Indexlr::Indexlr(const std::string& seqfile,
+inline Indexlr::Indexlr(std::string seqfile,
                         const size_t k,
                         const size_t w,
                         const unsigned flags,
                         const unsigned threads)
-  : seqfile(seqfile)
+  : seqfile(std::move(seqfile))
   , k(k)
   , w(w)
   , flags(flags)
   , threads(threads)
   , id(last_id()++)
+  , input_worker(*this)
+  , minimize_workers(
+      std::vector<MinimizeWorker>(threads, MinimizeWorker(*this)))
 {
-  InputWorker iw(*this);
-  iw.start();
-  auto mw = std::vector<MinimizeWorker>(threads, MinimizeWorker(*this));
-  for (auto& worker : mw) {
+  input_worker.start();
+  for (auto& worker : minimize_workers) {
     worker.start();
   }
-  for (auto& worker : mw) {
+}
+
+inline Indexlr::~Indexlr()
+{
+  for (auto& worker : minimize_workers) {
     worker.join();
   }
-  iw.join();
+  input_worker.join();
 }
 
 // Minimerize a sequence: Find the minimizers of a vector of hash values

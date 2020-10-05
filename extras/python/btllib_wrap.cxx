@@ -17635,12 +17635,11 @@ fail:
 
 SWIGINTERN int _wrap_new_Indexlr__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
+  std::string arg1 ;
   size_t arg2 ;
   size_t arg3 ;
   unsigned int arg4 ;
   unsigned int arg5 ;
-  int res1 = SWIG_OLDOBJ ;
   size_t val2 ;
   int ecode2 = 0 ;
   size_t val3 ;
@@ -17654,14 +17653,12 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObj
   if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Indexlr" "', argument " "1"" of type '" "std::string const &""'"); 
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_Indexlr" "', argument " "1"" of type '" "std::string""'"); 
     }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Indexlr" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
   }
   ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -17683,23 +17680,20 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Indexlr" "', argument " "5"" of type '" "unsigned int""'");
   } 
   arg5 = static_cast< unsigned int >(val5);
-  result = (btllib::Indexlr *)new btllib::Indexlr((std::string const &)*arg1,arg2,arg3,arg4,arg5);
+  result = (btllib::Indexlr *)new btllib::Indexlr(arg1,arg2,arg3,arg4,arg5);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__Indexlr, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj == Py_None ? -1 : 0;
 fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
   return -1;
 }
 
 
 SWIGINTERN int _wrap_new_Indexlr__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
+  std::string arg1 ;
   size_t arg2 ;
   size_t arg3 ;
   unsigned int arg4 ;
-  int res1 = SWIG_OLDOBJ ;
   size_t val2 ;
   int ecode2 = 0 ;
   size_t val3 ;
@@ -17711,14 +17705,12 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObj
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Indexlr" "', argument " "1"" of type '" "std::string const &""'"); 
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_Indexlr" "', argument " "1"" of type '" "std::string""'"); 
     }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Indexlr" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
   }
   ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -17735,22 +17727,19 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "unsigned int""'");
   } 
   arg4 = static_cast< unsigned int >(val4);
-  result = (btllib::Indexlr *)new btllib::Indexlr((std::string const &)*arg1,arg2,arg3,arg4);
+  result = (btllib::Indexlr *)new btllib::Indexlr(arg1,arg2,arg3,arg4);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__Indexlr, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj == Py_None ? -1 : 0;
 fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
   return -1;
 }
 
 
 SWIGINTERN int _wrap_new_Indexlr__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
+  std::string arg1 ;
   size_t arg2 ;
   size_t arg3 ;
-  int res1 = SWIG_OLDOBJ ;
   size_t val2 ;
   int ecode2 = 0 ;
   size_t val3 ;
@@ -17760,14 +17749,12 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObj
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Indexlr" "', argument " "1"" of type '" "std::string const &""'"); 
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_Indexlr" "', argument " "1"" of type '" "std::string""'"); 
     }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Indexlr" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
   }
   ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -17779,12 +17766,10 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Indexlr" "', argument " "3"" of type '" "size_t""'");
   } 
   arg3 = static_cast< size_t >(val3);
-  result = (btllib::Indexlr *)new btllib::Indexlr((std::string const &)*arg1,arg2,arg3);
+  result = (btllib::Indexlr *)new btllib::Indexlr(arg1,arg2,arg3);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__Indexlr, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj == Py_None ? -1 : 0;
 fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
   return -1;
 }
 
@@ -17880,9 +17865,9 @@ SWIGINTERN int _wrap_new_Indexlr(PyObject *self, PyObject *args, PyObject *kwarg
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Indexlr'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::Indexlr::Indexlr(std::string const &,size_t,size_t,unsigned int,unsigned int)\n"
-    "    btllib::Indexlr::Indexlr(std::string const &,size_t,size_t,unsigned int)\n"
-    "    btllib::Indexlr::Indexlr(std::string const &,size_t,size_t)\n");
+    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,unsigned int,unsigned int)\n"
+    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,unsigned int)\n"
+    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t)\n");
   return -1;
 }
 

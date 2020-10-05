@@ -4129,7 +4129,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1get_1minimizers(JNIEnv *
 
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
   jlong jresult = 0 ;
-  std::string *arg1 = 0 ;
+  std::string arg1 ;
   size_t arg2 ;
   size_t arg3 ;
   unsigned int arg4 ;
@@ -4141,17 +4141,16 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_10(JNIEnv *j
   if(!jarg1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
     return 0;
-  }
+  } 
   const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
   if (!arg1_pstr) return 0;
-  std::string arg1_str(arg1_pstr);
-  arg1 = &arg1_str;
+  (&arg1)->assign(arg1_pstr);
   jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
   arg2 = (size_t)jarg2; 
   arg3 = (size_t)jarg3; 
   arg4 = (unsigned int)jarg4; 
   arg5 = (unsigned int)jarg5; 
-  result = (btllib::Indexlr *)new btllib::Indexlr((std::string const &)*arg1,arg2,arg3,arg4,arg5);
+  result = (btllib::Indexlr *)new btllib::Indexlr(arg1,arg2,arg3,arg4,arg5);
   *(btllib::Indexlr **)&jresult = result; 
   return jresult;
 }
@@ -4159,7 +4158,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_10(JNIEnv *j
 
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4) {
   jlong jresult = 0 ;
-  std::string *arg1 = 0 ;
+  std::string arg1 ;
   size_t arg2 ;
   size_t arg3 ;
   unsigned int arg4 ;
@@ -4170,16 +4169,15 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_11(JNIEnv *j
   if(!jarg1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
     return 0;
-  }
+  } 
   const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
   if (!arg1_pstr) return 0;
-  std::string arg1_str(arg1_pstr);
-  arg1 = &arg1_str;
+  (&arg1)->assign(arg1_pstr);
   jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
   arg2 = (size_t)jarg2; 
   arg3 = (size_t)jarg3; 
   arg4 = (unsigned int)jarg4; 
-  result = (btllib::Indexlr *)new btllib::Indexlr((std::string const &)*arg1,arg2,arg3,arg4);
+  result = (btllib::Indexlr *)new btllib::Indexlr(arg1,arg2,arg3,arg4);
   *(btllib::Indexlr **)&jresult = result; 
   return jresult;
 }
@@ -4187,7 +4185,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_11(JNIEnv *j
 
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3) {
   jlong jresult = 0 ;
-  std::string *arg1 = 0 ;
+  std::string arg1 ;
   size_t arg2 ;
   size_t arg3 ;
   btllib::Indexlr *result = 0 ;
@@ -4197,17 +4195,26 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1_1SWIG_12(JNIEnv *j
   if(!jarg1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
     return 0;
-  }
+  } 
   const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
   if (!arg1_pstr) return 0;
-  std::string arg1_str(arg1_pstr);
-  arg1 = &arg1_str;
+  (&arg1)->assign(arg1_pstr);
   jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
   arg2 = (size_t)jarg2; 
   arg3 = (size_t)jarg3; 
-  result = (btllib::Indexlr *)new btllib::Indexlr((std::string const &)*arg1,arg2,arg3);
+  result = (btllib::Indexlr *)new btllib::Indexlr(arg1,arg2,arg3);
   *(btllib::Indexlr **)&jresult = result; 
   return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1Indexlr(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::Indexlr **)&jarg1; 
+  delete arg1;
 }
 
 
@@ -4220,16 +4227,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1MAX_1SIMULTANEOUS_1INDEX
   result = btllib::Indexlr::MAX_SIMULTANEOUS_INDEXLRS;
   jresult = (jlong)result; 
   return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1Indexlr(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::Indexlr **)&jarg1; 
-  delete arg1;
 }
 
 

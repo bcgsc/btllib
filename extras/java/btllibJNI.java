@@ -223,8 +223,8 @@ public class btllibJNI {
   public final static native long new_Indexlr__SWIG_0(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
   public final static native long new_Indexlr__SWIG_1(String jarg1, long jarg2, long jarg3, long jarg4);
   public final static native long new_Indexlr__SWIG_2(String jarg1, long jarg2, long jarg3);
-  public final static native long Indexlr_MAX_SIMULTANEOUS_INDEXLRS_get();
   public final static native void delete_Indexlr(long jarg1);
+  public final static native long Indexlr_MAX_SIMULTANEOUS_INDEXLRS_get();
   public final static native String get_time();
   public final static native void log_info(String jarg1);
   public final static native void log_warning(String jarg1);
