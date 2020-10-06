@@ -20,7 +20,7 @@
 
 namespace btllib {
 
-static const unsigned BUFFER_SIZE = 512;
+static const unsigned BUFFER_SIZE = 256;
 static const unsigned BLOCK_SIZE = 64;
 
 // TODO: Allow multiple Indexlr objects to be instantiated (by assigning ID to
