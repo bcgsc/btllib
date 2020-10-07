@@ -228,6 +228,7 @@ private:
     void work() override;
   };
 
+  SeqReader reader;
   InputWorker input_worker;
   std::vector<MinimizeWorker> minimize_workers;
 };
@@ -249,6 +250,7 @@ inline Indexlr::Indexlr(std::string seqfile,
   , bf2(bf2)
   , filter_in_enabled(filter_in())
   , filter_out_enabled(filter_out())
+  , reader(this->seqfile)
   , input_worker(*this)
   , minimize_workers(
       std::vector<MinimizeWorker>(threads, MinimizeWorker(*this)))
@@ -261,6 +263,7 @@ inline Indexlr::Indexlr(std::string seqfile,
 
 inline Indexlr::~Indexlr()
 {
+  reader.close();
   for (auto& worker : minimize_workers) {
     worker.join();
   }
@@ -380,8 +383,7 @@ Indexlr::get_minimizers()
 inline void
 Indexlr::InputWorker::work()
 {
-  SeqReader reader(indexlr.seqfile);
-  if (reader.get_format() == SeqReader::Format::FASTA) {
+  if (indexlr.reader.get_format() == SeqReader::Format::FASTA) {
     indexlr.fasta = true;
   } else {
     indexlr.fasta = false;
@@ -391,7 +393,7 @@ Indexlr::InputWorker::work()
   size_t current_block_num = 0;
   SeqReader::Record record;
   Read read;
-  while ((record = reader.read())) {
+  while ((record = indexlr.reader.read())) {
     block.data[block.count++] = Read(record.num,
                                      std::move(record.name),
                                      std::move(record.comment),
