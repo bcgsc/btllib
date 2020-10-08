@@ -738,8 +738,8 @@ public:
    * Max value is the largest value seen in your set of possible values
    * Returns proportion of saturated elements relative to all elements
    */
-  double calc_frame_probs(vector<double>& frame_probs,
-                          unsigned allowed_miss) // NOLINT
+  double calc_frame_probs(vector<double>& frame_probs, // NOLINT
+                          unsigned allowed_miss)
   {
     double occupancy = double(get_pop()) / double(size());
     vector<size_t> count_table = vector<size_t>(frame_probs.size(), 0);
@@ -890,9 +890,9 @@ private:
     if (k == 0) {
       return 1;
     }
-    int result = (int)n;
-    for (int i = 2; i <= k; ++i) {
-      result *= ((int)n - i + 1);
+    unsigned result = n;
+    for (unsigned i = 2; i <= k; ++i) {
+      result *= (n - i + 1);
       result /= i;
     }
     return result;
@@ -908,7 +908,7 @@ private:
   unsigned m_hash_num;
   unsigned m_kmer_size;
 
-  typedef vector<vector<unsigned>> seed_val;
+  using seed_val = vector<vector<unsigned>>;
   vector<string> m_sseeds;
 
   double m_prob_saturated;
