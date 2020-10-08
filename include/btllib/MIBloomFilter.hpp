@@ -1,7 +1,8 @@
 /*
  * MIBloomFilter.hpp
  *
- * Agnostic of hash function used -> cannot call contains without an array of hash values
+ * Agnostic of hash function used -> cannot call contains without an array of
+ * hash values
  *
  *  Created on: Jan 14, 2016
  *      Author: cjustin
@@ -12,901 +13,907 @@
 
 #include <algorithm> // std::random_shuffle
 #include <cassert>
+#include <cmath>
+#include <cstdint>
+#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <fstream>
 #include <iostream>
 #include <limits>
-#include <math.h>
+#include <string>
+#include <vector>
 #include <omp.h>
 #include <sdsl/bit_vector_il.hpp>
 #include <sdsl/rank_support.hpp>
-#include <stdint.h>
-#include <stdio.h>
-#include <string>
 #include <sys/stat.h>
-#include <vector>
 
-using namespace std;
-
-namespace btllib{
+namespace btllib {
 
 template<typename T>
 class MIBloomFilter
 {
+using std::vector;
+using std::string;
+using std::pair;
+using std::endl;
+using std::ofstream;
+using std::cerr;
+using std::ios;
 
-  public:
-	static const T mask = 1 << (sizeof(T) * 8 - 1);
-	static const T anti_mask = (T)~mask;
+public:
+  static const T MASK = 1 << (sizeof(T) * 8 - 1);
+  static const T ANTI_MASK = (T)~MASK;
 
-	static const T strand = 1 << (sizeof(T) * 8 - 2);
-	static const T anti_strand = (T)~strand;
+  static const T STRAND = 1 << (sizeof(T) * 8 - 2);
+  static const T ANTI_STRAND = (T)~STRAND;
 
-	static const T id_mask = anti_strand & anti_mask;
+  static const T ID_MASK = ANTI_STRAND & ANTI_MASK;
 
-	static const unsigned BLOCKSIZE = 512;
-	// static methods
-	/*
-	 * Parses spaced seed string (string consisting of 1s and 0s) to vector
-	 */
-	static inline vector<vector<unsigned>> parse_seed_string(const vector<string>& spaced_seeds)
-	{
-		vector<vector<unsigned>> seeds(spaced_seeds.size(), vector<unsigned>());
-		for (unsigned i = 0; i < spaced_seeds.size(); ++i) 
-		{
-			const string ss = spaced_seeds.at(i);
-			for (unsigned j = 0; j < ss.size(); ++j) 
-			{
-				if (ss.at(j) == '0') 
-				{seeds[i].push_back(j);}
-			}
-		}
-		return seeds;
-	}
+  static const unsigned BLOCKSIZE = 512;
+  // static methods
+  /*
+   * Parses spaced seed string (string consisting of 1s and 0s) to vector
+   */
+  static inline vector<vector<unsigned>> parse_seed_string(
+    const vector<string>& spaced_seeds)
+  {
+    vector<vector<unsigned>> seeds(spaced_seeds.size(), vector<unsigned>());
+    for (unsigned i = 0; i < spaced_seeds.size(); ++i) {
+      const string ss = spaced_seeds.at(i);
+      for (unsigned j = 0; j < ss.size(); ++j) {
+        if (ss.at(j) == '0') {
+          seeds[i].push_back(j);
+        }
+      }
+    }
+    return seeds;
+  }
 
-	// helper methods
-	// calculates the per frame probability of a random match for single value
-	static inline double
-	calc_prob_single_frame(double occupancy, unsigned hash_num, double freq, unsigned allowed_misses)
-	{
-		double prob_total = 0.0;
-		for (unsigned i = hash_num - allowed_misses; i <= hash_num; i++) 
-		{
-			double prob = n_choose_k(hash_num, i);
-			prob *= pow(occupancy, i);
-			prob *= pow(1.0 - occupancy, hash_num - i);
-			prob *= (1.0 - pow(1.0 - freq, i));
-			prob_total += prob;
-		}
-		return prob_total;
-	}
+  // helper methods
+  // calculates the per frame probability of a random match for single value
+  static inline double calc_prob_single_frame(double occupancy,
+                                              unsigned hash_num,
+                                              double freq,
+                                              unsigned allowed_misses)
+  {
+    double prob_total = 0.0;
+    for (unsigned i = hash_num - allowed_misses; i <= hash_num; i++) {
+      double prob = n_choose_k(hash_num, i);
+      prob *= pow(occupancy, i);
+      prob *= pow(1.0 - occupancy, hash_num - i);
+      prob *= (1.0 - pow(1.0 - freq, i));
+      prob_total += prob;
+    }
+    return prob_total;
+  }
 
-	static inline double calc_prob_single(double occupancy, double freq) 
-	{ return occupancy * freq; }
+  static inline double calc_prob_single(double occupancy, double freq)
+  {
+    return occupancy * freq;
+  }
 
-	/*
-	 * Returns an a filter size large enough to maintain an occupancy specified
-	 */
-	static size_t calc_optimal_size(size_t entries, unsigned hash_num, double occupancy)
-	{
-		size_t non_64_approx_val = size_t(-double(entries) * double(hash_num) / log(1.0 - occupancy));
-		return non_64_approx_val + (64 - non_64_approx_val % 64);
-	}
+  /*
+   * Returns an a filter size large enough to maintain an occupancy specified
+   */
+  static size_t calc_optimal_size(size_t entries,
+                                  unsigned hash_num,
+                                  double occupancy)
+  {
+    auto non_64_approx_val =
+      size_t(-double(entries) * double(hash_num) / log(1.0 - occupancy));
+    const int  magic = 64;
+    return non_64_approx_val + (magic - non_64_approx_val % magic);
+  }
 
-	/*
-	 * Inserts a set of hash values into an sdsl bitvector and returns the number of collisions
-	 * Thread safe on the bv, though return values will not be the same run to run
-	 */
-	static unsigned insert(sdsl::bit_vector& bv, uint64_t* hash_values, unsigned hash_num)
-	{
-		unsigned colli_count = 0;
-		for (unsigned i = 0; i < hash_num; ++i) 
-		{
-			uint64_t pos = hash_values[i] % bv.size();
-			uint64_t* data_index = bv.data() + (pos >> 6);
-			uint64_t bit_mask_value = (uint64_t)1 << (pos & 0x3F);
-			colli_count += __sync_fetch_and_or(data_index, bit_mask_value) >> (pos & 0x3F) & 1;
-		}
-		return colli_count;
-	}
+  /*
+   * Inserts a set of hash values into an sdsl bitvector and returns the number
+   * of collisions Thread safe on the bv, though return values will not be the
+   * same run to run
+   */
+  static unsigned insert(sdsl::bit_vector& bv,
+                         uint64_t* hash_values,
+                         unsigned hash_num)
+  {
+    unsigned colli_count = 0;
+    for (unsigned i = 0; i < hash_num; ++i) {
+      const int magic = 0x3f;
+      uint64_t pos = hash_values[i] % bv.size();
+      uint64_t* data_index = bv.data() + (pos >> 6);
+      uint64_t bit_mask_value = (uint64_t)1 << (pos & magic);
+      colli_count +=
+        __sync_fetch_and_or(data_index, bit_mask_value) >> (pos & magic) & 1;
+    }
+    return colli_count;
+  }
 
-	// TODO: include allowed miss in header
+  const static int MAGIC_NUM = 8;
+  // TODO(jyiu): include allowed miss in header
 #pragma pack(1) // to maintain consistent values across platforms
-	struct file_header
-	{
-		char magic[8];
-		uint32_t hlen; // header length (including spaced seeds)
-		uint64_t size;
-		uint32_t nhash;
-		uint32_t kmer;
-		uint32_t version;
-		//		uint8_t allowed_miss;
-	};
+  struct FileHeader
+  {
+    char magic[MAGIC_NUM];
+    uint32_t hlen; // header length (including spaced seeds)
+    uint64_t size;
+    uint32_t nhash;
+    uint32_t kmer;
+    uint32_t version;
+    //		uint8_t allowed_miss;
+  };
 
-	/*
-	 * Constructor using a prebuilt bitvector
-	 */
-	MIBloomFilter<T>(
-	    unsigned hash_num,
-	    unsigned kmer_size,
-	    sdsl::bit_vector& bv,
-	    const vector<string> seeds = vector<string>(0))
-	  : m_d_size(0)
-	  , m_hash_num(hash_num)
-	  , m_kmer_size(kmer_size)
-	  , m_sseeds(seeds)
-	  , m_prob_saturated(0)
-	{
-		m_bv = sdsl::bit_vector_il<BLOCKSIZE>(bv);
-		bv = sdsl::bit_vector();
-		if (!seeds.empty()) 
-		{
-			m_ss_val = parse_seed_string(m_sseeds);
-			assert(m_sseeds[0].size() == kmer_size);
-			for (vector<string>::const_iterator itr = m_sseeds.begin(); itr != m_sseeds.end();
-			     ++itr) 
-			{
-				// check if spaced seeds are all the same length
-				assert(m_kmer_size == itr->size());
-			}
-		}
-		m_rank_support = sdsl::rank_support_il<1>(&m_bv);
-		m_d_size = get_pop();
-		m_data = new T[m_d_size]();
-	}
+  /*
+   * Constructor using a prebuilt bitvector
+   */
+  MIBloomFilter<T>(unsigned hash_num,
+                   unsigned kmer_size,
+                   sdsl::bit_vector& bv,
+                   const vector<string> seeds = vector<string>(0))
+    : m_d_size(0)
+    , m_hash_num(hash_num)
+    , m_kmer_size(kmer_size)
+    , m_sseeds(seeds)
+    , m_prob_saturated(0)
+  {
+    m_bv = sdsl::bit_vector_il<BLOCKSIZE>(bv);
+    bv = sdsl::bit_vector();
+    if (!seeds.empty()) {
+      m_ss_val = parse_seed_string(m_sseeds);
+      assert(m_sseeds[0].size() == kmer_size);
+      for (vector<string>::const_iterator itr = m_sseeds.begin();
+           itr != m_sseeds.end();
+           ++itr) {
+        // check if spaced seeds are all the same length
+        assert(m_kmer_size == itr->size());
+      }
+    }
+    m_rank_support = sdsl::rank_support_il<1>(&m_bv);
+    m_d_size = get_pop();
+    m_data = new T[m_d_size]();
+  }
 
-	MIBloomFilter<T>(const string& filter_file_path)
-	{
+  MIBloomFilter<T>(const string& filter_file_path)
+  {
 #pragma omp parallel for
-		for (unsigned i = 0; i < 2; ++i) 
-		{
-			if (i == 0) 
-			{
-				FILE* file = fopen(filter_file_path.c_str(), "rb");
-				if (file == NULL) 
-				{
+    for (unsigned i = 0; i < 2; ++i) {
+      if (i == 0) {
+        FILE* file = fopen(filter_file_path.c_str(), "rb");
+        if (file == nullptr) {
 #pragma omp critical(stderr)
-					cerr << "file \"" << filter_file_path << "\" could not be read." << endl;
-					exit(1);
-				}
+          cerr << "file \"" << filter_file_path << "\" could not be read."
+               << endl;
+          exit(1);
+        }
 
-				file_header header;
-				if (fread(&header, sizeof(struct file_header), 1, file) == 1) 
-				{
+        FileHeader header;
+        if (fread(&header, sizeof(struct FileHeader), 1, file) == 1) {
 #pragma omp critical(stderr)
-					cerr << "Loading header..." << endl;
-				} 
-				else 
-				{
+          cerr << "Loading header..." << endl;
+        } else {
 #pragma omp critical(stderr)
-					cerr << "Failed to Load header" << endl;
-					exit(1);
-				}
-
-				char magic[9];
-				memcpy(magic, header.magic, 8);
-				magic[8] = '\0';
+          cerr << "Failed to Load header" << endl;
+          exit(1);
+        }
+	
+	const int magic_num = 9;
+        char magic[magic_num];
+        memcpy(magic, header.magic, 8);
+	magic_num = 8;
+        magic[magic_num] = '\0';
 
 #pragma omp critical(stderr)
-				cerr << "Loaded header... magic: " << magic << " hlen: " << header.hlen
-				     << " size: " << header.size << " nhash: " << header.nhash
-				     << " kmer: " << header.kmer << endl;
+        cerr << "Loaded header... magic: " << magic << " hlen: " << header.hlen
+             << " size: " << header.size << " nhash: " << header.nhash
+             << " kmer: " << header.kmer << endl;
 
-				m_hash_num = header.nhash;
-				m_kmer_size = header.kmer;
-				m_d_size = header.size;
-				m_data = new T[m_d_size]();
+        m_hash_num = header.nhash;
+        m_kmer_size = header.kmer;
+        m_d_size = header.size;
+        m_data = new T[m_d_size]();
 
-				if (header.hlen > sizeof(struct file_header)) 
-				{
-					// load seeds
-					for (unsigned i = 0; i < header.nhash; ++i) 
-					{
-						char temp[header.kmer];
+        if (header.hlen > sizeof(struct FileHeader)) {
+          // load seeds
+          for (unsigned i = 0; i < header.nhash; ++i) {
+            char temp[header.kmer];
 
-						if (fread(temp, header.kmer, 1, file) != 1) 
-						{
-							cerr << "Failed to load spaced seed string" << endl;
-							exit(1);
-						} 
-						else 
-						{
-							cerr << "Spaced Seed " << i << ": " << string(temp, header.kmer)
-							     << endl;
-						}
-						m_sseeds.push_back(string(temp, header.kmer));
-					}
+            if (fread(temp, header.kmer, 1, file) != 1) {
+              cerr << "Failed to load spaced seed string" << endl;
+              exit(1);
+            } else {
+              cerr << "Spaced Seed " << i << ": " << string(temp, header.kmer)
+                   << endl;
+            }
+            m_sseeds.push_back(string(temp, header.kmer));
+          }
 
-					m_ss_val = parse_seed_string(m_sseeds);
-					assert(m_sseeds[0].size() == m_kmer_size);
-					for (vector<string>::const_iterator itr = m_sseeds.begin();
-					     itr != m_sseeds.end();
-					     ++itr) 
-					{
-						// check if spaced seeds are all the same length
-						assert(m_kmer_size == itr->size());
-					}
-				}
+          m_ss_val = parse_seed_string(m_sseeds);
+          assert(m_sseeds[0].size() == m_kmer_size);
+          for (vector<string>::const_iterator itr = m_sseeds.begin();
+               itr != m_sseeds.end();
+               ++itr) {
+            // check if spaced seeds are all the same length
+            assert(m_kmer_size == itr->size());
+          }
+        }
 
-				if (header.hlen != (sizeof(file_header) + m_kmer_size * m_sseeds.size())) 
-				{
-					cerr << "Multi Index Bloom Filter header length: " << header.hlen
-					     << " does not match expected length: "
-					     << (sizeof(file_header) + m_kmer_size * m_sseeds.size())
-					     << " (likely version mismatch)" << endl;
-					exit(1);
-				}
+        if (header.hlen !=
+            (sizeof(FileHeader) + m_kmer_size * m_sseeds.size())) {
+          cerr << "Multi Index Bloom Filter header length: " << header.hlen
+               << " does not match expected length: "
+               << (sizeof(FileHeader) + m_kmer_size * m_sseeds.size())
+               << " (likely version mismatch)" << endl;
+          exit(1);
+        }
 
-				if (strcmp(magic, "MIBLOOMF")) 
-				{
-					cerr << "Bloom Filter type does not match " << endl;
-					exit(1);
-				}
+        if (strcmp(magic, "MIBLOOMF") != 0) {
+          cerr << "Bloom Filter type does not match " << endl;
+          exit(1);
+        }
 
-				if (header.version != MIBloomFilter_VERSION) 
-				{
-					cerr << "Multi Index Bloom Filter version does not match: " << header.version
-					     << " expected: " << MIBloomFilter_VERSION << endl;
-					exit(1);
-				}
+        if (header.version != MI_BLOOM_FILTER_VERSION) {
+          cerr << "Multi Index Bloom Filter version does not match: "
+               << header.version << " expected: " << MI_BLOOM_FILTER_VERSION
+               << endl;
+          exit(1);
+        }
 
 #pragma omp critical(stderr)
-				cerr << "Loading data vector" << endl;
+        cerr << "Loading data vector" << endl;
 
-				long int l_cur_pos = ftell(file);
-				fseek(file, 0, 2);
-				size_t file_size = ftell(file) - header.hlen;
-				fseek(file, l_cur_pos, 0);
+        long int l_cur_pos = ftell(file);
+        fseek(file, 0, 2);
+        size_t file_size = ftell(file) - header.hlen;
+        fseek(file, l_cur_pos, 0);
 
-				if (file_size != m_d_size * sizeof(T)) 
-				{
-					cerr << "Error: " << filter_file_path
-					     << " does not match size given by its header. Size: " << file_size << " vs "
-					     << m_d_size * sizeof(T) << " bytes." << endl;
-					exit(1);
-				}
+        if (file_size != m_d_size * sizeof(T)) {
+          cerr << "Error: " << filter_file_path
+               << " does not match size given by its header. Size: "
+               << file_size << " vs " << m_d_size * sizeof(T) << " bytes."
+               << endl;
+          exit(1);
+        }
 
-				size_t count_read = fread(m_data, file_size, 1, file);
+        size_t count_read = fread(m_data, file_size, 1, file);
 
-				if (count_read != 1 && fclose(file) != 0) 
-				{
-					cerr << "file \"" << filter_file_path << "\" could not be read." << endl;
-					exit(1);
-				}
-			} 
+        if (count_read != 1 && fclose(file) != 0) {
+          cerr << "file \"" << filter_file_path << "\" could not be read."
+               << endl;
+          exit(1);
+        }
+      }
 
-			else 
-			{
-				string bv_filename = filter_file_path + ".sdsl";
+      else {
+        string bv_filename = filter_file_path + ".sdsl";
 #pragma omp critical(stderr)
-				cerr << "Loading sdsl interleaved bit vector from: " << bv_filename << endl;
-				load_from_file(m_bv, bv_filename);
-				m_rank_support = sdsl::rank_support_il<1>(&m_bv);
-			}
-		}
+        cerr << "Loading sdsl interleaved bit vector from: " << bv_filename
+             << endl;
+        load_from_file(m_bv, bv_filename);
+        m_rank_support = sdsl::rank_support_il<1>(&m_bv);
+      }
+    }
 
-		cerr << "Bit Vector Size: " << m_bv.size() << endl;
-		cerr << "Popcount: " << get_pop() << endl;
-		// TODO make more streamlined
-		m_prob_saturated = pow(double(get_pop_saturated()) / double(get_pop()), m_hash_num);
-	}
+    cerr << "Bit Vector Size: " << m_bv.size() << endl;
+    cerr << "Popcount: " << get_pop() << endl;
+    // TODO(jyiu): make more streamlined
+    m_prob_saturated =
+      pow(double(get_pop_saturated()) / double(get_pop()), m_hash_num);
+  }
 
-	/*
-	 * Stores the filter as a binary file to the path specified
-	 * Stores uncompressed because the random data tends to
-	 * compress poorly anyway
-	 */
-	void store(string const& filter_file_path) const
-	{
+  /*
+   * Stores the filter as a binary file to the path specified
+   * Stores uncompressed because the random data tends to
+   * compress poorly anyway
+   */
+  void store(string const& filter_file_path) const
+  {
 
 #pragma omp parallel for
-		for (unsigned i = 0; i < 2; ++i) 
-		{
-			if (i == 0) 
-			{
-				ofstream my_file(filter_file_path.c_str(), ios::out | ios::binary);
+    for (unsigned i = 0; i < 2; ++i) {
+      if (i == 0) {
+        ofstream my_file(filter_file_path.c_str(), ios::out | ios::binary);
 
-				assert(my_file);
-				write_header(my_file);
+        assert(my_file);
+        write_header(my_file);
 
-				//				cerr << "Storing filter. Filter is " << m_d_size * sizeof(T)
-				//						<< " bytes." << endl;
+        //				cerr << "Storing filter. Filter is " <<
+        // m_d_size * sizeof(T)
+        //						<< " bytes." << endl;
 
-				// write out each block
-				my_file.write(reinterpret_cast<char*>(m_data), m_d_size * sizeof(T));
+        // write out each block
+        my_file.write(reinterpret_cast<char*>(m_data), m_d_size * sizeof(T));
 
-				my_file.close();
-				assert(my_file);
+        my_file.close();
+        assert(my_file);
 
-				FILE* file = fopen(filter_file_path.c_str(), "rb");
-				if (file == NULL) {
-					cerr << "file \"" << filter_file_path << "\" could not be read." << endl;
-					exit(1);
-				}
-			} 
-			else 
-			{
-				string bv_filename = filter_file_path + ".sdsl";
-				//				cerr << "Storing sdsl interleaved bit vector to: " << bv_filename
-				//						<< endl;
-				store_to_file(m_bv, bv_filename);
-				//				cerr << "Number of bit vector buckets is " << m_bv.size()
-				//						<< endl;
-				//				cerr << "Uncompressed bit vector size is "
-				//						<< (m_bv.size() + m_bv.size() * 64 / BLOCKSIZE) / 8
-				//						<< " bytes" << endl;
-			}
-		}
-	}
+        FILE* file = fopen(filter_file_path.c_str(), "rb");
+        if (file == nullptr) {
+          cerr << "file \"" << filter_file_path << "\" could not be read."
+               << endl;
+          exit(1);
+        }
+      } else {
+        string bv_filename = filter_file_path + ".sdsl";
+        //				cerr << "Storing sdsl interleaved bit
+        // vector to: " << bv_filename
+        //						<< endl;
+        store_to_file(m_bv, bv_filename);
+        //				cerr << "Number of bit vector buckets is
+        //"
+        //<< m_bv.size()
+        //						<< endl;
+        //				cerr << "Uncompressed bit vector size is
+        //"
+        //						<< (m_bv.size() +
+        // m_bv.size()
+        //* 64
+        /// BLOCKSIZE) / 8
+        //						<< " bytes" << endl;
+      }
+    }
+  }
 
-	/*
-	 * Returns false if unable to insert hashes values
-	 * Contains strand information
-	 * Inserts hash functions in random order
-	 */
-	bool insert(const uint64_t* hashes, const bool* strand, T val, unsigned max)
-	{
-		unsigned count = 0;
-		std::vector<unsigned> hash_order;
-		bool saturated = true;
-		// for random number generator seed
-		uint64_t rand_value = val;
-		bool strand_dir = max % 2;
+  /*
+   * Returns false if unable to insert hashes values
+   * Contains strand information
+   * Inserts hash functions in random order
+   */
+  bool insert(const uint64_t* hashes, const bool* strand, T val, unsigned max)
+  {
+    unsigned count = 0;
+    std::vector<unsigned> hash_order;
+    bool saturated = true;
+    // for random number generator seed
+    uint64_t rand_value = val;
+    bool strand_dir = true;
+    if (max % 2 == 0) {
+      strand_dir = false;
+    }
+      
+    // check values and if value set
+    for (unsigned i = 0; i < m_hash_num; ++i) {
+      // check if values are already set
+      uint64_t pos = m_rank_support(hashes[i] % m_bv.size());
+      T value = strand_dir ^ strand[i] ? val | STRAND : val;
+      // check for saturation
+      T old_val = m_data[pos];
 
-		// check values and if value set
-		for (unsigned i = 0; i < m_hash_num; ++i) 
-		{
-			// check if values are already set
-			uint64_t pos = m_rank_support(hashes[i] % m_bv.size());
-			T value = strand_dir ^ strand[i] ? val | strand : val;
-			// check for saturation
-			T old_val = m_data[pos];
+      if (old_val > MASK) {
+        old_val = old_val & ANTI_MASK;
+      } else {
+        saturated = false;
+      }
 
-			if (old_val > mask) 
-			{
-				old_val = old_val & anti_mask;
-			} 
-			else 
-			{
-				saturated = false;
-			}
+      if (old_val == value) {
+        ++count;
+      } else {
+        hash_order.push_back(i);
+      }
 
-			if (old_val == value) 
-			{
-				++count;
-			} 
-			else 
-			{
-				hash_order.push_back(i);
-			}
+      if (count >= max) {
+        return true;
+      }
+      rand_value ^= hashes[i];
+    }
+    std::minstd_rand g(rand_value);
+    std::shuffle(hash_order.begin(), hash_order.end(), g);
 
-			if (count >= max) {
-				return true;
-			}
-			rand_value ^= hashes[i];
-		}
-		std::minstd_rand g(rand_value);
-		std::shuffle(hash_order.begin(), hash_order.end(), g);
+    // insert seeds in random order
+    for (std::vector<unsigned>::iterator itr = hash_order.begin();
+         itr != hash_order.end();
+         ++itr) {
+      uint64_t pos = m_rank_support(hashes[*itr] % m_bv.size());
+      T value = strand_dir ^ strand[*itr] ? val | STRAND : val;
+      // check for saturation
+      T old_val = set_val(&m_data[pos], value);
 
-		// insert seeds in random order
-		for (std::vector<unsigned>::iterator itr = hash_order.begin(); itr != hash_order.end();
-		     ++itr) 
-		{
-			uint64_t pos = m_rank_support(hashes[*itr] % m_bv.size());
-			T value = strand_dir ^ strand[*itr] ? val | strand : val;
-			// check for saturation
-			T old_val = set_val(&m_data[pos], value);
+      if (old_val > MASK) {
+        old_val = old_val & ANTI_MASK;
+      } else {
+        saturated = false;
+      }
 
-			if (old_val > mask) {
-				old_val = old_val & anti_mask;
-			} 
-			else 
-			{saturated = false;}
+      if (old_val == 0) {
+        ++count;
+      }
 
-			if (old_val == 0) 
-			{++count;}
+      if (count >= max) {
+        return true;
+      }
+    }
 
-			if (count >= max) 
-			{return true;}
-		}
+    if (count == 0) {
+      if (!saturated) {
+        assert(
+          max ==
+          1); // if this triggers then spaced seed is probably not symmetric
+        saturate(hashes);
+      }
+      return false;
+    }
+    return true;
+  }
 
-		if (count == 0) 
-		{
-			if (!saturated) 
-			{
-				assert(max == 1); // if this triggers then spaced seed is probably not symmetric
-				saturate(hashes);
-			}
-			return false;
-		}
-		return true;
-	}
+  /*
+   * Returns false if unable to insert hashes values
+   * Inserts hash functions in random order
+   */
+  bool insert(const uint64_t* hashes, T value, unsigned max)
+  {
+    unsigned count = 0;
+    std::vector<unsigned> hash_order;
+    // for random number generator seed
+    uint64_t rand_value = value;
 
-	/*
-	 * Returns false if unable to insert hashes values
-	 * Inserts hash functions in random order
-	 */
-	bool insert(const uint64_t* hashes, T value, unsigned max)
-	{
-		unsigned count = 0;
-		std::vector<unsigned> hash_order;
-		// for random number generator seed
-		uint64_t rand_value = value;
+    bool saturated = true;
 
-		bool saturated = true;
+    // check values and if value set
+    for (unsigned i = 0; i < m_hash_num; ++i) {
+      // check if values are already set
+      uint64_t pos = m_rank_support(hashes[i] % m_bv.size());
+      // check for saturation
+      T old_val = m_data[pos];
 
-		// check values and if value set
-		for (unsigned i = 0; i < m_hash_num; ++i) 
-		{
-			// check if values are already set
-			uint64_t pos = m_rank_support(hashes[i] % m_bv.size());
-			// check for saturation
-			T old_val = m_data[pos];
+      if (old_val > MASK) {
+        old_val = old_val & ANTI_MASK;
+      } else {
+        saturated = false;
+      }
 
-			if (old_val > mask) 
-			{old_val = old_val & anti_mask;} 
-			else 
-			{saturated = false;}
+      if (old_val == value) {
+        ++count;
+      } else {
+        hash_order.push_back(i);
+      }
 
-			if (old_val == value) 
-			{++count;}
-			else {hash_order.push_back(i);}
+      if (count >= max) {
+        return true;
+      }
 
-			if (count >= max) 
-			{return true;}
+      rand_value ^= hashes[i];
+    }
+    std::minstd_rand g(rand_value);
+    std::shuffle(hash_order.begin(), hash_order.end(), g);
 
-			rand_value ^= hashes[i];
-		}
-		std::minstd_rand g(rand_value);
-		std::shuffle(hash_order.begin(), hash_order.end(), g);
+    // insert seeds in random order
+    for (std::vector<unsigned>::iterator itr = hash_order.begin();
+         itr != hash_order.end();
+         ++itr) {
+      uint64_t pos = m_rank_support(hashes[*itr] % m_bv.size());
+      // check for saturation
+      T old_val = set_val(&m_data[pos], value);
 
-		// insert seeds in random order
-		for (std::vector<unsigned>::iterator itr = hash_order.begin(); itr != hash_order.end();
-		     ++itr) 
-		{
-			uint64_t pos = m_rank_support(hashes[*itr] % m_bv.size());
-			// check for saturation
-			T old_val = set_val(&m_data[pos], value);
+      if (old_val > MASK) {
+        old_val = old_val & ANTI_MASK;
+      } else {
+        saturated = false;
+      }
 
-			if (old_val > mask) 
-			{old_val = old_val & anti_mask;} 
-			else 
-			{saturated = false;}
+      if (old_val == 0) {
+        ++count;
+      }
 
-			if (old_val == 0) 
-			{++count;}
+      if (count >= max) {
+        return true;
+      }
+    }
 
-			if (count >= max) 
-			{return true;}
-		}
+    if (count == 0) {
+      if (!saturated) {
+        assert(
+          max ==
+          1); // if this triggers then spaced seed is probably not symmetric
+        saturate(hashes);
+      }
+      return false;
+    }
+    return true;
+  }
 
-		if (count == 0) 
-		{
-			if (!saturated) 
-			{
-				assert(max == 1); // if this triggers then spaced seed is probably not symmetric
-				saturate(hashes);
-			}
-			return false;
-		}
-		return true;
-	}
+  void saturate(const uint64_t* hashes)
+  {
+    for (unsigned i = 0; i < m_hash_num; ++i) {
+      uint64_t pos = m_rank_support(hashes[i] % m_bv.size());
+      __sync_or_and_fetch(&m_data[pos], MASK);
+    }
+  }
 
-	void saturate(const uint64_t* hashes)
-	{
-		for (unsigned i = 0; i < m_hash_num; ++i) 
-		{
-			uint64_t pos = m_rank_support(hashes[i] % m_bv.size());
-			__sync_or_and_fetch(&m_data[pos], mask);
-		}
-	}
+  inline vector<T> at(const uint64_t* hashes,
+                      bool& saturated,
+                      unsigned max_miss = 0)
+  {
+    vector<T> results(m_hash_num);
+    unsigned misses = 0;
+    for (unsigned i = 0; i < m_hash_num; ++i) {
+      uint64_t pos = hashes[i] % m_bv.size();
+      if (m_bv[pos] == 0) {
+        ++misses;
+        saturated = false;
+        if (misses > max_miss) {
+          return vector<T>();
+        }
+      } else {
+        uint64_t rank_pos = m_rank_support(pos);
+        T temp_result = m_data[rank_pos];
+        if (temp_result > MASK) {
+          results[i] = m_data[rank_pos] & ANTI_MASK;
+        } else {
+          results[i] = m_data[rank_pos];
+          saturated = false;
+        }
+      }
+    }
+    return results;
+  }
 
-	inline vector<T> at(const uint64_t* hashes, bool& saturated, unsigned max_miss = 0)
-	{
-		vector<T> results(m_hash_num);
-		unsigned misses = 0;
-		for (unsigned i = 0; i < m_hash_num; ++i) 
-		{
-			uint64_t pos = hashes[i] % m_bv.size();
-			if (m_bv[pos] == 0) 
-			{
-				++misses;
-				saturated = false;
-				if (misses > max_miss) 
-				{
-					return vector<T>();
-				}
-			} 
-			else 
-			{
-				uint64_t rank_pos = m_rank_support(pos);
-				T temp_result = m_data[rank_pos];
-				if (temp_result > mask) 
-				{
-					results[i] = m_data[rank_pos] & anti_mask;
-				} 
-				else 
-				{
-					results[i] = m_data[rank_pos];
-					saturated = false;
-				}
-			}
-		}
-		return results;
-	}
+  /*
+   * Populates rank pos vector. Boolean vector is use to confirm if hits are
+   * good Returns total number of misses found
+   */
+  unsigned at_rank(const uint64_t* hashes,
+                   vector<uint64_t>& rank_pos,
+                   vector<bool>& hits,
+                   unsigned max_miss) const
+  {
+    unsigned misses = 0;
+    for (unsigned i = 0; i < m_hash_num; ++i) {
+      uint64_t pos = hashes[i] % m_bv.size();
+      if (m_bv[pos]) {
+        rank_pos[i] = m_rank_support(pos);
+        hits[i] = true;
+      } else {
+        if (++misses > max_miss) {
+          return misses;
+        }
 
-	/*
-	 * Populates rank pos vector. Boolean vector is use to confirm if hits are good
-	 * Returns total number of misses found
-	 */
-	unsigned at_rank(
-	    const uint64_t* hashes,
-	    vector<uint64_t>& rank_pos,
-	    vector<bool>& hits,
-	    unsigned max_miss) const
-	{
-		unsigned misses = 0;
-		for (unsigned i = 0; i < m_hash_num; ++i) 
-		{
-			uint64_t pos = hashes[i] % m_bv.size();
-			if (m_bv[pos]) 
-			{
-				rank_pos[i] = m_rank_support(pos);
-				hits[i] = true;
-			} 
-			else 
-			{
-				if (++misses > max_miss) 
-				{return misses;}
+        hits[i] = false;
+      }
+    }
+    return misses;
+  }
 
-				hits[i] = false;
-			}
-		}
-		return misses;
-	}
+  /*
+   * For k-mers
+   * Returns if match succeeded
+   */
+  bool at_rank(const uint64_t* hashes, vector<uint64_t>& rank_pos) const
+  {
+    for (unsigned i = 0; i < m_hash_num; ++i) {
+      uint64_t pos = hashes[i] % m_bv.size();
+      if (m_bv[pos]) {
+        rank_pos[i] = m_rank_support(pos);
+      } else {
+        return false;
+      }
+    }
+    return true;
+  }
 
-	/*
-	 * For k-mers
-	 * Returns if match succeeded
-	 */
-	bool at_rank(const uint64_t* hashes, vector<uint64_t>& rank_pos) const
-	{
-		for (unsigned i = 0; i < m_hash_num; ++i) 
-		{
-			uint64_t pos = hashes[i] % m_bv.size();
-			if (m_bv[pos]) 
-			{
-				rank_pos[i] = m_rank_support(pos);
-			} 
-			else 
-			{return false;}
-		}
-		return true;
-	}
+  vector<uint64_t> get_rank_pos(const uint64_t* hashes) const
+  {
+    vector<uint64_t> rank_pos(m_hash_num);
+    for (unsigned i = 0; i < m_hash_num; ++i) {
+      uint64_t pos = hashes[i] % m_bv.size();
+      rank_pos[i] = m_rank_support(pos);
+    }
+    return rank_pos;
+  }
 
-	vector<uint64_t> get_rank_pos(const uint64_t* hashes) const
-	{
-		vector<uint64_t> rank_pos(m_hash_num);
-		for (unsigned i = 0; i < m_hash_num; ++i) 
-		{
-			uint64_t pos = hashes[i] % m_bv.size();
-			rank_pos[i] = m_rank_support(pos);
-		}
-		return rank_pos;
-	}
+  uint64_t get_rank_pos(const uint64_t hash) const
+  {
+    return m_rank_support(hash % m_bv.size());
+  }
 
-	uint64_t get_rank_pos(const uint64_t hash) const { return m_rank_support(hash % m_bv.size()); }
+  const vector<vector<unsigned>>& get_seed_values() const { return m_ss_val; }
 
-	const vector<vector<unsigned>>& get_seed_values() const { return m_ss_val; }
+  unsigned get_kmer_size() const { return m_kmer_size; }
 
-	unsigned get_kmer_size() const { return m_kmer_size; }
+  unsigned get_hash_num() const { return m_hash_num; }
 
-	unsigned get_hash_num() const { return m_hash_num; }
+  /*
+   * Computes id frequency based on data vector contents
+   * Returns counts of repetitive sequence
+   */
+  size_t get_id_counts(vector<size_t>& counts) const
+  {
+    size_t saturated_counts = 0;
+    for (size_t i = 0; i < m_d_size; ++i) {
+      if (m_data[i] > MASK) {
+        ++counts[m_data[i] & ANTI_MASK];
+        ++saturated_counts;
+      } else {
+        ++counts[m_data[i]];
+      }
+    }
+    return saturated_counts;
+  }
 
-	/*
-	 * Computes id frequency based on data vector contents
-	 * Returns counts of repetitive sequence
-	 */
-	size_t get_id_counts(vector<size_t>& counts) const
-	{
-		size_t saturated_counts = 0;
-		for (size_t i = 0; i < m_d_size; ++i) 
-		{
-			if (m_data[i] > mask) 
-			{
-				++counts[m_data[i] & anti_mask];
-				++saturated_counts;
-			} 
-			else 
-			{
-				++counts[m_data[i]];
-			}
-		}
-		return saturated_counts;
-	}
+  /*
+   * computes id frequency based on datavector
+   * Returns counts of repetitive sequence
+   */
+  size_t get_id_counts_strand(vector<size_t>& counts) const
+  {
+    size_t saturated_counts = 0;
+    for (size_t i = 0; i < m_d_size; ++i) {
+      if (m_data[i] > MASK) {
+        ++counts[m_data[i] & ID_MASK];
+        ++saturated_counts;
+      } else {
+        ++counts[m_data[i] & ANTI_STRAND];
+      }
+    }
+    return saturated_counts;
+  }
 
-	/*
-	 * computes id frequency based on datavector
-	 * Returns counts of repetitive sequence
-	 */
-	size_t get_id_counts_strand(vector<size_t>& counts) const
-	{
-		size_t saturated_counts = 0;
-		for (size_t i = 0; i < m_d_size; ++i) 
-		{
-			if (m_data[i] > mask) 
-			{
-				++counts[m_data[i] & id_mask];
-				++saturated_counts;
-			} 
-			else 
-			{
-				++counts[m_data[i] & anti_strand];
-			}
-		}
-		return saturated_counts;
-	}
+  size_t get_pop() const
+  {
+    size_t index = m_bv.size() - 1;
+    while (m_bv[index] == 0) {
+      --index;
+    }
+    return m_rank_support(index) + 1;
+  }
 
-	size_t get_pop() const
-	{
-		size_t index = m_bv.size() - 1;
-		while (m_bv[index] == 0) 
-		{
-			--index;
-		}
-		return m_rank_support(index) + 1;
-	}
+  /*
+   * Mostly for debugging
+   * should equal get_pop if fully populated
+   */
+  size_t get_pop_non_zero() const
+  {
+    size_t count = 0;
+    for (size_t i = 0; i < m_d_size; ++i) {
+      if (m_data[i] != 0) {
+        ++count;
+      }
+    }
+    return count;
+  }
 
-	/*
-	 * Mostly for debugging
-	 * should equal get_pop if fully populated
-	 */
-	size_t get_pop_non_zero() const
-	{
-		size_t count = 0;
-		for (size_t i = 0; i < m_d_size; ++i) 
-		{
-			if (m_data[i] != 0) 
-			{
-				++count;
-			}
-		}
-		return count;
-	}
+  /*
+   * Checks data array for abnormal IDs
+   * (i.e. values greater than what is possible)
+   * Returns first abnormal ID or value of max_val if no abnormal IDs are found
+   * For debugging
+   */
+  T check_values(T max_val) const
+  {
+    for (size_t i = 0; i < m_d_size; ++i) {
+      if ((m_data[i] & ANTI_MASK) > max_val) {
+        return m_data[i];
+      }
+    }
+    return max_val;
+  }
 
-	/*
-	 * Checks data array for abnormal IDs
-	 * (i.e. values greater than what is possible)
-	 * Returns first abnormal ID or value of max_val if no abnormal IDs are found
-	 * For debugging
-	 */
-	T check_values(T max_val) const
-	{
-		for (size_t i = 0; i < m_d_size; ++i) 
-		{
-			if ((m_data[i] & anti_mask) > max_val) 
-			{
-				return m_data[i];
-			}
-		}
-		return max_val;
-	}
+  size_t get_pop_saturated() const
+  {
+    size_t count = 0;
+    for (size_t i = 0; i < m_d_size; ++i) {
+      if (m_data[i] > MASK) {
+        ++count;
+      }
+    }
+    return count;
+  }
 
-	size_t get_pop_saturated() const
-	{
-		size_t count = 0;
-		for (size_t i = 0; i < m_d_size; ++i) 
-		{
-			if (m_data[i] > mask) 
-			{
-				++count;
-			}
-		}
-		return count;
-	}
+  size_t size() const { return m_bv.size(); }
 
-	size_t size() const { return m_bv.size(); }
+  // overwrites existing value CAS
+  void set_data(uint64_t pos, T id)
+  {
+    T old_value;
+    do {
+      old_value = m_data[pos];
+      if (old_value > MASK) {
+        id |= MASK;
+      }
+    } while (!__sync_bool_compare_and_swap(&m_data[pos], old_value, id));
+  }
 
-	// overwrites existing value CAS
-	void set_data(uint64_t pos, T id)
-	{
-		T old_value;
-		do {
-			old_value = m_data[pos];
-			if (old_value > mask) 
-			{
-				id |= mask;
-			}
-		} while (!__sync_bool_compare_and_swap(&m_data[pos], old_value, id));
-	}
-
-	// saturates values
-	void saturate_data(uint64_t pos)
-	{
+  // saturates values
+  void saturate_data(uint64_t pos)
+  {
 #pragma omp critical
-		m_data[pos] |= mask;
-	}
+    m_data[pos] |= MASK;
+  }
 
-	// Does not overwrite
-	void set_data_if_empty(uint64_t pos, T id) { set_val(&m_data[pos], id); }
+  // Does not overwrite
+  void set_data_if_empty(uint64_t pos, T id) { set_val(&m_data[pos], id); }
 
-	vector<T> get_data(const vector<uint64_t>& rank_pos) const
-	{
-		vector<T> results(rank_pos.size());
-		for (unsigned i = 0; i < m_hash_num; ++i) 
-		{
-			results[i] = m_data[rank_pos[i]];
-		}
-		return results;
-	}
+  vector<T> get_data(const vector<uint64_t>& rank_pos) const
+  {
+    vector<T> results(rank_pos.size());
+    for (unsigned i = 0; i < m_hash_num; ++i) {
+      results[i] = m_data[rank_pos[i]];
+    }
+    return results;
+  }
 
-	T get_data(uint64_t rank) const { return m_data[rank]; }
+  T get_data(uint64_t rank) const { return m_data[rank]; }
 
-	/*
-	 * Preconditions:
-	 * 	frame_probs but be equal in size to multiMatchProbs
-	 * 	frame_probs must be preallocated to correct size (number of ids + 1)
-	 * Max value is the largest value seen in your set of possible values
-	 * Returns proportion of saturated elements relative to all elements
-	 */
-	double calc_frame_probs(vector<double>& frame_probs, unsigned allowed_miss)
-	{
-		double occupancy = double(get_pop()) / double(size());
-		vector<size_t> count_table = vector<size_t>(frame_probs.size(), 0);
-		double sat_prop = double(get_id_counts(count_table));
-		size_t sum = 0;
-		for (size_t i = 1; i < count_table.size(); ++i) 
-		{
-			sum += count_table[i];
-		}
-		sat_prop /= double(sum);
-		for (size_t i = 1; i < count_table.size(); ++i) 
-		{
-			frame_probs[i] = calc_prob_single_frame(
-			    occupancy, m_hash_num, double(count_table[i]) / double(sum), allowed_miss);
-		}
-		return sat_prop;
-	}
+  /*
+   * Preconditions:
+   * 	frame_probs but be equal in size to multiMatchProbs
+   * 	frame_probs must be preallocated to correct size (number of ids + 1)
+   * Max value is the largest value seen in your set of possible values
+   * Returns proportion of saturated elements relative to all elements
+   */
+  double calc_frame_probs(vector<double>& frame_probs, unsigned allowed_miss)
+  {
+    double occupancy = double(get_pop()) / double(size());
+    vector<size_t> count_table = vector<size_t>(frame_probs.size(), 0);
+    double sat_prop = double(get_id_counts(count_table));
+    size_t sum = 0;
+    for (size_t i = 1; i < count_table.size(); ++i) {
+      sum += count_table[i];
+    }
+    sat_prop /= double(sum);
+    for (size_t i = 1; i < count_table.size(); ++i) {
+      frame_probs[i] =
+        calc_prob_single_frame(occupancy,
+                               m_hash_num,
+                               double(count_table[i]) / double(sum),
+                               allowed_miss);
+    }
+    return sat_prop;
+  }
 
-	/*
-	 * Preconditions:
-	 * 	frame_probs but be equal in size to multiMatchProbs
-	 * 	frame_probs must be preallocated to correct size (number of ids + 1)
-	 * Max value is the largest value seen in your set of possible values
-	 * Returns proportion of saturated elements relative to all elements
-	 */
-	double calc_frame_probs_strand(vector<double>& frame_probs, unsigned allowed_miss)
-	{
-		double occupancy = double(get_pop()) / double(size());
-		vector<size_t> count_table = vector<size_t>(frame_probs.size(), 0);
-		double sat_prop = double(get_id_counts_strand(count_table));
-		size_t sum = 0;
-		for (vector<size_t>::const_iterator itr = count_table.begin(); itr != count_table.end();
-		     ++itr) 
-		{
-			sum += *itr;
-		}
-		sat_prop /= double(sum);
+  /*
+   * Preconditions:
+   * 	frame_probs but be equal in size to multiMatchProbs
+   * 	frame_probs must be preallocated to correct size (number of ids + 1)
+   * Max value is the largest value seen in your set of possible values
+   * Returns proportion of saturated elements relative to all elements
+   */
+  double calc_frame_probs_strand(vector<double>& frame_probs,
+                                 unsigned allowed_miss)
+  {
+    double occupancy = double(get_pop()) / double(size());
+    vector<size_t> count_table = vector<size_t>(frame_probs.size(), 0);
+    double sat_prop = double(get_id_counts_strand(count_table));
+    size_t sum = 0;
+    for (vector<size_t>::const_iterator itr = count_table.begin();
+         itr != count_table.end();
+         ++itr) {
+      sum += *itr;
+    }
+    sat_prop /= double(sum);
 #pragma omp parallel for
-		for (size_t i = 1; i < count_table.size(); ++i) 
-		{
-			frame_probs[i] = calc_prob_single_frame(
-			    occupancy, m_hash_num, double(count_table[i]) / double(sum), allowed_miss);
-			//			frame_probs[i] = calc_prob_single(occupancy,
-			//					double(count_table[i]) / double(sum));
-		}
-		return sat_prop;
-	}
+    for (size_t i = 1; i < count_table.size(); ++i) {
+      frame_probs[i] =
+        calc_prob_single_frame(occupancy,
+                               m_hash_num,
+                               double(count_table[i]) / double(sum),
+                               allowed_miss);
+      //			frame_probs[i] = calc_prob_single(occupancy,
+      //					double(count_table[i]) /
+      // double(sum));
+    }
+    return sat_prop;
+  }
 
-	~MIBloomFilter() { delete[] m_data; }
+  ~MIBloomFilter() { delete[] m_data; }
 
-  private:
-	// Driver function to sort the vector elements
-	// by second element of pairs
-	static bool sort_by_sec(const pair<int, int>& a, const pair<int, int>& b)
-	{
-		return (a.second < b.second);
-	}
+private:
+  // Driver function to sort the vector elements
+  // by second element of pairs
+  static bool sort_by_sec(const pair<int, int>& a, const pair<int, int>& b)
+  {
+    return (a.second < b.second);
+  }
 
-	/*
-	 * Helper function for header storage
-	 */
-	void write_header(ofstream& out) const
-	{
-		file_header header;
-		memcpy(header.magic, "MIBLOOMF", 8);
+  /*
+   * Helper function for header storage
+   */
+  void write_header(ofstream& out) const
+  {
+    FileHeader header;
+    const int magic_num = 8;
+    memcpy(header.magic, "MIBLOOMF", magic_num);
 
-		header.hlen = sizeof(struct file_header) + m_kmer_size * m_sseeds.size();
-		header.kmer = m_kmer_size;
-		header.size = m_d_size;
-		header.nhash = m_hash_num;
-		header.version = MIBloomFilter_VERSION;
+    header.hlen = sizeof(struct FileHeader) + m_kmer_size * m_sseeds.size();
+    header.kmer = m_kmer_size;
+    header.size = m_d_size;
+    header.nhash = m_hash_num;
+    header.version = MI_BLOOM_FILTER_VERSION;
 
-		//		cerr << "Writing header... magic: " << magic << " hlen: " << header.hlen
-		//				<< " nhash: " << header.nhash << " size: " << header.size
-		//				<< endl;
+    //		cerr << "Writing header... magic: " << magic << " hlen: " <<
+    // header.hlen
+    //				<< " nhash: " << header.nhash << " size: " <<
+    // header.size
+    //				<< endl;
 
-		out.write(reinterpret_cast<char*>(&header), sizeof(struct file_header));
+    out.write(reinterpret_cast<char*>(&header), sizeof(struct FileHeader));
 
-		for (vector<string>::const_iterator itr = m_sseeds.begin(); itr != m_sseeds.end(); ++itr) {
-			out.write(itr->c_str(), m_kmer_size);
-		}
-	}
+    for (vector<string>::const_iterator itr = m_sseeds.begin();
+         itr != m_sseeds.end();
+         ++itr) {
+      out.write(itr->c_str(), m_kmer_size);
+    }
+  }
 
-	/*
-	 * Calculates the optimal number of hash function to use
-	 * Calculation assumes optimal ratio of bytes per entry given a fpr
-	 */
-	inline static unsigned calc_opti_hash_num(double fpr) { return unsigned(-log(fpr) / log(2)); }
+  /*
+   * Calculates the optimal number of hash function to use
+   * Calculation assumes optimal ratio of bytes per entry given a fpr
+   */
+  inline static unsigned calc_opti_hash_num(double fpr)
+  {
+    return unsigned(-log(fpr) / log(2));
+  }
 
-	/*
-	 * Calculate FPR based on hash functions, size and number of entries
-	 * see http://en.wikipedia.org/wiki/Bloom_filter
-	 */
-	double calc_FPR_num_inserted(size_t num_entr) const
-	{
-		return pow(
-		    1.0 - pow(1.0 - 1.0 / double(m_bv.size()), double(num_entr) * double(m_hash_num)),
-		    double(m_hash_num));
-	}
+  /*
+   * Calculate FPR based on hash functions, size and number of entries
+   * see http://en.wikipedia.org/wiki/Bloom_filter
+   */
+  double calc_fpr_num_inserted(size_t num_entr) const
+  {
+    return pow(1.0 - pow(1.0 - 1.0 / double(m_bv.size()),
+                         double(num_entr) * double(m_hash_num)),
+               double(m_hash_num));
+  }
 
-	/*
-	 * Calculates the optimal FPR to use based on hash functions
-	 */
-	double calc_FPR_hash_num(int hash_funct_num) const { return pow(2.0, -hash_funct_num); }
+  /*
+   * Calculates the optimal FPR to use based on hash functions
+   */
+  double calc_fpr_hash_num(int hash_funct_num) const
+  {
+    const double magic = 2.0;
+    return pow(magic, -hash_funct_num);
+  }
 
-	/*
-	 * Returns old value that was inside
-	 * Does not overwrite if non-zero value already exists
-	 */
-	T set_val(T* val, T new_val)
-	{
-		T old_value;
-		do {
-			old_value = *val;
-			if (old_value != 0)
-				break;
-		} while (!__sync_bool_compare_and_swap(val, old_value, new_val));
-		return old_value;
-	}
+  /*
+   * Returns old value that was inside
+   * Does not overwrite if non-zero value already exists
+   */
+  T set_val(T* val, T new_val)
+  {
+    T old_value;
+    do {
+      old_value = *val;
+      if (old_value != 0) {
+        break;
+      }
+    } while (!__sync_bool_compare_and_swap(val, old_value, new_val));
+    return old_value;
+  }
 
-	static inline unsigned n_choose_k(unsigned n, unsigned k)
-	{
-		if (k > n)
-			return 0;
-		if (k * 2 > n)
-			k = n - k;
-		if (k == 0)
-			return 1;
+  static inline unsigned n_choose_k(unsigned n, unsigned k)
+  {
+    if (k > n) {
+      return 0;
+    }
+    if (k * 2 > n){
+      k = n - k;
+    }
+    if (k == 0){
+      return 1;
+    }
+    int result = (int) n;
+    for (int i = 2; i <= k; ++i) {
+      result *= ((int)n - i + 1);
+      result /= i;
+    }
+    return result;
+  }
 
-		int result = n;
-		for (unsigned i = 2; i <= k; ++i) 
-		{
-			result *= (n - i + 1);
-			result /= i;
-		}
-		return result;
-	}
+  // size of bitvector
+  size_t m_d_size;
 
-	// size of bitvector
-	size_t m_d_size;
+  sdsl::bit_vector_il<BLOCKSIZE> m_bv;
+  T* m_data;
+  sdsl::rank_support_il<1> m_rank_support;
 
-	sdsl::bit_vector_il<BLOCKSIZE> m_bv;
-	T* m_data;
-	sdsl::rank_support_il<1> m_rank_support;
+  unsigned m_hash_num;
+  unsigned m_kmer_size;
 
-	unsigned m_hash_num;
-	unsigned m_kmer_size;
+  typedef vector<vector<unsigned>> seed_val;
+  vector<string> m_sseeds;
 
-	typedef vector<vector<unsigned>> seed_val;
-	vector<string> m_sseeds;
+  double m_prob_saturated;
+  seed_val m_ss_val;
 
-	double m_prob_saturated;
-	seed_val m_ss_val;
-
-	static const uint32_t MIBloomFilter_VERSION = 1;
+  static const uint32_t MI_BLOOM_FILTER_VERSION = 1;
 };
 
-} //namespace btllib
+} // namespace btllib
 
 #endif /* MIBLOOMFILTER_HPP_ */
