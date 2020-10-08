@@ -7,10 +7,10 @@ global_args = [ '-pthread' ]
 global_link_args = [ '-ldl', '-lpthread' ]
 if build_machine.system() == 'darwin'
   global_args += [ '-Xpreprocessor', '-fopenmp' ]
-  global_link_args += [ '-Xpreprocessor', '-fopenmp', '-lomp','-L/home/jyiu/Desktop/include','-lsdsl']
+  global_link_args += [ '-Xpreprocessor', '-fopenmp', '-lomp','-L/home/jyiu/Desktop/lib','-lsdsl']
 else
   global_args += [ '-fopenmp' ]
-  global_link_args += [ '-fopenmp','-L/home/jyiu/Desktop/include', '-lsdsl']
+  global_link_args += [ '-fopenmp','-L/home/jyiu/Desktop/lib', '-lsdsl']
 endif
 add_global_arguments(global_args, language : 'cpp')
 add_global_link_arguments(global_link_args, language : 'cpp')
