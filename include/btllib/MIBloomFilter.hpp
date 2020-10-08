@@ -29,13 +29,13 @@
 #include <vector>
 
 namespace btllib {
-  using std::cerr;
-  using std::endl;
-  using std::ios;
-  using std::ofstream;
-  using std::pair;
-  using std::string;
-  using std::vector;
+using std::cerr;
+using std::endl;
+using std::ios;
+using std::ofstream;
+using std::pair;
+using std::string;
+using std::vector;
 
 template<typename T>
 class MIBloomFilter
@@ -110,7 +110,7 @@ public:
    * of collisions Thread safe on the bv, though return values will not be the
    * same run to run
    */
-  static unsigned insert(sdsl::bit_vector& bv,// NOLINT
+  static unsigned insert(sdsl::bit_vector& bv, // NOLINT
                          uint64_t* hash_values,
                          unsigned hash_num)
   {
@@ -143,10 +143,10 @@ public:
   /*
    * Constructor using a prebuilt bitvector
    */
-  MIBloomFilter<T>(unsigned hash_num,// NOLINT
+  MIBloomFilter<T>(unsigned hash_num, // NOLINT
                    unsigned kmer_size,
-                   sdsl::bit_vector& bv,// NOLINT
-                   const vector<string> seeds = vector<string>(0))//NOLINT
+                   sdsl::bit_vector& bv,                           // NOLINT
+                   const vector<string> seeds = vector<string>(0)) // NOLINT
     : m_d_size(0)
     , m_hash_num(hash_num)
     , m_kmer_size(kmer_size)
@@ -170,7 +170,7 @@ public:
     m_data = new T[m_d_size]();
   }
 
-  MIBloomFilter<T>(const string& filter_file_path)// NOLINT
+  MIBloomFilter<T>(const string& filter_file_path) // NOLINT
   {
 #pragma omp parallel for
     for (unsigned i = 0; i < 2; ++i) {
@@ -195,7 +195,7 @@ public:
 
         const int magic_nine = 9;
         char magic[magic_nine];
-	const int magic_eight = 8;
+        const int magic_eight = 8;
         memcpy(magic, header.magic, magic_eight);
         magic[magic_eight] = '\0';
 
@@ -302,7 +302,7 @@ public:
    * Stores uncompressed because the random data tends to
    * compress poorly anyway
    */
-  void store(string const& filter_file_path) const// NOLINT
+  void store(string const& filter_file_path) const // NOLINT
   {
 
 #pragma omp parallel for
@@ -318,7 +318,8 @@ public:
         //						<< " bytes." << endl;
 
         // write out each block
-        my_file.write(reinterpret_cast<char*>(m_data), m_d_size * sizeof(T));// NOLINT
+        my_file.write(reinterpret_cast<char*>(m_data),
+                      m_d_size * sizeof(T)); // NOLINT
 
         my_file.close();
         assert(my_file);
@@ -548,8 +549,8 @@ public:
    * good Returns total number of misses found
    */
   unsigned at_rank(const uint64_t* hashes,
-                   vector<uint64_t>& rank_pos,// NOLINT
-                   vector<bool>& hits,// NOLINT
+                   vector<uint64_t>& rank_pos, // NOLINT
+                   vector<bool>& hits,         // NOLINT
                    unsigned max_miss) const
   {
     unsigned misses = 0;
@@ -573,7 +574,8 @@ public:
    * For k-mers
    * Returns if match succeeded
    */
-  bool at_rank(const uint64_t* hashes, vector<uint64_t>& rank_pos) const// NOLINT
+  bool at_rank(const uint64_t* hashes,
+               vector<uint64_t>& rank_pos) const // NOLINT
   {
     for (unsigned i = 0; i < m_hash_num; ++i) {
       uint64_t pos = hashes[i] % m_bv.size();
@@ -611,7 +613,7 @@ public:
    * Computes id frequency based on data vector contents
    * Returns counts of repetitive sequence
    */
-  size_t get_id_counts(vector<size_t>& counts) const// NOLINT
+  size_t get_id_counts(vector<size_t>& counts) const // NOLINT
   {
     size_t saturated_counts = 0;
     for (size_t i = 0; i < m_d_size; ++i) {
@@ -629,7 +631,7 @@ public:
    * computes id frequency based on datavector
    * Returns counts of repetitive sequence
    */
-  size_t get_id_counts_strand(vector<size_t>& counts) const// NOLINT
+  size_t get_id_counts_strand(vector<size_t>& counts) const // NOLINT
   {
     size_t saturated_counts = 0;
     for (size_t i = 0; i < m_d_size; ++i) {
@@ -718,7 +720,7 @@ public:
   // Does not overwrite
   void set_data_if_empty(uint64_t pos, T id) { set_val(&m_data[pos], id); }
 
-  vector<T> get_data(const vector<uint64_t>& rank_pos) const// NOLINT
+  vector<T> get_data(const vector<uint64_t>& rank_pos) const // NOLINT
   {
     vector<T> results(rank_pos.size());
     for (unsigned i = 0; i < m_hash_num; ++i) {
@@ -736,7 +738,8 @@ public:
    * Max value is the largest value seen in your set of possible values
    * Returns proportion of saturated elements relative to all elements
    */
-  double calc_frame_probs(vector<double>& frame_probs, unsigned allowed_miss)// NOLINT
+  double calc_frame_probs(vector<double>& frame_probs,
+                          unsigned allowed_miss) // NOLINT
   {
     double occupancy = double(get_pop()) / double(size());
     vector<size_t> count_table = vector<size_t>(frame_probs.size(), 0);
@@ -763,8 +766,8 @@ public:
    * Max value is the largest value seen in your set of possible values
    * Returns proportion of saturated elements relative to all elements
    */
-  double calc_frame_probs_strand(vector<double>& frame_probs,// NOLINT
-				 unsigned allowed_miss)
+  double calc_frame_probs_strand(vector<double>& frame_probs, // NOLINT
+                                 unsigned allowed_miss)
   {
     double occupancy = double(get_pop()) / double(size());
     vector<size_t> count_table = vector<size_t>(frame_probs.size(), 0);
@@ -803,7 +806,7 @@ private:
   /*
    * Helper function for header storage
    */
-  void write_header(ofstream& out) const// NOLINT
+  void write_header(ofstream& out) const // NOLINT
   {
     FileHeader header;
     const int magic_num = 8;
@@ -821,7 +824,8 @@ private:
     // header.size
     //				<< endl;
 
-    out.write(reinterpret_cast<char*>(&header), sizeof(struct FileHeader));// NOLINT
+    out.write(reinterpret_cast<char*>(&header),
+              sizeof(struct FileHeader)); // NOLINT
 
     for (vector<string>::const_iterator itr = m_sseeds.begin();
          itr != m_sseeds.end();
