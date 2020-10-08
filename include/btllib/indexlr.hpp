@@ -14,6 +14,7 @@
 #include <cstring>
 #include <functional>
 #include <iostream>
+#include <limits>
 #include <string>
 #include <thread>
 #include <vector>
@@ -357,7 +358,8 @@ Indexlr::minimize_hashed_kmers(
       min_it = right_it - 1;
     }
     candidate_min_pos = min_it - first_it;
-    if (candidate_min_pos > prev_min_pos && min_it->hash1 != UINT64_MAX) {
+    if (candidate_min_pos > prev_min_pos &&
+        min_it->hash1 != std::numeric_limits<uint64_t>::max()) {
       prev_min_pos = candidate_min_pos;
       minimizers.push_back(*min_it);
     }
@@ -473,19 +475,19 @@ Indexlr::MinimizeWorker::work()
             tmp = { hk.hash1 };
             if (!indexlr.bf1.get().contains(tmp) ||
                 indexlr.bf2.get().contains(tmp)) {
-              hk.hash1 = UINT64_MAX;
+              hk.hash1 = std::numeric_limits<uint64_t>::max();
             }
           }
         } else if (indexlr.filter_in()) {
           for (auto& hk : hashed_kmers) {
             if (!indexlr.bf1.get().contains({ hk.hash1 })) {
-              hk.hash1 = UINT64_MAX;
+              hk.hash1 = std::numeric_limits<uint64_t>::max();
             }
           }
         } else if (indexlr.filter_out()) {
           for (auto& hk : hashed_kmers) {
             if (indexlr.bf1.get().contains({ hk.hash1 })) {
-              hk.hash1 = UINT64_MAX;
+              hk.hash1 = std::numeric_limits<uint64_t>::max();
             }
           }
         }
