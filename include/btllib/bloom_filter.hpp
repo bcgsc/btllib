@@ -197,7 +197,7 @@ inline BloomFilter::BloomFilter(const std::string& path)
   assigns the header to a char array*/
   std::string toml_buffer(line + '\n');
   bool header_end_found = false;
-  while (std::getline(file, line)) {
+  while (bool(std::getline(file, line))) {
     toml_buffer.append(line + '\n');
     if (line == "[HeaderEnd]") {
       header_end_found = true;
@@ -330,7 +330,7 @@ inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path)
   assigns the header to a char array*/
   std::string toml_buffer(line + '\n');
   bool header_end_found = false;
-  while (std::getline(file, line)) {
+  while (bool(std::getline(file, line))) {
     toml_buffer.append(line + '\n');
     if (line == "[HeaderEnd]") {
       header_end_found = true;

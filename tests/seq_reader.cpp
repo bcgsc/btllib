@@ -4,8 +4,10 @@
 
 #include <algorithm>
 #include <cassert>
+#include <chrono>
 #include <cstdio>
 #include <fstream>
+#include <random>
 #include <string>
 
 #include <omp.h>
@@ -80,6 +82,10 @@ main()
     }
     assert(i == 2);
 
+    std::default_random_engine generator(
+      std::chrono::system_clock::now().time_since_epoch().count() + 9999999);
+    std::uniform_int_distribution<int> seq_size_distribution(100, 5000);
+
     // Test larger randomly generated file
     std::cerr << "Test random file" << std::endl;
     std::vector<std::string> generated_names;
@@ -93,8 +99,9 @@ main()
 
       name = get_random_name(10);
       comment = get_random_name(20);
-      seq = get_random_sequence(200 + s);
-      qual = get_random_name(200 + s);
+      size_t seq_size = seq_size_distribution(generator);
+      seq = get_random_sequence(seq_size);
+      qual = get_random_name(seq_size);
 
       random_seqs << '@' << name << ' ' << comment << '\n'
                   << seq << "\n+\n"
