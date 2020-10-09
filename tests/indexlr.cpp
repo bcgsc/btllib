@@ -49,7 +49,7 @@ main()
         if (j > 0) {
           ss << ' ';
         }
-        ss << min.hash2;
+        ss << min.out_hash;
         j++;
       }
     }
@@ -63,7 +63,8 @@ main()
         if (j > 0) {
           ss2 << ' ';
         }
-        ss2 << min.hash2 << ':' << min.pos << ':' << min.seq;
+        ss2 << min.out_hash << ':' << min.pos << ':'
+            << (min.forward ? '+' : '-') << ':' << min.seq;
         j++;
       }
     }
@@ -114,7 +115,7 @@ main()
     for (const auto& min : record.minimizers) {
       bool found = false;
       for (const auto h : filter_in_hashes) {
-        if (min.hash1 == h) {
+        if (min.min_hash == h) {
           found = true;
           break;
         }
@@ -135,7 +136,7 @@ main()
   while ((record = indexlr4.get_minimizers())) {
     for (const auto& min : record.minimizers) {
       for (const auto h : filter_out_hashes) {
-        assert(min.hash1 != h);
+        assert(min.min_hash != h);
       }
       mins_found++;
     }
@@ -155,14 +156,14 @@ main()
     for (const auto& min : record.minimizers) {
       bool found = false;
       for (const auto h : filter_in_hashes) {
-        if (min.hash1 == h) {
+        if (min.min_hash == h) {
           found = true;
           break;
         }
       }
       assert(found);
       for (const auto h : filter_out_hashes) {
-        assert(min.hash2 != h);
+        assert(min.min_hash != h);
       }
       mins_found++;
     }

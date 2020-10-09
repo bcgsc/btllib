@@ -73,8 +73,21 @@ public:
 
   struct Minimizer
   {
-    uint64_t hash1, hash2;
+    Minimizer(uint64_t min_hash,
+              uint64_t out_hash,
+              size_t pos,
+              bool forward,
+              std::string seq)
+      : min_hash(min_hash)
+      , out_hash(out_hash)
+      , pos(pos)
+      , forward(forward)
+      , seq(std::move(seq))
+    {}
+
+    uint64_t min_hash, out_hash;
     size_t pos;
+    bool forward;
     std::string seq;
   };
 
@@ -330,11 +343,11 @@ Indexlr::hash_kmers(const std::string& seq, const size_t k) const
   }
   hashed_kmers.reserve(seq.size() - k + 1);
   for (NtHash nh(seq, k, 2); nh.roll();) {
-    hashed_kmers.push_back(
-      Minimizer({ nh.hashes()[0],
-                  nh.hashes()[1],
-                  nh.get_pos(),
-                  output_seq() ? seq.substr(nh.get_pos(), k) : "" }));
+    hashed_kmers.emplace_back(nh.hashes()[0],
+                              nh.hashes()[1],
+                              nh.get_pos(),
+                              nh.forward(),
+                              output_seq() ? seq.substr(nh.get_pos(), k) : "");
   }
   return hashed_kmers;
 }
@@ -359,14 +372,14 @@ Indexlr::minimize_hashed_kmers(
       // Use of operator '<=' returns the minimum that is furthest from left.
       min_it = std::min_element(
         left_it, right_it, [](const HashedKmer& a, const HashedKmer& b) {
-          return a.hash1 <= b.hash1;
+          return a.min_hash <= b.min_hash;
         });
-    } else if (right_it[-1].hash1 <= min_it->hash1) {
+    } else if (right_it[-1].min_hash <= min_it->min_hash) {
       min_it = right_it - 1;
     }
     candidate_min_pos = min_it - first_it;
     if (candidate_min_pos > prev_min_pos &&
-        min_it->hash1 != std::numeric_limits<uint64_t>::max()) {
+        min_it->min_hash != std::numeric_limits<uint64_t>::max()) {
       prev_min_pos = candidate_min_pos;
       minimizers.push_back(*min_it);
     }
@@ -479,22 +492,22 @@ Indexlr::MinimizeWorker::work()
         if (indexlr.filter_in() && indexlr.filter_out()) {
           std::vector<uint64_t> tmp;
           for (auto& hk : hashed_kmers) {
-            tmp = { hk.hash1 };
+            tmp = { hk.min_hash };
             if (!indexlr.bf1.get().contains(tmp) ||
                 indexlr.bf2.get().contains(tmp)) {
-              hk.hash1 = std::numeric_limits<uint64_t>::max();
+              hk.min_hash = std::numeric_limits<uint64_t>::max();
             }
           }
         } else if (indexlr.filter_in()) {
           for (auto& hk : hashed_kmers) {
-            if (!indexlr.bf1.get().contains({ hk.hash1 })) {
-              hk.hash1 = std::numeric_limits<uint64_t>::max();
+            if (!indexlr.bf1.get().contains({ hk.min_hash })) {
+              hk.min_hash = std::numeric_limits<uint64_t>::max();
             }
           }
         } else if (indexlr.filter_out()) {
           for (auto& hk : hashed_kmers) {
-            if (indexlr.bf1.get().contains({ hk.hash1 })) {
-              hk.hash1 = std::numeric_limits<uint64_t>::max();
+            if (indexlr.bf1.get().contains({ hk.min_hash })) {
+              hk.min_hash = std::numeric_limits<uint64_t>::max();
             }
           }
         }

@@ -75,7 +75,7 @@ main()
 
     std::default_random_engine generator(
       std::chrono::system_clock::now().time_since_epoch().count() + 9999999);
-    std::uniform_int_distribution<int> seq_size_distribution(100, 5000);
+    std::uniform_int_distribution<int> seq_size_distribution(100, 2000);
 
     // Test larger randomly generated file
     std::cerr << "Test random file" << std::endl;

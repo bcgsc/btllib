@@ -15343,6 +15343,28 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_NtHash_forward(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "NtHash_forward", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_forward" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (bool)((btllib::NtHash const *)arg1)->forward();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_NtHash_get_k(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
@@ -18552,7 +18574,80 @@ fail:
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Read) /* defines _wrap_delete_Read_destructor_closure */
 
-SWIGINTERN PyObject *_wrap_Minimizer_hash1_set(PyObject *self, PyObject *args) {
+SWIGINTERN int _wrap_new_Minimizer(PyObject *self, PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  uint64_t arg2 ;
+  size_t arg3 ;
+  bool arg4 ;
+  std::string arg5 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[5] ;
+  btllib::Indexlr::Minimizer *result = 0 ;
+  
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_Minimizer")) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "new_Minimizer", 5, 5, swig_obj)) SWIG_fail;
+  {
+    res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_uint64_t,  0  | 0);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Minimizer" "', argument " "1"" of type '" "uint64_t""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Minimizer" "', argument " "1"" of type '" "uint64_t""'");
+    } else {
+      uint64_t * temp = reinterpret_cast< uint64_t * >(argp1);
+      arg1 = *temp;
+      if (SWIG_IsNewObj(res1)) delete temp;
+    }
+  }
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_uint64_t,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Minimizer" "', argument " "2"" of type '" "uint64_t""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Minimizer" "', argument " "2"" of type '" "uint64_t""'");
+    } else {
+      uint64_t * temp = reinterpret_cast< uint64_t * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Minimizer" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Minimizer" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[4], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_Minimizer" "', argument " "5"" of type '" "std::string""'"); 
+    }
+    arg5 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (btllib::Indexlr::Minimizer *)new btllib::Indexlr::Minimizer(arg1,arg2,arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__Indexlr__Minimizer, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_Minimizer_min_hash_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Indexlr::Minimizer *arg1 = (btllib::Indexlr::Minimizer *) 0 ;
   uint64_t arg2 ;
@@ -18566,23 +18661,23 @@ SWIGINTERN PyObject *_wrap_Minimizer_hash1_set(PyObject *self, PyObject *args) {
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Indexlr__Minimizer, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Minimizer_hash1_set" "', argument " "1"" of type '" "btllib::Indexlr::Minimizer *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Minimizer_min_hash_set" "', argument " "1"" of type '" "btllib::Indexlr::Minimizer *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Indexlr::Minimizer * >(argp1);
   {
     res2 = SWIG_ConvertPtr(swig_obj[0], &argp2, SWIGTYPE_p_uint64_t,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Minimizer_hash1_set" "', argument " "2"" of type '" "uint64_t""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Minimizer_min_hash_set" "', argument " "2"" of type '" "uint64_t""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Minimizer_hash1_set" "', argument " "2"" of type '" "uint64_t""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Minimizer_min_hash_set" "', argument " "2"" of type '" "uint64_t""'");
     } else {
       uint64_t * temp = reinterpret_cast< uint64_t * >(argp2);
       arg2 = *temp;
       if (SWIG_IsNewObj(res2)) delete temp;
     }
   }
-  if (arg1) (arg1)->hash1 = arg2;
+  if (arg1) (arg1)->min_hash = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -18590,7 +18685,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Minimizer_hash1_get(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Minimizer_min_hash_get(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Indexlr::Minimizer *arg1 = (btllib::Indexlr::Minimizer *) 0 ;
   void *argp1 = 0 ;
@@ -18598,13 +18693,13 @@ SWIGINTERN PyObject *_wrap_Minimizer_hash1_get(PyObject *self, PyObject *args) {
   PyObject *swig_obj[1] ;
   uint64_t result;
   
-  if (!SWIG_Python_UnpackTuple(args, "Minimizer_hash1_get", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "Minimizer_min_hash_get", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Indexlr__Minimizer, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Minimizer_hash1_get" "', argument " "1"" of type '" "btllib::Indexlr::Minimizer *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Minimizer_min_hash_get" "', argument " "1"" of type '" "btllib::Indexlr::Minimizer *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Indexlr::Minimizer * >(argp1);
-  result =  ((arg1)->hash1);
+  result =  ((arg1)->min_hash);
   resultobj = SWIG_NewPointerObj((new uint64_t(static_cast< const uint64_t& >(result))), SWIGTYPE_p_uint64_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
@@ -18612,7 +18707,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Minimizer_hash2_set(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Minimizer_out_hash_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Indexlr::Minimizer *arg1 = (btllib::Indexlr::Minimizer *) 0 ;
   uint64_t arg2 ;
@@ -18626,23 +18721,23 @@ SWIGINTERN PyObject *_wrap_Minimizer_hash2_set(PyObject *self, PyObject *args) {
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Indexlr__Minimizer, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Minimizer_hash2_set" "', argument " "1"" of type '" "btllib::Indexlr::Minimizer *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Minimizer_out_hash_set" "', argument " "1"" of type '" "btllib::Indexlr::Minimizer *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Indexlr::Minimizer * >(argp1);
   {
     res2 = SWIG_ConvertPtr(swig_obj[0], &argp2, SWIGTYPE_p_uint64_t,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Minimizer_hash2_set" "', argument " "2"" of type '" "uint64_t""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Minimizer_out_hash_set" "', argument " "2"" of type '" "uint64_t""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Minimizer_hash2_set" "', argument " "2"" of type '" "uint64_t""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Minimizer_out_hash_set" "', argument " "2"" of type '" "uint64_t""'");
     } else {
       uint64_t * temp = reinterpret_cast< uint64_t * >(argp2);
       arg2 = *temp;
       if (SWIG_IsNewObj(res2)) delete temp;
     }
   }
-  if (arg1) (arg1)->hash2 = arg2;
+  if (arg1) (arg1)->out_hash = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -18650,7 +18745,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Minimizer_hash2_get(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Minimizer_out_hash_get(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Indexlr::Minimizer *arg1 = (btllib::Indexlr::Minimizer *) 0 ;
   void *argp1 = 0 ;
@@ -18658,13 +18753,13 @@ SWIGINTERN PyObject *_wrap_Minimizer_hash2_get(PyObject *self, PyObject *args) {
   PyObject *swig_obj[1] ;
   uint64_t result;
   
-  if (!SWIG_Python_UnpackTuple(args, "Minimizer_hash2_get", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "Minimizer_out_hash_get", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Indexlr__Minimizer, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Minimizer_hash2_get" "', argument " "1"" of type '" "btllib::Indexlr::Minimizer *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Minimizer_out_hash_get" "', argument " "1"" of type '" "btllib::Indexlr::Minimizer *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Indexlr::Minimizer * >(argp1);
-  result =  ((arg1)->hash2);
+  result =  ((arg1)->out_hash);
   resultobj = SWIG_NewPointerObj((new uint64_t(static_cast< const uint64_t& >(result))), SWIGTYPE_p_uint64_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
@@ -18718,6 +18813,58 @@ SWIGINTERN PyObject *_wrap_Minimizer_pos_get(PyObject *self, PyObject *args) {
   arg1 = reinterpret_cast< btllib::Indexlr::Minimizer * >(argp1);
   result =  ((arg1)->pos);
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Minimizer_forward_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::Indexlr::Minimizer *arg1 = (btllib::Indexlr::Minimizer *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Indexlr__Minimizer, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Minimizer_forward_set" "', argument " "1"" of type '" "btllib::Indexlr::Minimizer *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::Indexlr::Minimizer * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Minimizer_forward_set" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  if (arg1) (arg1)->forward = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Minimizer_forward_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::Indexlr::Minimizer *arg1 = (btllib::Indexlr::Minimizer *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Minimizer_forward_get", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Indexlr__Minimizer, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Minimizer_forward_get" "', argument " "1"" of type '" "btllib::Indexlr::Minimizer *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::Indexlr::Minimizer * >(argp1);
+  result = (bool) ((arg1)->forward);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
   return NULL;
@@ -18780,20 +18927,6 @@ SWIGINTERN PyObject *_wrap_Minimizer_seq_get(PyObject *self, PyObject *args) {
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN int _wrap_new_Minimizer(PyObject *self, PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  btllib::Indexlr::Minimizer *result = 0 ;
-  
-  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_Minimizer")) SWIG_fail;
-  if (!SWIG_Python_UnpackTuple(args, "new_Minimizer", 0, 0, 0)) SWIG_fail;
-  result = (btllib::Indexlr::Minimizer *)new btllib::Indexlr::Minimizer();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__Indexlr__Minimizer, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  return -1;
 }
 
 
@@ -21985,6 +22118,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__NtHash_methods[] = {
   { "roll", _wrap_NtHash_roll, METH_NOARGS, "" },
   { "hashes", _wrap_NtHash_hashes, METH_NOARGS, "" },
   { "get_pos", _wrap_NtHash_get_pos, METH_NOARGS, "" },
+  { "forward", _wrap_NtHash_forward, METH_NOARGS, "" },
   { "get_k", _wrap_NtHash_get_k, METH_NOARGS, "" },
   { "get_hash_num", _wrap_NtHash_get_hash_num, METH_NOARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
@@ -23902,17 +24036,19 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__Indexlr__Read_type = {
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__Indexlr__Read_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__Indexlr__Read_type};
 
-static SwigPyGetSet Minimizer_hash2_getset = { _wrap_Minimizer_hash2_get, _wrap_Minimizer_hash2_set };
 static SwigPyGetSet Minimizer_pos_getset = { _wrap_Minimizer_pos_get, _wrap_Minimizer_pos_set };
+static SwigPyGetSet Minimizer_forward_getset = { _wrap_Minimizer_forward_get, _wrap_Minimizer_forward_set };
+static SwigPyGetSet Minimizer_out_hash_getset = { _wrap_Minimizer_out_hash_get, _wrap_Minimizer_out_hash_set };
 static SwigPyGetSet Minimizer___dict___getset = { SwigPyObject_get___dict__, 0 };
+static SwigPyGetSet Minimizer_min_hash_getset = { _wrap_Minimizer_min_hash_get, _wrap_Minimizer_min_hash_set };
 static SwigPyGetSet Minimizer_seq_getset = { _wrap_Minimizer_seq_get, _wrap_Minimizer_seq_set };
-static SwigPyGetSet Minimizer_hash1_getset = { _wrap_Minimizer_hash1_get, _wrap_Minimizer_hash1_set };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__Indexlr__Minimizer_getset[] = {
-    { (char *)"hash2", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_hash2_getset },
     { (char *)"pos", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_pos_getset },
+    { (char *)"forward", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_forward_getset },
+    { (char *)"out_hash", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_out_hash_getset },
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &Minimizer___dict___getset },
+    { (char *)"min_hash", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_min_hash_getset },
     { (char *)"seq", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_seq_getset },
-    { (char *)"hash1", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_hash1_getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };
 
