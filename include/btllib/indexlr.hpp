@@ -117,7 +117,8 @@ public:
   static const size_t MAX_SIMULTANEOUS_INDEXLRS = 256;
 
 private:
-  static std::string extract_barcode(std::string comment);
+  static std::string extract_barcode(const std::string& id,
+                                     const std::string& comment);
   std::vector<HashedKmer> hash_kmers(const std::string& seq, size_t k) const;
   static std::vector<Minimizer> minimize_hashed_kmers(
     const std::vector<HashedKmer>& hashed_kmers,
@@ -299,19 +300,25 @@ r min = v[i] if (i != prev) { prev = i M <- M + m
 }*/
 
 inline std::string
-Indexlr::extract_barcode(std::string comment)
+Indexlr::extract_barcode(const std::string& id, const std::string& comment)
 {
   const static std::string BARCODE_PREFIX = "BX:Z:";
   if (starts_with(comment, BARCODE_PREFIX)) {
-    auto pos = comment.find(' ');
-    if (pos != std::string::npos) {
-      comment.erase(pos);
+    const auto space_pos = comment.find(' ');
+    if (space_pos != std::string::npos) {
+      return comment.substr(BARCODE_PREFIX.size(),
+                            space_pos - BARCODE_PREFIX.size());
     }
-    comment.erase(0, BARCODE_PREFIX.size());
-  } else {
-    comment = "NA";
+    return comment.substr(BARCODE_PREFIX.size());
   }
-  return comment;
+  const auto pound_pos = id.find('#');
+  if (pound_pos != std::string::npos) {
+    const auto slash_pos = id.find('/');
+    if (slash_pos > pound_pos) {
+      return id.substr(pound_pos + 1, slash_pos - (pound_pos + 1));
+    }
+  }
+  return "NA";
 }
 
 inline std::vector<Indexlr::HashedKmer>
@@ -448,7 +455,7 @@ Indexlr::MinimizeWorker::work()
       record.id = std::move(read.id);
     }
     if (indexlr.output_bx()) {
-      record.barcode = indexlr.extract_barcode(read.comment);
+      record.barcode = indexlr.extract_barcode(record.id, read.comment);
     }
 
     check_warning(read.seq.size() < indexlr.k,

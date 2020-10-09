@@ -15,6 +15,23 @@
 
 namespace btllib {
 
+static const unsigned char BIT_MASKS[CHAR_BIT] = {
+  // NOLINT
+  0x01, 0x02, 0x04, 0x08, // NOLINT
+  0x10, 0x20, 0x40, 0x80  // NOLINT
+};
+
+static const char* const BLOOM_FILTER_MAGIC_HEADER = "BTLBloomFilter_v2";
+
+inline unsigned
+pop_cnt_byte(unsigned char x)
+{
+  return ((0x876543210 >>                                              // NOLINT
+           (((0x4332322132212110 >> ((x & 0xF) << 2)) & 0xF) << 2)) >> // NOLINT
+          ((0x4332322132212110 >> (((x & 0xF0) >> 2)) & 0xF) << 2)) &  // NOLINT
+         0xf;                                                          // NOLINT
+}
+
 class BloomFilter
 {
 
@@ -91,24 +108,6 @@ public:
 private:
   unsigned k;
 };
-
-static const unsigned char BIT_MASKS[CHAR_BIT] = {
-  // NOLINT
-  0x01, 0x02, 0x04, 0x08, // NOLINT
-  0x10, 0x20, 0x40, 0x80  // NOLINT
-};
-static const char* const BLOOM_FILTER_MAGIC_HEADER = "BTLBloomFilter_v2";
-static const char* const COUNTING_BLOOM_FILTER_MAGIC_HEADER =
-  "BTLCountingBloomFilter_v2";
-
-inline unsigned
-pop_cnt_byte(unsigned char x)
-{
-  return ((0x876543210 >>                                              // NOLINT
-           (((0x4332322132212110 >> ((x & 0xF) << 2)) & 0xF) << 2)) >> // NOLINT
-          ((0x4332322132212110 >> (((x & 0xF0) >> 2)) & 0xF) << 2)) &  // NOLINT
-         0xf;                                                          // NOLINT
-}
 
 inline BloomFilter::BloomFilter(size_t bytes, unsigned hash_num)
   : bytes(std::ceil(bytes / sizeof(uint64_t)) * sizeof(uint64_t))

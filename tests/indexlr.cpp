@@ -72,7 +72,18 @@ main()
     }
   }
 
+  if (ss.str() != correct_output) {
+    std::cerr << "Correct:\n\n"
+              << correct_output << "\n\nActual:\n\n"
+              << ss.str() << "\n\n";
+  }
   assert(ss.str() == correct_output);
+
+  if (ss2.str() != correct_output2) {
+    std::cerr << "Correct:\n\n"
+              << correct_output2 << "\n\nActual:\n\n"
+              << ss2.str() << "\n\n";
+  }
   assert(ss2.str() == correct_output2);
 
   btllib::BloomFilter filter_in_bf(1024 * 1024 * 256, 1);
