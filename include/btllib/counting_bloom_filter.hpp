@@ -16,6 +16,9 @@
 
 namespace btllib {
 
+static const char* const COUNTING_BLOOM_FILTER_MAGIC_HEADER =
+  "BTLCountingBloomFilter_v2";
+
 template<typename T>
 class CountingBloomFilter
 {
@@ -73,9 +76,6 @@ using CountingBloomFilter32 = CountingBloomFilter<uint32_t>;
 using KmerCountingBloomFilter8 = KmerCountingBloomFilter<uint8_t>;
 using KmerCountingBloomFilter16 = KmerCountingBloomFilter<uint16_t>;
 using KmerCountingBloomFilter32 = KmerCountingBloomFilter<uint32_t>;
-
-static const char* const COUNTING_BLOOM_FILTER_MAGIC_HEADER =
-  "BTLCountingBloomFilter_v2";
 
 template<typename T>
 inline CountingBloomFilter<T>::CountingBloomFilter(size_t bytes,
