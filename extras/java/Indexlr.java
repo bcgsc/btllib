@@ -319,12 +319,12 @@ public class Indexlr {
     return new Indexlr.Record(btllibJNI.Indexlr_get_minimizers(swigCPtr, this), true);
   }
 
-  public Indexlr(String seqfile, long k, long w, long flags, long threads, SWIGTYPE_p_btllib__BloomFilter bf1, SWIGTYPE_p_btllib__BloomFilter bf2) {
-    this(btllibJNI.new_Indexlr__SWIG_0(seqfile, k, w, flags, threads, SWIGTYPE_p_btllib__BloomFilter.getCPtr(bf1), SWIGTYPE_p_btllib__BloomFilter.getCPtr(bf2)), true);
+  public Indexlr(String seqfile, long k, long w, long flags, long threads, BloomFilter bf1, BloomFilter bf2) {
+    this(btllibJNI.new_Indexlr__SWIG_0(seqfile, k, w, flags, threads, BloomFilter.getCPtr(bf1), bf1, BloomFilter.getCPtr(bf2), bf2), true);
   }
 
-  public Indexlr(String seqfile, long k, long w, long flags, long threads, SWIGTYPE_p_btllib__BloomFilter bf1) {
-    this(btllibJNI.new_Indexlr__SWIG_1(seqfile, k, w, flags, threads, SWIGTYPE_p_btllib__BloomFilter.getCPtr(bf1)), true);
+  public Indexlr(String seqfile, long k, long w, long flags, long threads, BloomFilter bf1) {
+    this(btllibJNI.new_Indexlr__SWIG_1(seqfile, k, w, flags, threads, BloomFilter.getCPtr(bf1), bf1), true);
   }
 
   public Indexlr(String seqfile, long k, long w, long flags, long threads) {

@@ -449,6 +449,10 @@ public class btllib {
     btllibJNI.check_stream(SWIGTYPE_p_std__ios.getCPtr(stream), name);
   }
 
+  public static String getKMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER() {
+    return btllibJNI.KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_get();
+  }
+
   public static String getCOMPLEMENTS() {
     return btllibJNI.COMPLEMENTS_get();
   }
@@ -463,6 +467,19 @@ public class btllib {
 
   public static String get_reverse_complement(String seq) {
     return btllibJNI.get_reverse_complement(seq);
+  }
+
+  public static SWIGTYPE_p_unsigned_char getBIT_MASKS() {
+    long cPtr = btllibJNI.BIT_MASKS_get();
+    return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_char(cPtr, false);
+  }
+
+  public static String getKMER_BLOOM_FILTER_MAGIC_HEADER() {
+    return btllibJNI.KMER_BLOOM_FILTER_MAGIC_HEADER_get();
+  }
+
+  public static long pop_cnt_byte(SWIGTYPE_p_uint8_t x) {
+    return btllibJNI.pop_cnt_byte(SWIGTYPE_p_uint8_t.getCPtr(x));
   }
 
 }
