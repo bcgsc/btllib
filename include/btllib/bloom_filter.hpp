@@ -67,6 +67,7 @@ protected:
   size_t bytes = 0;
   size_t array_size =
     0; // Should be equal to bytes, but not guaranteed by standard
+  size_t array_bits = 0;
   unsigned hash_num = 0;
 };
 
@@ -128,6 +129,7 @@ protected:
 inline BloomFilter::BloomFilter(size_t bytes, unsigned hash_num)
   : bytes(std::ceil(bytes / sizeof(uint64_t)) * sizeof(uint64_t))
   , array_size(this->bytes / sizeof(array[0]))
+  , array_bits(array_size * CHAR_BIT)
   , hash_num(hash_num)
 {
   check_warning(
@@ -148,7 +150,7 @@ inline void
 BloomFilter::insert(const uint64_t* hashes)
 {
   for (unsigned i = 0; i < hash_num; ++i) {
-    const auto normalized = hashes[i] % array_size;
+    const auto normalized = hashes[i] % array_bits;
     array[normalized / CHAR_BIT] |= BIT_MASKS[normalized % CHAR_BIT];
   }
 }
@@ -163,7 +165,7 @@ inline bool
 BloomFilter::contains(const uint64_t* hashes) const
 {
   for (unsigned i = 0; i < hash_num; ++i) {
-    const auto normalized = hashes[i] % array_size;
+    const auto normalized = hashes[i] % array_bits;
     const auto mask = BIT_MASKS[normalized % CHAR_BIT];
     if (!bool(array[normalized / CHAR_BIT] & mask)) {
       return false;
@@ -241,6 +243,7 @@ inline BloomFilter::BloomFilter(const std::string& path)
     "Atomic primitives take extra memory. BloomFilter will have less than " +
       std::to_string(bytes) + " for bit array.");
   array_size = bytes / sizeof(std::atomic<uint8_t>);
+  array_bits = array_size * CHAR_BIT;
   hash_num = *table->get_as<decltype(hash_num)>("hash_num");
 
   array = new std::atomic<uint8_t>[array_size];
@@ -321,6 +324,7 @@ inline KmerBloomFilter::KmerBloomFilter(const std::string& path)
     "Atomic primitives take extra memory. BloomFilter will have less than " +
       std::to_string(bytes) + " for bit array.");
   array_size = bytes / sizeof(array[0]);
+  array_bits = array_size * CHAR_BIT;
   hash_num = *table->get_as<decltype(hash_num)>("hash_num");
   k = *table->get_as<decltype(k)>("k");
 
