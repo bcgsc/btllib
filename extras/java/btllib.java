@@ -437,12 +437,16 @@ public class btllib {
     btllibJNI.log_error(msg);
   }
 
-  public static void check_error(boolean condition, String msg) {
-    btllibJNI.check_error(condition, msg);
+  public static void check_info(boolean condition, String msg) {
+    btllibJNI.check_info(condition, msg);
   }
 
   public static void check_warning(boolean condition, String msg) {
     btllibJNI.check_warning(condition, msg);
+  }
+
+  public static void check_error(boolean condition, String msg) {
+    btllibJNI.check_error(condition, msg);
   }
 
   public static void check_stream(SWIGTYPE_p_std__ios stream, String name) {

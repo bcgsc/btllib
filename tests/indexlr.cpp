@@ -109,6 +109,7 @@ main()
                            5,
                            btllib::Indexlr::Flag::FILTER_IN,
                            3,
+                           true,
                            filter_in_bf);
   size_t mins_found = 0;
   while ((record = indexlr3.get_minimizers())) {
@@ -131,6 +132,7 @@ main()
                            5,
                            btllib::Indexlr::Flag::FILTER_OUT,
                            3,
+                           true,
                            filter_out_bf);
   mins_found = 0;
   while ((record = indexlr4.get_minimizers())) {
@@ -149,6 +151,7 @@ main()
                            btllib::Indexlr::Flag::FILTER_IN |
                              btllib::Indexlr::Flag::FILTER_OUT,
                            3,
+                           true,
                            filter_in_bf,
                            filter_out_bf);
   mins_found = 0;
