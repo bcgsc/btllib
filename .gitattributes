@@ -3,7 +3,6 @@
 azure-pipelines.yml export-ignore
 docs export-ignore
 Doxyfile export-ignore
-*meson.build export-ignore
 *.i export-ignore
 tests export-ignore
 examples export-ignore
