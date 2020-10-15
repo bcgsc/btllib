@@ -48,3 +48,10 @@ If you want to contribute code to this repo, before making a pull request, make 
 - `ninja docs` generates code documentation from comments (requires Doxygen)
 
 Any of these can be run individually within `build` directory.
+
+Credits
+---
+- Author: Vladimir Nikolic [github.com/schutzekatze](https://github.com/schutzekatze)
+- Components:
+  - Hamid Mohamadi [github.com/mohamadi](https://github.com/mohamadi) for [ntHash](https://github.com/bcgsc/ntHash)
+  - Chase Geigle [github.com/skystrife](https://github.com/skystrife) for [cpptoml](https://github.com/skystrife/cpptoml)
