@@ -1,4 +1,4 @@
-BTL common code library in C++ with Python and Java wrappers.
+[BTL](http://www.birollab.ca/) common code library in C++ with Python and Java wrappers.
 
 Platforms
 ---
