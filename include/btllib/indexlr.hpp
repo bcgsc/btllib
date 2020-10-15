@@ -73,8 +73,21 @@ public:
 
   struct Minimizer
   {
-    uint64_t hash1, hash2;
+    Minimizer(uint64_t min_hash,
+              uint64_t out_hash,
+              size_t pos,
+              bool forward,
+              std::string seq)
+      : min_hash(min_hash)
+      , out_hash(out_hash)
+      , pos(pos)
+      , forward(forward)
+      , seq(std::move(seq))
+    {}
+
+    uint64_t min_hash, out_hash;
     size_t pos;
+    bool forward;
     std::string seq;
   };
 
@@ -109,6 +122,7 @@ public:
           size_t w,
           unsigned flags = 0,
           unsigned threads = 5,
+          bool verbose = false,
           const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
           const btllib::BloomFilter& bf2 = Indexlr::dummy_bf());
 
@@ -128,6 +142,7 @@ private:
   const size_t k, w;
   const unsigned flags;
   const unsigned threads;
+  const bool verbose;
   const unsigned id;
 
   static const BloomFilter& dummy_bf()
@@ -240,6 +255,7 @@ inline Indexlr::Indexlr(std::string seqfile,
                         const size_t w,
                         const unsigned flags,
                         const unsigned threads,
+                        const bool verbose,
                         const BloomFilter& bf1,
                         const BloomFilter& bf2)
   : seqfile(std::move(seqfile))
@@ -247,6 +263,7 @@ inline Indexlr::Indexlr(std::string seqfile,
   , w(w)
   , flags(flags)
   , threads(threads)
+  , verbose(verbose)
   , id(last_id()++)
   , bf1(bf1)
   , bf2(bf2)
@@ -330,11 +347,11 @@ Indexlr::hash_kmers(const std::string& seq, const size_t k) const
   }
   hashed_kmers.reserve(seq.size() - k + 1);
   for (NtHash nh(seq, k, 2); nh.roll();) {
-    hashed_kmers.push_back(
-      Minimizer({ nh.hashes()[0],
-                  nh.hashes()[1],
-                  nh.get_pos(),
-                  output_seq() ? seq.substr(nh.get_pos(), k) : "" }));
+    hashed_kmers.emplace_back(nh.hashes()[0],
+                              nh.hashes()[1],
+                              nh.get_pos(),
+                              nh.forward(),
+                              output_seq() ? seq.substr(nh.get_pos(), k) : "");
   }
   return hashed_kmers;
 }
@@ -359,14 +376,14 @@ Indexlr::minimize_hashed_kmers(
       // Use of operator '<=' returns the minimum that is furthest from left.
       min_it = std::min_element(
         left_it, right_it, [](const HashedKmer& a, const HashedKmer& b) {
-          return a.hash1 <= b.hash1;
+          return a.min_hash <= b.min_hash;
         });
-    } else if (right_it[-1].hash1 <= min_it->hash1) {
+    } else if (right_it[-1].min_hash <= min_it->min_hash) {
       min_it = right_it - 1;
     }
     candidate_min_pos = min_it - first_it;
     if (candidate_min_pos > prev_min_pos &&
-        min_it->hash1 != std::numeric_limits<uint64_t>::max()) {
+        min_it->min_hash != std::numeric_limits<uint64_t>::max()) {
       prev_min_pos = candidate_min_pos;
       minimizers.push_back(*min_it);
     }
@@ -458,43 +475,43 @@ Indexlr::MinimizeWorker::work()
       record.barcode = indexlr.extract_barcode(record.id, read.comment);
     }
 
-    check_warning(read.seq.size() < indexlr.k,
-                  "Indexlr: skipped seq " + std::to_string(read.num) +
-                    " on line " +
-                    std::to_string(read.num * (indexlr.fasta ? 2 : 4) + 2) +
-                    "; k (" + std::to_string(indexlr.k) + ") > seq length (" +
-                    std::to_string(read.seq.size()) + ")");
+    check_info(indexlr.verbose && read.seq.size() < indexlr.k,
+               "Indexlr: skipped seq " + std::to_string(read.num) +
+                 " on line " +
+                 std::to_string(read.num * (indexlr.fasta ? 2 : 4) + 2) +
+                 "; k (" + std::to_string(indexlr.k) + ") > seq length (" +
+                 std::to_string(read.seq.size()) + ")");
 
     decltype(indexlr.hash_kmers(read.seq, indexlr.k)) hashed_kmers;
     if (read.seq.size() >= indexlr.k) {
       hashed_kmers = indexlr.hash_kmers(read.seq, indexlr.k);
 
-      check_warning(
-        indexlr.w > hashed_kmers.size(),
-        "Indexlr: skipped seq " + std::to_string(read.num) + " on line " +
-          std::to_string(read.num * (indexlr.fasta ? 2 : 4) + 2) + "; w (" +
-          std::to_string(indexlr.w) + ") > # of hashes (" +
-          std::to_string(hashed_kmers.size()) + ")");
+      check_info(indexlr.verbose && indexlr.w > hashed_kmers.size(),
+                 "Indexlr: skipped seq " + std::to_string(read.num) +
+                   " on line " +
+                   std::to_string(read.num * (indexlr.fasta ? 2 : 4) + 2) +
+                   "; w (" + std::to_string(indexlr.w) + ") > # of hashes (" +
+                   std::to_string(hashed_kmers.size()) + ")");
       if (indexlr.w <= hashed_kmers.size()) {
         if (indexlr.filter_in() && indexlr.filter_out()) {
           std::vector<uint64_t> tmp;
           for (auto& hk : hashed_kmers) {
-            tmp = { hk.hash1 };
+            tmp = { hk.min_hash };
             if (!indexlr.bf1.get().contains(tmp) ||
                 indexlr.bf2.get().contains(tmp)) {
-              hk.hash1 = std::numeric_limits<uint64_t>::max();
+              hk.min_hash = std::numeric_limits<uint64_t>::max();
             }
           }
         } else if (indexlr.filter_in()) {
           for (auto& hk : hashed_kmers) {
-            if (!indexlr.bf1.get().contains({ hk.hash1 })) {
-              hk.hash1 = std::numeric_limits<uint64_t>::max();
+            if (!indexlr.bf1.get().contains({ hk.min_hash })) {
+              hk.min_hash = std::numeric_limits<uint64_t>::max();
             }
           }
         } else if (indexlr.filter_out()) {
           for (auto& hk : hashed_kmers) {
-            if (indexlr.bf1.get().contains({ hk.hash1 })) {
-              hk.hash1 = std::numeric_limits<uint64_t>::max();
+            if (indexlr.bf1.get().contains({ hk.min_hash })) {
+              hk.min_hash = std::numeric_limits<uint64_t>::max();
             }
           }
         }
