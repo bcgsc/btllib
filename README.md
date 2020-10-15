@@ -51,7 +51,7 @@ Any of these can be run individually within `build` directory.
 
 Credits
 ---
-- Author: Vladimir Nikolic [github.com/schutzekatze](https://github.com/schutzekatze)
+- Author: [Vladimir Nikolic](https://github.com/schutzekatze)
 - Components:
-  - Hamid Mohamadi [github.com/mohamadi](https://github.com/mohamadi) for [ntHash](https://github.com/bcgsc/ntHash)
-  - Chase Geigle [github.com/skystrife](https://github.com/skystrife) for [cpptoml](https://github.com/skystrife/cpptoml)
+  - [Hamid Mohamadi](https://github.com/mohamadi) for [ntHash](https://github.com/bcgsc/ntHash)
+  - [Chase Geigle](https://github.com/skystrife) for [cpptoml](https://github.com/skystrife/cpptoml)
