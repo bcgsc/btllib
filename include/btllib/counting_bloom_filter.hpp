@@ -33,11 +33,14 @@ public:
 
   virtual ~CountingBloomFilter() { delete[] array; }
 
-  void insert(const std::vector<uint64_t>& hashes);
   void insert(const uint64_t* hashes);
+  void insert(const std::vector<uint64_t>& hashes) { insert(hashes.data()); }
 
-  T contains(const std::vector<uint64_t>& hashes) const;
   T contains(const uint64_t* hashes) const;
+  T contains(const std::vector<uint64_t>& hashes) const
+  {
+    return contains(hashes.data());
+  }
 
   size_t get_bytes() const { return bytes; }
   uint64_t get_pop_cnt() const;
@@ -68,11 +71,14 @@ public:
 
   ~KmerCountingBloomFilter() override {}
 
-  void insert(const std::string& seq);
   void insert(const char* seq, size_t seq_len);
+  void insert(const std::string& seq) { insert(seq.c_str(), seq.size()); }
 
-  uint64_t contains(const std::string& seq) const;
   uint64_t contains(const char* seq, size_t seq_len) const;
+  uint64_t contains(const std::string& seq) const
+  {
+    return contains(seq.c_str(), seq.size());
+  }
 
   unsigned get_k() const { return k; }
 
@@ -107,13 +113,6 @@ inline CountingBloomFilter<T>::CountingBloomFilter(size_t bytes,
 
 template<typename T>
 inline void
-CountingBloomFilter<T>::insert(const std::vector<uint64_t>& hashes)
-{
-  insert(hashes.data());
-}
-
-template<typename T>
-inline void
 CountingBloomFilter<T>::insert(const uint64_t* hashes)
 {
   // Update flag to track if increment is done on at least one counter
@@ -139,13 +138,6 @@ CountingBloomFilter<T>::insert(const uint64_t* hashes)
       min_val = contains(hashes);
     }
   }
-}
-
-template<typename T>
-inline T
-CountingBloomFilter<T>::contains(const std::vector<uint64_t>& hashes) const
-{
-  return contains(hashes.data());
 }
 
 template<typename T>
@@ -248,26 +240,12 @@ inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(size_t bytes,
 
 template<typename T>
 inline void
-KmerCountingBloomFilter<T>::insert(const std::string& seq)
-{
-  insert(seq.c_str(), seq.size());
-}
-
-template<typename T>
-inline void
 KmerCountingBloomFilter<T>::insert(const char* seq, size_t seq_len)
 {
   NtHash nthash(seq, seq_len, k, CountingBloomFilter<T>::get_hash_num());
   while (nthash.roll()) {
     CountingBloomFilter<T>::insert(nthash.hashes());
   }
-}
-
-template<typename T>
-inline uint64_t
-KmerCountingBloomFilter<T>::contains(const std::string& seq) const
-{
-  return contains(seq.c_str(), seq.size());
 }
 
 template<typename T>

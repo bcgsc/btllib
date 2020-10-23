@@ -4967,6 +4967,19 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1BloomFilter(JNIEnv *jenv, 
 
 SWIGEXPORT void JNICALL Java_btllib_btllibJNI_BloomFilter_1insert_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::BloomFilter **)&jarg1; 
+  arg2 = *(uint64_t **)&jarg2; 
+  (arg1)->insert((uint64_t const *)arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_BloomFilter_1insert_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;
   std::vector< uint64_t > *arg2 = 0 ;
   
   (void)jenv;
@@ -4982,20 +4995,24 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_BloomFilter_1insert_1_1SWIG_10(JNI
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_BloomFilter_1insert_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_BloomFilter_1contains_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  jboolean jresult = 0 ;
   btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;
   uint64_t *arg2 = (uint64_t *) 0 ;
+  bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(btllib::BloomFilter **)&jarg1; 
   arg2 = *(uint64_t **)&jarg2; 
-  (arg1)->insert((uint64_t const *)arg2);
+  result = (bool)((btllib::BloomFilter const *)arg1)->contains((uint64_t const *)arg2);
+  jresult = (jboolean)result; 
+  return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_BloomFilter_1contains_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_BloomFilter_1contains_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   jboolean jresult = 0 ;
   btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;
   std::vector< uint64_t > *arg2 = 0 ;
@@ -5011,23 +5028,6 @@ SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_BloomFilter_1contains_1_1SWIG_
     return 0;
   } 
   result = (bool)((btllib::BloomFilter const *)arg1)->contains((std::vector< uint64_t > const &)*arg2);
-  jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_BloomFilter_1contains_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
-  jboolean jresult = 0 ;
-  btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;
-  uint64_t *arg2 = (uint64_t *) 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::BloomFilter **)&jarg1; 
-  arg2 = *(uint64_t **)&jarg2; 
-  result = (bool)((btllib::BloomFilter const *)arg1)->contains((uint64_t const *)arg2);
   jresult = (jboolean)result; 
   return jresult;
 }
@@ -5207,7 +5207,27 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1KmerBloomFilter(JNIEnv *je
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1insert_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1insert_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3) {
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::KmerBloomFilter **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  arg3 = (size_t)jarg3; 
+  (arg1)->insert((char const *)arg2,arg3);
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1insert_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -5228,10 +5248,12 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1insert_1_1SWIG_10
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1insert_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1contains_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3) {
+  jlong jresult = 0 ;
   btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
   char *arg2 = (char *) 0 ;
   size_t arg3 ;
+  unsigned int result;
   
   (void)jenv;
   (void)jcls;
@@ -5240,15 +5262,17 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1insert_1_1SWIG_11
   arg2 = 0;
   if (jarg2) {
     arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
-    if (!arg2) return ;
+    if (!arg2) return 0;
   }
   arg3 = (size_t)jarg3; 
-  (arg1)->insert((char const *)arg2,arg3);
+  result = (unsigned int)((btllib::KmerBloomFilter const *)arg1)->contains((char const *)arg2,arg3);
+  jresult = (jlong)result; 
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1contains_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1contains_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
   std::string *arg2 = 0 ;
@@ -5269,30 +5293,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1contains_1_1SWIG
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = (unsigned int)((btllib::KmerBloomFilter const *)arg1)->contains((std::string const &)*arg2);
   jresult = (jlong)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1contains_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3) {
-  jlong jresult = 0 ;
-  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
-  char *arg2 = (char *) 0 ;
-  size_t arg3 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::KmerBloomFilter **)&jarg1; 
-  arg2 = 0;
-  if (jarg2) {
-    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
-    if (!arg2) return 0;
-  }
-  arg3 = (size_t)jarg3; 
-  result = (unsigned int)((btllib::KmerBloomFilter const *)arg1)->contains((char const *)arg2,arg3);
-  jresult = (jlong)result; 
-  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
   return jresult;
 }
 

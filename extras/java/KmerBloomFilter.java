@@ -44,20 +44,20 @@ public class KmerBloomFilter extends BloomFilter {
     this(btllibJNI.new_KmerBloomFilter__SWIG_1(path), true);
   }
 
-  public void insert(String seq) {
-    btllibJNI.KmerBloomFilter_insert__SWIG_0(swigCPtr, this, seq);
-  }
-
   public void insert(String seq, long seq_len) {
-    btllibJNI.KmerBloomFilter_insert__SWIG_1(swigCPtr, this, seq, seq_len);
+    btllibJNI.KmerBloomFilter_insert__SWIG_0(swigCPtr, this, seq, seq_len);
   }
 
-  public long contains(String seq) {
-    return btllibJNI.KmerBloomFilter_contains__SWIG_0(swigCPtr, this, seq);
+  public void insert(String seq) {
+    btllibJNI.KmerBloomFilter_insert__SWIG_1(swigCPtr, this, seq);
   }
 
   public long contains(String seq, long seq_len) {
-    return btllibJNI.KmerBloomFilter_contains__SWIG_1(swigCPtr, this, seq, seq_len);
+    return btllibJNI.KmerBloomFilter_contains__SWIG_0(swigCPtr, this, seq, seq_len);
+  }
+
+  public long contains(String seq) {
+    return btllibJNI.KmerBloomFilter_contains__SWIG_1(swigCPtr, this, seq);
   }
 
   public long get_k() {

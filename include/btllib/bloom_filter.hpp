@@ -45,11 +45,14 @@ public:
 
   virtual ~BloomFilter() { delete[] array; }
 
-  void insert(const std::vector<uint64_t>& hashes);
   void insert(const uint64_t* hashes);
+  void insert(const std::vector<uint64_t>& hashes) { insert(hashes.data()); }
 
-  bool contains(const std::vector<uint64_t>& hashes) const;
   bool contains(const uint64_t* hashes) const;
+  bool contains(const std::vector<uint64_t>& hashes) const
+  {
+    return contains(hashes.data());
+  }
 
   size_t get_bytes() const { return bytes; }
   uint64_t get_pop_cnt() const;
@@ -94,23 +97,15 @@ public:
   /**
    * Store the kmers of a sequence.
    * @param seq sequence to kmerize
-   */
-  void insert(const std::string& seq);
-
-  /**
-   * Store the kmers of a sequence.
-   * @param seq sequence to kmerize
    * @param seq_len length of seq
    */
   void insert(const char* seq, size_t seq_len);
 
   /**
-   * Query the kmers of a sequence.
+   * Store the kmers of a sequence.
    * @param seq sequence to kmerize
-   *
-   * @return number of kmers found in seq
    */
-  unsigned contains(const std::string& seq) const;
+  void insert(const std::string& seq) { insert(seq.c_str(), seq.size()); }
 
   /**
    * Query the kmers of a sequence.
@@ -120,6 +115,17 @@ public:
    * @return number of kmers found in seq
    */
   unsigned contains(const char* seq, size_t seq_len) const;
+
+  /**
+   * Query the kmers of a sequence.
+   * @param seq sequence to kmerize
+   *
+   * @return number of kmers found in seq
+   */
+  unsigned contains(const std::string& seq) const
+  {
+    return contains(seq.c_str(), seq.size());
+  }
 
   unsigned get_k() const { return k; }
 
@@ -144,24 +150,12 @@ inline BloomFilter::BloomFilter(size_t bytes, unsigned hash_num)
 }
 
 inline void
-BloomFilter::insert(const std::vector<uint64_t>& hashes)
-{
-  insert(hashes.data());
-}
-
-inline void
 BloomFilter::insert(const uint64_t* hashes)
 {
   for (unsigned i = 0; i < hash_num; ++i) {
     const auto normalized = hashes[i] % array_bits;
     array[normalized / CHAR_BIT] |= BIT_MASKS[normalized % CHAR_BIT];
   }
-}
-
-inline bool
-BloomFilter::contains(const std::vector<uint64_t>& hashes) const
-{
-  return contains(hashes.data());
 }
 
 inline bool
@@ -289,24 +283,12 @@ inline KmerBloomFilter::KmerBloomFilter(size_t bytes,
 {}
 
 inline void
-KmerBloomFilter::insert(const std::string& seq)
-{
-  insert(seq.c_str(), seq.size());
-}
-
-inline void
 KmerBloomFilter::insert(const char* seq, size_t seq_len)
 {
   NtHash nthash(seq, seq_len, k, get_hash_num());
   while (nthash.roll()) {
     BloomFilter::insert(nthash.hashes());
   }
-}
-
-inline unsigned
-KmerBloomFilter::contains(const std::string& seq) const
-{
-  return contains(seq.c_str(), seq.size());
 }
 
 inline unsigned
