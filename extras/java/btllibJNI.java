@@ -57,10 +57,8 @@ public class btllibJNI {
   public final static native long T31L_get();
   public final static native long N33R_get();
   public final static native long N31L_get();
-  public final static native void ms_tab_33r_set(long jarg1);
-  public final static native long ms_tab_33r_get();
-  public final static native void ms_tab_31l_set(long jarg1);
-  public final static native long ms_tab_31l_get();
+  public final static native long MS_TAB_33R_get();
+  public final static native long MS_TAB_31L_get();
   public final static native long RC_CONVERT_TAB_get();
   public final static native long CONVERT_TAB_get();
   public final static native long DIMER_TAB_get();

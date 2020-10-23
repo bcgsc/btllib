@@ -922,55 +922,25 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_N31L_1get(JNIEnv *jenv, jclass jc
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_ms_1tab_133r_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  uint64_t **arg1 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(uint64_t ***)&jarg1; 
-  {
-    size_t ii;
-    uint64_t const * *b = (uint64_t const * *) btllib::ms_tab_33r;
-    for (ii = 0; ii < (size_t)btllib::ASCII_SIZE; ii++) b[ii] = *((uint64_t const * *) arg1 + ii);
-  }
-  
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_ms_1tab_133r_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_MS_1TAB_133R_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   uint64_t **result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (uint64_t **)(uint64_t **)btllib::ms_tab_33r;
+  result = (uint64_t **)(uint64_t **)btllib::MS_TAB_33R;
   *(uint64_t ***)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_ms_1tab_131l_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  uint64_t **arg1 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(uint64_t ***)&jarg1; 
-  {
-    size_t ii;
-    uint64_t const * *b = (uint64_t const * *) btllib::ms_tab_31l;
-    for (ii = 0; ii < (size_t)btllib::ASCII_SIZE; ii++) b[ii] = *((uint64_t const * *) arg1 + ii);
-  }
-  
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_ms_1tab_131l_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_MS_1TAB_131L_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   uint64_t **result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (uint64_t **)(uint64_t **)btllib::ms_tab_31l;
+  result = (uint64_t **)(uint64_t **)btllib::MS_TAB_31L;
   *(uint64_t ***)&jresult = result; 
   return jresult;
 }

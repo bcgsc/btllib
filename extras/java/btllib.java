@@ -100,21 +100,13 @@ public class btllib {
     return (cPtr == 0) ? null : new SWIGTYPE_p_uint64_t(cPtr, false);
   }
 
-  public static void setMs_tab_33r(SWIGTYPE_p_p_uint64_t value) {
-    btllibJNI.ms_tab_33r_set(SWIGTYPE_p_p_uint64_t.getCPtr(value));
-  }
-
-  public static SWIGTYPE_p_p_uint64_t getMs_tab_33r() {
-    long cPtr = btllibJNI.ms_tab_33r_get();
+  public static SWIGTYPE_p_p_uint64_t getMS_TAB_33R() {
+    long cPtr = btllibJNI.MS_TAB_33R_get();
     return (cPtr == 0) ? null : new SWIGTYPE_p_p_uint64_t(cPtr, false);
   }
 
-  public static void setMs_tab_31l(SWIGTYPE_p_p_uint64_t value) {
-    btllibJNI.ms_tab_31l_set(SWIGTYPE_p_p_uint64_t.getCPtr(value));
-  }
-
-  public static SWIGTYPE_p_p_uint64_t getMs_tab_31l() {
-    long cPtr = btllibJNI.ms_tab_31l_get();
+  public static SWIGTYPE_p_p_uint64_t getMS_TAB_31L() {
+    long cPtr = btllibJNI.MS_TAB_31L_get();
     return (cPtr == 0) ? null : new SWIGTYPE_p_p_uint64_t(cPtr, false);
   }
 

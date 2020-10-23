@@ -11752,60 +11752,34 @@ SWIGINTERN PyObject *Swig_var_N31L_get(void) {
 }
 
 
-SWIGINTERN int Swig_var_ms_tab_33r_set(PyObject *_val) {
-  {
-    uint64_t const * *inp = 0;
-    int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_p_uint64_t,  0 );
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""btllib::ms_tab_33r""' of type '""uint64_t const *[btllib::ASCII_SIZE]""'");
-    } else if (inp) {
-      size_t ii = 0;
-      for (; ii < (size_t)btllib::ASCII_SIZE; ++ii) *(uint64_t const * *)&btllib::ms_tab_33r[ii] = *((uint64_t const * *)inp + ii);
-    } else {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""btllib::ms_tab_33r""' of type '""uint64_t const *[btllib::ASCII_SIZE]""'");
-    }
-  }
-  return 0;
-fail:
+SWIGINTERN int Swig_var_MS_TAB_33R_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable MS_TAB_33R is read-only.");
   return 1;
 }
 
 
-SWIGINTERN PyObject *Swig_var_ms_tab_33r_get(void) {
+SWIGINTERN PyObject *Swig_var_MS_TAB_33R_get(void) {
   PyObject *pyobj = 0;
   PyObject *self = 0;
   
   (void)self;
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::ms_tab_33r), SWIGTYPE_p_p_uint64_t,  0 );
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::MS_TAB_33R), SWIGTYPE_p_p_uint64_t,  0 );
   return pyobj;
 }
 
 
-SWIGINTERN int Swig_var_ms_tab_31l_set(PyObject *_val) {
-  {
-    uint64_t const * *inp = 0;
-    int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_p_uint64_t,  0 );
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""btllib::ms_tab_31l""' of type '""uint64_t const *[btllib::ASCII_SIZE]""'");
-    } else if (inp) {
-      size_t ii = 0;
-      for (; ii < (size_t)btllib::ASCII_SIZE; ++ii) *(uint64_t const * *)&btllib::ms_tab_31l[ii] = *((uint64_t const * *)inp + ii);
-    } else {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""btllib::ms_tab_31l""' of type '""uint64_t const *[btllib::ASCII_SIZE]""'");
-    }
-  }
-  return 0;
-fail:
+SWIGINTERN int Swig_var_MS_TAB_31L_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable MS_TAB_31L is read-only.");
   return 1;
 }
 
 
-SWIGINTERN PyObject *Swig_var_ms_tab_31l_get(void) {
+SWIGINTERN PyObject *Swig_var_MS_TAB_31L_get(void) {
   PyObject *pyobj = 0;
   PyObject *self = 0;
   
   (void)self;
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::ms_tab_31l), SWIGTYPE_p_p_uint64_t,  0 );
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::MS_TAB_31L), SWIGTYPE_p_p_uint64_t,  0 );
   return pyobj;
 }
 
@@ -28050,8 +28024,12 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "N31L", Swig_var_N31L_get, Swig_var_N31L_set);
   PyDict_SetItemString(md, "N31L", PyObject_GetAttrString(globals, "N31L"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "N31L");
-  SWIG_addvarlink(globals, "ms_tab_33r", Swig_var_ms_tab_33r_get, Swig_var_ms_tab_33r_set);
-  SWIG_addvarlink(globals, "ms_tab_31l", Swig_var_ms_tab_31l_get, Swig_var_ms_tab_31l_set);
+  SWIG_addvarlink(globals, "MS_TAB_33R", Swig_var_MS_TAB_33R_get, Swig_var_MS_TAB_33R_set);
+  PyDict_SetItemString(md, "MS_TAB_33R", PyObject_GetAttrString(globals, "MS_TAB_33R"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MS_TAB_33R");
+  SWIG_addvarlink(globals, "MS_TAB_31L", Swig_var_MS_TAB_31L_get, Swig_var_MS_TAB_31L_set);
+  PyDict_SetItemString(md, "MS_TAB_31L", PyObject_GetAttrString(globals, "MS_TAB_31L"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MS_TAB_31L");
   SWIG_addvarlink(globals, "RC_CONVERT_TAB", Swig_var_RC_CONVERT_TAB_get, Swig_var_RC_CONVERT_TAB_set);
   PyDict_SetItemString(md, "RC_CONVERT_TAB", PyObject_GetAttrString(globals, "RC_CONVERT_TAB"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "RC_CONVERT_TAB");
