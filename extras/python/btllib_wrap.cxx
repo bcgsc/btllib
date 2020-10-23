@@ -20595,6 +20595,28 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_BloomFilter_get_occupancy(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "BloomFilter_get_occupancy", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BloomFilter_get_occupancy" "', argument " "1"" of type '" "btllib::BloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BloomFilter * >(argp1);
+  result = (double)((btllib::BloomFilter const *)arg1)->get_occupancy();
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_BloomFilter_get_hash_num(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;
@@ -25920,6 +25942,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__BloomFilter_methods[] = {
   { "contains", _wrap_BloomFilter_contains, METH_VARARGS, "" },
   { "get_bytes", _wrap_BloomFilter_get_bytes, METH_NOARGS, "" },
   { "get_pop_cnt", _wrap_BloomFilter_get_pop_cnt, METH_NOARGS, "" },
+  { "get_occupancy", _wrap_BloomFilter_get_occupancy, METH_NOARGS, "" },
   { "get_hash_num", _wrap_BloomFilter_get_hash_num, METH_NOARGS, "" },
   { "get_fpr", _wrap_BloomFilter_get_fpr, METH_NOARGS, "" },
   { "parse_header", (PyCFunction)(void(*)(void))_wrap_BloomFilter_parse_header, METH_STATIC|METH_VARARGS, "" },

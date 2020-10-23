@@ -269,6 +269,7 @@ public class btllibJNI {
   public final static native boolean BloomFilter_contains__SWIG_1(long jarg1, BloomFilter jarg1_, long jarg2);
   public final static native long BloomFilter_get_bytes(long jarg1, BloomFilter jarg1_);
   public final static native long BloomFilter_get_pop_cnt(long jarg1, BloomFilter jarg1_);
+  public final static native double BloomFilter_get_occupancy(long jarg1, BloomFilter jarg1_);
   public final static native long BloomFilter_get_hash_num(long jarg1, BloomFilter jarg1_);
   public final static native double BloomFilter_get_fpr(long jarg1, BloomFilter jarg1_);
   public final static native long BloomFilter_parse_header(long jarg1, String jarg2);

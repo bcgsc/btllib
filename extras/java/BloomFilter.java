@@ -72,6 +72,10 @@ public class BloomFilter {
     return new SWIGTYPE_p_uint64_t(btllibJNI.BloomFilter_get_pop_cnt(swigCPtr, this), true);
   }
 
+  public double get_occupancy() {
+    return btllibJNI.BloomFilter_get_occupancy(swigCPtr, this);
+  }
+
   public long get_hash_num() {
     return btllibJNI.BloomFilter_get_hash_num(swigCPtr, this);
   }

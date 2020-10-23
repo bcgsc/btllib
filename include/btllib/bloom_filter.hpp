@@ -53,6 +53,7 @@ public:
 
   size_t get_bytes() const { return bytes; }
   uint64_t get_pop_cnt() const;
+  double get_occupancy() const;
   unsigned get_hash_num() const { return hash_num; }
   double get_fpr() const;
 
@@ -186,9 +187,15 @@ BloomFilter::get_pop_cnt() const
 }
 
 inline double
+BloomFilter::get_occupancy() const
+{
+  return double(get_pop_cnt()) / double(array_bits);
+}
+
+inline double
 BloomFilter::get_fpr() const
 {
-  return std::pow(double(get_pop_cnt()) / double(array_size), double(hash_num));
+  return std::pow(get_occupancy(), double(hash_num));
 }
 
 inline std::shared_ptr<cpptoml::table>

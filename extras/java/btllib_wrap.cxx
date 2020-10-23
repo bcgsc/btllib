@@ -5063,6 +5063,21 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_BloomFilter_1get_1pop_1cnt(JNIEnv
 }
 
 
+SWIGEXPORT jdouble JNICALL Java_btllib_btllibJNI_BloomFilter_1get_1occupancy(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::BloomFilter **)&jarg1; 
+  result = (double)((btllib::BloomFilter const *)arg1)->get_occupancy();
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_BloomFilter_1get_1hash_1num(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;

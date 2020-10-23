@@ -41,6 +41,7 @@ public:
 
   size_t get_bytes() const { return bytes; }
   uint64_t get_pop_cnt() const;
+  double get_occupancy() const;
   unsigned get_hash_num() const { return hash_num; }
   double get_fpr() const;
 
@@ -166,7 +167,7 @@ CountingBloomFilter<T>::get_pop_cnt() const
   uint64_t pop_cnt = 0;
 #pragma omp parallel for reduction(+ : pop_cnt)
   for (size_t i = 0; i < array_size; ++i) {
-    if (array[i]) {
+    if (array[i] > 0) {
       ++pop_cnt;
     }
   }
@@ -175,9 +176,16 @@ CountingBloomFilter<T>::get_pop_cnt() const
 
 template<typename T>
 inline double
+CountingBloomFilter<T>::get_occupancy() const
+{
+  return double(get_pop_cnt()) / double(array_size);
+}
+
+template<typename T>
+inline double
 CountingBloomFilter<T>::get_fpr() const
 {
-  return std::pow(double(get_pop_cnt()) / double(array_size), double(hash_num));
+  return std::pow(get_occupancy(), double(hash_num));
 }
 
 template<typename T>
