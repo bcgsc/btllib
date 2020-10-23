@@ -121,6 +121,8 @@ public:
    */
   unsigned contains(const char* seq, size_t seq_len) const;
 
+  unsigned get_k() const { return k; }
+
   void write(const std::string& path);
 
 protected:

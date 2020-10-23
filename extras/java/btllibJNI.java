@@ -281,6 +281,7 @@ public class btllibJNI {
   public final static native void KmerBloomFilter_insert__SWIG_1(long jarg1, KmerBloomFilter jarg1_, String jarg2, long jarg3);
   public final static native long KmerBloomFilter_contains__SWIG_0(long jarg1, KmerBloomFilter jarg1_, String jarg2);
   public final static native long KmerBloomFilter_contains__SWIG_1(long jarg1, KmerBloomFilter jarg1_, String jarg2, long jarg3);
+  public final static native long KmerBloomFilter_get_k(long jarg1, KmerBloomFilter jarg1_);
   public final static native void KmerBloomFilter_write(long jarg1, KmerBloomFilter jarg1_, String jarg2);
   public final static native long SeedNtHash_SWIGUpcast(long jarg1);
   public final static native long DataSource_SWIGUpcast(long jarg1);

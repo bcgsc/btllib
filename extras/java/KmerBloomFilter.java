@@ -60,6 +60,10 @@ public class KmerBloomFilter extends BloomFilter {
     return btllibJNI.KmerBloomFilter_contains__SWIG_1(swigCPtr, this, seq, seq_len);
   }
 
+  public long get_k() {
+    return btllibJNI.KmerBloomFilter_get_k(swigCPtr, this);
+  }
+
   public void write(String path) {
     btllibJNI.KmerBloomFilter_write(swigCPtr, this, path);
   }

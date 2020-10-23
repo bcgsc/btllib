@@ -74,6 +74,8 @@ public:
   uint64_t contains(const std::string& seq) const;
   uint64_t contains(const char* seq, size_t seq_len) const;
 
+  unsigned get_k() const { return k; }
+
   void write(const std::string& path);
 
 protected:
