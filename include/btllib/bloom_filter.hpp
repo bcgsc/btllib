@@ -13,6 +13,7 @@
 #include <fstream>
 #include <memory>
 #include <string>
+#include <vector>
 
 namespace btllib {
 
@@ -25,6 +26,8 @@ static const unsigned char BIT_MASKS[CHAR_BIT] = {
 static const char* const BLOOM_FILTER_MAGIC_HEADER = "BTLBloomFilter_v2";
 static const char* const KMER_BLOOM_FILTER_MAGIC_HEADER =
   "BTLKmerBloomFilter_v2";
+static const char* const SEED_BLOOM_FILTER_MAGIC_HEADER =
+  "BTLSeedBloomFilter_v2";
 
 inline unsigned
 pop_cnt_byte(uint8_t x)
@@ -83,6 +86,7 @@ class KmerBloomFilter : public BloomFilter
 {
 
 public:
+  KmerBloomFilter() {}
   /**
    * Constructor.
    * @param k kmer size
@@ -132,7 +136,40 @@ public:
   void write(const std::string& path);
 
 protected:
-  unsigned k;
+  unsigned k = 0;
+};
+
+class SeedBloomFilter : public KmerBloomFilter
+{
+
+public:
+  SeedBloomFilter() {}
+  SeedBloomFilter(size_t bytes,
+                  unsigned k,
+                  const std::vector<std::string>& seeds,
+                  unsigned hash_num_per_seed);
+  SeedBloomFilter(const std::string& path);
+
+  ~SeedBloomFilter() override {}
+
+  void insert(const char* seq, size_t seq_len);
+  void insert(const std::string& seq) { insert(seq.c_str(), seq.size()); }
+
+  std::vector<std::vector<unsigned>> contains(const char* seq,
+                                              size_t seq_len) const;
+  std::vector<std::vector<unsigned>> contains(const std::string& seq) const
+  {
+    return contains(seq.c_str(), seq.size());
+  }
+
+  const std::vector<std::string>& get_seeds() const { return seeds; }
+  unsigned get_hash_num_per_seed() const { return get_hash_num(); }
+
+  void write(const std::string& path);
+
+protected:
+  std::vector<std::string> seeds;
+  std::vector<SpacedSeed> parsed_seeds;
 };
 
 inline BloomFilter::BloomFilter(size_t bytes, unsigned hash_num)
@@ -240,14 +277,14 @@ inline BloomFilter::BloomFilter(const std::string& path)
   std::ifstream file(path);
 
   auto table = parse_header(file, BLOOM_FILTER_MAGIC_HEADER);
-  bytes = *table->get_as<decltype(bytes)>("bytes");
+  bytes = *(table->get_as<decltype(bytes)>("bytes"));
   check_warning(
     sizeof(uint8_t) != sizeof(std::atomic<uint8_t>),
     "Atomic primitives take extra memory. BloomFilter will have less than " +
       std::to_string(bytes) + " for bit array.");
   array_size = bytes / sizeof(std::atomic<uint8_t>);
   array_bits = array_size * CHAR_BIT;
-  hash_num = *table->get_as<decltype(hash_num)>("hash_num");
+  hash_num = *(table->get_as<decltype(hash_num)>("hash_num"));
 
   array = new std::atomic<uint8_t>[array_size];
   file.read((char*)array, array_size * sizeof(array[0]));
@@ -309,15 +346,15 @@ inline KmerBloomFilter::KmerBloomFilter(const std::string& path)
   std::ifstream file(path);
 
   auto table = parse_header(file, KMER_BLOOM_FILTER_MAGIC_HEADER);
-  bytes = *table->get_as<decltype(bytes)>("bytes");
+  bytes = *(table->get_as<decltype(bytes)>("bytes"));
   check_warning(
     sizeof(uint8_t) != sizeof(std::atomic<uint8_t>),
     "Atomic primitives take extra memory. BloomFilter will have less than " +
       std::to_string(bytes) + " for bit array.");
   array_size = bytes / sizeof(array[0]);
   array_bits = array_size * CHAR_BIT;
-  hash_num = *table->get_as<decltype(hash_num)>("hash_num");
-  k = *table->get_as<decltype(k)>("k");
+  hash_num = *(table->get_as<decltype(hash_num)>("hash_num"));
+  k = *(table->get_as<decltype(k)>("k"));
 
   array = new std::atomic<uint8_t>[array_size];
   file.read((char*)array, array_size * sizeof(array[0]));
@@ -339,8 +376,101 @@ KmerBloomFilter::write(const std::string& path)
   auto header = cpptoml::make_table();
   header->insert("bytes", bytes);
   header->insert("hash_num", hash_num);
-  header->insert("k", hash_num);
+  header->insert("k", k);
   root->insert(KMER_BLOOM_FILTER_MAGIC_HEADER, header);
+  file << *root << "[HeaderEnd]\n";
+
+  file.write((char*)array, array_size * sizeof(array[0]));
+}
+
+inline SeedBloomFilter::SeedBloomFilter(size_t bytes,
+                                        unsigned k,
+                                        const std::vector<std::string>& seeds,
+                                        unsigned hash_num_per_seed)
+  : KmerBloomFilter(bytes, hash_num_per_seed, k)
+  , seeds(seeds)
+  , parsed_seeds(parse_seeds(seeds))
+{
+  for (const auto& seed : seeds) {
+    check_error(k != seed.size(),
+                "SeedBloomFilter: passed k (" + std::to_string(k) +
+                  ") not equal to passed spaced seed size (" +
+                  std::to_string(seed.size()) + ")");
+  }
+}
+
+inline void
+SeedBloomFilter::insert(const char* seq, size_t seq_len)
+{
+  SeedNtHash nthash(seq, seq_len, k, parsed_seeds, get_hash_num_per_seed());
+  while (nthash.roll()) {
+    for (unsigned s = 0; s < seeds.size(); s++) {
+      BloomFilter::insert(nthash.hashes() + s * get_hash_num_per_seed());
+    }
+  }
+}
+
+inline std::vector<std::vector<unsigned>>
+SeedBloomFilter::contains(const char* seq, size_t seq_len) const
+{
+  std::vector<std::vector<unsigned>> hit_seeds;
+  SeedNtHash nthash(seq, seq_len, k, parsed_seeds, get_hash_num_per_seed());
+  while (nthash.roll()) {
+    hit_seeds.emplace_back();
+    for (unsigned s = 0; s < seeds.size(); s++) {
+      if (BloomFilter::contains(nthash.hashes() +
+                                s * get_hash_num_per_seed())) {
+        hit_seeds.back().push_back(s);
+      }
+    }
+  }
+  return hit_seeds;
+}
+
+inline SeedBloomFilter::SeedBloomFilter(const std::string& path)
+{
+  std::ifstream file(path);
+
+  auto table = parse_header(file, SEED_BLOOM_FILTER_MAGIC_HEADER);
+  bytes = *(table->get_as<decltype(bytes)>("bytes"));
+  check_warning(
+    sizeof(uint8_t) != sizeof(std::atomic<uint8_t>),
+    "Atomic primitives take extra memory. BloomFilter will have less than " +
+      std::to_string(bytes) + " for bit array.");
+  array_size = bytes / sizeof(array[0]);
+  array_bits = array_size * CHAR_BIT;
+  hash_num = *(table->get_as<decltype(hash_num)>("hash_num"));
+  k = *(table->get_as<decltype(k)>("k"));
+  seeds = *(table->get_array_of<std::string>("seeds"));
+  parsed_seeds = parse_seeds(seeds);
+
+  array = new std::atomic<uint8_t>[array_size];
+  file.read((char*)array, array_size * sizeof(array[0]));
+}
+
+inline void
+SeedBloomFilter::write(const std::string& path)
+{
+  std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);
+
+  /* Initialize cpptoml root table
+    Note: Tables and fields are unordered
+    Ordering of table is maintained by directing the table
+    to the output stream immediately after completion  */
+  auto root = cpptoml::make_table();
+
+  /* Initialize bloom filter section and insert fields
+      and output to ostream */
+  auto header = cpptoml::make_table();
+  header->insert("bytes", bytes);
+  header->insert("hash_num", hash_num);
+  header->insert("k", k);
+  auto seeds_array = cpptoml::make_array();
+  for (const auto& seed : seeds) {
+    seeds_array->push_back(seed);
+  }
+  header->insert("seeds", seeds_array);
+  root->insert(SEED_BLOOM_FILTER_MAGIC_HEADER, header);
   file << *root << "[HeaderEnd]\n";
 
   file.write((char*)array, array_size * sizeof(array[0]));

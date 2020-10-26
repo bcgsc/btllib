@@ -36,12 +36,16 @@ public class KmerBloomFilter extends BloomFilter {
     super.delete();
   }
 
+  public KmerBloomFilter() {
+    this(btllibJNI.new_KmerBloomFilter__SWIG_0(), true);
+  }
+
   public KmerBloomFilter(long bytes, long hash_num, long k) {
-    this(btllibJNI.new_KmerBloomFilter__SWIG_0(bytes, hash_num, k), true);
+    this(btllibJNI.new_KmerBloomFilter__SWIG_1(bytes, hash_num, k), true);
   }
 
   public KmerBloomFilter(String path) {
-    this(btllibJNI.new_KmerBloomFilter__SWIG_1(path), true);
+    this(btllibJNI.new_KmerBloomFilter__SWIG_2(path), true);
   }
 
   public void insert(String seq, long seq_len) {

@@ -256,6 +256,7 @@ public class btllibJNI {
   public final static native String get_reverse_complement(String jarg1);
   public final static native long BIT_MASKS_get();
   public final static native String KMER_BLOOM_FILTER_MAGIC_HEADER_get();
+  public final static native String SEED_BLOOM_FILTER_MAGIC_HEADER_get();
   public final static native long pop_cnt_byte(long jarg1);
   public final static native long new_BloomFilter__SWIG_0();
   public final static native long new_BloomFilter__SWIG_1(long jarg1, long jarg2);
@@ -272,8 +273,9 @@ public class btllibJNI {
   public final static native double BloomFilter_get_fpr(long jarg1, BloomFilter jarg1_);
   public final static native long BloomFilter_parse_header(long jarg1, String jarg2);
   public final static native void BloomFilter_write(long jarg1, BloomFilter jarg1_, String jarg2);
-  public final static native long new_KmerBloomFilter__SWIG_0(long jarg1, long jarg2, long jarg3);
-  public final static native long new_KmerBloomFilter__SWIG_1(String jarg1);
+  public final static native long new_KmerBloomFilter__SWIG_0();
+  public final static native long new_KmerBloomFilter__SWIG_1(long jarg1, long jarg2, long jarg3);
+  public final static native long new_KmerBloomFilter__SWIG_2(String jarg1);
   public final static native void delete_KmerBloomFilter(long jarg1);
   public final static native void KmerBloomFilter_insert__SWIG_0(long jarg1, KmerBloomFilter jarg1_, String jarg2, long jarg3);
   public final static native void KmerBloomFilter_insert__SWIG_1(long jarg1, KmerBloomFilter jarg1_, String jarg2);
@@ -281,8 +283,20 @@ public class btllibJNI {
   public final static native long KmerBloomFilter_contains__SWIG_1(long jarg1, KmerBloomFilter jarg1_, String jarg2);
   public final static native long KmerBloomFilter_get_k(long jarg1, KmerBloomFilter jarg1_);
   public final static native void KmerBloomFilter_write(long jarg1, KmerBloomFilter jarg1_, String jarg2);
+  public final static native long new_SeedBloomFilter__SWIG_0();
+  public final static native long new_SeedBloomFilter__SWIG_1(long jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long new_SeedBloomFilter__SWIG_2(String jarg1);
+  public final static native void delete_SeedBloomFilter(long jarg1);
+  public final static native void SeedBloomFilter_insert__SWIG_0(long jarg1, SeedBloomFilter jarg1_, String jarg2, long jarg3);
+  public final static native void SeedBloomFilter_insert__SWIG_1(long jarg1, SeedBloomFilter jarg1_, String jarg2);
+  public final static native long SeedBloomFilter_contains__SWIG_0(long jarg1, SeedBloomFilter jarg1_, String jarg2, long jarg3);
+  public final static native long SeedBloomFilter_contains__SWIG_1(long jarg1, SeedBloomFilter jarg1_, String jarg2);
+  public final static native long SeedBloomFilter_get_seeds(long jarg1, SeedBloomFilter jarg1_);
+  public final static native long SeedBloomFilter_get_hash_num_per_seed(long jarg1, SeedBloomFilter jarg1_);
+  public final static native void SeedBloomFilter_write(long jarg1, SeedBloomFilter jarg1_, String jarg2);
   public final static native long SeedNtHash_SWIGUpcast(long jarg1);
   public final static native long DataSource_SWIGUpcast(long jarg1);
   public final static native long DataSink_SWIGUpcast(long jarg1);
   public final static native long KmerBloomFilter_SWIGUpcast(long jarg1);
+  public final static native long SeedBloomFilter_SWIGUpcast(long jarg1);
 }

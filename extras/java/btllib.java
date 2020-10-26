@@ -474,6 +474,10 @@ public class btllib {
     return btllibJNI.KMER_BLOOM_FILTER_MAGIC_HEADER_get();
   }
 
+  public static String getSEED_BLOOM_FILTER_MAGIC_HEADER() {
+    return btllibJNI.SEED_BLOOM_FILTER_MAGIC_HEADER_get();
+  }
+
   public static long pop_cnt_byte(SWIGTYPE_p_uint8_t x) {
     return btllibJNI.pop_cnt_byte(SWIGTYPE_p_uint8_t.getCPtr(x));
   }
