@@ -1018,7 +1018,7 @@ sub_hash(uint64_t fh_val,
 {
   uint64_t b_val = 0, t_val = 0;
 
-  for (unsigned i = 0; i < positions.size(); i++) {
+  for (size_t i = 0; i < positions.size(); i++) {
     const auto pos = positions[i];
     const auto new_base = new_bases[i];
 
