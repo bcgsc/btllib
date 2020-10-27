@@ -176,7 +176,7 @@ public:
   {
     return get_hash_num_per_seed() * get_seeds().size();
   }
-  double get_fpr() const { return kmer_bloom_filter.get_fpr(); }
+  double get_fpr() const;
   unsigned get_k() const { return kmer_bloom_filter.get_k(); }
   const std::vector<std::string>& get_seeds() const { return seeds; }
   unsigned get_hash_num_per_seed() const
@@ -451,6 +451,13 @@ SeedBloomFilter::contains(const char* seq, size_t seq_len) const
     }
   }
   return hit_seeds;
+}
+
+inline double
+SeedBloomFilter::get_fpr() const
+{
+  const double single_seed_fpr = std::pow(get_occupancy(), get_hash_num_per_seed());
+	return 1 - std::pow(1 - single_seed_fpr, seeds.size());
 }
 
 inline SeedBloomFilter::SeedBloomFilter(const std::string& path)
