@@ -97,6 +97,7 @@ public class btllibJNI {
   public final static native boolean ntmc64__SWIG_5(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8);
   public final static native void ntmc64__SWIG_6(short jarg1, short jarg2, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8);
   public final static native long mask_hash(long jarg1, long jarg2, String jarg3, String jarg4, long jarg5);
+  public final static native void sub_hash(long jarg1, long jarg2, String jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8);
   public final static native long nts64__SWIG_0(String jarg1, long jarg2, long jarg3, long jarg4);
   public final static native long nts64__SWIG_1(String jarg1, long jarg2, short jarg3, short jarg4, long jarg5, long jarg6);
   public final static native boolean ntms64__SWIG_0(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8, long jarg9);
@@ -107,6 +108,7 @@ public class btllibJNI {
   public final static native long new_NtHash__SWIG_0(String jarg1, long jarg2, long jarg3, long jarg4);
   public final static native long new_NtHash__SWIG_1(String jarg1, long jarg2, long jarg3);
   public final static native boolean NtHash_roll(long jarg1, NtHash jarg1_);
+  public final static native void NtHash_sub(long jarg1, NtHash jarg1_, long jarg2, long jarg3);
   public final static native long NtHash_hashes(long jarg1, NtHash jarg1_);
   public final static native long NtHash_get_pos(long jarg1, NtHash jarg1_);
   public final static native boolean NtHash_forward(long jarg1, NtHash jarg1_);

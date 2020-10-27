@@ -1904,6 +1904,55 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_mask_1hash(JNIEnv *jenv, jclass j
 }
 
 
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_sub_1hash(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jstring jarg3, jlong jarg4, jlong jarg5, jlong jarg6, jlong jarg7, jlong jarg8) {
+  uint64_t arg1 ;
+  uint64_t arg2 ;
+  char *arg3 = (char *) 0 ;
+  std::vector< unsigned int > *arg4 = 0 ;
+  std::vector< unsigned char > *arg5 = 0 ;
+  unsigned int arg6 ;
+  unsigned int arg7 ;
+  uint64_t *arg8 = (uint64_t *) 0 ;
+  uint64_t *argp1 ;
+  uint64_t *argp2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  argp1 = *(uint64_t **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint64_t");
+    return ;
+  }
+  arg1 = *argp1; 
+  argp2 = *(uint64_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint64_t");
+    return ;
+  }
+  arg2 = *argp2; 
+  arg3 = 0;
+  if (jarg3) {
+    arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
+    if (!arg3) return ;
+  }
+  arg4 = *(std::vector< unsigned int > **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< unsigned int > const & reference is null");
+    return ;
+  } 
+  arg5 = *(std::vector< unsigned char > **)&jarg5;
+  if (!arg5) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< unsigned char > const & reference is null");
+    return ;
+  } 
+  arg6 = (unsigned int)jarg6; 
+  arg7 = (unsigned int)jarg7; 
+  arg8 = *(uint64_t **)&jarg8; 
+  btllib::sub_hash(arg1,arg2,(char const *)arg3,(std::vector< unsigned int > const &)*arg4,(std::vector< unsigned char > const &)*arg5,arg6,arg7,arg8);
+  if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_nts64_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4) {
   jlong jresult = 0 ;
   char *arg1 = (char *) 0 ;
@@ -2250,6 +2299,29 @@ SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_NtHash_1roll(JNIEnv *jenv, jcl
   result = (bool)(arg1)->roll();
   jresult = (jboolean)result; 
   return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_NtHash_1sub(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  std::vector< unsigned int > *arg2 = 0 ;
+  std::vector< unsigned char > *arg3 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::NtHash **)&jarg1; 
+  arg2 = *(std::vector< unsigned int > **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< unsigned int > const & reference is null");
+    return ;
+  } 
+  arg3 = *(std::vector< unsigned char > **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< unsigned char > const & reference is null");
+    return ;
+  } 
+  (arg1)->sub((std::vector< unsigned int > const &)*arg2,(std::vector< unsigned char > const &)*arg3);
 }
 
 

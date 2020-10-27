@@ -1005,6 +1005,45 @@ mask_hash(uint64_t& fk_val,
   return (rs_val < fs_val) ? rs_val : fs_val;
 }
 
+// replacing canonical ntHash with a substitution
+inline void
+sub_hash(uint64_t fh_val,
+         uint64_t rh_val,
+         const char* kmer_seq,
+         const std::vector<unsigned>& positions,
+         const std::vector<unsigned char>& new_bases,
+         const unsigned k,
+         const unsigned m,
+         uint64_t* h_val)
+{
+  uint64_t b_val = 0, t_val = 0;
+
+  for (unsigned i = 0; i < positions.size(); i++) {
+    const auto pos = positions[i];
+    const auto new_base = new_bases[i];
+
+    fh_val ^=
+      (MS_TAB_31L[(unsigned char)kmer_seq[pos]][(k - 1 - pos) % 31] | // NOLINT
+       MS_TAB_33R[(unsigned char)kmer_seq[pos]][(k - 1 - pos) % 33]); // NOLINT
+    fh_val ^= (MS_TAB_31L[new_base][(k - 1 - pos) % 31] |             // NOLINT
+               MS_TAB_33R[new_base][(k - 1 - pos) % 33]);             // NOLINT
+
+    rh_val ^=
+      (MS_TAB_31L[(unsigned char)kmer_seq[pos] & CP_OFF][pos % 31] | // NOLINT
+       MS_TAB_33R[(unsigned char)kmer_seq[pos] & CP_OFF][pos % 33]); // NOLINT
+    rh_val ^= (MS_TAB_31L[new_base & CP_OFF][pos % 31] |             // NOLINT
+               MS_TAB_33R[new_base & CP_OFF][pos % 33]);             // NOLINT
+  }
+
+  b_val = rh_val < fh_val ? rh_val : fh_val;
+  h_val[0] = b_val;
+  for (unsigned i = 1; i < m; i++) {
+    t_val = b_val * (i ^ k * MULTISEED);
+    t_val ^= t_val >> MULTISHIFT;
+    h_val[i] = t_val;
+  }
+}
+
 // spaced seed ntHash for base kmer, i.e. fhval(kmer_0)
 inline uint64_t
 nts64(const char* kmer_seq,
@@ -1256,6 +1295,9 @@ public:
    */
   bool roll();
 
+  void sub(const std::vector<unsigned>& positions,
+           const std::vector<unsigned char>& new_bases);
+
   const uint64_t* hashes() const { return hashes_vector.data(); }
 
   size_t get_pos() const { return pos; }
@@ -1405,6 +1447,20 @@ parse_seeds(const std::vector<std::string>& seed_strings)
     seed_set.push_back(seed);
   }
   return seed_set;
+}
+
+inline void
+NtHash::sub(const std::vector<unsigned>& positions,
+            const std::vector<unsigned char>& new_bases)
+{
+  sub_hash(forward_hash,
+           reverse_hash,
+           seq + pos,
+           positions,
+           new_bases,
+           get_k(),
+           get_hash_num(),
+           hashes_vector.data());
 }
 
 // NOLINTNEXTLINE

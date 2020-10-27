@@ -267,6 +267,10 @@ public class btllib {
     return new SWIGTYPE_p_uint64_t(btllibJNI.mask_hash(SWIGTYPE_p_uint64_t.getCPtr(fk_val), SWIGTYPE_p_uint64_t.getCPtr(rk_val), seed_seq, kmer_seq, k), true);
   }
 
+  public static void sub_hash(SWIGTYPE_p_uint64_t fh_val, SWIGTYPE_p_uint64_t rh_val, String kmer_seq, SWIGTYPE_p_std__vectorT_unsigned_int_t positions, SWIGTYPE_p_std__vectorT_unsigned_char_t new_bases, long k, long m, SWIGTYPE_p_uint64_t h_val) {
+    btllibJNI.sub_hash(SWIGTYPE_p_uint64_t.getCPtr(fh_val), SWIGTYPE_p_uint64_t.getCPtr(rh_val), kmer_seq, SWIGTYPE_p_std__vectorT_unsigned_int_t.getCPtr(positions), SWIGTYPE_p_std__vectorT_unsigned_char_t.getCPtr(new_bases), k, m, SWIGTYPE_p_uint64_t.getCPtr(h_val));
+  }
+
   public static SWIGTYPE_p_uint64_t nts64(String kmer_seq, SWIGTYPE_p_std__vectorT_bool_t seed, long k, SWIGTYPE_p_uint64_t h_val) {
     return new SWIGTYPE_p_uint64_t(btllibJNI.nts64__SWIG_0(kmer_seq, SWIGTYPE_p_std__vectorT_bool_t.getCPtr(seed), k, SWIGTYPE_p_uint64_t.getCPtr(h_val)), true);
   }
