@@ -536,51 +536,58 @@ $(function() {
 <div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;    kmer_bloom_filter.bloom_filter.array_size * CHAR_BIT;</div>
 <div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;  kmer_bloom_filter.bloom_filter.hash_num =</div>
 <div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    *(table-&gt;get_as&lt;decltype(kmer_bloom_filter.bloom_filter.hash_num)&gt;(</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;      <span class="stringliteral">&quot;hash_num&quot;</span>));</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;  kmer_bloom_filter.k = *(table-&gt;get_as&lt;decltype(kmer_bloom_filter.k)&gt;(<span class="stringliteral">&quot;k&quot;</span>));</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;  seeds = *(table-&gt;get_array_of&lt;std::string&gt;(<span class="stringliteral">&quot;seeds&quot;</span>));</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;  parsed_seeds = parse_seeds(seeds);</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160; </div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;  kmer_bloom_filter.bloom_filter.array =</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    <span class="keyword">new</span> std::atomic&lt;uint8_t&gt;[kmer_bloom_filter.bloom_filter.array_size];</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;  file.read((<span class="keywordtype">char</span>*)kmer_bloom_filter.bloom_filter.array,</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;            kmer_bloom_filter.bloom_filter.array_size *</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;              <span class="keyword">sizeof</span>(kmer_bloom_filter.bloom_filter.array[0]));</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;}</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; </div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;SeedBloomFilter::write(<span class="keyword">const</span> std::string&amp; path)</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;{</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;  std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160; </div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;  <span class="comment">/* Initialize cpptoml root table</span></div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;<span class="comment">    Note: Tables and fields are unordered</span></div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;<span class="comment">    Ordering of table is maintained by directing the table</span></div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;<span class="comment">    to the output stream immediately after completion  */</span></div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;  <span class="keyword">auto</span> root = cpptoml::make_table();</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;      <span class="stringliteral">&quot;hash_num_per_seed&quot;</span>));</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> hash_num =</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    *(table-&gt;get_as&lt;decltype(kmer_bloom_filter.bloom_filter.hash_num)&gt;(</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;      <span class="stringliteral">&quot;hash_num&quot;</span>));</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;  kmer_bloom_filter.k = *(table-&gt;get_as&lt;decltype(kmer_bloom_filter.k)&gt;(<span class="stringliteral">&quot;k&quot;</span>));</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;  seeds = *(table-&gt;get_array_of&lt;std::string&gt;(<span class="stringliteral">&quot;seeds&quot;</span>));</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;  parsed_seeds = parse_seeds(seeds);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;  check_error(hash_num != get_hash_num_per_seed() * seeds.size(),</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;              <span class="stringliteral">&quot;SeedBloomFilter: hash_num, hash_num_per_seed, or number of &quot;</span></div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;              <span class="stringliteral">&quot;seeds is wrong.&quot;</span>);</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160; </div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;  kmer_bloom_filter.bloom_filter.array =</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    <span class="keyword">new</span> std::atomic&lt;uint8_t&gt;[kmer_bloom_filter.bloom_filter.array_size];</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;  file.read((<span class="keywordtype">char</span>*)kmer_bloom_filter.bloom_filter.array,</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;            kmer_bloom_filter.bloom_filter.array_size *</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;              <span class="keyword">sizeof</span>(kmer_bloom_filter.bloom_filter.array[0]));</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;}</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;SeedBloomFilter::write(<span class="keyword">const</span> std::string&amp; path)</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;{</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;  std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);</div>
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160; </div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;  <span class="comment">/* Initialize bloom filter section and insert fields</span></div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;<span class="comment">      and output to ostream */</span></div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;  <span class="keyword">auto</span> header = cpptoml::make_table();</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;bytes&quot;</span>, get_bytes());</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;hash_num&quot;</span>, get_hash_num());</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;k&quot;</span>, get_k());</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;  <span class="keyword">auto</span> seeds_array = cpptoml::make_array();</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; seed : seeds) {</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    seeds_array-&gt;push_back(seed);</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;  }</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;seeds&quot;</span>, seeds_array);</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;  root-&gt;insert(SEED_BLOOM_FILTER_MAGIC_HEADER, header);</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;  file &lt;&lt; *root &lt;&lt; <span class="stringliteral">&quot;[HeaderEnd]\n&quot;</span>;</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160; </div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;  file.write((<span class="keywordtype">char</span>*)kmer_bloom_filter.bloom_filter.array,</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;             kmer_bloom_filter.bloom_filter.array_size *</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;               <span class="keyword">sizeof</span>(kmer_bloom_filter.bloom_filter.array[0]));</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;}</div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160; </div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;  <span class="comment">/* Initialize cpptoml root table</span></div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;<span class="comment">    Note: Tables and fields are unordered</span></div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;<span class="comment">    Ordering of table is maintained by directing the table</span></div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="comment">    to the output stream immediately after completion  */</span></div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;  <span class="keyword">auto</span> root = cpptoml::make_table();</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160; </div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;  <span class="comment">/* Initialize bloom filter section and insert fields</span></div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;<span class="comment">      and output to ostream */</span></div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;  <span class="keyword">auto</span> header = cpptoml::make_table();</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;bytes&quot;</span>, get_bytes());</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;hash_num&quot;</span>, get_hash_num());</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;hash_num_per_seed&quot;</span>, get_hash_num_per_seed());</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;k&quot;</span>, get_k());</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;  <span class="keyword">auto</span> seeds_array = cpptoml::make_array();</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; seed : seeds) {</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    seeds_array-&gt;push_back(seed);</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;  }</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;seeds&quot;</span>, seeds_array);</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;  root-&gt;insert(SEED_BLOOM_FILTER_MAGIC_HEADER, header);</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;  file &lt;&lt; *root &lt;&lt; <span class="stringliteral">&quot;[HeaderEnd]\n&quot;</span>;</div>
 <div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160; </div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;  file.write((<span class="keywordtype">char</span>*)kmer_bloom_filter.bloom_filter.array,</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;             kmer_bloom_filter.bloom_filter.array_size *</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;               <span class="keyword">sizeof</span>(kmer_bloom_filter.bloom_filter.array[0]));</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;}</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160; </div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassbtllib_1_1KmerBloomFilter_html"><div class="ttname"><a href="classbtllib_1_1KmerBloomFilter.html">btllib::KmerBloomFilter</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:89</div></div>
 <div class="ttc" id="aclassbtllib_1_1KmerBloomFilter_html_a313ba88552ef9adf2ac6a09e30f7a64c"><div class="ttname"><a href="classbtllib_1_1KmerBloomFilter.html#a313ba88552ef9adf2ac6a09e30f7a64c">btllib::KmerBloomFilter::contains</a></div><div class="ttdeci">unsigned contains(const char *seq, size_t seq_len) const</div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:370</div></div>

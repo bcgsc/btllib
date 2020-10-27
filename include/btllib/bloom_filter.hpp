@@ -497,10 +497,16 @@ inline SeedBloomFilter::SeedBloomFilter(const std::string& path)
     kmer_bloom_filter.bloom_filter.array_size * CHAR_BIT;
   kmer_bloom_filter.bloom_filter.hash_num =
     *(table->get_as<decltype(kmer_bloom_filter.bloom_filter.hash_num)>(
+      "hash_num_per_seed"));
+  const auto hash_num =
+    *(table->get_as<decltype(kmer_bloom_filter.bloom_filter.hash_num)>(
       "hash_num"));
   kmer_bloom_filter.k = *(table->get_as<decltype(kmer_bloom_filter.k)>("k"));
   seeds = *(table->get_array_of<std::string>("seeds"));
   parsed_seeds = parse_seeds(seeds);
+  check_error(hash_num != get_hash_num_per_seed() * seeds.size(),
+              "SeedBloomFilter: hash_num, hash_num_per_seed, or number of "
+              "seeds is wrong.");
 
   kmer_bloom_filter.bloom_filter.array =
     new std::atomic<uint8_t>[kmer_bloom_filter.bloom_filter.array_size];
@@ -525,6 +531,7 @@ SeedBloomFilter::write(const std::string& path)
   auto header = cpptoml::make_table();
   header->insert("bytes", get_bytes());
   header->insert("hash_num", get_hash_num());
+  header->insert("hash_num_per_seed", get_hash_num_per_seed());
   header->insert("k", get_k());
   auto seeds_array = cpptoml::make_array();
   for (const auto& seed : seeds) {
