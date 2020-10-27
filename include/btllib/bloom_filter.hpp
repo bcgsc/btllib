@@ -132,6 +132,15 @@ public:
     return contains(seq.c_str(), seq.size());
   }
 
+  bool contains(const uint64_t* hashes) const
+  {
+    return bloom_filter.contains(hashes);
+  }
+  bool contains(const std::vector<uint64_t>& hashes) const
+  {
+    return bloom_filter.contains(hashes);
+  }
+
   size_t get_bytes() const { return bloom_filter.get_bytes(); }
   uint64_t get_pop_cnt() const { return bloom_filter.get_pop_cnt(); }
   double get_occupancy() const { return bloom_filter.get_occupancy(); }
@@ -167,6 +176,15 @@ public:
   std::vector<std::vector<unsigned>> contains(const std::string& seq) const
   {
     return contains(seq.c_str(), seq.size());
+  }
+
+  bool contains(const uint64_t* hashes) const
+  {
+    return kmer_bloom_filter.contains(hashes);
+  }
+  bool contains(const std::vector<uint64_t>& hashes) const
+  {
+    return kmer_bloom_filter.contains(hashes);
   }
 
   size_t get_bytes() const { return kmer_bloom_filter.get_bytes(); }

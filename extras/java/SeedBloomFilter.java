@@ -64,6 +64,14 @@ public class SeedBloomFilter {
     return new SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t(btllibJNI.SeedBloomFilter_contains__SWIG_1(swigCPtr, this, seq), true);
   }
 
+  public boolean contains(SWIGTYPE_p_uint64_t hashes) {
+    return btllibJNI.SeedBloomFilter_contains__SWIG_2(swigCPtr, this, SWIGTYPE_p_uint64_t.getCPtr(hashes));
+  }
+
+  public boolean contains(SWIGTYPE_p_std__vectorT_uint64_t_t hashes) {
+    return btllibJNI.SeedBloomFilter_contains__SWIG_3(swigCPtr, this, SWIGTYPE_p_std__vectorT_uint64_t_t.getCPtr(hashes));
+  }
+
   public long get_bytes() {
     return btllibJNI.SeedBloomFilter_get_bytes(swigCPtr, this);
   }

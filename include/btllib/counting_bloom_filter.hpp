@@ -83,6 +83,15 @@ public:
     return contains(seq.c_str(), seq.size());
   }
 
+  T contains(const uint64_t* hashes) const
+  {
+    counting_bloom_filter.contains(hashes);
+  }
+  T contains(const std::vector<uint64_t>& hashes) const
+  {
+    counting_bloom_filter.contains(hashes);
+  }
+
   size_t get_bytes() const { return counting_bloom_filter.get_bytes(); }
   uint64_t get_pop_cnt() const { return counting_bloom_filter.get_pop_cnt(); }
   double get_occupancy() const { return counting_bloom_filter.get_occupancy(); }
