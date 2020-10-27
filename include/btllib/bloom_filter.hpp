@@ -428,7 +428,7 @@ SeedBloomFilter::insert(const char* seq, size_t seq_len)
   SeedNtHash nthash(
     seq, seq_len, get_k(), parsed_seeds, get_hash_num_per_seed());
   while (nthash.roll()) {
-    for (unsigned s = 0; s < seeds.size(); s++) {
+    for (size_t s = 0; s < seeds.size(); s++) {
       kmer_bloom_filter.bloom_filter.insert(nthash.hashes() +
                                             s * get_hash_num_per_seed());
     }
@@ -443,7 +443,7 @@ SeedBloomFilter::contains(const char* seq, size_t seq_len) const
     seq, seq_len, get_k(), parsed_seeds, get_hash_num_per_seed());
   while (nthash.roll()) {
     hit_seeds.emplace_back();
-    for (unsigned s = 0; s < seeds.size(); s++) {
+    for (size_t s = 0; s < seeds.size(); s++) {
       if (kmer_bloom_filter.bloom_filter.contains(
             nthash.hashes() + s * get_hash_num_per_seed())) {
         hit_seeds.back().push_back(s);
