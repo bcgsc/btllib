@@ -16175,6 +16175,116 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SeedNtHash_hashes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  uint64_t *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_hashes", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_hashes" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (uint64_t *)((btllib::SeedNtHash const *)arg1)->hashes();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_uint64_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_get_pos(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  size_t result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_pos", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_pos" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = ((btllib::SeedNtHash const *)arg1)->get_pos();
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_forward(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_forward", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_forward" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (bool)((btllib::SeedNtHash const *)arg1)->forward();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_get_k(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  unsigned int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_k", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_k" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (unsigned int)((btllib::SeedNtHash const *)arg1)->get_k();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_get_hash_num(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  unsigned int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_hash_num", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_hash_num" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (unsigned int)((btllib::SeedNtHash const *)arg1)->get_hash_num();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SeedNtHash_get_hash_num_per_seed(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
@@ -20862,27 +20972,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_KmerBloomFilter(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "delete_KmerBloomFilter", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerBloomFilter, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_KmerBloomFilter" "', argument " "1"" of type '" "btllib::KmerBloomFilter *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::KmerBloomFilter * >(argp1);
-  delete arg1;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_KmerBloomFilter_insert__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
@@ -21133,6 +21222,116 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_KmerBloomFilter_get_bytes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  size_t result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "KmerBloomFilter_get_bytes", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_get_bytes" "', argument " "1"" of type '" "btllib::KmerBloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerBloomFilter * >(argp1);
+  result = ((btllib::KmerBloomFilter const *)arg1)->get_bytes();
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerBloomFilter_get_pop_cnt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  uint64_t result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "KmerBloomFilter_get_pop_cnt", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_get_pop_cnt" "', argument " "1"" of type '" "btllib::KmerBloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerBloomFilter * >(argp1);
+  result = ((btllib::KmerBloomFilter const *)arg1)->get_pop_cnt();
+  resultobj = SWIG_NewPointerObj((new uint64_t(static_cast< const uint64_t& >(result))), SWIGTYPE_p_uint64_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerBloomFilter_get_occupancy(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "KmerBloomFilter_get_occupancy", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_get_occupancy" "', argument " "1"" of type '" "btllib::KmerBloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerBloomFilter * >(argp1);
+  result = (double)((btllib::KmerBloomFilter const *)arg1)->get_occupancy();
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerBloomFilter_get_hash_num(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  unsigned int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "KmerBloomFilter_get_hash_num", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_get_hash_num" "', argument " "1"" of type '" "btllib::KmerBloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerBloomFilter * >(argp1);
+  result = (unsigned int)((btllib::KmerBloomFilter const *)arg1)->get_hash_num();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerBloomFilter_get_fpr(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "KmerBloomFilter_get_fpr", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_get_fpr" "', argument " "1"" of type '" "btllib::KmerBloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerBloomFilter * >(argp1);
+  result = (double)((btllib::KmerBloomFilter const *)arg1)->get_fpr();
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_KmerBloomFilter_get_k(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
@@ -21188,6 +21387,27 @@ SWIGINTERN PyObject *_wrap_KmerBloomFilter_write(PyObject *self, PyObject *args)
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_KmerBloomFilter(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "delete_KmerBloomFilter", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerBloomFilter, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_KmerBloomFilter" "', argument " "1"" of type '" "btllib::KmerBloomFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerBloomFilter * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
   return NULL;
 }
 
@@ -21337,27 +21557,6 @@ fail:
     "    btllib::SeedBloomFilter::SeedBloomFilter(size_t,unsigned int,std::vector< std::string,std::allocator< std::string > > const &,unsigned int)\n"
     "    btllib::SeedBloomFilter::SeedBloomFilter(std::string const &)\n");
   return -1;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_SeedBloomFilter(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "delete_SeedBloomFilter", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedBloomFilter, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeedBloomFilter" "', argument " "1"" of type '" "btllib::SeedBloomFilter *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
-  delete arg1;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
 }
 
 
@@ -21611,6 +21810,138 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_bytes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  size_t result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedBloomFilter_get_bytes", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedBloomFilter_get_bytes" "', argument " "1"" of type '" "btllib::SeedBloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
+  result = ((btllib::SeedBloomFilter const *)arg1)->get_bytes();
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_pop_cnt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  uint64_t result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedBloomFilter_get_pop_cnt", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedBloomFilter_get_pop_cnt" "', argument " "1"" of type '" "btllib::SeedBloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
+  result = ((btllib::SeedBloomFilter const *)arg1)->get_pop_cnt();
+  resultobj = SWIG_NewPointerObj((new uint64_t(static_cast< const uint64_t& >(result))), SWIGTYPE_p_uint64_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_occupancy(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedBloomFilter_get_occupancy", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedBloomFilter_get_occupancy" "', argument " "1"" of type '" "btllib::SeedBloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
+  result = (double)((btllib::SeedBloomFilter const *)arg1)->get_occupancy();
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_hash_num(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  unsigned int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedBloomFilter_get_hash_num", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedBloomFilter_get_hash_num" "', argument " "1"" of type '" "btllib::SeedBloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
+  result = (unsigned int)((btllib::SeedBloomFilter const *)arg1)->get_hash_num();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_fpr(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedBloomFilter_get_fpr", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedBloomFilter_get_fpr" "', argument " "1"" of type '" "btllib::SeedBloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
+  result = (double)((btllib::SeedBloomFilter const *)arg1)->get_fpr();
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_k(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  unsigned int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedBloomFilter_get_k", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedBloomFilter_get_k" "', argument " "1"" of type '" "btllib::SeedBloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
+  result = (unsigned int)((btllib::SeedBloomFilter const *)arg1)->get_k();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_seeds(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
@@ -21688,6 +22019,27 @@ SWIGINTERN PyObject *_wrap_SeedBloomFilter_write(PyObject *self, PyObject *args)
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SeedBloomFilter(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "delete_SeedBloomFilter", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedBloomFilter, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeedBloomFilter" "', argument " "1"" of type '" "btllib::SeedBloomFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
   return NULL;
 }
 
@@ -24087,6 +24439,11 @@ SwigPyBuiltin__btllib__SeedNtHash_richcompare(PyObject *self, PyObject *other, i
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedNtHash_methods[] = {
+  { "hashes", _wrap_SeedNtHash_hashes, METH_NOARGS, "" },
+  { "get_pos", _wrap_SeedNtHash_get_pos, METH_NOARGS, "" },
+  { "forward", _wrap_SeedNtHash_forward, METH_NOARGS, "" },
+  { "get_k", _wrap_SeedNtHash_get_k, METH_NOARGS, "" },
+  { "get_hash_num", _wrap_SeedNtHash_get_hash_num, METH_NOARGS, "" },
   { "get_hash_num_per_seed", _wrap_SeedNtHash_get_hash_num_per_seed, METH_NOARGS, "" },
   { "roll", _wrap_SeedNtHash_roll, METH_NOARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
@@ -26691,6 +27048,11 @@ SwigPyBuiltin__btllib__KmerBloomFilter_richcompare(PyObject *self, PyObject *oth
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__KmerBloomFilter_methods[] = {
   { "insert", _wrap_KmerBloomFilter_insert, METH_VARARGS, "" },
   { "contains", _wrap_KmerBloomFilter_contains, METH_VARARGS, "" },
+  { "get_bytes", _wrap_KmerBloomFilter_get_bytes, METH_NOARGS, "" },
+  { "get_pop_cnt", _wrap_KmerBloomFilter_get_pop_cnt, METH_NOARGS, "" },
+  { "get_occupancy", _wrap_KmerBloomFilter_get_occupancy, METH_NOARGS, "" },
+  { "get_hash_num", _wrap_KmerBloomFilter_get_hash_num, METH_NOARGS, "" },
+  { "get_fpr", _wrap_KmerBloomFilter_get_fpr, METH_NOARGS, "" },
   { "get_k", _wrap_KmerBloomFilter_get_k, METH_NOARGS, "" },
   { "write", _wrap_KmerBloomFilter_write, METH_O, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
@@ -26907,6 +27269,12 @@ SwigPyBuiltin__btllib__SeedBloomFilter_richcompare(PyObject *self, PyObject *oth
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedBloomFilter_methods[] = {
   { "insert", _wrap_SeedBloomFilter_insert, METH_VARARGS, "" },
   { "contains", _wrap_SeedBloomFilter_contains, METH_VARARGS, "" },
+  { "get_bytes", _wrap_SeedBloomFilter_get_bytes, METH_NOARGS, "" },
+  { "get_pop_cnt", _wrap_SeedBloomFilter_get_pop_cnt, METH_NOARGS, "" },
+  { "get_occupancy", _wrap_SeedBloomFilter_get_occupancy, METH_NOARGS, "" },
+  { "get_hash_num", _wrap_SeedBloomFilter_get_hash_num, METH_NOARGS, "" },
+  { "get_fpr", _wrap_SeedBloomFilter_get_fpr, METH_NOARGS, "" },
+  { "get_k", _wrap_SeedBloomFilter_get_k, METH_NOARGS, "" },
   { "get_seeds", _wrap_SeedBloomFilter_get_seeds, METH_NOARGS, "" },
   { "get_hash_num_per_seed", _wrap_SeedBloomFilter_get_hash_num_per_seed, METH_NOARGS, "" },
   { "write", _wrap_SeedBloomFilter_write, METH_O, "" },
@@ -27104,18 +27472,6 @@ SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeedBloomFilter_clientdata = 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_f_r_std__ios_base__r_std__basic_ostreamT_char_std__char_traitsT_char_t_tTo_p_f_r_std__ios_base__r_std__ios_base(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((std::ios_base &(*)(std::ios_base &)) (std::basic_ios< char > *) ((std::basic_ostream< char,std::char_traits< char > > &(*)(std::ios_base &)) x));
-}
-static void *_p_f_r_std__ios_base__r_std__basic_istreamT_char_std__char_traitsT_char_t_tTo_p_f_r_std__ios_base__r_std__ios_base(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((std::ios_base &(*)(std::ios_base &)) (std::basic_ios< char > *) ((std::basic_istream< char,std::char_traits< char > > &(*)(std::ios_base &)) x));
-}
-static void *_p_f_r_std__ios_base__r_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_f_r_std__ios_base__r_std__ios_base(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((std::ios_base &(*)(std::ios_base &)) (std::basic_ios< char > *)(std::basic_istream< char > *) ((std::basic_iostream< char,std::char_traits< char > > &(*)(std::ios_base &)) x));
-}
-static void *_p_f_r_std__ios_base__r_std__basic_iosT_char_std__char_traitsT_char_t_tTo_p_f_r_std__ios_base__r_std__ios_base(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((std::ios_base &(*)(std::ios_base &))  ((std::basic_ios< char,std::char_traits< char > > &(*)(std::ios_base &)) x));
-}
 static void *_p_std__basic_ostreamT_char_std__char_traitsT_char_t_tTo_p_std__ios_base(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::ios_base *) (std::basic_ios< char > *) ((std::basic_ostream< char,std::char_traits< char > > *) x));
 }
@@ -27128,14 +27484,17 @@ static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__io
 static void *_p_std__basic_iosT_char_std__char_traitsT_char_t_tTo_p_std__ios_base(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::ios_base *)  ((std::basic_ios< char,std::char_traits< char > > *) x));
 }
-static void *_p_btllib__SeedBloomFilterTo_p_btllib__KmerBloomFilter(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((btllib::KmerBloomFilter *)  ((btllib::SeedBloomFilter *) x));
+static void *_p_f_r_std__ios_base__r_std__basic_ostreamT_char_std__char_traitsT_char_t_tTo_p_f_r_std__ios_base__r_std__ios_base(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((std::ios_base &(*)(std::ios_base &)) (std::basic_ios< char > *) ((std::basic_ostream< char,std::char_traits< char > > &(*)(std::ios_base &)) x));
 }
-static void *_p_btllib__KmerBloomFilterTo_p_btllib__BloomFilter(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((btllib::BloomFilter *)  ((btllib::KmerBloomFilter *) x));
+static void *_p_f_r_std__ios_base__r_std__basic_istreamT_char_std__char_traitsT_char_t_tTo_p_f_r_std__ios_base__r_std__ios_base(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((std::ios_base &(*)(std::ios_base &)) (std::basic_ios< char > *) ((std::basic_istream< char,std::char_traits< char > > &(*)(std::ios_base &)) x));
 }
-static void *_p_btllib__SeedBloomFilterTo_p_btllib__BloomFilter(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((btllib::BloomFilter *) (btllib::KmerBloomFilter *) ((btllib::SeedBloomFilter *) x));
+static void *_p_f_r_std__ios_base__r_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_f_r_std__ios_base__r_std__ios_base(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((std::ios_base &(*)(std::ios_base &)) (std::basic_ios< char > *)(std::basic_istream< char > *) ((std::basic_iostream< char,std::char_traits< char > > &(*)(std::ios_base &)) x));
+}
+static void *_p_f_r_std__ios_base__r_std__basic_iosT_char_std__char_traitsT_char_t_tTo_p_f_r_std__ios_base__r_std__ios_base(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((std::ios_base &(*)(std::ios_base &))  ((std::basic_ios< char,std::char_traits< char > > &(*)(std::ios_base &)) x));
 }
 static void *_p_btllib__DataSinkTo_p_btllib__DataStream(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((btllib::DataStream *)  ((btllib::DataSink *) x));
@@ -27172,9 +27531,6 @@ static void *_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basi
 }
 static void *_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_ios< char,std::char_traits< char > > &(*)(std::basic_ios< char,std::char_traits< char > > &)) (std::basic_istream< char > *) ((std::basic_iostream< char,std::char_traits< char > > &(*)(std::basic_ios< char,std::char_traits< char > > &)) x));
-}
-static void *_p_btllib__SeedNtHashTo_p_btllib__NtHash(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((btllib::NtHash *)  ((btllib::SeedNtHash *) x));
 }
 static swig_type_info _swigt__p_FILE = {"_p_FILE", "FILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_HashedKmer = {"_p_HashedKmer", "HashedKmer *", 0, 0, (void*)0, 0};
@@ -27372,7 +27728,7 @@ static swig_cast_info _swigc__p_FILE[] = {  {&_swigt__p_FILE, 0, 0, 0},{0, 0, 0,
 static swig_cast_info _swigc__p_HashedKmer[] = {  {&_swigt__p_HashedKmer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SwigPyObject[] = {  {&_swigt__p_SwigPyObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_btllib__BloomFilter[] = {  {&_swigt__p_btllib__BloomFilter, 0, 0, 0},  {&_swigt__p_btllib__KmerBloomFilter, _p_btllib__KmerBloomFilterTo_p_btllib__BloomFilter, 0, 0},  {&_swigt__p_btllib__SeedBloomFilter, _p_btllib__SeedBloomFilterTo_p_btllib__BloomFilter, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__BloomFilter[] = {  {&_swigt__p_btllib__BloomFilter, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__CountingBloomFilterT_uint16_t_t[] = {  {&_swigt__p_btllib__CountingBloomFilterT_uint16_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__CountingBloomFilterT_uint32_t_t[] = {  {&_swigt__p_btllib__CountingBloomFilterT_uint32_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__CountingBloomFilterT_uint8_t_t[] = {  {&_swigt__p_btllib__CountingBloomFilterT_uint8_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -27384,11 +27740,11 @@ static swig_cast_info _swigc__p_btllib__Indexlr__Flag[] = {  {&_swigt__p_btllib_
 static swig_cast_info _swigc__p_btllib__Indexlr__Minimizer[] = {  {&_swigt__p_btllib__Indexlr__Minimizer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__Indexlr__Read[] = {  {&_swigt__p_btllib__Indexlr__Read, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__Indexlr__Record[] = {  {&_swigt__p_btllib__Indexlr__Record, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_btllib__KmerBloomFilter[] = {  {&_swigt__p_btllib__KmerBloomFilter, 0, 0, 0},  {&_swigt__p_btllib__SeedBloomFilter, _p_btllib__SeedBloomFilterTo_p_btllib__KmerBloomFilter, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__KmerBloomFilter[] = {  {&_swigt__p_btllib__KmerBloomFilter, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__KmerCountingBloomFilterT_uint16_t_t[] = {  {&_swigt__p_btllib__KmerCountingBloomFilterT_uint16_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__KmerCountingBloomFilterT_uint32_t_t[] = {  {&_swigt__p_btllib__KmerCountingBloomFilterT_uint32_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__KmerCountingBloomFilterT_uint8_t_t[] = {  {&_swigt__p_btllib__KmerCountingBloomFilterT_uint8_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_btllib__NtHash[] = {  {&_swigt__p_btllib__NtHash, 0, 0, 0},  {&_swigt__p_btllib__SeedNtHash, _p_btllib__SeedNtHashTo_p_btllib__NtHash, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__NtHash[] = {  {&_swigt__p_btllib__NtHash, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeedBloomFilter[] = {  {&_swigt__p_btllib__SeedBloomFilter, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeedNtHash[] = {  {&_swigt__p_btllib__SeedNtHash, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeqReader[] = {  {&_swigt__p_btllib__SeqReader, 0, 0, 0},{0, 0, 0, 0}};
@@ -28836,17 +29192,6 @@ SWIG_init(void) {
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;
-  builtin_basetype = SWIG_MangledTypeQuery("_p_btllib__NtHash");
-  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData *) builtin_basetype->clientdata)->pytype) {
-    builtin_bases[builtin_base_count++] = ((SwigPyClientData *) builtin_basetype->clientdata)->pytype;
-  } else {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'SeedNtHash' as base 'btllib::NtHash' has not been initialized.\n");
-#if PY_VERSION_HEX >= 0x03000000
-    return NULL;
-#else
-    return;
-#endif
-  }
   builtin_bases[builtin_base_count] = NULL;
   SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
   PyDict_SetItemString(d, "this", this_descr);
@@ -29203,17 +29548,6 @@ SWIG_init(void) {
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;
-  builtin_basetype = SWIG_MangledTypeQuery("_p_btllib__BloomFilter");
-  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData *) builtin_basetype->clientdata)->pytype) {
-    builtin_bases[builtin_base_count++] = ((SwigPyClientData *) builtin_basetype->clientdata)->pytype;
-  } else {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'KmerBloomFilter' as base 'btllib::BloomFilter' has not been initialized.\n");
-#if PY_VERSION_HEX >= 0x03000000
-    return NULL;
-#else
-    return;
-#endif
-  }
   builtin_bases[builtin_base_count] = NULL;
   SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
   PyDict_SetItemString(d, "this", this_descr);
@@ -29237,17 +29571,6 @@ SWIG_init(void) {
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;
-  builtin_basetype = SWIG_MangledTypeQuery("_p_btllib__KmerBloomFilter");
-  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData *) builtin_basetype->clientdata)->pytype) {
-    builtin_bases[builtin_base_count++] = ((SwigPyClientData *) builtin_basetype->clientdata)->pytype;
-  } else {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'SeedBloomFilter' as base 'btllib::KmerBloomFilter' has not been initialized.\n");
-#if PY_VERSION_HEX >= 0x03000000
-    return NULL;
-#else
-    return;
-#endif
-  }
   builtin_bases[builtin_base_count] = NULL;
   SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
   PyDict_SetItemString(d, "this", this_descr);

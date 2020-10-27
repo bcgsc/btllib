@@ -1256,14 +1256,16 @@ public:
    */
   bool roll();
 
-  const uint64_t* hashes() const;
+  const uint64_t* hashes() const { return hashes_vector.data(); }
 
   size_t get_pos() const { return pos; }
   bool forward() const { return forward_hash <= reverse_hash; }
   unsigned get_k() const { return k; }
   unsigned get_hash_num() const { return hash_num; }
 
-protected:
+private:
+  friend class SeedNtHash;
+
   /** Initialize internal state of iterator */
   bool init();
 
@@ -1278,7 +1280,7 @@ protected:
   uint64_t reverse_hash = 0;
 };
 
-class SeedNtHash : public NtHash
+class SeedNtHash
 {
 
 public:
@@ -1305,6 +1307,12 @@ public:
              unsigned hash_num_per_seed,
              size_t pos = 0);
 
+  const uint64_t* hashes() const { return nthash.hashes(); }
+
+  size_t get_pos() const { return nthash.get_pos(); }
+  bool forward() const { return nthash.forward(); }
+  unsigned get_k() const { return nthash.get_k(); }
+  unsigned get_hash_num() const { return nthash.get_hash_num(); }
   unsigned get_hash_num_per_seed() const { return hash_num_per_seed; }
 
   bool roll();
@@ -1312,6 +1320,7 @@ public:
 private:
   bool init();
 
+  NtHash nthash;
   const unsigned hash_num_per_seed;
   std::vector<SpacedSeed> seeds;
 };
@@ -1344,7 +1353,7 @@ inline SeedNtHash::SeedNtHash(const char* seq,
                               const std::vector<SpacedSeed>& seeds,
                               unsigned hash_num_per_seed,
                               size_t pos)
-  : NtHash(seq, seq_len, k, seeds.size() * hash_num_per_seed, pos)
+  : nthash(seq, seq_len, k, seeds.size() * hash_num_per_seed, pos)
   , hash_num_per_seed(hash_num_per_seed)
   , seeds(seeds)
 {}
@@ -1354,7 +1363,7 @@ inline SeedNtHash::SeedNtHash(const std::string& seq,
                               const std::vector<SpacedSeed>& seeds,
                               unsigned hash_num_per_seed,
                               size_t pos)
-  : NtHash(seq, k, seeds.size() * hash_num_per_seed, pos)
+  : nthash(seq, k, seeds.size() * hash_num_per_seed, pos)
   , hash_num_per_seed(hash_num_per_seed)
   , seeds(seeds)
 {}
@@ -1365,7 +1374,7 @@ inline SeedNtHash::SeedNtHash(const char* seq,
                               const std::vector<std::string>& seeds,
                               unsigned hash_num_per_seed,
                               size_t pos)
-  : NtHash(seq, seq_len, k, seeds.size() * hash_num_per_seed, pos)
+  : nthash(seq, seq_len, k, seeds.size() * hash_num_per_seed, pos)
   , hash_num_per_seed(hash_num_per_seed)
   , seeds(parse_seeds(seeds))
 {}
@@ -1375,7 +1384,7 @@ inline SeedNtHash::SeedNtHash(const std::string& seq,
                               const std::vector<std::string>& seeds,
                               unsigned hash_num_per_seed,
                               size_t pos)
-  : NtHash(seq, k, seeds.size() * hash_num_per_seed, pos)
+  : nthash(seq, k, seeds.size() * hash_num_per_seed, pos)
   , hash_num_per_seed(hash_num_per_seed)
   , seeds(parse_seeds(seeds))
 {}
@@ -1399,38 +1408,42 @@ parse_seeds(const std::vector<std::string>& seed_strings)
 }
 
 // NOLINTNEXTLINE
-#define NTHASH_INIT(CLASS, NTHASH_CALL)                                        \
+#define NTHASH_INIT(CLASS, NTHASH_CALL, MEMBER_PREFIX)                         \
   inline bool CLASS::init()                                                    \
   {                                                                            \
-    if (k > seq_len) {                                                         \
-      pos = std::numeric_limits<std::size_t>::max();                           \
+    if (MEMBER_PREFIX k > MEMBER_PREFIX seq_len) {                             \
+      MEMBER_PREFIX pos = std::numeric_limits<std::size_t>::max();             \
       return false;                                                            \
     }                                                                          \
     unsigned posN = 0;                                                         \
-    while ((pos < seq_len - k + 1) && !(NTHASH_CALL)) {                        \
-      pos += posN + 1;                                                         \
+    while (                                                                    \
+      (MEMBER_PREFIX pos < MEMBER_PREFIX seq_len - MEMBER_PREFIX k + 1) &&     \
+      !(NTHASH_CALL)) {                                                        \
+      MEMBER_PREFIX pos += posN + 1;                                           \
     }                                                                          \
-    if (pos > seq_len - k) {                                                   \
-      pos = std::numeric_limits<std::size_t>::max();                           \
+    if (MEMBER_PREFIX pos > MEMBER_PREFIX seq_len - MEMBER_PREFIX k) {         \
+      MEMBER_PREFIX pos = std::numeric_limits<std::size_t>::max();             \
       return false;                                                            \
     }                                                                          \
-    initialized = true;                                                        \
+    MEMBER_PREFIX initialized = true;                                          \
     return true;                                                               \
   }
 
 // NOLINTNEXTLINE
-#define NTHASH_ROLL(CLASS, NTHASH_CALL)                                        \
+#define NTHASH_ROLL(CLASS, NTHASH_CALL, MEMBER_PREFIX)                         \
   inline bool CLASS::roll()                                                    \
   {                                                                            \
-    if (!initialized) {                                                        \
+    if (!MEMBER_PREFIX initialized) {                                          \
       return init();                                                           \
     }                                                                          \
-    ++pos;                                                                     \
-    if (pos > seq_len - k) {                                                   \
+    ++MEMBER_PREFIX pos;                                                       \
+    if (MEMBER_PREFIX pos > MEMBER_PREFIX seq_len - MEMBER_PREFIX k) {         \
       return false;                                                            \
     }                                                                          \
-    if (SEED_TAB[(unsigned char)(seq[pos + k - 1])] == SEED_N) {               \
-      pos += k;                                                                \
+    if (SEED_TAB[(unsigned char)(MEMBER_PREFIX seq[MEMBER_PREFIX pos +         \
+                                                   MEMBER_PREFIX k - 1])] ==   \
+        SEED_N) {                                                              \
+      MEMBER_PREFIX pos += MEMBER_PREFIX k;                                    \
       return init();                                                           \
     }                                                                          \
     (NTHASH_CALL);                                                             \
@@ -1444,7 +1457,7 @@ NTHASH_INIT(NtHash,
                    forward_hash,
                    reverse_hash,
                    posN,
-                   hashes_vector.data()))
+                   hashes_vector.data()), )
 NTHASH_ROLL(NtHash,
             ntmc64(seq[pos - 1],
                    seq[pos - 1 + k],
@@ -1452,38 +1465,34 @@ NTHASH_ROLL(NtHash,
                    hash_num,
                    forward_hash,
                    reverse_hash,
-                   hashes_vector.data()))
+                   hashes_vector.data()), )
 
 NTHASH_INIT(SeedNtHash,
-            ntmsm64(seq + pos,
+            ntmsm64(nthash.seq + nthash.pos,
                     seeds,
-                    k,
+                    nthash.k,
                     seeds.size(),
                     hash_num_per_seed,
-                    forward_hash,
-                    reverse_hash,
+                    nthash.forward_hash,
+                    nthash.reverse_hash,
                     posN,
-                    hashes_vector.data()))
+                    nthash.hashes_vector.data()),
+            nthash.)
 NTHASH_ROLL(SeedNtHash,
-            ntmsm64(seq + pos,
+            ntmsm64(nthash.seq + nthash.pos,
                     seeds,
-                    seq[pos - 1],
-                    seq[pos - 1 + k],
-                    k,
+                    nthash.seq[nthash.pos - 1],
+                    nthash.seq[nthash.pos - 1 + nthash.k],
+                    nthash.k,
                     seeds.size(),
                     hash_num_per_seed,
-                    forward_hash,
-                    reverse_hash,
-                    hashes_vector.data()))
+                    nthash.forward_hash,
+                    nthash.reverse_hash,
+                    nthash.hashes_vector.data()),
+            nthash.)
 
 #undef NTHASH_INIT
 #undef NTHASH_ROLL
-
-inline const uint64_t*
-NtHash::hashes() const
-{
-  return hashes_vector.data();
-}
 
 } // namespace btllib
 

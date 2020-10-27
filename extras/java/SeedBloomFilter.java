@@ -8,11 +8,12 @@
 
 package btllib;
 
-public class SeedBloomFilter extends KmerBloomFilter {
+public class SeedBloomFilter {
   private transient long swigCPtr;
+  protected transient boolean swigCMemOwn;
 
   protected SeedBloomFilter(long cPtr, boolean cMemoryOwn) {
-    super(btllibJNI.SeedBloomFilter_SWIGUpcast(cPtr), cMemoryOwn);
+    swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
@@ -33,7 +34,6 @@ public class SeedBloomFilter extends KmerBloomFilter {
       }
       swigCPtr = 0;
     }
-    super.delete();
   }
 
   public SeedBloomFilter() {
@@ -62,6 +62,30 @@ public class SeedBloomFilter extends KmerBloomFilter {
 
   public SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t contains(String seq) {
     return new SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t(btllibJNI.SeedBloomFilter_contains__SWIG_1(swigCPtr, this, seq), true);
+  }
+
+  public long get_bytes() {
+    return btllibJNI.SeedBloomFilter_get_bytes(swigCPtr, this);
+  }
+
+  public SWIGTYPE_p_uint64_t get_pop_cnt() {
+    return new SWIGTYPE_p_uint64_t(btllibJNI.SeedBloomFilter_get_pop_cnt(swigCPtr, this), true);
+  }
+
+  public double get_occupancy() {
+    return btllibJNI.SeedBloomFilter_get_occupancy(swigCPtr, this);
+  }
+
+  public long get_hash_num() {
+    return btllibJNI.SeedBloomFilter_get_hash_num(swigCPtr, this);
+  }
+
+  public double get_fpr() {
+    return btllibJNI.SeedBloomFilter_get_fpr(swigCPtr, this);
+  }
+
+  public long get_k() {
+    return btllibJNI.SeedBloomFilter_get_k(swigCPtr, this);
   }
 
   public SWIGTYPE_p_std__vectorT_std__string_t get_seeds() {

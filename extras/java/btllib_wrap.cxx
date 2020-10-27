@@ -2598,6 +2598,81 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_17(JNIEnv
 }
 
 
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedNtHash_1hashes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  uint64_t *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeedNtHash **)&jarg1; 
+  result = (uint64_t *)((btllib::SeedNtHash const *)arg1)->hashes();
+  *(uint64_t **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedNtHash_1get_1pos(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  size_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeedNtHash **)&jarg1; 
+  result = ((btllib::SeedNtHash const *)arg1)->get_pos();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_SeedNtHash_1forward(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeedNtHash **)&jarg1; 
+  result = (bool)((btllib::SeedNtHash const *)arg1)->forward();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedNtHash_1get_1k(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeedNtHash **)&jarg1; 
+  result = (unsigned int)((btllib::SeedNtHash const *)arg1)->get_k();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedNtHash_1get_1hash_1num(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeedNtHash **)&jarg1; 
+  result = (unsigned int)((btllib::SeedNtHash const *)arg1)->get_hash_num();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedNtHash_1get_1hash_1num_1per_1seed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
@@ -5191,16 +5266,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1KmerBloomFilter_1_1SWIG_12(J
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1KmerBloomFilter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::KmerBloomFilter **)&jarg1; 
-  delete arg1;
-}
-
-
 SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1insert_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3) {
   btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -5291,6 +5356,81 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1contains_1_1SWIG
 }
 
 
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1get_1bytes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  size_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::KmerBloomFilter **)&jarg1; 
+  result = ((btllib::KmerBloomFilter const *)arg1)->get_bytes();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1get_1pop_1cnt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  uint64_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::KmerBloomFilter **)&jarg1; 
+  result = ((btllib::KmerBloomFilter const *)arg1)->get_pop_cnt();
+  *(uint64_t **)&jresult = new uint64_t((const uint64_t &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1get_1occupancy(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::KmerBloomFilter **)&jarg1; 
+  result = (double)((btllib::KmerBloomFilter const *)arg1)->get_occupancy();
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1get_1hash_1num(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::KmerBloomFilter **)&jarg1; 
+  result = (unsigned int)((btllib::KmerBloomFilter const *)arg1)->get_hash_num();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1get_1fpr(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::KmerBloomFilter **)&jarg1; 
+  result = (double)((btllib::KmerBloomFilter const *)arg1)->get_fpr();
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1get_1k(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
@@ -5324,6 +5464,16 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1write(JNIEnv *jen
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   (arg1)->write((std::string const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1KmerBloomFilter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::KmerBloomFilter **)&jarg1; 
+  delete arg1;
 }
 
 
@@ -5382,16 +5532,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedBloomFilter_1_1SWIG_12(J
   result = (btllib::SeedBloomFilter *)new btllib::SeedBloomFilter((std::string const &)*arg1);
   *(btllib::SeedBloomFilter **)&jresult = result; 
   return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeedBloomFilter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::SeedBloomFilter **)&jarg1; 
-  delete arg1;
 }
 
 
@@ -5485,6 +5625,96 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1contains_1_1SWIG
 }
 
 
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1get_1bytes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  size_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeedBloomFilter **)&jarg1; 
+  result = ((btllib::SeedBloomFilter const *)arg1)->get_bytes();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1get_1pop_1cnt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  uint64_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeedBloomFilter **)&jarg1; 
+  result = ((btllib::SeedBloomFilter const *)arg1)->get_pop_cnt();
+  *(uint64_t **)&jresult = new uint64_t((const uint64_t &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1get_1occupancy(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeedBloomFilter **)&jarg1; 
+  result = (double)((btllib::SeedBloomFilter const *)arg1)->get_occupancy();
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1get_1hash_1num(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeedBloomFilter **)&jarg1; 
+  result = (unsigned int)((btllib::SeedBloomFilter const *)arg1)->get_hash_num();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1get_1fpr(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jdouble jresult = 0 ;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeedBloomFilter **)&jarg1; 
+  result = (double)((btllib::SeedBloomFilter const *)arg1)->get_fpr();
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1get_1k(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeedBloomFilter **)&jarg1; 
+  result = (unsigned int)((btllib::SeedBloomFilter const *)arg1)->get_k();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1get_1seeds(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
@@ -5536,13 +5766,15 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1write(JNIEnv *jen
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedNtHash_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-    jlong baseptr = 0;
-    (void)jenv;
-    (void)jcls;
-    *(btllib::NtHash **)&baseptr = *(btllib::SeedNtHash **)&jarg1;
-    return baseptr;
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeedBloomFilter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeedBloomFilter **)&jarg1; 
+  delete arg1;
 }
+
 
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSource_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
@@ -5557,22 +5789,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSink_1SWIGUpcast(JNIEnv *jenv
     (void)jenv;
     (void)jcls;
     *(btllib::DataStream **)&baseptr = *(btllib::DataSink **)&jarg1;
-    return baseptr;
-}
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-    jlong baseptr = 0;
-    (void)jenv;
-    (void)jcls;
-    *(btllib::BloomFilter **)&baseptr = *(btllib::KmerBloomFilter **)&jarg1;
-    return baseptr;
-}
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-    jlong baseptr = 0;
-    (void)jenv;
-    (void)jcls;
-    *(btllib::KmerBloomFilter **)&baseptr = *(btllib::SeedBloomFilter **)&jarg1;
     return baseptr;
 }
 
