@@ -456,8 +456,9 @@ SeedBloomFilter::contains(const char* seq, size_t seq_len) const
 inline double
 SeedBloomFilter::get_fpr() const
 {
-  const double single_seed_fpr = std::pow(get_occupancy(), get_hash_num_per_seed());
-	return 1 - std::pow(1 - single_seed_fpr, seeds.size());
+  const double single_seed_fpr =
+    std::pow(get_occupancy(), get_hash_num_per_seed());
+  return 1 - std::pow(1 - single_seed_fpr, seeds.size());
 }
 
 inline SeedBloomFilter::SeedBloomFilter(const std::string& path)
