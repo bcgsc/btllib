@@ -313,6 +313,7 @@ public class btllibJNI {
   public final static native double SeedBloomFilter_get_fpr(long jarg1, SeedBloomFilter jarg1_);
   public final static native long SeedBloomFilter_get_k(long jarg1, SeedBloomFilter jarg1_);
   public final static native long SeedBloomFilter_get_seeds(long jarg1, SeedBloomFilter jarg1_);
+  public final static native long SeedBloomFilter_get_parsed_seeds(long jarg1, SeedBloomFilter jarg1_);
   public final static native long SeedBloomFilter_get_hash_num_per_seed(long jarg1, SeedBloomFilter jarg1_);
   public final static native void SeedBloomFilter_write(long jarg1, SeedBloomFilter jarg1_, String jarg2);
   public final static native void delete_SeedBloomFilter(long jarg1);

@@ -22290,6 +22290,28 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_parsed_seeds(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedBloomFilter_get_parsed_seeds", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedBloomFilter_get_parsed_seeds" "', argument " "1"" of type '" "btllib::SeedBloomFilter const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
+  result = (std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *) &((btllib::SeedBloomFilter const *)arg1)->get_parsed_seeds();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_hash_num_per_seed(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
@@ -27604,6 +27626,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedBloomFilter_methods[] = {
   { "get_fpr", _wrap_SeedBloomFilter_get_fpr, METH_NOARGS, "" },
   { "get_k", _wrap_SeedBloomFilter_get_k, METH_NOARGS, "" },
   { "get_seeds", _wrap_SeedBloomFilter_get_seeds, METH_NOARGS, "" },
+  { "get_parsed_seeds", _wrap_SeedBloomFilter_get_parsed_seeds, METH_NOARGS, "" },
   { "get_hash_num_per_seed", _wrap_SeedBloomFilter_get_hash_num_per_seed, METH_NOARGS, "" },
   { "write", _wrap_SeedBloomFilter_write, METH_O, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */

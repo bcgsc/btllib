@@ -197,6 +197,10 @@ public:
   double get_fpr() const;
   unsigned get_k() const { return kmer_bloom_filter.get_k(); }
   const std::vector<std::string>& get_seeds() const { return seeds; }
+  const std::vector<SpacedSeed>& get_parsed_seeds() const
+  {
+    return parsed_seeds;
+  }
   unsigned get_hash_num_per_seed() const
   {
     return kmer_bloom_filter.get_hash_num();
