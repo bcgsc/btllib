@@ -110,7 +110,7 @@ public:
    * of collisions Thread safe on the bv, though return values will not be the
    * same run to run
    */
-  static unsigned insert(sdsl::bit_vector& bv, // NOLINT
+  static unsigned insert(sdsl::bit_vector& bv,  // NOLINT
                          uint64_t* hash_values, // NOLINT
                          unsigned hash_num)
   {
@@ -158,7 +158,7 @@ public:
     if (!seeds.empty()) {
       m_ss_val = parse_seed_string(m_sseeds);
       assert(m_sseeds[0].size() == kmer_size);
-      for (vector<string>::const_iterator itr = m_sseeds.begin(); //NOLINT
+      for (vector<string>::const_iterator itr = m_sseeds.begin(); // NOLINT
            itr != m_sseeds.end();
            ++itr) {
         // check if spaced seeds are all the same length
@@ -226,7 +226,7 @@ public:
 
           m_ss_val = parse_seed_string(m_sseeds);
           assert(m_sseeds[0].size() == m_kmer_size);
-          for (vector<string>::const_iterator itr = m_sseeds.begin(); // NOLINt
+          for (vector<string>::const_iterator itr = m_sseeds.begin(); // NOLINT
                itr != m_sseeds.end();
                ++itr) {
             // check if spaced seeds are all the same length
