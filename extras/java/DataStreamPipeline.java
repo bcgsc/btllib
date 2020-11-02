@@ -8,16 +8,16 @@
 
 package btllib;
 
-public class _Pipeline {
+public class DataStreamPipeline {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
-  protected _Pipeline(long cPtr, boolean cMemoryOwn) {
+  protected DataStreamPipeline(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(_Pipeline obj) {
+  protected static long getCPtr(DataStreamPipeline obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
@@ -30,59 +30,59 @@ public class _Pipeline {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        btllibJNI.delete__Pipeline(swigCPtr);
+        btllibJNI.delete_DataStreamPipeline(swigCPtr);
       }
       swigCPtr = 0;
     }
   }
 
-  public _Pipeline() {
-    this(btllibJNI.new__Pipeline__SWIG_0(), true);
+  public DataStreamPipeline() {
+    this(btllibJNI.new_DataStreamPipeline__SWIG_0(), true);
   }
 
-  public _Pipeline(_Pipeline.Direction direction, SWIGTYPE_p_pid_t pid_first, SWIGTYPE_p_pid_t pid_last) {
-    this(btllibJNI.new__Pipeline__SWIG_1(direction.swigValue(), SWIGTYPE_p_pid_t.getCPtr(pid_first), SWIGTYPE_p_pid_t.getCPtr(pid_last)), true);
+  public DataStreamPipeline(DataStreamPipeline.Direction direction, SWIGTYPE_p_pid_t pid_first, SWIGTYPE_p_pid_t pid_last) {
+    this(btllibJNI.new_DataStreamPipeline__SWIG_1(direction.swigValue(), SWIGTYPE_p_pid_t.getCPtr(pid_first), SWIGTYPE_p_pid_t.getCPtr(pid_last)), true);
   }
 
   public void finish() {
-    btllibJNI._Pipeline_finish(swigCPtr, this);
+    btllibJNI.DataStreamPipeline_finish(swigCPtr, this);
   }
 
-  public void setDirection(_Pipeline.Direction value) {
-    btllibJNI._Pipeline_direction_set(swigCPtr, this, value.swigValue());
+  public void setDirection(DataStreamPipeline.Direction value) {
+    btllibJNI.DataStreamPipeline_direction_set(swigCPtr, this, value.swigValue());
   }
 
-  public _Pipeline.Direction getDirection() {
-    return _Pipeline.Direction.swigToEnum(btllibJNI._Pipeline_direction_get(swigCPtr, this));
+  public DataStreamPipeline.Direction getDirection() {
+    return DataStreamPipeline.Direction.swigToEnum(btllibJNI.DataStreamPipeline_direction_get(swigCPtr, this));
   }
 
   public void setPid_first(SWIGTYPE_p_pid_t value) {
-    btllibJNI._Pipeline_pid_first_set(swigCPtr, this, SWIGTYPE_p_pid_t.getCPtr(value));
+    btllibJNI.DataStreamPipeline_pid_first_set(swigCPtr, this, SWIGTYPE_p_pid_t.getCPtr(value));
   }
 
   public SWIGTYPE_p_pid_t getPid_first() {
-    return new SWIGTYPE_p_pid_t(btllibJNI._Pipeline_pid_first_get(swigCPtr, this), true);
+    return new SWIGTYPE_p_pid_t(btllibJNI.DataStreamPipeline_pid_first_get(swigCPtr, this), true);
   }
 
   public void setPid_last(SWIGTYPE_p_pid_t value) {
-    btllibJNI._Pipeline_pid_last_set(swigCPtr, this, SWIGTYPE_p_pid_t.getCPtr(value));
+    btllibJNI.DataStreamPipeline_pid_last_set(swigCPtr, this, SWIGTYPE_p_pid_t.getCPtr(value));
   }
 
   public SWIGTYPE_p_pid_t getPid_last() {
-    return new SWIGTYPE_p_pid_t(btllibJNI._Pipeline_pid_last_get(swigCPtr, this), true);
+    return new SWIGTYPE_p_pid_t(btllibJNI.DataStreamPipeline_pid_last_get(swigCPtr, this), true);
   }
 
   public void setClosed(boolean value) {
-    btllibJNI._Pipeline_closed_set(swigCPtr, this, value);
+    btllibJNI.DataStreamPipeline_closed_set(swigCPtr, this, value);
   }
 
   public boolean getClosed() {
-    return btllibJNI._Pipeline_closed_get(swigCPtr, this);
+    return btllibJNI.DataStreamPipeline_closed_get(swigCPtr, this);
   }
 
   public final static class Direction {
-    public final static _Pipeline.Direction SOURCE = new _Pipeline.Direction("SOURCE");
-    public final static _Pipeline.Direction SINK = new _Pipeline.Direction("SINK");
+    public final static DataStreamPipeline.Direction SOURCE = new DataStreamPipeline.Direction("SOURCE");
+    public final static DataStreamPipeline.Direction SINK = new DataStreamPipeline.Direction("SINK");
 
     public final int swigValue() {
       return swigValue;

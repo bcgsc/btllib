@@ -1243,7 +1243,7 @@ SeqReader::start_processor()
             if (fold_case()) {
               for (auto& c : seq) {
                 char old = c;
-                c = CAPITALS[unsigned(c)];
+                c = CAPITALS[(unsigned char)(c)];
                 if (!bool(c)) {
                   log_error(std::string("A sequence contains invalid "
                                         "IUPAC character: ") +

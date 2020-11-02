@@ -337,8 +337,8 @@ public class btllib {
     return btllibJNI.new_pipe_id();
   }
 
-  public static SWIGTYPE_p_std__mapT_std__string_btllib___Pipeline_t pipeline_map() {
-    return new SWIGTYPE_p_std__mapT_std__string_btllib___Pipeline_t(btllibJNI.pipeline_map(), false);
+  public static SWIGTYPE_p_std__mapT_std__string_btllib__DataStreamPipeline_t pipeline_map() {
+    return new SWIGTYPE_p_std__mapT_std__string_btllib__DataStreamPipeline_t(btllibJNI.pipeline_map(), false);
   }
 
   public static String get_pipepath(long id) {
@@ -381,8 +381,8 @@ public class btllib {
     return btllibJNI.get_pipeline_cmd(path, op.swigValue());
   }
 
-  public static _Pipeline run_pipeline_cmd(String cmd, DataStream.Operation op, int pipe_fd) {
-    return new _Pipeline(btllibJNI.run_pipeline_cmd(cmd, op.swigValue(), pipe_fd), true);
+  public static DataStreamPipeline run_pipeline_cmd(String cmd, DataStream.Operation op, int pipe_fd) {
+    return new DataStreamPipeline(btllibJNI.run_pipeline_cmd(cmd, op.swigValue(), pipe_fd), true);
   }
 
   public static SWIGTYPE_p_std__vectorT_std__string_t split(String s, String delim) {

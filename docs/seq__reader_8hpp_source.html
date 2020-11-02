@@ -1300,7 +1300,7 @@ $(function() {
 <div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;            <span class="keywordflow">if</span> (fold_case()) {</div>
 <div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;              <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; c : seq) {</div>
 <div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;                <span class="keywordtype">char</span> old = c;</div>
-<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;                c = CAPITALS[unsigned(c)];</div>
+<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;                c = CAPITALS[(<span class="keywordtype">unsigned</span> char)(c)];</div>
 <div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;                <span class="keywordflow">if</span> (!<span class="keywordtype">bool</span>(c)) {</div>
 <div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;                  log_error(std::string(<span class="stringliteral">&quot;A sequence contains invalid &quot;</span></div>
 <div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;                                        <span class="stringliteral">&quot;IUPAC character: &quot;</span>) +</div>
