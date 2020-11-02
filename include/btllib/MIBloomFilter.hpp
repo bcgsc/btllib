@@ -58,9 +58,9 @@ public:
     const vector<string>& spaced_seeds)
   {
     vector<vector<unsigned>> seeds(spaced_seeds.size(), vector<unsigned>());
-    for (unsigned i = 0; i < spaced_seeds.size(); ++i) {
+    for (unsigned long i = 0; i < spaced_seeds.size(); ++i) {
       const string ss = spaced_seeds.at(i);
-      for (unsigned j = 0; j < ss.size(); ++j) {
+      for (unsigned long j = 0; j < ss.size(); ++j) {
         if (ss.at(j) == '0') {
           seeds[i].push_back(j);
         }
@@ -111,14 +111,14 @@ public:
    * same run to run
    */
   static unsigned insert(sdsl::bit_vector& bv, // NOLINT
-                         uint64_t* hash_values,
+                         uint64_t* hash_values, // NOLINT
                          unsigned hash_num)
   {
     unsigned colli_count = 0;
     for (unsigned i = 0; i < hash_num; ++i) {
       const int magic = 0x3f;
       uint64_t pos = hash_values[i] % bv.size();
-      uint64_t* data_index = bv.data() + (pos >> 6);
+      uint64_t* data_index = bv.data() + (pos >> 6); // NOLINT
       uint64_t bit_mask_value = (uint64_t)1 << (pos & magic);
       colli_count +=
         __sync_fetch_and_or(data_index, bit_mask_value) >> (pos & magic) & 1;
@@ -158,7 +158,7 @@ public:
     if (!seeds.empty()) {
       m_ss_val = parse_seed_string(m_sseeds);
       assert(m_sseeds[0].size() == kmer_size);
-      for (vector<string>::const_iterator itr = m_sseeds.begin();
+      for (vector<string>::const_iterator itr = m_sseeds.begin(); //NOLINT
            itr != m_sseeds.end();
            ++itr) {
         // check if spaced seeds are all the same length
@@ -226,7 +226,7 @@ public:
 
           m_ss_val = parse_seed_string(m_sseeds);
           assert(m_sseeds[0].size() == m_kmer_size);
-          for (vector<string>::const_iterator itr = m_sseeds.begin();
+          for (vector<string>::const_iterator itr = m_sseeds.begin(); // NOLINt
                itr != m_sseeds.end();
                ++itr) {
             // check if spaced seeds are all the same length
@@ -397,7 +397,7 @@ public:
     std::shuffle(hash_order.begin(), hash_order.end(), g);
 
     // insert seeds in random order
-    for (std::vector<unsigned>::iterator itr = hash_order.begin();
+    for (std::vector<unsigned>::iterator itr = hash_order.begin(); // NOLINT
          itr != hash_order.end();
          ++itr) {
       uint64_t pos = m_rank_support(hashes[*itr] % m_bv.size());
