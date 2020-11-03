@@ -158,9 +158,7 @@ public:
     if (!seeds.empty()) {
       m_ss_val = parse_seed_string(m_sseeds);
       assert(m_sseeds[0].size() == kmer_size);
-      for (auto itr = m_sseeds.begin(); 
-           itr != m_sseeds.end();
-           ++itr) {
+      for (auto itr = m_sseeds.begin(); itr != m_sseeds.end(); ++itr) {
         // check if spaced seeds are all the same length
         assert(m_kmer_size == itr->size());
       }
@@ -226,9 +224,7 @@ public:
 
           m_ss_val = parse_seed_string(m_sseeds);
           assert(m_sseeds[0].size() == m_kmer_size);
-          for (auto itr = m_sseeds.begin(); 
-               itr != m_sseeds.end();
-               ++itr) {
+          for (auto itr = m_sseeds.begin(); itr != m_sseeds.end(); ++itr) {
             // check if spaced seeds are all the same length
             assert(m_kmer_size == itr->size());
           }
@@ -397,9 +393,7 @@ public:
     std::shuffle(hash_order.begin(), hash_order.end(), g);
 
     // insert seeds in random order
-    for (auto itr = hash_order.begin(); 
-         itr != hash_order.end();
-         ++itr) {
+    for (auto itr = hash_order.begin(); itr != hash_order.end(); ++itr) {
       uint64_t pos = m_rank_support(hashes[*itr] % m_bv.size());
       T value = strand_dir ^ strand[*itr] ? val | STRAND : val;
       // check for saturation
@@ -827,9 +821,7 @@ private:
     out.write(reinterpret_cast<char*>(&header),
               sizeof(struct FileHeader)); // NOLINT
 
-    for (auto itr = m_sseeds.begin();
-         itr != m_sseeds.end();
-         ++itr) {
+    for (auto itr = m_sseeds.begin(); itr != m_sseeds.end(); ++itr) {
       out.write(itr->c_str(), m_kmer_size);
     }
   }
