@@ -393,7 +393,9 @@ public:
     std::shuffle(hash_order.begin(), hash_order.end(), g);
 
     // insert seeds in random order
-    for (auto itr = hash_order.begin(); itr != hash_order.end(); ++itr) {
+    for (std::vector<unsigned>::iterator itr = hash_order.begin(); // NOLINT
+         itr != hash_order.end();
+         ++itr) {
       uint64_t pos = m_rank_support(hashes[*itr] % m_bv.size());
       T value = strand_dir ^ strand[*itr] ? val | STRAND : val;
       // check for saturation
