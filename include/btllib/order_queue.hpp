@@ -58,6 +58,10 @@ public:
       , occupied(slot.occupied)
       , last_tenant(slot.last_tenant)
     {}
+    Slot(Slot&&) = delete;
+
+    Slot& operator=(const Slot&) = delete;
+    Slot& operator=(Slot&&) = delete;
 
     typename OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Block block;
     std::mutex busy;
