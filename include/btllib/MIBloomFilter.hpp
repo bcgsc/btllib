@@ -158,7 +158,7 @@ public:
     if (!seeds.empty()) {
       m_ss_val = parse_seed_string(m_sseeds);
       assert(m_sseeds[0].size() == kmer_size);
-      for (vector<string>::const_iterator itr = m_sseeds.begin(); // NOLINT
+      for (auto itr = m_sseeds.begin(); 
            itr != m_sseeds.end();
            ++itr) {
         // check if spaced seeds are all the same length
@@ -226,7 +226,7 @@ public:
 
           m_ss_val = parse_seed_string(m_sseeds);
           assert(m_sseeds[0].size() == m_kmer_size);
-          for (vector<string>::const_iterator itr = m_sseeds.begin(); // NOLINT
+          for (auto itr = m_sseeds.begin(); 
                itr != m_sseeds.end();
                ++itr) {
             // check if spaced seeds are all the same length
@@ -397,7 +397,7 @@ public:
     std::shuffle(hash_order.begin(), hash_order.end(), g);
 
     // insert seeds in random order
-    for (std::vector<unsigned>::iterator itr = hash_order.begin(); // NOLINT
+    for (auto itr = hash_order.begin(); 
          itr != hash_order.end();
          ++itr) {
       uint64_t pos = m_rank_support(hashes[*itr] % m_bv.size());
@@ -474,7 +474,7 @@ public:
     std::shuffle(hash_order.begin(), hash_order.end(), g);
 
     // insert seeds in random order
-    for (std::vector<unsigned>::iterator itr = hash_order.begin();
+    for (std::vector<unsigned>::iterator itr = hash_order.begin(); // NOLINT
          itr != hash_order.end();
          ++itr) {
       uint64_t pos = m_rank_support(hashes[*itr] % m_bv.size());
@@ -827,7 +827,7 @@ private:
     out.write(reinterpret_cast<char*>(&header),
               sizeof(struct FileHeader)); // NOLINT
 
-    for (vector<string>::const_iterator itr = m_sseeds.begin();
+    for (auto itr = m_sseeds.begin();
          itr != m_sseeds.end();
          ++itr) {
       out.write(itr->c_str(), m_kmer_size);
