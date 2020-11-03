@@ -1,5 +1,5 @@
-#include "../include/btllib/indexlr.hpp"
-#include "../include/btllib/bloom_filter.hpp"
+#include "btllib/indexlr.hpp"
+#include "btllib/bloom_filter.hpp"
 
 #include <fstream>
 #include <sstream>

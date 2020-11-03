@@ -44,9 +44,15 @@ class BloomFilter
 public:
   BloomFilter() {}
   BloomFilter(size_t bytes, unsigned hash_num);
-  BloomFilter(const std::string& path);
+  explicit BloomFilter(const std::string& path);
 
   ~BloomFilter() { delete[] array; }
+
+  BloomFilter(const BloomFilter&) = delete;
+  BloomFilter(BloomFilter&&) = delete;
+
+  BloomFilter& operator=(const BloomFilter&) = delete;
+  BloomFilter& operator=(BloomFilter&&) = delete;
 
   void insert(const uint64_t* hashes);
   void insert(const std::vector<uint64_t>& hashes) { insert(hashes.data()); }
@@ -97,7 +103,13 @@ public:
    * @param hash_num number of hashes
    */
   KmerBloomFilter(size_t bytes, unsigned hash_num, unsigned k);
-  KmerBloomFilter(const std::string& path);
+  explicit KmerBloomFilter(const std::string& path);
+
+  KmerBloomFilter(const KmerBloomFilter&) = delete;
+  KmerBloomFilter(KmerBloomFilter&&) = delete;
+
+  KmerBloomFilter& operator=(const KmerBloomFilter&) = delete;
+  KmerBloomFilter& operator=(KmerBloomFilter&&) = delete;
 
   /**
    * Store the kmers of a sequence.
@@ -166,7 +178,13 @@ public:
                   unsigned k,
                   const std::vector<std::string>& seeds,
                   unsigned hash_num_per_seed);
-  SeedBloomFilter(const std::string& path);
+  explicit SeedBloomFilter(const std::string& path);
+
+  SeedBloomFilter(const SeedBloomFilter&) = delete;
+  SeedBloomFilter(SeedBloomFilter&&) = delete;
+
+  SeedBloomFilter& operator=(const SeedBloomFilter&) = delete;
+  SeedBloomFilter& operator=(SeedBloomFilter&&) = delete;
 
   void insert(const char* seq, size_t seq_len);
   void insert(const std::string& seq) { insert(seq.c_str(), seq.size()); }
