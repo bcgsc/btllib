@@ -18950,7 +18950,20 @@ fail:
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Read) /* defines _wrap_delete_Read_destructor_closure */
 
-SWIGINTERN int _wrap_new_Minimizer(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN int _wrap_new_Minimizer__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::Indexlr::Minimizer *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  result = (btllib::Indexlr::Minimizer *)new btllib::Indexlr::Minimizer();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__Indexlr__Minimizer, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_Minimizer__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   uint64_t arg1 ;
   uint64_t arg2 ;
@@ -18965,11 +18978,9 @@ SWIGINTERN int _wrap_new_Minimizer(PyObject *self, PyObject *args, PyObject *kwa
   int ecode3 = 0 ;
   bool val4 ;
   int ecode4 = 0 ;
-  PyObject *swig_obj[5] ;
   btllib::Indexlr::Minimizer *result = 0 ;
   
-  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_Minimizer")) SWIG_fail;
-  if (!SWIG_Python_UnpackTuple(args, "new_Minimizer", 5, 5, swig_obj)) SWIG_fail;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
   {
     res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_uint64_t,  0  | 0);
     if (!SWIG_IsOK(res1)) {
@@ -19019,6 +19030,56 @@ SWIGINTERN int _wrap_new_Minimizer(PyObject *self, PyObject *args, PyObject *kwa
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__Indexlr__Minimizer, SWIG_BUILTIN_INIT |  0 );
   return resultobj == Py_None ? -1 : 0;
 fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_Minimizer(PyObject *self, PyObject *args, PyObject *kwargs) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_Minimizer")) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_Minimizer", 0, 5, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_Minimizer__SWIG_0(self, argc, argv);
+  }
+  if (argc == 5) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_uint64_t, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_uint64_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_size_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_bool(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            int res = SWIG_AsPtr_std_string(argv[4], (std::string**)(0));
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_new_Minimizer__SWIG_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Minimizer'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::Indexlr::Minimizer::Minimizer()\n"
+    "    btllib::Indexlr::Minimizer::Minimizer(uint64_t,uint64_t,size_t,bool,std::string)\n");
   return -1;
 }
 
@@ -21590,6 +21651,28 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_KmerBloomFilter_get_bloom_filter(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  btllib::BloomFilter *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "KmerBloomFilter_get_bloom_filter", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_get_bloom_filter" "', argument " "1"" of type '" "btllib::KmerBloomFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerBloomFilter * >(argp1);
+  result = (btllib::BloomFilter *) &(arg1)->get_bloom_filter();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BloomFilter, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_KmerBloomFilter_write(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
@@ -22328,6 +22411,28 @@ SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_hash_num_per_seed(PyObject *self,
   arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
   result = (unsigned int)((btllib::SeedBloomFilter const *)arg1)->get_hash_num_per_seed();
   resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_kmer_bloom_filter(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  btllib::KmerBloomFilter *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedBloomFilter_get_kmer_bloom_filter", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedBloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedBloomFilter_get_kmer_bloom_filter" "', argument " "1"" of type '" "btllib::SeedBloomFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
+  result = (btllib::KmerBloomFilter *) &(arg1)->get_kmer_bloom_filter();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__KmerBloomFilter, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -27404,6 +27509,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__KmerBloomFilter_methods[] = {
   { "get_hash_num", _wrap_KmerBloomFilter_get_hash_num, METH_NOARGS, "" },
   { "get_fpr", _wrap_KmerBloomFilter_get_fpr, METH_NOARGS, "" },
   { "get_k", _wrap_KmerBloomFilter_get_k, METH_NOARGS, "" },
+  { "get_bloom_filter", _wrap_KmerBloomFilter_get_bloom_filter, METH_NOARGS, "" },
   { "write", _wrap_KmerBloomFilter_write, METH_O, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
@@ -27628,6 +27734,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedBloomFilter_methods[] = {
   { "get_seeds", _wrap_SeedBloomFilter_get_seeds, METH_NOARGS, "" },
   { "get_parsed_seeds", _wrap_SeedBloomFilter_get_parsed_seeds, METH_NOARGS, "" },
   { "get_hash_num_per_seed", _wrap_SeedBloomFilter_get_hash_num_per_seed, METH_NOARGS, "" },
+  { "get_kmer_bloom_filter", _wrap_SeedBloomFilter_get_kmer_bloom_filter, METH_NOARGS, "" },
   { "write", _wrap_SeedBloomFilter_write, METH_O, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };

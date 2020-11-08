@@ -159,6 +159,7 @@ public:
   unsigned get_hash_num() const { return bloom_filter.get_hash_num(); }
   double get_fpr() const { return bloom_filter.get_fpr(); }
   unsigned get_k() const { return k; }
+  BloomFilter& get_bloom_filter() { return bloom_filter; }
 
   void write(const std::string& path);
 
@@ -223,6 +224,7 @@ public:
   {
     return kmer_bloom_filter.get_hash_num();
   }
+  KmerBloomFilter& get_kmer_bloom_filter() { return kmer_bloom_filter; }
 
   void write(const std::string& path);
 

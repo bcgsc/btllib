@@ -198,8 +198,12 @@ public class Indexlr {
       }
     }
   
+    public Minimizer() {
+      this(btllibJNI.new_Indexlr_Minimizer__SWIG_0(), true);
+    }
+  
     public Minimizer(SWIGTYPE_p_uint64_t min_hash, SWIGTYPE_p_uint64_t out_hash, long pos, boolean forward, String seq) {
-      this(btllibJNI.new_Indexlr_Minimizer(SWIGTYPE_p_uint64_t.getCPtr(min_hash), SWIGTYPE_p_uint64_t.getCPtr(out_hash), pos, forward, seq), true);
+      this(btllibJNI.new_Indexlr_Minimizer__SWIG_1(SWIGTYPE_p_uint64_t.getCPtr(min_hash), SWIGTYPE_p_uint64_t.getCPtr(out_hash), pos, forward, seq), true);
     }
   
     public void setMin_hash(SWIGTYPE_p_uint64_t value) {
