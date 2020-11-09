@@ -366,10 +366,11 @@ Indexlr::minimize(const std::string& seq) const
   std::vector<Minimizer> minimizers;
   minimizers.reserve(2 * (seq.size() - k + 1) / w);
   std::vector<HashedKmer> hashed_kmers_buffer(w + 1);
-  ssize_t min_pos_left, min_pos_right, min_pos_prev = -1;
+  ssize_t min_idx_left, min_idx_right, min_pos_prev = -1;
   const Minimizer* min_current = nullptr;
-  for (NtHash nh(seq, k, 2); nh.roll();) {
-    auto& hk = hashed_kmers_buffer[nh.get_pos() % hashed_kmers_buffer.size()];
+  size_t idx = 0;
+  for (NtHash nh(seq, k, 2); nh.roll(); ++idx) {
+    auto& hk = hashed_kmers_buffer[idx % hashed_kmers_buffer.size()];
 
     hk = HashedKmer(nh.hashes()[0],
                     nh.hashes()[1],
@@ -393,18 +394,18 @@ Indexlr::minimize(const std::string& seq) const
       }
     }
 
-    if (nh.get_pos() + 1 >= w) {
-      min_pos_left = nh.get_pos() + 1 - w;
-      min_pos_right = nh.get_pos() + 1;
+    if (idx + 1 >= w) {
+      min_idx_left = idx + 1 - w;
+      min_idx_right = idx + 1;
       const auto& min_left =
-        hashed_kmers_buffer[min_pos_left % hashed_kmers_buffer.size()];
+        hashed_kmers_buffer[min_idx_left % hashed_kmers_buffer.size()];
       const auto& min_right =
-        hashed_kmers_buffer[(min_pos_right - 1) % hashed_kmers_buffer.size()];
+        hashed_kmers_buffer[(min_idx_right - 1) % hashed_kmers_buffer.size()];
 
-      if (min_current == nullptr || ssize_t(min_current->pos) < min_pos_left) {
+      if (min_current == nullptr || min_current->pos < min_left.pos) {
         min_current = &min_left;
         // Use of operator '<=' returns the minimum that is furthest from left.
-        for (ssize_t i = min_pos_left; i < min_pos_right; i++) {
+        for (ssize_t i = min_idx_left; i < min_idx_right; i++) {
           const auto& min_i =
             hashed_kmers_buffer[i % hashed_kmers_buffer.size()];
           if (min_i.min_hash <= min_current->min_hash) {
