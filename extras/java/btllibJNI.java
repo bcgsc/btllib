@@ -15,9 +15,11 @@ public class btllibJNI {
   public final static native long SeqReader_Flag_TRIM_MASKED_get();
   public final static native long new_SeqReader_Flag();
   public final static native void delete_SeqReader_Flag(long jarg1);
-  public final static native long new_SeqReader__SWIG_0(String jarg1, long jarg2, long jarg3);
-  public final static native long new_SeqReader__SWIG_1(String jarg1, long jarg2);
-  public final static native long new_SeqReader__SWIG_2(String jarg1);
+  public final static native long new_SeqReader__SWIG_0(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
+  public final static native long new_SeqReader__SWIG_1(String jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long new_SeqReader__SWIG_2(String jarg1, long jarg2, long jarg3);
+  public final static native long new_SeqReader__SWIG_3(String jarg1, long jarg2);
+  public final static native long new_SeqReader__SWIG_4(String jarg1);
   public final static native void delete_SeqReader(long jarg1);
   public final static native void SeqReader_close(long jarg1, SeqReader jarg1_);
   public final static native boolean SeqReader_fold_case(long jarg1, SeqReader jarg1_);
@@ -180,8 +182,6 @@ public class btllibJNI {
   public final static native void trim(long jarg1);
   public final static native boolean starts_with(String jarg1, String jarg2);
   public final static native boolean ends_with(String jarg1, String jarg2);
-  public final static native long BUFFER_SIZE_get();
-  public final static native long BLOCK_SIZE_get();
   public final static native long Indexlr_Flag_ID_get();
   public final static native long Indexlr_Flag_NO_ID_get();
   public final static native long Indexlr_Flag_BX_get();
@@ -192,6 +192,8 @@ public class btllibJNI {
   public final static native long Indexlr_Flag_NO_FILTER_IN_get();
   public final static native long Indexlr_Flag_FILTER_OUT_get();
   public final static native long Indexlr_Flag_NO_FILTER_OUT_get();
+  public final static native long Indexlr_Flag_SHORT_MODE_get();
+  public final static native long Indexlr_Flag_LONG_MODE_get();
   public final static native long new_Indexlr_Flag();
   public final static native void delete_Indexlr_Flag(long jarg1);
   public final static native boolean Indexlr_output_id(long jarg1, Indexlr jarg1_);
@@ -199,6 +201,8 @@ public class btllibJNI {
   public final static native boolean Indexlr_output_seq(long jarg1, Indexlr jarg1_);
   public final static native boolean Indexlr_filter_in(long jarg1, Indexlr jarg1_);
   public final static native boolean Indexlr_filter_out(long jarg1, Indexlr jarg1_);
+  public final static native boolean Indexlr_short_mode(long jarg1, Indexlr jarg1_);
+  public final static native boolean Indexlr_long_mode(long jarg1, Indexlr jarg1_);
   public final static native long new_Indexlr_Read__SWIG_0();
   public final static native long new_Indexlr_Read__SWIG_1(long jarg1, String jarg2, String jarg3, String jarg4);
   public final static native void Indexlr_Read_num_set(long jarg1, Indexlr.Read jarg1_, long jarg2);
@@ -243,6 +247,10 @@ public class btllibJNI {
   public final static native long new_Indexlr__SWIG_5(String jarg1, long jarg2, long jarg3);
   public final static native void delete_Indexlr(long jarg1);
   public final static native long Indexlr_MAX_SIMULTANEOUS_INDEXLRS_get();
+  public final static native long Indexlr_SHORT_MODE_BUFFER_SIZE_get();
+  public final static native long Indexlr_SHORT_MODE_BLOCK_SIZE_get();
+  public final static native long Indexlr_LONG_MODE_BUFFER_SIZE_get();
+  public final static native long Indexlr_LONG_MODE_BLOCK_SIZE_get();
   public final static native String get_time();
   public final static native void log_info(String jarg1);
   public final static native void log_warning(String jarg1);

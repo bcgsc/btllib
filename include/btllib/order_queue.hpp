@@ -11,7 +11,7 @@
 
 namespace btllib {
 
-template<typename T, unsigned QUEUE_SIZE, unsigned BLOCK_SIZE>
+template<typename T>
 class OrderQueue
 {
 
@@ -19,9 +19,11 @@ public:
   struct Block
   {
 
-    Block() {}
+    Block(const size_t block_size)
+      : data(block_size)
+    {}
 
-    Block(const Block&) = delete;
+    Block(const Block& block) = default;
 
     Block(Block&& block) noexcept
       : current(block.current)
@@ -31,7 +33,7 @@ public:
       std::swap(data, block.data);
     }
 
-    Block& operator=(const Block&) = delete;
+    Block& operator=(const Block& block) = default;
 
     Block& operator=(Block&& block) noexcept
     {
@@ -42,7 +44,7 @@ public:
       return *this;
     }
 
-    std::vector<T> data{ BLOCK_SIZE };
+    std::vector<T> data;
     size_t current = 0;
     size_t count = 0;
     size_t num = 0;
@@ -52,18 +54,39 @@ public:
   // for exclusive access
   struct Slot
   {
-    Slot() = default;
+    Slot(size_t block_size)
+      : block(block_size)
+    {}
     Slot(const Slot& slot)
       : block(slot.block)
       , occupied(slot.occupied)
       , last_tenant(slot.last_tenant)
     {}
-    Slot(Slot&&) = delete;
+    Slot(Slot&& slot) noexcept
+      : block(slot.block)
+      , occupied(slot.occupied)
+      , last_tenant(slot.last_tenant)
+    {}
 
-    Slot& operator=(const Slot&) = delete;
-    Slot& operator=(Slot&&) = delete;
+    Slot& operator=(const Slot& slot)
+    {
+      if (this == &slot) {
+        return *this;
+      }
+      block = slot.block;
+      occupied = slot.occupied;
+      last_tenant = slot.last_tenant;
+      return *this;
+    }
+    Slot& operator=(Slot&& slot) noexcept
+    {
+      block = slot.block;
+      occupied = slot.occupied;
+      last_tenant = slot.last_tenant;
+      return *this;
+    }
 
-    typename OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Block block;
+    typename OrderQueue<T>::Block block;
     std::mutex busy;
     bool occupied = false;
     std::condition_variable occupancy_changed;
@@ -82,8 +105,18 @@ public:
 
   bool is_closed() const { return closed; }
 
+  OrderQueue(const size_t queue_size, const size_t block_size)
+    : slots(queue_size, Slot(block_size))
+    , queue_size(queue_size)
+    , block_size(block_size)
+  {}
+
+  OrderQueue(const OrderQueue&) = delete;
+  OrderQueue(OrderQueue&&) = delete;
+
 protected:
-  std::vector<Slot> slots{ QUEUE_SIZE };
+  std::vector<Slot> slots;
+  size_t queue_size, block_size;
   size_t read_counter = 0;
   std::atomic<size_t> element_count{ 0 };
   std::atomic<bool> closed{ false };
@@ -99,19 +132,23 @@ protected:
                          POST_READ_LOCK,                                       \
                          NOTIFY_READ,                                          \
                          MEMBERS)                                              \
-  template<typename T, unsigned QUEUE_SIZE, unsigned BLOCK_SIZE>               \
-  class OrderQueue##SUFFIX : public OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>      \
+  template<typename T>                                                         \
+  class OrderQueue##SUFFIX : public OrderQueue<T>                              \
   {                                                                            \
                                                                                \
   public:                                                                      \
-    using Block = typename OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Block;       \
-    using Slot = typename OrderQueue<T, QUEUE_SIZE, BLOCK_SIZE>::Slot;         \
+    OrderQueue##SUFFIX(const size_t queue_size, const size_t block_size)       \
+      : OrderQueue<T>(queue_size, block_size)                                  \
+    {}                                                                         \
+                                                                               \
+    using Block = typename OrderQueue<T>::Block;                               \
+    using Slot = typename OrderQueue<T>::Slot;                                 \
                                                                                \
     void write(Block& block)                                                   \
     {                                                                          \
       PRE_WRITE_LOCK;                                                          \
       const auto num = block.num;                                              \
-      auto& target = this->slots[num % QUEUE_SIZE];                            \
+      auto& target = this->slots[num % this->queue_size];                      \
       std::unique_lock<std::mutex> busy_lock(target.busy);                     \
       target.occupancy_changed.wait(busy_lock, [&] {                           \
         return (!target.occupied EXTRA_WRITE_LOCK_CONDS) || this->closed;      \
@@ -129,7 +166,7 @@ protected:
     void read(Block& block)                                                    \
     {                                                                          \
       PRE_READ_LOCK;                                                           \
-      auto& target = this->slots[this->read_counter % QUEUE_SIZE];             \
+      auto& target = this->slots[this->read_counter % this->queue_size];       \
       std::unique_lock<std::mutex> busy_lock(target.busy);                     \
       target.occupancy_changed.wait(busy_lock, [&] {                           \
         return (target.occupied EXTRA_READ_LOCK_CONDS) || this->closed;        \
@@ -152,7 +189,7 @@ protected:
 ORDER_QUEUE_XPXC(SPSC, , , , notify_one, , , , notify_one, )
 ORDER_QUEUE_XPXC(MPSC,
                  ,
-                 &&(num - target.last_tenant <= QUEUE_SIZE),
+                 &&(num - target.last_tenant <= this->queue_size),
                  target.last_tenant = num,
                  notify_all,
                  ,
@@ -171,7 +208,7 @@ ORDER_QUEUE_XPXC(SPMC,
                  std::mutex read_mutex)
 ORDER_QUEUE_XPXC(MPMC,
                  ,
-                 &&(num - target.last_tenant <= QUEUE_SIZE),
+                 &&(num - target.last_tenant <= this->queue_size),
                  target.last_tenant = num,
                  notify_all,
                  std::unique_lock<std::mutex> read_lock(read_mutex),

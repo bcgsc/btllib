@@ -78,6 +78,8 @@ public class Indexlr {
     public final static long NO_FILTER_IN = btllibJNI.Indexlr_Flag_NO_FILTER_IN_get();
     public final static long FILTER_OUT = btllibJNI.Indexlr_Flag_FILTER_OUT_get();
     public final static long NO_FILTER_OUT = btllibJNI.Indexlr_Flag_NO_FILTER_OUT_get();
+    public final static long SHORT_MODE = btllibJNI.Indexlr_Flag_SHORT_MODE_get();
+    public final static long LONG_MODE = btllibJNI.Indexlr_Flag_LONG_MODE_get();
   }
 
   public boolean output_id() {
@@ -98,6 +100,14 @@ public class Indexlr {
 
   public boolean filter_out() {
     return btllibJNI.Indexlr_filter_out(swigCPtr, this);
+  }
+
+  public boolean short_mode() {
+    return btllibJNI.Indexlr_short_mode(swigCPtr, this);
+  }
+
+  public boolean long_mode() {
+    return btllibJNI.Indexlr_long_mode(swigCPtr, this);
   }
 
   static public class Read {
@@ -348,4 +358,8 @@ public class Indexlr {
   }
 
   public final static long MAX_SIMULTANEOUS_INDEXLRS = btllibJNI.Indexlr_MAX_SIMULTANEOUS_INDEXLRS_get();
+  public final static long SHORT_MODE_BUFFER_SIZE = btllibJNI.Indexlr_SHORT_MODE_BUFFER_SIZE_get();
+  public final static long SHORT_MODE_BLOCK_SIZE = btllibJNI.Indexlr_SHORT_MODE_BLOCK_SIZE_get();
+  public final static long LONG_MODE_BUFFER_SIZE = btllibJNI.Indexlr_LONG_MODE_BUFFER_SIZE_get();
+  public final static long LONG_MODE_BLOCK_SIZE = btllibJNI.Indexlr_LONG_MODE_BLOCK_SIZE_get();
 }

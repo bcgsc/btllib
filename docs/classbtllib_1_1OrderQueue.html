@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>btllib: btllib::OrderQueue&lt; T, QUEUE_SIZE, BLOCK_SIZE &gt; Class Template Reference</title>
+<title>btllib: btllib::OrderQueue&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classbtllib_1_1OrderQueue-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">btllib::OrderQueue&lt; T, QUEUE_SIZE, BLOCK_SIZE &gt; Class Template Reference</div>  </div>
+<div class="title">btllib::OrderQueue&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
@@ -84,30 +84,45 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aec2a2dd6864a7b17c5b2b6b52bdf9024"><td class="memItemLeft" align="right" valign="top"><a id="aec2a2dd6864a7b17c5b2b6b52bdf9024"></a>
+<tr class="memitem:a3ee2993b54d3bc2a701b41babd0a7485"><td class="memItemLeft" align="right" valign="top"><a id="a3ee2993b54d3bc2a701b41babd0a7485"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>elements</b> () const</td></tr>
-<tr class="separator:aec2a2dd6864a7b17c5b2b6b52bdf9024"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4757005fe8d7a10cff4d9e6927ba5070"><td class="memItemLeft" align="right" valign="top"><a id="a4757005fe8d7a10cff4d9e6927ba5070"></a>
+<tr class="separator:a3ee2993b54d3bc2a701b41babd0a7485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf38ee7f545dc2c02287424112558341"><td class="memItemLeft" align="right" valign="top"><a id="abf38ee7f545dc2c02287424112558341"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
-<tr class="separator:a4757005fe8d7a10cff4d9e6927ba5070"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77949ecccd136507f0e0958998384c51"><td class="memItemLeft" align="right" valign="top"><a id="a77949ecccd136507f0e0958998384c51"></a>
+<tr class="separator:abf38ee7f545dc2c02287424112558341"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad72119c9327ee8d8cab067a0cf25f368"><td class="memItemLeft" align="right" valign="top"><a id="ad72119c9327ee8d8cab067a0cf25f368"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_closed</b> () const</td></tr>
-<tr class="separator:a77949ecccd136507f0e0958998384c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ad72119c9327ee8d8cab067a0cf25f368"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab62065768a84fad79c9fd5dfe4d49d77"><td class="memItemLeft" align="right" valign="top"><a id="ab62065768a84fad79c9fd5dfe4d49d77"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>OrderQueue</b> (const size_t queue_size, const size_t block_size)</td></tr>
+<tr class="separator:ab62065768a84fad79c9fd5dfe4d49d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a143b145997201382a0a4cb6ffbab2398"><td class="memItemLeft" align="right" valign="top"><a id="a143b145997201382a0a4cb6ffbab2398"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>OrderQueue</b> (const <a class="el" href="classbtllib_1_1OrderQueue.html">OrderQueue</a> &amp;)=delete</td></tr>
+<tr class="separator:a143b145997201382a0a4cb6ffbab2398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cc3983b0aac1a426a0ff7f249974a69"><td class="memItemLeft" align="right" valign="top"><a id="a8cc3983b0aac1a426a0ff7f249974a69"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>OrderQueue</b> (<a class="el" href="classbtllib_1_1OrderQueue.html">OrderQueue</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a8cc3983b0aac1a426a0ff7f249974a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ab0618b83d88e1a27f8e9120a6c02fb19"><td class="memItemLeft" align="right" valign="top"><a id="ab0618b83d88e1a27f8e9120a6c02fb19"></a>
-std::vector&lt; <a class="el" href="structbtllib_1_1OrderQueue_1_1Slot.html">Slot</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>slots</b> { QUEUE_SIZE }</td></tr>
-<tr class="separator:ab0618b83d88e1a27f8e9120a6c02fb19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a623d021dcd6c0df69572c4a2c748fad0"><td class="memItemLeft" align="right" valign="top"><a id="a623d021dcd6c0df69572c4a2c748fad0"></a>
+<tr class="memitem:aba65329502f7ce8f40c497071f233cb8"><td class="memItemLeft" align="right" valign="top"><a id="aba65329502f7ce8f40c497071f233cb8"></a>
+std::vector&lt; <a class="el" href="structbtllib_1_1OrderQueue_1_1Slot.html">Slot</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>slots</b></td></tr>
+<tr class="separator:aba65329502f7ce8f40c497071f233cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a80fd69f2975f64dc0bec2f0c7eb2d3"><td class="memItemLeft" align="right" valign="top"><a id="a4a80fd69f2975f64dc0bec2f0c7eb2d3"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>queue_size</b></td></tr>
+<tr class="separator:a4a80fd69f2975f64dc0bec2f0c7eb2d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2ea1d0750b1a552d2742f036bd4a953"><td class="memItemLeft" align="right" valign="top"><a id="aa2ea1d0750b1a552d2742f036bd4a953"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>block_size</b></td></tr>
+<tr class="separator:aa2ea1d0750b1a552d2742f036bd4a953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a2a875091e91d2f82a00793de832cce"><td class="memItemLeft" align="right" valign="top"><a id="a3a2a875091e91d2f82a00793de832cce"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>read_counter</b> = 0</td></tr>
-<tr class="separator:a623d021dcd6c0df69572c4a2c748fad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97ac75151a9e0a668c6c597998fea0fb"><td class="memItemLeft" align="right" valign="top"><a id="a97ac75151a9e0a668c6c597998fea0fb"></a>
+<tr class="separator:a3a2a875091e91d2f82a00793de832cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0133d444873362b08ac14145fd60ad1"><td class="memItemLeft" align="right" valign="top"><a id="ab0133d444873362b08ac14145fd60ad1"></a>
 std::atomic&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>element_count</b> { 0 }</td></tr>
-<tr class="separator:a97ac75151a9e0a668c6c597998fea0fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea777aecdd668fa5bede755f81b403cd"><td class="memItemLeft" align="right" valign="top"><a id="aea777aecdd668fa5bede755f81b403cd"></a>
+<tr class="separator:ab0133d444873362b08ac14145fd60ad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abca9eae6a19466d5de533d23705c5956"><td class="memItemLeft" align="right" valign="top"><a id="abca9eae6a19466d5de533d23705c5956"></a>
 std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>closed</b> { false }</td></tr>
-<tr class="separator:aea777aecdd668fa5bede755f81b403cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:abca9eae6a19466d5de533d23705c5956"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/btllib/<a class="el" href="order__queue_8hpp_source.html">order_queue.hpp</a></li>

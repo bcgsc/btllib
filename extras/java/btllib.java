@@ -409,14 +409,6 @@ public class btllib {
     return btllibJNI.ends_with(s, suffix);
   }
 
-  public static long getBUFFER_SIZE() {
-    return btllibJNI.BUFFER_SIZE_get();
-  }
-
-  public static long getBLOCK_SIZE() {
-    return btllibJNI.BLOCK_SIZE_get();
-  }
-
   public static String get_time() {
     return btllibJNI.get_time();
   }

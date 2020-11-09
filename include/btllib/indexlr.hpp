@@ -15,14 +15,12 @@
 #include <functional>
 #include <iostream>
 #include <limits>
+#include <memory>
 #include <string>
 #include <thread>
 #include <vector>
 
 namespace btllib {
-
-static const unsigned BUFFER_SIZE = 256;
-static const unsigned BLOCK_SIZE = 64;
 
 // TODO: Allow multiple Indexlr objects to be instantiated (by assigning ID to
 // each instance / indexing static members based on ID)
@@ -46,6 +44,8 @@ public:
     static const unsigned NO_FILTER_IN = 0;
     static const unsigned FILTER_OUT = 16;
     static const unsigned NO_FILTER_OUT = 0;
+    static const unsigned SHORT_MODE = 0;
+    static const unsigned LONG_MODE = 32;
   };
 
   bool output_id() const { return bool(~flags & Flag::NO_ID); }
@@ -53,6 +53,8 @@ public:
   bool output_seq() const { return bool(flags & Flag::SEQ); }
   bool filter_in() const { return bool(flags & Flag::FILTER_IN); }
   bool filter_out() const { return bool(flags & Flag::FILTER_OUT); }
+  bool short_mode() const { return bool(~flags & Flag::LONG_MODE); }
+  bool long_mode() const { return bool(flags & Flag::LONG_MODE); }
 
   struct Read
   {
@@ -132,6 +134,12 @@ public:
 
   static const size_t MAX_SIMULTANEOUS_INDEXLRS = 256;
 
+  static const size_t SHORT_MODE_BUFFER_SIZE = 32;
+  static const size_t SHORT_MODE_BLOCK_SIZE = 32;
+
+  static const size_t LONG_MODE_BUFFER_SIZE = 4;
+  static const size_t LONG_MODE_BLOCK_SIZE = 1;
+
 private:
   static std::string extract_barcode(const std::string& id,
                                      const std::string& comment);
@@ -142,7 +150,9 @@ private:
   const unsigned flags;
   const unsigned threads;
   const bool verbose;
-  const unsigned id;
+  const long id;
+  const size_t buffer_size;
+  const size_t block_size;
 
   static const BloomFilter& dummy_bf()
   {
@@ -156,20 +166,26 @@ private:
   bool filter_out_enabled;
 
   std::atomic<bool> fasta{ false };
-  OrderQueueSPMC<Read, BUFFER_SIZE, BLOCK_SIZE> input_queue;
-  OrderQueueMPSC<Record, BUFFER_SIZE, BLOCK_SIZE> output_queue;
+  OrderQueueSPMC<Read> input_queue;
+  OrderQueueMPSC<Record> output_queue;
 
   using OutputQueueType = decltype(output_queue);
-  static OutputQueueType::Block* ready_blocks_array()
+  static std::unique_ptr<OutputQueueType::Block>* ready_blocks_array()
   {
-    thread_local static decltype(
-      output_queue)::Block var[MAX_SIMULTANEOUS_INDEXLRS];
+    thread_local static std::unique_ptr<decltype(output_queue)::Block>
+      var[MAX_SIMULTANEOUS_INDEXLRS];
     return var;
   }
 
-  static std::atomic<unsigned>& last_id()
+  static long* ready_blocks_owners()
   {
-    static std::atomic<unsigned> var(0);
+    thread_local static long var[MAX_SIMULTANEOUS_INDEXLRS];
+    return var;
+  }
+
+  static std::atomic<long>& last_id()
+  {
+    static std::atomic<long> var(0);
     return var;
   }
 
@@ -263,12 +279,16 @@ inline Indexlr::Indexlr(std::string seqfile,
   , flags(flags)
   , threads(threads)
   , verbose(verbose)
-  , id(last_id()++)
+  , id(++last_id())
+  , buffer_size(short_mode() ? SHORT_MODE_BUFFER_SIZE : LONG_MODE_BUFFER_SIZE)
+  , block_size(short_mode() ? SHORT_MODE_BLOCK_SIZE : LONG_MODE_BLOCK_SIZE)
   , bf1(bf1)
   , bf2(bf2)
   , filter_in_enabled(filter_in())
   , filter_out_enabled(filter_out())
-  , reader(this->seqfile)
+  , input_queue(buffer_size, block_size)
+  , output_queue(buffer_size, block_size)
+  , reader(this->seqfile, 0, 3, buffer_size, block_size)
   , input_worker(*this)
   , minimize_workers(
       std::vector<MinimizeWorker>(threads, MinimizeWorker(*this)))
@@ -407,12 +427,18 @@ Indexlr::minimize(const std::string& seq) const
 inline Indexlr::Record
 Indexlr::get_minimizers()
 {
-  auto& block = ready_blocks_array()[id % MAX_SIMULTANEOUS_INDEXLRS];
+  if (ready_blocks_owners()[id % MAX_SIMULTANEOUS_INDEXLRS] != id) {
+    ready_blocks_array()[id % MAX_SIMULTANEOUS_INDEXLRS] =
+      std::unique_ptr<decltype(output_queue)::Block>(
+        new decltype(output_queue)::Block(block_size));
+    ready_blocks_owners()[id % MAX_SIMULTANEOUS_INDEXLRS] = id;
+  }
+  auto& block = *(ready_blocks_array()[id % MAX_SIMULTANEOUS_INDEXLRS]);
   if (block.count <= block.current) {
     output_queue.read(block);
     if (block.count <= block.current) {
       output_queue.close();
-      block = decltype(output_queue)::Block();
+      block = decltype(output_queue)::Block(block_size);
       return Record();
     }
   }
@@ -428,7 +454,7 @@ Indexlr::InputWorker::work()
     indexlr.fasta = false;
   }
 
-  decltype(indexlr.input_queue)::Block block;
+  decltype(indexlr.input_queue)::Block block(indexlr.block_size);
   size_t current_block_num = 0;
   SeqReader::Record record;
   Read read;
@@ -437,7 +463,7 @@ Indexlr::InputWorker::work()
                                      std::move(record.name),
                                      std::move(record.comment),
                                      std::move(record.seq));
-    if (block.count == BLOCK_SIZE) {
+    if (block.count == indexlr.block_size) {
       block.num = current_block_num++;
       indexlr.input_queue.write(block);
       block.count = 0;
@@ -458,8 +484,8 @@ Indexlr::InputWorker::work()
 inline void
 Indexlr::MinimizeWorker::work()
 {
-  decltype(indexlr.input_queue)::Block input_block;
-  decltype(indexlr.output_queue)::Block output_block;
+  decltype(indexlr.input_queue)::Block input_block(indexlr.block_size);
+  decltype(indexlr.output_queue)::Block output_block(indexlr.block_size);
 
   for (;;) {
     if (input_block.current == input_block.count) {
