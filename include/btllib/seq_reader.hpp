@@ -977,6 +977,9 @@ SeqReader::read_from_buffer(F f,
 {
   for (; buffer_start < buffer_end && !reader_end;) {
     reader_record = &(records.data[records.count]);
+    reader_record->header.clear();
+    reader_record->seq.clear();
+    reader_record->qual.clear();
     if (!f(*this) || reader_record->seq.empty()) {
       break;
     }
@@ -985,6 +988,7 @@ SeqReader::read_from_buffer(F f,
       records.current = 0;
       records.num = counter++;
       cstring_queue.write(records);
+      records.num = 0;
       records.current = 0;
       records.count = 0;
     }
@@ -1009,6 +1013,7 @@ SeqReader::read_transition(F f,
           records.current = 0;
           records.num = counter++;
           cstring_queue.write(records);
+          records.num = 0;
           records.current = 0;
           records.count = 0;
         }
@@ -1034,6 +1039,7 @@ SeqReader::read_from_file(F f,
       records.current = 0;
       records.num = counter++;
       cstring_queue.write(records);
+      records.num = 0;
       records.current = 0;
       records.count = 0;
     }

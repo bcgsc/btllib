@@ -31,6 +31,9 @@ public:
       , num(block.num)
     {
       std::swap(data, block.data);
+      block.current = 0;
+      block.count = 0;
+      block.num = 0;
     }
 
     Block& operator=(const Block& block) = default;
@@ -41,6 +44,9 @@ public:
       current = block.current;
       count = block.count;
       num = block.num;
+      block.current = 0;
+      block.count = 0;
+      block.num = 0;
       return *this;
     }
 
