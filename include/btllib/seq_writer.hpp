@@ -73,7 +73,7 @@ SeqWriter::write(const std::string& name,
 {
   check_error(seq.empty(), "Attempted to write empty sequence.");
   for (const auto& c : seq) {
-    if (!bool(COMPLEMENTS[unsigned(c)])) {
+    if (!bool(COMPLEMENTS[(unsigned char)(c)])) {
       log_error(std::string("A sequence contains invalid IUPAC character: ") +
                 c);
       std::exit(EXIT_FAILURE);
@@ -106,7 +106,8 @@ SeqWriter::write(const std::string& name,
 
   {
     std::unique_lock<std::mutex> lock(mutex);
-    fwrite(output.c_str(), 1, output.size(), sink);
+    check_error(fwrite(output.c_str(), 1, output.size(), sink) != output.size(),
+                "SeqWriter: fwrite failed.");
   }
 }
 

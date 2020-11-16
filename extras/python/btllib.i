@@ -14,6 +14,7 @@
 #include "btllib/counting_bloom_filter.hpp"
 #include "btllib/seq_writer.hpp"
 #include "btllib/seq.hpp"
+#include "btllib/cstring.hpp"
 #include "btllib/bloom_filter.hpp"
 %}
 
@@ -41,4 +42,5 @@
 %include "btllib/counting_bloom_filter.hpp"
 %include "btllib/seq_writer.hpp"
 %include "btllib/seq.hpp"
+%include "btllib/cstring.hpp"
 %include "btllib/bloom_filter.hpp"
