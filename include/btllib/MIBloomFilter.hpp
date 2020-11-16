@@ -126,13 +126,12 @@ public:
     return colli_count;
   }
 
-  const static int MAGIC_NUM = 8;
   // TODO(jyiu): include allowed miss in header
 #pragma pack(1) // to maintain consistent values across platforms
   struct FileHeader
   {
-    char magic[MAGIC_NUM];
-    uint32_t hlen; // header length (including spaced seeds)
+    char magic[MAGIC_NUM]; // NOLINT
+    uint32_t hlen;         // header length (including spaced seeds)
     uint64_t size;
     uint32_t nhash;
     uint32_t kmer;

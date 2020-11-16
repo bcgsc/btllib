@@ -56,6 +56,7 @@ jobs:
       brew install llvm python3 libomp cppcheck boost samtools coreutils xz bzip2
       sudo ln -s $(brew --prefix llvm)/bin/clang-format /usr/local/bin/clang-format
       sudo ln -s $(brew --prefix llvm)/bin/clang-tidy /usr/local/bin/clang-tidy
+      sudo apt-get install libsdsl-dev
       sudo pip3 install ninja meson
     displayName: 'Install required software'
 
