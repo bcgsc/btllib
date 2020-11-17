@@ -8,16 +8,6 @@
 %ignore btllib::DataSource::operator FILE*() const;
 %ignore btllib::DataSink::operator FILE*() const;
 
-%ignore btllib::CString;
-%ignore btllib::CString::operator=;
-%ignore btllib::OrderQueue;
-%ignore btllib::OrderQueue::Block;
-%ignore btllib::OrderQueue::Slot;
-%ignore btllib::OrderQueue::Block::operator=;
-%ignore btllib::OrderQueue::Block::operator=;
-%ignore btllib::OrderQueue::Slot::operator=;
-%ignore btllib::OrderQueue::Slot::operator=;
-
 %ignore btllib::SeqReader::Record::operator bool;
 %ignore btllib::Indexlr::Record::operator bool;
 
