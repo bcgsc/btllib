@@ -14,7 +14,6 @@
 #include "btllib/seq.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/status.hpp"
-#include "btllib/MIBloomFilter.hpp"
 %}
 
 %include <java.swg>
@@ -36,4 +35,3 @@
 %include "btllib/seq.hpp"
 %include "btllib/nthash.hpp"
 %include "btllib/status.hpp"
-%include "btllib/MIBloomFilter.hpp"

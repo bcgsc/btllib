@@ -16,7 +16,6 @@
 #include "btllib/seq.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/status.hpp"
-#include "btllib/MIBloomFilter.hpp"
 %}
 
 %include <pyprimtypes.swg>
@@ -45,4 +44,3 @@
 %include "btllib/seq.hpp"
 %include "btllib/nthash.hpp"
 %include "btllib/status.hpp"
-%include "btllib/MIBloomFilter.hpp"

@@ -3665,7 +3665,6 @@ namespace swig {
 #include "btllib/seq.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/status.hpp"
-#include "btllib/MIBloomFilter.hpp"
 
 
 #include <typeinfo>

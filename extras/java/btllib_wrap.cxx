@@ -245,7 +245,6 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #include "btllib/seq.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/status.hpp"
-#include "btllib/MIBloomFilter.hpp"
 
 
 #include <string>
