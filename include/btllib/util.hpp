@@ -65,7 +65,7 @@ starts_with(std::string s, std::string prefix)
   std::transform(s.begin(), s.end(), s.begin(), ::tolower);
   std::transform(prefix.begin(), prefix.end(), prefix.begin(), ::tolower);
   return s.find(prefix) == 0;
-};
+}
 
 inline bool
 ends_with(std::string s, std::string suffix)
@@ -74,7 +74,7 @@ ends_with(std::string s, std::string suffix)
   std::transform(suffix.begin(), suffix.end(), suffix.begin(), ::tolower);
   auto pos = s.rfind(suffix);
   return (pos != std::string::npos) && (pos == s.size() - suffix.size());
-};
+}
 
 } // namespace btllib
 

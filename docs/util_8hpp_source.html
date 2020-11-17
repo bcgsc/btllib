@@ -136,7 +136,7 @@ $(function() {
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  std::transform(s.begin(), s.end(), s.begin(), ::tolower);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  std::transform(prefix.begin(), prefix.end(), prefix.begin(), ::tolower);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordflow">return</span> s.find(prefix) == 0;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;ends_with(std::string s, std::string suffix)</div>
@@ -145,7 +145,7 @@ $(function() {
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  std::transform(suffix.begin(), suffix.end(), suffix.begin(), ::tolower);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">auto</span> pos = s.rfind(suffix);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">return</span> (pos != std::string::npos) &amp;&amp; (pos == s.size() - suffix.size());</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;} <span class="comment">// namespace btllib</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
