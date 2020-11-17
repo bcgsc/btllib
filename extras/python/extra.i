@@ -7,17 +7,21 @@
 %rename (IndexlrRecord) btllib::Indexlr::Record;
 %rename (IndexlrFlag) btllib::Indexlr::Flag;
 
+%ignore btllib::CString;
+%ignore btllib::CString::operator=;
+%ignore btllib::OrderQueue;
+%ignore btllib::OrderQueue::Block;
+%ignore btllib::OrderQueue::Slot;
+%ignore btllib::OrderQueue::Block::operator=;
+%ignore btllib::OrderQueue::Block::operator=;
+%ignore btllib::OrderQueue::Slot::operator=;
+%ignore btllib::OrderQueue::Slot::operator=;
+
 %feature("flatnested", "1");
 
 %ignore btllib::DataStream::operator FILE*() const;
 %ignore btllib::DataSource::operator FILE*() const;
 %ignore btllib::DataSink::operator FILE*() const;
-
-%ignore btllib::OrderQueue::Block::operator=;
-%ignore btllib::SeqReader::CString::operator=;
-%ignore btllib::SeqReader::RecordCString::operator=;
-%ignore btllib::SeqReader::RecordCString2::operator=;
-%ignore btllib::SeqReader::RecordCString3::operator=;
 
 %ignore btllib::BLOOM_FILTER_MAGIC_HEADER;
 %ignore btllib::COUNTING_BLOOM_FILTER_MAGIC_HEADER;
