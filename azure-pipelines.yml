@@ -58,7 +58,7 @@ jobs:
   - script: |
       set -o errexit -o pipefail
       brew update
-      brew install llvm python3 libomp cppcheck boost samtools coreutils xz bzip2
+      brew install llvm libomp cppcheck boost samtools coreutils xz
       brew cask install java
       sudo ln -sf $(brew --prefix llvm)/bin/clang-format /usr/local/bin/clang-format
       sudo ln -sf $(brew --prefix llvm)/bin/clang-tidy /usr/local/bin/clang-tidy
