@@ -59,7 +59,8 @@ jobs:
       set -o errexit -o pipefail
       brew update
       brew install llvm libomp cppcheck boost samtools coreutils xz
-      brew cask install java
+      brew tap adoptopenjdk/openjdk
+      brew cask install adoptopenjdk11
       sudo ln -sf $(brew --prefix llvm)/bin/clang-format /usr/local/bin/clang-format
       sudo ln -sf $(brew --prefix llvm)/bin/clang-tidy /usr/local/bin/clang-tidy
       sudo pip3 install ninja meson
