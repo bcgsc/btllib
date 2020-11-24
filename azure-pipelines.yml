@@ -16,8 +16,8 @@ jobs:
       sudo apt-get update
       sudo apt-get install --yes --no-install-recommends clang-format-8 clang-tidy-8 cppcheck \
         python3 python3-setuptools openjdk-11-jdk libboost-dev samtools xz-utils bzip2
-      sudo ln -s clang-format-8 /usr/bin/clang-format
-      sudo ln -s clang-tidy-8 /usr/bin/clang-tidy
+      sudo ln -sf clang-format-8 /usr/bin/clang-format
+      sudo ln -sf clang-tidy-8 /usr/bin/clang-tidy
       sudo pip3 install ninja meson
     displayName: 'Install required software'
 
@@ -60,8 +60,8 @@ jobs:
       brew update
       brew install llvm python3 libomp cppcheck boost samtools coreutils xz bzip2
       brew cask install java
-      sudo ln -s $(brew --prefix llvm)/bin/clang-format /usr/local/bin/clang-format
-      sudo ln -s $(brew --prefix llvm)/bin/clang-tidy /usr/local/bin/clang-tidy
+      sudo ln -sf $(brew --prefix llvm)/bin/clang-format /usr/local/bin/clang-format
+      sudo ln -sf $(brew --prefix llvm)/bin/clang-tidy /usr/local/bin/clang-tidy
       sudo pip3 install ninja meson
     displayName: 'Install required software'
 
