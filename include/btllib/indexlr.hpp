@@ -104,16 +104,19 @@ public:
     Record(size_t num,
            std::string id,
            std::string barcode,
+           size_t readlen,
            std::vector<Minimizer> minimizers)
       : num(num)
       , id(std::move(id))
       , barcode(std::move(barcode))
+      , readlen(readlen)
       , minimizers(std::move(minimizers))
     {}
 
     size_t num = 0;
     std::string id;
     std::string barcode;
+    size_t readlen = 0;
     std::vector<Minimizer> minimizers;
 
     operator bool() const { return !id.empty() || !barcode.empty(); }
@@ -514,6 +517,7 @@ Indexlr::MinimizeWorker::work()
     if (indexlr.output_bx()) {
       record.barcode = indexlr.extract_barcode(record.id, read.comment);
     }
+    record.readlen = read.seq.size();
 
     check_info(indexlr.verbose && indexlr.k > read.seq.size(),
                "Indexlr: skipped seq " + std::to_string(read.num) +

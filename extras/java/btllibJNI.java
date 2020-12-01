@@ -228,13 +228,15 @@ public class btllibJNI {
   public final static native String Indexlr_Minimizer_seq_get(long jarg1, Indexlr.Minimizer jarg1_);
   public final static native void delete_Indexlr_Minimizer(long jarg1);
   public final static native long new_Indexlr_Record__SWIG_0();
-  public final static native long new_Indexlr_Record__SWIG_1(long jarg1, String jarg2, String jarg3, long jarg4);
+  public final static native long new_Indexlr_Record__SWIG_1(long jarg1, String jarg2, String jarg3, long jarg4, long jarg5);
   public final static native void Indexlr_Record_num_set(long jarg1, Indexlr.Record jarg1_, long jarg2);
   public final static native long Indexlr_Record_num_get(long jarg1, Indexlr.Record jarg1_);
   public final static native void Indexlr_Record_id_set(long jarg1, Indexlr.Record jarg1_, String jarg2);
   public final static native String Indexlr_Record_id_get(long jarg1, Indexlr.Record jarg1_);
   public final static native void Indexlr_Record_barcode_set(long jarg1, Indexlr.Record jarg1_, String jarg2);
   public final static native String Indexlr_Record_barcode_get(long jarg1, Indexlr.Record jarg1_);
+  public final static native void Indexlr_Record_readlen_set(long jarg1, Indexlr.Record jarg1_, long jarg2);
+  public final static native long Indexlr_Record_readlen_get(long jarg1, Indexlr.Record jarg1_);
   public final static native void Indexlr_Record_minimizers_set(long jarg1, Indexlr.Record jarg1_, long jarg2);
   public final static native long Indexlr_Record_minimizers_get(long jarg1, Indexlr.Record jarg1_);
   public final static native void delete_Indexlr_Record(long jarg1);

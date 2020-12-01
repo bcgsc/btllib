@@ -290,8 +290,8 @@ public class Indexlr {
       this(btllibJNI.new_Indexlr_Record__SWIG_0(), true);
     }
   
-    public Record(long num, String id, String barcode, SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t minimizers) {
-      this(btllibJNI.new_Indexlr_Record__SWIG_1(num, id, barcode, SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t.getCPtr(minimizers)), true);
+    public Record(long num, String id, String barcode, long readlen, SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t minimizers) {
+      this(btllibJNI.new_Indexlr_Record__SWIG_1(num, id, barcode, readlen, SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t.getCPtr(minimizers)), true);
     }
   
     public void setNum(long value) {
@@ -316,6 +316,14 @@ public class Indexlr {
   
     public String getBarcode() {
       return btllibJNI.Indexlr_Record_barcode_get(swigCPtr, this);
+    }
+  
+    public void setReadlen(long value) {
+      btllibJNI.Indexlr_Record_readlen_set(swigCPtr, this, value);
+    }
+  
+    public long getReadlen() {
+      return btllibJNI.Indexlr_Record_readlen_get(swigCPtr, this);
     }
   
     public void setMinimizers(SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t value) {
