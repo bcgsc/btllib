@@ -3214,13 +3214,14 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1Record_1_1SWIG_10(J
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1Record_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jstring jarg3, jlong jarg4) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1Record_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jstring jarg3, jlong jarg4, jlong jarg5) {
   jlong jresult = 0 ;
   size_t arg1 ;
   std::string arg2 ;
   std::string arg3 ;
-  SwigValueWrapper< std::vector< btllib::Indexlr::Minimizer > > arg4 ;
-  std::vector< btllib::Indexlr::Minimizer > *argp4 ;
+  size_t arg4 ;
+  SwigValueWrapper< std::vector< btllib::Indexlr::Minimizer > > arg5 ;
+  std::vector< btllib::Indexlr::Minimizer > *argp5 ;
   btllib::Indexlr::Record *result = 0 ;
   
   (void)jenv;
@@ -3242,13 +3243,14 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1Record_1_1SWIG_11(J
   if (!arg3_pstr) return 0;
   (&arg3)->assign(arg3_pstr);
   jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
-  argp4 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg4; 
-  if (!argp4) {
+  arg4 = (size_t)jarg4; 
+  argp5 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg5; 
+  if (!argp5) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null std::vector< btllib::Indexlr::Minimizer >");
     return 0;
   }
-  arg4 = *argp4; 
-  result = (btllib::Indexlr::Record *)new btllib::Indexlr::Record(arg1,arg2,arg3,arg4);
+  arg5 = *argp5; 
+  result = (btllib::Indexlr::Record *)new btllib::Indexlr::Record(arg1,arg2,arg3,arg4,arg5);
   *(btllib::Indexlr::Record **)&jresult = result; 
   return jresult;
 }
@@ -3350,6 +3352,34 @@ SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_Indexlr_1Record_1barcode_1get(J
   arg1 = *(btllib::Indexlr::Record **)&jarg1; 
   result = (std::string *) & ((arg1)->barcode);
   jresult = jenv->NewStringUTF(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Indexlr_1Record_1readlen_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  btllib::Indexlr::Record *arg1 = (btllib::Indexlr::Record *) 0 ;
+  size_t arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::Indexlr::Record **)&jarg1; 
+  arg2 = (size_t)jarg2; 
+  if (arg1) (arg1)->readlen = arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1Record_1readlen_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::Indexlr::Record *arg1 = (btllib::Indexlr::Record *) 0 ;
+  size_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::Indexlr::Record **)&jarg1; 
+  result =  ((arg1)->readlen);
+  jresult = (jlong)result; 
   return jresult;
 }
 
