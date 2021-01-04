@@ -38,7 +38,7 @@ class DataStreamPipeline;
 inline bool& process_spawner_initialized() { static bool var; return var; }
 inline int* process_spawner_parent2child_fd() { static int var[2]; return var; }
 inline int* process_spawner_child2parent_fd() { static int var[2]; return var; }
-inline std::mutex& process_spawner_comm_mutex() { static std::mutex var; return var; };
+inline std::mutex& process_spawner_comm_mutex() { static std::mutex var; return var; }
 inline PipeId new_pipe_id() { static PipeId last_pipe_id = 0; return last_pipe_id++; }
 inline std::map<std::string, DataStreamPipeline>& pipeline_map() { static std::map<std::string, DataStreamPipeline> var; return var; }
 // clang-format on

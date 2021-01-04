@@ -10,21 +10,19 @@ jobs:
   steps:
 
   - script: |
+      set -o errexit -o pipefail
       wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
       sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-8 main"
       sudo apt-get update
       sudo apt-get install --yes --no-install-recommends clang-format-8 clang-tidy-8 cppcheck \
-        python3 python3-setuptools libboost-dev samtools xz-utils bzip2
-      sudo apt-get install libsdsl-dev
-      sudo ln -s clang-format-8 /usr/bin/clang-format
-      sudo ln -s clang-tidy-8 /usr/bin/clang-tidy
+        python3 python3-setuptools openjdk-11-jdk libboost-dev samtools xz-utils bzip2
+      sudo ln -sf clang-format-8 /usr/bin/clang-format
+      sudo ln -sf clang-tidy-8 /usr/bin/clang-tidy
       sudo pip3 install ninja meson
     displayName: 'Install required software'
 
   - script: |
-      meson setup build
-      cd build
-      ninja
+      meson setup build && cd build && ninja
     displayName: 'Build the project'
 
   - script: cd build && ninja formatcheck
@@ -37,13 +35,19 @@ jobs:
     displayName: 'Run cppcheck'
 
   - script: |
-      cd build
-      meson test --repeat=10
+      cd build && meson test --repeat=10
       if [[ $? -ne 0 ]]; then
         cat meson-logs/testlog.txt
         exit 1
       fi
     displayName: 'Run tests'
+
+  - script: |
+      set -o errexit -o pipefail
+      ./compile
+      [[ -d python ]]
+      [[ -d java ]]
+    displayName: 'Test ./compile script (for wrappers)'
 
 - job: macos
   pool:
@@ -52,18 +56,18 @@ jobs:
   steps:
 
   - script: |
+      set -o errexit -o pipefail
       brew update
-      brew install llvm python3 libomp cppcheck boost samtools coreutils xz bzip2
-      sudo ln -s $(brew --prefix llvm)/bin/clang-format /usr/local/bin/clang-format
-      sudo ln -s $(brew --prefix llvm)/bin/clang-tidy /usr/local/bin/clang-tidy
-      sudo apt-get install libsdsl-dev
+      brew install llvm libomp cppcheck boost samtools coreutils xz
+      brew tap adoptopenjdk/openjdk
+      brew cask install adoptopenjdk11
+      sudo ln -sf $(brew --prefix llvm)/bin/clang-format /usr/local/bin/clang-format
+      sudo ln -sf $(brew --prefix llvm)/bin/clang-tidy /usr/local/bin/clang-tidy
       sudo pip3 install ninja meson
     displayName: 'Install required software'
 
   - script: |
-      meson setup build
-      cd build
-      ninja
+      meson setup build && cd build && ninja
     displayName: 'Build the project'
 
   - script: cd build && ninja formatcheck
@@ -76,10 +80,16 @@ jobs:
     displayName: 'Run cppcheck'
 
   - script: |
-      cd build
-      meson test --repeat=10
+      cd build && meson test --repeat=10
       if [[ $? -ne 0 ]]; then
         cat meson-logs/testlog.txt
         exit 1
       fi
     displayName: 'Run tests'
+
+  - script: |
+      set -o errexit -o pipefail
+      ./compile
+      [[ -d python ]]
+      [[ -d java ]]
+    displayName: 'Test ./compile script (for wrappers)'

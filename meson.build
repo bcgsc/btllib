@@ -1,7 +1,7 @@
 project('btllib', 'cpp',
         version : '1.0.6',
         license : 'GPL3',
-        default_options : [ 'cpp_std=c++11' ])
+        default_options : [ 'cpp_std=c++11', 'warning_level=3', 'werror=true' ])
 
 global_args = [ '-pthread' ]
 global_link_args = [ '-ldl', '-lpthread' ]
