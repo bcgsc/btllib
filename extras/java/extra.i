@@ -8,6 +8,10 @@
 %ignore btllib::DataSource::operator FILE*() const;
 %ignore btllib::DataSink::operator FILE*() const;
 
+%{
+  using btllib::SpacedSeed;
+%}
+
 %ignore btllib::CString;
 %ignore btllib::CString::operator=;
 %ignore btllib::OrderQueue;

@@ -7,6 +7,10 @@
 %rename (IndexlrRecord) btllib::Indexlr::Record;
 %rename (IndexlrFlag) btllib::Indexlr::Flag;
 
+%{
+  using btllib::SpacedSeed;
+%}
+
 %ignore btllib::CString;
 %ignore btllib::CString::operator=;
 %ignore btllib::OrderQueue;
