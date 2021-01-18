@@ -15,6 +15,7 @@ C++
   * GCC 4.8.1+ or Clang 3.3.0+ with OpenMP
 - Copy the root `btllib` directory into your project
 - Use any header from the `btllib/include` directory
+- `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
 
 Python and Java
 ---
