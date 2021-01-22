@@ -55,7 +55,7 @@ public:
    * Parses spaced seed string (string consisting of 1s and 0s) to vector
    */
   static inline vector<vector<unsigned>> parse_seed_string(
-    const vector<string>& spaced_seeds)
+    const vector<string>& spaced_seeds) // NOLINT
   {
     vector<vector<unsigned>> seeds(spaced_seeds.size(), vector<unsigned>());
     for (unsigned long i = 0; i < spaced_seeds.size(); ++i) {
