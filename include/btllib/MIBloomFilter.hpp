@@ -768,7 +768,7 @@ public:
     vector<size_t> count_table = vector<size_t>(frame_probs.size(), 0);
     double sat_prop = double(get_id_counts_strand(count_table));
     size_t sum = 0;
-    for (vector<size_t>::const_iterator itr = count_table.begin();
+    for (vector<size_t>::const_iterator itr = count_table.begin(); // NOLINT
          itr != count_table.end();
          ++itr) {
       sum += *itr;
@@ -822,7 +822,7 @@ private:
     out.write(reinterpret_cast<char*>(&header),
               sizeof(struct FileHeader)); // NOLINT
 
-    for (auto itr = m_sseeds.begin(); itr != m_sseeds.end(); ++itr) {
+    for (auto itr = m_sseeds.begin(); itr != m_sseeds.end(); ++itr) { // NOLINT
       out.write(itr->c_str(), m_kmer_size);
     }
   }
