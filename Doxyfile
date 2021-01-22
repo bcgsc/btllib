@@ -934,7 +934,8 @@ RECURSIVE              = YES
 # run.
 
 EXCLUDE                = include/btllib/index_queue.hpp \
-                         include/btllib/data_stream.hpp
+                         include/btllib/data_stream.hpp \
+                         include/btllib/cstring.hpp
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -961,7 +962,8 @@ EXCLUDE_PATTERNS       =
 # Note that the wildcards are matched against the file with absolute path, so to
 # exclude all test directories use the pattern */test/*
 
-EXCLUDE_SYMBOLS        = btllib::SeqReader::read_*
+EXCLUDE_SYMBOLS        = btllib::SeqReader::read_* \
+                         btllib::Indexlr::Read
 
 # The EXAMPLE_PATH tag can be used to specify one or more files or directories
 # that contain example code fragments that are included (see the \include

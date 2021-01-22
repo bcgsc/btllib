@@ -29,6 +29,8 @@ static const char* const KMER_BLOOM_FILTER_MAGIC_HEADER =
 static const char* const SEED_BLOOM_FILTER_MAGIC_HEADER =
   "BTLSeedBloomFilter_v2";
 
+static const unsigned MAX_HASH_VALUES = 1024;
+
 inline unsigned
 pop_cnt_byte(uint8_t x)
 {
@@ -240,6 +242,10 @@ inline BloomFilter::BloomFilter(size_t bytes, unsigned hash_num)
   , array_bits(array_size * CHAR_BIT)
   , hash_num(hash_num)
 {
+  check_error(bytes == 0, "BloomFilter: memory budget must be >0!");
+  check_error(hash_num == 0, "BloomFilter: number of hash values must be >0!");
+  check_error(hash_num > MAX_HASH_VALUES,
+              "BloomFilter: number of hash values cannot be over 1024!");
   check_warning(
     sizeof(uint8_t) != sizeof(std::atomic<uint8_t>),
     "Atomic primitives take extra memory. BloomFilter will have less than " +

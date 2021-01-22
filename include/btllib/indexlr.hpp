@@ -56,23 +56,6 @@ public:
   bool short_mode() const { return bool(~flags & Flag::LONG_MODE); }
   bool long_mode() const { return bool(flags & Flag::LONG_MODE); }
 
-  struct Read
-  {
-    Read() {}
-
-    Read(size_t num, std::string id, std::string comment, std::string seq)
-      : num(num)
-      , id(std::move(id))
-      , comment(std::move(comment))
-      , seq(std::move(seq))
-    {}
-
-    size_t num = 0;
-    std::string id;
-    std::string comment;
-    std::string seq;
-  };
-
   struct Minimizer
   {
     Minimizer() = default;
@@ -144,6 +127,23 @@ public:
   static const size_t LONG_MODE_BLOCK_SIZE = 1;
 
 private:
+  struct Read
+  {
+    Read() {}
+
+    Read(size_t num, std::string id, std::string comment, std::string seq)
+      : num(num)
+      , id(std::move(id))
+      , comment(std::move(comment))
+      , seq(std::move(seq))
+    {}
+
+    size_t num = 0;
+    std::string id;
+    std::string comment;
+    std::string seq;
+  };
+
   static std::string extract_barcode(const std::string& id,
                                      const std::string& comment);
   std::vector<Minimizer> minimize(const std::string& seq) const;
