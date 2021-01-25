@@ -4,7 +4,7 @@
 #include "nthash.hpp"
 #include "status.hpp"
 
-#include "vendor/cpptoml.hpp"
+#include "../vendor/cpptoml.hpp"
 
 #include <atomic>
 #include <climits>

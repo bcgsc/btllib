@@ -22,19 +22,7 @@
 #include <unordered_map>
 #include <vector>
 
-#if __cplusplus > 201103L
 #define CPPTOML_DEPRECATED(reason) [[deprecated(reason)]]
-#elif defined(__clang__)
-#define CPPTOML_DEPRECATED(reason) __attribute__((deprecated(reason)))
-#elif defined(__GNUG__)
-#define CPPTOML_DEPRECATED(reason) __attribute__((deprecated))
-#elif defined(_MSC_VER)
-#if _MSC_VER < 1910
-#define CPPTOML_DEPRECATED(reason) __declspec(deprecated)
-#else
-#define CPPTOML_DEPRECATED(reason) [[deprecated(reason)]]
-#endif
-#endif
 
 namespace cpptoml
 {
