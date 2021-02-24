@@ -15,6 +15,7 @@
 #include "btllib/order_queue.hpp"
 #include "btllib/graph.hpp"
 #include "btllib/status.hpp"
+#include "btllib/mi_bloom_filter.hpp"
 #include "btllib/util.hpp"
 %}
 
@@ -43,4 +44,5 @@
 %include "btllib/order_queue.hpp"
 %include "btllib/graph.hpp"
 %include "btllib/status.hpp"
+%include "btllib/mi_bloom_filter.hpp"
 %include "btllib/util.hpp"

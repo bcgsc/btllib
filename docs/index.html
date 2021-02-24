@@ -76,6 +76,9 @@ Platforms</h2>
 Documentation</h2>
 <p><a href="https://bcgsc.github.io/btllib/">Docs page</a></p>
 <h2><a class="anchor" id="autotoc_md2"></a>
+Download</h2>
+<p>The recommended way is to download the latest release, but if you want the latest master branch, ensure to download submodules: <code>git clone <a href="https://github.com/bcgsc/btllib">https://github.com/bcgsc/btllib</a> --recurse-submodules</code>.</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
 C++</h2>
 <ul>
 <li>Dependencies<ul>
@@ -86,7 +89,7 @@ C++</h2>
 <li>Use any header from the <code>btllib/include</code> directory (pass <code>-I btllib/include</code> flag to the compiler)</li>
 <li><code>btllib</code> uses <code>C++11</code> features, so that standard should be enabled at a minimum.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Python and Java</h2>
 <ul>
 <li>Dependencies<ul>
@@ -109,13 +112,14 @@ Python and Java</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Contributing</h2>
 <p>If you want to contribute code to this repo, before making a pull request, make sure to:</p><ul>
 <li>Create a build directory by running <code>meson build</code> in <code>btllib</code> directory</li>
 <li>Run <code>ninja complete</code> in the <code>build</code> directory to generate wrappers, docs, format the code, check for any errors, etc.</li>
 </ul>
 <p><code>ninja complete</code> does the following steps, in order:</p><ul>
+<li><code>ninja build-sdsl</code> builds the sdsl-lite dependency library</li>
 <li><code>ninja format</code> formats the whitespace in code (requires clang-format 8+)</li>
 <li><code>ninja wrap</code> wraps C++ code for Python and Java (requires SWIG 4.0+)</li>
 <li><code>ninja tidycheck</code> runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+)</li>
@@ -125,13 +129,15 @@ Contributing</h2>
 <li><code>ninja docs</code> generates code documentation from comments (requires Doxygen)</li>
 </ul>
 <p>Any of these can be run individually within <code>build</code> directory.</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<p>In order to build tests and wrappers, you need to run <code>ninja build-sdsl</code> once to build the sdsl dependency library.</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Credits</h2>
 <ul>
 <li>Author: <a href="https://github.com/schutzekatze">Vladimir Nikolic</a></li>
 <li>Components:<ul>
 <li><a href="https://github.com/mohamadi">Hamid Mohamadi</a> for <a href="https://github.com/bcgsc/ntHash">ntHash</a></li>
-<li><a href="https://github.com/skystrife">Chase Geigle</a> for <a href="https://github.com/skystrife/cpptoml">cpptoml</a> </li>
+<li><a href="https://github.com/skystrife">Chase Geigle</a> for <a href="https://github.com/skystrife/cpptoml">cpptoml</a></li>
+<li>Simon Gog, Timo Beller, Alistair Moffat, and Matthias Petri for <a href="https://github.com/simongog/sdsl-lite">sdsl-lite</a> </li>
 </ul>
 </li>
 </ul>

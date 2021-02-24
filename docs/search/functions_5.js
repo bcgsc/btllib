@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['write_45',['write',['../classbtllib_1_1CountingBloomFilter.html#a2a786558fc9b82feac48066dd40c4283',1,'btllib::CountingBloomFilter']]]
+  ['store_50',['store',['../classbtllib_1_1MIBloomFilter.html#a307db9aef904be2d88f9dfff2627bc6b',1,'btllib::MIBloomFilter']]]
 ];
