@@ -116,14 +116,10 @@ if [[ ! $(which meson) || ! $(which ninja) ]]; then
   in_venv=true
 fi
 
-cd external/sdsl-lite
-sed -i 's~^\(.*\) -DCMAKE_POSITION_INDEPENDENT_CODE=ON \(.*\)$~\1 \2~' install.sh
-sed -i 's~^cmake\(.*\) \.\.~cmake\1 -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..~' install.sh
-./install.sh installdir
-
 rm -rf build python java
 meson setup --buildtype release --prefix=$SCRIPTPATH build
 cd build
+ninja build-sdsl
 ninja install
 cd ..
 
