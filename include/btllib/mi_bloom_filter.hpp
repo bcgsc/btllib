@@ -142,10 +142,13 @@ public:
     for (unsigned i = 0; i < 2; ++i) {
       if (i == 0) {
         FILE* file = fopen(filter_file_path.c_str(), "rbe");
-        check_error(file == nullptr, "MIBloomFilter: File " + filter_file_path + " could not be read.");
+        check_error(file == nullptr,
+                    "MIBloomFilter: File " + filter_file_path +
+                      " could not be read.");
 
         FileHeader header;
-        check_error(fread(&header, sizeof(struct FileHeader), 1, file) != 1, "MIBloomFilter: Failed to load header.");
+        check_error(fread(&header, sizeof(struct FileHeader), 1, file) != 1,
+                    "MIBloomFilter: Failed to load header.");
         log_info("MIBloomFilter: Loading header...");
 
         const int magic_nine = 9;
@@ -154,7 +157,11 @@ public:
         memcpy(magic, header.magic, magic_eight);
         magic[magic_eight] = '\0';
 
-        log_info("MIBloomFilter: Loaded header\nmagic: " + std::string(magic) + "\nhlen: " + std::to_string(header.hlen) + "\nsize: " + std::to_string(header.size) + "\nnhash: " + std::to_string(header.nhash) + "\nkmer: " + std::to_string(header.kmer));
+        log_info("MIBloomFilter: Loaded header\nmagic: " + std::string(magic) +
+                 "\nhlen: " + std::to_string(header.hlen) +
+                 "\nsize: " + std::to_string(header.size) +
+                 "\nnhash: " + std::to_string(header.nhash) +
+                 "\nkmer: " + std::to_string(header.kmer));
 
         m_hash_num = header.nhash;
         m_kmer_size = header.kmer;
@@ -166,8 +173,10 @@ public:
           for (unsigned i = 0; i < header.nhash; ++i) {
             char temp[header.kmer];
 
-            check_error(fread(temp, header.kmer, 1, file) != 1, "MIBloomFilter: Failed to load spaced seed string.");
-            log_info("MIBloomFilter: Spaced seed " + std::to_string(i) + ": " + std::string(temp, header.kmer));
+            check_error(fread(temp, header.kmer, 1, file) != 1,
+                        "MIBloomFilter: Failed to load spaced seed string.");
+            log_info("MIBloomFilter: Spaced seed " + std::to_string(i) + ": " +
+                     std::string(temp, header.kmer));
             m_sseeds.push_back(std::string(temp, header.kmer));
           }
 
@@ -179,11 +188,20 @@ public:
           }
         }
 
-        check_error(header.hlen != (sizeof(FileHeader) + m_kmer_size * m_sseeds.size()), "MIBloomFilter: header length: " + std::to_string(header.hlen) + " does not match expected length: " + std::to_string(sizeof(FileHeader) + m_kmer_size * m_sseeds.size()) + " (likely version mismatch)." );
+        check_error(
+          header.hlen != (sizeof(FileHeader) + m_kmer_size * m_sseeds.size()),
+          "MIBloomFilter: header length: " + std::to_string(header.hlen) +
+            " does not match expected length: " +
+            std::to_string(sizeof(FileHeader) + m_kmer_size * m_sseeds.size()) +
+            " (likely version mismatch).");
 
-        check_error(strcmp(magic, "MIBLOOMF") != 0, "MIBloomFilter: Bloom filter type does not matc.");
+        check_error(strcmp(magic, "MIBLOOMF") != 0,
+                    "MIBloomFilter: Bloom filter type does not matc.");
 
-        check_error(header.version != MI_BLOOM_FILTER_VERSION, "MIBloomFilter: Bloom filter version does not match: " + std::to_string(header.version) + " expected " + std::to_string(MI_BLOOM_FILTER_VERSION) + ".");
+        check_error(header.version != MI_BLOOM_FILTER_VERSION,
+                    "MIBloomFilter: Bloom filter version does not match: " +
+                      std::to_string(header.version) + " expected " +
+                      std::to_string(MI_BLOOM_FILTER_VERSION) + ".");
 
         log_info("MIBloomFilter: Loading data vector");
 
@@ -192,22 +210,30 @@ public:
         size_t file_size = ftell(file) - header.hlen;
         fseek(file, l_cur_pos, 0);
 
-        check_error(file_size != m_d_size * sizeof(T), "MIBloomFilter: " + filter_file_path + " does not match size given by its header. Size: " + std::to_string(file_size) + " vs " + std::to_string(m_d_size * sizeof(T)) + " bytes.");
+        check_error(file_size != m_d_size * sizeof(T),
+                    "MIBloomFilter: " + filter_file_path +
+                      " does not match size given by its header. Size: " +
+                      std::to_string(file_size) + " vs " +
+                      std::to_string(m_d_size * sizeof(T)) + " bytes.");
 
         size_t count_read = fread(m_data, file_size, 1, file);
 
-        check_error(count_read != 1 && fclose(file) != 0, "MIBloomFilter: File " + filter_file_path + " could not be read.");
+        check_error(count_read != 1 && fclose(file) != 0,
+                    "MIBloomFilter: File " + filter_file_path +
+                      " could not be read.");
       }
 
       else {
         std::string bv_filename = filter_file_path + ".sdsl";
-        log_info("MIBloomFilter: Loading sdsl interleaved bit vector from: " + bv_filename);
+        log_info("MIBloomFilter: Loading sdsl interleaved bit vector from: " +
+                 bv_filename);
         load_from_file(m_bv, bv_filename);
         m_rank_support = sdsl::rank_support_il<1>(&m_bv);
       }
     }
 
-    log_info("MIBloomFilter: Bit vector size: " + std::to_string(m_bv.size()) + "\nPopcount: " + std::to_string(get_pop()));
+    log_info("MIBloomFilter: Bit vector size: " + std::to_string(m_bv.size()) +
+             "\nPopcount: " + std::to_string(get_pop()));
     // TODO: make more streamlined
     m_prob_saturated =
       pow(double(get_pop_saturated()) / double(get_pop()), m_hash_num);
@@ -244,7 +270,9 @@ public:
         assert(my_file);
 
         FILE* file = fopen(filter_file_path.c_str(), "rbe");
-        check_error(file == nullptr, "MIBloomFilter: " + filter_file_path + " could not be read.");
+        check_error(file == nullptr,
+                    "MIBloomFilter: " + filter_file_path +
+                      " could not be read.");
       } else {
         std::string bv_filename = filter_file_path + ".sdsl";
         //				std::cerr << "Storing sdsl interleaved
