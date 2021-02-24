@@ -8,6 +8,8 @@ jobs:
     vmImage: 'ubuntu-latest'
 
   steps:
+  - checkout: self
+    submodules: true
 
   - script: |
       set -o errexit -o pipefail
@@ -56,6 +58,8 @@ jobs:
     vmImage: 'macOS-latest'
 
   steps:
+  - checkout: self
+    submodules: true
 
   - script: |
       set -o errexit -o pipefail
