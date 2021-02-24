@@ -11,7 +11,7 @@ Documentation
 
 Download
 ---
-The recommended way is to download the latest release, but if you want the latest master branch, ensure to download submodules: `git clone https://github.com/bcgsc/btllib --recurse-submodules`.
+The recommended way is to download the latest release, but if you want the latest master branch, ensure that submodules are cloned: `git clone https://github.com/bcgsc/btllib --recurse-submodules`.
 
 C++
 ---
