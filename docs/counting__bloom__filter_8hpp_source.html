@@ -285,7 +285,7 @@ $(function() {
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  std::ifstream file(path);</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  <span class="keyword">auto</span> table =</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    BloomFilter::parse_header(file, COUNTING_BLOOM_FILTER_MAGIC_HEADER);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <a class="code" href="classbtllib_1_1BloomFilter.html#a2671dfd28714057547e9b7ac21d44d88">BloomFilter::parse_header</a>(file, COUNTING_BLOOM_FILTER_MAGIC_HEADER);</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  bytes = *table-&gt;get_as&lt;decltype(bytes)&gt;(<span class="stringliteral">&quot;bytes&quot;</span>);</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  check_warning(<span class="keyword">sizeof</span>(uint8_t) != <span class="keyword">sizeof</span>(std::atomic&lt;uint8_t&gt;),</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <span class="stringliteral">&quot;Atomic primitives take extra memory. CountingBloomFilter will &quot;</span></div>
@@ -364,7 +364,7 @@ $(function() {
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  std::ifstream file(path);</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  <span class="keyword">auto</span> table =</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    BloomFilter::parse_header(file, KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <a class="code" href="classbtllib_1_1BloomFilter.html#a2671dfd28714057547e9b7ac21d44d88">BloomFilter::parse_header</a>(file, KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER);</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  counting_bloom_filter.bytes =</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    *table-&gt;get_as&lt;decltype(counting_bloom_filter.bytes)&gt;(<span class="stringliteral">&quot;bytes&quot;</span>);</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  check_warning(<span class="keyword">sizeof</span>(uint8_t) != <span class="keyword">sizeof</span>(std::atomic&lt;uint8_t&gt;),</div>
@@ -419,6 +419,7 @@ $(function() {
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;} <span class="comment">// namespace btllib</span></div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassbtllib_1_1BloomFilter_html_a2671dfd28714057547e9b7ac21d44d88"><div class="ttname"><a href="classbtllib_1_1BloomFilter.html#a2671dfd28714057547e9b7ac21d44d88">btllib::BloomFilter::parse_header</a></div><div class="ttdeci">static std::shared_ptr&lt; cpptoml::table &gt; parse_header(std::ifstream &amp;file, const std::string &amp;magic_string)</div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:473</div></div>
 <div class="ttc" id="aclassbtllib_1_1CountingBloomFilter_html"><div class="ttname"><a href="classbtllib_1_1CountingBloomFilter.html">btllib::CountingBloomFilter</a></div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:30</div></div>
 <div class="ttc" id="aclassbtllib_1_1CountingBloomFilter_html_a2a786558fc9b82feac48066dd40c4283"><div class="ttname"><a href="classbtllib_1_1CountingBloomFilter.html#a2a786558fc9b82feac48066dd40c4283">btllib::CountingBloomFilter::write</a></div><div class="ttdeci">void write(const std::string &amp;path)</div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:241</div></div>
 <div class="ttc" id="aclassbtllib_1_1KmerCountingBloomFilter_html"><div class="ttname"><a href="classbtllib_1_1KmerCountingBloomFilter.html">btllib::KmerCountingBloomFilter</a></div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:77</div></div>

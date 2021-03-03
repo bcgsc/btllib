@@ -72,14 +72,16 @@ $(function() {
 <div class="title">btllib::SeedBloomFilter Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="bloom__filter_8hpp_source.html">bloom_filter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4fb38186f959cd49479404dd9e03c596"><td class="memItemLeft" align="right" valign="top"><a id="a4fb38186f959cd49479404dd9e03c596"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SeedBloomFilter</b> (size_t bytes, unsigned k, const std::vector&lt; std::string &gt; &amp;seeds, unsigned hash_num_per_seed)</td></tr>
+<tr class="memitem:ad13884cf28a0e94978ac5005be628f3b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ad13884cf28a0e94978ac5005be628f3b">SeedBloomFilter</a> ()</td></tr>
+<tr class="separator:ad13884cf28a0e94978ac5005be628f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fb38186f959cd49479404dd9e03c596"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a4fb38186f959cd49479404dd9e03c596">SeedBloomFilter</a> (size_t bytes, unsigned k, const std::vector&lt; std::string &gt; &amp;seeds, unsigned hash_num_per_seed)</td></tr>
 <tr class="separator:a4fb38186f959cd49479404dd9e03c596"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a826a023c14d8d229d5238df0eee04a25"><td class="memItemLeft" align="right" valign="top"><a id="a826a023c14d8d229d5238df0eee04a25"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SeedBloomFilter</b> (const std::string &amp;path)</td></tr>
+<tr class="memitem:a826a023c14d8d229d5238df0eee04a25"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a826a023c14d8d229d5238df0eee04a25">SeedBloomFilter</a> (const std::string &amp;path)</td></tr>
 <tr class="separator:a826a023c14d8d229d5238df0eee04a25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa54bd24a3e9ddd7abfbf3fc2935df752"><td class="memItemLeft" align="right" valign="top"><a id="aa54bd24a3e9ddd7abfbf3fc2935df752"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SeedBloomFilter</b> (const <a class="el" href="classbtllib_1_1SeedBloomFilter.html">SeedBloomFilter</a> &amp;)=delete</td></tr>
@@ -93,58 +95,676 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab61db175a895b18bff4a73018d487921"><td class="memItemLeft" align="right" valign="top"><a id="ab61db175a895b18bff4a73018d487921"></a>
 <a class="el" href="classbtllib_1_1SeedBloomFilter.html">SeedBloomFilter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classbtllib_1_1SeedBloomFilter.html">SeedBloomFilter</a> &amp;&amp;)=delete</td></tr>
 <tr class="separator:ab61db175a895b18bff4a73018d487921"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c7a6908a0bad703848fcffaa81388cc"><td class="memItemLeft" align="right" valign="top"><a id="a3c7a6908a0bad703848fcffaa81388cc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const char *seq, size_t seq_len)</td></tr>
+<tr class="memitem:a3c7a6908a0bad703848fcffaa81388cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a3c7a6908a0bad703848fcffaa81388cc">insert</a> (const char *seq, size_t seq_len)</td></tr>
 <tr class="separator:a3c7a6908a0bad703848fcffaa81388cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee44f80f2f9e63cbeb36c71265176a2a"><td class="memItemLeft" align="right" valign="top"><a id="aee44f80f2f9e63cbeb36c71265176a2a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const std::string &amp;seq)</td></tr>
+<tr class="memitem:aee44f80f2f9e63cbeb36c71265176a2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#aee44f80f2f9e63cbeb36c71265176a2a">insert</a> (const std::string &amp;seq)</td></tr>
 <tr class="separator:aee44f80f2f9e63cbeb36c71265176a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad08664a39c529781d67c240d5426ab01"><td class="memItemLeft" align="right" valign="top"><a id="ad08664a39c529781d67c240d5426ab01"></a>
-std::vector&lt; std::vector&lt; unsigned &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>contains</b> (const char *seq, size_t seq_len) const</td></tr>
+<tr class="memitem:ad08664a39c529781d67c240d5426ab01"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; unsigned &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ad08664a39c529781d67c240d5426ab01">contains</a> (const char *seq, size_t seq_len) const</td></tr>
 <tr class="separator:ad08664a39c529781d67c240d5426ab01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a913a885fafd047695b198fc8cd95aa90"><td class="memItemLeft" align="right" valign="top"><a id="a913a885fafd047695b198fc8cd95aa90"></a>
-std::vector&lt; std::vector&lt; unsigned &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>contains</b> (const std::string &amp;seq) const</td></tr>
+<tr class="memitem:a913a885fafd047695b198fc8cd95aa90"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; unsigned &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a913a885fafd047695b198fc8cd95aa90">contains</a> (const std::string &amp;seq) const</td></tr>
 <tr class="separator:a913a885fafd047695b198fc8cd95aa90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bb4d37b28e674c7a42f58b07810cfb0"><td class="memItemLeft" align="right" valign="top"><a id="a1bb4d37b28e674c7a42f58b07810cfb0"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>contains</b> (const uint64_t *hashes) const</td></tr>
+<tr class="memitem:a1bb4d37b28e674c7a42f58b07810cfb0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a1bb4d37b28e674c7a42f58b07810cfb0">contains</a> (const uint64_t *hashes) const</td></tr>
 <tr class="separator:a1bb4d37b28e674c7a42f58b07810cfb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3da56bd6b0be875adceec6c199b53b83"><td class="memItemLeft" align="right" valign="top"><a id="a3da56bd6b0be875adceec6c199b53b83"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>contains</b> (const std::vector&lt; uint64_t &gt; &amp;hashes) const</td></tr>
+<tr class="memitem:a3da56bd6b0be875adceec6c199b53b83"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a3da56bd6b0be875adceec6c199b53b83">contains</a> (const std::vector&lt; uint64_t &gt; &amp;hashes) const</td></tr>
 <tr class="separator:a3da56bd6b0be875adceec6c199b53b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a984bda5e8ac31071c9ab61b2b2f1ab8e"><td class="memItemLeft" align="right" valign="top"><a id="a984bda5e8ac31071c9ab61b2b2f1ab8e"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_bytes</b> () const</td></tr>
+<tr class="memitem:a984bda5e8ac31071c9ab61b2b2f1ab8e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a984bda5e8ac31071c9ab61b2b2f1ab8e">get_bytes</a> () const</td></tr>
 <tr class="separator:a984bda5e8ac31071c9ab61b2b2f1ab8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96ce7ada797c1f578dae30c3d3128ad9"><td class="memItemLeft" align="right" valign="top"><a id="a96ce7ada797c1f578dae30c3d3128ad9"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_pop_cnt</b> () const</td></tr>
+<tr class="memitem:a96ce7ada797c1f578dae30c3d3128ad9"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a96ce7ada797c1f578dae30c3d3128ad9">get_pop_cnt</a> () const</td></tr>
 <tr class="separator:a96ce7ada797c1f578dae30c3d3128ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19d07b10ebb82e858914f88f9dca3a4c"><td class="memItemLeft" align="right" valign="top"><a id="a19d07b10ebb82e858914f88f9dca3a4c"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>get_occupancy</b> () const</td></tr>
+<tr class="memitem:a19d07b10ebb82e858914f88f9dca3a4c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a19d07b10ebb82e858914f88f9dca3a4c">get_occupancy</a> () const</td></tr>
 <tr class="separator:a19d07b10ebb82e858914f88f9dca3a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8252f79e19a18665af02ec5ded5be97"><td class="memItemLeft" align="right" valign="top"><a id="ae8252f79e19a18665af02ec5ded5be97"></a>
-unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_hash_num</b> () const</td></tr>
+<tr class="memitem:ae8252f79e19a18665af02ec5ded5be97"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ae8252f79e19a18665af02ec5ded5be97">get_hash_num</a> () const</td></tr>
 <tr class="separator:ae8252f79e19a18665af02ec5ded5be97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90f162ecded0b3974eeaaf496ff6853e"><td class="memItemLeft" align="right" valign="top"><a id="a90f162ecded0b3974eeaaf496ff6853e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>get_fpr</b> () const</td></tr>
+<tr class="memitem:a90f162ecded0b3974eeaaf496ff6853e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a90f162ecded0b3974eeaaf496ff6853e">get_fpr</a> () const</td></tr>
 <tr class="separator:a90f162ecded0b3974eeaaf496ff6853e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab644f0b1af1c5a9897b812fedf6acc33"><td class="memItemLeft" align="right" valign="top"><a id="ab644f0b1af1c5a9897b812fedf6acc33"></a>
-unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_k</b> () const</td></tr>
+<tr class="memitem:ab644f0b1af1c5a9897b812fedf6acc33"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ab644f0b1af1c5a9897b812fedf6acc33">get_k</a> () const</td></tr>
 <tr class="separator:ab644f0b1af1c5a9897b812fedf6acc33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a771229a941a3f35e0c3da4b3c0cc024a"><td class="memItemLeft" align="right" valign="top"><a id="a771229a941a3f35e0c3da4b3c0cc024a"></a>
-const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_seeds</b> () const</td></tr>
+<tr class="memitem:a771229a941a3f35e0c3da4b3c0cc024a"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a771229a941a3f35e0c3da4b3c0cc024a">get_seeds</a> () const</td></tr>
 <tr class="separator:a771229a941a3f35e0c3da4b3c0cc024a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2f1f051aa02ea0fa32b84e75d8cf07b"><td class="memItemLeft" align="right" valign="top"><a id="ae2f1f051aa02ea0fa32b84e75d8cf07b"></a>
-const std::vector&lt; SpacedSeed &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_parsed_seeds</b> () const</td></tr>
+<tr class="memitem:ae2f1f051aa02ea0fa32b84e75d8cf07b"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; SpacedSeed &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ae2f1f051aa02ea0fa32b84e75d8cf07b">get_parsed_seeds</a> () const</td></tr>
 <tr class="separator:ae2f1f051aa02ea0fa32b84e75d8cf07b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b281f9326b52e93355e6bef17748c20"><td class="memItemLeft" align="right" valign="top"><a id="a6b281f9326b52e93355e6bef17748c20"></a>
-unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_hash_num_per_seed</b> () const</td></tr>
+<tr class="memitem:a6b281f9326b52e93355e6bef17748c20"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a6b281f9326b52e93355e6bef17748c20">get_hash_num_per_seed</a> () const</td></tr>
 <tr class="separator:a6b281f9326b52e93355e6bef17748c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8b6d0b55a61c7c231cce2c86b149125"><td class="memItemLeft" align="right" valign="top"><a id="ab8b6d0b55a61c7c231cce2c86b149125"></a>
-<a class="el" href="classbtllib_1_1KmerBloomFilter.html">KmerBloomFilter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_kmer_bloom_filter</b> ()</td></tr>
+<tr class="memitem:ab8b6d0b55a61c7c231cce2c86b149125"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbtllib_1_1KmerBloomFilter.html">KmerBloomFilter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ab8b6d0b55a61c7c231cce2c86b149125">get_kmer_bloom_filter</a> ()</td></tr>
 <tr class="separator:ab8b6d0b55a61c7c231cce2c86b149125"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a723a6867adcec5bc05f3949dfde9f6d6"><td class="memItemLeft" align="right" valign="top"><a id="a723a6867adcec5bc05f3949dfde9f6d6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (const std::string &amp;path)</td></tr>
+<tr class="memitem:a723a6867adcec5bc05f3949dfde9f6d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a723a6867adcec5bc05f3949dfde9f6d6">write</a> (const std::string &amp;path)</td></tr>
 <tr class="separator:a723a6867adcec5bc05f3949dfde9f6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Bloom filter data structure that stores spaced seed k-mers. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad13884cf28a0e94978ac5005be628f3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad13884cf28a0e94978ac5005be628f3b">&#9670;&nbsp;</a></span>SeedBloomFilter() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">btllib::SeedBloomFilter::SeedBloomFilter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Construct a dummy Seed Bloom filter (e.g. as a default argument). </p>
+
+</div>
+</div>
+<a id="a4fb38186f959cd49479404dd9e03c596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fb38186f959cd49479404dd9e03c596">&#9670;&nbsp;</a></span>SeedBloomFilter() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">btllib::SeedBloomFilter::SeedBloomFilter </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>seeds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>hash_num_per_seed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Construct an empty Seed Bloom filter of given size.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bytes</td><td>Filter size in bytes. </td></tr>
+    <tr><td class="paramname">k</td><td>K-mer size. </td></tr>
+    <tr><td class="paramname">seeds</td><td>A vector of spaced seeds in string format. 0s indicate ignored and 1s indicate relevant bases. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a826a023c14d8d229d5238df0eee04a25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a826a023c14d8d229d5238df0eee04a25">&#9670;&nbsp;</a></span>SeedBloomFilter() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">btllib::SeedBloomFilter::SeedBloomFilter </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Load a Seed Bloom filter from a file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Filepath to load from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad08664a39c529781d67c240d5426ab01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad08664a39c529781d67c240d5426ab01">&#9670;&nbsp;</a></span>contains() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; unsigned &gt; &gt; btllib::SeedBloomFilter::contains </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>seq_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Query the presence of spaced seed k-mers of a sequence.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>Sequence to k-merize. </td></tr>
+    <tr><td class="paramname">seq_len</td><td>Length of seq.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector indicating which seeds had a hit for every k-mer. The indices of the outer vector are indices of seq k-mers. The indices of inner vector are indices of spaced seeds hit for that k-mer. </dd></dl>
+
+</div>
+</div>
+<a id="a913a885fafd047695b198fc8cd95aa90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a913a885fafd047695b198fc8cd95aa90">&#9670;&nbsp;</a></span>contains() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;unsigned&gt; &gt; btllib::SeedBloomFilter::contains </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>seq</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Query the presence of spaced seed k-mers of a sequence.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>Sequence to k-merize.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector indicating which seeds had a hit for every k-mer. The indices of the outer vector are indices of seq k-mers. The indices of inner vector are indices of spaced seeds hit for that k-mer. </dd></dl>
+
+</div>
+</div>
+<a id="a3da56bd6b0be875adceec6c199b53b83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3da56bd6b0be875adceec6c199b53b83">&#9670;&nbsp;</a></span>contains() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::SeedBloomFilter::contains </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint64_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Check for the presence of an element's hash values. A single spaced seed is an element here.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer vector of hash values. Array size should equal the hash_num_per_seed argument used when the Bloom filter was constructed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1bb4d37b28e674c7a42f58b07810cfb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bb4d37b28e674c7a42f58b07810cfb0">&#9670;&nbsp;</a></span>contains() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::SeedBloomFilter::contains </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Check for the presence of an element's hash values. A single spaced seed is an element here.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer vector of hash values. Array size should equal the hash_num_per_seed argument used when the Bloom filter was constructed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a984bda5e8ac31071c9ab61b2b2f1ab8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a984bda5e8ac31071c9ab61b2b2f1ab8e">&#9670;&nbsp;</a></span>get_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t btllib::SeedBloomFilter::get_bytes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get filter size in bytes. </p>
+
+</div>
+</div>
+<a id="a90f162ecded0b3974eeaaf496ff6853e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90f162ecded0b3974eeaaf496ff6853e">&#9670;&nbsp;</a></span>get_fpr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double btllib::SeedBloomFilter::get_fpr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the false positive rate of at least one seed falsely reporting a hit per k-mer. </p>
+
+</div>
+</div>
+<a id="ae8252f79e19a18665af02ec5ded5be97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8252f79e19a18665af02ec5ded5be97">&#9670;&nbsp;</a></span>get_hash_num()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned btllib::SeedBloomFilter::get_hash_num </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the number of hash values per k-mer, i.e. total number of hash values for all seeds. </p>
+
+</div>
+</div>
+<a id="a6b281f9326b52e93355e6bef17748c20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b281f9326b52e93355e6bef17748c20">&#9670;&nbsp;</a></span>get_hash_num_per_seed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned btllib::SeedBloomFilter::get_hash_num_per_seed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the number of hash values per element, i.e. seed. </p>
+
+</div>
+</div>
+<a id="ab644f0b1af1c5a9897b812fedf6acc33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab644f0b1af1c5a9897b812fedf6acc33">&#9670;&nbsp;</a></span>get_k()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned btllib::SeedBloomFilter::get_k </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the k-mer size used. </p>
+
+</div>
+</div>
+<a id="ab8b6d0b55a61c7c231cce2c86b149125"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8b6d0b55a61c7c231cce2c86b149125">&#9670;&nbsp;</a></span>get_kmer_bloom_filter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classbtllib_1_1KmerBloomFilter.html">KmerBloomFilter</a>&amp; btllib::SeedBloomFilter::get_kmer_bloom_filter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get a reference to the underlying Kmer Bloom filter. </p>
+
+</div>
+</div>
+<a id="a19d07b10ebb82e858914f88f9dca3a4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19d07b10ebb82e858914f88f9dca3a4c">&#9670;&nbsp;</a></span>get_occupancy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double btllib::SeedBloomFilter::get_occupancy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the fraction of the filter occupied by 1 bits. </p>
+
+</div>
+</div>
+<a id="ae2f1f051aa02ea0fa32b84e75d8cf07b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2f1f051aa02ea0fa32b84e75d8cf07b">&#9670;&nbsp;</a></span>get_parsed_seeds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;SpacedSeed&gt;&amp; btllib::SeedBloomFilter::get_parsed_seeds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the seeds used in parsed format. Parsed format is a vector of indices of 0s in the seed. </p>
+
+</div>
+</div>
+<a id="a96ce7ada797c1f578dae30c3d3128ad9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96ce7ada797c1f578dae30c3d3128ad9">&#9670;&nbsp;</a></span>get_pop_cnt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::SeedBloomFilter::get_pop_cnt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get population count, i.e. the number of 1 bits in the filter. </p>
+
+</div>
+</div>
+<a id="a771229a941a3f35e0c3da4b3c0cc024a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a771229a941a3f35e0c3da4b3c0cc024a">&#9670;&nbsp;</a></span>get_seeds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;std::string&gt;&amp; btllib::SeedBloomFilter::get_seeds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the seeds used in string format. </p>
+
+</div>
+</div>
+<a id="a3c7a6908a0bad703848fcffaa81388cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c7a6908a0bad703848fcffaa81388cc">&#9670;&nbsp;</a></span>insert() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::SeedBloomFilter::insert </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>seq_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Insert a sequence's spaced seed k-mers into the filter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>Sequence to k-merize. </td></tr>
+    <tr><td class="paramname">seq_len</td><td>Length of seq. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aee44f80f2f9e63cbeb36c71265176a2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee44f80f2f9e63cbeb36c71265176a2a">&#9670;&nbsp;</a></span>insert() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::SeedBloomFilter::insert </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>seq</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Insert a sequence's spaced seed k-mers into the filter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>Sequence to k-merize. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a723a6867adcec5bc05f3949dfde9f6d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a723a6867adcec5bc05f3949dfde9f6d6">&#9670;&nbsp;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::SeedBloomFilter::write </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Write the Bloom filter to a file that can be loaded in the future.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Filepath to store filter at. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/btllib/<a class="el" href="bloom__filter_8hpp_source.html">bloom_filter.hpp</a></li>
 </ul>

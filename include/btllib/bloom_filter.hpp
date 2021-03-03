@@ -44,8 +44,22 @@ class BloomFilter
 {
 
 public:
+  /** Construct a dummy Bloom filter (e.g. as a default argument). */
   BloomFilter() {}
+
+  /**
+   * Construct an empty Bloom filter of given size.
+   *
+   * @param bytes Filter size in bytes.
+   * @param hash_num Number of hash values per element.
+   */
   BloomFilter(size_t bytes, unsigned hash_num);
+
+  /**
+   * Load a Bloom filter from a file.
+   *
+   * @param path Filepath to load from.
+   */
   explicit BloomFilter(const std::string& path);
 
   ~BloomFilter() { delete[] array; }
@@ -56,26 +70,62 @@ public:
   BloomFilter& operator=(const BloomFilter&) = delete;
   BloomFilter& operator=(BloomFilter&&) = delete;
 
+  /**
+   * Insert an element's hash values.
+   *
+   * @param hashes Integer array of hash values. Array size should equal the
+   * hash_num argument used when the Bloom filter was constructed.
+   */
   void insert(const uint64_t* hashes);
+
+  /**
+   * Insert an element's hash values.
+   *
+   * @param hashes Integer vector of hash values.
+   */
   void insert(const std::vector<uint64_t>& hashes) { insert(hashes.data()); }
 
+  /**
+   * Check for the presence of an element's hash values.
+   *
+   * @param hashes Integer vector of hash values. Array size should equal the
+   * hash_num argument used when the Bloom filter was constructed.
+   */
   bool contains(const uint64_t* hashes) const;
+
+  /**
+   * Check for the presence of an element's hash values.
+   *
+   * @param hashes Integer vector of hash values.
+   */
   bool contains(const std::vector<uint64_t>& hashes) const
   {
     return contains(hashes.data());
   }
 
+  /** Get filter size in bytes. */
   size_t get_bytes() const { return bytes; }
+  /** Get population count, i.e. the number of 1 bits in the filter. */
   uint64_t get_pop_cnt() const;
+  /** Get the fraction of the filter occupied by 1 bits. */
   double get_occupancy() const;
+  /** Get the number of hash values per element. */
   unsigned get_hash_num() const { return hash_num; }
+  /** Get the query false positive rate. */
   double get_fpr() const;
 
+  /**
+   * Write the Bloom filter to a file that can be loaded in the future.
+   *
+   * @param path Filepath to store filter at.
+   */
+  void write(const std::string& path);
+
+  /** Parse a Bloom filter file header. Useful for implementing Bloom filter
+   * variants. */
   static std::shared_ptr<cpptoml::table> parse_header(
     std::ifstream& file,
     const std::string& magic_string);
-
-  void write(const std::string& path);
 
 private:
   friend class KmerBloomFilter;
@@ -90,21 +140,29 @@ private:
 };
 
 /**
- * Bloom filter data structure that kmerizes and hashes given sequences,
- * storing the results.
+ * Bloom filter data structure stores k-mers.
  */
 class KmerBloomFilter
 {
 
 public:
+  /** Construct a dummy Kmer Bloom filter (e.g. as a default argument). */
   KmerBloomFilter() {}
+
   /**
-   * Constructor.
-   * @param k kmer size
-   * @param bytes bytes to allocate for the filter
-   * @param hash_num number of hashes
+   * Construct an empty Kmer Bloom filter of given size.
+   *
+   * @param bytes Filter size in bytes.
+   * @param hash_num Number of hash values per element.
+   * @param k K-mer size.
    */
   KmerBloomFilter(size_t bytes, unsigned hash_num, unsigned k);
+
+  /**
+   * Load a Kmer Bloom filter from a file.
+   *
+   * @param path Filepath to load from.
+   */
   explicit KmerBloomFilter(const std::string& path);
 
   KmerBloomFilter(const KmerBloomFilter&) = delete;
@@ -114,55 +172,83 @@ public:
   KmerBloomFilter& operator=(KmerBloomFilter&&) = delete;
 
   /**
-   * Store the kmers of a sequence.
-   * @param seq sequence to kmerize
-   * @param seq_len length of seq
+   * Insert a sequence's k-mers into the filter.
+   *
+   * @param seq Sequence to k-merize.
+   * @param seq_len Length of seq.
    */
   void insert(const char* seq, size_t seq_len);
 
   /**
-   * Store the kmers of a sequence.
-   * @param seq sequence to kmerize
+   * Insert a sequence's k-mers into the filter.
+   *
+   * @param seq Sequence to k-merize.
    */
   void insert(const std::string& seq) { insert(seq.c_str(), seq.size()); }
 
   /**
-   * Query the kmers of a sequence.
-   * @param seq sequence to kmerize
-   * @param seq_len length of seq
+   * Query the presence of k-mers of a sequence.
    *
-   * @return number of kmers found in seq
+   * @param seq Sequence to k-merize.
+   * @param seq_len Length of seq.
+   *
+   * @return The number of seq's k-mers found in the filter.
    */
   unsigned contains(const char* seq, size_t seq_len) const;
 
   /**
-   * Query the kmers of a sequence.
-   * @param seq sequence to kmerize
+   * Query the presence of k-mers of a sequence.
    *
-   * @return number of kmers found in seq
+   * @param seq Sequence to k-merize.
+   *
+   * @return The number of seq's k-mers found in the filter.
    */
   unsigned contains(const std::string& seq) const
   {
     return contains(seq.c_str(), seq.size());
   }
 
+  /**
+   * Check for the presence of an element's hash values.
+   *
+   * @param hashes Integer vector of hash values. Array size should equal the
+   * hash_num argument used when the Bloom filter was constructed.
+   */
   bool contains(const uint64_t* hashes) const
   {
     return bloom_filter.contains(hashes);
   }
+
+  /**
+   * Check for the presence of an element's hash values.
+   *
+   * @param hashes Integer vector of hash values.
+   */
   bool contains(const std::vector<uint64_t>& hashes) const
   {
     return bloom_filter.contains(hashes);
   }
 
+  /** Get filter size in bytes. */
   size_t get_bytes() const { return bloom_filter.get_bytes(); }
+  /** Get population count, i.e. the number of 1 bits in the filter. */
   uint64_t get_pop_cnt() const { return bloom_filter.get_pop_cnt(); }
+  /** Get the fraction of the filter occupied by 1 bits. */
   double get_occupancy() const { return bloom_filter.get_occupancy(); }
+  /** Get the number of hash values per element. */
   unsigned get_hash_num() const { return bloom_filter.get_hash_num(); }
+  /** Get the query false positive rate. */
   double get_fpr() const { return bloom_filter.get_fpr(); }
+  /** Get the k-mer size used. */
   unsigned get_k() const { return k; }
+  /** Get a reference to the underlying vanilla Bloom filter. */
   BloomFilter& get_bloom_filter() { return bloom_filter; }
 
+  /**
+   * Write the Bloom filter to a file that can be loaded in the future.
+   *
+   * @param path Filepath to store filter at.
+   */
   void write(const std::string& path);
 
 private:
@@ -172,15 +258,34 @@ private:
   unsigned k = 0;
 };
 
+/**
+ * Bloom filter data structure that stores spaced seed k-mers.
+ */
 class SeedBloomFilter
 {
 
 public:
+  /** Construct a dummy Seed Bloom filter (e.g. as a default argument). */
   SeedBloomFilter() {}
+
+  /**
+   * Construct an empty Seed Bloom filter of given size.
+   *
+   * @param bytes Filter size in bytes.
+   * @param k K-mer size.
+   * @param seeds A vector of spaced seeds in string format. 0s indicate ignored
+   * and 1s indicate relevant bases.
+   */
   SeedBloomFilter(size_t bytes,
                   unsigned k,
                   const std::vector<std::string>& seeds,
                   unsigned hash_num_per_seed);
+
+  /**
+   * Load a Seed Bloom filter from a file.
+   *
+   * @param path Filepath to load from.
+   */
   explicit SeedBloomFilter(const std::string& path);
 
   SeedBloomFilter(const SeedBloomFilter&) = delete;
@@ -189,45 +294,110 @@ public:
   SeedBloomFilter& operator=(const SeedBloomFilter&) = delete;
   SeedBloomFilter& operator=(SeedBloomFilter&&) = delete;
 
+  /**
+   * Insert a sequence's spaced seed k-mers into the filter.
+   *
+   * @param seq Sequence to k-merize.
+   * @param seq_len Length of seq.
+   */
   void insert(const char* seq, size_t seq_len);
+
+  /**
+   * Insert a sequence's spaced seed k-mers into the filter.
+   *
+   * @param seq Sequence to k-merize.
+   */
   void insert(const std::string& seq) { insert(seq.c_str(), seq.size()); }
 
+  /**
+   * Query the presence of spaced seed k-mers of a sequence.
+   *
+   * @param seq Sequence to k-merize.
+   * @param seq_len Length of seq.
+   *
+   * @return A vector indicating which seeds had a hit for every k-mer. The
+   * indices of the outer vector are indices of seq k-mers. The indices of inner
+   * vector are indices of spaced seeds hit for that k-mer.
+   */
   std::vector<std::vector<unsigned>> contains(const char* seq,
                                               size_t seq_len) const;
+
+  /**
+   * Query the presence of spaced seed k-mers of a sequence.
+   *
+   * @param seq Sequence to k-merize.
+   *
+   * @return A vector indicating which seeds had a hit for every k-mer. The
+   * indices of the outer vector are indices of seq k-mers. The indices of inner
+   * vector are indices of spaced seeds hit for that k-mer.
+   */
   std::vector<std::vector<unsigned>> contains(const std::string& seq) const
   {
     return contains(seq.c_str(), seq.size());
   }
 
+  /**
+   * Check for the presence of an element's hash values. A single spaced seed is
+   * an element here.
+   *
+   * @param hashes Integer vector of hash values. Array size should equal the
+   * hash_num_per_seed argument used when the Bloom filter was constructed.
+   */
   bool contains(const uint64_t* hashes) const
   {
     return kmer_bloom_filter.contains(hashes);
   }
+
+  /**
+   * Check for the presence of an element's hash values. A single spaced seed is
+   * an element here.
+   *
+   * @param hashes Integer vector of hash values. Array size should equal the
+   * hash_num_per_seed argument used when the Bloom filter was constructed.
+   */
   bool contains(const std::vector<uint64_t>& hashes) const
   {
     return kmer_bloom_filter.contains(hashes);
   }
 
+  /** Get filter size in bytes. */
   size_t get_bytes() const { return kmer_bloom_filter.get_bytes(); }
+  /** Get population count, i.e. the number of 1 bits in the filter. */
   uint64_t get_pop_cnt() const { return kmer_bloom_filter.get_pop_cnt(); }
+  /** Get the fraction of the filter occupied by 1 bits. */
   double get_occupancy() const { return kmer_bloom_filter.get_occupancy(); }
+  /** Get the number of hash values per k-mer, i.e. total number of hash values
+   * for all seeds. */
   unsigned get_hash_num() const
   {
     return get_hash_num_per_seed() * get_seeds().size();
   }
+  /** Get the false positive rate of at least one seed falsely reporting a hit
+   * per k-mer. */
   double get_fpr() const;
+  /** Get the k-mer size used. */
   unsigned get_k() const { return kmer_bloom_filter.get_k(); }
+  /** Get the seeds used in string format. */
   const std::vector<std::string>& get_seeds() const { return seeds; }
+  /** Get the seeds used in parsed format. Parsed format is a vector of indices
+   * of 0s in the seed. */
   const std::vector<SpacedSeed>& get_parsed_seeds() const
   {
     return parsed_seeds;
   }
+  /** Get the number of hash values per element, i.e. seed. */
   unsigned get_hash_num_per_seed() const
   {
     return kmer_bloom_filter.get_hash_num();
   }
+  /** Get a reference to the underlying Kmer Bloom filter. */
   KmerBloomFilter& get_kmer_bloom_filter() { return kmer_bloom_filter; }
 
+  /**
+   * Write the Bloom filter to a file that can be loaded in the future.
+   *
+   * @param path Filepath to store filter at.
+   */
   void write(const std::string& path);
 
 private:

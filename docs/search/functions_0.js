@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['contains_44',['contains',['../classbtllib_1_1KmerBloomFilter.html#a313ba88552ef9adf2ac6a09e30f7a64c',1,'btllib::KmerBloomFilter::contains(const char *seq, size_t seq_len) const'],['../classbtllib_1_1KmerBloomFilter.html#ae08873ac46f99f809423c86db65255b1',1,'btllib::KmerBloomFilter::contains(const std::string &amp;seq) const']]]
+  ['bloomfilter_56',['BloomFilter',['../classbtllib_1_1BloomFilter.html#ae45ae1bfcffeb8e5afba24e2a6f5bc90',1,'btllib::BloomFilter::BloomFilter()'],['../classbtllib_1_1BloomFilter.html#a2c17efe6a06916af2bca47e5b1f29500',1,'btllib::BloomFilter::BloomFilter(size_t bytes, unsigned hash_num)'],['../classbtllib_1_1BloomFilter.html#afab84bd57e8d7b307673f548e5205b29',1,'btllib::BloomFilter::BloomFilter(const std::string &amp;path)']]]
 ];

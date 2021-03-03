@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['read_48',['read',['../classbtllib_1_1SeqReader.html#a7e8acc7bfbd8624cf8d9745922e9a034',1,'btllib::SeqReader']]],
-  ['roll_49',['roll',['../classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05',1,'btllib::NtHash']]]
+  ['kmerbloomfilter_70',['KmerBloomFilter',['../classbtllib_1_1KmerBloomFilter.html#a76683977f97d802b7ebe3e09884fb4e6',1,'btllib::KmerBloomFilter::KmerBloomFilter()'],['../classbtllib_1_1KmerBloomFilter.html#aebcf0f91e72aa2212a6d0f744789fb86',1,'btllib::KmerBloomFilter::KmerBloomFilter(size_t bytes, unsigned hash_num, unsigned k)'],['../classbtllib_1_1KmerBloomFilter.html#a56046ef890ff084f943f13989f69d504',1,'btllib::KmerBloomFilter::KmerBloomFilter(const std::string &amp;path)']]]
 ];

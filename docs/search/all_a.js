@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['write_25',['write',['../classbtllib_1_1CountingBloomFilter.html#a2a786558fc9b82feac48066dd40c4283',1,'btllib::CountingBloomFilter']]]
+  ['read_28',['read',['../classbtllib_1_1SeqReader.html#a7e8acc7bfbd8624cf8d9745922e9a034',1,'btllib::SeqReader']]],
+  ['record_29',['Record',['../structbtllib_1_1Indexlr_1_1Record.html',1,'btllib::Indexlr::Record'],['../structbtllib_1_1SeqReader_1_1Record.html',1,'btllib::SeqReader::Record']]],
+  ['roll_30',['roll',['../classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05',1,'btllib::NtHash']]]
 ];
