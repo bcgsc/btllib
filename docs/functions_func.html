@@ -72,9 +72,14 @@ $(function() {
 
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>contains()
-: <a class="el" href="classbtllib_1_1BloomFilter.html#a29af5077ed6bc89f3c5e51e1802b6cf1">btllib::BloomFilter</a>
+: <a class="el" href="classbtllib_1_1BloomFilter.html#a2ed85398ead96900dc728a795e21981f">btllib::BloomFilter</a>
+, <a class="el" href="classbtllib_1_1CountingBloomFilter.html#a951e4a020cc28cf1e4e1cf6cc09d314b">btllib::CountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1KmerBloomFilter.html#a313ba88552ef9adf2ac6a09e30f7a64c">btllib::KmerBloomFilter</a>
-, <a class="el" href="classbtllib_1_1SeedBloomFilter.html#ad08664a39c529781d67c240d5426ab01">btllib::SeedBloomFilter</a>
+, <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#afd1d44b715c8a0453221627f085a885e">btllib::KmerCountingBloomFilter&lt; T &gt;</a>
+, <a class="el" href="classbtllib_1_1SeedBloomFilter.html#a3da56bd6b0be875adceec6c199b53b83">btllib::SeedBloomFilter</a>
+</li>
+<li>CountingBloomFilter()
+: <a class="el" href="classbtllib_1_1CountingBloomFilter.html#a9705fdffa692d4b3469380b95b69b0e8">btllib::CountingBloomFilter&lt; T &gt;</a>
 </li>
 </ul>
 
@@ -85,17 +90,26 @@ $(function() {
 </li>
 <li>get_bytes()
 : <a class="el" href="classbtllib_1_1BloomFilter.html#ab555271b219e326c52871dcba236493f">btllib::BloomFilter</a>
+, <a class="el" href="classbtllib_1_1CountingBloomFilter.html#a757657b6cdee481025be9535d003e7d6">btllib::CountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1KmerBloomFilter.html#acaf81467d9dd71a89be9c43b05b6b33d">btllib::KmerBloomFilter</a>
+, <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#a5d7bcfa3c35a0bee90426ce139e2dc4a">btllib::KmerCountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1SeedBloomFilter.html#a984bda5e8ac31071c9ab61b2b2f1ab8e">btllib::SeedBloomFilter</a>
+</li>
+<li>get_counting_bloom_filter()
+: <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#aae7313b7afe859590b90597fe2bdaa6b">btllib::KmerCountingBloomFilter&lt; T &gt;</a>
 </li>
 <li>get_fpr()
 : <a class="el" href="classbtllib_1_1BloomFilter.html#a5dd9f8d1f65c7b5698d224690ed47848">btllib::BloomFilter</a>
+, <a class="el" href="classbtllib_1_1CountingBloomFilter.html#a172db896b1c6d60a5ae4727df1cd33a5">btllib::CountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1KmerBloomFilter.html#a0308def03cfa762667ebfff214ca96d2">btllib::KmerBloomFilter</a>
+, <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#af9667d4804419add12a97c9a01e1c979">btllib::KmerCountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1SeedBloomFilter.html#a90f162ecded0b3974eeaaf496ff6853e">btllib::SeedBloomFilter</a>
 </li>
 <li>get_hash_num()
 : <a class="el" href="classbtllib_1_1BloomFilter.html#a81c0dc774c122c0f5e98377dddaed0f4">btllib::BloomFilter</a>
+, <a class="el" href="classbtllib_1_1CountingBloomFilter.html#a92536bbe784a710cf27abec895d2ac44">btllib::CountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1KmerBloomFilter.html#a25a250e3e0dbf782dabd0264ba43e7a0">btllib::KmerBloomFilter</a>
+, <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#aadccd75150490cb6570e24cfbb2b60be">btllib::KmerCountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1SeedBloomFilter.html#ae8252f79e19a18665af02ec5ded5be97">btllib::SeedBloomFilter</a>
 </li>
 <li>get_hash_num_per_seed()
@@ -103,6 +117,7 @@ $(function() {
 </li>
 <li>get_k()
 : <a class="el" href="classbtllib_1_1KmerBloomFilter.html#ae3e514af53bc8db0a5b58210745970b8">btllib::KmerBloomFilter</a>
+, <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#ad51ae4b55f765aea12397c073bf1a7d1">btllib::KmerCountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1SeedBloomFilter.html#ab644f0b1af1c5a9897b812fedf6acc33">btllib::SeedBloomFilter</a>
 </li>
 <li>get_kmer_bloom_filter()
@@ -110,7 +125,9 @@ $(function() {
 </li>
 <li>get_occupancy()
 : <a class="el" href="classbtllib_1_1BloomFilter.html#ac9573cb27050b8ecf1473b722978d6f8">btllib::BloomFilter</a>
+, <a class="el" href="classbtllib_1_1CountingBloomFilter.html#afca13e8c6f3901e06f1dedfe9e5bbf60">btllib::CountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1KmerBloomFilter.html#acd201143bbb6d60bf1ffb32981e6a854">btllib::KmerBloomFilter</a>
+, <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#a847eeac1746a45320c08f16f5fd6eaf3">btllib::KmerCountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1SeedBloomFilter.html#a19d07b10ebb82e858914f88f9dca3a4c">btllib::SeedBloomFilter</a>
 </li>
 <li>get_parsed_seeds()
@@ -118,7 +135,9 @@ $(function() {
 </li>
 <li>get_pop_cnt()
 : <a class="el" href="classbtllib_1_1BloomFilter.html#aefbb78f46fdd79368842048b427aac20">btllib::BloomFilter</a>
+, <a class="el" href="classbtllib_1_1CountingBloomFilter.html#a69c657ea3b384c52f5d49bdb7255d2f6">btllib::CountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1KmerBloomFilter.html#a577d568f9dca7a39ce0048e1442886e2">btllib::KmerBloomFilter</a>
+, <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#ad1dddde95105fc79b833fc45998b64d2">btllib::KmerCountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1SeedBloomFilter.html#a96ce7ada797c1f578dae30c3d3128ad9">btllib::SeedBloomFilter</a>
 </li>
 <li>get_seeds()
@@ -130,7 +149,9 @@ $(function() {
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>insert()
 : <a class="el" href="classbtllib_1_1BloomFilter.html#a58dc018011bd2b3490c41710c3a86153">btllib::BloomFilter</a>
+, <a class="el" href="classbtllib_1_1CountingBloomFilter.html#ad11f2a8c8dbc742f35726f57f7181760">btllib::CountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1KmerBloomFilter.html#a004236cf211881d9c1d0216891381dd0">btllib::KmerBloomFilter</a>
+, <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#a9f5ab29059b0fa1cc5b076520639f14c">btllib::KmerCountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1SeedBloomFilter.html#a3c7a6908a0bad703848fcffaa81388cc">btllib::SeedBloomFilter</a>
 </li>
 </ul>
@@ -139,6 +160,9 @@ $(function() {
 <h3><a id="index_k"></a>- k -</h3><ul>
 <li>KmerBloomFilter()
 : <a class="el" href="classbtllib_1_1KmerBloomFilter.html#a76683977f97d802b7ebe3e09884fb4e6">btllib::KmerBloomFilter</a>
+</li>
+<li>KmerCountingBloomFilter()
+: <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#af5073e09146d1b029e4f6be38ec644bc">btllib::KmerCountingBloomFilter&lt; T &gt;</a>
 </li>
 </ul>
 
@@ -182,6 +206,7 @@ $(function() {
 : <a class="el" href="classbtllib_1_1BloomFilter.html#a6daf59f89a4bbeb2ab1adb7e0606352c">btllib::BloomFilter</a>
 , <a class="el" href="classbtllib_1_1CountingBloomFilter.html#a2a786558fc9b82feac48066dd40c4283">btllib::CountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1KmerBloomFilter.html#abadc15fe62b600f181b76b8447271e92">btllib::KmerBloomFilter</a>
+, <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#aedcffa9e51c9e1a596639add1ea8af93">btllib::KmerCountingBloomFilter&lt; T &gt;</a>
 , <a class="el" href="classbtllib_1_1SeedBloomFilter.html#a723a6867adcec5bc05f3949dfde9f6d6">btllib::SeedBloomFilter</a>
 </li>
 </ul>

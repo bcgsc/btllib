@@ -88,8 +88,10 @@ public:
   /**
    * Check for the presence of an element's hash values.
    *
-   * @param hashes Integer vector of hash values. Array size should equal the
+   * @param hashes Integer array of hash values. Array size should equal the
    * hash_num argument used when the Bloom filter was constructed.
+   *
+   * @return True if present, false otherwise.
    */
   bool contains(const uint64_t* hashes) const;
 
@@ -97,6 +99,8 @@ public:
    * Check for the presence of an element's hash values.
    *
    * @param hashes Integer vector of hash values.
+   *
+   * @return True if present, false otherwise.
    */
   bool contains(const std::vector<uint64_t>& hashes) const
   {
@@ -211,7 +215,7 @@ public:
   /**
    * Check for the presence of an element's hash values.
    *
-   * @param hashes Integer vector of hash values. Array size should equal the
+   * @param hashes Integer array of hash values. Array size should equal the
    * hash_num argument used when the Bloom filter was constructed.
    */
   bool contains(const uint64_t* hashes) const
@@ -340,7 +344,7 @@ public:
    * Check for the presence of an element's hash values. A single spaced seed is
    * an element here.
    *
-   * @param hashes Integer vector of hash values. Array size should equal the
+   * @param hashes Integer array of hash values. Array size should equal the
    * hash_num_per_seed argument used when the Bloom filter was constructed.
    */
   bool contains(const uint64_t* hashes) const
@@ -352,8 +356,7 @@ public:
    * Check for the presence of an element's hash values. A single spaced seed is
    * an element here.
    *
-   * @param hashes Integer vector of hash values. Array size should equal the
-   * hash_num_per_seed argument used when the Bloom filter was constructed.
+   * @param hashes Integer vector of hash values.
    */
   bool contains(const std::vector<uint64_t>& hashes) const
   {
