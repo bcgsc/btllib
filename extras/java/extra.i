@@ -8,6 +8,11 @@
 %ignore btllib::DataSource::operator FILE*() const;
 %ignore btllib::DataSink::operator FILE*() const;
 
+%rename (SeqReaderRecord) btllib::SeqReader::Record;
+%rename (SeqReaderFlag) btllib::SeqReader::Flag;
+%rename (IndexlrRecord) btllib::Indexlr::Record;
+%rename (IndexlrFlag) btllib::Indexlr::Flag;
+
 %{
   using btllib::SpacedSeed;
 %}

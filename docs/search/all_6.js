@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['mibloomfilter_23',['MIBloomFilter',['../classbtllib_1_1MIBloomFilter.html',1,'btllib']]],
-  ['minimizer_24',['Minimizer',['../structbtllib_1_1Indexlr_1_1Minimizer.html',1,'btllib::Indexlr']]]
+  ['log_5ferror_28',['log_error',['../namespacebtllib.html#aae48e6ebdbbde9836cd2c20347b85606',1,'btllib']]],
+  ['log_5finfo_29',['log_info',['../namespacebtllib.html#aa0d6ecae33b5e60b5c285f5358a9ad6a',1,'btllib']]],
+  ['log_5fwarning_30',['log_warning',['../namespacebtllib.html#a3d4af2317963b43668700a59fb8c67a6',1,'btllib']]]
 ];

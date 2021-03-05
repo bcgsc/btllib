@@ -80,7 +80,7 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>btllib {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacebtllib.html">btllib</a> {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classbtllib_1_1OrderQueue.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classbtllib_1_1OrderQueue.html">OrderQueue</a></div>
@@ -129,23 +129,23 @@ $(function() {
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="comment">// Surrounds pieces of data in the buffer with a busy mutex</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="comment">// for exclusive access</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structbtllib_1_1OrderQueue_1_1Slot.html">   61</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structbtllib_1_1OrderQueue_1_1Slot.html">Slot</a></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">struct </span>Slot</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="structbtllib_1_1OrderQueue_1_1Slot.html">Slot</a>(<span class="keywordtype">size_t</span> block_size)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    Slot(<span class="keywordtype">size_t</span> block_size)</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      : block(block_size)</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    {}</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="structbtllib_1_1OrderQueue_1_1Slot.html">Slot</a>(<span class="keyword">const</span> <a class="code" href="structbtllib_1_1OrderQueue_1_1Slot.html">Slot</a>&amp; slot)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    Slot(<span class="keyword">const</span> Slot&amp; slot)</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      : block(slot.block)</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      , occupied(slot.occupied)</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      , last_tenant(slot.last_tenant)</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    {}</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="structbtllib_1_1OrderQueue_1_1Slot.html">Slot</a>(<a class="code" href="structbtllib_1_1OrderQueue_1_1Slot.html">Slot</a>&amp;&amp; slot) noexcept</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    Slot(Slot&amp;&amp; slot) noexcept</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      : block(slot.block)</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      , occupied(slot.occupied)</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      , last_tenant(slot.last_tenant)</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    {}</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="structbtllib_1_1OrderQueue_1_1Slot.html">Slot</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="structbtllib_1_1OrderQueue_1_1Slot.html">Slot</a>&amp; slot)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    Slot&amp; operator=(<span class="keyword">const</span> Slot&amp; slot)</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    {</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;slot) {</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
@@ -155,7 +155,7 @@ $(function() {
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      last_tenant = slot.last_tenant;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="structbtllib_1_1OrderQueue_1_1Slot.html">Slot</a>&amp; operator=(<a class="code" href="structbtllib_1_1OrderQueue_1_1Slot.html">Slot</a>&amp;&amp; slot) noexcept</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    Slot&amp; operator=(Slot&amp;&amp; slot) noexcept</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      block = slot.block;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      occupied = slot.occupied;</div>
@@ -163,7 +163,7 @@ $(function() {
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">typename</span> <a class="code" href="structbtllib_1_1OrderQueue_1_1Block.html">OrderQueue&lt;T&gt;::Block</a> block;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">typename</span> OrderQueue&lt;T&gt;::Block block;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    std::mutex busy;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">bool</span> occupied = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::condition_variable occupancy_changed;</div>
@@ -300,8 +300,8 @@ $(function() {
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassbtllib_1_1OrderQueue_html"><div class="ttname"><a href="classbtllib_1_1OrderQueue.html">btllib::OrderQueue</a></div><div class="ttdef"><b>Definition:</b> order_queue.hpp:16</div></div>
+<div class="ttc" id="anamespacebtllib_html"><div class="ttname"><a href="namespacebtllib.html">btllib</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:18</div></div>
 <div class="ttc" id="astructbtllib_1_1OrderQueue_1_1Block_html"><div class="ttname"><a href="structbtllib_1_1OrderQueue_1_1Block.html">btllib::OrderQueue::Block</a></div><div class="ttdef"><b>Definition:</b> order_queue.hpp:20</div></div>
-<div class="ttc" id="astructbtllib_1_1OrderQueue_1_1Slot_html"><div class="ttname"><a href="structbtllib_1_1OrderQueue_1_1Slot.html">btllib::OrderQueue::Slot</a></div><div class="ttdef"><b>Definition:</b> order_queue.hpp:62</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

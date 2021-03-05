@@ -45,13 +45,15 @@ public:
      * sequences. */
     static const unsigned NO_TRIM_MASKED = 0;
     static const unsigned TRIM_MASKED = 2;
+    /** Long mode optimizes buffer_size and block_size for long sequences
+     * (around >5kbp) */
+    static const unsigned SHORT_MODE = 0;
+    static const unsigned LONG_MODE = 4;
   };
 
   SeqReader(const std::string& source_path,
             unsigned flags = 0,
-            unsigned threads = 3,
-            size_t buffer_size = 32,
-            size_t block_size = 32);
+            unsigned threads = 3);
 
   SeqReader(const SeqReader&) = delete;
   SeqReader(SeqReader&&) = delete;
@@ -65,6 +67,8 @@ public:
 
   bool fold_case() const { return bool(~flags & Flag::NO_FOLD_CASE); }
   bool trim_masked() const { return bool(flags & Flag::TRIM_MASKED); }
+  bool short_mode() const { return bool(~flags & Flag::LONG_MODE); }
+  bool long_mode() const { return bool(flags & Flag::LONG_MODE); }
 
   enum class Format
   {
@@ -104,6 +108,12 @@ private:
 
   static const size_t DETERMINE_FORMAT_CHARS = 2048;
   static const size_t BUFFER_SIZE = DETERMINE_FORMAT_CHARS;
+
+  static const size_t SHORT_MODE_BUFFER_SIZE = 32;
+  static const size_t SHORT_MODE_BLOCK_SIZE = 32;
+
+  static const size_t LONG_MODE_BUFFER_SIZE = 4;
+  static const size_t LONG_MODE_BLOCK_SIZE = 1;
 
   std::vector<char> buffer;
   size_t buffer_start = 0;
@@ -217,17 +227,15 @@ private:
 
 inline SeqReader::SeqReader(const std::string& source_path,
                             const unsigned flags,
-                            const unsigned threads,
-                            const size_t buffer_size,
-                            const size_t block_size)
+                            const unsigned threads)
   : source_path(source_path)
   , source(source_path)
   , flags(flags)
   , threads(threads)
   , buffer(std::vector<char>(BUFFER_SIZE))
   , reader_end(false)
-  , buffer_size(buffer_size)
-  , block_size(block_size)
+  , buffer_size(short_mode() ? SHORT_MODE_BUFFER_SIZE : LONG_MODE_BUFFER_SIZE)
+  , block_size(short_mode() ? SHORT_MODE_BLOCK_SIZE : LONG_MODE_BLOCK_SIZE)
   , cstring_queue(buffer_size, block_size)
   , output_queue(buffer_size, block_size)
   , id(++last_id())

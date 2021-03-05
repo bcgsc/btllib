@@ -86,7 +86,7 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span>btllib {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacebtllib.html">btllib</a> {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span> COUNTING_BLOOM_FILTER_MAGIC_HEADER =</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="stringliteral">&quot;BTLCountingBloomFilter_v2&quot;</span>;</div>
@@ -214,7 +214,7 @@ $(function() {
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  , array_size(get_bytes() / sizeof(array[0]))</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  , hash_num(hash_num)</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;{</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  check_warning(<span class="keyword">sizeof</span>(uint8_t) != <span class="keyword">sizeof</span>(std::atomic&lt;uint8_t&gt;),</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  <a class="code" href="namespacebtllib.html#a60a36f4583a7eb03001f8bdb7b395507">check_warning</a>(<span class="keyword">sizeof</span>(uint8_t) != <span class="keyword">sizeof</span>(std::atomic&lt;uint8_t&gt;),</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                <span class="stringliteral">&quot;Atomic primitives take extra memory. CountingBloomFilter will &quot;</span></div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                <span class="stringliteral">&quot;have less than &quot;</span> +</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                  std::to_string(bytes) + <span class="stringliteral">&quot; for bit array.&quot;</span>);</div>
@@ -301,13 +301,13 @@ $(function() {
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  <span class="keyword">auto</span> table =</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <a class="code" href="classbtllib_1_1BloomFilter.html#a2671dfd28714057547e9b7ac21d44d88">BloomFilter::parse_header</a>(file, COUNTING_BLOOM_FILTER_MAGIC_HEADER);</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  bytes = *table-&gt;get_as&lt;decltype(bytes)&gt;(<span class="stringliteral">&quot;bytes&quot;</span>);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  check_warning(<span class="keyword">sizeof</span>(uint8_t) != <span class="keyword">sizeof</span>(std::atomic&lt;uint8_t&gt;),</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  <a class="code" href="namespacebtllib.html#a60a36f4583a7eb03001f8bdb7b395507">check_warning</a>(<span class="keyword">sizeof</span>(uint8_t) != <span class="keyword">sizeof</span>(std::atomic&lt;uint8_t&gt;),</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                <span class="stringliteral">&quot;Atomic primitives take extra memory. CountingBloomFilter will &quot;</span></div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                <span class="stringliteral">&quot;have less than &quot;</span> +</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                  std::to_string(bytes) + <span class="stringliteral">&quot; for bit array.&quot;</span>);</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  array_size = bytes / <span class="keyword">sizeof</span>(array[0]);</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  hash_num = *table-&gt;get_as&lt;decltype(hash_num)&gt;(<span class="stringliteral">&quot;hash_num&quot;</span>);</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  check_error(</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  <a class="code" href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">check_error</a>(</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keyword">sizeof</span>(array[0]) * CHAR_BIT != *table-&gt;get_as&lt;<span class="keywordtype">size_t</span>&gt;(<span class="stringliteral">&quot;counter_bits&quot;</span>),</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="stringliteral">&quot;CountingBloomFilter&quot;</span> + std::to_string(<span class="keyword">sizeof</span>(array[0]) * CHAR_BIT) +</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;      <span class="stringliteral">&quot; tried to load a file of CountingBloomFilter&quot;</span> +</div>
@@ -381,7 +381,7 @@ $(function() {
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <a class="code" href="classbtllib_1_1BloomFilter.html#a2671dfd28714057547e9b7ac21d44d88">BloomFilter::parse_header</a>(file, KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER);</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;  counting_bloom_filter.bytes =</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    *table-&gt;get_as&lt;decltype(counting_bloom_filter.bytes)&gt;(<span class="stringliteral">&quot;bytes&quot;</span>);</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  check_warning(<span class="keyword">sizeof</span>(uint8_t) != <span class="keyword">sizeof</span>(std::atomic&lt;uint8_t&gt;),</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  <a class="code" href="namespacebtllib.html#a60a36f4583a7eb03001f8bdb7b395507">check_warning</a>(<span class="keyword">sizeof</span>(uint8_t) != <span class="keyword">sizeof</span>(std::atomic&lt;uint8_t&gt;),</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                <span class="stringliteral">&quot;Atomic primitives take extra memory. CountingBloomFilter will &quot;</span></div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                <span class="stringliteral">&quot;have less than &quot;</span> +</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                  std::to_string(get_bytes()) + <span class="stringliteral">&quot; for bit array.&quot;</span>);</div>
@@ -390,7 +390,7 @@ $(function() {
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;  counting_bloom_filter.hash_num =</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    *table-&gt;get_as&lt;decltype(counting_bloom_filter.hash_num)&gt;(<span class="stringliteral">&quot;hash_num&quot;</span>);</div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;  k = *table-&gt;get_as&lt;decltype(k)&gt;(<span class="stringliteral">&quot;k&quot;</span>);</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;  check_error(<span class="keyword">sizeof</span>(T) * CHAR_BIT != *table-&gt;get_as&lt;<span class="keywordtype">size_t</span>&gt;(<span class="stringliteral">&quot;counter_bits&quot;</span>),</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;  <a class="code" href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">check_error</a>(<span class="keyword">sizeof</span>(T) * CHAR_BIT != *table-&gt;get_as&lt;<span class="keywordtype">size_t</span>&gt;(<span class="stringliteral">&quot;counter_bits&quot;</span>),</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;              <span class="stringliteral">&quot;CountingBloomFilter&quot;</span> + std::to_string(<span class="keyword">sizeof</span>(T) * CHAR_BIT) +</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                <span class="stringliteral">&quot; tried to load a file of CountingBloomFilter&quot;</span> +</div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                std::to_string(*table-&gt;get_as&lt;<span class="keywordtype">size_t</span>&gt;(<span class="stringliteral">&quot;counter_bits&quot;</span>)));</div>
@@ -464,6 +464,9 @@ $(function() {
 <div class="ttc" id="aclassbtllib_1_1KmerCountingBloomFilter_html_afd1d44b715c8a0453221627f085a885e"><div class="ttname"><a href="classbtllib_1_1KmerCountingBloomFilter.html#afd1d44b715c8a0453221627f085a885e">btllib::KmerCountingBloomFilter::contains</a></div><div class="ttdeci">T contains(const std::vector&lt; uint64_t &gt; &amp;hashes) const</div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:220</div></div>
 <div class="ttc" id="aclassbtllib_1_1NtHash_html"><div class="ttname"><a href="classbtllib_1_1NtHash.html">btllib::NtHash</a></div><div class="ttdef"><b>Definition:</b> nthash.hpp:1268</div></div>
 <div class="ttc" id="aclassbtllib_1_1NtHash_html_a244c0c11655b6e1c52dd7c4528b8ed05"><div class="ttname"><a href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05">btllib::NtHash::roll</a></div><div class="ttdeci">bool roll()</div></div>
+<div class="ttc" id="anamespacebtllib_html"><div class="ttname"><a href="namespacebtllib.html">btllib</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:18</div></div>
+<div class="ttc" id="anamespacebtllib_html_a540bce0213b7718e519ddc4466361bf7"><div class="ttname"><a href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">btllib::check_error</a></div><div class="ttdeci">void check_error(bool condition, const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:126</div></div>
+<div class="ttc" id="anamespacebtllib_html_a60a36f4583a7eb03001f8bdb7b395507"><div class="ttname"><a href="namespacebtllib.html#a60a36f4583a7eb03001f8bdb7b395507">btllib::check_warning</a></div><div class="ttdeci">void check_warning(bool condition, const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:118</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['nthash_75',['NtHash',['../classbtllib_1_1NtHash.html#af0ccb96bbce8f6edeb5943c2c5df1281',1,'btllib::NtHash::NtHash(const char *seq, size_t seq_len, unsigned k, unsigned hash_num, size_t pos=0)'],['../classbtllib_1_1NtHash.html#a6553cdbd058890caa8e2028592cb709b',1,'btllib::NtHash::NtHash(const std::string &amp;seq, unsigned k, unsigned hash_num, size_t pos=0)']]]
+  ['log_5ferror_88',['log_error',['../namespacebtllib.html#aae48e6ebdbbde9836cd2c20347b85606',1,'btllib']]],
+  ['log_5finfo_89',['log_info',['../namespacebtllib.html#aa0d6ecae33b5e60b5c285f5358a9ad6a',1,'btllib']]],
+  ['log_5fwarning_90',['log_warning',['../namespacebtllib.html#a3d4af2317963b43668700a59fb8c67a6',1,'btllib']]]
 ];

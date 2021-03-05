@@ -120,13 +120,13 @@ public:
 
   static const size_t MAX_SIMULTANEOUS_INDEXLRS = 256;
 
+private:
   static const size_t SHORT_MODE_BUFFER_SIZE = 32;
   static const size_t SHORT_MODE_BLOCK_SIZE = 32;
 
   static const size_t LONG_MODE_BUFFER_SIZE = 4;
   static const size_t LONG_MODE_BLOCK_SIZE = 1;
 
-private:
   struct Read
   {
     Read() {}
@@ -291,7 +291,10 @@ inline Indexlr::Indexlr(std::string seqfile,
   , filter_out_enabled(filter_out())
   , input_queue(buffer_size, block_size)
   , output_queue(buffer_size, block_size)
-  , reader(this->seqfile, 0, 3, buffer_size, block_size)
+  , reader(this->seqfile,
+           short_mode() ? SeqReader::Flag::SHORT_MODE
+                        : SeqReader::Flag::LONG_MODE,
+           3)
   , input_worker(*this)
   , minimize_workers(
       std::vector<MinimizeWorker>(threads, MinimizeWorker(*this)))

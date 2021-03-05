@@ -1,3 +1,6 @@
+/**
+ * Functions for logging and error checking.
+ */
 #ifndef BTLLIB_STATUS_HPP
 #define BTLLIB_STATUS_HPP
 
@@ -11,18 +14,67 @@ namespace btllib {
 
 inline std::string
 get_time();
+
+/**
+ * Log info level events.
+ *
+ * @param msg Message to print.
+ */
 inline void
 log_info(const std::string& msg);
+
+/**
+ * Log warning level events.
+ *
+ * @param msg Message to print.
+ */
 inline void
 log_warning(const std::string& msg);
+
+/**
+ * Log error level events.
+ *
+ * @param msg Message to print.
+ */
 inline void
 log_error(const std::string& msg);
+
+/**
+ * Conditionally log info level events.
+ *
+ * @param condition If this is true, the message is printed.
+ * @param msg Message to print.
+ */
 inline void
 check_info(bool condition, const std::string& msg);
+
+/**
+ * Conditionally log warning level events.
+ *
+ * @param condition If this is true, the message is printed.
+ * @param msg Message to print.
+ */
 inline void
 check_warning(bool condition, const std::string& msg);
+
+/**
+ * Conditionally log error level events. The program exits if the condition is
+ * true.
+ *
+ * @param condition If this is true, the message is printed and the program
+ * exits.
+ * @param msg Message to print.
+ */
 inline void
 check_error(bool condition, const std::string& msg);
+
+/**
+ * Check whether the stream is good. Program prints an error message and exits
+ * if not.
+ *
+ * @param stream Stream to check goodness of.
+ * @param name Name of the stream, e.g. filepath or stdin
+ */
 inline void
 check_stream(const std::ios& stream, const std::string& name);
 

@@ -1,3 +1,6 @@
+/**
+ * Random utility functions.
+ */
 #ifndef BTLLIB_UTIL_HPP
 #define BTLLIB_UTIL_HPP
 
