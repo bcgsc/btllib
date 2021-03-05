@@ -34,17 +34,33 @@ public:
    */
   struct Flag
   {
+    /** Include read ID along with minimizer information. */
     static const unsigned ID = 0;
+    /** Do not include read ID information. May improve performance. */
     static const unsigned NO_ID = 1;
+    /** Include barcode along with minimizer information. */
     static const unsigned BX = 2;
+    /** Do not include barcode information. May improve performance. */
     static const unsigned NO_BX = 0;
+    /** Include read sequence along with minimizer information. */
     static const unsigned SEQ = 4;
+    /** Do not include read sequence information. May improve performance. */
     static const unsigned NO_SEQ = 0;
+    /** Only include minimizers found in the first Bloom filter argument.
+     */
     static const unsigned FILTER_IN = 8;
+    /** Do not perform filter-in processing. */
     static const unsigned NO_FILTER_IN = 0;
+    /** Filter out minimizers found in a Bloom filter argument. If FILTER_IN is
+     * NOT enabled, then use the first Bloom filter argument. If both FILTER_IN
+     * and FILTER_OUT flags are enabled, FILTER_IN uses the first Bloom filter
+     * argument and FILTER_OUT uses the second. */
     static const unsigned FILTER_OUT = 16;
+    /** Do not perform filter-out processing. */
     static const unsigned NO_FILTER_OUT = 0;
+    /** Optimizes performance for short sequences (approx. <=5kbp) */
     static const unsigned SHORT_MODE = 0;
+    /** Optimizes performance for long sequences (approx. >5kbp) */
     static const unsigned LONG_MODE = 32;
   };
 
@@ -163,8 +179,8 @@ private:
     return VAR;
   }
 
-  const std::reference_wrapper<const BloomFilter> bf1;
-  const std::reference_wrapper<const BloomFilter> bf2;
+  const std::reference_wrapper<const BloomFilter> filter_in_bf;
+  const std::reference_wrapper<const BloomFilter> filter_out_bf;
   bool filter_in_enabled;
   bool filter_out_enabled;
 
@@ -285,8 +301,8 @@ inline Indexlr::Indexlr(std::string seqfile,
   , id(++last_id())
   , buffer_size(short_mode() ? SHORT_MODE_BUFFER_SIZE : LONG_MODE_BUFFER_SIZE)
   , block_size(short_mode() ? SHORT_MODE_BLOCK_SIZE : LONG_MODE_BLOCK_SIZE)
-  , bf1(bf1)
-  , bf2(bf2)
+  , filter_in_bf(filter_in() ? bf1 : Indexlr::dummy_bf())
+  , filter_out_bf(filter_out() ? filter_in() ? bf2 : bf1 : Indexlr::dummy_bf())
   , filter_in_enabled(filter_in())
   , filter_out_enabled(filter_out())
   , input_queue(buffer_size, block_size)
@@ -387,15 +403,16 @@ Indexlr::minimize(const std::string& seq) const
     if (filter_in() && filter_out()) {
       std::vector<uint64_t> tmp;
       tmp = { hk.min_hash };
-      if (!bf1.get().contains(tmp) || bf2.get().contains(tmp)) {
+      if (!filter_in_bf.get().contains(tmp) ||
+          filter_out_bf.get().contains(tmp)) {
         hk.min_hash = std::numeric_limits<uint64_t>::max();
       }
     } else if (filter_in()) {
-      if (!bf1.get().contains({ hk.min_hash })) {
+      if (!filter_in_bf.get().contains({ hk.min_hash })) {
         hk.min_hash = std::numeric_limits<uint64_t>::max();
       }
     } else if (filter_out()) {
-      if (bf1.get().contains({ hk.min_hash })) {
+      if (filter_out_bf.get().contains({ hk.min_hash })) {
         hk.min_hash = std::numeric_limits<uint64_t>::max();
       }
     }

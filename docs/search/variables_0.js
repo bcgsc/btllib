@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fold_5fcase_99',['FOLD_CASE',['../structbtllib_1_1SeqReader_1_1Flag.html#a44ad672a99f366b36f2df42b5c05c6c0',1,'btllib::SeqReader::Flag']]]
+  ['bx_112',['BX',['../structbtllib_1_1Indexlr_1_1Flag.html#a07fb1c3c507f8e24e4621af2998733de',1,'btllib::Indexlr::Flag']]]
 ];

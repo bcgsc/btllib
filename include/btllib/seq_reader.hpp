@@ -40,14 +40,16 @@ public:
   {
     /** Fold lower-case characters to upper-case. */
     static const unsigned FOLD_CASE = 0;
+    /** Do not perform any case folding. May improve performance. */
     static const unsigned NO_FOLD_CASE = 1;
+    /** Do not preform any character trimming. May improve performance. */
+    static const unsigned NO_TRIM_MASKED = 0;
     /** Trim masked (lower case) characters from the ends of
      * sequences. */
-    static const unsigned NO_TRIM_MASKED = 0;
     static const unsigned TRIM_MASKED = 2;
-    /** Long mode optimizes buffer_size and block_size for long sequences
-     * (around >5kbp) */
+    /** Optimizes performance for short sequences (approx. <=5kbp) */
     static const unsigned SHORT_MODE = 0;
+    /** Optimizes performance for long sequences (approx. >5kbp) */
     static const unsigned LONG_MODE = 4;
   };
 
