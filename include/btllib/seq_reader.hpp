@@ -28,7 +28,9 @@ namespace btllib {
  * An example of reading a gzipped fastq file.
  */
 
-/** Read a FASTA, FASTQ, SAM, or GFA2 file. Threadsafe. */
+/** Read a FASTA, FASTQ, SAM, or GFA2 file. Capable of reading gzipped (.gz),
+ * bzipped (.bz2), xzipped (.xz), zipped (.zip), 7zipped (.7z), BAM (.bam) and
+ * CRAM (.cram), and URL (http://, https://, ftp://) files. Threadsafe. */
 class SeqReader
 {
 public:

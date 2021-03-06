@@ -15,7 +15,10 @@ namespace btllib {
  * An example of writing a gzipped fastq file.
  */
 
-/** Write FASTA or FASTQ sequences to a file. Threadsafe. */
+/** Write FASTA or FASTQ sequences to a file. Capable of writing gzipped (.gz),
+ * bzipped (.bz2), xzipped (.xz), zipped (.zip), and 7zipped (.7z) files. Add
+ * the appropriate extension to the output filename to automatically compress.
+ * Threadsafe. */
 class SeqWriter
 {
 
