@@ -35,7 +35,7 @@ public:
   void write(const std::string& name,
              const std::string& comment,
              const std::string& seq,
-             const std::string& qual);
+             const std::string& qual = "");
 
 private:
   const std::string sink_path;

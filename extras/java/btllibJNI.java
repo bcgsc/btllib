@@ -259,7 +259,8 @@ public class btllibJNI {
   public final static native long new_SeqWriter__SWIG_1(String jarg1, int jarg2);
   public final static native long new_SeqWriter__SWIG_2(String jarg1);
   public final static native void SeqWriter_close(long jarg1, SeqWriter jarg1_);
-  public final static native void SeqWriter_write(long jarg1, SeqWriter jarg1_, String jarg2, String jarg3, String jarg4, String jarg5);
+  public final static native void SeqWriter_write__SWIG_0(long jarg1, SeqWriter jarg1_, String jarg2, String jarg3, String jarg4, String jarg5);
+  public final static native void SeqWriter_write__SWIG_1(long jarg1, SeqWriter jarg1_, String jarg2, String jarg3, String jarg4);
   public final static native void delete_SeqWriter(long jarg1);
   public final static native int PIPE_READ_END_get();
   public final static native int PIPE_WRITE_END_get();
