@@ -305,6 +305,10 @@ public class btllibJNI {
   public final static native boolean PROCESS_SPAWNER_INITIALIZER_get();
   public final static native String get_pipeline_cmd(String jarg1, int jarg2);
   public final static native long run_pipeline_cmd(String jarg1, int jarg2, int jarg3);
+  public final static native String PRINT_COLOR_INFO_get();
+  public final static native String PRINT_COLOR_WARNING_get();
+  public final static native String PRINT_COLOR_ERROR_get();
+  public final static native String PRINT_COLOR_END_get();
   public final static native String get_time();
   public final static native void log_info(String jarg1);
   public final static native void log_warning(String jarg1);

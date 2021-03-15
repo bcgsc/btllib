@@ -12,6 +12,11 @@
 
 namespace btllib {
 
+constexpr const char* PRINT_COLOR_INFO = "\33[32m";
+constexpr const char* PRINT_COLOR_WARNING = "\33[33m";
+constexpr const char* PRINT_COLOR_ERROR = "\33[31m";
+constexpr const char* PRINT_COLOR_END = "\33[0m";
+
 inline std::string
 get_time();
 
@@ -84,26 +89,34 @@ get_time()
   time_t now;
   time(&now);
   char buf[sizeof("2011-10-08T07:07:09Z")];
-  strftime(buf, sizeof buf, "%F %T", localtime(&now));
+  std::tm tm_result = {};
+  localtime_r(&now, &tm_result);
+  std::strftime(buf, sizeof buf, "%F %T", &tm_result);
   return std::string(buf);
 }
 
 inline void
 log_info(const std::string& msg)
 {
-  std::cerr << ('[' + get_time() + "] [INFO] " + msg + '\n') << std::flush;
+  std::cerr << ('[' + get_time() + "]" + PRINT_COLOR_INFO + "[INFO] " +
+                PRINT_COLOR_END + msg + '\n')
+            << std::flush;
 }
 
 inline void
 log_warning(const std::string& msg)
 {
-  std::cerr << ('[' + get_time() + "] [WARNING] " + msg + '\n') << std::flush;
+  std::cerr << ('[' + get_time() + "]" + PRINT_COLOR_WARNING + "[WARNING] " +
+                PRINT_COLOR_END + msg + '\n')
+            << std::flush;
 }
 
 inline void
 log_error(const std::string& msg)
 {
-  std::cerr << ('[' + get_time() + "] [ERROR] " + msg + '\n') << std::flush;
+  std::cerr << ('[' + get_time() + "]" + PRINT_COLOR_ERROR + "[ERROR] " +
+                PRINT_COLOR_END + msg + '\n')
+            << std::flush;
 }
 
 inline void

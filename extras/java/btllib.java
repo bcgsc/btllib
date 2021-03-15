@@ -426,6 +426,22 @@ public class btllib {
     return new DataStreamPipeline(btllibJNI.run_pipeline_cmd(cmd, op.swigValue(), pipe_fd), true);
   }
 
+  public static String getPRINT_COLOR_INFO() {
+    return btllibJNI.PRINT_COLOR_INFO_get();
+  }
+
+  public static String getPRINT_COLOR_WARNING() {
+    return btllibJNI.PRINT_COLOR_WARNING_get();
+  }
+
+  public static String getPRINT_COLOR_ERROR() {
+    return btllibJNI.PRINT_COLOR_ERROR_get();
+  }
+
+  public static String getPRINT_COLOR_END() {
+    return btllibJNI.PRINT_COLOR_END_get();
+  }
+
   public static String get_time() {
     return btllibJNI.get_time();
   }

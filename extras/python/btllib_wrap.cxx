@@ -21976,6 +21976,70 @@ fail:
 }
 
 
+SWIGINTERN int Swig_var_PRINT_COLOR_INFO_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable PRINT_COLOR_INFO is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_PRINT_COLOR_INFO_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_FromCharPtr(btllib::PRINT_COLOR_INFO);
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_PRINT_COLOR_WARNING_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable PRINT_COLOR_WARNING is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_PRINT_COLOR_WARNING_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_FromCharPtr(btllib::PRINT_COLOR_WARNING);
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_PRINT_COLOR_ERROR_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable PRINT_COLOR_ERROR is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_PRINT_COLOR_ERROR_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_FromCharPtr(btllib::PRINT_COLOR_ERROR);
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_PRINT_COLOR_END_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable PRINT_COLOR_END is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_PRINT_COLOR_END_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_FromCharPtr(btllib::PRINT_COLOR_END);
+  return pyobj;
+}
+
+
 SWIGINTERN PyObject *_wrap_get_time(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   std::string result;
@@ -29724,6 +29788,18 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "PROCESS_SPAWNER_INITIALIZER", Swig_var_PROCESS_SPAWNER_INITIALIZER_get, Swig_var_PROCESS_SPAWNER_INITIALIZER_set);
   PyDict_SetItemString(md, "PROCESS_SPAWNER_INITIALIZER", PyObject_GetAttrString(globals, "PROCESS_SPAWNER_INITIALIZER"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "PROCESS_SPAWNER_INITIALIZER");
+  SWIG_addvarlink(globals, "PRINT_COLOR_INFO", Swig_var_PRINT_COLOR_INFO_get, Swig_var_PRINT_COLOR_INFO_set);
+  PyDict_SetItemString(md, "PRINT_COLOR_INFO", PyObject_GetAttrString(globals, "PRINT_COLOR_INFO"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "PRINT_COLOR_INFO");
+  SWIG_addvarlink(globals, "PRINT_COLOR_WARNING", Swig_var_PRINT_COLOR_WARNING_get, Swig_var_PRINT_COLOR_WARNING_set);
+  PyDict_SetItemString(md, "PRINT_COLOR_WARNING", PyObject_GetAttrString(globals, "PRINT_COLOR_WARNING"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "PRINT_COLOR_WARNING");
+  SWIG_addvarlink(globals, "PRINT_COLOR_ERROR", Swig_var_PRINT_COLOR_ERROR_get, Swig_var_PRINT_COLOR_ERROR_set);
+  PyDict_SetItemString(md, "PRINT_COLOR_ERROR", PyObject_GetAttrString(globals, "PRINT_COLOR_ERROR"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "PRINT_COLOR_ERROR");
+  SWIG_addvarlink(globals, "PRINT_COLOR_END", Swig_var_PRINT_COLOR_END_get, Swig_var_PRINT_COLOR_END_set);
+  PyDict_SetItemString(md, "PRINT_COLOR_END", PyObject_GetAttrString(globals, "PRINT_COLOR_END"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "PRINT_COLOR_END");
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else
