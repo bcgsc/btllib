@@ -117,8 +117,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>long_mode</b> () cons
 <tr class="memitem:af499cebc008f6828c46de09092d9b96c"><td class="memItemLeft" align="right" valign="top"><a id="af499cebc008f6828c46de09092d9b96c"></a>
 <a class="el" href="structbtllib_1_1Indexlr_1_1Record.html">Record</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_minimizers</b> ()</td></tr>
 <tr class="separator:af499cebc008f6828c46de09092d9b96c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16eaf1402422f88cd3a66d03e9e11b85"><td class="memItemLeft" align="right" valign="top"><a id="a16eaf1402422f88cd3a66d03e9e11b85"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Indexlr</b> (std::string seqfile, size_t k, size_t w, unsigned flags=0, unsigned threads=5, bool verbose=false, const <a class="el" href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a> &amp;bf1=Indexlr::dummy_bf(), const <a class="el" href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a> &amp;bf2=Indexlr::dummy_bf())</td></tr>
+<tr class="memitem:a16eaf1402422f88cd3a66d03e9e11b85"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1Indexlr.html#a16eaf1402422f88cd3a66d03e9e11b85">Indexlr</a> (std::string seqfile, size_t k, size_t w, unsigned flags=0, unsigned threads=5, bool verbose=false, const <a class="el" href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a> &amp;bf1=Indexlr::dummy_bf(), const <a class="el" href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a> &amp;bf2=Indexlr::dummy_bf())</td></tr>
 <tr class="separator:a16eaf1402422f88cd3a66d03e9e11b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
@@ -127,6 +126,93 @@ Static Public Attributes</h2></td></tr>
 static const size_t&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_SIMULTANEOUS_INDEXLRS</b> = 256</td></tr>
 <tr class="separator:a9cebcc5048cd4b65f5ef414ecf2cf684"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a16eaf1402422f88cd3a66d03e9e11b85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16eaf1402422f88cd3a66d03e9e11b85">&#9670;&nbsp;</a></span>Indexlr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">btllib::Indexlr::Indexlr </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>seqfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>flags</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>threads</em> = <code>5</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>verbose</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a> &amp;&#160;</td>
+          <td class="paramname"><em>bf1</em> = <code>Indexlr::dummy_bf()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a> &amp;&#160;</td>
+          <td class="paramname"><em>bf2</em> = <code>Indexlr::dummy_bf()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Construct a <a class="el" href="classbtllib_1_1SeqReader.html">SeqReader</a> to read sequences from a given path.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seqfile</td><td>Filepath to read sequences from. Pass "-" to read from stdin. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size for the minimizer. </td></tr>
+    <tr><td class="paramname">w</td><td>window size when selecting minimizers. </td></tr>
+    <tr><td class="paramname">flags</td><td>Modifier flags. Specifiying either short or long mode flag is mandatory; other flags are optional. </td></tr>
+    <tr><td class="paramname">threads</td><td>Maximum number of processing threads to use. Must be at least 1. </td></tr>
+    <tr><td class="paramname">verbose</td><td>Whether to output informational messages during processing. </td></tr>
+    <tr><td class="paramname">bf1</td><td>A Bloom filter to use for either filtering minimizers in or out, if one of the flags is enabled. If both are enabled, bf1 is used for filtering in. </td></tr>
+    <tr><td class="paramname">bf2</td><td>A second Bloom filter to use when both filtering minimizers in and out is enabled. bf2 is used for filtering out. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/btllib/<a class="el" href="indexlr_8hpp_source.html">indexlr.hpp</a></li>
 </ul>

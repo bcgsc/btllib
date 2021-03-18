@@ -113,6 +113,24 @@ public:
 
   Record get_minimizers();
 
+  /**
+   * Construct a SeqReader to read sequences from a given path.
+   *
+   * @param seqfile Filepath to read sequences from. Pass "-" to read from
+   * stdin.
+   * @param k k-mer size for the minimizer.
+   * @param w window size when selecting minimizers.
+   * @param flags Modifier flags. Specifiying either short or long mode flag is
+   * mandatory; other flags are optional.
+   * @param threads Maximum number of processing threads to use. Must be at
+   * least 1.
+   * @param verbose Whether to output informational messages during processing.
+   * @param bf1 A Bloom filter to use for either filtering minimizers in or out,
+   * if one of the flags is enabled. If both are enabled, bf1 is used for
+   * filtering in.
+   * @param bf2 A second Bloom filter to use when both filtering minimizers in
+   * and out is enabled. bf2 is used for filtering out.
+   */
   Indexlr(std::string seqfile,
           size_t k,
           size_t w,
@@ -307,6 +325,8 @@ inline Indexlr::Indexlr(std::string seqfile,
   check_error(!short_mode() && !long_mode(),
               "Indexlr: no mode selected, either short or long mode flag must "
               "be provided.");
+  check_error(threads == 0,
+              "Indexlr: Number of processing threads cannot be 0.");
   input_worker.start();
   for (auto& worker : minimize_workers) {
     worker.start();

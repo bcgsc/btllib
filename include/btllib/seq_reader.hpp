@@ -55,7 +55,8 @@ public:
    * Construct a SeqReader to read sequences from a given path.
    *
    * @param source_path Filepath to read from. Pass "-" to read from stdin.
-   * @param flags Modifier flags.
+   * @param flags Modifier flags. Specifiying either short or long mode flag is
+   * mandatory; other flags are optional.
    * @param threads Maximum number of helper threads to use. Must be at least 1.
    */
   SeqReader(const std::string& source_path,
