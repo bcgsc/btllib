@@ -29,6 +29,13 @@ public:
     FASTQ
   };
 
+  /**
+   * Construct a SeqWriter to write sequences to a given path.
+   *
+   * @param source_path Filepath to write to. Pass "-" to write to stdout.
+   * @param format Which format to write the output as.
+   * @param append Whether to append to the target file or write anew.
+   */
   SeqWriter(const std::string& sink_path,
             Format format = FASTA,
             bool append = false);
@@ -93,8 +100,8 @@ SeqWriter::write(const std::string& name,
   if (!comment.empty()) {
     output += " ";
     output += comment;
-    output += '\n';
   }
+  output += '\n';
 
   output += seq;
   output += '\n';

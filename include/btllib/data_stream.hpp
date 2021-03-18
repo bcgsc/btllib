@@ -660,8 +660,12 @@ run_pipeline_cmd(const std::string& cmd, DataStream::Operation op, int pipe_fd)
     std::string stdout_to_file;
     decltype(args)::iterator it;
     for (it = args.begin(); it != args.end(); ++it) {
-      if (it->front() == '>') {
-        stdout_to_file = it->substr(1);
+      if (it->at(0) == '>') {
+        if (it->at(1) == '>') {
+          stdout_to_file = it->substr(2);
+        } else {
+          stdout_to_file = it->substr(1);
+        }
         break;
       }
     }

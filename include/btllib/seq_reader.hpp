@@ -55,6 +55,13 @@ public:
     static const unsigned LONG_MODE = 4;
   };
 
+  /**
+   * Construct a SeqReader to read sequences from a given path.
+   *
+   * @param source_path Filepath to read from. Pass "-" to read from stdin.
+   * @param flags Modifier flags.
+   * @param threads Maximum number of helper threads to use. Must be at least 1.
+   */
   SeqReader(const std::string& source_path,
             unsigned flags = 0,
             unsigned threads = 3);
@@ -244,6 +251,7 @@ inline SeqReader::SeqReader(const std::string& source_path,
   , output_queue(buffer_size, block_size)
   , id(++last_id())
 {
+  check_error(threads == 0, "SeqReader: Number of helper threads cannot be 0.");
   start_processor();
   {
     std::unique_lock<std::mutex> lock(format_mutex);
