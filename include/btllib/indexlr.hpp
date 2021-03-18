@@ -34,34 +34,24 @@ public:
    */
   struct Flag
   {
-    /** Include read ID along with minimizer information. */
-    static const unsigned ID = 0;
     /** Do not include read ID information. May improve performance. */
     static const unsigned NO_ID = 1;
     /** Include barcode along with minimizer information. */
     static const unsigned BX = 2;
-    /** Do not include barcode information. May improve performance. */
-    static const unsigned NO_BX = 0;
     /** Include read sequence along with minimizer information. */
     static const unsigned SEQ = 4;
-    /** Do not include read sequence information. May improve performance. */
-    static const unsigned NO_SEQ = 0;
     /** Only include minimizers found in the first Bloom filter argument.
      */
     static const unsigned FILTER_IN = 8;
-    /** Do not perform filter-in processing. */
-    static const unsigned NO_FILTER_IN = 0;
     /** Filter out minimizers found in a Bloom filter argument. If FILTER_IN is
      * NOT enabled, then use the first Bloom filter argument. If both FILTER_IN
      * and FILTER_OUT flags are enabled, FILTER_IN uses the first Bloom filter
      * argument and FILTER_OUT uses the second. */
     static const unsigned FILTER_OUT = 16;
-    /** Do not perform filter-out processing. */
-    static const unsigned NO_FILTER_OUT = 0;
     /** Optimizes performance for short sequences (approx. <=5kbp) */
-    static const unsigned SHORT_MODE = 0;
+    static const unsigned SHORT_MODE = 32;
     /** Optimizes performance for long sequences (approx. >5kbp) */
-    static const unsigned LONG_MODE = 32;
+    static const unsigned LONG_MODE = 64;
   };
 
   bool output_id() const { return bool(~flags & Flag::NO_ID); }
@@ -309,12 +299,14 @@ inline Indexlr::Indexlr(std::string seqfile,
   , output_queue(buffer_size, block_size)
   , reader(this->seqfile,
            short_mode() ? SeqReader::Flag::SHORT_MODE
-                        : SeqReader::Flag::LONG_MODE,
-           3)
+                        : SeqReader::Flag::LONG_MODE)
   , input_worker(*this)
   , minimize_workers(
       std::vector<MinimizeWorker>(threads, MinimizeWorker(*this)))
 {
+  check_error(!short_mode() && !long_mode(),
+              "Indexlr: no mode selected, either short or long mode flag must "
+              "be provided.");
   input_worker.start();
   for (auto& worker : minimize_workers) {
     worker.start();

@@ -68,9 +68,7 @@ public class SeqReader {
       this(btllibJNI.new_SeqReaderFlag(), true);
     }
   
-    public final static long FOLD_CASE = btllibJNI.SeqReader_SeqReaderFlag_FOLD_CASE_get();
     public final static long NO_FOLD_CASE = btllibJNI.SeqReader_SeqReaderFlag_NO_FOLD_CASE_get();
-    public final static long NO_TRIM_MASKED = btllibJNI.SeqReader_SeqReaderFlag_NO_TRIM_MASKED_get();
     public final static long TRIM_MASKED = btllibJNI.SeqReader_SeqReaderFlag_TRIM_MASKED_get();
     public final static long SHORT_MODE = btllibJNI.SeqReader_SeqReaderFlag_SHORT_MODE_get();
     public final static long LONG_MODE = btllibJNI.SeqReader_SeqReaderFlag_LONG_MODE_get();

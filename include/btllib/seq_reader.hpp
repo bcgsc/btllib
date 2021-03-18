@@ -40,19 +40,15 @@ public:
    */
   struct Flag
   {
-    /** Fold lower-case characters to upper-case. */
-    static const unsigned FOLD_CASE = 0;
     /** Do not perform any case folding. May improve performance. */
     static const unsigned NO_FOLD_CASE = 1;
-    /** Do not preform any character trimming. May improve performance. */
-    static const unsigned NO_TRIM_MASKED = 0;
     /** Trim masked (lower case) characters from the ends of
      * sequences. */
     static const unsigned TRIM_MASKED = 2;
     /** Optimizes performance for short sequences (approx. <=5kbp) */
-    static const unsigned SHORT_MODE = 0;
+    static const unsigned SHORT_MODE = 4;
     /** Optimizes performance for long sequences (approx. >5kbp) */
-    static const unsigned LONG_MODE = 4;
+    static const unsigned LONG_MODE = 8;
   };
 
   /**
@@ -78,7 +74,7 @@ public:
 
   bool fold_case() const { return bool(~flags & Flag::NO_FOLD_CASE); }
   bool trim_masked() const { return bool(flags & Flag::TRIM_MASKED); }
-  bool short_mode() const { return bool(~flags & Flag::LONG_MODE); }
+  bool short_mode() const { return bool(flags & Flag::SHORT_MODE); }
   bool long_mode() const { return bool(flags & Flag::LONG_MODE); }
 
   enum class Format
@@ -251,6 +247,9 @@ inline SeqReader::SeqReader(const std::string& source_path,
   , output_queue(buffer_size, block_size)
   , id(++last_id())
 {
+  check_error(!short_mode() && !long_mode(),
+              "SeqReader: no mode selected, either short or long mode flag "
+              "must be provided.");
   check_error(threads == 0, "SeqReader: Number of helper threads cannot be 0.");
   start_processor();
   {

@@ -68,16 +68,11 @@ public class Indexlr {
       this(btllibJNI.new_IndexlrFlag(), true);
     }
   
-    public final static long ID = btllibJNI.Indexlr_IndexlrFlag_ID_get();
     public final static long NO_ID = btllibJNI.Indexlr_IndexlrFlag_NO_ID_get();
     public final static long BX = btllibJNI.Indexlr_IndexlrFlag_BX_get();
-    public final static long NO_BX = btllibJNI.Indexlr_IndexlrFlag_NO_BX_get();
     public final static long SEQ = btllibJNI.Indexlr_IndexlrFlag_SEQ_get();
-    public final static long NO_SEQ = btllibJNI.Indexlr_IndexlrFlag_NO_SEQ_get();
     public final static long FILTER_IN = btllibJNI.Indexlr_IndexlrFlag_FILTER_IN_get();
-    public final static long NO_FILTER_IN = btllibJNI.Indexlr_IndexlrFlag_NO_FILTER_IN_get();
     public final static long FILTER_OUT = btllibJNI.Indexlr_IndexlrFlag_FILTER_OUT_get();
-    public final static long NO_FILTER_OUT = btllibJNI.Indexlr_IndexlrFlag_NO_FILTER_OUT_get();
     public final static long SHORT_MODE = btllibJNI.Indexlr_IndexlrFlag_SHORT_MODE_get();
     public final static long LONG_MODE = btllibJNI.Indexlr_IndexlrFlag_LONG_MODE_get();
   }

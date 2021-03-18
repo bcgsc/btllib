@@ -9,9 +9,7 @@
 package btllib;
 
 public class btllibJNI {
-  public final static native long SeqReader_SeqReaderFlag_FOLD_CASE_get();
   public final static native long SeqReader_SeqReaderFlag_NO_FOLD_CASE_get();
-  public final static native long SeqReader_SeqReaderFlag_NO_TRIM_MASKED_get();
   public final static native long SeqReader_SeqReaderFlag_TRIM_MASKED_get();
   public final static native long SeqReader_SeqReaderFlag_SHORT_MODE_get();
   public final static native long SeqReader_SeqReaderFlag_LONG_MODE_get();
@@ -105,16 +103,11 @@ public class btllibJNI {
   public final static native void reverse_complement(long jarg1);
   public final static native String get_reverse_complement(String jarg1);
   public final static native String KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_get();
-  public final static native long Indexlr_IndexlrFlag_ID_get();
   public final static native long Indexlr_IndexlrFlag_NO_ID_get();
   public final static native long Indexlr_IndexlrFlag_BX_get();
-  public final static native long Indexlr_IndexlrFlag_NO_BX_get();
   public final static native long Indexlr_IndexlrFlag_SEQ_get();
-  public final static native long Indexlr_IndexlrFlag_NO_SEQ_get();
   public final static native long Indexlr_IndexlrFlag_FILTER_IN_get();
-  public final static native long Indexlr_IndexlrFlag_NO_FILTER_IN_get();
   public final static native long Indexlr_IndexlrFlag_FILTER_OUT_get();
-  public final static native long Indexlr_IndexlrFlag_NO_FILTER_OUT_get();
   public final static native long Indexlr_IndexlrFlag_SHORT_MODE_get();
   public final static native long Indexlr_IndexlrFlag_LONG_MODE_get();
   public final static native long new_IndexlrFlag();

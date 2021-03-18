@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['long_5fmode_119',['LONG_MODE',['../structbtllib_1_1Indexlr_1_1Flag.html#a1d0c959beee8c7d4f27a84fdcd32bc0f',1,'btllib::Indexlr::Flag::LONG_MODE()'],['../structbtllib_1_1SeqReader_1_1Flag.html#acadd9255385912461a0ff9b5faca068c',1,'btllib::SeqReader::Flag::LONG_MODE()']]]
+  ['no_5ffold_5fcase_111',['NO_FOLD_CASE',['../structbtllib_1_1SeqReader_1_1Flag.html#a095a05abb58c51853ec14fd70f799dab',1,'btllib::SeqReader::Flag']]],
+  ['no_5fid_112',['NO_ID',['../structbtllib_1_1Indexlr_1_1Flag.html#aac8eb0ab5a9e0e4460c5b39b52e19cd5',1,'btllib::Indexlr::Flag']]]
 ];

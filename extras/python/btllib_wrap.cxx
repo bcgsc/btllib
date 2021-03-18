@@ -29258,9 +29258,7 @@ SWIG_init(void) {
   /* type 'btllib::SeqReader::Flag' */
   builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReader__Flag_type;
   builtin_pytype->tp_dict = d = PyDict_New();
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FOLD_CASE",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::SeqReader::Flag::FOLD_CASE)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_FOLD_CASE",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::SeqReader::Flag::NO_FOLD_CASE)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_TRIM_MASKED",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::SeqReader::Flag::NO_TRIM_MASKED)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "TRIM_MASKED",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::SeqReader::Flag::TRIM_MASKED)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SHORT_MODE",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::SeqReader::Flag::SHORT_MODE)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "LONG_MODE",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::SeqReader::Flag::LONG_MODE)));
@@ -29424,16 +29422,11 @@ SWIG_init(void) {
   /* type 'btllib::Indexlr::Flag' */
   builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__Indexlr__Flag_type;
   builtin_pytype->tp_dict = d = PyDict_New();
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "ID",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::ID)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_ID",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::NO_ID)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "BX",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::BX)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_BX",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::NO_BX)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SEQ",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::SEQ)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_SEQ",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::NO_SEQ)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FILTER_IN",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::FILTER_IN)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_FILTER_IN",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::NO_FILTER_IN)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FILTER_OUT",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::FILTER_OUT)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NO_FILTER_OUT",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::NO_FILTER_OUT)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SHORT_MODE",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::SHORT_MODE)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "LONG_MODE",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::Indexlr::Flag::LONG_MODE)));
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);

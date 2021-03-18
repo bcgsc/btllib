@@ -258,18 +258,6 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 extern "C" {
 #endif
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderFlag_1FOLD_1CASE_1get(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (unsigned int)btllib::SeqReader::Flag::FOLD_CASE;
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderFlag_1NO_1FOLD_1CASE_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   unsigned int result;
@@ -277,18 +265,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderFlag_1NO_1FOL
   (void)jenv;
   (void)jcls;
   result = (unsigned int)btllib::SeqReader::Flag::NO_FOLD_CASE;
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderFlag_1NO_1TRIM_1MASKED_1get(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (unsigned int)btllib::SeqReader::Flag::NO_TRIM_MASKED;
   jresult = (jlong)result; 
   return jresult;
 }
@@ -1816,18 +1792,6 @@ SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_KMER_1COUNTING_1BLOOM_1FILTER_1
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrFlag_1ID_1get(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (unsigned int)btllib::Indexlr::Flag::ID;
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrFlag_1NO_1ID_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   unsigned int result;
@@ -1852,18 +1816,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrFlag_1BX_1get(JNI
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrFlag_1NO_1BX_1get(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (unsigned int)btllib::Indexlr::Flag::NO_BX;
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrFlag_1SEQ_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   unsigned int result;
@@ -1871,18 +1823,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrFlag_1SEQ_1get(JN
   (void)jenv;
   (void)jcls;
   result = (unsigned int)btllib::Indexlr::Flag::SEQ;
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrFlag_1NO_1SEQ_1get(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (unsigned int)btllib::Indexlr::Flag::NO_SEQ;
   jresult = (jlong)result; 
   return jresult;
 }
@@ -1900,18 +1840,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrFlag_1FILTER_1IN_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrFlag_1NO_1FILTER_1IN_1get(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (unsigned int)btllib::Indexlr::Flag::NO_FILTER_IN;
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrFlag_1FILTER_1OUT_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   unsigned int result;
@@ -1919,18 +1847,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrFlag_1FILTER_1OUT
   (void)jenv;
   (void)jcls;
   result = (unsigned int)btllib::Indexlr::Flag::FILTER_OUT;
-  jresult = (jlong)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrFlag_1NO_1FILTER_1OUT_1get(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  unsigned int result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (unsigned int)btllib::Indexlr::Flag::NO_FILTER_OUT;
   jresult = (jlong)result; 
   return jresult;
 }

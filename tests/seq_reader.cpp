@@ -27,8 +27,10 @@ main()
 
     // Test FASTA and FASTQ (simultaneously)
     std::cerr << "Test FASTA and FASTQ" << std::endl;
-    btllib::SeqReader reader_fasta("../tests/input.fa.gz.bz2.xz");
-    btllib::SeqReader reader_fastq("../tests/input.fq.tar.xz");
+    btllib::SeqReader reader_fasta("../tests/input.fa.gz.bz2.xz",
+                                   btllib::SeqReader::Flag::SHORT_MODE);
+    btllib::SeqReader reader_fastq("../tests/input.fq.tar.xz",
+                                   btllib::SeqReader::Flag::SHORT_MODE);
 
     assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
     assert(reader_fastq.get_format() == btllib::SeqReader::Format::FASTQ);
@@ -56,7 +58,8 @@ main()
 
     // Test SAM
     std::cerr << "Test SAM" << std::endl;
-    btllib::SeqReader reader_sam("../tests/input.bam");
+    btllib::SeqReader reader_sam("../tests/input.bam",
+                                 btllib::SeqReader::Flag::SHORT_MODE);
     assert(reader_sam.get_format() == btllib::SeqReader::Format::SAM);
 
     i = 0;
@@ -70,7 +73,8 @@ main()
 
     // Test GFA2
     std::cerr << "Test GFA2" << std::endl;
-    btllib::SeqReader reader_gfa2("../tests/input.gfa2");
+    btllib::SeqReader reader_gfa2("../tests/input.gfa2",
+                                  btllib::SeqReader::Flag::SHORT_MODE);
     assert(reader_gfa2.get_format() == btllib::SeqReader::Format::GFA2);
 
     i = 0;
@@ -111,7 +115,8 @@ main()
     }
     random_seqs.close();
 
-    btllib::SeqReader random_reader(random_filename);
+    btllib::SeqReader random_reader(random_filename,
+                                    btllib::SeqReader::Flag::LONG_MODE);
     for (i = 0; (record = random_reader.read()); i++) {
       assert(record.name == generated_names[i]);
       assert(record.comment == generated_comments[i]);
@@ -130,7 +135,8 @@ main()
     std::vector<std::string> parallel_seqs;
     std::vector<std::string> parallel_quals;
 
-    btllib::SeqReader random_reader2(random_filename);
+    btllib::SeqReader random_reader2(random_filename,
+                                     btllib::SeqReader::Flag::LONG_MODE);
 #pragma omp parallel private(record) shared(random_reader2)
     {
       while ((record = random_reader2.read())) {

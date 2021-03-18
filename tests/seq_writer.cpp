@@ -27,7 +27,8 @@ main()
     }
     writer_fasta.close();
 
-    btllib::SeqReader reader_fasta(random_filename);
+    btllib::SeqReader reader_fasta(random_filename,
+                                   btllib::SeqReader::Flag::SHORT_MODE);
     assert(reader_fasta.get_format() == btllib::SeqReader::Format::FASTA);
 
     size_t i;
@@ -56,7 +57,8 @@ main()
     }
     writer_fastq.close();
 
-    btllib::SeqReader reader_fastq(random_filename);
+    btllib::SeqReader reader_fastq(random_filename,
+                                   btllib::SeqReader::Flag::SHORT_MODE);
     assert(reader_fastq.get_format() == btllib::SeqReader::Format::FASTQ);
 
     i = 0;
@@ -100,7 +102,8 @@ main()
     }
     random_seqs.close();
 
-    btllib::SeqReader random_reader(random_filename);
+    btllib::SeqReader random_reader(random_filename,
+                                    btllib::SeqReader::Flag::LONG_MODE);
     for (i = 0; (record = random_reader.read()); i++) {
       assert(record.name == generated_names[i]);
       assert(record.comment == generated_comments[i]);
@@ -146,7 +149,8 @@ main()
     std::vector<std::string> parallel_comments;
     std::vector<std::string> parallel_seqs;
     std::vector<std::string> parallel_quals;
-    btllib::SeqReader random_reader2(random_filename2);
+    btllib::SeqReader random_reader2(random_filename2,
+                                     btllib::SeqReader::Flag::LONG_MODE);
     while ((record = random_reader2.read())) {
       parallel_names.push_back(record.name);
       parallel_comments.push_back(record.comment);
