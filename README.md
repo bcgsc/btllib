@@ -43,11 +43,9 @@ Python and Java
 
 Contributing
 ---
-If you want to contribute code to this repo, before making a pull request, make sure to:
-- Create a build directory by running `meson build` in `btllib` directory
-- Run `ninja complete` in the `build` directory to generate wrappers, docs, format the code, check for any errors, etc.
+If you want to make changes to the btllib code, first create a build directory by running `meson build` in `btllib` directory. `cd` to `build` directory and run `ninja build-sdsl` once to build the `sdsl` dependency. After that, every time you want to build the tests and wrappers, run `ninja` in `build` directory. To run the tests, run `ninja test`.
 
-`ninja complete` does the following steps, in order:
+The following are the available `ninja` commands which can be run within `build` directory:
 - `ninja build-sdsl` builds the sdsl-lite dependency library
 - `ninja format` formats the whitespace in code (requires clang-format 8+)
 - `ninja wrap` wraps C++ code for Python and Java (requires SWIG 4.0+)
@@ -56,10 +54,9 @@ If you want to contribute code to this repo, before making a pull request, make 
 - `ninja` builds the tests and wrapper libraries / makes sure they compile
 - `ninja test` runs the tests
 - `ninja docs` generates code documentation from comments (requires Doxygen)
+- `ninja complete` runs all of the above commands in the listed order
 
-Any of these can be run individually within `build` directory.
-
-In order to build tests and wrappers, you need to run `ninja build-sdsl` once to build the sdsl dependency library.
+Before making a pull request, make sure to run `ninja complete` to make sure the code passes the CI test.
 
 Credits
 ---
