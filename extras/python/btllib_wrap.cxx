@@ -19509,6 +19509,50 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_NtHash_get_forward_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  uint64_t result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "NtHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_get_forward_hash" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = ((btllib::NtHash const *)arg1)->get_forward_hash();
+  resultobj = SWIG_NewPointerObj((new uint64_t(static_cast< const uint64_t& >(result))), SWIGTYPE_p_uint64_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_get_reverse_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  uint64_t result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "NtHash_get_reverse_hash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_get_reverse_hash" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = ((btllib::NtHash const *)arg1)->get_reverse_hash();
+  resultobj = SWIG_NewPointerObj((new uint64_t(static_cast< const uint64_t& >(result))), SWIGTYPE_p_uint64_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_NtHash(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
@@ -20285,6 +20329,28 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SeedNtHash_roll(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_roll", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_roll" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (bool)(arg1)->roll();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SeedNtHash_hashes(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
@@ -20417,22 +20483,44 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SeedNtHash_roll(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_SeedNtHash_get_forward_hash(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  bool result;
+  uint64_t result;
   
-  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_roll", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_roll" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_forward_hash" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (bool)(arg1)->roll();
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  result = ((btllib::SeedNtHash const *)arg1)->get_forward_hash();
+  resultobj = SWIG_NewPointerObj((new uint64_t(static_cast< const uint64_t& >(result))), SWIGTYPE_p_uint64_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_get_reverse_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  uint64_t result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_reverse_hash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_reverse_hash" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = ((btllib::SeedNtHash const *)arg1)->get_reverse_hash();
+  resultobj = SWIG_NewPointerObj((new uint64_t(static_cast< const uint64_t& >(result))), SWIGTYPE_p_uint64_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -26204,6 +26292,8 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__NtHash_methods[] = {
   { "forward", _wrap_NtHash_forward, METH_NOARGS, "" },
   { "get_k", _wrap_NtHash_get_k, METH_NOARGS, "" },
   { "get_hash_num", _wrap_NtHash_get_hash_num, METH_NOARGS, "" },
+  { "get_forward_hash", _wrap_NtHash_get_forward_hash, METH_NOARGS, "" },
+  { "get_reverse_hash", _wrap_NtHash_get_reverse_hash, METH_NOARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -26416,13 +26506,15 @@ SwigPyBuiltin__btllib__SeedNtHash_richcompare(PyObject *self, PyObject *other, i
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedNtHash_methods[] = {
+  { "roll", _wrap_SeedNtHash_roll, METH_NOARGS, "" },
   { "hashes", _wrap_SeedNtHash_hashes, METH_NOARGS, "" },
   { "get_pos", _wrap_SeedNtHash_get_pos, METH_NOARGS, "" },
   { "forward", _wrap_SeedNtHash_forward, METH_NOARGS, "" },
   { "get_k", _wrap_SeedNtHash_get_k, METH_NOARGS, "" },
   { "get_hash_num", _wrap_SeedNtHash_get_hash_num, METH_NOARGS, "" },
   { "get_hash_num_per_seed", _wrap_SeedNtHash_get_hash_num_per_seed, METH_NOARGS, "" },
-  { "roll", _wrap_SeedNtHash_roll, METH_NOARGS, "" },
+  { "get_forward_hash", _wrap_SeedNtHash_get_forward_hash, METH_NOARGS, "" },
+  { "get_reverse_hash", _wrap_SeedNtHash_get_reverse_hash, METH_NOARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 

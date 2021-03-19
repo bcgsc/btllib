@@ -1290,7 +1290,7 @@ public:
   NtHash(const std::string& seq, unsigned k, unsigned hash_num, size_t pos = 0);
 
   /**
-   * Calculate the next hash value
+   * Calculate the next hash value.
    * @return true on success and false otherwise
    */
   bool roll();
@@ -1304,6 +1304,9 @@ public:
   bool forward() const { return forward_hash <= reverse_hash; }
   unsigned get_k() const { return k; }
   unsigned get_hash_num() const { return hash_num; }
+
+  uint64_t get_forward_hash() const { return forward_hash; }
+  uint64_t get_reverse_hash() const { return reverse_hash; }
 
 private:
   friend class SeedNtHash;
@@ -1349,6 +1352,12 @@ public:
              unsigned hash_num_per_seed,
              size_t pos = 0);
 
+  /**
+   * Calculate the next hash value.
+   * @return true on success and false otherwise
+   */
+  bool roll();
+
   const uint64_t* hashes() const { return nthash.hashes(); }
 
   size_t get_pos() const { return nthash.get_pos(); }
@@ -1357,7 +1366,8 @@ public:
   unsigned get_hash_num() const { return nthash.get_hash_num(); }
   unsigned get_hash_num_per_seed() const { return hash_num_per_seed; }
 
-  bool roll();
+  uint64_t get_forward_hash() const { return nthash.get_forward_hash(); }
+  uint64_t get_reverse_hash() const { return nthash.get_reverse_hash(); }
 
 private:
   bool init();

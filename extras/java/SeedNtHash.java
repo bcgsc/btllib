@@ -68,6 +68,10 @@ public class SeedNtHash {
     this(btllibJNI.new_SeedNtHash__SWIG_7(seq, k, SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seeds), hash_num_per_seed), true);
   }
 
+  public boolean roll() {
+    return btllibJNI.SeedNtHash_roll(swigCPtr, this);
+  }
+
   public SWIGTYPE_p_uint64_t hashes() {
     long cPtr = btllibJNI.SeedNtHash_hashes(swigCPtr, this);
     return (cPtr == 0) ? null : new SWIGTYPE_p_uint64_t(cPtr, false);
@@ -93,8 +97,12 @@ public class SeedNtHash {
     return btllibJNI.SeedNtHash_get_hash_num_per_seed(swigCPtr, this);
   }
 
-  public boolean roll() {
-    return btllibJNI.SeedNtHash_roll(swigCPtr, this);
+  public SWIGTYPE_p_uint64_t get_forward_hash() {
+    return new SWIGTYPE_p_uint64_t(btllibJNI.SeedNtHash_get_forward_hash(swigCPtr, this), true);
+  }
+
+  public SWIGTYPE_p_uint64_t get_reverse_hash() {
+    return new SWIGTYPE_p_uint64_t(btllibJNI.SeedNtHash_get_reverse_hash(swigCPtr, this), true);
   }
 
 }

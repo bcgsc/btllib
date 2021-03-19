@@ -73,4 +73,12 @@ public class NtHash {
     return btllibJNI.NtHash_get_hash_num(swigCPtr, this);
   }
 
+  public SWIGTYPE_p_uint64_t get_forward_hash() {
+    return new SWIGTYPE_p_uint64_t(btllibJNI.NtHash_get_forward_hash(swigCPtr, this), true);
+  }
+
+  public SWIGTYPE_p_uint64_t get_reverse_hash() {
+    return new SWIGTYPE_p_uint64_t(btllibJNI.NtHash_get_reverse_hash(swigCPtr, this), true);
+  }
+
 }

@@ -87,6 +87,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5834d303ae489fd3368b2edc9a354754"><td class="memItemLeft" align="right" valign="top"><a id="a5834d303ae489fd3368b2edc9a354754"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b> (const std::string &amp;seq, unsigned k, const std::vector&lt; std::string &gt; &amp;seeds, unsigned hash_num_per_seed, size_t pos=0)</td></tr>
 <tr class="separator:a5834d303ae489fd3368b2edc9a354754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa817b8acaf7c57d7be8ce47fcf5ac758"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedNtHash.html#aa817b8acaf7c57d7be8ce47fcf5ac758">roll</a> ()</td></tr>
+<tr class="separator:aa817b8acaf7c57d7be8ce47fcf5ac758"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f588d08549a3a1b05e56271820a647c"><td class="memItemLeft" align="right" valign="top"><a id="a8f588d08549a3a1b05e56271820a647c"></a>
 const uint64_t *&#160;</td><td class="memItemRight" valign="bottom"><b>hashes</b> () const</td></tr>
 <tr class="separator:a8f588d08549a3a1b05e56271820a647c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -105,10 +107,32 @@ unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_hash_num</b> 
 <tr class="memitem:aa7b2181a58526dfaa3a34d5829312291"><td class="memItemLeft" align="right" valign="top"><a id="aa7b2181a58526dfaa3a34d5829312291"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_hash_num_per_seed</b> () const</td></tr>
 <tr class="separator:aa7b2181a58526dfaa3a34d5829312291"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa817b8acaf7c57d7be8ce47fcf5ac758"><td class="memItemLeft" align="right" valign="top"><a id="aa817b8acaf7c57d7be8ce47fcf5ac758"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>roll</b> ()</td></tr>
-<tr class="separator:aa817b8acaf7c57d7be8ce47fcf5ac758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad373314254510da8b178319e7b4be441"><td class="memItemLeft" align="right" valign="top"><a id="ad373314254510da8b178319e7b4be441"></a>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_forward_hash</b> () const</td></tr>
+<tr class="separator:ad373314254510da8b178319e7b4be441"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae581888ddbc2ea0f96e103ab4d76ffdb"><td class="memItemLeft" align="right" valign="top"><a id="ae581888ddbc2ea0f96e103ab4d76ffdb"></a>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_reverse_hash</b> () const</td></tr>
+<tr class="separator:ae581888ddbc2ea0f96e103ab4d76ffdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa817b8acaf7c57d7be8ce47fcf5ac758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa817b8acaf7c57d7be8ce47fcf5ac758">&#9670;&nbsp;</a></span>roll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::SeedNtHash::roll </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculate the next hash value. </p><dl class="section return"><dt>Returns</dt><dd>true on success and false otherwise </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/btllib/<a class="el" href="nthash_8hpp_source.html">nthash.hpp</a></li>
 </ul>
