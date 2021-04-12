@@ -115,11 +115,8 @@ Python and Java</h2>
 </ul>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Contributing</h2>
-<p>If you want to contribute code to this repo, before making a pull request, make sure to:</p><ul>
-<li>Create a build directory by running <code>meson build</code> in <code>btllib</code> directory</li>
-<li>Run <code>ninja complete</code> in the <code>build</code> directory to generate wrappers, docs, format the code, check for any errors, etc.</li>
-</ul>
-<p><code>ninja complete</code> does the following steps, in order:</p><ul>
+<p>If you want to make changes to the btllib code, first create a build directory by running <code>meson build</code> in <code>btllib</code> directory. <code>cd</code> to <code>build</code> directory and run <code>ninja build-sdsl</code> once to build the <code>sdsl</code> dependency. After that, every time you want to build the tests and wrappers, run <code>ninja</code> in <code>build</code> directory. To run the tests, run <code>ninja test</code>.</p>
+<p>The following are the available <code>ninja</code> commands which can be run within <code>build</code> directory:</p><ul>
 <li><code>ninja build-sdsl</code> builds the sdsl-lite dependency library</li>
 <li><code>ninja format</code> formats the whitespace in code (requires clang-format 8+)</li>
 <li><code>ninja wrap</code> wraps C++ code for Python and Java (requires SWIG 4.0+)</li>
@@ -128,9 +125,9 @@ Contributing</h2>
 <li><code>ninja</code> builds the tests and wrapper libraries / makes sure they compile</li>
 <li><code>ninja test</code> runs the tests</li>
 <li><code>ninja docs</code> generates code documentation from comments (requires Doxygen)</li>
+<li><code>ninja complete</code> runs all of the above commands in the listed order</li>
 </ul>
-<p>Any of these can be run individually within <code>build</code> directory.</p>
-<p>In order to build tests and wrappers, you need to run <code>ninja build-sdsl</code> once to build the sdsl dependency library.</p>
+<p>Before making a pull request, make sure to run <code>ninja complete</code> to make sure the code passes the CI test.</p>
 <h2><a class="anchor" id="autotoc_md6"></a>
 Credits</h2>
 <ul>

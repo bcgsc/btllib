@@ -343,7 +343,7 @@ SeqReader::is_fasta_buffer()
       case IN_SEQ:
         if (c == '\n') {
           state = IN_HEADER_1;
-        } else if (!bool(COMPLEMENTS[c])) {
+        } else if (c != '\r' && !bool(COMPLEMENTS[c])) {
           return false;
         }
         break;
@@ -387,7 +387,7 @@ SeqReader::is_fastq_buffer()
       case IN_SEQ:
         if (c == '\n') {
           state = IN_PLUS_1;
-        } else if (!bool(COMPLEMENTS[c])) {
+        } else if (c != '\r' && !bool(COMPLEMENTS[c])) {
           return false;
         }
         break;
@@ -406,7 +406,7 @@ SeqReader::is_fastq_buffer()
       case IN_QUAL:
         if (c == '\n') {
           state = IN_HEADER_1;
-        } else if (c < '!' || c > '~') {
+        } else if (c != '\r' && (c < '!' || c > '~')) {
           return false;
         }
         break;
@@ -1139,14 +1139,15 @@ SeqReader::start_processor()
             records_out.data[i].seq = std::string(
               records_in.data[i].seq, records_in.data[i].seq.size());
             auto& seq = records_out.data[i].seq;
-            if (!seq.empty() && seq.back() == '\n') {
+            while (!seq.empty() && (seq.back() == '\r' || seq.back() == '\n')) {
               seq.pop_back();
             }
 
             records_out.data[i].qual = std::string(
               records_in.data[i].qual, records_in.data[i].qual.size());
             auto& qual = records_out.data[i].qual;
-            if (!qual.empty() && qual.back() == '\n') {
+            while (!qual.empty() &&
+                   (qual.back() == '\r' || qual.back() == '\n')) {
               qual.pop_back();
             }
 
@@ -1182,10 +1183,12 @@ SeqReader::start_processor()
 
             auto& name = records_out.data[i].name;
             auto& comment = records_out.data[i].comment;
-            if (!name.empty() && name.back() == '\n') {
+            while (!name.empty() &&
+                   (name.back() == '\r' || name.back() == '\n')) {
               name.pop_back();
             }
-            if (!comment.empty() && comment.back() == '\n') {
+            while (!comment.empty() &&
+                   (comment.back() == '\r' || comment.back() == '\n')) {
               comment.pop_back();
             }
 

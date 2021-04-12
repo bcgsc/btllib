@@ -390,7 +390,7 @@ $(function() {
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;      <span class="keywordflow">case</span> IN_SEQ:</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\n&#39;</span>) {</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;          state = IN_HEADER_1;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!<span class="keywordtype">bool</span>(COMPLEMENTS[c])) {</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c != <span class="charliteral">&#39;\r&#39;</span> &amp;&amp; !<span class="keywordtype">bool</span>(COMPLEMENTS[c])) {</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        }</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <span class="keywordflow">break</span>;</div>
@@ -434,7 +434,7 @@ $(function() {
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;      <span class="keywordflow">case</span> IN_SEQ:</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\n&#39;</span>) {</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;          state = IN_PLUS_1;</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!<span class="keywordtype">bool</span>(COMPLEMENTS[c])) {</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c != <span class="charliteral">&#39;\r&#39;</span> &amp;&amp; !<span class="keywordtype">bool</span>(COMPLEMENTS[c])) {</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        }</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        <span class="keywordflow">break</span>;</div>
@@ -453,7 +453,7 @@ $(function() {
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;      <span class="keywordflow">case</span> IN_QUAL:</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\n&#39;</span>) {</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;          state = IN_HEADER_1;</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c &lt; &#39;!&#39; || c &gt; <span class="charliteral">&#39;~&#39;</span>) {</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c != <span class="charliteral">&#39;\r&#39;</span> &amp;&amp; (c &lt; &#39;!&#39; || c &gt; <span class="charliteral">&#39;~&#39;</span>)) {</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        }</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        <span class="keywordflow">break</span>;</div>
@@ -1184,126 +1184,129 @@ $(function() {
 <div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;            records_out.data[i].seq = std::string(</div>
 <div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;              records_in.data[i].seq, records_in.data[i].seq.size());</div>
 <div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;            <span class="keyword">auto</span>&amp; seq = records_out.data[i].seq;</div>
-<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;            <span class="keywordflow">if</span> (!seq.empty() &amp;&amp; seq.back() == <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;            <span class="keywordflow">while</span> (!seq.empty() &amp;&amp; (seq.back() == <span class="charliteral">&#39;\r&#39;</span> || seq.back() == <span class="charliteral">&#39;\n&#39;</span>)) {</div>
 <div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;              seq.pop_back();</div>
 <div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;            }</div>
 <div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160; </div>
 <div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;            records_out.data[i].qual = std::string(</div>
 <div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;              records_in.data[i].qual, records_in.data[i].qual.size());</div>
 <div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;            <span class="keyword">auto</span>&amp; qual = records_out.data[i].qual;</div>
-<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;            <span class="keywordflow">if</span> (!qual.empty() &amp;&amp; qual.back() == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;              qual.pop_back();</div>
-<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;            }</div>
-<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160; </div>
-<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;            <span class="keywordtype">char</span> *first_whitespace = <span class="keyword">nullptr</span>, *last_whitespace = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; records_in.data[i].header.size(); j++) {</div>
-<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;              <span class="keywordflow">if</span> (<span class="keywordtype">bool</span>(std::isspace(records_in.data[i].header[j]))) {</div>
-<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;                <span class="keywordflow">if</span> (first_whitespace == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;                  first_whitespace = records_in.data[i].header + j;</div>
-<div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;                }</div>
-<div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;                last_whitespace = records_in.data[i].header + j;</div>
-<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;              } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (last_whitespace != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01162"></a><span class="lineno"> 1162</span>&#160;              }</div>
-<div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160;            }</div>
-<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;            <span class="keywordtype">size_t</span> name_start =</div>
-<div class="line"><a name="l01165"></a><span class="lineno"> 1165</span>&#160;              (format == Format::FASTA || format == Format::FASTQ) ? 1 : 0;</div>
-<div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160; </div>
-<div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160;            <span class="keywordflow">if</span> (first_whitespace == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;              records_out.data[i].name =</div>
-<div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160;                std::string(records_in.data[i].header + name_start,</div>
-<div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;                            records_in.data[i].header.size() - name_start);</div>
-<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;              records_out.data[i].comment = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;              records_out.data[i].name = std::string(</div>
-<div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160;                records_in.data[i].header + name_start,</div>
-<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;                first_whitespace - records_in.data[i].header - name_start);</div>
-<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;              records_out.data[i].comment = std::string(</div>
-<div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;                last_whitespace + 1,</div>
-<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;                records_in.data[i].header.size() -</div>
-<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;                  (last_whitespace - records_in.data[i].header) - 1);</div>
-<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;            }</div>
-<div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;            records_in.data[i].header.clear();</div>
-<div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160; </div>
-<div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160;            <span class="keyword">auto</span>&amp; name = records_out.data[i].name;</div>
-<div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;            <span class="keyword">auto</span>&amp; comment = records_out.data[i].comment;</div>
-<div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160;            <span class="keywordflow">if</span> (!name.empty() &amp;&amp; name.back() == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;              name.pop_back();</div>
-<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;            }</div>
-<div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;            <span class="keywordflow">if</span> (!comment.empty() &amp;&amp; comment.back() == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;              comment.pop_back();</div>
-<div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;            }</div>
-<div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160; </div>
-<div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;            <span class="keywordflow">if</span> (trim_masked()) {</div>
-<div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;              <span class="keyword">const</span> <span class="keyword">auto</span> len = seq.length();</div>
-<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;              <span class="keywordtype">size_t</span> trim_start = 0, trim_end = seq.length();</div>
-<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;              <span class="keywordflow">while</span> (trim_start &lt;= len &amp;&amp; <span class="keywordtype">bool</span>(islower(seq[trim_start]))) {</div>
-<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;                trim_start++;</div>
-<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;              }</div>
-<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;              <span class="keywordflow">while</span> (trim_end &gt; 0 &amp;&amp; <span class="keywordtype">bool</span>(islower(seq[trim_end - 1]))) {</div>
-<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;                trim_end--;</div>
+<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;            <span class="keywordflow">while</span> (!qual.empty() &amp;&amp;</div>
+<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;                   (qual.back() == <span class="charliteral">&#39;\r&#39;</span> || qual.back() == <span class="charliteral">&#39;\n&#39;</span>)) {</div>
+<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;              qual.pop_back();</div>
+<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;            }</div>
+<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160; </div>
+<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;            <span class="keywordtype">char</span> *first_whitespace = <span class="keyword">nullptr</span>, *last_whitespace = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; records_in.data[i].header.size(); j++) {</div>
+<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;              <span class="keywordflow">if</span> (<span class="keywordtype">bool</span>(std::isspace(records_in.data[i].header[j]))) {</div>
+<div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;                <span class="keywordflow">if</span> (first_whitespace == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;                  first_whitespace = records_in.data[i].header + j;</div>
+<div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;                }</div>
+<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;                last_whitespace = records_in.data[i].header + j;</div>
+<div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160;              } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (last_whitespace != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l01162"></a><span class="lineno"> 1162</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160;              }</div>
+<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;            }</div>
+<div class="line"><a name="l01165"></a><span class="lineno"> 1165</span>&#160;            <span class="keywordtype">size_t</span> name_start =</div>
+<div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160;              (format == Format::FASTA || format == Format::FASTQ) ? 1 : 0;</div>
+<div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160; </div>
+<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;            <span class="keywordflow">if</span> (first_whitespace == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160;              records_out.data[i].name =</div>
+<div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;                std::string(records_in.data[i].header + name_start,</div>
+<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;                            records_in.data[i].header.size() - name_start);</div>
+<div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;              records_out.data[i].comment = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160;              records_out.data[i].name = std::string(</div>
+<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;                records_in.data[i].header + name_start,</div>
+<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;                first_whitespace - records_in.data[i].header - name_start);</div>
+<div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;              records_out.data[i].comment = std::string(</div>
+<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;                last_whitespace + 1,</div>
+<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;                records_in.data[i].header.size() -</div>
+<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;                  (last_whitespace - records_in.data[i].header) - 1);</div>
+<div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;            }</div>
+<div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;            records_in.data[i].header.clear();</div>
+<div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160; </div>
+<div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;            <span class="keyword">auto</span>&amp; name = records_out.data[i].name;</div>
+<div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160;            <span class="keyword">auto</span>&amp; comment = records_out.data[i].comment;</div>
+<div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;            <span class="keywordflow">while</span> (!name.empty() &amp;&amp;</div>
+<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;                   (name.back() == <span class="charliteral">&#39;\r&#39;</span> || name.back() == <span class="charliteral">&#39;\n&#39;</span>)) {</div>
+<div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;              name.pop_back();</div>
+<div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;            }</div>
+<div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;            <span class="keywordflow">while</span> (!comment.empty() &amp;&amp;</div>
+<div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;                   (comment.back() == <span class="charliteral">&#39;\r&#39;</span> || comment.back() == <span class="charliteral">&#39;\n&#39;</span>)) {</div>
+<div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;              comment.pop_back();</div>
+<div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;            }</div>
+<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160; </div>
+<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;            <span class="keywordflow">if</span> (trim_masked()) {</div>
+<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;              <span class="keyword">const</span> <span class="keyword">auto</span> len = seq.length();</div>
+<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;              <span class="keywordtype">size_t</span> trim_start = 0, trim_end = seq.length();</div>
+<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;              <span class="keywordflow">while</span> (trim_start &lt;= len &amp;&amp; <span class="keywordtype">bool</span>(islower(seq[trim_start]))) {</div>
+<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;                trim_start++;</div>
 <div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;              }</div>
-<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;              seq.erase(trim_end);</div>
-<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;              seq.erase(0, trim_start);</div>
-<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;              <span class="keywordflow">if</span> (!qual.empty()) {</div>
-<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;                qual.erase(trim_end);</div>
-<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;                qual.erase(0, trim_start);</div>
-<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;              }</div>
-<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;            }</div>
-<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;            <span class="keywordflow">if</span> (fold_case()) {</div>
-<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;              <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; c : seq) {</div>
-<div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;                <span class="keywordtype">char</span> old = c;</div>
-<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;                c = CAPITALS[(<span class="keywordtype">unsigned</span> char)(c)];</div>
-<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;                <span class="keywordflow">if</span> (!<span class="keywordtype">bool</span>(c)) {</div>
-<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;                  <a class="code" href="namespacebtllib.html#aae48e6ebdbbde9836cd2c20347b85606">log_error</a>(std::string(<span class="stringliteral">&quot;A sequence contains invalid &quot;</span></div>
-<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;                                        <span class="stringliteral">&quot;IUPAC character: &quot;</span>) +</div>
-<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;                            old);</div>
-<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;                  std::exit(EXIT_FAILURE);</div>
-<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;                }</div>
-<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;              }</div>
-<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;            }</div>
-<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;            records_out.data[i].num = records_in.num * block_size + i;</div>
-<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;          }</div>
-<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;          records_out.count = records_in.count;</div>
-<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;          records_out.current = records_in.current;</div>
-<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;          records_out.num = records_in.num;</div>
-<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;          <span class="keywordflow">if</span> (records_out.count == 0) {</div>
-<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;            output_queue.write(records_out);</div>
-<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;          }</div>
-<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;          output_queue.write(records_out);</div>
-<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;        }</div>
-<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;      })));</div>
-<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;  }</div>
-<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;}</div>
-<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160; </div>
-<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;<span class="keyword">inline</span> SeqReader::Record</div>
-<div class="line"><a name="l01236"></a><span class="lineno"><a class="line" href="classbtllib_1_1SeqReader.html#a7e8acc7bfbd8624cf8d9745922e9a034"> 1236</a></span>&#160;<a class="code" href="classbtllib_1_1SeqReader.html#a7e8acc7bfbd8624cf8d9745922e9a034">SeqReader::read</a>()</div>
-<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;{</div>
-<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;  <span class="keywordflow">if</span> (ready_records_owners()[<span class="keywordtype">id</span> % MAX_SIMULTANEOUS_SEQREADERS] != <span class="keywordtype">id</span>) {</div>
-<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;    ready_records_array()[<span class="keywordtype">id</span> % MAX_SIMULTANEOUS_SEQREADERS] =</div>
-<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;      std::unique_ptr&lt;decltype(output_queue)::Block&gt;(</div>
-<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;        <span class="keyword">new</span> decltype(output_queue)::Block(block_size));</div>
-<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;    ready_records_owners()[<span class="keywordtype">id</span> % MAX_SIMULTANEOUS_SEQREADERS] = id;</div>
-<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;  }</div>
-<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;  <span class="keyword">auto</span>&amp; ready_records =</div>
-<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;    *(ready_records_array()[<span class="keywordtype">id</span> % MAX_SIMULTANEOUS_SEQREADERS]);</div>
-<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;  <span class="keywordflow">if</span> (ready_records.count &lt;= ready_records.current) {</div>
-<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;    output_queue.read(ready_records);</div>
-<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;    <span class="keywordflow">if</span> (ready_records.count &lt;= ready_records.current) {</div>
-<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;      close();</div>
-<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;      ready_records = decltype(output_queue)::Block(block_size);</div>
-<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="structbtllib_1_1SeqReader_1_1Record.html">Record</a>();</div>
-<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;    }</div>
-<div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;  }</div>
-<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;  <span class="keywordflow">return</span> std::move(ready_records.data[ready_records.current++]);</div>
-<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;}</div>
-<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160; </div>
-<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;} <span class="comment">// namespace btllib</span></div>
-<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160; </div>
-<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;              <span class="keywordflow">while</span> (trim_end &gt; 0 &amp;&amp; <span class="keywordtype">bool</span>(islower(seq[trim_end - 1]))) {</div>
+<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;                trim_end--;</div>
+<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;              }</div>
+<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;              seq.erase(trim_end);</div>
+<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;              seq.erase(0, trim_start);</div>
+<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;              <span class="keywordflow">if</span> (!qual.empty()) {</div>
+<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;                qual.erase(trim_end);</div>
+<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;                qual.erase(0, trim_start);</div>
+<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;              }</div>
+<div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;            }</div>
+<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;            <span class="keywordflow">if</span> (fold_case()) {</div>
+<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;              <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; c : seq) {</div>
+<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;                <span class="keywordtype">char</span> old = c;</div>
+<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;                c = CAPITALS[(<span class="keywordtype">unsigned</span> char)(c)];</div>
+<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;                <span class="keywordflow">if</span> (!<span class="keywordtype">bool</span>(c)) {</div>
+<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;                  <a class="code" href="namespacebtllib.html#aae48e6ebdbbde9836cd2c20347b85606">log_error</a>(std::string(<span class="stringliteral">&quot;A sequence contains invalid &quot;</span></div>
+<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;                                        <span class="stringliteral">&quot;IUPAC character: &quot;</span>) +</div>
+<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;                            old);</div>
+<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;                  std::exit(EXIT_FAILURE);</div>
+<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;                }</div>
+<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;              }</div>
+<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;            }</div>
+<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;            records_out.data[i].num = records_in.num * block_size + i;</div>
+<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;          }</div>
+<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;          records_out.count = records_in.count;</div>
+<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;          records_out.current = records_in.current;</div>
+<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;          records_out.num = records_in.num;</div>
+<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;          <span class="keywordflow">if</span> (records_out.count == 0) {</div>
+<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;            output_queue.write(records_out);</div>
+<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;          }</div>
+<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;          output_queue.write(records_out);</div>
+<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;        }</div>
+<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;      })));</div>
+<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;  }</div>
+<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;}</div>
+<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160; </div>
+<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;<span class="keyword">inline</span> SeqReader::Record</div>
+<div class="line"><a name="l01239"></a><span class="lineno"><a class="line" href="classbtllib_1_1SeqReader.html#a7e8acc7bfbd8624cf8d9745922e9a034"> 1239</a></span>&#160;<a class="code" href="classbtllib_1_1SeqReader.html#a7e8acc7bfbd8624cf8d9745922e9a034">SeqReader::read</a>()</div>
+<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;{</div>
+<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;  <span class="keywordflow">if</span> (ready_records_owners()[<span class="keywordtype">id</span> % MAX_SIMULTANEOUS_SEQREADERS] != <span class="keywordtype">id</span>) {</div>
+<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;    ready_records_array()[<span class="keywordtype">id</span> % MAX_SIMULTANEOUS_SEQREADERS] =</div>
+<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;      std::unique_ptr&lt;decltype(output_queue)::Block&gt;(</div>
+<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;        <span class="keyword">new</span> decltype(output_queue)::Block(block_size));</div>
+<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;    ready_records_owners()[<span class="keywordtype">id</span> % MAX_SIMULTANEOUS_SEQREADERS] = id;</div>
+<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;  }</div>
+<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;  <span class="keyword">auto</span>&amp; ready_records =</div>
+<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;    *(ready_records_array()[<span class="keywordtype">id</span> % MAX_SIMULTANEOUS_SEQREADERS]);</div>
+<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;  <span class="keywordflow">if</span> (ready_records.count &lt;= ready_records.current) {</div>
+<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;    output_queue.read(ready_records);</div>
+<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;    <span class="keywordflow">if</span> (ready_records.count &lt;= ready_records.current) {</div>
+<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;      close();</div>
+<div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;      ready_records = decltype(output_queue)::Block(block_size);</div>
+<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="structbtllib_1_1SeqReader_1_1Record.html">Record</a>();</div>
+<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;    }</div>
+<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;  }</div>
+<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;  <span class="keywordflow">return</span> std::move(ready_records.data[ready_records.current++]);</div>
+<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;}</div>
+<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160; </div>
+<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160; </div>
+<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassbtllib_1_1SeqReader_html"><div class="ttname"><a href="classbtllib_1_1SeqReader.html">btllib::SeqReader</a></div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:35</div></div>
-<div class="ttc" id="aclassbtllib_1_1SeqReader_html_a7e8acc7bfbd8624cf8d9745922e9a034"><div class="ttname"><a href="classbtllib_1_1SeqReader.html#a7e8acc7bfbd8624cf8d9745922e9a034">btllib::SeqReader::read</a></div><div class="ttdeci">Record read()</div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:1236</div></div>
+<div class="ttc" id="aclassbtllib_1_1SeqReader_html_a7e8acc7bfbd8624cf8d9745922e9a034"><div class="ttname"><a href="classbtllib_1_1SeqReader.html#a7e8acc7bfbd8624cf8d9745922e9a034">btllib::SeqReader::read</a></div><div class="ttdeci">Record read()</div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:1239</div></div>
 <div class="ttc" id="aclassbtllib_1_1SeqReader_html_a9e599e429ae274d7a4c10dd5590c1efc"><div class="ttname"><a href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">btllib::SeqReader::SeqReader</a></div><div class="ttdeci">SeqReader(const std::string &amp;source_path, unsigned flags=0, unsigned threads=3)</div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:236</div></div>
 <div class="ttc" id="anamespacebtllib_html"><div class="ttname"><a href="namespacebtllib.html">btllib</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:18</div></div>
 <div class="ttc" id="anamespacebtllib_html_a540bce0213b7718e519ddc4466361bf7"><div class="ttname"><a href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">btllib::check_error</a></div><div class="ttdeci">void check_error(bool condition, const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:139</div></div>
