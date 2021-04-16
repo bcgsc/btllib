@@ -137,7 +137,7 @@ public:
 
   MIBloomFilter<T>(const std::string& filter_file_path)
   {
-#pragma omp parallel for default(none) shared(filter_file_path)
+//#pragma omp parallel for default(none) shared(filter_file_path)
     for (unsigned i = 0; i < 2; ++i) {
       if (i == 0) {
         FILE* file = fopen(filter_file_path.c_str(), "rbe");
