@@ -23,11 +23,11 @@ add_global_link_arguments(global_link_args, language : 'cpp')
 compiler = meson.get_compiler('cpp')
 compiler_id = compiler.get_id()
 compiler_version = compiler.version()
-if compiler_id == 'gcc' and compiler_version.version_compare('<4.8.1')
-  error('GCC ' + compiler_version + ' doesn\'t fully support C++11')
+if compiler_id == 'gcc' and compiler_version.version_compare('<7.0.0')
+  error('GCC ' + compiler_version + ' is unsupported.')
 endif
-if compiler_id == 'clang' and compiler_version.version_compare('<3.3.0')
-  error('Clang ' + compiler_version + ' doesn\'t fully support C++11')
+if compiler_id == 'clang' and compiler_version.version_compare('<4.0.0')
+  error('Clang ' + compiler_version + ' is unsupported.')
 endif
 
 btllib_include = include_directories('include')
