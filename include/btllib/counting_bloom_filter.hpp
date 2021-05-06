@@ -110,6 +110,7 @@ public:
   unsigned get_hash_num() const { return counting_bloom_filter.get_hash_num(); }
   double get_fpr() const { return counting_bloom_filter.get_fpr(); }
   unsigned get_k() const { return k; }
+  CountingBloomFilter<T>& get_counting_bloom_filter() { return counting_bloom_filter;}
 
   void write(const std::string& path);
 

@@ -1,7 +1,8 @@
 #ifndef BTLLIB_INDEXLR_HPP
 #define BTLLIB_INDEXLR_HPP
 
-#include "bloom_filter.hpp"
+//#include "bloom_filter.hpp"
+#include "counting_bloom_filter.hpp"
 #include "nthash.hpp"
 #include "order_queue.hpp"
 #include "seq_reader.hpp"
@@ -19,6 +20,7 @@
 #include <string>
 #include <thread>
 #include <vector>
+#include <stdint.h>
 
 namespace btllib {
 
@@ -127,11 +129,10 @@ public:
   Indexlr(std::string seqfile,
           size_t k,
           size_t w,
+          const btllib::CountingBloomFilter<uint16_t>& cbf,
           unsigned flags = 0,
           unsigned threads = 5,
-          bool verbose = false,
-          const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
-          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf());
+          bool verbose = false);
 
   ~Indexlr();
 
@@ -157,16 +158,17 @@ private:
   const size_t buffer_size;
   const size_t block_size;
 
-  static const BloomFilter& dummy_bf()
+  /* static const CountingBloomFilter<uint16_t>& dummy_cbf()
   {
-    static const BloomFilter VAR;
+    static const CountingBloomFilter<uint16_t> VAR;
     return VAR;
-  }
+  } */
 
-  const std::reference_wrapper<const BloomFilter> bf1;
-  const std::reference_wrapper<const BloomFilter> bf2;
-  bool filter_in_enabled;
-  bool filter_out_enabled;
+  //const std::reference_wrapper<const BloomFilter> bf1;
+  //const std::reference_wrapper<const BloomFilter> bf2;
+  const std::reference_wrapper<const CountingBloomFilter<uint16_t>> cbf;
+  //bool filter_in_enabled;
+  //bool filter_out_enabled;
 
   std::atomic<bool> fasta{ false };
   OrderQueueSPMC<Read> input_queue;
@@ -271,11 +273,10 @@ private:
 inline Indexlr::Indexlr(std::string seqfile,
                         const size_t k,
                         const size_t w,
+                        const CountingBloomFilter<uint16_t>& cbf,
                         const unsigned flags,
                         const unsigned threads,
-                        const bool verbose,
-                        const BloomFilter& bf1,
-                        const BloomFilter& bf2)
+                        const bool verbose)
   : seqfile(std::move(seqfile))
   , k(k)
   , w(w)
@@ -285,10 +286,7 @@ inline Indexlr::Indexlr(std::string seqfile,
   , id(++last_id())
   , buffer_size(short_mode() ? SHORT_MODE_BUFFER_SIZE : LONG_MODE_BUFFER_SIZE)
   , block_size(short_mode() ? SHORT_MODE_BLOCK_SIZE : LONG_MODE_BLOCK_SIZE)
-  , bf1(bf1)
-  , bf2(bf2)
-  , filter_in_enabled(filter_in())
-  , filter_out_enabled(filter_out())
+  , cbf(cbf)
   , input_queue(buffer_size, block_size)
   , output_queue(buffer_size, block_size)
   , reader(this->seqfile, 0, 3, buffer_size, block_size)
@@ -381,7 +379,7 @@ Indexlr::minimize(const std::string& seq) const
                     nh.forward(),
                     output_seq() ? seq.substr(nh.get_pos(), k) : "");
 
-    if (filter_in() && filter_out()) {
+    /* if (filter_in() && filter_out()) {
       std::vector<uint64_t> tmp;
       tmp = { hk.min_hash };
       if (!bf1.get().contains(tmp) || bf2.get().contains(tmp)) {
@@ -395,7 +393,7 @@ Indexlr::minimize(const std::string& seq) const
       if (bf1.get().contains({ hk.min_hash })) {
         hk.min_hash = std::numeric_limits<uint64_t>::max();
       }
-    }
+    } */
 
     if (idx + 1 >= w) {
       min_idx_left = idx + 1 - w;
