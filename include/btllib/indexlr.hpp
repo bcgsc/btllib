@@ -389,7 +389,7 @@ Indexlr::minimize(const std::string& seq) const
                     output_seq() ? seq.substr(nh.get_pos(), k) : "");
 
     kmer_count = cbf.get().contains(nh.hashes());
-    if(kmer_count < 4){
+    if(kmer_count < min_mx || kmer_count > max_mx){
       hk.min_hash = std::numeric_limits<uint64_t>::max();
     }
     /* if (filter_in() && filter_out()) {
