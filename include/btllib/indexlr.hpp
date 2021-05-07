@@ -130,6 +130,8 @@ public:
           size_t k,
           size_t w,
           const btllib::CountingBloomFilter<uint32_t>& cbf,
+          unsigned min_mx = 0,
+          unsigned max_mx = std::numeric_limits<unsigned>::max(),
           unsigned flags = 0,
           unsigned threads = 5,
           bool verbose = false);
@@ -151,6 +153,7 @@ private:
 
   const std::string seqfile;
   const size_t k, w;
+  const unsigned min_mx, max_mx;
   const unsigned flags;
   const unsigned threads;
   const bool verbose;
@@ -274,12 +277,16 @@ inline Indexlr::Indexlr(std::string seqfile,
                         const size_t k,
                         const size_t w,
                         const CountingBloomFilter<uint32_t>& cbf,
+                        const unsigned min_mx,
+                        const unsigned max_mx,
                         const unsigned flags,
                         const unsigned threads,
                         const bool verbose)
   : seqfile(std::move(seqfile))
   , k(k)
   , w(w)
+  , min_mx(min_mx)
+  , max_mx(max_mx)
   , flags(flags)
   , threads(threads)
   , verbose(verbose)
