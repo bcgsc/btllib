@@ -129,7 +129,7 @@ public:
   Indexlr(std::string seqfile,
           size_t k,
           size_t w,
-          const btllib::CountingBloomFilter<uint16_t>& cbf,
+          const btllib::CountingBloomFilter<uint32_t>& cbf,
           unsigned flags = 0,
           unsigned threads = 5,
           bool verbose = false);
@@ -166,7 +166,7 @@ private:
 
   //const std::reference_wrapper<const BloomFilter> bf1;
   //const std::reference_wrapper<const BloomFilter> bf2;
-  const std::reference_wrapper<const CountingBloomFilter<uint16_t>> cbf;
+  const std::reference_wrapper<const CountingBloomFilter<uint32_t>> cbf;
   //bool filter_in_enabled;
   //bool filter_out_enabled;
 
@@ -273,7 +273,7 @@ private:
 inline Indexlr::Indexlr(std::string seqfile,
                         const size_t k,
                         const size_t w,
-                        const CountingBloomFilter<uint16_t>& cbf,
+                        const CountingBloomFilter<uint32_t>& cbf,
                         const unsigned flags,
                         const unsigned threads,
                         const bool verbose)
@@ -370,7 +370,9 @@ Indexlr::minimize(const std::string& seq) const
   ssize_t min_idx_left, min_idx_right, min_pos_prev = -1;
   const Minimizer* min_current = nullptr;
   size_t idx = 0;
-  for (NtHash nh(seq, k, 2); nh.roll(); ++idx) {
+  static unsigned hash_num = cbf.get().get_hash_num();
+  size_t kmer_count;
+  for (NtHash nh(seq, k, hash_num); nh.roll(); ++idx) {
     auto& hk = hashed_kmers_buffer[idx % hashed_kmers_buffer.size()];
 
     hk = HashedKmer(nh.hashes()[0],
@@ -379,6 +381,10 @@ Indexlr::minimize(const std::string& seq) const
                     nh.forward(),
                     output_seq() ? seq.substr(nh.get_pos(), k) : "");
 
+    kmer_count = cbf.get().contains(nh.hashes());
+    if(kmer_count < 4){
+      hk.min_hash = std::numeric_limits<uint64_t>::max();
+    }
     /* if (filter_in() && filter_out()) {
       std::vector<uint64_t> tmp;
       tmp = { hk.min_hash };

@@ -296,7 +296,6 @@ inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
   const std::string& path)
 {
   std::ifstream file(path);
-
   auto table =
     BloomFilter::parse_header(file, KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER);
   counting_bloom_filter.bytes =
@@ -314,7 +313,6 @@ inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
               "CountingBloomFilter" + std::to_string(sizeof(T) * CHAR_BIT) +
                 " tried to load a file of CountingBloomFilter" +
                 std::to_string(*table->get_as<size_t>("counter_bits")));
-
   counting_bloom_filter.array =
     new std::atomic<T>[counting_bloom_filter.array_size];
   file.read((char*)counting_bloom_filter.array,
