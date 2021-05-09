@@ -50,6 +50,14 @@ public class btllib {
     return btllibJNI.KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_get();
   }
 
+  public static void filter_hashed_kmer(Indexlr.Minimizer hk, boolean filter_in, boolean filter_out, BloomFilter filter_in_bf, BloomFilter filter_out_bf) {
+    btllibJNI.filter_hashed_kmer(Indexlr.Minimizer.getCPtr(hk), hk, filter_in, filter_out, BloomFilter.getCPtr(filter_in_bf), filter_in_bf, BloomFilter.getCPtr(filter_out_bf), filter_out_bf);
+  }
+
+  public static void calc_minimizer(SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t hashed_kmers_buffer, SWIGTYPE_p_p_btllib__Indexlr__Minimizer min_current, long idx, SWIGTYPE_p_ssize_t min_idx_left, SWIGTYPE_p_ssize_t min_idx_right, SWIGTYPE_p_ssize_t min_pos_prev, long w, SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t minimizers) {
+    btllibJNI.calc_minimizer(SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t.getCPtr(hashed_kmers_buffer), SWIGTYPE_p_p_btllib__Indexlr__Minimizer.getCPtr(min_current), idx, SWIGTYPE_p_ssize_t.getCPtr(min_idx_left), SWIGTYPE_p_ssize_t.getCPtr(min_idx_right), SWIGTYPE_p_ssize_t.getCPtr(min_pos_prev), w, SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t.getCPtr(minimizers));
+  }
+
   public static SWIGTYPE_p_uint8_t getCP_OFF() {
     return new SWIGTYPE_p_uint8_t(btllibJNI.CP_OFF_get(), true);
   }
@@ -356,6 +364,11 @@ public class btllib {
     return new SWIGTYPE_p_mode_t(btllibJNI.PIPE_PERMISSIONS_get(), true);
   }
 
+  public static Datatype getDATATYPES() {
+    long cPtr = btllibJNI.DATATYPES_get();
+    return (cPtr == 0) ? null : new Datatype(cPtr, false);
+  }
+
   public static SWIGTYPE_p_bool process_spawner_initialized() {
     return new SWIGTYPE_p_bool(btllibJNI.process_spawner_initialized(), false);
   }
@@ -424,6 +437,42 @@ public class btllib {
 
   public static DataStreamPipeline run_pipeline_cmd(String cmd, DataStream.Operation op, int pipe_fd) {
     return new DataStreamPipeline(btllibJNI.run_pipeline_cmd(cmd, op.swigValue(), pipe_fd), true);
+  }
+
+  public static void ignore_sigchld() {
+    btllibJNI.ignore_sigchld();
+  }
+
+  public static void rm_pipes_on_death() {
+    btllibJNI.rm_pipes_on_death();
+  }
+
+  public static void process_spawner_operation() {
+    btllibJNI.process_spawner_operation();
+  }
+
+  public static String get_datatype_cmd(String path, Datatype datatype, DataStream.Operation op) {
+    return btllibJNI.get_datatype_cmd(path, Datatype.getCPtr(datatype), datatype, op.swigValue());
+  }
+
+  public static SWIGTYPE_p_std__vectorT_std__string_t peel_datatype(String path, DataStream.Operation op) {
+    return new SWIGTYPE_p_std__vectorT_std__string_t(btllibJNI.peel_datatype(path, op.swigValue()), true);
+  }
+
+  public static String form_string_cmd(SWIGTYPE_p_std__vectorT_std__string_t cmd_layers, DataStream.Operation op, String path) {
+    return btllibJNI.form_string_cmd(SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(cmd_layers), op.swigValue(), path);
+  }
+
+  public static String extract_stdout_file(SWIGTYPE_p_std__vectorT_std__string_t args) {
+    return btllibJNI.extract_stdout_file(SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(args));
+  }
+
+  public static void chain_read(int idx, int cmd_count, SWIGTYPE_p_p_char argv, int pipe_fd, SWIGTYPE_p_int input_fd, SWIGTYPE_p_int output_fd) {
+    btllibJNI.chain_read(idx, cmd_count, SWIGTYPE_p_p_char.getCPtr(argv), pipe_fd, SWIGTYPE_p_int.getCPtr(input_fd), SWIGTYPE_p_int.getCPtr(output_fd));
+  }
+
+  public static void chain_write(int idx, int cmd_count, SWIGTYPE_p_p_char argv, int pipe_fd, SWIGTYPE_p_int input_fd, SWIGTYPE_p_int output_fd, boolean append, String stdout_to_file) {
+    btllibJNI.chain_write(idx, cmd_count, SWIGTYPE_p_p_char.getCPtr(argv), pipe_fd, SWIGTYPE_p_int.getCPtr(input_fd), SWIGTYPE_p_int.getCPtr(output_fd), append, stdout_to_file);
   }
 
   public static String getPRINT_COLOR_INFO() {

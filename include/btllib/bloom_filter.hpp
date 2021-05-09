@@ -410,7 +410,8 @@ private:
 };
 
 inline BloomFilter::BloomFilter(size_t bytes, unsigned hash_num)
-  : bytes(std::ceil(bytes / sizeof(uint64_t)) * sizeof(uint64_t))
+  : bytes(
+      size_t(std::ceil(double(bytes) / sizeof(uint64_t)) * sizeof(uint64_t)))
   , array_size(get_bytes() / sizeof(array[0]))
   , array_bits(array_size * CHAR_BIT)
   , hash_num(hash_num)
@@ -484,7 +485,7 @@ BloomFilter::parse_header(std::ifstream& file, const std::string& magic_string)
       std::string("Magic string does not match (likely version mismatch)\n") +
       "File magic string:\t" + line + "\n" + "Loader magic string:\t" +
       magic_with_brackets);
-    std::exit(EXIT_FAILURE);
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
 
   /* Read bloom filter line by line until it sees "[HeaderEnd]"
@@ -501,7 +502,7 @@ BloomFilter::parse_header(std::ifstream& file, const std::string& magic_string)
   }
   if (!header_end_found) {
     log_error("Pre-built bloom filter does not have the correct header end.");
-    std::exit(EXIT_FAILURE);
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
 
   // Send the char array to a stringstream for the cpptoml parser to parse
@@ -528,7 +529,7 @@ inline BloomFilter::BloomFilter(const std::string& path)
   hash_num = *(table->get_as<decltype(hash_num)>("hash_num"));
 
   array = new std::atomic<uint8_t>[array_size];
-  file.read((char*)array, array_size * sizeof(array[0]));
+  file.read((char*)array, std::streamsize(array_size * sizeof(array[0])));
 }
 
 inline void
@@ -550,7 +551,7 @@ BloomFilter::write(const std::string& path)
   root->insert(BLOOM_FILTER_MAGIC_HEADER, header);
   file << *root << "[HeaderEnd]\n";
 
-  file.write((char*)array, array_size * sizeof(array[0]));
+  file.write((char*)array, std::streamsize(array_size * sizeof(array[0])));
 }
 
 inline KmerBloomFilter::KmerBloomFilter(size_t bytes,
@@ -599,8 +600,9 @@ inline KmerBloomFilter::KmerBloomFilter(const std::string& path)
   k = *(table->get_as<decltype(k)>("k"));
 
   bloom_filter.array = new std::atomic<uint8_t>[bloom_filter.array_size];
-  file.read((char*)bloom_filter.array,
-            bloom_filter.array_size * sizeof(bloom_filter.array[0]));
+  file.read(
+    (char*)bloom_filter.array,
+    std::streamsize(bloom_filter.array_size * sizeof(bloom_filter.array[0])));
 }
 
 inline void
@@ -623,8 +625,9 @@ KmerBloomFilter::write(const std::string& path)
   root->insert(KMER_BLOOM_FILTER_MAGIC_HEADER, header);
   file << *root << "[HeaderEnd]\n";
 
-  file.write((char*)bloom_filter.array,
-             bloom_filter.array_size * sizeof(bloom_filter.array[0]));
+  file.write(
+    (char*)bloom_filter.array,
+    std::streamsize(bloom_filter.array_size * sizeof(bloom_filter.array[0])));
 }
 
 inline SeedBloomFilter::SeedBloomFilter(size_t bytes,
@@ -714,8 +717,8 @@ inline SeedBloomFilter::SeedBloomFilter(const std::string& path)
   kmer_bloom_filter.bloom_filter.array =
     new std::atomic<uint8_t>[kmer_bloom_filter.bloom_filter.array_size];
   file.read((char*)kmer_bloom_filter.bloom_filter.array,
-            kmer_bloom_filter.bloom_filter.array_size *
-              sizeof(kmer_bloom_filter.bloom_filter.array[0]));
+            std::streamsize(kmer_bloom_filter.bloom_filter.array_size *
+                            sizeof(kmer_bloom_filter.bloom_filter.array[0])));
 }
 
 inline void
@@ -745,8 +748,8 @@ SeedBloomFilter::write(const std::string& path)
   file << *root << "[HeaderEnd]\n";
 
   file.write((char*)kmer_bloom_filter.bloom_filter.array,
-             kmer_bloom_filter.bloom_filter.array_size *
-               sizeof(kmer_bloom_filter.bloom_filter.array[0]));
+             std::streamsize(kmer_bloom_filter.bloom_filter.array_size *
+                             sizeof(kmer_bloom_filter.bloom_filter.array[0])));
 }
 
 } // namespace btllib

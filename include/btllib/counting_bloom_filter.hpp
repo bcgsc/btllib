@@ -5,7 +5,7 @@
 #include "nthash.hpp"
 #include "status.hpp"
 
-#include "external/cpptoml.hpp"
+#include "../external/cpptoml.hpp"
 
 #include <atomic>
 #include <climits>
@@ -263,7 +263,8 @@ using KmerCountingBloomFilter32 = KmerCountingBloomFilter<uint32_t>;
 template<typename T>
 inline CountingBloomFilter<T>::CountingBloomFilter(size_t bytes,
                                                    unsigned hash_num)
-  : bytes(std::ceil(bytes / sizeof(uint64_t)) * sizeof(uint64_t))
+  : bytes(
+      size_t(std::ceil(double(bytes) / sizeof(uint64_t)) * sizeof(uint64_t)))
   , array_size(get_bytes() / sizeof(array[0]))
   , hash_num(hash_num)
 {

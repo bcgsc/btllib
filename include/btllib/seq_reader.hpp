@@ -281,7 +281,7 @@ SeqReader::close() noexcept
       source.close();
     } catch (const std::system_error& e) {
       log_error("SeqReader thread join failure: " + std::string(e.what()));
-      std::exit(EXIT_FAILURE);
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
   }
 }
@@ -616,7 +616,7 @@ SeqReader::determine_format()
   } else {
     format = Format::INVALID;
     log_error(std::string(source_path) + " source file is in invalid format!");
-    std::exit(EXIT_FAILURE);
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
 }
 
@@ -787,7 +787,7 @@ struct SeqReader::read_fasta_buffer
       }
       default: {
         log_error("SeqReader has entered an invalid state.");
-        std::exit(EXIT_FAILURE);
+        std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
       }
     }
     return false;
@@ -832,7 +832,7 @@ struct SeqReader::read_fastq_buffer
       }
       default: {
         log_error("SeqReader has entered an invalid state.");
-        std::exit(EXIT_FAILURE);
+        std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
       }
     }
     return false;
@@ -888,7 +888,7 @@ struct SeqReader::read_fasta_transition
       }
       default: {
         log_error("SeqReader has entered an invalid state.");
-        std::exit(EXIT_FAILURE);
+        std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
       }
     }
   }
@@ -922,7 +922,7 @@ struct SeqReader::read_fastq_transition
       }
       default: {
         log_error("SeqReader has entered an invalid state.");
-        std::exit(EXIT_FAILURE);
+        std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
       }
     }
   }
@@ -1216,7 +1216,7 @@ SeqReader::start_processor()
                   log_error(std::string("A sequence contains invalid "
                                         "IUPAC character: ") +
                             old);
-                  std::exit(EXIT_FAILURE);
+                  std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
                 }
               }
             }

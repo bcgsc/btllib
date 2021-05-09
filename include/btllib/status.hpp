@@ -140,7 +140,7 @@ check_error(bool condition, const std::string& msg)
 {
   if (condition) {
     log_error(msg);
-    std::exit(EXIT_FAILURE);
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
 }
 

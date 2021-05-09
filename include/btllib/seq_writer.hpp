@@ -86,7 +86,7 @@ SeqWriter::write(const std::string& name,
     if (!bool(COMPLEMENTS[(unsigned char)(c)])) {
       log_error(std::string("A sequence contains invalid IUPAC character: ") +
                 c);
-      std::exit(EXIT_FAILURE);
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
   }
 

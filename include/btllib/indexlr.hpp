@@ -391,6 +391,66 @@ Indexlr::extract_barcode(const std::string& id, const std::string& comment)
   return "NA";
 }
 
+inline static void
+filter_hashed_kmer(Indexlr::HashedKmer& hk,
+                   bool filter_in,
+                   bool filter_out,
+                   const BloomFilter& filter_in_bf,
+                   const BloomFilter& filter_out_bf)
+{
+  if (filter_in && filter_out) {
+    std::vector<uint64_t> tmp;
+    tmp = { hk.min_hash };
+    if (!filter_in_bf.contains(tmp) || filter_out_bf.contains(tmp)) {
+      hk.min_hash = std::numeric_limits<uint64_t>::max();
+    }
+  } else if (filter_in) {
+    if (!filter_in_bf.contains({ hk.min_hash })) {
+      hk.min_hash = std::numeric_limits<uint64_t>::max();
+    }
+  } else if (filter_out) {
+    if (filter_out_bf.contains({ hk.min_hash })) {
+      hk.min_hash = std::numeric_limits<uint64_t>::max();
+    }
+  }
+}
+
+inline static void
+calc_minimizer(const std::vector<Indexlr::HashedKmer>& hashed_kmers_buffer,
+               const Indexlr::Minimizer*& min_current,
+               const size_t idx,
+               ssize_t& min_idx_left,
+               ssize_t& min_idx_right,
+               ssize_t& min_pos_prev,
+               const size_t w,
+               std::vector<Indexlr::Minimizer>& minimizers)
+{
+  min_idx_left = ssize_t(idx + 1 - w);
+  min_idx_right = ssize_t(idx + 1);
+  const auto& min_left =
+    hashed_kmers_buffer[min_idx_left % hashed_kmers_buffer.size()];
+  const auto& min_right =
+    hashed_kmers_buffer[(min_idx_right - 1) % hashed_kmers_buffer.size()];
+
+  if (min_current == nullptr || min_current->pos < min_left.pos) {
+    min_current = &min_left;
+    // Use of operator '<=' returns the minimum that is furthest from left.
+    for (ssize_t i = min_idx_left; i < min_idx_right; i++) {
+      const auto& min_i = hashed_kmers_buffer[i % hashed_kmers_buffer.size()];
+      if (min_i.min_hash <= min_current->min_hash) {
+        min_current = &min_i;
+      }
+    }
+  } else if (min_right.min_hash <= min_current->min_hash) {
+    min_current = &min_right;
+  }
+  if (ssize_t(min_current->pos) > min_pos_prev &&
+      min_current->min_hash != std::numeric_limits<uint64_t>::max()) {
+    min_pos_prev = ssize_t(min_current->pos);
+    minimizers.push_back(*min_current);
+  }
+}
+
 inline std::vector<Indexlr::Minimizer>
 Indexlr::minimize(const std::string& seq) const
 {
@@ -412,49 +472,18 @@ Indexlr::minimize(const std::string& seq) const
                     nh.forward(),
                     output_seq() ? seq.substr(nh.get_pos(), k) : "");
 
-    if (filter_in() && filter_out()) {
-      std::vector<uint64_t> tmp;
-      tmp = { hk.min_hash };
-      if (!filter_in_bf.get().contains(tmp) ||
-          filter_out_bf.get().contains(tmp)) {
-        hk.min_hash = std::numeric_limits<uint64_t>::max();
-      }
-    } else if (filter_in()) {
-      if (!filter_in_bf.get().contains({ hk.min_hash })) {
-        hk.min_hash = std::numeric_limits<uint64_t>::max();
-      }
-    } else if (filter_out()) {
-      if (filter_out_bf.get().contains({ hk.min_hash })) {
-        hk.min_hash = std::numeric_limits<uint64_t>::max();
-      }
-    }
+    filter_hashed_kmer(
+      hk, filter_in(), filter_out(), filter_in_bf.get(), filter_out_bf.get());
 
     if (idx + 1 >= w) {
-      min_idx_left = idx + 1 - w;
-      min_idx_right = idx + 1;
-      const auto& min_left =
-        hashed_kmers_buffer[min_idx_left % hashed_kmers_buffer.size()];
-      const auto& min_right =
-        hashed_kmers_buffer[(min_idx_right - 1) % hashed_kmers_buffer.size()];
-
-      if (min_current == nullptr || min_current->pos < min_left.pos) {
-        min_current = &min_left;
-        // Use of operator '<=' returns the minimum that is furthest from left.
-        for (ssize_t i = min_idx_left; i < min_idx_right; i++) {
-          const auto& min_i =
-            hashed_kmers_buffer[i % hashed_kmers_buffer.size()];
-          if (min_i.min_hash <= min_current->min_hash) {
-            min_current = &min_i;
-          }
-        }
-      } else if (min_right.min_hash <= min_current->min_hash) {
-        min_current = &min_right;
-      }
-      if (ssize_t(min_current->pos) > min_pos_prev &&
-          min_current->min_hash != std::numeric_limits<uint64_t>::max()) {
-        min_pos_prev = min_current->pos;
-        minimizers.push_back(*min_current);
-      }
+      calc_minimizer(hashed_kmers_buffer,
+                     min_current,
+                     idx,
+                     min_idx_left,
+                     min_idx_right,
+                     min_pos_prev,
+                     w,
+                     minimizers);
     }
   }
   return minimizers;
