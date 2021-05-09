@@ -127,8 +127,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6b281f9326b52e93355e6bef17748c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8b6d0b55a61c7c231cce2c86b149125"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbtllib_1_1KmerBloomFilter.html">KmerBloomFilter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ab8b6d0b55a61c7c231cce2c86b149125">get_kmer_bloom_filter</a> ()</td></tr>
 <tr class="separator:ab8b6d0b55a61c7c231cce2c86b149125"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a723a6867adcec5bc05f3949dfde9f6d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a723a6867adcec5bc05f3949dfde9f6d6">write</a> (const std::string &amp;path)</td></tr>
-<tr class="separator:a723a6867adcec5bc05f3949dfde9f6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a492503ad458de38bf683ef804ebff5c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a492503ad458de38bf683ef804ebff5c1">save</a> (const std::string &amp;path)</td></tr>
+<tr class="separator:a492503ad458de38bf683ef804ebff5c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Bloom filter data structure that stores spaced seed k-mers. </p>
@@ -732,8 +732,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a723a6867adcec5bc05f3949dfde9f6d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a723a6867adcec5bc05f3949dfde9f6d6">&#9670;&nbsp;</a></span>write()</h2>
+<a id="a492503ad458de38bf683ef804ebff5c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a492503ad458de38bf683ef804ebff5c1">&#9670;&nbsp;</a></span>save()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -742,7 +742,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void btllib::SeedBloomFilter::write </td>
+          <td class="memname">void btllib::SeedBloomFilter::save </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>path</em></td><td>)</td>
@@ -755,7 +755,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Write the Bloom filter to a file that can be loaded in the future.</p>
+<p>Save the Bloom filter to a file that can be loaded in the future.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>Filepath to store filter at. </td></tr>

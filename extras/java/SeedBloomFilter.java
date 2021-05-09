@@ -112,8 +112,8 @@ public class SeedBloomFilter {
     return new KmerBloomFilter(btllibJNI.SeedBloomFilter_get_kmer_bloom_filter(swigCPtr, this), false);
   }
 
-  public void write(String path) {
-    btllibJNI.SeedBloomFilter_write(swigCPtr, this, path);
+  public void save(String path) {
+    btllibJNI.SeedBloomFilter_save(swigCPtr, this, path);
   }
 
 }

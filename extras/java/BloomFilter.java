@@ -84,8 +84,8 @@ public class BloomFilter {
     return btllibJNI.BloomFilter_get_fpr(swigCPtr, this);
   }
 
-  public void write(String path) {
-    btllibJNI.BloomFilter_write(swigCPtr, this, path);
+  public void save(String path) {
+    btllibJNI.BloomFilter_save(swigCPtr, this, path);
   }
 
   public static SWIGTYPE_p_std__shared_ptrT_cpptoml__table_t parse_header(SWIGTYPE_p_std__ifstream file, String magic_string) {

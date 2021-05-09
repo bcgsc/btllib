@@ -524,7 +524,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderRecord_1num_1
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderRecord_1name_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderRecord_1id_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -541,11 +541,11 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderRecord_1name_1
   std::string arg2_str(arg2_pstr);
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  if (arg1) (arg1)->name = *arg2;
+  if (arg1) (arg1)->id = *arg2;
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderRecord_1name_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderRecord_1id_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
   std::string *result = 0 ;
@@ -554,7 +554,7 @@ SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderRecord_1nam
   (void)jcls;
   (void)jarg1_;
   arg1 = *(btllib::SeqReader::Record **)&jarg1; 
-  result = (std::string *) & ((arg1)->name);
+  result = (std::string *) & ((arg1)->id);
   jresult = jenv->NewStringUTF(result->c_str()); 
   return jresult;
 }
@@ -988,7 +988,7 @@ SWIGEXPORT jdouble JNICALL Java_btllib_btllibJNI_BloomFilter_1get_1fpr(JNIEnv *j
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_BloomFilter_1write(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_BloomFilter_1save(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -1005,7 +1005,7 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_BloomFilter_1write(JNIEnv *jenv, j
   std::string arg2_str(arg2_pstr);
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  (arg1)->write((std::string const &)*arg2);
+  (arg1)->save((std::string const &)*arg2);
 }
 
 
@@ -1322,7 +1322,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1get_1bloom_1filt
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1write(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1save(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -1339,7 +1339,7 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_KmerBloomFilter_1write(JNIEnv *jen
   std::string arg2_str(arg2_pstr);
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  (arg1)->write((std::string const &)*arg2);
+  (arg1)->save((std::string const &)*arg2);
 }
 
 
@@ -1689,7 +1689,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1get_1kmer_1bloom
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1write(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1save(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -1706,7 +1706,7 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1write(JNIEnv *jen
   std::string arg2_str(arg2_pstr);
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  (arg1)->write((std::string const &)*arg2);
+  (arg1)->save((std::string const &)*arg2);
 }
 
 

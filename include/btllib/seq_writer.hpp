@@ -42,7 +42,7 @@ public:
 
   void close();
 
-  void write(const std::string& name,
+  void write(const std::string& id,
              const std::string& comment,
              const std::string& seq,
              const std::string& qual = "");
@@ -76,7 +76,7 @@ SeqWriter::close()
 }
 
 inline void
-SeqWriter::write(const std::string& name,
+SeqWriter::write(const std::string& id,
                  const std::string& comment,
                  const std::string& seq,
                  const std::string& qual)
@@ -91,11 +91,11 @@ SeqWriter::write(const std::string& name,
   }
 
   std::string output;
-  output.reserve(1 + name.size() + 1 + comment.size() + 1 + seq.size() + 3 +
+  output.reserve(1 + id.size() + 1 + comment.size() + 1 + seq.size() + 3 +
                  qual.size() + 1);
   output += headerchar;
-  if (!name.empty()) {
-    output += name;
+  if (!id.empty()) {
+    output += id;
   }
   if (!comment.empty()) {
     output += " ";

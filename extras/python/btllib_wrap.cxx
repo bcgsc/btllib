@@ -11188,7 +11188,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SeqReaderRecord_name_set(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_SeqReaderRecord_id_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
   std::string *arg2 = 0 ;
@@ -11201,21 +11201,21 @@ SWIGINTERN PyObject *_wrap_SeqReaderRecord_name_set(PyObject *self, PyObject *ar
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReaderRecord_name_set" "', argument " "1"" of type '" "btllib::SeqReader::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReaderRecord_id_set" "', argument " "1"" of type '" "btllib::SeqReader::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::SeqReader::Record * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SeqReaderRecord_name_set" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SeqReaderRecord_id_set" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SeqReaderRecord_name_set" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SeqReaderRecord_id_set" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
-  if (arg1) (arg1)->name = *arg2;
+  if (arg1) (arg1)->id = *arg2;
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -11225,7 +11225,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SeqReaderRecord_name_get(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_SeqReaderRecord_id_get(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
   void *argp1 = 0 ;
@@ -11233,13 +11233,13 @@ SWIGINTERN PyObject *_wrap_SeqReaderRecord_name_get(PyObject *self, PyObject *ar
   PyObject *swig_obj[1] ;
   std::string *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "SeqReaderRecord_name_get", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "SeqReaderRecord_id_get", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReaderRecord_name_get" "', argument " "1"" of type '" "btllib::SeqReader::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReaderRecord_id_get" "', argument " "1"" of type '" "btllib::SeqReader::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::SeqReader::Record * >(argp1);
-  result = (std::string *) & ((arg1)->name);
+  result = (std::string *) & ((arg1)->id);
   resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
@@ -12040,7 +12040,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BloomFilter_write(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_BloomFilter_save(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;
   std::string *arg2 = 0 ;
@@ -12053,21 +12053,21 @@ SWIGINTERN PyObject *_wrap_BloomFilter_write(PyObject *self, PyObject *args) {
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BloomFilter, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BloomFilter_write" "', argument " "1"" of type '" "btllib::BloomFilter *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BloomFilter_save" "', argument " "1"" of type '" "btllib::BloomFilter *""'"); 
   }
   arg1 = reinterpret_cast< btllib::BloomFilter * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BloomFilter_write" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BloomFilter_save" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BloomFilter_write" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BloomFilter_save" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
-  (arg1)->write((std::string const &)*arg2);
+  (arg1)->save((std::string const &)*arg2);
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -12744,7 +12744,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_KmerBloomFilter_write(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_KmerBloomFilter_save(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::KmerBloomFilter *arg1 = (btllib::KmerBloomFilter *) 0 ;
   std::string *arg2 = 0 ;
@@ -12757,21 +12757,21 @@ SWIGINTERN PyObject *_wrap_KmerBloomFilter_write(PyObject *self, PyObject *args)
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerBloomFilter, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_write" "', argument " "1"" of type '" "btllib::KmerBloomFilter *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_save" "', argument " "1"" of type '" "btllib::KmerBloomFilter *""'"); 
   }
   arg1 = reinterpret_cast< btllib::KmerBloomFilter * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerBloomFilter_write" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerBloomFilter_save" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerBloomFilter_write" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerBloomFilter_save" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
-  (arg1)->write((std::string const &)*arg2);
+  (arg1)->save((std::string const &)*arg2);
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -13510,7 +13510,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SeedBloomFilter_write(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_SeedBloomFilter_save(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
   std::string *arg2 = 0 ;
@@ -13523,21 +13523,21 @@ SWIGINTERN PyObject *_wrap_SeedBloomFilter_write(PyObject *self, PyObject *args)
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedBloomFilter, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedBloomFilter_write" "', argument " "1"" of type '" "btllib::SeedBloomFilter *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedBloomFilter_save" "', argument " "1"" of type '" "btllib::SeedBloomFilter *""'"); 
   }
   arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SeedBloomFilter_write" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SeedBloomFilter_save" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SeedBloomFilter_write" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SeedBloomFilter_save" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
-  (arg1)->write((std::string const &)*arg2);
+  (arg1)->save((std::string const &)*arg2);
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -25373,17 +25373,17 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__SeqReader__Flag_type = {
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeqReader__Flag_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReader__Flag_type};
 
-static SwigPyGetSet SeqReaderRecord_name_getset = { _wrap_SeqReaderRecord_name_get, _wrap_SeqReaderRecord_name_set };
 static SwigPyGetSet SeqReaderRecord_qual_getset = { _wrap_SeqReaderRecord_qual_get, _wrap_SeqReaderRecord_qual_set };
 static SwigPyGetSet SeqReaderRecord___dict___getset = { SwigPyObject_get___dict__, 0 };
 static SwigPyGetSet SeqReaderRecord_num_getset = { _wrap_SeqReaderRecord_num_get, _wrap_SeqReaderRecord_num_set };
+static SwigPyGetSet SeqReaderRecord_id_getset = { _wrap_SeqReaderRecord_id_get, _wrap_SeqReaderRecord_id_set };
 static SwigPyGetSet SeqReaderRecord_comment_getset = { _wrap_SeqReaderRecord_comment_get, _wrap_SeqReaderRecord_comment_set };
 static SwigPyGetSet SeqReaderRecord_seq_getset = { _wrap_SeqReaderRecord_seq_get, _wrap_SeqReaderRecord_seq_set };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__SeqReader__Record_getset[] = {
-    { (char *)"name", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &SeqReaderRecord_name_getset },
     { (char *)"qual", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &SeqReaderRecord_qual_getset },
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &SeqReaderRecord___dict___getset },
     { (char *)"num", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &SeqReaderRecord_num_getset },
+    { (char *)"id", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &SeqReaderRecord_id_getset },
     { (char *)"comment", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &SeqReaderRecord_comment_getset },
     { (char *)"seq", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &SeqReaderRecord_seq_getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
@@ -25624,7 +25624,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__BloomFilter_methods[] = {
   { "get_occupancy", _wrap_BloomFilter_get_occupancy, METH_NOARGS, "" },
   { "get_hash_num", _wrap_BloomFilter_get_hash_num, METH_NOARGS, "" },
   { "get_fpr", _wrap_BloomFilter_get_fpr, METH_NOARGS, "" },
-  { "write", _wrap_BloomFilter_write, METH_O, "" },
+  { "save", _wrap_BloomFilter_save, METH_O, "" },
   { "parse_header", (PyCFunction)(void(*)(void))_wrap_BloomFilter_parse_header, METH_STATIC|METH_VARARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
@@ -25847,7 +25847,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__KmerBloomFilter_methods[] = {
   { "get_fpr", _wrap_KmerBloomFilter_get_fpr, METH_NOARGS, "" },
   { "get_k", _wrap_KmerBloomFilter_get_k, METH_NOARGS, "" },
   { "get_bloom_filter", _wrap_KmerBloomFilter_get_bloom_filter, METH_NOARGS, "" },
-  { "write", _wrap_KmerBloomFilter_write, METH_O, "" },
+  { "save", _wrap_KmerBloomFilter_save, METH_O, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -26072,7 +26072,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedBloomFilter_methods[] = {
   { "get_parsed_seeds", _wrap_SeedBloomFilter_get_parsed_seeds, METH_NOARGS, "" },
   { "get_hash_num_per_seed", _wrap_SeedBloomFilter_get_hash_num_per_seed, METH_NOARGS, "" },
   { "get_kmer_bloom_filter", _wrap_SeedBloomFilter_get_kmer_bloom_filter, METH_NOARGS, "" },
-  { "write", _wrap_SeedBloomFilter_write, METH_O, "" },
+  { "save", _wrap_SeedBloomFilter_save, METH_O, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 

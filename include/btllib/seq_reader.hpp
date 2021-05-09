@@ -93,7 +93,7 @@ public:
   struct Record
   {
     size_t num = -1;
-    std::string name;
+    std::string id;
     std::string comment;
     std::string seq;
     std::string qual;
@@ -1162,18 +1162,18 @@ SeqReader::start_processor()
                 break;
               }
             }
-            size_t name_start =
+            size_t id_start =
               (format == Format::FASTA || format == Format::FASTQ) ? 1 : 0;
 
             if (first_whitespace == nullptr) {
-              records_out.data[i].name =
-                std::string(records_in.data[i].header + name_start,
-                            records_in.data[i].header.size() - name_start);
+              records_out.data[i].id =
+                std::string(records_in.data[i].header + id_start,
+                            records_in.data[i].header.size() - id_start);
               records_out.data[i].comment = "";
             } else {
-              records_out.data[i].name = std::string(
-                records_in.data[i].header + name_start,
-                first_whitespace - records_in.data[i].header - name_start);
+              records_out.data[i].id = std::string(
+                records_in.data[i].header + id_start,
+                first_whitespace - records_in.data[i].header - id_start);
               records_out.data[i].comment = std::string(
                 last_whitespace + 1,
                 records_in.data[i].header.size() -
@@ -1181,11 +1181,10 @@ SeqReader::start_processor()
             }
             records_in.data[i].header.clear();
 
-            auto& name = records_out.data[i].name;
+            auto& id = records_out.data[i].id;
             auto& comment = records_out.data[i].comment;
-            while (!name.empty() &&
-                   (name.back() == '\r' || name.back() == '\n')) {
-              name.pop_back();
+            while (!id.empty() && (id.back() == '\r' || id.back() == '\n')) {
+              id.pop_back();
             }
             while (!comment.empty() &&
                    (comment.back() == '\r' || comment.back() == '\n')) {

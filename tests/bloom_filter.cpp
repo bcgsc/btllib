@@ -22,7 +22,7 @@ main()
   assert(!bf.contains({ 1, 20, 100 }));
 
   auto filename = get_random_name(64);
-  bf.write(filename);
+  bf.save(filename);
 
   btllib::BloomFilter bf2(filename);
 

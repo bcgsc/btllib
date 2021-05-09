@@ -100,8 +100,8 @@ public class KmerBloomFilter {
     return new BloomFilter(btllibJNI.KmerBloomFilter_get_bloom_filter(swigCPtr, this), false);
   }
 
-  public void write(String path) {
-    btllibJNI.KmerBloomFilter_write(swigCPtr, this, path);
+  public void save(String path) {
+    btllibJNI.KmerBloomFilter_save(swigCPtr, this, path);
   }
 
 }

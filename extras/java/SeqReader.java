@@ -146,12 +146,12 @@ public class SeqReader {
       return btllibJNI.SeqReader_SeqReaderRecord_num_get(swigCPtr, this);
     }
   
-    public void setName(String value) {
-      btllibJNI.SeqReader_SeqReaderRecord_name_set(swigCPtr, this, value);
+    public void setId(String value) {
+      btllibJNI.SeqReader_SeqReaderRecord_id_set(swigCPtr, this, value);
     }
   
-    public String getName() {
-      return btllibJNI.SeqReader_SeqReaderRecord_name_get(swigCPtr, this);
+    public String getId() {
+      return btllibJNI.SeqReader_SeqReaderRecord_id_get(swigCPtr, this);
     }
   
     public void setComment(String value) {

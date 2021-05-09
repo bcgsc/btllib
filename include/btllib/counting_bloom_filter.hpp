@@ -110,11 +110,11 @@ public:
   double get_fpr() const;
 
   /**
-   * Write the Bloom filter to a file that can be loaded in the future.
+   * Save the Bloom filter to a file that can be loaded in the future.
    *
    * @param path Filepath to store filter at.
    */
-  void write(const std::string& path);
+  void save(const std::string& path);
 
 private:
   friend class KmerCountingBloomFilter<T>;
@@ -241,11 +241,11 @@ public:
   }
 
   /**
-   * Write the Bloom filter to a file that can be loaded in the future.
+   * Save the Bloom filter to a file that can be loaded in the future.
    *
    * @param path Filepath to store filter at.
    */
-  void write(const std::string& path);
+  void save(const std::string& path);
 
 private:
   CountingBloomFilter<T> counting_bloom_filter;
@@ -373,7 +373,7 @@ inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path)
 
 template<typename T>
 inline void
-CountingBloomFilter<T>::write(const std::string& path)
+CountingBloomFilter<T>::save(const std::string& path)
 {
   std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);
 
@@ -458,7 +458,7 @@ inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
 
 template<typename T>
 inline void
-KmerCountingBloomFilter<T>::write(const std::string& path)
+KmerCountingBloomFilter<T>::save(const std::string& path)
 {
   std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);
 

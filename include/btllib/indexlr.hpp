@@ -525,7 +525,7 @@ Indexlr::InputWorker::work()
   Read read;
   while ((record = indexlr.reader.read())) {
     block.data[block.count++] = Read(record.num,
-                                     std::move(record.name),
+                                     std::move(record.id),
                                      std::move(record.comment),
                                      std::move(record.seq));
     if (block.count == indexlr.block_size) {

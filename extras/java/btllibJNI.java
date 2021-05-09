@@ -27,8 +27,8 @@ public class btllibJNI {
   public final static native int SeqReader_get_format(long jarg1, SeqReader jarg1_);
   public final static native void SeqReader_SeqReaderRecord_num_set(long jarg1, SeqReader.SeqReaderRecord jarg1_, long jarg2);
   public final static native long SeqReader_SeqReaderRecord_num_get(long jarg1, SeqReader.SeqReaderRecord jarg1_);
-  public final static native void SeqReader_SeqReaderRecord_name_set(long jarg1, SeqReader.SeqReaderRecord jarg1_, String jarg2);
-  public final static native String SeqReader_SeqReaderRecord_name_get(long jarg1, SeqReader.SeqReaderRecord jarg1_);
+  public final static native void SeqReader_SeqReaderRecord_id_set(long jarg1, SeqReader.SeqReaderRecord jarg1_, String jarg2);
+  public final static native String SeqReader_SeqReaderRecord_id_get(long jarg1, SeqReader.SeqReaderRecord jarg1_);
   public final static native void SeqReader_SeqReaderRecord_comment_set(long jarg1, SeqReader.SeqReaderRecord jarg1_, String jarg2);
   public final static native String SeqReader_SeqReaderRecord_comment_get(long jarg1, SeqReader.SeqReaderRecord jarg1_);
   public final static native void SeqReader_SeqReaderRecord_seq_set(long jarg1, SeqReader.SeqReaderRecord jarg1_, String jarg2);
@@ -57,7 +57,7 @@ public class btllibJNI {
   public final static native double BloomFilter_get_occupancy(long jarg1, BloomFilter jarg1_);
   public final static native long BloomFilter_get_hash_num(long jarg1, BloomFilter jarg1_);
   public final static native double BloomFilter_get_fpr(long jarg1, BloomFilter jarg1_);
-  public final static native void BloomFilter_write(long jarg1, BloomFilter jarg1_, String jarg2);
+  public final static native void BloomFilter_save(long jarg1, BloomFilter jarg1_, String jarg2);
   public final static native long BloomFilter_parse_header(long jarg1, String jarg2);
   public final static native long new_KmerBloomFilter__SWIG_0();
   public final static native long new_KmerBloomFilter__SWIG_1(long jarg1, long jarg2, long jarg3);
@@ -75,7 +75,7 @@ public class btllibJNI {
   public final static native double KmerBloomFilter_get_fpr(long jarg1, KmerBloomFilter jarg1_);
   public final static native long KmerBloomFilter_get_k(long jarg1, KmerBloomFilter jarg1_);
   public final static native long KmerBloomFilter_get_bloom_filter(long jarg1, KmerBloomFilter jarg1_);
-  public final static native void KmerBloomFilter_write(long jarg1, KmerBloomFilter jarg1_, String jarg2);
+  public final static native void KmerBloomFilter_save(long jarg1, KmerBloomFilter jarg1_, String jarg2);
   public final static native void delete_KmerBloomFilter(long jarg1);
   public final static native long new_SeedBloomFilter__SWIG_0();
   public final static native long new_SeedBloomFilter__SWIG_1(long jarg1, long jarg2, long jarg3, long jarg4);
@@ -96,7 +96,7 @@ public class btllibJNI {
   public final static native long SeedBloomFilter_get_parsed_seeds(long jarg1, SeedBloomFilter jarg1_);
   public final static native long SeedBloomFilter_get_hash_num_per_seed(long jarg1, SeedBloomFilter jarg1_);
   public final static native long SeedBloomFilter_get_kmer_bloom_filter(long jarg1, SeedBloomFilter jarg1_);
-  public final static native void SeedBloomFilter_write(long jarg1, SeedBloomFilter jarg1_, String jarg2);
+  public final static native void SeedBloomFilter_save(long jarg1, SeedBloomFilter jarg1_, String jarg2);
   public final static native void delete_SeedBloomFilter(long jarg1);
   public final static native String COMPLEMENTS_get();
   public final static native String CAPITALS_get();

@@ -119,11 +119,11 @@ public:
   double get_fpr() const;
 
   /**
-   * Write the Bloom filter to a file that can be loaded in the future.
+   * Save the Bloom filter to a file that can be loaded in the future.
    *
    * @param path Filepath to store filter at.
    */
-  void write(const std::string& path);
+  void save(const std::string& path);
 
   /** Parse a Bloom filter file header. Useful for implementing Bloom filter
    * variants. */
@@ -249,11 +249,11 @@ public:
   BloomFilter& get_bloom_filter() { return bloom_filter; }
 
   /**
-   * Write the Bloom filter to a file that can be loaded in the future.
+   * Save the Bloom filter to a file that can be loaded in the future.
    *
    * @param path Filepath to store filter at.
    */
-  void write(const std::string& path);
+  void save(const std::string& path);
 
 private:
   friend class SeedBloomFilter;
@@ -397,11 +397,11 @@ public:
   KmerBloomFilter& get_kmer_bloom_filter() { return kmer_bloom_filter; }
 
   /**
-   * Write the Bloom filter to a file that can be loaded in the future.
+   * Save the Bloom filter to a file that can be loaded in the future.
    *
    * @param path Filepath to store filter at.
    */
-  void write(const std::string& path);
+  void save(const std::string& path);
 
 private:
   KmerBloomFilter kmer_bloom_filter;
@@ -533,7 +533,7 @@ inline BloomFilter::BloomFilter(const std::string& path)
 }
 
 inline void
-BloomFilter::write(const std::string& path)
+BloomFilter::save(const std::string& path)
 {
   std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);
 
@@ -606,7 +606,7 @@ inline KmerBloomFilter::KmerBloomFilter(const std::string& path)
 }
 
 inline void
-KmerBloomFilter::write(const std::string& path)
+KmerBloomFilter::save(const std::string& path)
 {
   std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);
 
@@ -722,7 +722,7 @@ inline SeedBloomFilter::SeedBloomFilter(const std::string& path)
 }
 
 inline void
-SeedBloomFilter::write(const std::string& path)
+SeedBloomFilter::save(const std::string& path)
 {
   std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);
 
