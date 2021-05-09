@@ -23,11 +23,12 @@ static const unsigned char BIT_MASKS[CHAR_BIT] = {
   0x10, 0x20, 0x40, 0x80  // NOLINT
 };
 
-static const char* const BLOOM_FILTER_MAGIC_HEADER = "BTLBloomFilter_v2";
+static const char* const BLOOM_FILTER_MAGIC_HEADER = "BTLBloomFilter_v3";
 static const char* const KMER_BLOOM_FILTER_MAGIC_HEADER =
-  "BTLKmerBloomFilter_v2";
+  "BTLKmerBloomFilter_v3";
 static const char* const SEED_BLOOM_FILTER_MAGIC_HEADER =
-  "BTLSeedBloomFilter_v2";
+  "BTLSeedBloomFilter_v3";
+static const char* const HASH_FUNCTION = "ntHash_v1";
 
 static const unsigned MAX_HASH_VALUES = 1024;
 
@@ -59,8 +60,11 @@ public:
    * Load a Bloom filter from a file.
    *
    * @param path Filepath to load from.
+   * @param hash_fn Hash function expected in loaded Bloom filter. Not checked
+   * if the argument is not provided.
    */
-  explicit BloomFilter(const std::string& path);
+  explicit BloomFilter(const std::string& path,
+                       const std::string& hash_fn = "");
 
   ~BloomFilter() { delete[] array; }
 
@@ -122,8 +126,10 @@ public:
    * Save the Bloom filter to a file that can be loaded in the future.
    *
    * @param path Filepath to store filter at.
+   * @param hash_fn Hash function used. Not saved if the argument is not
+   * provided.
    */
-  void save(const std::string& path);
+  void save(const std::string& path, const std::string& hash_fn = "");
 
   /** Parse a Bloom filter file header. Useful for implementing Bloom filter
    * variants. */
@@ -514,7 +520,8 @@ BloomFilter::parse_header(std::ifstream& file, const std::string& magic_string)
   return header_config->get_table(magic_string);
 }
 
-inline BloomFilter::BloomFilter(const std::string& path)
+inline BloomFilter::BloomFilter(const std::string& path,
+                                const std::string& hash_fn)
 {
   std::ifstream file(path);
 
@@ -526,6 +533,12 @@ inline BloomFilter::BloomFilter(const std::string& path)
       std::to_string(bytes) + " for bit array.");
   array_size = bytes / sizeof(std::atomic<uint8_t>);
   array_bits = array_size * CHAR_BIT;
+  if (table->contains("hash_function") && !hash_fn.empty()) {
+    const auto loaded_hash_fn = *(table->get_as<std::string>("hash_function"));
+    check_error(hash_fn != loaded_hash_fn,
+                "Hash function mismatch: " + hash_fn +
+                  " (btllib) != " + loaded_hash_fn + " (loaded Bloom filter)!");
+  }
   hash_num = *(table->get_as<decltype(hash_num)>("hash_num"));
 
   array = new std::atomic<uint8_t>[array_size];
@@ -533,7 +546,7 @@ inline BloomFilter::BloomFilter(const std::string& path)
 }
 
 inline void
-BloomFilter::save(const std::string& path)
+BloomFilter::save(const std::string& path, const std::string& hash_fn)
 {
   std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);
 
@@ -547,6 +560,9 @@ BloomFilter::save(const std::string& path)
       and output to ostream */
   auto header = cpptoml::make_table();
   header->insert("bytes", get_bytes());
+  if (!hash_fn.empty()) {
+    header->insert("hash_function", hash_fn);
+  }
   header->insert("hash_num", get_hash_num());
   root->insert(BLOOM_FILTER_MAGIC_HEADER, header);
   file << *root << "[HeaderEnd]\n";
@@ -595,6 +611,10 @@ inline KmerBloomFilter::KmerBloomFilter(const std::string& path)
       std::to_string(get_bytes()) + " for bit array.");
   bloom_filter.array_size = get_bytes() / sizeof(bloom_filter.array[0]);
   bloom_filter.array_bits = bloom_filter.array_size * CHAR_BIT;
+  const auto hash_fn = *(table->get_as<std::string>("hash_function"));
+  check_error(hash_fn != HASH_FUNCTION,
+              "Hash function mismatch: " + std::string(HASH_FUNCTION) +
+                " (btllib) != " + hash_fn + " (loaded Bloom filter)!");
   bloom_filter.hash_num =
     *(table->get_as<decltype(bloom_filter.hash_num)>("hash_num"));
   k = *(table->get_as<decltype(k)>("k"));
@@ -620,6 +640,7 @@ KmerBloomFilter::save(const std::string& path)
       and output to ostream */
   auto header = cpptoml::make_table();
   header->insert("bytes", get_bytes());
+  header->insert("hash_function", HASH_FUNCTION);
   header->insert("hash_num", get_hash_num());
   header->insert("k", get_k());
   root->insert(KMER_BLOOM_FILTER_MAGIC_HEADER, header);
@@ -701,6 +722,10 @@ inline SeedBloomFilter::SeedBloomFilter(const std::string& path)
     get_bytes() / sizeof(kmer_bloom_filter.bloom_filter.array[0]);
   kmer_bloom_filter.bloom_filter.array_bits =
     kmer_bloom_filter.bloom_filter.array_size * CHAR_BIT;
+  const auto hash_fn = *(table->get_as<std::string>("hash_function"));
+  check_error(hash_fn != HASH_FUNCTION,
+              "Hash function mismatch: " + std::string(HASH_FUNCTION) +
+                " (btllib) != " + hash_fn + " (loaded Bloom filter)!");
   kmer_bloom_filter.bloom_filter.hash_num =
     *(table->get_as<decltype(kmer_bloom_filter.bloom_filter.hash_num)>(
       "hash_num_per_seed"));
@@ -736,6 +761,7 @@ SeedBloomFilter::save(const std::string& path)
       and output to ostream */
   auto header = cpptoml::make_table();
   header->insert("bytes", get_bytes());
+  header->insert("hash_function", HASH_FUNCTION);
   header->insert("hash_num", get_hash_num());
   header->insert("hash_num_per_seed", get_hash_num_per_seed());
   header->insert("k", get_k());

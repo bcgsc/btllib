@@ -42,11 +42,13 @@ public class btllibJNI {
   public final static native long BIT_MASKS_get();
   public final static native String KMER_BLOOM_FILTER_MAGIC_HEADER_get();
   public final static native String SEED_BLOOM_FILTER_MAGIC_HEADER_get();
+  public final static native String HASH_FUNCTION_get();
   public final static native long MAX_HASH_VALUES_get();
   public final static native long pop_cnt_byte(long jarg1);
   public final static native long new_BloomFilter__SWIG_0();
   public final static native long new_BloomFilter__SWIG_1(long jarg1, long jarg2);
-  public final static native long new_BloomFilter__SWIG_2(String jarg1);
+  public final static native long new_BloomFilter__SWIG_2(String jarg1, String jarg2);
+  public final static native long new_BloomFilter__SWIG_3(String jarg1);
   public final static native void delete_BloomFilter(long jarg1);
   public final static native void BloomFilter_insert__SWIG_0(long jarg1, BloomFilter jarg1_, long jarg2);
   public final static native void BloomFilter_insert__SWIG_1(long jarg1, BloomFilter jarg1_, long jarg2);
@@ -57,7 +59,8 @@ public class btllibJNI {
   public final static native double BloomFilter_get_occupancy(long jarg1, BloomFilter jarg1_);
   public final static native long BloomFilter_get_hash_num(long jarg1, BloomFilter jarg1_);
   public final static native double BloomFilter_get_fpr(long jarg1, BloomFilter jarg1_);
-  public final static native void BloomFilter_save(long jarg1, BloomFilter jarg1_, String jarg2);
+  public final static native void BloomFilter_save__SWIG_0(long jarg1, BloomFilter jarg1_, String jarg2, String jarg3);
+  public final static native void BloomFilter_save__SWIG_1(long jarg1, BloomFilter jarg1_, String jarg2);
   public final static native long BloomFilter_parse_header(long jarg1, String jarg2);
   public final static native long new_KmerBloomFilter__SWIG_0();
   public final static native long new_KmerBloomFilter__SWIG_1(long jarg1, long jarg2, long jarg3);

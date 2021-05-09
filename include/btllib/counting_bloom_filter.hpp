@@ -18,9 +18,9 @@
 namespace btllib {
 
 static const char* const COUNTING_BLOOM_FILTER_MAGIC_HEADER =
-  "BTLCountingBloomFilter_v2";
+  "BTLCountingBloomFilter_v3";
 static const char* const KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER =
-  "BTLKmerCountingBloomFilter_v2";
+  "BTLKmerCountingBloomFilter_v3";
 
 template<typename T>
 class KmerCountingBloomFilter;
@@ -50,8 +50,11 @@ public:
    * Load a Counting Bloom filter from a file.
    *
    * @param path Filepath to load from.
+   * @param hash_fn Hash function expected in loaded Bloom filter. Not checked
+   * if the argument is not provided.
    */
-  explicit CountingBloomFilter(const std::string& path);
+  explicit CountingBloomFilter(const std::string& path,
+                               const std::string& hash_fn = "");
 
   ~CountingBloomFilter() { delete[] array; }
 
@@ -113,8 +116,10 @@ public:
    * Save the Bloom filter to a file that can be loaded in the future.
    *
    * @param path Filepath to store filter at.
+   * @param hash_fn Hash function used. Not saved if the argument is not
+   * provided.
    */
-  void save(const std::string& path);
+  void save(const std::string& path, const std::string& hash_fn = "");
 
 private:
   friend class KmerCountingBloomFilter<T>;
@@ -348,7 +353,8 @@ CountingBloomFilter<T>::get_fpr() const
 }
 
 template<typename T>
-inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path)
+inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path,
+                                                   const std::string& hash_fn)
 {
   std::ifstream file(path);
 
@@ -360,6 +366,12 @@ inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path)
                 "have less than " +
                   std::to_string(bytes) + " for bit array.");
   array_size = bytes / sizeof(array[0]);
+  if (table->contains("hash_function") && !hash_fn.empty()) {
+    const auto loaded_hash_fn = *(table->get_as<std::string>("hash_function"));
+    check_error(hash_fn != loaded_hash_fn,
+                "Hash function mismatch: " + hash_fn +
+                  " (btllib) != " + loaded_hash_fn + " (loaded Bloom filter)!");
+  }
   hash_num = *table->get_as<decltype(hash_num)>("hash_num");
   check_error(
     sizeof(array[0]) * CHAR_BIT != *table->get_as<size_t>("counter_bits"),
@@ -373,7 +385,8 @@ inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path)
 
 template<typename T>
 inline void
-CountingBloomFilter<T>::save(const std::string& path)
+CountingBloomFilter<T>::save(const std::string& path,
+                             const std::string& hash_fn)
 {
   std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);
 
@@ -387,6 +400,9 @@ CountingBloomFilter<T>::save(const std::string& path)
       and output to ostream */
   auto header = cpptoml::make_table();
   header->insert("bytes", get_bytes());
+  if (!hash_fn.empty()) {
+    header->insert("hash_function", hash_fn);
+  }
   header->insert("hash_num", get_hash_num());
   header->insert("counter_bits", size_t(sizeof(array[0]) * CHAR_BIT));
   root->insert(COUNTING_BLOOM_FILTER_MAGIC_HEADER, header);
@@ -441,6 +457,10 @@ inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
                   std::to_string(get_bytes()) + " for bit array.");
   counting_bloom_filter.array_size =
     get_bytes() / sizeof(counting_bloom_filter.array[0]);
+  const auto hash_fn = *(table->get_as<std::string>("hash_function"));
+  check_error(hash_fn != HASH_FUNCTION,
+              "Hash function mismatch: " + std::string(HASH_FUNCTION) +
+                " (btllib) != " + hash_fn + " (loaded Bloom filter)!");
   counting_bloom_filter.hash_num =
     *table->get_as<decltype(counting_bloom_filter.hash_num)>("hash_num");
   k = *table->get_as<decltype(k)>("k");
@@ -472,6 +492,7 @@ KmerCountingBloomFilter<T>::save(const std::string& path)
       and output to ostream */
   auto header = cpptoml::make_table();
   header->insert("bytes", get_bytes());
+  header->insert("hash_function", HASH_FUNCTION);
   header->insert("hash_num", get_hash_num());
   header->insert("counter_bits",
                  size_t(sizeof(counting_bloom_filter.array[0]) * CHAR_BIT));

@@ -22,6 +22,10 @@ public class btllib {
     return btllibJNI.SEED_BLOOM_FILTER_MAGIC_HEADER_get();
   }
 
+  public static String getHASH_FUNCTION() {
+    return btllibJNI.HASH_FUNCTION_get();
+  }
+
   public static long getMAX_HASH_VALUES() {
     return btllibJNI.MAX_HASH_VALUES_get();
   }

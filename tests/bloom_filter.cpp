@@ -22,9 +22,9 @@ main()
   assert(!bf.contains({ 1, 20, 100 }));
 
   auto filename = get_random_name(64);
-  bf.save(filename);
+  bf.save(filename, "ntHash");
 
-  btllib::BloomFilter bf2(filename);
+  btllib::BloomFilter bf2(filename, "ntHash");
 
   assert(bf2.contains({ 1, 10, 100 }));
   assert(bf2.contains({ 100, 200, 300 }));

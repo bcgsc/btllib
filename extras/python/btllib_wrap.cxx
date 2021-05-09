@@ -11535,6 +11535,22 @@ SWIGINTERN PyObject *Swig_var_SEED_BLOOM_FILTER_MAGIC_HEADER_get(void) {
 }
 
 
+SWIGINTERN int Swig_var_HASH_FUNCTION_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable HASH_FUNCTION is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_HASH_FUNCTION_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_FromCharPtr(btllib::HASH_FUNCTION);
+  return pyobj;
+}
+
+
 SWIGINTERN int Swig_var_MAX_HASH_VALUES_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable MAX_HASH_VALUES is read-only.");
   return 1;
@@ -11627,6 +11643,49 @@ fail:
 SWIGINTERN int _wrap_new_BloomFilter__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  btllib::BloomFilter *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BloomFilter" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BloomFilter" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_BloomFilter" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BloomFilter" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (btllib::BloomFilter *)new btllib::BloomFilter((std::string const &)*arg1,(std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BloomFilter, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_BloomFilter__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
   int res1 = SWIG_OLDOBJ ;
   btllib::BloomFilter *result = 0 ;
   
@@ -11669,7 +11728,7 @@ SWIGINTERN int _wrap_new_BloomFilter(PyObject *self, PyObject *args, PyObject *k
     int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_BloomFilter__SWIG_2(self, argc, argv);
+      return _wrap_new_BloomFilter__SWIG_3(self, argc, argv);
     }
   }
   if (argc == 2) {
@@ -11688,12 +11747,25 @@ SWIGINTERN int _wrap_new_BloomFilter(PyObject *self, PyObject *args, PyObject *k
       }
     }
   }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_BloomFilter__SWIG_2(self, argc, argv);
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_BloomFilter'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    btllib::BloomFilter::BloomFilter()\n"
     "    btllib::BloomFilter::BloomFilter(size_t,unsigned int)\n"
+    "    btllib::BloomFilter::BloomFilter(std::string const &,std::string const &)\n"
     "    btllib::BloomFilter::BloomFilter(std::string const &)\n");
   return -1;
 }
@@ -12040,17 +12112,17 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BloomFilter_save(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_BloomFilter_save__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;
   std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[2] ;
+  int res3 = SWIG_OLDOBJ ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BloomFilter, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BloomFilter_save" "', argument " "1"" of type '" "btllib::BloomFilter *""'"); 
@@ -12058,7 +12130,55 @@ SWIGINTERN PyObject *_wrap_BloomFilter_save(PyObject *self, PyObject *args) {
   arg1 = reinterpret_cast< btllib::BloomFilter * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BloomFilter_save" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BloomFilter_save" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BloomFilter_save" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BloomFilter_save" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  (arg1)->save((std::string const &)*arg2,(std::string const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BloomFilter_save__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::BloomFilter *arg1 = (btllib::BloomFilter *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BloomFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BloomFilter_save" "', argument " "1"" of type '" "btllib::BloomFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BloomFilter * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
     if (!SWIG_IsOK(res2)) {
       SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BloomFilter_save" "', argument " "2"" of type '" "std::string const &""'"); 
     }
@@ -12074,6 +12194,54 @@ SWIGINTERN PyObject *_wrap_BloomFilter_save(PyObject *self, PyObject *args) {
 fail:
   if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BloomFilter_save(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "BloomFilter_save", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_btllib__BloomFilter, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_BloomFilter_save__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_btllib__BloomFilter, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_BloomFilter_save__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BloomFilter_save'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::BloomFilter::save(std::string const &,std::string const &)\n"
+    "    btllib::BloomFilter::save(std::string const &)\n");
+  return 0;
 }
 
 
@@ -25624,7 +25792,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__BloomFilter_methods[] = {
   { "get_occupancy", _wrap_BloomFilter_get_occupancy, METH_NOARGS, "" },
   { "get_hash_num", _wrap_BloomFilter_get_hash_num, METH_NOARGS, "" },
   { "get_fpr", _wrap_BloomFilter_get_fpr, METH_NOARGS, "" },
-  { "save", _wrap_BloomFilter_save, METH_O, "" },
+  { "save", _wrap_BloomFilter_save, METH_VARARGS, "" },
   { "parse_header", (PyCFunction)(void(*)(void))_wrap_BloomFilter_parse_header, METH_STATIC|METH_VARARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
@@ -30522,6 +30690,9 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "SEED_BLOOM_FILTER_MAGIC_HEADER", Swig_var_SEED_BLOOM_FILTER_MAGIC_HEADER_get, Swig_var_SEED_BLOOM_FILTER_MAGIC_HEADER_set);
   PyDict_SetItemString(md, "SEED_BLOOM_FILTER_MAGIC_HEADER", PyObject_GetAttrString(globals, "SEED_BLOOM_FILTER_MAGIC_HEADER"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "SEED_BLOOM_FILTER_MAGIC_HEADER");
+  SWIG_addvarlink(globals, "HASH_FUNCTION", Swig_var_HASH_FUNCTION_get, Swig_var_HASH_FUNCTION_set);
+  PyDict_SetItemString(md, "HASH_FUNCTION", PyObject_GetAttrString(globals, "HASH_FUNCTION"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "HASH_FUNCTION");
   SWIG_addvarlink(globals, "MAX_HASH_VALUES", Swig_var_MAX_HASH_VALUES_get, Swig_var_MAX_HASH_VALUES_set);
   PyDict_SetItemString(md, "MAX_HASH_VALUES", PyObject_GetAttrString(globals, "MAX_HASH_VALUES"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "MAX_HASH_VALUES");
