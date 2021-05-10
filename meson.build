@@ -23,7 +23,7 @@ add_global_link_arguments(global_link_args, language : 'cpp')
 compiler = meson.get_compiler('cpp')
 compiler_id = compiler.get_id()
 compiler_version = compiler.version()
-if compiler_id == 'gcc' and compiler_version.version_compare('<7.0.0')
+if compiler_id == 'gcc' and compiler_version.version_compare('<5.0.0')
   error('GCC ' + compiler_version + ' is unsupported.')
 endif
 if compiler_id == 'clang' and compiler_version.version_compare('<4.0.0')
