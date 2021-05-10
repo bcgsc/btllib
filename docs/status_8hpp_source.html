@@ -180,20 +180,21 @@ $(function() {
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">// POSIX and GNU implementation of strerror_r differ, even in function signature</span></div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">// and so we need to check which one is used</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">#if (_POSIX_C_SOURCE &gt;= 200112L || _XOPEN_SOURCE &gt;= 600) &amp;&amp; !_GNU_SOURCE</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    strerror_r(errno, buf, BUFLEN);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="namespacebtllib.html#aae48e6ebdbbde9836cd2c20347b85606">log_error</a>(<span class="stringliteral">&quot;&#39;&quot;</span> + name + <span class="stringliteral">&quot;&#39; stream error: &quot;</span> + std::string(buf));</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">char</span>* msg = strerror_r(errno, buf, BUFLEN);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <a class="code" href="namespacebtllib.html#aae48e6ebdbbde9836cd2c20347b85606">log_error</a>(<span class="stringliteral">&quot;&#39;&quot;</span> + name + <span class="stringliteral">&quot;&#39; stream error: &quot;</span> + std::string(msg));</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    std::exit(EXIT_FAILURE); <span class="comment">// NOLINT(concurrency-mt-unsafe)</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  }</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;} <span class="comment">// namespace btllib</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">#if __APPLE__ ||                                                               \</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">  ((_POSIX_C_SOURCE &gt;= 200112L || _XOPEN_SOURCE &gt;= 600) &amp;&amp; !_GNU_SOURCE)</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    strerror_r(errno, buf, BUFLEN);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="namespacebtllib.html#aae48e6ebdbbde9836cd2c20347b85606">log_error</a>(<span class="stringliteral">&quot;&#39;&quot;</span> + name + <span class="stringliteral">&quot;&#39; stream error: &quot;</span> + std::string(buf));</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">char</span>* msg = strerror_r(errno, buf, BUFLEN);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <a class="code" href="namespacebtllib.html#aae48e6ebdbbde9836cd2c20347b85606">log_error</a>(<span class="stringliteral">&quot;&#39;&quot;</span> + name + <span class="stringliteral">&quot;&#39; stream error: &quot;</span> + std::string(msg));</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    std::exit(EXIT_FAILURE); <span class="comment">// NOLINT(concurrency-mt-unsafe)</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="anamespacebtllib_html"><div class="ttname"><a href="namespacebtllib.html">btllib</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:18</div></div>
 <div class="ttc" id="anamespacebtllib_html_a3d4af2317963b43668700a59fb8c67a6"><div class="ttname"><a href="namespacebtllib.html#a3d4af2317963b43668700a59fb8c67a6">btllib::log_warning</a></div><div class="ttdeci">void log_warning(const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:107</div></div>
 <div class="ttc" id="anamespacebtllib_html_a540bce0213b7718e519ddc4466361bf7"><div class="ttname"><a href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">btllib::check_error</a></div><div class="ttdeci">void check_error(bool condition, const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:139</div></div>

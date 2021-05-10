@@ -153,7 +153,8 @@ check_stream(const std::ios& stream, const std::string& name)
 
 // POSIX and GNU implementation of strerror_r differ, even in function signature
 // and so we need to check which one is used
-#if (_POSIX_C_SOURCE >= 200112L || _XOPEN_SOURCE >= 600) && !_GNU_SOURCE
+#if __APPLE__ ||                                                               \
+  ((_POSIX_C_SOURCE >= 200112L || _XOPEN_SOURCE >= 600) && !_GNU_SOURCE)
     strerror_r(errno, buf, BUFLEN);
     log_error("'" + name + "' stream error: " + std::string(buf));
 #else
