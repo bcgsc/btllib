@@ -23016,17 +23016,17 @@ fail:
 
 SWIGINTERN PyObject *_wrap_chain_write(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  int arg1 ;
-  int arg2 ;
+  size_t arg1 ;
+  size_t arg2 ;
   char **arg3 = (char **) 0 ;
   int arg4 ;
   int *arg5 ;
   int *arg6 ;
   bool arg7 ;
   std::string *arg8 = 0 ;
-  int val1 ;
+  size_t val1 ;
   int ecode1 = 0 ;
-  int val2 ;
+  size_t val2 ;
   int ecode2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
@@ -23042,16 +23042,16 @@ SWIGINTERN PyObject *_wrap_chain_write(PyObject *self, PyObject *args) {
   PyObject *swig_obj[8] ;
   
   if (!SWIG_Python_UnpackTuple(args, "chain_write", 8, 8, swig_obj)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "chain_write" "', argument " "1"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "chain_write" "', argument " "1"" of type '" "size_t""'");
   } 
-  arg1 = static_cast< int >(val1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  arg1 = static_cast< size_t >(val1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "chain_write" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "chain_write" "', argument " "2"" of type '" "size_t""'");
   } 
-  arg2 = static_cast< int >(val2);
+  arg2 = static_cast< size_t >(val2);
   res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_p_char, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "chain_write" "', argument " "3"" of type '" "char *const *""'"); 

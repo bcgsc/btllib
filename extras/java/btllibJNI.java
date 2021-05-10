@@ -330,7 +330,7 @@ public class btllibJNI {
   public final static native String form_string_cmd(long jarg1, int jarg2, String jarg3);
   public final static native String extract_stdout_file(long jarg1);
   public final static native void chain_read(long jarg1, long jarg2, long jarg3, int jarg4, long jarg5, long jarg6);
-  public final static native void chain_write(int jarg1, int jarg2, long jarg3, int jarg4, long jarg5, long jarg6, boolean jarg7, String jarg8);
+  public final static native void chain_write(long jarg1, long jarg2, long jarg3, int jarg4, long jarg5, long jarg6, boolean jarg7, String jarg8);
   public final static native String PRINT_COLOR_INFO_get();
   public final static native String PRINT_COLOR_WARNING_get();
   public final static native String PRINT_COLOR_ERROR_get();

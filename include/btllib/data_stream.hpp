@@ -724,8 +724,8 @@ chain_read(size_t idx,
 }
 
 static inline void
-chain_write(int idx,
-            int cmd_count,
+chain_write(size_t idx,
+            size_t cmd_count,
             char* const* argv,
             int pipe_fd,
             int input_fd[2],
