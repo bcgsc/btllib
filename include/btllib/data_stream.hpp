@@ -692,8 +692,8 @@ extract_stdout_file(std::vector<std::string>& args)
 }
 
 static inline void
-chain_read(int idx,
-           int cmd_count,
+chain_read(size_t idx,
+           size_t cmd_count,
            char* const* argv,
            int pipe_fd,
            int input_fd[2],
@@ -779,7 +779,7 @@ run_pipeline_cmd(const std::string& cmd, DataStream::Operation op, int pipe_fd)
   output_fd[PIPE_READ_END] = -1;
   output_fd[PIPE_WRITE_END] = -1;
 
-  size_t i = 0;
+  size_t idx = 0;
   for (const auto& individual_cmd : individual_cmds) {
     auto args = split(individual_cmd, " ");
     std::for_each(args.begin(), args.end(), trim);
@@ -793,7 +793,7 @@ run_pipeline_cmd(const std::string& cmd, DataStream::Operation op, int pipe_fd)
     }
     ((char*&)(argv[args.size() + 1])) = nullptr;
 
-    if (i < individual_cmds.size() - 1) {
+    if (idx < individual_cmds.size() - 1) {
       check_error(pipe(input_fd) == -1, "Error opening a pipe.");
       fcntl(input_fd[PIPE_READ_END], F_SETFD, FD_CLOEXEC);
       fcntl(input_fd[PIPE_WRITE_END], F_SETFD, FD_CLOEXEC);
@@ -803,9 +803,9 @@ run_pipeline_cmd(const std::string& cmd, DataStream::Operation op, int pipe_fd)
     if (pid == 0) {
       if (op == DataStream::Operation::READ) {
         chain_read(
-          i, individual_cmds.size(), argv, pipe_fd, input_fd, output_fd);
+          idx, individual_cmds.size(), argv, pipe_fd, input_fd, output_fd);
       } else {
-        chain_write(i,
+        chain_write(idx,
                     individual_cmds.size(),
                     argv,
                     pipe_fd,
@@ -821,17 +821,17 @@ run_pipeline_cmd(const std::string& cmd, DataStream::Operation op, int pipe_fd)
 
     pids.push_back(pid);
 
-    if (i > 0) {
+    if (idx > 0) {
       close(output_fd[PIPE_READ_END]);
       close(output_fd[PIPE_WRITE_END]);
     }
 
-    if (i < individual_cmds.size() - 1) {
+    if (idx < individual_cmds.size() - 1) {
       output_fd[PIPE_READ_END] = input_fd[PIPE_READ_END];
       output_fd[PIPE_WRITE_END] = input_fd[PIPE_WRITE_END];
     }
 
-    i++;
+    idx++;
   }
 
   return DataStreamPipeline(op == DataStream::Operation::READ

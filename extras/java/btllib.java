@@ -471,7 +471,7 @@ public class btllib {
     return btllibJNI.extract_stdout_file(SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(args));
   }
 
-  public static void chain_read(int idx, int cmd_count, SWIGTYPE_p_p_char argv, int pipe_fd, SWIGTYPE_p_int input_fd, SWIGTYPE_p_int output_fd) {
+  public static void chain_read(long idx, long cmd_count, SWIGTYPE_p_p_char argv, int pipe_fd, SWIGTYPE_p_int input_fd, SWIGTYPE_p_int output_fd) {
     btllibJNI.chain_read(idx, cmd_count, SWIGTYPE_p_p_char.getCPtr(argv), pipe_fd, SWIGTYPE_p_int.getCPtr(input_fd), SWIGTYPE_p_int.getCPtr(output_fd));
   }
 

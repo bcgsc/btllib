@@ -147,8 +147,21 @@ check_error(bool condition, const std::string& msg)
 inline void
 check_stream(const std::ios& stream, const std::string& name)
 {
-  check_error(!stream.good(),
-              "'" + name + "' stream error: " + std::strerror(errno));
+  if (!stream.good()) {
+    static const size_t BUFLEN = 1024;
+    char buf[BUFLEN];
+
+// POSIX and GNU implementation of strerror_r differ, even in function signature
+// and so we need to check which one is used
+#if (_POSIX_C_SOURCE >= 200112L || _XOPEN_SOURCE >= 600) && !_GNU_SOURCE
+    strerror_r(errno, buf, BUFLEN);
+    log_error("'" + name + "' stream error: " + std::string(buf));
+#else
+    char* msg = strerror_r(errno, buf, BUFLEN);
+    log_error("'" + name + "' stream error: " + std::string(msg));
+#endif
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+  }
 }
 
 } // namespace btllib

@@ -6128,9 +6128,9 @@ SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_extract_1stdout_1file(JNIEnv *j
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_chain_1read(JNIEnv *jenv, jclass jcls, jint jarg1, jint jarg2, jlong jarg3, jint jarg4, jlong jarg5, jlong jarg6) {
-  int arg1 ;
-  int arg2 ;
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_chain_1read(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3, jint jarg4, jlong jarg5, jlong jarg6) {
+  size_t arg1 ;
+  size_t arg2 ;
   char **arg3 = (char **) 0 ;
   int arg4 ;
   int *arg5 ;
@@ -6138,8 +6138,8 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_chain_1read(JNIEnv *jenv, jclass j
   
   (void)jenv;
   (void)jcls;
-  arg1 = (int)jarg1; 
-  arg2 = (int)jarg2; 
+  arg1 = (size_t)jarg1; 
+  arg2 = (size_t)jarg2; 
   arg3 = *(char ***)&jarg3; 
   arg4 = (int)jarg4; 
   arg5 = *(int **)&jarg5; 
