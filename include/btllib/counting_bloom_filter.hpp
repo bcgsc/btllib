@@ -212,7 +212,7 @@ public:
    */
   T contains(const uint64_t* hashes) const
   {
-    counting_bloom_filter.contains(hashes);
+    return counting_bloom_filter.contains(hashes);
   }
 
   /**
@@ -224,7 +224,7 @@ public:
    */
   T contains(const std::vector<uint64_t>& hashes) const
   {
-    counting_bloom_filter.contains(hashes);
+    return counting_bloom_filter.contains(hashes);
   }
 
   /** Get filter size in bytes. */
