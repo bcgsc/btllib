@@ -56,6 +56,14 @@ public class KmerBloomFilter {
     btllibJNI.KmerBloomFilter_insert__SWIG_1(swigCPtr, this, seq);
   }
 
+  public void insert(SWIGTYPE_p_uint64_t hashes) {
+    btllibJNI.KmerBloomFilter_insert__SWIG_2(swigCPtr, this, SWIGTYPE_p_uint64_t.getCPtr(hashes));
+  }
+
+  public void insert(SWIGTYPE_p_std__vectorT_uint64_t_t hashes) {
+    btllibJNI.KmerBloomFilter_insert__SWIG_3(swigCPtr, this, SWIGTYPE_p_std__vectorT_uint64_t_t.getCPtr(hashes));
+  }
+
   public long contains(String seq, long seq_len) {
     return btllibJNI.KmerBloomFilter_contains__SWIG_0(swigCPtr, this, seq, seq_len);
   }
@@ -94,6 +102,10 @@ public class KmerBloomFilter {
 
   public long get_k() {
     return btllibJNI.KmerBloomFilter_get_k(swigCPtr, this);
+  }
+
+  public String get_hash_fn() {
+    return btllibJNI.KmerBloomFilter_get_hash_fn(swigCPtr, this);
   }
 
   public BloomFilter get_bloom_filter() {

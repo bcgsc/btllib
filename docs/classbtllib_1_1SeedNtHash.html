@@ -75,18 +75,18 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad52072ddbe5dc3bd1b4761c1d80b8b90"><td class="memItemLeft" align="right" valign="top"><a id="ad52072ddbe5dc3bd1b4761c1d80b8b90"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b> (const char *seq, size_t seq_len, unsigned k, const std::vector&lt; SpacedSeed &gt; &amp;seeds, unsigned hash_num_per_seed, size_t pos=0)</td></tr>
-<tr class="separator:ad52072ddbe5dc3bd1b4761c1d80b8b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35d9c8c31b4215c644744b373b20e769"><td class="memItemLeft" align="right" valign="top"><a id="a35d9c8c31b4215c644744b373b20e769"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b> (const std::string &amp;seq, unsigned k, const std::vector&lt; SpacedSeed &gt; &amp;seeds, unsigned hash_num_per_seed, size_t pos=0)</td></tr>
-<tr class="separator:a35d9c8c31b4215c644744b373b20e769"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af949b720b7327b6e4b363adad18f82af"><td class="memItemLeft" align="right" valign="top"><a id="af949b720b7327b6e4b363adad18f82af"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b> (const char *seq, size_t seq_len, unsigned k, const std::vector&lt; std::string &gt; &amp;seeds, unsigned hash_num_per_seed, size_t pos=0)</td></tr>
-<tr class="separator:af949b720b7327b6e4b363adad18f82af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5834d303ae489fd3368b2edc9a354754"><td class="memItemLeft" align="right" valign="top"><a id="a5834d303ae489fd3368b2edc9a354754"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b> (const std::string &amp;seq, unsigned k, const std::vector&lt; std::string &gt; &amp;seeds, unsigned hash_num_per_seed, size_t pos=0)</td></tr>
-<tr class="separator:a5834d303ae489fd3368b2edc9a354754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f666a4e1691b7271d0f6b25b69dd4f1"><td class="memItemLeft" align="right" valign="top"><a id="a3f666a4e1691b7271d0f6b25b69dd4f1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b> (const char *seq, size_t seq_len, const std::vector&lt; SpacedSeed &gt; &amp;seeds, unsigned hash_num_per_seed, unsigned k, size_t pos=0)</td></tr>
+<tr class="separator:a3f666a4e1691b7271d0f6b25b69dd4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe519e9af567371da36ee580c2030bab"><td class="memItemLeft" align="right" valign="top"><a id="abe519e9af567371da36ee580c2030bab"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b> (const std::string &amp;seq, const std::vector&lt; SpacedSeed &gt; &amp;seeds, unsigned hash_num_per_seed, unsigned k, size_t pos=0)</td></tr>
+<tr class="separator:abe519e9af567371da36ee580c2030bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35cbc77174aa86ff3d9714cc90848f3c"><td class="memItemLeft" align="right" valign="top"><a id="a35cbc77174aa86ff3d9714cc90848f3c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b> (const char *seq, size_t seq_len, const std::vector&lt; std::string &gt; &amp;seeds, unsigned hash_num_per_seed, unsigned k, size_t pos=0)</td></tr>
+<tr class="separator:a35cbc77174aa86ff3d9714cc90848f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36d936861c83e468747a11267c91a3f1"><td class="memItemLeft" align="right" valign="top"><a id="a36d936861c83e468747a11267c91a3f1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b> (const std::string &amp;seq, const std::vector&lt; std::string &gt; &amp;seeds, unsigned hash_num_per_seed, unsigned k, size_t pos=0)</td></tr>
+<tr class="separator:a36d936861c83e468747a11267c91a3f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa817b8acaf7c57d7be8ce47fcf5ac758"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedNtHash.html#aa817b8acaf7c57d7be8ce47fcf5ac758">roll</a> ()</td></tr>
 <tr class="separator:aa817b8acaf7c57d7be8ce47fcf5ac758"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f588d08549a3a1b05e56271820a647c"><td class="memItemLeft" align="right" valign="top"><a id="a8f588d08549a3a1b05e56271820a647c"></a>
@@ -98,15 +98,15 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_pos</b> () cons
 <tr class="memitem:a8c0a5e53a6883db9a49806998ce8ed0b"><td class="memItemLeft" align="right" valign="top"><a id="a8c0a5e53a6883db9a49806998ce8ed0b"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>forward</b> () const</td></tr>
 <tr class="separator:a8c0a5e53a6883db9a49806998ce8ed0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa605d7fe07cec5ee02b5d6362af0cdd3"><td class="memItemLeft" align="right" valign="top"><a id="aa605d7fe07cec5ee02b5d6362af0cdd3"></a>
-unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_k</b> () const</td></tr>
-<tr class="separator:aa605d7fe07cec5ee02b5d6362af0cdd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafce9763427d377cd416880d1450cf9f"><td class="memItemLeft" align="right" valign="top"><a id="aafce9763427d377cd416880d1450cf9f"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_hash_num</b> () const</td></tr>
 <tr class="separator:aafce9763427d377cd416880d1450cf9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7b2181a58526dfaa3a34d5829312291"><td class="memItemLeft" align="right" valign="top"><a id="aa7b2181a58526dfaa3a34d5829312291"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_hash_num_per_seed</b> () const</td></tr>
 <tr class="separator:aa7b2181a58526dfaa3a34d5829312291"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa605d7fe07cec5ee02b5d6362af0cdd3"><td class="memItemLeft" align="right" valign="top"><a id="aa605d7fe07cec5ee02b5d6362af0cdd3"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_k</b> () const</td></tr>
+<tr class="separator:aa605d7fe07cec5ee02b5d6362af0cdd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad373314254510da8b178319e7b4be441"><td class="memItemLeft" align="right" valign="top"><a id="ad373314254510da8b178319e7b4be441"></a>
 uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_forward_hash</b> () const</td></tr>
 <tr class="separator:ad373314254510da8b178319e7b4be441"><td class="memSeparator" colspan="2">&#160;</td></tr>

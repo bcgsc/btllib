@@ -78,10 +78,10 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af0ccb96bbce8f6edeb5943c2c5df1281"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#af0ccb96bbce8f6edeb5943c2c5df1281">NtHash</a> (const char *seq, size_t seq_len, unsigned k, unsigned hash_num, size_t pos=0)</td></tr>
-<tr class="separator:af0ccb96bbce8f6edeb5943c2c5df1281"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6553cdbd058890caa8e2028592cb709b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#a6553cdbd058890caa8e2028592cb709b">NtHash</a> (const std::string &amp;seq, unsigned k, unsigned hash_num, size_t pos=0)</td></tr>
-<tr class="separator:a6553cdbd058890caa8e2028592cb709b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e18579814556c508a11ebe03395d357"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#a5e18579814556c508a11ebe03395d357">NtHash</a> (const char *seq, size_t seq_len, unsigned hash_num, unsigned k, size_t pos=0)</td></tr>
+<tr class="separator:a5e18579814556c508a11ebe03395d357"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05918ba5003a052c1e22668de81bf85b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#a05918ba5003a052c1e22668de81bf85b">NtHash</a> (const std::string &amp;seq, unsigned hash_num, unsigned k, size_t pos=0)</td></tr>
+<tr class="separator:a05918ba5003a052c1e22668de81bf85b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a244c0c11655b6e1c52dd7c4528b8ed05"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05">roll</a> ()</td></tr>
 <tr class="separator:a244c0c11655b6e1c52dd7c4528b8ed05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a106702c70516c00fa52fba2f38d056e1"><td class="memItemLeft" align="right" valign="top"><a id="a106702c70516c00fa52fba2f38d056e1"></a>
@@ -96,12 +96,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_pos</b> () cons
 <tr class="memitem:a15528b61f541ba8556c56a7807651c7d"><td class="memItemLeft" align="right" valign="top"><a id="a15528b61f541ba8556c56a7807651c7d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>forward</b> () const</td></tr>
 <tr class="separator:a15528b61f541ba8556c56a7807651c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6929f2f55c06e766e75a3e452726cbb7"><td class="memItemLeft" align="right" valign="top"><a id="a6929f2f55c06e766e75a3e452726cbb7"></a>
-unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_k</b> () const</td></tr>
-<tr class="separator:a6929f2f55c06e766e75a3e452726cbb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8e935c66a22e236b8c0b1650be4ec01"><td class="memItemLeft" align="right" valign="top"><a id="af8e935c66a22e236b8c0b1650be4ec01"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_hash_num</b> () const</td></tr>
 <tr class="separator:af8e935c66a22e236b8c0b1650be4ec01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6929f2f55c06e766e75a3e452726cbb7"><td class="memItemLeft" align="right" valign="top"><a id="a6929f2f55c06e766e75a3e452726cbb7"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_k</b> () const</td></tr>
+<tr class="separator:a6929f2f55c06e766e75a3e452726cbb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed87e8298fb9d1373a751cfaa86f4a56"><td class="memItemLeft" align="right" valign="top"><a id="aed87e8298fb9d1373a751cfaa86f4a56"></a>
 uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_forward_hash</b> () const</td></tr>
 <tr class="separator:aed87e8298fb9d1373a751cfaa86f4a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,8 +119,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b></td><
 <div class="textblock"><p>Iterate over hash values for k-mers in a given DNA sequence.</p>
 <p>This implementation uses ntHash function to efficiently calculate hash values for successive k-mers. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="af0ccb96bbce8f6edeb5943c2c5df1281"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0ccb96bbce8f6edeb5943c2c5df1281">&#9670;&nbsp;</a></span>NtHash() <span class="overload">[1/2]</span></h2>
+<a id="a5e18579814556c508a11ebe03395d357"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e18579814556c508a11ebe03395d357">&#9670;&nbsp;</a></span>NtHash() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,13 +144,13 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b></td><
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>k</em>, </td>
+          <td class="paramname"><em>hash_num</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>hash_num</em>, </td>
+          <td class="paramname"><em>k</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -174,16 +174,16 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b></td><
   <table class="params">
     <tr><td class="paramname">seq</td><td>DNA sequence to be hashed </td></tr>
     <tr><td class="paramname">seq_len</td><td>length of seq </td></tr>
-    <tr><td class="paramname">k</td><td>k-mer size </td></tr>
     <tr><td class="paramname">hash_num</td><td>number of hashes </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a6553cdbd058890caa8e2028592cb709b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6553cdbd058890caa8e2028592cb709b">&#9670;&nbsp;</a></span>NtHash() <span class="overload">[2/2]</span></h2>
+<a id="a05918ba5003a052c1e22668de81bf85b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05918ba5003a052c1e22668de81bf85b">&#9670;&nbsp;</a></span>NtHash() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -201,13 +201,13 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b></td><
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>k</em>, </td>
+          <td class="paramname"><em>hash_num</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>hash_num</em>, </td>
+          <td class="paramname"><em>k</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -230,8 +230,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b></td><
 <p>Constructor. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">seq</td><td>DNA sequence to be hashed </td></tr>
-    <tr><td class="paramname">k</td><td>k-mer size </td></tr>
     <tr><td class="paramname">hash_num</td><td>number of hashes </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size </td></tr>
   </table>
   </dd>
 </dl>

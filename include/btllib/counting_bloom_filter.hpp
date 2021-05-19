@@ -18,9 +18,9 @@
 namespace btllib {
 
 static const char* const COUNTING_BLOOM_FILTER_MAGIC_HEADER =
-  "BTLCountingBloomFilter_v3";
+  "BTLCountingBloomFilter_v4";
 static const char* const KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER =
-  "BTLKmerCountingBloomFilter_v3";
+  "BTLKmerCountingBloomFilter_v4";
 
 template<typename T>
 class KmerCountingBloomFilter;
@@ -43,18 +43,18 @@ public:
    *
    * @param bytes Filter size in bytes.
    * @param hash_num Number of hash values per element.
+   * @param hash_fn Name of the hash function used. Used for metadata. Optional.
    */
-  CountingBloomFilter(size_t bytes, unsigned hash_num);
+  CountingBloomFilter(size_t bytes,
+                      unsigned hash_num,
+                      std::string hash_fn = "");
 
   /**
    * Load a Counting Bloom filter from a file.
    *
    * @param path Filepath to load from.
-   * @param hash_fn Hash function expected in loaded Bloom filter. Not checked
-   * if the argument is not provided.
    */
-  explicit CountingBloomFilter(const std::string& path,
-                               const std::string& hash_fn = "");
+  explicit CountingBloomFilter(const std::string& path);
 
   ~CountingBloomFilter() { delete[] array; }
 
@@ -111,15 +111,15 @@ public:
   unsigned get_hash_num() const { return hash_num; }
   /** Get the query false positive rate. */
   double get_fpr() const;
+  /** Get the name of the hash function used. */
+  const std::string& get_hash_fn() const { return hash_fn; }
 
   /**
    * Save the Bloom filter to a file that can be loaded in the future.
    *
    * @param path Filepath to store filter at.
-   * @param hash_fn Hash function used. Not saved if the argument is not
-   * provided.
    */
-  void save(const std::string& path, const std::string& hash_fn = "");
+  void save(const std::string& path);
 
 private:
   friend class KmerCountingBloomFilter<T>;
@@ -128,6 +128,7 @@ private:
   size_t bytes = 0;
   size_t array_size = 0;
   unsigned hash_num = 0;
+  std::string hash_fn;
 };
 
 /**
@@ -179,6 +180,24 @@ public:
    * @param seq Sequence to k-merize.
    */
   void insert(const std::string& seq) { insert(seq.c_str(), seq.size()); }
+
+  /**
+   * Insert an element's hash values.
+   *
+   * @param hashes Integer array of hash values. Array size should equal the
+   * hash_num argument used when the Bloom filter was constructed.
+   */
+  void insert(const uint64_t* hashes) { counting_bloom_filter.insert(hashes); }
+
+  /**
+   * Insert an element's hash values.
+   *
+   * @param hashes Integer vector of hash values.
+   */
+  void insert(const std::vector<uint64_t>& hashes)
+  {
+    counting_bloom_filter.insert(hashes.data());
+  }
 
   /**
    * Query the presence of k-mers of a sequence.
@@ -239,6 +258,11 @@ public:
   double get_fpr() const { return counting_bloom_filter.get_fpr(); }
   /** Get the k-mer size used. */
   unsigned get_k() const { return k; }
+  /** Get the name of the hash function used. */
+  const std::string& get_hash_fn() const
+  {
+    return counting_bloom_filter.get_hash_fn();
+  }
   /** Get a reference to the underlying vanilla Counting Bloom filter. */
   CountingBloomFilter<T>& get_counting_bloom_filter()
   {
@@ -267,11 +291,13 @@ using KmerCountingBloomFilter32 = KmerCountingBloomFilter<uint32_t>;
 
 template<typename T>
 inline CountingBloomFilter<T>::CountingBloomFilter(size_t bytes,
-                                                   unsigned hash_num)
+                                                   unsigned hash_num,
+                                                   std::string hash_fn)
   : bytes(
       size_t(std::ceil(double(bytes) / sizeof(uint64_t)) * sizeof(uint64_t)))
   , array_size(get_bytes() / sizeof(array[0]))
   , hash_num(hash_num)
+  , hash_fn(std::move(hash_fn))
 {
   check_warning(sizeof(uint8_t) != sizeof(std::atomic<uint8_t>),
                 "Atomic primitives take extra memory. CountingBloomFilter will "
@@ -353,8 +379,7 @@ CountingBloomFilter<T>::get_fpr() const
 }
 
 template<typename T>
-inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path,
-                                                   const std::string& hash_fn)
+inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path)
 {
   std::ifstream file(path);
 
@@ -366,11 +391,8 @@ inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path,
                 "have less than " +
                   std::to_string(bytes) + " for bit array.");
   array_size = bytes / sizeof(array[0]);
-  if (table->contains("hash_function") && !hash_fn.empty()) {
-    const auto loaded_hash_fn = *(table->get_as<std::string>("hash_function"));
-    check_error(hash_fn != loaded_hash_fn,
-                "Hash function mismatch: " + hash_fn +
-                  " (btllib) != " + loaded_hash_fn + " (loaded Bloom filter)!");
+  if (table->contains("hash_fn")) {
+    hash_fn = *(table->get_as<std::string>("hash_fn"));
   }
   hash_num = *table->get_as<decltype(hash_num)>("hash_num");
   check_error(
@@ -385,8 +407,7 @@ inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path,
 
 template<typename T>
 inline void
-CountingBloomFilter<T>::save(const std::string& path,
-                             const std::string& hash_fn)
+CountingBloomFilter<T>::save(const std::string& path)
 {
   std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);
 
@@ -400,10 +421,10 @@ CountingBloomFilter<T>::save(const std::string& path,
       and output to ostream */
   auto header = cpptoml::make_table();
   header->insert("bytes", get_bytes());
-  if (!hash_fn.empty()) {
-    header->insert("hash_function", hash_fn);
-  }
   header->insert("hash_num", get_hash_num());
+  if (!hash_fn.empty()) {
+    header->insert("hash_fn", hash_fn);
+  }
   header->insert("counter_bits", size_t(sizeof(array[0]) * CHAR_BIT));
   root->insert(COUNTING_BLOOM_FILTER_MAGIC_HEADER, header);
   file << *root << "[HeaderEnd]\n";
@@ -415,7 +436,7 @@ template<typename T>
 inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(size_t bytes,
                                                            unsigned hash_num,
                                                            unsigned k)
-  : counting_bloom_filter(bytes, hash_num)
+  : counting_bloom_filter(bytes, hash_num, HASH_FN)
   , k(k)
 {}
 
@@ -457,12 +478,9 @@ inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
                   std::to_string(get_bytes()) + " for bit array.");
   counting_bloom_filter.array_size =
     get_bytes() / sizeof(counting_bloom_filter.array[0]);
-  const auto hash_fn = *(table->get_as<std::string>("hash_function"));
-  check_error(hash_fn != HASH_FUNCTION,
-              "Hash function mismatch: " + std::string(HASH_FUNCTION) +
-                " (btllib) != " + hash_fn + " (loaded Bloom filter)!");
   counting_bloom_filter.hash_num =
     *table->get_as<decltype(counting_bloom_filter.hash_num)>("hash_num");
+  counting_bloom_filter.hash_fn = *(table->get_as<std::string>("hash_fn"));
   k = *table->get_as<decltype(k)>("k");
   check_error(sizeof(T) * CHAR_BIT != *table->get_as<size_t>("counter_bits"),
               "CountingBloomFilter" + std::to_string(sizeof(T) * CHAR_BIT) +
@@ -492,7 +510,7 @@ KmerCountingBloomFilter<T>::save(const std::string& path)
       and output to ostream */
   auto header = cpptoml::make_table();
   header->insert("bytes", get_bytes());
-  header->insert("hash_function", HASH_FUNCTION);
+  header->insert("hash_fn", get_hash_fn());
   header->insert("hash_num", get_hash_num());
   header->insert("counter_bits",
                  size_t(sizeof(counting_bloom_filter.array[0]) * CHAR_BIT));

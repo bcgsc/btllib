@@ -99,6 +99,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3c7a6908a0bad703848fcffaa81388cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee44f80f2f9e63cbeb36c71265176a2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#aee44f80f2f9e63cbeb36c71265176a2a">insert</a> (const std::string &amp;seq)</td></tr>
 <tr class="separator:aee44f80f2f9e63cbeb36c71265176a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba8a7a3b359fdf3d57876df69d4746ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#aba8a7a3b359fdf3d57876df69d4746ee">insert</a> (const uint64_t *hashes)</td></tr>
+<tr class="separator:aba8a7a3b359fdf3d57876df69d4746ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ae0ccc20ef986ccd379e43dd6b22355"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a5ae0ccc20ef986ccd379e43dd6b22355">insert</a> (const std::vector&lt; uint64_t &gt; &amp;hashes)</td></tr>
+<tr class="separator:a5ae0ccc20ef986ccd379e43dd6b22355"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad08664a39c529781d67c240d5426ab01"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; unsigned &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ad08664a39c529781d67c240d5426ab01">contains</a> (const char *seq, size_t seq_len) const</td></tr>
 <tr class="separator:ad08664a39c529781d67c240d5426ab01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a913a885fafd047695b198fc8cd95aa90"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; unsigned &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a913a885fafd047695b198fc8cd95aa90">contains</a> (const std::string &amp;seq) const</td></tr>
@@ -125,6 +129,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae2f1f051aa02ea0fa32b84e75d8cf07b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b281f9326b52e93355e6bef17748c20"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a6b281f9326b52e93355e6bef17748c20">get_hash_num_per_seed</a> () const</td></tr>
 <tr class="separator:a6b281f9326b52e93355e6bef17748c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac57554df7bfa8672a5f01810590b7c07"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ac57554df7bfa8672a5f01810590b7c07">get_hash_fn</a> () const</td></tr>
+<tr class="separator:ac57554df7bfa8672a5f01810590b7c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8b6d0b55a61c7c231cce2c86b149125"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbtllib_1_1KmerBloomFilter.html">KmerBloomFilter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ab8b6d0b55a61c7c231cce2c86b149125">get_kmer_bloom_filter</a> ()</td></tr>
 <tr class="separator:ab8b6d0b55a61c7c231cce2c86b149125"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a492503ad458de38bf683ef804ebff5c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a492503ad458de38bf683ef804ebff5c1">save</a> (const std::string &amp;path)</td></tr>
@@ -447,6 +453,32 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ac57554df7bfa8672a5f01810590b7c07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac57554df7bfa8672a5f01810590b7c07">&#9670;&nbsp;</a></span>get_hash_fn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; btllib::SeedBloomFilter::get_hash_fn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the name of the hash function used. </p>
+
+</div>
+</div>
 <a id="ae8252f79e19a18665af02ec5ded5be97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae8252f79e19a18665af02ec5ded5be97">&#9670;&nbsp;</a></span>get_hash_num()</h2>
 
@@ -656,7 +688,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a3c7a6908a0bad703848fcffaa81388cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c7a6908a0bad703848fcffaa81388cc">&#9670;&nbsp;</a></span>insert() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c7a6908a0bad703848fcffaa81388cc">&#9670;&nbsp;</a></span>insert() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -700,7 +732,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="aee44f80f2f9e63cbeb36c71265176a2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee44f80f2f9e63cbeb36c71265176a2a">&#9670;&nbsp;</a></span>insert() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aee44f80f2f9e63cbeb36c71265176a2a">&#9670;&nbsp;</a></span>insert() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -726,6 +758,72 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">seq</td><td>Sequence to k-merize. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5ae0ccc20ef986ccd379e43dd6b22355"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ae0ccc20ef986ccd379e43dd6b22355">&#9670;&nbsp;</a></span>insert() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::SeedBloomFilter::insert </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint64_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Insert an element's hash values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer vector of hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aba8a7a3b359fdf3d57876df69d4746ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba8a7a3b359fdf3d57876df69d4746ee">&#9670;&nbsp;</a></span>insert() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::SeedBloomFilter::insert </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Insert an element's hash values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer array of hash values. Array size should equal the hash_num argument used when the Bloom filter was constructed. </td></tr>
   </table>
   </dd>
 </dl>

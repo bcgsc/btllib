@@ -505,7 +505,7 @@ $(function() {
 <div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;  ssize_t min_idx_left, min_idx_right, min_pos_prev = -1;</div>
 <div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;  <span class="keyword">const</span> Minimizer* min_current = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;  <span class="keywordtype">size_t</span> idx = 0;</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;  <span class="keywordflow">for</span> (NtHash nh(seq, k, 2); nh.roll(); ++idx) {</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;  <span class="keywordflow">for</span> (NtHash nh(seq, 2, k); nh.roll(); ++idx) {</div>
 <div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    <span class="keyword">auto</span>&amp; hk = hashed_kmers_buffer[idx % hashed_kmers_buffer.size()];</div>
 <div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160; </div>
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    hk = HashedKmer(nh.hashes()[0],</div>

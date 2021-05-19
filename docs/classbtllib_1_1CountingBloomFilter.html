@@ -80,10 +80,10 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9705fdffa692d4b3469380b95b69b0e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a9705fdffa692d4b3469380b95b69b0e8">CountingBloomFilter</a> ()</td></tr>
 <tr class="separator:a9705fdffa692d4b3469380b95b69b0e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a661e6ac98df6eec07757a49c9ccb0c8b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a661e6ac98df6eec07757a49c9ccb0c8b">CountingBloomFilter</a> (size_t bytes, unsigned hash_num)</td></tr>
-<tr class="separator:a661e6ac98df6eec07757a49c9ccb0c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24f1d25e191a2b5cff6a1afea6c3cf8c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a24f1d25e191a2b5cff6a1afea6c3cf8c">CountingBloomFilter</a> (const std::string &amp;path, const std::string &amp;hash_fn=&quot;&quot;)</td></tr>
-<tr class="separator:a24f1d25e191a2b5cff6a1afea6c3cf8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1933a58f1e8d53c666fe3e4db0ffb5a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a1933a58f1e8d53c666fe3e4db0ffb5a1">CountingBloomFilter</a> (size_t bytes, unsigned hash_num, std::string hash_fn=&quot;&quot;)</td></tr>
+<tr class="separator:a1933a58f1e8d53c666fe3e4db0ffb5a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cb12da1f8fbf5fd769f08820c58719d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a5cb12da1f8fbf5fd769f08820c58719d">CountingBloomFilter</a> (const std::string &amp;path)</td></tr>
+<tr class="separator:a5cb12da1f8fbf5fd769f08820c58719d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affb3517ba4048ab57115e5dd64b80eb2"><td class="memItemLeft" align="right" valign="top"><a id="affb3517ba4048ab57115e5dd64b80eb2"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>CountingBloomFilter</b> (const <a class="el" href="classbtllib_1_1CountingBloomFilter.html">CountingBloomFilter</a> &amp;)=delete</td></tr>
 <tr class="separator:affb3517ba4048ab57115e5dd64b80eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,8 +114,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a92536bbe784a710cf27abec895d2ac44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a172db896b1c6d60a5ae4727df1cd33a5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a172db896b1c6d60a5ae4727df1cd33a5">get_fpr</a> () const</td></tr>
 <tr class="separator:a172db896b1c6d60a5ae4727df1cd33a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6660bd3c54fc02bd3c59ba9ff44cc0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#ad6660bd3c54fc02bd3c59ba9ff44cc0f">save</a> (const std::string &amp;path, const std::string &amp;hash_fn=&quot;&quot;)</td></tr>
-<tr class="separator:ad6660bd3c54fc02bd3c59ba9ff44cc0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a546e03f63465fc3c904fe8899958f2a2"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a546e03f63465fc3c904fe8899958f2a2">get_hash_fn</a> () const</td></tr>
+<tr class="separator:a546e03f63465fc3c904fe8899958f2a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e22481a658471b286a2a8b915839121"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a5e22481a658471b286a2a8b915839121">save</a> (const std::string &amp;path)</td></tr>
+<tr class="separator:a5e22481a658471b286a2a8b915839121"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -157,8 +159,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a661e6ac98df6eec07757a49c9ccb0c8b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a661e6ac98df6eec07757a49c9ccb0c8b">&#9670;&nbsp;</a></span>CountingBloomFilter() <span class="overload">[2/3]</span></h2>
+<a id="a1933a58f1e8d53c666fe3e4db0ffb5a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1933a58f1e8d53c666fe3e4db0ffb5a1">&#9670;&nbsp;</a></span>CountingBloomFilter() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -178,7 +180,13 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>hash_num</em>&#160;</td>
+          <td class="paramname"><em>hash_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>hash_fn</em> = <code>&quot;&quot;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -197,14 +205,15 @@ template&lt;typename T &gt; </div>
   <table class="params">
     <tr><td class="paramname">bytes</td><td>Filter size in bytes. </td></tr>
     <tr><td class="paramname">hash_num</td><td>Number of hash values per element. </td></tr>
+    <tr><td class="paramname">hash_fn</td><td>Name of the hash function used. Used for metadata. Optional. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a24f1d25e191a2b5cff6a1afea6c3cf8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24f1d25e191a2b5cff6a1afea6c3cf8c">&#9670;&nbsp;</a></span>CountingBloomFilter() <span class="overload">[3/3]</span></h2>
+<a id="a5cb12da1f8fbf5fd769f08820c58719d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cb12da1f8fbf5fd769f08820c58719d">&#9670;&nbsp;</a></span>CountingBloomFilter() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -218,18 +227,8 @@ template&lt;typename T &gt; </div>
           <td class="memname"><a class="el" href="classbtllib_1_1CountingBloomFilter.html">btllib::CountingBloomFilter</a>&lt; T &gt;::<a class="el" href="classbtllib_1_1CountingBloomFilter.html">CountingBloomFilter</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>path</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>hash_fn</em> = <code>&quot;&quot;</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -242,7 +241,6 @@ template&lt;typename T &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>Filepath to load from. </td></tr>
-    <tr><td class="paramname">hash_fn</td><td>Hash function expected in loaded Bloom filter. Not checked if the argument is not provided. </td></tr>
   </table>
   </dd>
 </dl>
@@ -372,6 +370,34 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Get the query false positive rate. </p>
+
+</div>
+</div>
+<a id="a546e03f63465fc3c904fe8899958f2a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a546e03f63465fc3c904fe8899958f2a2">&#9670;&nbsp;</a></span>get_hash_fn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; <a class="el" href="classbtllib_1_1CountingBloomFilter.html">btllib::CountingBloomFilter</a>&lt; T &gt;::get_hash_fn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the name of the hash function used. </p>
 
 </div>
 </div>
@@ -523,8 +549,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="ad6660bd3c54fc02bd3c59ba9ff44cc0f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6660bd3c54fc02bd3c59ba9ff44cc0f">&#9670;&nbsp;</a></span>save()</h2>
+<a id="a5e22481a658471b286a2a8b915839121"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e22481a658471b286a2a8b915839121">&#9670;&nbsp;</a></span>save()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -538,18 +564,8 @@ template&lt;typename T &gt; </div>
           <td class="memname">void <a class="el" href="classbtllib_1_1CountingBloomFilter.html">btllib::CountingBloomFilter</a>&lt; T &gt;::save </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>path</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>hash_fn</em> = <code>&quot;&quot;</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -562,7 +578,6 @@ template&lt;typename T &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>Filepath to store filter at. </td></tr>
-    <tr><td class="paramname">hash_fn</td><td>Hash function used. Not saved if the argument is not provided. </td></tr>
   </table>
   </dd>
 </dl>

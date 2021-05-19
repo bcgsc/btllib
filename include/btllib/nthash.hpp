@@ -8,6 +8,8 @@
 #ifndef BTLLIB_NTHASH_HPP
 #define BTLLIB_NTHASH_HPP
 
+#include "status.hpp"
+
 #include <cstdint>
 #include <limits>
 #include <string>
@@ -1389,7 +1391,10 @@ inline NtHash::NtHash(const char* seq,
   , pos(pos)
   , initialized(false)
 {
-  check_warning(hash_num >= k, "NtHash: using " + std::to_string(hash_num) + " hash functions and k size of " + std::to_string(k) + ". Did you permute the parameters?");
+  check_warning(hash_num >= k,
+                "NtHash: using " + std::to_string(hash_num) +
+                  " hash functions and k size of " + std::to_string(k) +
+                  ". Did you permute the parameters?");
   hashes_vector.resize(hash_num);
 }
 
