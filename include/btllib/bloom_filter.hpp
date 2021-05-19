@@ -580,7 +580,7 @@ inline KmerBloomFilter::KmerBloomFilter(size_t bytes,
 inline void
 KmerBloomFilter::insert(const char* seq, size_t seq_len)
 {
-  NtHash nthash(seq, seq_len, get_k(), get_hash_num());
+  NtHash nthash(seq, seq_len, get_hash_num(), get_k());
   while (nthash.roll()) {
     bloom_filter.insert(nthash.hashes());
   }
@@ -590,7 +590,7 @@ inline unsigned
 KmerBloomFilter::contains(const char* seq, size_t seq_len) const
 {
   unsigned count = 0;
-  NtHash nthash(seq, seq_len, get_k(), get_hash_num());
+  NtHash nthash(seq, seq_len, get_hash_num(), get_k());
   while (nthash.roll()) {
     if (bloom_filter.contains(nthash.hashes())) {
       count++;
@@ -671,7 +671,7 @@ inline void
 SeedBloomFilter::insert(const char* seq, size_t seq_len)
 {
   SeedNtHash nthash(
-    seq, seq_len, get_k(), parsed_seeds, get_hash_num_per_seed());
+    seq, seq_len, parsed_seeds, get_hash_num_per_seed(), get_k());
   while (nthash.roll()) {
     for (size_t s = 0; s < seeds.size(); s++) {
       kmer_bloom_filter.bloom_filter.insert(nthash.hashes() +
@@ -685,7 +685,7 @@ SeedBloomFilter::contains(const char* seq, size_t seq_len) const
 {
   std::vector<std::vector<unsigned>> hit_seeds;
   SeedNtHash nthash(
-    seq, seq_len, get_k(), parsed_seeds, get_hash_num_per_seed());
+    seq, seq_len, parsed_seeds, get_hash_num_per_seed(), get_k());
   while (nthash.roll()) {
     hit_seeds.emplace_back();
     for (size_t s = 0; s < seeds.size(); s++) {

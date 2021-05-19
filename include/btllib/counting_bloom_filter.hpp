@@ -423,7 +423,7 @@ template<typename T>
 inline void
 KmerCountingBloomFilter<T>::insert(const char* seq, size_t seq_len)
 {
-  NtHash nthash(seq, seq_len, get_k(), get_hash_num());
+  NtHash nthash(seq, seq_len, get_hash_num(), get_k());
   while (nthash.roll()) {
     counting_bloom_filter.insert(nthash.hashes());
   }
@@ -434,7 +434,7 @@ inline uint64_t
 KmerCountingBloomFilter<T>::contains(const char* seq, size_t seq_len) const
 {
   uint64_t count = 0;
-  NtHash nthash(seq, seq_len, get_k(), get_hash_num());
+  NtHash nthash(seq, seq_len, get_hash_num(), get_k());
   while (nthash.roll()) {
     count += counting_bloom_filter.contains(nthash.hashes());
   }

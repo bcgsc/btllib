@@ -463,7 +463,7 @@ Indexlr::minimize(const std::string& seq) const
   ssize_t min_idx_left, min_idx_right, min_pos_prev = -1;
   const Minimizer* min_current = nullptr;
   size_t idx = 0;
-  for (NtHash nh(seq, k, 2); nh.roll(); ++idx) {
+  for (NtHash nh(seq, 2, k); nh.roll(); ++idx) {
     auto& hk = hashed_kmers_buffer[idx % hashed_kmers_buffer.size()];
 
     hk = HashedKmer(nh.hashes()[0],
