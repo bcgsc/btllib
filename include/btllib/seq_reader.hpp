@@ -40,8 +40,8 @@ public:
    */
   struct Flag
   {
-    /** Do not perform any case folding. May improve performance. */
-    static const unsigned NO_FOLD_CASE = 1;
+    /** Fold all nucleotides into upper case. */
+    static const unsigned FOLD_CASE = 1;
     /** Trim masked (lower case) characters from the ends of
      * sequences. */
     static const unsigned TRIM_MASKED = 2;
@@ -60,7 +60,7 @@ public:
    * @param threads Maximum number of helper threads to use. Must be at least 1.
    */
   SeqReader(const std::string& source_path,
-            unsigned flags = 0,
+            unsigned flags,
             unsigned threads = 3);
 
   SeqReader(const SeqReader&) = delete;
@@ -73,7 +73,7 @@ public:
 
   void close() noexcept;
 
-  bool fold_case() const { return bool(~flags & Flag::NO_FOLD_CASE); }
+  bool fold_case() const { return bool(flags & Flag::FOLD_CASE); }
   bool trim_masked() const { return bool(flags & Flag::TRIM_MASKED); }
   bool short_mode() const { return bool(flags & Flag::SHORT_MODE); }
   bool long_mode() const { return bool(flags & Flag::LONG_MODE); }

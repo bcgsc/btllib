@@ -103,18 +103,18 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">   */</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structbtllib_1_1SeqReader_1_1Flag.html">   41</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structbtllib_1_1SeqReader_1_1Flag.html">Flag</a></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  {</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structbtllib_1_1SeqReader_1_1Flag.html#a095a05abb58c51853ec14fd70f799dab">   44</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <a class="code" href="structbtllib_1_1SeqReader_1_1Flag.html#a095a05abb58c51853ec14fd70f799dab">NO_FOLD_CASE</a> = 1;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structbtllib_1_1SeqReader_1_1Flag.html#a44ad672a99f366b36f2df42b5c05c6c0">   44</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <a class="code" href="structbtllib_1_1SeqReader_1_1Flag.html#a44ad672a99f366b36f2df42b5c05c6c0">FOLD_CASE</a> = 1;</div>
 <div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structbtllib_1_1SeqReader_1_1Flag.html#a14037ad6ddb996106682815f75817289">   47</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <a class="code" href="structbtllib_1_1SeqReader_1_1Flag.html#a14037ad6ddb996106682815f75817289">TRIM_MASKED</a> = 2;</div>
 <div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structbtllib_1_1SeqReader_1_1Flag.html#ab0aba3f99ab4159205621e2242c6e18f">   49</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <a class="code" href="structbtllib_1_1SeqReader_1_1Flag.html#ab0aba3f99ab4159205621e2242c6e18f">SHORT_MODE</a> = 4;</div>
 <div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structbtllib_1_1SeqReader_1_1Flag.html#acadd9255385912461a0ff9b5faca068c">   51</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <a class="code" href="structbtllib_1_1SeqReader_1_1Flag.html#acadd9255385912461a0ff9b5faca068c">LONG_MODE</a> = 8;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  };</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>(<span class="keyword">const</span> std::string&amp; source_path,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordtype">unsigned</span> flags = 0,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>(<span class="keyword">const</span> std::string&amp; source_path,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordtype">unsigned</span> flags,</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordtype">unsigned</span> threads = 3);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>(<span class="keyword">const</span> <a class="code" href="classbtllib_1_1SeqReader.html">SeqReader</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>(<a class="code" href="classbtllib_1_1SeqReader.html">SeqReader</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>(<span class="keyword">const</span> <a class="code" href="classbtllib_1_1SeqReader.html">SeqReader</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>(<a class="code" href="classbtllib_1_1SeqReader.html">SeqReader</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="classbtllib_1_1SeqReader.html">SeqReader</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classbtllib_1_1SeqReader.html">SeqReader</a>&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="classbtllib_1_1SeqReader.html">SeqReader</a>&amp; operator=(<a class="code" href="classbtllib_1_1SeqReader.html">SeqReader</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
@@ -123,7 +123,7 @@ $(function() {
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">void</span> close() noexcept;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">bool</span> fold_case()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> bool(~flags &amp; <a class="code" href="structbtllib_1_1SeqReader_1_1Flag.html#a095a05abb58c51853ec14fd70f799dab">Flag::NO_FOLD_CASE</a>); }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">bool</span> fold_case()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> bool(flags &amp; <a class="code" href="structbtllib_1_1SeqReader_1_1Flag.html#a44ad672a99f366b36f2df42b5c05c6c0">Flag::FOLD_CASE</a>); }</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">bool</span> trim_masked()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> bool(flags &amp; <a class="code" href="structbtllib_1_1SeqReader_1_1Flag.html#a14037ad6ddb996106682815f75817289">Flag::TRIM_MASKED</a>); }</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">bool</span> short_mode()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> bool(flags &amp; <a class="code" href="structbtllib_1_1SeqReader_1_1Flag.html#ab0aba3f99ab4159205621e2242c6e18f">Flag::SHORT_MODE</a>); }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">bool</span> long_mode()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> bool(flags &amp; <a class="code" href="structbtllib_1_1SeqReader_1_1Flag.html#acadd9255385912461a0ff9b5faca068c">Flag::LONG_MODE</a>); }</div>
@@ -280,7 +280,7 @@ $(function() {
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <span class="keywordtype">void</span> postprocess();</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;};</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">  236</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader::SeqReader</a>(<span class="keyword">const</span> std::string&amp; source_path,</div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">  236</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader::SeqReader</a>(<span class="keyword">const</span> std::string&amp; source_path,</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                            <span class="keyword">const</span> <span class="keywordtype">unsigned</span> flags,</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                            <span class="keyword">const</span> <span class="keywordtype">unsigned</span> threads)</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  : source_path(source_path)</div>
@@ -813,7 +813,7 @@ $(function() {
 <div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160; </div>
 <div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;<span class="keyword">struct </span>SeqReader::read_fasta_buffer</div>
 <div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;{</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;  <span class="keywordtype">bool</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>&amp; seq_reader)</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;  <span class="keywordtype">bool</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>&amp; seq_reader)</div>
 <div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;  {</div>
 <div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;    <span class="keywordflow">switch</span> (seq_reader.read_stage) {</div>
 <div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;      <span class="keywordflow">case</span> ReadStage::HEADER: {</div>
@@ -842,7 +842,7 @@ $(function() {
 <div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160; </div>
 <div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;<span class="keyword">struct </span>SeqReader::read_fastq_buffer</div>
 <div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;{</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;  <span class="keywordtype">bool</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>&amp; seq_reader)</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;  <span class="keywordtype">bool</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>&amp; seq_reader)</div>
 <div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;  {</div>
 <div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;    <span class="keywordflow">switch</span> (seq_reader.read_stage) {</div>
 <div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;      <span class="keywordflow">case</span> ReadStage::HEADER: {</div>
@@ -887,7 +887,7 @@ $(function() {
 <div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160; </div>
 <div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;<span class="keyword">struct </span>SeqReader::read_sam_buffer</div>
 <div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;{</div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;  <span class="keywordtype">bool</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>&amp; seq_reader)</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;  <span class="keywordtype">bool</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>&amp; seq_reader)</div>
 <div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;  {</div>
 <div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;    READ_SAM(                                   <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;      <span class="keywordflow">if</span> (!seq_reader.readline_buffer_append(   <span class="comment">// NOLINT</span></div>
@@ -903,7 +903,7 @@ $(function() {
 <div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160; </div>
 <div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;<span class="keyword">struct </span>SeqReader::read_gfa2_buffer</div>
 <div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;{</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;  <span class="keywordtype">bool</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>&amp; seq_reader)</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;  <span class="keywordtype">bool</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>&amp; seq_reader)</div>
 <div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;  {</div>
 <div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;    READ_GFA2(                                  <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;      <span class="keywordflow">if</span> (!seq_reader.readline_buffer_append(   <span class="comment">// NOLINT</span></div>
@@ -919,7 +919,7 @@ $(function() {
 <div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160; </div>
 <div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;<span class="keyword">struct </span>SeqReader::read_fasta_transition</div>
 <div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;{</div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>&amp; seq_reader)</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>&amp; seq_reader)</div>
 <div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;  {</div>
 <div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    <span class="keywordflow">switch</span> (seq_reader.read_stage) {</div>
 <div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;      <span class="keywordflow">case</span> ReadStage::HEADER: {</div>
@@ -942,7 +942,7 @@ $(function() {
 <div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160; </div>
 <div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;<span class="keyword">struct </span>SeqReader::read_fastq_transition</div>
 <div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;{</div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>&amp; seq_reader)</div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>&amp; seq_reader)</div>
 <div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;  {</div>
 <div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;    <span class="keywordflow">switch</span> (seq_reader.read_stage) {</div>
 <div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;      <span class="keywordflow">case</span> ReadStage::HEADER: {</div>
@@ -976,7 +976,7 @@ $(function() {
 <div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160; </div>
 <div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;<span class="keyword">struct </span>SeqReader::read_sam_transition</div>
 <div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;{</div>
-<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>&amp; seq_reader)</div>
+<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>&amp; seq_reader)</div>
 <div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;  {</div>
 <div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;    READ_SAM(                                            <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;      seq_reader.readline_file_append(seq_reader.tmp);   <span class="comment">// NOLINT</span></div>
@@ -986,7 +986,7 @@ $(function() {
 <div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160; </div>
 <div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;<span class="keyword">struct </span>SeqReader::read_gfa2_transition</div>
 <div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;{</div>
-<div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>&amp; seq_reader)</div>
+<div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>&amp; seq_reader)</div>
 <div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;  {</div>
 <div class="line"><a name="l00945"></a><span class="lineno">  945</span>&#160;    READ_GFA2(                                           <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160;      seq_reader.readline_file_append(seq_reader.tmp);   <span class="comment">// NOLINT</span></div>
@@ -996,7 +996,7 @@ $(function() {
 <div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160; </div>
 <div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;<span class="keyword">struct </span>SeqReader::read_fasta_file</div>
 <div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;{</div>
-<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>&amp; seq_reader)</div>
+<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>&amp; seq_reader)</div>
 <div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;  {</div>
 <div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;    seq_reader.readline_file(seq_reader.reader_record-&gt;header);</div>
 <div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;    seq_reader.readline_file(seq_reader.reader_record-&gt;seq);</div>
@@ -1005,7 +1005,7 @@ $(function() {
 <div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160; </div>
 <div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;<span class="keyword">struct </span>SeqReader::read_fastq_file</div>
 <div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;{</div>
-<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>&amp; seq_reader)</div>
+<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>&amp; seq_reader)</div>
 <div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;  {</div>
 <div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;    seq_reader.readline_file(seq_reader.reader_record-&gt;header);</div>
 <div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;    seq_reader.readline_file(seq_reader.reader_record-&gt;seq);</div>
@@ -1016,7 +1016,7 @@ $(function() {
 <div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160; </div>
 <div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;<span class="keyword">struct </span>SeqReader::read_sam_file</div>
 <div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;{</div>
-<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>&amp; seq_reader)</div>
+<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>&amp; seq_reader)</div>
 <div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;  {</div>
 <div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;    READ_SAM(                                            <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160;      seq_reader.readline_file(seq_reader.tmp);          <span class="comment">// NOLINT</span></div>
@@ -1026,7 +1026,7 @@ $(function() {
 <div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160; </div>
 <div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;<span class="keyword">struct </span>SeqReader::read_gfa2_file</div>
 <div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;{</div>
-<div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">SeqReader</a>&amp; seq_reader)</div>
+<div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;  <span class="keywordtype">void</span> operator()(<a class="code" href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">SeqReader</a>&amp; seq_reader)</div>
 <div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;  {</div>
 <div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160;    READ_GFA2(                                           <span class="comment">// NOLINT</span></div>
 <div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;      seq_reader.readline_file(seq_reader.tmp);          <span class="comment">// NOLINT</span></div>
@@ -1305,15 +1305,15 @@ $(function() {
 <div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160; </div>
 <div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassbtllib_1_1SeqReader_html"><div class="ttname"><a href="classbtllib_1_1SeqReader.html">btllib::SeqReader</a></div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:35</div></div>
+<div class="ttc" id="aclassbtllib_1_1SeqReader_html_a03cc4e39fffc556a2f05c30bc6d3731d"><div class="ttname"><a href="classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d">btllib::SeqReader::SeqReader</a></div><div class="ttdeci">SeqReader(const std::string &amp;source_path, unsigned flags, unsigned threads=3)</div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:236</div></div>
 <div class="ttc" id="aclassbtllib_1_1SeqReader_html_a7e8acc7bfbd8624cf8d9745922e9a034"><div class="ttname"><a href="classbtllib_1_1SeqReader.html#a7e8acc7bfbd8624cf8d9745922e9a034">btllib::SeqReader::read</a></div><div class="ttdeci">Record read()</div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:1238</div></div>
-<div class="ttc" id="aclassbtllib_1_1SeqReader_html_a9e599e429ae274d7a4c10dd5590c1efc"><div class="ttname"><a href="classbtllib_1_1SeqReader.html#a9e599e429ae274d7a4c10dd5590c1efc">btllib::SeqReader::SeqReader</a></div><div class="ttdeci">SeqReader(const std::string &amp;source_path, unsigned flags=0, unsigned threads=3)</div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:236</div></div>
 <div class="ttc" id="anamespacebtllib_html"><div class="ttname"><a href="namespacebtllib.html">btllib</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:18</div></div>
 <div class="ttc" id="anamespacebtllib_html_a540bce0213b7718e519ddc4466361bf7"><div class="ttname"><a href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">btllib::check_error</a></div><div class="ttdeci">void check_error(bool condition, const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:139</div></div>
 <div class="ttc" id="anamespacebtllib_html_a60a36f4583a7eb03001f8bdb7b395507"><div class="ttname"><a href="namespacebtllib.html#a60a36f4583a7eb03001f8bdb7b395507">btllib::check_warning</a></div><div class="ttdeci">void check_warning(bool condition, const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:131</div></div>
 <div class="ttc" id="anamespacebtllib_html_aae48e6ebdbbde9836cd2c20347b85606"><div class="ttname"><a href="namespacebtllib.html#aae48e6ebdbbde9836cd2c20347b85606">btllib::log_error</a></div><div class="ttdeci">void log_error(const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:115</div></div>
 <div class="ttc" id="astructbtllib_1_1SeqReader_1_1Flag_html"><div class="ttname"><a href="structbtllib_1_1SeqReader_1_1Flag.html">btllib::SeqReader::Flag</a></div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:42</div></div>
-<div class="ttc" id="astructbtllib_1_1SeqReader_1_1Flag_html_a095a05abb58c51853ec14fd70f799dab"><div class="ttname"><a href="structbtllib_1_1SeqReader_1_1Flag.html#a095a05abb58c51853ec14fd70f799dab">btllib::SeqReader::Flag::NO_FOLD_CASE</a></div><div class="ttdeci">static const unsigned NO_FOLD_CASE</div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:44</div></div>
 <div class="ttc" id="astructbtllib_1_1SeqReader_1_1Flag_html_a14037ad6ddb996106682815f75817289"><div class="ttname"><a href="structbtllib_1_1SeqReader_1_1Flag.html#a14037ad6ddb996106682815f75817289">btllib::SeqReader::Flag::TRIM_MASKED</a></div><div class="ttdeci">static const unsigned TRIM_MASKED</div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:47</div></div>
+<div class="ttc" id="astructbtllib_1_1SeqReader_1_1Flag_html_a44ad672a99f366b36f2df42b5c05c6c0"><div class="ttname"><a href="structbtllib_1_1SeqReader_1_1Flag.html#a44ad672a99f366b36f2df42b5c05c6c0">btllib::SeqReader::Flag::FOLD_CASE</a></div><div class="ttdeci">static const unsigned FOLD_CASE</div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:44</div></div>
 <div class="ttc" id="astructbtllib_1_1SeqReader_1_1Flag_html_ab0aba3f99ab4159205621e2242c6e18f"><div class="ttname"><a href="structbtllib_1_1SeqReader_1_1Flag.html#ab0aba3f99ab4159205621e2242c6e18f">btllib::SeqReader::Flag::SHORT_MODE</a></div><div class="ttdeci">static const unsigned SHORT_MODE</div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:49</div></div>
 <div class="ttc" id="astructbtllib_1_1SeqReader_1_1Flag_html_acadd9255385912461a0ff9b5faca068c"><div class="ttname"><a href="structbtllib_1_1SeqReader_1_1Flag.html#acadd9255385912461a0ff9b5faca068c">btllib::SeqReader::Flag::LONG_MODE</a></div><div class="ttdeci">static const unsigned LONG_MODE</div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:51</div></div>
 <div class="ttc" id="astructbtllib_1_1SeqReader_1_1Record_html"><div class="ttname"><a href="structbtllib_1_1SeqReader_1_1Record.html">btllib::SeqReader::Record</a></div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:94</div></div>
