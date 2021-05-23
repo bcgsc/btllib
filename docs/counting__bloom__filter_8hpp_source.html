@@ -288,7 +288,7 @@ $(function() {
 <div class="line"><a name="l00355"></a><span class="lineno"><a class="line" href="classbtllib_1_1CountingBloomFilter.html#a69c657ea3b384c52f5d49bdb7255d2f6">  355</a></span>&#160;<a class="code" href="classbtllib_1_1CountingBloomFilter.html#a69c657ea3b384c52f5d49bdb7255d2f6">CountingBloomFilter&lt;T&gt;::get_pop_cnt</a>()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  uint64_t pop_cnt = 0;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor">#pragma omp parallel for default(none) reduction(+ : pop_cnt)</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor">#pragma omp parallel for default(none) shared(array_size, array) reduction(+ : pop_cnt)</span></div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; array_size; ++i) {</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keywordflow">if</span> (array[i] &gt; 0) {</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      ++pop_cnt;</div>
@@ -406,59 +406,65 @@ $(function() {
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;  counting_bloom_filter.bytes =</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    *table-&gt;get_as&lt;decltype(counting_bloom_filter.bytes)&gt;(<span class="stringliteral">&quot;bytes&quot;</span>);</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;  <a class="code" href="namespacebtllib.html#a60a36f4583a7eb03001f8bdb7b395507">check_warning</a>(<span class="keyword">sizeof</span>(uint8_t) != <span class="keyword">sizeof</span>(std::atomic&lt;uint8_t&gt;),</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                <span class="stringliteral">&quot;Atomic primitives take extra memory. CountingBloomFilter will &quot;</span></div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                <span class="stringliteral">&quot;have less than &quot;</span> +</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                  std::to_string(get_bytes()) + <span class="stringliteral">&quot; for bit array.&quot;</span>);</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;  counting_bloom_filter.array_size =</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    get_bytes() / <span class="keyword">sizeof</span>(counting_bloom_filter.array[0]);</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;  counting_bloom_filter.hash_num =</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    *table-&gt;get_as&lt;decltype(counting_bloom_filter.hash_num)&gt;(<span class="stringliteral">&quot;hash_num&quot;</span>);</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;  counting_bloom_filter.hash_fn = *(table-&gt;get_as&lt;std::string&gt;(<span class="stringliteral">&quot;hash_fn&quot;</span>));</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;  k = *table-&gt;get_as&lt;decltype(k)&gt;(<span class="stringliteral">&quot;k&quot;</span>);</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;  <a class="code" href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">check_error</a>(<span class="keyword">sizeof</span>(T) * CHAR_BIT != *table-&gt;get_as&lt;<span class="keywordtype">size_t</span>&gt;(<span class="stringliteral">&quot;counter_bits&quot;</span>),</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;              <span class="stringliteral">&quot;CountingBloomFilter&quot;</span> + std::to_string(<span class="keyword">sizeof</span>(T) * CHAR_BIT) +</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;                <span class="stringliteral">&quot; tried to load a file of CountingBloomFilter&quot;</span> +</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;                std::to_string(*table-&gt;get_as&lt;<span class="keywordtype">size_t</span>&gt;(<span class="stringliteral">&quot;counter_bits&quot;</span>)));</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;  counting_bloom_filter.array =</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    <span class="keyword">new</span> std::atomic&lt;T&gt;[counting_bloom_filter.array_size];</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;  file.read((<span class="keywordtype">char</span>*)counting_bloom_filter.array,</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;            counting_bloom_filter.array_size *</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;              <span class="keyword">sizeof</span>(counting_bloom_filter.array[0]));</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;}</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160; </div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00499"></a><span class="lineno"><a class="line" href="classbtllib_1_1KmerCountingBloomFilter.html#a2114624b42d693170ec48391690d95fe">  499</a></span>&#160;<a class="code" href="classbtllib_1_1KmerCountingBloomFilter.html#a2114624b42d693170ec48391690d95fe">KmerCountingBloomFilter&lt;T&gt;::save</a>(<span class="keyword">const</span> std::string&amp; path)</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;{</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;  std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                <span class="stringliteral">&quot;KmerCountingBloomFilter: Atomic primitives take extra memory. &quot;</span></div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                <span class="stringliteral">&quot;KmerCountingBloomFilter will &quot;</span></div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                <span class="stringliteral">&quot;have less than &quot;</span> +</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                  std::to_string(get_bytes()) + <span class="stringliteral">&quot; for bit array.&quot;</span>);</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;  counting_bloom_filter.array_size =</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    get_bytes() / <span class="keyword">sizeof</span>(counting_bloom_filter.array[0]);</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;  counting_bloom_filter.hash_num =</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    *table-&gt;get_as&lt;decltype(counting_bloom_filter.hash_num)&gt;(<span class="stringliteral">&quot;hash_num&quot;</span>);</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;  <span class="keyword">const</span> std::string loaded_hash_fn = *(table-&gt;get_as&lt;std::string&gt;(<span class="stringliteral">&quot;hash_fn&quot;</span>));</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;  <a class="code" href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">check_error</a>(</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    loaded_hash_fn != HASH_FN,</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    <span class="stringliteral">&quot;KmerCountingBloomFilter: loaded hash function (&quot;</span> + loaded_hash_fn +</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;      <span class="stringliteral">&quot;) is different from the one used by default (&quot;</span> + HASH_FN + <span class="stringliteral">&quot;).&quot;</span>);</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;  counting_bloom_filter.hash_fn = loaded_hash_fn;</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;  k = *table-&gt;get_as&lt;decltype(k)&gt;(<span class="stringliteral">&quot;k&quot;</span>);</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;  <a class="code" href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">check_error</a>(<span class="keyword">sizeof</span>(T) * CHAR_BIT != *table-&gt;get_as&lt;<span class="keywordtype">size_t</span>&gt;(<span class="stringliteral">&quot;counter_bits&quot;</span>),</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;              <span class="stringliteral">&quot;CountingBloomFilter&quot;</span> + std::to_string(<span class="keyword">sizeof</span>(T) * CHAR_BIT) +</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;                <span class="stringliteral">&quot; tried to load a file of CountingBloomFilter&quot;</span> +</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;                std::to_string(*table-&gt;get_as&lt;<span class="keywordtype">size_t</span>&gt;(<span class="stringliteral">&quot;counter_bits&quot;</span>)));</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160; </div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;  counting_bloom_filter.array =</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;    <span class="keyword">new</span> std::atomic&lt;T&gt;[counting_bloom_filter.array_size];</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;  file.read((<span class="keywordtype">char</span>*)counting_bloom_filter.array,</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            counting_bloom_filter.array_size *</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;              <span class="keyword">sizeof</span>(counting_bloom_filter.array[0]));</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;}</div>
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160; </div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;  <span class="comment">/* Initialize cpptoml root table</span></div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;<span class="comment">    Note: Tables and fields are unordered</span></div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;<span class="comment">    Ordering of table is maintained by directing the table</span></div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;<span class="comment">    to the output stream immediately after completion  */</span></div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;  <span class="keyword">auto</span> root = cpptoml::make_table();</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00505"></a><span class="lineno"><a class="line" href="classbtllib_1_1KmerCountingBloomFilter.html#a2114624b42d693170ec48391690d95fe">  505</a></span>&#160;<a class="code" href="classbtllib_1_1KmerCountingBloomFilter.html#a2114624b42d693170ec48391690d95fe">KmerCountingBloomFilter&lt;T&gt;::save</a>(<span class="keyword">const</span> std::string&amp; path)</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;{</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;  std::ofstream file(path.c_str(), std::ios::out | std::ios::binary);</div>
 <div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; </div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;  <span class="comment">/* Initialize bloom filter section and insert fields</span></div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="comment">      and output to ostream */</span></div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;  <span class="keyword">auto</span> header = cpptoml::make_table();</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;bytes&quot;</span>, get_bytes());</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;hash_fn&quot;</span>, get_hash_fn());</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;hash_num&quot;</span>, get_hash_num());</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;counter_bits&quot;</span>,</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;                 <span class="keywordtype">size_t</span>(<span class="keyword">sizeof</span>(counting_bloom_filter.array[0]) * CHAR_BIT));</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;k&quot;</span>, k);</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;  root-&gt;insert(KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER, header);</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;  file &lt;&lt; *root &lt;&lt; <span class="stringliteral">&quot;[HeaderEnd]\n&quot;</span>;</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160; </div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;  file.write((<span class="keywordtype">char</span>*)counting_bloom_filter.array,</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;             counting_bloom_filter.array_size *</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;               <span class="keyword">sizeof</span>(counting_bloom_filter.array[0]));</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;}</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160; </div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;} <span class="comment">// namespace btllib</span></div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;  <span class="comment">/* Initialize cpptoml root table</span></div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="comment">    Note: Tables and fields are unordered</span></div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;<span class="comment">    Ordering of table is maintained by directing the table</span></div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;<span class="comment">    to the output stream immediately after completion  */</span></div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;  <span class="keyword">auto</span> root = cpptoml::make_table();</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160; </div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;  <span class="comment">/* Initialize bloom filter section and insert fields</span></div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;<span class="comment">      and output to ostream */</span></div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;  <span class="keyword">auto</span> header = cpptoml::make_table();</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;bytes&quot;</span>, get_bytes());</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;hash_fn&quot;</span>, get_hash_fn());</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;hash_num&quot;</span>, get_hash_num());</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;counter_bits&quot;</span>,</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                 <span class="keywordtype">size_t</span>(<span class="keyword">sizeof</span>(counting_bloom_filter.array[0]) * CHAR_BIT));</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;  header-&gt;insert(<span class="stringliteral">&quot;k&quot;</span>, k);</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;  root-&gt;insert(KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER, header);</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;  file &lt;&lt; *root &lt;&lt; <span class="stringliteral">&quot;[HeaderEnd]\n&quot;</span>;</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;  file.write((<span class="keywordtype">char</span>*)counting_bloom_filter.array,</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;             counting_bloom_filter.array_size *</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;               <span class="keyword">sizeof</span>(counting_bloom_filter.array[0]));</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;}</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160; </div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160; </div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassbtllib_1_1BloomFilter_html_a2671dfd28714057547e9b7ac21d44d88"><div class="ttname"><a href="classbtllib_1_1BloomFilter.html#a2671dfd28714057547e9b7ac21d44d88">btllib::BloomFilter::parse_header</a></div><div class="ttdeci">static std::shared_ptr&lt; cpptoml::table &gt; parse_header(std::ifstream &amp;file, const std::string &amp;magic_string)</div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:528</div></div>
 <div class="ttc" id="aclassbtllib_1_1CountingBloomFilter_html"><div class="ttname"><a href="classbtllib_1_1CountingBloomFilter.html">btllib::CountingBloomFilter</a></div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:35</div></div>
 <div class="ttc" id="aclassbtllib_1_1CountingBloomFilter_html_a154fa80d30a1019a71a2206ff15fc8fe"><div class="ttname"><a href="classbtllib_1_1CountingBloomFilter.html#a154fa80d30a1019a71a2206ff15fc8fe">btllib::CountingBloomFilter::insert</a></div><div class="ttdeci">void insert(const std::vector&lt; uint64_t &gt; &amp;hashes)</div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:80</div></div>
@@ -475,7 +481,7 @@ $(function() {
 <div class="ttc" id="aclassbtllib_1_1CountingBloomFilter_html_afca13e8c6f3901e06f1dedfe9e5bbf60"><div class="ttname"><a href="classbtllib_1_1CountingBloomFilter.html#afca13e8c6f3901e06f1dedfe9e5bbf60">btllib::CountingBloomFilter::get_occupancy</a></div><div class="ttdeci">double get_occupancy() const</div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:369</div></div>
 <div class="ttc" id="aclassbtllib_1_1KmerCountingBloomFilter_html"><div class="ttname"><a href="classbtllib_1_1KmerCountingBloomFilter.html">btllib::KmerCountingBloomFilter</a></div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:141</div></div>
 <div class="ttc" id="aclassbtllib_1_1KmerCountingBloomFilter_html_a00dedb8babe37a3c5e86a9e2bcaed86e"><div class="ttname"><a href="classbtllib_1_1KmerCountingBloomFilter.html#a00dedb8babe37a3c5e86a9e2bcaed86e">btllib::KmerCountingBloomFilter::contains</a></div><div class="ttdeci">uint64_t contains(const char *seq, size_t seq_len) const</div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:455</div></div>
-<div class="ttc" id="aclassbtllib_1_1KmerCountingBloomFilter_html_a2114624b42d693170ec48391690d95fe"><div class="ttname"><a href="classbtllib_1_1KmerCountingBloomFilter.html#a2114624b42d693170ec48391690d95fe">btllib::KmerCountingBloomFilter::save</a></div><div class="ttdeci">void save(const std::string &amp;path)</div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:499</div></div>
+<div class="ttc" id="aclassbtllib_1_1KmerCountingBloomFilter_html_a2114624b42d693170ec48391690d95fe"><div class="ttname"><a href="classbtllib_1_1KmerCountingBloomFilter.html#a2114624b42d693170ec48391690d95fe">btllib::KmerCountingBloomFilter::save</a></div><div class="ttdeci">void save(const std::string &amp;path)</div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:505</div></div>
 <div class="ttc" id="aclassbtllib_1_1KmerCountingBloomFilter_html_a40dd76d7ebc18df5a766326f511ce2a8"><div class="ttname"><a href="classbtllib_1_1KmerCountingBloomFilter.html#a40dd76d7ebc18df5a766326f511ce2a8">btllib::KmerCountingBloomFilter::contains</a></div><div class="ttdeci">T contains(const uint64_t *hashes) const</div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:232</div></div>
 <div class="ttc" id="aclassbtllib_1_1KmerCountingBloomFilter_html_a5d7bcfa3c35a0bee90426ce139e2dc4a"><div class="ttname"><a href="classbtllib_1_1KmerCountingBloomFilter.html#a5d7bcfa3c35a0bee90426ce139e2dc4a">btllib::KmerCountingBloomFilter::get_bytes</a></div><div class="ttdeci">size_t get_bytes() const</div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:250</div></div>
 <div class="ttc" id="aclassbtllib_1_1KmerCountingBloomFilter_html_a847eeac1746a45320c08f16f5fd6eaf3"><div class="ttname"><a href="classbtllib_1_1KmerCountingBloomFilter.html#a847eeac1746a45320c08f16f5fd6eaf3">btllib::KmerCountingBloomFilter::get_occupancy</a></div><div class="ttdeci">double get_occupancy() const</div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:254</div></div>

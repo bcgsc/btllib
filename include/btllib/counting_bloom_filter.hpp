@@ -132,7 +132,7 @@ private:
 };
 
 /**
- * Counting Bloom filter data structure stores k-mers. Provides
+ * Counting Bloom filter data structure that stores k-mers. Provides
  * KmerCountingBloomFilter8, KmerCountingBloomFilter16, and
  * KmerCountingBloomFilter32 classes with corresponding bit-size counters.
  */
@@ -355,7 +355,7 @@ inline uint64_t
 CountingBloomFilter<T>::get_pop_cnt() const
 {
   uint64_t pop_cnt = 0;
-#pragma omp parallel for default(none) reduction(+ : pop_cnt)
+#pragma omp parallel for default(none) shared(array_size, array) reduction(+ : pop_cnt)
   for (size_t i = 0; i < array_size; ++i) {
     if (array[i] > 0) {
       ++pop_cnt;
@@ -473,14 +473,20 @@ inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
   counting_bloom_filter.bytes =
     *table->get_as<decltype(counting_bloom_filter.bytes)>("bytes");
   check_warning(sizeof(uint8_t) != sizeof(std::atomic<uint8_t>),
-                "Atomic primitives take extra memory. CountingBloomFilter will "
+                "KmerCountingBloomFilter: Atomic primitives take extra memory. "
+                "KmerCountingBloomFilter will "
                 "have less than " +
                   std::to_string(get_bytes()) + " for bit array.");
   counting_bloom_filter.array_size =
     get_bytes() / sizeof(counting_bloom_filter.array[0]);
   counting_bloom_filter.hash_num =
     *table->get_as<decltype(counting_bloom_filter.hash_num)>("hash_num");
-  counting_bloom_filter.hash_fn = *(table->get_as<std::string>("hash_fn"));
+  const std::string loaded_hash_fn = *(table->get_as<std::string>("hash_fn"));
+  check_error(
+    loaded_hash_fn != HASH_FN,
+    "KmerCountingBloomFilter: loaded hash function (" + loaded_hash_fn +
+      ") is different from the one used by default (" + HASH_FN + ").");
+  counting_bloom_filter.hash_fn = loaded_hash_fn;
   k = *table->get_as<decltype(k)>("k");
   check_error(sizeof(T) * CHAR_BIT != *table->get_as<size_t>("counter_bits"),
               "CountingBloomFilter" + std::to_string(sizeof(T) * CHAR_BIT) +

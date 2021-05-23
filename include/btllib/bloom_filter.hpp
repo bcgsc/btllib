@@ -646,15 +646,21 @@ inline KmerBloomFilter::KmerBloomFilter(const std::string& path)
 
   auto table = bloom_filter.parse_header(file, KMER_BLOOM_FILTER_MAGIC_HEADER);
   bloom_filter.bytes = *(table->get_as<decltype(bloom_filter.bytes)>("bytes"));
-  check_warning(
-    sizeof(uint8_t) != sizeof(std::atomic<uint8_t>),
-    "Atomic primitives take extra memory. BloomFilter will have less than " +
-      std::to_string(get_bytes()) + " for bit array.");
+  check_warning(sizeof(uint8_t) != sizeof(std::atomic<uint8_t>),
+                "KmerBloomFilter: Atomic primitives take extra memory. "
+                "KmerBloomFilter will have less than " +
+                  std::to_string(get_bytes()) + " for bit array.");
   bloom_filter.array_size = get_bytes() / sizeof(bloom_filter.array[0]);
   bloom_filter.array_bits = bloom_filter.array_size * CHAR_BIT;
   bloom_filter.hash_num =
     *(table->get_as<decltype(bloom_filter.hash_num)>("hash_num"));
-  bloom_filter.hash_fn = *(table->get_as<std::string>("hash_fn"));
+  const std::string loaded_hash_fn = *(table->get_as<std::string>("hash_fn"));
+  check_error(loaded_hash_fn != HASH_FN,
+              "KmerBloomFilter: loaded hash function (" + loaded_hash_fn +
+                ") is different from the one used by default (" + HASH_FN +
+                ").");
+  bloom_filter.hash_fn = loaded_hash_fn;
+
   k = *(table->get_as<decltype(k)>("k"));
 
   bloom_filter.array = new std::atomic<uint8_t>[bloom_filter.array_size];
@@ -752,10 +758,10 @@ inline SeedBloomFilter::SeedBloomFilter(const std::string& path)
     file, SEED_BLOOM_FILTER_MAGIC_HEADER);
   kmer_bloom_filter.bloom_filter.bytes =
     *(table->get_as<decltype(kmer_bloom_filter.bloom_filter.bytes)>("bytes"));
-  check_warning(
-    sizeof(uint8_t) != sizeof(std::atomic<uint8_t>),
-    "Atomic primitives take extra memory. BloomFilter will have less than " +
-      std::to_string(get_bytes()) + " for bit array.");
+  check_warning(sizeof(uint8_t) != sizeof(std::atomic<uint8_t>),
+                "SeedBloomFilter: Atomic primitives take extra memory. "
+                "SeedBloomFilter will have less than " +
+                  std::to_string(get_bytes()) + " for bit array.");
   kmer_bloom_filter.bloom_filter.array_size =
     get_bytes() / sizeof(kmer_bloom_filter.bloom_filter.array[0]);
   kmer_bloom_filter.bloom_filter.array_bits =
@@ -766,8 +772,12 @@ inline SeedBloomFilter::SeedBloomFilter(const std::string& path)
   const auto hash_num =
     *(table->get_as<decltype(kmer_bloom_filter.bloom_filter.hash_num)>(
       "hash_num"));
-  kmer_bloom_filter.bloom_filter.hash_fn =
-    *(table->get_as<std::string>("hash_fn"));
+  const std::string loaded_hash_fn = *(table->get_as<std::string>("hash_fn"));
+  check_error(loaded_hash_fn != HASH_FN,
+              "SeedBloomFilter: loaded hash function (" + loaded_hash_fn +
+                ") is different from the one used by default (" + HASH_FN +
+                ").");
+  kmer_bloom_filter.bloom_filter.hash_fn = loaded_hash_fn;
   kmer_bloom_filter.k = *(table->get_as<decltype(kmer_bloom_filter.k)>("k"));
   seeds = *(table->get_array_of<std::string>("seeds"));
   parsed_seeds = parse_seeds(seeds);
