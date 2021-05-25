@@ -355,7 +355,7 @@ inline uint64_t
 CountingBloomFilter<T>::get_pop_cnt() const
 {
   uint64_t pop_cnt = 0;
-#pragma omp parallel for default(none) shared(array) reduction(+ : pop_cnt)
+#pragma omp parallel for default(none) reduction(+ : pop_cnt)
   for (size_t i = 0; i < array_size; ++i) {
     if (array[i] > 0) {
       ++pop_cnt;

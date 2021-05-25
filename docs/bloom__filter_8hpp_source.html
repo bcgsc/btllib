@@ -357,7 +357,7 @@ $(function() {
 <div class="line"><a name="l00505"></a><span class="lineno"><a class="line" href="classbtllib_1_1BloomFilter.html#aefbb78f46fdd79368842048b427aac20">  505</a></span>&#160;<a class="code" href="classbtllib_1_1BloomFilter.html#aefbb78f46fdd79368842048b427aac20">BloomFilter::get_pop_cnt</a>()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;  uint64_t pop_cnt = 0;</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;<span class="preprocessor">#pragma omp parallel for default(none) shared(array) reduction(+ : pop_cnt)</span></div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;<span class="preprocessor">#pragma omp parallel for default(none) reduction(+ : pop_cnt)</span></div>
 <div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; array_size; ++i) {</div>
 <div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    pop_cnt += pop_cnt_byte(array[i]);</div>
 <div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;  }</div>

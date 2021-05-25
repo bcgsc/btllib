@@ -288,7 +288,7 @@ $(function() {
 <div class="line"><a name="l00355"></a><span class="lineno"><a class="line" href="classbtllib_1_1CountingBloomFilter.html#a69c657ea3b384c52f5d49bdb7255d2f6">  355</a></span>&#160;<a class="code" href="classbtllib_1_1CountingBloomFilter.html#a69c657ea3b384c52f5d49bdb7255d2f6">CountingBloomFilter&lt;T&gt;::get_pop_cnt</a>()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  uint64_t pop_cnt = 0;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor">#pragma omp parallel for default(none) shared(array) reduction(+ : pop_cnt)</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor">#pragma omp parallel for default(none) reduction(+ : pop_cnt)</span></div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; array_size; ++i) {</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keywordflow">if</span> (array[i] &gt; 0) {</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      ++pop_cnt;</div>
