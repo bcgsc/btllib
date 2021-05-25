@@ -505,7 +505,7 @@ inline uint64_t
 BloomFilter::get_pop_cnt() const
 {
   uint64_t pop_cnt = 0;
-#pragma omp parallel for default(none) reduction(+ : pop_cnt)
+#pragma omp parallel for default(none) shared(array) reduction(+ : pop_cnt)
   for (size_t i = 0; i < array_size; ++i) {
     pop_cnt += pop_cnt_byte(array[i]);
   }
