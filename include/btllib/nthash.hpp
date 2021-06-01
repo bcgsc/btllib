@@ -1258,24 +1258,17 @@ using SpacedSeed = std::vector<unsigned>;
 static std::vector<SpacedSeed>
 parse_seeds(const std::vector<std::string>& seed_strings);
 
-/**
- * Iterate over hash values for k-mers in a
- * given DNA sequence.
- *
- * This implementation uses ntHash
- * function to efficiently calculate
- * hash values for successive k-mers.
- */
 class NtHash
 {
 
 public:
   /**
    * Constructor.
-   * @param seq DNA sequence to be hashed
-   * @param seq_len length of seq
-   * @param hash_num number of hashes
-   * @param k k-mer size
+   * @param seq C string of DNA sequence to be hashed.
+   * @param seq_len Length of seq.
+   * @param hash_num Number of hashes to produce per k-mer.
+   * @param k K-mer size.
+   * @param pos Position in seq to start hashing from.
    */
   NtHash(const char* seq,
          size_t seq_len,
@@ -1285,14 +1278,23 @@ public:
 
   /**
    * Constructor.
-   * @param seq DNA sequence to be hashed
-   * @param hash_num number of hashes
-   * @param k k-mer size
+   * @param seq String of DNA sequence to be hashed.
+   * @param hash_num Number of hashes to produce per k-mer.
+   * @param k K-mer size.
+   * @param pos Position in seq to start hashing from.
    */
   NtHash(const std::string& seq, unsigned hash_num, unsigned k, size_t pos = 0);
 
   /**
-   * Calculate the next hash value.
+   * Calculate the hash values of current k-mer and advance to the next k-mer.
+   * NtHash advances one nucleotide at a time until it finds a k-mer with valid
+   * characters (ACTG) and skips over those with invalid characters (non-ACTG,
+   * including N). This method must be called before hashes() is accessed, for
+   * the first and every subsequent hashed kmer. get_pos() may be called at any
+   * time to obtain the position of last hashed k-mer or the k-mer to be hashed
+   * if roll() has never been called on this NtHash object. It is important to
+   * note that the number of roll() calls is NOT necessarily equal to get_pos(),
+   * if there are N or invalid characters in the hashed sequence.
    * @return true on success and false otherwise
    */
   bool roll();
@@ -1302,6 +1304,10 @@ public:
 
   const uint64_t* hashes() const { return hashes_vector.data(); }
 
+  /**
+   * Get the position of last hashed k-mer or the k-mer to be hashed if roll()
+   * has never been called on this NtHash object.
+   */
   size_t get_pos() const { return pos; }
   bool forward() const { return forward_hash <= reverse_hash; }
   unsigned get_hash_num() const { return hash_num; }
