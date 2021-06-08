@@ -20,7 +20,7 @@ The recommended way is to download the latest release, but if you want the lates
 C++
 ---
 - Dependencies
-  * GCC 4.8.1+ or Clang 3.3.0+ with OpenMP
+  * GCC 5+ or Clang 4+ with OpenMP
 - Copy the root `btllib` directory into your project
 - Use any header from the `btllib/include` directory (pass `-I btllib/include` flag to the compiler)
 - `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
