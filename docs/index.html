@@ -101,7 +101,7 @@ Python and Java</h2>
 </li>
 <li>Copy the root <code>btllib</code> directory into your project</li>
 <li>Run <code>btllib/compile-wrappers</code></li>
-<li>The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are subclasses (e.g. Flag subclasses) which are prefixed with parent class name (e.g. <code><a class="el" href="structbtllib_1_1SeqReader_1_1Flag.html">btllib::SeqReader::Flag</a></code> in C++ versus <code>btllib.SeqReaderFlag</code> in Python).</li>
+<li>The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. <code><a class="el" href="structbtllib_1_1SeqReader_1_1Flag.html">btllib::SeqReader::Flag</a></code> in C++ versus <code>btllib.SeqReaderFlag</code> in Python).</li>
 <li>Python<ul>
 <li>Use Python's <code>sys.path.append()</code> to include <code>btllib/python</code> directory</li>
 <li>Include the library with <code>import btllib</code></li>
