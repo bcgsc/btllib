@@ -23,14 +23,15 @@ static const unsigned char BIT_MASKS[CHAR_BIT] = {
   0x10, 0x20, 0x40, 0x80  // NOLINT
 };
 
-static const char* const BLOOM_FILTER_MAGIC_HEADER = "BTLBloomFilter_v4";
+static const char* const BLOOM_FILTER_MAGIC_HEADER = "BTLBloomFilter_v5";
 static const char* const KMER_BLOOM_FILTER_MAGIC_HEADER =
-  "BTLKmerBloomFilter_v4";
+  "BTLKmerBloomFilter_v5";
 static const char* const SEED_BLOOM_FILTER_MAGIC_HEADER =
-  "BTLSeedBloomFilter_v4";
+  "BTLSeedBloomFilter_v5";
 static const char* const HASH_FN = "ntHash_v1";
 
 static const unsigned MAX_HASH_VALUES = 1024;
+static const unsigned PLACEHOLDER_NEWLINES = 50;
 
 inline unsigned
 pop_cnt_byte(uint8_t x)
@@ -555,6 +556,9 @@ BloomFilter::parse_header(std::ifstream& file, const std::string& magic_string)
     log_error("Pre-built bloom filter does not have the correct header end.");
     std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
+  for (unsigned i = 0; i < PLACEHOLDER_NEWLINES; i++) {
+    std::getline(file, line);
+  }
 
   // Send the char array to a stringstream for the cpptoml parser to parse
   std::istringstream toml_stream(toml_buffer);
@@ -607,6 +611,12 @@ BloomFilter::save(const std::string& path)
   }
   root->insert(BLOOM_FILTER_MAGIC_HEADER, header);
   file << *root << "[HeaderEnd]\n";
+  for (unsigned i = 0; i < PLACEHOLDER_NEWLINES; i++) {
+    if (i == 1) {
+      file << "  <binary data>";
+    }
+    file << '\n';
+  }
 
   file.write((char*)array, std::streamsize(array_size * sizeof(array[0])));
 }
@@ -689,6 +699,12 @@ KmerBloomFilter::save(const std::string& path)
   header->insert("k", get_k());
   root->insert(KMER_BLOOM_FILTER_MAGIC_HEADER, header);
   file << *root << "[HeaderEnd]\n";
+  for (unsigned i = 0; i < PLACEHOLDER_NEWLINES; i++) {
+    if (i == 1) {
+      file << "  <binary data>";
+    }
+    file << '\n';
+  }
 
   file.write(
     (char*)bloom_filter.array,
@@ -818,6 +834,12 @@ SeedBloomFilter::save(const std::string& path)
   header->insert("seeds", seeds_array);
   root->insert(SEED_BLOOM_FILTER_MAGIC_HEADER, header);
   file << *root << "[HeaderEnd]\n";
+  for (unsigned i = 0; i < PLACEHOLDER_NEWLINES; i++) {
+    if (i == 1) {
+      file << "  <binary data>";
+    }
+    file << '\n';
+  }
 
   file.write((char*)kmer_bloom_filter.bloom_filter.array,
              std::streamsize(kmer_bloom_filter.bloom_filter.array_size *

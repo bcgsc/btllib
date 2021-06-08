@@ -43,6 +43,7 @@ public class btllibJNI {
   public final static native String SEED_BLOOM_FILTER_MAGIC_HEADER_get();
   public final static native String HASH_FN_get();
   public final static native long MAX_HASH_VALUES_get();
+  public final static native long PLACEHOLDER_NEWLINES_get();
   public final static native long pop_cnt_byte(long jarg1);
   public final static native long new_BloomFilter__SWIG_0();
   public final static native long new_BloomFilter__SWIG_1(long jarg1, long jarg2, String jarg3);

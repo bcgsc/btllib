@@ -18,9 +18,9 @@
 namespace btllib {
 
 static const char* const COUNTING_BLOOM_FILTER_MAGIC_HEADER =
-  "BTLCountingBloomFilter_v4";
+  "BTLCountingBloomFilter_v5";
 static const char* const KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER =
-  "BTLKmerCountingBloomFilter_v4";
+  "BTLKmerCountingBloomFilter_v5";
 
 template<typename T>
 class KmerCountingBloomFilter;
@@ -428,6 +428,12 @@ CountingBloomFilter<T>::save(const std::string& path)
   header->insert("counter_bits", size_t(sizeof(array[0]) * CHAR_BIT));
   root->insert(COUNTING_BLOOM_FILTER_MAGIC_HEADER, header);
   file << *root << "[HeaderEnd]\n";
+  for (unsigned i = 0; i < PLACEHOLDER_NEWLINES; i++) {
+    if (i == 1) {
+      file << "  <binary data>";
+    }
+    file << '\n';
+  }
 
   file.write((char*)array, array_size * sizeof(array[0]));
 }
@@ -523,6 +529,12 @@ KmerCountingBloomFilter<T>::save(const std::string& path)
   header->insert("k", k);
   root->insert(KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER, header);
   file << *root << "[HeaderEnd]\n";
+  for (unsigned i = 0; i < PLACEHOLDER_NEWLINES; i++) {
+    if (i == 1) {
+      file << "  <binary data>";
+    }
+    file << '\n';
+  }
 
   file.write((char*)counting_bloom_filter.array,
              counting_bloom_filter.array_size *

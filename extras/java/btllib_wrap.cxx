@@ -755,6 +755,18 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_MAX_1HASH_1VALUES_1get(JNIEnv *je
 }
 
 
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_PLACEHOLDER_1NEWLINES_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  unsigned int result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (unsigned int)(unsigned int)btllib::PLACEHOLDER_NEWLINES;
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_pop_1cnt_1byte(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   uint8_t arg1 ;

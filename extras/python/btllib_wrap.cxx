@@ -11530,6 +11530,22 @@ SWIGINTERN PyObject *Swig_var_MAX_HASH_VALUES_get(void) {
 }
 
 
+SWIGINTERN int Swig_var_PLACEHOLDER_NEWLINES_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable PLACEHOLDER_NEWLINES is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_PLACEHOLDER_NEWLINES_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::PLACEHOLDER_NEWLINES));
+  return pyobj;
+}
+
+
 SWIGINTERN PyObject *_wrap_pop_cnt_byte(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   uint8_t arg1 ;
@@ -30812,6 +30828,9 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "MAX_HASH_VALUES", Swig_var_MAX_HASH_VALUES_get, Swig_var_MAX_HASH_VALUES_set);
   PyDict_SetItemString(md, "MAX_HASH_VALUES", PyObject_GetAttrString(globals, "MAX_HASH_VALUES"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "MAX_HASH_VALUES");
+  SWIG_addvarlink(globals, "PLACEHOLDER_NEWLINES", Swig_var_PLACEHOLDER_NEWLINES_get, Swig_var_PLACEHOLDER_NEWLINES_set);
+  PyDict_SetItemString(md, "PLACEHOLDER_NEWLINES", PyObject_GetAttrString(globals, "PLACEHOLDER_NEWLINES"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "PLACEHOLDER_NEWLINES");
   
   /* type 'btllib::BloomFilter' */
   builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__BloomFilter_type;
