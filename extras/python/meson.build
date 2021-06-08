@@ -11,6 +11,7 @@ link_extra_args = global_link_args + link_extra_args
 py_sources = ['btllib_wrap.cxx']
 btllib_py = shared_module('_btllib',
                            py_sources,
+                           name_suffix : 'so',
                            include_directories : btllib_include,
                            cpp_args : cpp_extra_args,
                            link_args : link_extra_args,

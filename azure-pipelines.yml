@@ -48,10 +48,10 @@ jobs:
 
   - script: |
       set -o errexit -o pipefail
-      ./compile
+      ./compile-wrappers
       [[ -d python ]]
       [[ -d java ]]
-    displayName: 'Test ./compile script (for wrappers)'
+    displayName: 'Test ./compile-wrappers script'
 
 - job: macos
   pool:
@@ -97,7 +97,7 @@ jobs:
 
   - script: |
       set -o errexit -o pipefail
-      ./compile
+      ./compile-wrappers
       [[ -d python ]]
       [[ -d java ]]
-    displayName: 'Test ./compile script (for wrappers)'
+    displayName: 'Test ./compile-wrappers script'

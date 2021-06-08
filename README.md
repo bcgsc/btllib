@@ -32,7 +32,7 @@ Python and Java
   * Python 3.5+
   * Meson and Ninja Python3 packages (optional - if they are missing, they will be automatically downloaded to a temporary directory)
 - Copy the root `btllib` directory into your project
-- Run `btllib/compile`
+- Run `btllib/compile-wrappers`
 - The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name.
 - Python
   * Use Python's `sys.path.append()` to include `btllib/python` directory
