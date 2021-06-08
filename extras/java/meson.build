@@ -17,7 +17,7 @@ endforeach
 cpp_extra_args += ['-w']
 
 java_sources = ['btllib_wrap.cxx']
-btllib_java = shared_library('btllib',
+btllib_java = shared_module('btllib',
                              java_sources,
                              include_directories : btllib_include,
                              cpp_args : cpp_extra_args,

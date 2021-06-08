@@ -53,7 +53,7 @@ static const Datatype DATATYPES[] {
   { {}, { ".xz" }, { "command -v xz" }, { "unxz -dc" }, { "xz -T0 >" }, { "xz -T0 >>" } },
   { {}, { ".7z" }, { "command -v 7z" }, { "7z -so e" }, { "7z -si a" }, { "7z -si a" } },
   { {}, { ".zip" }, { "command -v zip" }, { "unzip -p" }, { "" }, { "" } },
-  { {}, { ".lrz" }, { "command -v lrzip" }, { "lrzip -d -o -" }, { "lrzip >" }, { "" } },
+  { {}, { ".lrz" }, { "command -v lrzip" }, { "lrzip -q -d -o -" }, { "lrzip -q >" }, { "" } },
   { {}, { ".bam", ".cram" }, { "command -v samtools" }, { "samtools view -h" }, { "samtools -Sb - >" }, { "samtools -Sb - >>" } },
 };
 // clang-format on
