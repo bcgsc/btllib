@@ -42,19 +42,20 @@ struct Datatype
 };
 
 // clang-format off
-  static const Datatype DATATYPES[] {
-    { { "http://", "https://", "ftp://" }, {}, { "command -v wget" }, { "wget -O-" }, { "" }, { "" } },
-    { {}, { ".url" }, { "command -v wget" }, { "wget -O- -i" }, { "" }, { "" } },
-    { {}, { ".ar" }, { "command -v ar" }, { "ar -p" }, { "" }, { "" } },
-    { {}, { ".tar" }, { "command -v tar" }, { "tar -xOf" }, { "" }, { "" } },
-    { {}, { ".tgz" }, { "command -v tar" }, { "tar -zxOf" }, { "" }, { "" } },
-    { {}, { ".gz", ".z" }, { "command -v pigz", "command -v gzip" }, { "pigz -dc", "gzip -dc" }, { "pigz >", "gzip >" }, { "pigz >>", "gzip >>" } },
-    { {}, { ".bz2" }, { "command -v bzip2" }, { "bunzip2 -dc" }, { "bzip2 >" }, { "bzip2 >>" } },
-    { {}, { ".xz" }, { "command -v xz" }, { "unxz -dc" }, { "xz -T0 >" }, { "xz -T0 >>" } },
-    { {}, { ".7z" }, { "command -v 7z" }, { "7z -so e" }, { "7z -si a" }, { "7z -si a" } },
-    { {}, { ".zip" }, { "command -v zip" }, { "unzip -p" }, { "" }, { "" } },
-    { {}, { ".bam", ".cram" }, { "command -v samtools" }, { "samtools view -h" }, { "samtools -Sb - >" }, { "samtools -Sb - >>" } },
-  };
+static const Datatype DATATYPES[] {
+  { { "http://", "https://", "ftp://" }, {}, { "command -v wget" }, { "wget -O-" }, { "" }, { "" } },
+  { {}, { ".url" }, { "command -v wget" }, { "wget -O- -i" }, { "" }, { "" } },
+  { {}, { ".ar" }, { "command -v ar" }, { "ar -p" }, { "" }, { "" } },
+  { {}, { ".tar" }, { "command -v tar" }, { "tar -xOf" }, { "" }, { "" } },
+  { {}, { ".tgz" }, { "command -v tar" }, { "tar -zxOf" }, { "" }, { "" } },
+  { {}, { ".gz", ".z" }, { "command -v pigz", "command -v gzip" }, { "pigz -dc", "gzip -dc" }, { "pigz >", "gzip >" }, { "pigz >>", "gzip >>" } },
+  { {}, { ".bz2" }, { "command -v bzip2" }, { "bunzip2 -dc" }, { "bzip2 >" }, { "bzip2 >>" } },
+  { {}, { ".xz" }, { "command -v xz" }, { "unxz -dc" }, { "xz -T0 >" }, { "xz -T0 >>" } },
+  { {}, { ".7z" }, { "command -v 7z" }, { "7z -so e" }, { "7z -si a" }, { "7z -si a" } },
+  { {}, { ".zip" }, { "command -v zip" }, { "unzip -p" }, { "" }, { "" } },
+  { {}, { ".lrz" }, { "command -v lrzip" }, { "lrzip -d -o -" }, { "lrzip >" }, { "" } },
+  { {}, { ".bam", ".cram" }, { "command -v samtools" }, { "samtools view -h" }, { "samtools -Sb - >" }, { "samtools -Sb - >>" } },
+};
 // clang-format on
 
 using PipeId = unsigned long;
