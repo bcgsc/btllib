@@ -33,7 +33,7 @@ Python and Java
   * Meson and Ninja Python3 packages (optional - if they are missing, they will be automatically downloaded to a temporary directory)
 - Copy the root `btllib` directory into your project
 - Run `btllib/compile-wrappers`
-- The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name.
+- The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are subclasses (e.g. Flag subclasses) which are prefixed with parent class name (e.g. `btllib::SeqReader::Flag` in C++ versus `btllib.SeqReaderFlag` in Python).
 - Python
   * Use Python's `sys.path.append()` to include `btllib/python` directory
   * Include the library with `import btllib`
