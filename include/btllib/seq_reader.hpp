@@ -112,7 +112,7 @@ private:
   const unsigned flags;
   const unsigned threads;
   Format format = Format::UNDETERMINED; // Format of the source file
-  bool closed = false;
+  std::atomic<bool> closed{ false };
 
   static const size_t DETERMINE_FORMAT_CHARS = 2048;
   static const size_t BUFFER_SIZE = DETERMINE_FORMAT_CHARS;
@@ -147,6 +147,7 @@ private:
   const size_t block_size;
   OrderQueueSPMC<RecordCString> cstring_queue;
   OrderQueueMPMC<Record> output_queue;
+  size_t dummy_block_num = 0;
 
   // I am crying at this code, but until C++17 compliant compilers are
   // widespread, this cannot be a static inline variable
@@ -215,6 +216,10 @@ private:
   struct read_gfa2_file;
   /// @endcond
 
+  inline void write_cstring_records(
+    OrderQueueSPMC<RecordCString>::Block& records,
+    size_t& counter);
+
   template<typename F>
   void read_from_buffer(F f,
                         OrderQueueSPMC<RecordCString>::Block& records,
@@ -268,9 +273,9 @@ inline SeqReader::~SeqReader()
 inline void
 SeqReader::close() noexcept
 {
-  if (!closed) {
+  bool closed_expected = false;
+  if (closed.compare_exchange_strong(closed_expected, true)) {
     try {
-      closed = true;
       reader_end = true;
       output_queue.close();
       for (auto& pt : processor_threads) {
@@ -989,6 +994,21 @@ struct SeqReader::read_gfa2_file
 };
 /// @endcond
 
+inline void
+SeqReader::write_cstring_records(OrderQueueSPMC<RecordCString>::Block& records,
+                                 size_t& counter)
+{
+  records.count++;
+  if (records.count == block_size) {
+    records.current = 0;
+    records.num = counter++;
+    cstring_queue.write(records);
+    records.num = 0;
+    records.current = 0;
+    records.count = 0;
+  }
+}
+
 template<typename F>
 inline void
 SeqReader::read_from_buffer(F f,
@@ -1003,15 +1023,7 @@ SeqReader::read_from_buffer(F f,
     if (!f(*this) || reader_record->seq.empty()) {
       break;
     }
-    records.count++;
-    if (records.count == block_size) {
-      records.current = 0;
-      records.num = counter++;
-      cstring_queue.write(records);
-      records.num = 0;
-      records.current = 0;
-      records.count = 0;
-    }
+    write_cstring_records(records, counter);
   }
 }
 
@@ -1028,15 +1040,7 @@ SeqReader::read_transition(F f,
       reader_record = &(records.data[records.count]);
       f(*this);
       if (!reader_record->seq.empty()) {
-        records.count++;
-        if (records.count == block_size) {
-          records.current = 0;
-          records.num = counter++;
-          cstring_queue.write(records);
-          records.num = 0;
-          records.current = 0;
-          records.count = 0;
-        }
+        write_cstring_records(records, counter);
       }
     }
   }
@@ -1054,15 +1058,7 @@ SeqReader::read_from_file(F f,
     if (reader_record->seq.empty()) {
       break;
     }
-    records.count++;
-    if (records.count == block_size) {
-      records.current = 0;
-      records.num = counter++;
-      cstring_queue.write(records);
-      records.num = 0;
-      records.current = 0;
-      records.count = 0;
-    }
+    write_cstring_records(records, counter);
   }
 }
 
@@ -1115,6 +1111,9 @@ SeqReader::start_reader()
       cstring_queue.write(records);
     }
     for (unsigned i = 0; i < threads; i++) {
+      if (i == 0) {
+        dummy_block_num = counter;
+      }
       decltype(cstring_queue)::Block dummy(block_size);
       dummy.num = counter++;
       dummy.current = 0;
@@ -1225,7 +1224,9 @@ SeqReader::start_processor()
           records_out.current = records_in.current;
           records_out.num = records_in.num;
           if (records_out.count == 0) {
-            output_queue.write(records_out);
+            if (records_out.num == dummy_block_num) {
+              output_queue.write(records_out);
+            }
             break;
           }
           output_queue.write(records_out);
