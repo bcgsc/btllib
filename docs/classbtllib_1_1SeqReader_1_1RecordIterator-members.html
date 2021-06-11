@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>btllib: seq_reader.cpp</title>
+<title>btllib: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -45,7 +45,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,37 +59,24 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacebtllib.html">btllib</a></li><li class="navelem"><a class="el" href="classbtllib_1_1SeqReader.html">SeqReader</a></li><li class="navelem"><a class="el" href="classbtllib_1_1SeqReader_1_1RecordIterator.html">RecordIterator</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">seq_reader.cpp</div>  </div>
+<div class="title">btllib::SeqReader::RecordIterator Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
-<p>An example of reading a gzipped fastq file.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;../include/btllib/seq_reader.hpp&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span></div>
-<div class="line">main()</div>
-<div class="line">{</div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; record : <a name="_a0"></a><a class="code" href="classbtllib_1_1SeqReader.html">btllib::SeqReader</a>(</div>
-<div class="line">         <span class="stringliteral">&quot;my_reads.fq.gz&quot;</span>, <a name="a1"></a><a class="code" href="structbtllib_1_1SeqReader_1_1Flag.html#ab0aba3f99ab4159205621e2242c6e18f">btllib::SeqReader::Flag::SHORT_MODE</a>)) {</div>
-<div class="line">    std::cout &lt;&lt; record.seq &lt;&lt; <span class="charliteral">&#39;\n&#39;</span> &lt;&lt; record.qual &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line">  }</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">/*</span></div>
-<div class="line"><span class="comment">   * In Python, this would be:</span></div>
-<div class="line"><span class="comment">   *</span></div>
-<div class="line"><span class="comment">   * with btllib.SeqReader(&quot;my_reads.fq.gz&quot;, btllib.SeqReaderFlag.SHORT_MODE) as</span></div>
-<div class="line"><span class="comment">   reader: for record in reader: print(record.seq, record.qual)</span></div>
-<div class="line"><span class="comment">   *</span></div>
-<div class="line"><span class="comment">   */</span></div>
-<div class="line"> </div>
-<div class="line">  <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-<div class="ttc" id="aclassbtllib_1_1SeqReader_html"><div class="ttname"><a href="classbtllib_1_1SeqReader.html">btllib::SeqReader</a></div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:35</div></div>
-<div class="ttc" id="astructbtllib_1_1SeqReader_1_1Flag_html_ab0aba3f99ab4159205621e2242c6e18f"><div class="ttname"><a href="structbtllib_1_1SeqReader_1_1Flag.html#ab0aba3f99ab4159205621e2242c6e18f">btllib::SeqReader::Flag::SHORT_MODE</a></div><div class="ttdeci">static const unsigned SHORT_MODE</div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:49</div></div>
-</div><!-- fragment --> </div><!-- contents -->
+
+<p>This is the complete list of members for <a class="el" href="classbtllib_1_1SeqReader_1_1RecordIterator.html">btllib::SeqReader::RecordIterator</a>, including all inherited members.</p>
+<table class="directory">
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>next</b>() (defined in <a class="el" href="classbtllib_1_1SeqReader_1_1RecordIterator.html">btllib::SeqReader::RecordIterator</a>)</td><td class="entry"><a class="el" href="classbtllib_1_1SeqReader_1_1RecordIterator.html">btllib::SeqReader::RecordIterator</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>operator!=</b>(const RecordIterator &amp;i) (defined in <a class="el" href="classbtllib_1_1SeqReader_1_1RecordIterator.html">btllib::SeqReader::RecordIterator</a>)</td><td class="entry"><a class="el" href="classbtllib_1_1SeqReader_1_1RecordIterator.html">btllib::SeqReader::RecordIterator</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator*</b>() (defined in <a class="el" href="classbtllib_1_1SeqReader_1_1RecordIterator.html">btllib::SeqReader::RecordIterator</a>)</td><td class="entry"><a class="el" href="classbtllib_1_1SeqReader_1_1RecordIterator.html">btllib::SeqReader::RecordIterator</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>operator++</b>() (defined in <a class="el" href="classbtllib_1_1SeqReader_1_1RecordIterator.html">btllib::SeqReader::RecordIterator</a>)</td><td class="entry"><a class="el" href="classbtllib_1_1SeqReader_1_1RecordIterator.html">btllib::SeqReader::RecordIterator</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+</table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1

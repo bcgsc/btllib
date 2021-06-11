@@ -92,5 +92,5 @@ done
 
 ln -sf $PWD/include extras/python/
 cd extras/python
-swig -python -py3 -builtin -c++ -Iinclude btllib.i
+swig -python -py3 -fastproxy -fastdispatch -builtin -c++ -Iinclude btllib.i
 rm include

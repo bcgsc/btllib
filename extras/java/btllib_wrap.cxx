@@ -695,6 +695,61 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1MAX_1SIMULTANEOUS_1SEQ
 }
 
 
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1RecordIterator_1next(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::SeqReader::RecordIterator *arg1 = (btllib::SeqReader::RecordIterator *) 0 ;
+  btllib::SeqReader::Record result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeqReader::RecordIterator **)&jarg1; 
+  result = (arg1)->next();
+  *(btllib::SeqReader::Record **)&jresult = new btllib::SeqReader::Record((const btllib::SeqReader::Record &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1RecordIterator(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReader::RecordIterator *arg1 = (btllib::SeqReader::RecordIterator *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReader::RecordIterator **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1begin(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
+  SwigValueWrapper< btllib::SeqReader::RecordIterator > result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeqReader **)&jarg1; 
+  result = (arg1)->begin();
+  *(btllib::SeqReader::RecordIterator **)&jresult = new btllib::SeqReader::RecordIterator((const btllib::SeqReader::RecordIterator &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1end(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
+  SwigValueWrapper< btllib::SeqReader::RecordIterator > result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::SeqReader **)&jarg1; 
+  result = (arg1)->end();
+  *(btllib::SeqReader::RecordIterator **)&jresult = new btllib::SeqReader::RecordIterator((const btllib::SeqReader::RecordIterator &)result); 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_BIT_1MASKS_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   unsigned char *result = 0 ;

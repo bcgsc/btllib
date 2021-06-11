@@ -106,6 +106,42 @@ public:
 
   static const size_t MAX_SIMULTANEOUS_SEQREADERS = 256;
 
+  /** For range-based for loop only. */
+  class RecordIterator
+  {
+  public:
+    void operator++() { record = reader.read(); }
+    bool operator!=(const RecordIterator& i)
+    {
+      return bool(record) || bool(i.record);
+    }
+    Record operator*() { return std::move(record); }
+    // For wrappers
+    Record next()
+    {
+      auto val = operator*();
+      operator++();
+      return val;
+    }
+
+  private:
+    friend SeqReader;
+
+    RecordIterator(SeqReader& reader, bool end)
+      : reader(reader)
+    {
+      if (!end) {
+        operator++();
+      }
+    }
+
+    SeqReader& reader;
+    Record record;
+  };
+
+  RecordIterator begin() { return RecordIterator(*this, false); }
+  RecordIterator end() { return RecordIterator(*this, true); }
+
 private:
   const std::string& source_path;
   DataSource source;

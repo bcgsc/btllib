@@ -521,9 +521,8 @@ Indexlr::InputWorker::work()
 
   decltype(indexlr.input_queue)::Block block(indexlr.block_size);
   size_t current_block_num = 0;
-  SeqReader::Record record;
   Read read;
-  while ((record = indexlr.reader.read())) {
+  for (auto record : indexlr.reader) {
     block.data[block.count++] = Read(record.num,
                                      std::move(record.id),
                                      std::move(record.comment),

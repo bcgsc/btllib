@@ -13,6 +13,12 @@
 %rename (IndexlrRecord) btllib::Indexlr::Record;
 %rename (IndexlrFlag) btllib::Indexlr::Flag;
 
+%ignore btllib::SeqReader::RecordIterator::begin;
+%ignore btllib::SeqReader::RecordIterator::end;
+%ignore btllib::SeqReader::RecordIterator::operator++;
+%ignore btllib::SeqReader::RecordIterator::operator!=;
+%ignore btllib::SeqReader::RecordIterator::operator*;
+
 %{
   using btllib::SpacedSeed;
 %}

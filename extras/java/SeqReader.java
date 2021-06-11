@@ -184,6 +184,48 @@ public class SeqReader {
     return new SeqReader.SeqReaderRecord(btllibJNI.SeqReader_read(swigCPtr, this), true);
   }
 
+  static public class RecordIterator {
+    private transient long swigCPtr;
+    protected transient boolean swigCMemOwn;
+  
+    protected RecordIterator(long cPtr, boolean cMemoryOwn) {
+      swigCMemOwn = cMemoryOwn;
+      swigCPtr = cPtr;
+    }
+  
+    protected static long getCPtr(RecordIterator obj) {
+      return (obj == null) ? 0 : obj.swigCPtr;
+    }
+  
+    @SuppressWarnings("deprecation")
+    protected void finalize() {
+      delete();
+    }
+  
+    public synchronized void delete() {
+      if (swigCPtr != 0) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          btllibJNI.delete_SeqReader_RecordIterator(swigCPtr);
+        }
+        swigCPtr = 0;
+      }
+    }
+  
+    public SeqReader.SeqReaderRecord next() {
+      return new SeqReader.SeqReaderRecord(btllibJNI.SeqReader_RecordIterator_next(swigCPtr, this), true);
+    }
+  
+  }
+
+  public SeqReader.RecordIterator begin() {
+    return new SeqReader.RecordIterator(btllibJNI.SeqReader_begin(swigCPtr, this), true);
+  }
+
+  public SeqReader.RecordIterator end() {
+    return new SeqReader.RecordIterator(btllibJNI.SeqReader_end(swigCPtr, this), true);
+  }
+
   public final static class Format {
     public final static SeqReader.Format UNDETERMINED = new SeqReader.Format("UNDETERMINED");
     public final static SeqReader.Format FASTA = new SeqReader.Format("FASTA");

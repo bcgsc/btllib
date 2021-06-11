@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>btllib: btllib::SeqReader::Record Struct Reference</title>
+<title>btllib: btllib::SeqReader::RecordIterator Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,44 +61,38 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacebtllib.html">btllib</a></li><li class="navelem"><a class="el" href="classbtllib_1_1SeqReader.html">SeqReader</a></li><li class="navelem"><a class="el" href="structbtllib_1_1SeqReader_1_1Record.html">Record</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacebtllib.html">btllib</a></li><li class="navelem"><a class="el" href="classbtllib_1_1SeqReader.html">SeqReader</a></li><li class="navelem"><a class="el" href="classbtllib_1_1SeqReader_1_1RecordIterator.html">RecordIterator</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structbtllib_1_1SeqReader_1_1Record-members.html">List of all members</a>  </div>
+<a href="classbtllib_1_1SeqReader_1_1RecordIterator-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">btllib::SeqReader::Record Struct Reference</div>  </div>
+<div class="title">btllib::SeqReader::RecordIterator Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="seq__reader_8hpp_source.html">seq_reader.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a92837e8605045d843d8ba403d4fea283"><td class="memItemLeft" align="right" valign="top"><a id="a92837e8605045d843d8ba403d4fea283"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>operator bool</b> () const</td></tr>
-<tr class="separator:a92837e8605045d843d8ba403d4fea283"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:ab8370550dd3d810d4f04bf3accdf6054"><td class="memItemLeft" align="right" valign="top"><a id="ab8370550dd3d810d4f04bf3accdf6054"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>num</b> = -1</td></tr>
-<tr class="separator:ab8370550dd3d810d4f04bf3accdf6054"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac50c2be1fe10e99b23cca852661045ab"><td class="memItemLeft" align="right" valign="top"><a id="ac50c2be1fe10e99b23cca852661045ab"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
-<tr class="separator:ac50c2be1fe10e99b23cca852661045ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fccff3afb4889bf740abccbb3a0732b"><td class="memItemLeft" align="right" valign="top"><a id="a7fccff3afb4889bf740abccbb3a0732b"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>comment</b></td></tr>
-<tr class="separator:a7fccff3afb4889bf740abccbb3a0732b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d9c2a5e19f71b15cca2623acc1b44ae"><td class="memItemLeft" align="right" valign="top"><a id="a3d9c2a5e19f71b15cca2623acc1b44ae"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>seq</b></td></tr>
-<tr class="separator:a3d9c2a5e19f71b15cca2623acc1b44ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2cdc536d6a6b18c4ce19e828fa1c2fc"><td class="memItemLeft" align="right" valign="top"><a id="ac2cdc536d6a6b18c4ce19e828fa1c2fc"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>qual</b></td></tr>
-<tr class="separator:ac2cdc536d6a6b18c4ce19e828fa1c2fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a84dfb2b0ba4c24a5beb1272cd35eb1"><td class="memItemLeft" align="right" valign="top"><a id="a1a84dfb2b0ba4c24a5beb1272cd35eb1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> ()</td></tr>
+<tr class="separator:a1a84dfb2b0ba4c24a5beb1272cd35eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed7b5341c8d5a5f274d2c8314061c92b"><td class="memItemLeft" align="right" valign="top"><a id="aed7b5341c8d5a5f274d2c8314061c92b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classbtllib_1_1SeqReader_1_1RecordIterator.html">RecordIterator</a> &amp;i)</td></tr>
+<tr class="separator:aed7b5341c8d5a5f274d2c8314061c92b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c1bf66c89c36c29059d9a27849321b2"><td class="memItemLeft" align="right" valign="top"><a id="a2c1bf66c89c36c29059d9a27849321b2"></a>
+<a class="el" href="structbtllib_1_1SeqReader_1_1Record.html">Record</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> ()</td></tr>
+<tr class="separator:a2c1bf66c89c36c29059d9a27849321b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27052d754d18b2f1c17140bcd1050a81"><td class="memItemLeft" align="right" valign="top"><a id="a27052d754d18b2f1c17140bcd1050a81"></a>
+<a class="el" href="structbtllib_1_1SeqReader_1_1Record.html">Record</a>&#160;</td><td class="memItemRight" valign="bottom"><b>next</b> ()</td></tr>
+<tr class="separator:a27052d754d18b2f1c17140bcd1050a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>For range-based for loop only. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/btllib/<a class="el" href="seq__reader_8hpp_source.html">seq_reader.hpp</a></li>
 </ul>
 </div><!-- contents -->

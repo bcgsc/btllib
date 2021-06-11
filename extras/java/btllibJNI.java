@@ -38,6 +38,10 @@ public class btllibJNI {
   public final static native void delete_SeqReader_SeqReaderRecord(long jarg1);
   public final static native long SeqReader_read(long jarg1, SeqReader jarg1_);
   public final static native long SeqReader_MAX_SIMULTANEOUS_SEQREADERS_get();
+  public final static native long SeqReader_RecordIterator_next(long jarg1, SeqReader.RecordIterator jarg1_);
+  public final static native void delete_SeqReader_RecordIterator(long jarg1);
+  public final static native long SeqReader_begin(long jarg1, SeqReader jarg1_);
+  public final static native long SeqReader_end(long jarg1, SeqReader jarg1_);
   public final static native long BIT_MASKS_get();
   public final static native String KMER_BLOOM_FILTER_MAGIC_HEADER_get();
   public final static native String SEED_BLOOM_FILTER_MAGIC_HEADER_get();
