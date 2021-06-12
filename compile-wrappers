@@ -110,10 +110,12 @@ fi
 
 rm -rf build python java
 meson setup --buildtype release --prefix=$SCRIPTPATH build
-cd build
-ninja build-sdsl
-ninja install
-cd ..
+if [[ $? -eq 0 ]]; then
+  cd build
+  ninja build-sdsl
+  ninja install
+  cd ..
+fi
 
 cd $SCRIPTPATH
 if [[ $in_venv == true ]]; then
