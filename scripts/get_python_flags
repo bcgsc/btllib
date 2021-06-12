@@ -8,8 +8,8 @@ fi
 cd "${MESON_SOURCE_ROOT}"
 
 if [[ -n "$BTLLIB_PYTHON_CFLAGS" ]]; then
-  cflags=$BTLLIB_PYTHON_CFLAGS
-  ldflags=$BTLLIB_PYTHON_LDFLAGS
+  cflags="$BTLLIB_PYTHON_CFLAGS"
+  ldflags="$BTLLIB_PYTHON_LDFLAGS"
 else
   cflags=$(python3-config --cflags)
   ldflags=$(python3-config --ldflags)

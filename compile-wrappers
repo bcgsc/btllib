@@ -1,108 +1,100 @@
 #!/bin/bash
 
-command -v python >/dev/null
-python_exists=$?
-
-command -v python-config >/dev/null
-python_config_exists=$?
-
-command -v python3 >/dev/null
-python3_exists=$?
-
-command -v python3-config >/dev/null
-python3_config_exists=$?
-
-set -e
-
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd $SCRIPTPATH
 
-if [[ $python_exists -eq 0 && $python_config_exists -eq 0 ]]; then
-  py_version1=$(python --version 2>&1)
-  py_version1_num=$(echo $py_version1 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
-else
-  py_version1=""
-  py_version1_num=-1
-fi
+get_major_minor_version() {
+  echo "$1" | awk '{print $2}' | awk -F '.' '{print $1 "." $2}'
+}
 
-if [[ $python3_exists -eq 0 && $python3_config_exists -eq 0 ]]; then
-  py_version2=$(python3 --version 2>&1)
-  py_version2_num=$(echo $py_version2 | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
-else
-  py_version2=""
-  py_version2_num=-1
-fi
-
-if [[ ! "$py_version1_num" < "3.0" && "$py_version1_num" < "4.0" ]]; then
-  py_cflags1=$(python-config --cflags)
-  py_cflags2=$(python3-config --cflags)
-  py_ldflags1=$(python-config --ldflags)
-  py_ldflags2=$(python3-config --ldflags)
-
-  py2_flags=false
-  for flag in $py_cflags1; do
-    if [[ -n $(echo $flag | grep python2) ]]; then
-      py2_flags=true
-      break
+get_lib_paths() {
+  local lib_paths=()
+  for flag in $1; do
+    if [[ $flag == "-L"* ]]; then
+      lib_paths+=($flag)
     fi
   done
-  for flag in $py_ldflags1; do
-    if [[ -n $(echo $flag | grep python2) ]]; then
-      py2_flags=true
-      break
-    fi
+  echo "${lib_paths[@]}"
+}
+
+get_config_vars() {
+  local prefix="py${1}"
+  local config_var="${prefix}_config"
+  local path_var="${prefix}_path"
+  local version_var="${prefix}_version"
+  local version_num_var="${prefix}_version_num"
+  local cflags_var="${prefix}_cflags"
+  local ldflags_var="${prefix}_ldflags"
+  local lib_paths_var="${prefix}_lib_paths"
+
+  export declare ${config_var}="python${1}-config"
+  command -v ${!config_var} >/dev/null
+  if [[ $? -eq 0 ]]; then
+    export declare ${path_var}="$(${!config_var} --exec-prefix)/bin/python${1}"
+    export declare ${version_var}="$(${!path_var} --version 2>&1)"
+    export declare ${version_num_var}="$(get_major_minor_version "${!version_var}")"
+    export declare ${cflags_var}="$(${!config_var} --cflags)"
+    export declare ${ldflags_var}="$(${!config_var} --ldflags)"
+    export declare ${lib_paths_var}="$(get_lib_paths "${!ldflags_var}")"
+  else
+    export declare ${version}=""
+    export declare ${version_num}=-1
+  fi
+}
+
+are_lists_diff() {
+  local list1=()
+  local list2=()
+  for e in $1; do
+    list1+=($e)
   done
+  for e in $2; do
+    list2+=($e)
+  done
+  old_IFS="$IFS"
+  IFS=$'\n'
+  local list1_sorted=($(sort <<< "${list1[*]}"))
+  local list2_sorted=($(sort <<< "${list2[*]}"))
+  IFS="$old_IFS"
+  [[ ${list1_sorted[@]} == ${list2_sorted[@]} ]]
+  echo $?
+}
 
-  if [[ $py2_flags -eq false ]]; then
-    py_Lpaths1=()
-    py_Lpaths2=()
-    for flag in $py_ldflags1; do
-      if [[ $flag == "-L"* ]]; then
-        py_Lpaths1+=($flag)
-      fi
-    done
-    for flag in $py_ldflags2; do
-      if [[ $flag == "-L"* ]]; then
-        py_Lpaths2+=($flag)
-      fi
-    done
-    old_IFS="$IFS"
-    IFS=$'\n'
-    py_Lpaths1_sorted=($(sort <<<"${py_Lpaths1[*]}"))
-    py_Lpaths2_sorted=($(sort <<<"${py_Lpaths2[*]}"))
-    IFS="$old_IFS"
+get_config_vars
+get_config_vars 3
 
-    if [[ "$py_version1" != "$py_version2" || \
-    ( -n "${py_Lpaths1_sorted}" && -n "${py_Lpaths2_sorted}" && "${py_Lpaths1_sorted}" != "${py_Lpaths2_sorted}" ) ]]; then
-      if [[ -n "${py_Lpaths1_sorted}" && -n "${py_Lpaths2_sorted}" && "${py_Lpaths1_sorted}" != "${py_Lpaths2_sorted}" ]]; then
-        option1="$py_version1 (${py_Lpaths1})"
-        option2="$py_version2 (${py_Lpaths2})"
-      else
-        option1="$py_version1"
-        option2="$py_version2"
-      fi
-
-      echo "Multiple Pythons found"
-      PS3="Select which one to build with: "
-      options=("${option1}" "${option2}")
-      select opt in "${options[@]}"; do
-        case $opt in
-          "${option1}")
-              echo "Using ${option1}";
-              export BTLLIB_PYTHON_CFLAGS="$py_cflags1"
-              export BTLLIB_PYTHON_LDFLAGS="$py_ldflags1"
-              export BTLLIB_PYTHON_VERSION="$py_version1_num"
-              break;;
-          "${option2}")
-              echo "Using ${option2}";
-              export BTLLIB_PYTHON_CFLAGS="$py_cflags2"
-              export BTLLIB_PYTHON_LDFLAGS="$py_ldflags2"
-              export BTLLIB_PYTHON_VERSION="$py_version2_num"
-              break;;
-          *) echo "Invalid option $REPLY";;
-        esac
-      done
+if [[ ! "$py_version_num" < "3.0" && "$py_version_num" < "4.0" ]]; then
+  lib_paths_diff=$(are_lists_diff "$py_lib_paths" "$py3_lib_paths")
+  if [[ ("$py_version" != "$py3_version") || ($lib_paths_diff -eq 1) ]]; then
+    option1="$py_version"
+    option2="$py3_version"
+    if [[ -n "${py_lib_paths}" ]]; then
+      option1+=" ($py_lib_paths)"
     fi
+    if [[ -n "${py3_lib_paths}" ]]; then
+      option2+=" ($py3_lib_paths)"
+    fi
+
+    echo "Multiple Pythons found"
+    PS3="Select which one to build with: "
+    options=("${option1}" "${option2}")
+    select opt in "${options[@]}"; do
+      case $opt in
+        "${option1}")
+            echo "Using ${option1}";
+            export BTLLIB_PYTHON_CFLAGS="$py_cflags"
+            export BTLLIB_PYTHON_LDFLAGS="$py_ldflags"
+            export BTLLIB_PYTHON_VERSION="$py_version_num"
+            break;;
+        "${option2}")
+            echo "Using ${option2}";
+            export BTLLIB_PYTHON_CFLAGS="$py3_cflags"
+            export BTLLIB_PYTHON_LDFLAGS="$py3_ldflags"
+            export BTLLIB_PYTHON_VERSION="$py3_version_num"
+            break;;
+        *) echo "Invalid option $REPLY";;
+      esac
+    done
   fi
 fi
 
