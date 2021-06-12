@@ -5,6 +5,16 @@ if [ -z "${MESON_SOURCE_ROOT}" ]; then
   exit 1
 fi
 
+get_lib_paths() {
+  local lib_paths=()
+  for flag in $1; do
+    if [[ $flag == "-L"* ]]; then
+      lib_paths+=($flag)
+    fi
+  done
+  echo "${lib_paths[@]}"
+}
+
 cd "${MESON_SOURCE_ROOT}"
 
 if [[ -n "$BTLLIB_PYTHON_CFLAGS" ]]; then
@@ -15,45 +25,49 @@ else
   ldflags=$(python3-config --ldflags)
 fi
 
-found_libpython=false
+found_libpython=0
 for flag in $ldflags; do
   if [[ $flag == "-lpython"* ]]; then
-    found_libpython=true
+    found_libpython=1
   fi
 done
 
-if [[ $found_libpython == false ]]; then
+if [[ $found_libpython -eq 0 ]]; then
   if [[ -n "$BTLLIB_PYTHON_VERSION" ]]; then
-    py_version="python$BTLLIB_PYTHON_VERSION"
+    py_version_major_minor="$BTLLIB_PYTHON_VERSION"
   else
-    py_version=python$(python3 --version | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
+    py_version_major_minor=$(python3 --version | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
   fi
-  py_version_major=$(echo $py_version | sed 's~python\([[:digit:]]\).[[:digit:]]~python\1~')
+  py_version_major=$(echo $py_version_major_minor | awk -F '.' '{print $1}')
 
-  pylibs=( "${py_version}" "${py_version}m" "${py_version_major}" "python" )
+  pylibs=( "python${py_version_major_minor}" "python${py_version_major_minor}m" "python${py_version_major}" "python" )
   libdetects=( "" "" "" "" )
 
-  if [[ $OSTYPE == "linux-gnu"* ]]; then
-    for i in $(seq 0 3); do
-      libdetects[$i]="rm -f btllib_py_lib_check.tmp; ld ${ldflags} -l${pylibs[$i]} -o btllib_py_lib_check.tmp"
-    done
-  elif [[ $OSTYPE == "darwin"* ]]; then
-    for i in $(seq 0 3); do
-      libdetects[$i]="rm -f btllib_py_lib_check.tmp; ld ${ldflags} -l${pylibs[$i]} -dylib -arch x86_64 -o btllib_py_lib_check.tmp"
-    done
-  fi
+  lib_paths="$(get_lib_paths "${ldflags}")"
 
+  found=0
   for i in $(seq 0 3); do
-    if [[ -n ${libdetects[$i]} ]]; then
-      eval ${libdetects[$i]}
-      if [[ $? -eq 0 ]]; then
-        ldflags+=" -l${pylibs[$i]}"
+    l=${pylibs[$i]}
+    for lp in $lib_paths; do
+      p=${lp:2}
+      libsfound="$(find "$p" -maxdepth 1 -regextype sed -regex ".*lib${l}\.\(so\|a\)")"
+      if [[ -n "$libsfound" ]]; then
+        ldflags+=" -l${l}"
+        found=1
         break
       fi
+    done
+    if [[ $found -eq 1 ]]; then
+      break
     fi
   done
-  rm -f btllib_py_lib_check.tmp
+  if [[ $found -eq 0 ]]; then
+    echo "ERROR"
+    echo "Python library (.so or .a) not found!"
+    exit 1
+  fi
 fi
 
+echo "SUCCESS"
 echo "$cflags"
 echo "$ldflags"

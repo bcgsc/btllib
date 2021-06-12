@@ -1,6 +1,11 @@
 pyflags = run_command('../../scripts/get_python_flags').stdout().split('\n')
-cpp_extra_args = pyflags[0].strip().split()
-link_extra_args = pyflags[1].strip().split()
+
+if pyflags[0] == 'ERROR'
+  error(pyflags[1].strip())
+endif
+
+cpp_extra_args = pyflags[1].strip().split()
+link_extra_args = pyflags[2].strip().split()
 
 cpp_extra_args += ['-w']
 
