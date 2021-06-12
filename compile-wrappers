@@ -98,13 +98,24 @@ if [[ ! "$py_version_num" < "3.0" && "$py_version_num" < "4.0" ]]; then
   fi
 fi
 
+deps=( 'meson' 'ninja' 'cmake' )
+missing_dep=0
+pip_to_install=""
+for dep in ${deps[@]}; do
+  command -v $dep >/dev/null
+  if [[ $? -eq 1 ]]; then
+    missing_dep=1
+    pip_to_install+=" $dep"
+  fi
+done
+
 in_venv=false
-if [[ ! $(which meson) || ! $(which ninja) ]]; then
+if [[ $missing_dep -eq 1 ]]; then
   if [[ ! -f venv ]]; then
     python3 -m venv venv
   fi
   source venv/bin/activate
-  pip3 install meson ninja
+  pip3 install $pip_to_install
   in_venv=true
 fi
 
