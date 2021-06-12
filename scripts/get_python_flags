@@ -50,7 +50,12 @@ if [[ $found_libpython -eq 0 ]]; then
     l=${pylibs[$i]}
     for lp in $lib_paths; do
       p=${lp:2}
-      libsfound="$(find "$p" -maxdepth 1 -regextype sed -regex ".*lib${l}\.\(so\|dylib\|tbd\|a\)")"
+      libsfound=
+      if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        libsfound="$(find "$p" -maxdepth 1 -regextype sed -regex ".*lib${l}\.\(so\|a\)")"
+      elif [[ "$OSTYPE" == "darwin"* ]]; then
+        libsfound="$(find -E "$p" -maxdepth 1 -regex ".*lib${l}\.(so|dylib|tbd|a)")"
+      fi
       if [[ -n "$libsfound" ]]; then
         ldflags+=" -l${l}"
         found=1
