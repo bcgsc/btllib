@@ -50,7 +50,7 @@ if [[ $found_libpython -eq 0 ]]; then
     l=${pylibs[$i]}
     for lp in $lib_paths; do
       p=${lp:2}
-      libsfound="$(find "$p" -maxdepth 1 -regextype sed -regex ".*lib${l}\.\(so\|dylib\|a\)")"
+      libsfound="$(find "$p" -maxdepth 1 -regextype sed -regex ".*lib${l}\.\(so\|dylib\|\|tbd\|a\)")"
       if [[ -n "$libsfound" ]]; then
         ldflags+=" -l${l}"
         found=1
@@ -63,7 +63,7 @@ if [[ $found_libpython -eq 0 ]]; then
   done
   if [[ $found -eq 0 ]]; then
     echo "ERROR"
-    echo "Python library (.so, .dylib, or .a) not found!"
+    echo "Python library (.so, .dylib, .tbd, or .a) not found!"
     exit 1
   fi
 fi
