@@ -21,6 +21,7 @@ btllib_java = shared_module('btllib',
                              java_sources,
                              name_suffix : 'so',
                              include_directories : btllib_include,
+                             dependencies : deps,
                              cpp_args : cpp_extra_args,
                              install : true,
                              install_dir : 'java')

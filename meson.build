@@ -1,19 +1,16 @@
 project('btllib', 'cpp',
-        version : '1.0.9',
+        version : '1.0.10',
         license : 'GPL3',
         default_options : [ 'cpp_std=c++11', 'warning_level=3', 'werror=true' ])
 
-global_args = [ '-pthread' ]
-global_link_args = [ '-ldl', '-pthread', '-lpthread' ]
-if build_machine.system() == 'darwin'
-  global_args += [ '-Xpreprocessor', '-fopenmp' ]
-  global_link_args += [ '-Xpreprocessor', '-fopenmp', '-lomp' ]
-else
-  global_args += [ '-fopenmp' ]
-  global_link_args += [ '-fopenmp' ]
-endif
+threads_dep = dependency('threads')
+openmp_dep = dependency('openmp', required : false)
+deps = [ threads_dep, openmp_dep ]
 
-sdsl = meson.get_compiler('cpp').find_library('sdsl', required : false, dirs : meson.source_root()+ '/external/sdsl-lite/installdir/lib')
+global_args = []
+global_link_args = [ '-ldl' ]
+
+sdsl_lib = meson.get_compiler('cpp').find_library('sdsl', required : false, dirs : meson.source_root() + '/external/sdsl-lite/installdir/lib')
 global_args += [ '-I' + meson.source_root() + '/external/sdsl-lite/installdir/include' ]
 global_link_args += [ '-L' + meson.source_root() + '/external/sdsl-lite/installdir/lib', '-lsdsl', '-ldivsufsort', '-ldivsufsort64' ]
 
