@@ -44,17 +44,17 @@ else
   ldflags="$(python3-config --ldflags)"
 fi
 
-found_libpython=0
+libpython_required=0
 for flag in $ldflags; do
   if [[ $flag == "-lpython"* ]]; then
-    found_libpython=1
+    libpython_required=${flag:2}
   fi
 done
 
 rm -rf "${MESON_SOURCE_ROOT}/${PYTHON_DIR_SUBPATH}/lib"
 mkdir -p "${MESON_SOURCE_ROOT}/${PYTHON_DIR_SUBPATH}/lib"
 
-if [[ $found_libpython -eq 0 ]]; then
+if [[ $libpython_required -eq 0 ]]; then
   if [[ -n "$BTLLIB_PYTHON_VERSION" ]]; then
     py_version_major_minor="$BTLLIB_PYTHON_VERSION"
   else
@@ -83,7 +83,7 @@ if [[ $found_libpython -eq 0 ]]; then
         for libfound in $libsfound; do
           ln -s "$libfound" "${MESON_SOURCE_ROOT}/${PYTHON_DIR_SUBPATH}/lib/"
         done
-        ldflags+=" -l${libname}"
+#        ldflags+=" -l${libname}"
         found=1
         break
       fi
