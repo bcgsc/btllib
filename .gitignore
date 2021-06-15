@@ -3,7 +3,6 @@ build/
 *.jar
 python/
 !extras/python/
-extras/python/lib/
 java/
 !extras/java/
 Doxyfile.bak

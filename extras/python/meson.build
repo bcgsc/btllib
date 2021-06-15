@@ -1,4 +1,10 @@
-pyflags = run_command('../../scripts/get_python_flags').stdout().split('\n')
+pyflags_cmd = run_command('../../scripts/get_python_flags')
+
+if pyflags_cmd.stderr() != ''
+  error(pyflags_cmd.stderr())
+endif
+
+pyflags = pyflags_cmd.stdout().split('\n')
 
 if pyflags[0] == 'ERROR'
   error(pyflags[1].strip())

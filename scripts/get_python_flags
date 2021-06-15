@@ -7,17 +7,17 @@ if [ -z "${MESON_SOURCE_ROOT}" ]; then
   exit 1
 fi
 
-strip_lib_paths() {
+strip_libpaths() {
   local stripped=()
-  local lib_paths=()
+  local libpaths=()
   for arg in $1; do
     if [[ $arg == "-L"* ]]; then
-      lib_paths+=(${arg:2})
+      libpaths+=(${arg:2})
     else
       stripped+=($arg)
     fi
   done
-  printf "%s\n%s\n" "${stripped[*]}" "${lib_paths[*]}"
+  printf "%s\n%s\n" "${stripped[*]}" "${libpaths[*]}"
 }
 
 get_libs() {
@@ -51,52 +51,34 @@ for flag in $ldflags; do
   fi
 done
 
-rm -rf "${MESON_SOURCE_ROOT}/${PYTHON_DIR_SUBPATH}/lib"
-mkdir -p "${MESON_SOURCE_ROOT}/${PYTHON_DIR_SUBPATH}/lib"
+if [[ $libpython_required != 0 ]]; then
+  stripped_libpaths="$(strip_libpaths "${ldflags}")"
 
-if [[ $libpython_required -eq 0 ]]; then
-  if [[ -n "$BTLLIB_PYTHON_VERSION" ]]; then
-    py_version_major_minor="$BTLLIB_PYTHON_VERSION"
-  else
-    py_version_major_minor=$(python3 --version | awk '{print $2}' | awk -F '.' '{print $1 "." $2}')
-  fi
-  py_version_major=$(echo $py_version_major_minor | awk -F '.' '{print $1}')
-
-  pylibs=( "python${py_version_major_minor}" "python${py_version_major_minor}m" "python${py_version_major}" "python" )
-  libdetects=( "" "" "" "" )
-
-  stripped_lib_paths="$(strip_lib_paths "${ldflags}")"
-
-  ldflags="$(echo "$stripped_lib_paths" | head -n1)"
-  ldflags+=" -L${MESON_SOURCE_ROOT}/${PYTHON_DIR_SUBPATH}/lib"
-
-  lib_paths="$(echo "$stripped_lib_paths" | tail -n1)"
+  ldflags="$(echo "$stripped_libpaths" | head -n1)"
+  libpaths="$(echo "$stripped_libpaths" | tail -n1)"
 
   sysconfig_libdir="$(python -c 'from distutils import sysconfig; print (sysconfig.get_config_var("LIBDIR"))')"
-  lib_paths+=" $sysconfig_libdir"
+  libpaths+=" $sysconfig_libdir"
 
   found=0
-  for libpath in ${lib_paths}; do
-    for libname in ${pylibs[@]}; do
-      libsfound="$(get_libs $libpath $libname)"
-      if [[ -n "$libsfound" ]]; then
-        for libfound in $libsfound; do
-          ln -s "$libfound" "${MESON_SOURCE_ROOT}/${PYTHON_DIR_SUBPATH}/lib/"
-        done
-#        ldflags+=" -l${libname}"
-        found=1
-        break
-      fi
-    done
-    if [[ $found -eq 1 ]]; then
+  for libpath in ${libpaths}; do
+    libsfound="$(get_libs $libpath $libpython_required)"
+    if [[ -n "$libsfound" ]]; then
+      found=1
       break
     fi
   done
   if [[ $found -eq 0 ]]; then
     echo "ERROR"
-    echo "Python library (.so, .dylib, .tbd, or .a) not found!"
+    echo "libpython (.so, .dylib, .tbd, or .a) not found!"
     exit 1
   fi
+
+  param_libpaths=
+  for libpath in ${libpaths}; do
+    param_libpaths+="-L${libpath} "
+  done
+  ldflags="$param_libpaths $ldflags"
 fi
 
 echo "SUCCESS"
