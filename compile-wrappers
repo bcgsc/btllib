@@ -65,38 +65,41 @@ set -e
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd $SCRIPTPATH
 
-if [[ ! "$py_version_num" < "3.0" && "$py_version_num" < "4.0" ]]; then
-  lib_paths_diff=$(are_lists_diff "$py_lib_paths" "$py3_lib_paths")
-  if [[ ("$py_version" != "$py3_version") || ($lib_paths_diff -eq 1) ]]; then
-    option1="$py_version"
-    option2="$py3_version"
-    if [[ -n "${py_lib_paths}" ]]; then
-      option1+=" ($py_lib_paths)"
-    fi
-    if [[ -n "${py3_lib_paths}" ]]; then
-      option2+=" ($py3_lib_paths)"
-    fi
+# Check if in interactive prompt
+if [[ -n ${PS1+x} ]]; then
+  if [[ ! "$py_version_num" < "3.0" && "$py_version_num" < "4.0" ]]; then
+    lib_paths_diff=$(are_lists_diff "$py_lib_paths" "$py3_lib_paths")
+    if [[ ("$py_version" != "$py3_version") || ($lib_paths_diff -eq 1) ]]; then
+      option1="$py_version"
+      option2="$py3_version"
+      if [[ -n "${py_lib_paths}" ]]; then
+        option1+=" ($py_lib_paths)"
+      fi
+      if [[ -n "${py3_lib_paths}" ]]; then
+        option2+=" ($py3_lib_paths)"
+      fi
 
-    echo "Multiple Pythons found"
-    PS3="Select which one to build with: "
-    options=("${option1}" "${option2}")
-    select opt in "${options[@]}"; do
-      case $opt in
-        "${option1}")
-            echo "Using ${option1}";
-            export BTLLIB_PYTHON_CFLAGS="$py_cflags"
-            export BTLLIB_PYTHON_LDFLAGS="$py_ldflags"
-            export BTLLIB_PYTHON_VERSION="$py_version_num"
-            break;;
-        "${option2}")
-            echo "Using ${option2}";
-            export BTLLIB_PYTHON_CFLAGS="$py3_cflags"
-            export BTLLIB_PYTHON_LDFLAGS="$py3_ldflags"
-            export BTLLIB_PYTHON_VERSION="$py3_version_num"
-            break;;
-        *) echo "Invalid option $REPLY";;
-      esac
-    done
+      echo "Multiple Pythons found"
+      PS3="Select which one to build with: "
+      options=("${option1}" "${option2}")
+      select opt in "${options[@]}"; do
+        case $opt in
+          "${option1}")
+              echo "Using ${option1}";
+              export BTLLIB_PYTHON_CFLAGS="$py_cflags"
+              export BTLLIB_PYTHON_LDFLAGS="$py_ldflags"
+              export BTLLIB_PYTHON_VERSION="$py_version_num"
+              break;;
+          "${option2}")
+              echo "Using ${option2}";
+              export BTLLIB_PYTHON_CFLAGS="$py3_cflags"
+              export BTLLIB_PYTHON_LDFLAGS="$py3_ldflags"
+              export BTLLIB_PYTHON_VERSION="$py3_version_num"
+              break;;
+          *) echo "Invalid option $REPLY";;
+        esac
+      done
+    fi
   fi
 fi
 
