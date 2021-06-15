@@ -1,19 +1,38 @@
 #!/bin/bash
 
+PYTHON_DIR_SUBPATH="extras/python"
+
 if [ -z "${MESON_SOURCE_ROOT}" ]; then
   echo "[ERROR] This script can only be ran with meson!"
   exit 1
 fi
 
-get_lib_paths() {
+strip_lib_paths() {
+  local stripped=()
   local lib_paths=()
-  for flag in $1; do
-    if [[ $flag == "-L"* ]]; then
-      lib_paths+=($flag)
+  for arg in $1; do
+    if [[ $arg == "-L"* ]]; then
+      lib_paths+=(${arg:2})
+    else
+      stripped+=($arg)
     fi
   done
-  echo "${lib_paths[@]}"
+  printf "%s\n%s\n" "${stripped[*]}" "${lib_paths[*]}"
 }
+
+get_libs() {
+  local libpath=$1
+  local libname=$2
+  local libsfound=
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    libsfound="$(find "$libpath" -maxdepth 1 -regextype sed -regex ".*/lib${libname}\.\(so\|a\)")"
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    libsfound="$(find -E "$libpath" -maxdepth 1 -regex ".*/lib${libname}\.(so|dylib|tbd|a)")"
+  fi
+  echo "$libsfound"
+}
+
+set -e
 
 cd "${MESON_SOURCE_ROOT}"
 
@@ -21,8 +40,8 @@ if [[ -n "$BTLLIB_PYTHON_CFLAGS" ]]; then
   cflags="$BTLLIB_PYTHON_CFLAGS"
   ldflags="$BTLLIB_PYTHON_LDFLAGS"
 else
-  cflags=$(python3-config --cflags)
-  ldflags=$(python3-config --ldflags)
+  cflags="$(python3-config --cflags)"
+  ldflags="$(python3-config --ldflags)"
 fi
 
 found_libpython=0
@@ -31,6 +50,9 @@ for flag in $ldflags; do
     found_libpython=1
   fi
 done
+
+rm -rf "${MESON_SOURCE_ROOT}/${PYTHON_DIR_SUBPATH}/lib"
+mkdir -p "${MESON_SOURCE_ROOT}/${PYTHON_DIR_SUBPATH}/lib"
 
 if [[ $found_libpython -eq 0 ]]; then
   if [[ -n "$BTLLIB_PYTHON_VERSION" ]]; then
@@ -43,21 +65,25 @@ if [[ $found_libpython -eq 0 ]]; then
   pylibs=( "python${py_version_major_minor}" "python${py_version_major_minor}m" "python${py_version_major}" "python" )
   libdetects=( "" "" "" "" )
 
-  lib_paths="$(get_lib_paths "${ldflags}")"
+  stripped_lib_paths="$(strip_lib_paths "${ldflags}")"
+
+  ldflags="$(echo "$stripped_lib_paths" | head -n1)"
+  ldflags+=" -L${MESON_SOURCE_ROOT}/${PYTHON_DIR_SUBPATH}/lib"
+
+  lib_paths="$(echo "$stripped_lib_paths" | tail -n1)"
+
+  sysconfig_libdir="$(python -c 'from distutils import sysconfig; print (sysconfig.get_config_var("LIBDIR"))')"
+  lib_paths+=" $sysconfig_libdir"
 
   found=0
-  for i in $(seq 0 3); do
-    l=${pylibs[$i]}
-    for lp in $lib_paths; do
-      p=${lp:2}
-      libsfound=
-      if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        libsfound="$(find "$p" -maxdepth 1 -regextype sed -regex ".*lib${l}\.\(so\|a\)")"
-      elif [[ "$OSTYPE" == "darwin"* ]]; then
-        libsfound="$(find -E "$p" -maxdepth 1 -regex ".*lib${l}\.(so|dylib|tbd|a)")"
-      fi
+  for libpath in ${lib_paths}; do
+    for libname in ${pylibs[@]}; do
+      libsfound="$(get_libs $libpath $libname)"
       if [[ -n "$libsfound" ]]; then
-        ldflags+=" -l${l}"
+        for libfound in $libsfound; do
+          ln -s "$libfound" "${MESON_SOURCE_ROOT}/${PYTHON_DIR_SUBPATH}/lib/"
+        done
+        ldflags+=" -l${libname}"
         found=1
         break
       fi

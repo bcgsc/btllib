@@ -66,5 +66,7 @@ endif
 run_target('complete', command: join_paths(rootpath, 'scripts/complete'))
 
 subdir('include')
-subdir('tests')
 subdir('extras')
+if get_option('buildtype') != 'release'
+  subdir('tests')
+endif

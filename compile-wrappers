@@ -1,8 +1,5 @@
 #!/bin/bash
 
-SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
-cd $SCRIPTPATH
-
 get_major_minor_version() {
   echo "$1" | awk '{print $2}' | awk -F '.' '{print $1 "." $2}'
 }
@@ -62,6 +59,11 @@ are_lists_diff() {
 
 get_config_vars
 get_config_vars 3
+
+set -e
+
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+cd $SCRIPTPATH
 
 if [[ ! "$py_version_num" < "3.0" && "$py_version_num" < "4.0" ]]; then
   lib_paths_diff=$(are_lists_diff "$py_lib_paths" "$py3_lib_paths")
