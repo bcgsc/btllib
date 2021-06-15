@@ -1,8 +1,7 @@
-build/
 *.class
 *.jar
-python/
-!extras/python/
-java/
-!extras/java/
-Doxyfile.bak
+/python/
+!/extras/python/
+/java/
+!/extras/java/
+/Doxyfile.bak
