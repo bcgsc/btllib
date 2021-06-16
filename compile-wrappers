@@ -107,11 +107,13 @@ deps=( 'meson' 'ninja' 'cmake' )
 missing_dep=0
 pip_to_install=""
 for dep in ${deps[@]}; do
+  set +e
   command -v $dep >/dev/null
   if [[ $? -eq 1 ]]; then
     missing_dep=1
     pip_to_install+=" $dep"
   fi
+  set -e
 done
 
 in_venv=false
