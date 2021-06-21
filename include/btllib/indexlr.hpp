@@ -22,8 +22,6 @@
 
 namespace btllib {
 
-// TODO: Allow multiple Indexlr objects to be instantiated (by assigning ID to
-// each instance / indexing static members based on ID)
 class Indexlr
 {
 
@@ -108,7 +106,10 @@ public:
     size_t readlen = 0;
     std::vector<Minimizer> minimizers;
 
-    operator bool() const { return !id.empty() || !barcode.empty(); }
+    operator bool() const
+    {
+      return !id.empty() || !barcode.empty() || !minimizers.empty();
+    }
   };
 
   Record get_minimizers();
