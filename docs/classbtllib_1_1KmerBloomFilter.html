@@ -112,6 +112,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a92d03485d4b87407d58409c4591d9eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8c38be96a73895f2841ca0e8a9f2c9a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerBloomFilter.html#ae8c38be96a73895f2841ca0e8a9f2c9a">contains</a> (const std::vector&lt; uint64_t &gt; &amp;hashes) const</td></tr>
 <tr class="separator:ae8c38be96a73895f2841ca0e8a9f2c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02377124e5021d32b1ad960437af404f"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerBloomFilter.html#a02377124e5021d32b1ad960437af404f">contains_insert</a> (const char *seq, size_t seq_len)</td></tr>
+<tr class="separator:a02377124e5021d32b1ad960437af404f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34311741b4a2e5dda7863fdb624feae3"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerBloomFilter.html#a34311741b4a2e5dda7863fdb624feae3">contains_insert</a> (const std::string &amp;seq)</td></tr>
+<tr class="separator:a34311741b4a2e5dda7863fdb624feae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69c1c65e51c7f0551f67611dd1050985"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerBloomFilter.html#a69c1c65e51c7f0551f67611dd1050985">contains_insert</a> (const uint64_t *hashes)</td></tr>
+<tr class="separator:a69c1c65e51c7f0551f67611dd1050985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3e264e980afa45af171a7595e17f73a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerBloomFilter.html#ac3e264e980afa45af171a7595e17f73a">contains_insert</a> (const std::vector&lt; uint64_t &gt; &amp;hashes)</td></tr>
+<tr class="separator:ac3e264e980afa45af171a7595e17f73a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acaf81467d9dd71a89be9c43b05b6b33d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerBloomFilter.html#acaf81467d9dd71a89be9c43b05b6b33d">get_bytes</a> () const</td></tr>
 <tr class="separator:acaf81467d9dd71a89be9c43b05b6b33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a577d568f9dca7a39ce0048e1442886e2"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerBloomFilter.html#a577d568f9dca7a39ce0048e1442886e2">get_pop_cnt</a> () const</td></tr>
@@ -393,6 +401,153 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeedBloomFilter</b><
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a02377124e5021d32b1ad960437af404f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02377124e5021d32b1ad960437af404f">&#9670;&nbsp;</a></span>contains_insert() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned btllib::KmerBloomFilter::contains_insert </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>seq_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Query the presence of k-mers of a sequence and insert if missing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>Sequence to k-merize. </td></tr>
+    <tr><td class="paramname">seq_len</td><td>Length of seq.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of seq's k-mers found in the filter before insertion. </dd></dl>
+
+</div>
+</div>
+<a id="a34311741b4a2e5dda7863fdb624feae3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34311741b4a2e5dda7863fdb624feae3">&#9670;&nbsp;</a></span>contains_insert() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned btllib::KmerBloomFilter::contains_insert </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>seq</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Query the presence of k-mers of a sequence and insert if missing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>Sequence to k-merize.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of seq's k-mers found in the filter before insertion. </dd></dl>
+
+</div>
+</div>
+<a id="ac3e264e980afa45af171a7595e17f73a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3e264e980afa45af171a7595e17f73a">&#9670;&nbsp;</a></span>contains_insert() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::KmerBloomFilter::contains_insert </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint64_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Check for the presence of an element's hash values and insert if missing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer vector of hash values.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if present before insertion, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a69c1c65e51c7f0551f67611dd1050985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69c1c65e51c7f0551f67611dd1050985">&#9670;&nbsp;</a></span>contains_insert() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::KmerBloomFilter::contains_insert </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Check for the presence of an element's hash values and insert if missing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer array of hash values. Array size should equal the hash_num argument used when the Bloom filter was constructed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if present before insertion, false otherwise. </dd></dl>
 
 </div>
 </div>

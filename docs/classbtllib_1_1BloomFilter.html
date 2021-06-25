@@ -103,6 +103,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a29af5077ed6bc89f3c5e51e1802b6cf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ed85398ead96900dc728a795e21981f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1BloomFilter.html#a2ed85398ead96900dc728a795e21981f">contains</a> (const std::vector&lt; uint64_t &gt; &amp;hashes) const</td></tr>
 <tr class="separator:a2ed85398ead96900dc728a795e21981f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae01ccc96888f1440b4f2baf3b39f8f2c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1BloomFilter.html#ae01ccc96888f1440b4f2baf3b39f8f2c">contains_insert</a> (const uint64_t *hashes)</td></tr>
+<tr class="separator:ae01ccc96888f1440b4f2baf3b39f8f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeec05597bec692f5f1a63988fc32e696"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1BloomFilter.html#aeec05597bec692f5f1a63988fc32e696">contains_insert</a> (const std::vector&lt; uint64_t &gt; &amp;hashes)</td></tr>
+<tr class="separator:aeec05597bec692f5f1a63988fc32e696"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab555271b219e326c52871dcba236493f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1BloomFilter.html#ab555271b219e326c52871dcba236493f">get_bytes</a> () const</td></tr>
 <tr class="separator:ab555271b219e326c52871dcba236493f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefbb78f46fdd79368842048b427aac20"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1BloomFilter.html#aefbb78f46fdd79368842048b427aac20">get_pop_cnt</a> () const</td></tr>
@@ -309,6 +313,74 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeedBloomFilter</b><
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if present, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="aeec05597bec692f5f1a63988fc32e696"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeec05597bec692f5f1a63988fc32e696">&#9670;&nbsp;</a></span>contains_insert() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::BloomFilter::contains_insert </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint64_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Check for the presence of an element's hash values and insert if missing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer vector of hash values.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if present before insertion, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ae01ccc96888f1440b4f2baf3b39f8f2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae01ccc96888f1440b4f2baf3b39f8f2c">&#9670;&nbsp;</a></span>contains_insert() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::BloomFilter::contains_insert </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Check for the presence of an element's hash values and insert if missing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer array of hash values. Array size should equal the hash_num argument used when the Bloom filter was constructed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if present before insertion, false otherwise. </dd></dl>
 
 </div>
 </div>
