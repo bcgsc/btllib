@@ -1486,7 +1486,7 @@ NtHash::sub(const std::vector<unsigned>& positions,
 }
 
 // NOLINTNEXTLINE
-#define NTHASH_INIT(CLASS, NTHASH_CALL, MEMBER_PREFIX)                         \
+#define BTLLIB_NTHASH_INIT(CLASS, NTHASH_CALL, MEMBER_PREFIX)                  \
   inline bool CLASS::init()                                                    \
   {                                                                            \
     if (MEMBER_PREFIX k > MEMBER_PREFIX seq_len) {                             \
@@ -1508,7 +1508,7 @@ NtHash::sub(const std::vector<unsigned>& positions,
   }
 
 // NOLINTNEXTLINE
-#define NTHASH_ROLL(CLASS, NTHASH_CALL, MEMBER_PREFIX)                         \
+#define BTLLIB_NTHASH_ROLL(CLASS, NTHASH_CALL, MEMBER_PREFIX)                  \
   inline bool CLASS::roll()                                                    \
   {                                                                            \
     if (!MEMBER_PREFIX initialized) {                                          \
@@ -1528,49 +1528,49 @@ NtHash::sub(const std::vector<unsigned>& positions,
     return true;                                                               \
   }
 
-NTHASH_INIT(NtHash,
-            ntmc64(seq + pos,
-                   k,
-                   hash_num,
-                   forward_hash,
-                   reverse_hash,
-                   posN,
-                   hashes_vector.data()), )
-NTHASH_ROLL(NtHash,
-            ntmc64(seq[pos - 1],
-                   seq[pos - 1 + k],
-                   k,
-                   hash_num,
-                   forward_hash,
-                   reverse_hash,
-                   hashes_vector.data()), )
+BTLLIB_NTHASH_INIT(NtHash,
+                   ntmc64(seq + pos,
+                          k,
+                          hash_num,
+                          forward_hash,
+                          reverse_hash,
+                          posN,
+                          hashes_vector.data()), )
+BTLLIB_NTHASH_ROLL(NtHash,
+                   ntmc64(seq[pos - 1],
+                          seq[pos - 1 + k],
+                          k,
+                          hash_num,
+                          forward_hash,
+                          reverse_hash,
+                          hashes_vector.data()), )
 
-NTHASH_INIT(SeedNtHash,
-            ntmsm64(nthash.seq + nthash.pos,
-                    seeds,
-                    nthash.k,
-                    seeds.size(),
-                    hash_num_per_seed,
-                    nthash.forward_hash,
-                    nthash.reverse_hash,
-                    posN,
-                    nthash.hashes_vector.data()),
-            nthash.)
-NTHASH_ROLL(SeedNtHash,
-            ntmsm64(nthash.seq + nthash.pos,
-                    seeds,
-                    nthash.seq[nthash.pos - 1],
-                    nthash.seq[nthash.pos - 1 + nthash.k],
-                    nthash.k,
-                    seeds.size(),
-                    hash_num_per_seed,
-                    nthash.forward_hash,
-                    nthash.reverse_hash,
-                    nthash.hashes_vector.data()),
-            nthash.)
+BTLLIB_NTHASH_INIT(SeedNtHash,
+                   ntmsm64(nthash.seq + nthash.pos,
+                           seeds,
+                           nthash.k,
+                           seeds.size(),
+                           hash_num_per_seed,
+                           nthash.forward_hash,
+                           nthash.reverse_hash,
+                           posN,
+                           nthash.hashes_vector.data()),
+                   nthash.)
+BTLLIB_NTHASH_ROLL(SeedNtHash,
+                   ntmsm64(nthash.seq + nthash.pos,
+                           seeds,
+                           nthash.seq[nthash.pos - 1],
+                           nthash.seq[nthash.pos - 1 + nthash.k],
+                           nthash.k,
+                           seeds.size(),
+                           hash_num_per_seed,
+                           nthash.forward_hash,
+                           nthash.reverse_hash,
+                           nthash.hashes_vector.data()),
+                   nthash.)
 
-#undef NTHASH_INIT
-#undef NTHASH_ROLL
+#undef BTLLIB_NTHASH_INIT
+#undef BTLLIB_NTHASH_ROLL
 
 } // namespace btllib
 

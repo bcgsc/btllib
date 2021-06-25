@@ -9,7 +9,7 @@ namespace btllib {
 
 struct CString
 {
-  static const size_t CSTRING_DEFAULT_CAP = 4096;
+  static const size_t CSTRING_DEFAULT_CAP = 2048;
 
   CString() { s[0] = '\0'; }
 
@@ -86,6 +86,12 @@ struct CString
   size_t size() const { return s_size; }
 
   operator char*() const { return s; }
+
+  void change_cap(const size_t new_cap)
+  {
+    s_cap = new_cap;
+    s = (char*)std::realloc(s, new_cap); // NOLINT
+  }
 
   char* s = (char*)std::malloc(CSTRING_DEFAULT_CAP); // NOLINT
   size_t s_size = 0;
