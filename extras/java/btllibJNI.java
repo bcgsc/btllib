@@ -58,6 +58,8 @@ public class btllibJNI {
   public final static native void BloomFilter_insert__SWIG_1(long jarg1, BloomFilter jarg1_, long jarg2);
   public final static native boolean BloomFilter_contains__SWIG_0(long jarg1, BloomFilter jarg1_, long jarg2);
   public final static native boolean BloomFilter_contains__SWIG_1(long jarg1, BloomFilter jarg1_, long jarg2);
+  public final static native boolean BloomFilter_contains_insert__SWIG_0(long jarg1, BloomFilter jarg1_, long jarg2);
+  public final static native boolean BloomFilter_contains_insert__SWIG_1(long jarg1, BloomFilter jarg1_, long jarg2);
   public final static native long BloomFilter_get_bytes(long jarg1, BloomFilter jarg1_);
   public final static native long BloomFilter_get_pop_cnt(long jarg1, BloomFilter jarg1_);
   public final static native double BloomFilter_get_occupancy(long jarg1, BloomFilter jarg1_);
@@ -77,6 +79,10 @@ public class btllibJNI {
   public final static native long KmerBloomFilter_contains__SWIG_1(long jarg1, KmerBloomFilter jarg1_, String jarg2);
   public final static native boolean KmerBloomFilter_contains__SWIG_2(long jarg1, KmerBloomFilter jarg1_, long jarg2);
   public final static native boolean KmerBloomFilter_contains__SWIG_3(long jarg1, KmerBloomFilter jarg1_, long jarg2);
+  public final static native long KmerBloomFilter_contains_insert__SWIG_0(long jarg1, KmerBloomFilter jarg1_, String jarg2, long jarg3);
+  public final static native long KmerBloomFilter_contains_insert__SWIG_1(long jarg1, KmerBloomFilter jarg1_, String jarg2);
+  public final static native boolean KmerBloomFilter_contains_insert__SWIG_2(long jarg1, KmerBloomFilter jarg1_, long jarg2);
+  public final static native boolean KmerBloomFilter_contains_insert__SWIG_3(long jarg1, KmerBloomFilter jarg1_, long jarg2);
   public final static native long KmerBloomFilter_get_bytes(long jarg1, KmerBloomFilter jarg1_);
   public final static native long KmerBloomFilter_get_pop_cnt(long jarg1, KmerBloomFilter jarg1_);
   public final static native double KmerBloomFilter_get_occupancy(long jarg1, KmerBloomFilter jarg1_);
@@ -98,6 +104,10 @@ public class btllibJNI {
   public final static native long SeedBloomFilter_contains__SWIG_1(long jarg1, SeedBloomFilter jarg1_, String jarg2);
   public final static native boolean SeedBloomFilter_contains__SWIG_2(long jarg1, SeedBloomFilter jarg1_, long jarg2);
   public final static native boolean SeedBloomFilter_contains__SWIG_3(long jarg1, SeedBloomFilter jarg1_, long jarg2);
+  public final static native long SeedBloomFilter_contains_insert__SWIG_0(long jarg1, SeedBloomFilter jarg1_, String jarg2, long jarg3);
+  public final static native long SeedBloomFilter_contains_insert__SWIG_1(long jarg1, SeedBloomFilter jarg1_, String jarg2);
+  public final static native boolean SeedBloomFilter_contains_insert__SWIG_2(long jarg1, SeedBloomFilter jarg1_, long jarg2);
+  public final static native boolean SeedBloomFilter_contains_insert__SWIG_3(long jarg1, SeedBloomFilter jarg1_, long jarg2);
   public final static native long SeedBloomFilter_get_bytes(long jarg1, SeedBloomFilter jarg1_);
   public final static native long SeedBloomFilter_get_pop_cnt(long jarg1, SeedBloomFilter jarg1_);
   public final static native double SeedBloomFilter_get_occupancy(long jarg1, SeedBloomFilter jarg1_);

@@ -9,9 +9,9 @@
 package btllib;
 
 public class btllib {
-  public static SWIGTYPE_p_unsigned_char getBIT_MASKS() {
+  public static SWIGTYPE_p_uint8_t getBIT_MASKS() {
     long cPtr = btllibJNI.BIT_MASKS_get();
-    return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_char(cPtr, false);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_uint8_t(cPtr, false);
   }
 
   public static String getKMER_BLOOM_FILTER_MAGIC_HEADER() {

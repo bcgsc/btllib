@@ -31,6 +31,9 @@ main()
   assert(bf2.contains({ 100, 200, 300 }));
   assert(!bf2.contains({ 1, 20, 100 }));
 
+  assert(!bf2.contains_insert({ 9, 99, 999 }));
+  assert(bf2.contains_insert({ 9, 99, 999 }));
+
   std::remove(filename.c_str());
 
   std::string seq = "CACTATCGACGATCATTCGAGCATCAGCGACTG";
