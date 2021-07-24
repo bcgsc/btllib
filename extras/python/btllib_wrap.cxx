@@ -3545,13 +3545,12 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_traits_type swig_types[96]
 #define SWIGTYPE_p_uint64_t swig_types[97]
 #define SWIGTYPE_p_uint8_t swig_types[98]
-#define SWIGTYPE_p_unsigned_char swig_types[99]
-#define SWIGTYPE_p_unsigned_int swig_types[100]
-#define SWIGTYPE_p_unsigned_long swig_types[101]
-#define SWIGTYPE_p_unsigned_long_long swig_types[102]
-#define SWIGTYPE_p_unsigned_short swig_types[103]
-static swig_type_info *swig_types[105];
-static swig_module_info swig_module = {swig_types, 104, 0, 0, 0, 0};
+#define SWIGTYPE_p_unsigned_int swig_types[99]
+#define SWIGTYPE_p_unsigned_long swig_types[100]
+#define SWIGTYPE_p_unsigned_long_long swig_types[101]
+#define SWIGTYPE_p_unsigned_short swig_types[102]
+static swig_type_info *swig_types[104];
+static swig_module_info swig_module = {swig_types, 103, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -25470,6 +25469,7 @@ SwigPyBuiltin__btllib__BloomFilter_richcompare(PyObject *self, PyObject *other, 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__BloomFilter_methods[] = {
   { "insert", _wrap_BloomFilter_insert, METH_VARARGS, "" },
   { "contains", _wrap_BloomFilter_contains, METH_VARARGS, "" },
+  { "contains_insert", _wrap_BloomFilter_contains_insert, METH_VARARGS, "" },
   { "get_bytes", _wrap_BloomFilter_get_bytes, METH_NOARGS, "" },
   { "get_pop_cnt", _wrap_BloomFilter_get_pop_cnt, METH_NOARGS, "" },
   { "get_occupancy", _wrap_BloomFilter_get_occupancy, METH_NOARGS, "" },
@@ -25689,27 +25689,10 @@ SwigPyBuiltin__btllib__KmerBloomFilter_richcompare(PyObject *self, PyObject *oth
   return result;
 }
 
-<<<<<<< HEAD
-SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedBloomFilter_methods[] = {
-  { "insert", _wrap_SeedBloomFilter_insert, METH_VARARGS, "" },
-  { "contains", _wrap_SeedBloomFilter_contains, METH_VARARGS, "" },
-  { "contains_insert", _wrap_SeedBloomFilter_contains_insert, METH_VARARGS, "" },
-  { "get_bytes", _wrap_SeedBloomFilter_get_bytes, METH_NOARGS, "" },
-  { "get_pop_cnt", _wrap_SeedBloomFilter_get_pop_cnt, METH_NOARGS, "" },
-  { "get_occupancy", _wrap_SeedBloomFilter_get_occupancy, METH_NOARGS, "" },
-  { "get_hash_num", _wrap_SeedBloomFilter_get_hash_num, METH_NOARGS, "" },
-  { "get_fpr", _wrap_SeedBloomFilter_get_fpr, METH_NOARGS, "" },
-  { "get_k", _wrap_SeedBloomFilter_get_k, METH_NOARGS, "" },
-  { "get_seeds", _wrap_SeedBloomFilter_get_seeds, METH_NOARGS, "" },
-  { "get_parsed_seeds", _wrap_SeedBloomFilter_get_parsed_seeds, METH_NOARGS, "" },
-  { "get_hash_num_per_seed", _wrap_SeedBloomFilter_get_hash_num_per_seed, METH_NOARGS, "" },
-  { "get_hash_fn", _wrap_SeedBloomFilter_get_hash_fn, METH_NOARGS, "" },
-  { "get_kmer_bloom_filter", _wrap_SeedBloomFilter_get_kmer_bloom_filter, METH_NOARGS, "" },
-  { "save", _wrap_SeedBloomFilter_save, METH_O, "" },
-=======
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__KmerBloomFilter_methods[] = {
   { "insert", _wrap_KmerBloomFilter_insert, METH_VARARGS, "" },
   { "contains", _wrap_KmerBloomFilter_contains, METH_VARARGS, "" },
+  { "contains_insert", _wrap_KmerBloomFilter_contains_insert, METH_VARARGS, "" },
   { "get_bytes", _wrap_KmerBloomFilter_get_bytes, METH_NOARGS, "" },
   { "get_pop_cnt", _wrap_KmerBloomFilter_get_pop_cnt, METH_NOARGS, "" },
   { "get_occupancy", _wrap_KmerBloomFilter_get_occupancy, METH_NOARGS, "" },
@@ -25719,7 +25702,6 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__KmerBloomFilter_methods[] = {
   { "get_hash_fn", _wrap_KmerBloomFilter_get_hash_fn, METH_NOARGS, "" },
   { "get_bloom_filter", _wrap_KmerBloomFilter_get_bloom_filter, METH_NOARGS, "" },
   { "save", _wrap_KmerBloomFilter_save, METH_O, "" },
->>>>>>> 2433e80 (Split SeqReader into modules)
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -25934,6 +25916,7 @@ SwigPyBuiltin__btllib__SeedBloomFilter_richcompare(PyObject *self, PyObject *oth
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedBloomFilter_methods[] = {
   { "insert", _wrap_SeedBloomFilter_insert, METH_VARARGS, "" },
   { "contains", _wrap_SeedBloomFilter_contains, METH_VARARGS, "" },
+  { "contains_insert", _wrap_SeedBloomFilter_contains_insert, METH_VARARGS, "" },
   { "get_bytes", _wrap_SeedBloomFilter_get_bytes, METH_NOARGS, "" },
   { "get_pop_cnt", _wrap_SeedBloomFilter_get_pop_cnt, METH_NOARGS, "" },
   { "get_occupancy", _wrap_SeedBloomFilter_get_occupancy, METH_NOARGS, "" },
