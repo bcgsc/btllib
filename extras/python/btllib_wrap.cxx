@@ -3471,82 +3471,86 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_btllib__SeedBloomFilter swig_types[22]
 #define SWIGTYPE_p_btllib__SeedNtHash swig_types[23]
 #define SWIGTYPE_p_btllib__SeqReader swig_types[24]
-#define SWIGTYPE_p_btllib__SeqReader__Flag swig_types[25]
-#define SWIGTYPE_p_btllib__SeqReader__Record swig_types[26]
-#define SWIGTYPE_p_btllib__SeqReader__RecordIterator swig_types[27]
-#define SWIGTYPE_p_btllib__SeqWriter swig_types[28]
-#define SWIGTYPE_p_char swig_types[29]
-#define SWIGTYPE_p_char_type swig_types[30]
-#define SWIGTYPE_p_double swig_types[31]
-#define SWIGTYPE_p_f_enum_std__ios_base__event_r_std__ios_base_int__void swig_types[32]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[33]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[34]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[35]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[36]
-#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[37]
-#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[38]
-#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[39]
-#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[40]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[41]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[42]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[43]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[44]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__ios_base swig_types[45]
-#define SWIGTYPE_p_float swig_types[46]
-#define SWIGTYPE_p_fmtflags swig_types[47]
-#define SWIGTYPE_p_int swig_types[48]
-#define SWIGTYPE_p_int_type swig_types[49]
-#define SWIGTYPE_p_iostate swig_types[50]
-#define SWIGTYPE_p_long swig_types[51]
-#define SWIGTYPE_p_long_double swig_types[52]
-#define SWIGTYPE_p_long_long swig_types[53]
-#define SWIGTYPE_p_mode_t swig_types[54]
-#define SWIGTYPE_p_off_type swig_types[55]
-#define SWIGTYPE_p_openmode swig_types[56]
-#define SWIGTYPE_p_p_btllib__Indexlr__Minimizer swig_types[57]
-#define SWIGTYPE_p_p_char swig_types[58]
-#define SWIGTYPE_p_p_uint64_t swig_types[59]
-#define SWIGTYPE_p_p_void swig_types[60]
-#define SWIGTYPE_p_pid_t swig_types[61]
-#define SWIGTYPE_p_pos_type swig_types[62]
-#define SWIGTYPE_p_seekdir swig_types[63]
-#define SWIGTYPE_p_short swig_types[64]
-#define SWIGTYPE_p_size_t swig_types[65]
-#define SWIGTYPE_p_ssize_t swig_types[66]
-#define SWIGTYPE_p_state_type swig_types[67]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[68]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[69]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[70]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[71]
-#define SWIGTYPE_p_std__basic_streambufT_char_std__char_traitsT_char_t_t swig_types[72]
-#define SWIGTYPE_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t swig_types[73]
-#define SWIGTYPE_p_std__ifstream swig_types[74]
-#define SWIGTYPE_p_std__ios_base swig_types[75]
-#define SWIGTYPE_p_std__locale swig_types[76]
-#define SWIGTYPE_p_std__mapT_std__string_btllib__DataStreamPipeline_t swig_types[77]
-#define SWIGTYPE_p_std__mutex swig_types[78]
-#define SWIGTYPE_p_std__shared_ptrT_cpptoml__table_t swig_types[79]
-#define SWIGTYPE_p_std__string swig_types[80]
-#define SWIGTYPE_p_std__vectorT_SpacedSeed_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[81]
-#define SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t swig_types[82]
-#define SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t swig_types[83]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[84]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[85]
-#define SWIGTYPE_p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t swig_types[86]
-#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[87]
-#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[88]
-#define SWIGTYPE_p_streamoff swig_types[89]
-#define SWIGTYPE_p_streampos swig_types[90]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[91]
-#define SWIGTYPE_p_traits_type swig_types[92]
-#define SWIGTYPE_p_uint64_t swig_types[93]
-#define SWIGTYPE_p_uint8_t swig_types[94]
-#define SWIGTYPE_p_unsigned_int swig_types[95]
-#define SWIGTYPE_p_unsigned_long swig_types[96]
-#define SWIGTYPE_p_unsigned_long_long swig_types[97]
-#define SWIGTYPE_p_unsigned_short swig_types[98]
-static swig_type_info *swig_types[100];
-static swig_module_info swig_module = {swig_types, 99, 0, 0, 0, 0};
+#define SWIGTYPE_p_btllib__SeqReaderFastaModule swig_types[25]
+#define SWIGTYPE_p_btllib__SeqReaderFastqModule swig_types[26]
+#define SWIGTYPE_p_btllib__SeqReaderGfa2Module swig_types[27]
+#define SWIGTYPE_p_btllib__SeqReaderSamModule swig_types[28]
+#define SWIGTYPE_p_btllib__SeqReader__Flag swig_types[29]
+#define SWIGTYPE_p_btllib__SeqReader__Record swig_types[30]
+#define SWIGTYPE_p_btllib__SeqReader__RecordIterator swig_types[31]
+#define SWIGTYPE_p_btllib__SeqWriter swig_types[32]
+#define SWIGTYPE_p_char swig_types[33]
+#define SWIGTYPE_p_char_type swig_types[34]
+#define SWIGTYPE_p_double swig_types[35]
+#define SWIGTYPE_p_f_enum_std__ios_base__event_r_std__ios_base_int__void swig_types[36]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[37]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[38]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[39]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[40]
+#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[41]
+#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[42]
+#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[43]
+#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[44]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[45]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[46]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[47]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[48]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__ios_base swig_types[49]
+#define SWIGTYPE_p_float swig_types[50]
+#define SWIGTYPE_p_fmtflags swig_types[51]
+#define SWIGTYPE_p_int swig_types[52]
+#define SWIGTYPE_p_int_type swig_types[53]
+#define SWIGTYPE_p_iostate swig_types[54]
+#define SWIGTYPE_p_long swig_types[55]
+#define SWIGTYPE_p_long_double swig_types[56]
+#define SWIGTYPE_p_long_long swig_types[57]
+#define SWIGTYPE_p_mode_t swig_types[58]
+#define SWIGTYPE_p_off_type swig_types[59]
+#define SWIGTYPE_p_openmode swig_types[60]
+#define SWIGTYPE_p_p_btllib__Indexlr__Minimizer swig_types[61]
+#define SWIGTYPE_p_p_char swig_types[62]
+#define SWIGTYPE_p_p_uint64_t swig_types[63]
+#define SWIGTYPE_p_p_void swig_types[64]
+#define SWIGTYPE_p_pid_t swig_types[65]
+#define SWIGTYPE_p_pos_type swig_types[66]
+#define SWIGTYPE_p_seekdir swig_types[67]
+#define SWIGTYPE_p_short swig_types[68]
+#define SWIGTYPE_p_size_t swig_types[69]
+#define SWIGTYPE_p_ssize_t swig_types[70]
+#define SWIGTYPE_p_state_type swig_types[71]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[72]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[73]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[74]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[75]
+#define SWIGTYPE_p_std__basic_streambufT_char_std__char_traitsT_char_t_t swig_types[76]
+#define SWIGTYPE_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t swig_types[77]
+#define SWIGTYPE_p_std__ifstream swig_types[78]
+#define SWIGTYPE_p_std__ios_base swig_types[79]
+#define SWIGTYPE_p_std__locale swig_types[80]
+#define SWIGTYPE_p_std__mapT_std__string_btllib__DataStreamPipeline_t swig_types[81]
+#define SWIGTYPE_p_std__mutex swig_types[82]
+#define SWIGTYPE_p_std__shared_ptrT_cpptoml__table_t swig_types[83]
+#define SWIGTYPE_p_std__string swig_types[84]
+#define SWIGTYPE_p_std__vectorT_SpacedSeed_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[85]
+#define SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t swig_types[86]
+#define SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t swig_types[87]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[88]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[89]
+#define SWIGTYPE_p_std__vectorT_uint64_t_std__allocatorT_uint64_t_t_t swig_types[90]
+#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[91]
+#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[92]
+#define SWIGTYPE_p_streamoff swig_types[93]
+#define SWIGTYPE_p_streampos swig_types[94]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[95]
+#define SWIGTYPE_p_traits_type swig_types[96]
+#define SWIGTYPE_p_uint64_t swig_types[97]
+#define SWIGTYPE_p_uint8_t swig_types[98]
+#define SWIGTYPE_p_unsigned_int swig_types[99]
+#define SWIGTYPE_p_unsigned_long swig_types[100]
+#define SWIGTYPE_p_unsigned_long_long swig_types[101]
+#define SWIGTYPE_p_unsigned_short swig_types[102]
+static swig_type_info *swig_types[104];
+static swig_module_info swig_module = {swig_types, 103, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3656,14 +3660,18 @@ namespace swig {
 #define SWIG_FILE_WITH_INIT
 
 #include "btllib/seq_reader.hpp"
+#include "btllib/seq_reader_sam_module.hpp"
 #include "btllib/bloom_filter.hpp"
 #include "btllib/seq.hpp"
 #include "btllib/counting_bloom_filter.hpp"
 #include "btllib/indexlr.hpp"
+#include "btllib/seq_reader_fastq_module.hpp"
+#include "btllib/seq_reader_fasta_module.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/seq_writer.hpp"
 #include "btllib/data_stream.hpp"
 #include "btllib/cstring.hpp"
+#include "btllib/seq_reader_gfa2_module.hpp"
 #include "btllib/order_queue.hpp"
 #include "btllib/graph.hpp"
 #include "btllib/status.hpp"
@@ -11136,6 +11144,43 @@ SWIGPY_ITERNEXTFUNC_CLOSURE(_wrap_RecordIterator___next__) /* defines _wrap_Reco
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_RecordIterator) /* defines _wrap_delete_RecordIterator_destructor_closure */
 
+SWIGINTERN int _wrap_new_SeqReaderSamModule(PyObject *self, PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  btllib::SeqReaderSamModule *result = 0 ;
+  
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_SeqReaderSamModule")) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "new_SeqReaderSamModule", 0, 0, 0)) SWIG_fail;
+  result = (btllib::SeqReaderSamModule *)new btllib::SeqReaderSamModule();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeqReaderSamModule, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SeqReaderSamModule(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeqReaderSamModule *arg1 = (btllib::SeqReaderSamModule *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "delete_SeqReaderSamModule", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReaderSamModule, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeqReaderSamModule" "', argument " "1"" of type '" "btllib::SeqReaderSamModule *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeqReaderSamModule * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeqReaderSamModule) /* defines _wrap_delete_SeqReaderSamModule_destructor_closure */
+
 SWIGINTERN int Swig_var_BIT_MASKS_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable BIT_MASKS is read-only.");
   return 1;
@@ -15610,6 +15655,80 @@ fail:
   return NULL;
 }
 
+
+SWIGINTERN int _wrap_new_SeqReaderFastqModule(PyObject *self, PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  btllib::SeqReaderFastqModule *result = 0 ;
+  
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_SeqReaderFastqModule")) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "new_SeqReaderFastqModule", 0, 0, 0)) SWIG_fail;
+  result = (btllib::SeqReaderFastqModule *)new btllib::SeqReaderFastqModule();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeqReaderFastqModule, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SeqReaderFastqModule(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeqReaderFastqModule *arg1 = (btllib::SeqReaderFastqModule *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "delete_SeqReaderFastqModule", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReaderFastqModule, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeqReaderFastqModule" "', argument " "1"" of type '" "btllib::SeqReaderFastqModule *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeqReaderFastqModule * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeqReaderFastqModule) /* defines _wrap_delete_SeqReaderFastqModule_destructor_closure */
+
+SWIGINTERN int _wrap_new_SeqReaderFastaModule(PyObject *self, PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  btllib::SeqReaderFastaModule *result = 0 ;
+  
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_SeqReaderFastaModule")) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "new_SeqReaderFastaModule", 0, 0, 0)) SWIG_fail;
+  result = (btllib::SeqReaderFastaModule *)new btllib::SeqReaderFastaModule();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeqReaderFastaModule, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SeqReaderFastaModule(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeqReaderFastaModule *arg1 = (btllib::SeqReaderFastaModule *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "delete_SeqReaderFastaModule", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReaderFastaModule, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeqReaderFastaModule" "', argument " "1"" of type '" "btllib::SeqReaderFastaModule *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeqReaderFastaModule * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeqReaderFastaModule) /* defines _wrap_delete_SeqReaderFastaModule_destructor_closure */
 
 SWIGINTERN int Swig_var_CP_OFF_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable CP_OFF is read-only.");
@@ -22089,6 +22208,43 @@ fail:
 }
 
 
+SWIGINTERN int _wrap_new_SeqReaderGfa2Module(PyObject *self, PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  btllib::SeqReaderGfa2Module *result = 0 ;
+  
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_SeqReaderGfa2Module")) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "new_SeqReaderGfa2Module", 0, 0, 0)) SWIG_fail;
+  result = (btllib::SeqReaderGfa2Module *)new btllib::SeqReaderGfa2Module();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeqReaderGfa2Module, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SeqReaderGfa2Module(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeqReaderGfa2Module *arg1 = (btllib::SeqReaderGfa2Module *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "delete_SeqReaderGfa2Module", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReaderGfa2Module, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeqReaderGfa2Module" "', argument " "1"" of type '" "btllib::SeqReaderGfa2Module *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeqReaderGfa2Module * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeqReaderGfa2Module) /* defines _wrap_delete_SeqReaderGfa2Module_destructor_closure */
+
 SWIGINTERN int Swig_var_PRINT_COLOR_INFO_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable PRINT_COLOR_INFO is read-only.");
   return 1;
@@ -25078,6 +25234,218 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__SeqReader__RecordIterator_type = 
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeqReader__RecordIterator_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReader__RecordIterator_type};
 
+static SwigPyGetSet SeqReaderSamModule___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__SeqReaderSamModule_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &SeqReaderSamModule___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__SeqReaderSamModule_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeqReaderSamModule_methods[] = {
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__SeqReaderSamModule_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.SeqReaderSamModule",              /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_SeqReaderSamModule_destructor_closure,           /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__SeqReaderSamModule_type.as_number,    /* tp_as_number */
+    &SwigPyBuiltin__btllib__SeqReaderSamModule_type.as_sequence,  /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__SeqReaderSamModule_type.as_mapping,   /* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__SeqReaderSamModule_type.as_buffer,    /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::SeqReaderSamModule",             /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__SeqReaderSamModule_richcompare,        /* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__SeqReaderSamModule_methods,            /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__SeqReaderSamModule_getset,             /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_SeqReaderSamModule,             /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeqReaderSamModule_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReaderSamModule_type};
+
 static SwigPyGetSet BloomFilter___dict___getset = { SwigPyObject_get___dict__, 0 };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__BloomFilter_getset[] = {
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &BloomFilter___dict___getset },
@@ -26628,6 +26996,430 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__Indexlr__Record_type = {
 };
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__Indexlr__Record_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__Indexlr__Record_type};
+
+static SwigPyGetSet SeqReaderFastqModule___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__SeqReaderFastqModule_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &SeqReaderFastqModule___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__SeqReaderFastqModule_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeqReaderFastqModule_methods[] = {
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__SeqReaderFastqModule_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.SeqReaderFastqModule",            /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_SeqReaderFastqModule_destructor_closure,         /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__SeqReaderFastqModule_type.as_number,  /* tp_as_number */
+    &SwigPyBuiltin__btllib__SeqReaderFastqModule_type.as_sequence,/* tp_as_sequence */
+    &SwigPyBuiltin__btllib__SeqReaderFastqModule_type.as_mapping, /* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__SeqReaderFastqModule_type.as_buffer,  /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::SeqReaderFastqModule",           /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__SeqReaderFastqModule_richcompare,      /* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__SeqReaderFastqModule_methods,          /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__SeqReaderFastqModule_getset,           /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_SeqReaderFastqModule,           /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeqReaderFastqModule_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReaderFastqModule_type};
+
+static SwigPyGetSet SeqReaderFastaModule___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__SeqReaderFastaModule_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &SeqReaderFastaModule___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__SeqReaderFastaModule_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeqReaderFastaModule_methods[] = {
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__SeqReaderFastaModule_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.SeqReaderFastaModule",            /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_SeqReaderFastaModule_destructor_closure,         /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__SeqReaderFastaModule_type.as_number,  /* tp_as_number */
+    &SwigPyBuiltin__btllib__SeqReaderFastaModule_type.as_sequence,/* tp_as_sequence */
+    &SwigPyBuiltin__btllib__SeqReaderFastaModule_type.as_mapping, /* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__SeqReaderFastaModule_type.as_buffer,  /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::SeqReaderFastaModule",           /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__SeqReaderFastaModule_richcompare,      /* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__SeqReaderFastaModule_methods,          /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__SeqReaderFastaModule_getset,           /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_SeqReaderFastaModule,           /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeqReaderFastaModule_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReaderFastaModule_type};
 
 static SwigPyGetSet NtHash___dict___getset = { SwigPyObject_get___dict__, 0 };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__NtHash_getset[] = {
@@ -28369,6 +29161,218 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__DataStreamPipeline_type = {
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__DataStreamPipeline_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__DataStreamPipeline_type};
 
+static SwigPyGetSet SeqReaderGfa2Module___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__SeqReaderGfa2Module_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &SeqReaderGfa2Module___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__SeqReaderGfa2Module_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeqReaderGfa2Module_methods[] = {
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__SeqReaderGfa2Module_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.SeqReaderGfa2Module",             /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_SeqReaderGfa2Module_destructor_closure,          /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__SeqReaderGfa2Module_type.as_number,   /* tp_as_number */
+    &SwigPyBuiltin__btllib__SeqReaderGfa2Module_type.as_sequence, /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__SeqReaderGfa2Module_type.as_mapping,  /* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__SeqReaderGfa2Module_type.as_buffer,   /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::SeqReaderGfa2Module",            /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__SeqReaderGfa2Module_richcompare,       /* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__SeqReaderGfa2Module_methods,           /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__SeqReaderGfa2Module_getset,            /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_SeqReaderGfa2Module,            /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeqReaderGfa2Module_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReaderGfa2Module_type};
+
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
@@ -28457,6 +29461,10 @@ static swig_type_info _swigt__p_btllib__NtHash = {"_p_btllib__NtHash", "btllib::
 static swig_type_info _swigt__p_btllib__SeedBloomFilter = {"_p_btllib__SeedBloomFilter", "btllib::SeedBloomFilter *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeedBloomFilter_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeedNtHash = {"_p_btllib__SeedNtHash", "btllib::SeedNtHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeedNtHash_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeqReader = {"_p_btllib__SeqReader", "btllib::SeqReader *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqReader_clientdata, 0};
+static swig_type_info _swigt__p_btllib__SeqReaderFastaModule = {"_p_btllib__SeqReaderFastaModule", "btllib::SeqReaderFastaModule *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqReaderFastaModule_clientdata, 0};
+static swig_type_info _swigt__p_btllib__SeqReaderFastqModule = {"_p_btllib__SeqReaderFastqModule", "btllib::SeqReaderFastqModule *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqReaderFastqModule_clientdata, 0};
+static swig_type_info _swigt__p_btllib__SeqReaderGfa2Module = {"_p_btllib__SeqReaderGfa2Module", "btllib::SeqReaderGfa2Module *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqReaderGfa2Module_clientdata, 0};
+static swig_type_info _swigt__p_btllib__SeqReaderSamModule = {"_p_btllib__SeqReaderSamModule", "btllib::SeqReaderSamModule *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqReaderSamModule_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeqReader__Flag = {"_p_btllib__SeqReader__Flag", "btllib::SeqReader::Flag *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqReader__Flag_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeqReader__Record = {"_p_btllib__SeqReader__Record", "btllib::SeqReader::Record *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqReader__Record_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeqReader__RecordIterator = {"_p_btllib__SeqReader__RecordIterator", "btllib::SeqReader::RecordIterator *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqReader__RecordIterator_clientdata, 0};
@@ -28558,6 +29566,10 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_btllib__SeedBloomFilter,
   &_swigt__p_btllib__SeedNtHash,
   &_swigt__p_btllib__SeqReader,
+  &_swigt__p_btllib__SeqReaderFastaModule,
+  &_swigt__p_btllib__SeqReaderFastqModule,
+  &_swigt__p_btllib__SeqReaderGfa2Module,
+  &_swigt__p_btllib__SeqReaderSamModule,
   &_swigt__p_btllib__SeqReader__Flag,
   &_swigt__p_btllib__SeqReader__Record,
   &_swigt__p_btllib__SeqReader__RecordIterator,
@@ -28659,6 +29671,10 @@ static swig_cast_info _swigc__p_btllib__NtHash[] = {  {&_swigt__p_btllib__NtHash
 static swig_cast_info _swigc__p_btllib__SeedBloomFilter[] = {  {&_swigt__p_btllib__SeedBloomFilter, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeedNtHash[] = {  {&_swigt__p_btllib__SeedNtHash, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeqReader[] = {  {&_swigt__p_btllib__SeqReader, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__SeqReaderFastaModule[] = {  {&_swigt__p_btllib__SeqReaderFastaModule, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__SeqReaderFastqModule[] = {  {&_swigt__p_btllib__SeqReaderFastqModule, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__SeqReaderGfa2Module[] = {  {&_swigt__p_btllib__SeqReaderGfa2Module, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__SeqReaderSamModule[] = {  {&_swigt__p_btllib__SeqReaderSamModule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeqReader__Flag[] = {  {&_swigt__p_btllib__SeqReader__Flag, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeqReader__Record[] = {  {&_swigt__p_btllib__SeqReader__Record, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeqReader__RecordIterator[] = {  {&_swigt__p_btllib__SeqReader__RecordIterator, 0, 0, 0},{0, 0, 0, 0}};
@@ -28760,6 +29776,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_btllib__SeedBloomFilter,
   _swigc__p_btllib__SeedNtHash,
   _swigc__p_btllib__SeqReader,
+  _swigc__p_btllib__SeqReaderFastaModule,
+  _swigc__p_btllib__SeqReaderFastqModule,
+  _swigc__p_btllib__SeqReaderGfa2Module,
+  _swigc__p_btllib__SeqReaderSamModule,
   _swigc__p_btllib__SeqReader__Flag,
   _swigc__p_btllib__SeqReader__Record,
   _swigc__p_btllib__SeqReader__RecordIterator,
@@ -30024,6 +31044,29 @@ SWIG_init(void) {
   PyModule_AddObject(m, "RecordIterator", (PyObject *)builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "RecordIterator");
   d = md;
+  
+  /* type 'btllib::SeqReaderSamModule' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReaderSamModule_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'SeqReaderSamModule'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "SeqReaderSamModule", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SeqReaderSamModule");
+  d = md;
   SWIG_addvarlink(globals, "BIT_MASKS", Swig_var_BIT_MASKS_get, Swig_var_BIT_MASKS_set);
   PyDict_SetItemString(md, "BIT_MASKS", PyObject_GetAttrString(globals, "BIT_MASKS"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "BIT_MASKS");
@@ -30219,6 +31262,52 @@ SWIG_init(void) {
   Py_INCREF(builtin_pytype);
   PyModule_AddObject(m, "IndexlrRecord", (PyObject *)builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "IndexlrRecord");
+  d = md;
+  
+  /* type 'btllib::SeqReaderFastqModule' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReaderFastqModule_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'SeqReaderFastqModule'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "SeqReaderFastqModule", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SeqReaderFastqModule");
+  d = md;
+  
+  /* type 'btllib::SeqReaderFastaModule' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReaderFastaModule_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'SeqReaderFastaModule'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "SeqReaderFastaModule", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SeqReaderFastaModule");
   d = md;
   SWIG_addvarlink(globals, "CP_OFF", Swig_var_CP_OFF_get, Swig_var_CP_OFF_set);
   PyDict_SetItemString(md, "CP_OFF", PyObject_GetAttrString(globals, "CP_OFF"));
@@ -30533,6 +31622,29 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "PROCESS_SPAWNER_INITIALIZER", Swig_var_PROCESS_SPAWNER_INITIALIZER_get, Swig_var_PROCESS_SPAWNER_INITIALIZER_set);
   PyDict_SetItemString(md, "PROCESS_SPAWNER_INITIALIZER", PyObject_GetAttrString(globals, "PROCESS_SPAWNER_INITIALIZER"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "PROCESS_SPAWNER_INITIALIZER");
+  
+  /* type 'btllib::SeqReaderGfa2Module' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReaderGfa2Module_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'SeqReaderGfa2Module'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "SeqReaderGfa2Module", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SeqReaderGfa2Module");
+  d = md;
   SWIG_addvarlink(globals, "PRINT_COLOR_INFO", Swig_var_PRINT_COLOR_INFO_get, Swig_var_PRINT_COLOR_INFO_set);
   PyDict_SetItemString(md, "PRINT_COLOR_INFO", PyObject_GetAttrString(globals, "PRINT_COLOR_INFO"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "PRINT_COLOR_INFO");

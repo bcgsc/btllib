@@ -70,6 +70,7 @@ $(function() {
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classbtllib_1_1SeqReader-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">btllib::SeqReader Class Reference</div>  </div>
@@ -149,6 +150,21 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a0a5fc7ac4c61f37316065c68fa2dbd81"><td class="memItemLeft" align="right" valign="top"><a id="a0a5fc7ac4c61f37316065c68fa2dbd81"></a>
 static const size_t&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_SIMULTANEOUS_SEQREADERS</b> = 256</td></tr>
 <tr class="separator:a0a5fc7ac4c61f37316065c68fa2dbd81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a1fd84ab8284034fac695b765effe48c8"><td class="memItemLeft" align="right" valign="top"><a id="a1fd84ab8284034fac695b765effe48c8"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>SeqReaderFastaModule</b></td></tr>
+<tr class="separator:a1fd84ab8284034fac695b765effe48c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4abe9e4298313df32f01c153db1fafb8"><td class="memItemLeft" align="right" valign="top"><a id="a4abe9e4298313df32f01c153db1fafb8"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>SeqReaderFastqModule</b></td></tr>
+<tr class="separator:a4abe9e4298313df32f01c153db1fafb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47775cd56d87127dc4b27126bc1949d6"><td class="memItemLeft" align="right" valign="top"><a id="a47775cd56d87127dc4b27126bc1949d6"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>SeqReaderSamModule</b></td></tr>
+<tr class="separator:a47775cd56d87127dc4b27126bc1949d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9ff8dfd327a5ec2486442dab7cfacb2"><td class="memItemLeft" align="right" valign="top"><a id="ab9ff8dfd327a5ec2486442dab7cfacb2"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>SeqReaderGfa2Module</b></td></tr>
+<tr class="separator:ab9ff8dfd327a5ec2486442dab7cfacb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Read a FASTA, FASTQ, SAM, or GFA2 file. Capable of reading gzip (.gz), bzip2 (.bz2), xz (.xz), zip (.zip), 7zip (.7z), lrzip (.lrz), BAM (.bam) and CRAM (.cram), and URL (<a href="http://">http://</a>, <a href="https://">https://</a>, <a href="ftp://">ftp://</a>) files. Threadsafe. </p>
@@ -229,7 +245,7 @@ static const size_t&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_SI
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Read operator. </p>
+<p>Obtain next record. </p>
 
 </div>
 </div>

@@ -42,6 +42,8 @@ public class btllibJNI {
   public final static native void delete_SeqReader_RecordIterator(long jarg1);
   public final static native long SeqReader_begin(long jarg1, SeqReader jarg1_);
   public final static native long SeqReader_end(long jarg1, SeqReader jarg1_);
+  public final static native long new_SeqReaderSamModule();
+  public final static native void delete_SeqReaderSamModule(long jarg1);
   public final static native long BIT_MASKS_get();
   public final static native String KMER_BLOOM_FILTER_MAGIC_HEADER_get();
   public final static native String SEED_BLOOM_FILTER_MAGIC_HEADER_get();
@@ -179,6 +181,10 @@ public class btllibJNI {
   public final static native long Indexlr_MAX_SIMULTANEOUS_INDEXLRS_get();
   public final static native void filter_hashed_kmer(long jarg1, Indexlr.Minimizer jarg1_, boolean jarg2, boolean jarg3, long jarg4, BloomFilter jarg4_, long jarg5, BloomFilter jarg5_);
   public final static native void calc_minimizer(long jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8);
+  public final static native long new_SeqReaderFastqModule();
+  public final static native void delete_SeqReaderFastqModule(long jarg1);
+  public final static native long new_SeqReaderFastaModule();
+  public final static native void delete_SeqReaderFastaModule(long jarg1);
   public final static native long CP_OFF_get();
   public final static native int MULTISHIFT_get();
   public final static native long MULTISEED_get();
@@ -351,6 +357,8 @@ public class btllibJNI {
   public final static native String extract_stdout_file(long jarg1);
   public final static native void chain_read(long jarg1, long jarg2, long jarg3, int jarg4, long jarg5, long jarg6);
   public final static native void chain_write(long jarg1, long jarg2, long jarg3, int jarg4, long jarg5, long jarg6, boolean jarg7, String jarg8);
+  public final static native long new_SeqReaderGfa2Module();
+  public final static native void delete_SeqReaderGfa2Module(long jarg1);
   public final static native String PRINT_COLOR_INFO_get();
   public final static native String PRINT_COLOR_WARNING_get();
   public final static native String PRINT_COLOR_ERROR_get();

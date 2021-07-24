@@ -233,14 +233,18 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 
 
 #include "btllib/seq_reader.hpp"
+#include "btllib/seq_reader_sam_module.hpp"
 #include "btllib/bloom_filter.hpp"
 #include "btllib/seq.hpp"
 #include "btllib/counting_bloom_filter.hpp"
 #include "btllib/indexlr.hpp"
+#include "btllib/seq_reader_fastq_module.hpp"
+#include "btllib/seq_reader_fasta_module.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/seq_writer.hpp"
 #include "btllib/data_stream.hpp"
 #include "btllib/cstring.hpp"
+#include "btllib/seq_reader_gfa2_module.hpp"
 #include "btllib/order_queue.hpp"
 #include "btllib/graph.hpp"
 #include "btllib/status.hpp"
@@ -747,6 +751,28 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1end(JNIEnv *jenv, jcla
   result = (arg1)->end();
   *(btllib::SeqReader::RecordIterator **)&jresult = new btllib::SeqReader::RecordIterator((const btllib::SeqReader::RecordIterator &)result); 
   return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReaderSamModule(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReaderSamModule *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReaderSamModule *)new btllib::SeqReaderSamModule();
+  *(btllib::SeqReaderSamModule **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReaderSamModule(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReaderSamModule *arg1 = (btllib::SeqReaderSamModule *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReaderSamModule **)&jarg1; 
+  delete arg1;
 }
 
 
@@ -3155,6 +3181,50 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_calc_1minimizer(JNIEnv *jenv, jcla
     return ;
   } 
   btllib::calc_minimizer((std::vector< btllib::Indexlr::Minimizer > const &)*arg1,(btllib::Indexlr::Minimizer const *&)*arg2,arg3,*arg4,*arg5,*arg6,arg7,*arg8);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReaderFastqModule(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReaderFastqModule *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReaderFastqModule *)new btllib::SeqReaderFastqModule();
+  *(btllib::SeqReaderFastqModule **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReaderFastqModule(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReaderFastqModule *arg1 = (btllib::SeqReaderFastqModule *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReaderFastqModule **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReaderFastaModule(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReaderFastaModule *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReaderFastaModule *)new btllib::SeqReaderFastaModule();
+  *(btllib::SeqReaderFastaModule **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReaderFastaModule(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReaderFastaModule *arg1 = (btllib::SeqReaderFastaModule *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReaderFastaModule **)&jarg1; 
+  delete arg1;
 }
 
 
@@ -6505,6 +6575,28 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_chain_1write(JNIEnv *jenv, jclass 
   btllib::chain_write(arg1,arg2,(char *const *)arg3,arg4,arg5,arg6,arg7,(std::string const &)*arg8);
   
   
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReaderGfa2Module(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReaderGfa2Module *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReaderGfa2Module *)new btllib::SeqReaderGfa2Module();
+  *(btllib::SeqReaderGfa2Module **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReaderGfa2Module(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReaderGfa2Module *arg1 = (btllib::SeqReaderGfa2Module *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReaderGfa2Module **)&jarg1; 
+  delete arg1;
 }
 
 
