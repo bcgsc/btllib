@@ -352,7 +352,7 @@ SeqReader::determine_format()
     return;
   }
 
-  const auto buf = buffer.data.data() + buffer.start;
+  auto* const buf = buffer.data.data() + buffer.start;
   const auto bufsize = buffer.end - buffer.start;
 
   if (fasta_module.buffer_valid(buf, bufsize)) {

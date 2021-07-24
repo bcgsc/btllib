@@ -24,7 +24,7 @@ private:
   Stage stage = Stage::HEADER;
   CString tmp;
 
-  bool buffer_valid(const char* buffer, const size_t size) const;
+  static bool buffer_valid(const char* buffer, size_t size);
   template<typename ReaderType, typename RecordType>
   bool read_buffer(ReaderType& reader, RecordType& record);
   template<typename ReaderType, typename RecordType>
@@ -34,7 +34,7 @@ private:
 };
 
 inline bool
-SeqReaderFastqModule::buffer_valid(const char* buffer, const size_t size) const
+SeqReaderFastqModule::buffer_valid(const char* buffer, const size_t size)
 {
   size_t current = 0;
   unsigned char c;
