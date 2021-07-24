@@ -256,7 +256,7 @@ private:
   friend class SeqReaderSamModule;
   SeqReaderSamModule sam_module;
 
-  friend class SeqReaderGfaModule;
+  friend class SeqReaderGfa2Module;
   SeqReaderGfa2Module gfa2_module;
 
   void postprocess();
