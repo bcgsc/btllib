@@ -19,7 +19,20 @@ get_random_seq(size_t size) {
   static auto gen_random_actg = std::bind(distribution_actg, random_generator);
   std::string seq;
   for (size_t i = 0; i < size; i++) {
-    seq += "ACTG"[(gen_random_actg())];
+    seq += "ACTG"[gen_random_actg()];
+  }
+  return seq;
+}
+
+inline std::string
+split_seq_multiline(std::string seq) {
+  static std::default_random_engine random_generator2(std::chrono::system_clock::now().time_since_epoch().count() + 9999998);
+  static std::uniform_real_distribution<double> distribution_newline(0.0, 1.0);
+  static auto gen_random_newline = std::bind(distribution_newline, random_generator2);
+  for (size_t i = 1; i < seq.size(); i++) {
+    if (gen_random_newline() <= 0.012 && seq[i - 1] != '\n') {
+      seq.insert(i, "\n");
+    }
   }
   return seq;
 }

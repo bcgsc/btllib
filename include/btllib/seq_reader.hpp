@@ -8,6 +8,7 @@
 #include "seq_reader_fasta_module.hpp"
 #include "seq_reader_fastq_module.hpp"
 #include "seq_reader_gfa2_module.hpp"
+#include "seq_reader_multiline_fasta_module.hpp"
 #include "seq_reader_sam_module.hpp"
 #include "status.hpp"
 
@@ -86,6 +87,7 @@ public:
   {
     UNDETERMINED,
     FASTA,
+    MULTILINE_FASTA,
     FASTQ,
     SAM,
     GFA2,
@@ -227,6 +229,10 @@ private:
   bool readline_buffer_append(CString& s);
   void readline_file(CString& s);
   void readline_file_append(CString& s);
+  int getc_buffer();
+  int getc_file();
+  int ungetc_buffer(int c);
+  int ungetc_file(int c);
 
   inline void write_cstring_records(
     OrderQueueSPMC<RecordCString>::Block& records,
@@ -249,6 +255,9 @@ private:
 
   friend class SeqReaderFastaModule;
   SeqReaderFastaModule fasta_module;
+
+  friend class SeqReaderMultilineFastaModule;
+  SeqReaderMultilineFastaModule multiline_fasta_module;
 
   friend class SeqReaderFastqModule;
   SeqReaderFastqModule fastq_module;
@@ -357,6 +366,8 @@ SeqReader::determine_format()
 
   if (fasta_module.buffer_valid(buf, bufsize)) {
     format = Format::FASTA;
+  } else if (multiline_fasta_module.buffer_valid(buf, bufsize)) {
+    format = Format::MULTILINE_FASTA;
   } else if (fastq_module.buffer_valid(buf, bufsize)) {
     format = Format::FASTQ;
   } else if (sam_module.buffer_valid(buf, bufsize)) {
@@ -409,6 +420,37 @@ SeqReader::readline_file_append(CString& s)
   s.s_size += tmp.s_size;
 }
 
+inline int
+SeqReader::getc_buffer()
+{
+  if (buffer.start < buffer.end) {
+    return buffer.data[buffer.start++];
+  }
+  return EOF;
+}
+
+inline int
+SeqReader::getc_file()
+{
+  return std::getc(source);
+}
+
+inline int
+SeqReader::ungetc_buffer(const int c)
+{
+  if (buffer.start > 0) {
+    buffer.data[--buffer.start] = int(c);
+    return c;
+  }
+  return EOF;
+}
+
+inline int
+SeqReader::ungetc_file(const int c)
+{
+  return std::ungetc(c, source);
+}
+
 inline void
 SeqReader::write_cstring_records(OrderQueueSPMC<RecordCString>::Block& records,
                                  size_t& counter)
@@ -430,16 +472,20 @@ SeqReader::read_from_buffer(Module& module,
                             OrderQueueSPMC<RecordCString>::Block& records,
                             size_t& counter)
 {
+  reader_record = &(records.data[records.count]);
+  reader_record->header.clear();
+  reader_record->seq.clear();
+  reader_record->qual.clear();
   for (; buffer.start < buffer.end && !reader_end;) {
-    reader_record = &(records.data[records.count]);
-    reader_record->header.clear();
-    reader_record->seq.clear();
-    reader_record->qual.clear();
     if (!module.read_buffer(*this, *reader_record) ||
         reader_record->seq.empty()) {
       break;
     }
     write_cstring_records(records, counter);
+    reader_record = &(records.data[records.count]);
+    reader_record->header.clear();
+    reader_record->seq.clear();
+    reader_record->qual.clear();
   }
 }
 
@@ -459,6 +505,8 @@ SeqReader::read_transition(Module& module,
         write_cstring_records(records, counter);
       }
     }
+  } else if (!reader_record->seq.empty()) {
+    write_cstring_records(records, counter);
   }
 }
 
@@ -500,6 +548,7 @@ SeqReader::start_reader()
     decltype(cstring_queue)::Block records(block_size);
     switch (format) {
       BTLLIB_SEQREADER_FORMAT_READ(FASTA, fasta_module)
+      BTLLIB_SEQREADER_FORMAT_READ(MULTILINE_FASTA, multiline_fasta_module)
       BTLLIB_SEQREADER_FORMAT_READ(FASTQ, fastq_module)
       BTLLIB_SEQREADER_FORMAT_READ(SAM, sam_module)
       BTLLIB_SEQREADER_FORMAT_READ(GFA2, gfa2_module)
@@ -568,7 +617,10 @@ SeqReader::start_processors()
               }
             }
             size_t id_start =
-              (format == Format::FASTA || format == Format::FASTQ) ? 1 : 0;
+              (format == Format::FASTA || format == Format::MULTILINE_FASTA ||
+               format == Format::FASTQ)
+                ? 1
+                : 0;
 
             if (first_whitespace == nullptr) {
               records_out.data[i].id =

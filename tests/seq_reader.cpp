@@ -56,6 +56,21 @@ main()
       }
     }
 
+    // Test multiline FASTA
+    std::cerr << "Test multiline FASTA" << std::endl;
+    btllib::SeqReader reader_multiline_fasta(
+      "../tests/input_multiline.fa", btllib::SeqReader::Flag::SHORT_MODE);
+
+    assert(reader_multiline_fasta.get_format() ==
+           btllib::SeqReader::Format::MULTILINE_FASTA);
+
+    i = 0;
+    while ((record = reader_multiline_fasta.read())) {
+      assert(record.seq == seqs[i]);
+      i++;
+    }
+    assert(i == 2);
+
     // Test SAM
     std::cerr << "Test SAM" << std::endl;
     btllib::SeqReader reader_sam("../tests/input.bam",
@@ -87,8 +102,8 @@ main()
     }
     assert(i == 2);
 
-    // Test larger randomly generated file
-    std::cerr << "Test random file" << std::endl;
+    // Test larger randomly generated FASTQ file
+    std::cerr << "Test random FASTQ file" << std::endl;
     std::vector<std::string> generated_ids;
     std::vector<std::string> generated_comments;
     std::vector<std::string> generated_seqs;
@@ -128,7 +143,7 @@ main()
 
     random_reader.close();
 
-    std::cerr << "Test random file in parallel" << std::endl;
+    std::cerr << "Test random FASTQ file in parallel" << std::endl;
     std::vector<long> read_nums;
 
     std::vector<std::string> parallel_ids;
@@ -175,6 +190,35 @@ main()
     assert(size_t(i) == read_nums.size());
 
     std::remove(random_filename.c_str());
+
+    // Test larger randomly generated multiline FASTA file
+    std::cerr << "Test random multiline FASTA file" << std::endl;
+    random_filename = get_random_name(64);
+    std::ofstream random_seqs_multiline(random_filename);
+    for (int s = 0; s < 500; s++) {
+      std::string seq_multiline;
+
+      seq_multiline = split_seq_multiline(generated_seqs[s]);
+
+      random_seqs_multiline << '>' << generated_ids[s] << ' ' << generated_comments[s] << '\n' << seq_multiline << '\n';
+    }
+    random_seqs_multiline.close();
+    std::cerr << random_filename << std::endl;
+
+    btllib::SeqReader random_reader_multiline(random_filename,
+                                    btllib::SeqReader::Flag::LONG_MODE);
+    assert(random_reader_multiline.get_format() == btllib::SeqReader::Format::MULTILINE_FASTA);
+    for (i = 0; (record = random_reader_multiline.read()); i++) {
+      assert(record.id == generated_ids[i]);
+      assert(record.comment == generated_comments[i]);
+      if (record.seq != generated_seqs[i]) {
+        std::cerr << record.seq << '\n' << generated_seqs[i] << std::endl;
+      }
+      assert(record.seq == generated_seqs[i]);
+    }
+    assert(i == 500);
+
+    random_reader_multiline.close();
   }
 
   return 0;
