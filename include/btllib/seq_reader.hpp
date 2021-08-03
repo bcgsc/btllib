@@ -439,7 +439,7 @@ inline int
 SeqReader::ungetc_buffer(const int c)
 {
   if (buffer.start > 0) {
-    buffer.data[--buffer.start] = int(c);
+    buffer.data[--buffer.start] = char(c);
     return c;
   }
   return EOF;

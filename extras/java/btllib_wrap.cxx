@@ -240,6 +240,7 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #include "btllib/indexlr.hpp"
 #include "btllib/seq_reader_fastq_module.hpp"
 #include "btllib/seq_reader_fasta_module.hpp"
+#include "btllib/seq_reader_multiline_fasta_module.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/seq_writer.hpp"
 #include "btllib/data_stream.hpp"
@@ -3224,6 +3225,28 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReaderFastaModule(JNIEn
   (void)jenv;
   (void)jcls;
   arg1 = *(btllib::SeqReaderFastaModule **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReaderMultilineFastaModule(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  btllib::SeqReaderMultilineFastaModule *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (btllib::SeqReaderMultilineFastaModule *)new btllib::SeqReaderMultilineFastaModule();
+  *(btllib::SeqReaderMultilineFastaModule **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReaderMultilineFastaModule(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::SeqReaderMultilineFastaModule *arg1 = (btllib::SeqReaderMultilineFastaModule *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::SeqReaderMultilineFastaModule **)&jarg1; 
   delete arg1;
 }
 

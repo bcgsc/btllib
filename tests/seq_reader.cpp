@@ -200,14 +200,17 @@ main()
 
       seq_multiline = split_seq_multiline(generated_seqs[s]);
 
-      random_seqs_multiline << '>' << generated_ids[s] << ' ' << generated_comments[s] << '\n' << seq_multiline << '\n';
+      random_seqs_multiline << '>' << generated_ids[s] << ' '
+                            << generated_comments[s] << '\n'
+                            << seq_multiline << '\n';
     }
     random_seqs_multiline.close();
     std::cerr << random_filename << std::endl;
 
-    btllib::SeqReader random_reader_multiline(random_filename,
-                                    btllib::SeqReader::Flag::LONG_MODE);
-    assert(random_reader_multiline.get_format() == btllib::SeqReader::Format::MULTILINE_FASTA);
+    btllib::SeqReader random_reader_multiline(
+      random_filename, btllib::SeqReader::Flag::LONG_MODE);
+    assert(random_reader_multiline.get_format() ==
+           btllib::SeqReader::Format::MULTILINE_FASTA);
     for (i = 0; (record = random_reader_multiline.read()); i++) {
       assert(record.id == generated_ids[i]);
       assert(record.comment == generated_comments[i]);

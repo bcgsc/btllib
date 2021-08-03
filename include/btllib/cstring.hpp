@@ -131,7 +131,8 @@ struct CString
   size_t size() const { return s_size; }
   char& front() const { return s[0]; }
   char& back() const { return s[s_size - 1]; }
-  void pop_back() {
+  void pop_back()
+  {
     s_size -= 1;
     s[s_size] = '\0';
   }

@@ -102,7 +102,9 @@ SeqReaderMultilineFastaModule::read_buffer(ReaderType& reader,
         if (!reader.readline_buffer_append(record.seq)) {
           return false;
         }
-        if (record.seq.back() == '\n') { record.seq.pop_back(); }
+        if (record.seq.back() == '\n') {
+          record.seq.pop_back();
+        }
         stage = Stage::TRANSITION;
       }
       // fall through
@@ -124,7 +126,9 @@ SeqReaderMultilineFastaModule::read_buffer(ReaderType& reader,
           if (!reader.readline_buffer_append(record.seq)) {
             return false;
           }
-          if (record.seq.back() == '\n') { record.seq.pop_back(); }
+          if (record.seq.back() == '\n') {
+            record.seq.pop_back();
+          }
           stage = Stage::TRANSITION;
         }
         break;
@@ -153,7 +157,9 @@ SeqReaderMultilineFastaModule::read_transition(ReaderType& reader,
       // fall through
       case Stage::SEQ: {
         reader.readline_file_append(record.seq);
-        if (record.seq.back() == '\n') { record.seq.pop_back(); }
+        if (record.seq.back() == '\n') {
+          record.seq.pop_back();
+        }
         stage = Stage::TRANSITION;
       }
       // fall through
@@ -173,7 +179,9 @@ SeqReaderMultilineFastaModule::read_transition(ReaderType& reader,
       case Stage::TRANSITION_SEQ: {
         if (stage == Stage::TRANSITION_SEQ) {
           reader.readline_file_append(record.seq);
-          if (record.seq.back() == '\n') { record.seq.pop_back(); }
+          if (record.seq.back() == '\n') {
+            record.seq.pop_back();
+          }
           stage = Stage::TRANSITION;
         }
         break;
@@ -193,7 +201,9 @@ SeqReaderMultilineFastaModule::read_file(ReaderType& reader, RecordType& record)
   reader.readline_file(record.header);
   int c;
   reader.readline_file(record.seq);
-  if (record.seq.back() == '\n') { record.seq.pop_back(); }
+  if (record.seq.back() == '\n') {
+    record.seq.pop_back();
+  }
   for (;;) {
     c = reader.getc_file();
     if (c == EOF) {
@@ -204,7 +214,9 @@ SeqReaderMultilineFastaModule::read_file(ReaderType& reader, RecordType& record)
       break;
     }
     reader.readline_file_append(record.seq);
-    if (record.seq.back() == '\n') { record.seq.pop_back(); }
+    if (record.seq.back() == '\n') {
+      record.seq.pop_back();
+    }
   }
 }
 /// @endcond

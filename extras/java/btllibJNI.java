@@ -185,6 +185,8 @@ public class btllibJNI {
   public final static native void delete_SeqReaderFastqModule(long jarg1);
   public final static native long new_SeqReaderFastaModule();
   public final static native void delete_SeqReaderFastaModule(long jarg1);
+  public final static native long new_SeqReaderMultilineFastaModule();
+  public final static native void delete_SeqReaderMultilineFastaModule(long jarg1);
   public final static native long CP_OFF_get();
   public final static native int MULTISHIFT_get();
   public final static native long MULTISEED_get();
