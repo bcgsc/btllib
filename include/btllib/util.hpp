@@ -12,6 +12,8 @@ namespace btllib {
 
 inline std::vector<std::string>
 split(const std::string& s, const std::string& delim);
+inline std::string
+join(const std::vector<std::string>& s, const std::string& delim);
 inline void
 ltrim(std::string& s);
 inline void
@@ -35,6 +37,17 @@ split(const std::string& s, const std::string& delim)
   }
   tokens.push_back(s.substr(pos1));
   return tokens;
+}
+
+inline std::string
+join(const std::vector<std::string>& s, const std::string& delim)
+{
+  std::string joined = s[0];
+  for (size_t i = 1; i < s.size(); i++) {
+    joined += delim;
+    joined += s[i];
+  }
+  return joined;
 }
 
 inline void
