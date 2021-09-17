@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['seedbloomfilter_71',['SeedBloomFilter',['../classbtllib_1_1SeedBloomFilter.html',1,'btllib']]],
-  ['seednthash_72',['SeedNtHash',['../classbtllib_1_1SeedNtHash.html',1,'btllib']]],
-  ['seqreader_73',['SeqReader',['../classbtllib_1_1SeqReader.html',1,'btllib']]],
-  ['seqwriter_74',['SeqWriter',['../classbtllib_1_1SeqWriter.html',1,'btllib']]]
+  ['record_0',['Record',['../structbtllib_1_1Indexlr_1_1Record.html',1,'btllib::Indexlr::Record'],['../structbtllib_1_1SeqReader_1_1Record.html',1,'btllib::SeqReader::Record']]],
+  ['recorditerator_1',['RecordIterator',['../classbtllib_1_1SeqReader_1_1RecordIterator.html',1,'btllib::SeqReader']]]
 ];

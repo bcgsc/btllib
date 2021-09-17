@@ -1,3 +1,6 @@
+%ignore btllib::ProcessPipeline;
+%ignore btllib::IORedirection;
+
 %ignore btllib::KmerSet::insert(const char*);
 %ignore btllib::KmerSet::contains(const char*);
 

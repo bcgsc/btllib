@@ -1,3 +1,9 @@
+%ignore btllib::ProcessPipeline;
+%ignore btllib::ProcessPipeline::in;
+
+%ignore btllib::IORedirection;
+%ignore btllib::IORedirection::in;
+
 %rename(__str__) btllib::Graph::to_string;
 %feature("python:slot", "tp_str", functype="reprfunc") btllib::Graph::to_string;
 %rename(__bool__) btllib::SeqReader::Record::operator bool;
