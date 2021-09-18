@@ -293,7 +293,11 @@ open_comm_pipes(
 
       unlink(pipepath.c_str());
 
-      fcntl(pipe_fd, F_SETFL, fcntl(pipe_fd, F_GETFL) & ~O_NONBLOCK);
+      const auto status_flags = fcntl(pipe_fd, F_GETFL);
+      check_error(status_flags == -1,
+                  "Process pipeline: fcntl error: " + get_strerror());
+      check_error(fcntl(pipe_fd, F_SETFL, status_flags & ~O_NONBLOCK) == -1,
+                  "Process pipeline: fcntl error: " + get_strerror());
       write_to_user(&confirmation, sizeof(confirmation));
     } else {
       len = 0;
@@ -532,6 +536,8 @@ run_cmd()
   check_error(individual_cmds.empty(), "Process spawner: Invalid command.");
   std::for_each(individual_cmds.begin(), individual_cmds.end(), trim);
 
+  const auto original_cmds = individual_cmds;
+
   std::vector<IORedirection> redirections;
   size_t idx = 0;
   for (auto& cmd : individual_cmds) {
@@ -576,7 +582,6 @@ run_cmd()
                      args.end(),
                      [](const std::string& arg) { return arg.empty(); }),
       args.end());
-    const auto args_with_quotes = args;
     std::for_each(args.begin(), args.end(), [](std::string& s) {
       if ((startswith(s, "'") && endswith(s, "'")) ||
           (startswith(s, "\"") && endswith(s, "\""))) {
@@ -588,8 +593,12 @@ run_cmd()
     if (idx > 0) {
       check_error(pipe(chainpipe_in_fd) == -1,
                   "Process pipeline: Error opening a pipe.");
-      fcntl(chainpipe_in_fd[PIPE_READ_END], F_SETFD, FD_CLOEXEC);
-      fcntl(chainpipe_in_fd[PIPE_WRITE_END], F_SETFD, FD_CLOEXEC);
+      check_error(fcntl(chainpipe_in_fd[PIPE_READ_END], F_SETFD, FD_CLOEXEC) ==
+                    -1,
+                  "Process pipeline: fcntl error: " + get_strerror());
+      check_error(fcntl(chainpipe_in_fd[PIPE_WRITE_END], F_SETFD, FD_CLOEXEC) ==
+                    -1,
+                  "Process pipeline: fcntl error: " + get_strerror());
     }
 
     pid_t pid = fork();
@@ -609,7 +618,7 @@ run_cmd()
     }
     check_error(pid == -1, "Process pipeline: Error on fork.");
 
-    pipeline.cmds.emplace_back(join(args_with_quotes, " "), pid);
+    pipeline.cmds.emplace_back(original_cmds[idx], pid);
 
     if (idx < last_idx) {
       check_error(close(chainpipe_out_fd[PIPE_READ_END]) != 0,
@@ -743,7 +752,11 @@ inline ProcessPipeline::ProcessPipeline(const std::string& cmd)
         read_from_spawner(&confirmation, sizeof(confirmation));
       }
 
-      fcntl(pipe_fd, F_SETFL, fcntl(pipe_fd, F_GETFL) & ~O_NONBLOCK);
+      const auto status_flags = fcntl(pipe_fd, F_GETFL);
+      check_error(status_flags == -1,
+                  "Process pipeline: fcntl error: " + get_strerror());
+      check_error(fcntl(pipe_fd, F_SETFL, status_flags & ~O_NONBLOCK) == -1,
+                  "Process pipeline: fcntl error: " + get_strerror());
       read_from_spawner(&confirmation, sizeof(confirmation));
 
       (*(handles[i])) = fdopen(pipe_fd, modes[i]);
