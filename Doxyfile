@@ -933,7 +933,7 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = include/btllib/index_queue.hpp \
+EXCLUDE                = include/btllib/order_queue.hpp \
                          include/btllib/data_stream.hpp \
                          include/btllib/cstring.hpp
 

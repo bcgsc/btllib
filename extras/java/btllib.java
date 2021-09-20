@@ -104,6 +104,10 @@ public class btllib {
     return btllibJNI.new_pipe_id();
   }
 
+  public static SWIGTYPE_p_std__string pipepath_prefix() {
+    return new SWIGTYPE_p_std__string(btllibJNI.pipepath_prefix(), false);
+  }
+
   public static long new_pipeline_id() {
     return btllibJNI.new_pipeline_id();
   }
@@ -120,8 +124,8 @@ public class btllib {
     return btllibJNI.PROCESS_PIPELINE_INITIALIZER_get();
   }
 
-  public static String get_pipename(long id) {
-    return btllibJNI.get_pipename(id);
+  public static String get_pipepath(long id) {
+    return btllibJNI.get_pipepath(id);
   }
 
   public static SWIGTYPE_p_btllib__IORedirection extract_io_redirection(SWIGTYPE_p_std__string cmd) {
@@ -174,6 +178,10 @@ public class btllib {
 
   public static void open_redirection_files(SWIGTYPE_p_btllib__IORedirection redirection, SWIGTYPE_p_int in_fd, SWIGTYPE_p_int out_fd, SWIGTYPE_p_int err_fd) {
     btllibJNI.open_redirection_files(SWIGTYPE_p_btllib__IORedirection.getCPtr(redirection), SWIGTYPE_p_int.getCPtr(in_fd), SWIGTYPE_p_int.getCPtr(out_fd), SWIGTYPE_p_int.getCPtr(err_fd));
+  }
+
+  public static void set_pipepath_prefix() {
+    btllibJNI.set_pipepath_prefix();
   }
 
   public static void closefile(SWIGTYPE_p_p_FILE f) {

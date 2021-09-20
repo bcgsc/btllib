@@ -2336,6 +2336,18 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1pipe_1id(JNIEnv *jenv, jclas
 }
 
 
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_pipepath_1prefix(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  std::string *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (std::string *) &btllib::pipepath_prefix();
+  *(std::string **)&jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1pipeline_1id(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   btllib::PipelineId result;
@@ -2384,7 +2396,7 @@ SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_PROCESS_1PIPELINE_1INITIALIZER
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_get_1pipename(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_get_1pipepath(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jstring jresult = 0 ;
   btllib::PipeId arg1 ;
   std::string result;
@@ -2392,7 +2404,7 @@ SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_get_1pipename(JNIEnv *jenv, jcl
   (void)jenv;
   (void)jcls;
   arg1 = (btllib::PipeId)jarg1; 
-  result = btllib::get_pipename(arg1);
+  result = btllib::get_pipepath(arg1);
   jresult = jenv->NewStringUTF((&result)->c_str()); 
   return jresult;
 }
@@ -2631,6 +2643,13 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_open_1redirection_1files(JNIEnv *j
     return ;
   } 
   btllib::open_redirection_files((btllib::IORedirection const &)*arg1,*arg2,*arg3,*arg4);
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_set_1pipepath_1prefix(JNIEnv *jenv, jclass jcls) {
+  (void)jenv;
+  (void)jcls;
+  btllib::set_pipepath_prefix();
 }
 
 

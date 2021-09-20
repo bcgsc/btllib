@@ -14152,6 +14152,19 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_pipepath_prefix(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "pipepath_prefix", 0, 0, 0)) SWIG_fail;
+  result = (std::string *) &btllib::pipepath_prefix();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__string, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_pipeline_id(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::PipelineId result;
@@ -14207,7 +14220,7 @@ SWIGINTERN PyObject *Swig_var_PROCESS_PIPELINE_INITIALIZER_get(void) {
 }
 
 
-SWIGINTERN PyObject *_wrap_get_pipename(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_get_pipepath(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::PipeId arg1 ;
   unsigned long val1 ;
@@ -14219,10 +14232,10 @@ SWIGINTERN PyObject *_wrap_get_pipename(PyObject *self, PyObject *args) {
   swig_obj[0] = args;
   ecode1 = SWIG_AsVal_unsigned_SS_long(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_pipename" "', argument " "1"" of type '" "btllib::PipeId""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "get_pipepath" "', argument " "1"" of type '" "btllib::PipeId""'");
   } 
   arg1 = static_cast< btllib::PipeId >(val1);
-  result = btllib::get_pipename(arg1);
+  result = btllib::get_pipepath(arg1);
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
@@ -14700,6 +14713,18 @@ SWIGINTERN PyObject *_wrap_open_redirection_files(PyObject *self, PyObject *args
   }
   arg4 = reinterpret_cast< int * >(argp4);
   btllib::open_redirection_files((btllib::IORedirection const &)*arg1,*arg2,*arg3,*arg4);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_set_pipepath_prefix(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  
+  if (!SWIG_Python_UnpackTuple(args, "set_pipepath_prefix", 0, 0, 0)) SWIG_fail;
+  btllib::set_pipepath_prefix();
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -22693,10 +22718,11 @@ static PyMethodDef SwigMethods[] = {
 	 { "process_spawner_spawner2user_fd", _wrap_process_spawner_spawner2user_fd, METH_NOARGS, NULL},
 	 { "process_spawner_comm_mutex", _wrap_process_spawner_comm_mutex, METH_NOARGS, NULL},
 	 { "new_pipe_id", _wrap_new_pipe_id, METH_NOARGS, NULL},
+	 { "pipepath_prefix", _wrap_pipepath_prefix, METH_NOARGS, NULL},
 	 { "new_pipeline_id", _wrap_new_pipeline_id, METH_NOARGS, NULL},
 	 { "pipeline_map", _wrap_pipeline_map, METH_NOARGS, NULL},
 	 { "process_spawner_init", _wrap_process_spawner_init, METH_NOARGS, NULL},
-	 { "get_pipename", _wrap_get_pipename, METH_O, NULL},
+	 { "get_pipepath", _wrap_get_pipepath, METH_O, NULL},
 	 { "extract_io_redirection", _wrap_extract_io_redirection, METH_O, NULL},
 	 { "open_comm_pipes", _wrap_open_comm_pipes, METH_VARARGS, NULL},
 	 { "redirect_io", _wrap_redirect_io, METH_VARARGS, NULL},
@@ -22709,6 +22735,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "end_spawner", _wrap_end_spawner, METH_NOARGS, NULL},
 	 { "set_comm_pipes", _wrap_set_comm_pipes, METH_VARARGS, NULL},
 	 { "open_redirection_files", _wrap_open_redirection_files, METH_VARARGS, NULL},
+	 { "set_pipepath_prefix", _wrap_set_pipepath_prefix, METH_NOARGS, NULL},
 	 { "closefile", _wrap_closefile, METH_O, NULL},
 	 { "filter_hashed_kmer", _wrap_filter_hashed_kmer, METH_VARARGS, NULL},
 	 { "calc_minimizer", _wrap_calc_minimizer, METH_VARARGS, NULL},
@@ -22809,10 +22836,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "process_spawner_spawner2user_fd", _wrap_process_spawner_spawner2user_fd, METH_NOARGS, NULL},
 	 { "process_spawner_comm_mutex", _wrap_process_spawner_comm_mutex, METH_NOARGS, NULL},
 	 { "new_pipe_id", _wrap_new_pipe_id, METH_NOARGS, NULL},
+	 { "pipepath_prefix", _wrap_pipepath_prefix, METH_NOARGS, NULL},
 	 { "new_pipeline_id", _wrap_new_pipeline_id, METH_NOARGS, NULL},
 	 { "pipeline_map", _wrap_pipeline_map, METH_NOARGS, NULL},
 	 { "process_spawner_init", _wrap_process_spawner_init, METH_NOARGS, NULL},
-	 { "get_pipename", _wrap_get_pipename, METH_O, NULL},
+	 { "get_pipepath", _wrap_get_pipepath, METH_O, NULL},
 	 { "extract_io_redirection", _wrap_extract_io_redirection, METH_O, NULL},
 	 { "open_comm_pipes", _wrap_open_comm_pipes, METH_VARARGS, NULL},
 	 { "redirect_io", _wrap_redirect_io, METH_VARARGS, NULL},
@@ -22825,6 +22853,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "end_spawner", _wrap_end_spawner, METH_NOARGS, NULL},
 	 { "set_comm_pipes", _wrap_set_comm_pipes, METH_VARARGS, NULL},
 	 { "open_redirection_files", _wrap_open_redirection_files, METH_VARARGS, NULL},
+	 { "set_pipepath_prefix", _wrap_set_pipepath_prefix, METH_NOARGS, NULL},
 	 { "closefile", _wrap_closefile, METH_O, NULL},
 	 { "filter_hashed_kmer", _wrap_filter_hashed_kmer, METH_VARARGS, NULL},
 	 { "calc_minimizer", _wrap_calc_minimizer, METH_VARARGS, NULL},

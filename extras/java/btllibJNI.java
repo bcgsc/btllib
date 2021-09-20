@@ -139,11 +139,12 @@ public class btllibJNI {
   public final static native long process_spawner_spawner2user_fd();
   public final static native long process_spawner_comm_mutex();
   public final static native long new_pipe_id();
+  public final static native long pipepath_prefix();
   public final static native long new_pipeline_id();
   public final static native long pipeline_map();
   public final static native boolean process_spawner_init();
   public final static native boolean PROCESS_PIPELINE_INITIALIZER_get();
-  public final static native String get_pipename(long jarg1);
+  public final static native String get_pipepath(long jarg1);
   public final static native long extract_io_redirection(long jarg1);
   public final static native void open_comm_pipes(long jarg1, long jarg2);
   public final static native void redirect_io(int jarg1, int jarg2, int jarg3);
@@ -160,6 +161,7 @@ public class btllibJNI {
   public final static native void end_spawner();
   public final static native void set_comm_pipes(long jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
   public final static native void open_redirection_files(long jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native void set_pipepath_prefix();
   public final static native void closefile(long jarg1);
   public final static native String KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_get();
   public final static native long Indexlr_IndexlrFlag_NO_ID_get();

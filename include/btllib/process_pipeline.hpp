@@ -74,7 +74,9 @@ private:
   friend void process_spawner_operation();
 };
 
+/// @cond HIDDEN_SYMBOLS
 class ProcessPipelineInternal;
+/// @endcond
 
 // clang-format off
 inline bool& process_spawner_initialized() { static bool var; return var; }
@@ -82,6 +84,7 @@ inline int* process_spawner_user2spawner_fd() { static int var[2]; return var; }
 inline int* process_spawner_spawner2user_fd() { static int var[2]; return var; }
 inline std::mutex& process_spawner_comm_mutex() { static std::mutex var; return var; }
 inline PipeId new_pipe_id() { static PipeId last_pipe_id = 0; return last_pipe_id++; }
+inline std::string& pipepath_prefix() { static std::string var; return var; }
 inline PipelineId new_pipeline_id() { static PipelineId last_pipeline_id = 0; return last_pipeline_id++; }
 inline std::map<PipelineId, ProcessPipelineInternal>& pipeline_map() { static std::map<PipelineId, ProcessPipelineInternal> var; return var; }
 // clang-format on
@@ -91,9 +94,10 @@ process_spawner_init();
 static const bool PROCESS_PIPELINE_INITIALIZER = process_spawner_init();
 
 static inline std::string
-get_pipename(const PipeId id)
+get_pipepath(const PipeId id)
 {
-  return "btllib-" + std::to_string(getpid()) + "-" + std::to_string(id);
+  return pipepath_prefix() + "btllib-" + std::to_string(getpid()) + "-" +
+         std::to_string(id);
 }
 
 using DirectedFd = int* (*)();
@@ -137,12 +141,13 @@ write_to(const void* buf, size_t count)
 #define write_to_user(buf, count)                                              \
   write_to<process_spawner_spawner2user_fd>(buf, count)
 
+/// @cond HIDDEN_SYMBOLS
 struct IORedirection
 {
-
   std::string in, out, err;
   bool out_append = false, err_append = false;
 };
+/// @endcond
 
 static inline IORedirection
 extract_io_redirection(std::string& cmd)
@@ -265,7 +270,7 @@ open_comm_pipes(
     const std::string& filepath = io_filepaths[i];
     int& pipe_fd = comm_pipe_fd[i];
     if (filepath.empty()) {
-      pipepath = get_pipename(new_pipe_id());
+      pipepath = get_pipepath(new_pipe_id());
       if (access(pipepath.c_str(), F_OK) != -1) {
         unlink(pipepath.c_str());
       }
@@ -357,9 +362,9 @@ rm_pipes()
 {
   const auto last_id = new_pipe_id();
   for (PipeId id = 0; id < last_id; id++) {
-    const auto fname = get_pipename(id);
-    if (access(fname.c_str(), F_OK) != -1) {
-      unlink(fname.c_str());
+    const auto fpath = get_pipepath(id);
+    if (access(fpath.c_str(), F_OK) != -1) {
+      unlink(fpath.c_str());
     }
   }
 }
@@ -437,6 +442,7 @@ handle_sigchld()
   sigaction(SIGCHLD, &action, nullptr);
 }
 
+/// @cond HIDDEN_SYMBOLS
 class ProcessPipelineInternal
 {
 
@@ -454,6 +460,7 @@ private:
   friend void end_cmd();
   friend void process_spawner_operation();
 };
+/// @endcond
 
 inline void
 ProcessPipelineInternal::end()
@@ -677,6 +684,28 @@ process_spawner_operation()
   }
 }
 
+static inline void
+set_pipepath_prefix()
+{
+  const auto* const tmpdir =
+    std::getenv("TMPDIR"); // NOLINT(concurrency-mt-unsafe)
+  if (tmpdir != nullptr) {
+    pipepath_prefix() = tmpdir;
+    const auto tmpdirlen = std::strlen(tmpdir);
+    if (tmpdirlen > 0 && tmpdir[tmpdirlen - 1] != '/') {
+      pipepath_prefix() += '/';
+    }
+  } else {
+    struct stat info
+    {};
+    if ((stat("/tmp", &info) == 0) && ((info.st_mode & S_IFMT) == S_IFDIR)) {
+      pipepath_prefix() = "/tmp/";
+    } else {
+      pipepath_prefix() = "";
+    }
+  }
+}
+
 static inline bool
 process_spawner_init()
 {
@@ -690,6 +719,8 @@ process_spawner_init()
                 "Process pipeline: Error opening a pipe.");
     check_error(pipe(process_spawner_spawner2user_fd()) == -1,
                 "Process pipeline: Error opening a pipe.");
+
+    set_pipepath_prefix();
 
     const pid_t pid = fork();
     if (pid == 0) {

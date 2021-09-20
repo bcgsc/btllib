@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['processpipeline_0',['ProcessPipeline',['../classbtllib_1_1ProcessPipeline.html',1,'btllib']]],
-  ['processpipelineinternal_1',['ProcessPipelineInternal',['../classbtllib_1_1ProcessPipelineInternal.html',1,'btllib']]]
+  ['record_0',['Record',['../structbtllib_1_1Indexlr_1_1Record.html',1,'btllib::Indexlr::Record'],['../structbtllib_1_1SeqReader_1_1Record.html',1,'btllib::SeqReader::Record']]],
+  ['recorditerator_1',['RecordIterator',['../classbtllib_1_1SeqReader_1_1RecordIterator.html',1,'btllib::SeqReader']]]
 ];
