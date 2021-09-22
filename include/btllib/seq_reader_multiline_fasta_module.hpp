@@ -27,9 +27,9 @@ private:
   template<typename ReaderType, typename RecordType>
   bool read_buffer(ReaderType& reader, RecordType& record);
   template<typename ReaderType, typename RecordType>
-  void read_transition(ReaderType& reader, RecordType& record);
+  bool read_transition(ReaderType& reader, RecordType& record);
   template<typename ReaderType, typename RecordType>
-  void read_file(ReaderType& reader, RecordType& record);
+  bool read_file(ReaderType& reader, RecordType& record);
 };
 
 inline bool
@@ -88,41 +88,21 @@ inline bool
 SeqReaderMultilineFastaModule::read_buffer(ReaderType& reader,
                                            RecordType& record)
 {
-  int c;
-  for (;;) {
-    switch (stage) {
-      case Stage::HEADER: {
-        if (!reader.readline_buffer_append(record.header)) {
-          return false;
+  record.header.clear();
+  record.seq.clear();
+  record.qual.clear();
+  if (reader.buffer.start < reader.buffer.end) {
+    int c;
+    for (;;) {
+      switch (stage) {
+        case Stage::HEADER: {
+          if (!reader.readline_buffer_append(record.header)) {
+            return false;
+          }
+          stage = Stage::SEQ;
         }
-        stage = Stage::SEQ;
-      }
-      // fall through
-      case Stage::SEQ: {
-        if (!reader.readline_buffer_append(record.seq)) {
-          return false;
-        }
-        if (record.seq.back() == '\n') {
-          record.seq.pop_back();
-        }
-        stage = Stage::TRANSITION;
-      }
-      // fall through
-      case Stage::TRANSITION: {
-        c = reader.getc_buffer();
-        if (c == EOF) {
-          return false;
-        }
-        reader.ungetc_buffer(c);
-        if (c == '>') {
-          stage = Stage::HEADER;
-          return true;
-        }
-        stage = Stage::TRANSITION_SEQ;
-      }
-      // fall through
-      case Stage::TRANSITION_SEQ: {
-        if (stage == Stage::TRANSITION_SEQ) {
+        // fall through
+        case Stage::SEQ: {
           if (!reader.readline_buffer_append(record.seq)) {
             return false;
           }
@@ -131,11 +111,36 @@ SeqReaderMultilineFastaModule::read_buffer(ReaderType& reader,
           }
           stage = Stage::TRANSITION;
         }
-        break;
-      }
-      default: {
-        log_error("SeqReader has entered an invalid state.");
-        std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+        // fall through
+        case Stage::TRANSITION: {
+          c = reader.getc_buffer();
+          if (c == EOF) {
+            return false;
+          }
+          reader.ungetc_buffer(c);
+          if (c == '>') {
+            stage = Stage::HEADER;
+            return true;
+          }
+          stage = Stage::TRANSITION_SEQ;
+        }
+        // fall through
+        case Stage::TRANSITION_SEQ: {
+          if (stage == Stage::TRANSITION_SEQ) {
+            if (!reader.readline_buffer_append(record.seq)) {
+              return false;
+            }
+            if (record.seq.back() == '\n') {
+              record.seq.pop_back();
+            }
+            stage = Stage::TRANSITION;
+          }
+          break;
+        }
+        default: {
+          log_error("SeqReader has entered an invalid state.");
+          std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+        }
       }
     }
   }
@@ -143,81 +148,91 @@ SeqReaderMultilineFastaModule::read_buffer(ReaderType& reader,
 }
 
 template<typename ReaderType, typename RecordType>
-inline void
+inline bool
 SeqReaderMultilineFastaModule::read_transition(ReaderType& reader,
                                                RecordType& record)
 {
-  int c;
-  for (;;) {
-    switch (stage) {
-      case Stage::HEADER: {
-        reader.readline_file_append(record.header);
-        stage = Stage::SEQ;
-      }
-      // fall through
-      case Stage::SEQ: {
-        reader.readline_file_append(record.seq);
-        if (record.seq.back() == '\n') {
-          record.seq.pop_back();
-        }
-        stage = Stage::TRANSITION;
-      }
-      // fall through
-      case Stage::TRANSITION: {
-        c = reader.getc_file();
-        if (c == EOF) {
-          return;
-        }
-        reader.ungetc_file(c);
-        if (c == '>') {
-          stage = Stage::HEADER;
-          return;
-        }
-        stage = Stage::TRANSITION_SEQ;
-      }
-      // fall through
-      case Stage::TRANSITION_SEQ: {
-        if (stage == Stage::TRANSITION_SEQ) {
-          reader.readline_file_append(record.seq);
-          if (record.seq.back() == '\n') {
-            record.seq.pop_back();
+  if (std::ferror(reader.source) == 0 && std::feof(reader.source) == 0) {
+    const auto p = std::fgetc(reader.source);
+    if (p != EOF) {
+      std::ungetc(p, reader.source);
+      int c;
+      for (;;) {
+        switch (stage) {
+          case Stage::HEADER: {
+            reader.readline_file_append(record.header, reader.source);
+            stage = Stage::SEQ;
           }
-          stage = Stage::TRANSITION;
+          // fall through
+          case Stage::SEQ: {
+            reader.readline_file_append(record.seq, reader.source);
+            if (record.seq.back() == '\n') {
+              record.seq.pop_back();
+            }
+            stage = Stage::TRANSITION;
+          }
+          // fall through
+          case Stage::TRANSITION: {
+            c = std::fgetc(reader.source);
+            if (c == EOF) {
+              return false;
+            }
+            std::ungetc(c, reader.source);
+            if (c == '>') {
+              stage = Stage::HEADER;
+              return true;
+            }
+            stage = Stage::TRANSITION_SEQ;
+          }
+          // fall through
+          case Stage::TRANSITION_SEQ: {
+            if (stage == Stage::TRANSITION_SEQ) {
+              reader.readline_file_append(record.seq, reader.source);
+              if (record.seq.back() == '\n') {
+                record.seq.pop_back();
+              }
+              stage = Stage::TRANSITION;
+            }
+            break;
+          }
+          default: {
+            log_error("SeqReader has entered an invalid state.");
+            std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+          }
         }
-        break;
-      }
-      default: {
-        log_error("SeqReader has entered an invalid state.");
-        std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
       }
     }
   }
+  return false;
 }
 
 template<typename ReaderType, typename RecordType>
-inline void
+inline bool
 SeqReaderMultilineFastaModule::read_file(ReaderType& reader, RecordType& record)
 {
-  reader.readline_file(record.header);
-  int c;
-  reader.readline_file(record.seq);
-  if (record.seq.back() == '\n') {
-    record.seq.pop_back();
-  }
-  for (;;) {
-    c = reader.getc_file();
-    if (c == EOF) {
-      return;
-    }
-    reader.ungetc_file(c);
-    if (c == '>') {
-      break;
-    }
-    reader.readline_file_append(record.seq);
+  if (std::ferror(reader.source) == 0 && std::feof(reader.source) == 0) {
+    reader.readline_file(record.header, reader.source);
+    int c;
+    reader.readline_file(record.seq, reader.source);
     if (record.seq.back() == '\n') {
       record.seq.pop_back();
     }
+    for (;;) {
+      c = std::fgetc(reader.source);
+      if (c == EOF) {
+        return true;
+      }
+      std::ungetc(c, reader.source);
+      if (c == '>') {
+        return true;
+      }
+      reader.readline_file_append(record.seq, reader.source);
+      if (record.seq.back() == '\n') {
+        record.seq.pop_back();
+      }
+    }
   }
+  return false;
 }
 /// @endcond
 

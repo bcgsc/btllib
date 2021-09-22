@@ -24,9 +24,9 @@ main()
 
   std::cerr << "Test .gz read" << std::endl;
   btllib::DataSource gz_source(gz_filename);
-  assert(getline(&line, &line_len, gz_source) > 0);
+  TEST_ASSERT_GT(getline(&line, &line_len, gz_source), 0);
   gz_source.close();
-  assert(strcmp(line, txt) == 0);
+  TEST_ASSERT_EQ(strcmp(line, txt), 0);
 
   std::remove(gz_filename.c_str());
 
@@ -40,9 +40,9 @@ main()
 
   std::cerr << "Test .xz read" << std::endl;
   btllib::DataSource xz_source(xz_filename);
-  assert(getline(&line, &line_len, xz_source) > 0);
+  TEST_ASSERT_GT(getline(&line, &line_len, xz_source), 0);
   xz_source.close();
-  assert(strcmp(line, txt) == 0);
+  TEST_ASSERT_EQ(strcmp(line, txt), 0);
 
   std::remove(xz_filename.c_str());
 
@@ -56,9 +56,9 @@ main()
 
   std::cerr << "Test .lrz read" << std::endl;
   btllib::DataSource lrz_source(lrz_filename);
-  assert(getline(&line, &line_len, lrz_source) > 0);
+  TEST_ASSERT_GT(getline(&line, &line_len, lrz_source), 0);
   lrz_source.close();
-  assert(strcmp(line, txt) == 0);
+  TEST_ASSERT_EQ(strcmp(line, txt), 0);
 
   std::remove(lrz_filename.c_str());
 

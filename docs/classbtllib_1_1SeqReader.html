@@ -169,9 +169,12 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeqReaderSamModule</
 <tr class="memitem:ab9ff8dfd327a5ec2486442dab7cfacb2"><td class="memItemLeft" align="right" valign="top"><a id="ab9ff8dfd327a5ec2486442dab7cfacb2" name="ab9ff8dfd327a5ec2486442dab7cfacb2"></a>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>SeqReaderGfa2Module</b></td></tr>
 <tr class="separator:ab9ff8dfd327a5ec2486442dab7cfacb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab5ad2bfbb265214ab08410b77a62d45"><td class="memItemLeft" align="right" valign="top"><a id="aab5ad2bfbb265214ab08410b77a62d45" name="aab5ad2bfbb265214ab08410b77a62d45"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;os, const Format f)</td></tr>
+<tr class="separator:aab5ad2bfbb265214ab08410b77a62d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Read a FASTA, FASTQ, SAM, or GFA2 file. Capable of reading gzip (.gz), bzip2 (.bz2), xz (.xz), zip (.zip), 7zip (.7z), lrzip (.lrz), BAM (.bam) and CRAM (.cram), and URL (<a href="http://">http://</a>, <a href="https://">https://</a>, <a href="ftp://">ftp://</a>) files. Threadsafe. </p>
+<div class="textblock"><p >Read a FASTA, FASTQ, SAM, or GFA2 file. When reading SAM files, <code>samtools fastq</code> is used to convert from the SAM format to the FASTQ format. Capable of reading gzip (.gz), bzip2 (.bz2), xz (.xz), zip (.zip), 7zip (.7z), lrzip (.lrz), BAM (.bam) and CRAM (.cram), and URL (<a href="http://">http://</a>, <a href="https://">https://</a>, <a href="ftp://">ftp://</a>) files. Threadsafe. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="seq_reader_8cpp-example.html#_a0">seq_reader.cpp</a>.</dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>

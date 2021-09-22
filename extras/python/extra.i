@@ -1,3 +1,5 @@
+%ignore operator<<;
+
 %ignore btllib::ProcessPipeline;
 %ignore btllib::ProcessPipeline::in;
 

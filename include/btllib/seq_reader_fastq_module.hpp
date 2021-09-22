@@ -28,9 +28,9 @@ private:
   template<typename ReaderType, typename RecordType>
   bool read_buffer(ReaderType& reader, RecordType& record);
   template<typename ReaderType, typename RecordType>
-  void read_transition(ReaderType& reader, RecordType& record);
+  bool read_transition(ReaderType& reader, RecordType& record);
   template<typename ReaderType, typename RecordType>
-  void read_file(ReaderType& reader, RecordType& record);
+  bool read_file(ReaderType& reader, RecordType& record);
 };
 
 inline bool
@@ -99,85 +99,101 @@ template<typename ReaderType, typename RecordType>
 inline bool
 SeqReaderFastqModule::read_buffer(ReaderType& reader, RecordType& record)
 {
-  switch (stage) {
-    case Stage::HEADER: {
-      if (!reader.readline_buffer_append(record.header)) {
-        return false;
+  record.header.clear();
+  record.seq.clear();
+  record.qual.clear();
+  if (reader.buffer.start < reader.buffer.end) {
+    switch (stage) {
+      case Stage::HEADER: {
+        if (!reader.readline_buffer_append(record.header)) {
+          return false;
+        }
+        stage = Stage::SEQ;
       }
-      stage = Stage::SEQ;
-    }
-    // fall through
-    case Stage::SEQ: {
-      if (!reader.readline_buffer_append(record.seq)) {
-        return false;
+      // fall through
+      case Stage::SEQ: {
+        if (!reader.readline_buffer_append(record.seq)) {
+          return false;
+        }
+        stage = Stage::SEP;
       }
-      stage = Stage::SEP;
-    }
-    // fall through
-    case Stage::SEP: {
-      if (!reader.readline_buffer_append(tmp)) {
-        return false;
+      // fall through
+      case Stage::SEP: {
+        if (!reader.readline_buffer_append(tmp)) {
+          return false;
+        }
+        stage = Stage::QUAL;
+        tmp.clear();
       }
-      stage = Stage::QUAL;
-      tmp.clear();
-    }
-    // fall through
-    case Stage::QUAL: {
-      if (!reader.readline_buffer_append(record.qual)) {
-        return false;
+      // fall through
+      case Stage::QUAL: {
+        if (!reader.readline_buffer_append(record.qual)) {
+          return false;
+        }
+        stage = Stage::HEADER;
+        return true;
       }
-      stage = Stage::HEADER;
-      return true;
-    }
-    default: {
-      log_error("SeqReader has entered an invalid state.");
-      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+      default: {
+        log_error("SeqReader has entered an invalid state.");
+        std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+      }
     }
   }
   return false;
 }
 
 template<typename ReaderType, typename RecordType>
-inline void
+inline bool
 SeqReaderFastqModule::read_transition(ReaderType& reader, RecordType& record)
 {
-  switch (stage) {
-    case Stage::HEADER: {
-      reader.readline_file_append(record.header);
-      stage = Stage::SEQ;
-    }
-    // fall through
-    case Stage::SEQ: {
-      reader.readline_file_append(record.seq);
-      stage = Stage::SEP;
-    }
-    // fall through
-    case Stage::SEP: {
-      reader.readline_file_append(tmp);
-      stage = Stage::QUAL;
-      tmp.clear();
-    }
-    // fall through
-    case Stage::QUAL: {
-      reader.readline_file_append(record.qual);
-      stage = Stage::HEADER;
-      return;
-    }
-    default: {
-      log_error("SeqReader has entered an invalid state.");
-      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+  if (std::ferror(reader.source) == 0 && std::feof(reader.source) == 0) {
+    const auto p = std::fgetc(reader.source);
+    if (p != EOF) {
+      std::ungetc(p, reader.source);
+      switch (stage) {
+        case Stage::HEADER: {
+          reader.readline_file_append(record.header, reader.source);
+          stage = Stage::SEQ;
+        }
+        // fall through
+        case Stage::SEQ: {
+          reader.readline_file_append(record.seq, reader.source);
+          stage = Stage::SEP;
+        }
+        // fall through
+        case Stage::SEP: {
+          reader.readline_file_append(tmp, reader.source);
+          stage = Stage::QUAL;
+          tmp.clear();
+        }
+        // fall through
+        case Stage::QUAL: {
+          reader.readline_file_append(record.qual, reader.source);
+          stage = Stage::HEADER;
+          return true;
+        }
+        default: {
+          log_error("SeqReader has entered an invalid state.");
+          std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+        }
+      }
     }
   }
+  return false;
 }
 
 template<typename ReaderType, typename RecordType>
-inline void
+inline bool
 SeqReaderFastqModule::read_file(ReaderType& reader, RecordType& record)
 {
-  reader.readline_file(record.header);
-  reader.readline_file(record.seq);
-  reader.readline_file(tmp);
-  reader.readline_file(record.qual);
+  if (std::ferror(reader.source) == 0 && std::feof(reader.source) == 0) {
+    reader.readline_file(record.header, reader.source);
+    reader.readline_file(record.seq, reader.source);
+    reader.readline_file(tmp, reader.source);
+    reader.readline_file(record.qual, reader.source);
+    return true;
+  }
+  return false;
 }
 /// @endcond
 

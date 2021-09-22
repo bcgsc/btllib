@@ -33,9 +33,11 @@ namespace btllib {
  * An example of reading a gzipped fastq file.
  */
 
-/** Read a FASTA, FASTQ, SAM, or GFA2 file. Capable of reading gzip (.gz),
- * bzip2 (.bz2), xz (.xz), zip (.zip), 7zip (.7z), lrzip (.lrz), BAM (.bam) and
- * CRAM (.cram), and URL (http://, https://, ftp://) files. Threadsafe. */
+/** Read a FASTA, FASTQ, SAM, or GFA2 file. When reading SAM files,
+ * `samtools fastq` is used to convert from the SAM format to the
+ * FASTQ format. Capable of reading gzip (.gz), bzip2 (.bz2), xz (.xz),
+ * zip (.zip), 7zip (.7z), lrzip (.lrz), BAM (.bam) and CRAM (.cram),
+ * and URL (http://, https://, ftp://) files. Threadsafe. */
 class SeqReader
 {
 public:
@@ -93,6 +95,11 @@ public:
     GFA2,
     INVALID
   };
+
+  friend std::ostream& operator<<(std::ostream& os, const Format f)
+  {
+    return os << static_cast<int32_t>(f);
+  }
 
   Format get_format() const { return format; }
 
@@ -227,14 +234,12 @@ private:
 
   CString tmp;
   bool readline_buffer_append(CString& s);
-  void readline_file(CString& s);
-  void readline_file_append(CString& s);
+  static void readline_file(CString& s, FILE* f);
+  void readline_file_append(CString& s, FILE* f);
   int getc_buffer();
-  int getc_file();
   int ungetc_buffer(int c);
-  int ungetc_file(int c);
 
-  inline void write_cstring_records(
+  inline void update_cstring_records(
     OrderQueueSPMC<RecordCString>::Block& records,
     size_t& counter);
 
@@ -404,15 +409,15 @@ SeqReader::readline_buffer_append(CString& s)
 }
 
 inline void
-SeqReader::readline_file(CString& s)
+SeqReader::readline_file(CString& s, FILE* f)
 {
-  s.s_size = getline(&(s.s), &(s.s_cap), source);
+  s.s_size = getline(&(s.s), &(s.s_cap), f);
 }
 
 inline void
-SeqReader::readline_file_append(CString& s)
+SeqReader::readline_file_append(CString& s, FILE* f)
 {
-  readline_file(tmp);
+  readline_file(tmp, f);
   if (s.s_size + tmp.s_size + 1 > s.s_cap) {
     s.change_cap(s.s_size + tmp.s_size + 1);
   }
@@ -430,12 +435,6 @@ SeqReader::getc_buffer()
 }
 
 inline int
-SeqReader::getc_file()
-{
-  return std::getc(source);
-}
-
-inline int
 SeqReader::ungetc_buffer(const int c)
 {
   if (buffer.start > 0) {
@@ -445,15 +444,9 @@ SeqReader::ungetc_buffer(const int c)
   return EOF;
 }
 
-inline int
-SeqReader::ungetc_file(const int c)
-{
-  return std::ungetc(c, source);
-}
-
 inline void
-SeqReader::write_cstring_records(OrderQueueSPMC<RecordCString>::Block& records,
-                                 size_t& counter)
+SeqReader::update_cstring_records(OrderQueueSPMC<RecordCString>::Block& records,
+                                  size_t& counter)
 {
   records.count++;
   if (records.count == block_size) {
@@ -472,20 +465,13 @@ SeqReader::read_from_buffer(Module& module,
                             OrderQueueSPMC<RecordCString>::Block& records,
                             size_t& counter)
 {
-  reader_record = &(records.data[records.count]);
-  reader_record->header.clear();
-  reader_record->seq.clear();
-  reader_record->qual.clear();
-  for (; buffer.start < buffer.end && !reader_end;) {
+  while (!reader_end) {
+    reader_record = &(records.data[records.count]);
     if (!module.read_buffer(*this, *reader_record) ||
         reader_record->seq.empty()) {
       break;
     }
-    write_cstring_records(records, counter);
-    reader_record = &(records.data[records.count]);
-    reader_record->header.clear();
-    reader_record->seq.clear();
-    reader_record->qual.clear();
+    update_cstring_records(records, counter);
   }
 }
 
@@ -495,18 +481,14 @@ SeqReader::read_transition(Module& module,
                            OrderQueueSPMC<RecordCString>::Block& records,
                            size_t& counter)
 {
-  if (std::ferror(source) == 0 && std::feof(source) == 0 && !reader_end) {
-    int p = std::fgetc(source);
-    if (p != EOF) {
-      std::ungetc(p, source);
-      reader_record = &(records.data[records.count]);
-      module.read_transition(*this, *reader_record);
-      if (!reader_record->seq.empty()) {
-        write_cstring_records(records, counter);
-      }
+  if (!reader_end) {
+    reader_record = &(records.data[records.count]);
+    module.read_transition(*this, *reader_record);
+    if (!reader_record->seq.empty()) {
+      update_cstring_records(records, counter);
     }
   } else if (!reader_record->seq.empty()) {
-    write_cstring_records(records, counter);
+    update_cstring_records(records, counter);
   }
 }
 
@@ -516,13 +498,13 @@ SeqReader::read_from_file(Module& module,
                           OrderQueueSPMC<RecordCString>::Block& records,
                           size_t& counter)
 {
-  for (; std::ferror(source) == 0 && std::feof(source) == 0 && !reader_end;) {
+  while (!reader_end) {
     reader_record = &(records.data[records.count]);
-    module.read_file(*this, *reader_record);
-    if (reader_record->seq.empty()) {
+    if (!module.read_file(*this, *reader_record) ||
+        reader_record->seq.empty()) {
       break;
     }
-    write_cstring_records(records, counter);
+    update_cstring_records(records, counter);
   }
 }
 
@@ -618,7 +600,7 @@ SeqReader::start_processors()
             }
             size_t id_start =
               (format == Format::FASTA || format == Format::MULTILINE_FASTA ||
-               format == Format::FASTQ)
+               format == Format::FASTQ || format == Format::SAM)
                 ? 1
                 : 0;
 

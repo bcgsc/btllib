@@ -3,6 +3,7 @@
 
 #include "cstring.hpp"
 #include "seq.hpp"
+#include <cstdlib>
 
 namespace btllib {
 
@@ -28,9 +29,9 @@ private:
   template<typename ReaderType, typename RecordType>
   bool read_buffer(ReaderType& reader, RecordType& record);
   template<typename ReaderType, typename RecordType>
-  void read_transition(ReaderType& reader, RecordType& record);
+  bool read_transition(ReaderType& reader, RecordType& record);
   template<typename ReaderType, typename RecordType>
-  void read_file(ReaderType& reader, RecordType& record);
+  bool read_file(ReaderType& reader, RecordType& record);
 };
 
 inline bool
@@ -140,6 +141,12 @@ template<typename ReaderType, typename RecordType>
 inline bool
 SeqReaderGfa2Module::read_buffer(ReaderType& reader, RecordType& record)
 {
+  log_error("GFA2 files are unsupported right now.");
+  std::exit(EXIT_FAILURE); // NOLINT
+  (void)reader;
+  (void)record;
+  return false;
+  /*
   READ_GFA2(                                                           // NOLINT
     if (!reader.readline_buffer_append(                                // NOLINT
           tmp)) { return false; },                                     // NOLINT
@@ -147,24 +154,35 @@ SeqReaderGfa2Module::read_buffer(ReaderType& reader, RecordType& record)
     return true;                                                       // NOLINT
     , if (reader.buffer.start >= reader.buffer.end) { return false; }) // NOLINT
   return false;
+  */
 }
 
 template<typename ReaderType, typename RecordType>
-inline void
+inline bool
 SeqReaderGfa2Module::read_transition(ReaderType& reader, RecordType& record)
 {
+  (void)reader;
+  (void)record;
+  return false;
+  /*
   READ_GFA2(                                       // NOLINT
     reader.readline_file_append(tmp);              // NOLINT
     , , if (bool(feof(reader.source))) { break; }) // NOLINT
+  */
 }
 
 template<typename ReaderType, typename RecordType>
-inline void
+inline bool
 SeqReaderGfa2Module::read_file(ReaderType& reader, RecordType& record)
 {
+  (void)reader;
+  (void)record;
+  return false;
+  /*
   READ_GFA2(                                       // NOLINT
     reader.readline_file(tmp);                     // NOLINT
     , , if (bool(feof(reader.source))) { break; }) // NOLINT
+  */
 }
 /// @endcond
 
