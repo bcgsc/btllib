@@ -222,76 +222,79 @@ $(function() {
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  (void)reader;</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  (void)record;</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>  {</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    ProcessPipeline version_test(<span class="stringliteral">&quot;samtools version 2&gt;/dev/stdout | head -n2&quot;</span>);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    ProcessPipeline version_test(<span class="stringliteral">&quot;samtools --version 2&gt;/dev/stdout | head -n2&quot;</span>);</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordtype">char</span>* line = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordtype">size_t</span> n = 0;</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    std::string version = <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    getline(&amp;line, &amp;n, version_test.out);</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    version += line;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    line = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    getline(&amp;line, &amp;n, version_test.out);</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    version += line;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    version.pop_back();</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <a class="code hl_function" href="namespacebtllib.html#aa0d6ecae33b5e60b5c285f5358a9ad6a">log_info</a>(version);</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  }</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  samtools_process =</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    std::unique_ptr&lt;ProcessPipeline&gt;(<span class="keyword">new</span> ProcessPipeline(<span class="stringliteral">&quot;samtools fastq&quot;</span>));</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  loader_thread = std::unique_ptr&lt;std::thread&gt;(<span class="keyword">new</span> std::thread([&amp;]() {</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    fwrite(reader.buffer.data.data() + reader.buffer.start,</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>           1,</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>           reader.buffer.end - reader.buffer.start,</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>           samtools_process-&gt;in);</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    reader.buffer.start = reader.buffer.end;</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keywordflow">if</span> (std::ferror(reader.source) == 0 &amp;&amp; std::feof(reader.source) == 0) {</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>      <span class="keyword">const</span> <span class="keyword">auto</span> p = std::fgetc(reader.source);</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>      <span class="keywordflow">if</span> (p != EOF) {</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        std::ungetc(p, reader.source);</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keywordflow">while</span> (std::ferror(reader.source) == 0 &amp;&amp;</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>               std::feof(reader.source) == 0) {</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>          <span class="keyword">const</span> <span class="keywordtype">size_t</span> bufsize = LOADER_BLOCK_SIZE;</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>          <span class="keywordtype">char</span> buf[bufsize];</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>          <span class="keywordtype">size_t</span> bytes_read = fread(buf, 1, bufsize, reader.source);</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>          fwrite(buf, 1, bytes_read, samtools_process-&gt;in);</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        }</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>      }</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    }</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    samtools_process-&gt;close_in();</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  }));</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  loader_thread-&gt;detach();</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>}</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> ReaderType, <span class="keyword">typename</span> RecordType&gt;</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="keyword">inline</span> <span class="keywordtype">bool</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>SeqReaderSamModule::read_transition(ReaderType&amp; reader, RecordType&amp; record)</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>{</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  (void)reader;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  (void)record;</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>}</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> ReaderType, <span class="keyword">typename</span> RecordType&gt;</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="keyword">inline</span> <span class="keywordtype">bool</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>SeqReaderSamModule::read_file(ReaderType&amp; reader, RecordType&amp; record)</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>{</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  <span class="keywordflow">if</span> (std::ferror(samtools_process-&gt;out) == 0 &amp;&amp;</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>      std::feof(samtools_process-&gt;out) == 0) {</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    reader.readline_file(record.header, samtools_process-&gt;out);</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    reader.readline_file(record.seq, samtools_process-&gt;out);</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    reader.readline_file(tmp, samtools_process-&gt;out);</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    reader.readline_file(record.qual, samtools_process-&gt;out);</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>  }</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>}</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <a class="code hl_function" href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">check_error</a>(getline(&amp;line, &amp;n, version_test.out) &lt; 2,</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                <span class="stringliteral">&quot;Failed to get samtools version.&quot;</span>);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    version += line;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    line = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <a class="code hl_function" href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">check_error</a>(getline(&amp;line, &amp;n, version_test.out) &lt; 2,</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                <span class="stringliteral">&quot;Failed to get samtools version.&quot;</span>);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    version += line;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    version.pop_back();</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <a class="code hl_function" href="namespacebtllib.html#aa0d6ecae33b5e60b5c285f5358a9ad6a">log_info</a>(version);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  }</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  samtools_process =</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    std::unique_ptr&lt;ProcessPipeline&gt;(<span class="keyword">new</span> ProcessPipeline(<span class="stringliteral">&quot;samtools fastq&quot;</span>));</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  loader_thread = std::unique_ptr&lt;std::thread&gt;(<span class="keyword">new</span> std::thread([&amp;]() {</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    fwrite(reader.buffer.data.data() + reader.buffer.start,</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>           1,</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>           reader.buffer.end - reader.buffer.start,</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>           samtools_process-&gt;in);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    reader.buffer.start = reader.buffer.end;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordflow">if</span> (std::ferror(reader.source) == 0 &amp;&amp; std::feof(reader.source) == 0) {</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>      <span class="keyword">const</span> <span class="keyword">auto</span> p = std::fgetc(reader.source);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>      <span class="keywordflow">if</span> (p != EOF) {</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        std::ungetc(p, reader.source);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="keywordflow">while</span> (std::ferror(reader.source) == 0 &amp;&amp;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>               std::feof(reader.source) == 0) {</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>          <span class="keyword">const</span> <span class="keywordtype">size_t</span> bufsize = LOADER_BLOCK_SIZE;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>          <span class="keywordtype">char</span> buf[bufsize];</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>          <span class="keywordtype">size_t</span> bytes_read = fread(buf, 1, bufsize, reader.source);</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>          fwrite(buf, 1, bytes_read, samtools_process-&gt;in);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        }</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>      }</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    }</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    samtools_process-&gt;close_in();</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  }));</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  loader_thread-&gt;detach();</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>}</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> ReaderType, <span class="keyword">typename</span> RecordType&gt;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="keyword">inline</span> <span class="keywordtype">bool</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>SeqReaderSamModule::read_transition(ReaderType&amp; reader, RecordType&amp; record)</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>{</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  (void)reader;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  (void)record;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>}</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> ReaderType, <span class="keyword">typename</span> RecordType&gt;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="keyword">inline</span> <span class="keywordtype">bool</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>SeqReaderSamModule::read_file(ReaderType&amp; reader, RecordType&amp; record)</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>{</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  <span class="keywordflow">if</span> (std::ferror(samtools_process-&gt;out) == 0 &amp;&amp;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>      std::feof(samtools_process-&gt;out) == 0) {</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    reader.readline_file(record.header, samtools_process-&gt;out);</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    reader.readline_file(record.seq, samtools_process-&gt;out);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    reader.readline_file(tmp, samtools_process-&gt;out);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    reader.readline_file(record.qual, samtools_process-&gt;out);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>  }</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>}</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="anamespacebtllib_html"><div class="ttname"><a href="namespacebtllib.html">btllib</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:18</div></div>
+<div class="ttc" id="anamespacebtllib_html_a540bce0213b7718e519ddc4466361bf7"><div class="ttname"><a href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">btllib::check_error</a></div><div class="ttdeci">void check_error(bool condition, const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:139</div></div>
 <div class="ttc" id="anamespacebtllib_html_aa0d6ecae33b5e60b5c285f5358a9ad6a"><div class="ttname"><a href="namespacebtllib.html#aa0d6ecae33b5e60b5c285f5358a9ad6a">btllib::log_info</a></div><div class="ttdeci">void log_info(const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:99</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

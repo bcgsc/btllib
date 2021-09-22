@@ -152,16 +152,18 @@ SeqReaderSamModule::read_buffer(ReaderType& reader, RecordType& record)
   (void)reader;
   (void)record;
   {
-    ProcessPipeline version_test("samtools version 2>/dev/stdout | head -n2");
+    ProcessPipeline version_test("samtools --version 2>/dev/stdout | head -n2");
     char* line = nullptr;
     size_t n = 0;
     std::string version = "\n";
 
-    getline(&line, &n, version_test.out);
+    check_error(getline(&line, &n, version_test.out) < 2,
+                "Failed to get samtools version.");
     version += line;
 
     line = nullptr;
-    getline(&line, &n, version_test.out);
+    check_error(getline(&line, &n, version_test.out) < 2,
+                "Failed to get samtools version.");
     version += line;
     version.pop_back();
 
