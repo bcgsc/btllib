@@ -45,6 +45,10 @@ end_cmd();
 static inline void
 process_spawner_operation();
 
+/**
+ * Run a process pipeline and obtain the stdin of the first
+ * and stdout of the last process.
+ */
 class ProcessPipeline
 {
 
