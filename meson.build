@@ -65,6 +65,8 @@ endif
 
 run_target('complete', command: join_paths(rootpath, 'scripts/complete'))
 
+run_target('test-wrappers', command: join_paths(rootpath, 'scripts/test_wrappers'))
+
 subdir('include')
 subdir('extras')
 if get_option('buildtype') != 'release'

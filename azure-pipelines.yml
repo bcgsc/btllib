@@ -49,8 +49,7 @@ jobs:
   - script: |
       set -o errexit -o pipefail
       ./compile-wrappers
-      [[ -d python ]]
-      python -c 'import btllib; nt = btllib.NtHash("ACTG", 2, 3); nt.roll(); b = btllib.BloomFilter(1024, 2); b.insert(nt.hashes())'
+      cd build && ninja test-wrappers
     displayName: 'Test ./compile-wrappers script'
 
 - job: macos
@@ -98,6 +97,5 @@ jobs:
   - script: |
       set -o errexit -o pipefail
       ./compile-wrappers
-      [[ -d python ]]
-      python -c 'import btllib; nt = btllib.NtHash("ACTG", 2, 3); nt.roll(); b = btllib.BloomFilter(1024, 2); b.insert(nt.hashes())'
+      cd build && ninja test-wrappers
     displayName: 'Test ./compile-wrappers script'
