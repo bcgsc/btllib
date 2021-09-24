@@ -110,9 +110,9 @@ template<DirectedFd fd>
 static inline bool
 read_from(void* buf, const size_t n)
 {
-  size_t so_far = 0, ret;
-  while (so_far < n) {
-    ret = read(fd()[PIPE_READ_END], (uint8_t*)(buf) + so_far, n - so_far);
+  ssize_t so_far = 0, ret;
+  while (so_far < ssize_t(n)) {
+    ret = read(fd()[PIPE_READ_END], (uint8_t*)(buf) + so_far, ssize_t(n) - so_far);
     if (ret <= 0) {
       return false;
     }
@@ -123,11 +123,11 @@ read_from(void* buf, const size_t n)
 
 template<DirectedFd fd>
 static inline bool
-write_to(const void* buf, size_t count)
+write_to(const void* buf, size_t n)
 {
-  size_t so_far = 0, ret;
-  while (so_far < count) {
-    ret = write(fd()[PIPE_WRITE_END], (uint8_t*)(buf) + so_far, count - so_far);
+  ssize_t so_far = 0, ret;
+  while (so_far < ssize_t(n)) {
+    ret = write(fd()[PIPE_WRITE_END], (uint8_t*)(buf) + so_far, ssize_t(n) - so_far);
     if (ret <= 0) {
       return false;
     }
