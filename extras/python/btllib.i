@@ -25,6 +25,7 @@
 #include "btllib/util.hpp"
 %}
 
+#define SWIGWORDSIZE64
 %include <pyprimtypes.swg>
 %include <pyopers.swg>
 %include <std_common.i>
@@ -35,6 +36,7 @@
 %include <std_iostream.i>
 %include <std_vector.i>
 %include <carrays.i>
+%include <stdint.i>
 
 %include "extra.i"
 

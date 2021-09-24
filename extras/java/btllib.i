@@ -26,6 +26,7 @@
 %include <java.swg>
 %include <various.i>
 %include <std_string.i>
+%include <stdint.i>
 
 %include "extra.i"
 

@@ -31,6 +31,7 @@ echo "%}
 %include <java.swg>
 %include <various.i>
 %include <std_string.i>
+%include <stdint.i>
 
 %include \"extra.i\"
 " >> extras/java/btllib.i
@@ -70,6 +71,7 @@ done
 
 echo "%}
 
+#define SWIGWORDSIZE64
 %include <pyprimtypes.swg>
 %include <pyopers.swg>
 %include <std_common.i>
@@ -80,6 +82,7 @@ echo "%}
 %include <std_iostream.i>
 %include <std_vector.i>
 %include <carrays.i>
+%include <stdint.i>
 
 %include \"extra.i\"
 " >> extras/python/btllib.i

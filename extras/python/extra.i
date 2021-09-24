@@ -89,6 +89,12 @@
 %ignore btllib::NtHash::NtHash(const std::string&, unsigned, unsigned k, size_t pos = 0);
 %ignore btllib::NtHash::NtHash(const char*, size_t, unsigned, unsigned, size_t pos = 0);
 
+%template(VectorUint64t) std::vector<uint64_t>;
+
+%{
+  static_assert(sizeof(long unsigned int) >= sizeof(uint64_t), "Python wrappers are using wrong size integers.");
+%}
+
 %typemap(out) uint64_t* btllib::NtHash::hashes %{
   $result = PyList_New(arg1->get_hash_num());
   for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
