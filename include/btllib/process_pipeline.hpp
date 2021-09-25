@@ -114,6 +114,7 @@ read_from(void* buf, const size_t n)
   while (so_far < ssize_t(n)) {
     ret = read(fd()[PIPE_READ_END], (uint8_t*)(buf) + so_far, ssize_t(n) - so_far);
     if (ret <= 0) {
+      if (ret < 0 && errno == EINTR) { continue; }
       return false;
     }
     so_far += ret;
@@ -129,6 +130,7 @@ write_to(const void* buf, size_t n)
   while (so_far < ssize_t(n)) {
     ret = write(fd()[PIPE_WRITE_END], (uint8_t*)(buf) + so_far, ssize_t(n) - so_far);
     if (ret <= 0) {
+      if (ret < 0 && errno == EINTR) { continue; }
       return false;
     }
     so_far += ret;
