@@ -25,18 +25,17 @@
 #include "btllib/util.hpp"
 %}
 
-#define SWIGWORDSIZE64
+%include <stdint.i>
+%include <typemaps.i>
 %include <pyprimtypes.swg>
 %include <pyopers.swg>
 %include <std_common.i>
 %include <cstring.i>
 %include <std_string.i>
 %include <exception.i>
-%include <std_string.i>
 %include <std_iostream.i>
-%include <std_vector.i>
 %include <carrays.i>
-%include <stdint.i>
+%include <std_vector.i>
 
 %include "extra.i"
 
