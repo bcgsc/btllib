@@ -13,5 +13,5 @@ files=$(find extras/python -type f | grep "\(.*\.h$\)\|\(.*\.hpp$\)\|\(.*\.cpp$\
 files+=" "
 files+=$(find extras/java -type f | grep "\(.*\.h$\)\|\(.*\.hpp$\)\|\(.*\.cpp$\)\|\(.*\.cxx$\)")
 for file in $files; do
-  echo -n "$(realpath $file) "
+  echo -n "$file "
 done

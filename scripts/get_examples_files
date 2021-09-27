@@ -11,5 +11,5 @@ cd "${MESON_SOURCE_ROOT}"
 
 files=$(find examples -type f | grep "\(.*\.h$\)\|\(.*\.hpp$\)\|\(.*\.cpp$\)\|\(.*\.cxx$\)")
 for file in $files; do
-  echo -n "$(realpath $file) "
+  echo -n "$file "
 done
