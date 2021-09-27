@@ -17481,19 +17481,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_rm_pipes_on_death(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  
-  if (!SWIG_Python_UnpackTuple(args, "rm_pipes_on_death", 0, 0, 0)) SWIG_fail;
-  btllib::rm_pipes_on_death();
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_check_process_status__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_check_child_failure__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   int arg1 ;
   pid_t arg2 ;
@@ -17503,20 +17491,21 @@ SWIGINTERN PyObject *_wrap_check_process_status__SWIG_0(PyObject *self, Py_ssize
   void *argp2 ;
   int res2 = 0 ;
   int res3 = SWIG_OLDOBJ ;
+  bool result;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "check_process_status" "', argument " "1"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "check_child_failure" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = static_cast< int >(val1);
   {
     res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_pid_t,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "check_process_status" "', argument " "2"" of type '" "pid_t const""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "check_child_failure" "', argument " "2"" of type '" "pid_t const""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "check_process_status" "', argument " "2"" of type '" "pid_t const""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "check_child_failure" "', argument " "2"" of type '" "pid_t const""'");
     } else {
       pid_t * temp = reinterpret_cast< pid_t * >(argp2);
       arg2 = *temp;
@@ -17527,15 +17516,15 @@ SWIGINTERN PyObject *_wrap_check_process_status__SWIG_0(PyObject *self, Py_ssize
     std::string *ptr = (std::string *)0;
     res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "check_process_status" "', argument " "3"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "check_child_failure" "', argument " "3"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "check_process_status" "', argument " "3"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "check_child_failure" "', argument " "3"" of type '" "std::string const &""'"); 
     }
     arg3 = ptr;
   }
-  btllib::check_process_status(arg1,arg2,(std::string const &)*arg3);
-  resultobj = SWIG_Py_Void();
+  result = (bool)btllib::check_child_failure(arg1,arg2,(std::string const &)*arg3);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
   if (SWIG_IsNewObj(res3)) delete arg3;
   return resultobj;
 fail:
@@ -17544,7 +17533,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_check_process_status__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_check_child_failure__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   int arg1 ;
   pid_t arg2 ;
@@ -17552,67 +17541,81 @@ SWIGINTERN PyObject *_wrap_check_process_status__SWIG_1(PyObject *self, Py_ssize
   int ecode1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
+  bool result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "check_process_status" "', argument " "1"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "check_child_failure" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = static_cast< int >(val1);
   {
     res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_pid_t,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "check_process_status" "', argument " "2"" of type '" "pid_t const""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "check_child_failure" "', argument " "2"" of type '" "pid_t const""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "check_process_status" "', argument " "2"" of type '" "pid_t const""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "check_child_failure" "', argument " "2"" of type '" "pid_t const""'");
     } else {
       pid_t * temp = reinterpret_cast< pid_t * >(argp2);
       arg2 = *temp;
       if (SWIG_IsNewObj(res2)) delete temp;
     }
   }
-  btllib::check_process_status(arg1,arg2);
-  resultobj = SWIG_Py_Void();
+  result = (bool)btllib::check_child_failure(arg1,arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_check_process_status(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_check_child_failure(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[4] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "check_process_status", 0, 3, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "check_child_failure", 0, 3, argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
-    PyObject *retobj = _wrap_check_process_status__SWIG_1(self, argc, argv);
+    PyObject *retobj = _wrap_check_child_failure__SWIG_1(self, argc, argv);
     if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
     SWIG_fail;
   }
   if (argc == 3) {
-    PyObject *retobj = _wrap_check_process_status__SWIG_0(self, argc, argv);
+    PyObject *retobj = _wrap_check_child_failure__SWIG_0(self, argc, argv);
     if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
     SWIG_fail;
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'check_process_status'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'check_child_failure'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::check_process_status(int const,pid_t const,std::string const &)\n"
-    "    btllib::check_process_status(int const,pid_t const)\n");
+    "    btllib::check_child_failure(int const,pid_t const,std::string const &)\n"
+    "    btllib::check_child_failure(int const,pid_t const)\n");
   return 0;
 }
 
 
 SWIGINTERN PyObject *_wrap_check_children_failures(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
+  bool result;
   
   if (!SWIG_Python_UnpackTuple(args, "check_children_failures", 0, 0, 0)) SWIG_fail;
-  btllib::check_children_failures();
+  result = (bool)btllib::check_children_failures();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_install_signal_handlers_spawner(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  
+  if (!SWIG_Python_UnpackTuple(args, "install_signal_handlers_spawner", 0, 0, 0)) SWIG_fail;
+  btllib::install_signal_handlers_spawner();
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -17620,11 +17623,11 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_handle_sigchld(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_install_signal_handlers_user(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   
-  if (!SWIG_Python_UnpackTuple(args, "handle_sigchld", 0, 0, 0)) SWIG_fail;
-  btllib::handle_sigchld();
+  if (!SWIG_Python_UnpackTuple(args, "install_signal_handlers_user", 0, 0, 0)) SWIG_fail;
+  btllib::install_signal_handlers_user();
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -17689,18 +17692,6 @@ fail:
 
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_ProcessPipelineInternal) /* defines _wrap_delete_ProcessPipelineInternal_destructor_closure */
-
-SWIGINTERN PyObject *_wrap_end_spawner(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  
-  if (!SWIG_Python_UnpackTuple(args, "end_spawner", 0, 0, 0)) SWIG_fail;
-  btllib::end_spawner();
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
 
 SWIGINTERN PyObject *_wrap_set_comm_pipes(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
@@ -25682,11 +25673,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "redirect_io", _wrap_redirect_io, METH_VARARGS, NULL},
 	 { "assign_process_cmd", _wrap_assign_process_cmd, METH_O, NULL},
 	 { "rm_pipes", _wrap_rm_pipes, METH_NOARGS, NULL},
-	 { "rm_pipes_on_death", _wrap_rm_pipes_on_death, METH_NOARGS, NULL},
-	 { "check_process_status", _wrap_check_process_status, METH_VARARGS, NULL},
+	 { "check_child_failure", _wrap_check_child_failure, METH_VARARGS, NULL},
 	 { "check_children_failures", _wrap_check_children_failures, METH_NOARGS, NULL},
-	 { "handle_sigchld", _wrap_handle_sigchld, METH_NOARGS, NULL},
-	 { "end_spawner", _wrap_end_spawner, METH_NOARGS, NULL},
+	 { "install_signal_handlers_spawner", _wrap_install_signal_handlers_spawner, METH_NOARGS, NULL},
+	 { "install_signal_handlers_user", _wrap_install_signal_handlers_user, METH_NOARGS, NULL},
 	 { "set_comm_pipes", _wrap_set_comm_pipes, METH_VARARGS, NULL},
 	 { "open_redirection_files", _wrap_open_redirection_files, METH_VARARGS, NULL},
 	 { "set_pipepath_prefix", _wrap_set_pipepath_prefix, METH_NOARGS, NULL},
@@ -25800,11 +25790,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "redirect_io", _wrap_redirect_io, METH_VARARGS, NULL},
 	 { "assign_process_cmd", _wrap_assign_process_cmd, METH_O, NULL},
 	 { "rm_pipes", _wrap_rm_pipes, METH_NOARGS, NULL},
-	 { "rm_pipes_on_death", _wrap_rm_pipes_on_death, METH_NOARGS, NULL},
-	 { "check_process_status", _wrap_check_process_status, METH_VARARGS, NULL},
+	 { "check_child_failure", _wrap_check_child_failure, METH_VARARGS, NULL},
 	 { "check_children_failures", _wrap_check_children_failures, METH_NOARGS, NULL},
-	 { "handle_sigchld", _wrap_handle_sigchld, METH_NOARGS, NULL},
-	 { "end_spawner", _wrap_end_spawner, METH_NOARGS, NULL},
+	 { "install_signal_handlers_spawner", _wrap_install_signal_handlers_spawner, METH_NOARGS, NULL},
+	 { "install_signal_handlers_user", _wrap_install_signal_handlers_user, METH_NOARGS, NULL},
 	 { "set_comm_pipes", _wrap_set_comm_pipes, METH_VARARGS, NULL},
 	 { "open_redirection_files", _wrap_open_redirection_files, METH_VARARGS, NULL},
 	 { "set_pipepath_prefix", _wrap_set_pipepath_prefix, METH_NOARGS, NULL},

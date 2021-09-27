@@ -387,35 +387,14 @@ rm_pipes()
   }
 }
 
-static inline void
-rm_pipes_on_death()
-{
-  struct sigaction action; // NOLINT
-  action.sa_handler = [](const int sig) {
-    (void)sig;
-    rm_pipes();
-    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
-  };
-  sigemptyset(&action.sa_mask);
-  action.sa_flags = SA_RESTART;
-  sigaction(SIGHUP, &action, nullptr);
-  sigaction(SIGQUIT, &action, nullptr);
-  sigaction(SIGILL, &action, nullptr);
-  sigaction(SIGABRT, &action, nullptr);
-  sigaction(SIGBUS, &action, nullptr);
-  sigaction(SIGSEGV, &action, nullptr);
-  sigaction(SIGPIPE, &action, nullptr);
-  sigaction(SIGTERM, &action, nullptr);
-}
-
-static inline void
-check_process_status(const int status,
-                     const pid_t pid,
-                     const std::string& cmd = "")
+static inline bool
+check_child_failure(const int status,
+                    const pid_t pid,
+                    const std::string& cmd = "")
 {
   if (status != 0) {
     if (WIFSIGNALED(status) && WTERMSIG(status) == SIGPIPE) {
-      return;
+      return false;
     }
     std::stringstream ss;
     ss << "A helper process has finished unsuccessfully:\n";
@@ -431,33 +410,77 @@ check_process_status(const int status,
       ss << "exited with code " << status;
     }
     log_error(ss.str());
-    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+    return true;
   }
+  return false;
 }
 
-static inline void
+static inline bool
 check_children_failures()
 {
   // Checks if any children have failed so the caller can be a disappointed
   // parent.
   int status;
   pid_t pid;
+  bool failed = false;
   while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
-    check_process_status(status, pid);
+    failed = check_child_failure(status, pid) || failed;
   }
+  return failed;
 }
 
 static inline void
-handle_sigchld()
+install_signal_handlers_spawner()
 {
   struct sigaction action; // NOLINT
+  action.sa_flags = SA_RESTART;
+  sigemptyset(&action.sa_mask);
+
   action.sa_handler = [](const int sig) {
     (void)sig;
-    check_children_failures();
+    if (check_children_failures()) {
+      rm_pipes();
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+    }
+  };
+  sigaction(SIGCHLD, &action, nullptr);
+
+  action.sa_handler = [](const int sig) {
+    (void)sig;
+    rm_pipes();
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   };
   sigemptyset(&action.sa_mask);
-  action.sa_flags = SA_RESTART;
-  sigaction(SIGCHLD, &action, nullptr);
+  sigaction(SIGHUP, &action, nullptr);
+  sigaction(SIGQUIT, &action, nullptr);
+  sigaction(SIGILL, &action, nullptr);
+  sigaction(SIGABRT, &action, nullptr);
+  sigaction(SIGBUS, &action, nullptr);
+  sigaction(SIGSEGV, &action, nullptr);
+  sigaction(SIGPIPE, &action, nullptr);
+  sigaction(SIGTERM, &action, nullptr);
+}
+
+static inline void
+install_signal_handlers_user()
+{
+  struct sigaction oldact, newact; // NOLINT
+
+  sigaction(SIGCHLD, nullptr, &oldact);
+  static const auto oldhandler = oldact.sa_handler;
+
+  newact.sa_flags = SA_RESTART;
+  sigemptyset(&newact.sa_mask);
+
+  newact.sa_handler = [](const int sig) {
+    if (oldhandler != nullptr) {
+      oldhandler(sig);
+    }
+    if (check_children_failures()) {
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+    }
+  };
+  sigaction(SIGCHLD, &newact, nullptr);
 }
 
 /// @cond HIDDEN_SYMBOLS
@@ -490,21 +513,15 @@ ProcessPipelineInternal::end()
       const auto ret = waitpid(cmd.second, &status, 0);
       check_error((ret == -1) && (errno != ECHILD),
                   "Process pipeline: waitpid failed: " + get_strerror());
-      if (ret != -1) {
-        check_process_status(status, cmd.second, cmd.first);
+      if (ret != -1 && check_child_failure(status, cmd.second, cmd.first)) {
+        std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
       }
     }
-    check_children_failures();
+    if (check_children_failures()) {
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+    }
     ended = true;
   }
-}
-
-static inline void
-end_spawner()
-{
-  check_children_failures();
-  rm_pipes();
-  std::exit(EXIT_SUCCESS); // NOLINT(concurrency-mt-unsafe)
 }
 
 static inline void
@@ -530,20 +547,20 @@ open_redirection_files(const IORedirection& redirection,
                        int& out_fd,
                        int& err_fd)
 {
-  static const int OPEN_READ_FLAGS = O_RDONLY;
-  static const int OPEN_WRITE_FLAGS = O_WRONLY | O_CREAT;
+  static const int open_read_flags = O_RDONLY;
+  static const int open_write_flags = O_WRONLY | O_CREAT;
 
   if (!redirection.in.empty()) {
-    in_fd = open(redirection.in.c_str(), OPEN_READ_FLAGS, OPEN_MODE);
+    in_fd = open(redirection.in.c_str(), open_read_flags, OPEN_MODE);
   }
   if (!redirection.out.empty()) {
     out_fd = open(redirection.out.c_str(),
-                  OPEN_WRITE_FLAGS | (redirection.out_append ? O_APPEND : 0),
+                  open_write_flags | (redirection.out_append ? O_APPEND : 0),
                   OPEN_MODE);
   }
   if (!redirection.err.empty()) {
     err_fd = open(redirection.err.c_str(),
-                  OPEN_WRITE_FLAGS | (redirection.err_append ? O_APPEND : 0),
+                  open_write_flags | (redirection.err_append ? O_APPEND : 0),
                   OPEN_MODE);
   }
 }
@@ -627,7 +644,7 @@ run_cmd()
                   "Process pipeline: fcntl error: " + get_strerror());
     }
 
-    pid_t pid = fork();
+    const pid_t pid = fork();
     if (pid == 0) {
       int in_fd = chainpipe_in_fd[PIPE_READ_END];
       int out_fd = chainpipe_out_fd[PIPE_WRITE_END];
@@ -706,6 +723,11 @@ process_spawner_operation()
       break;
     }
   }
+  if (check_children_failures()) {
+    rm_pipes();
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+  }
+  std::exit(EXIT_SUCCESS); // NOLINT(concurrency-mt-unsafe)
 }
 
 static inline void
@@ -746,6 +768,8 @@ process_spawner_init()
 
     set_pipepath_prefix();
 
+    install_signal_handlers_user();
+
     const pid_t pid = fork();
     if (pid == 0) {
       check_error(close(process_spawner_user2spawner_fd()[PIPE_WRITE_END]) != 0,
@@ -753,8 +777,7 @@ process_spawner_init()
       check_error(close(process_spawner_spawner2user_fd()[PIPE_READ_END]) != 0,
                   "Process pipeline: Pipe close error: " + get_strerror());
 
-      handle_sigchld();
-      rm_pipes_on_death();
+      install_signal_handlers_spawner();
 
       process_spawner_operation();
     }

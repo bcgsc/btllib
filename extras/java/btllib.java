@@ -148,28 +148,24 @@ public class btllib {
     btllibJNI.rm_pipes();
   }
 
-  public static void rm_pipes_on_death() {
-    btllibJNI.rm_pipes_on_death();
+  public static boolean check_child_failure(int status, SWIGTYPE_p_pid_t pid, String cmd) {
+    return btllibJNI.check_child_failure__SWIG_0(status, SWIGTYPE_p_pid_t.getCPtr(pid), cmd);
   }
 
-  public static void check_process_status(int status, SWIGTYPE_p_pid_t pid, String cmd) {
-    btllibJNI.check_process_status__SWIG_0(status, SWIGTYPE_p_pid_t.getCPtr(pid), cmd);
+  public static boolean check_child_failure(int status, SWIGTYPE_p_pid_t pid) {
+    return btllibJNI.check_child_failure__SWIG_1(status, SWIGTYPE_p_pid_t.getCPtr(pid));
   }
 
-  public static void check_process_status(int status, SWIGTYPE_p_pid_t pid) {
-    btllibJNI.check_process_status__SWIG_1(status, SWIGTYPE_p_pid_t.getCPtr(pid));
+  public static boolean check_children_failures() {
+    return btllibJNI.check_children_failures();
   }
 
-  public static void check_children_failures() {
-    btllibJNI.check_children_failures();
+  public static void install_signal_handlers_spawner() {
+    btllibJNI.install_signal_handlers_spawner();
   }
 
-  public static void handle_sigchld() {
-    btllibJNI.handle_sigchld();
-  }
-
-  public static void end_spawner() {
-    btllibJNI.end_spawner();
+  public static void install_signal_handlers_user() {
+    btllibJNI.install_signal_handlers_user();
   }
 
   public static void set_comm_pipes(SWIGTYPE_p_std__vectorT_btllib__IORedirection_t redirections, long idx, long last_idx, SWIGTYPE_p_int comm_pipe_fd, SWIGTYPE_p_int in_fd, SWIGTYPE_p_int out_fd) {

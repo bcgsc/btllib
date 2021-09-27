@@ -2523,18 +2523,13 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_rm_1pipes(JNIEnv *jenv, jclass jcl
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_rm_1pipes_1on_1death(JNIEnv *jenv, jclass jcls) {
-  (void)jenv;
-  (void)jcls;
-  btllib::rm_pipes_on_death();
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_check_1process_1status_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jint jarg1, jlong jarg2, jstring jarg3) {
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_check_1child_1failure_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jint jarg1, jlong jarg2, jstring jarg3) {
+  jboolean jresult = 0 ;
   int arg1 ;
   pid_t arg2 ;
   std::string *arg3 = 0 ;
   pid_t const *argp2 ;
+  bool result;
   
   (void)jenv;
   (void)jcls;
@@ -2542,26 +2537,30 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_check_1process_1status_1_1SWIG_10(
   argp2 = *(pid_t **)&jarg2; 
   if (!argp2) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null pid_t const");
-    return ;
+    return 0;
   }
   arg2 = *argp2; 
   if(!jarg3) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
-    return ;
+    return 0;
   }
   const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
-  if (!arg3_pstr) return ;
+  if (!arg3_pstr) return 0;
   std::string arg3_str(arg3_pstr);
   arg3 = &arg3_str;
   jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
-  btllib::check_process_status(arg1,arg2,(std::string const &)*arg3);
+  result = (bool)btllib::check_child_failure(arg1,arg2,(std::string const &)*arg3);
+  jresult = (jboolean)result; 
+  return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_check_1process_1status_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jint jarg1, jlong jarg2) {
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_check_1child_1failure_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jint jarg1, jlong jarg2) {
+  jboolean jresult = 0 ;
   int arg1 ;
   pid_t arg2 ;
   pid_t const *argp2 ;
+  bool result;
   
   (void)jenv;
   (void)jcls;
@@ -2569,24 +2568,38 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_check_1process_1status_1_1SWIG_11(
   argp2 = *(pid_t **)&jarg2; 
   if (!argp2) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null pid_t const");
-    return ;
+    return 0;
   }
   arg2 = *argp2; 
-  btllib::check_process_status(arg1,arg2);
+  result = (bool)btllib::check_child_failure(arg1,arg2);
+  jresult = (jboolean)result; 
+  return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_check_1children_1failures(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_check_1children_1failures(JNIEnv *jenv, jclass jcls) {
+  jboolean jresult = 0 ;
+  bool result;
+  
   (void)jenv;
   (void)jcls;
-  btllib::check_children_failures();
+  result = (bool)btllib::check_children_failures();
+  jresult = (jboolean)result; 
+  return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_handle_1sigchld(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_install_1signal_1handlers_1spawner(JNIEnv *jenv, jclass jcls) {
   (void)jenv;
   (void)jcls;
-  btllib::handle_sigchld();
+  btllib::install_signal_handlers_spawner();
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_install_1signal_1handlers_1user(JNIEnv *jenv, jclass jcls) {
+  (void)jenv;
+  (void)jcls;
+  btllib::install_signal_handlers_user();
 }
 
 
@@ -2620,13 +2633,6 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1ProcessPipelineInternal(JN
   (void)jcls;
   arg1 = *(btllib::ProcessPipelineInternal **)&jarg1; 
   delete arg1;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_end_1spawner(JNIEnv *jenv, jclass jcls) {
-  (void)jenv;
-  (void)jcls;
-  btllib::end_spawner();
 }
 
 

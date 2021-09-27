@@ -226,8 +226,8 @@ $(function() {
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>  <span class="keyword">static</span> <span class="keyword">const</span> BloomFilter&amp; dummy_bf()</div>
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  {</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keyword">static</span> <span class="keyword">const</span> BloomFilter VAR;</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordflow">return</span> VAR;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keyword">static</span> <span class="keyword">const</span> BloomFilter var;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordflow">return</span> var;</div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>  }</div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  <span class="keyword">const</span> std::reference_wrapper&lt;const BloomFilter&gt; filter_in_bf;</div>
@@ -415,14 +415,14 @@ $(function() {
 <div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="keyword">inline</span> std::string</div>
 <div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>Indexlr::extract_barcode(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>, <span class="keyword">const</span> std::string&amp; comment)</div>
 <div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>{</div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>  <span class="keyword">const</span> <span class="keyword">static</span> std::string BARCODE_PREFIX = <span class="stringliteral">&quot;BX:Z:&quot;</span>;</div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>  <span class="keywordflow">if</span> (startswith(comment, BARCODE_PREFIX)) {</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>  <span class="keyword">const</span> <span class="keyword">static</span> std::string barcode_prefix = <span class="stringliteral">&quot;BX:Z:&quot;</span>;</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>  <span class="keywordflow">if</span> (startswith(comment, barcode_prefix)) {</div>
 <div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    <span class="keyword">const</span> <span class="keyword">auto</span> space_pos = comment.find(<span class="charliteral">&#39; &#39;</span>);</div>
 <div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>    <span class="keywordflow">if</span> (space_pos != std::string::npos) {</div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>      <span class="keywordflow">return</span> comment.substr(BARCODE_PREFIX.size(),</div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>                            space_pos - BARCODE_PREFIX.size());</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>      <span class="keywordflow">return</span> comment.substr(barcode_prefix.size(),</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>                            space_pos - barcode_prefix.size());</div>
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>    }</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    <span class="keywordflow">return</span> comment.substr(BARCODE_PREFIX.size());</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    <span class="keywordflow">return</span> comment.substr(barcode_prefix.size());</div>
 <div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>  }</div>
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>  <span class="keyword">const</span> <span class="keyword">auto</span> pound_pos = <span class="keywordtype">id</span>.find(<span class="charliteral">&#39;#&#39;</span>);</div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>  <span class="keywordflow">if</span> (pound_pos != std::string::npos) {</div>
