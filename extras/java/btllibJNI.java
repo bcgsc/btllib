@@ -154,13 +154,13 @@ public class btllibJNI {
   public final static native boolean check_child_failure__SWIG_1(int jarg1, long jarg2);
   public final static native boolean check_children_failures();
   public final static native void install_signal_handlers_spawner();
-  public final static native void install_signal_handlers_user();
   public final static native long new_ProcessPipelineInternal();
   public final static native void ProcessPipelineInternal_end(long jarg1, ProcessPipelineInternal jarg1_);
   public final static native void delete_ProcessPipelineInternal(long jarg1);
   public final static native void set_comm_pipes(long jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
   public final static native void open_redirection_files(long jarg1, long jarg2, long jarg3, long jarg4);
   public final static native void set_pipepath_prefix();
+  public final static native long start_watchdog();
   public final static native void closefile(long jarg1);
   public final static native String KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_get();
   public final static native long Indexlr_IndexlrFlag_NO_ID_get();

@@ -164,10 +164,6 @@ public class btllib {
     btllibJNI.install_signal_handlers_spawner();
   }
 
-  public static void install_signal_handlers_user() {
-    btllibJNI.install_signal_handlers_user();
-  }
-
   public static void set_comm_pipes(SWIGTYPE_p_std__vectorT_btllib__IORedirection_t redirections, long idx, long last_idx, SWIGTYPE_p_int comm_pipe_fd, SWIGTYPE_p_int in_fd, SWIGTYPE_p_int out_fd) {
     btllibJNI.set_comm_pipes(SWIGTYPE_p_std__vectorT_btllib__IORedirection_t.getCPtr(redirections), idx, last_idx, SWIGTYPE_p_int.getCPtr(comm_pipe_fd), SWIGTYPE_p_int.getCPtr(in_fd), SWIGTYPE_p_int.getCPtr(out_fd));
   }
@@ -178,6 +174,10 @@ public class btllib {
 
   public static void set_pipepath_prefix() {
     btllibJNI.set_pipepath_prefix();
+  }
+
+  public static SWIGTYPE_p_std__arrayT_int_2_t start_watchdog() {
+    return new SWIGTYPE_p_std__arrayT_int_2_t(btllibJNI.start_watchdog(), true);
   }
 
   public static void closefile(SWIGTYPE_p_p_FILE f) {

@@ -5,6 +5,7 @@
 #include "util.hpp"
 
 #include <algorithm>
+#include <array>
 #include <cassert>
 #include <cerrno>
 #include <csignal>
@@ -17,6 +18,7 @@
 #include <mutex>
 #include <sstream>
 #include <string>
+#include <thread>
 #include <tuple>
 #include <vector>
 
@@ -461,28 +463,6 @@ install_signal_handlers_spawner()
   sigaction(SIGTERM, &action, nullptr);
 }
 
-static inline void
-install_signal_handlers_user()
-{
-  struct sigaction oldact, newact; // NOLINT
-
-  sigaction(SIGCHLD, nullptr, &oldact);
-  static const auto oldhandler = oldact.sa_handler;
-
-  newact.sa_flags = SA_RESTART;
-  sigemptyset(&newact.sa_mask);
-
-  newact.sa_handler = [](const int sig) {
-    if (oldhandler != nullptr) {
-      oldhandler(sig);
-    }
-    if (check_children_failures()) {
-      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
-    }
-  };
-  sigaction(SIGCHLD, &newact, nullptr);
-}
-
 /// @cond HIDDEN_SYMBOLS
 class ProcessPipelineInternal
 {
@@ -723,11 +703,6 @@ process_spawner_operation()
       break;
     }
   }
-  if (check_children_failures()) {
-    rm_pipes();
-    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
-  }
-  std::exit(EXIT_SUCCESS); // NOLINT(concurrency-mt-unsafe)
 }
 
 static inline void
@@ -752,6 +727,23 @@ set_pipepath_prefix()
   }
 }
 
+static inline std::array<int, 2>
+start_watchdog()
+{
+  std::array<int, 2> watchdog_pipe{ -1, -1 };
+  check_error(pipe(watchdog_pipe.data()) == -1,
+              "Process pipeline: Error opening a pipe.");
+  (new std::thread([watchdog_pipe]() {
+    char dummy;
+    if (read(watchdog_pipe[PIPE_READ_END], &dummy, sizeof(dummy)) <= 0) {
+      log_error("Process pipeline: Spawner process failed.");
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+    }
+  }))
+    ->detach();
+  return watchdog_pipe;
+}
+
 static inline bool
 process_spawner_init()
 {
@@ -768,7 +760,7 @@ process_spawner_init()
 
     set_pipepath_prefix();
 
-    install_signal_handlers_user();
+    const auto watchdog_pipe = start_watchdog();
 
     const pid_t pid = fork();
     if (pid == 0) {
@@ -776,14 +768,24 @@ process_spawner_init()
                   "Process pipeline: Pipe close error: " + get_strerror());
       check_error(close(process_spawner_spawner2user_fd()[PIPE_READ_END]) != 0,
                   "Process pipeline: Pipe close error: " + get_strerror());
+      check_error(close(watchdog_pipe[PIPE_READ_END]) != 0,
+                  "Process pipeline: Pipe close error: " + get_strerror());
 
       install_signal_handlers_spawner();
 
       process_spawner_operation();
+
+      if (check_children_failures()) {
+        rm_pipes();
+        std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+      }
+      std::exit(EXIT_SUCCESS); // NOLINT(concurrency-mt-unsafe)
     }
     check_error(close(process_spawner_user2spawner_fd()[PIPE_READ_END]) != 0,
                 "Process pipeline: Pipe close error: " + get_strerror());
     check_error(close(process_spawner_spawner2user_fd()[PIPE_WRITE_END]) != 0,
+                "Process pipeline: Pipe close error: " + get_strerror());
+    check_error(close(watchdog_pipe[PIPE_WRITE_END]) != 0,
                 "Process pipeline: Pipe close error: " + get_strerror());
 
     process_spawner_initialized() = true;

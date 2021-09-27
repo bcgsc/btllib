@@ -2596,13 +2596,6 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_install_1signal_1handlers_1spawner
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_install_1signal_1handlers_1user(JNIEnv *jenv, jclass jcls) {
-  (void)jenv;
-  (void)jcls;
-  btllib::install_signal_handlers_user();
-}
-
-
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1ProcessPipelineInternal(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   btllib::ProcessPipelineInternal *result = 0 ;
@@ -2704,6 +2697,18 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_set_1pipepath_1prefix(JNIEnv *jenv
   (void)jenv;
   (void)jcls;
   btllib::set_pipepath_prefix();
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_start_1watchdog(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  std::array< int,2 > result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = btllib::start_watchdog();
+  *(std::array< int,2 > **)&jresult = new std::array< int,2 >((const std::array< int,2 > &)result); 
+  return jresult;
 }
 
 

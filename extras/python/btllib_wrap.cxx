@@ -3526,40 +3526,41 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_ssize_t swig_types[77]
 #define SWIGTYPE_p_state_type swig_types[78]
 #define SWIGTYPE_p_std__allocatorT_unsigned_long_long_t swig_types[79]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[80]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[81]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[82]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[83]
-#define SWIGTYPE_p_std__basic_streambufT_char_std__char_traitsT_char_t_t swig_types[84]
-#define SWIGTYPE_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t swig_types[85]
-#define SWIGTYPE_p_std__ifstream swig_types[86]
-#define SWIGTYPE_p_std__ios_base swig_types[87]
-#define SWIGTYPE_p_std__locale swig_types[88]
-#define SWIGTYPE_p_std__mapT_unsigned_long_btllib__ProcessPipelineInternal_t swig_types[89]
-#define SWIGTYPE_p_std__mutex swig_types[90]
-#define SWIGTYPE_p_std__shared_ptrT_cpptoml__table_t swig_types[91]
-#define SWIGTYPE_p_std__string swig_types[92]
-#define SWIGTYPE_p_std__vectorT_SpacedSeed_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[93]
-#define SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t swig_types[94]
-#define SWIGTYPE_p_std__vectorT_btllib__IORedirection_std__allocatorT_btllib__IORedirection_t_t swig_types[95]
-#define SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t swig_types[96]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[97]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[98]
-#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[99]
-#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[100]
-#define SWIGTYPE_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t swig_types[101]
-#define SWIGTYPE_p_streamoff swig_types[102]
-#define SWIGTYPE_p_streampos swig_types[103]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[104]
-#define SWIGTYPE_p_traits_type swig_types[105]
-#define SWIGTYPE_p_unsigned_char swig_types[106]
-#define SWIGTYPE_p_unsigned_int swig_types[107]
-#define SWIGTYPE_p_unsigned_long swig_types[108]
-#define SWIGTYPE_p_unsigned_long_long swig_types[109]
-#define SWIGTYPE_p_unsigned_short swig_types[110]
-#define SWIGTYPE_p_value_type swig_types[111]
-static swig_type_info *swig_types[113];
-static swig_module_info swig_module = {swig_types, 112, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__arrayT_int_2_t swig_types[80]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[81]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[82]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[83]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[84]
+#define SWIGTYPE_p_std__basic_streambufT_char_std__char_traitsT_char_t_t swig_types[85]
+#define SWIGTYPE_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t swig_types[86]
+#define SWIGTYPE_p_std__ifstream swig_types[87]
+#define SWIGTYPE_p_std__ios_base swig_types[88]
+#define SWIGTYPE_p_std__locale swig_types[89]
+#define SWIGTYPE_p_std__mapT_unsigned_long_btllib__ProcessPipelineInternal_t swig_types[90]
+#define SWIGTYPE_p_std__mutex swig_types[91]
+#define SWIGTYPE_p_std__shared_ptrT_cpptoml__table_t swig_types[92]
+#define SWIGTYPE_p_std__string swig_types[93]
+#define SWIGTYPE_p_std__vectorT_SpacedSeed_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[94]
+#define SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t swig_types[95]
+#define SWIGTYPE_p_std__vectorT_btllib__IORedirection_std__allocatorT_btllib__IORedirection_t_t swig_types[96]
+#define SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t swig_types[97]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[98]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[99]
+#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[100]
+#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[101]
+#define SWIGTYPE_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t swig_types[102]
+#define SWIGTYPE_p_streamoff swig_types[103]
+#define SWIGTYPE_p_streampos swig_types[104]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[105]
+#define SWIGTYPE_p_traits_type swig_types[106]
+#define SWIGTYPE_p_unsigned_char swig_types[107]
+#define SWIGTYPE_p_unsigned_int swig_types[108]
+#define SWIGTYPE_p_unsigned_long swig_types[109]
+#define SWIGTYPE_p_unsigned_long_long swig_types[110]
+#define SWIGTYPE_p_unsigned_short swig_types[111]
+#define SWIGTYPE_p_value_type swig_types[112]
+static swig_type_info *swig_types[114];
+static swig_module_info swig_module = {swig_types, 113, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -17623,18 +17624,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_install_signal_handlers_user(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  
-  if (!SWIG_Python_UnpackTuple(args, "install_signal_handlers_user", 0, 0, 0)) SWIG_fail;
-  btllib::install_signal_handlers_user();
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN int _wrap_new_ProcessPipelineInternal(PyObject *self, PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   btllib::ProcessPipelineInternal *result = 0 ;
@@ -17826,6 +17815,19 @@ SWIGINTERN PyObject *_wrap_set_pipepath_prefix(PyObject *self, PyObject *args) {
   if (!SWIG_Python_UnpackTuple(args, "set_pipepath_prefix", 0, 0, 0)) SWIG_fail;
   btllib::set_pipepath_prefix();
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_start_watchdog(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< int,2 > result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "start_watchdog", 0, 0, 0)) SWIG_fail;
+  result = btllib::start_watchdog();
+  resultobj = SWIG_NewPointerObj((new std::array< int,2 >(static_cast< const std::array< int,2 >& >(result))), SWIGTYPE_p_std__arrayT_int_2_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -25676,10 +25678,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "check_child_failure", _wrap_check_child_failure, METH_VARARGS, NULL},
 	 { "check_children_failures", _wrap_check_children_failures, METH_NOARGS, NULL},
 	 { "install_signal_handlers_spawner", _wrap_install_signal_handlers_spawner, METH_NOARGS, NULL},
-	 { "install_signal_handlers_user", _wrap_install_signal_handlers_user, METH_NOARGS, NULL},
 	 { "set_comm_pipes", _wrap_set_comm_pipes, METH_VARARGS, NULL},
 	 { "open_redirection_files", _wrap_open_redirection_files, METH_VARARGS, NULL},
 	 { "set_pipepath_prefix", _wrap_set_pipepath_prefix, METH_NOARGS, NULL},
+	 { "start_watchdog", _wrap_start_watchdog, METH_NOARGS, NULL},
 	 { "closefile", _wrap_closefile, METH_O, NULL},
 	 { "filter_hashed_kmer", _wrap_filter_hashed_kmer, METH_VARARGS, NULL},
 	 { "calc_minimizer", _wrap_calc_minimizer, METH_VARARGS, NULL},
@@ -25793,10 +25795,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "check_child_failure", _wrap_check_child_failure, METH_VARARGS, NULL},
 	 { "check_children_failures", _wrap_check_children_failures, METH_NOARGS, NULL},
 	 { "install_signal_handlers_spawner", _wrap_install_signal_handlers_spawner, METH_NOARGS, NULL},
-	 { "install_signal_handlers_user", _wrap_install_signal_handlers_user, METH_NOARGS, NULL},
 	 { "set_comm_pipes", _wrap_set_comm_pipes, METH_VARARGS, NULL},
 	 { "open_redirection_files", _wrap_open_redirection_files, METH_VARARGS, NULL},
 	 { "set_pipepath_prefix", _wrap_set_pipepath_prefix, METH_NOARGS, NULL},
+	 { "start_watchdog", _wrap_start_watchdog, METH_NOARGS, NULL},
 	 { "closefile", _wrap_closefile, METH_O, NULL},
 	 { "filter_hashed_kmer", _wrap_filter_hashed_kmer, METH_VARARGS, NULL},
 	 { "calc_minimizer", _wrap_calc_minimizer, METH_VARARGS, NULL},
@@ -32846,6 +32848,7 @@ static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0
 static swig_type_info _swigt__p_ssize_t = {"_p_ssize_t", "ssize_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_state_type = {"_p_state_type", "state_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_unsigned_long_long_t = {"_p_std__allocatorT_unsigned_long_long_t", "std::allocator< uint64_t > *|std::vector< uint64_t >::allocator_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__arrayT_int_2_t = {"_p_std__arrayT_int_2_t", "std::array< int,2 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__basic_iosT_char_std__char_traitsT_char_t_t = {"_p_std__basic_iosT_char_std__char_traitsT_char_t_t", "std::basic_ios< char > *|std::basic_ios< char,std::char_traits< char > > *|std::ios *", 0, 0, (void*)&SwigPyBuiltin__std__basic_iosT_char_t_clientdata, 0};
 static swig_type_info _swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t = {"_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t", "std::basic_iostream< char,std::char_traits< char > > *|std::basic_iostream< char > *|std::iostream *", 0, 0, (void*)&SwigPyBuiltin__std__basic_iostreamT_char_t_clientdata, 0};
 static swig_type_info _swigt__p_std__basic_istreamT_char_std__char_traitsT_char_t_t = {"_p_std__basic_istreamT_char_std__char_traitsT_char_t_t", "std::basic_istream< char > *|std::basic_istream< char,std::char_traits< char > > *|std::istream *", 0, 0, (void*)&SwigPyBuiltin__std__basic_istreamT_char_t_clientdata, 0};
@@ -32960,6 +32963,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_ssize_t,
   &_swigt__p_state_type,
   &_swigt__p_std__allocatorT_unsigned_long_long_t,
+  &_swigt__p_std__arrayT_int_2_t,
   &_swigt__p_std__basic_iosT_char_std__char_traitsT_char_t_t,
   &_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t,
   &_swigt__p_std__basic_istreamT_char_std__char_traitsT_char_t_t,
@@ -33074,6 +33078,7 @@ static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0}
 static swig_cast_info _swigc__p_ssize_t[] = {  {&_swigt__p_ssize_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_state_type[] = {  {&_swigt__p_state_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_unsigned_long_long_t[] = {  {&_swigt__p_std__allocatorT_unsigned_long_long_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__arrayT_int_2_t[] = {  {&_swigt__p_std__arrayT_int_2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__basic_iosT_char_std__char_traitsT_char_t_t[] = {  {&_swigt__p_std__basic_iosT_char_std__char_traitsT_char_t_t, 0, 0, 0},  {&_swigt__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_ostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t, 0, 0},  {&_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t, 0, 0},  {&_swigt__p_std__basic_istreamT_char_std__char_traitsT_char_t_t, _p_std__basic_istreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t[] = {  {&_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__basic_istreamT_char_std__char_traitsT_char_t_t[] = {  {&_swigt__p_std__basic_istreamT_char_std__char_traitsT_char_t_t, 0, 0, 0},  {&_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_istreamT_char_std__char_traitsT_char_t_t, 0, 0},{0, 0, 0, 0}};
@@ -33188,6 +33193,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_ssize_t,
   _swigc__p_state_type,
   _swigc__p_std__allocatorT_unsigned_long_long_t,
+  _swigc__p_std__arrayT_int_2_t,
   _swigc__p_std__basic_iosT_char_std__char_traitsT_char_t_t,
   _swigc__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t,
   _swigc__p_std__basic_istreamT_char_std__char_traitsT_char_t_t,
