@@ -11,7 +11,7 @@ cd "${MESON_SOURCE_ROOT}"
 
 # MacOS does not necessarily have coreutils installed, but Python should be as btllib requires it
 function portable_realpath() {
-  python -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' $1
+  python3 -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' $1
 }
 
 files=$(find include/btllib -type f | grep "\(.*\.h$\)\|\(.*\.hpp$\)\|\(.*\.cpp$\)\|\(.*\.cxx$\)")
