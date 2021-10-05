@@ -54,6 +54,7 @@
 
 %ignore btllib::CString;
 %ignore btllib::CString::operator=;
+%ignore btllib::CString::operator[];
 %ignore btllib::OrderQueue;
 %ignore btllib::OrderQueue::Block;
 %ignore btllib::OrderQueue::Slot;

@@ -542,118 +542,121 @@ $(function() {
 <div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span>    ready_blocks_owners()[<span class="keywordtype">id</span> % MAX_SIMULTANEOUS_INDEXLRS] = id;</div>
 <div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span>  }</div>
 <div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span>  <span class="keyword">auto</span>&amp; block = *(ready_blocks_array()[<span class="keywordtype">id</span> % MAX_SIMULTANEOUS_INDEXLRS]);</div>
-<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>  <span class="keywordflow">if</span> (block.count &lt;= block.current) {</div>
-<div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>    output_queue.read(block);</div>
-<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span>    <span class="keywordflow">if</span> (block.count &lt;= block.current) {</div>
-<div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>      output_queue.close();</div>
-<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span>      block = <span class="keyword">decltype</span>(output_queue)::Block(block_size);</div>
-<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>      <span class="keywordflow">return</span> Record();</div>
-<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>    }</div>
-<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>  }</div>
-<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>  <span class="keywordflow">return</span> std::move(block.data[block.current++]);</div>
-<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>}</div>
-<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span> </div>
-<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span><span class="keyword">inline</span> <span class="keywordtype">void</span></div>
-<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>Indexlr::InputWorker::work()</div>
-<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span>{</div>
-<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span>  <span class="keywordflow">if</span> (indexlr.reader.get_format() == SeqReader::Format::FASTA) {</div>
-<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>    indexlr.fasta = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>    indexlr.fasta = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>  }</div>
-<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span> </div>
-<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>  <span class="keyword">decltype</span>(indexlr.input_queue)::Block block(indexlr.block_size);</div>
-<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>  <span class="keywordtype">size_t</span> current_block_num = 0;</div>
-<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span>  Read read;</div>
-<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> record : indexlr.reader) {</div>
-<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>    block.data[block.count++] = Read(record.num,</div>
-<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>                                     std::move(record.id),</div>
-<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>                                     std::move(record.comment),</div>
-<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>                                     std::move(record.seq));</div>
-<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>    <span class="keywordflow">if</span> (block.count == indexlr.block_size) {</div>
-<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>      block.num = current_block_num++;</div>
-<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>      indexlr.input_queue.write(block);</div>
-<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>      block.count = 0;</div>
-<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>    }</div>
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>  }</div>
-<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>  <span class="keywordflow">if</span> (block.count &gt; 0) {</div>
-<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>    block.num = current_block_num++;</div>
-<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>    indexlr.input_queue.write(block);</div>
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>  }</div>
-<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; indexlr.threads; i++) {</div>
-<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>    block.num = current_block_num++;</div>
-<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>    block.current = 0;</div>
-<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span>    block.count = 0;</div>
-<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>    indexlr.input_queue.write(block);</div>
-<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>  }</div>
-<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>}</div>
-<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span> </div>
-<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span><span class="keyword">inline</span> <span class="keywordtype">void</span></div>
-<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span>Indexlr::MinimizeWorker::work()</div>
-<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span>{</div>
-<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>  <span class="keyword">decltype</span>(indexlr.input_queue)::Block input_block(indexlr.block_size);</div>
-<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span>  <span class="keyword">decltype</span>(indexlr.output_queue)::Block output_block(indexlr.block_size);</div>
-<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span> </div>
-<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span>  <span class="keywordflow">for</span> (;;) {</div>
-<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>    <span class="keywordflow">if</span> (input_block.current == input_block.count) {</div>
-<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>      <span class="keywordflow">if</span> (output_block.count &gt; 0) {</div>
-<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>        output_block.num = input_block.num;</div>
-<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>        indexlr.output_queue.write(output_block);</div>
-<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>        output_block.current = 0;</div>
-<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>        output_block.count = 0;</div>
-<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>      }</div>
-<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>      indexlr.input_queue.read(input_block);</div>
-<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>    }</div>
-<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>    <span class="keywordflow">if</span> (input_block.count == 0) {</div>
-<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>      output_block.num = input_block.num;</div>
-<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span>      output_block.current = 0;</div>
-<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span>      output_block.count = 0;</div>
-<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span>      indexlr.output_queue.write(output_block);</div>
-<div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span>      <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span>    }</div>
-<div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span>    Read&amp; read = input_block.data[input_block.current++];</div>
-<div class="line"><a id="l00573" name="l00573"></a><span class="lineno">  573</span>    Record record;</div>
-<div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span>    record.num = read.num;</div>
-<div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span>    <span class="keywordflow">if</span> (indexlr.output_id()) {</div>
-<div class="line"><a id="l00576" name="l00576"></a><span class="lineno">  576</span>      record.id = std::move(read.id);</div>
-<div class="line"><a id="l00577" name="l00577"></a><span class="lineno">  577</span>    }</div>
-<div class="line"><a id="l00578" name="l00578"></a><span class="lineno">  578</span>    <span class="keywordflow">if</span> (indexlr.output_bx()) {</div>
-<div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span>      record.barcode = indexlr.extract_barcode(record.id, read.comment);</div>
+<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>  <span class="keywordflow">if</span> (block.count &lt;= block.current) { <span class="comment">// cppcheck-suppress danglingTempReference</span></div>
+<div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>    output_queue.read(block);         <span class="comment">// cppcheck-suppress danglingTempReference</span></div>
+<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span>    <span class="keywordflow">if</span> (block.count &lt;=                <span class="comment">// cppcheck-suppress danglingTempReference</span></div>
+<div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>        block.current) {              <span class="comment">// cppcheck-suppress danglingTempReference</span></div>
+<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span>      output_queue.close();</div>
+<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>      <span class="comment">// cppcheck-suppress danglingTempReference</span></div>
+<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>      block = <span class="keyword">decltype</span>(output_queue)::Block(block_size);</div>
+<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>      <span class="keywordflow">return</span> Record();</div>
+<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>    }</div>
+<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>  }</div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>  <span class="comment">// cppcheck-suppress danglingTempReference</span></div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>  <span class="keywordflow">return</span> std::move(block.data[block.current++]);</div>
+<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>}</div>
+<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span> </div>
+<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span><span class="keyword">inline</span> <span class="keywordtype">void</span></div>
+<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>Indexlr::InputWorker::work()</div>
+<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>{</div>
+<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>  <span class="keywordflow">if</span> (indexlr.reader.get_format() == SeqReader::Format::FASTA) {</div>
+<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>    indexlr.fasta = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>    indexlr.fasta = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>  }</div>
+<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span> </div>
+<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>  <span class="keyword">decltype</span>(indexlr.input_queue)::Block block(indexlr.block_size);</div>
+<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>  <span class="keywordtype">size_t</span> current_block_num = 0;</div>
+<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>  Read read;</div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> record : indexlr.reader) {</div>
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>    block.data[block.count++] = Read(record.num,</div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>                                     std::move(record.id),</div>
+<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>                                     std::move(record.comment),</div>
+<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>                                     std::move(record.seq));</div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>    <span class="keywordflow">if</span> (block.count == indexlr.block_size) {</div>
+<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>      block.num = current_block_num++;</div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>      indexlr.input_queue.write(block);</div>
+<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>      block.count = 0;</div>
+<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>    }</div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>  }</div>
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>  <span class="keywordflow">if</span> (block.count &gt; 0) {</div>
+<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>    block.num = current_block_num++;</div>
+<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>    indexlr.input_queue.write(block);</div>
+<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>  }</div>
+<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span>  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; indexlr.threads; i++) {</div>
+<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>    block.num = current_block_num++;</div>
+<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>    block.current = 0;</div>
+<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>    block.count = 0;</div>
+<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>    indexlr.input_queue.write(block);</div>
+<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>  }</div>
+<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span>}</div>
+<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span> </div>
+<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span><span class="keyword">inline</span> <span class="keywordtype">void</span></div>
+<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span>Indexlr::MinimizeWorker::work()</div>
+<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>{</div>
+<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span>  <span class="keyword">decltype</span>(indexlr.input_queue)::Block input_block(indexlr.block_size);</div>
+<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>  <span class="keyword">decltype</span>(indexlr.output_queue)::Block output_block(indexlr.block_size);</div>
+<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span> </div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>  <span class="keywordflow">for</span> (;;) {</div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>    <span class="keywordflow">if</span> (input_block.current == input_block.count) {</div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>      <span class="keywordflow">if</span> (output_block.count &gt; 0) {</div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>        output_block.num = input_block.num;</div>
+<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>        indexlr.output_queue.write(output_block);</div>
+<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>        output_block.current = 0;</div>
+<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>        output_block.count = 0;</div>
+<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>      }</div>
+<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>      indexlr.input_queue.read(input_block);</div>
+<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span>    }</div>
+<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span>    <span class="keywordflow">if</span> (input_block.count == 0) {</div>
+<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span>      output_block.num = input_block.num;</div>
+<div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span>      output_block.current = 0;</div>
+<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span>      output_block.count = 0;</div>
+<div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span>      indexlr.output_queue.write(output_block);</div>
+<div class="line"><a id="l00573" name="l00573"></a><span class="lineno">  573</span>      <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span>    }</div>
+<div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span>    Read&amp; read = input_block.data[input_block.current++];</div>
+<div class="line"><a id="l00576" name="l00576"></a><span class="lineno">  576</span>    Record record;</div>
+<div class="line"><a id="l00577" name="l00577"></a><span class="lineno">  577</span>    record.num = read.num;</div>
+<div class="line"><a id="l00578" name="l00578"></a><span class="lineno">  578</span>    <span class="keywordflow">if</span> (indexlr.output_id()) {</div>
+<div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span>      record.id = std::move(read.id);</div>
 <div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span>    }</div>
-<div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span>    record.readlen = read.seq.size();</div>
-<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span> </div>
-<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>    <a class="code hl_function" href="namespacebtllib.html#ae35010b35086565ec1bdf8f454c99d3a">check_info</a>(indexlr.verbose &amp;&amp; indexlr.k &gt; read.seq.size(),</div>
-<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span>               <span class="stringliteral">&quot;Indexlr: skipped seq &quot;</span> + std::to_string(read.num) +</div>
-<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>                 <span class="stringliteral">&quot; on line &quot;</span> +</div>
-<div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>                 std::to_string(read.num * (indexlr.fasta ? 2 : 4) + 2) +</div>
-<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>                 <span class="stringliteral">&quot;; k (&quot;</span> + std::to_string(indexlr.k) + <span class="stringliteral">&quot;) &gt; seq length (&quot;</span> +</div>
-<div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>                 std::to_string(read.seq.size()) + <span class="stringliteral">&quot;)&quot;</span>);</div>
-<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span> </div>
-<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>    <a class="code hl_function" href="namespacebtllib.html#ae35010b35086565ec1bdf8f454c99d3a">check_info</a>(indexlr.verbose &amp;&amp; indexlr.w &gt; read.seq.size() - indexlr.k + 1,</div>
-<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>               <span class="stringliteral">&quot;Indexlr: skipped seq &quot;</span> + std::to_string(read.num) +</div>
-<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>                 <span class="stringliteral">&quot; on line &quot;</span> +</div>
-<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>                 std::to_string(read.num * (indexlr.fasta ? 2 : 4) + 2) +</div>
-<div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>                 <span class="stringliteral">&quot;; w (&quot;</span> + std::to_string(indexlr.w) + <span class="stringliteral">&quot;) &gt; # of hashes (&quot;</span> +</div>
-<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>                 std::to_string(read.seq.size() - indexlr.k + 1) + <span class="stringliteral">&quot;)&quot;</span>);</div>
-<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span> </div>
-<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>    <span class="keywordflow">if</span> (indexlr.k &lt;= read.seq.size() &amp;&amp;</div>
-<div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span>        indexlr.w &lt;= read.seq.size() - indexlr.k + 1) {</div>
-<div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span>      record.minimizers = indexlr.minimize(read.seq);</div>
-<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span>      record.minimizers = {};</div>
-<div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span>    }</div>
-<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span> </div>
-<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>    output_block.data[output_block.count++] = std::move(record);</div>
-<div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span>  }</div>
-<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>}</div>
-<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span> </div>
-<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>} <span class="comment">// namespace btllib</span></div>
-<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span> </div>
-<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span>    <span class="keywordflow">if</span> (indexlr.output_bx()) {</div>
+<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span>      record.barcode = indexlr.extract_barcode(record.id, read.comment);</div>
+<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>    }</div>
+<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span>    record.readlen = read.seq.size();</div>
+<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span> </div>
+<div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>    <a class="code hl_function" href="namespacebtllib.html#ae35010b35086565ec1bdf8f454c99d3a">check_info</a>(indexlr.verbose &amp;&amp; indexlr.k &gt; read.seq.size(),</div>
+<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>               <span class="stringliteral">&quot;Indexlr: skipped seq &quot;</span> + std::to_string(read.num) +</div>
+<div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>                 <span class="stringliteral">&quot; on line &quot;</span> +</div>
+<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>                 std::to_string(read.num * (indexlr.fasta ? 2 : 4) + 2) +</div>
+<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>                 <span class="stringliteral">&quot;; k (&quot;</span> + std::to_string(indexlr.k) + <span class="stringliteral">&quot;) &gt; seq length (&quot;</span> +</div>
+<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>                 std::to_string(read.seq.size()) + <span class="stringliteral">&quot;)&quot;</span>);</div>
+<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span> </div>
+<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>    <a class="code hl_function" href="namespacebtllib.html#ae35010b35086565ec1bdf8f454c99d3a">check_info</a>(indexlr.verbose &amp;&amp; indexlr.w &gt; read.seq.size() - indexlr.k + 1,</div>
+<div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>               <span class="stringliteral">&quot;Indexlr: skipped seq &quot;</span> + std::to_string(read.num) +</div>
+<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>                 <span class="stringliteral">&quot; on line &quot;</span> +</div>
+<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span>                 std::to_string(read.num * (indexlr.fasta ? 2 : 4) + 2) +</div>
+<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>                 <span class="stringliteral">&quot;; w (&quot;</span> + std::to_string(indexlr.w) + <span class="stringliteral">&quot;) &gt; # of hashes (&quot;</span> +</div>
+<div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span>                 std::to_string(read.seq.size() - indexlr.k + 1) + <span class="stringliteral">&quot;)&quot;</span>);</div>
+<div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span> </div>
+<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span>    <span class="keywordflow">if</span> (indexlr.k &lt;= read.seq.size() &amp;&amp;</div>
+<div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span>        indexlr.w &lt;= read.seq.size() - indexlr.k + 1) {</div>
+<div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span>      record.minimizers = indexlr.minimize(read.seq);</div>
+<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>      record.minimizers = {};</div>
+<div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span>    }</div>
+<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span> </div>
+<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>    output_block.data[output_block.count++] = std::move(record);</div>
+<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>  }</div>
+<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span>}</div>
+<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span> </div>
+<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span> </div>
+<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassbtllib_1_1BloomFilter_html"><div class="ttname"><a href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:46</div></div>
 <div class="ttc" id="aclassbtllib_1_1Indexlr_html"><div class="ttname"><a href="classbtllib_1_1Indexlr.html">btllib::Indexlr</a></div><div class="ttdef"><b>Definition:</b> indexlr.hpp:26</div></div>
 <div class="ttc" id="aclassbtllib_1_1Indexlr_html_a16eaf1402422f88cd3a66d03e9e11b85"><div class="ttname"><a href="classbtllib_1_1Indexlr.html#a16eaf1402422f88cd3a66d03e9e11b85">btllib::Indexlr::Indexlr</a></div><div class="ttdeci">Indexlr(std::string seqfile, size_t k, size_t w, unsigned flags=0, unsigned threads=5, bool verbose=false, const btllib::BloomFilter &amp;bf1=Indexlr::dummy_bf(), const btllib::BloomFilter &amp;bf2=Indexlr::dummy_bf())</div><div class="ttdef"><b>Definition:</b> indexlr.hpp:296</div></div>
-<div class="ttc" id="aclassbtllib_1_1SeqReader_html"><div class="ttname"><a href="classbtllib_1_1SeqReader.html">btllib::SeqReader</a></div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:42</div></div>
+<div class="ttc" id="aclassbtllib_1_1SeqReader_html"><div class="ttname"><a href="classbtllib_1_1SeqReader.html">btllib::SeqReader</a></div><div class="ttdef"><b>Definition:</b> seq_reader.hpp:44</div></div>
 <div class="ttc" id="anamespacebtllib_html"><div class="ttname"><a href="namespacebtllib.html">btllib</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:18</div></div>
 <div class="ttc" id="anamespacebtllib_html_a540bce0213b7718e519ddc4466361bf7"><div class="ttname"><a href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">btllib::check_error</a></div><div class="ttdeci">void check_error(bool condition, const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:139</div></div>
 <div class="ttc" id="anamespacebtllib_html_ae35010b35086565ec1bdf8f454c99d3a"><div class="ttname"><a href="namespacebtllib.html#ae35010b35086565ec1bdf8f454c99d3a">btllib::check_info</a></div><div class="ttdeci">void check_info(bool condition, const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:123</div></div>

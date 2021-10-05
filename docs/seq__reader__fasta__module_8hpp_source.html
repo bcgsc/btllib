@@ -204,7 +204,7 @@ $(function() {
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keyword">inline</span> <span class="keywordtype">bool</span></div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>SeqReaderFastaModule::read_file(ReaderType&amp; reader, RecordType&amp; record)</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>{</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  <span class="keywordflow">if</span> (std::ferror(reader.source) == 0 &amp;&amp; std::feof(reader.source) == 0) {</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  <span class="keywordflow">if</span> (!reader.file_at_end(reader.source)) {</div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    reader.readline_file(record.header, reader.source);</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    reader.readline_file(record.seq, reader.source);</div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
