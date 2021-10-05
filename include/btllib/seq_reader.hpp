@@ -553,17 +553,19 @@ SeqReader::start_reader()
     size_t counter = 0;
     decltype(cstring_queue)::Block records(block_size);
 
-    int module_counter = 0;
+    if (get_format() != Format::UNDETERMINED) {
+      int module_counter = 0;
 
-    BTLLIB_SEQREADER_FORMAT_READ(fasta_module)
-    BTLLIB_SEQREADER_FORMAT_READ(multiline_fasta_module)
-    BTLLIB_SEQREADER_FORMAT_READ(fastq_module)
-    BTLLIB_SEQREADER_FORMAT_READ(multiline_fastq_module)
-    BTLLIB_SEQREADER_FORMAT_READ(sam_module)
-    BTLLIB_SEQREADER_FORMAT_READ(gfa2_module)
-    {
-      log_error("SeqReader: No reading module was enabled.");
-      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+      BTLLIB_SEQREADER_FORMAT_READ(fasta_module)
+      BTLLIB_SEQREADER_FORMAT_READ(multiline_fasta_module)
+      BTLLIB_SEQREADER_FORMAT_READ(fastq_module)
+      BTLLIB_SEQREADER_FORMAT_READ(multiline_fastq_module)
+      BTLLIB_SEQREADER_FORMAT_READ(sam_module)
+      BTLLIB_SEQREADER_FORMAT_READ(gfa2_module)
+      {
+        log_error("SeqReader: No reading module was enabled.");
+        std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+      }
     }
 
     reader_end = true;
