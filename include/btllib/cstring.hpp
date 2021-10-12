@@ -121,8 +121,6 @@ struct CString
     return *this;
   }
 
-  char& operator[](const size_t pos) const { return s[pos]; }
-
   ~CString() { free(s); } // NOLINT
 
   void clear()
