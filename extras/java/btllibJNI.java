@@ -42,8 +42,6 @@ public class btllibJNI {
   public final static native void delete_SeqReader_RecordIterator(long jarg1);
   public final static native long SeqReader_begin(long jarg1, SeqReader jarg1_);
   public final static native long SeqReader_end(long jarg1, SeqReader jarg1_);
-  public final static native long new_SeqReaderSamModule();
-  public final static native void delete_SeqReaderSamModule(long jarg1);
   public final static native long BIT_MASKS_get();
   public final static native String KMER_BLOOM_FILTER_MAGIC_HEADER_get();
   public final static native String SEED_BLOOM_FILTER_MAGIC_HEADER_get();
@@ -154,9 +152,6 @@ public class btllibJNI {
   public final static native boolean check_child_failure__SWIG_1(int jarg1, long jarg2);
   public final static native boolean check_children_failures();
   public final static native void install_signal_handlers_spawner();
-  public final static native long new_ProcessPipelineInternal();
-  public final static native void ProcessPipelineInternal_end(long jarg1, ProcessPipelineInternal jarg1_);
-  public final static native void delete_ProcessPipelineInternal(long jarg1);
   public final static native void set_comm_pipes(long jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
   public final static native void open_redirection_files(long jarg1, long jarg2, long jarg3, long jarg4);
   public final static native void set_pipepath_prefix();
@@ -216,14 +211,6 @@ public class btllibJNI {
   public final static native long Indexlr_MAX_SIMULTANEOUS_INDEXLRS_get();
   public final static native void filter_hashed_kmer(long jarg1, Indexlr.Minimizer jarg1_, boolean jarg2, boolean jarg3, long jarg4, BloomFilter jarg4_, long jarg5, BloomFilter jarg5_);
   public final static native void calc_minimizer(long jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8);
-  public final static native long new_SeqReaderFastqModule();
-  public final static native void delete_SeqReaderFastqModule(long jarg1);
-  public final static native long new_SeqReaderMultilineFastqModule();
-  public final static native void delete_SeqReaderMultilineFastqModule(long jarg1);
-  public final static native long new_SeqReaderFastaModule();
-  public final static native void delete_SeqReaderFastaModule(long jarg1);
-  public final static native long new_SeqReaderMultilineFastaModule();
-  public final static native void delete_SeqReaderMultilineFastaModule(long jarg1);
   public final static native short CP_OFF_get();
   public final static native int MULTISHIFT_get();
   public final static native java.math.BigInteger MULTISEED_get();
@@ -344,11 +331,6 @@ public class btllibJNI {
   public final static native long new_Datatype();
   public final static native void delete_Datatype(long jarg1);
   public final static native long DATATYPES_get();
-  public final static native long new_DataStream(String jarg1, int jarg2);
-  public final static native void delete_DataStream(long jarg1);
-  public final static native void DataStream_close(long jarg1, DataStream jarg1_);
-  public final static native long DataStream___ref__(long jarg1, DataStream jarg1_);
-  public final static native long DataStream___deref__(long jarg1, DataStream jarg1_);
   public final static native long new_DataSource(String jarg1);
   public final static native void delete_DataSource(long jarg1);
   public final static native long new_DataSink__SWIG_0(String jarg1, boolean jarg2);
@@ -358,8 +340,6 @@ public class btllibJNI {
   public final static native String get_datatype_cmd(String jarg1, long jarg2, Datatype jarg2_, int jarg3);
   public final static native long peel_datatype(String jarg1, int jarg2);
   public final static native String form_string_cmd(long jarg1, int jarg2, String jarg3);
-  public final static native long new_SeqReaderGfa2Module();
-  public final static native void delete_SeqReaderGfa2Module(long jarg1);
   public final static native String PRINT_COLOR_INFO_get();
   public final static native String PRINT_COLOR_WARNING_get();
   public final static native String PRINT_COLOR_ERROR_get();
@@ -383,6 +363,4 @@ public class btllibJNI {
   public final static native void trim__SWIG_1(long jarg1);
   public final static native boolean startswith(String jarg1, String jarg2);
   public final static native boolean endswith(String jarg1, String jarg2);
-  public final static native long DataSource_SWIGUpcast(long jarg1);
-  public final static native long DataSink_SWIGUpcast(long jarg1);
 }

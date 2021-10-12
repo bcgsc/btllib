@@ -29,6 +29,7 @@
 %include <std_string.i>
 %include <stdint.i>
 
+%include "../extra_common.i"
 %include "extra.i"
 
 %include "btllib/seq_reader.hpp"

@@ -38,6 +38,7 @@
 %include <carrays.i>
 %include <std_vector.i>
 
+%include "../extra_common.i"
 %include "extra.i"
 
 %include "btllib/seq_reader.hpp"

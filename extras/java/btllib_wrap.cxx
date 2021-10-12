@@ -760,28 +760,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1end(JNIEnv *jenv, jcla
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReaderSamModule(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  btllib::SeqReaderSamModule *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (btllib::SeqReaderSamModule *)new btllib::SeqReaderSamModule();
-  *(btllib::SeqReaderSamModule **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReaderSamModule(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::SeqReaderSamModule *arg1 = (btllib::SeqReaderSamModule *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::SeqReaderSamModule **)&jarg1; 
-  delete arg1;
-}
-
-
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_BIT_1MASKS_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   uint8_t *result = 0 ;
@@ -2597,39 +2575,6 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_install_1signal_1handlers_1spawner
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1ProcessPipelineInternal(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  btllib::ProcessPipelineInternal *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (btllib::ProcessPipelineInternal *)new btllib::ProcessPipelineInternal();
-  *(btllib::ProcessPipelineInternal **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_ProcessPipelineInternal_1end(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  btllib::ProcessPipelineInternal *arg1 = (btllib::ProcessPipelineInternal *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::ProcessPipelineInternal **)&jarg1; 
-  (arg1)->end();
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1ProcessPipelineInternal(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::ProcessPipelineInternal *arg1 = (btllib::ProcessPipelineInternal *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::ProcessPipelineInternal **)&jarg1; 
-  delete arg1;
-}
-
-
 SWIGEXPORT void JNICALL Java_btllib_btllibJNI_set_1comm_1pipes(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5, jlong jarg6) {
   std::vector< btllib::IORedirection > *arg1 = 0 ;
   size_t arg2 ;
@@ -3813,94 +3758,6 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_calc_1minimizer(JNIEnv *jenv, jcla
     return ;
   } 
   btllib::calc_minimizer((std::vector< btllib::Indexlr::Minimizer > const &)*arg1,(btllib::Indexlr::Minimizer const *&)*arg2,arg3,*arg4,*arg5,*arg6,arg7,*arg8);
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReaderFastqModule(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  btllib::SeqReaderFastqModule *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (btllib::SeqReaderFastqModule *)new btllib::SeqReaderFastqModule();
-  *(btllib::SeqReaderFastqModule **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReaderFastqModule(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::SeqReaderFastqModule *arg1 = (btllib::SeqReaderFastqModule *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::SeqReaderFastqModule **)&jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReaderMultilineFastqModule(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  btllib::SeqReaderMultilineFastqModule *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (btllib::SeqReaderMultilineFastqModule *)new btllib::SeqReaderMultilineFastqModule();
-  *(btllib::SeqReaderMultilineFastqModule **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReaderMultilineFastqModule(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::SeqReaderMultilineFastqModule *arg1 = (btllib::SeqReaderMultilineFastqModule *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::SeqReaderMultilineFastqModule **)&jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReaderFastaModule(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  btllib::SeqReaderFastaModule *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (btllib::SeqReaderFastaModule *)new btllib::SeqReaderFastaModule();
-  *(btllib::SeqReaderFastaModule **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReaderFastaModule(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::SeqReaderFastaModule *arg1 = (btllib::SeqReaderFastaModule *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::SeqReaderFastaModule **)&jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReaderMultilineFastaModule(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  btllib::SeqReaderMultilineFastaModule *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (btllib::SeqReaderMultilineFastaModule *)new btllib::SeqReaderMultilineFastaModule();
-  *(btllib::SeqReaderMultilineFastaModule **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReaderMultilineFastaModule(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::SeqReaderMultilineFastaModule *arg1 = (btllib::SeqReaderMultilineFastaModule *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::SeqReaderMultilineFastaModule **)&jarg1; 
-  delete arg1;
 }
 
 
@@ -7317,81 +7174,6 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DATATYPES_1get(JNIEnv *jenv, jcla
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1DataStream(JNIEnv *jenv, jclass jcls, jstring jarg1, jint jarg2) {
-  jlong jresult = 0 ;
-  std::string *arg1 = 0 ;
-  btllib::DataStream::Operation arg2 ;
-  btllib::DataStream *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  if(!jarg1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
-    return 0;
-  }
-  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
-  if (!arg1_pstr) return 0;
-  std::string arg1_str(arg1_pstr);
-  arg1 = &arg1_str;
-  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
-  arg2 = (btllib::DataStream::Operation)jarg2; 
-  result = (btllib::DataStream *)new btllib::DataStream((std::string const &)*arg1,arg2);
-  *(btllib::DataStream **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1DataStream(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::DataStream *arg1 = (btllib::DataStream *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::DataStream **)&jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_DataStream_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  btllib::DataStream *arg1 = (btllib::DataStream *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::DataStream **)&jarg1; 
-  (arg1)->close();
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataStream_1_1_1ref_1_1(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  btllib::DataStream *arg1 = (btllib::DataStream *) 0 ;
-  FILE *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::DataStream **)&jarg1; 
-  result = (FILE *)((btllib::DataStream const *)arg1)->operator *();
-  *(FILE **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataStream_1_1_1deref_1_1(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  btllib::DataStream *arg1 = (btllib::DataStream *) 0 ;
-  FILE *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(btllib::DataStream **)&jarg1; 
-  result = (FILE *)((btllib::DataStream const *)arg1)->operator ->();
-  *(FILE **)&jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1DataSource(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
@@ -7586,28 +7368,6 @@ SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_form_1string_1cmd(JNIEnv *jenv,
   result = btllib::form_string_cmd(*arg1,arg2,(std::string const &)*arg3);
   jresult = jenv->NewStringUTF((&result)->c_str()); 
   return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeqReaderGfa2Module(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  btllib::SeqReaderGfa2Module *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (btllib::SeqReaderGfa2Module *)new btllib::SeqReaderGfa2Module();
-  *(btllib::SeqReaderGfa2Module **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReaderGfa2Module(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  btllib::SeqReaderGfa2Module *arg1 = (btllib::SeqReaderGfa2Module *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(btllib::SeqReaderGfa2Module **)&jarg1; 
-  delete arg1;
 }
 
 
@@ -8024,22 +7784,6 @@ SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_endswith(JNIEnv *jenv, jclass 
   return jresult;
 }
 
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSource_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-    jlong baseptr = 0;
-    (void)jenv;
-    (void)jcls;
-    *(btllib::DataStream **)&baseptr = *(btllib::DataSource **)&jarg1;
-    return baseptr;
-}
-
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_DataSink_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-    jlong baseptr = 0;
-    (void)jenv;
-    (void)jcls;
-    *(btllib::DataStream **)&baseptr = *(btllib::DataSink **)&jarg1;
-    return baseptr;
-}
 
 #ifdef __cplusplus
 }
