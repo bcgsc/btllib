@@ -144,7 +144,7 @@ $(function() {
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classbtllib_1_1CountingBloomFilter.html#a5e22481a658471b286a2a8b915839121">save</a>(<span class="keyword">const</span> std::string&amp; path);</div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  <a class="code hl_function" href="classbtllib_1_1CountingBloomFilter.html#a9705fdffa692d4b3469380b95b69b0e8">CountingBloomFilter</a>(<a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a> bfi);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  <a class="code hl_function" href="classbtllib_1_1CountingBloomFilter.html#a9705fdffa692d4b3469380b95b69b0e8">CountingBloomFilter</a>(BloomFilterInitializer bfi);</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classbtllib_1_1KmerCountingBloomFilter.html">KmerCountingBloomFilter</a>&lt;T&gt;;</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
@@ -235,7 +235,7 @@ $(function() {
 <div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classbtllib_1_1KmerCountingBloomFilter.html#a2114624b42d693170ec48391690d95fe">save</a>(<span class="keyword">const</span> std::string&amp; path);</div>
 <div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
 <div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>  <a class="code hl_function" href="classbtllib_1_1KmerCountingBloomFilter.html#af5073e09146d1b029e4f6be38ec644bc">KmerCountingBloomFilter</a>(<a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a> bfi);</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>  <a class="code hl_function" href="classbtllib_1_1KmerCountingBloomFilter.html#af5073e09146d1b029e4f6be38ec644bc">KmerCountingBloomFilter</a>(BloomFilterInitializer bfi);</div>
 <div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span> </div>
 <div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>  <span class="keywordtype">unsigned</span> k = 0;</div>
 <div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>  <a class="code hl_class" href="classbtllib_1_1CountingBloomFilter.html">CountingBloomFilter&lt;T&gt;</a> counting_bloom_filter;</div>
@@ -356,11 +356,11 @@ $(function() {
 <div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a id="l00469" name="l00469"></a><span class="lineno"><a class="line" href="classbtllib_1_1CountingBloomFilter.html#a5cb12da1f8fbf5fd769f08820c58719d">  469</a></span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1CountingBloomFilter.html#a9705fdffa692d4b3469380b95b69b0e8">CountingBloomFilter&lt;T&gt;::CountingBloomFilter</a>(<span class="keyword">const</span> std::string&amp; path)</div>
 <div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span>  : <a class="code hl_class" href="classbtllib_1_1CountingBloomFilter.html">CountingBloomFilter</a>&lt;T&gt;::<a class="code hl_class" href="classbtllib_1_1CountingBloomFilter.html">CountingBloomFilter</a>(</div>
-<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>      <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>(path, COUNTING_BLOOM_FILTER_MAGIC_HEADER))</div>
+<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>      BloomFilterInitializer(path, COUNTING_BLOOM_FILTER_MAGIC_HEADER))</div>
 <div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span>{}</div>
 <div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span> </div>
 <div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1CountingBloomFilter.html#a9705fdffa692d4b3469380b95b69b0e8">CountingBloomFilter&lt;T&gt;::CountingBloomFilter</a>(<a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a> bfi)</div>
+<div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1CountingBloomFilter.html#a9705fdffa692d4b3469380b95b69b0e8">CountingBloomFilter&lt;T&gt;::CountingBloomFilter</a>(BloomFilterInitializer bfi)</div>
 <div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span>  : bytes(*bfi.table-&gt;get_as&lt;decltype(bytes)&gt;(<span class="stringliteral">&quot;bytes&quot;</span>))</div>
 <div class="line"><a id="l00477" name="l00477"></a><span class="lineno">  477</span>  , array_size(bytes / sizeof(array[0]))</div>
 <div class="line"><a id="l00478" name="l00478"></a><span class="lineno">  478</span>  , hash_num(*(bfi.table-&gt;get_as&lt;decltype(hash_num)&gt;(<span class="stringliteral">&quot;hash_num&quot;</span>)))</div>
@@ -451,12 +451,12 @@ $(function() {
 <div class="line"><a id="l00563" name="l00563"></a><span class="lineno"><a class="line" href="classbtllib_1_1KmerCountingBloomFilter.html#a14fc342e9b8988127d45fa8710e772ba">  563</a></span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1KmerCountingBloomFilter.html#af5073e09146d1b029e4f6be38ec644bc">KmerCountingBloomFilter&lt;T&gt;::KmerCountingBloomFilter</a>(</div>
 <div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>  <span class="keyword">const</span> std::string&amp; path)</div>
 <div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>  : <a class="code hl_class" href="classbtllib_1_1KmerCountingBloomFilter.html">KmerCountingBloomFilter</a>&lt;T&gt;::<a class="code hl_class" href="classbtllib_1_1KmerCountingBloomFilter.html">KmerCountingBloomFilter</a>(</div>
-<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>      <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>(path, KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER))</div>
+<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>      BloomFilterInitializer(path, KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER))</div>
 <div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span>{}</div>
 <div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span> </div>
 <div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1KmerCountingBloomFilter.html#af5073e09146d1b029e4f6be38ec644bc">KmerCountingBloomFilter&lt;T&gt;::KmerCountingBloomFilter</a>(</div>
-<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span>  <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a> bfi)</div>
+<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span>  BloomFilterInitializer bfi)</div>
 <div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span>  : k(*(bfi.table-&gt;get_as&lt;decltype(k)&gt;(<span class="stringliteral">&quot;k&quot;</span>)))</div>
 <div class="line"><a id="l00573" name="l00573"></a><span class="lineno">  573</span>  , counting_bloom_filter(std::move(bfi))</div>
 <div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span>{</div>
@@ -498,7 +498,6 @@ $(function() {
 <div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>} <span class="comment">// namespace btllib</span></div>
 <div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span> </div>
 <div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassbtllib_1_1BloomFilterInitializer_html"><div class="ttname"><a href="classbtllib_1_1BloomFilterInitializer.html">btllib::BloomFilterInitializer</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:46</div></div>
 <div class="ttc" id="aclassbtllib_1_1BloomFilter_html_aa47b7cad6cd99614effb16a30e6abc6f"><div class="ttname"><a href="classbtllib_1_1BloomFilter.html#aa47b7cad6cd99614effb16a30e6abc6f">btllib::BloomFilter::save</a></div><div class="ttdeci">void save(const std::string &amp;path)</div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:785</div></div>
 <div class="ttc" id="aclassbtllib_1_1CountingBloomFilter_html"><div class="ttname"><a href="classbtllib_1_1CountingBloomFilter.html">btllib::CountingBloomFilter</a></div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:36</div></div>
 <div class="ttc" id="aclassbtllib_1_1CountingBloomFilter_html_a154fa80d30a1019a71a2206ff15fc8fe"><div class="ttname"><a href="classbtllib_1_1CountingBloomFilter.html#a154fa80d30a1019a71a2206ff15fc8fe">btllib::CountingBloomFilter::insert</a></div><div class="ttdeci">void insert(const std::vector&lt; uint64_t &gt; &amp;hashes)</div><div class="ttdef"><b>Definition:</b> counting_bloom_filter.hpp:79</div></div>

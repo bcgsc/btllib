@@ -113,28 +113,28 @@ $(function() {
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>         0xf;                                                          <span class="comment">// NOLINT</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classbtllib_1_1BloomFilterInitializer.html">   45</a></span><span class="keyword">class </span><a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">class </span>BloomFilterInitializer</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>(<span class="keyword">const</span> std::string&amp; path,</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  BloomFilterInitializer(<span class="keyword">const</span> std::string&amp; path,</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                         <span class="keyword">const</span> std::string&amp; magic_string)</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    : ifs(path)</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    , table(<a class="code hl_function" href="classbtllib_1_1BloomFilterInitializer.html#aaf3db854c7f5dd83d9588a3931156ee1">parse_header</a>(ifs, magic_string))</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    , table(parse_header(ifs, magic_string))</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  {}</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keyword">static</span> std::shared_ptr&lt;cpptoml::table&gt; <a class="code hl_function" href="classbtllib_1_1BloomFilterInitializer.html#aaf3db854c7f5dd83d9588a3931156ee1">parse_header</a>(</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keyword">static</span> std::shared_ptr&lt;cpptoml::table&gt; parse_header(</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    std::ifstream&amp; file,</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">const</span> std::string&amp; magic_string);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  std::ifstream ifs;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  std::shared_ptr&lt;cpptoml::table&gt; table;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>(<span class="keyword">const</span> <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>(<a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  BloomFilterInitializer(<span class="keyword">const</span> BloomFilterInitializer&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  BloomFilterInitializer(BloomFilterInitializer&amp;&amp;) = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>&amp; operator=(<span class="keyword">const</span> <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>&amp; operator=(<a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  BloomFilterInitializer&amp; operator=(<span class="keyword">const</span> BloomFilterInitializer&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  BloomFilterInitializer&amp; operator=(BloomFilterInitializer&amp;&amp;) = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classbtllib_1_1BloomFilter.html">   71</a></span><span class="keyword">class </span><a class="code hl_class" href="classbtllib_1_1BloomFilter.html">BloomFilter</a></div>
@@ -186,7 +186,7 @@ $(function() {
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                   <span class="keywordtype">size_t</span> n);</div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>  <a class="code hl_function" href="classbtllib_1_1BloomFilter.html#ae45ae1bfcffeb8e5afba24e2a6f5bc90">BloomFilter</a>(<a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a> bfi);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>  <a class="code hl_function" href="classbtllib_1_1BloomFilter.html#ae45ae1bfcffeb8e5afba24e2a6f5bc90">BloomFilter</a>(BloomFilterInitializer bfi);</div>
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classbtllib_1_1KmerBloomFilter.html">KmerBloomFilter</a>;</div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classbtllib_1_1SeedBloomFilter.html">SeedBloomFilter</a>;</div>
@@ -273,7 +273,7 @@ $(function() {
 <div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classbtllib_1_1KmerBloomFilter.html#abd827a224723a2b24ea2e9e1d7f1d5ea">save</a>(<span class="keyword">const</span> std::string&amp; path);</div>
 <div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span> </div>
 <div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>  <a class="code hl_function" href="classbtllib_1_1KmerBloomFilter.html#a76683977f97d802b7ebe3e09884fb4e6">KmerBloomFilter</a>(<a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a> bfi);</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>  <a class="code hl_function" href="classbtllib_1_1KmerBloomFilter.html#a76683977f97d802b7ebe3e09884fb4e6">KmerBloomFilter</a>(BloomFilterInitializer bfi);</div>
 <div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span> </div>
 <div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classbtllib_1_1SeedBloomFilter.html">SeedBloomFilter</a>;</div>
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
@@ -375,7 +375,7 @@ $(function() {
 <div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classbtllib_1_1SeedBloomFilter.html#a492503ad458de38bf683ef804ebff5c1">save</a>(<span class="keyword">const</span> std::string&amp; path);</div>
 <div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span> </div>
 <div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>  <a class="code hl_function" href="classbtllib_1_1SeedBloomFilter.html#ad13884cf28a0e94978ac5005be628f3b">SeedBloomFilter</a>(<a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a> bfi);</div>
+<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>  <a class="code hl_function" href="classbtllib_1_1SeedBloomFilter.html#ad13884cf28a0e94978ac5005be628f3b">SeedBloomFilter</a>(BloomFilterInitializer bfi);</div>
 <div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span> </div>
 <div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>  std::vector&lt;std::string&gt; seeds;</div>
 <div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>  std::vector&lt;SpacedSeed&gt; parsed_seeds;</div>
@@ -463,7 +463,7 @@ $(function() {
 <div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>}</div>
 <div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span> </div>
 <div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span><span class="keyword">inline</span> std::shared_ptr&lt;cpptoml::table&gt;</div>
-<div class="line"><a id="l00698" name="l00698"></a><span class="lineno"><a class="line" href="classbtllib_1_1BloomFilterInitializer.html#aaf3db854c7f5dd83d9588a3931156ee1">  698</a></span><a class="code hl_function" href="classbtllib_1_1BloomFilterInitializer.html#aaf3db854c7f5dd83d9588a3931156ee1">BloomFilterInitializer::parse_header</a>(std::ifstream&amp; file,</div>
+<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>BloomFilterInitializer::parse_header(std::ifstream&amp; file,</div>
 <div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>                                     <span class="keyword">const</span> std::string&amp; magic_string)</div>
 <div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>{</div>
 <div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>  <span class="keyword">const</span> std::string magic_with_brackets = std::string(<span class="stringliteral">&quot;[&quot;</span>) + magic_string + <span class="stringliteral">&quot;]&quot;</span>;</div>
@@ -509,10 +509,10 @@ $(function() {
 <div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span> </div>
 <div class="line"><a id="l00742" name="l00742"></a><span class="lineno"><a class="line" href="classbtllib_1_1BloomFilter.html#afab84bd57e8d7b307673f548e5205b29">  742</a></span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1BloomFilter.html#ae45ae1bfcffeb8e5afba24e2a6f5bc90">BloomFilter::BloomFilter</a>(<span class="keyword">const</span> std::string&amp; path)</div>
 <div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span>  : <a class="code hl_class" href="classbtllib_1_1BloomFilter.html">BloomFilter</a>::<a class="code hl_class" href="classbtllib_1_1BloomFilter.html">BloomFilter</a>(</div>
-<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span>      <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>(path, BLOOM_FILTER_MAGIC_HEADER))</div>
+<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span>      BloomFilterInitializer(path, BLOOM_FILTER_MAGIC_HEADER))</div>
 <div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span>{}</div>
 <div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span> </div>
-<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1BloomFilter.html#ae45ae1bfcffeb8e5afba24e2a6f5bc90">BloomFilter::BloomFilter</a>(<a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a> bfi)</div>
+<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1BloomFilter.html#ae45ae1bfcffeb8e5afba24e2a6f5bc90">BloomFilter::BloomFilter</a>(BloomFilterInitializer bfi)</div>
 <div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span>  : bytes(*(bfi.table-&gt;get_as&lt;decltype(bytes)&gt;(<span class="stringliteral">&quot;bytes&quot;</span>)))</div>
 <div class="line"><a id="l00749" name="l00749"></a><span class="lineno">  749</span>  , array_size(bytes / sizeof(array[0]))</div>
 <div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span>  , array_bits(array_size * CHAR_BIT)</div>
@@ -615,10 +615,10 @@ $(function() {
 <div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span> </div>
 <div class="line"><a id="l00848" name="l00848"></a><span class="lineno"><a class="line" href="classbtllib_1_1KmerBloomFilter.html#a56046ef890ff084f943f13989f69d504">  848</a></span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1KmerBloomFilter.html#a76683977f97d802b7ebe3e09884fb4e6">KmerBloomFilter::KmerBloomFilter</a>(<span class="keyword">const</span> std::string&amp; path)</div>
 <div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span>  : <a class="code hl_class" href="classbtllib_1_1KmerBloomFilter.html">KmerBloomFilter</a>::<a class="code hl_class" href="classbtllib_1_1KmerBloomFilter.html">KmerBloomFilter</a>(</div>
-<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span>      <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>(path, KMER_BLOOM_FILTER_MAGIC_HEADER))</div>
+<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span>      BloomFilterInitializer(path, KMER_BLOOM_FILTER_MAGIC_HEADER))</div>
 <div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span>{}</div>
 <div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span> </div>
-<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1KmerBloomFilter.html#a76683977f97d802b7ebe3e09884fb4e6">KmerBloomFilter::KmerBloomFilter</a>(<a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a> bfi)</div>
+<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1KmerBloomFilter.html#a76683977f97d802b7ebe3e09884fb4e6">KmerBloomFilter::KmerBloomFilter</a>(BloomFilterInitializer bfi)</div>
 <div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span>  : k(*(bfi.table-&gt;get_as&lt;decltype(k)&gt;(<span class="stringliteral">&quot;k&quot;</span>)))</div>
 <div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span>  , bloom_filter(std::move(bfi))</div>
 <div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span>{</div>
@@ -727,10 +727,10 @@ $(function() {
 <div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span> </div>
 <div class="line"><a id="l00960" name="l00960"></a><span class="lineno"><a class="line" href="classbtllib_1_1SeedBloomFilter.html#a826a023c14d8d229d5238df0eee04a25">  960</a></span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1SeedBloomFilter.html#ad13884cf28a0e94978ac5005be628f3b">SeedBloomFilter::SeedBloomFilter</a>(<span class="keyword">const</span> std::string&amp; path)</div>
 <div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>  : <a class="code hl_class" href="classbtllib_1_1SeedBloomFilter.html">SeedBloomFilter</a>::<a class="code hl_class" href="classbtllib_1_1SeedBloomFilter.html">SeedBloomFilter</a>(</div>
-<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>      <a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a>(path, SEED_BLOOM_FILTER_MAGIC_HEADER))</div>
+<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>      BloomFilterInitializer(path, SEED_BLOOM_FILTER_MAGIC_HEADER))</div>
 <div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>{}</div>
 <div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span> </div>
-<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1SeedBloomFilter.html#ad13884cf28a0e94978ac5005be628f3b">SeedBloomFilter::SeedBloomFilter</a>(<a class="code hl_class" href="classbtllib_1_1BloomFilterInitializer.html">BloomFilterInitializer</a> bfi)</div>
+<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span><span class="keyword">inline</span> <a class="code hl_function" href="classbtllib_1_1SeedBloomFilter.html#ad13884cf28a0e94978ac5005be628f3b">SeedBloomFilter::SeedBloomFilter</a>(BloomFilterInitializer bfi)</div>
 <div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>  : seeds(*(bfi.table-&gt;get_array_of&lt;std::string&gt;(<span class="stringliteral">&quot;seeds&quot;</span>)))</div>
 <div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>  , parsed_seeds(parse_seeds(seeds))</div>
 <div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>  , kmer_bloom_filter(std::move(bfi))</div>
@@ -769,8 +769,6 @@ $(function() {
 <div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>} <span class="comment">// namespace btllib</span></div>
 <div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span> </div>
 <div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassbtllib_1_1BloomFilterInitializer_html"><div class="ttname"><a href="classbtllib_1_1BloomFilterInitializer.html">btllib::BloomFilterInitializer</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:46</div></div>
-<div class="ttc" id="aclassbtllib_1_1BloomFilterInitializer_html_aaf3db854c7f5dd83d9588a3931156ee1"><div class="ttname"><a href="classbtllib_1_1BloomFilterInitializer.html#aaf3db854c7f5dd83d9588a3931156ee1">btllib::BloomFilterInitializer::parse_header</a></div><div class="ttdeci">static std::shared_ptr&lt; cpptoml::table &gt; parse_header(std::ifstream &amp;file, const std::string &amp;magic_string)</div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:698</div></div>
 <div class="ttc" id="aclassbtllib_1_1BloomFilter_html"><div class="ttname"><a href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:72</div></div>
 <div class="ttc" id="aclassbtllib_1_1BloomFilter_html_a29af5077ed6bc89f3c5e51e1802b6cf1"><div class="ttname"><a href="classbtllib_1_1BloomFilter.html#a29af5077ed6bc89f3c5e51e1802b6cf1">btllib::BloomFilter::contains</a></div><div class="ttdeci">bool contains(const uint64_t *hashes) const</div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:649</div></div>
 <div class="ttc" id="aclassbtllib_1_1BloomFilter_html_a2ed85398ead96900dc728a795e21981f"><div class="ttname"><a href="classbtllib_1_1BloomFilter.html#a2ed85398ead96900dc728a795e21981f">btllib::BloomFilter::contains</a></div><div class="ttdeci">bool contains(const std::vector&lt; uint64_t &gt; &amp;hashes) const</div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:132</div></div>
