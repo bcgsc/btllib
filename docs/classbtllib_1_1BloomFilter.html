@@ -124,8 +124,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a2671dfd28714057547e9b7ac21d44d88"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; cpptoml::table &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1BloomFilter.html#a2671dfd28714057547e9b7ac21d44d88">parse_header</a> (std::ifstream &amp;file, const std::string &amp;magic_string)</td></tr>
-<tr class="separator:a2671dfd28714057547e9b7ac21d44d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7af324b3b1777c846e805b58e6723d95"><td class="memItemLeft" align="right" valign="top"><a id="a7af324b3b1777c846e805b58e6723d95" name="a7af324b3b1777c846e805b58e6723d95"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>save</b> (const std::string &amp;path, const cpptoml::table &amp;table, const char *data, size_t n)</td></tr>
+<tr class="separator:a7af324b3b1777c846e805b58e6723d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -603,43 +604,6 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeedBloomFilter</b><
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a2671dfd28714057547e9b7ac21d44d88" name="a2671dfd28714057547e9b7ac21d44d88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2671dfd28714057547e9b7ac21d44d88">&#9670;&nbsp;</a></span>parse_header()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt; cpptoml::table &gt; btllib::BloomFilter::parse_header </td>
-          <td>(</td>
-          <td class="paramtype">std::ifstream &amp;&#160;</td>
-          <td class="paramname"><em>file</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>magic_string</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p >Parse a Bloom filter file header. Useful for implementing Bloom filter variants. </p>
 
 </div>
 </div>

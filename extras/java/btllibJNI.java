@@ -53,7 +53,6 @@ public class btllibJNI {
   public final static native long new_BloomFilter__SWIG_1(long jarg1, long jarg2, String jarg3);
   public final static native long new_BloomFilter__SWIG_2(long jarg1, long jarg2);
   public final static native long new_BloomFilter__SWIG_3(String jarg1);
-  public final static native void delete_BloomFilter(long jarg1);
   public final static native void BloomFilter_insert__SWIG_0(long jarg1, BloomFilter jarg1_, long jarg2);
   public final static native void BloomFilter_insert__SWIG_1(long jarg1, BloomFilter jarg1_, long jarg2);
   public final static native boolean BloomFilter_contains__SWIG_0(long jarg1, BloomFilter jarg1_, long jarg2);
@@ -66,8 +65,9 @@ public class btllibJNI {
   public final static native long BloomFilter_get_hash_num(long jarg1, BloomFilter jarg1_);
   public final static native double BloomFilter_get_fpr(long jarg1, BloomFilter jarg1_);
   public final static native String BloomFilter_get_hash_fn(long jarg1, BloomFilter jarg1_);
-  public final static native void BloomFilter_save(long jarg1, BloomFilter jarg1_, String jarg2);
-  public final static native long BloomFilter_parse_header(long jarg1, String jarg2);
+  public final static native void BloomFilter_save__SWIG_0(long jarg1, BloomFilter jarg1_, String jarg2);
+  public final static native void BloomFilter_save__SWIG_1(String jarg1, long jarg2, String jarg3, long jarg4);
+  public final static native void delete_BloomFilter(long jarg1);
   public final static native long new_KmerBloomFilter__SWIG_0();
   public final static native long new_KmerBloomFilter__SWIG_1(long jarg1, long jarg2, long jarg3);
   public final static native long new_KmerBloomFilter__SWIG_2(String jarg1);
@@ -111,12 +111,13 @@ public class btllibJNI {
   public final static native long SeedBloomFilter_get_bytes(long jarg1, SeedBloomFilter jarg1_);
   public final static native java.math.BigInteger SeedBloomFilter_get_pop_cnt(long jarg1, SeedBloomFilter jarg1_);
   public final static native double SeedBloomFilter_get_occupancy(long jarg1, SeedBloomFilter jarg1_);
-  public final static native long SeedBloomFilter_get_hash_num(long jarg1, SeedBloomFilter jarg1_);
+  public final static native long SeedBloomFilter_get_total_hash_num(long jarg1, SeedBloomFilter jarg1_);
   public final static native double SeedBloomFilter_get_fpr(long jarg1, SeedBloomFilter jarg1_);
   public final static native long SeedBloomFilter_get_k(long jarg1, SeedBloomFilter jarg1_);
   public final static native long SeedBloomFilter_get_seeds(long jarg1, SeedBloomFilter jarg1_);
   public final static native long SeedBloomFilter_get_parsed_seeds(long jarg1, SeedBloomFilter jarg1_);
   public final static native long SeedBloomFilter_get_hash_num_per_seed(long jarg1, SeedBloomFilter jarg1_);
+  public final static native long SeedBloomFilter_get_hash_num(long jarg1, SeedBloomFilter jarg1_);
   public final static native String SeedBloomFilter_get_hash_fn(long jarg1, SeedBloomFilter jarg1_);
   public final static native long SeedBloomFilter_get_kmer_bloom_filter(long jarg1, SeedBloomFilter jarg1_);
   public final static native void SeedBloomFilter_save(long jarg1, SeedBloomFilter jarg1_, String jarg2);

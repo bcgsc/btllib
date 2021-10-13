@@ -125,8 +125,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a96ce7ada797c1f578dae30c3d3128ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19d07b10ebb82e858914f88f9dca3a4c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a19d07b10ebb82e858914f88f9dca3a4c">get_occupancy</a> () const</td></tr>
 <tr class="separator:a19d07b10ebb82e858914f88f9dca3a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8252f79e19a18665af02ec5ded5be97"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ae8252f79e19a18665af02ec5ded5be97">get_hash_num</a> () const</td></tr>
-<tr class="separator:ae8252f79e19a18665af02ec5ded5be97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a1aa55085c3dfed021854e9f2452c83"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a0a1aa55085c3dfed021854e9f2452c83">get_total_hash_num</a> () const</td></tr>
+<tr class="separator:a0a1aa55085c3dfed021854e9f2452c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90f162ecded0b3974eeaaf496ff6853e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a90f162ecded0b3974eeaaf496ff6853e">get_fpr</a> () const</td></tr>
 <tr class="separator:a90f162ecded0b3974eeaaf496ff6853e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab644f0b1af1c5a9897b812fedf6acc33"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ab644f0b1af1c5a9897b812fedf6acc33">get_k</a> () const</td></tr>
@@ -137,6 +137,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a568db8643f6104f74af3276f8c70bcc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b281f9326b52e93355e6bef17748c20"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a6b281f9326b52e93355e6bef17748c20">get_hash_num_per_seed</a> () const</td></tr>
 <tr class="separator:a6b281f9326b52e93355e6bef17748c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8252f79e19a18665af02ec5ded5be97"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ae8252f79e19a18665af02ec5ded5be97">get_hash_num</a> () const</td></tr>
+<tr class="separator:ae8252f79e19a18665af02ec5ded5be97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad006f5964bf58f114d0b7f5e325dc083"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#ad006f5964bf58f114d0b7f5e325dc083">get_hash_fn</a> () const</td></tr>
 <tr class="separator:ad006f5964bf58f114d0b7f5e325dc083"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58291ea587d0c9c3f10511a771054d8e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbtllib_1_1KmerBloomFilter.html">KmerBloomFilter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1SeedBloomFilter.html#a58291ea587d0c9c3f10511a771054d8e">get_kmer_bloom_filter</a> ()</td></tr>
@@ -656,7 +658,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Get the number of hash values per k-mer, i.e. total number of hash values for all seeds. </p>
+<p >Get the number of hash values per element, i.e. seed. </p>
 
 </div>
 </div>
@@ -839,6 +841,32 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p >Get the seeds used in string format. </p>
+
+</div>
+</div>
+<a id="a0a1aa55085c3dfed021854e9f2452c83" name="a0a1aa55085c3dfed021854e9f2452c83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a1aa55085c3dfed021854e9f2452c83">&#9670;&nbsp;</a></span>get_total_hash_num()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned btllib::SeedBloomFilter::get_total_hash_num </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Get the number of hash values per k-mer, i.e. total number of hash values for all seeds. </p>
 
 </div>
 </div>
