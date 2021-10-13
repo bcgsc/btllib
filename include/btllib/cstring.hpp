@@ -26,9 +26,9 @@ struct CString
   }
 
   CString(CString&& cstr) noexcept
+    : s_size(cstr.s_size)
   {
     std::swap(s, cstr.s);
-    s_size = cstr.s_size;
     cstr.clear();
     std::swap(s_cap, cstr.s_cap);
   }

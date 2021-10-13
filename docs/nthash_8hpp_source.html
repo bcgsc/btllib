@@ -1281,9 +1281,9 @@ $(function() {
 <div class="line"><a id="l01210" name="l01210"></a><span class="lineno"> 1210</span>                 MS_TAB_33R[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[seed_pos] &amp; CP_OFF]</div>
 <div class="line"><a id="l01211" name="l01211"></a><span class="lineno"> 1211</span>                           [seed_pos % 33]); <span class="comment">// NOLINT</span></div>
 <div class="line"><a id="l01212" name="l01212"></a><span class="lineno"> 1212</span>    }</div>
-<div class="line"><a id="l01213" name="l01213"></a><span class="lineno"> 1213</span>    h_val[j * m2] = rs_val &lt; fs_val ? rs_val : fs_val;</div>
+<div class="line"><a id="l01213" name="l01213"></a><span class="lineno"> 1213</span>    h_val[size_t(j) * m2] = rs_val &lt; fs_val ? rs_val : fs_val;</div>
 <div class="line"><a id="l01214" name="l01214"></a><span class="lineno"> 1214</span>    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j2 = 1; j2 &lt; m2; j2++) {</div>
-<div class="line"><a id="l01215" name="l01215"></a><span class="lineno"> 1215</span>      uint64_t t_val = h_val[j * m2] * (j2 ^ k * MULTISEED);</div>
+<div class="line"><a id="l01215" name="l01215"></a><span class="lineno"> 1215</span>      uint64_t t_val = h_val[size_t(j) * m2] * (j2 ^ k * MULTISEED);</div>
 <div class="line"><a id="l01216" name="l01216"></a><span class="lineno"> 1216</span>      t_val ^= t_val &gt;&gt; MULTISHIFT;</div>
 <div class="line"><a id="l01217" name="l01217"></a><span class="lineno"> 1217</span>      h_val[j * m2 + j2] = t_val;</div>
 <div class="line"><a id="l01218" name="l01218"></a><span class="lineno"> 1218</span>    }</div>
@@ -1318,9 +1318,9 @@ $(function() {
 <div class="line"><a id="l01247" name="l01247"></a><span class="lineno"> 1247</span>                 MS_TAB_33R[(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)kmer_seq[seed_pos] &amp; CP_OFF]</div>
 <div class="line"><a id="l01248" name="l01248"></a><span class="lineno"> 1248</span>                           [seed_pos % 33]); <span class="comment">// NOLINT</span></div>
 <div class="line"><a id="l01249" name="l01249"></a><span class="lineno"> 1249</span>    }</div>
-<div class="line"><a id="l01250" name="l01250"></a><span class="lineno"> 1250</span>    h_val[j * m2] = rs_val &lt; fs_val ? rs_val : fs_val;</div>
+<div class="line"><a id="l01250" name="l01250"></a><span class="lineno"> 1250</span>    h_val[size_t(j) * m2] = rs_val &lt; fs_val ? rs_val : fs_val;</div>
 <div class="line"><a id="l01251" name="l01251"></a><span class="lineno"> 1251</span>    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j2 = 1; j2 &lt; m2; j2++) {</div>
-<div class="line"><a id="l01252" name="l01252"></a><span class="lineno"> 1252</span>      uint64_t t_val = h_val[j * m2] * (j2 ^ k * MULTISEED);</div>
+<div class="line"><a id="l01252" name="l01252"></a><span class="lineno"> 1252</span>      uint64_t t_val = h_val[size_t(j) * m2] * (j2 ^ k * MULTISEED);</div>
 <div class="line"><a id="l01253" name="l01253"></a><span class="lineno"> 1253</span>      t_val ^= t_val &gt;&gt; MULTISHIFT;</div>
 <div class="line"><a id="l01254" name="l01254"></a><span class="lineno"> 1254</span>      h_val[j * m2 + j2] = t_val;</div>
 <div class="line"><a id="l01255" name="l01255"></a><span class="lineno"> 1255</span>    }</div>
