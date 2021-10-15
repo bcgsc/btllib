@@ -13,7 +13,7 @@ main()
     std::cerr << "Iteration " << iteration + 1 << std::endl;
 
     std::cerr << "Test small FASTA" << std::endl;
-    btllib::SeqReader reader("../tests/input.fa.gz.bz2.xz.lrz",
+    btllib::SeqReader reader("../tests/input.fa.gz.bz2.xz",
                              btllib::SeqReader::Flag::SHORT_MODE);
     TEST_ASSERT_EQ(reader.get_format(), btllib::SeqReader::Format::FASTA)
 

@@ -143,7 +143,7 @@ public:
   void save(const std::string& path);
 
 private:
-  CountingBloomFilter(BloomFilterInitializer bfi);
+  CountingBloomFilter(std::shared_ptr<BloomFilterInitializer> bfi);
 
   friend class KmerCountingBloomFilter<T>;
 
@@ -347,7 +347,7 @@ public:
   void save(const std::string& path);
 
 private:
-  KmerCountingBloomFilter(BloomFilterInitializer bfi);
+  KmerCountingBloomFilter(std::shared_ptr<BloomFilterInitializer> bfi);
 
   unsigned k = 0;
   CountingBloomFilter<T> counting_bloom_filter;
@@ -468,16 +468,18 @@ CountingBloomFilter<T>::get_fpr() const
 template<typename T>
 inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path)
   : CountingBloomFilter<T>::CountingBloomFilter(
-      BloomFilterInitializer(path, COUNTING_BLOOM_FILTER_MAGIC_HEADER))
+      std::shared_ptr<BloomFilterInitializer>(
+        new BloomFilterInitializer(path, COUNTING_BLOOM_FILTER_MAGIC_HEADER)))
 {}
 
 template<typename T>
-inline CountingBloomFilter<T>::CountingBloomFilter(BloomFilterInitializer bfi)
-  : bytes(*bfi.table->get_as<decltype(bytes)>("bytes"))
+inline CountingBloomFilter<T>::CountingBloomFilter(
+  std::shared_ptr<BloomFilterInitializer> bfi)
+  : bytes(*bfi->table->get_as<decltype(bytes)>("bytes"))
   , array_size(bytes / sizeof(array[0]))
-  , hash_num(*(bfi.table->get_as<decltype(hash_num)>("hash_num")))
-  , hash_fn(bfi.table->contains("hash_fn")
-              ? *(bfi.table->get_as<decltype(hash_fn)>("hash_fn"))
+  , hash_num(*(bfi->table->get_as<decltype(hash_num)>("hash_num")))
+  , hash_fn(bfi->table->contains("hash_fn")
+              ? *(bfi->table->get_as<decltype(hash_fn)>("hash_fn"))
               : "")
   , array(new std::atomic<T>[array_size])
 {
@@ -485,14 +487,15 @@ inline CountingBloomFilter<T>::CountingBloomFilter(BloomFilterInitializer bfi)
                 "Atomic primitives take extra memory. CountingBloomFilter will "
                 "have less than " +
                   std::to_string(bytes) + " for bit array.");
-  const auto loaded_counter_bits = *bfi.table->get_as<size_t>("counter_bits");
+  const auto loaded_counter_bits =
+    *(bfi->table->get_as<size_t>("counter_bits"));
   check_error(sizeof(array[0]) * CHAR_BIT != loaded_counter_bits,
               "CountingBloomFilter" +
                 std::to_string(sizeof(array[0]) * CHAR_BIT) +
                 " tried to load a file of CountingBloomFilter" +
                 std::to_string(loaded_counter_bits));
-  bfi.ifs.read((char*)array.get(),
-               std::streamsize(array_size * sizeof(array[0])));
+  bfi->ifs.read((char*)array.get(),
+                std::streamsize(array_size * sizeof(array[0])));
 }
 
 template<typename T>
@@ -563,14 +566,16 @@ template<typename T>
 inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
   const std::string& path)
   : KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
-      BloomFilterInitializer(path, KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER))
+      std::shared_ptr<BloomFilterInitializer>(
+        new BloomFilterInitializer(path,
+                                   KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER)))
 {}
 
 template<typename T>
 inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
-  BloomFilterInitializer bfi)
-  : k(*(bfi.table->get_as<decltype(k)>("k")))
-  , counting_bloom_filter(std::move(bfi))
+  std::shared_ptr<BloomFilterInitializer> bfi)
+  : k(*(bfi->table->get_as<decltype(k)>("k")))
+  , counting_bloom_filter(bfi)
 {
   check_error(counting_bloom_filter.hash_fn != HASH_FN,
               "KmerCountingBloomFilter: loaded hash function (" +

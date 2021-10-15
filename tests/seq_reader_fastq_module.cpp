@@ -19,7 +19,7 @@ main()
     btllib::SeqReader::Record record;
 
     std::cerr << "Test small FASTA and FASTQ simultaneously" << std::endl;
-    btllib::SeqReader reader_fasta("../tests/input.fa.gz.bz2.xz.lrz",
+    btllib::SeqReader reader_fasta("../tests/input.fa.gz.bz2.xz",
                                    btllib::SeqReader::Flag::SHORT_MODE);
     btllib::SeqReader reader_fastq("../tests/input.fq.tar.xz",
                                    btllib::SeqReader::Flag::SHORT_MODE);

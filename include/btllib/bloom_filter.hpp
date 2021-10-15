@@ -182,7 +182,7 @@ public:
                    size_t n);
 
 private:
-  BloomFilter(BloomFilterInitializer bfi);
+  BloomFilter(std::shared_ptr<BloomFilterInitializer> bfi);
 
   friend class KmerBloomFilter;
   friend class SeedBloomFilter;
@@ -376,7 +376,7 @@ public:
   void save(const std::string& path);
 
 private:
-  KmerBloomFilter(BloomFilterInitializer bfi);
+  KmerBloomFilter(std::shared_ptr<BloomFilterInitializer> bfi);
 
   friend class SeedBloomFilter;
 
@@ -607,7 +607,7 @@ public:
   void save(const std::string& path);
 
 private:
-  SeedBloomFilter(BloomFilterInitializer bfi);
+  SeedBloomFilter(std::shared_ptr<BloomFilterInitializer> bfi);
 
   std::vector<std::string> seeds;
   std::vector<SpacedSeed> parsed_seeds;
@@ -740,17 +740,17 @@ BloomFilterInitializer::parse_header(std::ifstream& file,
 }
 
 inline BloomFilter::BloomFilter(const std::string& path)
-  : BloomFilter::BloomFilter(
-      BloomFilterInitializer(path, BLOOM_FILTER_MAGIC_HEADER))
+  : BloomFilter::BloomFilter(std::shared_ptr<BloomFilterInitializer>(
+      new BloomFilterInitializer(path, BLOOM_FILTER_MAGIC_HEADER)))
 {}
 
-inline BloomFilter::BloomFilter(BloomFilterInitializer bfi)
-  : bytes(*(bfi.table->get_as<decltype(bytes)>("bytes")))
+inline BloomFilter::BloomFilter(std::shared_ptr<BloomFilterInitializer> bfi)
+  : bytes(*(bfi->table->get_as<decltype(bytes)>("bytes")))
   , array_size(bytes / sizeof(array[0]))
   , array_bits(array_size * CHAR_BIT)
-  , hash_num(*(bfi.table->get_as<decltype(hash_num)>("hash_num")))
-  , hash_fn(bfi.table->contains("hash_fn")
-              ? *(bfi.table->get_as<decltype(hash_fn)>("hash_fn"))
+  , hash_num(*(bfi->table->get_as<decltype(hash_num)>("hash_num")))
+  , hash_fn(bfi->table->contains("hash_fn")
+              ? *(bfi->table->get_as<decltype(hash_fn)>("hash_fn"))
               : "")
   , array(new std::atomic<uint8_t>[array_size])
 {
@@ -758,8 +758,8 @@ inline BloomFilter::BloomFilter(BloomFilterInitializer bfi)
     sizeof(uint8_t) != sizeof(std::atomic<uint8_t>),
     "Atomic primitives take extra memory. BloomFilter will have less than " +
       std::to_string(bytes) + " for bit array.");
-  bfi.ifs.read((char*)array.get(),
-               std::streamsize(array_size * sizeof(array[0])));
+  bfi->ifs.read((char*)array.get(),
+                std::streamsize(array_size * sizeof(array[0])));
 }
 
 inline void
@@ -846,13 +846,14 @@ KmerBloomFilter::contains_insert(const char* seq, size_t seq_len)
 }
 
 inline KmerBloomFilter::KmerBloomFilter(const std::string& path)
-  : KmerBloomFilter::KmerBloomFilter(
-      BloomFilterInitializer(path, KMER_BLOOM_FILTER_MAGIC_HEADER))
+  : KmerBloomFilter::KmerBloomFilter(std::shared_ptr<BloomFilterInitializer>(
+      new BloomFilterInitializer(path, KMER_BLOOM_FILTER_MAGIC_HEADER)))
 {}
 
-inline KmerBloomFilter::KmerBloomFilter(BloomFilterInitializer bfi)
-  : k(*(bfi.table->get_as<decltype(k)>("k")))
-  , bloom_filter(std::move(bfi))
+inline KmerBloomFilter::KmerBloomFilter(
+  std::shared_ptr<BloomFilterInitializer> bfi)
+  : k(*(bfi->table->get_as<decltype(k)>("k")))
+  , bloom_filter(bfi)
 {
   check_error(bloom_filter.hash_fn != HASH_FN,
               "KmerBloomFilter: loaded hash function (" + bloom_filter.hash_fn +
@@ -958,14 +959,15 @@ SeedBloomFilter::get_fpr() const
 }
 
 inline SeedBloomFilter::SeedBloomFilter(const std::string& path)
-  : SeedBloomFilter::SeedBloomFilter(
-      BloomFilterInitializer(path, SEED_BLOOM_FILTER_MAGIC_HEADER))
+  : SeedBloomFilter::SeedBloomFilter(std::shared_ptr<BloomFilterInitializer>(
+      new BloomFilterInitializer(path, SEED_BLOOM_FILTER_MAGIC_HEADER)))
 {}
 
-inline SeedBloomFilter::SeedBloomFilter(BloomFilterInitializer bfi)
-  : seeds(*(bfi.table->get_array_of<std::string>("seeds")))
+inline SeedBloomFilter::SeedBloomFilter(
+  std::shared_ptr<BloomFilterInitializer> bfi)
+  : seeds(*(bfi->table->get_array_of<std::string>("seeds")))
   , parsed_seeds(parse_seeds(seeds))
-  , kmer_bloom_filter(std::move(bfi))
+  , kmer_bloom_filter(bfi)
 {}
 
 inline void
