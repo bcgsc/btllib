@@ -143,7 +143,7 @@ public:
   void save(const std::string& path);
 
 private:
-  CountingBloomFilter(std::shared_ptr<BloomFilterInitializer> bfi);
+  CountingBloomFilter(const std::shared_ptr<BloomFilterInitializer>& bfi);
 
   friend class KmerCountingBloomFilter<T>;
 
@@ -347,7 +347,7 @@ public:
   void save(const std::string& path);
 
 private:
-  KmerCountingBloomFilter(std::shared_ptr<BloomFilterInitializer> bfi);
+  KmerCountingBloomFilter(const std::shared_ptr<BloomFilterInitializer>& bfi);
 
   unsigned k = 0;
   CountingBloomFilter<T> counting_bloom_filter;
@@ -468,13 +468,14 @@ CountingBloomFilter<T>::get_fpr() const
 template<typename T>
 inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path)
   : CountingBloomFilter<T>::CountingBloomFilter(
-      std::shared_ptr<BloomFilterInitializer>(
-        new BloomFilterInitializer(path, COUNTING_BLOOM_FILTER_MAGIC_HEADER)))
+      std::make_shared<BloomFilterInitializer>(
+        path,
+        COUNTING_BLOOM_FILTER_MAGIC_HEADER))
 {}
 
 template<typename T>
 inline CountingBloomFilter<T>::CountingBloomFilter(
-  std::shared_ptr<BloomFilterInitializer> bfi)
+  const std::shared_ptr<BloomFilterInitializer>& bfi)
   : bytes(*bfi->table->get_as<decltype(bytes)>("bytes"))
   , array_size(bytes / sizeof(array[0]))
   , hash_num(*(bfi->table->get_as<decltype(hash_num)>("hash_num")))
@@ -566,14 +567,14 @@ template<typename T>
 inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
   const std::string& path)
   : KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
-      std::shared_ptr<BloomFilterInitializer>(
-        new BloomFilterInitializer(path,
-                                   KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER)))
+      std::make_shared<BloomFilterInitializer>(
+        path,
+        KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER))
 {}
 
 template<typename T>
 inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
-  std::shared_ptr<BloomFilterInitializer> bfi)
+  const std::shared_ptr<BloomFilterInitializer>& bfi)
   : k(*(bfi->table->get_as<decltype(k)>("k")))
   , counting_bloom_filter(bfi)
 {

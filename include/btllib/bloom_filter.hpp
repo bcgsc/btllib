@@ -182,7 +182,7 @@ public:
                    size_t n);
 
 private:
-  BloomFilter(std::shared_ptr<BloomFilterInitializer> bfi);
+  BloomFilter(const std::shared_ptr<BloomFilterInitializer>& bfi);
 
   friend class KmerBloomFilter;
   friend class SeedBloomFilter;
@@ -376,7 +376,7 @@ public:
   void save(const std::string& path);
 
 private:
-  KmerBloomFilter(std::shared_ptr<BloomFilterInitializer> bfi);
+  KmerBloomFilter(const std::shared_ptr<BloomFilterInitializer>& bfi);
 
   friend class SeedBloomFilter;
 
@@ -607,7 +607,7 @@ public:
   void save(const std::string& path);
 
 private:
-  SeedBloomFilter(std::shared_ptr<BloomFilterInitializer> bfi);
+  SeedBloomFilter(const std::shared_ptr<BloomFilterInitializer>& bfi);
 
   std::vector<std::string> seeds;
   std::vector<SpacedSeed> parsed_seeds;
@@ -740,11 +740,12 @@ BloomFilterInitializer::parse_header(std::ifstream& file,
 }
 
 inline BloomFilter::BloomFilter(const std::string& path)
-  : BloomFilter::BloomFilter(std::shared_ptr<BloomFilterInitializer>(
-      new BloomFilterInitializer(path, BLOOM_FILTER_MAGIC_HEADER)))
+  : BloomFilter::BloomFilter(
+      std::make_shared<BloomFilterInitializer>(path, BLOOM_FILTER_MAGIC_HEADER))
 {}
 
-inline BloomFilter::BloomFilter(std::shared_ptr<BloomFilterInitializer> bfi)
+inline BloomFilter::BloomFilter(
+  const std::shared_ptr<BloomFilterInitializer>& bfi)
   : bytes(*(bfi->table->get_as<decltype(bytes)>("bytes")))
   , array_size(bytes / sizeof(array[0]))
   , array_bits(array_size * CHAR_BIT)
@@ -846,12 +847,13 @@ KmerBloomFilter::contains_insert(const char* seq, size_t seq_len)
 }
 
 inline KmerBloomFilter::KmerBloomFilter(const std::string& path)
-  : KmerBloomFilter::KmerBloomFilter(std::shared_ptr<BloomFilterInitializer>(
-      new BloomFilterInitializer(path, KMER_BLOOM_FILTER_MAGIC_HEADER)))
+  : KmerBloomFilter::KmerBloomFilter(
+      std::make_shared<BloomFilterInitializer>(path,
+                                               KMER_BLOOM_FILTER_MAGIC_HEADER))
 {}
 
 inline KmerBloomFilter::KmerBloomFilter(
-  std::shared_ptr<BloomFilterInitializer> bfi)
+  const std::shared_ptr<BloomFilterInitializer>& bfi)
   : k(*(bfi->table->get_as<decltype(k)>("k")))
   , bloom_filter(bfi)
 {
@@ -959,12 +961,13 @@ SeedBloomFilter::get_fpr() const
 }
 
 inline SeedBloomFilter::SeedBloomFilter(const std::string& path)
-  : SeedBloomFilter::SeedBloomFilter(std::shared_ptr<BloomFilterInitializer>(
-      new BloomFilterInitializer(path, SEED_BLOOM_FILTER_MAGIC_HEADER)))
+  : SeedBloomFilter::SeedBloomFilter(
+      std::make_shared<BloomFilterInitializer>(path,
+                                               SEED_BLOOM_FILTER_MAGIC_HEADER))
 {}
 
 inline SeedBloomFilter::SeedBloomFilter(
-  std::shared_ptr<BloomFilterInitializer> bfi)
+  const std::shared_ptr<BloomFilterInitializer>& bfi)
   : seeds(*(bfi->table->get_array_of<std::string>("seeds")))
   , parsed_seeds(parse_seeds(seeds))
   , kmer_bloom_filter(bfi)
