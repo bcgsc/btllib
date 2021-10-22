@@ -53,3 +53,9 @@
 %template(VectorInt) std::vector<int>;
 %template(VectorUnsigned) std::vector<unsigned>;
 %template(VectorDouble) std::vector<double>;
+%template(VectorUint64t) std::vector<uint64_t>;
+
+namespace btllib {
+using SpacedSeed = std::vector<unsigned>;
+}
+%template(VectorSpacedSeed) std::vector<btllib::SpacedSeed>;
