@@ -39,6 +39,6 @@ tidy_options="[
   { key: readability-identifier-naming.ConstexprVariableCase,     value: UPPER_CASE },
 ]"
 
-files=$(scripts/get_include_files)
+files=$(scripts/get-include-files)
 clang-tidy -warnings-as-errors='*' -config="{Checks: '$tidy_checks', CheckOptions: $tidy_options}" $files -- \
 -std=c++11 -Iinclude $@

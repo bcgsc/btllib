@@ -37,6 +37,7 @@
 %include <std_iostream.i>
 %include <carrays.i>
 %include <std_vector.i>
+%include <stl.i>
 
 %include "../extra_common.i"
 %include "extra.i"

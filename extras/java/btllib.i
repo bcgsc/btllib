@@ -28,6 +28,7 @@
 %include <various.i>
 %include <std_string.i>
 %include <stdint.i>
+%include <stl.i>
 
 %include "../extra_common.i"
 %include "extra.i"

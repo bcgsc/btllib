@@ -52,20 +52,20 @@ public class SeedNtHash {
     this(btllibJNI.new_SeedNtHash__SWIG_3(seq, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t.getCPtr(seeds), hash_num_per_seed, k), true);
   }
 
-  public SeedNtHash(String seq, long seq_len, SWIGTYPE_p_std__vectorT_std__string_t seeds, long hash_num_per_seed, long k, long pos) {
-    this(btllibJNI.new_SeedNtHash__SWIG_4(seq, seq_len, SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seeds), hash_num_per_seed, k, pos), true);
+  public SeedNtHash(String seq, long seq_len, VectorString seeds, long hash_num_per_seed, long k, long pos) {
+    this(btllibJNI.new_SeedNtHash__SWIG_4(seq, seq_len, VectorString.getCPtr(seeds), seeds, hash_num_per_seed, k, pos), true);
   }
 
-  public SeedNtHash(String seq, long seq_len, SWIGTYPE_p_std__vectorT_std__string_t seeds, long hash_num_per_seed, long k) {
-    this(btllibJNI.new_SeedNtHash__SWIG_5(seq, seq_len, SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seeds), hash_num_per_seed, k), true);
+  public SeedNtHash(String seq, long seq_len, VectorString seeds, long hash_num_per_seed, long k) {
+    this(btllibJNI.new_SeedNtHash__SWIG_5(seq, seq_len, VectorString.getCPtr(seeds), seeds, hash_num_per_seed, k), true);
   }
 
-  public SeedNtHash(String seq, SWIGTYPE_p_std__vectorT_std__string_t seeds, long hash_num_per_seed, long k, long pos) {
-    this(btllibJNI.new_SeedNtHash__SWIG_6(seq, SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seeds), hash_num_per_seed, k, pos), true);
+  public SeedNtHash(String seq, VectorString seeds, long hash_num_per_seed, long k, long pos) {
+    this(btllibJNI.new_SeedNtHash__SWIG_6(seq, VectorString.getCPtr(seeds), seeds, hash_num_per_seed, k, pos), true);
   }
 
-  public SeedNtHash(String seq, SWIGTYPE_p_std__vectorT_std__string_t seeds, long hash_num_per_seed, long k) {
-    this(btllibJNI.new_SeedNtHash__SWIG_7(seq, SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seeds), hash_num_per_seed, k), true);
+  public SeedNtHash(String seq, VectorString seeds, long hash_num_per_seed, long k) {
+    this(btllibJNI.new_SeedNtHash__SWIG_7(seq, VectorString.getCPtr(seeds), seeds, hash_num_per_seed, k), true);
   }
 
   public boolean roll() {

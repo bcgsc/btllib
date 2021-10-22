@@ -48,3 +48,8 @@
 
 %ignore btllib::BloomFilterInitializer;
 %ignore btllib::BloomFilterInitializer::operator=;
+
+%template(VectorString) std::vector<std::string>;
+%template(VectorInt) std::vector<int>;
+%template(VectorUnsigned) std::vector<unsigned>;
+%template(VectorDouble) std::vector<double>;

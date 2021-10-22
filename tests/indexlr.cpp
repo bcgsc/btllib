@@ -1,5 +1,6 @@
 #include "btllib/indexlr.hpp"
 #include "btllib/bloom_filter.hpp"
+#include "btllib/util.hpp"
 #include "helpers.hpp"
 
 #include <fstream>
@@ -8,14 +9,16 @@
 int
 main()
 {
-  btllib::Indexlr indexlr("../tests/indexlr.fa", 100, 5, 0);
-  btllib::Indexlr indexlr2("../tests/indexlr.fq",
+  btllib::Indexlr indexlr(
+    btllib::get_dirname(__FILE__) + "/indexlr.fa", 100, 5, 0);
+  btllib::Indexlr indexlr2(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
                            btllib::Indexlr::Flag::BX |
                              btllib::Indexlr::Flag::SEQ);
 
-  std::ifstream correct_output_file("../tests/indexlr.fa.correct");
+  std::ifstream correct_output_file(btllib::get_dirname(__FILE__) +
+                                    "/indexlr.fa.correct");
   std::string correct_output;
   correct_output_file.seekg(0, std::ios::end);
   correct_output.reserve(correct_output_file.tellg());
@@ -24,7 +27,8 @@ main()
   correct_output.assign(std::istreambuf_iterator<char>(correct_output_file),
                         std::istreambuf_iterator<char>());
 
-  std::ifstream correct_output_file2("../tests/indexlr.fq.correct");
+  std::ifstream correct_output_file2(btllib::get_dirname(__FILE__) +
+                                     "/indexlr.fq.correct");
   std::string correct_output2;
   correct_output_file2.seekg(0, std::ios::end);
   correct_output2.reserve(correct_output_file2.tellg());
@@ -106,7 +110,7 @@ main()
     filter_out_bf.insert({ h });
   }
 
-  btllib::Indexlr indexlr3("../tests/indexlr.fq",
+  btllib::Indexlr indexlr3(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
                            btllib::Indexlr::Flag::FILTER_IN,
@@ -129,7 +133,7 @@ main()
   }
   TEST_ASSERT_GE(mins_found, filter_in_hashes.size());
 
-  btllib::Indexlr indexlr4("../tests/indexlr.fq",
+  btllib::Indexlr indexlr4(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
                            btllib::Indexlr::Flag::FILTER_OUT,
@@ -147,7 +151,7 @@ main()
   }
   TEST_ASSERT_GE(mins_found, filter_in_hashes.size());
 
-  btllib::Indexlr indexlr5("../tests/indexlr.fq",
+  btllib::Indexlr indexlr5(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
                            btllib::Indexlr::Flag::FILTER_IN |

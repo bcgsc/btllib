@@ -440,10 +440,12 @@ install_signal_handlers_spawner()
 
   action.sa_handler = [](const int sig) {
     (void)sig;
+    const auto prev_errno = errno;
     if (check_children_failures()) {
       rm_pipes();
       std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
+    errno = prev_errno;
   };
   sigaction(SIGCHLD, &action, nullptr);
 

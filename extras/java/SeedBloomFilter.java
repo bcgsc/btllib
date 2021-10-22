@@ -40,8 +40,8 @@ public class SeedBloomFilter {
     this(btllibJNI.new_SeedBloomFilter__SWIG_0(), true);
   }
 
-  public SeedBloomFilter(long bytes, long k, SWIGTYPE_p_std__vectorT_std__string_t seeds, long hash_num_per_seed) {
-    this(btllibJNI.new_SeedBloomFilter__SWIG_1(bytes, k, SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seeds), hash_num_per_seed), true);
+  public SeedBloomFilter(long bytes, long k, VectorString seeds, long hash_num_per_seed) {
+    this(btllibJNI.new_SeedBloomFilter__SWIG_1(bytes, k, VectorString.getCPtr(seeds), seeds, hash_num_per_seed), true);
   }
 
   public SeedBloomFilter(String path) {
@@ -120,8 +120,8 @@ public class SeedBloomFilter {
     return btllibJNI.SeedBloomFilter_get_k(swigCPtr, this);
   }
 
-  public SWIGTYPE_p_std__vectorT_std__string_t get_seeds() {
-    return new SWIGTYPE_p_std__vectorT_std__string_t(btllibJNI.SeedBloomFilter_get_seeds(swigCPtr, this), false);
+  public VectorString get_seeds() {
+    return new VectorString(btllibJNI.SeedBloomFilter_get_seeds(swigCPtr, this), false);
   }
 
   public SWIGTYPE_p_std__vectorT_SpacedSeed_t get_parsed_seeds() {

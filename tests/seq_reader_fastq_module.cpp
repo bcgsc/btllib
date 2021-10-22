@@ -1,4 +1,5 @@
 #include "btllib/seq_reader.hpp"
+#include "btllib/util.hpp"
 #include "helpers.hpp"
 
 #include <fstream>
@@ -19,9 +20,11 @@ main()
     btllib::SeqReader::Record record;
 
     std::cerr << "Test small FASTA and FASTQ simultaneously" << std::endl;
-    btllib::SeqReader reader_fasta("../tests/input.fa.gz.bz2.xz",
+    btllib::SeqReader reader_fasta(btllib::get_dirname(__FILE__) +
+                                     "/input.fa.gz.bz2.xz",
                                    btllib::SeqReader::Flag::SHORT_MODE);
-    btllib::SeqReader reader_fastq("../tests/input.fq.tar.xz",
+    btllib::SeqReader reader_fastq(btllib::get_dirname(__FILE__) +
+                                     "/input.fq.tar.xz",
                                    btllib::SeqReader::Flag::SHORT_MODE);
 
     TEST_ASSERT_EQ(reader_fasta.get_format(), btllib::SeqReader::Format::FASTA);

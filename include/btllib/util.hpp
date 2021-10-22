@@ -7,6 +7,7 @@
 #include "cstring.hpp"
 
 #include <algorithm>
+#include <cstring>
 #include <string>
 #include <vector>
 
@@ -32,6 +33,8 @@ inline bool
 startswith(std::string s, std::string prefix);
 inline bool
 endswith(std::string s, std::string suffix);
+inline std::string
+get_dirname(const std::string& path);
 
 inline std::vector<std::string>
 split(const std::string& s, const std::string& delim)
@@ -125,6 +128,49 @@ endswith(std::string s, std::string suffix)
   std::transform(suffix.begin(), suffix.end(), suffix.begin(), ::tolower);
   auto pos = s.rfind(suffix);
   return (pos != std::string::npos) && (pos == s.size() - suffix.size());
+}
+
+inline std::string
+get_dirname(const std::string& path)
+{
+  std::string ret = path;
+  auto last_slash_pos = path.find_last_of('/');
+
+  if (last_slash_pos != std::string::npos && last_slash_pos != 0 &&
+      last_slash_pos == path.size() - 1) {
+    auto i = last_slash_pos;
+    for (; i != 0; --i) {
+      if (path[i - 1] != '/') {
+        break;
+      }
+    }
+    if (i != 0) {
+      last_slash_pos = path.substr(0, i).find_last_of('/');
+    }
+  }
+
+  if (last_slash_pos != std::string::npos) {
+    auto i = last_slash_pos;
+    for (; i != 0; --i) {
+      if (path[i - 1] != '/') {
+        break;
+      }
+    }
+    if (i == 0) {
+      if (last_slash_pos == 1) {
+        ++last_slash_pos;
+      } else {
+        last_slash_pos = 1;
+      }
+    } else {
+      last_slash_pos = i;
+    }
+    ret.resize(last_slash_pos);
+  } else {
+    return ".";
+  }
+
+  return ret;
 }
 
 } // namespace btllib

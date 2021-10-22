@@ -112,8 +112,8 @@ public class btllib {
     return btllibJNI.new_pipeline_id();
   }
 
-  public static SWIGTYPE_p_std__mapT_unsigned_long_btllib__ProcessPipelineInternal_t pipeline_map() {
-    return new SWIGTYPE_p_std__mapT_unsigned_long_btllib__ProcessPipelineInternal_t(btllibJNI.pipeline_map(), false);
+  public static SWIGTYPE_p_std__mapT_unsigned_long_btllib__ProcessPipelineInternal_std__lessT_unsigned_long_t_t pipeline_map() {
+    return new SWIGTYPE_p_std__mapT_unsigned_long_btllib__ProcessPipelineInternal_std__lessT_unsigned_long_t_t(btllibJNI.pipeline_map(), false);
   }
 
   public static boolean process_spawner_init() {
@@ -140,8 +140,8 @@ public class btllib {
     btllibJNI.redirect_io(in_fd, out_fd, err_fd);
   }
 
-  public static void assign_process_cmd(SWIGTYPE_p_std__vectorT_std__string_t args) {
-    btllibJNI.assign_process_cmd(SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(args));
+  public static void assign_process_cmd(VectorString args) {
+    btllibJNI.assign_process_cmd(VectorString.getCPtr(args), args);
   }
 
   public static void rm_pipes() {
@@ -454,8 +454,8 @@ public class btllib {
     return btllibJNI.mask_hash(SWIGTYPE_p_unsigned_long_long.getCPtr(fk_val), SWIGTYPE_p_unsigned_long_long.getCPtr(rk_val), seed_seq, kmer_seq, k);
   }
 
-  public static void sub_hash(java.math.BigInteger fh_val, java.math.BigInteger rh_val, String kmer_seq, SWIGTYPE_p_std__vectorT_unsigned_int_t positions, SWIGTYPE_p_std__vectorT_unsigned_char_t new_bases, long k, long m, SWIGTYPE_p_unsigned_long_long h_val) {
-    btllibJNI.sub_hash(fh_val, rh_val, kmer_seq, SWIGTYPE_p_std__vectorT_unsigned_int_t.getCPtr(positions), SWIGTYPE_p_std__vectorT_unsigned_char_t.getCPtr(new_bases), k, m, SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
+  public static void sub_hash(java.math.BigInteger fh_val, java.math.BigInteger rh_val, String kmer_seq, VectorUnsigned positions, SWIGTYPE_p_std__vectorT_unsigned_char_t new_bases, long k, long m, SWIGTYPE_p_unsigned_long_long h_val) {
+    btllibJNI.sub_hash(fh_val, rh_val, kmer_seq, VectorUnsigned.getCPtr(positions), positions, SWIGTYPE_p_std__vectorT_unsigned_char_t.getCPtr(new_bases), k, m, SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
   }
 
   public static java.math.BigInteger nts64(String kmer_seq, SWIGTYPE_p_std__vectorT_bool_t seed, long k, SWIGTYPE_p_unsigned_long_long h_val) {
@@ -482,8 +482,8 @@ public class btllib {
     btllibJNI.ntmsm64__SWIG_1(kmer_seq, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t.getCPtr(seed_seq), char_out, char_in, k, m, m2, SWIGTYPE_p_unsigned_long_long.getCPtr(fh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(rh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
   }
 
-  public static SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t parse_seeds(SWIGTYPE_p_std__vectorT_std__string_t seed_strings) {
-    return new SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t(btllibJNI.parse_seeds(SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(seed_strings)), true);
+  public static SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t parse_seeds(VectorString seed_strings) {
+    return new SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_t_t(btllibJNI.parse_seeds(VectorString.getCPtr(seed_strings), seed_strings), true);
   }
 
   public static Datatype getDATATYPES() {
@@ -499,12 +499,12 @@ public class btllib {
     return btllibJNI.get_datatype_cmd(path, Datatype.getCPtr(datatype), datatype, op.swigValue());
   }
 
-  public static SWIGTYPE_p_std__vectorT_std__string_t peel_datatype(String path, Operation op) {
-    return new SWIGTYPE_p_std__vectorT_std__string_t(btllibJNI.peel_datatype(path, op.swigValue()), true);
+  public static VectorString peel_datatype(String path, Operation op) {
+    return new VectorString(btllibJNI.peel_datatype(path, op.swigValue()), true);
   }
 
-  public static String form_string_cmd(SWIGTYPE_p_std__vectorT_std__string_t cmd_layers, Operation op, String path) {
-    return btllibJNI.form_string_cmd(SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(cmd_layers), op.swigValue(), path);
+  public static String form_string_cmd(VectorString cmd_layers, Operation op, String path) {
+    return btllibJNI.form_string_cmd(VectorString.getCPtr(cmd_layers), cmd_layers, op.swigValue(), path);
   }
 
   public static String getPRINT_COLOR_INFO() {
@@ -559,12 +559,12 @@ public class btllib {
     return btllibJNI.get_strerror();
   }
 
-  public static SWIGTYPE_p_std__vectorT_std__string_t split(String s, String delim) {
-    return new SWIGTYPE_p_std__vectorT_std__string_t(btllibJNI.split(s, delim), true);
+  public static VectorString split(String s, String delim) {
+    return new VectorString(btllibJNI.split(s, delim), true);
   }
 
-  public static String join(SWIGTYPE_p_std__vectorT_std__string_t s, String delim) {
-    return btllibJNI.join(SWIGTYPE_p_std__vectorT_std__string_t.getCPtr(s), delim);
+  public static String join(VectorString s, String delim) {
+    return btllibJNI.join(VectorString.getCPtr(s), s, delim);
   }
 
   public static void ltrim(SWIGTYPE_p_std__string s) {
@@ -597,6 +597,10 @@ public class btllib {
 
   public static boolean endswith(String s, String suffix) {
     return btllibJNI.endswith(s, suffix);
+  }
+
+  public static String get_dirname(String path) {
+    return btllibJNI.get_dirname(path);
   }
 
 }

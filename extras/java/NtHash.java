@@ -48,8 +48,8 @@ public class NtHash {
     return btllibJNI.NtHash_roll(swigCPtr, this);
   }
 
-  public void sub(SWIGTYPE_p_std__vectorT_unsigned_int_t positions, SWIGTYPE_p_std__vectorT_unsigned_char_t new_bases) {
-    btllibJNI.NtHash_sub(swigCPtr, this, SWIGTYPE_p_std__vectorT_unsigned_int_t.getCPtr(positions), SWIGTYPE_p_std__vectorT_unsigned_char_t.getCPtr(new_bases));
+  public void sub(VectorUnsigned positions, SWIGTYPE_p_std__vectorT_unsigned_char_t new_bases) {
+    btllibJNI.NtHash_sub(swigCPtr, this, VectorUnsigned.getCPtr(positions), positions, SWIGTYPE_p_std__vectorT_unsigned_char_t.getCPtr(new_bases));
   }
 
   public SWIGTYPE_p_unsigned_long_long hashes() {

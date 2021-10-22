@@ -231,6 +231,23 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_JavaThrowException(jenv, SWIG_JavaIllegalArgumentException, msg); return nullreturn; } else
 
+/*  Errors in SWIG */
+#define  SWIG_UnknownError    	   -1
+#define  SWIG_IOError        	   -2
+#define  SWIG_RuntimeError   	   -3
+#define  SWIG_IndexError     	   -4
+#define  SWIG_TypeError      	   -5
+#define  SWIG_DivisionByZero 	   -6
+#define  SWIG_OverflowError  	   -7
+#define  SWIG_SyntaxError    	   -8
+#define  SWIG_ValueError     	   -9
+#define  SWIG_SystemError    	   -10
+#define  SWIG_AttributeError 	   -11
+#define  SWIG_MemoryError    	   -12
+#define  SWIG_NullReferenceError   -13
+
+
+
 
 #include "btllib/seq_reader.hpp"
 #include "btllib/seq_reader_sam_module.hpp"
@@ -261,12 +278,1400 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #include <stdint.h>		// Use the C99 official header
 
 
+#include <typeinfo>
+#include <stdexcept>
+
+
+#include <vector>
+#include <stdexcept>
+
+
+#include <map>
+#include <stdexcept>
+
+
+SWIGINTERN void SWIG_JavaException(JNIEnv *jenv, int code, const char *msg) {
+  SWIG_JavaExceptionCodes exception_code = SWIG_JavaUnknownError;
+  switch(code) {
+  case SWIG_MemoryError:
+    exception_code = SWIG_JavaOutOfMemoryError;
+    break;
+  case SWIG_IOError:
+    exception_code = SWIG_JavaIOException;
+    break;
+  case SWIG_SystemError:
+  case SWIG_RuntimeError:
+    exception_code = SWIG_JavaRuntimeException;
+    break;
+  case SWIG_OverflowError:
+  case SWIG_IndexError:
+    exception_code = SWIG_JavaIndexOutOfBoundsException;
+    break;
+  case SWIG_DivisionByZero:
+    exception_code = SWIG_JavaArithmeticException;
+    break;
+  case SWIG_SyntaxError:
+  case SWIG_ValueError:
+  case SWIG_TypeError:
+    exception_code = SWIG_JavaIllegalArgumentException;
+    break;
+  case SWIG_UnknownError:
+  default:
+    exception_code = SWIG_JavaUnknownError;
+    break;
+  }
+  SWIG_JavaThrowException(jenv, exception_code, msg);
+}
+
+
+#include <typeinfo>
+#include <stdexcept>
+
+
+#include <utility>
+
+
+/* Check for overflow converting to Java int (always signed 32-bit) from (unsigned variable-bit) size_t */
+SWIGINTERN jint SWIG_JavaIntFromSize_t(size_t size) {
+  static const jint JINT_MAX = 0x7FFFFFFF;
+  return (size > (size_t)JINT_MAX) ? -1 : (jint)size;
+}
+
+
+SWIGINTERN jint SWIG_VectorSize(size_t size) {
+  jint sz = SWIG_JavaIntFromSize_t(size);
+  if (sz == -1)
+    throw std::out_of_range("vector size is too large to fit into a Java int");
+  return sz;
+}
+
+SWIGINTERN std::vector< std::string > *new_std_vector_Sl_std_string_Sg___SWIG_2(jint count,std::string const &value){
+        if (count < 0)
+          throw std::out_of_range("vector count must be positive");
+        return new std::vector< std::string >(static_cast<std::vector< std::string >::size_type>(count), value);
+      }
+SWIGINTERN jint std_vector_Sl_std_string_Sg__doSize(std::vector< std::string > const *self){
+        return SWIG_VectorSize(self->size());
+      }
+SWIGINTERN void std_vector_Sl_std_string_Sg__doAdd__SWIG_0(std::vector< std::string > *self,std::vector< std::string >::value_type const &x){
+        self->push_back(x);
+      }
+SWIGINTERN void std_vector_Sl_std_string_Sg__doAdd__SWIG_1(std::vector< std::string > *self,jint index,std::vector< std::string >::value_type const &x){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= index && index <= size) {
+          self->insert(self->begin() + index, x);
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< std::string >::value_type std_vector_Sl_std_string_Sg__doRemove(std::vector< std::string > *self,jint index){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= index && index < size) {
+          std::string const old_value = (*self)[index];
+          self->erase(self->begin() + index);
+          return old_value;
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< std::string >::value_type const &std_vector_Sl_std_string_Sg__doGet(std::vector< std::string > *self,jint index){
+        jint size = static_cast<jint>(self->size());
+        if (index >= 0 && index < size)
+          return (*self)[index];
+        else
+          throw std::out_of_range("vector index out of range");
+      }
+SWIGINTERN std::vector< std::string >::value_type std_vector_Sl_std_string_Sg__doSet(std::vector< std::string > *self,jint index,std::vector< std::string >::value_type const &val){
+        jint size = static_cast<jint>(self->size());
+        if (index >= 0 && index < size) {
+          std::string const old_value = (*self)[index];
+          (*self)[index] = val;
+          return old_value;
+        }
+        else
+          throw std::out_of_range("vector index out of range");
+      }
+SWIGINTERN void std_vector_Sl_std_string_Sg__doRemoveRange(std::vector< std::string > *self,jint fromIndex,jint toIndex){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= fromIndex && fromIndex <= toIndex && toIndex <= size) {
+          self->erase(self->begin() + fromIndex, self->begin() + toIndex);
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< int > *new_std_vector_Sl_int_Sg___SWIG_2(jint count,int const &value){
+        if (count < 0)
+          throw std::out_of_range("vector count must be positive");
+        return new std::vector< int >(static_cast<std::vector< int >::size_type>(count), value);
+      }
+SWIGINTERN jint std_vector_Sl_int_Sg__doSize(std::vector< int > const *self){
+        return SWIG_VectorSize(self->size());
+      }
+SWIGINTERN void std_vector_Sl_int_Sg__doAdd__SWIG_0(std::vector< int > *self,std::vector< int >::value_type const &x){
+        self->push_back(x);
+      }
+SWIGINTERN void std_vector_Sl_int_Sg__doAdd__SWIG_1(std::vector< int > *self,jint index,std::vector< int >::value_type const &x){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= index && index <= size) {
+          self->insert(self->begin() + index, x);
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< int >::value_type std_vector_Sl_int_Sg__doRemove(std::vector< int > *self,jint index){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= index && index < size) {
+          int const old_value = (*self)[index];
+          self->erase(self->begin() + index);
+          return old_value;
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< int >::value_type const &std_vector_Sl_int_Sg__doGet(std::vector< int > *self,jint index){
+        jint size = static_cast<jint>(self->size());
+        if (index >= 0 && index < size)
+          return (*self)[index];
+        else
+          throw std::out_of_range("vector index out of range");
+      }
+SWIGINTERN std::vector< int >::value_type std_vector_Sl_int_Sg__doSet(std::vector< int > *self,jint index,std::vector< int >::value_type const &val){
+        jint size = static_cast<jint>(self->size());
+        if (index >= 0 && index < size) {
+          int const old_value = (*self)[index];
+          (*self)[index] = val;
+          return old_value;
+        }
+        else
+          throw std::out_of_range("vector index out of range");
+      }
+SWIGINTERN void std_vector_Sl_int_Sg__doRemoveRange(std::vector< int > *self,jint fromIndex,jint toIndex){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= fromIndex && fromIndex <= toIndex && toIndex <= size) {
+          self->erase(self->begin() + fromIndex, self->begin() + toIndex);
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< unsigned int > *new_std_vector_Sl_unsigned_SS_int_Sg___SWIG_2(jint count,unsigned int const &value){
+        if (count < 0)
+          throw std::out_of_range("vector count must be positive");
+        return new std::vector< unsigned int >(static_cast<std::vector< unsigned int >::size_type>(count), value);
+      }
+SWIGINTERN jint std_vector_Sl_unsigned_SS_int_Sg__doSize(std::vector< unsigned int > const *self){
+        return SWIG_VectorSize(self->size());
+      }
+SWIGINTERN void std_vector_Sl_unsigned_SS_int_Sg__doAdd__SWIG_0(std::vector< unsigned int > *self,std::vector< unsigned int >::value_type const &x){
+        self->push_back(x);
+      }
+SWIGINTERN void std_vector_Sl_unsigned_SS_int_Sg__doAdd__SWIG_1(std::vector< unsigned int > *self,jint index,std::vector< unsigned int >::value_type const &x){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= index && index <= size) {
+          self->insert(self->begin() + index, x);
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< unsigned int >::value_type std_vector_Sl_unsigned_SS_int_Sg__doRemove(std::vector< unsigned int > *self,jint index){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= index && index < size) {
+          unsigned int const old_value = (*self)[index];
+          self->erase(self->begin() + index);
+          return old_value;
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< unsigned int >::value_type const &std_vector_Sl_unsigned_SS_int_Sg__doGet(std::vector< unsigned int > *self,jint index){
+        jint size = static_cast<jint>(self->size());
+        if (index >= 0 && index < size)
+          return (*self)[index];
+        else
+          throw std::out_of_range("vector index out of range");
+      }
+SWIGINTERN std::vector< unsigned int >::value_type std_vector_Sl_unsigned_SS_int_Sg__doSet(std::vector< unsigned int > *self,jint index,std::vector< unsigned int >::value_type const &val){
+        jint size = static_cast<jint>(self->size());
+        if (index >= 0 && index < size) {
+          unsigned int const old_value = (*self)[index];
+          (*self)[index] = val;
+          return old_value;
+        }
+        else
+          throw std::out_of_range("vector index out of range");
+      }
+SWIGINTERN void std_vector_Sl_unsigned_SS_int_Sg__doRemoveRange(std::vector< unsigned int > *self,jint fromIndex,jint toIndex){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= fromIndex && fromIndex <= toIndex && toIndex <= size) {
+          self->erase(self->begin() + fromIndex, self->begin() + toIndex);
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< double > *new_std_vector_Sl_double_Sg___SWIG_2(jint count,double const &value){
+        if (count < 0)
+          throw std::out_of_range("vector count must be positive");
+        return new std::vector< double >(static_cast<std::vector< double >::size_type>(count), value);
+      }
+SWIGINTERN jint std_vector_Sl_double_Sg__doSize(std::vector< double > const *self){
+        return SWIG_VectorSize(self->size());
+      }
+SWIGINTERN void std_vector_Sl_double_Sg__doAdd__SWIG_0(std::vector< double > *self,std::vector< double >::value_type const &x){
+        self->push_back(x);
+      }
+SWIGINTERN void std_vector_Sl_double_Sg__doAdd__SWIG_1(std::vector< double > *self,jint index,std::vector< double >::value_type const &x){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= index && index <= size) {
+          self->insert(self->begin() + index, x);
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< double >::value_type std_vector_Sl_double_Sg__doRemove(std::vector< double > *self,jint index){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= index && index < size) {
+          double const old_value = (*self)[index];
+          self->erase(self->begin() + index);
+          return old_value;
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< double >::value_type const &std_vector_Sl_double_Sg__doGet(std::vector< double > *self,jint index){
+        jint size = static_cast<jint>(self->size());
+        if (index >= 0 && index < size)
+          return (*self)[index];
+        else
+          throw std::out_of_range("vector index out of range");
+      }
+SWIGINTERN std::vector< double >::value_type std_vector_Sl_double_Sg__doSet(std::vector< double > *self,jint index,std::vector< double >::value_type const &val){
+        jint size = static_cast<jint>(self->size());
+        if (index >= 0 && index < size) {
+          double const old_value = (*self)[index];
+          (*self)[index] = val;
+          return old_value;
+        }
+        else
+          throw std::out_of_range("vector index out of range");
+      }
+SWIGINTERN void std_vector_Sl_double_Sg__doRemoveRange(std::vector< double > *self,jint fromIndex,jint toIndex){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= fromIndex && fromIndex <= toIndex && toIndex <= size) {
+          self->erase(self->begin() + fromIndex, self->begin() + toIndex);
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+
   using btllib::SpacedSeed;
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorString_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  std::vector< std::string > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (std::vector< std::string > *)new std::vector< std::string >();
+  *(std::vector< std::string > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorString_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  std::vector< std::string > *arg1 = 0 ;
+  std::vector< std::string > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< std::string > **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< std::string > const & reference is null");
+    return 0;
+  } 
+  result = (std::vector< std::string > *)new std::vector< std::string >((std::vector< std::string > const &)*arg1);
+  *(std::vector< std::string > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_VectorString_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string >::size_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< std::string > **)&jarg1; 
+  result = ((std::vector< std::string > const *)arg1)->capacity();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorString_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string >::size_type arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< std::string > **)&jarg1; 
+  arg2 = (std::vector< std::string >::size_type)jarg2; 
+  try {
+    (arg1)->reserve(arg2);
+  } catch(std::length_error &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_VectorString_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< std::string > **)&jarg1; 
+  result = (bool)((std::vector< std::string > const *)arg1)->empty();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorString_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< std::string > **)&jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorString_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jint jarg1, jstring jarg2) {
+  jlong jresult = 0 ;
+  jint arg1 ;
+  std::string *arg2 = 0 ;
+  std::vector< std::string > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  try {
+    result = (std::vector< std::string > *)new_std_vector_Sl_std_string_Sg___SWIG_2(arg1,(std::string const &)*arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  *(std::vector< std::string > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_VectorString_1doSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  jint result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< std::string > **)&jarg1; 
+  try {
+    result = std_vector_Sl_std_string_Sg__doSize((std::vector< std::string > const *)arg1);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorString_1doAdd_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string >::value_type *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< std::string > **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return ;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  std::vector< std::string >::value_type arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  std_vector_Sl_std_string_Sg__doAdd__SWIG_0(arg1,(std::string const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorString_1doAdd_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  jint arg2 ;
+  std::vector< std::string >::value_type *arg3 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< std::string > **)&jarg1; 
+  arg2 = jarg2; 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return ;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return ;
+  std::vector< std::string >::value_type arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  try {
+    std_vector_Sl_std_string_Sg__doAdd__SWIG_1(arg1,arg2,(std::string const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_VectorString_1doRemove(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jstring jresult = 0 ;
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  jint arg2 ;
+  std::vector< std::string >::value_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< std::string > **)&jarg1; 
+  arg2 = jarg2; 
+  try {
+    result = std_vector_Sl_std_string_Sg__doRemove(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_VectorString_1doGet(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jstring jresult = 0 ;
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  jint arg2 ;
+  std::vector< std::string >::value_type *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< std::string > **)&jarg1; 
+  arg2 = jarg2; 
+  try {
+    result = (std::vector< std::string >::value_type *) &std_vector_Sl_std_string_Sg__doGet(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = jenv->NewStringUTF(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_VectorString_1doSet(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
+  jstring jresult = 0 ;
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  jint arg2 ;
+  std::vector< std::string >::value_type *arg3 = 0 ;
+  std::vector< std::string >::value_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< std::string > **)&jarg1; 
+  arg2 = jarg2; 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return 0;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return 0;
+  std::vector< std::string >::value_type arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  try {
+    result = std_vector_Sl_std_string_Sg__doSet(arg1,arg2,(std::string const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorString_1doRemoveRange(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  jint arg2 ;
+  jint arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< std::string > **)&jarg1; 
+  arg2 = jarg2; 
+  arg3 = jarg3; 
+  try {
+    std_vector_Sl_std_string_Sg__doRemoveRange(arg1,arg2,arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1VectorString(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(std::vector< std::string > **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorInt_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  std::vector< int > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (std::vector< int > *)new std::vector< int >();
+  *(std::vector< int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorInt_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  std::vector< int > *arg1 = 0 ;
+  std::vector< int > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< int > **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< int > const & reference is null");
+    return 0;
+  } 
+  result = (std::vector< int > *)new std::vector< int >((std::vector< int > const &)*arg1);
+  *(std::vector< int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_VectorInt_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  std::vector< int >::size_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< int > **)&jarg1; 
+  result = ((std::vector< int > const *)arg1)->capacity();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorInt_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  std::vector< int >::size_type arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< int > **)&jarg1; 
+  arg2 = (std::vector< int >::size_type)jarg2; 
+  try {
+    (arg1)->reserve(arg2);
+  } catch(std::length_error &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_VectorInt_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< int > **)&jarg1; 
+  result = (bool)((std::vector< int > const *)arg1)->empty();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorInt_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< int > **)&jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorInt_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jint jarg1, jint jarg2) {
+  jlong jresult = 0 ;
+  jint arg1 ;
+  int *arg2 = 0 ;
+  int temp2 ;
+  std::vector< int > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = jarg1; 
+  temp2 = (int)jarg2; 
+  arg2 = &temp2; 
+  try {
+    result = (std::vector< int > *)new_std_vector_Sl_int_Sg___SWIG_2(arg1,(int const &)*arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  *(std::vector< int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_VectorInt_1doSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  jint result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< int > **)&jarg1; 
+  try {
+    result = std_vector_Sl_int_Sg__doSize((std::vector< int > const *)arg1);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorInt_1doAdd_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  std::vector< int >::value_type *arg2 = 0 ;
+  std::vector< int >::value_type temp2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< int > **)&jarg1; 
+  temp2 = (std::vector< int >::value_type)jarg2; 
+  arg2 = &temp2; 
+  std_vector_Sl_int_Sg__doAdd__SWIG_0(arg1,(int const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorInt_1doAdd_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  jint arg2 ;
+  std::vector< int >::value_type *arg3 = 0 ;
+  std::vector< int >::value_type temp3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< int > **)&jarg1; 
+  arg2 = jarg2; 
+  temp3 = (std::vector< int >::value_type)jarg3; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_int_Sg__doAdd__SWIG_1(arg1,arg2,(int const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_VectorInt_1doRemove(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jint jresult = 0 ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  jint arg2 ;
+  std::vector< int >::value_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< int > **)&jarg1; 
+  arg2 = jarg2; 
+  try {
+    result = (std::vector< int >::value_type)std_vector_Sl_int_Sg__doRemove(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_VectorInt_1doGet(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jint jresult = 0 ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  jint arg2 ;
+  std::vector< int >::value_type *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< int > **)&jarg1; 
+  arg2 = jarg2; 
+  try {
+    result = (std::vector< int >::value_type *) &std_vector_Sl_int_Sg__doGet(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = (jint)*result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_VectorInt_1doSet(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  jint jresult = 0 ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  jint arg2 ;
+  std::vector< int >::value_type *arg3 = 0 ;
+  std::vector< int >::value_type temp3 ;
+  std::vector< int >::value_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< int > **)&jarg1; 
+  arg2 = jarg2; 
+  temp3 = (std::vector< int >::value_type)jarg3; 
+  arg3 = &temp3; 
+  try {
+    result = (std::vector< int >::value_type)std_vector_Sl_int_Sg__doSet(arg1,arg2,(int const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorInt_1doRemoveRange(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  jint arg2 ;
+  jint arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< int > **)&jarg1; 
+  arg2 = jarg2; 
+  arg3 = jarg3; 
+  try {
+    std_vector_Sl_int_Sg__doRemoveRange(arg1,arg2,arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1VectorInt(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(std::vector< int > **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorUnsigned_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  std::vector< unsigned int > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (std::vector< unsigned int > *)new std::vector< unsigned int >();
+  *(std::vector< unsigned int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorUnsigned_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  std::vector< unsigned int > *arg1 = 0 ;
+  std::vector< unsigned int > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< unsigned int > **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< unsigned int > const & reference is null");
+    return 0;
+  } 
+  result = (std::vector< unsigned int > *)new std::vector< unsigned int >((std::vector< unsigned int > const &)*arg1);
+  *(std::vector< unsigned int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_VectorUnsigned_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  std::vector< unsigned int > *arg1 = (std::vector< unsigned int > *) 0 ;
+  std::vector< unsigned int >::size_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< unsigned int > **)&jarg1; 
+  result = ((std::vector< unsigned int > const *)arg1)->capacity();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorUnsigned_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  std::vector< unsigned int > *arg1 = (std::vector< unsigned int > *) 0 ;
+  std::vector< unsigned int >::size_type arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< unsigned int > **)&jarg1; 
+  arg2 = (std::vector< unsigned int >::size_type)jarg2; 
+  try {
+    (arg1)->reserve(arg2);
+  } catch(std::length_error &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_VectorUnsigned_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  std::vector< unsigned int > *arg1 = (std::vector< unsigned int > *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< unsigned int > **)&jarg1; 
+  result = (bool)((std::vector< unsigned int > const *)arg1)->empty();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorUnsigned_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  std::vector< unsigned int > *arg1 = (std::vector< unsigned int > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< unsigned int > **)&jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorUnsigned_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jint jarg1, jlong jarg2) {
+  jlong jresult = 0 ;
+  jint arg1 ;
+  unsigned int *arg2 = 0 ;
+  unsigned int temp2 ;
+  std::vector< unsigned int > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = jarg1; 
+  temp2 = (unsigned int)jarg2; 
+  arg2 = &temp2; 
+  try {
+    result = (std::vector< unsigned int > *)new_std_vector_Sl_unsigned_SS_int_Sg___SWIG_2(arg1,(unsigned int const &)*arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  *(std::vector< unsigned int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_VectorUnsigned_1doSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  std::vector< unsigned int > *arg1 = (std::vector< unsigned int > *) 0 ;
+  jint result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< unsigned int > **)&jarg1; 
+  try {
+    result = std_vector_Sl_unsigned_SS_int_Sg__doSize((std::vector< unsigned int > const *)arg1);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorUnsigned_1doAdd_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  std::vector< unsigned int > *arg1 = (std::vector< unsigned int > *) 0 ;
+  std::vector< unsigned int >::value_type *arg2 = 0 ;
+  std::vector< unsigned int >::value_type temp2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< unsigned int > **)&jarg1; 
+  temp2 = (std::vector< unsigned int >::value_type)jarg2; 
+  arg2 = &temp2; 
+  std_vector_Sl_unsigned_SS_int_Sg__doAdd__SWIG_0(arg1,(unsigned int const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorUnsigned_1doAdd_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3) {
+  std::vector< unsigned int > *arg1 = (std::vector< unsigned int > *) 0 ;
+  jint arg2 ;
+  std::vector< unsigned int >::value_type *arg3 = 0 ;
+  std::vector< unsigned int >::value_type temp3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< unsigned int > **)&jarg1; 
+  arg2 = jarg2; 
+  temp3 = (std::vector< unsigned int >::value_type)jarg3; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_unsigned_SS_int_Sg__doAdd__SWIG_1(arg1,arg2,(unsigned int const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_VectorUnsigned_1doRemove(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  std::vector< unsigned int > *arg1 = (std::vector< unsigned int > *) 0 ;
+  jint arg2 ;
+  std::vector< unsigned int >::value_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< unsigned int > **)&jarg1; 
+  arg2 = jarg2; 
+  try {
+    result = (std::vector< unsigned int >::value_type)std_vector_Sl_unsigned_SS_int_Sg__doRemove(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_VectorUnsigned_1doGet(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  std::vector< unsigned int > *arg1 = (std::vector< unsigned int > *) 0 ;
+  jint arg2 ;
+  std::vector< unsigned int >::value_type *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< unsigned int > **)&jarg1; 
+  arg2 = jarg2; 
+  try {
+    result = (std::vector< unsigned int >::value_type *) &std_vector_Sl_unsigned_SS_int_Sg__doGet(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = (jlong)*result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_VectorUnsigned_1doSet(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3) {
+  jlong jresult = 0 ;
+  std::vector< unsigned int > *arg1 = (std::vector< unsigned int > *) 0 ;
+  jint arg2 ;
+  std::vector< unsigned int >::value_type *arg3 = 0 ;
+  std::vector< unsigned int >::value_type temp3 ;
+  std::vector< unsigned int >::value_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< unsigned int > **)&jarg1; 
+  arg2 = jarg2; 
+  temp3 = (std::vector< unsigned int >::value_type)jarg3; 
+  arg3 = &temp3; 
+  try {
+    result = (std::vector< unsigned int >::value_type)std_vector_Sl_unsigned_SS_int_Sg__doSet(arg1,arg2,(unsigned int const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorUnsigned_1doRemoveRange(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  std::vector< unsigned int > *arg1 = (std::vector< unsigned int > *) 0 ;
+  jint arg2 ;
+  jint arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< unsigned int > **)&jarg1; 
+  arg2 = jarg2; 
+  arg3 = jarg3; 
+  try {
+    std_vector_Sl_unsigned_SS_int_Sg__doRemoveRange(arg1,arg2,arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1VectorUnsigned(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  std::vector< unsigned int > *arg1 = (std::vector< unsigned int > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(std::vector< unsigned int > **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorDouble_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  std::vector< double > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (std::vector< double > *)new std::vector< double >();
+  *(std::vector< double > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorDouble_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  std::vector< double > *arg1 = 0 ;
+  std::vector< double > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< double > **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< double > const & reference is null");
+    return 0;
+  } 
+  result = (std::vector< double > *)new std::vector< double >((std::vector< double > const &)*arg1);
+  *(std::vector< double > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_VectorDouble_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  std::vector< double >::size_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< double > **)&jarg1; 
+  result = ((std::vector< double > const *)arg1)->capacity();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorDouble_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  std::vector< double >::size_type arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< double > **)&jarg1; 
+  arg2 = (std::vector< double >::size_type)jarg2; 
+  try {
+    (arg1)->reserve(arg2);
+  } catch(std::length_error &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_VectorDouble_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< double > **)&jarg1; 
+  result = (bool)((std::vector< double > const *)arg1)->empty();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorDouble_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< double > **)&jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorDouble_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jint jarg1, jdouble jarg2) {
+  jlong jresult = 0 ;
+  jint arg1 ;
+  double *arg2 = 0 ;
+  double temp2 ;
+  std::vector< double > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = jarg1; 
+  temp2 = (double)jarg2; 
+  arg2 = &temp2; 
+  try {
+    result = (std::vector< double > *)new_std_vector_Sl_double_Sg___SWIG_2(arg1,(double const &)*arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  *(std::vector< double > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_VectorDouble_1doSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  jint result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< double > **)&jarg1; 
+  try {
+    result = std_vector_Sl_double_Sg__doSize((std::vector< double > const *)arg1);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorDouble_1doAdd_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jdouble jarg2) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  std::vector< double >::value_type *arg2 = 0 ;
+  std::vector< double >::value_type temp2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< double > **)&jarg1; 
+  temp2 = (std::vector< double >::value_type)jarg2; 
+  arg2 = &temp2; 
+  std_vector_Sl_double_Sg__doAdd__SWIG_0(arg1,(double const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorDouble_1doAdd_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jdouble jarg3) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  jint arg2 ;
+  std::vector< double >::value_type *arg3 = 0 ;
+  std::vector< double >::value_type temp3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< double > **)&jarg1; 
+  arg2 = jarg2; 
+  temp3 = (std::vector< double >::value_type)jarg3; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_double_Sg__doAdd__SWIG_1(arg1,arg2,(double const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_btllib_btllibJNI_VectorDouble_1doRemove(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jdouble jresult = 0 ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  jint arg2 ;
+  std::vector< double >::value_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< double > **)&jarg1; 
+  arg2 = jarg2; 
+  try {
+    result = (std::vector< double >::value_type)std_vector_Sl_double_Sg__doRemove(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_btllib_btllibJNI_VectorDouble_1doGet(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jdouble jresult = 0 ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  jint arg2 ;
+  std::vector< double >::value_type *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< double > **)&jarg1; 
+  arg2 = jarg2; 
+  try {
+    result = (std::vector< double >::value_type *) &std_vector_Sl_double_Sg__doGet(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = (jdouble)*result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_btllib_btllibJNI_VectorDouble_1doSet(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jdouble jarg3) {
+  jdouble jresult = 0 ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  jint arg2 ;
+  std::vector< double >::value_type *arg3 = 0 ;
+  std::vector< double >::value_type temp3 ;
+  std::vector< double >::value_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< double > **)&jarg1; 
+  arg2 = jarg2; 
+  temp3 = (std::vector< double >::value_type)jarg3; 
+  arg3 = &temp3; 
+  try {
+    result = (std::vector< double >::value_type)std_vector_Sl_double_Sg__doSet(arg1,arg2,(double const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorDouble_1doRemoveRange(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  jint arg2 ;
+  jint arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< double > **)&jarg1; 
+  arg2 = jarg2; 
+  arg3 = jarg3; 
+  try {
+    std_vector_Sl_double_Sg__doRemoveRange(arg1,arg2,arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1VectorDouble(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(std::vector< double > **)&jarg1; 
+  delete arg1;
+}
+
 
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderFlag_1FOLD_1CASE_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
@@ -1675,7 +3080,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedBloomFilter_1_1SWIG_10(J
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedBloomFilter_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3, jlong jarg4) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedBloomFilter_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3, jobject jarg3_, jlong jarg4) {
   jlong jresult = 0 ;
   size_t arg1 ;
   unsigned int arg2 ;
@@ -1685,6 +3090,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedBloomFilter_1_1SWIG_11(J
   
   (void)jenv;
   (void)jcls;
+  (void)jarg3_;
   arg1 = (size_t)jarg1; 
   arg2 = (unsigned int)jarg2; 
   arg3 = *(std::vector< std::string > **)&jarg3;
@@ -1797,7 +3203,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1contains_1_1SWIG
   btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
   char *arg2 = (char *) 0 ;
   size_t arg3 ;
-  std::vector< std::vector< unsigned int > > result;
+  SwigValueWrapper< std::vector< std::vector< unsigned int > > > result;
   
   (void)jenv;
   (void)jcls;
@@ -1820,7 +3226,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1contains_1_1SWIG
   jlong jresult = 0 ;
   btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
   std::string *arg2 = 0 ;
-  std::vector< std::vector< unsigned int > > result;
+  SwigValueWrapper< std::vector< std::vector< unsigned int > > > result;
   
   (void)jenv;
   (void)jcls;
@@ -1884,7 +3290,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1contains_1insert
   btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
   char *arg2 = (char *) 0 ;
   size_t arg3 ;
-  std::vector< std::vector< unsigned int > > result;
+  SwigValueWrapper< std::vector< std::vector< unsigned int > > > result;
   
   (void)jenv;
   (void)jcls;
@@ -1907,7 +3313,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeedBloomFilter_1contains_1insert
   jlong jresult = 0 ;
   btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
   std::string *arg2 = 0 ;
-  std::vector< std::vector< unsigned int > > result;
+  SwigValueWrapper< std::vector< std::vector< unsigned int > > > result;
   
   (void)jenv;
   (void)jcls;
@@ -2409,12 +3815,12 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1pipeline_1id(JNIEnv *jenv, j
 
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_pipeline_1map(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
-  std::map< btllib::PipelineId,btllib::ProcessPipelineInternal > *result = 0 ;
+  std::map< btllib::PipelineId,btllib::ProcessPipelineInternal,std::less< btllib::PipelineId > > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (std::map< btllib::PipelineId,btllib::ProcessPipelineInternal > *) &btllib::pipeline_map();
-  *(std::map< btllib::PipelineId,btllib::ProcessPipelineInternal > **)&jresult = result; 
+  result = (std::map< btllib::PipelineId,btllib::ProcessPipelineInternal,std::less< btllib::PipelineId > > *) &btllib::pipeline_map();
+  *(std::map< btllib::PipelineId,btllib::ProcessPipelineInternal,std::less< btllib::PipelineId > > **)&jresult = result; 
   return jresult;
 }
 
@@ -2501,11 +3907,12 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_redirect_1io(JNIEnv *jenv, jclass 
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_assign_1process_1cmd(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_assign_1process_1cmd(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   std::vector< std::string > *arg1 = 0 ;
   
   (void)jenv;
   (void)jcls;
+  (void)jarg1_;
   arg1 = *(std::vector< std::string > **)&jarg1;
   if (!arg1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< std::string > const & reference is null");
@@ -5726,7 +7133,7 @@ SWIGEXPORT jobject JNICALL Java_btllib_btllibJNI_mask_1hash(JNIEnv *jenv, jclass
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_sub_1hash(JNIEnv *jenv, jclass jcls, jobject jarg1, jobject jarg2, jstring jarg3, jlong jarg4, jlong jarg5, jlong jarg6, jlong jarg7, jlong jarg8) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_sub_1hash(JNIEnv *jenv, jclass jcls, jobject jarg1, jobject jarg2, jstring jarg3, jlong jarg4, jobject jarg4_, jlong jarg5, jlong jarg6, jlong jarg7, jlong jarg8) {
   uint64_t arg1 ;
   uint64_t arg2 ;
   char *arg3 = (char *) 0 ;
@@ -5738,6 +7145,7 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_sub_1hash(JNIEnv *jenv, jclass jcl
   
   (void)jenv;
   (void)jcls;
+  (void)jarg4_;
   {
     jclass clazz;
     jmethodID mid;
@@ -6109,13 +7517,14 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_ntmsm64_1_1SWIG_11(JNIEnv *jenv, j
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_parse_1seeds(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_parse_1seeds(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   std::vector< std::string > *arg1 = 0 ;
-  std::vector< btllib::SpacedSeed > result;
+  SwigValueWrapper< std::vector< std::vector< unsigned int > > > result;
   
   (void)jenv;
   (void)jcls;
+  (void)jarg1_;
   arg1 = *(std::vector< std::string > **)&jarg1;
   if (!arg1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< std::string > const & reference is null");
@@ -6196,7 +7605,7 @@ SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_NtHash_1roll(JNIEnv *jenv, jcl
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_NtHash_1sub(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_NtHash_1sub(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3) {
   btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
   std::vector< unsigned int > *arg2 = 0 ;
   std::vector< unsigned char > *arg3 = 0 ;
@@ -6204,6 +7613,7 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_NtHash_1sub(JNIEnv *jenv, jclass j
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg2_;
   arg1 = *(btllib::NtHash **)&jarg1; 
   arg2 = *(std::vector< unsigned int > **)&jarg2;
   if (!arg2) {
@@ -6498,7 +7908,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_13(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5, jlong jarg6) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jobject jarg3_, jlong jarg4, jlong jarg5, jlong jarg6) {
   jlong jresult = 0 ;
   char *arg1 = (char *) 0 ;
   size_t arg2 ;
@@ -6510,6 +7920,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_14(JNIEnv
   
   (void)jenv;
   (void)jcls;
+  (void)jarg3_;
   arg1 = 0;
   if (jarg1) {
     arg1 = (char *)jenv->GetStringUTFChars(jarg1, 0);
@@ -6531,7 +7942,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_14(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_15(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_15(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jobject jarg3_, jlong jarg4, jlong jarg5) {
   jlong jresult = 0 ;
   char *arg1 = (char *) 0 ;
   size_t arg2 ;
@@ -6542,6 +7953,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_15(JNIEnv
   
   (void)jenv;
   (void)jcls;
+  (void)jarg3_;
   arg1 = 0;
   if (jarg1) {
     arg1 = (char *)jenv->GetStringUTFChars(jarg1, 0);
@@ -6562,7 +7974,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_15(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_16(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_16(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jobject jarg2_, jlong jarg3, jlong jarg4, jlong jarg5) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   std::vector< std::string > *arg2 = 0 ;
@@ -6573,6 +7985,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_16(JNIEnv
   
   (void)jenv;
   (void)jcls;
+  (void)jarg2_;
   if(!jarg1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
     return 0;
@@ -6596,7 +8009,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_16(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_17(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jlong jarg3, jlong jarg4) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_17(JNIEnv *jenv, jclass jcls, jstring jarg1, jlong jarg2, jobject jarg2_, jlong jarg3, jlong jarg4) {
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   std::vector< std::string > *arg2 = 0 ;
@@ -6606,6 +8019,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1SeedNtHash_1_1SWIG_17(JNIEnv
   
   (void)jenv;
   (void)jcls;
+  (void)jarg2_;
   if(!jarg1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
     return 0;
@@ -6992,13 +8406,14 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqWriter(JNIEnv *jenv, jc
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Datatype_1prefixes_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Datatype_1prefixes_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   btllib::Datatype *arg1 = (btllib::Datatype *) 0 ;
   std::vector< std::string > *arg2 = (std::vector< std::string > *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg2_;
   arg1 = *(btllib::Datatype **)&jarg1; 
   arg2 = *(std::vector< std::string > **)&jarg2; 
   if (arg1) (arg1)->prefixes = *arg2;
@@ -7020,13 +8435,14 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Datatype_1prefixes_1get(JNIEnv *j
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Datatype_1suffixes_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Datatype_1suffixes_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   btllib::Datatype *arg1 = (btllib::Datatype *) 0 ;
   std::vector< std::string > *arg2 = (std::vector< std::string > *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg2_;
   arg1 = *(btllib::Datatype **)&jarg1; 
   arg2 = *(std::vector< std::string > **)&jarg2; 
   if (arg1) (arg1)->suffixes = *arg2;
@@ -7048,13 +8464,14 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Datatype_1suffixes_1get(JNIEnv *j
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Datatype_1cmds_1check_1existence_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Datatype_1cmds_1check_1existence_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   btllib::Datatype *arg1 = (btllib::Datatype *) 0 ;
   std::vector< std::string > *arg2 = (std::vector< std::string > *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg2_;
   arg1 = *(btllib::Datatype **)&jarg1; 
   arg2 = *(std::vector< std::string > **)&jarg2; 
   if (arg1) (arg1)->cmds_check_existence = *arg2;
@@ -7076,13 +8493,14 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Datatype_1cmds_1check_1existence_
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Datatype_1read_1cmds_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Datatype_1read_1cmds_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   btllib::Datatype *arg1 = (btllib::Datatype *) 0 ;
   std::vector< std::string > *arg2 = (std::vector< std::string > *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg2_;
   arg1 = *(btllib::Datatype **)&jarg1; 
   arg2 = *(std::vector< std::string > **)&jarg2; 
   if (arg1) (arg1)->read_cmds = *arg2;
@@ -7104,13 +8522,14 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Datatype_1read_1cmds_1get(JNIEnv 
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Datatype_1write_1cmds_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Datatype_1write_1cmds_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   btllib::Datatype *arg1 = (btllib::Datatype *) 0 ;
   std::vector< std::string > *arg2 = (std::vector< std::string > *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg2_;
   arg1 = *(btllib::Datatype **)&jarg1; 
   arg2 = *(std::vector< std::string > **)&jarg2; 
   if (arg1) (arg1)->write_cmds = *arg2;
@@ -7132,13 +8551,14 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Datatype_1write_1cmds_1get(JNIEnv
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Datatype_1append_1cmds_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Datatype_1append_1cmds_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   btllib::Datatype *arg1 = (btllib::Datatype *) 0 ;
   std::vector< std::string > *arg2 = (std::vector< std::string > *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg2_;
   arg1 = *(btllib::Datatype **)&jarg1; 
   arg2 = *(std::vector< std::string > **)&jarg2; 
   if (arg1) (arg1)->append_cmds = *arg2;
@@ -7341,7 +8761,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_peel_1datatype(JNIEnv *jenv, jcla
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   btllib::DataStream::Operation arg2 ;
-  SwigValueWrapper< std::vector< std::string > > result;
+  std::vector< std::string > result;
   
   (void)jenv;
   (void)jcls;
@@ -7361,7 +8781,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_peel_1datatype(JNIEnv *jenv, jcla
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_form_1string_1cmd(JNIEnv *jenv, jclass jcls, jlong jarg1, jint jarg2, jstring jarg3) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_form_1string_1cmd(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
   jstring jresult = 0 ;
   std::vector< std::string > *arg1 = 0 ;
   btllib::DataStream::Operation arg2 ;
@@ -7370,6 +8790,7 @@ SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_form_1string_1cmd(JNIEnv *jenv,
   
   (void)jenv;
   (void)jcls;
+  (void)jarg1_;
   arg1 = *(std::vector< std::string > **)&jarg1;
   if (!arg1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< std::string > & reference is null");
@@ -7605,7 +9026,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_split(JNIEnv *jenv, jclass jcls, 
   jlong jresult = 0 ;
   std::string *arg1 = 0 ;
   std::string *arg2 = 0 ;
-  SwigValueWrapper< std::vector< std::string > > result;
+  std::vector< std::string > result;
   
   (void)jenv;
   (void)jcls;
@@ -7633,7 +9054,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_split(JNIEnv *jenv, jclass jcls, 
 }
 
 
-SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_join(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2) {
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_join(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jstring jresult = 0 ;
   std::vector< std::string > *arg1 = 0 ;
   std::string *arg2 = 0 ;
@@ -7641,6 +9062,7 @@ SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_join(JNIEnv *jenv, jclass jcls,
   
   (void)jenv;
   (void)jcls;
+  (void)jarg1_;
   arg1 = *(std::vector< std::string > **)&jarg1;
   if (!arg1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< std::string > const & reference is null");
@@ -7801,6 +9223,28 @@ SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_endswith(JNIEnv *jenv, jclass 
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = (bool)btllib::endswith(arg1,arg2);
   jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_btllib_btllibJNI_get_1dirname(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+  jstring jresult = 0 ;
+  std::string *arg1 = 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  if(!jarg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
+    return 0;
+  }
+  const char *arg1_pstr = (const char *)jenv->GetStringUTFChars(jarg1, 0); 
+  if (!arg1_pstr) return 0;
+  std::string arg1_str(arg1_pstr);
+  arg1 = &arg1_str;
+  jenv->ReleaseStringUTFChars(jarg1, arg1_pstr); 
+  result = btllib::get_dirname((std::string const &)*arg1);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
   return jresult;
 }
 
