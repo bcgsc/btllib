@@ -42856,6 +42856,11 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Format_GFA2",SWIG_From_int(static_cast< int >(btllib::SeqReader::Format::GFA2)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Format_INVALID",SWIG_From_int(static_cast< int >(btllib::SeqReader::Format::INVALID)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "MAX_SIMULTANEOUS_SEQREADERS",SWIG_From_size_t(static_cast< size_t >(btllib::SeqReader::MAX_SIMULTANEOUS_SEQREADERS)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SHORT_MODE_BUFFER_SIZE",SWIG_From_size_t(static_cast< size_t >(btllib::SeqReader::SHORT_MODE_BUFFER_SIZE)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SHORT_MODE_BLOCK_SIZE",SWIG_From_size_t(static_cast< size_t >(btllib::SeqReader::SHORT_MODE_BLOCK_SIZE)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "LONG_MODE_BUFFER_SIZE",SWIG_From_size_t(static_cast< size_t >(btllib::SeqReader::LONG_MODE_BUFFER_SIZE)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "LONG_MODE_BLOCK_SIZE",SWIG_From_size_t(static_cast< size_t >(btllib::SeqReader::LONG_MODE_BLOCK_SIZE)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "FORMAT_BUFFER_SIZE",SWIG_From_size_t(static_cast< size_t >(btllib::SeqReader::FORMAT_BUFFER_SIZE)));
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;

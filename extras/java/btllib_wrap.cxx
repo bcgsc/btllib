@@ -3008,6 +3008,66 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1end(JNIEnv *jenv, jcla
 }
 
 
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1SHORT_1MODE_1BUFFER_1SIZE_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  size_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = btllib::SeqReader::SHORT_MODE_BUFFER_SIZE;
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1SHORT_1MODE_1BLOCK_1SIZE_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  size_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = btllib::SeqReader::SHORT_MODE_BLOCK_SIZE;
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1LONG_1MODE_1BUFFER_1SIZE_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  size_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = btllib::SeqReader::LONG_MODE_BUFFER_SIZE;
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1LONG_1MODE_1BLOCK_1SIZE_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  size_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = btllib::SeqReader::LONG_MODE_BLOCK_SIZE;
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1FORMAT_1BUFFER_1SIZE_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  size_t result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = btllib::SeqReader::FORMAT_BUFFER_SIZE;
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_BIT_1MASKS_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   uint8_t *result = 0 ;

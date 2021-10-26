@@ -159,7 +159,6 @@ public:
   RecordIterator begin() { return RecordIterator(*this, false); }
   RecordIterator end() { return RecordIterator(*this, true); }
 
-private:
   static const size_t SHORT_MODE_BUFFER_SIZE = 32;
   static const size_t SHORT_MODE_BLOCK_SIZE = 32;
 
@@ -168,6 +167,7 @@ private:
 
   static const size_t FORMAT_BUFFER_SIZE = 16384;
 
+private:
   struct Buffer
   {
 
