@@ -26,6 +26,8 @@
 %rename (IndexlrRecord) btllib::Indexlr::Record;
 %rename (IndexlrFlag) btllib::Indexlr::Flag;
 
+%ignore btllib::SeqReader::read_block;
+
 %ignore btllib::IORedirection;
 %ignore btllib::IORedirection::in;
 %ignore btllib::IORedirection::out;

@@ -118,6 +118,9 @@ public:
   /** Obtain next record. */
   Record read();
 
+  /** Obtain a whole block of records. */
+  OrderQueueMPMC<Record>::Block read_block();
+
   static const size_t MAX_SIMULTANEOUS_SEQREADERS = 256;
 
   /** For range-based for loop only. */
@@ -217,7 +220,7 @@ private:
 
   static long* ready_records_owners()
   {
-    thread_local static long var[MAX_SIMULTANEOUS_SEQREADERS];
+    thread_local static long var[MAX_SIMULTANEOUS_SEQREADERS] = { 0 };
     return var;
   }
 
@@ -735,6 +738,18 @@ SeqReader::read()
   }
   // cppcheck-suppress danglingTempReference
   return std::move(ready_records.data[ready_records.current++]);
+}
+
+inline OrderQueueMPMC<SeqReader::Record>::Block
+SeqReader::read_block()
+{
+  decltype(SeqReader::read_block()) block(block_size);
+  output_queue.read(block); // cppcheck-suppress danglingTempReference
+  if (block.count <=        // cppcheck-suppress danglingTempReference
+      block.current) {      // cppcheck-suppress danglingTempReference
+    close();
+  }
+  return block;
 }
 
 } // namespace btllib
