@@ -61,3 +61,54 @@ namespace btllib {
 using SpacedSeed = std::vector<unsigned>;
 }
 %template(VectorSpacedSeed) std::vector<btllib::SpacedSeed>;
+
+%{
+  #include <map>
+  #include <mutex>
+  static long nthash_last_id = 0;
+  static std::mutex nthash_mutex;
+  static std::map<long, std::string> nthash_strings;
+  static std::map<void*, long> nthash_ids;
+%}
+
+%ignore btllib::NtHash::NtHash(const std::string&, unsigned, unsigned, size_t pos = 0);
+%ignore btllib::NtHash::NtHash(const char*, size_t, unsigned, unsigned, size_t pos = 0);
+
+%ignore btllib::SeedNtHash::SeedNtHash(const char*, size_t, const std::vector<SpacedSeed>&, unsigned, unsigned, size_t pos = 0);
+%ignore btllib::SeedNtHash::SeedNtHash(const std::string&, const std::vector<SpacedSeed>&, unsigned, unsigned, size_t pos = 0);
+%ignore btllib::SeedNtHash::SeedNtHash(const char*, size_t, const std::vector<std::string>&, unsigned, unsigned, size_t pos = 0);
+%ignore btllib::SeedNtHash::SeedNtHash(const std::string&, const std::vector<std::string>&, unsigned, unsigned, size_t pos = 0);
+
+%extend btllib::NtHash {
+  NtHash(std::string seq, unsigned hash_num, unsigned k, size_t pos = 0)
+  {
+    std::unique_lock<std::mutex> lock(nthash_mutex);
+    nthash_strings[++nthash_last_id] = std::move(seq);
+    auto *nthash = new btllib::NtHash(nthash_strings[nthash_last_id], hash_num, k);
+    nthash_ids[(void*)nthash] = nthash_last_id;
+    return nthash;
+  }
+
+  ~NtHash() {
+    std::unique_lock<std::mutex> lock(nthash_mutex);
+    nthash_strings.erase(nthash_ids[(void*)self]);
+    nthash_ids.erase((void*)self);
+  }
+}
+
+%extend btllib::SeedNtHash {
+  SeedNtHash(std::string seq, const std::vector<SpacedSeed>& seeds, unsigned hash_num_per_seed, unsigned k, size_t pos = 0)
+  {
+    std::unique_lock<std::mutex> lock(nthash_mutex);
+    nthash_strings[++nthash_last_id] = std::move(seq);
+    auto *nthash = new btllib::SeedNtHash(nthash_strings[nthash_last_id], seeds, hash_num_per_seed, k);
+    nthash_ids[(void*)nthash] = nthash_last_id;
+    return nthash;
+  }
+
+  ~SeedNtHash() {
+    std::unique_lock<std::mutex> lock(nthash_mutex);
+    nthash_strings.erase(nthash_ids[(void*)self]);
+    nthash_ids.erase((void*)self);
+  }
+}

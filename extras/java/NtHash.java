@@ -36,14 +36,6 @@ public class NtHash {
     }
   }
 
-  public NtHash(String seq, long hash_num, long k, long pos) {
-    this(btllibJNI.new_NtHash__SWIG_0(seq, hash_num, k, pos), true);
-  }
-
-  public NtHash(String seq, long hash_num, long k) {
-    this(btllibJNI.new_NtHash__SWIG_1(seq, hash_num, k), true);
-  }
-
   public boolean roll() {
     return btllibJNI.NtHash_roll(swigCPtr, this);
   }
@@ -79,6 +71,14 @@ public class NtHash {
 
   public java.math.BigInteger get_reverse_hash() {
     return btllibJNI.NtHash_get_reverse_hash(swigCPtr, this);
+  }
+
+  public NtHash(String seq, long hash_num, long k, long pos) {
+    this(btllibJNI.new_NtHash__SWIG_0(seq, hash_num, k, pos), true);
+  }
+
+  public NtHash(String seq, long hash_num, long k) {
+    this(btllibJNI.new_NtHash__SWIG_1(seq, hash_num, k), true);
   }
 
 }

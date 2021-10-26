@@ -42,23 +42,6 @@
   static_assert(sizeof(long unsigned int) >= sizeof(uint64_t), "Python wrappers are using wrong size integers.");
 %}
 
-%{
-  #include <map>
-  #include <mutex>
-  static long nthash_last_id = 0;
-  static std::mutex nthash_mutex;
-  static std::map<long, std::string> nthash_strings;
-  static std::map<btllib::NtHash*, long> nthash_ids;
-%}
-
-%ignore btllib::NtHash::NtHash(const std::string&, unsigned, unsigned, size_t pos = 0);
-%ignore btllib::NtHash::NtHash(const char*, size_t, unsigned, unsigned, size_t pos = 0);
-
-%ignore btllib::SeedNtHash::SeedNtHash(const char*, size_t, const std::vector<SpacedSeed>&, unsigned, unsigned, size_t pos = 0);
-//%ignore btllib::SeedNtHash::SeedNtHash(const std::string&, const std::vector<SpacedSeed>&, unsigned, unsigned, size_t pos = 0);
-%ignore btllib::SeedNtHash::SeedNtHash(const char*, size_t, const std::vector<std::string>&, unsigned, unsigned, size_t pos = 0);
-%ignore btllib::SeedNtHash::SeedNtHash(const std::string&, const std::vector<std::string>&, unsigned, unsigned, size_t pos = 0);
-
 %typemap(out) uint64_t* btllib::NtHash::hashes %{
   $result = PyTuple_New(arg1->get_hash_num());
   for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
@@ -72,20 +55,3 @@
     PyTuple_SetItem($result, i, PyLong_FromUnsignedLong($1[i]));
   }
 %}
-
-%extend btllib::NtHash {
-  NtHash(const char* seq, unsigned hash_num, unsigned k, size_t pos = 0)
-  {
-    std::unique_lock<std::mutex> lock(nthash_mutex);
-    nthash_strings[++nthash_last_id] = seq;
-    auto *nthash = new btllib::NtHash(nthash_strings[nthash_last_id], hash_num, k);
-    nthash_ids[nthash] = nthash_last_id;
-    return nthash;
-  }
-
-  ~NtHash() {
-    std::unique_lock<std::mutex> lock(nthash_mutex);
-    nthash_strings.erase(nthash_ids[self]);
-    nthash_ids.erase(self);
-  }
-}
