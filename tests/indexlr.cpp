@@ -78,18 +78,7 @@ main()
     }
   }
 
-  if (ss.str() != correct_output) {
-    std::cerr << "Correct:\n\n"
-              << correct_output << "\n\nActual:\n\n"
-              << ss.str() << "\n\n";
-  }
   TEST_ASSERT_EQ(ss.str(), correct_output);
-
-  if (ss2.str() != correct_output2) {
-    std::cerr << "Correct:\n\n"
-              << correct_output2 << "\n\nActual:\n\n"
-              << ss2.str() << "\n\n";
-  }
   TEST_ASSERT_EQ(ss2.str(), correct_output2);
 
   std::cerr << "Testing with Bloom filters" << std::endl;
