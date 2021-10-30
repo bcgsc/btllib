@@ -57,7 +57,7 @@ public:
   bool output_seq() const { return bool(flags & Flag::SEQ); }
   bool filter_in() const { return bool(flags & Flag::FILTER_IN); }
   bool filter_out() const { return bool(flags & Flag::FILTER_OUT); }
-  bool short_mode() const { return bool(~flags & Flag::LONG_MODE); }
+  bool short_mode() const { return bool(flags & Flag::SHORT_MODE); }
   bool long_mode() const { return bool(flags & Flag::LONG_MODE); }
 
   struct Minimizer
@@ -266,6 +266,7 @@ inline Indexlr::Indexlr(std::string seqfile,
 inline Indexlr::~Indexlr()
 {
   reader.close();
+  output_queue.close();
   for (auto& worker : workers) {
     worker.join();
   }
@@ -450,11 +451,12 @@ Indexlr::Worker::work()
 {
   decltype(indexlr.output_queue)::Block output_block(indexlr.reader.get_block_size());
   Record record;
+  size_t last_block_num = 0;
   for (;;) {
     auto input_block = indexlr.reader.read_block();
-    output_block.num = input_block.num;
     if (input_block.count == 0) { break; }
 
+    output_block.num = input_block.num;
     for (size_t idx = 0; idx < input_block.count; idx++) {
       auto& reader_record = input_block.data[idx];
       record.num = reader_record.num;
@@ -490,10 +492,12 @@ Indexlr::Worker::work()
       output_block.data[output_block.count++] = std::move(record);
     }
     if (output_block.count > 0) {
+      last_block_num = output_block.num;
       indexlr.output_queue.write(output_block);
       output_block.count = 0;
     }
   }
+  output_block.num = last_block_num + 1;
   indexlr.output_queue.write(output_block);
 }
 

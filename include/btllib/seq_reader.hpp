@@ -208,7 +208,7 @@ private:
   const std::atomic<size_t> block_size;
   OrderQueueSPMC<RecordCString> cstring_queue;
   OrderQueueMPMC<Record> output_queue;
-  size_t dummy_block_num = 0;
+  std::atomic<size_t> dummy_block_num{ 0 };
   const long id;
 
   // I am crying at this code, but until C++17 compliant compilers are
@@ -311,6 +311,8 @@ inline SeqReader::SeqReader(const std::string& source_path,
   check_error(!short_mode() && !long_mode(),
               "SeqReader: no mode selected, either short or long mode flag "
               "must be provided.");
+  check_error(short_mode() && long_mode(),
+              "SeqReader: short and long mode are mutually exclusive.");
   check_error(threads == 0, "SeqReader: Number of helper threads cannot be 0.");
   start_processors();
   {
