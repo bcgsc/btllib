@@ -146,7 +146,6 @@ public:
   static const size_t MAX_SIMULTANEOUS_INDEXLRS = 256;
 
 private:
-
   static std::string extract_barcode(const std::string& id,
                                      const std::string& comment);
   std::vector<Minimizer> minimize(const std::string& seq) const;
@@ -217,7 +216,6 @@ private:
     {}
 
   private:
-
     void work();
     static void do_work(Worker* worker) { worker->work(); }
 
@@ -250,8 +248,7 @@ inline Indexlr::Indexlr(std::string seqfile,
            short_mode() ? SeqReader::Flag::SHORT_MODE
                         : SeqReader::Flag::LONG_MODE)
   , output_queue(reader.get_buffer_size(), reader.get_block_size())
-  , workers(
-      std::vector<Worker>(threads, Worker(*this)))
+  , workers(std::vector<Worker>(threads, Worker(*this)))
 {
   check_error(!short_mode() && !long_mode(),
               "Indexlr: no mode selected, either short or long mode flag must "
@@ -432,9 +429,9 @@ Indexlr::get_minimizers()
   auto& block = *(ready_blocks_array()[id % MAX_SIMULTANEOUS_INDEXLRS]);
   auto& current = ready_blocks_current()[id % MAX_SIMULTANEOUS_INDEXLRS];
   if (current >= block.count) { // cppcheck-suppress danglingTempReference
-    block.count = 0;
-    output_queue.read(block);         // cppcheck-suppress danglingTempReference
-    if (block.count == 0) {              // cppcheck-suppress danglingTempReference
+    block.count = 0;            // cppcheck-suppress danglingTempReference
+    output_queue.read(block);   // cppcheck-suppress danglingTempReference
+    if (block.count == 0) {     // cppcheck-suppress danglingTempReference
       output_queue.close();
       // cppcheck-suppress danglingTempReference
       block = decltype(output_queue)::Block(reader.get_block_size());
@@ -449,38 +446,50 @@ Indexlr::get_minimizers()
 inline void
 Indexlr::Worker::work()
 {
-  decltype(indexlr.output_queue)::Block output_block(indexlr.reader.get_block_size());
-  Record record;
+  decltype(indexlr.output_queue)::Block output_block(
+    indexlr.reader.get_block_size());
   size_t last_block_num = 0;
   for (;;) {
     auto input_block = indexlr.reader.read_block();
-    if (input_block.count == 0) { break; }
+    if (input_block.count == 0) {
+      break;
+    }
 
     output_block.num = input_block.num;
     for (size_t idx = 0; idx < input_block.count; idx++) {
+      Record record;
       auto& reader_record = input_block.data[idx];
       record.num = reader_record.num;
       if (indexlr.output_id()) {
         record.id = std::move(reader_record.id);
       }
       if (indexlr.output_bx()) {
-        record.barcode = indexlr.extract_barcode(record.id, reader_record.comment);
+        record.barcode =
+          indexlr.extract_barcode(record.id, reader_record.comment);
       }
       record.readlen = reader_record.seq.size();
 
       check_info(indexlr.verbose && indexlr.k > record.readlen,
-                "Indexlr: skipped seq " + std::to_string(record.num) +
-                  " on line " +
-                  std::to_string(record.num * (indexlr.reader.get_format() == SeqReader::Format::FASTA ? 2 : 4) + 2) +
-                  "; k (" + std::to_string(indexlr.k) + ") > seq length (" +
-                  std::to_string(record.readlen) + ")");
+                 "Indexlr: skipped seq " + std::to_string(record.num) +
+                   " on line " +
+                   std::to_string(record.num * (indexlr.reader.get_format() ==
+                                                    SeqReader::Format::FASTA
+                                                  ? 2
+                                                  : 4) +
+                                  2) +
+                   "; k (" + std::to_string(indexlr.k) + ") > seq length (" +
+                   std::to_string(record.readlen) + ")");
 
       check_info(indexlr.verbose && indexlr.w > record.readlen - indexlr.k + 1,
-                "Indexlr: skipped seq " + std::to_string(record.num) +
-                  " on line " +
-                  std::to_string(record.num * (indexlr.reader.get_format() == SeqReader::Format::FASTA ? 2 : 4) + 2) +
-                  "; w (" + std::to_string(indexlr.w) + ") > # of hashes (" +
-                  std::to_string(record.readlen - indexlr.k + 1) + ")");
+                 "Indexlr: skipped seq " + std::to_string(record.num) +
+                   " on line " +
+                   std::to_string(record.num * (indexlr.reader.get_format() ==
+                                                    SeqReader::Format::FASTA
+                                                  ? 2
+                                                  : 4) +
+                                  2) +
+                   "; w (" + std::to_string(indexlr.w) + ") > # of hashes (" +
+                   std::to_string(record.readlen - indexlr.k + 1) + ")");
 
       if (indexlr.k <= record.readlen &&
           indexlr.w <= record.readlen - indexlr.k + 1) {

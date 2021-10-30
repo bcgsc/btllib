@@ -226,6 +226,14 @@ public class SeqReader {
     return new SeqReader.RecordIterator(btllibJNI.SeqReader_end(swigCPtr, this), true);
   }
 
+  public long get_buffer_size() {
+    return btllibJNI.SeqReader_get_buffer_size(swigCPtr, this);
+  }
+
+  public long get_block_size() {
+    return btllibJNI.SeqReader_get_block_size(swigCPtr, this);
+  }
+
   public final static class Format {
     public final static SeqReader.Format UNDETERMINED = new SeqReader.Format("UNDETERMINED");
     public final static SeqReader.Format FASTA = new SeqReader.Format("FASTA");

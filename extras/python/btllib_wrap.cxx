@@ -22948,6 +22948,50 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SeqReader_get_buffer_size(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  size_t result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeqReader_get_buffer_size", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_get_buffer_size" "', argument " "1"" of type '" "btllib::SeqReader const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
+  result = ((btllib::SeqReader const *)arg1)->get_buffer_size();
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeqReader_get_block_size(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  size_t result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeqReader_get_block_size", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReader_get_block_size" "', argument " "1"" of type '" "btllib::SeqReader const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeqReader * >(argp1);
+  result = ((btllib::SeqReader const *)arg1)->get_block_size();
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SeqReader___enter__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeqReader *arg1 = (btllib::SeqReader *) 0 ;
@@ -37403,6 +37447,8 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeqReader_methods[] = {
   { "read", _wrap_SeqReader_read, METH_NOARGS, "" },
   { "__iter__", _wrap_SeqReader___iter__, METH_NOARGS, "" },
   { "end", _wrap_SeqReader_end, METH_NOARGS, "" },
+  { "get_buffer_size", _wrap_SeqReader_get_buffer_size, METH_NOARGS, "" },
+  { "get_block_size", _wrap_SeqReader_get_block_size, METH_NOARGS, "" },
   { "__enter__", _wrap_SeqReader___enter__, METH_NOARGS, "" },
   { "__exit__", _wrap_SeqReader___exit__, METH_VARARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */

@@ -9,13 +9,16 @@
 int
 main()
 {
-  btllib::Indexlr indexlr(
-    btllib::get_dirname(__FILE__) + "/indexlr.fa", 100, 5, btllib::Indexlr::Flag::SHORT_MODE);
+  btllib::Indexlr indexlr(btllib::get_dirname(__FILE__) + "/indexlr.fa",
+                          100,
+                          5,
+                          btllib::Indexlr::Flag::SHORT_MODE);
   btllib::Indexlr indexlr2(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
                            btllib::Indexlr::Flag::BX |
-                             btllib::Indexlr::Flag::SEQ | btllib::Indexlr::Flag::SHORT_MODE);
+                             btllib::Indexlr::Flag::SEQ |
+                             btllib::Indexlr::Flag::SHORT_MODE);
 
   std::ifstream correct_output_file(btllib::get_dirname(__FILE__) +
                                     "/indexlr.fa.correct");
@@ -102,7 +105,8 @@ main()
   btllib::Indexlr indexlr3(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
-                           btllib::Indexlr::Flag::FILTER_IN | btllib::Indexlr::Flag::LONG_MODE,
+                           btllib::Indexlr::Flag::FILTER_IN |
+                             btllib::Indexlr::Flag::LONG_MODE,
                            3,
                            true,
                            filter_in_bf);
@@ -125,7 +129,8 @@ main()
   btllib::Indexlr indexlr4(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
-                           btllib::Indexlr::Flag::FILTER_OUT | btllib::Indexlr::Flag::LONG_MODE,
+                           btllib::Indexlr::Flag::FILTER_OUT |
+                             btllib::Indexlr::Flag::LONG_MODE,
                            3,
                            true,
                            filter_out_bf);
@@ -144,7 +149,8 @@ main()
                            100,
                            5,
                            btllib::Indexlr::Flag::FILTER_IN |
-                             btllib::Indexlr::Flag::FILTER_OUT | btllib::Indexlr::Flag::SHORT_MODE,
+                             btllib::Indexlr::Flag::FILTER_OUT |
+                             btllib::Indexlr::Flag::SHORT_MODE,
                            3,
                            true,
                            filter_in_bf,

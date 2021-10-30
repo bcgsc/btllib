@@ -132,6 +132,8 @@ public class btllibJNI {
   public final static native void delete_SeqReader_RecordIterator(long jarg1);
   public final static native long SeqReader_begin(long jarg1, SeqReader jarg1_);
   public final static native long SeqReader_end(long jarg1, SeqReader jarg1_);
+  public final static native long SeqReader_get_buffer_size(long jarg1, SeqReader jarg1_);
+  public final static native long SeqReader_get_block_size(long jarg1, SeqReader jarg1_);
   public final static native long SeqReader_SHORT_MODE_BUFFER_SIZE_get();
   public final static native long SeqReader_SHORT_MODE_BLOCK_SIZE_get();
   public final static native long SeqReader_LONG_MODE_BUFFER_SIZE_get();
