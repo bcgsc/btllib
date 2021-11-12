@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['read_0',['read',['../classbtllib_1_1SeqReader.html#a7e8acc7bfbd8624cf8d9745922e9a034',1,'btllib::SeqReader']]],
-  ['read_5fblock_1',['read_block',['../classbtllib_1_1SeqReader.html#af8b9b6b1834f2fa6ac0bde20db0324a3',1,'btllib::SeqReader']]],
-  ['reverse_5fcomplement_2',['reverse_complement',['../namespacebtllib.html#a0c9cb0705283e0519330f79629cdc738',1,'btllib']]],
-  ['roll_3',['roll',['../classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05',1,'btllib::NtHash::roll()'],['../classbtllib_1_1SeedNtHash.html#aa817b8acaf7c57d7be8ce47fcf5ac758',1,'btllib::SeedNtHash::roll()']]]
+  ['log_5ferror_0',['log_error',['../namespacebtllib.html#aae48e6ebdbbde9836cd2c20347b85606',1,'btllib']]],
+  ['log_5finfo_1',['log_info',['../namespacebtllib.html#aa0d6ecae33b5e60b5c285f5358a9ad6a',1,'btllib']]],
+  ['log_5fwarning_2',['log_warning',['../namespacebtllib.html#a3d4af2317963b43668700a59fb8c67a6',1,'btllib']]],
+  ['ltrim_3',['ltrim',['../namespacebtllib.html#ad74639e10aa8a303fc78973078e870dd',1,'btllib']]]
 ];

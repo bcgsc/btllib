@@ -13,26 +13,82 @@
 
 namespace btllib {
 
+/**
+ * Split a string into component substrings with a delimiter.
+ *
+ * @param s String to split.
+ * @param delim Delimiter to split with.
+ *
+ * @return Vector of substrings delimited by `delim`, excluding delimiters
+ * themselves.
+ */
 inline std::vector<std::string>
 split(const std::string& s, const std::string& delim);
+
+/**
+ * Join a vector of strings into a single string with a delimiter.
+ *
+ * @param s Vector of strings to join.
+ * @param delim Delimiter to join the strings with.
+ *
+ * @return String with all the components joined.
+ */
 inline std::string
 join(const std::vector<std::string>& s, const std::string& delim);
+
+/**
+ * Trim whitespace on the left side of the given string.
+ *
+ * @param s String to trim, edited in-place.
+ *
+ */
 inline void
 ltrim(std::string& s);
 inline void
 ltrim(CString& s);
+
+/**
+ * Trim whitespace on the right side of the given string.
+ *
+ * @param s String to trim, edited in-place.
+ *
+ */
 inline void
 rtrim(std::string& s);
 inline void
 rtrim(CString& s);
+
+/**
+ * Trim whitespace on the left and right side of the given string.
+ *
+ * @param s String to trim, edited in-place.
+ *
+ */
 inline void
 trim(std::string& s);
 inline void
 trim(CString& s);
+
+/**
+ * Check whether the given string starts with a prefix.
+ *
+ * @param s String to check.
+ * @param prefix Prefix to check for.
+ *
+ */
 inline bool
 startswith(std::string s, std::string prefix);
+
+/**
+ * Check whether the given string ends with a suffix.
+ *
+ * @param s String to check.
+ * @param suffix Suffix to check for.
+ *
+ */
 inline bool
 endswith(std::string s, std::string suffix);
+
 inline std::string
 get_dirname(const std::string& path);
 

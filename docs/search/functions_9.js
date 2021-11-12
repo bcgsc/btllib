@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['save_0',['save',['../classbtllib_1_1BloomFilter.html#aa47b7cad6cd99614effb16a30e6abc6f',1,'btllib::BloomFilter::save()'],['../classbtllib_1_1KmerBloomFilter.html#abd827a224723a2b24ea2e9e1d7f1d5ea',1,'btllib::KmerBloomFilter::save()'],['../classbtllib_1_1SeedBloomFilter.html#a492503ad458de38bf683ef804ebff5c1',1,'btllib::SeedBloomFilter::save()'],['../classbtllib_1_1CountingBloomFilter.html#a5e22481a658471b286a2a8b915839121',1,'btllib::CountingBloomFilter::save()'],['../classbtllib_1_1KmerCountingBloomFilter.html#a2114624b42d693170ec48391690d95fe',1,'btllib::KmerCountingBloomFilter::save()']]],
-  ['seedbloomfilter_1',['SeedBloomFilter',['../classbtllib_1_1SeedBloomFilter.html#ad13884cf28a0e94978ac5005be628f3b',1,'btllib::SeedBloomFilter::SeedBloomFilter()'],['../classbtllib_1_1SeedBloomFilter.html#a4fb38186f959cd49479404dd9e03c596',1,'btllib::SeedBloomFilter::SeedBloomFilter(size_t bytes, unsigned k, const std::vector&lt; std::string &gt; &amp;seeds, unsigned hash_num_per_seed)'],['../classbtllib_1_1SeedBloomFilter.html#a826a023c14d8d229d5238df0eee04a25',1,'btllib::SeedBloomFilter::SeedBloomFilter(const std::string &amp;path)']]],
-  ['seqreader_2',['SeqReader',['../classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d',1,'btllib::SeqReader']]],
-  ['seqwriter_3',['SeqWriter',['../classbtllib_1_1SeqWriter.html#a6271cffe77701558f0997532a7e58d43',1,'btllib::SeqWriter']]],
-  ['store_4',['store',['../classbtllib_1_1MIBloomFilter.html#a307db9aef904be2d88f9dfff2627bc6b',1,'btllib::MIBloomFilter']]]
+  ['read_0',['read',['../classbtllib_1_1SeqReader.html#a7e8acc7bfbd8624cf8d9745922e9a034',1,'btllib::SeqReader']]],
+  ['read_5fblock_1',['read_block',['../classbtllib_1_1SeqReader.html#af8b9b6b1834f2fa6ac0bde20db0324a3',1,'btllib::SeqReader']]],
+  ['reverse_5fcomplement_2',['reverse_complement',['../namespacebtllib.html#a0c9cb0705283e0519330f79629cdc738',1,'btllib']]],
+  ['roll_3',['roll',['../classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05',1,'btllib::NtHash::roll()'],['../classbtllib_1_1SeedNtHash.html#aa817b8acaf7c57d7be8ce47fcf5ac758',1,'btllib::SeedNtHash::roll()']]],
+  ['rtrim_4',['rtrim',['../namespacebtllib.html#a8733bdc6b1d9fdbc9991a1150fb64401',1,'btllib']]]
 ];

@@ -237,8 +237,8 @@ $(function() {
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  <span class="keyword">auto</span>&amp; out_append = redirection.out_append;</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  <span class="keyword">auto</span>&amp; err_append = redirection.err_append;</div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  <span class="keyword">auto</span> args = split(cmd, <span class="stringliteral">&quot; &quot;</span>);</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  std::for_each(args.begin(), args.end(), (void (*)(<span class="keyword">decltype</span>(args[0])&amp;))trim);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  <span class="keyword">auto</span> args = <a class="code hl_function" href="namespacebtllib.html#a6e1f7d38461cd2a81d5b070ae8a146fa">split</a>(cmd, <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  std::for_each(args.begin(), args.end(), (void (*)(<span class="keyword">decltype</span>(args[0])&amp;))<a class="code hl_function" href="namespacebtllib.html#a4d7c3b03ff4fe7ed419c723f3ddcfbd5">trim</a>);</div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  args.erase(std::remove_if(args.begin(),</div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                            args.end(),</div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                            [](<span class="keyword">const</span> std::string&amp; arg) { return arg.empty(); }),</div>
@@ -330,7 +330,7 @@ $(function() {
 <div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    args.erase(err_it);</div>
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>  }</div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>  cmd = join(args, <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>  cmd = <a class="code hl_function" href="namespacebtllib.html#a3136b2f8753378b2712fb2c815c98a92">join</a>(args, <span class="stringliteral">&quot; &quot;</span>);</div>
 <div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>  <span class="keywordflow">return</span> redirection;</div>
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>}</div>
 <div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
@@ -617,11 +617,11 @@ $(function() {
 <div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>  <a class="code hl_function" href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">check_error</a>(!read_from_user(&amp;len, <span class="keyword">sizeof</span>(len)) || !read_from_user(buf, len),</div>
 <div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>              <span class="stringliteral">&quot;Process pipeline: Communication failure.&quot;</span>);</div>
 <div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span> </div>
-<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>  <span class="keyword">auto</span> individual_cmds = split(buf, <span class="stringliteral">&quot;|&quot;</span>);</div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>  <span class="keyword">auto</span> individual_cmds = <a class="code hl_function" href="namespacebtllib.html#a6e1f7d38461cd2a81d5b070ae8a146fa">split</a>(buf, <span class="stringliteral">&quot;|&quot;</span>);</div>
 <div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>  <a class="code hl_function" href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">check_error</a>(individual_cmds.empty(), <span class="stringliteral">&quot;Process spawner: Invalid command.&quot;</span>);</div>
 <div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>  std::for_each(individual_cmds.begin(),</div>
 <div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>                individual_cmds.end(),</div>
-<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>                (void (*)(<span class="keyword">decltype</span>(individual_cmds[0])&amp;))trim);</div>
+<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>                (void (*)(<span class="keyword">decltype</span>(individual_cmds[0])&amp;))<a class="code hl_function" href="namespacebtllib.html#a4d7c3b03ff4fe7ed419c723f3ddcfbd5">trim</a>);</div>
 <div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span> </div>
 <div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>  <span class="keyword">const</span> <span class="keyword">auto</span> original_cmds = individual_cmds;</div>
 <div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span> </div>
@@ -663,8 +663,8 @@ $(function() {
 <div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span>  <span class="keywordflow">for</span> (ssize_t idx = last_idx; idx &gt;= 0; idx--) {</div>
 <div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span>    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; individual_cmd = individual_cmds[idx];</div>
 <div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span> </div>
-<div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span>    <span class="keyword">auto</span> args = split(individual_cmd, <span class="stringliteral">&quot; &quot;</span>);</div>
-<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>    std::for_each(args.begin(), args.end(), (void (*)(<span class="keyword">decltype</span>(args[0])&amp;))trim);</div>
+<div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span>    <span class="keyword">auto</span> args = <a class="code hl_function" href="namespacebtllib.html#a6e1f7d38461cd2a81d5b070ae8a146fa">split</a>(individual_cmd, <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>    std::for_each(args.begin(), args.end(), (void (*)(<span class="keyword">decltype</span>(args[0])&amp;))<a class="code hl_function" href="namespacebtllib.html#a4d7c3b03ff4fe7ed419c723f3ddcfbd5">trim</a>);</div>
 <div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>    args.erase(</div>
 <div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>      std::remove_if(args.begin(),</div>
 <div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span>                     args.end(),</div>
@@ -969,7 +969,10 @@ $(function() {
 <div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassbtllib_1_1ProcessPipeline_html"><div class="ttname"><a href="classbtllib_1_1ProcessPipeline.html">btllib::ProcessPipeline</a></div><div class="ttdef"><b>Definition:</b> process_pipeline.hpp:55</div></div>
 <div class="ttc" id="anamespacebtllib_html"><div class="ttname"><a href="namespacebtllib.html">btllib</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:18</div></div>
+<div class="ttc" id="anamespacebtllib_html_a3136b2f8753378b2712fb2c815c98a92"><div class="ttname"><a href="namespacebtllib.html#a3136b2f8753378b2712fb2c815c98a92">btllib::join</a></div><div class="ttdeci">std::string join(const std::vector&lt; std::string &gt; &amp;s, const std::string &amp;delim)</div><div class="ttdef"><b>Definition:</b> util.hpp:110</div></div>
+<div class="ttc" id="anamespacebtllib_html_a4d7c3b03ff4fe7ed419c723f3ddcfbd5"><div class="ttname"><a href="namespacebtllib.html#a4d7c3b03ff4fe7ed419c723f3ddcfbd5">btllib::trim</a></div><div class="ttdeci">void trim(std::string &amp;s)</div><div class="ttdef"><b>Definition:</b> util.hpp:159</div></div>
 <div class="ttc" id="anamespacebtllib_html_a540bce0213b7718e519ddc4466361bf7"><div class="ttname"><a href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">btllib::check_error</a></div><div class="ttdeci">void check_error(bool condition, const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:139</div></div>
+<div class="ttc" id="anamespacebtllib_html_a6e1f7d38461cd2a81d5b070ae8a146fa"><div class="ttname"><a href="namespacebtllib.html#a6e1f7d38461cd2a81d5b070ae8a146fa">btllib::split</a></div><div class="ttdeci">std::vector&lt; std::string &gt; split(const std::string &amp;s, const std::string &amp;delim)</div><div class="ttdef"><b>Definition:</b> util.hpp:96</div></div>
 <div class="ttc" id="anamespacebtllib_html_aae48e6ebdbbde9836cd2c20347b85606"><div class="ttname"><a href="namespacebtllib.html#aae48e6ebdbbde9836cd2c20347b85606">btllib::log_error</a></div><div class="ttdeci">void log_error(const std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> status.hpp:115</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
