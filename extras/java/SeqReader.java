@@ -184,16 +184,16 @@ public class SeqReader {
     return new SeqReader.SeqReaderRecord(btllibJNI.SeqReader_read(swigCPtr, this), true);
   }
 
-  static public class RecordIterator {
+  static public class SeqReaderRecordIterator {
     private transient long swigCPtr;
     protected transient boolean swigCMemOwn;
   
-    protected RecordIterator(long cPtr, boolean cMemoryOwn) {
+    protected SeqReaderRecordIterator(long cPtr, boolean cMemoryOwn) {
       swigCMemOwn = cMemoryOwn;
       swigCPtr = cPtr;
     }
   
-    protected static long getCPtr(RecordIterator obj) {
+    protected static long getCPtr(SeqReaderRecordIterator obj) {
       return (obj == null) ? 0 : obj.swigCPtr;
     }
   
@@ -206,24 +206,24 @@ public class SeqReader {
       if (swigCPtr != 0) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          btllibJNI.delete_SeqReader_RecordIterator(swigCPtr);
+          btllibJNI.delete_SeqReader_SeqReaderRecordIterator(swigCPtr);
         }
         swigCPtr = 0;
       }
     }
   
     public SeqReader.SeqReaderRecord next() {
-      return new SeqReader.SeqReaderRecord(btllibJNI.SeqReader_RecordIterator_next(swigCPtr, this), true);
+      return new SeqReader.SeqReaderRecord(btllibJNI.SeqReader_SeqReaderRecordIterator_next(swigCPtr, this), true);
     }
   
   }
 
-  public SeqReader.RecordIterator begin() {
-    return new SeqReader.RecordIterator(btllibJNI.SeqReader_begin(swigCPtr, this), true);
+  public SeqReader.SeqReaderRecordIterator begin() {
+    return new SeqReader.SeqReaderRecordIterator(btllibJNI.SeqReader_begin(swigCPtr, this), true);
   }
 
-  public SeqReader.RecordIterator end() {
-    return new SeqReader.RecordIterator(btllibJNI.SeqReader_end(swigCPtr, this), true);
+  public SeqReader.SeqReaderRecordIterator end() {
+    return new SeqReader.SeqReaderRecordIterator(btllibJNI.SeqReader_end(swigCPtr, this), true);
   }
 
   public long get_buffer_size() {

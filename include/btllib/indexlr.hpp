@@ -112,7 +112,7 @@ public:
     }
   };
 
-  Record get_minimizers();
+  Record read();
 
   /**
    * Construct a SeqReader to read sequences from a given path.
@@ -143,7 +143,45 @@ public:
 
   ~Indexlr();
 
+  void close() noexcept;
+
   static const size_t MAX_SIMULTANEOUS_INDEXLRS = 256;
+
+  /** For range-based for loop only. */
+  class RecordIterator
+  {
+  public:
+    void operator++() { record = indexlr.read(); }
+    bool operator!=(const RecordIterator& i)
+    {
+      return bool(record) || bool(i.record);
+    }
+    Record operator*() { return std::move(record); }
+    // For wrappers
+    Record next()
+    {
+      auto val = operator*();
+      operator++();
+      return val;
+    }
+
+  private:
+    friend Indexlr;
+
+    RecordIterator(Indexlr& indexlr, bool end)
+      : indexlr(indexlr)
+    {
+      if (!end) {
+        operator++();
+      }
+    }
+
+    Indexlr& indexlr;
+    Record record;
+  };
+
+  RecordIterator begin() { return RecordIterator(*this, false); }
+  RecordIterator end() { return RecordIterator(*this, true); }
 
 private:
   static std::string extract_barcode(const std::string& id,
@@ -155,6 +193,7 @@ private:
   const unsigned flags;
   const bool verbose;
   const long id;
+  std::atomic<bool> closed{ false };
 
   static const BloomFilter& dummy_bf()
   {
@@ -262,10 +301,24 @@ inline Indexlr::Indexlr(std::string seqfile,
 
 inline Indexlr::~Indexlr()
 {
-  reader.close();
-  output_queue.close();
-  for (auto& worker : workers) {
-    worker.join();
+  close();
+}
+
+inline void
+Indexlr::close() noexcept
+{
+  bool closed_expected = false;
+  if (closed.compare_exchange_strong(closed_expected, true)) {
+    try {
+      reader.close();
+      output_queue.close();
+      for (auto& worker : workers) {
+        worker.join();
+      }
+    } catch (const std::system_error& e) {
+      log_error("Indexlr thread join failure: " + std::string(e.what()));
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+    }
   }
 }
 
@@ -417,7 +470,7 @@ Indexlr::minimize(const std::string& seq) const
 }
 
 inline Indexlr::Record
-Indexlr::get_minimizers()
+Indexlr::read()
 {
   if (ready_blocks_owners()[id % MAX_SIMULTANEOUS_INDEXLRS] != id) {
     ready_blocks_array()[id % MAX_SIMULTANEOUS_INDEXLRS] =

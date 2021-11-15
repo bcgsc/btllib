@@ -615,6 +615,60 @@ SWIGINTERN void std_vector_Sl_uint64_t_Sg__doRemoveRange(std::vector< uint64_t >
           throw std::out_of_range("vector index out of range");
         }
       }
+SWIGINTERN std::vector< btllib::Indexlr::Minimizer > *new_std_vector_Sl_btllib_Indexlr_Minimizer_Sg___SWIG_2(jint count,btllib::Indexlr::Minimizer const &value){
+        if (count < 0)
+          throw std::out_of_range("vector count must be positive");
+        return new std::vector< btllib::Indexlr::Minimizer >(static_cast<std::vector< btllib::Indexlr::Minimizer >::size_type>(count), value);
+      }
+SWIGINTERN jint std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doSize(std::vector< btllib::Indexlr::Minimizer > const *self){
+        return SWIG_VectorSize(self->size());
+      }
+SWIGINTERN void std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doAdd__SWIG_0(std::vector< btllib::Indexlr::Minimizer > *self,std::vector< btllib::Indexlr::Minimizer >::value_type const &x){
+        self->push_back(x);
+      }
+SWIGINTERN void std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doAdd__SWIG_1(std::vector< btllib::Indexlr::Minimizer > *self,jint index,std::vector< btllib::Indexlr::Minimizer >::value_type const &x){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= index && index <= size) {
+          self->insert(self->begin() + index, x);
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< btllib::Indexlr::Minimizer >::value_type std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doRemove(std::vector< btllib::Indexlr::Minimizer > *self,jint index){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= index && index < size) {
+          btllib::Indexlr::Minimizer const old_value = (*self)[index];
+          self->erase(self->begin() + index);
+          return old_value;
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
+SWIGINTERN std::vector< btllib::Indexlr::Minimizer >::value_type const &std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doGet(std::vector< btllib::Indexlr::Minimizer > *self,jint index){
+        jint size = static_cast<jint>(self->size());
+        if (index >= 0 && index < size)
+          return (*self)[index];
+        else
+          throw std::out_of_range("vector index out of range");
+      }
+SWIGINTERN std::vector< btllib::Indexlr::Minimizer >::value_type std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doSet(std::vector< btllib::Indexlr::Minimizer > *self,jint index,std::vector< btllib::Indexlr::Minimizer >::value_type const &val){
+        jint size = static_cast<jint>(self->size());
+        if (index >= 0 && index < size) {
+          btllib::Indexlr::Minimizer const old_value = (*self)[index];
+          (*self)[index] = val;
+          return old_value;
+        }
+        else
+          throw std::out_of_range("vector index out of range");
+      }
+SWIGINTERN void std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doRemoveRange(std::vector< btllib::Indexlr::Minimizer > *self,jint fromIndex,jint toIndex){
+        jint size = static_cast<jint>(self->size());
+        if (0 <= fromIndex && fromIndex <= toIndex && toIndex <= size) {
+          self->erase(self->begin() + fromIndex, self->begin() + toIndex);
+        } else {
+          throw std::out_of_range("vector index out of range");
+        }
+      }
 SWIGINTERN std::vector< btllib::SpacedSeed > *new_std_vector_Sl_btllib_SpacedSeed_Sg___SWIG_2(jint count,std::vector< unsigned int > const &value){
         if (count < 0)
           throw std::out_of_range("vector count must be positive");
@@ -2234,6 +2288,288 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1VectorUint64t(JNIEnv *jenv
 }
 
 
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorMinimizer_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  std::vector< btllib::Indexlr::Minimizer > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (std::vector< btllib::Indexlr::Minimizer > *)new std::vector< btllib::Indexlr::Minimizer >();
+  *(std::vector< btllib::Indexlr::Minimizer > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorMinimizer_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = 0 ;
+  std::vector< btllib::Indexlr::Minimizer > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< btllib::Indexlr::Minimizer > const & reference is null");
+    return 0;
+  } 
+  result = (std::vector< btllib::Indexlr::Minimizer > *)new std::vector< btllib::Indexlr::Minimizer >((std::vector< btllib::Indexlr::Minimizer > const &)*arg1);
+  *(std::vector< btllib::Indexlr::Minimizer > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_VectorMinimizer_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
+  std::vector< btllib::Indexlr::Minimizer >::size_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1; 
+  result = ((std::vector< btllib::Indexlr::Minimizer > const *)arg1)->capacity();
+  jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorMinimizer_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
+  std::vector< btllib::Indexlr::Minimizer >::size_type arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1; 
+  arg2 = (std::vector< btllib::Indexlr::Minimizer >::size_type)jarg2; 
+  try {
+    (arg1)->reserve(arg2);
+  } catch(std::length_error &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_btllib_btllibJNI_VectorMinimizer_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1; 
+  result = (bool)((std::vector< btllib::Indexlr::Minimizer > const *)arg1)->empty();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorMinimizer_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorMinimizer_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jint jarg1, jlong jarg2, jobject jarg2_) {
+  jlong jresult = 0 ;
+  jint arg1 ;
+  btllib::Indexlr::Minimizer *arg2 = 0 ;
+  std::vector< btllib::Indexlr::Minimizer > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg2_;
+  arg1 = jarg1; 
+  arg2 = *(btllib::Indexlr::Minimizer **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "btllib::Indexlr::Minimizer const & reference is null");
+    return 0;
+  } 
+  try {
+    result = (std::vector< btllib::Indexlr::Minimizer > *)new_std_vector_Sl_btllib_Indexlr_Minimizer_Sg___SWIG_2(arg1,(btllib::Indexlr::Minimizer const &)*arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  *(std::vector< btllib::Indexlr::Minimizer > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_btllib_btllibJNI_VectorMinimizer_1doSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
+  jint result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1; 
+  try {
+    result = std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doSize((std::vector< btllib::Indexlr::Minimizer > const *)arg1);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorMinimizer_1doAdd_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
+  std::vector< btllib::Indexlr::Minimizer >::value_type *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1; 
+  arg2 = *(std::vector< btllib::Indexlr::Minimizer >::value_type **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< btllib::Indexlr::Minimizer >::value_type const & reference is null");
+    return ;
+  } 
+  std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doAdd__SWIG_0(arg1,(btllib::Indexlr::Minimizer const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorMinimizer_1doAdd_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
+  jint arg2 ;
+  std::vector< btllib::Indexlr::Minimizer >::value_type *arg3 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg3_;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1; 
+  arg2 = jarg2; 
+  arg3 = *(std::vector< btllib::Indexlr::Minimizer >::value_type **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< btllib::Indexlr::Minimizer >::value_type const & reference is null");
+    return ;
+  } 
+  try {
+    std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doAdd__SWIG_1(arg1,arg2,(btllib::Indexlr::Minimizer const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_VectorMinimizer_1doRemove(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
+  jint arg2 ;
+  std::vector< btllib::Indexlr::Minimizer >::value_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1; 
+  arg2 = jarg2; 
+  try {
+    result = std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doRemove(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  *(std::vector< btllib::Indexlr::Minimizer >::value_type **)&jresult = new std::vector< btllib::Indexlr::Minimizer >::value_type((const std::vector< btllib::Indexlr::Minimizer >::value_type &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_VectorMinimizer_1doGet(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
+  jint arg2 ;
+  std::vector< btllib::Indexlr::Minimizer >::value_type *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1; 
+  arg2 = jarg2; 
+  try {
+    result = (std::vector< btllib::Indexlr::Minimizer >::value_type *) &std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doGet(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  *(std::vector< btllib::Indexlr::Minimizer >::value_type **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_VectorMinimizer_1doSet(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
+  jlong jresult = 0 ;
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
+  jint arg2 ;
+  std::vector< btllib::Indexlr::Minimizer >::value_type *arg3 = 0 ;
+  std::vector< btllib::Indexlr::Minimizer >::value_type result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg3_;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1; 
+  arg2 = jarg2; 
+  arg3 = *(std::vector< btllib::Indexlr::Minimizer >::value_type **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< btllib::Indexlr::Minimizer >::value_type const & reference is null");
+    return 0;
+  } 
+  try {
+    result = std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doSet(arg1,arg2,(btllib::Indexlr::Minimizer const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return 0;
+  }
+  *(std::vector< btllib::Indexlr::Minimizer >::value_type **)&jresult = new std::vector< btllib::Indexlr::Minimizer >::value_type((const std::vector< btllib::Indexlr::Minimizer >::value_type &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_VectorMinimizer_1doRemoveRange(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
+  jint arg2 ;
+  jint arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1; 
+  arg2 = jarg2; 
+  arg3 = jarg3; 
+  try {
+    std_vector_Sl_btllib_Indexlr_Minimizer_Sg__doRemoveRange(arg1,arg2,arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
+    return ;
+  }
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1VectorMinimizer(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  std::vector< btllib::Indexlr::Minimizer > *arg1 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1VectorSpacedSeed_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   std::vector< btllib::SpacedSeed > *result = 0 ;
@@ -2953,7 +3289,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1MAX_1SIMULTANEOUS_1SEQ
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1RecordIterator_1next(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1SeqReaderRecordIterator_1next(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   btllib::SeqReader::RecordIterator *arg1 = (btllib::SeqReader::RecordIterator *) 0 ;
   btllib::SeqReader::Record result;
@@ -2968,7 +3304,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_SeqReader_1RecordIterator_1next(J
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1RecordIterator(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1SeqReader_1SeqReaderRecordIterator(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   btllib::SeqReader::RecordIterator *arg1 = (btllib::SeqReader::RecordIterator *) 0 ;
   
   (void)jenv;
@@ -5609,18 +5945,19 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1IndexlrRecord_1_1SW
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1IndexlrRecord_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jstring jarg3, jlong jarg4, jlong jarg5) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_new_1Indexlr_1IndexlrRecord_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jstring jarg3, jlong jarg4, jlong jarg5, jobject jarg5_) {
   jlong jresult = 0 ;
   size_t arg1 ;
   std::string arg2 ;
   std::string arg3 ;
   size_t arg4 ;
-  SwigValueWrapper< std::vector< btllib::Indexlr::Minimizer > > arg5 ;
+  std::vector< btllib::Indexlr::Minimizer > arg5 ;
   std::vector< btllib::Indexlr::Minimizer > *argp5 ;
   btllib::Indexlr::Record *result = 0 ;
   
   (void)jenv;
   (void)jcls;
+  (void)jarg5_;
   arg1 = (size_t)jarg1; 
   if(!jarg2) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null string");
@@ -5779,13 +6116,14 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrRecord_1readlen_1
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrRecord_1minimizers_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrRecord_1minimizers_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   btllib::Indexlr::Record *arg1 = (btllib::Indexlr::Record *) 0 ;
   std::vector< btllib::Indexlr::Minimizer > *arg2 = (std::vector< btllib::Indexlr::Minimizer > *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg2_;
   arg1 = *(btllib::Indexlr::Record **)&jarg1; 
   arg2 = *(std::vector< btllib::Indexlr::Minimizer > **)&jarg2; 
   if (arg1) (arg1)->minimizers = *arg2;
@@ -5817,7 +6155,7 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1Indexlr_1IndexlrRecord(JNI
 }
 
 
-SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1get_1minimizers(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1read(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
   btllib::Indexlr::Record result;
@@ -5826,7 +6164,7 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1get_1minimizers(JNIEnv *
   (void)jcls;
   (void)jarg1_;
   arg1 = *(btllib::Indexlr **)&jarg1; 
-  result = (arg1)->get_minimizers();
+  result = (arg1)->read();
   *(btllib::Indexlr::Record **)&jresult = new btllib::Indexlr::Record((const btllib::Indexlr::Record &)result); 
   return jresult;
 }
@@ -6037,6 +6375,17 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1Indexlr(JNIEnv *jenv, jcla
 }
 
 
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_Indexlr_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::Indexlr **)&jarg1; 
+  (arg1)->close();
+}
+
+
 SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1MAX_1SIMULTANEOUS_1INDEXLRS_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   size_t result;
@@ -6045,6 +6394,61 @@ SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1MAX_1SIMULTANEOUS_1INDEX
   (void)jcls;
   result = btllib::Indexlr::MAX_SIMULTANEOUS_INDEXLRS;
   jresult = (jlong)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1IndexlrRecordIterator_1next(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::Indexlr::RecordIterator *arg1 = (btllib::Indexlr::RecordIterator *) 0 ;
+  btllib::Indexlr::Record result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::Indexlr::RecordIterator **)&jarg1; 
+  result = (arg1)->next();
+  *(btllib::Indexlr::Record **)&jresult = new btllib::Indexlr::Record((const btllib::Indexlr::Record &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_delete_1Indexlr_1IndexlrRecordIterator(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  btllib::Indexlr::RecordIterator *arg1 = (btllib::Indexlr::RecordIterator *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(btllib::Indexlr::RecordIterator **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1begin(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
+  SwigValueWrapper< btllib::Indexlr::RecordIterator > result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::Indexlr **)&jarg1; 
+  result = (arg1)->begin();
+  *(btllib::Indexlr::RecordIterator **)&jresult = new btllib::Indexlr::RecordIterator((const btllib::Indexlr::RecordIterator &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_btllib_btllibJNI_Indexlr_1end(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
+  SwigValueWrapper< btllib::Indexlr::RecordIterator > result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(btllib::Indexlr **)&jarg1; 
+  result = (arg1)->end();
+  *(btllib::Indexlr::RecordIterator **)&jresult = new btllib::Indexlr::RecordIterator((const btllib::Indexlr::RecordIterator &)result); 
   return jresult;
 }
 
@@ -6082,7 +6486,7 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_filter_1hashed_1kmer(JNIEnv *jenv,
 }
 
 
-SWIGEXPORT void JNICALL Java_btllib_btllibJNI_calc_1minimizer(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5, jlong jarg6, jlong jarg7, jlong jarg8) {
+SWIGEXPORT void JNICALL Java_btllib_btllibJNI_calc_1minimizer(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4, jlong jarg5, jlong jarg6, jlong jarg7, jlong jarg8, jobject jarg8_) {
   std::vector< btllib::Indexlr::HashedKmer > *arg1 = 0 ;
   btllib::Indexlr::Minimizer **arg2 = 0 ;
   size_t arg3 ;
@@ -6094,6 +6498,8 @@ SWIGEXPORT void JNICALL Java_btllib_btllibJNI_calc_1minimizer(JNIEnv *jenv, jcla
   
   (void)jenv;
   (void)jcls;
+  (void)jarg1_;
+  (void)jarg8_;
   arg1 = *(std::vector< btllib::Indexlr::HashedKmer > **)&jarg1;
   if (!arg1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "std::vector< btllib::Indexlr::HashedKmer > const & reference is null");

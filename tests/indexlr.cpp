@@ -47,7 +47,7 @@ main()
   decltype(indexlr)::Record record;
   bool success_indexlr = false, success_indexlr2 = false;
   for (int i = 0;; i++) {
-    if ((success_indexlr = (record = indexlr.get_minimizers()))) {
+    if ((success_indexlr = (record = indexlr.read()))) {
       if (i > 0) {
         ss << '\n';
       }
@@ -61,7 +61,7 @@ main()
         j++;
       }
     }
-    if ((success_indexlr2 = (record = indexlr2.get_minimizers()))) {
+    if ((success_indexlr2 = (record = indexlr2.read()))) {
       if (i > 0) {
         ss2 << '\n';
       }
@@ -111,7 +111,7 @@ main()
                            true,
                            filter_in_bf);
   size_t mins_found = 0;
-  while ((record = indexlr3.get_minimizers())) {
+  while ((record = indexlr3.read())) {
     for (const auto& min : record.minimizers) {
       bool found = false;
       for (const auto h : filter_in_hashes) {
@@ -135,7 +135,7 @@ main()
                            true,
                            filter_out_bf);
   mins_found = 0;
-  while ((record = indexlr4.get_minimizers())) {
+  while ((record = indexlr4.read())) {
     for (const auto& min : record.minimizers) {
       for (const auto h : filter_out_hashes) {
         TEST_ASSERT_NE(min.min_hash, h);
@@ -156,7 +156,7 @@ main()
                            filter_in_bf,
                            filter_out_bf);
   mins_found = 0;
-  while ((record = indexlr5.get_minimizers())) {
+  while ((record = indexlr5.read())) {
     for (const auto& min : record.minimizers) {
       bool found = false;
       for (const auto h : filter_in_hashes) {

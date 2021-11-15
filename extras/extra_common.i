@@ -22,8 +22,10 @@
 %ignore btllib::SeqReaderMultilineFastqModule;
 
 %rename (SeqReaderRecord) btllib::SeqReader::Record;
+%rename (SeqReaderRecordIterator) btllib::SeqReader::RecordIterator;
 %rename (SeqReaderFlag) btllib::SeqReader::Flag;
 %rename (IndexlrRecord) btllib::Indexlr::Record;
+%rename (IndexlrRecordIterator) btllib::Indexlr::RecordIterator;
 %rename (IndexlrFlag) btllib::Indexlr::Flag;
 
 %ignore btllib::SeqReader::read_block;
@@ -46,6 +48,10 @@
 %ignore btllib::SeqReader::RecordIterator::operator!=;
 %ignore btllib::SeqReader::RecordIterator::operator*;
 
+%ignore btllib::Indexlr::RecordIterator::operator++;
+%ignore btllib::Indexlr::RecordIterator::operator!=;
+%ignore btllib::Indexlr::RecordIterator::operator*;
+
 %ignore btllib::NtHash::NtHash(const char*, size_t, unsigned, unsigned, size_t pos = 0);
 
 %ignore btllib::BloomFilterInitializer;
@@ -56,6 +62,7 @@
 %template(VectorUnsigned) std::vector<unsigned>;
 %template(VectorDouble) std::vector<double>;
 %template(VectorUint64t) std::vector<uint64_t>;
+%template(VectorMinimizer) std::vector<btllib::Indexlr::Minimizer>;
 
 namespace btllib {
 using SpacedSeed = std::vector<unsigned>;

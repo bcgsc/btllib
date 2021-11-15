@@ -192,8 +192,8 @@ public class btllib {
     btllibJNI.filter_hashed_kmer(Indexlr.Minimizer.getCPtr(hk), hk, filter_in, filter_out, BloomFilter.getCPtr(filter_in_bf), filter_in_bf, BloomFilter.getCPtr(filter_out_bf), filter_out_bf);
   }
 
-  public static void calc_minimizer(SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t hashed_kmers_buffer, SWIGTYPE_p_p_btllib__Indexlr__Minimizer min_current, long idx, SWIGTYPE_p_ssize_t min_idx_left, SWIGTYPE_p_ssize_t min_idx_right, SWIGTYPE_p_ssize_t min_pos_prev, long w, SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t minimizers) {
-    btllibJNI.calc_minimizer(SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t.getCPtr(hashed_kmers_buffer), SWIGTYPE_p_p_btllib__Indexlr__Minimizer.getCPtr(min_current), idx, SWIGTYPE_p_ssize_t.getCPtr(min_idx_left), SWIGTYPE_p_ssize_t.getCPtr(min_idx_right), SWIGTYPE_p_ssize_t.getCPtr(min_pos_prev), w, SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_t.getCPtr(minimizers));
+  public static void calc_minimizer(VectorMinimizer hashed_kmers_buffer, SWIGTYPE_p_p_btllib__Indexlr__Minimizer min_current, long idx, SWIGTYPE_p_ssize_t min_idx_left, SWIGTYPE_p_ssize_t min_idx_right, SWIGTYPE_p_ssize_t min_pos_prev, long w, VectorMinimizer minimizers) {
+    btllibJNI.calc_minimizer(VectorMinimizer.getCPtr(hashed_kmers_buffer), hashed_kmers_buffer, SWIGTYPE_p_p_btllib__Indexlr__Minimizer.getCPtr(min_current), idx, SWIGTYPE_p_ssize_t.getCPtr(min_idx_left), SWIGTYPE_p_ssize_t.getCPtr(min_idx_right), SWIGTYPE_p_ssize_t.getCPtr(min_pos_prev), w, VectorMinimizer.getCPtr(minimizers), minimizers);
   }
 
   public static short getCP_OFF() {
