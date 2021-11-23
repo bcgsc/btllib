@@ -1173,48 +1173,35 @@ ntms64(const char* kmer_seq,
 // Multi spaced seed ntHash with multiple hashes per seed
 inline bool
 ntmsm64(const char* kmer_seq,
-        const std::vector<std::vector<unsigned>>& seed_seq,
+        const std::vector<std::vector<std::pair<unsigned, unsigned>>>& seed_seq,
         const unsigned k,
         const unsigned m,
         const unsigned m2,
-        uint64_t& fh_val,
-        uint64_t& rh_val,
+        uint64_t* fh_val,
+        uint64_t* rh_val,
         unsigned& loc_n,
         uint64_t* h_val)
 {
-  fh_val = rh_val = 0;
-  loc_n = 0;
-  for (int i = int(k - 1); i >= 0; i--) {
-    if (SEED_TAB[(unsigned char)kmer_seq[i]] == SEED_N) {
-      loc_n = i;
-      return false;
+  for (unsigned i_seed = 0; i_seed < seed_seq.size(); i_seed++) {
+    std::vector<std::pair<unsigned, unsigned>> seed = seed_seq[i_seed];
+    fh_val[i_seed] = 0;
+    rh_val[i_seed] = 0;
+    for (unsigned i_block = 0; i_block < seed_seq.size(); i_block++) {
+      for (unsigned i = seed[i_block].first; i < seed[i_block].second; i++) {
+        fh_val[i_seed] ^=
+          (MS_TAB_31L[(unsigned char)kmer_seq[i]][(k - 1 - i) % 31] |
+           MS_TAB_33R[(unsigned char)kmer_seq[i]][(k - 1 - i) % 33]);
+        rh_val[i_seed] ^=
+          (MS_TAB_31L[(unsigned char)kmer_seq[i] & CP_OFF][i % 31] |
+           MS_TAB_33R[(unsigned char)kmer_seq[i] & CP_OFF][i % 33]);
+      }
     }
-    fh_val = rol1(fh_val);
-    fh_val = swapbits033(fh_val);
-    fh_val ^= SEED_TAB[(unsigned char)kmer_seq[k - 1 - i]];
-
-    rh_val = rol1(rh_val);
-    rh_val = swapbits033(rh_val);
-    rh_val ^= SEED_TAB[(unsigned char)kmer_seq[i] & CP_OFF];
-  }
-
-  for (unsigned j = 0; j < m; j++) {
-    uint64_t fs_val = fh_val, rs_val = rh_val;
-    for (const auto& seed_pos : seed_seq[j]) {
-      fs_val ^= (MS_TAB_31L[(unsigned char)kmer_seq[seed_pos]]
-                           [(k - 1 - seed_pos) % 31] | // NOLINT
-                 MS_TAB_33R[(unsigned char)kmer_seq[seed_pos]]
-                           [(k - 1 - seed_pos) % 33]); // NOLINT
-      rs_val ^= (MS_TAB_31L[(unsigned char)kmer_seq[seed_pos] & CP_OFF]
-                           [seed_pos % 31] | // NOLINT
-                 MS_TAB_33R[(unsigned char)kmer_seq[seed_pos] & CP_OFF]
-                           [seed_pos % 33]); // NOLINT
-    }
-    h_val[size_t(j) * m2] = rs_val < fs_val ? rs_val : fs_val;
-    for (unsigned j2 = 1; j2 < m2; j2++) {
-      uint64_t t_val = h_val[size_t(j) * m2] * (j2 ^ k * MULTISEED);
-      t_val ^= t_val >> MULTISHIFT;
-      h_val[j * m2 + j2] = t_val;
+    unsigned i_base = i_seed * m2;
+    bool strand = fh_val[i_seed] < rh_val[i_seed];
+    h_val[i_base] = strand ? fh_val[i_seed] : rh_val[i_seed];
+    for (unsigned i_hash = 1; i_hash < m2; i_hash++) {
+      h_val[i_base + i_hash] = h_val[i_base] * (i_hash ^ k * MULTISEED);
+      h_val[i_base + i_hash] ^= h_val[i_base + i_hash] >> MULTISHIFT;
     }
   }
   return true;
@@ -1223,42 +1210,55 @@ ntmsm64(const char* kmer_seq,
 // Multi spaced seed ntHash for sliding k-mers with multiple hashes per seed
 inline void
 ntmsm64(const char* kmer_seq,
-        const std::vector<std::vector<unsigned>>& seed_seq,
+        const std::vector<std::vector<std::pair<unsigned, unsigned>>>& seed_seq,
         const unsigned char char_out,
         const unsigned char char_in,
         const unsigned k,
         const unsigned m,
         const unsigned m2,
-        uint64_t& fh_val,
-        uint64_t& rh_val,
+        uint64_t* fh_val,
+        uint64_t* rh_val,
         uint64_t* h_val)
 {
-  fh_val = ntf64(fh_val, k, char_out, char_in);
-  rh_val = ntr64(rh_val, k, char_out, char_in);
-  for (unsigned j = 0; j < m; j++) {
-    uint64_t fs_val = fh_val, rs_val = rh_val;
-    for (const auto& seed_pos : seed_seq[j]) {
-      fs_val ^= (MS_TAB_31L[(unsigned char)kmer_seq[seed_pos]]
-                           [(k - 1 - seed_pos) % 31] | // NOLINT
-                 MS_TAB_33R[(unsigned char)kmer_seq[seed_pos]]
-                           [(k - 1 - seed_pos) % 33]); // NOLINT
-      rs_val ^= (MS_TAB_31L[(unsigned char)kmer_seq[seed_pos] & CP_OFF]
-                           [seed_pos % 31] | // NOLINT
-                 MS_TAB_33R[(unsigned char)kmer_seq[seed_pos] & CP_OFF]
-                           [seed_pos % 33]); // NOLINT
+  for (unsigned i_seed = 0; i_seed < seed_seq.size(); i_seed++) {
+    std::vector<std::pair<unsigned, unsigned>> seed = seed_seq[i_seed];
+    fh_val[i_seed] = swapbits033(rol1(fh_val[i_seed]));
+    for (unsigned i_block = 0; i_block < seed.size(); i_block++) {
+      fh_val[i_seed] ^=
+        (MS_TAB_31L[(unsigned char)kmer_seq[seed[i_block].first]]
+                   [(k - seed[i_block].first) % 31] |
+         MS_TAB_33R[(unsigned char)kmer_seq[seed[i_block].first]]
+                   [(k - seed[i_block].first) % 33]); // remove block's charOut
+      fh_val[i_seed] ^=
+        (MS_TAB_31L[(unsigned char)kmer_seq[seed[i_block].second]]
+                   [(k - seed[i_block].second) % 31] |
+         MS_TAB_33R[(unsigned char)kmer_seq[seed[i_block].second]]
+                   [(k - seed[i_block].second) % 33]); // include block's charIn
+      rh_val[i_seed] ^=
+        (MS_TAB_31L[(unsigned char)kmer_seq[seed[i_block].first] & CP_OFF]
+                   [(seed[i_block].first) % 31] |
+         MS_TAB_33R[(unsigned char)kmer_seq[seed[i_block].first] & CP_OFF]
+                   [(seed[i_block].first) % 33]); // remove block's charOut
+      rh_val[i_seed] ^=
+        (MS_TAB_31L[(unsigned char)kmer_seq[seed[i_block].second] & CP_OFF]
+                   [(seed[i_block].second) % 31] |
+         MS_TAB_33R[(unsigned char)kmer_seq[seed[i_block].second] & CP_OFF]
+                   [(seed[i_block].second) % 33]); // include block's charIn
     }
-    h_val[size_t(j) * m2] = rs_val < fs_val ? rs_val : fs_val;
-    for (unsigned j2 = 1; j2 < m2; j2++) {
-      uint64_t t_val = h_val[size_t(j) * m2] * (j2 ^ k * MULTISEED);
-      t_val ^= t_val >> MULTISHIFT;
-      h_val[j * m2 + j2] = t_val;
+    rh_val[i_seed] = swapbits3263(ror1(rh_val[i_seed]));
+    unsigned i_base = i_seed * m2;
+    bool strand = fh_val[i_seed] < rh_val[i_seed];
+    h_val[i_base] = strand ? fh_val[i_seed] : rh_val[i_seed];
+    for (unsigned i_hash = 1; i_hash < m2; i_hash++) {
+      h_val[i_base + i_hash] = h_val[i_base] * (i_hash ^ k * MULTISEED);
+      h_val[i_base + i_hash] ^= h_val[i_base + i_hash] >> MULTISHIFT;
     }
   }
 }
 
 class NtHash;
 class SeedNtHash;
-using SpacedSeed = std::vector<unsigned>;
+using SpacedSeed = std::vector<std::pair<unsigned, unsigned>>;
 static std::vector<SpacedSeed>
 parse_seeds(const std::vector<std::string>& seed_strings);
 
@@ -1378,8 +1378,8 @@ public:
   unsigned get_hash_num_per_seed() const { return hash_num_per_seed; }
   unsigned get_k() const { return nthash.get_k(); }
 
-  uint64_t get_forward_hash() const { return nthash.get_forward_hash(); }
-  uint64_t get_reverse_hash() const { return nthash.get_reverse_hash(); }
+  uint64_t* get_forward_hash() const { return forward_hash; }
+  uint64_t* get_reverse_hash() const { return reverse_hash; }
 
 private:
   bool init();
@@ -1387,6 +1387,8 @@ private:
   NtHash nthash;
   const unsigned hash_num_per_seed;
   std::vector<SpacedSeed> seeds;
+  uint64_t* forward_hash = 0;
+  uint64_t* reverse_hash = 0;
 };
 
 inline NtHash::NtHash(const char* seq,
@@ -1424,6 +1426,8 @@ inline SeedNtHash::SeedNtHash(const char* seq,
   : nthash(seq, seq_len, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
   , seeds(seeds)
+  , forward_hash(new uint64_t[seeds.size()])
+  , reverse_hash(new uint64_t[seeds.size()])
 {}
 
 inline SeedNtHash::SeedNtHash(const std::string& seq,
@@ -1434,6 +1438,8 @@ inline SeedNtHash::SeedNtHash(const std::string& seq,
   : nthash(seq, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
   , seeds(seeds)
+  , forward_hash(new uint64_t[seeds.size()])
+  , reverse_hash(new uint64_t[seeds.size()])
 {}
 
 inline SeedNtHash::SeedNtHash(const char* seq,
@@ -1445,6 +1451,8 @@ inline SeedNtHash::SeedNtHash(const char* seq,
   : nthash(seq, seq_len, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
   , seeds(parse_seeds(seeds))
+  , forward_hash(new uint64_t[seeds.size()])
+  , reverse_hash(new uint64_t[seeds.size()])
 {}
 
 inline SeedNtHash::SeedNtHash(const std::string& seq,
@@ -1455,6 +1463,8 @@ inline SeedNtHash::SeedNtHash(const std::string& seq,
   : nthash(seq, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
   , seeds(parse_seeds(seeds))
+  , forward_hash(new uint64_t[seeds.size()])
+  , reverse_hash(new uint64_t[seeds.size()])
 {}
 
 static std::vector<SpacedSeed>
@@ -1462,13 +1472,18 @@ parse_seeds(const std::vector<std::string>& seed_strings)
 {
   std::vector<SpacedSeed> seed_set;
   for (const auto& seed_string : seed_strings) {
+    const std::string padded_string = '0' + seed_string + '0';
     SpacedSeed seed;
-    size_t pos = 0;
-    for (const auto& c : seed_string) {
-      if (c != '1') {
-        seed.push_back(pos);
+    unsigned i_start = 0;
+    bool is_block = false;
+    for (unsigned pos = 0; pos < padded_string.length(); pos++) {
+      if (padded_string[pos] == '0' && is_block) {
+        seed.push_back(std::make_pair(i_start - 1, pos - 1));
+        is_block = false;
+      } else if (padded_string[pos] == '1' && !is_block) {
+        i_start = pos;
+        is_block = true;
       }
-      ++pos;
     }
     seed_set.push_back(seed);
   }
@@ -1518,8 +1533,7 @@ NtHash::sub(const std::vector<unsigned>& positions,
     if (!MEMBER_PREFIX initialized) {                                          \
       return init();                                                           \
     }                                                                          \
-    ++MEMBER_PREFIX pos;                                                       \
-    if (MEMBER_PREFIX pos > MEMBER_PREFIX seq_len - MEMBER_PREFIX k) {         \
+    if (MEMBER_PREFIX pos >= MEMBER_PREFIX seq_len - MEMBER_PREFIX k) {        \
       return false;                                                            \
     }                                                                          \
     if (SEED_TAB[(unsigned char)(MEMBER_PREFIX seq[MEMBER_PREFIX pos +         \
@@ -1529,6 +1543,7 @@ NtHash::sub(const std::vector<unsigned>& positions,
       return init();                                                           \
     }                                                                          \
     (NTHASH_CALL);                                                             \
+    ++MEMBER_PREFIX pos;                                                       \
     return true;                                                               \
   }
 
@@ -1555,8 +1570,8 @@ BTLLIB_NTHASH_INIT(SeedNtHash,
                            nthash.k,
                            seeds.size(),
                            hash_num_per_seed,
-                           nthash.forward_hash,
-                           nthash.reverse_hash,
+                           forward_hash,
+                           reverse_hash,
                            posN,
                            nthash.hashes_vector.data()),
                    nthash.)
@@ -1568,8 +1583,8 @@ BTLLIB_NTHASH_ROLL(SeedNtHash,
                            nthash.k,
                            seeds.size(),
                            hash_num_per_seed,
-                           nthash.forward_hash,
-                           nthash.reverse_hash,
+                           forward_hash,
+                           reverse_hash,
                            nthash.hashes_vector.data()),
                    nthash.)
 
