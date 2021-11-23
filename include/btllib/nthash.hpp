@@ -1194,11 +1194,11 @@ ntmsm64(const char* kmer_seq,
           return false;
         }
         fh_val[i_seed] ^=
-          (MS_TAB_31L[(unsigned char)kmer_seq[i]][(k - 1 - i) % 31] |  // NOLINT
-           MS_TAB_33R[(unsigned char)kmer_seq[i]][(k - 1 - i) % 33]);  // NOLINT
+          (MS_TAB_31L[(unsigned char)kmer_seq[i]][(k - 1 - i) % 31] | // NOLINT
+           MS_TAB_33R[(unsigned char)kmer_seq[i]][(k - 1 - i) % 33]); // NOLINT
         rh_val[i_seed] ^=
-          (MS_TAB_31L[(unsigned char)kmer_seq[i] & CP_OFF][i % 31] |  // NOLINT
-           MS_TAB_33R[(unsigned char)kmer_seq[i] & CP_OFF][i % 33]);  // NOLINT
+          (MS_TAB_31L[(unsigned char)kmer_seq[i] & CP_OFF][i % 31] | // NOLINT
+           MS_TAB_33R[(unsigned char)kmer_seq[i] & CP_OFF][i % 33]); // NOLINT
       }
     }
     unsigned i_base = i_seed * m2;
@@ -1232,18 +1232,18 @@ ntmsm64(const char* kmer_seq,
       unsigned i_start = seed[i_block], i_end = seed[i_block + 1];
       char_out = (unsigned char)kmer_seq[i_start];
       char_in = (unsigned char)kmer_seq[i_end];
-      fh_val[i_seed] ^=  // remove block's charOut
-        (MS_TAB_31L[char_out][(k - i_start) % 31] |  // NOLINT
-         MS_TAB_33R[char_out][(k - i_start) % 33]);  // NOLINT
-      fh_val[i_seed] ^=  // include block's charIn
-        (MS_TAB_31L[char_in][(k - i_end) % 31] |  // NOLINT
-         MS_TAB_33R[char_in][(k - i_end) % 33]);  // NOLINT
-      rh_val[i_seed] ^=  // remove block's charOut
-        (MS_TAB_31L[char_out & CP_OFF][i_start % 31] |  // NOLINT
-         MS_TAB_33R[char_out & CP_OFF][i_start % 33]);  // NOLINT
-      rh_val[i_seed] ^=  // include block's charIn
-        (MS_TAB_31L[char_in & CP_OFF][i_end % 31] |  // NOLINT
-         MS_TAB_33R[char_in & CP_OFF][i_end % 33]);  // NOLINT
+      fh_val[i_seed] ^=                                // remove block's charOut
+        (MS_TAB_31L[char_out][(k - i_start) % 31] |    // NOLINT
+         MS_TAB_33R[char_out][(k - i_start) % 33]);    // NOLINT
+      fh_val[i_seed] ^=                                // include block's charIn
+        (MS_TAB_31L[char_in][(k - i_end) % 31] |       // NOLINT
+         MS_TAB_33R[char_in][(k - i_end) % 33]);       // NOLINT
+      rh_val[i_seed] ^=                                // remove block's charOut
+        (MS_TAB_31L[char_out & CP_OFF][i_start % 31] | // NOLINT
+         MS_TAB_33R[char_out & CP_OFF][i_start % 33]); // NOLINT
+      rh_val[i_seed] ^=                                // include block's charIn
+        (MS_TAB_31L[char_in & CP_OFF][i_end % 31] |    // NOLINT
+         MS_TAB_33R[char_in & CP_OFF][i_end % 33]);    // NOLINT
     }
     rh_val[i_seed] = swapbits3263(ror1(rh_val[i_seed]));
     unsigned i_base = i_seed * m2;
