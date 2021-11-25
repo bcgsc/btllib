@@ -1186,7 +1186,7 @@ ntmsm64(const char* kmer_seq,
     std::vector<unsigned> seed = seed_seq[i_seed];
     fh_val[i_seed] = 0;
     rh_val[i_seed] = 0;
-    for (unsigned i_block = 0; i_block < m / 2; i_block += 2) {
+    for (unsigned i_block = 0; i_block <= m / 2; i_block += 2) {
       unsigned i_start = seed[i_block], i_end = seed[i_block + 1];
       for (unsigned i = i_start; i < i_end; i++) {
         if (kmer_seq[i] == SEED_N) {
@@ -1228,7 +1228,7 @@ ntmsm64(const char* kmer_seq,
   for (unsigned i_seed = 0; i_seed < m; i_seed++) {
     std::vector<unsigned> seed = seed_seq[i_seed];
     fh_val[i_seed] = swapbits033(rol1(fh_val[i_seed]));
-    for (unsigned i_block = 0; i_block < m / 2; i_block += 2) {
+    for (unsigned i_block = 0; i_block <= m / 2; i_block += 2) {
       unsigned i_start = seed[i_block], i_end = seed[i_block + 1];
       char_out = (unsigned char)kmer_seq[i_start];
       char_in = (unsigned char)kmer_seq[i_end];
