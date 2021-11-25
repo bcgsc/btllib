@@ -1186,19 +1186,69 @@ ntmsm64(const char* kmer_seq,
     std::vector<unsigned> seed = seed_seq[i_seed];
     fh_val[i_seed] = 0;
     rh_val[i_seed] = 0;
-    for (unsigned i_block = 0; i_block <= m / 2; i_block += 2) {
-      unsigned i_start = seed[i_block], i_end = seed[i_block + 1];
-      for (unsigned i = i_start; i < i_end; i++) {
-        if (kmer_seq[i] == SEED_N) {
-          loc_n = i;
-          return false;
+    for (unsigned i_block = 0; i_block <= seed.size() / 2; i_block += 2) {
+      unsigned start = seed[i_block], end = seed[i_block + 1];
+      uint8_t fh_loc, rh_loc, d;
+      uint64_t x;
+      switch (end - start) {
+        case 2: {
+          fh_loc = (CONVERT_TAB[(unsigned char)kmer_seq[start]] << 2) |
+                   (CONVERT_TAB[(unsigned char)kmer_seq[start + 1]]);
+          rh_loc = (RC_CONVERT_TAB[(unsigned char)kmer_seq[start + 1]] << 2) |
+                   (RC_CONVERT_TAB[(unsigned char)kmer_seq[start]]);
+          x = DIMER_TAB[fh_loc];
+          d = k - start - 2;
+          fh_val[i_seed] ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
+          x = DIMER_TAB[rh_loc];
+          d = start;
+          rh_val[i_seed] ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
+        } break;
+        case 3: {
+          fh_loc = (CONVERT_TAB[(unsigned char)kmer_seq[start]] << 4) |
+                   (CONVERT_TAB[(unsigned char)kmer_seq[start + 1]] << 2) |
+                   (CONVERT_TAB[(unsigned char)kmer_seq[start + 2]]);
+          rh_loc = (RC_CONVERT_TAB[(unsigned char)kmer_seq[start + 2]] << 4) |
+                   (RC_CONVERT_TAB[(unsigned char)kmer_seq[start + 1]] << 2) |
+                   (RC_CONVERT_TAB[(unsigned char)kmer_seq[start]]);
+          x = TRIMER_TAB[fh_loc];
+          d = k - start - 3;
+          fh_val[i_seed] ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
+          x = TRIMER_TAB[rh_loc];
+          d = start;
+          rh_val[i_seed] ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
+        } break;
+        case 4: {
+          fh_loc = (CONVERT_TAB[(unsigned char)kmer_seq[start]] << 6) |
+                   (CONVERT_TAB[(unsigned char)kmer_seq[start + 1]] << 4) |
+                   (CONVERT_TAB[(unsigned char)kmer_seq[start + 2]] << 2) |
+                   (CONVERT_TAB[(unsigned char)kmer_seq[start + 3]]);
+          rh_loc = (RC_CONVERT_TAB[(unsigned char)kmer_seq[start + 3]] << 6) |
+                   (RC_CONVERT_TAB[(unsigned char)kmer_seq[start + 2]] << 4) |
+                   (RC_CONVERT_TAB[(unsigned char)kmer_seq[start + 1]] << 2) |
+                   (RC_CONVERT_TAB[(unsigned char)kmer_seq[start]]);
+          x = TETRAMER_TAB[fh_loc];
+          d = k - start - 4;
+          fh_val[i_seed] ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
+          x = TETRAMER_TAB[rh_loc];
+          d = start;
+          rh_val[i_seed] ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
+        } break;
+        default: {
+          for (unsigned i = start; i < end; i++) {
+            if (kmer_seq[i] == SEED_N) {
+              loc_n = i;
+              return false;
+            }
+            fh_val[i_seed] ^= MS_TAB_31L[(unsigned char)kmer_seq[i]]
+                                        [(k - 1 - i) % 31] | // NOLINT
+                              MS_TAB_33R[(unsigned char)kmer_seq[i]]
+                                        [(k - 1 - i) % 33]; // NOLINT
+            rh_val[i_seed] ^=
+              MS_TAB_31L[(unsigned char)kmer_seq[i] & CP_OFF]
+                        [i % 31] |                                     // NOLINT
+              MS_TAB_33R[(unsigned char)kmer_seq[i] & CP_OFF][i % 33]; // NOLINT
+          }
         }
-        fh_val[i_seed] ^=
-          (MS_TAB_31L[(unsigned char)kmer_seq[i]][(k - 1 - i) % 31] | // NOLINT
-           MS_TAB_33R[(unsigned char)kmer_seq[i]][(k - 1 - i) % 33]); // NOLINT
-        rh_val[i_seed] ^=
-          (MS_TAB_31L[(unsigned char)kmer_seq[i] & CP_OFF][i % 31] | // NOLINT
-           MS_TAB_33R[(unsigned char)kmer_seq[i] & CP_OFF][i % 33]); // NOLINT
       }
     }
     unsigned i_base = i_seed * m2;
@@ -1228,7 +1278,7 @@ ntmsm64(const char* kmer_seq,
   for (unsigned i_seed = 0; i_seed < m; i_seed++) {
     std::vector<unsigned> seed = seed_seq[i_seed];
     fh_val[i_seed] = swapbits033(rol1(fh_val[i_seed]));
-    for (unsigned i_block = 0; i_block <= m / 2; i_block += 2) {
+    for (unsigned i_block = 0; i_block <= seed.size() / 2; i_block += 2) {
       unsigned i_start = seed[i_block], i_end = seed[i_block + 1];
       char_out = (unsigned char)kmer_seq[i_start];
       char_in = (unsigned char)kmer_seq[i_end];
