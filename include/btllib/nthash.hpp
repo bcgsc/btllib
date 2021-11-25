@@ -1189,8 +1189,12 @@ ntmsm64(const char* kmer_seq,
     SpacedSeed seed = seed_seq[i_seed];
     uint64_t fh_seed = 0, rh_seed = 0;
     for (unsigned i_block = 0; i_block <= seed.size() / 2; i_block += 2) {
-      unsigned i = seed[i_block];     // cppcheck-suppress arrayIndexOutOfBounds
-      unsigned j = seed[i_block + 1]; // cppcheck-suppress arrayIndexOutOfBounds
+      // cppcheck-suppress arrayIndexOutOfBounds
+      // cppcheck-suppress stlOutOfBounds
+      unsigned i = seed[i_block];
+      // cppcheck-suppress arrayIndexOutOfBounds
+      // cppcheck-suppress stlOutOfBounds
+      unsigned j = seed[i_block + 1];
       uint8_t fh_loc, rh_loc, d;
       uint64_t x;
       switch (j - i) {
@@ -1289,8 +1293,12 @@ ntmsm64(const char* kmer_seq,
     uint64_t fh_seed = swapbits033(rol1(fh_val[i_seed]));
     uint64_t rh_seed = rh_val[i_seed];
     for (unsigned i_block = 0; i_block <= seed.size() / 2; i_block += 2) {
-      unsigned i_out = seed[i_block];    // cppcheck-suppress
-      unsigned i_in = seed[i_block + 1]; // cppcheck-suppress
+      // cppcheck-suppress arrayIndexOutOfBounds
+      // cppcheck-suppress stlOutOfBounds
+      unsigned i_out = seed[i_block];
+      // cppcheck-suppress arrayIndexOutOfBounds
+      // cppcheck-suppress stlOutOfBounds
+      unsigned i_in = seed[i_block + 1];
       char_out = (unsigned char)kmer_seq[i_out];
       char_in = (unsigned char)kmer_seq[i_in];
       fh_seed ^= (MS_TAB_31L[char_out][(k - i_out) % 31] |    // NOLINT
