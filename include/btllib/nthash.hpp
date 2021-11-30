@@ -17,6 +17,8 @@
 
 namespace btllib {
 
+const std::string NTHASH_VERSION = "ntHash2";
+
 // define a data structure for spaced seeds
 using SpacedSeed = std::vector<unsigned>;
 
