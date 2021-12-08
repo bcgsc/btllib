@@ -1204,13 +1204,13 @@ ntmsm64(const char* kmer_seq,
           fh_loc = (CONVERT_TAB[(unsigned char)kmer_seq[i]] << 2) | // NOLINT
                    (CONVERT_TAB[(unsigned char)kmer_seq[i + 1]]);   // NOLINT
           rh_loc =
-            (RC_CONVERT_TAB[(unsigned char)kmer_seq[k - i - 1]]
-             << 2) |                                              // NOLINT
-            (RC_CONVERT_TAB[(unsigned char)kmer_seq[k - i - 2]]); // NOLINT
-          d = k - i - 2;                                          // NOLINT
+            (RC_CONVERT_TAB[(unsigned char)kmer_seq[i + 1]] << 2) | // NOLINT
+            (RC_CONVERT_TAB[(unsigned char)kmer_seq[i]]);           // NOLINT
           x = DIMER_TAB[fh_loc]; // cppcheck-suppress arrayIndexOutOfBounds
+          d = k - i - 2;         // NOLINT
           fh_seed ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
           x = DIMER_TAB[rh_loc]; // cppcheck-suppress arrayIndexOutOfBounds
+          d = i;
           rh_seed ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
         } break;
         case 3: {
@@ -1218,15 +1218,15 @@ ntmsm64(const char* kmer_seq,
             (CONVERT_TAB[(unsigned char)kmer_seq[i]] << 4) |     // NOLINT
             (CONVERT_TAB[(unsigned char)kmer_seq[i + 1]] << 2) | // NOLINT
             (CONVERT_TAB[(unsigned char)kmer_seq[i + 2]]);       // NOLINT
-          rh_loc = (RC_CONVERT_TAB[(unsigned char)kmer_seq[k - i - 1]]
-                    << 4) | // NOLINT
-                   (RC_CONVERT_TAB[(unsigned char)kmer_seq[k - i - 2]]
-                    << 2) | // NOLINT
-                   (RC_CONVERT_TAB[(unsigned char)kmer_seq[k - i - 3]]);
-          d = k - i - 3;          // NOLINT
+          rh_loc =
+            (RC_CONVERT_TAB[(unsigned char)kmer_seq[i + 2]] << 4) | // NOLINT
+            (RC_CONVERT_TAB[(unsigned char)kmer_seq[i + 1]] << 2) | // NOLINT
+            (RC_CONVERT_TAB[(unsigned char)kmer_seq[i]]);
           x = TRIMER_TAB[fh_loc]; // cppcheck-suppress arrayIndexOutOfBounds
+          d = k - i - 3;          // NOLINT
           fh_seed ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
           x = TRIMER_TAB[rh_loc]; // cppcheck-suppress arrayIndexOutOfBounds
+          d = i;
           rh_seed ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
         } break;
         case 4: {
@@ -1235,17 +1235,16 @@ ntmsm64(const char* kmer_seq,
             (CONVERT_TAB[(unsigned char)kmer_seq[i + 1]] << 4) | // NOLINT
             (CONVERT_TAB[(unsigned char)kmer_seq[i + 2]] << 2) | // NOLINT
             (CONVERT_TAB[(unsigned char)kmer_seq[i + 3]]);       // NOLINT
-          rh_loc = (RC_CONVERT_TAB[(unsigned char)kmer_seq[k - i - 1]]
-                    << 6) | // NOLINT
-                   (RC_CONVERT_TAB[(unsigned char)kmer_seq[k - i - 2]]
-                    << 4) | // NOLINT
-                   (RC_CONVERT_TAB[(unsigned char)kmer_seq[k - i - 3]]
-                    << 2) | // NOLINT
-                   (RC_CONVERT_TAB[(unsigned char)kmer_seq[k - i - 4]]);
-          d = k - i - 4;            // NOLINT
+          rh_loc =
+            (RC_CONVERT_TAB[(unsigned char)kmer_seq[i + 3]] << 6) | // NOLINT
+            (RC_CONVERT_TAB[(unsigned char)kmer_seq[i + 2]] << 4) | // NOLINT
+            (RC_CONVERT_TAB[(unsigned char)kmer_seq[i + 1]] << 2) | // NOLINT
+            (RC_CONVERT_TAB[(unsigned char)kmer_seq[i]]);
           x = TETRAMER_TAB[fh_loc]; // cppcheck-suppress arrayIndexOutOfBounds
+          d = k - i - 4;            // NOLINT
           fh_seed ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
           x = TETRAMER_TAB[rh_loc]; // cppcheck-suppress arrayIndexOutOfBounds
+          d = i;
           rh_seed ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
         } break;
         default: {
@@ -1258,10 +1257,10 @@ ntmsm64(const char* kmer_seq,
                                  [(k - 1 - pos) % 31] | // NOLINT
                        MS_TAB_33R[(unsigned char)kmer_seq[pos]]
                                  [(k - 1 - pos) % 33]; // NOLINT
-            rh_seed ^= MS_TAB_31L[(unsigned char)kmer_seq[k - 1 - pos] & CP_OFF]
-                                 [(k - 1 - pos) % 31] | // NOLINT
-                       MS_TAB_33R[(unsigned char)kmer_seq[k - 1 - pos] & CP_OFF]
-                                 [(k - 1 - pos) % 33]; // NOLINT
+            rh_seed ^= MS_TAB_31L[(unsigned char)kmer_seq[pos] & CP_OFF]
+                                 [pos % 31] | // NOLINT
+                       MS_TAB_33R[(unsigned char)kmer_seq[pos] & CP_OFF]
+                                 [pos % 33]; // NOLINT
           }
         }
       }
@@ -1304,15 +1303,10 @@ ntmsm64(const char* kmer_seq,
       unsigned i_in = seed[i_block + 1];
       char_out = (unsigned char)kmer_seq[i_out];
       char_in = (unsigned char)kmer_seq[i_in];
-      fh_seed ^= (MS_TAB_31L[char_out][(k - i_out) % 31] | // NOLINT
-                  MS_TAB_33R[char_out][(k - i_out) % 33]); // NOLINT
-      fh_seed ^= (MS_TAB_31L[char_in][(k - i_in) % 31] |   // NOLINT
-                  MS_TAB_33R[char_in][(k - i_in) % 33]);   // NOLINT
-      unsigned d = i_in - i_out;
-      i_out = k - i_in;
-      i_in = i_out + d;
-      char_out = (unsigned char)kmer_seq[i_out];
-      char_in = (unsigned char)kmer_seq[i_in];
+      fh_seed ^= (MS_TAB_31L[char_out][(k - i_out) % 31] |    // NOLINT
+                  MS_TAB_33R[char_out][(k - i_out) % 33]);    // NOLINT
+      fh_seed ^= (MS_TAB_31L[char_in][(k - i_in) % 31] |      // NOLINT
+                  MS_TAB_33R[char_in][(k - i_in) % 33]);      // NOLINT
       rh_seed ^= (MS_TAB_31L[char_out & CP_OFF][i_out % 31] | // NOLINT
                   MS_TAB_33R[char_out & CP_OFF][i_out % 33]); // NOLINT
       rh_seed ^= (MS_TAB_31L[char_in & CP_OFF][i_in % 31] |   // NOLINT
