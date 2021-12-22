@@ -38,6 +38,54 @@ public class btllib {
     return btllibJNI.pop_cnt_byte(x);
   }
 
+  public static String getKMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER() {
+    return btllibJNI.KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_get();
+  }
+
+  public static VectorString split(String s, String delim) {
+    return new VectorString(btllibJNI.split(s, delim), true);
+  }
+
+  public static String join(VectorString s, String delim) {
+    return btllibJNI.join(VectorString.getCPtr(s), s, delim);
+  }
+
+  public static void ltrim(SWIGTYPE_p_std__string s) {
+    btllibJNI.ltrim__SWIG_0(SWIGTYPE_p_std__string.getCPtr(s));
+  }
+
+  public static void ltrim(SWIGTYPE_p_btllib__CString s) {
+    btllibJNI.ltrim__SWIG_1(SWIGTYPE_p_btllib__CString.getCPtr(s));
+  }
+
+  public static void rtrim(SWIGTYPE_p_std__string s) {
+    btllibJNI.rtrim__SWIG_0(SWIGTYPE_p_std__string.getCPtr(s));
+  }
+
+  public static void rtrim(SWIGTYPE_p_btllib__CString s) {
+    btllibJNI.rtrim__SWIG_1(SWIGTYPE_p_btllib__CString.getCPtr(s));
+  }
+
+  public static void trim(SWIGTYPE_p_std__string s) {
+    btllibJNI.trim__SWIG_0(SWIGTYPE_p_std__string.getCPtr(s));
+  }
+
+  public static void trim(SWIGTYPE_p_btllib__CString s) {
+    btllibJNI.trim__SWIG_1(SWIGTYPE_p_btllib__CString.getCPtr(s));
+  }
+
+  public static boolean startswith(String s, String prefix) {
+    return btllibJNI.startswith(s, prefix);
+  }
+
+  public static boolean endswith(String s, String suffix) {
+    return btllibJNI.endswith(s, suffix);
+  }
+
+  public static String get_dirname(String path) {
+    return btllibJNI.get_dirname(path);
+  }
+
   public static String getCOMPLEMENTS() {
     return btllibJNI.COMPLEMENTS_get();
   }
@@ -52,6 +100,27 @@ public class btllib {
 
   public static String get_reverse_complement(String seq) {
     return btllibJNI.get_reverse_complement(seq);
+  }
+
+  public static Datatype getDATATYPES() {
+    long cPtr = btllibJNI.DATATYPES_get();
+    return (cPtr == 0) ? null : new Datatype(cPtr, false);
+  }
+
+  public static String get_pipeline_cmd(String path, Operation op) {
+    return btllibJNI.get_pipeline_cmd(path, op.swigValue());
+  }
+
+  public static String get_datatype_cmd(String path, Datatype datatype, Operation op) {
+    return btllibJNI.get_datatype_cmd(path, Datatype.getCPtr(datatype), datatype, op.swigValue());
+  }
+
+  public static VectorString peel_datatype(String path, Operation op) {
+    return new VectorString(btllibJNI.peel_datatype(path, op.swigValue()), true);
+  }
+
+  public static String form_string_cmd(VectorString cmd_layers, Operation op, String path) {
+    return btllibJNI.form_string_cmd(VectorString.getCPtr(cmd_layers), cmd_layers, op.swigValue(), path);
   }
 
   public static int getPIPE_READ_END() {
@@ -184,16 +253,56 @@ public class btllib {
     btllibJNI.closefile(SWIGTYPE_p_p_FILE.getCPtr(f));
   }
 
-  public static String getKMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER() {
-    return btllibJNI.KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_get();
+  public static String getPRINT_COLOR_INFO() {
+    return btllibJNI.PRINT_COLOR_INFO_get();
   }
 
-  public static void filter_hashed_kmer(Indexlr.Minimizer hk, boolean filter_in, boolean filter_out, BloomFilter filter_in_bf, BloomFilter filter_out_bf) {
-    btllibJNI.filter_hashed_kmer(Indexlr.Minimizer.getCPtr(hk), hk, filter_in, filter_out, BloomFilter.getCPtr(filter_in_bf), filter_in_bf, BloomFilter.getCPtr(filter_out_bf), filter_out_bf);
+  public static String getPRINT_COLOR_WARNING() {
+    return btllibJNI.PRINT_COLOR_WARNING_get();
   }
 
-  public static void calc_minimizer(VectorMinimizer hashed_kmers_buffer, SWIGTYPE_p_p_btllib__Indexlr__Minimizer min_current, long idx, SWIGTYPE_p_ssize_t min_idx_left, SWIGTYPE_p_ssize_t min_idx_right, SWIGTYPE_p_ssize_t min_pos_prev, long w, VectorMinimizer minimizers) {
-    btllibJNI.calc_minimizer(VectorMinimizer.getCPtr(hashed_kmers_buffer), hashed_kmers_buffer, SWIGTYPE_p_p_btllib__Indexlr__Minimizer.getCPtr(min_current), idx, SWIGTYPE_p_ssize_t.getCPtr(min_idx_left), SWIGTYPE_p_ssize_t.getCPtr(min_idx_right), SWIGTYPE_p_ssize_t.getCPtr(min_pos_prev), w, VectorMinimizer.getCPtr(minimizers), minimizers);
+  public static String getPRINT_COLOR_ERROR() {
+    return btllibJNI.PRINT_COLOR_ERROR_get();
+  }
+
+  public static String getPRINT_COLOR_END() {
+    return btllibJNI.PRINT_COLOR_END_get();
+  }
+
+  public static String get_time() {
+    return btllibJNI.get_time();
+  }
+
+  public static void log_info(String msg) {
+    btllibJNI.log_info(msg);
+  }
+
+  public static void log_warning(String msg) {
+    btllibJNI.log_warning(msg);
+  }
+
+  public static void log_error(String msg) {
+    btllibJNI.log_error(msg);
+  }
+
+  public static void check_info(boolean condition, String msg) {
+    btllibJNI.check_info(condition, msg);
+  }
+
+  public static void check_warning(boolean condition, String msg) {
+    btllibJNI.check_warning(condition, msg);
+  }
+
+  public static void check_error(boolean condition, String msg) {
+    btllibJNI.check_error(condition, msg);
+  }
+
+  public static void check_stream(SWIGTYPE_p_std__ios stream, String name) {
+    btllibJNI.check_stream(SWIGTYPE_p_std__ios.getCPtr(stream), name);
+  }
+
+  public static String get_strerror() {
+    return btllibJNI.get_strerror();
   }
 
   public static short getCP_OFF() {
@@ -484,123 +593,6 @@ public class btllib {
 
   public static VectorSpacedSeed parse_seeds(VectorString seed_strings) {
     return new VectorSpacedSeed(btllibJNI.parse_seeds(VectorString.getCPtr(seed_strings), seed_strings), true);
-  }
-
-  public static Datatype getDATATYPES() {
-    long cPtr = btllibJNI.DATATYPES_get();
-    return (cPtr == 0) ? null : new Datatype(cPtr, false);
-  }
-
-  public static String get_pipeline_cmd(String path, Operation op) {
-    return btllibJNI.get_pipeline_cmd(path, op.swigValue());
-  }
-
-  public static String get_datatype_cmd(String path, Datatype datatype, Operation op) {
-    return btllibJNI.get_datatype_cmd(path, Datatype.getCPtr(datatype), datatype, op.swigValue());
-  }
-
-  public static VectorString peel_datatype(String path, Operation op) {
-    return new VectorString(btllibJNI.peel_datatype(path, op.swigValue()), true);
-  }
-
-  public static String form_string_cmd(VectorString cmd_layers, Operation op, String path) {
-    return btllibJNI.form_string_cmd(VectorString.getCPtr(cmd_layers), cmd_layers, op.swigValue(), path);
-  }
-
-  public static String getPRINT_COLOR_INFO() {
-    return btllibJNI.PRINT_COLOR_INFO_get();
-  }
-
-  public static String getPRINT_COLOR_WARNING() {
-    return btllibJNI.PRINT_COLOR_WARNING_get();
-  }
-
-  public static String getPRINT_COLOR_ERROR() {
-    return btllibJNI.PRINT_COLOR_ERROR_get();
-  }
-
-  public static String getPRINT_COLOR_END() {
-    return btllibJNI.PRINT_COLOR_END_get();
-  }
-
-  public static String get_time() {
-    return btllibJNI.get_time();
-  }
-
-  public static void log_info(String msg) {
-    btllibJNI.log_info(msg);
-  }
-
-  public static void log_warning(String msg) {
-    btllibJNI.log_warning(msg);
-  }
-
-  public static void log_error(String msg) {
-    btllibJNI.log_error(msg);
-  }
-
-  public static void check_info(boolean condition, String msg) {
-    btllibJNI.check_info(condition, msg);
-  }
-
-  public static void check_warning(boolean condition, String msg) {
-    btllibJNI.check_warning(condition, msg);
-  }
-
-  public static void check_error(boolean condition, String msg) {
-    btllibJNI.check_error(condition, msg);
-  }
-
-  public static void check_stream(SWIGTYPE_p_std__ios stream, String name) {
-    btllibJNI.check_stream(SWIGTYPE_p_std__ios.getCPtr(stream), name);
-  }
-
-  public static String get_strerror() {
-    return btllibJNI.get_strerror();
-  }
-
-  public static VectorString split(String s, String delim) {
-    return new VectorString(btllibJNI.split(s, delim), true);
-  }
-
-  public static String join(VectorString s, String delim) {
-    return btllibJNI.join(VectorString.getCPtr(s), s, delim);
-  }
-
-  public static void ltrim(SWIGTYPE_p_std__string s) {
-    btllibJNI.ltrim__SWIG_0(SWIGTYPE_p_std__string.getCPtr(s));
-  }
-
-  public static void ltrim(SWIGTYPE_p_btllib__CString s) {
-    btllibJNI.ltrim__SWIG_1(SWIGTYPE_p_btllib__CString.getCPtr(s));
-  }
-
-  public static void rtrim(SWIGTYPE_p_std__string s) {
-    btllibJNI.rtrim__SWIG_0(SWIGTYPE_p_std__string.getCPtr(s));
-  }
-
-  public static void rtrim(SWIGTYPE_p_btllib__CString s) {
-    btllibJNI.rtrim__SWIG_1(SWIGTYPE_p_btllib__CString.getCPtr(s));
-  }
-
-  public static void trim(SWIGTYPE_p_std__string s) {
-    btllibJNI.trim__SWIG_0(SWIGTYPE_p_std__string.getCPtr(s));
-  }
-
-  public static void trim(SWIGTYPE_p_btllib__CString s) {
-    btllibJNI.trim__SWIG_1(SWIGTYPE_p_btllib__CString.getCPtr(s));
-  }
-
-  public static boolean startswith(String s, String prefix) {
-    return btllibJNI.startswith(s, prefix);
-  }
-
-  public static boolean endswith(String s, String suffix) {
-    return btllibJNI.endswith(s, suffix);
-  }
-
-  public static String get_dirname(String path) {
-    return btllibJNI.get_dirname(path);
   }
 
 }

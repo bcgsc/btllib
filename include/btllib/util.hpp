@@ -7,7 +7,9 @@
 #include "cstring.hpp"
 
 #include <algorithm>
+#include <condition_variable>
 #include <cstring>
+#include <mutex>
 #include <string>
 #include <vector>
 
@@ -45,7 +47,7 @@ join(const std::vector<std::string>& s, const std::string& delim);
 inline void
 ltrim(std::string& s);
 inline void
-ltrim(CString& s);
+ltrim(btllib::CString& s);
 
 /**
  * Trim whitespace on the right side of the given string.
@@ -56,7 +58,7 @@ ltrim(CString& s);
 inline void
 rtrim(std::string& s);
 inline void
-rtrim(CString& s);
+rtrim(btllib::CString& s);
 
 /**
  * Trim whitespace on the left and right side of the given string.
@@ -67,7 +69,7 @@ rtrim(CString& s);
 inline void
 trim(std::string& s);
 inline void
-trim(CString& s);
+trim(btllib::CString& s);
 
 /**
  * Check whether the given string starts with a prefix.
@@ -126,7 +128,7 @@ ltrim(std::string& s)
 }
 
 inline void
-ltrim(CString& s)
+ltrim(btllib::CString& s)
 {
   decltype(s.size()) i = 0;
   while (i < s.size() && bool(std::isspace(s[i]))) {
@@ -146,7 +148,7 @@ rtrim(std::string& s)
 }
 
 inline void
-rtrim(CString& s)
+rtrim(btllib::CString& s)
 {
   auto i = s.size();
   while (i > 0 && bool(std::isspace(s[i - 1]))) {
@@ -163,7 +165,7 @@ trim(std::string& s)
 }
 
 inline void
-trim(CString& s)
+trim(btllib::CString& s)
 {
   ltrim(s);
   rtrim(s);
@@ -228,6 +230,38 @@ get_dirname(const std::string& path)
 
   return ret;
 }
+
+// This exists in C++20, but we don't support that yet
+class Barrier
+{
+
+public:
+  Barrier(const unsigned count)
+    : counter(0)
+    , counter_default(count)
+    , waiting(0)
+  {}
+
+  void wait()
+  {
+    std::unique_lock<std::mutex> lock(m);
+    ++counter;
+    ++waiting;
+    cv.wait(lock, [&] { return counter >= counter_default; });
+    cv.notify_one();
+    --waiting;
+    if (waiting == 0) {
+      counter = 0;
+    }
+  }
+
+private:
+  std::mutex m;
+  std::condition_variable cv;
+  unsigned counter;
+  unsigned counter_default;
+  unsigned waiting;
+};
 
 } // namespace btllib
 

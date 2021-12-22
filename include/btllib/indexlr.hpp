@@ -186,6 +186,20 @@ public:
 private:
   static std::string extract_barcode(const std::string& id,
                                      const std::string& comment);
+  static void filter_hashed_kmer(Indexlr::HashedKmer& hk,
+                                 bool filter_in,
+                                 bool filter_out,
+                                 const BloomFilter& filter_in_bf,
+                                 const BloomFilter& filter_out_bf);
+  static void calc_minimizer(
+    const std::vector<Indexlr::HashedKmer>& hashed_kmers_buffer,
+    const Indexlr::Minimizer*& min_current,
+    size_t idx,
+    ssize_t& min_idx_left,
+    ssize_t& min_idx_right,
+    ssize_t& min_pos_prev,
+    size_t w,
+    std::vector<Indexlr::Minimizer>& minimizers);
   std::vector<Minimizer> minimize(const std::string& seq) const;
 
   const std::string seqfile;
@@ -263,6 +277,9 @@ private:
   };
 
   std::vector<Worker> workers;
+  Barrier end_barrier;
+  std::mutex last_block_num_mutex;
+  size_t last_block_num = 0;
 };
 
 inline Indexlr::Indexlr(std::string seqfile,
@@ -288,6 +305,7 @@ inline Indexlr::Indexlr(std::string seqfile,
                         : SeqReader::Flag::LONG_MODE)
   , output_queue(reader.get_buffer_size(), reader.get_block_size())
   , workers(std::vector<Worker>(threads, Worker(*this)))
+  , end_barrier(threads)
 {
   check_error(!short_mode() && !long_mode(),
               "Indexlr: no mode selected, either short or long mode flag must "
@@ -371,12 +389,12 @@ Indexlr::extract_barcode(const std::string& id, const std::string& comment)
   return "NA";
 }
 
-inline static void
-filter_hashed_kmer(Indexlr::HashedKmer& hk,
-                   bool filter_in,
-                   bool filter_out,
-                   const BloomFilter& filter_in_bf,
-                   const BloomFilter& filter_out_bf)
+inline void
+Indexlr::filter_hashed_kmer(Indexlr::HashedKmer& hk,
+                            bool filter_in,
+                            bool filter_out,
+                            const BloomFilter& filter_in_bf,
+                            const BloomFilter& filter_out_bf)
 {
   if (filter_in && filter_out) {
     std::vector<uint64_t> tmp;
@@ -395,15 +413,16 @@ filter_hashed_kmer(Indexlr::HashedKmer& hk,
   }
 }
 
-inline static void
-calc_minimizer(const std::vector<Indexlr::HashedKmer>& hashed_kmers_buffer,
-               const Indexlr::Minimizer*& min_current,
-               const size_t idx,
-               ssize_t& min_idx_left,
-               ssize_t& min_idx_right,
-               ssize_t& min_pos_prev,
-               const size_t w,
-               std::vector<Indexlr::Minimizer>& minimizers)
+inline void
+Indexlr::calc_minimizer(
+  const std::vector<Indexlr::HashedKmer>& hashed_kmers_buffer,
+  const Indexlr::Minimizer*& min_current,
+  const size_t idx,
+  ssize_t& min_idx_left,
+  ssize_t& min_idx_right,
+  ssize_t& min_pos_prev,
+  const size_t w,
+  std::vector<Indexlr::Minimizer>& minimizers)
 {
   min_idx_left = ssize_t(idx + 1 - w);
   min_idx_right = ssize_t(idx + 1);
@@ -559,8 +578,14 @@ Indexlr::Worker::work()
       output_block.count = 0;
     }
   }
-  output_block.num = last_block_num + 1;
-  indexlr.output_queue.write(output_block);
+  std::unique_lock<std::mutex> lock(indexlr.last_block_num_mutex);
+  indexlr.last_block_num = std::max(indexlr.last_block_num, last_block_num);
+  lock.unlock();
+  indexlr.end_barrier.wait();
+  if (last_block_num == indexlr.last_block_num) {
+    output_block.num = last_block_num + 1;
+    indexlr.output_queue.write(output_block);
+  }
 }
 
 } // namespace btllib
