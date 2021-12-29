@@ -4,9 +4,9 @@
 #include "status.hpp"
 #include "util.hpp"
 
-#include <atomic>
 #include <algorithm>
 #include <array>
+#include <atomic>
 #include <cassert>
 #include <cerrno>
 #include <csignal>
@@ -65,7 +65,8 @@ public:
   void end();
 
   FILE *in = nullptr, *out = nullptr;
-  std::atomic<bool> in_closed{ false }, out_closed{ false };
+  std::atomic<bool> in_closed{ false };
+  std::atomic<bool> out_closed{ false };
 
 private:
   enum class Operation

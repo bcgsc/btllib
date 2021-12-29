@@ -79,8 +79,7 @@ main()
   std::vector<std::string> present_seqs2 = present_seqs;
 
   btllib::KmerBloomFilter kmer_bf2(50 * 1024 * 1024, 4, 100);
-#pragma omp parallel shared(                                                   \
-  present_seqs, present_seqs2, absent_seqs, kmer_bf2)
+#pragma omp parallel shared(present_seqs, present_seqs2, absent_seqs, kmer_bf2)
   {
     while (true) {
       std::string seq;
@@ -94,7 +93,9 @@ main()
           present_seqs.pop_back();
         }
       }
-      if (end) { break; }
+      if (end) {
+        break;
+      }
       kmer_bf2.insert(seq);
     }
   }
@@ -117,15 +118,16 @@ main()
           absent_seqs.pop_back();
         }
       }
-      if (end) { break; }
+      if (end) {
+        break;
+      }
       false_positives += kmer_bf2.contains(seq);
     }
   }
   std::cerr << "False positives = " << false_positives << std::endl;
   TEST_ASSERT_LT(false_positives, 10);
 
-#pragma omp parallel shared(                                                   \
-  present_seqs, present_seqs2, absent_seqs, kmer_bf2)
+#pragma omp parallel shared(present_seqs, present_seqs2, absent_seqs, kmer_bf2)
   {
     while (true) {
       std::string seq;
@@ -139,7 +141,9 @@ main()
           present_seqs2.pop_back();
         }
       }
-      if (end) { break; }
+      if (end) {
+        break;
+      }
       TEST_ASSERT(kmer_bf2.contains(seq));
     }
   }

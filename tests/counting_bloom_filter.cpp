@@ -69,11 +69,8 @@ main()
   std::vector<std::string> present_seqs2 = present_seqs;
 
   btllib::KmerCountingBloomFilter8 kbf_multithreads(100 * 1024 * 1024, 4, 100);
-#pragma omp parallel shared(present_seqs,                                      \
-                            present_seqs2,                                     \
-                            inserts,                                           \
-                            absent_seqs,                                       \
-                            kbf_multithreads)
+#pragma omp parallel shared(                                                   \
+  present_seqs, present_seqs2, inserts, absent_seqs, kbf_multithreads)
   {
     while (true) {
       std::string seq;
@@ -90,7 +87,9 @@ main()
           inserts.pop_back();
         }
       }
-      if (end) { break; }
+      if (end) {
+        break;
+      }
       for (size_t i = 0; i < insert_count; i++) {
         kbf_multithreads.insert(seq);
       }
@@ -117,7 +116,9 @@ main()
           absent_seqs.pop_back();
         }
       }
-      if (end) { break; }
+      if (end) {
+        break;
+      }
       false_positives += kbf_multithreads.contains(seq);
     }
   }
@@ -144,7 +145,9 @@ main()
           present_seqs2.pop_back();
         }
       }
-      if (end) { break; }
+      if (end) {
+        break;
+      }
       if (kbf_multithreads.contains(seq) > 1) {
         more_than_1++;
       }
