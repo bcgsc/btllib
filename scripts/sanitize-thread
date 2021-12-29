@@ -9,8 +9,14 @@ set -e
 
 cd "${MESON_SOURCE_ROOT}"
 
+# GCC gives false positives when sanitizing threads if OpenMP is used
+# Clang on the other hand seems to handle this properly
+export CXX=clang
+export CC=clang
+export TSAN_OPTIONS='ignore_noninstrumented_modules=1'
+
 builddir="${MESON_BUILD_ROOT}/__build-sanitize-thread"
-meson setup -Db_sanitize=thread ${builddir}
+meson setup -Db_sanitize=thread ${builddir} -Db_lundef=false
 cd ${builddir}
 ninja test
 rm -rf ${builddir}
