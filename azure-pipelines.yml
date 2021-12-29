@@ -47,10 +47,26 @@ jobs:
     displayName: 'Run tests'
 
   - script: |
+      cd build && ninja sanitize-thread
+      if [[ $? -ne 0 ]]; then
+        cat meson-logs/testlog.txt
+        exit 1
+      fi
+    displayName: 'Sanitize thread'
+
+  - script: |
+      cd build && ninja sanitize-undefined
+      if [[ $? -ne 0 ]]; then
+        cat meson-logs/testlog.txt
+        exit 1
+      fi
+    displayName: 'Sanitize undefined'
+
+  - script: |
       set -o errexit -o pipefail
       ./compile-wrappers
       cd build && ninja test-wrappers
-    displayName: 'Test ./compile-wrappers script'
+    displayName: 'Test wrappers'
 
 - job: macos
   pool:
@@ -95,7 +111,23 @@ jobs:
     displayName: 'Run tests'
 
   - script: |
+      cd build && ninja sanitize-thread
+      if [[ $? -ne 0 ]]; then
+        cat meson-logs/testlog.txt
+        exit 1
+      fi
+    displayName: 'Sanitize thread'
+
+  - script: |
+      cd build && ninja sanitize-undefined
+      if [[ $? -ne 0 ]]; then
+        cat meson-logs/testlog.txt
+        exit 1
+      fi
+    displayName: 'Sanitize undefined'
+
+  - script: |
       set -o errexit -o pipefail
       ./compile-wrappers
       cd build && ninja test-wrappers
-    displayName: 'Test ./compile-wrappers script'
+    displayName: 'Test wrappers'

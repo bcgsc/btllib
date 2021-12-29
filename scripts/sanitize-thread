@@ -9,6 +9,15 @@ set -e
 
 cd "${MESON_SOURCE_ROOT}"
 
+# Check if clang is present
+set +e
+command -v clang >/dev/null
+if [[ $? -eq 1 ]]; then
+  echo "[ERROR] Clang compiler must be used for thread sanitization, but it is missing!"
+  exit 1
+fi
+set -e
+
 # GCC gives false positives when sanitizing threads if OpenMP is used
 # Clang on the other hand seems to handle this properly
 export CXX=clang
