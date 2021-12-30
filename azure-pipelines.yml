@@ -49,7 +49,7 @@ jobs:
   - script: |
       cd build && ninja sanitize-thread
       if [[ $? -ne 0 ]]; then
-        cat meson-logs/testlog.txt
+        cat __build-sanitize-thread/meson-logs/testlog.txt
         exit 1
       fi
     displayName: 'Sanitize thread'
@@ -57,7 +57,7 @@ jobs:
   - script: |
       cd build && ninja sanitize-undefined
       if [[ $? -ne 0 ]]; then
-        cat meson-logs/testlog.txt
+        cat __build-sanitize-undefined/meson-logs/testlog.txt
         exit 1
       fi
     displayName: 'Sanitize undefined'
