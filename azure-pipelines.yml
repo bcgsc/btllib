@@ -16,7 +16,7 @@ jobs:
       wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
       sudo apt-add-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main"
       sudo apt-get update
-      sudo apt-get install --yes --no-install-recommends clang-format-10 clang-tidy-10 cppcheck \
+      sudo apt-get install --yes --no-install-recommends clang-format-10 clang-tidy-10 clang cppcheck \
         python3 python3-setuptools openjdk-16-jdk libboost-dev samtools xz-utils bzip2 lrzip
       sudo ln -sf clang-format-10 /usr/bin/clang-format
       sudo ln -sf clang-tidy-10 /usr/bin/clang-tidy
