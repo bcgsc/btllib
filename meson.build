@@ -66,6 +66,7 @@ endif
 run_target('sanitize-address', command: join_paths(rootpath, 'scripts/sanitize-address'))
 run_target('sanitize-thread', command: join_paths(rootpath, 'scripts/sanitize-thread'))
 run_target('sanitize-undefined', command: join_paths(rootpath, 'scripts/sanitize-undefined'))
+run_target('sanitize-memory', command: join_paths(rootpath, 'scripts/sanitize-memory'))
 
 doxygen = find_program('doxygen', required : false)
 if doxygen.found()
