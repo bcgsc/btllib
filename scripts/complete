@@ -11,5 +11,5 @@ cd "${MESON_BUILD_ROOT}"
 
 ninja build-sdsl format wrap tidycheck cppcheck
 ninja test
-ninja sanitize-thread sanitize-undefined
+ninja sanitize-undefined
 ninja docs
