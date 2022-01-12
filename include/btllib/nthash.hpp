@@ -1330,6 +1330,9 @@ class SeedNtHash;
 static std::vector<SpacedSeed>
 parse_seeds(const std::vector<std::string>& seed_strings);
 
+static std::vector<SpacedSeed>
+parse_blocks(const std::vector<std::string>& seed_strings);
+
 class NtHash
 {
 
@@ -1518,7 +1521,7 @@ inline SeedNtHash::SeedNtHash(const char* seq,
                               size_t pos)
   : nthash(seq, seq_len, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
-  , seeds(parse_seeds(seeds))
+  , seeds(parse_blocks(seeds))
   , forward_hash(new uint64_t[seeds.size()])
   , reverse_hash(new uint64_t[seeds.size()])
 {}
@@ -1530,13 +1533,31 @@ inline SeedNtHash::SeedNtHash(const std::string& seq,
                               size_t pos)
   : nthash(seq, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
-  , seeds(parse_seeds(seeds))
+  , seeds(parse_blocks(seeds))
   , forward_hash(new uint64_t[seeds.size()])
   , reverse_hash(new uint64_t[seeds.size()])
 {}
 
 static std::vector<SpacedSeed>
 parse_seeds(const std::vector<std::string>& seed_strings)
+{
+  std::vector<SpacedSeed> seed_set;
+  for (const auto& seed_string : seed_strings) {
+    SpacedSeed seed;
+    size_t pos = 0;
+    for (const auto& c : seed_string) {
+      if (c != '1') {
+        seed.push_back(pos);
+      }
+      ++pos;
+    }
+    seed_set.push_back(seed);
+  }
+  return seed_set;
+}
+
+static std::vector<SpacedSeed>
+parse_blocks(const std::vector<std::string>& seed_strings)
 {
   std::vector<SpacedSeed> seed_set;
   for (const auto& seed_string : seed_strings) {
