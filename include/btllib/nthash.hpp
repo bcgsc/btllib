@@ -1333,6 +1333,9 @@ parse_seeds(const std::vector<std::string>& seed_strings);
 static std::vector<SpacedSeed>
 parse_blocks(const std::vector<std::string>& seed_strings);
 
+static std::vector<SpacedSeed>
+parse_blocks(const std::vector<SpacedSeed>& seeds, unsigned k);
+
 class NtHash
 {
 
@@ -1457,7 +1460,7 @@ private:
 
   NtHash nthash;
   const unsigned hash_num_per_seed;
-  std::vector<SpacedSeed> seeds;
+  std::vector<SpacedSeed> blocks;
   uint64_t* forward_hash = nullptr;
   uint64_t* reverse_hash = nullptr;
 };
@@ -1496,7 +1499,7 @@ inline SeedNtHash::SeedNtHash(const char* seq,
                               size_t pos)
   : nthash(seq, seq_len, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
-  , seeds(seeds)
+  , blocks(parse_blocks(seeds, k))
   , forward_hash(new uint64_t[seeds.size()])
   , reverse_hash(new uint64_t[seeds.size()])
 {}
@@ -1508,7 +1511,7 @@ inline SeedNtHash::SeedNtHash(const std::string& seq,
                               size_t pos)
   : nthash(seq, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
-  , seeds(seeds)
+  , blocks(parse_blocks(seeds, k))
   , forward_hash(new uint64_t[seeds.size()])
   , reverse_hash(new uint64_t[seeds.size()])
 {}
@@ -1521,7 +1524,7 @@ inline SeedNtHash::SeedNtHash(const char* seq,
                               size_t pos)
   : nthash(seq, seq_len, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
-  , seeds(parse_blocks(seeds))
+  , blocks(parse_blocks(seeds))
   , forward_hash(new uint64_t[seeds.size()])
   , reverse_hash(new uint64_t[seeds.size()])
 {}
@@ -1533,7 +1536,7 @@ inline SeedNtHash::SeedNtHash(const std::string& seq,
                               size_t pos)
   : nthash(seq, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
-  , seeds(parse_blocks(seeds))
+  , blocks(parse_blocks(seeds))
   , forward_hash(new uint64_t[seeds.size()])
   , reverse_hash(new uint64_t[seeds.size()])
 {}
@@ -1559,7 +1562,7 @@ parse_seeds(const std::vector<std::string>& seed_strings)
 static std::vector<SpacedSeed>
 parse_blocks(const std::vector<std::string>& seed_strings)
 {
-  std::vector<SpacedSeed> seed_set;
+  std::vector<SpacedSeed> blocks;
   for (const auto& seed_string : seed_strings) {
     const std::string padded_string = '0' + seed_string + '0';
     SpacedSeed seed;
@@ -1575,9 +1578,23 @@ parse_blocks(const std::vector<std::string>& seed_strings)
         is_block = true;
       }
     }
-    seed_set.push_back(seed);
+    blocks.push_back(seed);
   }
-  return seed_set;
+  return blocks;
+}
+
+static std::vector<SpacedSeed>
+parse_blocks(const std::vector<SpacedSeed>& seeds, const unsigned k)
+{ // TODO: simple but naive implementation; to be optimized
+  std::vector<std::string> seed_strings;
+  for (SpacedSeed seed : seeds) {
+    std::string seed_string(k, '1');
+    for (const auto& i : seed) {
+      seed_string[i] = '0';
+    }
+    seed_strings.push_back(seed_string);
+  }
+  return parse_blocks(seed_strings);
 }
 
 inline void
@@ -1656,9 +1673,9 @@ BTLLIB_NTHASH_ROLL(NtHash,
 
 BTLLIB_NTHASH_INIT(SeedNtHash,
                    ntmsm64(nthash.seq + nthash.pos,
-                           seeds,
+                           blocks,
                            nthash.k,
-                           seeds.size(),
+                           blocks.size(),
                            hash_num_per_seed,
                            forward_hash,
                            reverse_hash,
@@ -1667,11 +1684,11 @@ BTLLIB_NTHASH_INIT(SeedNtHash,
                    nthash.)
 BTLLIB_NTHASH_ROLL(SeedNtHash,
                    ntmsm64(nthash.seq + nthash.pos,
-                           seeds,
+                           blocks,
                            nthash.seq[nthash.pos - 1],
                            nthash.seq[nthash.pos - 1 + nthash.k],
                            nthash.k,
-                           seeds.size(),
+                           blocks.size(),
                            hash_num_per_seed,
                            forward_hash,
                            reverse_hash,
