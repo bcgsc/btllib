@@ -1327,7 +1327,7 @@ ntmsm64(const char* kmer_seq,
 class NtHash;
 class SeedNtHash;
 
-std::vector<SpacedSeed>
+inline std::vector<SpacedSeed>
 parse_seeds(const std::vector<std::string>& seed_strings);
 
 static std::vector<SpacedSeed>
@@ -1541,7 +1541,7 @@ inline SeedNtHash::SeedNtHash(const std::string& seq,
   , reverse_hash(new uint64_t[seeds.size()])
 {}
 
-std::vector<SpacedSeed>
+inline std::vector<SpacedSeed>
 parse_seeds(const std::vector<std::string>& seed_strings)
 {
   std::vector<SpacedSeed> seed_set;
