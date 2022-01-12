@@ -1190,7 +1190,7 @@ ntmsm64(const char* kmer_seq,
   for (unsigned i_seed = 0; i_seed < m; i_seed++) {
     SpacedSeed seed = seed_seq[i_seed];
     uint64_t fh_seed = 0, rh_seed = 0;
-    for (unsigned i_block = 0; i_block <= seed.size(); i_block += 2) {
+    for (unsigned i_block = 0; i_block < seed.size() - 1; i_block += 2) {
       // cppcheck-suppress arrayIndexOutOfBounds
       // cppcheck-suppress stlOutOfBounds
       unsigned i = seed[i_block];
@@ -1294,7 +1294,7 @@ ntmsm64(const char* kmer_seq,
     SpacedSeed seed = seed_seq[i_seed];
     uint64_t fh_seed = swapbits033(rol1(fh_val[i_seed]));
     uint64_t rh_seed = rh_val[i_seed];
-    for (unsigned i_block = 0; i_block <= seed.size(); i_block += 2) {
+    for (unsigned i_block = 0; i_block < seed.size() - 1; i_block += 2) {
       // cppcheck-suppress arrayIndexOutOfBounds
       // cppcheck-suppress stlOutOfBounds
       unsigned i_out = seed[i_block];
