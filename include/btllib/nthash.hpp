@@ -20,6 +20,7 @@ namespace btllib {
 const std::string NTHASH_VERSION = "ntHash2";
 
 // define a data structure for spaced seeds
+// TODO: Create a clearer structure for list-of-blocks
 using SpacedSeed = std::vector<unsigned>;
 
 // offset for the complement base in the random seeds table
@@ -1208,6 +1209,7 @@ ntmsm64(const char* kmer_seq,
             (RC_CONVERT_TAB[(unsigned char)kmer_seq[i]]);           // NOLINT
           x = DIMER_TAB[fh_loc]; // cppcheck-suppress arrayIndexOutOfBounds
           d = k - i - 2;         // NOLINT
+          // TODO: optimize by fixing edge case when d = 0
           fh_seed ^= d > 0 ? swapxbits033(rolx(x, d), d) : x;
           x = DIMER_TAB[rh_loc]; // cppcheck-suppress arrayIndexOutOfBounds
           d = i;
