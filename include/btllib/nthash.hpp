@@ -1587,7 +1587,7 @@ static std::vector<SpacedSeed>
 parse_blocks(const std::vector<SpacedSeed>& seeds, const unsigned k)
 { // TODO: simple but naive implementation; to be optimized
   std::vector<std::string> seed_strings;
-  for (SpacedSeed seed : seeds) {
+  for (const SpacedSeed& seed : seeds) {
     std::string seed_string(k, '1');
     for (const auto& i : seed) {
       seed_string[i] = '0';
