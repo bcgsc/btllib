@@ -1,7 +1,8 @@
 #include "../include/btllib/nthash.hpp"
-#include "../include/btllib/seq_reader.hpp"
 
 #include <iostream>
+#include <string>
+#include <vector>
 
 int
 main()
