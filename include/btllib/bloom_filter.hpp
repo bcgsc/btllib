@@ -28,7 +28,7 @@ static const char* const KMER_BLOOM_FILTER_MAGIC_HEADER =
   "BTLKmerBloomFilter_v6";
 static const char* const SEED_BLOOM_FILTER_MAGIC_HEADER =
   "BTLSeedBloomFilter_v6";
-static const char* const HASH_FN = "ntHash_v1";
+static const char* const HASH_FN = NTHASH_FN_NAME;
 
 static const unsigned MAX_HASH_VALUES = 1024;
 static const unsigned PLACEHOLDER_NEWLINES = 50;
