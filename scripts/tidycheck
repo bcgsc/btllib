@@ -40,5 +40,7 @@ tidy_options="[
 ]"
 
 files=$(scripts/get-include-files)
+files+=$(scripts/get-examples-files)
+files+=$(scripts/get-recipes-files)
 clang-tidy -warnings-as-errors='*' -config="{Checks: '$tidy_checks', CheckOptions: $tidy_options}" $files -- \
--std=c++11 -Iinclude $@
+-std=c++11 -Iinclude -I${MESON_BUILD_ROOT} $@

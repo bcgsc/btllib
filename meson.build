@@ -1,5 +1,5 @@
 project('btllib', 'cpp',
-        version : '1.1.9',
+        version : '1.2.0',
         license : 'GPL3',
         default_options : [ 'cpp_std=c++11', 'warning_level=3', 'werror=true' ])
 
@@ -10,6 +10,12 @@ deps = [ threads_dep, openmp_dep ]
 compiler = meson.get_compiler('cpp')
 compiler_id = compiler.get_id()
 compiler_version = compiler.version()
+
+conf = configuration_data()
+conf.set('PROJECT_VERSION', meson.project_version(), description : 'btllib version. Useful to append to the help prompt of recipes.')
+configure_file(input : 'include/btllib/btllib_config.hpp.in', output : 'btllib_config.hpp', configuration : conf)
+
+fs = import('fs')
 
 global_args = []
 global_link_args = [ '-ldl' ]
@@ -32,7 +38,7 @@ if compiler_id == 'clang' and compiler_version.version_compare('<4.0.0')
   error('Clang ' + compiler_version + ' is unsupported.')
 endif
 
-btllib_include = include_directories('include')
+btllib_include = [ include_directories('include'), include_directories('.') ]
 
 rootpath = meson.source_root()
 
@@ -79,6 +85,7 @@ run_target('test-wrappers', command: join_paths(rootpath, 'scripts/test-wrappers
 
 subdir('include')
 subdir('extras')
+subdir('recipes')
 if get_option('buildtype') != 'release'
   subdir('tests')
 endif

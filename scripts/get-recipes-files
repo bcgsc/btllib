@@ -9,10 +9,9 @@ set -e
 
 cd "${MESON_SOURCE_ROOT}"
 
-files=$(scripts/get-include-files)
-files+=$(scripts/get-tests-files)
-files+=$(scripts/get-examples-files)
-files+=$(scripts/get-recipes-files)
+. scripts/portable_realpath
+
+files=$(find recipes -type f | grep "\(.*\.cpp$\)\|\(.*\.cxx$\)")
 for file in $files; do
-  clang-format -i -style=mozilla $file
+  echo -n "$(portable_realpath $file) "
 done
