@@ -26074,34 +26074,50 @@ SWIGINTERN PyObject *Swig_var_BIT_MASKS_get(void) {
 }
 
 
-SWIGINTERN int Swig_var_KMER_BLOOM_FILTER_MAGIC_HEADER_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable KMER_BLOOM_FILTER_MAGIC_HEADER is read-only.");
+SWIGINTERN int Swig_var_BLOOM_FILTER_SIGNATURE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable BLOOM_FILTER_SIGNATURE is read-only.");
   return 1;
 }
 
 
-SWIGINTERN PyObject *Swig_var_KMER_BLOOM_FILTER_MAGIC_HEADER_get(void) {
+SWIGINTERN PyObject *Swig_var_BLOOM_FILTER_SIGNATURE_get(void) {
   PyObject *pyobj = 0;
   PyObject *self = 0;
   
   (void)self;
-  pyobj = SWIG_FromCharPtr(btllib::KMER_BLOOM_FILTER_MAGIC_HEADER);
+  pyobj = SWIG_FromCharPtr(btllib::BLOOM_FILTER_SIGNATURE);
   return pyobj;
 }
 
 
-SWIGINTERN int Swig_var_SEED_BLOOM_FILTER_MAGIC_HEADER_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable SEED_BLOOM_FILTER_MAGIC_HEADER is read-only.");
+SWIGINTERN int Swig_var_KMER_BLOOM_FILTER_SIGNATURE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable KMER_BLOOM_FILTER_SIGNATURE is read-only.");
   return 1;
 }
 
 
-SWIGINTERN PyObject *Swig_var_SEED_BLOOM_FILTER_MAGIC_HEADER_get(void) {
+SWIGINTERN PyObject *Swig_var_KMER_BLOOM_FILTER_SIGNATURE_get(void) {
   PyObject *pyobj = 0;
   PyObject *self = 0;
   
   (void)self;
-  pyobj = SWIG_FromCharPtr(btllib::SEED_BLOOM_FILTER_MAGIC_HEADER);
+  pyobj = SWIG_FromCharPtr(btllib::KMER_BLOOM_FILTER_SIGNATURE);
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_SEED_BLOOM_FILTER_SIGNATURE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable SEED_BLOOM_FILTER_SIGNATURE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_SEED_BLOOM_FILTER_SIGNATURE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_FromCharPtr(btllib::SEED_BLOOM_FILTER_SIGNATURE);
   return pyobj;
 }
 
@@ -26874,6 +26890,80 @@ fail:
     "    btllib::BloomFilter::save(std::string const &)\n"
     "    btllib::BloomFilter::save(std::string const &,cpptoml::table const &,char const *,size_t)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_BloomFilter_is_bloom_file(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BloomFilter_is_bloom_file" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BloomFilter_is_bloom_file" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = (bool)btllib::BloomFilter::is_bloom_file((std::string const &)*arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BloomFilter_check_file_signature(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "BloomFilter_check_file_signature", 2, 2, swig_obj)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BloomFilter_check_file_signature" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BloomFilter_check_file_signature" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BloomFilter_check_file_signature" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BloomFilter_check_file_signature" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)btllib::BloomFilter::check_file_signature((std::string const &)*arg1,(std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
 }
 
 
@@ -27800,6 +27890,36 @@ SWIGINTERN PyObject *_wrap_KmerBloomFilter_save(PyObject *self, PyObject *args) 
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerBloomFilter_is_bloom_file(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerBloomFilter_is_bloom_file" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerBloomFilter_is_bloom_file" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = (bool)btllib::KmerBloomFilter::is_bloom_file((std::string const &)*arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -28834,6 +28954,36 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SeedBloomFilter_is_bloom_file(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedBloomFilter_is_bloom_file" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SeedBloomFilter_is_bloom_file" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = (bool)btllib::SeedBloomFilter::is_bloom_file((std::string const &)*arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_SeedBloomFilter(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
@@ -28857,18 +29007,34 @@ fail:
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeedBloomFilter) /* defines _wrap_delete_SeedBloomFilter_destructor_closure */
 
-SWIGINTERN int Swig_var_KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER is read-only.");
+SWIGINTERN int Swig_var_COUNTING_BLOOM_FILTER_SIGNATURE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable COUNTING_BLOOM_FILTER_SIGNATURE is read-only.");
   return 1;
 }
 
 
-SWIGINTERN PyObject *Swig_var_KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_get(void) {
+SWIGINTERN PyObject *Swig_var_COUNTING_BLOOM_FILTER_SIGNATURE_get(void) {
   PyObject *pyobj = 0;
   PyObject *self = 0;
   
   (void)self;
-  pyobj = SWIG_FromCharPtr(btllib::KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER);
+  pyobj = SWIG_FromCharPtr(btllib::COUNTING_BLOOM_FILTER_SIGNATURE);
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_KMER_COUNTING_BLOOM_FILTER_SIGNATURE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable KMER_COUNTING_BLOOM_FILTER_SIGNATURE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_KMER_COUNTING_BLOOM_FILTER_SIGNATURE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_FromCharPtr(btllib::KMER_COUNTING_BLOOM_FILTER_SIGNATURE);
   return pyobj;
 }
 
@@ -32407,6 +32573,22 @@ fail:
 }
 
 
+SWIGINTERN int Swig_var_NTHASH_FN_NAME_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable NTHASH_FN_NAME is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_NTHASH_FN_NAME_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_FromCharPtr(btllib::NTHASH_FN_NAME);
+  return pyobj;
+}
+
+
 SWIGINTERN int Swig_var_CP_OFF_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable CP_OFF is read-only.");
   return 1;
@@ -35174,12 +35356,12 @@ fail:
 SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
-  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *arg2 = 0 ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
   unsigned int arg3 ;
   unsigned int arg4 ;
   unsigned int arg5 ;
-  uint64_t *arg6 = 0 ;
-  uint64_t *arg7 = 0 ;
+  uint64_t *arg6 = (uint64_t *) 0 ;
+  uint64_t *arg7 = (uint64_t *) 0 ;
   unsigned int *arg8 = 0 ;
   uint64_t *arg9 = (uint64_t *) 0 ;
   int res1 ;
@@ -35212,10 +35394,10 @@ SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyO
     std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
     res2 = swig::asptr(swig_obj[1], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
     }
     arg2 = ptr;
   }
@@ -35234,20 +35416,14 @@ SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyO
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ntmsm64" "', argument " "5"" of type '" "unsigned int""'");
   } 
   arg5 = static_cast< unsigned int >(val5);
-  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_unsigned_long_long,  0 );
+  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
   if (!SWIG_IsOK(res6)) {
-    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "ntmsm64" "', argument " "6"" of type '" "uint64_t &""'"); 
-  }
-  if (!argp6) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "6"" of type '" "uint64_t &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "ntmsm64" "', argument " "6"" of type '" "uint64_t *""'"); 
   }
   arg6 = reinterpret_cast< uint64_t * >(argp6);
-  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7, SWIGTYPE_p_unsigned_long_long,  0 );
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
   if (!SWIG_IsOK(res7)) {
-    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ntmsm64" "', argument " "7"" of type '" "uint64_t &""'"); 
-  }
-  if (!argp7) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "7"" of type '" "uint64_t &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ntmsm64" "', argument " "7"" of type '" "uint64_t *""'"); 
   }
   arg7 = reinterpret_cast< uint64_t * >(argp7);
   res8 = SWIG_ConvertPtr(swig_obj[7], &argp8, SWIGTYPE_p_unsigned_int,  0 );
@@ -35278,14 +35454,14 @@ fail:
 SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
-  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *arg2 = 0 ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
   unsigned char arg3 ;
   unsigned char arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
   unsigned int arg7 ;
-  uint64_t *arg8 = 0 ;
-  uint64_t *arg9 = 0 ;
+  uint64_t *arg8 = (uint64_t *) 0 ;
+  uint64_t *arg9 = (uint64_t *) 0 ;
   uint64_t *arg10 = (uint64_t *) 0 ;
   int res1 ;
   char *buf1 = 0 ;
@@ -35318,10 +35494,10 @@ SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyO
     std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
     res2 = swig::asptr(swig_obj[1], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
     }
     arg2 = ptr;
   }
@@ -35350,20 +35526,14 @@ SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyO
     SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "ntmsm64" "', argument " "7"" of type '" "unsigned int""'");
   } 
   arg7 = static_cast< unsigned int >(val7);
-  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8, SWIGTYPE_p_unsigned_long_long,  0 );
+  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
   if (!SWIG_IsOK(res8)) {
-    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64" "', argument " "8"" of type '" "uint64_t &""'"); 
-  }
-  if (!argp8) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "8"" of type '" "uint64_t &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64" "', argument " "8"" of type '" "uint64_t *""'"); 
   }
   arg8 = reinterpret_cast< uint64_t * >(argp8);
-  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9, SWIGTYPE_p_unsigned_long_long,  0 );
+  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
   if (!SWIG_IsOK(res9)) {
-    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "ntmsm64" "', argument " "9"" of type '" "uint64_t &""'"); 
-  }
-  if (!argp9) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "9"" of type '" "uint64_t &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "ntmsm64" "', argument " "9"" of type '" "uint64_t *""'"); 
   }
   arg9 = reinterpret_cast< uint64_t * >(argp9);
   res10 = SWIG_ConvertPtr(swig_obj[9], &argp10,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
@@ -35405,8 +35575,8 @@ SWIGINTERN PyObject *_wrap_ntmsm64(PyObject *self, PyObject *args) {
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntmsm64'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::ntmsm64(char const *,std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t &,uint64_t &,unsigned int &,uint64_t *)\n"
-    "    btllib::ntmsm64(char const *,std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &,unsigned char const,unsigned char const,unsigned int const,unsigned int const,unsigned int const,uint64_t &,uint64_t &,uint64_t *)\n");
+    "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,unsigned int &,uint64_t *)\n"
+    "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned char,unsigned char,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *)\n");
   return 0;
 }
 
@@ -35432,6 +35602,34 @@ SWIGINTERN PyObject *_wrap_parse_seeds(PyObject *self, PyObject *args) {
     arg1 = ptr;
   }
   result = btllib::parse_seeds((std::vector< std::string,std::allocator< std::string > > const &)*arg1);
+  resultobj = swig::from(static_cast< std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_parse_blocks__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< std::string,std::allocator< std::string > > *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "parse_blocks" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "parse_blocks" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = btllib::parse_blocks((std::vector< std::string,std::allocator< std::string > > const &)*arg1);
   resultobj = swig::from(static_cast< std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > >(result));
   if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
@@ -35972,7 +36170,7 @@ SWIGINTERN PyObject *_wrap_SeedNtHash_get_forward_hash(PyObject *self, PyObject 
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  uint64_t result;
+  uint64_t *result = 0 ;
   
   if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
@@ -35980,8 +36178,8 @@ SWIGINTERN PyObject *_wrap_SeedNtHash_get_forward_hash(PyObject *self, PyObject 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_forward_hash" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (uint64_t)((btllib::SeedNtHash const *)arg1)->get_forward_hash();
-  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  result = (uint64_t *)((btllib::SeedNtHash const *)arg1)->get_forward_hash();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -35994,7 +36192,7 @@ SWIGINTERN PyObject *_wrap_SeedNtHash_get_reverse_hash(PyObject *self, PyObject 
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  uint64_t result;
+  uint64_t *result = 0 ;
   
   if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_reverse_hash", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
@@ -36002,8 +36200,8 @@ SWIGINTERN PyObject *_wrap_SeedNtHash_get_reverse_hash(PyObject *self, PyObject 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_reverse_hash" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (uint64_t)((btllib::SeedNtHash const *)arg1)->get_reverse_hash();
-  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  result = (uint64_t *)((btllib::SeedNtHash const *)arg1)->get_reverse_hash();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -36178,6 +36376,70 @@ fail:
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeedNtHash) /* defines _wrap_delete_SeedNtHash_destructor_closure */
 
+SWIGINTERN PyObject *_wrap_parse_blocks__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg1 = 0 ;
+  unsigned int arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "parse_blocks" "', argument " "1"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "parse_blocks" "', argument " "1"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "parse_blocks" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = btllib::parse_blocks((std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg1,arg2);
+  resultobj = swig::from(static_cast< std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_parse_blocks(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "parse_blocks", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    PyObject *retobj = _wrap_parse_blocks__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    PyObject *retobj = _wrap_parse_blocks__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'parse_blocks'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::parse_blocks(std::vector< std::string,std::allocator< std::string > > const &)\n"
+    "    btllib::parse_blocks(std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int const)\n");
+  return 0;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
@@ -36219,6 +36481,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "flush", _wrap_flush, METH_O, "swig_ptr: flush_cb_ptr"},
 	 { "pop_cnt_byte", _wrap_pop_cnt_byte, METH_O, NULL},
 	 { "BloomFilter_save", _wrap_BloomFilter_save, METH_VARARGS, NULL},
+	 { "BloomFilter_is_bloom_file", _wrap_BloomFilter_is_bloom_file, METH_O, NULL},
+	 { "BloomFilter_check_file_signature", _wrap_BloomFilter_check_file_signature, METH_VARARGS, NULL},
+	 { "KmerBloomFilter_is_bloom_file", _wrap_KmerBloomFilter_is_bloom_file, METH_O, NULL},
+	 { "SeedBloomFilter_is_bloom_file", _wrap_SeedBloomFilter_is_bloom_file, METH_O, NULL},
 	 { "split", _wrap_split, METH_VARARGS, NULL},
 	 { "join", _wrap_join, METH_VARARGS, NULL},
 	 { "ltrim", _wrap_ltrim, METH_VARARGS, NULL},
@@ -36291,6 +36557,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ntms64", _wrap_ntms64, METH_VARARGS, NULL},
 	 { "ntmsm64", _wrap_ntmsm64, METH_VARARGS, NULL},
 	 { "parse_seeds", _wrap_parse_seeds, METH_O, NULL},
+	 { "parse_blocks", _wrap_parse_blocks, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -36335,6 +36602,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "flush", _wrap_flush, METH_O, "swig_ptr: flush_cb_ptr"},
 	 { "pop_cnt_byte", _wrap_pop_cnt_byte, METH_O, NULL},
 	 { "BloomFilter_save", _wrap_BloomFilter_save, METH_VARARGS, NULL},
+	 { "BloomFilter_is_bloom_file", _wrap_BloomFilter_is_bloom_file, METH_O, NULL},
+	 { "BloomFilter_check_file_signature", _wrap_BloomFilter_check_file_signature, METH_VARARGS, NULL},
+	 { "KmerBloomFilter_is_bloom_file", _wrap_KmerBloomFilter_is_bloom_file, METH_O, NULL},
+	 { "SeedBloomFilter_is_bloom_file", _wrap_SeedBloomFilter_is_bloom_file, METH_O, NULL},
 	 { "split", _wrap_split, METH_VARARGS, NULL},
 	 { "join", _wrap_join, METH_VARARGS, NULL},
 	 { "ltrim", _wrap_ltrim, METH_VARARGS, NULL},
@@ -36407,6 +36678,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ntms64", _wrap_ntms64, METH_VARARGS, NULL},
 	 { "ntmsm64", _wrap_ntmsm64, METH_VARARGS, NULL},
 	 { "parse_seeds", _wrap_parse_seeds, METH_O, NULL},
+	 { "parse_blocks", _wrap_parse_blocks, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -40637,6 +40909,8 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__BloomFilter_methods[] = {
   { "get_fpr", _wrap_BloomFilter_get_fpr, METH_NOARGS, "" },
   { "get_hash_fn", _wrap_BloomFilter_get_hash_fn, METH_NOARGS, "" },
   { "save", _wrap_BloomFilter_save, METH_VARARGS, "" },
+  { "is_bloom_file", (PyCFunction)(void(*)(void))_wrap_BloomFilter_is_bloom_file, METH_STATIC|METH_O, "" },
+  { "check_file_signature", (PyCFunction)(void(*)(void))_wrap_BloomFilter_check_file_signature, METH_STATIC|METH_VARARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -40861,6 +41135,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__KmerBloomFilter_methods[] = {
   { "get_hash_fn", _wrap_KmerBloomFilter_get_hash_fn, METH_NOARGS, "" },
   { "get_bloom_filter", _wrap_KmerBloomFilter_get_bloom_filter, METH_NOARGS, "" },
   { "save", _wrap_KmerBloomFilter_save, METH_O, "" },
+  { "is_bloom_file", (PyCFunction)(void(*)(void))_wrap_KmerBloomFilter_is_bloom_file, METH_STATIC|METH_O, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -41089,6 +41364,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedBloomFilter_methods[] = {
   { "get_hash_fn", _wrap_SeedBloomFilter_get_hash_fn, METH_NOARGS, "" },
   { "get_kmer_bloom_filter", _wrap_SeedBloomFilter_get_kmer_bloom_filter, METH_NOARGS, "" },
   { "save", _wrap_SeedBloomFilter_save, METH_O, "" },
+  { "is_bloom_file", (PyCFunction)(void(*)(void))_wrap_SeedBloomFilter_is_bloom_file, METH_STATIC|METH_O, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -45568,12 +45844,15 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "BIT_MASKS", Swig_var_BIT_MASKS_get, Swig_var_BIT_MASKS_set);
   PyDict_SetItemString(md, "BIT_MASKS", PyObject_GetAttrString(globals, "BIT_MASKS"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "BIT_MASKS");
-  SWIG_addvarlink(globals, "KMER_BLOOM_FILTER_MAGIC_HEADER", Swig_var_KMER_BLOOM_FILTER_MAGIC_HEADER_get, Swig_var_KMER_BLOOM_FILTER_MAGIC_HEADER_set);
-  PyDict_SetItemString(md, "KMER_BLOOM_FILTER_MAGIC_HEADER", PyObject_GetAttrString(globals, "KMER_BLOOM_FILTER_MAGIC_HEADER"));
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "KMER_BLOOM_FILTER_MAGIC_HEADER");
-  SWIG_addvarlink(globals, "SEED_BLOOM_FILTER_MAGIC_HEADER", Swig_var_SEED_BLOOM_FILTER_MAGIC_HEADER_get, Swig_var_SEED_BLOOM_FILTER_MAGIC_HEADER_set);
-  PyDict_SetItemString(md, "SEED_BLOOM_FILTER_MAGIC_HEADER", PyObject_GetAttrString(globals, "SEED_BLOOM_FILTER_MAGIC_HEADER"));
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "SEED_BLOOM_FILTER_MAGIC_HEADER");
+  SWIG_addvarlink(globals, "BLOOM_FILTER_SIGNATURE", Swig_var_BLOOM_FILTER_SIGNATURE_get, Swig_var_BLOOM_FILTER_SIGNATURE_set);
+  PyDict_SetItemString(md, "BLOOM_FILTER_SIGNATURE", PyObject_GetAttrString(globals, "BLOOM_FILTER_SIGNATURE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "BLOOM_FILTER_SIGNATURE");
+  SWIG_addvarlink(globals, "KMER_BLOOM_FILTER_SIGNATURE", Swig_var_KMER_BLOOM_FILTER_SIGNATURE_get, Swig_var_KMER_BLOOM_FILTER_SIGNATURE_set);
+  PyDict_SetItemString(md, "KMER_BLOOM_FILTER_SIGNATURE", PyObject_GetAttrString(globals, "KMER_BLOOM_FILTER_SIGNATURE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "KMER_BLOOM_FILTER_SIGNATURE");
+  SWIG_addvarlink(globals, "SEED_BLOOM_FILTER_SIGNATURE", Swig_var_SEED_BLOOM_FILTER_SIGNATURE_get, Swig_var_SEED_BLOOM_FILTER_SIGNATURE_set);
+  PyDict_SetItemString(md, "SEED_BLOOM_FILTER_SIGNATURE", PyObject_GetAttrString(globals, "SEED_BLOOM_FILTER_SIGNATURE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SEED_BLOOM_FILTER_SIGNATURE");
   SWIG_addvarlink(globals, "HASH_FN", Swig_var_HASH_FN_get, Swig_var_HASH_FN_set);
   PyDict_SetItemString(md, "HASH_FN", PyObject_GetAttrString(globals, "HASH_FN"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "HASH_FN");
@@ -45652,9 +45931,12 @@ SWIG_init(void) {
   PyModule_AddObject(m, "SeedBloomFilter", (PyObject *)builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "SeedBloomFilter");
   d = md;
-  SWIG_addvarlink(globals, "KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER", Swig_var_KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_get, Swig_var_KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_set);
-  PyDict_SetItemString(md, "KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER", PyObject_GetAttrString(globals, "KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER"));
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER");
+  SWIG_addvarlink(globals, "COUNTING_BLOOM_FILTER_SIGNATURE", Swig_var_COUNTING_BLOOM_FILTER_SIGNATURE_get, Swig_var_COUNTING_BLOOM_FILTER_SIGNATURE_set);
+  PyDict_SetItemString(md, "COUNTING_BLOOM_FILTER_SIGNATURE", PyObject_GetAttrString(globals, "COUNTING_BLOOM_FILTER_SIGNATURE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "COUNTING_BLOOM_FILTER_SIGNATURE");
+  SWIG_addvarlink(globals, "KMER_COUNTING_BLOOM_FILTER_SIGNATURE", Swig_var_KMER_COUNTING_BLOOM_FILTER_SIGNATURE_get, Swig_var_KMER_COUNTING_BLOOM_FILTER_SIGNATURE_set);
+  PyDict_SetItemString(md, "KMER_COUNTING_BLOOM_FILTER_SIGNATURE", PyObject_GetAttrString(globals, "KMER_COUNTING_BLOOM_FILTER_SIGNATURE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "KMER_COUNTING_BLOOM_FILTER_SIGNATURE");
   
   /* type 'btllib::SeqReader' */
   builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__SeqReader_type;
@@ -45916,6 +46198,9 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "PRINT_COLOR_END", Swig_var_PRINT_COLOR_END_get, Swig_var_PRINT_COLOR_END_set);
   PyDict_SetItemString(md, "PRINT_COLOR_END", PyObject_GetAttrString(globals, "PRINT_COLOR_END"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "PRINT_COLOR_END");
+  SWIG_addvarlink(globals, "NTHASH_FN_NAME", Swig_var_NTHASH_FN_NAME_get, Swig_var_NTHASH_FN_NAME_set);
+  PyDict_SetItemString(md, "NTHASH_FN_NAME", PyObject_GetAttrString(globals, "NTHASH_FN_NAME"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "NTHASH_FN_NAME");
   SWIG_addvarlink(globals, "CP_OFF", Swig_var_CP_OFF_get, Swig_var_CP_OFF_set);
   PyDict_SetItemString(md, "CP_OFF", PyObject_GetAttrString(globals, "CP_OFF"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "CP_OFF");

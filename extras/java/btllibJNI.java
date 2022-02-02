@@ -171,8 +171,9 @@ public class btllibJNI {
   public final static native long Indexlr_begin(long jarg1, Indexlr jarg1_);
   public final static native long Indexlr_end(long jarg1, Indexlr jarg1_);
   public final static native long BIT_MASKS_get();
-  public final static native String KMER_BLOOM_FILTER_MAGIC_HEADER_get();
-  public final static native String SEED_BLOOM_FILTER_MAGIC_HEADER_get();
+  public final static native String BLOOM_FILTER_SIGNATURE_get();
+  public final static native String KMER_BLOOM_FILTER_SIGNATURE_get();
+  public final static native String SEED_BLOOM_FILTER_SIGNATURE_get();
   public final static native String HASH_FN_get();
   public final static native long MAX_HASH_VALUES_get();
   public final static native long PLACEHOLDER_NEWLINES_get();
@@ -195,6 +196,8 @@ public class btllibJNI {
   public final static native String BloomFilter_get_hash_fn(long jarg1, BloomFilter jarg1_);
   public final static native void BloomFilter_save__SWIG_0(long jarg1, BloomFilter jarg1_, String jarg2);
   public final static native void BloomFilter_save__SWIG_1(String jarg1, long jarg2, String jarg3, long jarg4);
+  public final static native boolean BloomFilter_is_bloom_file(String jarg1);
+  public final static native boolean BloomFilter_check_file_signature(String jarg1, String jarg2);
   public final static native void delete_BloomFilter(long jarg1);
   public final static native long new_KmerBloomFilter__SWIG_0();
   public final static native long new_KmerBloomFilter__SWIG_1(long jarg1, long jarg2, long jarg3);
@@ -220,6 +223,7 @@ public class btllibJNI {
   public final static native String KmerBloomFilter_get_hash_fn(long jarg1, KmerBloomFilter jarg1_);
   public final static native long KmerBloomFilter_get_bloom_filter(long jarg1, KmerBloomFilter jarg1_);
   public final static native void KmerBloomFilter_save(long jarg1, KmerBloomFilter jarg1_, String jarg2);
+  public final static native boolean KmerBloomFilter_is_bloom_file(String jarg1);
   public final static native void delete_KmerBloomFilter(long jarg1);
   public final static native long new_SeedBloomFilter__SWIG_0();
   public final static native long new_SeedBloomFilter__SWIG_1(long jarg1, long jarg2, long jarg3, VectorString jarg3_, long jarg4);
@@ -249,8 +253,10 @@ public class btllibJNI {
   public final static native String SeedBloomFilter_get_hash_fn(long jarg1, SeedBloomFilter jarg1_);
   public final static native long SeedBloomFilter_get_kmer_bloom_filter(long jarg1, SeedBloomFilter jarg1_);
   public final static native void SeedBloomFilter_save(long jarg1, SeedBloomFilter jarg1_, String jarg2);
+  public final static native boolean SeedBloomFilter_is_bloom_file(String jarg1);
   public final static native void delete_SeedBloomFilter(long jarg1);
-  public final static native String KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_get();
+  public final static native String COUNTING_BLOOM_FILTER_SIGNATURE_get();
+  public final static native String KMER_COUNTING_BLOOM_FILTER_SIGNATURE_get();
   public final static native long SeqReader_SeqReaderFlag_FOLD_CASE_get();
   public final static native long SeqReader_SeqReaderFlag_TRIM_MASKED_get();
   public final static native long SeqReader_SeqReaderFlag_SHORT_MODE_get();
@@ -385,6 +391,7 @@ public class btllibJNI {
   public final static native void check_error(boolean jarg1, String jarg2);
   public final static native void check_stream(long jarg1, String jarg2);
   public final static native String get_strerror();
+  public final static native String NTHASH_FN_NAME_get();
   public final static native short CP_OFF_get();
   public final static native int MULTISHIFT_get();
   public final static native java.math.BigInteger MULTISEED_get();
@@ -453,6 +460,7 @@ public class btllibJNI {
   public final static native boolean ntmsm64__SWIG_0(String jarg1, long jarg2, VectorSpacedSeed jarg2_, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8, long jarg9);
   public final static native void ntmsm64__SWIG_1(String jarg1, long jarg2, VectorSpacedSeed jarg2_, short jarg3, short jarg4, long jarg5, long jarg6, long jarg7, long jarg8, long jarg9, long jarg10);
   public final static native long parse_seeds(long jarg1, VectorString jarg1_);
+  public final static native long parse_blocks__SWIG_0(long jarg1, VectorString jarg1_);
   public final static native boolean NtHash_roll(long jarg1, NtHash jarg1_);
   public final static native void NtHash_sub(long jarg1, NtHash jarg1_, long jarg2, VectorUnsigned jarg2_, long jarg3);
   public final static native long NtHash_hashes(long jarg1, NtHash jarg1_);
@@ -472,9 +480,10 @@ public class btllibJNI {
   public final static native long SeedNtHash_get_hash_num(long jarg1, SeedNtHash jarg1_);
   public final static native long SeedNtHash_get_hash_num_per_seed(long jarg1, SeedNtHash jarg1_);
   public final static native long SeedNtHash_get_k(long jarg1, SeedNtHash jarg1_);
-  public final static native java.math.BigInteger SeedNtHash_get_forward_hash(long jarg1, SeedNtHash jarg1_);
-  public final static native java.math.BigInteger SeedNtHash_get_reverse_hash(long jarg1, SeedNtHash jarg1_);
+  public final static native long SeedNtHash_get_forward_hash(long jarg1, SeedNtHash jarg1_);
+  public final static native long SeedNtHash_get_reverse_hash(long jarg1, SeedNtHash jarg1_);
   public final static native long new_SeedNtHash__SWIG_0(String jarg1, long jarg2, VectorSpacedSeed jarg2_, long jarg3, long jarg4, long jarg5);
   public final static native long new_SeedNtHash__SWIG_1(String jarg1, long jarg2, VectorSpacedSeed jarg2_, long jarg3, long jarg4);
   public final static native void delete_SeedNtHash(long jarg1);
+  public final static native long parse_blocks__SWIG_1(long jarg1, VectorSpacedSeed jarg1_, long jarg2);
 }

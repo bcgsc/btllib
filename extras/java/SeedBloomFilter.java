@@ -148,4 +148,8 @@ public class SeedBloomFilter {
     btllibJNI.SeedBloomFilter_save(swigCPtr, this, path);
   }
 
+  public static boolean is_bloom_file(String path) {
+    return btllibJNI.SeedBloomFilter_is_bloom_file(path);
+  }
+
 }

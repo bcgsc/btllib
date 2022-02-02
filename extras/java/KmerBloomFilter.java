@@ -132,4 +132,8 @@ public class KmerBloomFilter {
     btllibJNI.KmerBloomFilter_save(swigCPtr, this, path);
   }
 
+  public static boolean is_bloom_file(String path) {
+    return btllibJNI.KmerBloomFilter_is_bloom_file(path);
+  }
+
 }

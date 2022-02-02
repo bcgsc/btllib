@@ -54,6 +54,8 @@
 
 %ignore btllib::NtHash::NtHash(const char*, size_t, unsigned, unsigned, size_t pos = 0);
 
+%ignore btllib::parse_blocks(const std::vector<SpacedSeed>&, unsigned);
+
 %ignore btllib::BloomFilterInitializer;
 %ignore btllib::BloomFilterInitializer::operator=;
 

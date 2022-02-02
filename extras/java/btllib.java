@@ -14,12 +14,16 @@ public class btllib {
     return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_char(cPtr, false);
   }
 
-  public static String getKMER_BLOOM_FILTER_MAGIC_HEADER() {
-    return btllibJNI.KMER_BLOOM_FILTER_MAGIC_HEADER_get();
+  public static String getBLOOM_FILTER_SIGNATURE() {
+    return btllibJNI.BLOOM_FILTER_SIGNATURE_get();
   }
 
-  public static String getSEED_BLOOM_FILTER_MAGIC_HEADER() {
-    return btllibJNI.SEED_BLOOM_FILTER_MAGIC_HEADER_get();
+  public static String getKMER_BLOOM_FILTER_SIGNATURE() {
+    return btllibJNI.KMER_BLOOM_FILTER_SIGNATURE_get();
+  }
+
+  public static String getSEED_BLOOM_FILTER_SIGNATURE() {
+    return btllibJNI.SEED_BLOOM_FILTER_SIGNATURE_get();
   }
 
   public static String getHASH_FN() {
@@ -38,8 +42,12 @@ public class btllib {
     return btllibJNI.pop_cnt_byte(x);
   }
 
-  public static String getKMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER() {
-    return btllibJNI.KMER_COUNTING_BLOOM_FILTER_MAGIC_HEADER_get();
+  public static String getCOUNTING_BLOOM_FILTER_SIGNATURE() {
+    return btllibJNI.COUNTING_BLOOM_FILTER_SIGNATURE_get();
+  }
+
+  public static String getKMER_COUNTING_BLOOM_FILTER_SIGNATURE() {
+    return btllibJNI.KMER_COUNTING_BLOOM_FILTER_SIGNATURE_get();
   }
 
   public static VectorString split(String s, String delim) {
@@ -303,6 +311,10 @@ public class btllib {
 
   public static String get_strerror() {
     return btllibJNI.get_strerror();
+  }
+
+  public static String getNTHASH_FN_NAME() {
+    return btllibJNI.NTHASH_FN_NAME_get();
   }
 
   public static short getCP_OFF() {
@@ -593,6 +605,14 @@ public class btllib {
 
   public static VectorSpacedSeed parse_seeds(VectorString seed_strings) {
     return new VectorSpacedSeed(btllibJNI.parse_seeds(VectorString.getCPtr(seed_strings), seed_strings), true);
+  }
+
+  public static VectorSpacedSeed parse_blocks(VectorString seed_strings) {
+    return new VectorSpacedSeed(btllibJNI.parse_blocks__SWIG_0(VectorString.getCPtr(seed_strings), seed_strings), true);
+  }
+
+  public static VectorSpacedSeed parse_blocks(VectorSpacedSeed seeds, long k) {
+    return new VectorSpacedSeed(btllibJNI.parse_blocks__SWIG_1(VectorSpacedSeed.getCPtr(seeds), seeds, k), true);
   }
 
 }

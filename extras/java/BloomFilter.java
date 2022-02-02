@@ -108,4 +108,12 @@ public class BloomFilter {
     btllibJNI.BloomFilter_save__SWIG_1(path, SWIGTYPE_p_cpptoml__table.getCPtr(table), data, n);
   }
 
+  public static boolean is_bloom_file(String path) {
+    return btllibJNI.BloomFilter_is_bloom_file(path);
+  }
+
+  public static boolean check_file_signature(String path, String signature) {
+    return btllibJNI.BloomFilter_check_file_signature(path, signature);
+  }
+
 }

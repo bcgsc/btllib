@@ -109,8 +109,11 @@ main(int argc, char* argv[])
     { "version", no_argument, &version, 1 },
     { nullptr, 0, nullptr, 0 }
   };
-  while ((c = getopt_long(argc, argv, "k:w:o:t:vr:s:", longopts, &optindex)) != // NOLINT(concurrency-mt-unsafe)
-         -1) {
+  while ((c = getopt_long(argc, // NOLINT(concurrency-mt-unsafe)
+                          argv,
+                          "k:w:o:t:vr:s:",
+                          longopts,
+                          &optindex)) != -1) {
     switch (c) {
       case 0:
         break;
@@ -225,7 +228,7 @@ main(int argc, char* argv[])
 #ifdef __linux__
     out = fopen(outfile.c_str(), "we");
 #else
-	out = fopen(outfile.c_str(), "w");
+    out = fopen(outfile.c_str(), "w");
 #endif
   }
   for (auto& infile : infiles) {

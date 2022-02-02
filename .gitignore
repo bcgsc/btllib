@@ -4,5 +4,6 @@
 !/extras/python/
 /java/
 !/extras/java/
+/bin/
 /Doxyfile.bak
 /external/sdsl-lite/installdir/

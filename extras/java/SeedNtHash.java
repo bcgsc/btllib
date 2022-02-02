@@ -65,12 +65,14 @@ public class SeedNtHash {
     return btllibJNI.SeedNtHash_get_k(swigCPtr, this);
   }
 
-  public java.math.BigInteger get_forward_hash() {
-    return btllibJNI.SeedNtHash_get_forward_hash(swigCPtr, this);
+  public SWIGTYPE_p_unsigned_long_long get_forward_hash() {
+    long cPtr = btllibJNI.SeedNtHash_get_forward_hash(swigCPtr, this);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_long_long(cPtr, false);
   }
 
-  public java.math.BigInteger get_reverse_hash() {
-    return btllibJNI.SeedNtHash_get_reverse_hash(swigCPtr, this);
+  public SWIGTYPE_p_unsigned_long_long get_reverse_hash() {
+    long cPtr = btllibJNI.SeedNtHash_get_reverse_hash(swigCPtr, this);
+    return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_long_long(cPtr, false);
   }
 
   public SeedNtHash(String seq, VectorSpacedSeed seeds, long hash_num_per_seed, long k, long pos) {

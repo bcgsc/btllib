@@ -1332,10 +1332,10 @@ class SeedNtHash;
 inline std::vector<SpacedSeed>
 parse_seeds(const std::vector<std::string>& seed_strings);
 
-static std::vector<SpacedSeed>
+inline std::vector<SpacedSeed>
 parse_blocks(const std::vector<std::string>& seed_strings);
 
-static std::vector<SpacedSeed>
+inline std::vector<SpacedSeed>
 parse_blocks(const std::vector<SpacedSeed>& seeds, unsigned k);
 
 class NtHash
@@ -1561,7 +1561,7 @@ parse_seeds(const std::vector<std::string>& seed_strings)
   return seed_set;
 }
 
-static std::vector<SpacedSeed>
+inline std::vector<SpacedSeed>
 parse_blocks(const std::vector<std::string>& seed_strings)
 {
   std::vector<SpacedSeed> blocks;
@@ -1585,7 +1585,7 @@ parse_blocks(const std::vector<std::string>& seed_strings)
   return blocks;
 }
 
-static std::vector<SpacedSeed>
+inline std::vector<SpacedSeed>
 parse_blocks(const std::vector<SpacedSeed>& seeds, const unsigned k)
 { // TODO: simple but naive implementation; to be optimized
   std::vector<std::string> seed_strings;
