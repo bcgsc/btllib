@@ -128,6 +128,11 @@ if [[ $missing_dep -eq 1 ]]; then
   in_venv=true
 fi
 
+# We set the flags internally, don't need no nosy flags from the outside
+unset CFLAGS
+unset CXXFLAGS
+unset LDFLAGS
+
 rm -rf build python java
 meson setup --buildtype release --prefix=$SCRIPTPATH build
 if [[ $? -eq 0 ]]; then
