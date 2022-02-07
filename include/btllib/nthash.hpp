@@ -17,7 +17,7 @@
 
 namespace btllib {
 
-static const char* const NTHASH_FN_NAME = "ntHash1";
+static const char* const NTHASH_FN_NAME = "ntHash_v1";
 
 // define a data structure for spaced seeds
 // TODO: Create a clearer structure for list-of-blocks
