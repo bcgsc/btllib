@@ -33,8 +33,8 @@ jobs:
   - script: cd build && ninja tidycheck
     displayName: 'Run clang-tidy'
 
-  - script: cd build && ninja cppcheck
-    displayName: 'Run cppcheck'
+  #- script: cd build && ninja cppcheck
+  #  displayName: 'Run cppcheck'
 
   - script: |
       cd build && meson test --repeat=10
@@ -69,7 +69,7 @@ jobs:
   - script: |
       set -o errexit -o pipefail
       brew update
-      brew install llvm libomp cppcheck@2.6.3 boost samtools coreutils xz lrzip
+      brew install llvm libomp cppcheck boost samtools coreutils xz lrzip
       brew tap adoptopenjdk/openjdk
       brew install --cask adoptopenjdk11
       sudo ln -sf $(brew --prefix llvm)/bin/clang-format /usr/local/bin/clang-format
@@ -89,8 +89,8 @@ jobs:
   - script: cd build && ninja tidycheck
     displayName: 'Run clang-tidy'
 
-  - script: cd build && ninja cppcheck
-    displayName: 'Run cppcheck'
+  #- script: cd build && ninja cppcheck
+  #  displayName: 'Run cppcheck'
 
   - script: |
       cd build && meson test --repeat=10
