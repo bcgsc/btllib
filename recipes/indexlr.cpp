@@ -142,6 +142,7 @@ main(int argc, char* argv[])
             new btllib::KmerBloomFilter(optarg));
         } catch (const std::exception& e) {
           std::cerr << e.what() << '\n';
+          std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
         }
         std::cerr << "Finished loading repeat Bloom filter" << std::endl;
         break;
@@ -154,6 +155,7 @@ main(int argc, char* argv[])
             new btllib::KmerBloomFilter(optarg));
         } catch (const std::exception& e) {
           std::cerr << e.what() << '\n';
+          std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
         }
         std::cerr << "Finished loading solid Bloom filter" << std::endl;
         break;
@@ -228,7 +230,7 @@ main(int argc, char* argv[])
 #ifdef __linux__
     out = fopen(outfile.c_str(), "we");
 #else
-    out = fopen(outfile.c_str(), "w");
+    out = fopen(outfile.c_str(), "w"); // NOLINT(android-cloexec-fopen)
 #endif
   }
   for (auto& infile : infiles) {

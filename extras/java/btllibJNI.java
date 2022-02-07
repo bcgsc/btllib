@@ -445,6 +445,7 @@ public class btllibJNI {
   public final static native void ntmc64__SWIG_0(String jarg1, long jarg2, long jarg3, long jarg4);
   public final static native void ntmc64__SWIG_1(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
   public final static native void ntmc64__SWIG_2(short jarg1, short jarg2, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7);
+  public final static native void ntmc64l(short jarg1, short jarg2, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7);
   public final static native boolean ntc64__SWIG_4(String jarg1, long jarg2, long jarg3, long jarg4);
   public final static native boolean ntmc64__SWIG_3(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5);
   public final static native boolean ntc64__SWIG_5(String jarg1, long jarg2, long jarg3, long jarg4, long jarg5, long jarg6);
@@ -458,10 +459,12 @@ public class btllibJNI {
   public final static native boolean ntms64__SWIG_0(String jarg1, long jarg2, VectorSpacedSeed jarg2_, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8, long jarg9);
   public final static native void ntms64__SWIG_1(String jarg1, long jarg2, VectorSpacedSeed jarg2_, short jarg3, short jarg4, long jarg5, long jarg6, long jarg7, long jarg8, long jarg9, long jarg10);
   public final static native boolean ntmsm64__SWIG_0(String jarg1, long jarg2, VectorSpacedSeed jarg2_, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8, long jarg9);
-  public final static native void ntmsm64__SWIG_1(String jarg1, long jarg2, VectorSpacedSeed jarg2_, short jarg3, short jarg4, long jarg5, long jarg6, long jarg7, long jarg8, long jarg9, long jarg10);
+  public final static native void ntmsm64__SWIG_1(String jarg1, long jarg2, VectorSpacedSeed jarg2_, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8);
+  public final static native void ntmsm64l(String jarg1, long jarg2, VectorSpacedSeed jarg2_, long jarg3, long jarg4, long jarg5, long jarg6, long jarg7, long jarg8);
   public final static native long parse_seeds(long jarg1, VectorString jarg1_);
   public final static native long parse_blocks__SWIG_0(long jarg1, VectorString jarg1_);
   public final static native boolean NtHash_roll(long jarg1, NtHash jarg1_);
+  public final static native boolean NtHash_roll_back(long jarg1, NtHash jarg1_);
   public final static native void NtHash_sub(long jarg1, NtHash jarg1_, long jarg2, VectorUnsigned jarg2_, long jarg3);
   public final static native long NtHash_hashes(long jarg1, NtHash jarg1_);
   public final static native long NtHash_get_pos(long jarg1, NtHash jarg1_);
@@ -474,6 +477,7 @@ public class btllibJNI {
   public final static native long new_NtHash__SWIG_1(String jarg1, long jarg2, long jarg3);
   public final static native void delete_NtHash(long jarg1);
   public final static native boolean SeedNtHash_roll(long jarg1, SeedNtHash jarg1_);
+  public final static native boolean SeedNtHash_roll_back(long jarg1, SeedNtHash jarg1_);
   public final static native long SeedNtHash_hashes(long jarg1, SeedNtHash jarg1_);
   public final static native long SeedNtHash_get_pos(long jarg1, SeedNtHash jarg1_);
   public final static native boolean SeedNtHash_forward(long jarg1, SeedNtHash jarg1_);

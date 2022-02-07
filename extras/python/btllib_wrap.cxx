@@ -34181,6 +34181,81 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ntmc64l(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  unsigned char arg1 ;
+  unsigned char arg2 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  uint64_t *arg5 = 0 ;
+  uint64_t *arg6 = 0 ;
+  uint64_t *arg7 = (uint64_t *) 0 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  PyObject *swig_obj[7] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ntmc64l", 7, 7, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ntmc64l" "', argument " "1"" of type '" "unsigned char""'");
+  } 
+  arg1 = static_cast< unsigned char >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ntmc64l" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ntmc64l" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ntmc64l" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_unsigned_long_long,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "ntmc64l" "', argument " "5"" of type '" "uint64_t &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmc64l" "', argument " "5"" of type '" "uint64_t &""'"); 
+  }
+  arg5 = reinterpret_cast< uint64_t * >(argp5);
+  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_unsigned_long_long,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "ntmc64l" "', argument " "6"" of type '" "uint64_t &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmc64l" "', argument " "6"" of type '" "uint64_t &""'"); 
+  }
+  arg6 = reinterpret_cast< uint64_t * >(argp6);
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ntmc64l" "', argument " "7"" of type '" "uint64_t *""'"); 
+  }
+  arg7 = reinterpret_cast< uint64_t * >(argp7);
+  btllib::ntmc64l(arg1,arg2,arg3,arg4,*arg5,*arg6,arg7);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ntc64__SWIG_4(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
@@ -35455,36 +35530,30 @@ SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyO
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
   std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
-  unsigned char arg3 ;
-  unsigned char arg4 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
   unsigned int arg5 ;
-  unsigned int arg6 ;
-  unsigned int arg7 ;
+  uint64_t *arg6 = (uint64_t *) 0 ;
+  uint64_t *arg7 = (uint64_t *) 0 ;
   uint64_t *arg8 = (uint64_t *) 0 ;
-  uint64_t *arg9 = (uint64_t *) 0 ;
-  uint64_t *arg10 = (uint64_t *) 0 ;
   int res1 ;
   char *buf1 = 0 ;
   int alloc1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
-  unsigned char val3 ;
+  unsigned int val3 ;
   int ecode3 = 0 ;
-  unsigned char val4 ;
+  unsigned int val4 ;
   int ecode4 = 0 ;
   unsigned int val5 ;
   int ecode5 = 0 ;
-  unsigned int val6 ;
-  int ecode6 = 0 ;
-  unsigned int val7 ;
-  int ecode7 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
   void *argp8 = 0 ;
   int res8 = 0 ;
-  void *argp9 = 0 ;
-  int res9 = 0 ;
-  void *argp10 = 0 ;
-  int res10 = 0 ;
   
-  if ((nobjs < 10) || (nobjs > 10)) SWIG_fail;
+  if ((nobjs < 8) || (nobjs > 8)) SWIG_fail;
   res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ntmsm64" "', argument " "1"" of type '" "char const *""'");
@@ -35501,47 +35570,37 @@ SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyO
     }
     arg2 = ptr;
   }
-  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ntmsm64" "', argument " "3"" of type '" "unsigned char""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ntmsm64" "', argument " "3"" of type '" "unsigned int""'");
   } 
-  arg3 = static_cast< unsigned char >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ntmsm64" "', argument " "4"" of type '" "unsigned char""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ntmsm64" "', argument " "4"" of type '" "unsigned int""'");
   } 
-  arg4 = static_cast< unsigned char >(val4);
+  arg4 = static_cast< unsigned int >(val4);
   ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ntmsm64" "', argument " "5"" of type '" "unsigned int""'");
   } 
   arg5 = static_cast< unsigned int >(val5);
-  ecode6 = SWIG_AsVal_unsigned_SS_int(swig_obj[5], &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "ntmsm64" "', argument " "6"" of type '" "unsigned int""'");
-  } 
-  arg6 = static_cast< unsigned int >(val6);
-  ecode7 = SWIG_AsVal_unsigned_SS_int(swig_obj[6], &val7);
-  if (!SWIG_IsOK(ecode7)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "ntmsm64" "', argument " "7"" of type '" "unsigned int""'");
-  } 
-  arg7 = static_cast< unsigned int >(val7);
+  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "ntmsm64" "', argument " "6"" of type '" "uint64_t *""'"); 
+  }
+  arg6 = reinterpret_cast< uint64_t * >(argp6);
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ntmsm64" "', argument " "7"" of type '" "uint64_t *""'"); 
+  }
+  arg7 = reinterpret_cast< uint64_t * >(argp7);
   res8 = SWIG_ConvertPtr(swig_obj[7], &argp8,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
   if (!SWIG_IsOK(res8)) {
     SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64" "', argument " "8"" of type '" "uint64_t *""'"); 
   }
   arg8 = reinterpret_cast< uint64_t * >(argp8);
-  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
-  if (!SWIG_IsOK(res9)) {
-    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "ntmsm64" "', argument " "9"" of type '" "uint64_t *""'"); 
-  }
-  arg9 = reinterpret_cast< uint64_t * >(argp9);
-  res10 = SWIG_ConvertPtr(swig_obj[9], &argp10,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
-  if (!SWIG_IsOK(res10)) {
-    SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "ntmsm64" "', argument " "10"" of type '" "uint64_t *""'"); 
-  }
-  arg10 = reinterpret_cast< uint64_t * >(argp10);
-  btllib::ntmsm64((char const *)arg1,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
+  btllib::ntmsm64((char const *)arg1,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg2,arg3,arg4,arg5,arg6,arg7,arg8);
   resultobj = SWIG_Py_Void();
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   if (SWIG_IsNewObj(res2)) delete arg2;
@@ -35555,19 +35614,19 @@ fail:
 
 SWIGINTERN PyObject *_wrap_ntmsm64(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[11] = {
+  PyObject *argv[10] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ntmsm64", 0, 10, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ntmsm64", 0, 9, argv))) SWIG_fail;
   --argc;
-  if (argc == 9) {
-    PyObject *retobj = _wrap_ntmsm64__SWIG_0(self, argc, argv);
+  if (argc == 8) {
+    PyObject *retobj = _wrap_ntmsm64__SWIG_1(self, argc, argv);
     if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
     SWIG_fail;
   }
-  if (argc == 10) {
-    PyObject *retobj = _wrap_ntmsm64__SWIG_1(self, argc, argv);
+  if (argc == 9) {
+    PyObject *retobj = _wrap_ntmsm64__SWIG_0(self, argc, argv);
     if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
     SWIG_fail;
   }
@@ -35576,8 +35635,95 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntmsm64'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,unsigned int &,uint64_t *)\n"
-    "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned char,unsigned char,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *)\n");
+    "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64l(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  unsigned int arg5 ;
+  uint64_t *arg6 = (uint64_t *) 0 ;
+  uint64_t *arg7 = (uint64_t *) 0 ;
+  uint64_t *arg8 = (uint64_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject *swig_obj[8] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ntmsm64l", 8, 8, swig_obj)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ntmsm64l" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ntmsm64l" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64l" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ntmsm64l" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ntmsm64l" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ntmsm64l" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "ntmsm64l" "', argument " "6"" of type '" "uint64_t *""'"); 
+  }
+  arg6 = reinterpret_cast< uint64_t * >(argp6);
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ntmsm64l" "', argument " "7"" of type '" "uint64_t *""'"); 
+  }
+  arg7 = reinterpret_cast< uint64_t * >(argp7);
+  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64l" "', argument " "8"" of type '" "uint64_t *""'"); 
+  }
+  arg8 = reinterpret_cast< uint64_t * >(argp8);
+  btllib::ntmsm64l((char const *)arg1,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+  resultobj = SWIG_Py_Void();
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
 }
 
 
@@ -35654,6 +35800,28 @@ SWIGINTERN PyObject *_wrap_NtHash_roll(PyObject *self, PyObject *args) {
   }
   arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
   result = (bool)(arg1)->roll();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_roll_back(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "NtHash_roll_back", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_roll_back" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (bool)(arg1)->roll_back();
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -36020,6 +36188,28 @@ SWIGINTERN PyObject *_wrap_SeedNtHash_roll(PyObject *self, PyObject *args) {
   }
   arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
   result = (bool)(arg1)->roll();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_roll_back(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_roll_back", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_roll_back" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (bool)(arg1)->roll_back();
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -36549,6 +36739,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ntf64", _wrap_ntf64, METH_VARARGS, NULL},
 	 { "nte64", _wrap_nte64, METH_VARARGS, NULL},
 	 { "ntm64", _wrap_ntm64, METH_VARARGS, NULL},
+	 { "ntmc64l", _wrap_ntmc64l, METH_VARARGS, NULL},
 	 { "ntc64", _wrap_ntc64, METH_VARARGS, NULL},
 	 { "ntmc64", _wrap_ntmc64, METH_VARARGS, NULL},
 	 { "mask_hash", _wrap_mask_hash, METH_VARARGS, NULL},
@@ -36556,6 +36747,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "nts64", _wrap_nts64, METH_VARARGS, NULL},
 	 { "ntms64", _wrap_ntms64, METH_VARARGS, NULL},
 	 { "ntmsm64", _wrap_ntmsm64, METH_VARARGS, NULL},
+	 { "ntmsm64l", _wrap_ntmsm64l, METH_VARARGS, NULL},
 	 { "parse_seeds", _wrap_parse_seeds, METH_O, NULL},
 	 { "parse_blocks", _wrap_parse_blocks, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -36670,6 +36862,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ntf64", _wrap_ntf64, METH_VARARGS, NULL},
 	 { "nte64", _wrap_nte64, METH_VARARGS, NULL},
 	 { "ntm64", _wrap_ntm64, METH_VARARGS, NULL},
+	 { "ntmc64l", _wrap_ntmc64l, METH_VARARGS, NULL},
 	 { "ntc64", _wrap_ntc64, METH_VARARGS, NULL},
 	 { "ntmc64", _wrap_ntmc64, METH_VARARGS, NULL},
 	 { "mask_hash", _wrap_mask_hash, METH_VARARGS, NULL},
@@ -36677,6 +36870,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "nts64", _wrap_nts64, METH_VARARGS, NULL},
 	 { "ntms64", _wrap_ntms64, METH_VARARGS, NULL},
 	 { "ntmsm64", _wrap_ntmsm64, METH_VARARGS, NULL},
+	 { "ntmsm64l", _wrap_ntmsm64l, METH_VARARGS, NULL},
 	 { "parse_seeds", _wrap_parse_seeds, METH_O, NULL},
 	 { "parse_blocks", _wrap_parse_blocks, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -43525,6 +43719,7 @@ SwigPyBuiltin__btllib__NtHash_richcompare(PyObject *self, PyObject *other, int o
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__NtHash_methods[] = {
   { "roll", _wrap_NtHash_roll, METH_NOARGS, "" },
+  { "roll_back", _wrap_NtHash_roll_back, METH_NOARGS, "" },
   { "sub", _wrap_NtHash_sub, METH_VARARGS, "" },
   { "hashes", _wrap_NtHash_hashes, METH_NOARGS, "" },
   { "get_pos", _wrap_NtHash_get_pos, METH_NOARGS, "" },
@@ -43746,6 +43941,7 @@ SwigPyBuiltin__btllib__SeedNtHash_richcompare(PyObject *self, PyObject *other, i
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedNtHash_methods[] = {
   { "roll", _wrap_SeedNtHash_roll, METH_NOARGS, "" },
+  { "roll_back", _wrap_SeedNtHash_roll_back, METH_NOARGS, "" },
   { "hashes", _wrap_SeedNtHash_hashes, METH_NOARGS, "" },
   { "get_pos", _wrap_SeedNtHash_get_pos, METH_NOARGS, "" },
   { "forward", _wrap_SeedNtHash_forward, METH_NOARGS, "" },

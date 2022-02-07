@@ -82,6 +82,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a05918ba5003a052c1e22668de81bf85b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a244c0c11655b6e1c52dd7c4528b8ed05"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05">roll</a> ()</td></tr>
 <tr class="separator:a244c0c11655b6e1c52dd7c4528b8ed05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4417f1829a2eaa3a19559ee68df1091"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#ae4417f1829a2eaa3a19559ee68df1091">roll_back</a> ()</td></tr>
+<tr class="separator:ae4417f1829a2eaa3a19559ee68df1091"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a106702c70516c00fa52fba2f38d056e1"><td class="memItemLeft" align="right" valign="top"><a id="a106702c70516c00fa52fba2f38d056e1" name="a106702c70516c00fa52fba2f38d056e1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>sub</b> (const std::vector&lt; unsigned &gt; &amp;positions, const std::vector&lt; unsigned char &gt; &amp;new_bases)</td></tr>
 <tr class="separator:a106702c70516c00fa52fba2f38d056e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -276,6 +278,24 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b></td><
       </table>
 </div><div class="memdoc">
 <p >Calculate the hash values of current k-mer and advance to the next k-mer. <a class="el" href="classbtllib_1_1NtHash.html">NtHash</a> advances one nucleotide at a time until it finds a k-mer with valid characters (ACTG) and skips over those with invalid characters (non-ACTG, including N). This method must be called before hashes() is accessed, for the first and every subsequent hashed kmer. <a class="el" href="classbtllib_1_1NtHash.html#ada63a973779a8a56cbccaf6c5d24c6bc">get_pos()</a> may be called at any time to obtain the position of last hashed k-mer or the k-mer to be hashed if <a class="el" href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05">roll()</a> has never been called on this <a class="el" href="classbtllib_1_1NtHash.html">NtHash</a> object. It is important to note that the number of <a class="el" href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05">roll()</a> calls is NOT necessarily equal to <a class="el" href="classbtllib_1_1NtHash.html#ada63a973779a8a56cbccaf6c5d24c6bc">get_pos()</a>, if there are N or invalid characters in the hashed sequence. </p><dl class="section return"><dt>Returns</dt><dd>true on success and false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="ae4417f1829a2eaa3a19559ee68df1091" name="ae4417f1829a2eaa3a19559ee68df1091"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4417f1829a2eaa3a19559ee68df1091">&#9670;&nbsp;</a></span>roll_back()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::NtHash::roll_back </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Like the <a class="el" href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05">roll()</a> function, but advance backwards. </p><dl class="section return"><dt>Returns</dt><dd>true on success and false otherwise </dd></dl>
 
 </div>
 </div>

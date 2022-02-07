@@ -17,7 +17,7 @@
 
 namespace btllib {
 
-static const char* const NTHASH_FN_NAME = "ntHash2";
+static const char* const NTHASH_FN_NAME = "ntHash1";
 
 // define a data structure for spaced seeds
 // TODO: Create a clearer structure for list-of-blocks
@@ -810,6 +810,26 @@ ntmc64(const unsigned char char_out,
   }
 }
 
+// canonical multihash ntHash for sliding k-mers
+inline void
+ntmc64l(const unsigned char char_out,
+        const unsigned char char_in,
+        const unsigned k,
+        const unsigned m,
+        uint64_t& fh_val,
+        uint64_t& rh_val,
+        uint64_t* h_val)
+{
+  uint64_t b_val = 0, t_val = 0;
+  b_val = ntc64l(char_out, char_in, k, fh_val, rh_val);
+  h_val[0] = b_val;
+  for (unsigned i = 1; i < m; i++) {
+    t_val = b_val * (i ^ k * MULTISEED);
+    t_val ^= t_val >> MULTISHIFT;
+    h_val[i] = t_val;
+  }
+}
+
 /*
  * ignoring k-mers containing nonACGT using ntHash function
  */
@@ -1283,8 +1303,6 @@ ntmsm64(const char* kmer_seq,
 inline void
 ntmsm64(const char* kmer_seq,
         const std::vector<SpacedSeed>& seed_seq,
-        unsigned char char_out,
-        unsigned char char_in,
         const unsigned k,
         const unsigned m,
         const unsigned m2,
@@ -1292,17 +1310,19 @@ ntmsm64(const char* kmer_seq,
         uint64_t* rh_val,
         uint64_t* h_val)
 {
+  unsigned char char_out;
+  unsigned char char_in;
   for (unsigned i_seed = 0; i_seed < m; i_seed++) {
-    SpacedSeed seed = seed_seq[i_seed];
+    const SpacedSeed& seed = seed_seq[i_seed];
     uint64_t fh_seed = swapbits033(rol1(fh_val[i_seed]));
     uint64_t rh_seed = rh_val[i_seed];
     for (unsigned i_block = 0; i_block < seed.size() - 1; i_block += 2) {
       // cppcheck-suppress arrayIndexOutOfBounds
       // cppcheck-suppress stlOutOfBounds
-      unsigned i_out = seed[i_block];
+      const unsigned i_out = seed[i_block];
       // cppcheck-suppress arrayIndexOutOfBounds
       // cppcheck-suppress stlOutOfBounds
-      unsigned i_in = seed[i_block + 1];
+      const unsigned i_in = seed[i_block + 1];
       char_out = (unsigned char)kmer_seq[i_out];
       char_in = (unsigned char)kmer_seq[i_in];
       fh_seed ^= (MS_TAB_31L[char_out][(k - i_out) % 31] |    // NOLINT
@@ -1315,6 +1335,53 @@ ntmsm64(const char* kmer_seq,
                   MS_TAB_33R[char_in & CP_OFF][i_in % 33]);   // NOLINT
     }
     rh_seed = swapbits3263(ror1(rh_seed));
+    fh_val[i_seed] = fh_seed;
+    rh_val[i_seed] = rh_seed;
+    unsigned i_base = i_seed * m2;
+    h_val[i_base] = fh_seed < rh_seed ? fh_seed : rh_seed;
+    for (unsigned i_hash = 1; i_hash < m2; i_hash++) {
+      h_val[i_base + i_hash] = h_val[i_base] * (i_hash ^ k * MULTISEED);
+      h_val[i_base + i_hash] ^= h_val[i_base + i_hash] >> MULTISHIFT;
+    }
+  }
+}
+
+// Multi spaced seed ntHash for sliding k-mers with multiple hashes per seed
+inline void
+ntmsm64l(const char* kmer_seq,
+         const std::vector<SpacedSeed>& seed_seq,
+         const unsigned k,
+         const unsigned m,
+         const unsigned m2,
+         uint64_t* fh_val,
+         uint64_t* rh_val,
+         uint64_t* h_val)
+{
+  unsigned char char_in;
+  unsigned char char_out;
+  for (unsigned i_seed = 0; i_seed < m; i_seed++) {
+    const SpacedSeed& seed = seed_seq[i_seed];
+    uint64_t rh_seed = swapbits033(rol1(rh_val[i_seed]));
+    uint64_t fh_seed = fh_val[i_seed];
+    for (unsigned i_block = 0; i_block < seed.size() - 1; i_block += 2) {
+      // cppcheck-suppress arrayIndexOutOfBounds
+      // cppcheck-suppress stlOutOfBounds
+      const unsigned i_in = seed[i_block];
+      // cppcheck-suppress arrayIndexOutOfBounds
+      // cppcheck-suppress stlOutOfBounds
+      const unsigned i_out = seed[i_block + 1];
+      char_out = (unsigned char)kmer_seq[i_out];
+      char_in = (unsigned char)kmer_seq[i_in];
+      fh_seed ^= (MS_TAB_31L[char_out][(k - i_out) % 31] |    // NOLINT
+                  MS_TAB_33R[char_out][(k - i_out) % 33]);    // NOLINT
+      fh_seed ^= (MS_TAB_31L[char_in][(k - i_in) % 31] |      // NOLINT
+                  MS_TAB_33R[char_in][(k - i_in) % 33]);      // NOLINT
+      rh_seed ^= (MS_TAB_31L[char_out & CP_OFF][i_out % 31] | // NOLINT
+                  MS_TAB_33R[char_out & CP_OFF][i_out % 33]); // NOLINT
+      rh_seed ^= (MS_TAB_31L[char_in & CP_OFF][i_in % 31] |   // NOLINT
+                  MS_TAB_33R[char_in & CP_OFF][i_in % 33]);   // NOLINT
+    }
+    fh_seed = swapbits3263(ror1(fh_seed));
     fh_val[i_seed] = fh_seed;
     rh_val[i_seed] = rh_seed;
     unsigned i_base = i_seed * m2;
@@ -1379,6 +1446,12 @@ public:
    */
   bool roll();
 
+  /**
+   * Like the roll() function, but advance backwards.
+   * @return true on success and false otherwise
+   */
+  bool roll_back();
+
   void sub(const std::vector<unsigned>& positions,
            const std::vector<unsigned char>& new_bases);
 
@@ -1441,10 +1514,17 @@ public:
              size_t pos = 0);
 
   /**
-   * Calculate the next hash value.
+   * Calculate the next hash value. Refer to \ref NtHash::roll() for more
+   * information.
    * @return true on success and false otherwise
    */
   bool roll();
+
+  /**
+   * Like the roll() function, but advance backwards.
+   * @return true on success and false otherwise
+   */
+  bool roll_back();
 
   const uint64_t* hashes() const { return nthash.hashes(); }
 
@@ -1646,13 +1726,33 @@ NtHash::sub(const std::vector<unsigned>& positions,
       return false;                                                            \
     }                                                                          \
     if (SEED_TAB[(unsigned char)(MEMBER_PREFIX seq[MEMBER_PREFIX pos +         \
-                                                   MEMBER_PREFIX k - 1])] ==   \
+                                                   MEMBER_PREFIX k])] ==       \
         SEED_N) {                                                              \
       MEMBER_PREFIX pos += MEMBER_PREFIX k;                                    \
       return init();                                                           \
     }                                                                          \
     (NTHASH_CALL);                                                             \
     ++MEMBER_PREFIX pos;                                                       \
+    return true;                                                               \
+  }
+
+// NOLINTNEXTLINE
+#define BTLLIB_NTHASH_ROLL_BACK(CLASS, NTHASH_CALL, MEMBER_PREFIX)             \
+  inline bool CLASS::roll_back()                                               \
+  {                                                                            \
+    if (!MEMBER_PREFIX initialized) {                                          \
+      return init();                                                           \
+    }                                                                          \
+    if (MEMBER_PREFIX pos <= 0) {                                              \
+      return false;                                                            \
+    }                                                                          \
+    if (SEED_TAB[(unsigned char)(MEMBER_PREFIX seq[MEMBER_PREFIX pos - 1])] == \
+        SEED_N) {                                                              \
+      MEMBER_PREFIX pos += MEMBER_PREFIX k;                                    \
+      return init();                                                           \
+    }                                                                          \
+    (NTHASH_CALL);                                                             \
+    --MEMBER_PREFIX pos;                                                       \
     return true;                                                               \
   }
 
@@ -1672,6 +1772,14 @@ BTLLIB_NTHASH_ROLL(NtHash,
                           forward_hash,
                           reverse_hash,
                           hashes_vector.data()), )
+BTLLIB_NTHASH_ROLL_BACK(NtHash,
+                        ntmc64l(seq[pos + k - 1],
+                                seq[pos - 1],
+                                k,
+                                hash_num,
+                                forward_hash,
+                                reverse_hash,
+                                hashes_vector.data()), )
 
 BTLLIB_NTHASH_INIT(SeedNtHash,
                    ntmsm64(nthash.seq + nthash.pos,
@@ -1687,8 +1795,6 @@ BTLLIB_NTHASH_INIT(SeedNtHash,
 BTLLIB_NTHASH_ROLL(SeedNtHash,
                    ntmsm64(nthash.seq + nthash.pos,
                            blocks,
-                           nthash.seq[nthash.pos - 1],
-                           nthash.seq[nthash.pos - 1 + nthash.k],
                            nthash.k,
                            blocks.size(),
                            hash_num_per_seed,
@@ -1696,9 +1802,20 @@ BTLLIB_NTHASH_ROLL(SeedNtHash,
                            reverse_hash,
                            nthash.hashes_vector.data()),
                    nthash.)
+BTLLIB_NTHASH_ROLL_BACK(SeedNtHash,
+                        ntmsm64l(nthash.seq + nthash.pos - 1,
+                                 blocks,
+                                 nthash.k,
+                                 blocks.size(),
+                                 hash_num_per_seed,
+                                 forward_hash,
+                                 reverse_hash,
+                                 nthash.hashes_vector.data()),
+                        nthash.)
 
 #undef BTLLIB_NTHASH_INIT
 #undef BTLLIB_NTHASH_ROLL
+#undef BTLLIB_NTHASH_ROLL_BACK
 
 } // namespace btllib
 

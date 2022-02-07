@@ -40,6 +40,10 @@ public class SeedNtHash {
     return btllibJNI.SeedNtHash_roll(swigCPtr, this);
   }
 
+  public boolean roll_back() {
+    return btllibJNI.SeedNtHash_roll_back(swigCPtr, this);
+  }
+
   public SWIGTYPE_p_unsigned_long_long hashes() {
     long cPtr = btllibJNI.SeedNtHash_hashes(swigCPtr, this);
     return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_long_long(cPtr, false);

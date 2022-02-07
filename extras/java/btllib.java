@@ -547,6 +547,10 @@ public class btllib {
     btllibJNI.ntmc64__SWIG_2(char_out, char_in, k, m, SWIGTYPE_p_unsigned_long_long.getCPtr(fh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(rh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
   }
 
+  public static void ntmc64l(short char_out, short char_in, long k, long m, SWIGTYPE_p_unsigned_long_long fh_val, SWIGTYPE_p_unsigned_long_long rh_val, SWIGTYPE_p_unsigned_long_long h_val) {
+    btllibJNI.ntmc64l(char_out, char_in, k, m, SWIGTYPE_p_unsigned_long_long.getCPtr(fh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(rh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
+  }
+
   public static boolean ntc64(String kmer_seq, long k, SWIGTYPE_p_unsigned_long_long h_val, SWIGTYPE_p_unsigned_int loc_n) {
     return btllibJNI.ntc64__SWIG_4(kmer_seq, k, SWIGTYPE_p_unsigned_long_long.getCPtr(h_val), SWIGTYPE_p_unsigned_int.getCPtr(loc_n));
   }
@@ -599,8 +603,12 @@ public class btllib {
     return btllibJNI.ntmsm64__SWIG_0(kmer_seq, VectorSpacedSeed.getCPtr(seed_seq), seed_seq, k, m, m2, SWIGTYPE_p_unsigned_long_long.getCPtr(fh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(rh_val), SWIGTYPE_p_unsigned_int.getCPtr(loc_n), SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
   }
 
-  public static void ntmsm64(String kmer_seq, VectorSpacedSeed seed_seq, short char_out, short char_in, long k, long m, long m2, SWIGTYPE_p_unsigned_long_long fh_val, SWIGTYPE_p_unsigned_long_long rh_val, SWIGTYPE_p_unsigned_long_long h_val) {
-    btllibJNI.ntmsm64__SWIG_1(kmer_seq, VectorSpacedSeed.getCPtr(seed_seq), seed_seq, char_out, char_in, k, m, m2, SWIGTYPE_p_unsigned_long_long.getCPtr(fh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(rh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
+  public static void ntmsm64(String kmer_seq, VectorSpacedSeed seed_seq, long k, long m, long m2, SWIGTYPE_p_unsigned_long_long fh_val, SWIGTYPE_p_unsigned_long_long rh_val, SWIGTYPE_p_unsigned_long_long h_val) {
+    btllibJNI.ntmsm64__SWIG_1(kmer_seq, VectorSpacedSeed.getCPtr(seed_seq), seed_seq, k, m, m2, SWIGTYPE_p_unsigned_long_long.getCPtr(fh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(rh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
+  }
+
+  public static void ntmsm64l(String kmer_seq, VectorSpacedSeed seed_seq, long k, long m, long m2, SWIGTYPE_p_unsigned_long_long fh_val, SWIGTYPE_p_unsigned_long_long rh_val, SWIGTYPE_p_unsigned_long_long h_val) {
+    btllibJNI.ntmsm64l(kmer_seq, VectorSpacedSeed.getCPtr(seed_seq), seed_seq, k, m, m2, SWIGTYPE_p_unsigned_long_long.getCPtr(fh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(rh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
   }
 
   public static VectorSpacedSeed parse_seeds(VectorString seed_strings) {

@@ -40,6 +40,10 @@ public class NtHash {
     return btllibJNI.NtHash_roll(swigCPtr, this);
   }
 
+  public boolean roll_back() {
+    return btllibJNI.NtHash_roll_back(swigCPtr, this);
+  }
+
   public void sub(VectorUnsigned positions, SWIGTYPE_p_std__vectorT_unsigned_char_t new_bases) {
     btllibJNI.NtHash_sub(swigCPtr, this, VectorUnsigned.getCPtr(positions), positions, SWIGTYPE_p_std__vectorT_unsigned_char_t.getCPtr(new_bases));
   }
