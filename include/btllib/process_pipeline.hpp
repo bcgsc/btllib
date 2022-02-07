@@ -57,13 +57,13 @@ class ProcessPipeline
 
 public:
   /**
-    * Runs a process or a pipeline of processes in the background. 
-    *
-    * @param cmd The command to execute and obtain stdin and stdout for.
-    * A number of commands can be chained and piped (with the |
-    * operator) in which case stdin of the first command stdout
-    * of the last command are available.
-    */
+   * Runs a process or a pipeline of processes in the background.
+   *
+   * @param cmd The command to execute and obtain stdin and stdout for.
+   * A number of commands can be chained and piped (with the |
+   * operator) in which case stdin of the first command stdout
+   * of the last command are available.
+   */
   ProcessPipeline(const std::string& cmd);
   ~ProcessPipeline() { end(); }
 
