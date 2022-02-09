@@ -102,4 +102,5 @@ swig -python -py3 -fastproxy -fastdispatch -builtin -c++ -Iinclude btllib.i
 rm -f include
 
 # The following line is necessary because SWIG produces inconsistent code that cannot be compiled on all platforms. On some platforms, uint64_t is unsigned long int and unsigned long long int on others.
-sed -i 's~unsigned long long~uint64_t~g' btllib_wrap.cxx
+sed -i'.tmp' 's~unsigned long long~uint64_t~g' btllib_wrap.cxx
+rm -f btllib_wrap.cxx.tmp
