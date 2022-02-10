@@ -13,3 +13,5 @@ ninja build-sdsl format wrap tidycheck cppcheck
 ninja test
 ninja sanitize-undefined
 ninja docs
+./compile-wrappers
+ninja test-wrappers
