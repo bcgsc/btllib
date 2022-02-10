@@ -36,8 +36,8 @@ public class NtHash {
     }
   }
 
-  public NtHash(NtHash arg0) {
-    this(btllibJNI.new_NtHash__SWIG_0(NtHash.getCPtr(arg0), arg0), true);
+  public NtHash(NtHash nthash) {
+    this(btllibJNI.new_NtHash__SWIG_0(NtHash.getCPtr(nthash), nthash), true);
   }
 
   public boolean roll() {
@@ -106,11 +106,11 @@ public class NtHash {
   }
 
   public NtHash(String seq, long hash_num, long k, long pos) {
-    this(btllibJNI.new_NtHash__SWIG_1(seq, hash_num, k, pos), true);
+    this(btllibJNI.new_NtHash__SWIG_2(seq, hash_num, k, pos), true);
   }
 
   public NtHash(String seq, long hash_num, long k) {
-    this(btllibJNI.new_NtHash__SWIG_2(seq, hash_num, k), true);
+    this(btllibJNI.new_NtHash__SWIG_3(seq, hash_num, k), true);
   }
 
 }

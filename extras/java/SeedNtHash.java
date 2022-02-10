@@ -36,6 +36,10 @@ public class SeedNtHash {
     }
   }
 
+  public SeedNtHash(SeedNtHash seed_nthash) {
+    this(btllibJNI.new_SeedNtHash__SWIG_0(SeedNtHash.getCPtr(seed_nthash), seed_nthash), true);
+  }
+
   public boolean roll() {
     return btllibJNI.SeedNtHash_roll(swigCPtr, this);
   }
@@ -96,11 +100,11 @@ public class SeedNtHash {
   }
 
   public SeedNtHash(String seq, VectorSpacedSeed seeds, long hash_num_per_seed, long k, long pos) {
-    this(btllibJNI.new_SeedNtHash__SWIG_0(seq, VectorSpacedSeed.getCPtr(seeds), seeds, hash_num_per_seed, k, pos), true);
+    this(btllibJNI.new_SeedNtHash__SWIG_2(seq, VectorSpacedSeed.getCPtr(seeds), seeds, hash_num_per_seed, k, pos), true);
   }
 
   public SeedNtHash(String seq, VectorSpacedSeed seeds, long hash_num_per_seed, long k) {
-    this(btllibJNI.new_SeedNtHash__SWIG_1(seq, VectorSpacedSeed.getCPtr(seeds), seeds, hash_num_per_seed, k), true);
+    this(btllibJNI.new_SeedNtHash__SWIG_3(seq, VectorSpacedSeed.getCPtr(seeds), seeds, hash_num_per_seed, k), true);
   }
 
 }

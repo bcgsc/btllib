@@ -484,9 +484,10 @@ public class btllibJNI {
   public final static native long NtHash_get_k(long jarg1, NtHash jarg1_);
   public final static native java.math.BigInteger NtHash_get_forward_hash(long jarg1, NtHash jarg1_);
   public final static native java.math.BigInteger NtHash_get_reverse_hash(long jarg1, NtHash jarg1_);
-  public final static native long new_NtHash__SWIG_1(String jarg1, long jarg2, long jarg3, long jarg4);
-  public final static native long new_NtHash__SWIG_2(String jarg1, long jarg2, long jarg3);
+  public final static native long new_NtHash__SWIG_2(String jarg1, long jarg2, long jarg3, long jarg4);
+  public final static native long new_NtHash__SWIG_3(String jarg1, long jarg2, long jarg3);
   public final static native void delete_NtHash(long jarg1);
+  public final static native long new_SeedNtHash__SWIG_0(long jarg1, SeedNtHash jarg1_);
   public final static native boolean SeedNtHash_roll(long jarg1, SeedNtHash jarg1_);
   public final static native boolean SeedNtHash_roll_back(long jarg1, SeedNtHash jarg1_);
   public final static native boolean SeedNtHash_peek__SWIG_0(long jarg1, SeedNtHash jarg1_);
@@ -501,8 +502,8 @@ public class btllibJNI {
   public final static native long SeedNtHash_get_k(long jarg1, SeedNtHash jarg1_);
   public final static native long SeedNtHash_get_forward_hash(long jarg1, SeedNtHash jarg1_);
   public final static native long SeedNtHash_get_reverse_hash(long jarg1, SeedNtHash jarg1_);
-  public final static native long new_SeedNtHash__SWIG_0(String jarg1, long jarg2, VectorSpacedSeed jarg2_, long jarg3, long jarg4, long jarg5);
-  public final static native long new_SeedNtHash__SWIG_1(String jarg1, long jarg2, VectorSpacedSeed jarg2_, long jarg3, long jarg4);
+  public final static native long new_SeedNtHash__SWIG_2(String jarg1, long jarg2, VectorSpacedSeed jarg2_, long jarg3, long jarg4, long jarg5);
+  public final static native long new_SeedNtHash__SWIG_3(String jarg1, long jarg2, VectorSpacedSeed jarg2_, long jarg3, long jarg4);
   public final static native void delete_SeedNtHash(long jarg1);
   public final static native long parse_blocks__SWIG_1(long jarg1, VectorSpacedSeed jarg1_, long jarg2);
 }

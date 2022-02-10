@@ -1484,7 +1484,7 @@ public:
    */
   NtHash(const std::string& seq, unsigned hash_num, unsigned k, size_t pos = 0);
 
-  NtHash(const NtHash&) = delete;
+  NtHash(const NtHash& nthash);
   NtHash(NtHash&&) = default;
 
   /**
@@ -1619,6 +1619,9 @@ public:
              unsigned k,
              size_t pos = 0);
 
+  SeedNtHash(const SeedNtHash& seed_nthash);
+  SeedNtHash(SeedNtHash&&) = default;
+
   /**
    * Calculate the next hash value. Refer to \ref NtHash::roll() for more
    * information.
@@ -1718,6 +1721,21 @@ inline NtHash::NtHash(const std::string& seq,
   : NtHash(seq.c_str(), seq.size(), hash_num, k, pos)
 {}
 
+inline NtHash::NtHash(const NtHash& nthash)
+  : seq(nthash.seq)
+  , seq_len(nthash.seq_len)
+  , hash_num(nthash.hash_num)
+  , k(nthash.k)
+  , pos(nthash.pos)
+  , initialized(nthash.initialized)
+  , hashes_array(new uint64_t[hash_num])
+  , forward_hash(nthash.forward_hash)
+  , reverse_hash(nthash.reverse_hash)
+{
+  std::memcpy(
+    hashes_array.get(), nthash.hashes_array.get(), hash_num * sizeof(uint64_t));
+}
+
 inline SeedNtHash::SeedNtHash(const char* seq,
                               size_t seq_len,
                               const std::vector<SpacedSeed>& seeds,
@@ -1767,6 +1785,21 @@ inline SeedNtHash::SeedNtHash(const std::string& seq,
   , forward_hash(new uint64_t[seeds.size()])
   , reverse_hash(new uint64_t[seeds.size()])
 {}
+
+inline SeedNtHash::SeedNtHash(const SeedNtHash& seed_nthash)
+  : nthash(seed_nthash.nthash)
+  , hash_num_per_seed(seed_nthash.hash_num_per_seed)
+  , blocks(seed_nthash.blocks)
+  , forward_hash(new uint64_t[seed_nthash.blocks.size()])
+  , reverse_hash(new uint64_t[seed_nthash.blocks.size()])
+{
+  std::memcpy(forward_hash.get(),
+              seed_nthash.forward_hash.get(),
+              seed_nthash.blocks.size() * sizeof(uint64_t));
+  std::memcpy(reverse_hash.get(),
+              seed_nthash.reverse_hash.get(),
+              seed_nthash.blocks.size() * sizeof(uint64_t));
+}
 
 inline std::vector<SpacedSeed>
 parse_seeds(const std::vector<std::string>& seed_strings)
