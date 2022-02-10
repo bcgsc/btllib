@@ -44,6 +44,22 @@ public class SeedNtHash {
     return btllibJNI.SeedNtHash_roll_back(swigCPtr, this);
   }
 
+  public boolean peek() {
+    return btllibJNI.SeedNtHash_peek__SWIG_0(swigCPtr, this);
+  }
+
+  public boolean peek_back() {
+    return btllibJNI.SeedNtHash_peek_back__SWIG_0(swigCPtr, this);
+  }
+
+  public boolean peek(char char_in) {
+    return btllibJNI.SeedNtHash_peek__SWIG_1(swigCPtr, this, char_in);
+  }
+
+  public boolean peek_back(char char_in) {
+    return btllibJNI.SeedNtHash_peek_back__SWIG_1(swigCPtr, this, char_in);
+  }
+
   public SWIGTYPE_p_unsigned_long_long hashes() {
     long cPtr = btllibJNI.SeedNtHash_hashes(swigCPtr, this);
     return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_long_long(cPtr, false);

@@ -36,12 +36,40 @@ public class NtHash {
     }
   }
 
+  public NtHash(NtHash arg0) {
+    this(btllibJNI.new_NtHash__SWIG_0(NtHash.getCPtr(arg0), arg0), true);
+  }
+
   public boolean roll() {
-    return btllibJNI.NtHash_roll(swigCPtr, this);
+    return btllibJNI.NtHash_roll__SWIG_0(swigCPtr, this);
   }
 
   public boolean roll_back() {
-    return btllibJNI.NtHash_roll_back(swigCPtr, this);
+    return btllibJNI.NtHash_roll_back__SWIG_0(swigCPtr, this);
+  }
+
+  public boolean roll(char char_in) {
+    return btllibJNI.NtHash_roll__SWIG_1(swigCPtr, this, char_in);
+  }
+
+  public boolean roll_back(char char_in) {
+    return btllibJNI.NtHash_roll_back__SWIG_1(swigCPtr, this, char_in);
+  }
+
+  public boolean peek() {
+    return btllibJNI.NtHash_peek__SWIG_0(swigCPtr, this);
+  }
+
+  public boolean peek_back() {
+    return btllibJNI.NtHash_peek_back__SWIG_0(swigCPtr, this);
+  }
+
+  public boolean peek(char char_in) {
+    return btllibJNI.NtHash_peek__SWIG_1(swigCPtr, this, char_in);
+  }
+
+  public boolean peek_back(char char_in) {
+    return btllibJNI.NtHash_peek_back__SWIG_1(swigCPtr, this, char_in);
   }
 
   public void sub(VectorUnsigned positions, SWIGTYPE_p_std__vectorT_unsigned_char_t new_bases) {
@@ -78,11 +106,11 @@ public class NtHash {
   }
 
   public NtHash(String seq, long hash_num, long k, long pos) {
-    this(btllibJNI.new_NtHash__SWIG_0(seq, hash_num, k, pos), true);
+    this(btllibJNI.new_NtHash__SWIG_1(seq, hash_num, k, pos), true);
   }
 
   public NtHash(String seq, long hash_num, long k) {
-    this(btllibJNI.new_NtHash__SWIG_1(seq, hash_num, k), true);
+    this(btllibJNI.new_NtHash__SWIG_2(seq, hash_num, k), true);
   }
 
 }

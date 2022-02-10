@@ -317,6 +317,14 @@ public class btllib {
     return btllibJNI.NTHASH_FN_NAME_get();
   }
 
+  public static int getNTHASH_HASH_NUM_MAX() {
+    return btllibJNI.NTHASH_HASH_NUM_MAX_get();
+  }
+
+  public static int getNTHASH_K_MAX() {
+    return btllibJNI.NTHASH_K_MAX_get();
+  }
+
   public static short getCP_OFF() {
     return btllibJNI.CP_OFF_get();
   }
@@ -608,7 +616,15 @@ public class btllib {
   }
 
   public static void ntmsm64l(String kmer_seq, VectorSpacedSeed seed_seq, long k, long m, long m2, SWIGTYPE_p_unsigned_long_long fh_val, SWIGTYPE_p_unsigned_long_long rh_val, SWIGTYPE_p_unsigned_long_long h_val) {
-    btllibJNI.ntmsm64l(kmer_seq, VectorSpacedSeed.getCPtr(seed_seq), seed_seq, k, m, m2, SWIGTYPE_p_unsigned_long_long.getCPtr(fh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(rh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
+    btllibJNI.ntmsm64l__SWIG_0(kmer_seq, VectorSpacedSeed.getCPtr(seed_seq), seed_seq, k, m, m2, SWIGTYPE_p_unsigned_long_long.getCPtr(fh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(rh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
+  }
+
+  public static void ntmsm64(String kmer_seq, char in, VectorSpacedSeed seed_seq, long k, long m, long m2, SWIGTYPE_p_unsigned_long_long fh_val, SWIGTYPE_p_unsigned_long_long rh_val, SWIGTYPE_p_unsigned_long_long h_val) {
+    btllibJNI.ntmsm64__SWIG_2(kmer_seq, in, VectorSpacedSeed.getCPtr(seed_seq), seed_seq, k, m, m2, SWIGTYPE_p_unsigned_long_long.getCPtr(fh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(rh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
+  }
+
+  public static void ntmsm64l(String kmer_seq, char in, VectorSpacedSeed seed_seq, long k, long m, long m2, SWIGTYPE_p_unsigned_long_long fh_val, SWIGTYPE_p_unsigned_long_long rh_val, SWIGTYPE_p_unsigned_long_long h_val) {
+    btllibJNI.ntmsm64l__SWIG_1(kmer_seq, in, VectorSpacedSeed.getCPtr(seed_seq), seed_seq, k, m, m2, SWIGTYPE_p_unsigned_long_long.getCPtr(fh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(rh_val), SWIGTYPE_p_unsigned_long_long.getCPtr(h_val));
   }
 
   public static VectorSpacedSeed parse_seeds(VectorString seed_strings) {

@@ -6794,7 +6794,7 @@ SWIG_From_unsigned_SS_char  (unsigned char value)
   return SWIG_From_unsigned_SS_long  (value);
 }
 
-SWIGINTERN btllib::NtHash *new_btllib_NtHash__SWIG_0(std::string seq,unsigned int hash_num,unsigned int k,size_t pos=0){
+SWIGINTERN btllib::NtHash *new_btllib_NtHash__SWIG_1(std::string seq,unsigned int hash_num,unsigned int k,size_t pos=0){
     std::unique_lock<std::mutex> lock(nthash_mutex);
     nthash_strings[++nthash_last_id] = std::move(seq);
     auto *nthash = new btllib::NtHash(nthash_strings[nthash_last_id], hash_num, k);
@@ -32589,6 +32589,38 @@ SWIGINTERN PyObject *Swig_var_NTHASH_FN_NAME_get(void) {
 }
 
 
+SWIGINTERN int Swig_var_NTHASH_HASH_NUM_MAX_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable NTHASH_HASH_NUM_MAX is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_NTHASH_HASH_NUM_MAX_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_int(static_cast< int >(btllib::NTHASH_HASH_NUM_MAX));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_NTHASH_K_MAX_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable NTHASH_K_MAX is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_NTHASH_K_MAX_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_int(static_cast< int >(btllib::NTHASH_K_MAX));
+  return pyobj;
+}
+
+
 SWIGINTERN int Swig_var_CP_OFF_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable CP_OFF is read-only.");
   return 1;
@@ -35612,35 +35644,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ntmsm64(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[10] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ntmsm64", 0, 9, argv))) SWIG_fail;
-  --argc;
-  if (argc == 8) {
-    PyObject *retobj = _wrap_ntmsm64__SWIG_1(self, argc, argv);
-    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
-    SWIG_fail;
-  }
-  if (argc == 9) {
-    PyObject *retobj = _wrap_ntmsm64__SWIG_0(self, argc, argv);
-    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
-    SWIG_fail;
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntmsm64'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,unsigned int &,uint64_t *)\n"
-    "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_ntmsm64l(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_ntmsm64l__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
   std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
@@ -35666,9 +35670,8 @@ SWIGINTERN PyObject *_wrap_ntmsm64l(PyObject *self, PyObject *args) {
   int res7 = 0 ;
   void *argp8 = 0 ;
   int res8 = 0 ;
-  PyObject *swig_obj[8] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "ntmsm64l", 8, 8, swig_obj)) SWIG_fail;
+  if ((nobjs < 8) || (nobjs > 8)) SWIG_fail;
   res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ntmsm64l" "', argument " "1"" of type '" "char const *""'");
@@ -35724,6 +35727,284 @@ fail:
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  char arg2 ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg3 = 0 ;
+  unsigned int arg4 ;
+  unsigned int arg5 ;
+  unsigned int arg6 ;
+  uint64_t *arg7 = (uint64_t *) 0 ;
+  uint64_t *arg8 = (uint64_t *) 0 ;
+  uint64_t *arg9 = (uint64_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  unsigned int val6 ;
+  int ecode6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  void *argp9 = 0 ;
+  int res9 = 0 ;
+  
+  if ((nobjs < 9) || (nobjs > 9)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ntmsm64" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ntmsm64" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ntmsm64" "', argument " "3"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "3"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ntmsm64" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ntmsm64" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  ecode6 = SWIG_AsVal_unsigned_SS_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "ntmsm64" "', argument " "6"" of type '" "unsigned int""'");
+  } 
+  arg6 = static_cast< unsigned int >(val6);
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ntmsm64" "', argument " "7"" of type '" "uint64_t *""'"); 
+  }
+  arg7 = reinterpret_cast< uint64_t * >(argp7);
+  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64" "', argument " "8"" of type '" "uint64_t *""'"); 
+  }
+  arg8 = reinterpret_cast< uint64_t * >(argp8);
+  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res9)) {
+    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "ntmsm64" "', argument " "9"" of type '" "uint64_t *""'"); 
+  }
+  arg9 = reinterpret_cast< uint64_t * >(argp9);
+  btllib::ntmsm64((char const *)arg1,arg2,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg3,arg4,arg5,arg6,arg7,arg8,arg9);
+  resultobj = SWIG_Py_Void();
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[10] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ntmsm64", 0, 9, argv))) SWIG_fail;
+  --argc;
+  if (argc == 8) {
+    PyObject *retobj = _wrap_ntmsm64__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 9) {
+    int _v = 0;
+    {
+      {
+        int res = SWIG_AsVal_char(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_2;
+    {
+      int res = swig::asptr(argv[2], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_2;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_int(argv[5], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_2;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[7], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_2;
+    PyObject *retobj = _wrap_ntmsm64__SWIG_2(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+check_2:
+  
+  if (argc == 9) {
+    PyObject *retobj = _wrap_ntmsm64__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntmsm64'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,unsigned int &,uint64_t *)\n"
+    "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *)\n"
+    "    btllib::ntmsm64(char const *,char const,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64l__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  char arg2 ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg3 = 0 ;
+  unsigned int arg4 ;
+  unsigned int arg5 ;
+  unsigned int arg6 ;
+  uint64_t *arg7 = (uint64_t *) 0 ;
+  uint64_t *arg8 = (uint64_t *) 0 ;
+  uint64_t *arg9 = (uint64_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  unsigned int val6 ;
+  int ecode6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  void *argp9 = 0 ;
+  int res9 = 0 ;
+  
+  if ((nobjs < 9) || (nobjs > 9)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ntmsm64l" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ntmsm64l" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ntmsm64l" "', argument " "3"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64l" "', argument " "3"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ntmsm64l" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ntmsm64l" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  ecode6 = SWIG_AsVal_unsigned_SS_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "ntmsm64l" "', argument " "6"" of type '" "unsigned int""'");
+  } 
+  arg6 = static_cast< unsigned int >(val6);
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ntmsm64l" "', argument " "7"" of type '" "uint64_t *""'"); 
+  }
+  arg7 = reinterpret_cast< uint64_t * >(argp7);
+  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64l" "', argument " "8"" of type '" "uint64_t *""'"); 
+  }
+  arg8 = reinterpret_cast< uint64_t * >(argp8);
+  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res9)) {
+    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "ntmsm64l" "', argument " "9"" of type '" "uint64_t *""'"); 
+  }
+  arg9 = reinterpret_cast< uint64_t * >(argp9);
+  btllib::ntmsm64l((char const *)arg1,arg2,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg3,arg4,arg5,arg6,arg7,arg8,arg9);
+  resultobj = SWIG_Py_Void();
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64l(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[10] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ntmsm64l", 0, 9, argv))) SWIG_fail;
+  --argc;
+  if (argc == 8) {
+    PyObject *retobj = _wrap_ntmsm64l__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 9) {
+    PyObject *retobj = _wrap_ntmsm64l__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntmsm64l'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::ntmsm64l(char const *,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *)\n"
+    "    btllib::ntmsm64l(char const *,char const,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *)\n");
+  return 0;
 }
 
 
@@ -35785,15 +36066,38 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_NtHash_roll(PyObject *self, PyObject *args) {
+SWIGINTERN int _wrap_new_NtHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  btllib::NtHash *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_btllib__NtHash,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NtHash" "', argument " "1"" of type '" "btllib::NtHash &&""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NtHash" "', argument " "1"" of type '" "btllib::NtHash &&""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (btllib::NtHash *)new btllib::NtHash((btllib::NtHash &&)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_roll__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
   btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "NtHash_roll", 0, 0, 0)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_roll" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
@@ -35807,15 +36111,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_NtHash_roll_back(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_NtHash_roll_back__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
   btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "NtHash_roll_back", 0, 0, 0)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_roll_back" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
@@ -35826,6 +36129,276 @@ SWIGINTERN PyObject *_wrap_NtHash_roll_back(PyObject *self, PyObject *args) {
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_roll__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_roll" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NtHash_roll" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  result = (bool)(arg1)->roll(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_roll(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "NtHash_roll", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 1) {
+    PyObject *retobj = _wrap_NtHash_roll__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    PyObject *retobj = _wrap_NtHash_roll__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NtHash_roll'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::NtHash::roll()\n"
+    "    btllib::NtHash::roll(char)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_roll_back__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_roll_back" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NtHash_roll_back" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  result = (bool)(arg1)->roll_back(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_roll_back(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "NtHash_roll_back", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 1) {
+    PyObject *retobj = _wrap_NtHash_roll_back__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    PyObject *retobj = _wrap_NtHash_roll_back__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NtHash_roll_back'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::NtHash::roll_back()\n"
+    "    btllib::NtHash::roll_back(char)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_peek__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_peek" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (bool)(arg1)->peek();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_peek_back__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_peek_back" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (bool)(arg1)->peek_back();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_peek__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_peek" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NtHash_peek" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  result = (bool)(arg1)->peek(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_peek(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "NtHash_peek", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 1) {
+    PyObject *retobj = _wrap_NtHash_peek__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    PyObject *retobj = _wrap_NtHash_peek__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NtHash_peek'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::NtHash::peek()\n"
+    "    btllib::NtHash::peek(char)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_peek_back__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_peek_back" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NtHash_peek_back" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  result = (bool)(arg1)->peek_back(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_peek_back(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "NtHash_peek_back", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 1) {
+    PyObject *retobj = _wrap_NtHash_peek_back__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    PyObject *retobj = _wrap_NtHash_peek_back__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NtHash_peek_back'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::NtHash::peek_back()\n"
+    "    btllib::NtHash::peek_back(char)\n");
+  return 0;
 }
 
 
@@ -36035,7 +36608,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_NtHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_NtHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::string arg1 ;
   unsigned int arg2 ;
@@ -36074,7 +36647,7 @@ SWIGINTERN int _wrap_new_NtHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObje
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_NtHash" "', argument " "4"" of type '" "size_t""'");
   } 
   arg4 = static_cast< size_t >(val4);
-  result = (btllib::NtHash *)new_btllib_NtHash__SWIG_0(arg1,arg2,arg3,arg4);
+  result = (btllib::NtHash *)new_btllib_NtHash__SWIG_1(arg1,arg2,arg3,arg4);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
   return resultobj == Py_None ? -1 : 0;
 fail:
@@ -36082,7 +36655,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_NtHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_NtHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::string arg1 ;
   unsigned int arg2 ;
@@ -36113,7 +36686,7 @@ SWIGINTERN int _wrap_new_NtHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObje
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "unsigned int""'");
   } 
   arg3 = static_cast< unsigned int >(val3);
-  result = (btllib::NtHash *)new_btllib_NtHash__SWIG_0(arg1,arg2,arg3);
+  result = (btllib::NtHash *)new_btllib_NtHash__SWIG_1(arg1,arg2,arg3);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
   return resultobj == Py_None ? -1 : 0;
 fail:
@@ -36130,13 +36703,18 @@ SWIGINTERN int _wrap_new_NtHash(PyObject *self, PyObject *args, PyObject *kwargs
   if (!SWIG_Python_CheckNoKeywords(kwargs, "new_NtHash")) SWIG_fail;
   if (!(argc = SWIG_Python_UnpackTuple(args, "new_NtHash", 0, 4, argv))) SWIG_fail;
   --argc;
+  if (argc == 1) {
+    int retval = _wrap_new_NtHash__SWIG_0(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
   if (argc == 3) {
-    int retval = _wrap_new_NtHash__SWIG_1(self, argc, argv);
+    int retval = _wrap_new_NtHash__SWIG_2(self, argc, argv);
     if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
     SWIG_fail;
   }
   if (argc == 4) {
-    int retval = _wrap_new_NtHash__SWIG_0(self, argc, argv);
+    int retval = _wrap_new_NtHash__SWIG_1(self, argc, argv);
     if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
     SWIG_fail;
   }
@@ -36144,6 +36722,7 @@ SWIGINTERN int _wrap_new_NtHash(PyObject *self, PyObject *args, PyObject *kwargs
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_NtHash'.\n"
     "  Possible C/C++ prototypes are:\n"
+    "    btllib::NtHash::NtHash(btllib::NtHash &&)\n"
     "    btllib::NtHash::NtHash(std::string,unsigned int,unsigned int,size_t)\n"
     "    btllib::NtHash::NtHash(std::string,unsigned int,unsigned int)\n");
   return -1;
@@ -36214,6 +36793,162 @@ SWIGINTERN PyObject *_wrap_SeedNtHash_roll_back(PyObject *self, PyObject *args) 
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_peek__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_peek" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (bool)(arg1)->peek();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_peek_back__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_peek_back" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (bool)(arg1)->peek_back();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_peek__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_peek" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SeedNtHash_peek" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  result = (bool)(arg1)->peek(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_peek(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "SeedNtHash_peek", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 1) {
+    PyObject *retobj = _wrap_SeedNtHash_peek__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    PyObject *retobj = _wrap_SeedNtHash_peek__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'SeedNtHash_peek'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::SeedNtHash::peek()\n"
+    "    btllib::SeedNtHash::peek(char)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_peek_back__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_peek_back" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SeedNtHash_peek_back" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  result = (bool)(arg1)->peek_back(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_peek_back(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "SeedNtHash_peek_back", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 1) {
+    PyObject *retobj = _wrap_SeedNtHash_peek_back__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    PyObject *retobj = _wrap_SeedNtHash_peek_back__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'SeedNtHash_peek_back'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::SeedNtHash::peek_back()\n"
+    "    btllib::SeedNtHash::peek_back(char)\n");
+  return 0;
 }
 
 
@@ -43718,8 +44453,10 @@ SwigPyBuiltin__btllib__NtHash_richcompare(PyObject *self, PyObject *other, int o
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__NtHash_methods[] = {
-  { "roll", _wrap_NtHash_roll, METH_NOARGS, "" },
-  { "roll_back", _wrap_NtHash_roll_back, METH_NOARGS, "" },
+  { "roll", _wrap_NtHash_roll, METH_VARARGS, "" },
+  { "roll_back", _wrap_NtHash_roll_back, METH_VARARGS, "" },
+  { "peek", _wrap_NtHash_peek, METH_VARARGS, "" },
+  { "peek_back", _wrap_NtHash_peek_back, METH_VARARGS, "" },
   { "sub", _wrap_NtHash_sub, METH_VARARGS, "" },
   { "hashes", _wrap_NtHash_hashes, METH_NOARGS, "" },
   { "get_pos", _wrap_NtHash_get_pos, METH_NOARGS, "" },
@@ -43942,6 +44679,8 @@ SwigPyBuiltin__btllib__SeedNtHash_richcompare(PyObject *self, PyObject *other, i
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedNtHash_methods[] = {
   { "roll", _wrap_SeedNtHash_roll, METH_NOARGS, "" },
   { "roll_back", _wrap_SeedNtHash_roll_back, METH_NOARGS, "" },
+  { "peek", _wrap_SeedNtHash_peek, METH_VARARGS, "" },
+  { "peek_back", _wrap_SeedNtHash_peek_back, METH_VARARGS, "" },
   { "hashes", _wrap_SeedNtHash_hashes, METH_NOARGS, "" },
   { "get_pos", _wrap_SeedNtHash_get_pos, METH_NOARGS, "" },
   { "forward", _wrap_SeedNtHash_forward, METH_NOARGS, "" },
@@ -44311,11 +45050,11 @@ static swig_type_info _swigt__p_streamoff = {"_p_streamoff", "std::basic_ostream
 static swig_type_info _swigt__p_streampos = {"_p_streampos", "std::basic_ostream< char >::pos_type *|std::basic_istream< char >::pos_type *|streampos *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)&SwigPyBuiltin__swig__SwigPyIterator_clientdata, 0};
 static swig_type_info _swigt__p_traits_type = {"_p_traits_type", "traits_type *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *|uint_least8_t *|uint_fast8_t *|uint8_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *|btllib::NTHASH_HASH_NUM_TYPE *|uint_least8_t *|uint_fast8_t *|uint8_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "uintptr_t *|uint_least32_t *|uint_fast32_t *|uint32_t *|unsigned int *|uint_fast16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_long = {"_p_unsigned_long", "btllib::PipelineId *|unsigned long *|btllib::PipeId *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "uint_least64_t *|uint_fast64_t *|uint64_t *|uint64_t *|uintmax_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "unsigned short *|uint_least16_t *|uint16_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "btllib::NTHASH_K_TYPE *|unsigned short *|uint_least16_t *|uint16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
@@ -46397,6 +47136,12 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "NTHASH_FN_NAME", Swig_var_NTHASH_FN_NAME_get, Swig_var_NTHASH_FN_NAME_set);
   PyDict_SetItemString(md, "NTHASH_FN_NAME", PyObject_GetAttrString(globals, "NTHASH_FN_NAME"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "NTHASH_FN_NAME");
+  SWIG_addvarlink(globals, "NTHASH_HASH_NUM_MAX", Swig_var_NTHASH_HASH_NUM_MAX_get, Swig_var_NTHASH_HASH_NUM_MAX_set);
+  PyDict_SetItemString(md, "NTHASH_HASH_NUM_MAX", PyObject_GetAttrString(globals, "NTHASH_HASH_NUM_MAX"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "NTHASH_HASH_NUM_MAX");
+  SWIG_addvarlink(globals, "NTHASH_K_MAX", Swig_var_NTHASH_K_MAX_get, Swig_var_NTHASH_K_MAX_set);
+  PyDict_SetItemString(md, "NTHASH_K_MAX", PyObject_GetAttrString(globals, "NTHASH_K_MAX"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "NTHASH_K_MAX");
   SWIG_addvarlink(globals, "CP_OFF", Swig_var_CP_OFF_get, Swig_var_CP_OFF_set);
   PyDict_SetItemString(md, "CP_OFF", PyObject_GetAttrString(globals, "CP_OFF"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "CP_OFF");
