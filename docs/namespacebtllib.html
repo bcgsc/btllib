@@ -75,6 +75,8 @@ $(function() {
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1Barrier.html">Barrier</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1BlindNtHash.html">BlindNtHash</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1BloomFilter.html">BloomFilter</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>BloomFilterInitializer</b></td></tr>
@@ -158,48 +160,72 @@ std::vector&lt; SpacedSeed &gt;&#160;</td><td class="memItemRight" valign="botto
 <tr class="memitem:a68a4d089982e2397db077576d2fd40f0"><td class="memItemLeft" align="right" valign="top"><a id="a68a4d089982e2397db077576d2fd40f0" name="a68a4d089982e2397db077576d2fd40f0"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_INIT</b> (<a class="el" href="classbtllib_1_1NtHash.html">NtHash</a>, ntmc64(seq+pos, k, hash_num, forward_hash, reverse_hash, posN, hashes_array.get()),) BTLLIB_NTHASH_ROLL(<a class="el" href="classbtllib_1_1NtHash.html">NtHash</a></td></tr>
 <tr class="separator:a68a4d089982e2397db077576d2fd40f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6583f4ab6e34efd1c959f77b5adfd7e5"><td class="memItemLeft" align="right" valign="top"><a id="a6583f4ab6e34efd1c959f77b5adfd7e5" name="a6583f4ab6e34efd1c959f77b5adfd7e5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>roll</b> ()</td></tr>
+<tr class="separator:a6583f4ab6e34efd1c959f77b5adfd7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a147aae026e1df9924a2a6dcf27c4778d"><td class="memItemLeft" align="right" valign="top"><a id="a147aae026e1df9924a2a6dcf27c4778d" name="a147aae026e1df9924a2a6dcf27c4778d"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64</b> (seq[pos], seq[pos+k], k, hash_num, forward_hash, reverse_hash, hashes_array.get())</td></tr>
 <tr class="separator:a147aae026e1df9924a2a6dcf27c4778d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0fbeaa5001fa54b7de855a3f8e01d17"><td class="memItemLeft" align="right" valign="top"><a id="af0fbeaa5001fa54b7de855a3f8e01d17" name="af0fbeaa5001fa54b7de855a3f8e01d17"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_ROLL_BACK</b> (<a class="el" href="classbtllib_1_1NtHash.html">NtHash</a>, ntmc64l(seq[pos+k - 1], seq[pos - 1], k, hash_num, forward_hash, reverse_hash, hashes_array.get()),) BTLLIB_NTHASH_PEEK(peek()</td></tr>
-<tr class="separator:af0fbeaa5001fa54b7de855a3f8e01d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadd6525fe797fb33a212f25ff4e4d7a1"><td class="memItemLeft" align="right" valign="top"><a id="aadd6525fe797fb33a212f25ff4e4d7a1" name="aadd6525fe797fb33a212f25ff4e4d7a1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_ROLL_BACK</b> (<a class="el" href="classbtllib_1_1NtHash.html">NtHash</a>, roll_back(), ntmc64l(seq[pos+k - 1], seq[pos - 1], k, hash_num, forward_hash, reverse_hash, hashes_array.get());,) BTLLIB_NTHASH_PEEK(<a class="el" href="classbtllib_1_1NtHash.html">NtHash</a></td></tr>
+<tr class="separator:aadd6525fe797fb33a212f25ff4e4d7a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd4db112c8467826ed8dffe8b30ee8b1"><td class="memItemLeft" align="right" valign="top"><a id="abd4db112c8467826ed8dffe8b30ee8b1" name="abd4db112c8467826ed8dffe8b30ee8b1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>peek</b> ()</td></tr>
+<tr class="separator:abd4db112c8467826ed8dffe8b30ee8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1ab721005416733d302d6e096728b31"><td class="memItemLeft" align="right" valign="top"><a id="ad1ab721005416733d302d6e096728b31" name="ad1ab721005416733d302d6e096728b31"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64</b> (seq[pos], seq[pos+k], k, hash_num, forward_hash_tmp, reverse_hash_tmp, hashes_array.get())</td></tr>
 <tr class="separator:ad1ab721005416733d302d6e096728b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fecfef3931d81ea619d3b1c9a706e6a"><td class="memItemLeft" align="right" valign="top"><a id="a6fecfef3931d81ea619d3b1c9a706e6a" name="a6fecfef3931d81ea619d3b1c9a706e6a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_PEEK</b> (peek(char char_in), <a class="el" href="classbtllib_1_1NtHash.html">NtHash</a>, { uint64_t forward_hash_tmp=forward_hash;uint64_t reverse_hash_tmp=reverse_hash;ntmc64(seq[pos], char_in, k, hash_num, forward_hash_tmp, reverse_hash_tmp, hashes_array.get());},) BTLLIB_NTHASH_PEEK(peek_back()</td></tr>
-<tr class="separator:a6fecfef3931d81ea619d3b1c9a706e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cfc779f6d9295d033e533e8fb316b92"><td class="memItemLeft" align="right" valign="top"><a id="a8cfc779f6d9295d033e533e8fb316b92" name="a8cfc779f6d9295d033e533e8fb316b92"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_PEEK</b> (<a class="el" href="classbtllib_1_1NtHash.html">NtHash</a>, peek(char char_in), { uint64_t forward_hash_tmp=forward_hash;uint64_t reverse_hash_tmp=reverse_hash;ntmc64(seq[pos], char_in, k, hash_num, forward_hash_tmp, reverse_hash_tmp, hashes_array.get());},) BTLLIB_NTHASH_PEEK(<a class="el" href="classbtllib_1_1NtHash.html">NtHash</a></td></tr>
+<tr class="separator:a8cfc779f6d9295d033e533e8fb316b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ed3a8169a6cb9eeadf9bad893f641ba"><td class="memItemLeft" align="right" valign="top"><a id="a8ed3a8169a6cb9eeadf9bad893f641ba" name="a8ed3a8169a6cb9eeadf9bad893f641ba"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>peek_back</b> ()</td></tr>
+<tr class="separator:a8ed3a8169a6cb9eeadf9bad893f641ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73897a779f1da543d25c3c7f6999f053"><td class="memItemLeft" align="right" valign="top"><a id="a73897a779f1da543d25c3c7f6999f053" name="a73897a779f1da543d25c3c7f6999f053"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64l</b> (seq[pos+k - 1], seq[pos - 1], k, hash_num, forward_hash_tmp, reverse_hash_tmp, hashes_array.get())</td></tr>
 <tr class="separator:a73897a779f1da543d25c3c7f6999f053"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35611644b131698ba1ed03924c7b49d8"><td class="memItemLeft" align="right" valign="top"><a id="a35611644b131698ba1ed03924c7b49d8" name="a35611644b131698ba1ed03924c7b49d8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_PEEK</b> (peek_back(char char_in), <a class="el" href="classbtllib_1_1NtHash.html">NtHash</a>, { uint64_t forward_hash_tmp=forward_hash;uint64_t reverse_hash_tmp=reverse_hash;ntmc64l(seq[pos+k - 1], char_in, k, hash_num, forward_hash_tmp, reverse_hash_tmp, hashes_array.get());},) BTLLIB_NTHASH_INIT(<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a></td></tr>
-<tr class="separator:a35611644b131698ba1ed03924c7b49d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1eb10d90b6b08fa1ae4b6f1043ad0e5"><td class="memItemLeft" align="right" valign="top"><a id="ad1eb10d90b6b08fa1ae4b6f1043ad0e5" name="ad1eb10d90b6b08fa1ae4b6f1043ad0e5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64</b> (nthash.seq+nthash.pos, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash.get(), reverse_hash.get(), posN, nthash.hashes_array.get())</td></tr>
-<tr class="separator:ad1eb10d90b6b08fa1ae4b6f1043ad0e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affb10bad25ce3436c23810729f9d5a9c"><td class="memItemLeft" align="right" valign="top"><a id="affb10bad25ce3436c23810729f9d5a9c" name="affb10bad25ce3436c23810729f9d5a9c"></a>
-nthash&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_ROLL</b> (<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>, ntmsm64(nthash.seq+nthash.pos, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash.get(), reverse_hash.get(), nthash.hashes_array.get()), nthash.) BTLLIB_NTHASH_ROLL_BACK(<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a></td></tr>
-<tr class="separator:affb10bad25ce3436c23810729f9d5a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47b2e83d33cb0e60b3421b38ff2cda07"><td class="memItemLeft" align="right" valign="top"><a id="a47b2e83d33cb0e60b3421b38ff2cda07" name="a47b2e83d33cb0e60b3421b38ff2cda07"></a>
-nthash&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64l</b> (nthash.seq+nthash.pos - 1, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash.get(), reverse_hash.get(), nthash.hashes_array.get())</td></tr>
-<tr class="separator:a47b2e83d33cb0e60b3421b38ff2cda07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c14ba306c5d120ac46fa9a908b4fe28"><td class="memItemLeft" align="right" valign="top"><a id="a1c14ba306c5d120ac46fa9a908b4fe28" name="a1c14ba306c5d120ac46fa9a908b4fe28"></a>
-nthash nthash&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_PEEK</b> (peek(), <a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>, { std::unique_ptr&lt; uint64_t[]&gt; forward_hash_tmp(new uint64_t[blocks.size()]);std::unique_ptr&lt; uint64_t[]&gt; reverse_hash_tmp(new uint64_t[blocks.size()]);std::memcpy(forward_hash_tmp.get(), forward_hash.get(), blocks.size() *sizeof(uint64_t));std::memcpy(reverse_hash_tmp.get(), reverse_hash.get(), blocks.size() *sizeof(uint64_t));ntmsm64(nthash.seq+nthash.pos, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash_tmp.get(), reverse_hash_tmp.get(), nthash.hashes_array.get());}, nthash.) BTLLIB_NTHASH_PEEK(peek(char char_in)</td></tr>
-<tr class="separator:a1c14ba306c5d120ac46fa9a908b4fe28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaee62c2c10a516f66888a7ea81ee2df"><td class="memItemLeft" align="right" valign="top"><a id="aeaee62c2c10a516f66888a7ea81ee2df" name="aeaee62c2c10a516f66888a7ea81ee2df"></a>
-nthash nthash std::unique_ptr&lt; uint64_t[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>reverse_hash_tmp</b> (new uint64_t[blocks.size()])</td></tr>
-<tr class="separator:aeaee62c2c10a516f66888a7ea81ee2df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c0ce505b8f8bb016418c2fcde6287ab"><td class="memItemLeft" align="right" valign="top"><a id="a2c0ce505b8f8bb016418c2fcde6287ab" name="a2c0ce505b8f8bb016418c2fcde6287ab"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64</b> (nthash.seq+nthash.pos, char_in, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash_tmp.get(), reverse_hash_tmp.get(), nthash.hashes_array.get())</td></tr>
-<tr class="separator:a2c0ce505b8f8bb016418c2fcde6287ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e653fa398164d854657c9d4555482e1"><td class="memItemLeft" align="right" valign="top"><a id="a0e653fa398164d854657c9d4555482e1" name="a0e653fa398164d854657c9d4555482e1"></a>
-nthash&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_PEEK</b> (peek_back(), <a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>, { std::unique_ptr&lt; uint64_t[]&gt; forward_hash_tmp(new uint64_t[blocks.size()]);std::unique_ptr&lt; uint64_t[]&gt; reverse_hash_tmp(new uint64_t[blocks.size()]);std::memcpy(forward_hash_tmp.get(), forward_hash.get(), blocks.size() *sizeof(uint64_t));std::memcpy(reverse_hash_tmp.get(), reverse_hash.get(), blocks.size() *sizeof(uint64_t));ntmsm64l(nthash.seq+nthash.pos - 1, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash_tmp.get(), reverse_hash_tmp.get(), nthash.hashes_array.get());}, nthash.) BTLLIB_NTHASH_PEEK(peek_back(char char_in)</td></tr>
-<tr class="separator:a0e653fa398164d854657c9d4555482e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab52bbb3a17dc43db6a8a0b4c83c6b7f0"><td class="memItemLeft" align="right" valign="top"><a id="ab52bbb3a17dc43db6a8a0b4c83c6b7f0" name="ab52bbb3a17dc43db6a8a0b4c83c6b7f0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64l</b> (nthash.seq+nthash.pos - 1, char_in, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash_tmp.get(), reverse_hash_tmp.get(), nthash.hashes_array.get())</td></tr>
-<tr class="separator:ab52bbb3a17dc43db6a8a0b4c83c6b7f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35debad69eacdb102f67a343fa38bcee"><td class="memItemLeft" align="right" valign="top"><a id="a35debad69eacdb102f67a343fa38bcee" name="a35debad69eacdb102f67a343fa38bcee"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_PEEK</b> (<a class="el" href="classbtllib_1_1NtHash.html">NtHash</a>, peek_back(char char_in), { uint64_t forward_hash_tmp=forward_hash;uint64_t reverse_hash_tmp=reverse_hash;ntmc64l(seq[pos+k - 1], char_in, k, hash_num, forward_hash_tmp, reverse_hash_tmp, hashes_array.get());},) BTLLIB_NTHASH_INIT(<a class="el" href="classbtllib_1_1BlindNtHash.html">BlindNtHash</a></td></tr>
+<tr class="separator:a35debad69eacdb102f67a343fa38bcee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a557fde379e5c5ea062079424a05931d8"><td class="memItemLeft" align="right" valign="top"><a id="a557fde379e5c5ea062079424a05931d8" name="a557fde379e5c5ea062079424a05931d8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64</b> (seq.get()+pos, k, hash_num, forward_hash, reverse_hash, posN, hashes_array.get())</td></tr>
+<tr class="separator:a557fde379e5c5ea062079424a05931d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ea64c73af08dcf55d9eaa433c668089"><td class="memItemLeft" align="right" valign="top"><a id="a3ea64c73af08dcf55d9eaa433c668089" name="a3ea64c73af08dcf55d9eaa433c668089"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_ROLL</b> (<a class="el" href="classbtllib_1_1BlindNtHash.html">BlindNtHash</a>, roll(char char_in), { ntmc64(seq[pos % seq_len], char_in, k, hash_num, forward_hash, reverse_hash, hashes_array.get());seq[pos % seq_len]=char_in;},) BTLLIB_NTHASH_ROLL_BACK(<a class="el" href="classbtllib_1_1BlindNtHash.html">BlindNtHash</a></td></tr>
+<tr class="separator:a3ea64c73af08dcf55d9eaa433c668089"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86ab034baa039abb287575eaa4b30203"><td class="memItemLeft" align="right" valign="top"><a id="a86ab034baa039abb287575eaa4b30203" name="a86ab034baa039abb287575eaa4b30203"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>roll_back</b> (char char_in)</td></tr>
+<tr class="separator:a86ab034baa039abb287575eaa4b30203"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af212635703cbb6f672f1f78c7ffd9371"><td class="memItemLeft" align="right" valign="top"><a id="af212635703cbb6f672f1f78c7ffd9371" name="af212635703cbb6f672f1f78c7ffd9371"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_PEEK</b> (<a class="el" href="classbtllib_1_1BlindNtHash.html">BlindNtHash</a>, peek(char char_in), { uint64_t forward_hash_tmp=forward_hash;uint64_t reverse_hash_tmp=reverse_hash;ntmc64(seq[pos % seq_len], char_in, k, hash_num, forward_hash_tmp, reverse_hash_tmp, hashes_array.get());},) BTLLIB_NTHASH_PEEK(<a class="el" href="classbtllib_1_1BlindNtHash.html">BlindNtHash</a></td></tr>
+<tr class="separator:af212635703cbb6f672f1f78c7ffd9371"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8479c5525a87a59c4ce8d8904e7ba08d"><td class="memItemLeft" align="right" valign="top"><a id="a8479c5525a87a59c4ce8d8904e7ba08d" name="a8479c5525a87a59c4ce8d8904e7ba08d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>peek_back</b> (char char_in)</td></tr>
+<tr class="separator:a8479c5525a87a59c4ce8d8904e7ba08d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cd1b723e3a4442dedcda5d33d36e671"><td class="memItemLeft" align="right" valign="top"><a id="a7cd1b723e3a4442dedcda5d33d36e671" name="a7cd1b723e3a4442dedcda5d33d36e671"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64l</b> (seq[(pos+k - 1) % seq_len], char_in, k, hash_num, forward_hash_tmp, reverse_hash_tmp, hashes_array.get())</td></tr>
+<tr class="separator:a7cd1b723e3a4442dedcda5d33d36e671"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a731ce44739daddfa92347cbbb3180320"><td class="memItemLeft" align="right" valign="top"><a id="a731ce44739daddfa92347cbbb3180320" name="a731ce44739daddfa92347cbbb3180320"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_INIT</b> (<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>, ntmsm64(nthash.seq+nthash.pos, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash.get(), reverse_hash.get(), posN, nthash.hashes_array.get()), nthash.) BTLLIB_NTHASH_ROLL(<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a></td></tr>
+<tr class="separator:a731ce44739daddfa92347cbbb3180320"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f8f18379417553ad0504f0ab5c50d28"><td class="memItemLeft" align="right" valign="top"><a id="a4f8f18379417553ad0504f0ab5c50d28" name="a4f8f18379417553ad0504f0ab5c50d28"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64</b> (nthash.seq+nthash.pos, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash.get(), reverse_hash.get(), nthash.hashes_array.get())</td></tr>
+<tr class="separator:a4f8f18379417553ad0504f0ab5c50d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7d70d104653ded1993f357eb80dd8a8"><td class="memItemLeft" align="right" valign="top"><a id="aa7d70d104653ded1993f357eb80dd8a8" name="aa7d70d104653ded1993f357eb80dd8a8"></a>
+nthash&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_ROLL_BACK</b> (<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>, roll_back(), ntmsm64l(nthash.seq+nthash.pos - 1, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash.get(), reverse_hash.get(), nthash.hashes_array.get());, nthash.) BTLLIB_NTHASH_PEEK(<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a></td></tr>
+<tr class="separator:aa7d70d104653ded1993f357eb80dd8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3abcfbc1f4cc787a9dae7a46273fb8e6"><td class="memItemLeft" align="right" valign="top"><a id="a3abcfbc1f4cc787a9dae7a46273fb8e6" name="a3abcfbc1f4cc787a9dae7a46273fb8e6"></a>
+nthash std::unique_ptr&lt; uint64_t[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>reverse_hash_tmp</b> (new uint64_t[blocks.size()])</td></tr>
+<tr class="separator:a3abcfbc1f4cc787a9dae7a46273fb8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad175b214aaf85d75196f535831969e4"><td class="memItemLeft" align="right" valign="top"><a id="aad175b214aaf85d75196f535831969e4" name="aad175b214aaf85d75196f535831969e4"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64</b> (nthash.seq+nthash.pos, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash_tmp.get(), reverse_hash_tmp.get(), nthash.hashes_array.get())</td></tr>
+<tr class="separator:aad175b214aaf85d75196f535831969e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2bce06f60f005195dc9b9b65b6219dc"><td class="memItemLeft" align="right" valign="top"><a id="ab2bce06f60f005195dc9b9b65b6219dc" name="ab2bce06f60f005195dc9b9b65b6219dc"></a>
+nthash&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_PEEK</b> (<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>, peek(char char_in), { std::unique_ptr&lt; uint64_t[]&gt; forward_hash_tmp(new uint64_t[blocks.size()]);std::unique_ptr&lt; uint64_t[]&gt; reverse_hash_tmp(new uint64_t[blocks.size()]);std::memcpy(forward_hash_tmp.get(), forward_hash.get(), blocks.size() *sizeof(uint64_t));std::memcpy(reverse_hash_tmp.get(), reverse_hash.get(), blocks.size() *sizeof(uint64_t));ntmsm64(nthash.seq+nthash.pos, char_in, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash_tmp.get(), reverse_hash_tmp.get(), nthash.hashes_array.get());}, nthash.) BTLLIB_NTHASH_PEEK(<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a></td></tr>
+<tr class="separator:ab2bce06f60f005195dc9b9b65b6219dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a624d659cfabe20fa474ce6f574d2c31d"><td class="memItemLeft" align="right" valign="top"><a id="a624d659cfabe20fa474ce6f574d2c31d" name="a624d659cfabe20fa474ce6f574d2c31d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64l</b> (nthash.seq+nthash.pos - 1, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash_tmp.get(), reverse_hash_tmp.get(), nthash.hashes_array.get())</td></tr>
+<tr class="separator:a624d659cfabe20fa474ce6f574d2c31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1832fd21987c5a09f2df22d36fb0325"><td class="memItemLeft" align="right" valign="top"><a id="ab1832fd21987c5a09f2df22d36fb0325" name="ab1832fd21987c5a09f2df22d36fb0325"></a>
 uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>rol1</b> (const uint64_t v)</td></tr>
 <tr class="separator:ab1832fd21987c5a09f2df22d36fb0325"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -409,15 +435,12 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_dirname</b
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a294df3af8442700d97b6c6d53ddd073c"><td class="memItemLeft" align="right" valign="top"><a id="a294df3af8442700d97b6c6d53ddd073c" name="a294df3af8442700d97b6c6d53ddd073c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>NtHash</b></td></tr>
-<tr class="separator:a294df3af8442700d97b6c6d53ddd073c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d4691be772e9a5e6b3033740e8e667c"><td class="memItemLeft" align="right" valign="top"><a id="a3d4691be772e9a5e6b3033740e8e667c" name="a3d4691be772e9a5e6b3033740e8e667c"></a>
 uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>reverse_hash_tmp</b> = reverse_hash</td></tr>
 <tr class="separator:a3d4691be772e9a5e6b3033740e8e667c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f4b6e13ad3a2682d5f5f85d69771603"><td class="memItemLeft" align="right" valign="top"><a id="a8f4b6e13ad3a2682d5f5f85d69771603" name="a8f4b6e13ad3a2682d5f5f85d69771603"></a>
-nthash nthash&#160;</td><td class="memItemRight" valign="bottom"><b>SeedNtHash</b></td></tr>
-<tr class="separator:a8f4b6e13ad3a2682d5f5f85d69771603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3f5539e2ec9dc0130284b9b2036c557"><td class="memItemLeft" align="right" valign="top"><a id="aa3f5539e2ec9dc0130284b9b2036c557" name="aa3f5539e2ec9dc0130284b9b2036c557"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>seq</b> [(pos+k - 1) % seq_len] = char_in</td></tr>
+<tr class="separator:aa3f5539e2ec9dc0130284b9b2036c557"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b700e4ff97d6e5629382ead026fd1d7"><td class="memItemLeft" align="right" valign="top"><a id="a3b700e4ff97d6e5629382ead026fd1d7" name="a3b700e4ff97d6e5629382ead026fd1d7"></a>
 const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>CP_OFF</b> = 0x07</td></tr>
 <tr class="separator:a3b700e4ff97d6e5629382ead026fd1d7"><td class="memSeparator" colspan="2">&#160;</td></tr>

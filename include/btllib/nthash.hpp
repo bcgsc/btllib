@@ -95,24 +95,6 @@ public:
   bool roll_back();
 
   /**
-   * Like the roll() function, but instead of advancing in the sequence NtHash
-   * object was constructed on, the provided character \p char_in is used as
-   * the next base. No changes are made to the sequence or the position members
-   * of the NtHash object, only the current hash values are updated. Useful if,
-   * for example, you want to query for possibly paths in an implicit graph.
-   *
-   * @return true on success and false otherwise.
-   */
-  bool roll(char char_in);
-
-  /**
-   * Like the roll(char char_in) function, but advance backwards
-   *
-   * @return true on success and false otherwise.
-   */
-  bool roll_back(char char_in);
-
-  /**
    * Peeks the hash values as if roll() was called (without advancing the
    * NtHash object. The peeked hash values can be obtained through the
    * hashes() method.
@@ -166,6 +148,109 @@ private:
   bool init();
 
   const char* seq;
+  const size_t seq_len;
+  const NTHASH_HASH_NUM_TYPE hash_num;
+  const NTHASH_K_TYPE k;
+
+  size_t pos;
+  bool initialized;
+  std::unique_ptr<uint64_t[]> hashes_array;
+  uint64_t forward_hash = 0;
+  uint64_t reverse_hash = 0;
+};
+
+/**
+ * Similar to NtHash class, but instead of rolling on a predefined sequence,
+ * BlindNtHash needs to be fed the new character on each roll. This is useful
+ * when traversing an implicit de Bruijn Graph, as we need to query all  bases
+ * to know the possible extensions.
+ */
+class BlindNtHash
+{
+
+public:
+  /**
+   * Constructor.
+   * @param seq C string of DNA sequence to start hashing from.
+   * @param seq_len Length of seq.
+   * @param hash_num Number of hashes to produce per k-mer.
+   * @param k K-mer size.
+   * @param pos Position in seq to start hashing from.
+   */
+  BlindNtHash(const char* seq,
+              size_t seq_len,
+              unsigned hash_num,
+              unsigned k,
+              size_t pos = 0);
+
+  /**
+   * Constructor.
+   * @param seq String of DNA sequence to start hashing from.
+   * @param hash_num Number of hashes to produce per k-mer.
+   * @param k K-mer size.
+   * @param pos Position in seq to start hashing from.
+   */
+  BlindNtHash(const std::string& seq,
+              unsigned hash_num,
+              unsigned k,
+              size_t pos = 0);
+
+  BlindNtHash(const BlindNtHash& nthash);
+  BlindNtHash(BlindNtHash&&) = default;
+
+  /**
+   * Like the NtHash::roll() function, but instead of advancing in the
+   * sequence BlindNtHash object was constructed on, the provided character
+   * \p char_in is used as the next base. Useful if you want to query for
+   * possible paths in an implicit de Bruijn graph graph.
+   *
+   * @return true on success and false otherwise.
+   */
+  bool roll(char char_in);
+
+  /**
+   * Like the roll(char char_in) function, but advance backwards.
+   *
+   * @return true on success and false otherwise.
+   */
+  bool roll_back(char char_in);
+
+  /**
+   * Like NtHash::peek(), but as if roll(char char_in) was called.
+   *
+   * @return true on success and false otherwise.
+   */
+  bool peek(char char_in);
+
+  /**
+   * Like peek(char char_in), but as if roll_back(char char_in) was called.
+   *
+   * @return true on success and false otherwise.
+   */
+  bool peek_back(char char_in);
+
+  void sub(const std::vector<unsigned>& positions,
+           const std::vector<unsigned char>& new_bases);
+
+  const uint64_t* hashes() const { return hashes_array.get(); }
+
+  /**
+   * Get the position of last hashed k-mer or the k-mer to be hashed if roll()
+   * has never been called on this NtHash object.
+   */
+  size_t get_pos() const { return pos; }
+  bool forward() const { return forward_hash <= reverse_hash; }
+  unsigned get_hash_num() const { return hash_num; }
+  unsigned get_k() const { return k; }
+
+  uint64_t get_forward_hash() const { return forward_hash; }
+  uint64_t get_reverse_hash() const { return reverse_hash; }
+
+private:
+  /** Initialize internal state of iterator */
+  bool init();
+
+  std::unique_ptr<char[]> seq;
   const size_t seq_len;
   const NTHASH_HASH_NUM_TYPE hash_num;
   const NTHASH_K_TYPE k;
@@ -321,6 +406,61 @@ inline NtHash::NtHash(const NtHash& nthash)
     hashes_array.get(), nthash.hashes_array.get(), hash_num * sizeof(uint64_t));
 }
 
+inline BlindNtHash::BlindNtHash(const char* seq,
+                                size_t seq_len,
+                                unsigned hash_num,
+                                unsigned k,
+                                size_t pos)
+  : seq(new char[seq_len])
+  , seq_len(seq_len)
+  , hash_num(hash_num)
+  , k(k)
+  , pos(pos)
+  , initialized(false)
+  , hashes_array(new uint64_t[hash_num])
+{
+  check_error(k == seq_len,
+              "BlindNtHash: passed sequence length (" +
+                std::to_string(seq_len) + ") is not equal to k (" +
+                std::to_string(k) + ").");
+  check_error(k > NTHASH_K_MAX,
+              "BlindNtHash: passed k value (" + std::to_string(k) +
+                ") is larger than allowed (" + std::to_string(NTHASH_K_MAX) +
+                ").");
+  check_error(hash_num > NTHASH_HASH_NUM_MAX,
+              "BlindNtHash: passed number of hashes (" +
+                std::to_string(hash_num) + ") is larger than allowed (" +
+                std::to_string(NTHASH_HASH_NUM_MAX) + ").");
+  check_warning(hash_num >= k,
+                "BlindNtHash: using " + std::to_string(hash_num) +
+                  " hash functions and k size of " + std::to_string(k) +
+                  ". Did you permute the parameters?");
+  std::memcpy(this->seq.get(), seq, seq_len);
+}
+
+inline BlindNtHash::BlindNtHash(const std::string& seq,
+                                unsigned hash_num,
+                                unsigned k,
+                                size_t pos)
+  : BlindNtHash(seq.c_str(), seq.size(), hash_num, k, pos)
+{}
+
+inline BlindNtHash::BlindNtHash(const BlindNtHash& nthash)
+  : seq(new char[nthash.seq_len])
+  , seq_len(nthash.seq_len)
+  , hash_num(nthash.hash_num)
+  , k(nthash.k)
+  , pos(nthash.pos)
+  , initialized(nthash.initialized)
+  , hashes_array(new uint64_t[hash_num])
+  , forward_hash(nthash.forward_hash)
+  , reverse_hash(nthash.reverse_hash)
+{
+  std::memcpy(this->seq.get(), nthash.seq.get(), nthash.seq_len);
+  std::memcpy(
+    hashes_array.get(), nthash.hashes_array.get(), hash_num * sizeof(uint64_t));
+}
+
 inline SeedNtHash::SeedNtHash(const char* seq,
                               size_t seq_len,
                               const std::vector<SpacedSeed>& seeds,
@@ -456,6 +596,20 @@ NtHash::sub(const std::vector<unsigned>& positions,
            hashes_array.get());
 }
 
+inline void
+BlindNtHash::sub(const std::vector<unsigned>& positions,
+                 const std::vector<unsigned char>& new_bases)
+{
+  sub_hash(forward_hash,
+           reverse_hash,
+           seq.get() + pos,
+           positions,
+           new_bases,
+           get_k(),
+           get_hash_num(),
+           hashes_array.get());
+}
+
 // NOLINTNEXTLINE
 #define BTLLIB_NTHASH_INIT(CLASS, NTHASH_CALL, MEMBER_PREFIX)                  \
   inline bool CLASS::init()                                                    \
@@ -479,8 +633,8 @@ NtHash::sub(const std::vector<unsigned>& positions,
   }
 
 // NOLINTNEXTLINE
-#define BTLLIB_NTHASH_ROLL(CLASS, NTHASH_CALL, MEMBER_PREFIX)                  \
-  inline bool CLASS::roll()                                                    \
+#define BTLLIB_NTHASH_ROLL(CLASS, FN_DECL, NTHASH_CALL, MEMBER_PREFIX)         \
+  inline bool CLASS::FN_DECL                                                   \
   {                                                                            \
     if (!MEMBER_PREFIX initialized) {                                          \
       return init();                                                           \
@@ -494,14 +648,14 @@ NtHash::sub(const std::vector<unsigned>& positions,
       MEMBER_PREFIX pos += MEMBER_PREFIX k;                                    \
       return init();                                                           \
     }                                                                          \
-    (NTHASH_CALL);                                                             \
-    ++MEMBER_PREFIX pos;                                                       \
+    NTHASH_CALL /* NOLINT(bugprone-macro-parentheses) */                       \
+      ++ MEMBER_PREFIX pos;                                                    \
     return true;                                                               \
   }
 
 // NOLINTNEXTLINE
-#define BTLLIB_NTHASH_ROLL_BACK(CLASS, NTHASH_CALL, MEMBER_PREFIX)             \
-  inline bool CLASS::roll_back()                                               \
+#define BTLLIB_NTHASH_ROLL_BACK(CLASS, FN_DECL, NTHASH_CALL, MEMBER_PREFIX)    \
+  inline bool CLASS::FN_DECL                                                   \
   {                                                                            \
     if (!MEMBER_PREFIX initialized) {                                          \
       return init();                                                           \
@@ -514,13 +668,13 @@ NtHash::sub(const std::vector<unsigned>& positions,
       MEMBER_PREFIX pos -= MEMBER_PREFIX k;                                    \
       return init();                                                           \
     }                                                                          \
-    (NTHASH_CALL);                                                             \
-    --MEMBER_PREFIX pos;                                                       \
+    NTHASH_CALL /* NOLINT(bugprone-macro-parentheses) */                       \
+      -- MEMBER_PREFIX pos;                                                    \
     return true;                                                               \
   }
 
 // NOLINTNEXTLINE
-#define BTLLIB_NTHASH_PEEK(FN_DECL, CLASS, NTHASH_CALL, MEMBER_PREFIX)         \
+#define BTLLIB_NTHASH_PEEK(CLASS, FN_DECL, NTHASH_CALL, MEMBER_PREFIX)         \
   inline bool CLASS::FN_DECL                                                   \
   {                                                                            \
     if (!MEMBER_PREFIX initialized) {                                          \
@@ -539,24 +693,29 @@ BTLLIB_NTHASH_INIT(NtHash,
                           posN,
                           hashes_array.get()), )
 BTLLIB_NTHASH_ROLL(NtHash,
+                   roll(),
                    ntmc64(seq[pos],
                           seq[pos + k],
                           k,
                           hash_num,
                           forward_hash,
                           reverse_hash,
-                          hashes_array.get()), )
+                          hashes_array.get());
+                   , )
 BTLLIB_NTHASH_ROLL_BACK(NtHash,
+                        roll_back(),
                         ntmc64l(seq[pos + k - 1],
                                 seq[pos - 1],
                                 k,
                                 hash_num,
                                 forward_hash,
                                 reverse_hash,
-                                hashes_array.get()), )
+                                hashes_array.get());
+                        , )
 BTLLIB_NTHASH_PEEK(
-  peek(),
   NtHash,
+  peek(),
+
   {
     uint64_t forward_hash_tmp = forward_hash;
     uint64_t reverse_hash_tmp = reverse_hash;
@@ -569,8 +728,9 @@ BTLLIB_NTHASH_PEEK(
            hashes_array.get());
   }, )
 BTLLIB_NTHASH_PEEK(
-  peek(char char_in),
   NtHash,
+  peek(char char_in),
+
   {
     uint64_t forward_hash_tmp = forward_hash;
     uint64_t reverse_hash_tmp = reverse_hash;
@@ -583,8 +743,9 @@ BTLLIB_NTHASH_PEEK(
            hashes_array.get());
   }, )
 BTLLIB_NTHASH_PEEK(
-  peek_back(),
   NtHash,
+  peek_back(),
+
   {
     uint64_t forward_hash_tmp = forward_hash;
     uint64_t reverse_hash_tmp = reverse_hash;
@@ -597,12 +758,77 @@ BTLLIB_NTHASH_PEEK(
             hashes_array.get());
   }, )
 BTLLIB_NTHASH_PEEK(
-  peek_back(char char_in),
   NtHash,
+  peek_back(char char_in),
+
   {
     uint64_t forward_hash_tmp = forward_hash;
     uint64_t reverse_hash_tmp = reverse_hash;
     ntmc64l(seq[pos + k - 1],
+            char_in,
+            k,
+            hash_num,
+            forward_hash_tmp,
+            reverse_hash_tmp,
+            hashes_array.get());
+  }, )
+
+BTLLIB_NTHASH_INIT(BlindNtHash,
+                   ntmc64(seq.get() + pos,
+                          k,
+                          hash_num,
+                          forward_hash,
+                          reverse_hash,
+                          posN,
+                          hashes_array.get()), )
+BTLLIB_NTHASH_ROLL(
+  BlindNtHash,
+  roll(char char_in),
+  {
+    ntmc64(seq[pos % seq_len],
+           char_in,
+           k,
+           hash_num,
+           forward_hash,
+           reverse_hash,
+           hashes_array.get());
+    seq[pos % seq_len] = char_in;
+  }, )
+BTLLIB_NTHASH_ROLL_BACK(
+  BlindNtHash,
+  roll_back(char char_in),
+  {
+    ntmc64l(seq[(pos + k - 1) % seq_len],
+            char_in,
+            k,
+            hash_num,
+            forward_hash,
+            reverse_hash,
+            hashes_array.get());
+    seq[(pos + k - 1) % seq_len] = char_in;
+  }, )
+BTLLIB_NTHASH_PEEK(
+  BlindNtHash,
+  peek(char char_in),
+
+  {
+    uint64_t forward_hash_tmp = forward_hash;
+    uint64_t reverse_hash_tmp = reverse_hash;
+    ntmc64(seq[pos % seq_len],
+           char_in,
+           k,
+           hash_num,
+           forward_hash_tmp,
+           reverse_hash_tmp,
+           hashes_array.get());
+  }, )
+BTLLIB_NTHASH_PEEK(
+  BlindNtHash,
+  peek_back(char char_in),
+  {
+    uint64_t forward_hash_tmp = forward_hash;
+    uint64_t reverse_hash_tmp = reverse_hash;
+    ntmc64l(seq[(pos + k - 1) % seq_len],
             char_in,
             k,
             hash_num,
@@ -623,6 +849,7 @@ BTLLIB_NTHASH_INIT(SeedNtHash,
                            nthash.hashes_array.get()),
                    nthash.)
 BTLLIB_NTHASH_ROLL(SeedNtHash,
+                   roll(),
                    ntmsm64(nthash.seq + nthash.pos,
                            blocks,
                            nthash.k,
@@ -630,9 +857,10 @@ BTLLIB_NTHASH_ROLL(SeedNtHash,
                            hash_num_per_seed,
                            forward_hash.get(),
                            reverse_hash.get(),
-                           nthash.hashes_array.get()),
-                   nthash.)
+                           nthash.hashes_array.get());
+                   , nthash.)
 BTLLIB_NTHASH_ROLL_BACK(SeedNtHash,
+                        roll_back(),
                         ntmsm64l(nthash.seq + nthash.pos - 1,
                                  blocks,
                                  nthash.k,
@@ -640,11 +868,12 @@ BTLLIB_NTHASH_ROLL_BACK(SeedNtHash,
                                  hash_num_per_seed,
                                  forward_hash.get(),
                                  reverse_hash.get(),
-                                 nthash.hashes_array.get()),
-                        nthash.)
+                                 nthash.hashes_array.get());
+                        , nthash.)
 BTLLIB_NTHASH_PEEK(
-  peek(),
   SeedNtHash,
+  peek(),
+
   {
     std::unique_ptr<uint64_t[]> forward_hash_tmp(new uint64_t[blocks.size()]);
     std::unique_ptr<uint64_t[]> reverse_hash_tmp(new uint64_t[blocks.size()]);
@@ -665,8 +894,9 @@ BTLLIB_NTHASH_PEEK(
   },
   nthash.)
 BTLLIB_NTHASH_PEEK(
-  peek(char char_in),
   SeedNtHash,
+  peek(char char_in),
+
   {
     std::unique_ptr<uint64_t[]> forward_hash_tmp(new uint64_t[blocks.size()]);
     std::unique_ptr<uint64_t[]> reverse_hash_tmp(new uint64_t[blocks.size()]);
@@ -688,8 +918,9 @@ BTLLIB_NTHASH_PEEK(
   },
   nthash.)
 BTLLIB_NTHASH_PEEK(
-  peek_back(),
   SeedNtHash,
+  peek_back(),
+
   {
     std::unique_ptr<uint64_t[]> forward_hash_tmp(new uint64_t[blocks.size()]);
     std::unique_ptr<uint64_t[]> reverse_hash_tmp(new uint64_t[blocks.size()]);
@@ -710,8 +941,9 @@ BTLLIB_NTHASH_PEEK(
   },
   nthash.)
 BTLLIB_NTHASH_PEEK(
-  peek_back(char char_in),
   SeedNtHash,
+  peek_back(char char_in),
+
   {
     std::unique_ptr<uint64_t[]> forward_hash_tmp(new uint64_t[blocks.size()]);
     std::unique_ptr<uint64_t[]> reverse_hash_tmp(new uint64_t[blocks.size()]);
