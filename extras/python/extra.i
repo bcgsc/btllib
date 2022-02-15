@@ -36,6 +36,16 @@
   }
 }
 
+%extend btllib::SeqWriter {
+  btllib::SeqWriter* __enter__() {
+    return $self;
+  }
+
+  void __exit__(PyObject*, PyObject*, PyObject*) {
+    $self->close();
+  }
+}
+
 %extend btllib::Indexlr {
   btllib::Indexlr* __enter__() {
     return $self;
@@ -70,6 +80,14 @@
     PyTuple_SetItem($result, i, PyLong_FromUnsignedLong($1[i]));
   }
 %}
+
+%typemap(out) uint64_t* btllib::BlindNtHash::hashes %{
+  $result = PyTuple_New(arg1->get_hash_num());
+  for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
+    PyTuple_SetItem($result, i, PyLong_FromUnsignedLong($1[i]));
+  }
+%}
+
 
 %typemap(out) uint64_t* btllib::SeedNtHash::hashes %{
   $result = PyTuple_New(arg1->get_hash_num());

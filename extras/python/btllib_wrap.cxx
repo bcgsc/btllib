@@ -6779,6 +6779,12 @@ SWIGINTERN btllib::SeqReader *btllib_SeqReader___enter__(btllib::SeqReader *self
 SWIGINTERN void btllib_SeqReader___exit__(btllib::SeqReader *self,PyObject *,PyObject *,PyObject *){
     self->close();
   }
+SWIGINTERN btllib::SeqWriter *btllib_SeqWriter___enter__(btllib::SeqWriter *self){
+    return self;
+  }
+SWIGINTERN void btllib_SeqWriter___exit__(btllib::SeqWriter *self,PyObject *,PyObject *,PyObject *){
+    self->close();
+  }
 
 SWIGINTERN size_t
 SWIG_strnlen(const char* s, size_t maxlen)
@@ -30729,6 +30735,55 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SeqWriter___enter__(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeqWriter *arg1 = (btllib::SeqWriter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  btllib::SeqWriter *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeqWriter___enter__", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqWriter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqWriter___enter__" "', argument " "1"" of type '" "btllib::SeqWriter *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeqWriter * >(argp1);
+  result = (btllib::SeqWriter *)btllib_SeqWriter___enter__(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeqWriter, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeqWriter___exit__(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeqWriter *arg1 = (btllib::SeqWriter *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  PyObject *arg3 = (PyObject *) 0 ;
+  PyObject *arg4 = (PyObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[4] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SeqWriter___exit__", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqWriter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqWriter___exit__" "', argument " "1"" of type '" "btllib::SeqWriter *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeqWriter * >(argp1);
+  arg2 = swig_obj[0];
+  arg3 = swig_obj[1];
+  arg4 = swig_obj[2];
+  btllib_SeqWriter___exit__(arg1,arg2,arg3,arg4);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_SeqWriter(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeqWriter *arg1 = (btllib::SeqWriter *) 0 ;
@@ -36810,7 +36865,12 @@ SWIGINTERN PyObject *_wrap_BlindNtHash_hashes(PyObject *self, PyObject *args) {
   }
   arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
   result = (uint64_t *)((btllib::BlindNtHash const *)arg1)->hashes();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  
+  resultobj = PyTuple_New(arg1->get_hash_num());
+  for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
+    PyTuple_SetItem(resultobj, i, PyLong_FromUnsignedLong(result[i]));
+  }
+  
   return resultobj;
 fail:
   return NULL;
@@ -43928,6 +43988,8 @@ SwigPyBuiltin__btllib__SeqWriter_richcompare(PyObject *self, PyObject *other, in
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeqWriter_methods[] = {
   { "close", _wrap_SeqWriter_close, METH_NOARGS, "" },
   { "write", _wrap_SeqWriter_write, METH_VARARGS, "" },
+  { "__enter__", _wrap_SeqWriter___enter__, METH_NOARGS, "" },
+  { "__exit__", _wrap_SeqWriter___exit__, METH_VARARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
