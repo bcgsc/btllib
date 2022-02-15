@@ -43,6 +43,20 @@ main()
         TEST_ASSERT_EQ(nthash.hashes()[i],
                        hashes[nthash.get_pos() * nthash.get_hash_num() + i]);
       }
+      if (nthash.get_pos() > 0) {
+        nthash.peek_back();
+        for (size_t i = 0; i < nthash.get_hash_num(); ++i) {
+          TEST_ASSERT_EQ(
+            nthash.hashes()[i],
+            hashes[(nthash.get_pos() - 1) * nthash.get_hash_num() + i]);
+        }
+        nthash.peek_back(seq[nthash.get_pos() - 1]);
+        for (size_t i = 0; i < nthash.get_hash_num(); ++i) {
+          TEST_ASSERT_EQ(
+            nthash.hashes()[i],
+            hashes[(nthash.get_pos() - 1) * nthash.get_hash_num() + i]);
+        }
+      }
       steps++;
     }
     TEST_ASSERT_EQ(steps, nthash.get_pos() + 1)
@@ -65,6 +79,20 @@ main()
       for (size_t i = 0; i < nthash.get_hash_num(); ++i) {
         TEST_ASSERT_EQ(nthash.hashes()[i],
                        hashes[nthash.get_pos() * nthash.get_hash_num() + i]);
+      }
+      if (nthash.get_pos() < seq.size() - k) {
+        nthash.peek();
+        for (size_t i = 0; i < nthash.get_hash_num(); ++i) {
+          TEST_ASSERT_EQ(
+            nthash.hashes()[i],
+            hashes[(nthash.get_pos() + 1) * nthash.get_hash_num() + i]);
+        }
+        nthash.peek(seq[nthash.get_pos() + k]);
+        for (size_t i = 0; i < nthash.get_hash_num(); ++i) {
+          TEST_ASSERT_EQ(
+            nthash.hashes()[i],
+            hashes[(nthash.get_pos() + 1) * nthash.get_hash_num() + i]);
+        }
       }
       steps--;
     }
@@ -115,6 +143,22 @@ main()
         TEST_ASSERT_EQ(
           seed_nthash.hashes()[i],
           hashes[seed_nthash.get_pos() * seed_nthash.get_hash_num() + i]);
+      }
+      if (seed_nthash.get_pos() < seq.size() - k) {
+        seed_nthash.peek();
+        for (size_t i = 0; i < seed_nthash.get_hash_num(); ++i) {
+          TEST_ASSERT_EQ(
+            seed_nthash.hashes()[i],
+            hashes[(seed_nthash.get_pos() + 1) * seed_nthash.get_hash_num() +
+                   i]);
+        }
+        seed_nthash.peek(seq[seed_nthash.get_pos() + k]);
+        for (size_t i = 0; i < seed_nthash.get_hash_num(); ++i) {
+          TEST_ASSERT_EQ(
+            seed_nthash.hashes()[i],
+            hashes[(seed_nthash.get_pos() + 1) * seed_nthash.get_hash_num() +
+                   i]);
+        }
       }
       steps--;
     }
