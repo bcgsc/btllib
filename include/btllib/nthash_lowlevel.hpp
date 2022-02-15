@@ -1207,17 +1207,21 @@ ntmsm64(const char* kmer_seq,
         unsigned& loc_n,
         uint64_t* h_val)
 {
+  uint64_t fh_seed, rh_seed;
+  unsigned i_base, block_start, block_end;
+  const SpacedSeed* seed = nullptr;
   for (unsigned i_seed = 0; i_seed < m; i_seed++) {
-    SpacedSeed seed = seed_seq[i_seed];
-    uint64_t fh_seed = 0, rh_seed = 0;
-    for (int i_block = 0; i_block < (int)seed.size() - 1; i_block += 2) {
+    seed = &seed_seq[i_seed];
+    fh_seed = 0;
+    rh_seed = 0;
+    for (int i_block = 0; i_block < (int)seed->size() - 1; i_block += 2) {
       // cppcheck-suppress arrayIndexOutOfBounds
       // cppcheck-suppress stlOutOfBounds
-      unsigned i = seed[i_block];
+      block_start = seed->at(i_block);
       // cppcheck-suppress arrayIndexOutOfBounds
       // cppcheck-suppress stlOutOfBounds
-      unsigned j = seed[i_block + 1];
-      for (unsigned pos = i; pos < j; pos++) {
+      block_end = seed->at(i_block + 1);
+      for (unsigned pos = block_start; pos < block_end; pos++) {
         if (kmer_seq[pos] == SEED_N) {
           loc_n = pos;
           return false;
@@ -1244,7 +1248,7 @@ ntmsm64(const char* kmer_seq,
     }
     fh_val[i_seed] = fh_seed;
     rh_val[i_seed] = rh_seed;
-    unsigned i_base = i_seed * m2;
+    i_base = i_seed * m2;
     h_val[i_base] = fh_seed < rh_seed ? fh_seed : rh_seed;
     for (unsigned i_hash = 1; i_hash < m2; i_hash++) {
       h_val[i_base + i_hash] = h_val[i_base] * (i_hash ^ k * MULTISEED);
@@ -1255,19 +1259,21 @@ ntmsm64(const char* kmer_seq,
 }
 
 #define NTMSM64(CHAR_IN_HANDLING)                                              \
-  unsigned char char_out;                                                      \
-  unsigned char char_in;                                                       \
+  unsigned char char_out, char_in;                                             \
+  uint64_t fh_seed, rh_seed;                                                   \
+  unsigned i_out, i_in, i_base;                                                \
+  const SpacedSeed* seed = nullptr;                                            \
   for (unsigned i_seed = 0; i_seed < m; i_seed++) {                            \
-    const SpacedSeed& seed = seed_seq[i_seed];                                 \
-    uint64_t fh_seed = swapbits033(rol1(fh_nomonos[i_seed]));                  \
-    uint64_t rh_seed = rh_nomonos[i_seed];                                     \
-    for (int i_block = 0; i_block < (int)seed.size() - 1; i_block += 2) {      \
+    seed = &seed_seq[i_seed];                                                  \
+    fh_seed = swapbits033(rol1(fh_nomonos[i_seed]));                           \
+    rh_seed = rh_nomonos[i_seed];                                              \
+    for (int i_block = 0; i_block < (int)seed->size() - 1; i_block += 2) {     \
       /* cppcheck-suppress arrayIndexOutOfBounds */                            \
       /* cppcheck-suppress stlOutOfBounds */                                   \
-      const unsigned i_out = seed[i_block];                                    \
+      i_out = seed->at(i_block);                                               \
       /* cppcheck-suppress arrayIndexOutOfBounds */                            \
       /* cppcheck-suppress stlOutOfBounds */                                   \
-      const unsigned i_in = seed[i_block + 1];                                 \
+      i_in = seed->at(i_block + 1);                                            \
       char_out = (unsigned char)kmer_seq[i_out];                               \
       CHAR_IN_HANDLING                                                         \
       fh_seed ^= (MS_TAB_31L[char_out][(k - i_out) % 31] |    /* NOLINT */     \
@@ -1294,7 +1300,7 @@ ntmsm64(const char* kmer_seq,
     }                                                                          \
     fh_val[i_seed] = fh_seed;                                                  \
     rh_val[i_seed] = rh_seed;                                                  \
-    unsigned i_base = i_seed * m2;                                             \
+    i_base = i_seed * m2;                                                      \
     h_val[i_base] = fh_seed < rh_seed ? fh_seed : rh_seed;                     \
     for (unsigned i_hash = 1; i_hash < m2; i_hash++) {                         \
       h_val[i_base + i_hash] = h_val[i_base] * (i_hash ^ k * MULTISEED);       \
