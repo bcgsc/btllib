@@ -461,6 +461,7 @@ public class btllibJNI {
   public final static native long NtHash_get_k(long jarg1, NtHash jarg1_);
   public final static native java.math.BigInteger NtHash_get_forward_hash(long jarg1, NtHash jarg1_);
   public final static native java.math.BigInteger NtHash_get_reverse_hash(long jarg1, NtHash jarg1_);
+  public final static native void NtHash_reset(long jarg1, NtHash jarg1_, String jarg2);
   public final static native long new_NtHash__SWIG_0(String jarg1, long jarg2, long jarg3, long jarg4);
   public final static native long new_NtHash__SWIG_1(String jarg1, long jarg2, long jarg3);
   public final static native void delete_NtHash(long jarg1);
@@ -486,6 +487,7 @@ public class btllibJNI {
   public final static native boolean SeedNtHash_peek__SWIG_1(long jarg1, SeedNtHash jarg1_, char jarg2);
   public final static native boolean SeedNtHash_peek_back__SWIG_1(long jarg1, SeedNtHash jarg1_, char jarg2);
   public final static native long SeedNtHash_hashes(long jarg1, SeedNtHash jarg1_);
+  public final static native void SeedNtHash_reset(long jarg1, SeedNtHash jarg1_, String jarg2);
   public final static native long SeedNtHash_get_pos(long jarg1, SeedNtHash jarg1_);
   public final static native boolean SeedNtHash_forward(long jarg1, SeedNtHash jarg1_);
   public final static native long SeedNtHash_get_hash_num(long jarg1, SeedNtHash jarg1_);

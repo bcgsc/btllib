@@ -380,5 +380,44 @@ main()
     }
   }
 
+  {
+    std::cerr << "Testing reset function" << std::endl;
+
+    std::string seq1 = "ACATAAGT";
+    std::string seed = "1001";
+    unsigned k = seed.length();
+    std::queue<uint64_t> hashes1, hashes2;
+
+    btllib::NtHash kmer_hash(seq1, 1, k);
+    while (kmer_hash.roll()) {
+      hashes1.push(kmer_hash.hashes()[0]);
+    }
+    kmer_hash.reset(seq1);
+    while (kmer_hash.roll()) {
+      hashes2.push(kmer_hash.hashes()[0]);
+    }
+    TEST_ASSERT_EQ(hashes1.size(), hashes2.size());
+    while (!hashes1.empty()) {
+      TEST_ASSERT_EQ(hashes1.front(), hashes2.front());
+      hashes1.pop();
+      hashes2.pop();
+    }
+
+    btllib::SeedNtHash seed_hash(seq1, { seed }, 1, k);
+    while (seed_hash.roll()) {
+      hashes1.push(seed_hash.hashes()[0]);
+    }
+    seed_hash.reset(seq1);
+    while (seed_hash.roll()) {
+      hashes2.push(seed_hash.hashes()[0]);
+    }
+    TEST_ASSERT_EQ(hashes1.size(), hashes2.size());
+    while (!hashes1.empty()) {
+      TEST_ASSERT_EQ(hashes1.front(), hashes2.front());
+      hashes1.pop();
+      hashes2.pop();
+    }
+  }
+
   return 0;
 }

@@ -146,6 +146,16 @@ public:
   uint64_t get_forward_hash() const { return forward_hash; }
   uint64_t get_reverse_hash() const { return reverse_hash; }
 
+  void reset(const std::string& new_seq)
+  {
+    seq = new_seq.data();
+    seq_len = new_seq.length();
+    pos = 0;
+    initialized = false;
+    forward_hash = 0;
+    reverse_hash = 0;
+  }
+
 private:
   friend class SeedNtHash;
 
@@ -153,7 +163,7 @@ private:
   bool init();
 
   const char* seq;
-  const size_t seq_len;
+  size_t seq_len;
   const NTHASH_HASH_NUM_TYPE hash_num;
   const NTHASH_K_TYPE k;
 
@@ -342,6 +352,8 @@ public:
   bool peek_back(char char_in);
 
   const uint64_t* hashes() const { return nthash.hashes(); }
+
+  void reset(const std::string& seq) { nthash.reset(seq); }
 
   size_t get_pos() const { return nthash.get_pos(); }
   bool forward() const { return nthash.forward(); }
