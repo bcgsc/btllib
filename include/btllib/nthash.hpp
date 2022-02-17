@@ -264,7 +264,7 @@ public:
   void change_seq(const std::string& new_seq, size_t new_pos = 0)
   {
     seq_len = new_seq.length();
-    std::move(new_seq.begin(), new_seq.end(), seq.get());
+    std::memcpy(seq.get(), new_seq.data(), seq_len);
     pos = new_pos;
     initialized = false;
     forward_hash = 0;
