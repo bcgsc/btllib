@@ -236,7 +236,7 @@ main()
     std::string kmer2 = "CGTACACTGGACTGAGTC";
     std::string kmer3 = "GTACACTGGACTGAGTCT";
 
-    std::vector<btllib::NtHash> nthash_vector = {
+    btllib::NtHash nthash_vector[] = {
       btllib::NtHash(kmer1, nthash.get_hash_num(), kmer1.size()),
       btllib::NtHash(kmer2, nthash.get_hash_num(), kmer2.size()),
       btllib::NtHash(kmer3, nthash.get_hash_num(), kmer3.size())
@@ -270,18 +270,20 @@ main()
     btllib::SeedNtHash seed_nthashM2(seqM2, seeds, 2, k);
     btllib::SeedNtHash seed_nthashM3(seqM3, seeds, 2, k);
 
+    std::vector<std::vector<uint64_t>> hashes;
+
     TEST_ASSERT_EQ(seed_nthash.get_hash_num(), seeds.size() * 2);
 
-    size_t i = 0;
-    for (; seed_nthash.roll(); i++) {
+    size_t steps = 0;
+    for (; seed_nthash.roll(); steps++) {
       TEST_ASSERT_EQ(seed_nthashM1.roll(), true);
       TEST_ASSERT_EQ(seed_nthashM2.roll(), true);
       TEST_ASSERT_EQ(seed_nthashM3.roll(), true);
 
-      const std::string seq_sub = seq.substr(i, k);
-      const std::string seqM1_sub = seqM1.substr(i, k);
-      const std::string seqM2_sub = seqM2.substr(i, k);
-      const std::string seqM3_sub = seqM3.substr(i, k);
+      const std::string seq_sub = seq.substr(steps, k);
+      const std::string seqM1_sub = seqM1.substr(steps, k);
+      const std::string seqM2_sub = seqM2.substr(steps, k);
+      const std::string seqM3_sub = seqM3.substr(steps, k);
       btllib::SeedNtHash seed_nthash_base(seq_sub, seeds, 2, k);
       btllib::SeedNtHash seed_nthashM1_base(seqM1_sub, seeds, 2, k);
       btllib::SeedNtHash seed_nthashM2_base(seqM2_sub, seeds, 2, k);
@@ -292,19 +294,33 @@ main()
       TEST_ASSERT_EQ(seed_nthashM2_base.roll(), true);
       TEST_ASSERT_EQ(seed_nthashM3_base.roll(), true);
 
-      for (size_t j = 0; j < seed_nthash.get_hash_num(); j++) {
-        TEST_ASSERT_EQ(seed_nthash.hashes()[j], seed_nthashM1.hashes()[j]);
-        TEST_ASSERT_EQ(seed_nthash.hashes()[j], seed_nthashM2.hashes()[j]);
-        TEST_ASSERT_EQ(seed_nthash.hashes()[j], seed_nthashM3.hashes()[j]);
-        TEST_ASSERT_EQ(seed_nthash.hashes()[j], seed_nthashM1_base.hashes()[j]);
-        TEST_ASSERT_EQ(seed_nthash.hashes()[j], seed_nthashM2_base.hashes()[j]);
-        TEST_ASSERT_EQ(seed_nthash.hashes()[j], seed_nthashM3_base.hashes()[j]);
+      hashes.push_back({});
+      for (size_t i = 0; i < seed_nthash.get_hash_num(); i++) {
+        const auto hval = seed_nthash.hashes()[i];
+        TEST_ASSERT_EQ(hval, seed_nthashM1.hashes()[i]);
+        TEST_ASSERT_EQ(hval, seed_nthashM2.hashes()[i]);
+        TEST_ASSERT_EQ(hval, seed_nthashM3.hashes()[i]);
+        TEST_ASSERT_EQ(hval, seed_nthashM1_base.hashes()[i]);
+        TEST_ASSERT_EQ(hval, seed_nthashM2_base.hashes()[i]);
+        TEST_ASSERT_EQ(hval, seed_nthashM3_base.hashes()[i]);
+        hashes.back().push_back(hval);
+      }
+
+      if (seed_nthash.get_pos() > 0) {
+        seed_nthash.peek_back();
+        for (size_t i = 0; i < seed_nthash.get_hash_num(); i++) {
+          TEST_ASSERT_EQ(seed_nthash.hashes()[i], hashes[hashes.size() - 2][i]);
+        }
+        seed_nthash.peek_back(seq[seed_nthash.get_pos() - 1]);
+        for (size_t i = 0; i < seed_nthash.get_hash_num(); i++) {
+          TEST_ASSERT_EQ(seed_nthash.hashes()[i], hashes[hashes.size() - 2][i]);
+        }
       }
     }
     TEST_ASSERT_EQ(seed_nthashM1.roll(), false);
     TEST_ASSERT_EQ(seed_nthashM2.roll(), false);
     TEST_ASSERT_EQ(seed_nthashM3.roll(), false);
-    TEST_ASSERT_EQ(i, seq.size() - k + 1);
+    TEST_ASSERT_EQ(steps, seq.size() - k + 1);
   }
 
   {
