@@ -65,7 +65,7 @@ $(function() {
   <div class="headertitle"><div class="title">btllib </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_README"></a> <a href="http://www.birollab.ca/">Bioinformatics Technology Lab</a> common code library in C++ with Python and Java wrappers.</p>
+<div class="textblock"><p ><a class="anchor" id="md_README"></a> <a href="http://www.birollab.ca/">Bioinformatics Technology Lab</a> common code library in C++ with Python wrappers.</p>
 <p ><a href="https://dev.azure.com/bcgsc/btl_public/_build/latest?definitionId=1"><img src="https://dev.azure.com/bcgsc/btl_public/_apis/build/status/bcgsc.btllib" alt="Build Status" class="inline"/></a> <a href="https://lgtm.com/projects/g/bcgsc/btllib/context:cpp"><img src="https://img.shields.io/lgtm/grade/cpp/g/bcgsc/btllib.svg?logo=lgtm&amp;logoWidth=18" alt="Language grade: C/C++" style="pointer-events: none;" class="inline"/></a> <a href="https://lgtm.com/projects/g/bcgsc/btllib/alerts/"><img src="https://img.shields.io/lgtm/alerts/g/bcgsc/btllib.svg?logo=lgtm&amp;logoWidth=18" alt="Total alerts" style="pointer-events: none;" class="inline"/></a></p>
 <h2><a class="anchor" id="autotoc_md0"></a>
 Platforms</h2>
@@ -91,7 +91,7 @@ C++</h2>
 <li><code>btllib</code> uses <code>C++11</code> features, so that standard should be enabled at a minimum.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md4"></a>
-Python and Java</h2>
+Python</h2>
 <ul>
 <li>Dependencies<ul>
 <li>GCC 5+ or Clang 4+ with OpenMP</li>
@@ -107,11 +107,6 @@ Python and Java</h2>
 <li>Include the library with <code>import btllib</code></li>
 </ul>
 </li>
-<li>Java<ul>
-<li>Add <code>btllib/java</code> to classpath</li>
-<li>Include classes with <code>import btllib.*</code></li>
-</ul>
-</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Contributing</h2>
@@ -119,7 +114,7 @@ Contributing</h2>
 <p >The following are the available <code>ninja</code> commands which can be run within <code>build</code> directory:</p><ul>
 <li><code>ninja build-sdsl</code> builds the sdsl-lite dependency library.</li>
 <li><code>ninja format</code> formats the whitespace in code (requires clang-format 8+).</li>
-<li><code>ninja wrap</code> wraps C++ code for Python and Java (requires SWIG 4.0+).</li>
+<li><code>ninja wrap</code> wraps C++ code for Python (requires SWIG 4.0+).</li>
 <li><code>ninja tidycheck</code> runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+).</li>
 <li><code>ninja cppcheck</code> runs cppcheck on C++ code and makes sure it passes (requires cppcheck).</li>
 <li><code>ninja</code> builds the tests and wrapper libraries / makes sure they compile.</li>

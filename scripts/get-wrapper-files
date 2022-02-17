@@ -11,9 +11,8 @@ cd "${MESON_SOURCE_ROOT}"
 
 . scripts/portable_realpath
 
-files=$(find extras/python -type f | grep "\(.*\.h$\)\|\(.*\.hpp$\)\|\(.*\.cpp$\)\|\(.*\.cxx$\)")
+files=$(find wrappers/python -type f | grep "\(.*\.h$\)\|\(.*\.hpp$\)\|\(.*\.cpp$\)\|\(.*\.cxx$\)")
 files+=" "
-files+=$(find extras/java -type f | grep "\(.*\.h$\)\|\(.*\.hpp$\)\|\(.*\.cpp$\)\|\(.*\.cxx$\)")
 for file in $files; do
   echo -n "$(portable_realpath $file) "
 done

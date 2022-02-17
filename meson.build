@@ -84,7 +84,7 @@ run_target('complete', command: join_paths(rootpath, 'scripts/complete'))
 run_target('test-wrappers', command: join_paths(rootpath, 'scripts/test-wrappers'))
 
 subdir('include')
-subdir('extras')
+subdir('wrappers')
 # Re-enable recipes once finished
 #subdir('recipes')
 if get_option('buildtype') != 'release'

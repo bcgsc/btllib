@@ -133,7 +133,7 @@ unset CFLAGS
 unset CXXFLAGS
 unset LDFLAGS
 
-rm -rf build python java
+rm -rf build python
 meson setup --buildtype release --prefix=$SCRIPTPATH build
 if [[ $? -eq 0 ]]; then
   cd build

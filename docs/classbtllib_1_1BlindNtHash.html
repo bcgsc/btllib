@@ -118,6 +118,9 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_forward_hash<
 <tr class="memitem:a11c219c336e570d6a62fb527dc01f6ef"><td class="memItemLeft" align="right" valign="top"><a id="a11c219c336e570d6a62fb527dc01f6ef" name="a11c219c336e570d6a62fb527dc01f6ef"></a>
 uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_reverse_hash</b> () const</td></tr>
 <tr class="separator:a11c219c336e570d6a62fb527dc01f6ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a137b2a9ad8d5c7b26857611de45e3c5e"><td class="memItemLeft" align="right" valign="top"><a id="a137b2a9ad8d5c7b26857611de45e3c5e" name="a137b2a9ad8d5c7b26857611de45e3c5e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>change_seq</b> (const std::string &amp;new_seq, size_t new_pos=0)</td></tr>
+<tr class="separator:a137b2a9ad8d5c7b26857611de45e3c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Similar to <a class="el" href="classbtllib_1_1NtHash.html">NtHash</a> class, but instead of rolling on a predefined sequence, <a class="el" href="classbtllib_1_1BlindNtHash.html">BlindNtHash</a> needs to be fed the new character on each roll. This is useful when traversing an implicit de Bruijn Graph, as we need to query all bases to know the possible extensions. </p>

@@ -1,4 +1,4 @@
-[Bioinformatics Technology Lab](http://www.birollab.ca/) common code library in C++ with Python and Java wrappers.
+[Bioinformatics Technology Lab](http://www.birollab.ca/) common code library in C++ with Python wrappers.
 
 [![Build Status](https://dev.azure.com/bcgsc/btl_public/_apis/build/status/bcgsc.btllib)](https://dev.azure.com/bcgsc/btl_public/_build/latest?definitionId=1)
 [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/bcgsc/btllib.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bcgsc/btllib/context:cpp)
@@ -25,7 +25,7 @@ C++
 - Use any header from the `btllib/include` directory (pass `-I btllib/include` flag to the compiler)
 - `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
 
-Python and Java
+Python 
 ---
 - Dependencies
   * GCC 5+ or Clang 4+ with OpenMP
@@ -37,9 +37,6 @@ Python and Java
 - Python
   * Use Python's `sys.path.append()` to include `btllib/python` directory
   * Include the library with `import btllib`
-- Java
-  * Add `btllib/java` to classpath
-  * Include classes with `import btllib.*`
 
 Contributing
 ---
@@ -48,7 +45,7 @@ If you want to make changes to the btllib code, first create a build directory b
 The following are the available `ninja` commands which can be run within `build` directory:
 - `ninja build-sdsl` builds the sdsl-lite dependency library.
 - `ninja format` formats the whitespace in code (requires clang-format 8+).
-- `ninja wrap` wraps C++ code for Python and Java (requires SWIG 4.0+).
+- `ninja wrap` wraps C++ code for Python (requires SWIG 4.0+).
 - `ninja tidycheck` runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+).
 - `ninja cppcheck` runs cppcheck on C++ code and makes sure it passes (requires cppcheck).
 - `ninja` builds the tests and wrapper libraries / makes sure they compile.
