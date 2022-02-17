@@ -93,6 +93,14 @@ public class NtHash {
     return btllibJNI.NtHash_get_reverse_hash(swigCPtr, this);
   }
 
+  public void change_seq(String new_seq, long new_pos) {
+    btllibJNI.NtHash_change_seq__SWIG_0(swigCPtr, this, new_seq, new_pos);
+  }
+
+  public void change_seq(String new_seq) {
+    btllibJNI.NtHash_change_seq__SWIG_1(swigCPtr, this, new_seq);
+  }
+
   public NtHash(String seq, long hash_num, long k, long pos) {
     this(btllibJNI.new_NtHash__SWIG_0(seq, hash_num, k, pos), true);
   }

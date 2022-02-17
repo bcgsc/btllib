@@ -2,6 +2,7 @@
 #include "helpers.hpp"
 
 #include <iostream>
+#include <queue>
 #include <string>
 
 int
@@ -97,6 +98,29 @@ main()
     }
     TEST_ASSERT_EQ(nthash.get_pos(), 0)
     TEST_ASSERT_EQ(steps, 0)
+  }
+
+  {
+    std::cerr << "Testing block parsing" << std::endl;
+
+    std::vector<std::vector<unsigned>> blocks_out, monos_out;
+
+    std::vector<std::string> seeds = { "111101111", "1000110001" };
+    std::vector<std::vector<unsigned>> blocks = { { 0, 9 }, { 4, 6 } };
+    std::vector<std::vector<unsigned>> monos = { { 4 }, { 0, 9 } };
+
+    btllib::parse_blocks(seeds, blocks_out, monos_out);
+
+    for (unsigned i_seed = 0; i_seed < seeds.size(); i_seed++) {
+      TEST_ASSERT_EQ(blocks_out[i_seed].size(), blocks[i_seed].size());
+      TEST_ASSERT_EQ(monos_out[i_seed].size(), monos[i_seed].size());
+      for (unsigned i_block = 0; i_block < blocks[i_seed].size(); i_block++) {
+        TEST_ASSERT_EQ(blocks_out[i_seed][i_block], blocks[i_seed][i_block]);
+      }
+      for (unsigned i = 0; i < monos[i_seed].size(); i++) {
+        TEST_ASSERT_EQ(monos_out[i_seed][i], monos[i_seed][i]);
+      }
+    }
   }
 
   {
@@ -313,6 +337,86 @@ main()
       TEST_ASSERT_EQ(dna_nthash.hashes()[i], rna_nthash.hashes()[i]);
     }
     TEST_ASSERT_EQ(i, 3);
+  }
+
+  {
+    std::cerr << "Testing rolling spaced seeds vs masked hashing" << std::endl;
+
+    std::string seq = "AACGTGACTACTGACTAGCTAGCTAGCTGATCGT";
+    std::vector<std::string> seeds = { "111111111101111111111",
+                                       "110111010010010111011" };
+    unsigned k = seeds[0].length();
+    unsigned h = 2;
+
+    std::queue<uint64_t> masked_hashes;
+    for (unsigned i = 0; i <= seq.size() - k; i++) {
+      for (std::string seed : seeds) {
+        uint64_t fk = btllib::ntf64(seq.data() + i, k);
+        uint64_t rk = btllib::ntr64(seq.data() + i, k);
+        uint64_t hs = btllib::mask_hash(fk, rk, seed.data(), seq.data() + i, k);
+        masked_hashes.push(hs);
+        for (unsigned i_hash = 1; i_hash < h; i_hash++) {
+          masked_hashes.push(btllib::nte64(hs, k, i_hash));
+        }
+      }
+    }
+
+    std::queue<uint64_t> rolled_hashes;
+    btllib::SeedNtHash roller(seq, seeds, h, k);
+    unsigned num_hashes = roller.get_hash_num_per_seed() * seeds.size();
+    while (roller.roll()) {
+      for (unsigned i = 0; i < num_hashes; i++) {
+        rolled_hashes.push(roller.hashes()[i]);
+      }
+    }
+
+    TEST_ASSERT_EQ(masked_hashes.size(), rolled_hashes.size());
+    while (masked_hashes.size() > 0) {
+      uint64_t masked_hash = masked_hashes.front();
+      uint64_t rolled_hash = rolled_hashes.front();
+      TEST_ASSERT_EQ(masked_hash, rolled_hash);
+      masked_hashes.pop();
+      rolled_hashes.pop();
+    }
+  }
+
+  {
+    std::cerr << "Testing reset function" << std::endl;
+
+    std::string seq1 = "ACATAAGT";
+    std::string seed = "1001";
+    unsigned k = seed.length();
+    std::queue<uint64_t> hashes1, hashes2;
+
+    btllib::NtHash kmer_hash(seq1, 1, k);
+    while (kmer_hash.roll()) {
+      hashes1.push(kmer_hash.hashes()[0]);
+    }
+    kmer_hash.change_seq(seq1, 0);
+    while (kmer_hash.roll()) {
+      hashes2.push(kmer_hash.hashes()[0]);
+    }
+    TEST_ASSERT_EQ(hashes1.size(), hashes2.size());
+    while (!hashes1.empty()) {
+      TEST_ASSERT_EQ(hashes1.front(), hashes2.front());
+      hashes1.pop();
+      hashes2.pop();
+    }
+
+    btllib::SeedNtHash seed_hash(seq1, { seed }, 1, k);
+    while (seed_hash.roll()) {
+      hashes1.push(seed_hash.hashes()[0]);
+    }
+    seed_hash.change_seq(seq1);
+    while (seed_hash.roll()) {
+      hashes2.push(seed_hash.hashes()[0]);
+    }
+    TEST_ASSERT_EQ(hashes1.size(), hashes2.size());
+    while (!hashes1.empty()) {
+      TEST_ASSERT_EQ(hashes1.front(), hashes2.front());
+      hashes1.pop();
+      hashes2.pop();
+    }
   }
 
   return 0;
