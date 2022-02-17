@@ -392,7 +392,7 @@ main()
     while (kmer_hash.roll()) {
       hashes1.push(kmer_hash.hashes()[0]);
     }
-    kmer_hash.reset(seq1);
+    kmer_hash.change_seq(seq1, 0);
     while (kmer_hash.roll()) {
       hashes2.push(kmer_hash.hashes()[0]);
     }
@@ -407,7 +407,7 @@ main()
     while (seed_hash.roll()) {
       hashes1.push(seed_hash.hashes()[0]);
     }
-    seed_hash.reset(seq1);
+    seed_hash.change_seq(seq1);
     while (seed_hash.roll()) {
       hashes2.push(seed_hash.hashes()[0]);
     }

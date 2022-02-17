@@ -35809,40 +35809,109 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_NtHash_reset(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_NtHash_change_seq__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
   std::string *arg2 = 0 ;
+  size_t arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[2] ;
+  size_t val3 ;
+  int ecode3 = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_reset" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_change_seq" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
   }
   arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NtHash_reset" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NtHash_change_seq" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NtHash_reset" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NtHash_change_seq" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
-  (arg1)->reset((std::string const &)*arg2);
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "NtHash_change_seq" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  (arg1)->change_seq((std::string const &)*arg2,arg3);
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_change_seq__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_change_seq" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NtHash_change_seq" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NtHash_change_seq" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->change_seq((std::string const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_change_seq(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "NtHash_change_seq", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    PyObject *retobj = _wrap_NtHash_change_seq__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 3) {
+    PyObject *retobj = _wrap_NtHash_change_seq__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NtHash_change_seq'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::NtHash::change_seq(std::string const &,size_t)\n"
+    "    btllib::NtHash::change_seq(std::string const &)\n");
+  return 0;
 }
 
 
@@ -36679,40 +36748,109 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SeedNtHash_reset(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_SeedNtHash_change_seq__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
   std::string *arg2 = 0 ;
+  size_t arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[2] ;
+  size_t val3 ;
+  int ecode3 = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_reset" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_change_seq" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
   }
   arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SeedNtHash_reset" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SeedNtHash_change_seq" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SeedNtHash_reset" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SeedNtHash_change_seq" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
-  (arg1)->reset((std::string const &)*arg2);
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SeedNtHash_change_seq" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  (arg1)->change_seq((std::string const &)*arg2,arg3);
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
   if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_change_seq__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_change_seq" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SeedNtHash_change_seq" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SeedNtHash_change_seq" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->change_seq((std::string const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_change_seq(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "SeedNtHash_change_seq", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    PyObject *retobj = _wrap_SeedNtHash_change_seq__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 3) {
+    PyObject *retobj = _wrap_SeedNtHash_change_seq__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'SeedNtHash_change_seq'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::SeedNtHash::change_seq(std::string const &,size_t)\n"
+    "    btllib::SeedNtHash::change_seq(std::string const &)\n");
+  return 0;
 }
 
 
@@ -44618,7 +44756,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__NtHash_methods[] = {
   { "get_k", _wrap_NtHash_get_k, METH_NOARGS, "" },
   { "get_forward_hash", _wrap_NtHash_get_forward_hash, METH_NOARGS, "" },
   { "get_reverse_hash", _wrap_NtHash_get_reverse_hash, METH_NOARGS, "" },
-  { "reset", _wrap_NtHash_reset, METH_O, "" },
+  { "change_seq", _wrap_NtHash_change_seq, METH_VARARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -45060,7 +45198,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedNtHash_methods[] = {
   { "peek", _wrap_SeedNtHash_peek, METH_VARARGS, "" },
   { "peek_back", _wrap_SeedNtHash_peek_back, METH_VARARGS, "" },
   { "hashes", _wrap_SeedNtHash_hashes, METH_NOARGS, "" },
-  { "reset", _wrap_SeedNtHash_reset, METH_O, "" },
+  { "change_seq", _wrap_SeedNtHash_change_seq, METH_VARARGS, "" },
   { "get_pos", _wrap_SeedNtHash_get_pos, METH_NOARGS, "" },
   { "forward", _wrap_SeedNtHash_forward, METH_NOARGS, "" },
   { "get_hash_num", _wrap_SeedNtHash_get_hash_num, METH_NOARGS, "" },

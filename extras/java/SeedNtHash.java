@@ -65,8 +65,12 @@ public class SeedNtHash {
     return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_long_long(cPtr, false);
   }
 
-  public void reset(String seq) {
-    btllibJNI.SeedNtHash_reset(swigCPtr, this, seq);
+  public void change_seq(String seq, long pos) {
+    btllibJNI.SeedNtHash_change_seq__SWIG_0(swigCPtr, this, seq, pos);
+  }
+
+  public void change_seq(String seq) {
+    btllibJNI.SeedNtHash_change_seq__SWIG_1(swigCPtr, this, seq);
   }
 
   public long get_pos() {
