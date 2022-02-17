@@ -261,12 +261,22 @@ public:
   uint64_t get_forward_hash() const { return forward_hash; }
   uint64_t get_reverse_hash() const { return reverse_hash; }
 
+  void change_seq(const std::string& new_seq, size_t new_pos = 0)
+  {
+    seq_len = new_seq.length();
+    std::move(new_seq.begin(), new_seq.end(), seq.get());
+    pos = new_pos;
+    initialized = false;
+    forward_hash = 0;
+    reverse_hash = 0;
+  }
+
 private:
   /** Initialize internal state of iterator */
   bool init();
 
   std::unique_ptr<char[]> seq;
-  const size_t seq_len;
+  size_t seq_len;
   const NTHASH_HASH_NUM_TYPE hash_num;
   const NTHASH_K_TYPE k;
 
