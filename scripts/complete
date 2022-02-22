@@ -5,7 +5,7 @@ if [ -z "${MESON_BUILD_ROOT}" ]; then
   exit 1
 fi
 
-#set -e
+set -e
 
 cd "${MESON_BUILD_ROOT}"
 
