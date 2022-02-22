@@ -32,7 +32,7 @@ Python
   * Python 3.5+
   * Meson and Ninja Python3 packages, and CMake (optional -- if they are missing, they will be automatically downloaded to a temporary directory)
 - Copy the root `btllib` directory into your project
-- Run `btllib/compile-wrappers`
+- Run `btllib/compile`
 - The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. `btllib::SeqReader::Flag` in C++ versus `btllib.SeqReaderFlag` in Python).
 - Python
   * Use Python's `sys.path.append()` to include `btllib/python` directory

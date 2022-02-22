@@ -54,7 +54,7 @@ jobs:
 
   - script: |
       set -o errexit -o pipefail
-      ./compile-wrappers
+      ./compile
       cd build && ninja test-wrappers
     displayName: 'Test wrappers'
 
@@ -110,6 +110,6 @@ jobs:
 
   - script: |
       set -o errexit -o pipefail
-      ./compile-wrappers
+      ./compile
       cd build && ninja test-wrappers
     displayName: 'Test wrappers'

@@ -235,29 +235,34 @@ main(int argc, char* argv[])
   }
   for (auto& infile : infiles) {
     std::unique_ptr<btllib::Indexlr> indexlr;
-    if (with_repeat && with_solid) {
-      flags |= btllib::Indexlr::Flag::FILTER_IN;
-      flags |= btllib::Indexlr::Flag::FILTER_OUT;
-      indexlr = std::unique_ptr<btllib::Indexlr>(
-        new btllib::Indexlr(infile,
-                            k,
-                            w,
-                            flags,
-                            t,
-                            verbose,
-                            solid_bf->get_bloom_filter(),
-                            repeat_bf->get_bloom_filter()));
-    } else if (with_repeat) {
-      flags |= btllib::Indexlr::Flag::FILTER_OUT;
-      indexlr = std::unique_ptr<btllib::Indexlr>(new btllib::Indexlr(
-        infile, k, w, flags, t, verbose, repeat_bf->get_bloom_filter()));
-    } else if (with_solid) {
-      flags |= btllib::Indexlr::Flag::FILTER_IN;
-      indexlr = std::unique_ptr<btllib::Indexlr>(new btllib::Indexlr(
-        infile, k, w, flags, t, verbose, solid_bf->get_bloom_filter()));
-    } else {
-      indexlr = std::unique_ptr<btllib::Indexlr>(
-        new btllib::Indexlr(infile, k, w, flags, t, verbose));
+    try {
+      if (with_repeat && with_solid) {
+        flags |= btllib::Indexlr::Flag::FILTER_IN;
+        flags |= btllib::Indexlr::Flag::FILTER_OUT;
+        indexlr = std::unique_ptr<btllib::Indexlr>(
+          new btllib::Indexlr(infile,
+                              k,
+                              w,
+                              flags,
+                              t,
+                              verbose,
+                              solid_bf->get_bloom_filter(),
+                              repeat_bf->get_bloom_filter()));
+      } else if (with_repeat) {
+        flags |= btllib::Indexlr::Flag::FILTER_OUT;
+        indexlr = std::unique_ptr<btllib::Indexlr>(new btllib::Indexlr(
+          infile, k, w, flags, t, verbose, repeat_bf->get_bloom_filter()));
+      } else if (with_solid) {
+        flags |= btllib::Indexlr::Flag::FILTER_IN;
+        indexlr = std::unique_ptr<btllib::Indexlr>(new btllib::Indexlr(
+          infile, k, w, flags, t, verbose, solid_bf->get_bloom_filter()));
+      } else {
+        indexlr = std::unique_ptr<btllib::Indexlr>(
+          new btllib::Indexlr(infile, k, w, flags, t, verbose));
+      }
+    } catch (const std::exception& e) {
+      std::cerr << e.what() << '\n';
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
     std::queue<std::string> output_queue;
     std::mutex output_queue_mutex;
@@ -265,82 +270,89 @@ main(int argc, char* argv[])
     size_t max_seen_output_size = INITIAL_OUTPUT_STREAM_SIZE;
     const size_t output_period =
       bool(long_mode) ? OUTPUT_PERIOD_LONG : OUTPUT_PERIOD_SHORT;
-    std::unique_ptr<std::thread> info_compiler(new std::thread([&]() {
-      std::stringstream ss;
-      while ((record = indexlr->read())) {
-        if (bool(with_id) || (!bool(with_id) && !bool(with_bx))) {
-          ss << record.id << '\t';
-        }
-        if (bool(with_bx)) {
-          ss << record.barcode << '\t';
-        }
-        if (bool(with_len)) {
-          ss << record.readlen << '\t';
-        }
-        int j = 0;
-        for (const auto& min : record.minimizers) {
-          if (j > 0) {
-            ss << ' ';
+    try {
+      std::unique_ptr<std::thread> info_compiler(new std::thread([&]() {
+        std::stringstream ss;
+        while ((record = indexlr->read())) {
+          if (bool(with_id) || (!bool(with_id) && !bool(with_bx))) {
+            ss << record.id << '\t';
           }
-          ss << min.out_hash;
-          if (bool(with_pos)) {
-            ss << ':' << min.pos;
+          if (bool(with_bx)) {
+            ss << record.barcode << '\t';
           }
-          if (bool(with_strand)) {
-            ss << ':' << (min.forward ? '+' : '-');
+          if (bool(with_len)) {
+            ss << record.readlen << '\t';
           }
-          if (bool(with_seq)) {
-            ss << ':' << min.seq;
+          int j = 0;
+          for (const auto& min : record.minimizers) {
+            if (j > 0) {
+              ss << ' ';
+            }
+            ss << min.out_hash;
+            if (bool(with_pos)) {
+              ss << ':' << min.pos;
+            }
+            if (bool(with_strand)) {
+              ss << ':' << (min.forward ? '+' : '-');
+            }
+            if (bool(with_seq)) {
+              ss << ':' << min.seq;
+            }
+            j++;
           }
-          j++;
+          ss << '\n';
+          if (record.num % output_period == output_period - 1) {
+            auto ss_str = ss.str();
+            max_seen_output_size =
+              std::max(max_seen_output_size, ss_str.size());
+            std::unique_lock<std::mutex> lock(output_queue_mutex);
+            while (output_queue.size() == QUEUE_SIZE) {
+              queue_full.wait(lock);
+            }
+            output_queue.push(std::move(ss_str));
+            queue_empty.notify_one();
+            lock.unlock();
+            std::string newstring;
+            newstring.reserve(max_seen_output_size);
+            ss.str(newstring);
+          }
         }
-        ss << '\n';
-        if (record.num % output_period == output_period - 1) {
-          auto ss_str = ss.str();
-          max_seen_output_size = std::max(max_seen_output_size, ss_str.size());
-          std::unique_lock<std::mutex> lock(output_queue_mutex);
-          while (output_queue.size() == QUEUE_SIZE) {
-            queue_full.wait(lock);
-          }
-          output_queue.push(std::move(ss_str));
-          queue_empty.notify_one();
-          lock.unlock();
-          std::string newstring;
-          newstring.reserve(max_seen_output_size);
-          ss.str(newstring);
-        }
-      }
-      {
-        std::unique_lock<std::mutex> lock(output_queue_mutex);
-        if (!ss.str().empty()) {
-          output_queue.push(ss.str());
-        }
-        output_queue.push(std::string());
-        queue_empty.notify_one();
-      }
-    }));
-    std::unique_ptr<std::thread> output_worker(new std::thread([&]() {
-      std::string to_write;
-      for (;;) {
         {
           std::unique_lock<std::mutex> lock(output_queue_mutex);
-          while (output_queue.empty()) {
-            queue_empty.wait(lock);
+          if (!ss.str().empty()) {
+            output_queue.push(ss.str());
           }
-          to_write = std::move(output_queue.front());
-          output_queue.pop();
-          queue_full.notify_one();
+          output_queue.push(std::string());
+          queue_empty.notify_one();
         }
-        if (to_write.empty()) {
-          break;
+      }));
+      std::unique_ptr<std::thread> output_worker(new std::thread([&]() {
+        std::string to_write;
+        for (;;) {
+          {
+            std::unique_lock<std::mutex> lock(output_queue_mutex);
+            while (output_queue.empty()) {
+              queue_empty.wait(lock);
+            }
+            to_write = std::move(output_queue.front());
+            output_queue.pop();
+            queue_full.notify_one();
+          }
+          if (to_write.empty()) {
+            break;
+          }
+          btllib::check_error(
+            fwrite(to_write.c_str(), 1, to_write.size(), out) !=
+              to_write.size(),
+            "Indexlr: fwrite failed.");
         }
-        btllib::check_error(fwrite(to_write.c_str(), 1, to_write.size(), out) !=
-                              to_write.size(),
-                            "Indexlr: fwrite failed.");
-      }
-    }));
-    info_compiler->join();
-    output_worker->join();
+      }));
+      info_compiler->join();
+      output_worker->join();
+    } catch (const std::exception& e) {
+      std::cerr << e.what() << '\n';
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+    }
   }
   if (out != stdout) {
     fclose(out);
