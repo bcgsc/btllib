@@ -9,10 +9,10 @@ set -e
 
 cd "${MESON_SOURCE_ROOT}"
 
-files=$(scripts/get-include-files)
-files+=$(scripts/get-tests-files)
-files+=$(scripts/get-examples-files)
-files+=$(scripts/get-recipes-files)
+files=$(scripts/get-files include)
+files+=$(scripts/get-files tests)
+files+=$(scripts/get-files examples)
+files+=$(scripts/get-files recipes)
 for file in $files; do
   diff $file <(clang-format -style=mozilla $file)
 done

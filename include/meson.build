@@ -1,4 +1,4 @@
-header_paths = run_command('../scripts/get-include-files').stdout().strip().split()
+header_paths = run_command('../scripts/get-files', 'include').stdout().strip().split()
 
 # Do not install
 #foreach header : header_paths

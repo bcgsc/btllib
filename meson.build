@@ -1,5 +1,5 @@
 project('btllib', 'cpp',
-        version : '1.2.0',
+        version : '1.3.0',
         license : 'GPL3',
         default_options : [ 'cpp_std=c++11', 'warning_level=3', 'werror=true' ])
 
@@ -83,6 +83,7 @@ run_target('complete', command: join_paths(rootpath, 'scripts/complete'))
 
 run_target('test-wrappers', command: join_paths(rootpath, 'scripts/test-wrappers'))
 
+#subdir('src')
 subdir('include')
 subdir('wrappers')
 subdir('recipes')
