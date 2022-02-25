@@ -996,7 +996,8 @@ EXCLUDE_SYMBOLS        = btllib::SeqReader::read_* \
                          btllib::Indexlr::Read \
                          btllib::MIBloomFilter::FileHeader \
                          btllib::OrderQueue::Slot \
-                         btllib::BloomFilterInitializer
+                         btllib::BloomFilterInitializer \
+                         btllib::Barrier
 
 # The EXAMPLE_PATH tag can be used to specify one or more files or directories
 # that contain example code fragments that are included (see the \include
