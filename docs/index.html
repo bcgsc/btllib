@@ -80,18 +80,7 @@ Documentation</h2>
 Download</h2>
 <p >The recommended way is to download the <a href="https://github.com/bcgsc/btllib/releases/latest">latest release</a>.</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
-C++</h2>
-<ul>
-<li>Dependencies<ul>
-<li>GCC 5+ or Clang 4+ with OpenMP</li>
-</ul>
-</li>
-<li>Copy the root <code>btllib</code> directory into your project</li>
-<li>Use any header from the <code>btllib/include</code> directory (pass <code>-I btllib/include</code> flag to the compiler)</li>
-<li><code>btllib</code> uses <code>C++11</code> features, so that standard should be enabled at a minimum.</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md4"></a>
-Python</h2>
+Usage</h2>
 <ul>
 <li>Dependencies<ul>
 <li>GCC 5+ or Clang 4+ with OpenMP</li>
@@ -101,14 +90,20 @@ Python</h2>
 </li>
 <li>Copy the root <code>btllib</code> directory into your project</li>
 <li>Run <code>btllib/compile</code></li>
+<li>C++<ul>
+<li>Link your code with <code>btllib/lib/libbtllib.a</code> (pass <code>-L btllib/lib -l btllib</code> flags to the compiler).</li>
+<li><code>#include</code> any header from the <code>btllib/include</code> directory (pass <code>-I btllib/include</code> flag to the compiler).</li>
+<li><code>btllib</code> uses <code>C++11</code> features, so that standard should be enabled at a minimum.</li>
+</ul>
+</li>
+<li>Python wrappers<ul>
 <li>The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. <code><a class="el" href="structbtllib_1_1SeqReader_1_1Flag.html">btllib::SeqReader::Flag</a></code> in C++ versus <code>btllib.SeqReaderFlag</code> in Python).</li>
-<li>Python<ul>
 <li>Use Python's <code>sys.path.append()</code> to include <code>btllib/python</code> directory</li>
 <li>Include the library with <code>import btllib</code></li>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Contributing</h2>
 <p >If you want to make changes to the btllib code, first create a build directory by running <code>meson build</code> in <code>btllib</code> directory. <code>cd</code> to <code>build</code> directory and run <code>ninja build-sdsl</code> once to build the <code>sdsl</code> dependency. After that, every time you want to build the tests and wrappers, run <code>ninja</code> in <code>build</code> directory. To run the tests, run <code>ninja test</code>.</p>
 <p >The following are the available <code>ninja</code> commands which can be run within <code>build</code> directory:</p><ul>
@@ -125,7 +120,7 @@ Contributing</h2>
 <li><code>ninja complete</code> runs all of the above commands in the listed order.</li>
 </ul>
 <p >Before making a pull request, make sure to run <code>ninja complete</code> to make sure the code passes the CI test.</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Credits</h2>
 <ul>
 <li>Author: <a href="https://github.com/vlad0x00">Vladimir Nikolic</a></li>
