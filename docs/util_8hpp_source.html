@@ -252,41 +252,40 @@ $(function() {
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>}</div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="comment">// This exists in C++20, but we don&#39;t support that yet</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno"><a class="line" href="classbtllib_1_1Barrier.html">  235</a></span><span class="keyword">class </span><a class="code hl_class" href="classbtllib_1_1Barrier.html">Barrier</a></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>{</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>  <a class="code hl_class" href="classbtllib_1_1Barrier.html">Barrier</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> count)</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    : counter(0)</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    , counter_default(count)</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    , waiting(0)</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>  {}</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>  <span class="keywordtype">void</span> wait()</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>  {</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    std::unique_lock&lt;std::mutex&gt; lock(m);</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    ++counter;</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    ++waiting;</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    cv.wait(lock, [&amp;] { <span class="keywordflow">return</span> counter &gt;= counter_default; });</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    cv.notify_one();</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    --waiting;</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    <span class="keywordflow">if</span> (waiting == 0) {</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>      counter = 0;</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    }</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>  }</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>  std::mutex m;</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>  std::condition_variable cv;</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>  <span class="keywordtype">unsigned</span> counter;</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>  <span class="keywordtype">unsigned</span> counter_default;</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>  <span class="keywordtype">unsigned</span> waiting;</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>};</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment"></span><span class="keyword">class </span>Barrier</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>{</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>  Barrier(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> count)</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    : counter(0)</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    , counter_default(count)</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    , waiting(0)</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>  {}</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>  <span class="keywordtype">void</span> wait()</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>  {</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    std::unique_lock&lt;std::mutex&gt; lock(m);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    ++counter;</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    ++waiting;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    cv.wait(lock, [&amp;] { <span class="keywordflow">return</span> counter &gt;= counter_default; });</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    cv.notify_one();</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    --waiting;</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    <span class="keywordflow">if</span> (waiting == 0) {</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>      counter = 0;</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    }</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>  }</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>  std::mutex m;</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>  std::condition_variable cv;</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>  <span class="keywordtype">unsigned</span> counter;</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>  <span class="keywordtype">unsigned</span> counter_default;</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>  <span class="keywordtype">unsigned</span> waiting;</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>};</div>
 <div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassbtllib_1_1Barrier_html"><div class="ttname"><a href="classbtllib_1_1Barrier.html">btllib::Barrier</a></div><div class="ttdef"><b>Definition:</b> util.hpp:236</div></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="anamespacebtllib_html"><div class="ttname"><a href="namespacebtllib.html">btllib</a></div><div class="ttdef"><b>Definition:</b> bloom_filter.hpp:18</div></div>
 <div class="ttc" id="anamespacebtllib_html_a0d3f4421a7f9ba97324ad2791a96e2b5"><div class="ttname"><a href="namespacebtllib.html#a0d3f4421a7f9ba97324ad2791a96e2b5">btllib::endswith</a></div><div class="ttdeci">bool endswith(std::string s, std::string suffix)</div><div class="ttdef"><b>Definition:</b> util.hpp:183</div></div>
 <div class="ttc" id="anamespacebtllib_html_a3136b2f8753378b2712fb2c815c98a92"><div class="ttname"><a href="namespacebtllib.html#a3136b2f8753378b2712fb2c815c98a92">btllib::join</a></div><div class="ttdeci">std::string join(const std::vector&lt; std::string &gt; &amp;s, const std::string &amp;delim)</div><div class="ttdef"><b>Definition:</b> util.hpp:112</div></div>

@@ -56,7 +56,8 @@ check_warning(bool condition, const std::string& msg)
   }
 }
 
-void check_error(bool condition, const std::string& msg)
+void
+check_error(bool condition, const std::string& msg)
 {
   if (condition) {
     log_error(msg);

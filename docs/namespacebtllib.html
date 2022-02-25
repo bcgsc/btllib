@@ -73,13 +73,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1Barrier.html">Barrier</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1BlindNtHash.html">BlindNtHash</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1BloomFilter.html">BloomFilter</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>BloomFilterInitializer</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html">CountingBloomFilter</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,9 +135,6 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>PipeId</b> = unsigne
 <tr class="memitem:a9b177167b995a96864b49c5ced3cf4b1"><td class="memItemLeft" align="right" valign="top"><a id="a9b177167b995a96864b49c5ced3cf4b1" name="a9b177167b995a96864b49c5ced3cf4b1"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>PipelineId</b> = unsigned long</td></tr>
 <tr class="separator:a9b177167b995a96864b49c5ced3cf4b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bac27008a876177a8378149fefee1e2"><td class="memItemLeft" align="right" valign="top"><a id="a5bac27008a876177a8378149fefee1e2" name="a5bac27008a876177a8378149fefee1e2"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>DirectedFd</b> = int *(*)()</td></tr>
-<tr class="separator:a5bac27008a876177a8378149fefee1e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -364,30 +357,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64</b> (const ch
 <tr class="memitem:a7952ac19c84a22ed58044bab039f1b27"><td class="memItemLeft" align="right" valign="top"><a id="a7952ac19c84a22ed58044bab039f1b27" name="a7952ac19c84a22ed58044bab039f1b27"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64l</b> (const char *kmer_seq, const char in, const std::vector&lt; SpacedSeed &gt; &amp;seed_seq, const unsigned k, const unsigned m, const unsigned m2, uint64_t *fh_val, uint64_t *rh_val, uint64_t *h_val)</td></tr>
 <tr class="separator:a7952ac19c84a22ed58044bab039f1b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3942c738cd0c598bc5122edade87715f"><td class="memItemLeft" align="right" valign="top"><a id="a3942c738cd0c598bc5122edade87715f" name="a3942c738cd0c598bc5122edade87715f"></a>
-bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>process_spawner_initialized</b> ()</td></tr>
-<tr class="separator:a3942c738cd0c598bc5122edade87715f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bd68360c033332987ea79b19747c4f9"><td class="memItemLeft" align="right" valign="top"><a id="a5bd68360c033332987ea79b19747c4f9" name="a5bd68360c033332987ea79b19747c4f9"></a>
-int *&#160;</td><td class="memItemRight" valign="bottom"><b>process_spawner_user2spawner_fd</b> ()</td></tr>
-<tr class="separator:a5bd68360c033332987ea79b19747c4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbfc864c1c2027bbe33e79931cb27b6f"><td class="memItemLeft" align="right" valign="top"><a id="abbfc864c1c2027bbe33e79931cb27b6f" name="abbfc864c1c2027bbe33e79931cb27b6f"></a>
-int *&#160;</td><td class="memItemRight" valign="bottom"><b>process_spawner_spawner2user_fd</b> ()</td></tr>
-<tr class="separator:abbfc864c1c2027bbe33e79931cb27b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b8a3db2b25272a7fe2cfd08ea52e154"><td class="memItemLeft" align="right" valign="top"><a id="a0b8a3db2b25272a7fe2cfd08ea52e154" name="a0b8a3db2b25272a7fe2cfd08ea52e154"></a>
-std::mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>process_spawner_comm_mutex</b> ()</td></tr>
-<tr class="separator:a0b8a3db2b25272a7fe2cfd08ea52e154"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ce5f8987996848be348328a60a72276"><td class="memItemLeft" align="right" valign="top"><a id="a7ce5f8987996848be348328a60a72276" name="a7ce5f8987996848be348328a60a72276"></a>
-PipeId&#160;</td><td class="memItemRight" valign="bottom"><b>new_pipe_id</b> ()</td></tr>
-<tr class="separator:a7ce5f8987996848be348328a60a72276"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f30a56797319bc77a944b21039540ca"><td class="memItemLeft" align="right" valign="top"><a id="a2f30a56797319bc77a944b21039540ca" name="a2f30a56797319bc77a944b21039540ca"></a>
-std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>pipepath_prefix</b> ()</td></tr>
-<tr class="separator:a2f30a56797319bc77a944b21039540ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a253d615711647f0dee75f2a94567c967"><td class="memItemLeft" align="right" valign="top"><a id="a253d615711647f0dee75f2a94567c967" name="a253d615711647f0dee75f2a94567c967"></a>
-PipelineId&#160;</td><td class="memItemRight" valign="bottom"><b>new_pipeline_id</b> ()</td></tr>
-<tr class="separator:a253d615711647f0dee75f2a94567c967"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a319c78b76cd3410a67834f6cc5550a23"><td class="memItemLeft" align="right" valign="top"><a id="a319c78b76cd3410a67834f6cc5550a23" name="a319c78b76cd3410a67834f6cc5550a23"></a>
-std::map&lt; PipelineId, ProcessPipelineInternal &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>pipeline_map</b> ()</td></tr>
-<tr class="separator:a319c78b76cd3410a67834f6cc5550a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c9cb0705283e0519330f79629cdc738"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a0c9cb0705283e0519330f79629cdc738">reverse_complement</a> (std::string &amp;seq)</td></tr>
 <tr class="separator:a0c9cb0705283e0519330f79629cdc738"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfd77a3465be4993f797a31a3b2a285b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#abfd77a3465be4993f797a31a3b2a285b">get_reverse_complement</a> (const std::string &amp;seq)</td></tr>
@@ -407,11 +376,11 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_time</b> (
 <tr class="separator:a60a36f4583a7eb03001f8bdb7b395507"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a540bce0213b7718e519ddc4466361bf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">check_error</a> (bool condition, const std::string &amp;msg)</td></tr>
 <tr class="separator:a540bce0213b7718e519ddc4466361bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90573e7060c9c97d74316adf8faa75b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a90573e7060c9c97d74316adf8faa75b0">check_stream</a> (const std::ios &amp;stream, const std::string &amp;name)</td></tr>
-<tr class="separator:a90573e7060c9c97d74316adf8faa75b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2a24a23a678ed3c76484d86299efab2"><td class="memItemLeft" align="right" valign="top"><a id="ad2a24a23a678ed3c76484d86299efab2" name="ad2a24a23a678ed3c76484d86299efab2"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_strerror</b> ()</td></tr>
 <tr class="separator:ad2a24a23a678ed3c76484d86299efab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90573e7060c9c97d74316adf8faa75b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a90573e7060c9c97d74316adf8faa75b0">check_stream</a> (const std::ios &amp;stream, const std::string &amp;name)</td></tr>
+<tr class="separator:a90573e7060c9c97d74316adf8faa75b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e1f7d38461cd2a81d5b070ae8a146fa"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a6e1f7d38461cd2a81d5b070ae8a146fa">split</a> (const std::string &amp;s, const std::string &amp;delim)</td></tr>
 <tr class="separator:a6e1f7d38461cd2a81d5b070ae8a146fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3136b2f8753378b2712fb2c815c98a92"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a3136b2f8753378b2712fb2c815c98a92">join</a> (const std::vector&lt; std::string &gt; &amp;s, const std::string &amp;delim)</td></tr>
@@ -476,9 +445,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void btllib::check_error </td>
@@ -498,11 +464,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Conditionally log error level events. The program exits if the condition is true.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -520,9 +481,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void btllib::check_info </td>
@@ -542,11 +500,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Conditionally log info level events.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -564,9 +517,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void btllib::check_stream </td>
@@ -586,11 +536,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Check whether the stream is good. Program prints an error message and exits if not.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -608,9 +553,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void btllib::check_warning </td>
@@ -630,11 +572,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Conditionally log warning level events.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -775,9 +712,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void btllib::log_error </td>
@@ -787,11 +721,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Log error level events.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -808,9 +737,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void btllib::log_info </td>
@@ -820,11 +746,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Log info level events.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -841,9 +762,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void btllib::log_warning </td>
@@ -853,11 +771,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Log warning level events.</p>
 <dl class="params"><dt>Parameters</dt><dd>
