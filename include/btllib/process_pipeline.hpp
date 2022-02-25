@@ -547,14 +547,17 @@ open_redirection_files(const IORedirection& redirection,
     in_fd = open(redirection.in.c_str(), open_read_flags, OPEN_MODE);
   }
   if (!redirection.out.empty()) {
-    out_fd = open(redirection.out.c_str(),
-                  open_write_flags | (redirection.out_append ? O_APPEND : 0),
-                  OPEN_MODE);
+
+    out_fd =
+      open(redirection.out.c_str(),
+           open_write_flags | (redirection.out_append ? O_APPEND : O_TRUNC),
+           OPEN_MODE);
   }
   if (!redirection.err.empty()) {
-    err_fd = open(redirection.err.c_str(),
-                  open_write_flags | (redirection.err_append ? O_APPEND : 0),
-                  OPEN_MODE);
+    err_fd =
+      open(redirection.err.c_str(),
+           open_write_flags | (redirection.err_append ? O_APPEND : O_TRUNC),
+           OPEN_MODE);
   }
 }
 
