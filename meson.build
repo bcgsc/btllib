@@ -79,10 +79,22 @@ if cppcheck.found()
   run_target('cppcheck', command: join_paths(rootpath, 'scripts/cppcheck'))
 endif
 
-run_target('sanitize-address', command: join_paths(rootpath, 'scripts/sanitize-address'))
-run_target('sanitize-thread', command: join_paths(rootpath, 'scripts/sanitize-thread'))
-run_target('sanitize-undefined', command: join_paths(rootpath, 'scripts/sanitize-undefined'))
-run_target('sanitize-memory', command: join_paths(rootpath, 'scripts/sanitize-memory'))
+run_target('sanitize-address', command: [
+  join_paths(rootpath, 'scripts/sanitize'),
+  'address'
+])
+run_target('sanitize-memory', command: [
+  join_paths(rootpath, 'scripts/sanitize'),
+  'memory'
+])
+run_target('sanitize-thread', command: [
+  join_paths(rootpath, 'scripts/sanitize'),
+  'thread'
+])
+run_target('sanitize-undefined', command: [
+  join_paths(rootpath, 'scripts/sanitize'),
+  'undefined'
+])
 
 doxygen = find_program('doxygen', required : false)
 if doxygen.found()
