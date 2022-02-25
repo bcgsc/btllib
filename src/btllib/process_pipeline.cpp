@@ -36,21 +36,27 @@ static constexpr int COMM_BUFFER_SIZE = 1024;
 static constexpr mode_t OPEN_MODE =
   S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
 
+/// @cond HIDDEN_SYMBOLS
 enum class PipelineOperation
 {
   RUN,
   END
 };
 
-/// @cond HIDDEN_SYMBOLS
 class ProcessPipelineInternal;
 /// @endcond
 
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 static bool process_spawner_initialized = false;
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 static int process_spawner_user2spawner_fd[2];
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 static int process_spawner_spawner2user_fd[2];
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 static std::mutex process_spawner_comm_mutex;
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 static std::string pipepath_prefix;
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 static std::map<PipelineId, ProcessPipelineInternal> pipeline_map;
 
 static PipeId
@@ -444,7 +450,6 @@ public:
 
   void end();
 
-private:
   PipelineId id = 0;
   std::vector<std::pair<std::string, pid_t>> cmds;
   bool ended = false;
@@ -516,7 +521,7 @@ open_redirection_files(const IORedirection& redirection,
   }
 }
 
-void
+static void
 run_cmd()
 {
   char buf[COMM_BUFFER_SIZE];
@@ -639,7 +644,7 @@ run_cmd()
   pipeline_map[pipeline.id] = pipeline;
 }
 
-void
+static void
 end_cmd()
 {
   ProcessPipelineInternal pipeline;
@@ -655,7 +660,7 @@ end_cmd()
               "Process pipeline: Communication failure.");
 }
 
-void
+static void
 process_spawner_operation()
 {
   PipelineOperation op;

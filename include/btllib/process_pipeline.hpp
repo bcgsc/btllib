@@ -39,7 +39,6 @@ public:
   std::atomic<bool> out_closed{ false };
 
 private:
-
   PipelineId id = 0;
   std::atomic<bool> ended{ false };
 };
