@@ -682,46 +682,6 @@ ntc64l(const unsigned char char_out,
   return (rh_val < fh_val) ? rh_val : fh_val;
 }
 
-// ntBase with seeding option
-inline uint64_t
-ntf64(const char* kmer_seq, const unsigned k, const unsigned seed)
-{
-  uint64_t h_val = ntf64(kmer_seq, k);
-  if (seed == 0) {
-    return h_val;
-  }
-  h_val *= seed ^ k * MULTISEED;
-  h_val ^= h_val >> MULTISHIFT;
-  return h_val;
-}
-
-// canonical ntBase with seeding option
-inline uint64_t
-ntc64(const char* kmer_seq, const unsigned k, const unsigned seed)
-{
-  uint64_t h_val = ntc64(kmer_seq, k);
-  if (seed == 0) {
-    return h_val;
-  }
-  h_val *= seed ^ k * MULTISEED;
-  h_val ^= h_val >> MULTISHIFT;
-  return h_val;
-}
-
-// multihash ntHash, ntBase
-inline void
-ntm64(const char* kmer_seq, const unsigned k, const unsigned m, uint64_t* h_val)
-{
-  uint64_t b_val = 0, t_val = 0;
-  b_val = ntf64(kmer_seq, k);
-  h_val[0] = b_val;
-  for (unsigned i = 1; i < m; i++) {
-    t_val = b_val * (i ^ k * MULTISEED);
-    t_val ^= t_val >> MULTISHIFT;
-    h_val[i] = t_val;
-  }
-}
-
 // one extra hash for given base hash
 inline uint64_t
 nte64(const uint64_t h_val, const unsigned k, const unsigned i)
@@ -730,24 +690,6 @@ nte64(const uint64_t h_val, const unsigned k, const unsigned i)
   t_val *= (i ^ k * MULTISEED);
   t_val ^= t_val >> MULTISHIFT;
   return t_val;
-}
-
-// multihash ntHash for sliding k-mers
-inline void
-ntm64(const unsigned char char_out,
-      const unsigned char char_in,
-      const unsigned k,
-      const unsigned m,
-      uint64_t* h_val)
-{
-  uint64_t b_val = 0, t_val = 0;
-  b_val = ntf64(h_val[0], k, char_out, char_in);
-  h_val[0] = b_val;
-  for (unsigned i = 1; i < m; i++) {
-    t_val = b_val * (i ^ k * MULTISEED);
-    t_val ^= t_val >> MULTISHIFT;
-    h_val[i] = t_val;
-  }
 }
 
 // canonical multihash ntBase
@@ -1069,126 +1011,6 @@ sub_hash(uint64_t fh_val,
     t_val = b_val * (i ^ k * MULTISEED);
     t_val ^= t_val >> MULTISHIFT;
     h_val[i] = t_val;
-  }
-}
-
-// spaced seed ntHash for base kmer, i.e. fhval(kmer_0)
-inline uint64_t
-nts64(const char* kmer_seq,
-      const std::vector<bool>& seed,
-      const unsigned k,
-      uint64_t& h_val)
-{
-  h_val = 0;
-  uint64_t s_val = 0;
-  for (unsigned i = 0; i < k; i++) {
-    h_val = rol1(h_val);
-    h_val = swapbits033(h_val);
-    s_val = h_val;
-    h_val ^= SEED_TAB[(unsigned char)kmer_seq[i]];
-    if (seed[i]) {
-      s_val = h_val;
-    }
-  }
-  return s_val;
-}
-
-// spaced seed ntHash for sliding k-mers
-inline uint64_t
-nts64(const char* kmer_seq,
-      const std::vector<bool>& seed,
-      const unsigned char char_out,
-      const unsigned char char_in,
-      const unsigned k,
-      uint64_t& h_val)
-{
-  h_val = ntf64(h_val, k, char_out, char_in);
-  uint64_t s_val = h_val;
-  for (unsigned i = 0; i < k; i++) {
-    if (!seed[i]) {
-      s_val ^= (MS_TAB_31L[(unsigned char)kmer_seq[i]][k % 31] | // NOLINT
-                MS_TAB_33R[(unsigned char)kmer_seq[i]][k % 33]); // NOLINT
-    }
-  }
-  return s_val;
-}
-
-// strand-aware multihash spaced seed ntHash
-inline bool
-ntms64(const char* kmer_seq,
-       const std::vector<std::vector<unsigned>>& seed_seq,
-       const unsigned k,
-       const unsigned m,
-       uint64_t& fh_val,
-       uint64_t& rh_val,
-       unsigned& loc_n,
-       uint64_t* h_val,
-       bool* h_stn)
-{
-  fh_val = rh_val = 0;
-  loc_n = 0;
-  for (int i = int(k - 1); i >= 0; i--) {
-    if (SEED_TAB[(unsigned char)kmer_seq[i]] == SEED_N) {
-      loc_n = i;
-      return false;
-    }
-    fh_val = rol1(fh_val);
-    fh_val = swapbits033(fh_val);
-    fh_val ^= SEED_TAB[(unsigned char)kmer_seq[k - 1 - i]];
-
-    rh_val = rol1(rh_val);
-    rh_val = swapbits033(rh_val);
-    rh_val ^= SEED_TAB[(unsigned char)kmer_seq[i] & CP_OFF];
-  }
-
-  for (unsigned j = 0; j < m; j++) {
-    uint64_t fs_val = fh_val, rs_val = rh_val;
-    for (const auto& seed_pos : seed_seq[j]) {
-      fs_val ^= (MS_TAB_31L[(unsigned char)kmer_seq[seed_pos]]
-                           [(k - 1 - seed_pos) % 31] | // NOLINT
-                 MS_TAB_33R[(unsigned char)kmer_seq[seed_pos]]
-                           [(k - 1 - seed_pos) % 33]); // NOLINT
-      rs_val ^= (MS_TAB_31L[(unsigned char)kmer_seq[seed_pos] & CP_OFF]
-                           [seed_pos % 31] | // NOLINT
-                 MS_TAB_33R[(unsigned char)kmer_seq[seed_pos] & CP_OFF]
-                           [seed_pos % 33]); // NOLINT
-    }
-    h_stn[j] = rs_val < fs_val;
-    h_val[j] = h_stn[j] ? rs_val : fs_val;
-  }
-  return true;
-}
-
-// strand-aware multihash spaced seed ntHash for sliding k-mers
-inline void
-ntms64(const char* kmer_seq,
-       const std::vector<std::vector<unsigned>>& seed_seq,
-       const unsigned char char_out,
-       const unsigned char char_in,
-       const unsigned k,
-       const unsigned m,
-       uint64_t& fh_val,
-       uint64_t& rh_val,
-       uint64_t* h_val,
-       bool* h_stn)
-{
-  fh_val = ntf64(fh_val, k, char_out, char_in);
-  rh_val = ntr64(rh_val, k, char_out, char_in);
-  for (unsigned j = 0; j < m; j++) {
-    uint64_t fs_val = fh_val, rs_val = rh_val;
-    for (const auto& seed_pos : seed_seq[j]) {
-      fs_val ^= (MS_TAB_31L[(unsigned char)kmer_seq[seed_pos]]
-                           [(k - 1 - seed_pos) % 31] | // NOLINT
-                 MS_TAB_33R[(unsigned char)kmer_seq[seed_pos]]
-                           [(k - 1 - seed_pos) % 33]); // NOLINT
-      rs_val ^= (MS_TAB_31L[(unsigned char)kmer_seq[seed_pos] & CP_OFF]
-                           [seed_pos % 31] | // NOLINT
-                 MS_TAB_33R[(unsigned char)kmer_seq[seed_pos] & CP_OFF]
-                           [seed_pos % 33]); // NOLINT
-      ;
-    }
-    h_stn[j] = rs_val < fs_val;
-    h_val[j] = h_stn[j] ? rs_val : fs_val;
   }
 }
 
