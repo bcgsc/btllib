@@ -20,67 +20,6 @@ namespace btllib {
 // TODO: Create a clearer structure for list-of-blocks
 using SpacedSeed = std::vector<unsigned>;
 
-// rotate "v" to the left 1 position
-inline uint64_t
-rol1(const uint64_t v)
-{
-  return (v << 1) | (v >> 63); // NOLINT
-}
-
-// rotate "v" to the left x position
-inline uint64_t
-rolx(const uint64_t v, const unsigned x)
-{
-  return (v << x) | (v >> (64 - x)); // NOLINT
-}
-
-// rotate "v" to the right by 1 position
-inline uint64_t
-ror1(const uint64_t v)
-{
-  return (v >> 1) | (v << 63); // NOLINT
-}
-
-// rotate 31-left bits of "v" to the left by "s" positions
-inline uint64_t
-rol31(const uint64_t v, unsigned s)
-{
-  s %= 31;                                          // NOLINT
-  return ((v << s) | (v >> (31 - s))) & 0x7FFFFFFF; // NOLINT
-}
-
-// rotate 33-right bits of "v" to the left by "s" positions
-inline uint64_t
-rol33(const uint64_t v, unsigned s)
-{
-  s %= 33;                                           // NOLINT
-  return ((v << s) | (v >> (33 - s))) & 0x1FFFFFFFF; // NOLINT
-}
-
-// swap bit 0 with bit 33 in "v"
-inline uint64_t
-swapbits033(const uint64_t v)
-{
-  uint64_t x = (v ^ (v >> 33)) & 1; // NOLINT
-  return v ^ (x | (x << 33));       // NOLINT
-}
-
-// swap bit 32 with bit 63 in "v"
-inline uint64_t
-swapbits3263(const uint64_t v)
-{
-  uint64_t x = ((v >> 32) ^ (v >> 63)) & 1; // NOLINT
-  return v ^ ((x << 32) | (x << 63));       // NOLINT
-}
-
-inline uint64_t
-swapxbits033(const uint64_t v, const unsigned x)
-{
-  uint64_t y = (v ^ (v >> 33)) &                                   // NOLINT
-               (std::numeric_limits<uint64_t>::max() >> (64 - x)); // NOLINT
-  return v ^ (y | (y << 33));                                      // NOLINT
-}
-
 inline uint64_t
 srol(const uint64_t x)
 {
@@ -92,7 +31,10 @@ srol(const uint64_t x)
 inline uint64_t
 srol(const uint64_t x, const unsigned d)
 {
-  return swapxbits033(rolx(x, d), d);
+  uint64_t v = (x << d) | (x >> (64 - d));
+  uint64_t y = (v ^ (v >> 33)) &                                   // NOLINT
+               (std::numeric_limits<uint64_t>::max() >> (64 - d)); // NOLINT
+  return v ^ (y | (y << 33));                                      // NOLINT
 }
 
 inline uint64_t
