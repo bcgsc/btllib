@@ -81,14 +81,34 @@ swapxbits033(const uint64_t v, const unsigned x)
   return v ^ (y | (y << 33));                                      // NOLINT
 }
 
+inline uint64_t
+srol(const uint64_t x)
+{
+  uint64_t m = ((x & 0x8000000000000000ULL) >> 30) | // NOLINT
+               ((x & 0x100000000ULL) >> 32);         // NOLINT
+  return ((x << 1) & 0xFFFFFFFDFFFFFFFFULL) | m;     // NOLINT
+}
+
+inline uint64_t
+srol(const uint64_t x, const unsigned d)
+{
+  return swapxbits033(rolx(x, d), d);
+}
+
+inline uint64_t
+sror(const uint64_t x)
+{
+  uint64_t m = ((x & 0x200000000ULL) << 30) | ((x & 1ULL) << 32); // NOLINT
+  return ((x >> 1) & 0xFFFFFFFEFFFFFFFFULL) | m;                  // NOLINT
+}
+
 // forward-strand hash value of the base kmer, i.e. fhval(kmer_0)
 inline uint64_t
 ntf64(const char* kmer_seq, const unsigned k)
 {
   uint64_t h_val = 0;
   for (unsigned i = 0; i < k / 4; i++) {
-    h_val = rolx(h_val, 4);
-    h_val = swapxbits033(h_val, 4);
+    h_val = srol(h_val, 4);
     uint8_t curr_offset = 4 * i;
     uint8_t tetramer_loc =
       64 * CONVERT_TAB[(unsigned char)kmer_seq[curr_offset]] +     // NOLINT
@@ -98,8 +118,7 @@ ntf64(const char* kmer_seq, const unsigned k)
     h_val ^= TETRAMER_TAB[tetramer_loc];
   }
   unsigned remainder = k % 4;
-  h_val = rolx(h_val, remainder);
-  h_val = swapxbits033(h_val, remainder);
+  h_val = srol(h_val, remainder);
   if (remainder == 3) {
     uint8_t trimer_loc =
       16 * CONVERT_TAB[(unsigned char)kmer_seq[k - 3]] + // NOLINT
@@ -140,8 +159,7 @@ ntr64(const char* kmer_seq, const unsigned k)
     h_val ^= SEED_TAB[(unsigned char)kmer_seq[k - 1] & CP_OFF];
   }
   for (unsigned i = 0; i < k / 4; i++) {
-    h_val = rolx(h_val, 4);
-    h_val = swapxbits033(h_val, 4);
+    h_val = srol(h_val, 4);
     uint8_t curr_offset = 4 * (k / 4 - i) - 1;
     uint8_t tetramer_loc =
       64 * RC_CONVERT_TAB[(unsigned char)kmer_seq[curr_offset]] +     // NOLINT
@@ -160,8 +178,7 @@ ntf64(const uint64_t fh_val,
       const unsigned char char_out,
       const unsigned char char_in)
 {
-  uint64_t h_val = rol1(fh_val);
-  h_val = swapbits033(h_val);
+  uint64_t h_val = srol(fh_val);
   h_val ^= SEED_TAB[char_in];
   h_val ^=
     (MS_TAB_31L[char_out][k % 31] | MS_TAB_33R[char_out][k % 33]); // NOLINT
@@ -178,8 +195,7 @@ ntr64(const uint64_t rh_val,
   uint64_t h_val = rh_val ^ (MS_TAB_31L[char_in & CP_OFF][k % 31] | // NOLINT
                              MS_TAB_33R[char_in & CP_OFF][k % 33]); // NOLINT
   h_val ^= SEED_TAB[char_out & CP_OFF];
-  h_val = ror1(h_val);
-  h_val = swapbits3263(h_val);
+  h_val = sror(h_val);
   return h_val;
 }
 
@@ -228,8 +244,7 @@ ntf64l(const uint64_t rh_val,
   uint64_t h_val = rh_val ^ (MS_TAB_31L[char_in][k % 31] | // NOLINT
                              MS_TAB_33R[char_in][k % 33]); // NOLINT
   h_val ^= SEED_TAB[char_out];
-  h_val = ror1(h_val);
-  h_val = swapbits3263(h_val);
+  h_val = sror(h_val);
   return h_val;
 }
 
@@ -240,8 +255,7 @@ ntr64l(const uint64_t fh_val,
        const unsigned char char_out,
        const unsigned char char_in)
 {
-  uint64_t h_val = rol1(fh_val);
-  h_val = swapbits033(h_val);
+  uint64_t h_val = srol(fh_val);
   h_val ^= SEED_TAB[char_in & CP_OFF];
   h_val ^= (MS_TAB_31L[char_out & CP_OFF][k % 31] | // NOLINT
             MS_TAB_33R[char_out & CP_OFF][k % 33]); // NOLINT
@@ -363,12 +377,10 @@ ntc64(const char* kmer_seq, const unsigned k, uint64_t& h_val, unsigned& loc_n)
       loc_n = i;
       return false;
     }
-    fh_val = rol1(fh_val);
-    fh_val = swapbits033(fh_val);
+    fh_val = srol(fh_val);
     fh_val ^= SEED_TAB[(unsigned char)kmer_seq[k - 1 - i]];
 
-    rh_val = rol1(rh_val);
-    rh_val = swapbits033(rh_val);
+    rh_val = srol(rh_val);
     rh_val ^= SEED_TAB[(unsigned char)kmer_seq[i] & CP_OFF];
   }
   h_val = (rh_val < fh_val) ? rh_val : fh_val;
@@ -390,12 +402,10 @@ ntmc64(const char* kmer_seq,
       loc_n = i;
       return false;
     }
-    fh_val = rol1(fh_val);
-    fh_val = swapbits033(fh_val);
+    fh_val = srol(fh_val);
     fh_val ^= SEED_TAB[(unsigned char)kmer_seq[k - 1 - i]];
 
-    rh_val = rol1(rh_val);
-    rh_val = swapbits033(rh_val);
+    rh_val = srol(rh_val);
     rh_val ^= SEED_TAB[(unsigned char)kmer_seq[i] & CP_OFF];
   }
   b_val = (rh_val < fh_val) ? rh_val : fh_val;
@@ -424,12 +434,10 @@ ntc64(const char* kmer_seq,
       loc_n = i;
       return false;
     }
-    fh_val = rol1(fh_val);
-    fh_val = swapbits033(fh_val);
+    fh_val = srol(fh_val);
     fh_val ^= SEED_TAB[(unsigned char)kmer_seq[k - 1 - i]];
 
-    rh_val = rol1(rh_val);
-    rh_val = swapbits033(rh_val);
+    rh_val = srol(rh_val);
     rh_val ^= SEED_TAB[(unsigned char)kmer_seq[i] & CP_OFF];
   }
   h_val = (rh_val < fh_val) ? rh_val : fh_val;
@@ -454,12 +462,10 @@ ntmc64(const char* kmer_seq,
       loc_n = i;
       return false;
     }
-    fh_val = rol1(fh_val);
-    fh_val = swapbits033(fh_val);
+    fh_val = srol(fh_val);
     fh_val ^= SEED_TAB[(unsigned char)kmer_seq[k - 1 - i]];
 
-    rh_val = rol1(rh_val);
-    rh_val = swapbits033(rh_val);
+    rh_val = srol(rh_val);
     rh_val ^= SEED_TAB[(unsigned char)kmer_seq[i] & CP_OFF];
   }
   b_val = (rh_val < fh_val) ? rh_val : fh_val;
@@ -491,12 +497,10 @@ ntmc64(const char* kmer_seq,
       loc_n = i;
       return false;
     }
-    fh_val = rol1(fh_val);
-    fh_val = swapbits033(fh_val);
+    fh_val = srol(fh_val);
     fh_val ^= SEED_TAB[(unsigned char)kmer_seq[k - 1 - i]];
 
-    rh_val = rol1(rh_val);
-    rh_val = swapbits033(rh_val);
+    rh_val = srol(rh_val);
     rh_val ^= SEED_TAB[(unsigned char)kmer_seq[i] & CP_OFF];
   }
   h_stn = rh_val < fh_val;
@@ -666,7 +670,7 @@ ntmsm64(const char* kmer_seq,
   const SpacedSeed* seed = nullptr;                                            \
   for (unsigned i_seed = 0; i_seed < m; i_seed++) {                            \
     seed = &seed_seq[i_seed];                                                  \
-    fh_seed = swapbits033(rol1(fh_nomonos[i_seed]));                           \
+    fh_seed = srol(fh_nomonos[i_seed]);                                        \
     rh_seed = rh_nomonos[i_seed];                                              \
     for (int i_block = 0; i_block < (int)seed->size() - 1; i_block += 2) {     \
       /* cppcheck-suppress arrayIndexOutOfBounds */                            \
@@ -686,7 +690,7 @@ ntmsm64(const char* kmer_seq,
       rh_seed ^= (MS_TAB_31L[char_in & CP_OFF][i_in % 31] |   /* NOLINT */     \
                   MS_TAB_33R[char_in & CP_OFF][i_in % 33]);   /* NOLINT */     \
     }                                                                          \
-    rh_seed = swapbits3263(ror1(rh_seed));                                     \
+    rh_seed = sror(rh_seed);                                                   \
     fh_nomonos[i_seed] = fh_seed;                                              \
     rh_nomonos[i_seed] = rh_seed;                                              \
     for (unsigned pos : monomers[i_seed]) {                                    \
@@ -714,7 +718,7 @@ ntmsm64(const char* kmer_seq,
   unsigned char char_out;                                                      \
   for (unsigned i_seed = 0; i_seed < m; i_seed++) {                            \
     const SpacedSeed& seed = seed_seq[i_seed];                                 \
-    uint64_t rh_seed = swapbits033(rol1(rh_val[i_seed]));                      \
+    uint64_t rh_seed = srol(rh_val[i_seed]);                                   \
     uint64_t fh_seed = fh_val[i_seed];                                         \
     for (unsigned i_block = 0; i_block < seed.size() - 1; i_block += 2) {      \
       /* cppcheck-suppress arrayIndexOutOfBounds */                            \
@@ -734,7 +738,7 @@ ntmsm64(const char* kmer_seq,
       rh_seed ^= (MS_TAB_31L[char_in & CP_OFF][i_in % 31] |   /* NOLINT */     \
                   MS_TAB_33R[char_in & CP_OFF][i_in % 33]);   /* NOLINT */     \
     }                                                                          \
-    fh_seed = swapbits3263(ror1(fh_seed));                                     \
+    fh_seed = sror(fh_seed);                                                   \
     fh_val[i_seed] = fh_seed;                                                  \
     rh_val[i_seed] = rh_seed;                                                  \
     unsigned i_base = i_seed * m2;                                             \
