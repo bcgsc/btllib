@@ -20,6 +20,14 @@ namespace btllib {
 // TODO: Create a clearer structure for list-of-blocks
 using SpacedSeed = std::vector<unsigned>;
 
+/**
+ * Split a 64-bit word into 33 and 31-bit subwords and left-rotate them
+ * separately.
+ *
+ * @param x A 64-bit unsigned integer.
+ *
+ * @return Split-rotation result.
+ */
 inline uint64_t
 srol(const uint64_t x)
 {
@@ -28,6 +36,15 @@ srol(const uint64_t x)
   return ((x << 1) & 0xFFFFFFFDFFFFFFFFULL) | m;     // NOLINT
 }
 
+/**
+ * Split a 64-bit word into 33 and 31-bit subwords and left-rotate them
+ * separately multiple times.
+ *
+ * @param x A 64-bit unsigned integer.
+ * @param d Number of rotations.
+ *
+ * @return Split-rotation result.
+ */
 inline uint64_t
 srol(const uint64_t x, const unsigned d)
 {
@@ -37,6 +54,14 @@ srol(const uint64_t x, const unsigned d)
   return v ^ (y | (y << 33));                                      // NOLINT
 }
 
+/**
+ * Split a 64-bit word into 33 and 31-bit subwords and right-rotate them
+ * separately.
+ *
+ * @param x A 64-bit unsigned integer.
+ *
+ * @return Split-rotation result.
+ */
 inline uint64_t
 sror(const uint64_t x)
 {
@@ -44,7 +69,14 @@ sror(const uint64_t x)
   return ((x >> 1) & 0xFFFFFFFEFFFFFFFFULL) | m;                  // NOLINT
 }
 
-// forward-strand hash value of the base kmer, i.e. fhval(kmer_0)
+/**
+ * Generate the forward-strand hash value of the first k-mer in the sequence.
+ *
+ * @param kmer_seq C array containing the sequence's characters.
+ * @param k k-mer size.
+ *
+ * @return Hash value of k-mer_0.
+ */
 inline uint64_t
 ntf64(const char* kmer_seq, const unsigned k)
 {
@@ -79,7 +111,15 @@ ntf64(const char* kmer_seq, const unsigned k)
   return h_val;
 }
 
-// reverse-strand hash value of the base kmer, i.e. rhval(kmer_0)
+/**
+ * Generate the value of the reverse-complement of the first k-mer in the
+ * sequence.
+ *
+ * @param kmer_seq C array containing the sequence's characters.
+ * @param k k-mer size.
+ *
+ * @return Hash value of the reverse-complement of k-mer_0.
+ */
 inline uint64_t
 ntr64(const char* kmer_seq, const unsigned k)
 {
@@ -113,7 +153,17 @@ ntr64(const char* kmer_seq, const unsigned k)
   return h_val;
 }
 
-// forward-strand ntHash for sliding k-mers
+/**
+ * Perform a roll operation on the forward strand by removing char_out and
+ * including char_in.
+ *
+ * @param fh_val Previous hash value computed for the sequence.
+ * @param k k-mer size.
+ * @param char_out Character to be removed.
+ * @param char_in Character to be included.
+ *
+ * @return Rolled forward hash value.
+ */
 inline uint64_t
 ntf64(const uint64_t fh_val,
       const unsigned k,
@@ -126,7 +176,18 @@ ntf64(const uint64_t fh_val,
   return h_val;
 }
 
-// reverse-complement ntHash for sliding k-mers
+/**
+ * Perform a roll operation on the reverse-complement by removing char_out and
+ * including char_in.
+ *
+ * @param rh_val Previous reverse-complement hash value computed for the
+ * sequence.
+ * @param k k-mer size.
+ * @param char_out Character to be removed.
+ * @param char_in Character to be included.
+ *
+ * @return Rolled hash value for the reverse-complement.
+ */
 inline uint64_t
 ntr64(const uint64_t rh_val,
       const unsigned k,
@@ -139,7 +200,14 @@ ntr64(const uint64_t rh_val,
   return h_val;
 }
 
-// canonical ntBase
+/**
+ * Generate a canonical hash value for the first k-mer.
+ *
+ * @param kmer_seq C array containing the sequence's characters.
+ * @param k k-mer size.
+ *
+ * @return Canonical hash value of k-mer_0.
+ */
 inline uint64_t
 ntc64(const char* kmer_seq, const unsigned k)
 {
@@ -149,7 +217,15 @@ ntc64(const char* kmer_seq, const unsigned k)
   return (rh_val < fh_val) ? rh_val : fh_val;
 }
 
-// canonical ntHash
+/**
+ * Generate a canonical hash value for the first k-mer and update both strands'
+ * hash values.
+ *
+ * @param kmer_seq C array containing the sequence's characters.
+ * @param k k-mer size.
+ *
+ * @return Canonical hash value of k-mer_0.
+ */
 inline uint64_t
 ntc64(const char* kmer_seq,
       const unsigned k,
@@ -161,7 +237,17 @@ ntc64(const char* kmer_seq,
   return (rh_val < fh_val) ? rh_val : fh_val;
 }
 
-// canonical ntHash for sliding k-mers
+/**
+ * Perform a roll operation on the sequence and generate a canonical hash value.
+ *
+ * @param char_out Character to be removed.
+ * @param char_in Character to be included.
+ * @param k k-mer size.
+ * @param fh_val Previous hash value for the forward strand.
+ * @param rh_val Previous hash value for the reverse-complement.
+ *
+ * @return Canonical hash value after including char_in and removing char_out.
+ */
 inline uint64_t
 ntc64(const unsigned char char_out,
       const unsigned char char_in,
@@ -174,7 +260,16 @@ ntc64(const unsigned char char_out,
   return (rh_val < fh_val) ? rh_val : fh_val;
 }
 
-// forward-strand ntHash for sliding k-mers to the left
+/**
+ * Perform a roll-back operation on the forward strand.
+ *
+ * @param rh_val Previous forward hash value computed for the sequence.
+ * @param k k-mer size.
+ * @param char_out Character to be removed.
+ * @param char_in Character to be included.
+ *
+ * @return Roll-back'ed hash value.
+ */
 inline uint64_t
 ntf64l(const uint64_t rh_val,
        const unsigned k,
@@ -187,7 +282,16 @@ ntf64l(const uint64_t rh_val,
   return h_val;
 }
 
-// reverse-complement ntHash for sliding k-mers to the left
+/**
+ * Perform a roll-back operation on the reverse-complement.
+ *
+ * @param rh_val Previous reverse hash value computed for the sequence.
+ * @param k k-mer size.
+ * @param char_out Character to be removed.
+ * @param char_in Character to be included.
+ *
+ * @return Roll-back'ed hash value for the reverse-complement.
+ */
 inline uint64_t
 ntr64l(const uint64_t fh_val,
        const unsigned k,
@@ -200,7 +304,18 @@ ntr64l(const uint64_t fh_val,
   return h_val;
 }
 
-// canonical ntHash for sliding k-mers to the left
+/**
+ * Perform a roll-back operation on the canonical hash value and update previous
+ * hashes for both strands.
+ *
+ * @param char_out Character to be removed.
+ * @param char_in Character to be included.
+ * @param k k-mer size.
+ * @param fh_val Previous forward hash value computed for the sequence.
+ * @param rh_val Previous reverse hash value computed for the sequence.
+ *
+ * @return Roll back result for the canonical hash value.
+ */
 inline uint64_t
 ntc64l(const unsigned char char_out,
        const unsigned char char_in,
@@ -213,7 +328,16 @@ ntc64l(const unsigned char char_out,
   return (rh_val < fh_val) ? rh_val : fh_val;
 }
 
-// one extra hash for given base hash
+/**
+ * Generate a new value based on the input hash.
+ *
+ * @param h_val Base hash value.
+ * @param k k-mer size.
+ * @param i Seed number. Can be the index of the new value if generating
+ * multiple hashes per k-mer.
+ *
+ * @return New hash value.
+ */
 inline uint64_t
 nte64(const uint64_t h_val, const unsigned k, const unsigned i)
 {
@@ -223,7 +347,14 @@ nte64(const uint64_t h_val, const unsigned k, const unsigned i)
   return t_val;
 }
 
-// canonical multihash ntBase
+/**
+ * Generate multiple canonical hash values for the first k-mer.
+ *
+ * @param kmer_seq Array containing the sequence's characters.
+ * @param k k-mer size.
+ * @param m Number of hashes per k-mer.
+ * @param h_val Array of size m for storing the hash values.
+ */
 inline void
 ntmc64(const char* kmer_seq,
        const unsigned k,
@@ -240,7 +371,17 @@ ntmc64(const char* kmer_seq,
   }
 }
 
-// canonical multihash ntHash
+/**
+ * Generate multiple canonical hash values for the first k-mer and return
+ * strand-specific hash values.
+ *
+ * @param kmer_seq Array containing the sequence's characters.
+ * @param k k-mer size.
+ * @param m Number of hashes per k-mer.
+ * @param fh_val Unsigned 64-bit int container for the forward hash.
+ * @param rh_val Unsigned 64-bit int container for the reverse-complement hash.
+ * @param h_val Array of size m for storing the hash values.
+ */
 inline void
 ntmc64(const char* kmer_seq,
        const unsigned k,
@@ -259,7 +400,17 @@ ntmc64(const char* kmer_seq,
   }
 }
 
-// canonical multihash ntHash for sliding k-mers
+/**
+ * Generate a new canonical hash value by performing a roll operation.
+ *
+ * @param char_out Character to be removed.
+ * @param char_in Character to be included.
+ * @param k k-mer size.
+ * @param m Number of hashes per k-mer.
+ * @param fh_val Previous forward hash value.
+ * @param rh_val Previous reverse hash value.
+ * @param h_val Array of size m for storing the output hash values.
+ */
 inline void
 ntmc64(const unsigned char char_out,
        const unsigned char char_in,
@@ -279,7 +430,17 @@ ntmc64(const unsigned char char_out,
   }
 }
 
-// canonical multihash ntHash for sliding k-mers
+/**
+ * Generate a new canonical hash value by performing a roll-back operation.
+ *
+ * @param char_out Character to be removed.
+ * @param char_in Character to be included.
+ * @param k k-mer size.
+ * @param m Number of hashes per k-mer.
+ * @param fh_val Previous forward hash value.
+ * @param rh_val Previous reverse hash value.
+ * @param h_val Array of size m for storing the output hash values.
+ */
 inline void
 ntmc64l(const unsigned char char_out,
         const unsigned char char_in,
@@ -299,11 +460,18 @@ ntmc64l(const unsigned char char_out,
   }
 }
 
-/*
- * ignoring k-mers containing nonACGT using ntHash function
+/**
+ * Generate a canonical hash value for the first k-mer; skipping over unknown
+ * characters.
+ *
+ * @param kmer_seq Array containing the sequence's characters.
+ * @param k k-mer size.
+ * @param h_val Container for the output hash value.
+ * @param loc_n Location of the first unknown character.
+ *
+ * @return true if all the characters of the first k-mer are known, otherwise
+ * false.
  */
-
-// canonical ntBase
 inline bool
 ntc64(const char* kmer_seq, const unsigned k, uint64_t& h_val, unsigned& loc_n)
 {
@@ -325,7 +493,19 @@ ntc64(const char* kmer_seq, const unsigned k, uint64_t& h_val, unsigned& loc_n)
   return true;
 }
 
-// canonical multihash ntBase
+/**
+ * Generate multiple canonical hash values for the first k-mer; skipping over
+ * unknown characters.
+ *
+ * @param kmer_seq Array containing the sequence's characters.
+ * @param k k-mer size.
+ * @param m Number of hashes per k-mer.
+ * @param h_val Array of size m for storing the output hash values.
+ * @param loc_n Location of the first unknown character.
+ *
+ * @return true if all the characters of the first k-mer are known, otherwise
+ * false.
+ */
 inline bool
 ntmc64(const char* kmer_seq,
        const unsigned k,
@@ -356,7 +536,20 @@ ntmc64(const char* kmer_seq,
   return true;
 }
 
-// canonical ntHash
+/**
+ * Generate a canonical hash value for the first k-mer; skipping over unknown
+ * characters and returning the strand-specific hash values.
+ *
+ * @param kmer_seq Array containing the sequence's characters.
+ * @param k k-mer size.
+ * @param fh_val Container for the forward hash value.
+ * @param rh_val Container for the reverse hash value.
+ * @param h_val Container for the output hash value.
+ * @param loc_n Location of the first unknown character.
+ *
+ * @return true if all the characters of the first k-mer are known, otherwise
+ * false.
+ */
 inline bool
 ntc64(const char* kmer_seq,
       const unsigned k,
@@ -382,7 +575,21 @@ ntc64(const char* kmer_seq,
   return true;
 }
 
-// canonical multihash ntHash
+/**
+ * Generate multiple canonical hash value for the first k-mer; skipping over
+ * unknown characters and returning the strand-specific hash values.
+ *
+ * @param kmer_seq Array containing the sequence's characters.
+ * @param k k-mer size.
+ * @param m Number of hashes per k-mer.
+ * @param fh_val Container for the forward hash value.
+ * @param rh_val Container for the reverse hash value.
+ * @param loc_n Location of the first unknown character.
+ * @param h_val Array of size m for storing the output hash values.
+ *
+ * @return true if all the characters of the first k-mer are known, otherwise
+ * false.
+ */
 inline bool
 ntmc64(const char* kmer_seq,
        const unsigned k,
@@ -416,7 +623,23 @@ ntmc64(const char* kmer_seq,
   return true;
 }
 
-// strand-aware canonical multihash ntHash
+/**
+ * Generate multiple canonical hash values for the first k-mer; skipping over
+ * unknown characters and returning the strand-specific hash values and strand
+ * selections.
+ *
+ * @param kmer_seq Array containing the sequence's characters.
+ * @param k k-mer size.
+ * @param m Number of hashes per k-mer.
+ * @param fh_val Container for the forward hash value.
+ * @param rh_val Container for the reverse hash value.
+ * @param loc_n Location of the first unknown character.
+ * @param h_val Array of size m for storing the output hash values.
+ * @param h_stn true if the reverse strand was selected, otherwise false.
+ *
+ * @return true if all the characters of the first k-mer are known, otherwise
+ * false.
+ */
 inline bool
 ntmc64(const char* kmer_seq,
        const unsigned k,
@@ -452,7 +675,19 @@ ntmc64(const char* kmer_seq,
   return true;
 }
 
-// starnd-aware canonical multihash ntHash for sliding k-mers
+/**
+ * Generate multiple canonical hash values by performing a roll operation,
+ * returning the strand-specific hash values and strand selections.
+ *
+ * @param char_out Character to be removed.
+ * @param char_in Character to be included.
+ * @param k k-mer size.
+ * @param m Number of hashes per k-mer.
+ * @param fh_val Container for the forward hash value.
+ * @param rh_val Container for the reverse hash value.
+ * @param h_val Array of size m for storing the output hash values.
+ * @param h_stn true if the reverse strand was selected, otherwise false.
+ */
 inline void
 ntmc64(const unsigned char char_out,
        const unsigned char char_in,
@@ -474,7 +709,19 @@ ntmc64(const unsigned char char_out,
   }
 }
 
-// masking canonical ntHash using spaced seed pattern
+/**
+ * Generate a hash value for the input spaced seed by excluding all don't care
+ * positions.
+ *
+ * @param fk_val Forward hash value of the k-mer (ignoring the spaced seed).
+ * @param rk_val Reverse hash value of the k-mer (ignoring the spaced seed).
+ * @param seed_seq Array of characters representing the spaced seed. Anything
+ * other than '1' is treated as a don't care.
+ * @param kmer_seq Array of character representing the k-mer.
+ * @param k k-mer size.
+ *
+ * @return Canonical hash value for the k-mer masked with the spaced seed.
+ */
 inline uint64_t
 mask_hash(uint64_t& fk_val,
           uint64_t& rk_val,
@@ -492,7 +739,20 @@ mask_hash(uint64_t& fk_val,
   return (rs_val < fs_val) ? rs_val : fs_val;
 }
 
-// replacing canonical ntHash with a substitution
+/**
+ * Generate multiple new hash values for the input k-mer by substituting
+ * multiple characters.
+ *
+ * @param fh_val Forward hash value of the k-mer.
+ * @param rh_val Reverse hash value of the k-mer.
+ * @param kmer_seq Array of characters representing the k-mer.
+ * @param positions Indicies of the positions to be substituted.
+ * @param new_bases Characters to be placed in the indicies indicated in
+ * positions.
+ * @param k k-mer size.
+ * @param m Number of hashes per k-mer.
+ * @param h_val Array of size m for storing the output hash values.
+ */
 inline void
 sub_hash(uint64_t fh_val,
          uint64_t rh_val,
@@ -525,7 +785,30 @@ sub_hash(uint64_t fh_val,
   }
 }
 
-// Multi spaced seed ntHash with multiple hashes per seed
+/**
+ * Generate multiple hash values for the input spaced seeds and first k-mer.
+ *
+ * @param kmer_seq Array of characters representing the k-mer.
+ * @param seed_seq Array of SpacedSeed objects representing the seeds' blocks.
+ * @param monomers List of the positions that represent blocks of size one for
+ * each seed.
+ * @param k k-mer size.
+ * @param m Number of spaced seeds.
+ * @param m2 Number of hashes per seed.
+ * @param fh_nomonos Container for the forward hash values before including the
+ * size-one blocks.
+ * @param rh_nomonos Container for the reverse hash values before including the
+ * size-one blocks.
+ * @param fh_val Container for the forward hash values after including the
+ * size-one blocks.
+ * @param rh_val Container for the reverse hash values after including the
+ * size-one blocks.
+ * @param loc_n Location of the first unknown character in the first sequence.
+ * @param h_val Array of size m * m2 for storing the output hash values.
+ *
+ * @return true if all the care positions of the first k-mer are valid,
+ * otherwise false.
+ */
 inline bool
 ntmsm64(const char* kmer_seq,
         const std::vector<SpacedSeed>& seed_seq,
@@ -653,7 +936,27 @@ ntmsm64(const char* kmer_seq,
     }                                                                          \
   }
 
-// Multi spaced seed ntHash for sliding k-mers with multiple hashes per seed
+/**
+ * Generate multiple hash values for the input spaced seeds and the next
+ * k-mer by performing a forward roll operation.
+ *
+ * @param kmer_seq Array of characters representing the previous k-mer.
+ * @param seed_seq Array of SpacedSeed objects representing the seeds' blocks.
+ * @param monomers List of the positions that represent blocks of size one for
+ * each seed.
+ * @param k k-mer size.
+ * @param m Number of spaced seeds.
+ * @param m2 Number of hashes per seed.
+ * @param fh_nomonos Previous forward hash values before including the size-one
+ * blocks.
+ * @param rh_nomonos Previous reverse hash values before including the size-one
+ * blocks.
+ * @param fh_val Previous forward hash values after including the size-one
+ * blocks.
+ * @param rh_val Previous reverse hash values after including the size-one
+ * blocks.
+ * @param h_val Array of size m * m2 for storing the output hash values.
+ */
 inline void
 ntmsm64(const char* kmer_seq,
         const std::vector<SpacedSeed>& seed_seq,
@@ -670,7 +973,27 @@ ntmsm64(const char* kmer_seq,
   NTMSM64(char_in = (unsigned char)kmer_seq[i_in];)
 }
 
-// Multi spaced seed ntHash for sliding k-mers with multiple hashes per seed
+/**
+ * Generate multiple hash values for the input spaced seeds and the next
+ * k-mer by performing a backward roll operation.
+ *
+ * @param kmer_seq Array of characters representing the previous k-mer.
+ * @param seed_seq Array of SpacedSeed objects representing the seeds' blocks.
+ * @param monomers List of the positions that represent blocks of size one for
+ * each seed.
+ * @param k k-mer size.
+ * @param m Number of spaced seeds.
+ * @param m2 Number of hashes per seed.
+ * @param fh_nomonos Previous forward hash values before including the size-one
+ * blocks.
+ * @param rh_nomonos Previous reverse hash values before including the size-one
+ * blocks.
+ * @param fh_val Previous forward hash values after including the size-one
+ * blocks.
+ * @param rh_val Previous reverse hash values after including the size-one
+ * blocks.
+ * @param h_val Array of size m * m2 for storing the output hash values.
+ */
 inline void
 ntmsm64l(const char* kmer_seq,
          const std::vector<SpacedSeed>& seed_seq,
@@ -684,7 +1007,27 @@ ntmsm64l(const char* kmer_seq,
   NTMSM64L(char_in = (unsigned char)kmer_seq[i_in];)
 }
 
-// Multi spaced seed ntHash for sliding k-mers with multiple hashes per seed
+/**
+ * Generate multiple hash values for the input spaced seeds and the next
+ * k-mer by performing a forward peek operation.
+ *
+ * @param kmer_seq Array of characters representing the previous k-mer.
+ * @param seed_seq Array of SpacedSeed objects representing the seeds' blocks.
+ * @param monomers List of the positions that represent blocks of size one for
+ * each seed.
+ * @param k k-mer size.
+ * @param m Number of spaced seeds.
+ * @param m2 Number of hashes per seed.
+ * @param fh_nomonos Previous forward hash values before including the size-one
+ * blocks.
+ * @param rh_nomonos Previous reverse hash values before including the size-one
+ * blocks.
+ * @param fh_val Previous forward hash values after including the size-one
+ * blocks.
+ * @param rh_val Previous reverse hash values after including the size-one
+ * blocks.
+ * @param h_val Array of size m * m2 for storing the output hash values.
+ */
 inline void
 ntmsm64(const char* kmer_seq,
         const char in,
@@ -705,7 +1048,27 @@ ntmsm64(const char* kmer_seq,
     })
 }
 
-// Multi spaced seed ntHash for sliding k-mers with multiple hashes per seed
+/**
+ * Generate multiple hash values for the input spaced seeds and the next
+ * k-mer by performing a backwards peek operation.
+ *
+ * @param kmer_seq Array of characters representing the previous k-mer.
+ * @param seed_seq Array of SpacedSeed objects representing the seeds' blocks.
+ * @param monomers List of the positions that represent blocks of size one for
+ * each seed.
+ * @param k k-mer size.
+ * @param m Number of spaced seeds.
+ * @param m2 Number of hashes per seed.
+ * @param fh_nomonos Previous forward hash values before including the size-one
+ * blocks.
+ * @param rh_nomonos Previous reverse hash values before including the size-one
+ * blocks.
+ * @param fh_val Previous forward hash values after including the size-one
+ * blocks.
+ * @param rh_val Previous reverse hash values after including the size-one
+ * blocks.
+ * @param h_val Array of size m * m2 for storing the output hash values.
+ */
 inline void
 ntmsm64l(const char* kmer_seq,
          const char in,
