@@ -180,8 +180,7 @@ ntf64(const uint64_t fh_val,
 {
   uint64_t h_val = srol(fh_val);
   h_val ^= SEED_TAB[char_in];
-  h_val ^=
-    (MS_TAB_31L[char_out][k % 31] | MS_TAB_33R[char_out][k % 33]); // NOLINT
+  h_val ^= MS_TAB(char_out, k);
   return h_val;
 }
 
@@ -192,8 +191,7 @@ ntr64(const uint64_t rh_val,
       const unsigned char char_out,
       const unsigned char char_in)
 {
-  uint64_t h_val = rh_val ^ (MS_TAB_31L[char_in & CP_OFF][k % 31] | // NOLINT
-                             MS_TAB_33R[char_in & CP_OFF][k % 33]); // NOLINT
+  uint64_t h_val = rh_val ^ MS_TAB(char_in & CP_OFF, k);
   h_val ^= SEED_TAB[char_out & CP_OFF];
   h_val = sror(h_val);
   return h_val;
@@ -241,8 +239,7 @@ ntf64l(const uint64_t rh_val,
        const unsigned char char_out,
        const unsigned char char_in)
 {
-  uint64_t h_val = rh_val ^ (MS_TAB_31L[char_in][k % 31] | // NOLINT
-                             MS_TAB_33R[char_in][k % 33]); // NOLINT
+  uint64_t h_val = rh_val ^ MS_TAB(char_in, k);
   h_val ^= SEED_TAB[char_out];
   h_val = sror(h_val);
   return h_val;
@@ -257,8 +254,7 @@ ntr64l(const uint64_t fh_val,
 {
   uint64_t h_val = srol(fh_val);
   h_val ^= SEED_TAB[char_in & CP_OFF];
-  h_val ^= (MS_TAB_31L[char_out & CP_OFF][k % 31] | // NOLINT
-            MS_TAB_33R[char_out & CP_OFF][k % 33]); // NOLINT
+  h_val ^= MS_TAB(char_out & CP_OFF, k);
   return h_val;
 }
 
@@ -547,12 +543,8 @@ mask_hash(uint64_t& fk_val,
   uint64_t fs_val = fk_val, rs_val = rk_val;
   for (unsigned i = 0; i < k; i++) {
     if (seed_seq[i] != '1') {
-      fs_val ^=
-        (MS_TAB_31L[(unsigned char)kmer_seq[i]][(k - 1 - i) % 31] | // NOLINT
-         MS_TAB_33R[(unsigned char)kmer_seq[i]][(k - 1 - i) % 33]); // NOLINT
-      rs_val ^=
-        (MS_TAB_31L[(unsigned char)kmer_seq[i] & CP_OFF][i % 31] | // NOLINT
-         MS_TAB_33R[(unsigned char)kmer_seq[i] & CP_OFF][i % 33]); // NOLINT
+      fs_val ^= MS_TAB((unsigned char)kmer_seq[i], k - 1 - i);
+      rs_val ^= MS_TAB((unsigned char)kmer_seq[i] & CP_OFF, i);
     }
   }
   return (rs_val < fs_val) ? rs_val : fs_val;
@@ -575,17 +567,11 @@ sub_hash(uint64_t fh_val,
     const auto pos = positions[i];
     const auto new_base = new_bases[i];
 
-    fh_val ^=
-      (MS_TAB_31L[(unsigned char)kmer_seq[pos]][(k - 1 - pos) % 31] | // NOLINT
-       MS_TAB_33R[(unsigned char)kmer_seq[pos]][(k - 1 - pos) % 33]); // NOLINT
-    fh_val ^= (MS_TAB_31L[new_base][(k - 1 - pos) % 31] |             // NOLINT
-               MS_TAB_33R[new_base][(k - 1 - pos) % 33]);             // NOLINT
+    fh_val ^= MS_TAB((unsigned char)kmer_seq[pos], k - 1 - pos);
+    fh_val ^= MS_TAB(new_base, k - 1 - pos);
 
-    rh_val ^=
-      (MS_TAB_31L[(unsigned char)kmer_seq[pos] & CP_OFF][pos % 31] | // NOLINT
-       MS_TAB_33R[(unsigned char)kmer_seq[pos] & CP_OFF][pos % 33]); // NOLINT
-    rh_val ^= (MS_TAB_31L[new_base & CP_OFF][pos % 31] |             // NOLINT
-               MS_TAB_33R[new_base & CP_OFF][pos % 33]);             // NOLINT
+    rh_val ^= MS_TAB((unsigned char)kmer_seq[pos] & CP_OFF, pos);
+    rh_val ^= MS_TAB(new_base & CP_OFF, pos);
   }
 
   b_val = rh_val < fh_val ? rh_val : fh_val;
@@ -631,25 +617,15 @@ ntmsm64(const char* kmer_seq,
           loc_n = pos;
           return false;
         }
-        fh_seed ^= MS_TAB_31L[(unsigned char)kmer_seq[pos]]
-                             [(k - 1 - pos) % 31] | // NOLINT
-                   MS_TAB_33R[(unsigned char)kmer_seq[pos]]
-                             [(k - 1 - pos) % 33]; // NOLINT
-        rh_seed ^=
-          MS_TAB_31L[(unsigned char)kmer_seq[pos] & CP_OFF]
-                    [pos % 31] |                                       // NOLINT
-          MS_TAB_33R[(unsigned char)kmer_seq[pos] & CP_OFF][pos % 33]; // NOLINT
+        fh_seed ^= MS_TAB((unsigned char)kmer_seq[pos], k - 1 - pos);
+        rh_seed ^= MS_TAB((unsigned char)kmer_seq[pos] & CP_OFF, pos);
       }
     }
     fh_nomonos[i_seed] = fh_seed;
     rh_nomonos[i_seed] = rh_seed;
     for (unsigned pos : monomers[i_seed]) {
-      fh_seed ^=
-        MS_TAB_31L[(unsigned char)kmer_seq[pos]][(k - 1 - pos) % 31] | // NOLINT
-        MS_TAB_33R[(unsigned char)kmer_seq[pos]][(k - 1 - pos) % 33];  // NOLINT
-      rh_seed ^=
-        MS_TAB_31L[(unsigned char)kmer_seq[pos] & CP_OFF][pos % 31] | // NOLINT
-        MS_TAB_33R[(unsigned char)kmer_seq[pos] & CP_OFF][pos % 33];  // NOLINT
+      fh_seed ^= MS_TAB((unsigned char)kmer_seq[pos], k - 1 - pos);
+      rh_seed ^= MS_TAB((unsigned char)kmer_seq[pos] & CP_OFF, pos);
     }
     fh_val[i_seed] = fh_seed;
     rh_val[i_seed] = rh_seed;
@@ -681,27 +657,17 @@ ntmsm64(const char* kmer_seq,
       i_in = seed->at(i_block + 1);                                            \
       char_out = (unsigned char)kmer_seq[i_out];                               \
       CHAR_IN_HANDLING                                                         \
-      fh_seed ^= (MS_TAB_31L[char_out][(k - i_out) % 31] |    /* NOLINT */     \
-                  MS_TAB_33R[char_out][(k - i_out) % 33]);    /* NOLINT */     \
-      fh_seed ^= (MS_TAB_31L[char_in][(k - i_in) % 31] |      /* NOLINT */     \
-                  MS_TAB_33R[char_in][(k - i_in) % 33]);      /* NOLINT */     \
-      rh_seed ^= (MS_TAB_31L[char_out & CP_OFF][i_out % 31] | /* NOLINT */     \
-                  MS_TAB_33R[char_out & CP_OFF][i_out % 33]); /* NOLINT */     \
-      rh_seed ^= (MS_TAB_31L[char_in & CP_OFF][i_in % 31] |   /* NOLINT */     \
-                  MS_TAB_33R[char_in & CP_OFF][i_in % 33]);   /* NOLINT */     \
+      fh_seed ^= MS_TAB(char_out, k - i_out);                                  \
+      fh_seed ^= MS_TAB(char_in, k - i_in);                                    \
+      rh_seed ^= MS_TAB(char_out & CP_OFF, i_out);                             \
+      rh_seed ^= MS_TAB(char_in & CP_OFF, i_in);                               \
     }                                                                          \
     rh_seed = sror(rh_seed);                                                   \
     fh_nomonos[i_seed] = fh_seed;                                              \
     rh_nomonos[i_seed] = rh_seed;                                              \
     for (unsigned pos : monomers[i_seed]) {                                    \
-      fh_seed ^= MS_TAB_31L[(unsigned char)kmer_seq[pos + 1]]                  \
-                           [(k - 1 - pos) % 31] | /* NOLINT */                 \
-                 MS_TAB_33R[(unsigned char)kmer_seq[pos + 1]]                  \
-                           [(k - 1 - pos) % 33]; /* NOLINT */                  \
-      rh_seed ^= MS_TAB_31L[(unsigned char)kmer_seq[pos + 1] & CP_OFF]         \
-                           [pos % 31] | /* NOLINT */                           \
-                 MS_TAB_33R[(unsigned char)kmer_seq[pos + 1] & CP_OFF]         \
-                           [pos % 33]; /* NOLINT */                            \
+      fh_seed ^= MS_TAB((unsigned char)kmer_seq[pos + 1], k - 1 - pos);        \
+      rh_seed ^= MS_TAB((unsigned char)kmer_seq[pos + 1] & CP_OFF, pos);       \
     }                                                                          \
     fh_val[i_seed] = fh_seed;                                                  \
     rh_val[i_seed] = rh_seed;                                                  \
@@ -729,14 +695,10 @@ ntmsm64(const char* kmer_seq,
       const unsigned i_out = seed[i_block + 1];                                \
       char_out = (unsigned char)kmer_seq[i_out];                               \
       CHAR_IN_HANDLING                                                         \
-      fh_seed ^= (MS_TAB_31L[char_out][(k - i_out) % 31] |    /* NOLINT */     \
-                  MS_TAB_33R[char_out][(k - i_out) % 33]);    /* NOLINT */     \
-      fh_seed ^= (MS_TAB_31L[char_in][(k - i_in) % 31] |      /* NOLINT */     \
-                  MS_TAB_33R[char_in][(k - i_in) % 33]);      /* NOLINT */     \
-      rh_seed ^= (MS_TAB_31L[char_out & CP_OFF][i_out % 31] | /* NOLINT */     \
-                  MS_TAB_33R[char_out & CP_OFF][i_out % 33]); /* NOLINT */     \
-      rh_seed ^= (MS_TAB_31L[char_in & CP_OFF][i_in % 31] |   /* NOLINT */     \
-                  MS_TAB_33R[char_in & CP_OFF][i_in % 33]);   /* NOLINT */     \
+      fh_seed ^= MS_TAB(char_out, k - i_out);                                  \
+      fh_seed ^= MS_TAB(char_in, k - i_in);                                    \
+      rh_seed ^= MS_TAB(char_out & CP_OFF, i_out);                             \
+      rh_seed ^= MS_TAB(char_in & CP_OFF, i_in);                               \
     }                                                                          \
     fh_seed = sror(fh_seed);                                                   \
     fh_val[i_seed] = fh_seed;                                                  \
