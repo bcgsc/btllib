@@ -596,7 +596,7 @@ $(function() {
 <div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>NtHash::sub(<span class="keyword">const</span> std::vector&lt;unsigned&gt;&amp; positions,</div>
 <div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>            <span class="keyword">const</span> std::vector&lt;unsigned char&gt;&amp; new_bases)</div>
 <div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>{</div>
-<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>  sub_hash(forward_hash,</div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>  <a class="code hl_function" href="namespacebtllib.html#a4d60c4e9f386a96fb4f24a5a1fc87b25">sub_hash</a>(forward_hash,</div>
 <div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>           reverse_hash,</div>
 <div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>           seq + pos,</div>
 <div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>           positions,</div>
@@ -610,7 +610,7 @@ $(function() {
 <div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>BlindNtHash::sub(<span class="keyword">const</span> std::vector&lt;unsigned&gt;&amp; positions,</div>
 <div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>                 <span class="keyword">const</span> std::vector&lt;unsigned char&gt;&amp; new_bases)</div>
 <div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>{</div>
-<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>  sub_hash(forward_hash,</div>
+<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>  <a class="code hl_function" href="namespacebtllib.html#a4d60c4e9f386a96fb4f24a5a1fc87b25">sub_hash</a>(forward_hash,</div>
 <div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>           reverse_hash,</div>
 <div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>           seq.get() + pos,</div>
 <div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>           positions,</div>
@@ -879,138 +879,163 @@ $(function() {
 <div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span>                        roll_back(),</div>
 <div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>                        ntmsm64l(nthash.seq + nthash.pos - 1,</div>
 <div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span>                                 blocks,</div>
-<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>                                 nthash.k,</div>
-<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span>                                 blocks.size(),</div>
-<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>                                 hash_num_per_seed,</div>
-<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span>                                 forward_hash.get(),</div>
-<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>                                 reverse_hash.get(),</div>
-<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>                                 nthash.hashes_array.get());</div>
-<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span>                        , nthash.)</div>
-<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>BTLLIB_NTHASH_PEEK(</div>
-<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>  SeedNtHash,</div>
-<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>  peek(),</div>
-<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span> </div>
-<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>  {</div>
-<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span>    std::unique_ptr&lt;uint64_t[]&gt; fh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
-<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>    std::unique_ptr&lt;uint64_t[]&gt; rh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
-<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>    std::unique_ptr&lt;uint64_t[]&gt; forward_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
-<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>    std::unique_ptr&lt;uint64_t[]&gt; reverse_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
-<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>    std::memcpy(fh_no_monomers_tmp.get(),</div>
-<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span>                forward_hash.get(),</div>
-<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
-<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span>    std::memcpy(rh_no_monomers_tmp.get(),</div>
-<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>                reverse_hash.get(),</div>
+<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>                                 monomers,</div>
+<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span>                                 nthash.k,</div>
+<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>                                 blocks.size(),</div>
+<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span>                                 hash_num_per_seed,</div>
+<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>                                 fh_no_monomers.get(),</div>
+<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>                                 rh_no_monomers.get(),</div>
+<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span>                                 forward_hash.get(),</div>
+<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>                                 reverse_hash.get(),</div>
+<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>                                 nthash.hashes_array.get());</div>
+<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>                        , nthash.)</div>
+<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>BTLLIB_NTHASH_PEEK(</div>
+<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>  SeedNtHash,</div>
+<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span>  peek(),</div>
+<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span> </div>
+<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>  {</div>
+<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>    std::unique_ptr&lt;uint64_t[]&gt; fh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>    std::unique_ptr&lt;uint64_t[]&gt; rh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span>    std::unique_ptr&lt;uint64_t[]&gt; forward_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span>    std::unique_ptr&lt;uint64_t[]&gt; reverse_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span>    std::memcpy(fh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>                forward_hash.get(),</div>
 <div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
-<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>    std::memcpy(forward_hash_tmp.get(),</div>
-<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>                forward_hash.get(),</div>
+<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>    std::memcpy(rh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>                reverse_hash.get(),</div>
 <div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
-<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>    std::memcpy(reverse_hash_tmp.get(),</div>
-<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>                reverse_hash.get(),</div>
+<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>    std::memcpy(forward_hash_tmp.get(),</div>
+<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>                forward_hash.get(),</div>
 <div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
-<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>    ntmsm64(nthash.seq + nthash.pos,</div>
-<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>            blocks,</div>
-<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>            monomers,</div>
-<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>            nthash.k,</div>
-<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span>            blocks.size(),</div>
-<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span>            hash_num_per_seed,</div>
-<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span>            fh_no_monomers_tmp.get(),</div>
-<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span>            rh_no_monomers_tmp.get(),</div>
-<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>            forward_hash_tmp.get(),</div>
-<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span>            reverse_hash_tmp.get(),</div>
-<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>            nthash.hashes_array.get());</div>
-<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>  },</div>
-<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span>  nthash.)</div>
-<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>BTLLIB_NTHASH_PEEK(</div>
-<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>  SeedNtHash,</div>
-<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span>  peek(<span class="keywordtype">char</span> char_in),</div>
-<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span> </div>
-<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span>  {</div>
-<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>    std::unique_ptr&lt;uint64_t[]&gt; fh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
-<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span>    std::unique_ptr&lt;uint64_t[]&gt; rh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
-<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span>    std::unique_ptr&lt;uint64_t[]&gt; forward_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
-<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>    std::unique_ptr&lt;uint64_t[]&gt; reverse_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
-<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>    std::memcpy(fh_no_monomers_tmp.get(),</div>
-<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span>                forward_hash.get(),</div>
-<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
-<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span>    std::memcpy(rh_no_monomers_tmp.get(),</div>
-<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>                reverse_hash.get(),</div>
+<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>    std::memcpy(reverse_hash_tmp.get(),</div>
+<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>                reverse_hash.get(),</div>
+<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
+<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>    ntmsm64(nthash.seq + nthash.pos,</div>
+<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span>            blocks,</div>
+<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span>            monomers,</div>
+<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span>            nthash.k,</div>
+<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span>            blocks.size(),</div>
+<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>            hash_num_per_seed,</div>
+<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span>            fh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>            rh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>            forward_hash_tmp.get(),</div>
+<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span>            reverse_hash_tmp.get(),</div>
+<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>            nthash.hashes_array.get());</div>
+<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>  },</div>
+<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span>  nthash.)</div>
+<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>BTLLIB_NTHASH_PEEK(</div>
+<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span>  SeedNtHash,</div>
+<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>  peek(<span class="keywordtype">char</span> char_in),</div>
+<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span> </div>
+<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span>  {</div>
+<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>    std::unique_ptr&lt;uint64_t[]&gt; fh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>    std::unique_ptr&lt;uint64_t[]&gt; rh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span>    std::unique_ptr&lt;uint64_t[]&gt; forward_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span>    std::unique_ptr&lt;uint64_t[]&gt; reverse_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span>    std::memcpy(fh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>                forward_hash.get(),</div>
 <div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
-<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>    std::memcpy(forward_hash_tmp.get(),</div>
-<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>                forward_hash.get(),</div>
+<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>    std::memcpy(rh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>                reverse_hash.get(),</div>
 <div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
-<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span>    std::memcpy(reverse_hash_tmp.get(),</div>
-<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span>                reverse_hash.get(),</div>
+<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span>    std::memcpy(forward_hash_tmp.get(),</div>
+<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span>                forward_hash.get(),</div>
 <div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
-<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span>    ntmsm64(nthash.seq + nthash.pos,</div>
-<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>            char_in,</div>
-<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>            blocks,</div>
-<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>            monomers,</div>
-<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>            nthash.k,</div>
-<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span>            blocks.size(),</div>
-<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span>            hash_num_per_seed,</div>
-<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span>            fh_no_monomers_tmp.get(),</div>
-<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span>            rh_no_monomers_tmp.get(),</div>
-<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"> 1023</span>            forward_hash_tmp.get(),</div>
-<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span>            reverse_hash_tmp.get(),</div>
-<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span>            nthash.hashes_array.get());</div>
-<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"> 1026</span>  },</div>
-<div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span>  nthash.)</div>
-<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span>BTLLIB_NTHASH_PEEK(</div>
-<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span>  SeedNtHash,</div>
-<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span>  peek_back(),</div>
-<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span> </div>
-<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span>  {</div>
-<div class="line"><a id="l01033" name="l01033"></a><span class="lineno"> 1033</span>    std::unique_ptr&lt;uint64_t[]&gt; forward_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
-<div class="line"><a id="l01034" name="l01034"></a><span class="lineno"> 1034</span>    std::unique_ptr&lt;uint64_t[]&gt; reverse_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
-<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span>    std::memcpy(forward_hash_tmp.get(),</div>
-<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span>                forward_hash.get(),</div>
-<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
-<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span>    std::memcpy(reverse_hash_tmp.get(),</div>
-<div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span>                reverse_hash.get(),</div>
-<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
-<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"> 1041</span>    ntmsm64l(nthash.seq + nthash.pos - 1,</div>
-<div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span>             blocks,</div>
-<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span>             nthash.k,</div>
-<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"> 1044</span>             blocks.size(),</div>
-<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span>             hash_num_per_seed,</div>
-<div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span>             forward_hash_tmp.get(),</div>
-<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>             reverse_hash_tmp.get(),</div>
-<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span>             nthash.hashes_array.get());</div>
-<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span>  },</div>
-<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span>  nthash.)</div>
-<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>BTLLIB_NTHASH_PEEK(</div>
-<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span>  SeedNtHash,</div>
-<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span>  peek_back(<span class="keywordtype">char</span> char_in),</div>
-<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span> </div>
-<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>  {</div>
-<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>    std::unique_ptr&lt;uint64_t[]&gt; forward_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
-<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span>    std::unique_ptr&lt;uint64_t[]&gt; reverse_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
-<div class="line"><a id="l01058" name="l01058"></a><span class="lineno"> 1058</span>    std::memcpy(forward_hash_tmp.get(),</div>
-<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span>                forward_hash.get(),</div>
-<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
-<div class="line"><a id="l01061" name="l01061"></a><span class="lineno"> 1061</span>    std::memcpy(reverse_hash_tmp.get(),</div>
-<div class="line"><a id="l01062" name="l01062"></a><span class="lineno"> 1062</span>                reverse_hash.get(),</div>
-<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
-<div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span>    ntmsm64l(nthash.seq + nthash.pos - 1,</div>
-<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span>             char_in,</div>
-<div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span>             blocks,</div>
-<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span>             nthash.k,</div>
-<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>             blocks.size(),</div>
-<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>             hash_num_per_seed,</div>
-<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>             forward_hash_tmp.get(),</div>
-<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>             reverse_hash_tmp.get(),</div>
-<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>             nthash.hashes_array.get());</div>
-<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>  },</div>
-<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>  nthash.)</div>
-<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span> </div>
-<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span><span class="preprocessor">#undef BTLLIB_NTHASH_INIT</span></div>
-<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span><span class="preprocessor">#undef BTLLIB_NTHASH_ROLL</span></div>
-<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span><span class="preprocessor">#undef BTLLIB_NTHASH_ROLL_BACK</span></div>
-<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span><span class="preprocessor">#undef BTLLIB_NTHASH_PEEK</span></div>
-<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span> </div>
-<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span>} <span class="comment">// namespace btllib</span></div>
-<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span> </div>
-<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span>    std::memcpy(reverse_hash_tmp.get(),</div>
+<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>                reverse_hash.get(),</div>
+<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
+<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>    ntmsm64(nthash.seq + nthash.pos,</div>
+<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>            char_in,</div>
+<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span>            blocks,</div>
+<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span>            monomers,</div>
+<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span>            nthash.k,</div>
+<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span>            blocks.size(),</div>
+<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"> 1023</span>            hash_num_per_seed,</div>
+<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span>            fh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span>            rh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"> 1026</span>            forward_hash_tmp.get(),</div>
+<div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span>            reverse_hash_tmp.get(),</div>
+<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span>            nthash.hashes_array.get());</div>
+<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span>  },</div>
+<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span>  nthash.)</div>
+<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span>BTLLIB_NTHASH_PEEK(</div>
+<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span>  SeedNtHash,</div>
+<div class="line"><a id="l01033" name="l01033"></a><span class="lineno"> 1033</span>  peek_back(),</div>
+<div class="line"><a id="l01034" name="l01034"></a><span class="lineno"> 1034</span> </div>
+<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span>  {</div>
+<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span>    std::unique_ptr&lt;uint64_t[]&gt; fh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>    std::unique_ptr&lt;uint64_t[]&gt; rh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span>    std::unique_ptr&lt;uint64_t[]&gt; forward_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span>    std::unique_ptr&lt;uint64_t[]&gt; reverse_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span>    std::memcpy(fh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"> 1041</span>                forward_hash.get(),</div>
+<div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
+<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span>    std::memcpy(rh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"> 1044</span>                reverse_hash.get(),</div>
+<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
+<div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span>    std::memcpy(forward_hash_tmp.get(),</div>
+<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>                forward_hash.get(),</div>
+<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
+<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span>    std::memcpy(reverse_hash_tmp.get(),</div>
+<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span>                reverse_hash.get(),</div>
+<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
+<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span>    ntmsm64l(nthash.seq + nthash.pos - 1,</div>
+<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span>             blocks,</div>
+<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span>             monomers,</div>
+<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>             nthash.k,</div>
+<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>             blocks.size(),</div>
+<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span>             hash_num_per_seed,</div>
+<div class="line"><a id="l01058" name="l01058"></a><span class="lineno"> 1058</span>             fh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span>             rh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span>             forward_hash_tmp.get(),</div>
+<div class="line"><a id="l01061" name="l01061"></a><span class="lineno"> 1061</span>             reverse_hash_tmp.get(),</div>
+<div class="line"><a id="l01062" name="l01062"></a><span class="lineno"> 1062</span>             nthash.hashes_array.get());</div>
+<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>  },</div>
+<div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span>  nthash.)</div>
+<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span>BTLLIB_NTHASH_PEEK(</div>
+<div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span>  SeedNtHash,</div>
+<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span>  peek_back(<span class="keywordtype">char</span> char_in),</div>
+<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span> </div>
+<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>  {</div>
+<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>    std::unique_ptr&lt;uint64_t[]&gt; fh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>    std::unique_ptr&lt;uint64_t[]&gt; rh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>    std::unique_ptr&lt;uint64_t[]&gt; forward_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>    std::unique_ptr&lt;uint64_t[]&gt; reverse_hash_tmp(<span class="keyword">new</span> uint64_t[blocks.size()]);</div>
+<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>    std::memcpy(fh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>                forward_hash.get(),</div>
+<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
+<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>    std::memcpy(rh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>                reverse_hash.get(),</div>
+<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
+<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span>    std::memcpy(forward_hash_tmp.get(),</div>
+<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span>                forward_hash.get(),</div>
+<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
+<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span>    std::memcpy(reverse_hash_tmp.get(),</div>
+<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>                reverse_hash.get(),</div>
+<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span>                blocks.size() * <span class="keyword">sizeof</span>(uint64_t));</div>
+<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span>    ntmsm64l(nthash.seq + nthash.pos - 1,</div>
+<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span>             char_in,</div>
+<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span>             blocks,</div>
+<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>             monomers,</div>
+<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span>             nthash.k,</div>
+<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span>             blocks.size(),</div>
+<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>             hash_num_per_seed,</div>
+<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span>             fh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span>             rh_no_monomers_tmp.get(),</div>
+<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span>             forward_hash_tmp.get(),</div>
+<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span>             reverse_hash_tmp.get(),</div>
+<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span>             nthash.hashes_array.get());</div>
+<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span>  },</div>
+<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>  nthash.)</div>
+<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"> 1100</span> </div>
+<div class="line"><a id="l01101" name="l01101"></a><span class="lineno"> 1101</span><span class="preprocessor">#undef BTLLIB_NTHASH_INIT</span></div>
+<div class="line"><a id="l01102" name="l01102"></a><span class="lineno"> 1102</span><span class="preprocessor">#undef BTLLIB_NTHASH_ROLL</span></div>
+<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"> 1103</span><span class="preprocessor">#undef BTLLIB_NTHASH_ROLL_BACK</span></div>
+<div class="line"><a id="l01104" name="l01104"></a><span class="lineno"> 1104</span><span class="preprocessor">#undef BTLLIB_NTHASH_PEEK</span></div>
+<div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span> </div>
+<div class="line"><a id="l01106" name="l01106"></a><span class="lineno"> 1106</span>} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span> </div>
+<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassbtllib_1_1BlindNtHash_html"><div class="ttname"><a href="classbtllib_1_1BlindNtHash.html">btllib::BlindNtHash</a></div><div class="ttdef"><b>Definition:</b> nthash.hpp:184</div></div>
 <div class="ttc" id="aclassbtllib_1_1BlindNtHash_html_a0a80f282a62c4c5deae8acdb4051e471"><div class="ttname"><a href="classbtllib_1_1BlindNtHash.html#a0a80f282a62c4c5deae8acdb4051e471">btllib::BlindNtHash::roll_back</a></div><div class="ttdeci">bool roll_back(char char_in)</div></div>
 <div class="ttc" id="aclassbtllib_1_1BlindNtHash_html_a1b751022f37699b8a33465470976a7b8"><div class="ttname"><a href="classbtllib_1_1BlindNtHash.html#a1b751022f37699b8a33465470976a7b8">btllib::BlindNtHash::BlindNtHash</a></div><div class="ttdeci">BlindNtHash(const char *seq, size_t seq_len, unsigned hash_num, unsigned k, size_t pos=0)</div><div class="ttdef"><b>Definition:</b> nthash.hpp:444</div></div>

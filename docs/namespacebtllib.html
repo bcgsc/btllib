@@ -201,11 +201,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>parsed_seeds_to_block
 <tr class="memitem:afce0f8b6da9515e49105cf77ac1e7118"><td class="memItemLeft" align="right" valign="top"><a id="afce0f8b6da9515e49105cf77ac1e7118" name="afce0f8b6da9515e49105cf77ac1e7118"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64</b> (nthash.seq+nthash.pos, blocks, monomers, nthash.k, blocks.size(), hash_num_per_seed, fh_no_monomers.get(), rh_no_monomers.get(), forward_hash.get(), reverse_hash.get(), nthash.hashes_array.get())</td></tr>
 <tr class="separator:afce0f8b6da9515e49105cf77ac1e7118"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7d70d104653ded1993f357eb80dd8a8"><td class="memItemLeft" align="right" valign="top"><a id="aa7d70d104653ded1993f357eb80dd8a8" name="aa7d70d104653ded1993f357eb80dd8a8"></a>
-nthash&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_ROLL_BACK</b> (<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>, roll_back(), ntmsm64l(nthash.seq+nthash.pos - 1, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash.get(), reverse_hash.get(), nthash.hashes_array.get());, nthash.) BTLLIB_NTHASH_PEEK(<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a></td></tr>
-<tr class="separator:aa7d70d104653ded1993f357eb80dd8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9883166604380a8b9a5c6f44709cd60b"><td class="memItemLeft" align="right" valign="top"><a id="a9883166604380a8b9a5c6f44709cd60b" name="a9883166604380a8b9a5c6f44709cd60b"></a>
-nthash std::unique_ptr&lt; uint64_t[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rh_no_monomers_tmp</b> (new uint64_t[blocks.size()])</td></tr>
+<tr class="memitem:a1d6c16056fc75bb0c4d0b737a98ebc71"><td class="memItemLeft" align="right" valign="top"><a id="a1d6c16056fc75bb0c4d0b737a98ebc71" name="a1d6c16056fc75bb0c4d0b737a98ebc71"></a>
+nthash&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_ROLL_BACK</b> (<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>, roll_back(), ntmsm64l(nthash.seq+nthash.pos - 1, blocks, monomers, nthash.k, blocks.size(), hash_num_per_seed, fh_no_monomers.get(), rh_no_monomers.get(), forward_hash.get(), reverse_hash.get(), nthash.hashes_array.get());, nthash.) BTLLIB_NTHASH_PEEK(<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a></td></tr>
+<tr class="separator:a1d6c16056fc75bb0c4d0b737a98ebc71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9883166604380a8b9a5c6f44709cd60b"><td class="memItemLeft" align="right" valign="top">nthash std::unique_ptr&lt; uint64_t[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a9883166604380a8b9a5c6f44709cd60b">rh_no_monomers_tmp</a> (new uint64_t[blocks.size()])</td></tr>
 <tr class="separator:a9883166604380a8b9a5c6f44709cd60b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca300d886e258fefd3e0089acef6f44c"><td class="memItemLeft" align="right" valign="top"><a id="aca300d886e258fefd3e0089acef6f44c" name="aca300d886e258fefd3e0089acef6f44c"></a>
 std::unique_ptr&lt; uint64_t[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>forward_hash_tmp</b> (new uint64_t[blocks.size()])</td></tr>
@@ -219,141 +218,71 @@ std::unique_ptr&lt; uint64_t[]&gt;&#160;</td><td class="memItemRight" valign="bo
 <tr class="memitem:ad65310678c36161740f04ae6f21de621"><td class="memItemLeft" align="right" valign="top"><a id="ad65310678c36161740f04ae6f21de621" name="ad65310678c36161740f04ae6f21de621"></a>
 nthash&#160;</td><td class="memItemRight" valign="bottom"><b>BTLLIB_NTHASH_PEEK</b> (<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a>, peek(char char_in), { std::unique_ptr&lt; uint64_t[]&gt; fh_no_monomers_tmp(new uint64_t[blocks.size()]);std::unique_ptr&lt; uint64_t[]&gt; rh_no_monomers_tmp(new uint64_t[blocks.size()]);std::unique_ptr&lt; uint64_t[]&gt; forward_hash_tmp(new uint64_t[blocks.size()]);std::unique_ptr&lt; uint64_t[]&gt; reverse_hash_tmp(new uint64_t[blocks.size()]);std::memcpy(fh_no_monomers_tmp.get(), forward_hash.get(), blocks.size() *sizeof(uint64_t));std::memcpy(rh_no_monomers_tmp.get(), reverse_hash.get(), blocks.size() *sizeof(uint64_t));std::memcpy(forward_hash_tmp.get(), forward_hash.get(), blocks.size() *sizeof(uint64_t));std::memcpy(reverse_hash_tmp.get(), reverse_hash.get(), blocks.size() *sizeof(uint64_t));ntmsm64(nthash.seq+nthash.pos, char_in, blocks, monomers, nthash.k, blocks.size(), hash_num_per_seed, fh_no_monomers_tmp.get(), rh_no_monomers_tmp.get(), forward_hash_tmp.get(), reverse_hash_tmp.get(), nthash.hashes_array.get());}, nthash.) BTLLIB_NTHASH_PEEK(<a class="el" href="classbtllib_1_1SeedNtHash.html">SeedNtHash</a></td></tr>
 <tr class="separator:ad65310678c36161740f04ae6f21de621"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a624d659cfabe20fa474ce6f574d2c31d"><td class="memItemLeft" align="right" valign="top"><a id="a624d659cfabe20fa474ce6f574d2c31d" name="a624d659cfabe20fa474ce6f574d2c31d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64l</b> (nthash.seq+nthash.pos - 1, blocks, nthash.k, blocks.size(), hash_num_per_seed, forward_hash_tmp.get(), reverse_hash_tmp.get(), nthash.hashes_array.get())</td></tr>
-<tr class="separator:a624d659cfabe20fa474ce6f574d2c31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1832fd21987c5a09f2df22d36fb0325"><td class="memItemLeft" align="right" valign="top"><a id="ab1832fd21987c5a09f2df22d36fb0325" name="ab1832fd21987c5a09f2df22d36fb0325"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>rol1</b> (const uint64_t v)</td></tr>
-<tr class="separator:ab1832fd21987c5a09f2df22d36fb0325"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae61eb7f6143c46521995a4a5913a2c88"><td class="memItemLeft" align="right" valign="top"><a id="ae61eb7f6143c46521995a4a5913a2c88" name="ae61eb7f6143c46521995a4a5913a2c88"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>rolx</b> (const uint64_t v, const unsigned x)</td></tr>
-<tr class="separator:ae61eb7f6143c46521995a4a5913a2c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6412dbc2e1edf0749d21e6b381cc8658"><td class="memItemLeft" align="right" valign="top"><a id="a6412dbc2e1edf0749d21e6b381cc8658" name="a6412dbc2e1edf0749d21e6b381cc8658"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ror1</b> (const uint64_t v)</td></tr>
-<tr class="separator:a6412dbc2e1edf0749d21e6b381cc8658"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77db8db93ded32fbb42b95a1ae20340a"><td class="memItemLeft" align="right" valign="top"><a id="a77db8db93ded32fbb42b95a1ae20340a" name="a77db8db93ded32fbb42b95a1ae20340a"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>rol31</b> (const uint64_t v, unsigned s)</td></tr>
-<tr class="separator:a77db8db93ded32fbb42b95a1ae20340a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55e5705b4b5c3aedf860a7a2d8795667"><td class="memItemLeft" align="right" valign="top"><a id="a55e5705b4b5c3aedf860a7a2d8795667" name="a55e5705b4b5c3aedf860a7a2d8795667"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>rol33</b> (const uint64_t v, unsigned s)</td></tr>
-<tr class="separator:a55e5705b4b5c3aedf860a7a2d8795667"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1290f576d6be6ce631aa8018ea491e84"><td class="memItemLeft" align="right" valign="top"><a id="a1290f576d6be6ce631aa8018ea491e84" name="a1290f576d6be6ce631aa8018ea491e84"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>swapbits033</b> (const uint64_t v)</td></tr>
-<tr class="separator:a1290f576d6be6ce631aa8018ea491e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3240aceb25814bc37d6f68289e607b0f"><td class="memItemLeft" align="right" valign="top"><a id="a3240aceb25814bc37d6f68289e607b0f" name="a3240aceb25814bc37d6f68289e607b0f"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>swapbits3263</b> (const uint64_t v)</td></tr>
-<tr class="separator:a3240aceb25814bc37d6f68289e607b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a6f3ecf266f2f091f1b9d4eb851294d"><td class="memItemLeft" align="right" valign="top"><a id="a3a6f3ecf266f2f091f1b9d4eb851294d" name="a3a6f3ecf266f2f091f1b9d4eb851294d"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>swapxbits033</b> (const uint64_t v, const unsigned x)</td></tr>
-<tr class="separator:a3a6f3ecf266f2f091f1b9d4eb851294d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdf3ad7eaddd166fcc9e988354abe7b6"><td class="memItemLeft" align="right" valign="top"><a id="acdf3ad7eaddd166fcc9e988354abe7b6" name="acdf3ad7eaddd166fcc9e988354abe7b6"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ntf64</b> (const char *kmer_seq, const unsigned k)</td></tr>
+<tr class="memitem:ac93026bb711d0a4108416cd63ce0b2b2"><td class="memItemLeft" align="right" valign="top"><a id="ac93026bb711d0a4108416cd63ce0b2b2" name="ac93026bb711d0a4108416cd63ce0b2b2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64l</b> (nthash.seq+nthash.pos - 1, blocks, monomers, nthash.k, blocks.size(), hash_num_per_seed, fh_no_monomers_tmp.get(), rh_no_monomers_tmp.get(), forward_hash_tmp.get(), reverse_hash_tmp.get(), nthash.hashes_array.get())</td></tr>
+<tr class="separator:ac93026bb711d0a4108416cd63ce0b2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d172327f4a061736fa3788a476da88f"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a3d172327f4a061736fa3788a476da88f">srol</a> (const uint64_t x)</td></tr>
+<tr class="separator:a3d172327f4a061736fa3788a476da88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8adee205e2a9bc7509250a46f01a2c40"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a8adee205e2a9bc7509250a46f01a2c40">srol</a> (const uint64_t x, const unsigned d)</td></tr>
+<tr class="separator:a8adee205e2a9bc7509250a46f01a2c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a731d4ddcd44c63f3b6bfa6c33a0eedb8"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a731d4ddcd44c63f3b6bfa6c33a0eedb8">sror</a> (const uint64_t x)</td></tr>
+<tr class="separator:a731d4ddcd44c63f3b6bfa6c33a0eedb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdf3ad7eaddd166fcc9e988354abe7b6"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#acdf3ad7eaddd166fcc9e988354abe7b6">ntf64</a> (const char *kmer_seq, const unsigned k)</td></tr>
 <tr class="separator:acdf3ad7eaddd166fcc9e988354abe7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a1c21368b75d224216b0c2150effe32"><td class="memItemLeft" align="right" valign="top"><a id="a9a1c21368b75d224216b0c2150effe32" name="a9a1c21368b75d224216b0c2150effe32"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ntr64</b> (const char *kmer_seq, const unsigned k)</td></tr>
+<tr class="memitem:a9a1c21368b75d224216b0c2150effe32"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a9a1c21368b75d224216b0c2150effe32">ntr64</a> (const char *kmer_seq, const unsigned k)</td></tr>
 <tr class="separator:a9a1c21368b75d224216b0c2150effe32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5ee6ba9698bb6acb2a611875308930f"><td class="memItemLeft" align="right" valign="top"><a id="ad5ee6ba9698bb6acb2a611875308930f" name="ad5ee6ba9698bb6acb2a611875308930f"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ntf64</b> (const uint64_t fh_val, const unsigned k, const unsigned char char_out, const unsigned char char_in)</td></tr>
+<tr class="memitem:ad5ee6ba9698bb6acb2a611875308930f"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#ad5ee6ba9698bb6acb2a611875308930f">ntf64</a> (const uint64_t fh_val, const unsigned k, const unsigned char char_out, const unsigned char char_in)</td></tr>
 <tr class="separator:ad5ee6ba9698bb6acb2a611875308930f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3acf92730bc665bb44da80331dffb636"><td class="memItemLeft" align="right" valign="top"><a id="a3acf92730bc665bb44da80331dffb636" name="a3acf92730bc665bb44da80331dffb636"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ntr64</b> (const uint64_t rh_val, const unsigned k, const unsigned char char_out, const unsigned char char_in)</td></tr>
+<tr class="memitem:a3acf92730bc665bb44da80331dffb636"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a3acf92730bc665bb44da80331dffb636">ntr64</a> (const uint64_t rh_val, const unsigned k, const unsigned char char_out, const unsigned char char_in)</td></tr>
 <tr class="separator:a3acf92730bc665bb44da80331dffb636"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0aec4636c33f6a969657b008dbf0f9c7"><td class="memItemLeft" align="right" valign="top"><a id="a0aec4636c33f6a969657b008dbf0f9c7" name="a0aec4636c33f6a969657b008dbf0f9c7"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ntc64</b> (const char *kmer_seq, const unsigned k)</td></tr>
+<tr class="memitem:a0aec4636c33f6a969657b008dbf0f9c7"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a0aec4636c33f6a969657b008dbf0f9c7">ntc64</a> (const char *kmer_seq, const unsigned k)</td></tr>
 <tr class="separator:a0aec4636c33f6a969657b008dbf0f9c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedba4412bc152644a504c8b7eb82fdcd"><td class="memItemLeft" align="right" valign="top"><a id="aedba4412bc152644a504c8b7eb82fdcd" name="aedba4412bc152644a504c8b7eb82fdcd"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ntc64</b> (const char *kmer_seq, const unsigned k, uint64_t &amp;fh_val, uint64_t &amp;rh_val)</td></tr>
+<tr class="memitem:aedba4412bc152644a504c8b7eb82fdcd"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#aedba4412bc152644a504c8b7eb82fdcd">ntc64</a> (const char *kmer_seq, const unsigned k, uint64_t &amp;fh_val, uint64_t &amp;rh_val)</td></tr>
 <tr class="separator:aedba4412bc152644a504c8b7eb82fdcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af360e1688a616e004139c938a5e47edc"><td class="memItemLeft" align="right" valign="top"><a id="af360e1688a616e004139c938a5e47edc" name="af360e1688a616e004139c938a5e47edc"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ntc64</b> (const unsigned char char_out, const unsigned char char_in, const unsigned k, uint64_t &amp;fh_val, uint64_t &amp;rh_val)</td></tr>
+<tr class="memitem:af360e1688a616e004139c938a5e47edc"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#af360e1688a616e004139c938a5e47edc">ntc64</a> (const unsigned char char_out, const unsigned char char_in, const unsigned k, uint64_t &amp;fh_val, uint64_t &amp;rh_val)</td></tr>
 <tr class="separator:af360e1688a616e004139c938a5e47edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a604a936f87b4d6de3bec4d4a14ccd8d1"><td class="memItemLeft" align="right" valign="top"><a id="a604a936f87b4d6de3bec4d4a14ccd8d1" name="a604a936f87b4d6de3bec4d4a14ccd8d1"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ntf64l</b> (const uint64_t rh_val, const unsigned k, const unsigned char char_out, const unsigned char char_in)</td></tr>
+<tr class="memitem:a604a936f87b4d6de3bec4d4a14ccd8d1"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a604a936f87b4d6de3bec4d4a14ccd8d1">ntf64l</a> (const uint64_t rh_val, const unsigned k, const unsigned char char_out, const unsigned char char_in)</td></tr>
 <tr class="separator:a604a936f87b4d6de3bec4d4a14ccd8d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a53077b9a665880474e56c33f811711"><td class="memItemLeft" align="right" valign="top"><a id="a9a53077b9a665880474e56c33f811711" name="a9a53077b9a665880474e56c33f811711"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ntr64l</b> (const uint64_t fh_val, const unsigned k, const unsigned char char_out, const unsigned char char_in)</td></tr>
+<tr class="memitem:a9a53077b9a665880474e56c33f811711"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a9a53077b9a665880474e56c33f811711">ntr64l</a> (const uint64_t fh_val, const unsigned k, const unsigned char char_out, const unsigned char char_in)</td></tr>
 <tr class="separator:a9a53077b9a665880474e56c33f811711"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf494eba7503d7ea72af14ce907db8ea"><td class="memItemLeft" align="right" valign="top"><a id="acf494eba7503d7ea72af14ce907db8ea" name="acf494eba7503d7ea72af14ce907db8ea"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ntc64l</b> (const unsigned char char_out, const unsigned char char_in, const unsigned k, uint64_t &amp;fh_val, uint64_t &amp;rh_val)</td></tr>
+<tr class="memitem:acf494eba7503d7ea72af14ce907db8ea"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#acf494eba7503d7ea72af14ce907db8ea">ntc64l</a> (const unsigned char char_out, const unsigned char char_in, const unsigned k, uint64_t &amp;fh_val, uint64_t &amp;rh_val)</td></tr>
 <tr class="separator:acf494eba7503d7ea72af14ce907db8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41820583f5be8568cf89a08fab3535e2"><td class="memItemLeft" align="right" valign="top"><a id="a41820583f5be8568cf89a08fab3535e2" name="a41820583f5be8568cf89a08fab3535e2"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ntf64</b> (const char *kmer_seq, const unsigned k, const unsigned seed)</td></tr>
-<tr class="separator:a41820583f5be8568cf89a08fab3535e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef720e2f5fb39696d54fcb9db0b87610"><td class="memItemLeft" align="right" valign="top"><a id="aef720e2f5fb39696d54fcb9db0b87610" name="aef720e2f5fb39696d54fcb9db0b87610"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>ntc64</b> (const char *kmer_seq, const unsigned k, const unsigned seed)</td></tr>
-<tr class="separator:aef720e2f5fb39696d54fcb9db0b87610"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ea0f13bfd76842f77222c1d1edaf750"><td class="memItemLeft" align="right" valign="top"><a id="a7ea0f13bfd76842f77222c1d1edaf750" name="a7ea0f13bfd76842f77222c1d1edaf750"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ntm64</b> (const char *kmer_seq, const unsigned k, const unsigned m, uint64_t *h_val)</td></tr>
-<tr class="separator:a7ea0f13bfd76842f77222c1d1edaf750"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b8390896c5f82ac10718b1329a7fdac"><td class="memItemLeft" align="right" valign="top"><a id="a5b8390896c5f82ac10718b1329a7fdac" name="a5b8390896c5f82ac10718b1329a7fdac"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>nte64</b> (const uint64_t h_val, const unsigned k, const unsigned i)</td></tr>
-<tr class="separator:a5b8390896c5f82ac10718b1329a7fdac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cc07959c46b595621f6c852bc9b471a"><td class="memItemLeft" align="right" valign="top"><a id="a0cc07959c46b595621f6c852bc9b471a" name="a0cc07959c46b595621f6c852bc9b471a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ntm64</b> (const unsigned char char_out, const unsigned char char_in, const unsigned k, const unsigned m, uint64_t *h_val)</td></tr>
-<tr class="separator:a0cc07959c46b595621f6c852bc9b471a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5860c3b18b59c9a7567ba1a28f46f437"><td class="memItemLeft" align="right" valign="top"><a id="a5860c3b18b59c9a7567ba1a28f46f437" name="a5860c3b18b59c9a7567ba1a28f46f437"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64</b> (const char *kmer_seq, const unsigned k, const unsigned m, uint64_t *h_val)</td></tr>
+<tr class="memitem:afec25b7b954c8687e2146449c6c71152"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#afec25b7b954c8687e2146449c6c71152">nte64</a> (const uint64_t bh_val, const unsigned k, const unsigned h, uint64_t *h_val)</td></tr>
+<tr class="separator:afec25b7b954c8687e2146449c6c71152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5860c3b18b59c9a7567ba1a28f46f437"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a5860c3b18b59c9a7567ba1a28f46f437">ntmc64</a> (const char *kmer_seq, const unsigned k, const unsigned m, uint64_t *h_val)</td></tr>
 <tr class="separator:a5860c3b18b59c9a7567ba1a28f46f437"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6e5855061424ba9ff243383dc47cec7"><td class="memItemLeft" align="right" valign="top"><a id="ab6e5855061424ba9ff243383dc47cec7" name="ab6e5855061424ba9ff243383dc47cec7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64</b> (const char *kmer_seq, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, uint64_t *h_val)</td></tr>
+<tr class="memitem:ab6e5855061424ba9ff243383dc47cec7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#ab6e5855061424ba9ff243383dc47cec7">ntmc64</a> (const char *kmer_seq, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, uint64_t *h_val)</td></tr>
 <tr class="separator:ab6e5855061424ba9ff243383dc47cec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa57f6f06b4265a0500e4848a50debbe5"><td class="memItemLeft" align="right" valign="top"><a id="aa57f6f06b4265a0500e4848a50debbe5" name="aa57f6f06b4265a0500e4848a50debbe5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64</b> (const unsigned char char_out, const unsigned char char_in, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, uint64_t *h_val)</td></tr>
+<tr class="memitem:aa57f6f06b4265a0500e4848a50debbe5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#aa57f6f06b4265a0500e4848a50debbe5">ntmc64</a> (const unsigned char char_out, const unsigned char char_in, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, uint64_t *h_val)</td></tr>
 <tr class="separator:aa57f6f06b4265a0500e4848a50debbe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73b0d4ebd25b8d625677c56671f11456"><td class="memItemLeft" align="right" valign="top"><a id="a73b0d4ebd25b8d625677c56671f11456" name="a73b0d4ebd25b8d625677c56671f11456"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64l</b> (const unsigned char char_out, const unsigned char char_in, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, uint64_t *h_val)</td></tr>
+<tr class="memitem:a73b0d4ebd25b8d625677c56671f11456"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a73b0d4ebd25b8d625677c56671f11456">ntmc64l</a> (const unsigned char char_out, const unsigned char char_in, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, uint64_t *h_val)</td></tr>
 <tr class="separator:a73b0d4ebd25b8d625677c56671f11456"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5bfbef94db023c69b72a7c352439055"><td class="memItemLeft" align="right" valign="top"><a id="aa5bfbef94db023c69b72a7c352439055" name="aa5bfbef94db023c69b72a7c352439055"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>ntc64</b> (const char *kmer_seq, const unsigned k, uint64_t &amp;h_val, unsigned &amp;loc_n)</td></tr>
+<tr class="memitem:aa5bfbef94db023c69b72a7c352439055"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#aa5bfbef94db023c69b72a7c352439055">ntc64</a> (const char *kmer_seq, const unsigned k, uint64_t &amp;h_val, unsigned &amp;loc_n)</td></tr>
 <tr class="separator:aa5bfbef94db023c69b72a7c352439055"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9037eac5b23f8a7e978e902e1ed4ee04"><td class="memItemLeft" align="right" valign="top"><a id="a9037eac5b23f8a7e978e902e1ed4ee04" name="a9037eac5b23f8a7e978e902e1ed4ee04"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64</b> (const char *kmer_seq, const unsigned k, const unsigned m, unsigned &amp;loc_n, uint64_t *h_val)</td></tr>
+<tr class="memitem:a9037eac5b23f8a7e978e902e1ed4ee04"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a9037eac5b23f8a7e978e902e1ed4ee04">ntmc64</a> (const char *kmer_seq, const unsigned k, const unsigned m, unsigned &amp;loc_n, uint64_t *h_val)</td></tr>
 <tr class="separator:a9037eac5b23f8a7e978e902e1ed4ee04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae851786e66ca7dde43abfa5dc487f00c"><td class="memItemLeft" align="right" valign="top"><a id="ae851786e66ca7dde43abfa5dc487f00c" name="ae851786e66ca7dde43abfa5dc487f00c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>ntc64</b> (const char *kmer_seq, const unsigned k, uint64_t &amp;fh_val, uint64_t &amp;rh_val, uint64_t &amp;h_val, unsigned &amp;loc_n)</td></tr>
+<tr class="memitem:ae851786e66ca7dde43abfa5dc487f00c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#ae851786e66ca7dde43abfa5dc487f00c">ntc64</a> (const char *kmer_seq, const unsigned k, uint64_t &amp;fh_val, uint64_t &amp;rh_val, uint64_t &amp;h_val, unsigned &amp;loc_n)</td></tr>
 <tr class="separator:ae851786e66ca7dde43abfa5dc487f00c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d055d9c9ad0b0556624545ef6917d22"><td class="memItemLeft" align="right" valign="top"><a id="a7d055d9c9ad0b0556624545ef6917d22" name="a7d055d9c9ad0b0556624545ef6917d22"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64</b> (const char *kmer_seq, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, unsigned &amp;loc_n, uint64_t *h_val)</td></tr>
+<tr class="memitem:a7d055d9c9ad0b0556624545ef6917d22"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a7d055d9c9ad0b0556624545ef6917d22">ntmc64</a> (const char *kmer_seq, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, unsigned &amp;loc_n, uint64_t *h_val)</td></tr>
 <tr class="separator:a7d055d9c9ad0b0556624545ef6917d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbd082a9a6f1354eb72375929fb8e2fc"><td class="memItemLeft" align="right" valign="top"><a id="afbd082a9a6f1354eb72375929fb8e2fc" name="afbd082a9a6f1354eb72375929fb8e2fc"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64</b> (const char *kmer_seq, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, unsigned &amp;loc_n, uint64_t *h_val, bool &amp;h_stn)</td></tr>
+<tr class="memitem:afbd082a9a6f1354eb72375929fb8e2fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#afbd082a9a6f1354eb72375929fb8e2fc">ntmc64</a> (const char *kmer_seq, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, unsigned &amp;loc_n, uint64_t *h_val, bool &amp;h_stn)</td></tr>
 <tr class="separator:afbd082a9a6f1354eb72375929fb8e2fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b92b078f34df0972530fa8de5cd71da"><td class="memItemLeft" align="right" valign="top"><a id="a0b92b078f34df0972530fa8de5cd71da" name="a0b92b078f34df0972530fa8de5cd71da"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ntmc64</b> (const unsigned char char_out, const unsigned char char_in, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, uint64_t *h_val, bool &amp;h_stn)</td></tr>
+<tr class="memitem:a0b92b078f34df0972530fa8de5cd71da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a0b92b078f34df0972530fa8de5cd71da">ntmc64</a> (const unsigned char char_out, const unsigned char char_in, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, uint64_t *h_val, bool &amp;h_stn)</td></tr>
 <tr class="separator:a0b92b078f34df0972530fa8de5cd71da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee2762aa241a4687b226ff936a10f610"><td class="memItemLeft" align="right" valign="top"><a id="aee2762aa241a4687b226ff936a10f610" name="aee2762aa241a4687b226ff936a10f610"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>mask_hash</b> (uint64_t &amp;fk_val, uint64_t &amp;rk_val, const char *seed_seq, const char *kmer_seq, const unsigned k)</td></tr>
+<tr class="memitem:aee2762aa241a4687b226ff936a10f610"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#aee2762aa241a4687b226ff936a10f610">mask_hash</a> (uint64_t &amp;fk_val, uint64_t &amp;rk_val, const char *seed_seq, const char *kmer_seq, const unsigned k)</td></tr>
 <tr class="separator:aee2762aa241a4687b226ff936a10f610"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d60c4e9f386a96fb4f24a5a1fc87b25"><td class="memItemLeft" align="right" valign="top"><a id="a4d60c4e9f386a96fb4f24a5a1fc87b25" name="a4d60c4e9f386a96fb4f24a5a1fc87b25"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sub_hash</b> (uint64_t fh_val, uint64_t rh_val, const char *kmer_seq, const std::vector&lt; unsigned &gt; &amp;positions, const std::vector&lt; unsigned char &gt; &amp;new_bases, const unsigned k, const unsigned m, uint64_t *h_val)</td></tr>
+<tr class="memitem:a4d60c4e9f386a96fb4f24a5a1fc87b25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a4d60c4e9f386a96fb4f24a5a1fc87b25">sub_hash</a> (uint64_t fh_val, uint64_t rh_val, const char *kmer_seq, const std::vector&lt; unsigned &gt; &amp;positions, const std::vector&lt; unsigned char &gt; &amp;new_bases, const unsigned k, const unsigned m, uint64_t *h_val)</td></tr>
 <tr class="separator:a4d60c4e9f386a96fb4f24a5a1fc87b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f722cd2248fffb0aaa5396764e70100"><td class="memItemLeft" align="right" valign="top"><a id="a6f722cd2248fffb0aaa5396764e70100" name="a6f722cd2248fffb0aaa5396764e70100"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>nts64</b> (const char *kmer_seq, const std::vector&lt; bool &gt; &amp;seed, const unsigned k, uint64_t &amp;h_val)</td></tr>
-<tr class="separator:a6f722cd2248fffb0aaa5396764e70100"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac94ce3ef8b0e30fa959f222580a1ed36"><td class="memItemLeft" align="right" valign="top"><a id="ac94ce3ef8b0e30fa959f222580a1ed36" name="ac94ce3ef8b0e30fa959f222580a1ed36"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>nts64</b> (const char *kmer_seq, const std::vector&lt; bool &gt; &amp;seed, const unsigned char char_out, const unsigned char char_in, const unsigned k, uint64_t &amp;h_val)</td></tr>
-<tr class="separator:ac94ce3ef8b0e30fa959f222580a1ed36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f5653be91826a52f0bb094610ac1b1d"><td class="memItemLeft" align="right" valign="top"><a id="a6f5653be91826a52f0bb094610ac1b1d" name="a6f5653be91826a52f0bb094610ac1b1d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>ntms64</b> (const char *kmer_seq, const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;seed_seq, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, unsigned &amp;loc_n, uint64_t *h_val, bool *h_stn)</td></tr>
-<tr class="separator:a6f5653be91826a52f0bb094610ac1b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6407ff546016241dc47a94994251ca9b"><td class="memItemLeft" align="right" valign="top"><a id="a6407ff546016241dc47a94994251ca9b" name="a6407ff546016241dc47a94994251ca9b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ntms64</b> (const char *kmer_seq, const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;seed_seq, const unsigned char char_out, const unsigned char char_in, const unsigned k, const unsigned m, uint64_t &amp;fh_val, uint64_t &amp;rh_val, uint64_t *h_val, bool *h_stn)</td></tr>
-<tr class="separator:a6407ff546016241dc47a94994251ca9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeedf0ca7f2d2478a4e47490e2b4050bf"><td class="memItemLeft" align="right" valign="top"><a id="aeedf0ca7f2d2478a4e47490e2b4050bf" name="aeedf0ca7f2d2478a4e47490e2b4050bf"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64</b> (const char *kmer_seq, const std::vector&lt; SpacedSeed &gt; &amp;seed_seq, const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;monomers, const unsigned k, const unsigned m, const unsigned m2, uint64_t *fh_nomonos, uint64_t *rh_nomonos, uint64_t *fh_val, uint64_t *rh_val, unsigned &amp;loc_n, uint64_t *h_val)</td></tr>
+<tr class="memitem:aeedf0ca7f2d2478a4e47490e2b4050bf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#aeedf0ca7f2d2478a4e47490e2b4050bf">ntmsm64</a> (const char *kmer_seq, const std::vector&lt; SpacedSeed &gt; &amp;seed_seq, const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;monomers, const unsigned k, const unsigned m, const unsigned m2, uint64_t *fh_nomonos, uint64_t *rh_nomonos, uint64_t *fh_val, uint64_t *rh_val, unsigned &amp;loc_n, uint64_t *h_val)</td></tr>
 <tr class="separator:aeedf0ca7f2d2478a4e47490e2b4050bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d0ae4e758402952bb50b08da311eb0e"><td class="memItemLeft" align="right" valign="top"><a id="a4d0ae4e758402952bb50b08da311eb0e" name="a4d0ae4e758402952bb50b08da311eb0e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64</b> (const char *kmer_seq, const std::vector&lt; SpacedSeed &gt; &amp;seed_seq, const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;monomers, const unsigned k, const unsigned m, const unsigned m2, uint64_t *fh_nomonos, uint64_t *rh_nomonos, uint64_t *fh_val, uint64_t *rh_val, uint64_t *h_val)</td></tr>
+<tr class="memitem:a4d0ae4e758402952bb50b08da311eb0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a4d0ae4e758402952bb50b08da311eb0e">ntmsm64</a> (const char *kmer_seq, const std::vector&lt; SpacedSeed &gt; &amp;seed_seq, const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;monomers, const unsigned k, const unsigned m, const unsigned m2, uint64_t *fh_nomonos, uint64_t *rh_nomonos, uint64_t *fh_val, uint64_t *rh_val, uint64_t *h_val)</td></tr>
 <tr class="separator:a4d0ae4e758402952bb50b08da311eb0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cfdc8ce3b0b0855e6ebcef18e32ff58"><td class="memItemLeft" align="right" valign="top"><a id="a1cfdc8ce3b0b0855e6ebcef18e32ff58" name="a1cfdc8ce3b0b0855e6ebcef18e32ff58"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64l</b> (const char *kmer_seq, const std::vector&lt; SpacedSeed &gt; &amp;seed_seq, const unsigned k, const unsigned m, const unsigned m2, uint64_t *fh_val, uint64_t *rh_val, uint64_t *h_val)</td></tr>
-<tr class="separator:a1cfdc8ce3b0b0855e6ebcef18e32ff58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa669c4cbcb5ee992477289f79bf0aeeb"><td class="memItemLeft" align="right" valign="top"><a id="aa669c4cbcb5ee992477289f79bf0aeeb" name="aa669c4cbcb5ee992477289f79bf0aeeb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64</b> (const char *kmer_seq, const char in, const std::vector&lt; SpacedSeed &gt; &amp;seed_seq, const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;monomers, const unsigned k, const unsigned m, const unsigned m2, uint64_t *fh_nomonos, uint64_t *rh_nomonos, uint64_t *fh_val, uint64_t *rh_val, uint64_t *h_val)</td></tr>
+<tr class="memitem:ad68e0d6b25d5dc84ba4d38b84648d73c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#ad68e0d6b25d5dc84ba4d38b84648d73c">ntmsm64l</a> (const char *kmer_seq, const std::vector&lt; SpacedSeed &gt; &amp;seed_seq, const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;monomers, const unsigned k, const unsigned m, const unsigned m2, uint64_t *fh_nomonos, uint64_t *rh_nomonos, uint64_t *fh_val, uint64_t *rh_val, uint64_t *h_val)</td></tr>
+<tr class="separator:ad68e0d6b25d5dc84ba4d38b84648d73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa669c4cbcb5ee992477289f79bf0aeeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#aa669c4cbcb5ee992477289f79bf0aeeb">ntmsm64</a> (const char *kmer_seq, const char in, const std::vector&lt; SpacedSeed &gt; &amp;seed_seq, const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;monomers, const unsigned k, const unsigned m, const unsigned m2, uint64_t *fh_nomonos, uint64_t *rh_nomonos, uint64_t *fh_val, uint64_t *rh_val, uint64_t *h_val)</td></tr>
 <tr class="separator:aa669c4cbcb5ee992477289f79bf0aeeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7952ac19c84a22ed58044bab039f1b27"><td class="memItemLeft" align="right" valign="top"><a id="a7952ac19c84a22ed58044bab039f1b27" name="a7952ac19c84a22ed58044bab039f1b27"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ntmsm64l</b> (const char *kmer_seq, const char in, const std::vector&lt; SpacedSeed &gt; &amp;seed_seq, const unsigned k, const unsigned m, const unsigned m2, uint64_t *fh_val, uint64_t *rh_val, uint64_t *h_val)</td></tr>
-<tr class="separator:a7952ac19c84a22ed58044bab039f1b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a068ce1740a45193362dd8588ef7babba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a068ce1740a45193362dd8588ef7babba">ntmsm64l</a> (const char *kmer_seq, const char in, const std::vector&lt; SpacedSeed &gt; &amp;seed_seq, const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;monomers, const unsigned k, const unsigned m, const unsigned m2, uint64_t *fh_nomonos, uint64_t *rh_nomonos, uint64_t *fh_val, uint64_t *rh_val, uint64_t *h_val)</td></tr>
+<tr class="separator:a068ce1740a45193362dd8588ef7babba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c9cb0705283e0519330f79629cdc738"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a0c9cb0705283e0519330f79629cdc738">reverse_complement</a> (std::string &amp;seq)</td></tr>
 <tr class="separator:a0c9cb0705283e0519330f79629cdc738"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfd77a3465be4993f797a31a3b2a285b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#abfd77a3465be4993f797a31a3b2a285b">get_reverse_complement</a> (const std::string &amp;seq)</td></tr>
@@ -407,9 +336,9 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_dirname</b
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a3d4691be772e9a5e6b3033740e8e667c"><td class="memItemLeft" align="right" valign="top"><a id="a3d4691be772e9a5e6b3033740e8e667c" name="a3d4691be772e9a5e6b3033740e8e667c"></a>
+<tr class="memitem:a9e4b59324dd334652f20e1fe36744c27"><td class="memItemLeft" align="right" valign="top"><a id="a9e4b59324dd334652f20e1fe36744c27" name="a9e4b59324dd334652f20e1fe36744c27"></a>
 uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>reverse_hash_tmp</b> = reverse_hash</td></tr>
-<tr class="separator:a3d4691be772e9a5e6b3033740e8e667c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a9e4b59324dd334652f20e1fe36744c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3f5539e2ec9dc0130284b9b2036c557"><td class="memItemLeft" align="right" valign="top"><a id="aa3f5539e2ec9dc0130284b9b2036c557" name="aa3f5539e2ec9dc0130284b9b2036c557"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>seq</b> [(pos+k - 1) % seq_len] = char_in</td></tr>
 <tr class="separator:aa3f5539e2ec9dc0130284b9b2036c557"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -786,6 +715,1984 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 </div>
 </div>
+<a id="aee2762aa241a4687b226ff936a10f610" name="aee2762aa241a4687b226ff936a10f610"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee2762aa241a4687b226ff936a10f610">&#9670;&nbsp;</a></span>mask_hash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::mask_hash </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>fk_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>rk_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>seed_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate a hash value for the input spaced seed by excluding all don't care positions.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fk_val</td><td>Forward hash value of the k-mer (ignoring the spaced seed). </td></tr>
+    <tr><td class="paramname">rk_val</td><td>Reverse hash value of the k-mer (ignoring the spaced seed). </td></tr>
+    <tr><td class="paramname">seed_seq</td><td>Array of characters representing the spaced seed. Anything other than '1' is treated as a don't care. </td></tr>
+    <tr><td class="paramname">kmer_seq</td><td>Array of character representing the k-mer. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Canonical hash value for the k-mer masked with the spaced seed. </dd></dl>
+
+</div>
+</div>
+<a id="a0aec4636c33f6a969657b008dbf0f9c7" name="a0aec4636c33f6a969657b008dbf0f9c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aec4636c33f6a969657b008dbf0f9c7">&#9670;&nbsp;</a></span>ntc64() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::ntc64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate a canonical hash value for the first k-mer.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>C array containing the sequence's characters. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Canonical hash value of k-mer_0. </dd></dl>
+
+</div>
+</div>
+<a id="aedba4412bc152644a504c8b7eb82fdcd" name="aedba4412bc152644a504c8b7eb82fdcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedba4412bc152644a504c8b7eb82fdcd">&#9670;&nbsp;</a></span>ntc64() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::ntc64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>rh_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate a canonical hash value for the first k-mer and update both strands' hash values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>C array containing the sequence's characters. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Canonical hash value of k-mer_0. </dd></dl>
+
+</div>
+</div>
+<a id="ae851786e66ca7dde43abfa5dc487f00c" name="ae851786e66ca7dde43abfa5dc487f00c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae851786e66ca7dde43abfa5dc487f00c">&#9670;&nbsp;</a></span>ntc64() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::ntc64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>h_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned &amp;&#160;</td>
+          <td class="paramname"><em>loc_n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate a canonical hash value for the first k-mer; skipping over unknown characters and returning the strand-specific hash values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>Array containing the sequence's characters. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Container for the forward hash value. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Container for the reverse hash value. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Container for the output hash value. </td></tr>
+    <tr><td class="paramname">loc_n</td><td>Location of the first unknown character.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if all the characters of the first k-mer are known, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="aa5bfbef94db023c69b72a7c352439055" name="aa5bfbef94db023c69b72a7c352439055"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5bfbef94db023c69b72a7c352439055">&#9670;&nbsp;</a></span>ntc64() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::ntc64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>h_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned &amp;&#160;</td>
+          <td class="paramname"><em>loc_n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate a canonical hash value for the first k-mer; skipping over unknown characters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>Array containing the sequence's characters. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Container for the output hash value. </td></tr>
+    <tr><td class="paramname">loc_n</td><td>Location of the first unknown character.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if all the characters of the first k-mer are known, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="af360e1688a616e004139c938a5e47edc" name="af360e1688a616e004139c938a5e47edc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af360e1688a616e004139c938a5e47edc">&#9670;&nbsp;</a></span>ntc64() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::ntc64 </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>rh_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Perform a roll operation on the sequence and generate a canonical hash value.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char_out</td><td>Character to be removed. </td></tr>
+    <tr><td class="paramname">char_in</td><td>Character to be included. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Previous hash value for the forward strand. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Previous hash value for the reverse-complement.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Canonical hash value after including char_in and removing char_out. </dd></dl>
+
+</div>
+</div>
+<a id="acf494eba7503d7ea72af14ce907db8ea" name="acf494eba7503d7ea72af14ce907db8ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf494eba7503d7ea72af14ce907db8ea">&#9670;&nbsp;</a></span>ntc64l()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::ntc64l </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>rh_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Perform a roll-back operation on the canonical hash value and update previous hashes for both strands.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char_out</td><td>Character to be removed. </td></tr>
+    <tr><td class="paramname">char_in</td><td>Character to be included. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Previous forward hash value computed for the sequence. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Previous reverse hash value computed for the sequence.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Roll back result for the canonical hash value. </dd></dl>
+
+</div>
+</div>
+<a id="afec25b7b954c8687e2146449c6c71152" name="afec25b7b954c8687e2146449c6c71152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afec25b7b954c8687e2146449c6c71152">&#9670;&nbsp;</a></span>nte64()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::nte64 </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>bh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate new values based on the input hash.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bh_val</td><td>Base hash value. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">h</td><td>Size of the resulting hash array (number of extra hashes minus one). </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size h for storing the output hashes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acdf3ad7eaddd166fcc9e988354abe7b6" name="acdf3ad7eaddd166fcc9e988354abe7b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdf3ad7eaddd166fcc9e988354abe7b6">&#9670;&nbsp;</a></span>ntf64() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::ntf64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate the forward-strand hash value of the first k-mer in the sequence.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>C array containing the sequence's characters. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Hash value of k-mer_0. </dd></dl>
+
+</div>
+</div>
+<a id="ad5ee6ba9698bb6acb2a611875308930f" name="ad5ee6ba9698bb6acb2a611875308930f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5ee6ba9698bb6acb2a611875308930f">&#9670;&nbsp;</a></span>ntf64() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::ntf64 </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_in</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Perform a roll operation on the forward strand by removing char_out and including char_in.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fh_val</td><td>Previous hash value computed for the sequence. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">char_out</td><td>Character to be removed. </td></tr>
+    <tr><td class="paramname">char_in</td><td>Character to be included.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Rolled forward hash value. </dd></dl>
+
+</div>
+</div>
+<a id="a604a936f87b4d6de3bec4d4a14ccd8d1" name="a604a936f87b4d6de3bec4d4a14ccd8d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a604a936f87b4d6de3bec4d4a14ccd8d1">&#9670;&nbsp;</a></span>ntf64l()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::ntf64l </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_in</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Perform a roll-back operation on the forward strand.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rh_val</td><td>Previous forward hash value computed for the sequence. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">char_out</td><td>Character to be removed. </td></tr>
+    <tr><td class="paramname">char_in</td><td>Character to be included.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Roll-back'ed hash value. </dd></dl>
+
+</div>
+</div>
+<a id="ab6e5855061424ba9ff243383dc47cec7" name="ab6e5855061424ba9ff243383dc47cec7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6e5855061424ba9ff243383dc47cec7">&#9670;&nbsp;</a></span>ntmc64() <span class="overload">[1/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::ntmc64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate multiple canonical hash values for the first k-mer and return strand-specific hash values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>Array containing the sequence's characters. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of hashes per k-mer. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Unsigned 64-bit int container for the forward hash. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Unsigned 64-bit int container for the reverse-complement hash. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m for storing the hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7d055d9c9ad0b0556624545ef6917d22" name="a7d055d9c9ad0b0556624545ef6917d22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d055d9c9ad0b0556624545ef6917d22">&#9670;&nbsp;</a></span>ntmc64() <span class="overload">[2/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::ntmc64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned &amp;&#160;</td>
+          <td class="paramname"><em>loc_n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate multiple canonical hash value for the first k-mer; skipping over unknown characters and returning the strand-specific hash values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>Array containing the sequence's characters. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of hashes per k-mer. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Container for the forward hash value. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Container for the reverse hash value. </td></tr>
+    <tr><td class="paramname">loc_n</td><td>Location of the first unknown character. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m for storing the output hash values.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if all the characters of the first k-mer are known, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="afbd082a9a6f1354eb72375929fb8e2fc" name="afbd082a9a6f1354eb72375929fb8e2fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbd082a9a6f1354eb72375929fb8e2fc">&#9670;&nbsp;</a></span>ntmc64() <span class="overload">[3/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::ntmc64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned &amp;&#160;</td>
+          <td class="paramname"><em>loc_n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool &amp;&#160;</td>
+          <td class="paramname"><em>h_stn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate multiple canonical hash values for the first k-mer; skipping over unknown characters and returning the strand-specific hash values and strand selections.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>Array containing the sequence's characters. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of hashes per k-mer. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Container for the forward hash value. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Container for the reverse hash value. </td></tr>
+    <tr><td class="paramname">loc_n</td><td>Location of the first unknown character. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m for storing the output hash values. </td></tr>
+    <tr><td class="paramname">h_stn</td><td>true if the reverse strand was selected, otherwise false.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if all the characters of the first k-mer are known, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="a5860c3b18b59c9a7567ba1a28f46f437" name="a5860c3b18b59c9a7567ba1a28f46f437"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5860c3b18b59c9a7567ba1a28f46f437">&#9670;&nbsp;</a></span>ntmc64() <span class="overload">[4/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::ntmc64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate multiple canonical hash values for the first k-mer.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>Array containing the sequence's characters. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of hashes per k-mer. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m for storing the hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9037eac5b23f8a7e978e902e1ed4ee04" name="a9037eac5b23f8a7e978e902e1ed4ee04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9037eac5b23f8a7e978e902e1ed4ee04">&#9670;&nbsp;</a></span>ntmc64() <span class="overload">[5/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::ntmc64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned &amp;&#160;</td>
+          <td class="paramname"><em>loc_n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate multiple canonical hash values for the first k-mer; skipping over unknown characters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>Array containing the sequence's characters. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of hashes per k-mer. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m for storing the output hash values. </td></tr>
+    <tr><td class="paramname">loc_n</td><td>Location of the first unknown character.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if all the characters of the first k-mer are known, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="aa57f6f06b4265a0500e4848a50debbe5" name="aa57f6f06b4265a0500e4848a50debbe5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa57f6f06b4265a0500e4848a50debbe5">&#9670;&nbsp;</a></span>ntmc64() <span class="overload">[6/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::ntmc64 </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate a new canonical hash value by performing a roll operation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char_out</td><td>Character to be removed. </td></tr>
+    <tr><td class="paramname">char_in</td><td>Character to be included. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of hashes per k-mer. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Previous forward hash value. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Previous reverse hash value. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m for storing the output hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0b92b078f34df0972530fa8de5cd71da" name="a0b92b078f34df0972530fa8de5cd71da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b92b078f34df0972530fa8de5cd71da">&#9670;&nbsp;</a></span>ntmc64() <span class="overload">[7/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::ntmc64 </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool &amp;&#160;</td>
+          <td class="paramname"><em>h_stn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate multiple canonical hash values by performing a roll operation, returning the strand-specific hash values and strand selections.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char_out</td><td>Character to be removed. </td></tr>
+    <tr><td class="paramname">char_in</td><td>Character to be included. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of hashes per k-mer. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Container for the forward hash value. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Container for the reverse hash value. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m for storing the output hash values. </td></tr>
+    <tr><td class="paramname">h_stn</td><td>true if the reverse strand was selected, otherwise false. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a73b0d4ebd25b8d625677c56671f11456" name="a73b0d4ebd25b8d625677c56671f11456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73b0d4ebd25b8d625677c56671f11456">&#9670;&nbsp;</a></span>ntmc64l()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::ntmc64l </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t &amp;&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate a new canonical hash value by performing a roll-back operation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char_out</td><td>Character to be removed. </td></tr>
+    <tr><td class="paramname">char_in</td><td>Character to be included. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of hashes per k-mer. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Previous forward hash value. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Previous reverse hash value. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m for storing the output hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa669c4cbcb5ee992477289f79bf0aeeb" name="aa669c4cbcb5ee992477289f79bf0aeeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa669c4cbcb5ee992477289f79bf0aeeb">&#9670;&nbsp;</a></span>ntmsm64() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::ntmsm64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; SpacedSeed &gt; &amp;&#160;</td>
+          <td class="paramname"><em>seed_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>monomers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>fh_nomonos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>rh_nomonos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate multiple hash values for the input spaced seeds and the next k-mer by performing a forward peek operation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>Array of characters representing the previous k-mer. </td></tr>
+    <tr><td class="paramname">seed_seq</td><td>Array of SpacedSeed objects representing the seeds' blocks. </td></tr>
+    <tr><td class="paramname">monomers</td><td>List of the positions that represent blocks of size one for each seed. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of spaced seeds. </td></tr>
+    <tr><td class="paramname">m2</td><td>Number of hashes per seed. </td></tr>
+    <tr><td class="paramname">fh_nomonos</td><td>Previous forward hash values before including the size-one blocks. </td></tr>
+    <tr><td class="paramname">rh_nomonos</td><td>Previous reverse hash values before including the size-one blocks. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Previous forward hash values after including the size-one blocks. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Previous reverse hash values after including the size-one blocks. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m * m2 for storing the output hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4d0ae4e758402952bb50b08da311eb0e" name="a4d0ae4e758402952bb50b08da311eb0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d0ae4e758402952bb50b08da311eb0e">&#9670;&nbsp;</a></span>ntmsm64() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::ntmsm64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; SpacedSeed &gt; &amp;&#160;</td>
+          <td class="paramname"><em>seed_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>monomers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>fh_nomonos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>rh_nomonos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate multiple hash values for the input spaced seeds and the next k-mer by performing a forward roll operation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>Array of characters representing the previous k-mer. </td></tr>
+    <tr><td class="paramname">seed_seq</td><td>Array of SpacedSeed objects representing the seeds' blocks. </td></tr>
+    <tr><td class="paramname">monomers</td><td>List of the positions that represent blocks of size one for each seed. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of spaced seeds. </td></tr>
+    <tr><td class="paramname">m2</td><td>Number of hashes per seed. </td></tr>
+    <tr><td class="paramname">fh_nomonos</td><td>Previous forward hash values before including the size-one blocks. </td></tr>
+    <tr><td class="paramname">rh_nomonos</td><td>Previous reverse hash values before including the size-one blocks. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Previous forward hash values after including the size-one blocks. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Previous reverse hash values after including the size-one blocks. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m * m2 for storing the output hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aeedf0ca7f2d2478a4e47490e2b4050bf" name="aeedf0ca7f2d2478a4e47490e2b4050bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeedf0ca7f2d2478a4e47490e2b4050bf">&#9670;&nbsp;</a></span>ntmsm64() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool btllib::ntmsm64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; SpacedSeed &gt; &amp;&#160;</td>
+          <td class="paramname"><em>seed_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>monomers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>fh_nomonos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>rh_nomonos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned &amp;&#160;</td>
+          <td class="paramname"><em>loc_n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate multiple hash values for the input spaced seeds and first k-mer.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>Array of characters representing the k-mer. </td></tr>
+    <tr><td class="paramname">seed_seq</td><td>Array of SpacedSeed objects representing the seeds' blocks. </td></tr>
+    <tr><td class="paramname">monomers</td><td>List of the positions that represent blocks of size one for each seed. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of spaced seeds. </td></tr>
+    <tr><td class="paramname">m2</td><td>Number of hashes per seed. </td></tr>
+    <tr><td class="paramname">fh_nomonos</td><td>Container for the forward hash values before including the size-one blocks. </td></tr>
+    <tr><td class="paramname">rh_nomonos</td><td>Container for the reverse hash values before including the size-one blocks. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Container for the forward hash values after including the size-one blocks. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Container for the reverse hash values after including the size-one blocks. </td></tr>
+    <tr><td class="paramname">loc_n</td><td>Location of the first unknown character in the first sequence. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m * m2 for storing the output hash values.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if all the care positions of the first k-mer are valid, otherwise false. </dd></dl>
+
+</div>
+</div>
+<a id="a068ce1740a45193362dd8588ef7babba" name="a068ce1740a45193362dd8588ef7babba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a068ce1740a45193362dd8588ef7babba">&#9670;&nbsp;</a></span>ntmsm64l() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::ntmsm64l </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; SpacedSeed &gt; &amp;&#160;</td>
+          <td class="paramname"><em>seed_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>monomers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>fh_nomonos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>rh_nomonos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate multiple hash values for the input spaced seeds and the next k-mer by performing a backwards peek operation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>Array of characters representing the previous k-mer. </td></tr>
+    <tr><td class="paramname">seed_seq</td><td>Array of SpacedSeed objects representing the seeds' blocks. </td></tr>
+    <tr><td class="paramname">monomers</td><td>List of the positions that represent blocks of size one for each seed. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of spaced seeds. </td></tr>
+    <tr><td class="paramname">m2</td><td>Number of hashes per seed. </td></tr>
+    <tr><td class="paramname">fh_nomonos</td><td>Previous forward hash values before including the size-one blocks. </td></tr>
+    <tr><td class="paramname">rh_nomonos</td><td>Previous reverse hash values before including the size-one blocks. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Previous forward hash values after including the size-one blocks. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Previous reverse hash values after including the size-one blocks. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m * m2 for storing the output hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad68e0d6b25d5dc84ba4d38b84648d73c" name="ad68e0d6b25d5dc84ba4d38b84648d73c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad68e0d6b25d5dc84ba4d38b84648d73c">&#9670;&nbsp;</a></span>ntmsm64l() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::ntmsm64l </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; SpacedSeed &gt; &amp;&#160;</td>
+          <td class="paramname"><em>seed_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; unsigned &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>monomers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>fh_nomonos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>rh_nomonos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate multiple hash values for the input spaced seeds and the next k-mer by performing a backward roll operation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>Array of characters representing the previous k-mer. </td></tr>
+    <tr><td class="paramname">seed_seq</td><td>Array of SpacedSeed objects representing the seeds' blocks. </td></tr>
+    <tr><td class="paramname">monomers</td><td>List of the positions that represent blocks of size one for each seed. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of spaced seeds. </td></tr>
+    <tr><td class="paramname">m2</td><td>Number of hashes per seed. </td></tr>
+    <tr><td class="paramname">fh_nomonos</td><td>Previous forward hash values before including the size-one blocks. </td></tr>
+    <tr><td class="paramname">rh_nomonos</td><td>Previous reverse hash values before including the size-one blocks. </td></tr>
+    <tr><td class="paramname">fh_val</td><td>Previous forward hash values after including the size-one blocks. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Previous reverse hash values after including the size-one blocks. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m * m2 for storing the output hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9a1c21368b75d224216b0c2150effe32" name="a9a1c21368b75d224216b0c2150effe32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a1c21368b75d224216b0c2150effe32">&#9670;&nbsp;</a></span>ntr64() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::ntr64 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate the value of the reverse-complement of the first k-mer in the sequence.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmer_seq</td><td>C array containing the sequence's characters. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Hash value of the reverse-complement of k-mer_0. </dd></dl>
+
+</div>
+</div>
+<a id="a3acf92730bc665bb44da80331dffb636" name="a3acf92730bc665bb44da80331dffb636"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3acf92730bc665bb44da80331dffb636">&#9670;&nbsp;</a></span>ntr64() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::ntr64 </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_in</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Perform a roll operation on the reverse-complement by removing char_out and including char_in.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rh_val</td><td>Previous reverse-complement hash value computed for the sequence. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">char_out</td><td>Character to be removed. </td></tr>
+    <tr><td class="paramname">char_in</td><td>Character to be included.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Rolled hash value for the reverse-complement. </dd></dl>
+
+</div>
+</div>
+<a id="a9a53077b9a665880474e56c33f811711" name="a9a53077b9a665880474e56c33f811711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a53077b9a665880474e56c33f811711">&#9670;&nbsp;</a></span>ntr64l()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::ntr64l </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>char_in</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Perform a roll-back operation on the reverse-complement.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rh_val</td><td>Previous reverse hash value computed for the sequence. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">char_out</td><td>Character to be removed. </td></tr>
+    <tr><td class="paramname">char_in</td><td>Character to be included.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Roll-back'ed hash value for the reverse-complement. </dd></dl>
+
+</div>
+</div>
 <a id="a0c9cb0705283e0519330f79629cdc738" name="a0c9cb0705283e0519330f79629cdc738"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c9cb0705283e0519330f79629cdc738">&#9670;&nbsp;</a></span>reverse_complement()</h2>
 
@@ -809,6 +2716,26 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
   </dd>
 </dl>
 
+</div>
+</div>
+<a id="a9883166604380a8b9a5c6f44709cd60b" name="a9883166604380a8b9a5c6f44709cd60b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9883166604380a8b9a5c6f44709cd60b">&#9670;&nbsp;</a></span>rh_no_monomers_tmp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nthash std::unique_ptr&lt; uint64_t[]&gt; btllib::rh_no_monomers_tmp </td>
+          <td>(</td>
+          <td class="paramtype">new uint64_t&#160;</td>
+          <td class="paramname">[blocks.size()]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">    std::unique_ptr&lt;uint64_t[]&gt; fh_no_monomers_tmp(<span class="keyword">new</span> uint64_t[blocks.size()])</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a8733bdc6b1d9fdbc9991a1150fb64401" name="a8733bdc6b1d9fdbc9991a1150fb64401"></a>
@@ -873,6 +2800,119 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 </div>
 </div>
+<a id="a3d172327f4a061736fa3788a476da88f" name="a3d172327f4a061736fa3788a476da88f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d172327f4a061736fa3788a476da88f">&#9670;&nbsp;</a></span>srol() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::srol </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Split a 64-bit word into 33 and 31-bit subwords and left-rotate them separately.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>A 64-bit unsigned integer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Split-rotation result. </dd></dl>
+
+</div>
+</div>
+<a id="a8adee205e2a9bc7509250a46f01a2c40" name="a8adee205e2a9bc7509250a46f01a2c40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8adee205e2a9bc7509250a46f01a2c40">&#9670;&nbsp;</a></span>srol() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::srol </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Split a 64-bit word into 33 and 31-bit subwords and left-rotate them separately multiple times.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>A 64-bit unsigned integer. </td></tr>
+    <tr><td class="paramname">d</td><td>Number of rotations.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Split-rotation result. </dd></dl>
+
+</div>
+</div>
+<a id="a731d4ddcd44c63f3b6bfa6c33a0eedb8" name="a731d4ddcd44c63f3b6bfa6c33a0eedb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a731d4ddcd44c63f3b6bfa6c33a0eedb8">&#9670;&nbsp;</a></span>sror()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t btllib::sror </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Split a 64-bit word into 33 and 31-bit subwords and right-rotate them separately.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>A 64-bit unsigned integer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Split-rotation result. </dd></dl>
+
+</div>
+</div>
 <a id="acc6df2bfa872c7b1e830cf314d20e306" name="acc6df2bfa872c7b1e830cf314d20e306"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc6df2bfa872c7b1e830cf314d20e306">&#9670;&nbsp;</a></span>startswith()</h2>
 
@@ -903,6 +2943,92 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
   <table class="params">
     <tr><td class="paramname">s</td><td>String to check. </td></tr>
     <tr><td class="paramname">prefix</td><td>Prefix to check for. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4d60c4e9f386a96fb4f24a5a1fc87b25" name="a4d60c4e9f386a96fb4f24a5a1fc87b25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d60c4e9f386a96fb4f24a5a1fc87b25">&#9670;&nbsp;</a></span>sub_hash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::sub_hash </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>fh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>rh_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>kmer_seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; unsigned &gt; &amp;&#160;</td>
+          <td class="paramname"><em>positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; unsigned char &gt; &amp;&#160;</td>
+          <td class="paramname"><em>new_bases</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>h_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Generate multiple new hash values for the input k-mer by substituting multiple characters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fh_val</td><td>Forward hash value of the k-mer. </td></tr>
+    <tr><td class="paramname">rh_val</td><td>Reverse hash value of the k-mer. </td></tr>
+    <tr><td class="paramname">kmer_seq</td><td>Array of characters representing the k-mer. </td></tr>
+    <tr><td class="paramname">positions</td><td>Indicies of the positions to be substituted. </td></tr>
+    <tr><td class="paramname">new_bases</td><td>Characters to be placed in the indicies indicated in positions. </td></tr>
+    <tr><td class="paramname">k</td><td>k-mer size. </td></tr>
+    <tr><td class="paramname">m</td><td>Number of hashes per k-mer. </td></tr>
+    <tr><td class="paramname">h_val</td><td>Array of size m for storing the output hash values. </td></tr>
   </table>
   </dd>
 </dl>
