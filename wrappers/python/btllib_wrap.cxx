@@ -25968,7 +25968,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_IndexlrRecord___bool__(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_IndexlrRecord___nonzero__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Indexlr::Record *arg1 = (btllib::Indexlr::Record *) 0 ;
   void *argp1 = 0 ;
@@ -25976,10 +25976,10 @@ SWIGINTERN PyObject *_wrap_IndexlrRecord___bool__(PyObject *self, PyObject *args
   PyObject *swig_obj[1] ;
   bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "IndexlrRecord___bool__", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "IndexlrRecord___nonzero__", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Indexlr__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord___bool__" "', argument " "1"" of type '" "btllib::Indexlr::Record const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord___nonzero__" "', argument " "1"" of type '" "btllib::Indexlr::Record const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Indexlr::Record * >(argp1);
   result = (bool)((btllib::Indexlr::Record const *)arg1)->operator bool();
@@ -26013,7 +26013,7 @@ fail:
 }
 
 
-SWIGPY_INQUIRY_CLOSURE(_wrap_IndexlrRecord___bool__) /* defines _wrap_IndexlrRecord___bool___inquiry_closure */
+SWIGPY_INQUIRY_CLOSURE(_wrap_IndexlrRecord___nonzero__) /* defines _wrap_IndexlrRecord___nonzero___inquiry_closure */
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_IndexlrRecord) /* defines _wrap_delete_IndexlrRecord_destructor_closure */
 
@@ -29778,7 +29778,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SeqReaderRecord___bool__(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_SeqReaderRecord___nonzero__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::SeqReader::Record *arg1 = (btllib::SeqReader::Record *) 0 ;
   void *argp1 = 0 ;
@@ -29786,10 +29786,10 @@ SWIGINTERN PyObject *_wrap_SeqReaderRecord___bool__(PyObject *self, PyObject *ar
   PyObject *swig_obj[1] ;
   bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "SeqReaderRecord___bool__", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "SeqReaderRecord___nonzero__", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeqReader__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReaderRecord___bool__" "', argument " "1"" of type '" "btllib::SeqReader::Record const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeqReaderRecord___nonzero__" "', argument " "1"" of type '" "btllib::SeqReader::Record const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::SeqReader::Record * >(argp1);
   result = (bool)((btllib::SeqReader::Record const *)arg1)->operator bool();
@@ -29837,7 +29837,7 @@ fail:
 }
 
 
-SWIGPY_INQUIRY_CLOSURE(_wrap_SeqReaderRecord___bool__) /* defines _wrap_SeqReaderRecord___bool___inquiry_closure */
+SWIGPY_INQUIRY_CLOSURE(_wrap_SeqReaderRecord___nonzero__) /* defines _wrap_SeqReaderRecord___nonzero___inquiry_closure */
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeqReaderRecord) /* defines _wrap_delete_SeqReaderRecord_destructor_closure */
 
@@ -41458,7 +41458,7 @@ SwigPyBuiltin__btllib__Indexlr__Record_richcompare(PyObject *self, PyObject *oth
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__Indexlr__Record_methods[] = {
-  { "__bool__", _wrap_IndexlrRecord___bool__, METH_NOARGS, "" },
+  { "__nonzero__", _wrap_IndexlrRecord___nonzero__, METH_NOARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -41561,7 +41561,7 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__Indexlr__Record_type = {
     (unaryfunc) 0,                            /* nb_negative */
     (unaryfunc) 0,                            /* nb_positive */
     (unaryfunc) 0,                            /* nb_absolute */
-    (inquiry) 0,                              /* nb_nonzero */
+    _wrap_IndexlrRecord___nonzero___inquiry_closure,              /* nb_nonzero */
     (unaryfunc) 0,                            /* nb_invert */
     (binaryfunc) 0,                           /* nb_lshift */
     (binaryfunc) 0,                           /* nb_rshift */
@@ -43008,7 +43008,7 @@ SwigPyBuiltin__btllib__SeqReader__Record_richcompare(PyObject *self, PyObject *o
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeqReader__Record_methods[] = {
-  { "__bool__", _wrap_SeqReaderRecord___bool__, METH_NOARGS, "" },
+  { "__nonzero__", _wrap_SeqReaderRecord___nonzero__, METH_NOARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -43111,7 +43111,7 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__SeqReader__Record_type = {
     (unaryfunc) 0,                            /* nb_negative */
     (unaryfunc) 0,                            /* nb_positive */
     (unaryfunc) 0,                            /* nb_absolute */
-    (inquiry) 0,                              /* nb_nonzero */
+    _wrap_SeqReaderRecord___nonzero___inquiry_closure,            /* nb_nonzero */
     (unaryfunc) 0,                            /* nb_invert */
     (binaryfunc) 0,                           /* nb_lshift */
     (binaryfunc) 0,                           /* nb_rshift */

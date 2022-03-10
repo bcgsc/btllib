@@ -1,11 +1,6 @@
 %rename(__str__) btllib::Graph::to_string;
 %feature("python:slot", "tp_str", functype="reprfunc") btllib::Graph::to_string;
 
-%feature("python:slot", "nb_bool", functype="inquiry") btllib::SeqReader::Record::operator bool;
-%rename(__bool__) btllib::SeqReader::Record::operator bool;
-%feature("python:slot", "nb_bool", functype="inquiry") btllib::Indexlr::Record::operator bool;
-%rename(__bool__) btllib::Indexlr::Record::operator bool;
-
 %rename(__iter__) btllib::SeqReader::begin;
 %ignore btllib::SeqReader::end;
 %rename(__next__) btllib::SeqReader::RecordIterator::next;
