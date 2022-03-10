@@ -25080,16 +25080,18 @@ SWIGINTERN PyObject *_wrap_nte64(PyObject *self, PyObject *args) {
   uint64_t arg1 ;
   unsigned int arg2 ;
   unsigned int arg3 ;
+  uint64_t *arg4 = (uint64_t *) 0 ;
   uint64_t val1 ;
   int ecode1 = 0 ;
   unsigned int val2 ;
   int ecode2 = 0 ;
   unsigned int val3 ;
   int ecode3 = 0 ;
-  PyObject *swig_obj[3] ;
-  uint64_t result;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject *swig_obj[4] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "nte64", 3, 3, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "nte64", 4, 4, swig_obj)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "nte64" "', argument " "1"" of type '" "uint64_t""'");
@@ -25105,8 +25107,13 @@ SWIGINTERN PyObject *_wrap_nte64(PyObject *self, PyObject *args) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "nte64" "', argument " "3"" of type '" "unsigned int""'");
   } 
   arg3 = static_cast< unsigned int >(val3);
-  result = (uint64_t)btllib::nte64(arg1,arg2,arg3);
-  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "nte64" "', argument " "4"" of type '" "uint64_t *""'"); 
+  }
+  arg4 = reinterpret_cast< uint64_t * >(argp4);
+  btllib::nte64(arg1,arg2,arg3,arg4);
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;

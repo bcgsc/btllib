@@ -345,18 +345,19 @@ main()
     std::string seq = "AACGTGACTACTGACTAGCTAGCTAGCTGATCGT";
     std::vector<std::string> seeds = { "111111111101111111111",
                                        "110111010010010111011" };
-    unsigned k = seeds[0].length();
-    unsigned h = 2;
+    const unsigned k = seeds[0].length();
+    const unsigned h = 2;
 
     std::queue<uint64_t> masked_hashes;
     for (unsigned i = 0; i <= seq.size() - k; i++) {
       for (std::string seed : seeds) {
+        uint64_t h_vals[h];
         uint64_t fk = btllib::ntf64(seq.data() + i, k);
         uint64_t rk = btllib::ntr64(seq.data() + i, k);
         uint64_t hs = btllib::mask_hash(fk, rk, seed.data(), seq.data() + i, k);
-        masked_hashes.push(hs);
-        for (unsigned i_hash = 1; i_hash < h; i_hash++) {
-          masked_hashes.push(btllib::nte64(hs, k, i_hash));
+        btllib::nte64(hs, k, h, h_vals);
+        for (unsigned i = 0; i < h; i++) {
+          masked_hashes.push(h_vals[i]);
         }
       }
     }

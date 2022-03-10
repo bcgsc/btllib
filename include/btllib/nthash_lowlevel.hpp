@@ -329,22 +329,26 @@ ntc64l(const unsigned char char_out,
 }
 
 /**
- * Generate a new value based on the input hash.
+ * Generate new values based on the input hash.
  *
- * @param h_val Base hash value.
+ * @param bh_val Base hash value.
  * @param k k-mer size.
- * @param i Seed number. Can be the index of the new value if generating
- * multiple hashes per k-mer.
- *
- * @return New hash value.
+ * @param h Size of the resulting hash array (number of extra hashes minus one).
+ * @param h_val Array of size h for storing the output hashes.
  */
-inline uint64_t
-nte64(const uint64_t h_val, const unsigned k, const unsigned i)
+inline void
+nte64(const uint64_t bh_val,
+      const unsigned k,
+      const unsigned h,
+      uint64_t* h_val)
 {
-  uint64_t t_val = h_val;
-  t_val *= (i ^ k * MULTISEED);
-  t_val ^= t_val >> MULTISHIFT;
-  return t_val;
+  uint64_t t_val;
+  h_val[0] = bh_val;
+  for (unsigned i = 1; i < h; i++) {
+    t_val = bh_val * (i ^ k * MULTISEED);
+    t_val ^= t_val >> MULTISHIFT;
+    h_val[i] = t_val;
+  }
 }
 
 /**
@@ -361,14 +365,8 @@ ntmc64(const char* kmer_seq,
        const unsigned m,
        uint64_t* h_val)
 {
-  uint64_t b_val = 0, t_val = 0;
-  b_val = ntc64(kmer_seq, k);
-  h_val[0] = b_val;
-  for (unsigned i = 1; i < m; i++) {
-    t_val = b_val * (i ^ k * MULTISEED);
-    t_val ^= t_val >> MULTISHIFT;
-    h_val[i] = t_val;
-  }
+  uint64_t b_val = ntc64(kmer_seq, k);
+  nte64(b_val, k, m, h_val);
 }
 
 /**
@@ -390,14 +388,8 @@ ntmc64(const char* kmer_seq,
        uint64_t& rh_val,
        uint64_t* h_val)
 {
-  uint64_t b_val = 0, t_val = 0;
-  b_val = ntc64(kmer_seq, k, fh_val, rh_val);
-  h_val[0] = b_val;
-  for (unsigned i = 1; i < m; i++) {
-    t_val = b_val * (i ^ k * MULTISEED);
-    t_val ^= t_val >> MULTISHIFT;
-    h_val[i] = t_val;
-  }
+  uint64_t b_val = ntc64(kmer_seq, k, fh_val, rh_val);
+  nte64(b_val, k, m, h_val);
 }
 
 /**
@@ -420,14 +412,8 @@ ntmc64(const unsigned char char_out,
        uint64_t& rh_val,
        uint64_t* h_val)
 {
-  uint64_t b_val = 0, t_val = 0;
-  b_val = ntc64(char_out, char_in, k, fh_val, rh_val);
-  h_val[0] = b_val;
-  for (unsigned i = 1; i < m; i++) {
-    t_val = b_val * (i ^ k * MULTISEED);
-    t_val ^= t_val >> MULTISHIFT;
-    h_val[i] = t_val;
-  }
+  uint64_t b_val = ntc64(char_out, char_in, k, fh_val, rh_val);
+  nte64(b_val, k, m, h_val);
 }
 
 /**
@@ -450,14 +436,8 @@ ntmc64l(const unsigned char char_out,
         uint64_t& rh_val,
         uint64_t* h_val)
 {
-  uint64_t b_val = 0, t_val = 0;
-  b_val = ntc64l(char_out, char_in, k, fh_val, rh_val);
-  h_val[0] = b_val;
-  for (unsigned i = 1; i < m; i++) {
-    t_val = b_val * (i ^ k * MULTISEED);
-    t_val ^= t_val >> MULTISHIFT;
-    h_val[i] = t_val;
-  }
+  uint64_t b_val = ntc64l(char_out, char_in, k, fh_val, rh_val);
+  nte64(b_val, k, m, h_val);
 }
 
 /**
@@ -513,7 +493,7 @@ ntmc64(const char* kmer_seq,
        unsigned& loc_n,
        uint64_t* h_val)
 {
-  uint64_t b_val = 0, t_val = 0, fh_val = 0, rh_val = 0;
+  uint64_t b_val = 0, fh_val = 0, rh_val = 0;
   loc_n = 0;
   for (int i = int(k - 1); i >= 0; i--) {
     if (SEED_TAB[(unsigned char)kmer_seq[i]] == SEED_N) {
@@ -527,12 +507,7 @@ ntmc64(const char* kmer_seq,
     rh_val ^= SEED_TAB[(unsigned char)kmer_seq[i] & CP_OFF];
   }
   b_val = (rh_val < fh_val) ? rh_val : fh_val;
-  h_val[0] = b_val;
-  for (unsigned i = 1; i < m; i++) {
-    t_val = b_val * (i ^ k * MULTISEED);
-    t_val ^= t_val >> MULTISHIFT;
-    h_val[i] = t_val;
-  }
+  nte64(b_val, k, m, h_val);
   return true;
 }
 
@@ -600,7 +575,7 @@ ntmc64(const char* kmer_seq,
        uint64_t* h_val)
 {
   fh_val = rh_val = 0;
-  uint64_t b_val = 0, t_val = 0;
+  uint64_t b_val = 0;
   loc_n = 0;
   for (int i = int(k - 1); i >= 0; i--) {
     if (SEED_TAB[(unsigned char)kmer_seq[i]] == SEED_N) {
@@ -614,12 +589,7 @@ ntmc64(const char* kmer_seq,
     rh_val ^= SEED_TAB[(unsigned char)kmer_seq[i] & CP_OFF];
   }
   b_val = (rh_val < fh_val) ? rh_val : fh_val;
-  h_val[0] = b_val;
-  for (unsigned i = 1; i < m; i++) {
-    t_val = b_val * (i ^ k * MULTISEED);
-    t_val ^= t_val >> MULTISHIFT;
-    h_val[i] = t_val;
-  }
+  nte64(b_val, k, m, h_val);
   return true;
 }
 
@@ -651,7 +621,7 @@ ntmc64(const char* kmer_seq,
        bool& h_stn)
 {
   fh_val = rh_val = 0;
-  uint64_t b_val = 0, t_val = 0;
+  uint64_t b_val = 0;
   loc_n = 0;
   for (int i = int(k - 1); i >= 0; i--) {
     if (SEED_TAB[(unsigned char)kmer_seq[i]] == SEED_N) {
@@ -665,13 +635,7 @@ ntmc64(const char* kmer_seq,
     rh_val ^= SEED_TAB[(unsigned char)kmer_seq[i] & CP_OFF];
   }
   h_stn = rh_val < fh_val;
-  b_val = h_stn ? rh_val : fh_val;
-  h_val[0] = b_val;
-  for (unsigned i = 1; i < m; i++) {
-    t_val = b_val * (i ^ k * MULTISEED);
-    t_val ^= t_val >> MULTISHIFT;
-    h_val[i] = t_val;
-  }
+  nte64(b_val, k, m, h_val);
   return true;
 }
 
@@ -698,15 +662,9 @@ ntmc64(const unsigned char char_out,
        uint64_t* h_val,
        bool& h_stn)
 {
-  uint64_t b_val = 0, t_val = 0;
-  b_val = ntc64(char_out, char_in, k, fh_val, rh_val);
+  uint64_t b_val = ntc64(char_out, char_in, k, fh_val, rh_val);
   h_stn = rh_val < fh_val;
-  h_val[0] = b_val;
-  for (unsigned i = 1; i < m; i++) {
-    t_val = b_val * (i ^ k * MULTISEED);
-    t_val ^= t_val >> MULTISHIFT;
-    h_val[i] = t_val;
-  }
+  nte64(b_val, k, m, h_val);
 }
 
 /**
@@ -763,7 +721,7 @@ sub_hash(uint64_t fh_val,
          const unsigned m,
          uint64_t* h_val)
 {
-  uint64_t b_val = 0, t_val = 0;
+  uint64_t b_val = 0;
 
   for (size_t i = 0; i < positions.size(); i++) {
     const auto pos = positions[i];
@@ -777,12 +735,7 @@ sub_hash(uint64_t fh_val,
   }
 
   b_val = rh_val < fh_val ? rh_val : fh_val;
-  h_val[0] = b_val;
-  for (unsigned i = 1; i < m; i++) {
-    t_val = b_val * (i ^ k * MULTISEED);
-    t_val ^= t_val >> MULTISHIFT;
-    h_val[i] = t_val;
-  }
+  nte64(b_val, k, m, h_val);
 }
 
 /**
