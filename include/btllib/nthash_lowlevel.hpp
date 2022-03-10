@@ -864,31 +864,29 @@ ntmsm64(const char* kmer_seq,
   return true;
 }
 
-#define NTMSM64(CHAR_IN_HANDLING)                                              \
+#define NTMSM64(ROL_HANDLING, IN_HANDLING, OUT_HANDLING, ROR_HANDLING)         \
   unsigned char char_out, char_in;                                             \
   uint64_t fh_seed, rh_seed;                                                   \
   unsigned i_out, i_in, i_base;                                                \
   const SpacedSeed* seed = nullptr;                                            \
   for (unsigned i_seed = 0; i_seed < m; i_seed++) {                            \
     seed = &seed_seq[i_seed];                                                  \
-    fh_seed = srol(fh_nomonos[i_seed]);                                        \
-    rh_seed = rh_nomonos[i_seed];                                              \
-    for (int i_block = 0; i_block < (int)seed->size() - 1; i_block += 2) {     \
+    ROL_HANDLING /* NOLINT(bugprone-macro-parentheses) */                      \
+      for (int i_block = 0; i_block < (int)seed->size() - 1; i_block += 2)     \
+    {                                                                          \
       /* cppcheck-suppress arrayIndexOutOfBounds */                            \
       /* cppcheck-suppress stlOutOfBounds */                                   \
-      i_out = seed->at(i_block);                                               \
+      IN_HANDLING                                                              \
       /* cppcheck-suppress arrayIndexOutOfBounds */                            \
       /* cppcheck-suppress stlOutOfBounds */                                   \
-      i_in = seed->at(i_block + 1);                                            \
-      char_out = (unsigned char)kmer_seq[i_out];                               \
-      CHAR_IN_HANDLING                                                         \
+      OUT_HANDLING                                                             \
       fh_seed ^= MS_TAB(char_out, k - i_out);                                  \
       fh_seed ^= MS_TAB(char_in, k - i_in);                                    \
       rh_seed ^= MS_TAB(char_out & CP_OFF, i_out);                             \
       rh_seed ^= MS_TAB(char_in & CP_OFF, i_in);                               \
     }                                                                          \
-    rh_seed = sror(rh_seed);                                                   \
-    fh_nomonos[i_seed] = fh_seed;                                              \
+    ROR_HANDLING /* NOLINT(bugprone-macro-parentheses) */                      \
+      fh_nomonos[i_seed] = fh_seed;                                            \
     rh_nomonos[i_seed] = rh_seed;                                              \
     for (unsigned pos : monomers[i_seed]) {                                    \
       fh_seed ^= MS_TAB((unsigned char)kmer_seq[pos + 1], k - 1 - pos);        \
@@ -897,38 +895,6 @@ ntmsm64(const char* kmer_seq,
     fh_val[i_seed] = fh_seed;                                                  \
     rh_val[i_seed] = rh_seed;                                                  \
     i_base = i_seed * m2;                                                      \
-    h_val[i_base] = fh_seed < rh_seed ? fh_seed : rh_seed;                     \
-    for (unsigned i_hash = 1; i_hash < m2; i_hash++) {                         \
-      h_val[i_base + i_hash] = h_val[i_base] * (i_hash ^ k * MULTISEED);       \
-      h_val[i_base + i_hash] ^= h_val[i_base + i_hash] >> MULTISHIFT;          \
-    }                                                                          \
-  }
-
-#define NTMSM64L(CHAR_IN_HANDLING)                                             \
-  unsigned char char_in;                                                       \
-  unsigned char char_out;                                                      \
-  for (unsigned i_seed = 0; i_seed < m; i_seed++) {                            \
-    const SpacedSeed& seed = seed_seq[i_seed];                                 \
-    uint64_t rh_seed = srol(rh_val[i_seed]);                                   \
-    uint64_t fh_seed = fh_val[i_seed];                                         \
-    for (unsigned i_block = 0; i_block < seed.size() - 1; i_block += 2) {      \
-      /* cppcheck-suppress arrayIndexOutOfBounds */                            \
-      /* cppcheck-suppress stlOutOfBounds */                                   \
-      const unsigned i_in = seed[i_block];                                     \
-      /* cppcheck-suppress arrayIndexOutOfBounds */                            \
-      /* cppcheck-suppress stlOutOfBounds */                                   \
-      const unsigned i_out = seed[i_block + 1];                                \
-      char_out = (unsigned char)kmer_seq[i_out];                               \
-      CHAR_IN_HANDLING                                                         \
-      fh_seed ^= MS_TAB(char_out, k - i_out);                                  \
-      fh_seed ^= MS_TAB(char_in, k - i_in);                                    \
-      rh_seed ^= MS_TAB(char_out & CP_OFF, i_out);                             \
-      rh_seed ^= MS_TAB(char_in & CP_OFF, i_in);                               \
-    }                                                                          \
-    fh_seed = sror(fh_seed);                                                   \
-    fh_val[i_seed] = fh_seed;                                                  \
-    rh_val[i_seed] = rh_seed;                                                  \
-    unsigned i_base = i_seed * m2;                                             \
     h_val[i_base] = fh_seed < rh_seed ? fh_seed : rh_seed;                     \
     for (unsigned i_hash = 1; i_hash < m2; i_hash++) {                         \
       h_val[i_base + i_hash] = h_val[i_base] * (i_hash ^ k * MULTISEED);       \
@@ -970,7 +936,12 @@ ntmsm64(const char* kmer_seq,
         uint64_t* rh_val,
         uint64_t* h_val)
 {
-  NTMSM64(char_in = (unsigned char)kmer_seq[i_in];)
+  NTMSM64(fh_seed = srol(fh_nomonos[i_seed]); rh_seed = rh_nomonos[i_seed];
+          , i_in = seed->at(i_block + 1);
+          char_in = (unsigned char)kmer_seq[i_in];
+          , i_out = seed->at(i_block);
+          char_out = (unsigned char)kmer_seq[i_out];
+          , rh_seed = sror(rh_seed);)
 }
 
 /**
@@ -997,14 +968,22 @@ ntmsm64(const char* kmer_seq,
 inline void
 ntmsm64l(const char* kmer_seq,
          const std::vector<SpacedSeed>& seed_seq,
+         const std::vector<std::vector<unsigned>>& monomers,
          const unsigned k,
          const unsigned m,
          const unsigned m2,
+         uint64_t* fh_nomonos,
+         uint64_t* rh_nomonos,
          uint64_t* fh_val,
          uint64_t* rh_val,
          uint64_t* h_val)
 {
-  NTMSM64L(char_in = (unsigned char)kmer_seq[i_in];)
+  NTMSM64(fh_seed = fh_nomonos[i_seed]; rh_seed = srol(rh_nomonos[i_seed]);
+          , i_in = seed->at(i_block);
+          char_in = (unsigned char)kmer_seq[i_in];
+          , i_out = seed->at(i_block + 1);
+          char_out = (unsigned char)kmer_seq[i_out];
+          , fh_seed = sror(fh_seed);)
 }
 
 /**
@@ -1043,9 +1022,14 @@ ntmsm64(const char* kmer_seq,
         uint64_t* h_val)
 {
   NTMSM64(
+    fh_seed = srol(fh_nomonos[i_seed]); rh_seed = rh_nomonos[i_seed];
+    , i_in = seed->at(i_block + 1);
     if (i_in > k - 1) { char_in = in; } else {
       char_in = (unsigned char)kmer_seq[i_in];
-    })
+    },
+    i_out = seed->at(i_block);
+    char_out = (unsigned char)kmer_seq[i_out];
+    , rh_seed = sror(rh_seed);)
 }
 
 /**
@@ -1073,17 +1057,25 @@ inline void
 ntmsm64l(const char* kmer_seq,
          const char in,
          const std::vector<SpacedSeed>& seed_seq,
+         const std::vector<std::vector<unsigned>>& monomers,
          const unsigned k,
          const unsigned m,
          const unsigned m2,
+         uint64_t* fh_nomonos,
+         uint64_t* rh_nomonos,
          uint64_t* fh_val,
          uint64_t* rh_val,
          uint64_t* h_val)
 {
-  NTMSM64L(
+  NTMSM64(
+    fh_seed = fh_nomonos[i_seed]; rh_seed = srol(rh_nomonos[i_seed]);
+    , i_in = seed->at(i_block);
     if (i_in > k - 1) { char_in = in; } else {
       char_in = (unsigned char)kmer_seq[i_in];
-    })
+    },
+    i_out = seed->at(i_block + 1);
+    char_out = (unsigned char)kmer_seq[i_out];
+    , fh_seed = sror(fh_seed);)
 }
 
 } // namespace btllib

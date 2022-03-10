@@ -949,9 +949,12 @@ BTLLIB_NTHASH_ROLL_BACK(SeedNtHash,
                         roll_back(),
                         ntmsm64l(nthash.seq + nthash.pos - 1,
                                  blocks,
+                                 monomers,
                                  nthash.k,
                                  blocks.size(),
                                  hash_num_per_seed,
+                                 fh_no_monomers.get(),
+                                 rh_no_monomers.get(),
                                  forward_hash.get(),
                                  reverse_hash.get(),
                                  nthash.hashes_array.get());
@@ -1030,8 +1033,16 @@ BTLLIB_NTHASH_PEEK(
   peek_back(),
 
   {
+    std::unique_ptr<uint64_t[]> fh_no_monomers_tmp(new uint64_t[blocks.size()]);
+    std::unique_ptr<uint64_t[]> rh_no_monomers_tmp(new uint64_t[blocks.size()]);
     std::unique_ptr<uint64_t[]> forward_hash_tmp(new uint64_t[blocks.size()]);
     std::unique_ptr<uint64_t[]> reverse_hash_tmp(new uint64_t[blocks.size()]);
+    std::memcpy(fh_no_monomers_tmp.get(),
+                forward_hash.get(),
+                blocks.size() * sizeof(uint64_t));
+    std::memcpy(rh_no_monomers_tmp.get(),
+                reverse_hash.get(),
+                blocks.size() * sizeof(uint64_t));
     std::memcpy(forward_hash_tmp.get(),
                 forward_hash.get(),
                 blocks.size() * sizeof(uint64_t));
@@ -1040,9 +1051,12 @@ BTLLIB_NTHASH_PEEK(
                 blocks.size() * sizeof(uint64_t));
     ntmsm64l(nthash.seq + nthash.pos - 1,
              blocks,
+             monomers,
              nthash.k,
              blocks.size(),
              hash_num_per_seed,
+             fh_no_monomers_tmp.get(),
+             rh_no_monomers_tmp.get(),
              forward_hash_tmp.get(),
              reverse_hash_tmp.get(),
              nthash.hashes_array.get());
@@ -1053,8 +1067,16 @@ BTLLIB_NTHASH_PEEK(
   peek_back(char char_in),
 
   {
+    std::unique_ptr<uint64_t[]> fh_no_monomers_tmp(new uint64_t[blocks.size()]);
+    std::unique_ptr<uint64_t[]> rh_no_monomers_tmp(new uint64_t[blocks.size()]);
     std::unique_ptr<uint64_t[]> forward_hash_tmp(new uint64_t[blocks.size()]);
     std::unique_ptr<uint64_t[]> reverse_hash_tmp(new uint64_t[blocks.size()]);
+    std::memcpy(fh_no_monomers_tmp.get(),
+                forward_hash.get(),
+                blocks.size() * sizeof(uint64_t));
+    std::memcpy(rh_no_monomers_tmp.get(),
+                reverse_hash.get(),
+                blocks.size() * sizeof(uint64_t));
     std::memcpy(forward_hash_tmp.get(),
                 forward_hash.get(),
                 blocks.size() * sizeof(uint64_t));
@@ -1064,9 +1086,12 @@ BTLLIB_NTHASH_PEEK(
     ntmsm64l(nthash.seq + nthash.pos - 1,
              char_in,
              blocks,
+             monomers,
              nthash.k,
              blocks.size(),
              hash_num_per_seed,
+             fh_no_monomers_tmp.get(),
+             rh_no_monomers_tmp.get(),
              forward_hash_tmp.get(),
              reverse_hash_tmp.get(),
              nthash.hashes_array.get());
