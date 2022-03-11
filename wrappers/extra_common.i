@@ -1,3 +1,5 @@
+/* SWIG directives common to all language wrappers. */
+
 %ignore operator<<;
 
 %ignore btllib::DataStream;
