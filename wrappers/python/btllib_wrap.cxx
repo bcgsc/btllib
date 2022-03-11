@@ -6749,22 +6749,6 @@ SWIG_FromCharPtr(const char *cptr)
   return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
 }
 
-
-SWIGINTERN int
-SWIG_AsVal_unsigned_SS_char (PyObject * obj, unsigned char *val)
-{
-  unsigned long v;
-  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v > UCHAR_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< unsigned char >(v);
-    }
-  }  
-  return res;
-}
-
 SWIGINTERN btllib::SeqReader *btllib_SeqReader___enter__(btllib::SeqReader *self){
     return self;
   }
@@ -6792,6 +6776,22 @@ SWIGINTERNINLINE PyObject *
 SWIG_From_unsigned_SS_char  (unsigned char value)
 {    
   return SWIG_From_unsigned_SS_long  (value);
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_unsigned_SS_char (PyObject * obj, unsigned char *val)
+{
+  unsigned long v;
+  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v > UCHAR_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< unsigned char >(v);
+    }
+  }  
+  return res;
 }
 
 SWIGINTERN btllib::NtHash *new_btllib_NtHash__SWIG_0(std::string seq,unsigned int hash_num,unsigned int k,size_t pos=0){
@@ -26182,29 +26182,6 @@ SWIGINTERN PyObject *Swig_var_PLACEHOLDER_NEWLINES_get(void) {
 }
 
 
-SWIGINTERN PyObject *_wrap_pop_cnt_byte(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  uint8_t arg1 ;
-  unsigned char val1 ;
-  int ecode1 = 0 ;
-  PyObject *swig_obj[1] ;
-  unsigned int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_unsigned_SS_char(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "pop_cnt_byte" "', argument " "1"" of type '" "uint8_t""'");
-  } 
-  arg1 = static_cast< uint8_t >(val1);
-  result = (unsigned int)btllib::pop_cnt_byte(arg1);
-  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN int _wrap_new_BloomFilter__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
   btllib::BloomFilter *result = 0 ;
@@ -34912,176 +34889,6 @@ fail:
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_DataSink) /* defines _wrap_delete_DataSink_destructor_closure */
 
-SWIGINTERN PyObject *_wrap_get_pipeline_cmd(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  btllib::DataStream::Operation arg2 ;
-  int res1 = SWIG_OLDOBJ ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  std::string result;
-  
-  if (!SWIG_Python_UnpackTuple(args, "get_pipeline_cmd", 2, 2, swig_obj)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "get_pipeline_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "get_pipeline_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "get_pipeline_cmd" "', argument " "2"" of type '" "btllib::DataStream::Operation""'");
-  } 
-  arg2 = static_cast< btllib::DataStream::Operation >(val2);
-  result = btllib::get_pipeline_cmd((std::string const &)*arg1,arg2);
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_get_datatype_cmd(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  btllib::Datatype *arg2 = 0 ;
-  btllib::DataStream::Operation arg3 ;
-  int res1 = SWIG_OLDOBJ ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
-  PyObject *swig_obj[3] ;
-  std::string result;
-  
-  if (!SWIG_Python_UnpackTuple(args, "get_datatype_cmd", 3, 3, swig_obj)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "get_datatype_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "get_datatype_cmd" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_btllib__Datatype,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_datatype_cmd" "', argument " "2"" of type '" "btllib::Datatype const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "get_datatype_cmd" "', argument " "2"" of type '" "btllib::Datatype const &""'"); 
-  }
-  arg2 = reinterpret_cast< btllib::Datatype * >(argp2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "get_datatype_cmd" "', argument " "3"" of type '" "btllib::DataStream::Operation""'");
-  } 
-  arg3 = static_cast< btllib::DataStream::Operation >(val3);
-  result = btllib::get_datatype_cmd((std::string const &)*arg1,(btllib::Datatype const &)*arg2,arg3);
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_peel_datatype(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  btllib::DataStream::Operation arg2 ;
-  int res1 = SWIG_OLDOBJ ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  std::vector< std::string,std::allocator< std::string > > result;
-  
-  if (!SWIG_Python_UnpackTuple(args, "peel_datatype", 2, 2, swig_obj)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "peel_datatype" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "peel_datatype" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "peel_datatype" "', argument " "2"" of type '" "btllib::DataStream::Operation""'");
-  } 
-  arg2 = static_cast< btllib::DataStream::Operation >(val2);
-  result = btllib::peel_datatype((std::string const &)*arg1,arg2);
-  resultobj = swig::from(static_cast< std::vector< std::string,std::allocator< std::string > > >(result));
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_form_string_cmd(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  std::vector< std::string,std::allocator< std::string > > *arg1 = 0 ;
-  btllib::DataStream::Operation arg2 ;
-  std::string *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int res3 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[3] ;
-  std::string result;
-  
-  if (!SWIG_Python_UnpackTuple(args, "form_string_cmd", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "form_string_cmd" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "form_string_cmd" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > &""'"); 
-  }
-  arg1 = reinterpret_cast< std::vector< std::string,std::allocator< std::string > > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "form_string_cmd" "', argument " "2"" of type '" "btllib::DataStream::Operation""'");
-  } 
-  arg2 = static_cast< btllib::DataStream::Operation >(val2);
-  {
-    std::string *ptr = (std::string *)0;
-    res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "form_string_cmd" "', argument " "3"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "form_string_cmd" "', argument " "3"" of type '" "std::string const &""'"); 
-    }
-    arg3 = ptr;
-  }
-  result = btllib::form_string_cmd(*arg1,arg2,(std::string const &)*arg3);
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  if (SWIG_IsNewObj(res3)) delete arg3;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res3)) delete arg3;
-  return NULL;
-}
-
-
 SWIGINTERN int Swig_var_PRINT_COLOR_INFO_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable PRINT_COLOR_INFO is read-only.");
   return 1;
@@ -37510,7 +37317,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "endl", _wrap_endl, METH_O, "swig_ptr: endl_cb_ptr"},
 	 { "ends", _wrap_ends, METH_O, "swig_ptr: ends_cb_ptr"},
 	 { "flush", _wrap_flush, METH_O, "swig_ptr: flush_cb_ptr"},
-	 { "pop_cnt_byte", _wrap_pop_cnt_byte, METH_O, NULL},
 	 { "BloomFilter_save", _wrap_BloomFilter_save, METH_VARARGS, NULL},
 	 { "BloomFilter_is_bloom_file", _wrap_BloomFilter_is_bloom_file, METH_O, NULL},
 	 { "BloomFilter_check_file_signature", _wrap_BloomFilter_check_file_signature, METH_VARARGS, NULL},
@@ -37550,10 +37356,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "ntms64", _wrap_ntms64, METH_VARARGS, NULL},
 	 { "ntmsm64", _wrap_ntmsm64, METH_VARARGS, NULL},
 	 { "ntmsm64l", _wrap_ntmsm64l, METH_VARARGS, NULL},
-	 { "get_pipeline_cmd", _wrap_get_pipeline_cmd, METH_VARARGS, NULL},
-	 { "get_datatype_cmd", _wrap_get_datatype_cmd, METH_VARARGS, NULL},
-	 { "peel_datatype", _wrap_peel_datatype, METH_VARARGS, NULL},
-	 { "form_string_cmd", _wrap_form_string_cmd, METH_VARARGS, NULL},
 	 { "get_time", _wrap_get_time, METH_NOARGS, NULL},
 	 { "log_info", _wrap_log_info, METH_O, NULL},
 	 { "log_warning", _wrap_log_warning, METH_O, NULL},
@@ -37608,7 +37410,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "endl", _wrap_endl, METH_O, "swig_ptr: endl_cb_ptr"},
 	 { "ends", _wrap_ends, METH_O, "swig_ptr: ends_cb_ptr"},
 	 { "flush", _wrap_flush, METH_O, "swig_ptr: flush_cb_ptr"},
-	 { "pop_cnt_byte", _wrap_pop_cnt_byte, METH_O, NULL},
 	 { "BloomFilter_save", _wrap_BloomFilter_save, METH_VARARGS, NULL},
 	 { "BloomFilter_is_bloom_file", _wrap_BloomFilter_is_bloom_file, METH_O, NULL},
 	 { "BloomFilter_check_file_signature", _wrap_BloomFilter_check_file_signature, METH_VARARGS, NULL},
@@ -37648,10 +37449,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ntms64", _wrap_ntms64, METH_VARARGS, NULL},
 	 { "ntmsm64", _wrap_ntmsm64, METH_VARARGS, NULL},
 	 { "ntmsm64l", _wrap_ntmsm64l, METH_VARARGS, NULL},
-	 { "get_pipeline_cmd", _wrap_get_pipeline_cmd, METH_VARARGS, NULL},
-	 { "get_datatype_cmd", _wrap_get_datatype_cmd, METH_VARARGS, NULL},
-	 { "peel_datatype", _wrap_peel_datatype, METH_VARARGS, NULL},
-	 { "form_string_cmd", _wrap_form_string_cmd, METH_VARARGS, NULL},
 	 { "get_time", _wrap_get_time, METH_NOARGS, NULL},
 	 { "log_info", _wrap_log_info, METH_O, NULL},
 	 { "log_warning", _wrap_log_warning, METH_O, NULL},

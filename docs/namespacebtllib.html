@@ -138,9 +138,6 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>PipelineId</b> = uns
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac1ca125008fd86c835ecdc8e496fd3e2"><td class="memItemLeft" align="right" valign="top"><a id="ac1ca125008fd86c835ecdc8e496fd3e2" name="ac1ca125008fd86c835ecdc8e496fd3e2"></a>
-unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>pop_cnt_byte</b> (uint8_t x)</td></tr>
-<tr class="separator:ac1ca125008fd86c835ecdc8e496fd3e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a703446c70fd79b6ec64155b269ecb386"><td class="memItemLeft" align="right" valign="top"><a id="a703446c70fd79b6ec64155b269ecb386" name="a703446c70fd79b6ec64155b269ecb386"></a>
 std::vector&lt; SpacedSeed &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>parse_seeds</b> (const std::vector&lt; std::string &gt; &amp;seed_strings)</td></tr>
 <tr class="separator:a703446c70fd79b6ec64155b269ecb386"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -422,6 +419,12 @@ const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>CP_OFF</b> =
 <tr class="memitem:a8b6997c8440dc51928922427d0141d55"><td class="memItemLeft" align="right" valign="top"><a id="a8b6997c8440dc51928922427d0141d55" name="a8b6997c8440dc51928922427d0141d55"></a>
 const int&#160;</td><td class="memItemRight" valign="bottom"><b>MULTISHIFT</b> = 27</td></tr>
 <tr class="separator:a8b6997c8440dc51928922427d0141d55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aaeb2a40164866f5d232f3d21501b7a"><td class="memItemLeft" align="right" valign="top"><a id="a2aaeb2a40164866f5d232f3d21501b7a" name="a2aaeb2a40164866f5d232f3d21501b7a"></a>
+const char&#160;</td><td class="memItemRight" valign="bottom"><b>COMPLEMENTS</b> [256]</td></tr>
+<tr class="separator:a2aaeb2a40164866f5d232f3d21501b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60388808764875d40673ed9796102262"><td class="memItemLeft" align="right" valign="top"><a id="a60388808764875d40673ed9796102262" name="a60388808764875d40673ed9796102262"></a>
+const char&#160;</td><td class="memItemRight" valign="bottom"><b>CAPITALS</b> [256]</td></tr>
+<tr class="separator:a60388808764875d40673ed9796102262"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a088b277bd708b08d133deefb555414d1"><td class="memItemLeft" align="right" valign="top"><a id="a088b277bd708b08d133deefb555414d1" name="a088b277bd708b08d133deefb555414d1"></a>
 constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRINT_COLOR_INFO</b> = &quot;\33[32m&quot;</td></tr>
 <tr class="separator:a088b277bd708b08d133deefb555414d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -589,9 +592,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool btllib::endswith </td>
@@ -611,11 +611,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Check whether the given string ends with a suffix.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -633,9 +628,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::string btllib::get_reverse_complement </td>
@@ -645,11 +637,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Obtain a reverse complement of the provided sequence. The argument sequence is left untouched.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -667,9 +654,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::string btllib::join </td>
@@ -689,11 +673,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Join a vector of strings into a single string with a delimiter.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -787,9 +766,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void btllib::ltrim </td>
@@ -799,11 +775,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Trim whitespace on the left side of the given string.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -820,9 +791,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void btllib::reverse_complement </td>
@@ -832,11 +800,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Reverse complement a sequence in-place.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -853,9 +816,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void btllib::rtrim </td>
@@ -865,11 +825,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Trim whitespace on the right side of the given string.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -886,9 +841,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; std::string &gt; btllib::split </td>
@@ -908,11 +860,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Split a string into component substrings with a delimiter.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -931,9 +878,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool btllib::startswith </td>
@@ -953,11 +897,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Check whether the given string starts with a prefix.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -975,9 +914,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void btllib::trim </td>
@@ -987,11 +923,6 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p >Trim whitespace on the left and right side of the given string.</p>
 <dl class="params"><dt>Parameters</dt><dd>

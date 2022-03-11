@@ -1,11 +1,11 @@
 #ifndef BTLLIB_COUNTING_BLOOM_FILTER_HPP
 #define BTLLIB_COUNTING_BLOOM_FILTER_HPP
 
-#include "bloom_filter.hpp"
-#include "nthash.hpp"
-#include "status.hpp"
+#include "btllib/bloom_filter.hpp"
+#include "btllib/nthash.hpp"
+#include "btllib/status.hpp"
 
-#include "../external/cpptoml.hpp"
+#include "external/cpptoml.hpp"
 
 #include <atomic>
 #include <climits>
