@@ -103,22 +103,29 @@ main()
   {
     std::cerr << "Testing block parsing" << std::endl;
 
-    std::vector<std::vector<unsigned>> blocks_out, monos_out;
+    std::vector<btllib::SpacedSeedBlocks> blocks_out;
+    std::vector<btllib::SpacedSeedMonomers> monos_out;
 
-    std::vector<std::string> seeds = { "111101111", "1000110001" };
-    std::vector<std::vector<unsigned>> blocks = { { 0, 9 }, { 4, 6 } };
-    std::vector<std::vector<unsigned>> monos = { { 4 }, { 0, 9 } };
+    std::vector<std::string> seeds = { "1101001001011", "11011" };
+    std::vector<btllib::SpacedSeedBlocks> blocks_true = {
+      { { 0, 2 }, { 11, 13 } }, { { 0, 5 } }
+    };
+    std::vector<btllib::SpacedSeedMonomers> monos_true = { { 3, 6, 9 }, { 2 } };
 
-    btllib::parse_blocks(seeds, blocks_out, monos_out);
+    btllib::parse_seeds(seeds, blocks_out, monos_out);
 
     for (unsigned i_seed = 0; i_seed < seeds.size(); i_seed++) {
-      TEST_ASSERT_EQ(blocks_out[i_seed].size(), blocks[i_seed].size());
-      TEST_ASSERT_EQ(monos_out[i_seed].size(), monos[i_seed].size());
-      for (unsigned i_block = 0; i_block < blocks[i_seed].size(); i_block++) {
-        TEST_ASSERT_EQ(blocks_out[i_seed][i_block], blocks[i_seed][i_block]);
+      TEST_ASSERT_EQ(blocks_out[i_seed].size(), blocks_true[i_seed].size());
+      for (unsigned i_block = 0; i_block < blocks_out[i_seed].size();
+           i_block++) {
+        TEST_ASSERT_EQ(blocks_out[i_seed][i_block][0],
+                       blocks_true[i_seed][i_block][0]);
+        TEST_ASSERT_EQ(blocks_out[i_seed][i_block][1],
+                       blocks_true[i_seed][i_block][1]);
       }
-      for (unsigned i = 0; i < monos[i_seed].size(); i++) {
-        TEST_ASSERT_EQ(monos_out[i_seed][i], monos[i_seed][i]);
+      TEST_ASSERT_EQ(monos_out[i_seed].size(), monos_true[i_seed].size());
+      for (unsigned i = 0; i < monos_true[i_seed].size(); i++) {
+        TEST_ASSERT_EQ(monos_out[i_seed][i], monos_true[i_seed][i]);
       }
     }
   }
