@@ -826,9 +826,8 @@ ntmsm64(const char* kmer_seq,
   uint64_t fh_seed, rh_seed;                                                   \
   unsigned i_out, i_in, i_base;                                                \
   for (unsigned i_seed = 0; i_seed < m; i_seed++) {                            \
-    SpacedSeedBlocks blocks = seeds_blocks[i_seed];                            \
     ROL_HANDLING /* NOLINT(bugprone-macro-parentheses) */                      \
-      for (unsigned i_block = 0; i_block < blocks.size(); i_block++)           \
+      for (const auto& block : seeds_blocks[i_seed])                           \
     {                                                                          \
       /* cppcheck-suppress arrayIndexOutOfBounds */                            \
       /* cppcheck-suppress stlOutOfBounds */                                   \
@@ -893,9 +892,9 @@ ntmsm64(const char* kmer_seq,
         uint64_t* h_val)
 {
   NTMSM64(fh_seed = srol(fh_nomonos[i_seed]); rh_seed = rh_nomonos[i_seed];
-          , i_in = blocks[i_block][1];
+          , i_in = block[1];
           char_in = (unsigned char)kmer_seq[i_in];
-          , i_out = blocks[i_block][0];
+          , i_out = block[0];
           char_out = (unsigned char)kmer_seq[i_out];
           , rh_seed = sror(rh_seed);)
 }
@@ -935,9 +934,9 @@ ntmsm64l(const char* kmer_seq,
          uint64_t* h_val)
 {
   NTMSM64(fh_seed = fh_nomonos[i_seed]; rh_seed = srol(rh_nomonos[i_seed]);
-          , i_in = blocks[i_block][0];
+          , i_in = block[0];
           char_in = (unsigned char)kmer_seq[i_in];
-          , i_out = blocks[i_block][1];
+          , i_out = block[1];
           char_out = (unsigned char)kmer_seq[i_out];
           , fh_seed = sror(fh_seed);)
 }
@@ -979,11 +978,11 @@ ntmsm64(const char* kmer_seq,
 {
   NTMSM64(
     fh_seed = srol(fh_nomonos[i_seed]); rh_seed = rh_nomonos[i_seed];
-    , i_in = blocks[i_block][1];
+    , i_in = block[1];
     if (i_in > k - 1) { char_in = in; } else {
       char_in = (unsigned char)kmer_seq[i_in];
     },
-    i_out = blocks[i_block][0];
+    i_out = block[0];
     char_out = (unsigned char)kmer_seq[i_out];
     , rh_seed = sror(rh_seed);)
 }
@@ -1025,11 +1024,11 @@ ntmsm64l(const char* kmer_seq,
 {
   NTMSM64(
     fh_seed = fh_nomonos[i_seed]; rh_seed = srol(rh_nomonos[i_seed]);
-    , i_in = blocks[i_block][0];
+    , i_in = block[0];
     if (i_in > k - 1) { char_in = in; } else {
       char_in = (unsigned char)kmer_seq[i_in];
     },
-    i_out = blocks[i_block][1];
+    i_out = block[1];
     char_out = (unsigned char)kmer_seq[i_out];
     , fh_seed = sror(fh_seed);)
 }
