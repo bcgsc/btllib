@@ -829,11 +829,7 @@ ntmsm64(const char* kmer_seq,
     ROL_HANDLING /* NOLINT(bugprone-macro-parentheses) */                      \
       for (const auto& block : seeds_blocks[i_seed])                           \
     {                                                                          \
-      /* cppcheck-suppress arrayIndexOutOfBounds */                            \
-      /* cppcheck-suppress stlOutOfBounds */                                   \
       IN_HANDLING                                                              \
-      /* cppcheck-suppress arrayIndexOutOfBounds */                            \
-      /* cppcheck-suppress stlOutOfBounds */                                   \
       OUT_HANDLING                                                             \
       fh_seed ^= MS_TAB(char_out, k - i_out);                                  \
       fh_seed ^= MS_TAB(char_in, k - i_in);                                    \
@@ -843,7 +839,7 @@ ntmsm64(const char* kmer_seq,
     ROR_HANDLING /* NOLINT(bugprone-macro-parentheses) */                      \
       fh_nomonos[i_seed] = fh_seed;                                            \
     rh_nomonos[i_seed] = rh_seed;                                              \
-    for (unsigned pos : seeds_monomers[i_seed]) {                              \
+    for (const auto& pos : seeds_monomers[i_seed]) {                           \
       fh_seed ^= MS_TAB((unsigned char)kmer_seq[pos + 1], k - 1 - pos);        \
       rh_seed ^= MS_TAB((unsigned char)kmer_seq[pos + 1] & CP_OFF, pos);       \
     }                                                                          \
