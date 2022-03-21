@@ -36,7 +36,7 @@ Usage
 
 Contributing
 ---
-- Initial setup:
+- Initial setup, in the `btllib` root dir:
   * `meson build` to create a build directory.
   * `cd build` and `ninja build-sdsl` to build the `sdsl` dependency.
 - Every time you want to run tests, in the `build` dir:
