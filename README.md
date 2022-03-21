@@ -36,9 +36,19 @@ Usage
 
 Contributing
 ---
-If you want to make changes to the btllib code, first create a build directory by running `meson build` in `btllib` directory. `cd` to `build` directory and run `ninja build-sdsl` once to build the `sdsl` dependency. After that, every time you want to build the tests and wrappers, run `ninja` in `build` directory. To run the tests, run `ninja test`.
+- Initial setup:
+  * `meson build` to create a build directory.
+  * `cd build` and `ninja build-sdsl` to build the `sdsl` dependency.
+- Every time you want to run tests, in the `build` dir:
+  * `ninja wrap` to regenerate wrappers.
+  * `ninja test` to build wrappers and tests, and run tests.
+- Before making a pull request, in the `build` dir:
+  * `ninja quality-assurance` to make sure all CI tests pass.
+- Before making a release, in the `build` dir:
+  * Do the same as for a pull request and
+  * `ninja docs` to regenerate docs to reflect the release.
 
-The following are the available `ninja` commands which can be run within `build` directory:
+The following are all the available `ninja` commands which can be run within `build` directory:
 - `ninja build-sdsl` builds the sdsl-lite dependency library.
 - `ninja format` formats the whitespace in code (requires clang-format 8+).
 - `ninja wrap` wraps C++ code for Python (requires SWIG 4.0+).
@@ -47,11 +57,9 @@ The following are the available `ninja` commands which can be run within `build`
 - `ninja` builds the tests and wrapper libraries / makes sure they compile.
 - `ninja test` runs the tests.
 - `ninja sanitize-undefined` runs undefined sanitization.
-- `ninja docs` generates code documentation from comments (requires Doxygen).
 - `ninja test-wrappers` tests whether wrappers work.
-- `ninja complete` runs all of the above commands in the listed order.
-
-Before making a pull request, make sure to run `ninja complete` to make sure the code passes the CI test.
+- `ninja docs` generates code documentation from comments (requires Doxygen).
+- `ninja quality-assurance` runs `format`, `wrap`, `tidycheck`, `cppcheck`, `test`, `sanitize-undefined`, and `test-wrappers`. These are all checked at the CI test.
 
 Credits
 ---

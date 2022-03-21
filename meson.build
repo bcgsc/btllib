@@ -101,7 +101,7 @@ if doxygen.found()
   run_target('docs', command: join_paths(rootpath, 'scripts/docs'))
 endif
 
-run_target('complete', command: join_paths(rootpath, 'scripts/complete'))
+run_target('quality-assurance', command: join_paths(rootpath, 'scripts/quality-assurance'))
 
 run_target('test-wrappers', command: join_paths(rootpath, 'scripts/test-wrappers'))
 
