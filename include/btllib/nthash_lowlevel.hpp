@@ -17,8 +17,7 @@
 
 namespace btllib {
 
-#define CANONICAL(FORWARD, REVERSE)                                            \
-  ((FORWARD) < (REVERSE) ? (FORWARD) : (REVERSE))
+#define CANONICAL(FORWARD, REVERSE) ((FORWARD) + (REVERSE))
 
 // Data structures for spaced seeds
 
