@@ -89,6 +89,25 @@ startswith(std::string s, std::string prefix);
 bool
 endswith(std::string s, std::string suffix);
 
+/**
+ * Equivalent to the GNU implementation of basename,
+ * but returns a string copy of the result.
+ *
+ * @param path The path to get basename from.
+ *
+ * @return The basename of the path.
+ */
+std::string
+get_basename(const std::string& path);
+
+/**
+ * Equivalent to the GNU implementation of dirname,
+ * but returns a string copy of the result.
+ *
+ * @param path The path to get dirname from.
+ *
+ * @return The dirname of the path.
+ */
 std::string
 get_dirname(const std::string& path);
 

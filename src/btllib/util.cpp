@@ -147,6 +147,16 @@ get_dirname(const std::string& path)
   return ret;
 }
 
+std::string
+get_basename(const std::string& path)
+{
+  const auto p = path.find_last_of('/');
+  if (p == std::string::npos) {
+    return path;
+  }
+  return path.substr(p + 1);
+}
+
 void
 Barrier::wait()
 {
