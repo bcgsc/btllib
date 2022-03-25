@@ -1,10 +1,10 @@
 #ifndef BTLLIB_SEQ_READER_SAM_MODULE_HPP
 #define BTLLIB_SEQ_READER_SAM_MODULE_HPP
 
-#include "cstring.hpp"
-#include "process_pipeline.hpp"
-#include "seq.hpp"
-#include "status.hpp"
+#include "btllib/cstring.hpp"
+#include "btllib/process_pipeline.hpp"
+#include "btllib/seq.hpp"
+#include "btllib/status.hpp"
 
 #include <cstdio>
 #include <memory>

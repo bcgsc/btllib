@@ -1,8 +1,8 @@
 #ifndef BTLLIB_MI_BLOOM_FILTER_HPP
 #define BTLLIB_MI_BLOOM_FILTER_HPP
 
-#include "nthash.hpp"
-#include "status.hpp"
+#include "btllib/nthash.hpp"
+#include "btllib/status.hpp"
 
 #include <sdsl/bit_vector_il.hpp>
 #include <sdsl/rank_support.hpp>

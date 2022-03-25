@@ -8,8 +8,8 @@
 #ifndef BTLLIB_NTHASH_HPP
 #define BTLLIB_NTHASH_HPP
 
-#include "nthash_lowlevel.hpp"
-#include "status.hpp"
+#include "btllib/nthash_lowlevel.hpp"
+#include "btllib/status.hpp"
 
 #include <cstdint>
 #include <limits>

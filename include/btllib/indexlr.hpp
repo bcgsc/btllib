@@ -1,12 +1,12 @@
 #ifndef BTLLIB_INDEXLR_HPP
 #define BTLLIB_INDEXLR_HPP
 
-#include "bloom_filter.hpp"
-#include "nthash.hpp"
-#include "order_queue.hpp"
-#include "seq_reader.hpp"
-#include "status.hpp"
-#include "util.hpp"
+#include "btllib/bloom_filter.hpp"
+#include "btllib/nthash.hpp"
+#include "btllib/order_queue.hpp"
+#include "btllib/seq_reader.hpp"
+#include "btllib/status.hpp"
+#include "btllib/util.hpp"
 
 #include <algorithm>
 #include <atomic>

@@ -28,7 +28,7 @@ fs = import('fs')
 
 conf = configuration_data()
 conf.set('PROJECT_VERSION', meson.project_version(), description : 'btllib version. Useful to append to the help prompt of recipes.')
-configure_file(input : 'include/btllib/btllib_config.hpp.in', output : 'btllib_config.hpp', configuration : conf)
+configure_file(input : 'include/btllib/config.hpp.in', output : 'config.hpp', configuration : conf)
 
 # Compile and link arguments
 # ===========================================================
