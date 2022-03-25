@@ -19,6 +19,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <limits>
 #include <memory>
 #include <mutex>
 #include <stack>
@@ -104,7 +105,7 @@ public:
 
   struct Record
   {
-    size_t num = -1;
+    size_t num = std::numeric_limits<size_t>::max();
     std::string id;
     std::string comment;
     std::string seq;
