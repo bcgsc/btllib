@@ -36,9 +36,9 @@ Usage
 
 Contributing
 ---
-- Initial setup, in the `btllib` root dir:
-  * `meson build` to create a build directory.
-  * `cd build` and `ninja build-sdsl` to build the `sdsl` dependency.
+- Initial setup:
+  * `git clone --recurse-submodules` in order to obtain all the code.
+  * In `btllib` dir, run `meson build` to create a build directory.
 - Every time you want to run tests, in the `build` dir:
   * `ninja wrap` to regenerate wrappers.
   * `ninja test` to build wrappers and tests, and run tests.
@@ -50,7 +50,6 @@ Contributing
   * `ninja docs` to regenerate docs to reflect the release.
 
 The following are all the available `ninja` commands which can be run within `build` directory:
-- `ninja build-sdsl` builds the sdsl-lite dependency library.
 - `ninja format` formats the whitespace in code (requires clang-format 8+).
 - `ninja wrap` wraps C++ code for Python (requires SWIG 4.0+).
 - `ninja tidycheck` runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+).

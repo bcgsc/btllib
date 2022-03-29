@@ -68,8 +68,6 @@ sdsl_dep = sdsl_subproject.dependency('sdsl')
 
 rootpath = meson.source_root()
 
-run_target('prepare-sdsl', command: join_paths(rootpath, 'scripts/prepare-sdsl'))
-
 clang_format = find_program('clang-format', required : false)
 if clang_format.found()
   run_target('format', command: join_paths(rootpath, 'scripts/format'))
