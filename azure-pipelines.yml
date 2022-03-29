@@ -9,7 +9,7 @@ jobs:
 
   steps:
   - checkout: self
-    submodules: true
+    submodules: recursive
 
   - script: |
       set -o errexit -o pipefail
@@ -61,7 +61,7 @@ jobs:
 
   steps:
   - checkout: self
-    submodules: true
+    submodules: recursive
 
   - script: |
       set -o errexit -o pipefail
