@@ -40,19 +40,35 @@ if compiler_id == 'clang'
   global_link_args += [ '-lstdc++', '-lm' ]
 endif
 
-sdsl_lib = meson.get_compiler('cpp').find_library('sdsl', required : false, dirs : meson.source_root() + '/external/sdsl-lite/installdir/lib')
-global_args += [ '-I' + meson.source_root() + '/external/sdsl-lite/installdir/include' ]
-global_link_args += [ '-L' + meson.source_root() + '/external/sdsl-lite/installdir/lib', '-lsdsl', '-ldivsufsort', '-ldivsufsort64' ]
+add_global_arguments(global_args, language : 'cpp')
+add_global_link_arguments(global_link_args, language : 'cpp')
+
+# Subprojects
+# ===========================================================
+
+run_command(meson.source_root() + '/scripts/prepare-sdsl')
+
+global_args = [ '-I' + meson.source_root() + '/subprojects/sdsl-lite/include' ]
+global_link_args = [ '-L' + meson.build_root() + '/subprojects/sdsl-lite', '-lsdsl', '-ldivsufsort', '-ldivsufsort64' ]
 
 add_global_arguments(global_args, language : 'cpp')
 add_global_link_arguments(global_link_args, language : 'cpp')
+
+cmake = import('cmake')
+cmake_options = cmake.subproject_options()
+
+cmake_options.set_override_option('werror', 'false')
+
+sdsl_subproject = cmake.subproject('sdsl-lite', options : cmake_options)
+
+sdsl_dep = sdsl_subproject.dependency('sdsl')
 
 # Custom run commands
 # ===========================================================
 
 rootpath = meson.source_root()
 
-run_target('build-sdsl', command: join_paths(rootpath, 'scripts/build-sdsl'))
+run_target('prepare-sdsl', command: join_paths(rootpath, 'scripts/prepare-sdsl'))
 
 clang_format = find_program('clang-format', required : false)
 if clang_format.found()
