@@ -26,8 +26,8 @@ Usage
 - Copy the root `btllib` directory into your project
 - Run `btllib/compile`
 - C++
-  * Link your code with `btllib/lib/libbtllib.a` (pass `-L btllib/lib -l btllib` flags to the compiler).
-  * `#include` any header from the `btllib/include` directory (pass `-I btllib/include` flag to the compiler).
+  * Link your code with `btllib/lib/libbtllib.a` (pass `-L /path/to/btllib/lib -l btllib` flags to the compiler).
+  * `#include` any header from the `btllib/include` directory (pass `-I /path/to/btllib/include` flag to the compiler).
   * `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
 - Python wrappers
   * The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. `btllib::SeqReader::Flag` in C++ versus `btllib.SeqReaderFlag` in Python).
@@ -37,7 +37,7 @@ Usage
 Contributing
 ---
 - Initial setup:
-  * `git clone --recurse-submodules` in order to obtain all the code.
+  * `git clone --recurse-submodules https://github.com/bcgsc/btllib` in order to obtain all the code.
   * In `btllib` dir, run `meson build` to create a build directory.
 - Every time you want to run tests, in the `build` dir:
   * `ninja wrap` to regenerate wrappers.
