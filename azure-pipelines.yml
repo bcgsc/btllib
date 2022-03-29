@@ -21,10 +21,7 @@ jobs:
       sudo pip3 install ninja meson cmake
     displayName: 'Install required software'
 
-  - script: meson setup build && cd build && ninja build-sdsl
-    displayName: 'Build sdsl dependency'
-
-  - script: cd build && ninja
+  - script: meson setup build && cd build && ninja
     displayName: 'Build the project'
 
   - script: cd build && ninja formatcheck
@@ -77,10 +74,7 @@ jobs:
       sudo pip3 install ninja meson cmake
     displayName: 'Install required software'
 
-  - script: meson setup build && cd build && ninja build-sdsl
-    displayName: 'Build sdsl dependency'
-
-  - script: cd build && ninja
+  - script: meson setup build && cd build && ninja
     displayName: 'Build the project'
 
   - script: cd build && ninja formatcheck

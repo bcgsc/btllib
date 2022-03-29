@@ -132,7 +132,6 @@ rm -rf __build-compile python bin
 meson setup --buildtype release --prefix=$SCRIPTPATH __build-compile
 if [[ $? -eq 0 ]]; then
   cd __build-compile
-  ninja build-sdsl
   ninja install
   cd ..
 fi

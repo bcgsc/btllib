@@ -44,7 +44,7 @@ Contributing
   * `ninja test` to build wrappers and tests, and run tests.
 - Before making a pull request, in the `build` dir:
   * `ninja quality-assurance` to make sure all CI tests pass.
-  * Make a commit after the above step, in case it has made any changes to wrappers or formatting.
+  * Make a commit after the above step, in case it has made any changes to wrappers or formatting. Don't commit the changes made to the `sdsl-lite` subproject. Meson config file adjusts the `sdsl-lite` config in order for it to work for `btllib`, but this is done ad hoc and is not necessary to be committed. By doing it ad hoc we keep a list of differences compared to the upstream repository.
 - Before making a release, in the `build` dir:
   * Do the same as for a pull request and
   * `ninja docs` to regenerate docs to reflect the release.
