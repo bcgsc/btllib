@@ -20,9 +20,14 @@ The recommended way is to download the [latest release](https://github.com/bcgsc
 Usage
 ---
 - Dependencies
-  * GCC 5+ or Clang 4+ with OpenMP
-  * Python 3.5+
-  * Meson and Ninja Python3 packages, and CMake (optional -- if they are missing, they will be automatically downloaded to a temporary directory)
+  - Building
+    * GCC 5+ or Clang 4+ with OpenMP
+    * Python 3.5+
+    * Meson and Ninja Python3 packages, and CMake (optional -- if they are missing, they will be automatically downloaded to a temporary directory)
+  - Run time
+    * SAMtools for reading SAM, BAM, and CRAM files.
+    * gzip, tar, pigz, bzip2, xz, lrzip, zip, and/or 7zip for compressing/decompressing files. Not all of these are necessary, only the ones whose compressions you'll be using. 
+    * wget for downloading sequences from a URL.
 - Copy the root `btllib` directory into your project
 - Run `btllib/compile`
 - C++
