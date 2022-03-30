@@ -20,7 +20,7 @@ The recommended way is to download the [latest release](https://github.com/bcgsc
 Usage
 ---
 - Dependencies
-  - Building
+  - Build
     * GCC 5+ or Clang 4+ with OpenMP
     * Python 3.5+
     * Meson and Ninja Python3 packages, and CMake (optional -- if they are missing, they will be automatically downloaded to a temporary directory)
