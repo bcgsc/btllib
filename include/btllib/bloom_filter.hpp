@@ -39,7 +39,8 @@ public:
   BloomFilterInitializer(const std::string& path, const std::string& signature)
     : ifs(path)
     , table(parse_header(ifs, signature))
-  {}
+  {
+  }
 
   static bool check_file_signature(std::ifstream& ifs,
                                    std::string& file_signature,

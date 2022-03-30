@@ -424,7 +424,8 @@ inline NtHash::NtHash(const std::string& seq,
                       unsigned k,
                       size_t pos)
   : NtHash(seq.c_str(), seq.size(), hash_num, k, pos)
-{}
+{
+}
 
 inline NtHash::NtHash(const NtHash& nthash)
   : seq(nthash.seq)
@@ -478,7 +479,8 @@ inline BlindNtHash::BlindNtHash(const std::string& seq,
                                 unsigned k,
                                 size_t pos)
   : BlindNtHash(seq.c_str(), seq.size(), hash_num, k, pos)
-{}
+{
+}
 
 inline BlindNtHash::BlindNtHash(const BlindNtHash& nthash)
   : seq(new char[nthash.seq_len])

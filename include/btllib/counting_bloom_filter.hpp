@@ -781,7 +781,8 @@ inline CountingBloomFilter<T>::CountingBloomFilter(const std::string& path)
   : CountingBloomFilter<T>::CountingBloomFilter(
       std::make_shared<BloomFilterInitializer>(path,
                                                COUNTING_BLOOM_FILTER_SIGNATURE))
-{}
+{
+}
 
 template<typename T>
 inline CountingBloomFilter<T>::CountingBloomFilter(
@@ -843,7 +844,8 @@ inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(size_t bytes,
                                                            unsigned k)
   : k(k)
   , counting_bloom_filter(bytes, hash_num, HASH_FN)
-{}
+{
+}
 
 template<typename T>
 inline void
@@ -928,7 +930,8 @@ inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(
       std::make_shared<BloomFilterInitializer>(
         path,
         KMER_COUNTING_BLOOM_FILTER_SIGNATURE))
-{}
+{
+}
 
 template<typename T>
 inline KmerCountingBloomFilter<T>::KmerCountingBloomFilter(

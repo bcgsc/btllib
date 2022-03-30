@@ -160,7 +160,8 @@ BloomFilterInitializer::parse_header(std::ifstream& file,
 BloomFilter::BloomFilter(const std::string& path)
   : BloomFilter::BloomFilter(
       std::make_shared<BloomFilterInitializer>(path, BLOOM_FILTER_SIGNATURE))
-{}
+{
+}
 
 BloomFilter::BloomFilter(const std::shared_ptr<BloomFilterInitializer>& bfi)
   : bytes(*(bfi->table->get_as<decltype(bytes)>("bytes")))
@@ -236,7 +237,8 @@ BloomFilter::save(const std::string& path)
 KmerBloomFilter::KmerBloomFilter(size_t bytes, unsigned hash_num, unsigned k)
   : k(k)
   , bloom_filter(bytes, hash_num, HASH_FN)
-{}
+{
+}
 
 void
 KmerBloomFilter::insert(const char* seq, size_t seq_len)
@@ -277,7 +279,8 @@ KmerBloomFilter::KmerBloomFilter(const std::string& path)
   : KmerBloomFilter::KmerBloomFilter(
       std::make_shared<BloomFilterInitializer>(path,
                                                KMER_BLOOM_FILTER_SIGNATURE))
-{}
+{
+}
 
 KmerBloomFilter::KmerBloomFilter(
   const std::shared_ptr<BloomFilterInitializer>& bfi)
@@ -394,14 +397,16 @@ SeedBloomFilter::SeedBloomFilter(const std::string& path)
   : SeedBloomFilter::SeedBloomFilter(
       std::make_shared<BloomFilterInitializer>(path,
                                                SEED_BLOOM_FILTER_SIGNATURE))
-{}
+{
+}
 
 SeedBloomFilter::SeedBloomFilter(
   const std::shared_ptr<BloomFilterInitializer>& bfi)
   : seeds(*(bfi->table->get_array_of<std::string>("seeds")))
   , parsed_seeds(parse_seeds(seeds))
   , kmer_bloom_filter(bfi)
-{}
+{
+}
 
 void
 SeedBloomFilter::save(const std::string& path)

@@ -21,7 +21,8 @@ public:
 
     Block(const size_t block_size)
       : data(block_size)
-    {}
+    {
+    }
 
     Block(const Block& block) = default;
 
@@ -58,17 +59,20 @@ public:
   {
     Slot(size_t block_size)
       : block(block_size)
-    {}
+    {
+    }
     Slot(const Slot& slot)
       : block(slot.block)
       , occupied(slot.occupied)
       , last_tenant(slot.last_tenant)
-    {}
+    {
+    }
     Slot(Slot&& slot) noexcept
       : block(slot.block)
       , occupied(slot.occupied)
       , last_tenant(slot.last_tenant)
-    {}
+    {
+    }
 
     Slot& operator=(const Slot& slot)
     {
@@ -115,7 +119,8 @@ public:
     : slots(queue_size, Slot(block_size))
     , queue_size(queue_size)
     , block_size(block_size)
-  {}
+  {
+  }
 
   OrderQueue(const OrderQueue&) = delete;
   OrderQueue(OrderQueue&&) = delete;
@@ -150,7 +155,8 @@ protected:
   public:                                                                      \
     OrderQueue##SUFFIX(const size_t queue_size, const size_t block_size)       \
       : OrderQueue<T>(queue_size, block_size)                                  \
-    {}                                                                         \
+    {                                                                          \
+    }                                                                          \
                                                                                \
     using Block = typename OrderQueue<T>::Block;                               \
     using Slot = typename OrderQueue<T>::Slot;                                 \
