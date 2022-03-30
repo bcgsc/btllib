@@ -74,8 +74,7 @@ public:
       , pos(pos)
       , forward(forward)
       , seq(std::move(seq))
-    {
-    }
+    {}
 
     uint64_t min_hash = 0, out_hash = 0;
     size_t pos = 0;
@@ -99,8 +98,7 @@ public:
       , barcode(std::move(barcode))
       , readlen(readlen)
       , minimizers(std::move(minimizers))
-    {
-    }
+    {}
 
     size_t num = 0;
     std::string id;
@@ -265,16 +263,13 @@ private:
 
     Worker(Indexlr& indexlr)
       : indexlr(indexlr)
-    {
-    }
+    {}
     Worker(const Worker& worker)
       : Worker(worker.indexlr)
-    {
-    }
+    {}
     Worker(Worker&& worker) noexcept
       : Worker(worker.indexlr)
-    {
-    }
+    {}
 
   private:
     void work();

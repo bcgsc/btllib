@@ -551,15 +551,9 @@ public:
     return m_ss_val;
   }
 
-  unsigned get_kmer_size() const
-  {
-    return m_kmer_size;
-  }
+  unsigned get_kmer_size() const { return m_kmer_size; }
 
-  unsigned get_hash_num() const
-  {
-    return m_hash_num;
-  }
+  unsigned get_hash_num() const { return m_hash_num; }
 
   /*
    * Computes id frequency based on data vector contents
@@ -648,10 +642,7 @@ public:
     return count;
   }
 
-  size_t size() const
-  {
-    return m_bv.size();
-  }
+  size_t size() const { return m_bv.size(); }
 
   // overwrites existing value CAS
   void set_data(uint64_t pos, T id)
@@ -673,10 +664,7 @@ public:
   }
 
   // Does not overwrite
-  void set_data_if_empty(uint64_t pos, T id)
-  {
-    set_val(&m_data[pos], id);
-  }
+  void set_data_if_empty(uint64_t pos, T id) { set_val(&m_data[pos], id); }
 
   std::vector<T> get_data(const std::vector<uint64_t>& rank_pos) const
   {
@@ -687,10 +675,7 @@ public:
     return results;
   }
 
-  T get_data(uint64_t rank) const
-  {
-    return m_data[rank];
-  }
+  T get_data(uint64_t rank) const { return m_data[rank]; }
 
   /*
    * Preconditions:
@@ -754,10 +739,7 @@ public:
     return sat_prop;
   }
 
-  ~MIBloomFilter()
-  {
-    delete[] m_data;
-  }
+  ~MIBloomFilter() { delete[] m_data; }
 
 private:
   // Driver function to sort the std::vector elements

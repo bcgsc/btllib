@@ -121,8 +121,7 @@ public:
     : counter(0)
     , counter_default(count)
     , waiting(0)
-  {
-  }
+  {}
 
   void wait();
 

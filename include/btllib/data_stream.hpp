@@ -62,8 +62,7 @@ class DataSource : public DataStream
 public:
   DataSource(const std::string& path)
     : DataStream(path, READ)
-  {
-  }
+  {}
 };
 
 class DataSink : public DataStream
@@ -72,8 +71,7 @@ class DataSink : public DataStream
 public:
   DataSink(const std::string& path, bool append = false)
     : DataStream(path, append ? APPEND : WRITE)
-  {
-  }
+  {}
 };
 
 } // namespace btllib

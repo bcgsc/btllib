@@ -177,8 +177,7 @@ private:
 
     Buffer()
       : data(FORMAT_BUFFER_SIZE)
-    {
-    }
+    {}
 
     std::vector<char> data;
     size_t start = 0;
