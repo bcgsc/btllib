@@ -122,7 +122,7 @@ ntf64(const char* kmer_seq, const unsigned k)
 }
 
 /**
- * Generate the value of the reverse-complement of the first k-mer in the
+ * Generate a hash value for the reverse-complement of the first k-mer in the
  * sequence.
  *
  * @param kmer_seq C array containing the sequence's characters.
@@ -233,6 +233,8 @@ ntc64(const char* kmer_seq, const unsigned k)
  *
  * @param kmer_seq C array containing the sequence's characters.
  * @param k k-mer size.
+ * @param fh_val Forward strand hash value container.
+ * @param rh_val Reverse strand hash value container.
  *
  * @return Canonical hash value of k-mer_0.
  */
@@ -278,7 +280,7 @@ ntc64(const unsigned char char_out,
  * @param char_out Character to be removed.
  * @param char_in Character to be included.
  *
- * @return Roll-back'ed hash value.
+ * @return Resulting hash value.
  */
 inline uint64_t
 ntf64l(const uint64_t rh_val,
@@ -300,7 +302,7 @@ ntf64l(const uint64_t rh_val,
  * @param char_out Character to be removed.
  * @param char_in Character to be included.
  *
- * @return Roll-back'ed hash value for the reverse-complement.
+ * @return Resulting hash value for the reverse-complement.
  */
 inline uint64_t
 ntr64l(const uint64_t fh_val,
@@ -339,7 +341,7 @@ ntc64l(const unsigned char char_out,
 }
 
 /**
- * Generate new values based on the input hash.
+ * Extend hash array using a base hash value.
  *
  * @param bh_val Base hash value.
  * @param k k-mer size.
@@ -451,8 +453,8 @@ ntmc64l(const unsigned char char_out,
 }
 
 /**
- * Generate a canonical hash value for the first k-mer; skipping over unknown
- * characters.
+ * Generate a canonical hash value for the first k-mer and find the first
+ * ignored character.
  *
  * @param kmer_seq Array containing the sequence's characters.
  * @param k k-mer size.
@@ -484,8 +486,8 @@ ntc64(const char* kmer_seq, const unsigned k, uint64_t& h_val, unsigned& loc_n)
 }
 
 /**
- * Generate multiple canonical hash values for the first k-mer; skipping over
- * unknown characters.
+ * Generate multiple canonical hash values for the first k-mer and find the
+ * first ignored character.
  *
  * @param kmer_seq Array containing the sequence's characters.
  * @param k k-mer size.
@@ -522,8 +524,8 @@ ntmc64(const char* kmer_seq,
 }
 
 /**
- * Generate a canonical hash value for the first k-mer; skipping over unknown
- * characters and returning the strand-specific hash values.
+ * Generate a canonical hash value for the first k-mer, find the first ignored
+ * character and return the strand-specific hash values.
  *
  * @param kmer_seq Array containing the sequence's characters.
  * @param k k-mer size.
@@ -561,8 +563,8 @@ ntc64(const char* kmer_seq,
 }
 
 /**
- * Generate multiple canonical hash value for the first k-mer; skipping over
- * unknown characters and returning the strand-specific hash values.
+ * Generate multiple canonical hash value for the first k-mer, find the first
+ * ignored character and return the strand-specific hash values.
  *
  * @param kmer_seq Array containing the sequence's characters.
  * @param k k-mer size.
@@ -604,8 +606,8 @@ ntmc64(const char* kmer_seq,
 }
 
 /**
- * Generate multiple canonical hash values for the first k-mer; skipping over
- * unknown characters and returning the strand-specific hash values and strand
+ * Generate multiple canonical hash values for the first k-mer, find the first
+ * ignored character, and returning the strand-specific hash values and strand
  * selections.
  *
  * @param kmer_seq Array containing the sequence's characters.
