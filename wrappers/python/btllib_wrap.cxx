@@ -28852,37 +28852,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_get_basename(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  int res1 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "get_basename" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "get_basename" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  result = btllib::get_basename((std::string const &)*arg1);
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_get_dirname(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Minimizer_seq_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Indexlr::Minimizer *arg1 = (btllib::Indexlr::Minimizer *) 0 ;
   std::string *arg2 = 0 ;
@@ -36160,6 +36130,36 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_get_basename(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "get_basename" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "get_basename" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = btllib::get_basename((std::string const &)*arg1);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_get_dirname(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
@@ -36705,30 +36705,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "endl", _wrap_endl, METH_O, "swig_ptr: endl_cb_ptr"},
 	 { "ends", _wrap_ends, METH_O, "swig_ptr: ends_cb_ptr"},
 	 { "flush", _wrap_flush, METH_O, "swig_ptr: flush_cb_ptr"},
-	 { "BloomFilter_save", _wrap_BloomFilter_save, METH_VARARGS, NULL},
-	 { "BloomFilter_is_bloom_file", _wrap_BloomFilter_is_bloom_file, METH_O, NULL},
-	 { "BloomFilter_check_file_signature", _wrap_BloomFilter_check_file_signature, METH_VARARGS, NULL},
-	 { "KmerBloomFilter_is_bloom_file", _wrap_KmerBloomFilter_is_bloom_file, METH_O, NULL},
-	 { "SeedBloomFilter_is_bloom_file", _wrap_SeedBloomFilter_is_bloom_file, METH_O, NULL},
-	 { "split", _wrap_split, METH_VARARGS, NULL},
-	 { "join", _wrap_join, METH_VARARGS, NULL},
-	 { "ltrim", _wrap_ltrim, METH_VARARGS, NULL},
-	 { "rtrim", _wrap_rtrim, METH_VARARGS, NULL},
-	 { "trim", _wrap_trim, METH_VARARGS, NULL},
-	 { "startswith", _wrap_startswith, METH_VARARGS, NULL},
-	 { "endswith", _wrap_endswith, METH_VARARGS, NULL},
-	 { "get_basename", _wrap_get_basename, METH_O, NULL},
-	 { "get_dirname", _wrap_get_dirname, METH_O, NULL},
-	 { "reverse_complement", _wrap_reverse_complement, METH_O, NULL},
-	 { "get_reverse_complement", _wrap_get_reverse_complement, METH_O, NULL},
-	 { "rol1", _wrap_rol1, METH_O, NULL},
-	 { "rolx", _wrap_rolx, METH_VARARGS, NULL},
-	 { "ror1", _wrap_ror1, METH_O, NULL},
-	 { "rol31", _wrap_rol31, METH_VARARGS, NULL},
-	 { "rol33", _wrap_rol33, METH_VARARGS, NULL},
-	 { "swapbits033", _wrap_swapbits033, METH_O, NULL},
-	 { "swapbits3263", _wrap_swapbits3263, METH_O, NULL},
-	 { "swapxbits033", _wrap_swapxbits033, METH_VARARGS, NULL},
+	 { "srol", _wrap_srol, METH_VARARGS, NULL},
+	 { "sror", _wrap_sror, METH_O, NULL},
+	 { "ntf64", _wrap_ntf64, METH_VARARGS, NULL},
 	 { "ntr64", _wrap_ntr64, METH_VARARGS, NULL},
 	 { "ntf64l", _wrap_ntf64l, METH_VARARGS, NULL},
 	 { "ntr64l", _wrap_ntr64l, METH_VARARGS, NULL},
@@ -36766,6 +36745,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "trim", _wrap_trim, METH_VARARGS, NULL},
 	 { "startswith", _wrap_startswith, METH_VARARGS, NULL},
 	 { "endswith", _wrap_endswith, METH_VARARGS, NULL},
+	 { "get_basename", _wrap_get_basename, METH_O, NULL},
 	 { "get_dirname", _wrap_get_dirname, METH_O, NULL},
 	 { NULL, NULL, 0, NULL }
 };
@@ -36809,30 +36789,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "endl", _wrap_endl, METH_O, "swig_ptr: endl_cb_ptr"},
 	 { "ends", _wrap_ends, METH_O, "swig_ptr: ends_cb_ptr"},
 	 { "flush", _wrap_flush, METH_O, "swig_ptr: flush_cb_ptr"},
-	 { "BloomFilter_save", _wrap_BloomFilter_save, METH_VARARGS, NULL},
-	 { "BloomFilter_is_bloom_file", _wrap_BloomFilter_is_bloom_file, METH_O, NULL},
-	 { "BloomFilter_check_file_signature", _wrap_BloomFilter_check_file_signature, METH_VARARGS, NULL},
-	 { "KmerBloomFilter_is_bloom_file", _wrap_KmerBloomFilter_is_bloom_file, METH_O, NULL},
-	 { "SeedBloomFilter_is_bloom_file", _wrap_SeedBloomFilter_is_bloom_file, METH_O, NULL},
-	 { "split", _wrap_split, METH_VARARGS, NULL},
-	 { "join", _wrap_join, METH_VARARGS, NULL},
-	 { "ltrim", _wrap_ltrim, METH_VARARGS, NULL},
-	 { "rtrim", _wrap_rtrim, METH_VARARGS, NULL},
-	 { "trim", _wrap_trim, METH_VARARGS, NULL},
-	 { "startswith", _wrap_startswith, METH_VARARGS, NULL},
-	 { "endswith", _wrap_endswith, METH_VARARGS, NULL},
-	 { "get_basename", _wrap_get_basename, METH_O, NULL},
-	 { "get_dirname", _wrap_get_dirname, METH_O, NULL},
-	 { "reverse_complement", _wrap_reverse_complement, METH_O, NULL},
-	 { "get_reverse_complement", _wrap_get_reverse_complement, METH_O, NULL},
-	 { "rol1", _wrap_rol1, METH_O, NULL},
-	 { "rolx", _wrap_rolx, METH_VARARGS, NULL},
-	 { "ror1", _wrap_ror1, METH_O, NULL},
-	 { "rol31", _wrap_rol31, METH_VARARGS, NULL},
-	 { "rol33", _wrap_rol33, METH_VARARGS, NULL},
-	 { "swapbits033", _wrap_swapbits033, METH_O, NULL},
-	 { "swapbits3263", _wrap_swapbits3263, METH_O, NULL},
-	 { "swapxbits033", _wrap_swapxbits033, METH_VARARGS, NULL},
+	 { "srol", _wrap_srol, METH_VARARGS, NULL},
+	 { "sror", _wrap_sror, METH_O, NULL},
+	 { "ntf64", _wrap_ntf64, METH_VARARGS, NULL},
 	 { "ntr64", _wrap_ntr64, METH_VARARGS, NULL},
 	 { "ntf64l", _wrap_ntf64l, METH_VARARGS, NULL},
 	 { "ntr64l", _wrap_ntr64l, METH_VARARGS, NULL},
@@ -36870,6 +36829,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "trim", _wrap_trim, METH_VARARGS, NULL},
 	 { "startswith", _wrap_startswith, METH_VARARGS, NULL},
 	 { "endswith", _wrap_endswith, METH_VARARGS, NULL},
+	 { "get_basename", _wrap_get_basename, METH_O, NULL},
 	 { "get_dirname", _wrap_get_dirname, METH_O, NULL},
 	 { NULL, NULL, 0, NULL }
 };
