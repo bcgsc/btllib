@@ -36,7 +36,7 @@ Usage
   * `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
 - Python wrappers
   * The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. `btllib::SeqReader::Flag` in C++ versus `btllib.SeqReaderFlag` in Python).
-  * Use Python's `sys.path.append()` to include `/path/to/btllib/python` directory
+  * Use `PYTHONPATH` environment variable or `sys.path.append()` in your Python code to include `/path/to/btllib/python` directory
   * Include the library with `import btllib`
 
 Contributing
