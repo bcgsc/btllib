@@ -14,9 +14,13 @@ main()
                                 20,
                                 50,
                                 btllib::Indexlr::Flag::LONG_MODE);
+  int i = 0;
   for (auto minimizers : indexlr_empty) {
+    i++;
   }
+  TEST_ASSERT_EQ(i, 0);
 
+  std::cerr << "Testing without Bloom filters" << std::endl;
   btllib::Indexlr indexlr(btllib::get_dirname(__FILE__) + "/indexlr.fa",
                           100,
                           5,
@@ -51,7 +55,6 @@ main()
   std::stringstream ss;
   std::stringstream ss2;
 
-  std::cerr << "Testing without Bloom filters" << std::endl;
   decltype(indexlr)::Record record;
   bool success_indexlr = false, success_indexlr2 = false;
   for (int i = 0;; i++) {
