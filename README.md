@@ -21,7 +21,7 @@ Usage
 ---
 - Dependencies
   - Build
-    * GCC 5+ or Clang 4+ with OpenMP
+    * GCC 6+ or Clang 5+ with OpenMP
     * Python 3.5+
     * Meson and Ninja Python3 packages, and CMake (optional -- if they are missing, they will be automatically downloaded to a temporary directory)
   - Run time
