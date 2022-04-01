@@ -108,12 +108,10 @@ ntf64(const char* kmer_seq, const unsigned k)
       16 * CONVERT_TAB[(unsigned char)kmer_seq[k - 3]] + // NOLINT
       4 * CONVERT_TAB[(unsigned char)kmer_seq[k - 2]] +
       CONVERT_TAB[(unsigned char)kmer_seq[k - 1]];
-    // cppcheck-suppress arrayIndexOutOfBounds
     h_val ^= TRIMER_TAB[trimer_loc];
   } else if (remainder == 2) {
     uint8_t dimer_loc = 4 * CONVERT_TAB[(unsigned char)kmer_seq[k - 2]] +
                         CONVERT_TAB[(unsigned char)kmer_seq[k - 1]];
-    // cppcheck-suppress arrayIndexOutOfBounds
     h_val ^= DIMER_TAB[dimer_loc];
   } else if (remainder == 1) {
     h_val ^= SEED_TAB[(unsigned char)kmer_seq[k - 1]];
@@ -140,12 +138,10 @@ ntr64(const char* kmer_seq, const unsigned k)
       16 * RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 1]] + // NOLINT
       4 * RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 2]] +
       RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 3]];
-    // cppcheck-suppress arrayIndexOutOfBounds
     h_val ^= TRIMER_TAB[trimer_loc];
   } else if (remainder == 2) {
     uint8_t dimer_loc = 4 * RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 1]] +
                         RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 2]];
-    // cppcheck-suppress arrayIndexOutOfBounds
     h_val ^= DIMER_TAB[dimer_loc];
   } else if (remainder == 1) {
     h_val ^= SEED_TAB[(unsigned char)kmer_seq[k - 1] & CP_OFF];
@@ -794,6 +790,7 @@ ntmsm64(const char* kmer_seq,
   for (unsigned i_seed = 0; i_seed < m; i_seed++) {
     fh_seed = 0;
     rh_seed = 0;
+
     for (const auto& block : seeds_blocks[i_seed]) {
       for (unsigned pos = block[0]; pos < block[1]; pos++) {
         if (kmer_seq[pos] == SEED_N) {

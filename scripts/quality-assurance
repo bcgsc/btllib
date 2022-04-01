@@ -9,7 +9,7 @@ set -e
 
 cd "${MESON_BUILD_ROOT}"
 
-ninja format wrap tidycheck #cppcheck
+ninja clang-format wrap clang-tidy
 ninja test
 ninja sanitize-undefined
 cd "${MESON_SOURCE_ROOT}"

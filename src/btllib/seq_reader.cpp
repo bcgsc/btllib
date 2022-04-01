@@ -428,19 +428,16 @@ SeqReader::read()
   auto& ready_records =
     *(ready_records_array[id % MAX_SIMULTANEOUS_SEQREADERS]);
   auto& current = ready_records_current[id % MAX_SIMULTANEOUS_SEQREADERS];
-  if (current >=
-      ready_records.count) {          // cppcheck-suppress danglingTempReference
-    ready_records.count = 0;          // cppcheck-suppress danglingTempReference
-    output_queue.read(ready_records); // cppcheck-suppress danglingTempReference
-    if (ready_records.count == 0) {   // cppcheck-suppress danglingTempReference
+  if (current >= ready_records.count) {
+    ready_records.count = 0;
+    output_queue.read(ready_records);
+    if (ready_records.count == 0) {
       close();
-      // cppcheck-suppress danglingTempReference
       ready_records = decltype(output_queue)::Block(block_size);
       return Record();
     }
     current = 0;
   }
-  // cppcheck-suppress danglingTempReference
   return std::move(ready_records.data[current++]);
 }
 
@@ -448,8 +445,8 @@ OrderQueueMPMC<SeqReader::Record>::Block
 SeqReader::read_block()
 {
   decltype(SeqReader::read_block()) block(block_size);
-  output_queue.read(block); // cppcheck-suppress danglingTempReference
-  if (block.count == 0) {   // cppcheck-suppress danglingTempReference
+  output_queue.read(block);
+  if (block.count == 0) {
     close();
   }
   return block;

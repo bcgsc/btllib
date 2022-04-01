@@ -138,6 +138,8 @@ public:
   }
 
   MIBloomFilter<T>(const std::string& filter_file_path)
+    : m_prob_saturated(pow(double(get_pop_saturated()) / double(get_pop()),
+                           m_hash_num)) // TODO: make more streamlined
   {
 #pragma omp parallel for default(none) shared(filter_file_path)
     for (unsigned i = 0; i < 2; ++i) {
@@ -235,9 +237,6 @@ public:
 
     log_info("MIBloomFilter: Bit vector size: " + std::to_string(m_bv.size()) +
              "\nPopcount: " + std::to_string(get_pop()));
-    // TODO: make more streamlined
-    m_prob_saturated =
-      pow(double(get_pop_saturated()) / double(get_pop()), m_hash_num);
   }
 
   /*

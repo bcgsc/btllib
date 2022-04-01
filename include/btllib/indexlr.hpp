@@ -507,18 +507,16 @@ Indexlr::read()
   }
   auto& block = *(ready_blocks_array()[id % MAX_SIMULTANEOUS_INDEXLRS]);
   auto& current = ready_blocks_current()[id % MAX_SIMULTANEOUS_INDEXLRS];
-  if (current >= block.count) { // cppcheck-suppress danglingTempReference
-    block.count = 0;            // cppcheck-suppress danglingTempReference
-    output_queue.read(block);   // cppcheck-suppress danglingTempReference
-    if (block.count == 0) {     // cppcheck-suppress danglingTempReference
+  if (current >= block.count) {
+    block.count = 0;
+    output_queue.read(block);
+    if (block.count == 0) {
       output_queue.close();
-      // cppcheck-suppress danglingTempReference
       block = decltype(output_queue)::Block(reader.get_block_size());
       return Record();
     }
     current = 0;
   }
-  // cppcheck-suppress danglingTempReference
   return std::move(block.data[current++]);
 }
 
