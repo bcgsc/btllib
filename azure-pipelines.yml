@@ -24,7 +24,7 @@ jobs:
   - script: meson setup build && cd build && ninja
     displayName: 'Build the project'
 
-  - script: cd build && ninja formatcheck
+  - script: cd build && ninja clang-format-check
     displayName: 'Run clang-format'
 
   - script: cd build && ninja clang-tidy
@@ -77,7 +77,7 @@ jobs:
   - script: meson setup build && cd build && ninja
     displayName: 'Build the project'
 
-  - script: cd build && ninja formatcheck
+  - script: cd build && ninja clang-format-check
     displayName: 'Run clang-format'
 
   - script: cd build && ninja clang-tidy

@@ -64,19 +64,9 @@ deps = [ threads_dep, openmp_dep, cpptomp_dep, sdsl_dep ]
 
 rootpath = meson.source_root()
 
-clang_format = find_program('clang-format', required : false)
-if clang_format.found()
-  run_target('format', command: join_paths(rootpath, 'scripts/format'))
-endif
-
 swig = find_program('swig', required : false)
 if swig.found()
   run_target('wrap', command: join_paths(rootpath, 'scripts/wrap'))
-endif
-
-diff = find_program('diff', required : false)
-if diff.found() and clang_format.found()
-  run_target('formatcheck', command: join_paths(rootpath, 'scripts/formatcheck'))
 endif
 
 cppcheck = find_program('cppcheck', required : false)
