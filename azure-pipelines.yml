@@ -31,6 +31,7 @@ jobs:
       fi
       sudo ln -sf ${clang_format_dir}/clang-format-13 ${clang_format_dir}/clang-format
 
+      set +o errexit
       which clang-format
       which clang-format-13
       echo "Checking clang-tidy:"
@@ -49,6 +50,7 @@ jobs:
           exit -1
         fi
       fi
+      set -o errexit
       sudo ln -sf ${clang_tidy_dir}/clang-tidy-13 ${clang_tidy_dir}/clang-tidy
 
       sudo pip3 install ninja meson cmake
