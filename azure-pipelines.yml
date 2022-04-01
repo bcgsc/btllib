@@ -31,6 +31,13 @@ jobs:
       fi
       sudo ln -sf ${clang_format_dir}/clang-format-13 ${clang_format_dir}/clang-format
 
+      which clang-format
+      which clang-format-13
+      echo "Checking clang-tidy:"
+      which clang-tidy
+      echo "Checking clang-tidy-13:"
+      which clang-tidy-13
+
       command -v clang-tidy >/dev/null
       if [[ $? -eq 0 ]]; then
         clang_tidy_dir=$(dirname $(which clang-tidy))
