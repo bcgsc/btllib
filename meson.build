@@ -3,26 +3,6 @@ project('btllib', 'cpp',
         license : 'GPL3',
         default_options : [ 'cpp_std=c++11', 'warning_level=3', 'werror=true' ])
 
-# Dependencies and compiler
-# ===========================================================
-
-threads_dep = dependency('threads')
-openmp_dep = dependency('openmp', required : false)
-deps = [ threads_dep, openmp_dep ]
-
-compiler = meson.get_compiler('cpp')
-compiler_id = compiler.get_id()
-compiler_version = compiler.version()
-
-if compiler_id == 'gcc' and compiler_version.version_compare('<5.0.0')
-  error('GCC ' + compiler_version + ' is unsupported.')
-endif
-if compiler_id == 'clang' and compiler_version.version_compare('<4.0.0')
-  error('Clang ' + compiler_version + ' is unsupported.')
-endif
-
-fs = import('fs')
-
 # Configuration
 # ===========================================================
 
@@ -30,8 +10,25 @@ conf = configuration_data()
 conf.set('PROJECT_VERSION', meson.project_version(), description : 'btllib version. Useful to append to the help prompt of recipes.')
 configure_file(input : 'include/btllib/config.hpp.in', output : 'config.hpp', configuration : conf)
 
-# Compile and link arguments
+# Modules
 # ===========================================================
+
+fs = import('fs')
+cmake = import('cmake')
+
+# Compiler and global flags
+# ===========================================================
+
+compiler = meson.get_compiler('cpp')
+compiler_id = compiler.get_id()
+compiler_version = compiler.version()
+
+if compiler_id == 'gcc' and compiler_version.version_compare('<6.0.0')
+  error('GCC ' + compiler_version + ' is unsupported.')
+endif
+if compiler_id == 'clang' and compiler_version.version_compare('<5.0.0')
+  error('Clang ' + compiler_version + ' is unsupported.')
+endif
 
 global_args = []
 global_link_args = [ '-ldl' ]
@@ -43,25 +40,24 @@ endif
 add_global_arguments(global_args, language : 'cpp')
 add_global_link_arguments(global_link_args, language : 'cpp')
 
-# Subprojects
+# Dependencies and subprojects
 # ===========================================================
+
+threads_dep = dependency('threads')
+openmp_dep = dependency('openmp', required : false)
+
+cpptoml_subproject = cmake.subproject('cpptoml')
+cpptomp_dep = cpptoml_subproject.dependency('cpptoml')
 
 run_command(meson.source_root() + '/scripts/prepare-sdsl')
 
-global_args = [ '-I' + meson.source_root() + '/subprojects/sdsl-lite/include' ]
-global_link_args = [ '-L' + meson.build_root() + '/subprojects/sdsl-lite', '-lsdsl', '-ldivsufsort', '-ldivsufsort64' ]
-
-add_global_arguments(global_args, language : 'cpp')
-add_global_link_arguments(global_link_args, language : 'cpp')
-
-cmake = import('cmake')
 cmake_options = cmake.subproject_options()
-
 cmake_options.set_override_option('werror', 'false')
 
 sdsl_subproject = cmake.subproject('sdsl-lite', options : cmake_options)
-
 sdsl_dep = sdsl_subproject.dependency('sdsl')
+
+deps = [ threads_dep, openmp_dep, cpptomp_dep, sdsl_dep ]
 
 # Custom run commands
 # ===========================================================

@@ -41,4 +41,4 @@ tidy_options="[
 
 files=$(scripts/get-files src include examples recipes)
 clang-tidy -warnings-as-errors='*' -config="{Checks: '$tidy_checks', CheckOptions: $tidy_options}" $files -- \
--std=c++11 -Iinclude -I${MESON_BUILD_ROOT} $@
+-std=c++11 -Iinclude -Isubprojects/sdsl-lite/include -Isubprojects/cpptoml/include -I${MESON_BUILD_ROOT} $@

@@ -3,7 +3,7 @@
 
 #include "btllib/nthash.hpp"
 
-#include "external/cpptoml.hpp"
+#include "cpptoml.h"
 
 #include <atomic>
 #include <climits>
