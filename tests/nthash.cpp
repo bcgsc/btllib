@@ -11,6 +11,30 @@ main()
 {
 
   {
+    PRINT_TEST_NAME("k-mer hash values")
+
+    std::string seq = "ACATGCATGCA";
+    const unsigned k = 5;
+    const unsigned h = 3;
+
+    const std::vector<std::array<uint64_t, h>> hashes = {
+      { 0xf59ecb45f0e22b9c, 0x4969c33ac240c129, 0x688d616f0d7e08c3 },
+      { 0x38cc00f940aebdae, 0xab7e1b110e086fc6, 0x11a1818bcfdd553 },
+      { 0x603a48c5a11c794a, 0xe66016e61816b9c4, 0xc5b13cb146996ffe }
+    };
+
+    btllib::NtHash nthash(seq, h, k);
+    btllib::BlindNtHash ntblind(seq, h, k);
+
+    for (const auto& h_vals : hashes) {
+      nthash.roll();
+      TEST_ASSERT_ARRAY_EQ(h_vals, nthash.hashes(), h);
+      ntblind.roll(seq[ntblind.get_pos() + 1]);
+      TEST_ASSERT_ARRAY_EQ(h_vals, ntblind.hashes(), h);
+    }
+  }
+
+  {
     PRINT_TEST_NAME("k-mer rolling")
 
     std::string seq = "AGTCAGTC";
@@ -214,6 +238,28 @@ main()
       for (unsigned i = 0; i < monos_true[i_seed].size(); i++) {
         TEST_ASSERT_EQ(monos_out[i_seed][i], monos_true[i_seed][i]);
       }
+    }
+  }
+
+  {
+    PRINT_TEST_NAME("spaced seed hash values")
+
+    std::string seq = "ACATGCATGCA";
+    std::vector<std::string> seeds = { "11100111" };
+    const unsigned k = seeds[0].length();
+    const unsigned h = 3;
+
+    const std::vector<std::array<uint64_t, h>> hashes = {
+      { 0x10be4904ad8de5d, 0x3e29e4f4c991628c, 0x3f35c984b13feb20 },
+      { 0x8200a7aa3eaf17c8, 0x344198402f4c2a9c, 0xb6423fe62e69c40c },
+      { 0x3ce8adcbeaa56532, 0x162e91a4dbedbf11, 0x53173f786a031f45 }
+    };
+
+    btllib::SeedNtHash nthash(seq, seeds, h, k);
+
+    for (const auto& h_vals : hashes) {
+      nthash.roll();
+      TEST_ASSERT_ARRAY_EQ(h_vals, nthash.hashes(), h);
     }
   }
 
