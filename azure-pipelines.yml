@@ -17,8 +17,31 @@ jobs:
       sudo apt-add-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main"
       sudo apt-get update
       sudo apt-get install --yes --no-install-recommends llvm clang-format-13 clang-tidy-13 clang libomp-dev python3 python3-setuptools openjdk-16-jdk libboost-dev samtools xz-utils bzip2 lrzip
-      sudo ln -sf $(dirname $(which clang-format))/clang-format-13 $(dirname $(which clang-format))/clang-format
-      sudo ln -sf $(dirname $(which clang-tidy))/clang-tidy-13 $(dirname $(which clang-tidy))/clang-tidy
+
+      command -v clang-format >/dev/null
+      if [[ $? -eq 0 ]]; then
+        clang_format_dir=$(dirname $(which clang-format))
+      else
+        command -v clang-format-13 >/dev/null
+        if [[ $? -eq 0 ]]; then
+          clang_format_dir=$(dirname $(which clang-format-13))
+        else
+          exit -1
+      fi
+      sudo ln -sf ${clang_format_dir}/clang-format-13 ${clang_format_dir}/clang-format
+
+      command -v clang-tidy >/dev/null
+      if [[ $? -eq 0 ]]; then
+        clang_tidy_dir=$(dirname $(which clang-tidy))
+      else
+        command -v clang-tidy-13 >/dev/null
+        if [[ $? -eq 0 ]]; then
+          clang_tidy_dir=$(dirname $(which clang-tidy-13))
+        else
+          exit -1
+      fi
+      sudo ln -sf ${clang_tidy_dir}/clang-tidy-13 ${clang_tidy_dir}/clang-tidy
+
       sudo pip3 install ninja meson cmake
     displayName: 'Install required software'
 
