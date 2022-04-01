@@ -16,7 +16,9 @@ jobs:
       wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
       sudo apt-add-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main"
       sudo apt-get update
-      sudo apt-get install --yes --no-install-recommends llvm clang-format clang-tidy clang libomp-dev python3 python3-setuptools openjdk-16-jdk libboost-dev samtools xz-utils bzip2 lrzip
+      sudo apt-get install --yes --no-install-recommends llvm clang-format-13 clang-tidy-13 clang libomp-dev python3 python3-setuptools openjdk-16-jdk libboost-dev samtools xz-utils bzip2 lrzip
+      sudo ln -sf $(dirname $(which clang-format))/clang-format-13 $(dirname $(which clang-format))/clang-format
+      sudo ln -sf $(dirname $(which clang-tidy))/clang-tidy-13 $(dirname $(which clang-tidy))/clang-tidy
       sudo pip3 install ninja meson cmake
     displayName: 'Install required software'
 
