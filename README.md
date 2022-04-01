@@ -58,13 +58,12 @@ The following are all the available `ninja` commands which can be run within `bu
 - `ninja format` formats the whitespace in code (requires clang-format 8+).
 - `ninja wrap` wraps C++ code for Python (requires SWIG 4.0+).
 - `ninja clang-tidy` runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+).
-- `ninja cppcheck` runs cppcheck on C++ code and makes sure it passes (requires cppcheck).
 - `ninja` builds the tests and wrapper libraries / makes sure they compile.
 - `ninja test` runs the tests.
 - `ninja sanitize-undefined` runs undefined sanitization.
 - `ninja test-wrappers` tests whether wrappers work.
 - `ninja docs` generates code documentation from comments (requires Doxygen).
-- `ninja quality-assurance` runs `format`, `wrap`, `clang-tidy`, `cppcheck`, `test`, `sanitize-undefined`, and `test-wrappers`. These are all checked at the CI test.
+- `ninja quality-assurance` runs `format`, `wrap`, `clang-tidy`, `test`, `sanitize-undefined`, and `test-wrappers`. These are all checked at the CI test.
 
 Credits
 ---

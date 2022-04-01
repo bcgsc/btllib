@@ -16,7 +16,7 @@ jobs:
       wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
       sudo apt-add-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main"
       sudo apt-get update
-      sudo apt-get install --yes --no-install-recommends llvm clang-format clang-tidy clang libomp-dev cppcheck \
+      sudo apt-get install --yes --no-install-recommends llvm clang-format clang-tidy clang libomp-dev \
         python3 python3-setuptools openjdk-16-jdk libboost-dev samtools xz-utils bzip2 lrzip
       sudo pip3 install ninja meson cmake
     displayName: 'Install required software'
@@ -29,9 +29,6 @@ jobs:
 
   - script: cd build && ninja clang-tidy
     displayName: 'Run clang-tidy'
-
-  #- script: cd build && ninja cppcheck
-  #  displayName: 'Run cppcheck'
 
   - script: |
       cd build && meson test --repeat=10
@@ -66,7 +63,7 @@ jobs:
   - script: |
       set -o errexit -o pipefail
       brew update
-      brew install llvm libomp cppcheck boost samtools coreutils xz lrzip
+      brew install llvm libomp boost samtools coreutils xz lrzip
       brew tap adoptopenjdk/openjdk
       brew install --cask adoptopenjdk11
       sudo ln -sf $(brew --prefix llvm)/bin/clang-format /usr/local/bin/clang-format
@@ -82,9 +79,6 @@ jobs:
 
   - script: cd build && ninja clang-tidy
     displayName: 'Run clang-tidy'
-
-  #- script: cd build && ninja cppcheck
-  #  displayName: 'Run cppcheck'
 
   - script: |
       cd build && meson test --repeat=10

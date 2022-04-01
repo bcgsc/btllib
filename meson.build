@@ -69,11 +69,6 @@ if swig.found()
   run_target('wrap', command: join_paths(rootpath, 'scripts/wrap'))
 endif
 
-cppcheck = find_program('cppcheck', required : false)
-if cppcheck.found()
-  run_target('cppcheck', command: join_paths(rootpath, 'scripts/cppcheck'))
-endif
-
 run_target('sanitize-address', command: [
   join_paths(rootpath, 'scripts/sanitize'),
   'address'
