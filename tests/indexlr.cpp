@@ -105,9 +105,9 @@ main()
   std::vector<uint64_t> filter_in_hashes = { 1315163655624994337ULL,
                                              4261937130627716230ULL,
                                              6055236352205909654ULL };
-  std::vector<uint64_t> filter_out_hashes = { 1672947938795563804ULL,
-                                              2858314356342515870ULL,
-                                              1712341822067595113ULL };
+  std::vector<uint64_t> filter_out_hashes = { 54854220342742384ULL,
+                                              10545593919277017579ULL,
+                                              6459583435485319281ULL };
 
   for (const auto h : filter_in_hashes) {
     filter_in_bf.insert({ h });
