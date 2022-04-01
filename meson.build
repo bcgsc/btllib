@@ -74,11 +74,6 @@ if swig.found()
   run_target('wrap', command: join_paths(rootpath, 'scripts/wrap'))
 endif
 
-clang_tidy = find_program('clang-tidy', required : false)
-if clang_tidy.found()
-  run_target('tidycheck', command: [ join_paths(rootpath, 'scripts/tidycheck') ] + global_args + global_link_args)
-endif
-
 diff = find_program('diff', required : false)
 if diff.found() and clang_format.found()
   run_target('formatcheck', command: join_paths(rootpath, 'scripts/formatcheck'))

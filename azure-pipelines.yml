@@ -27,7 +27,7 @@ jobs:
   - script: cd build && ninja formatcheck
     displayName: 'Run clang-format'
 
-  - script: cd build && ninja tidycheck
+  - script: cd build && ninja clang-tidy
     displayName: 'Run clang-tidy'
 
   #- script: cd build && ninja cppcheck
@@ -80,7 +80,7 @@ jobs:
   - script: cd build && ninja formatcheck
     displayName: 'Run clang-format'
 
-  - script: cd build && ninja tidycheck
+  - script: cd build && ninja clang-tidy
     displayName: 'Run clang-tidy'
 
   #- script: cd build && ninja cppcheck
