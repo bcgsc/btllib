@@ -19,7 +19,7 @@
 
 namespace btllib {
 
-static const char* const NTHASH_FN_NAME = "ntHash_v1";
+static const char* const NTHASH_FN_NAME = "ntHash_v2";
 
 // This lets us minimize NtHash object size. Good for performance if it's copied
 // in, e.g., DBG traversal
@@ -37,15 +37,15 @@ inline std::vector<SpacedSeed>
 parse_seeds(const std::vector<std::string>& seed_strings);
 
 inline void
-parse_blocks(const std::vector<std::string>& seed_strings,
-             std::vector<SpacedSeed>& blocks,
-             std::vector<std::vector<unsigned>>& monomers);
+parse_seeds(const std::vector<std::string>& seed_strings,
+            std::vector<SpacedSeedBlocks>& blocks,
+            std::vector<SpacedSeedMonomers>& monomers);
 
 inline void
 parsed_seeds_to_blocks(const std::vector<SpacedSeed>& seeds,
                        unsigned k,
-                       std::vector<SpacedSeed>& blocks,
-                       std::vector<std::vector<unsigned>>& monomers);
+                       std::vector<SpacedSeedBlocks>& blocks,
+                       std::vector<SpacedSeedMonomers>& monomers);
 
 class NtHash
 {
@@ -383,8 +383,8 @@ private:
   NtHash nthash;
   const unsigned hash_num_per_seed;
 
-  std::vector<SpacedSeed> blocks;
-  std::vector<std::vector<unsigned>> monomers;
+  std::vector<SpacedSeedBlocks> blocks;
+  std::vector<SpacedSeedMonomers> monomers;
 
   std::unique_ptr<uint64_t[]> fh_no_monomers;
   std::unique_ptr<uint64_t[]> rh_no_monomers;
@@ -540,7 +540,7 @@ inline SeedNtHash::SeedNtHash(const char* seq,
   , forward_hash(new uint64_t[seeds.size()])
   , reverse_hash(new uint64_t[seeds.size()])
 {
-  parse_blocks(seeds, blocks, monomers);
+  parse_seeds(seeds, blocks, monomers);
 }
 
 inline SeedNtHash::SeedNtHash(const std::string& seq,
@@ -555,7 +555,7 @@ inline SeedNtHash::SeedNtHash(const std::string& seq,
   , forward_hash(new uint64_t[seeds.size()])
   , reverse_hash(new uint64_t[seeds.size()])
 {
-  parse_blocks(seeds, blocks, monomers);
+  parse_seeds(seeds, blocks, monomers);
 }
 
 inline SeedNtHash::SeedNtHash(const SeedNtHash& seed_nthash)
@@ -600,13 +600,13 @@ parse_seeds(const std::vector<std::string>& seed_strings)
 }
 
 inline void
-parse_blocks(const std::vector<std::string>& seed_strings,
-             std::vector<SpacedSeed>& out_blocks,
-             std::vector<std::vector<unsigned>>& out_monomers)
+parse_seeds(const std::vector<std::string>& seed_strings,
+            std::vector<SpacedSeedBlocks>& out_blocks,
+            std::vector<SpacedSeedMonomers>& out_monomers)
 {
   for (const auto& seed_string : seed_strings) {
     const std::string padded_string = seed_string + '0';
-    SpacedSeed care_blocks, ignore_blocks;
+    SpacedSeedBlocks care_blocks, ignore_blocks;
     std::vector<unsigned> care_monos, ignore_monos;
     unsigned i_start = 0;
     bool is_care_block = true;
@@ -615,8 +615,8 @@ parse_blocks(const std::vector<std::string>& seed_strings,
         if (pos - i_start == 1) {
           care_monos.push_back(i_start);
         } else {
-          care_blocks.push_back(i_start);
-          care_blocks.push_back(pos);
+          std::array<unsigned, 2> block{ { i_start, pos } };
+          care_blocks.push_back(block);
         }
         i_start = pos;
         is_care_block = false;
@@ -624,18 +624,19 @@ parse_blocks(const std::vector<std::string>& seed_strings,
         if (pos - i_start == 1) {
           ignore_monos.push_back(i_start);
         } else {
-          ignore_blocks.push_back(i_start);
-          ignore_blocks.push_back(pos);
+          std::array<unsigned, 2> block{ { i_start, pos } };
+          ignore_blocks.push_back(block);
         }
         i_start = pos;
         is_care_block = true;
       }
     }
-    unsigned num_cares = care_blocks.size() + care_monos.size();
-    unsigned num_ignores = ignore_blocks.size() + ignore_monos.size() + 2;
+    unsigned num_cares = care_blocks.size() * 2 + care_monos.size();
+    unsigned num_ignores = ignore_blocks.size() * 2 + ignore_monos.size() + 2;
     if (num_ignores < num_cares) {
-      ignore_blocks.push_back(0);
-      ignore_blocks.push_back(seed_string.length());
+      unsigned string_end = seed_string.length();
+      std::array<unsigned, 2> block{ { 0, string_end } };
+      ignore_blocks.push_back(block);
       out_blocks.push_back(ignore_blocks);
       out_monomers.push_back(ignore_monos);
     } else {
@@ -648,8 +649,8 @@ parse_blocks(const std::vector<std::string>& seed_strings,
 inline void
 parsed_seeds_to_blocks(const std::vector<SpacedSeed>& seeds,
                        unsigned k,
-                       std::vector<SpacedSeed>& out_blocks,
-                       std::vector<std::vector<unsigned>>& out_monomers)
+                       std::vector<SpacedSeedBlocks>& out_blocks,
+                       std::vector<SpacedSeedMonomers>& out_monomers)
 {
   std::vector<std::string> seed_strings;
   for (const SpacedSeed& seed : seeds) {
@@ -659,7 +660,7 @@ parsed_seeds_to_blocks(const std::vector<SpacedSeed>& seeds,
     }
     seed_strings.push_back(seed_string);
   }
-  parse_blocks(seed_strings, out_blocks, out_monomers);
+  parse_seeds(seed_strings, out_blocks, out_monomers);
 }
 
 inline void
@@ -949,9 +950,12 @@ BTLLIB_NTHASH_ROLL_BACK(SeedNtHash,
                         roll_back(),
                         ntmsm64l(nthash.seq + nthash.pos - 1,
                                  blocks,
+                                 monomers,
                                  nthash.k,
                                  blocks.size(),
                                  hash_num_per_seed,
+                                 fh_no_monomers.get(),
+                                 rh_no_monomers.get(),
                                  forward_hash.get(),
                                  reverse_hash.get(),
                                  nthash.hashes_array.get());
@@ -1030,8 +1034,16 @@ BTLLIB_NTHASH_PEEK(
   peek_back(),
 
   {
+    std::unique_ptr<uint64_t[]> fh_no_monomers_tmp(new uint64_t[blocks.size()]);
+    std::unique_ptr<uint64_t[]> rh_no_monomers_tmp(new uint64_t[blocks.size()]);
     std::unique_ptr<uint64_t[]> forward_hash_tmp(new uint64_t[blocks.size()]);
     std::unique_ptr<uint64_t[]> reverse_hash_tmp(new uint64_t[blocks.size()]);
+    std::memcpy(fh_no_monomers_tmp.get(),
+                forward_hash.get(),
+                blocks.size() * sizeof(uint64_t));
+    std::memcpy(rh_no_monomers_tmp.get(),
+                reverse_hash.get(),
+                blocks.size() * sizeof(uint64_t));
     std::memcpy(forward_hash_tmp.get(),
                 forward_hash.get(),
                 blocks.size() * sizeof(uint64_t));
@@ -1040,9 +1052,12 @@ BTLLIB_NTHASH_PEEK(
                 blocks.size() * sizeof(uint64_t));
     ntmsm64l(nthash.seq + nthash.pos - 1,
              blocks,
+             monomers,
              nthash.k,
              blocks.size(),
              hash_num_per_seed,
+             fh_no_monomers_tmp.get(),
+             rh_no_monomers_tmp.get(),
              forward_hash_tmp.get(),
              reverse_hash_tmp.get(),
              nthash.hashes_array.get());
@@ -1053,8 +1068,16 @@ BTLLIB_NTHASH_PEEK(
   peek_back(char char_in),
 
   {
+    std::unique_ptr<uint64_t[]> fh_no_monomers_tmp(new uint64_t[blocks.size()]);
+    std::unique_ptr<uint64_t[]> rh_no_monomers_tmp(new uint64_t[blocks.size()]);
     std::unique_ptr<uint64_t[]> forward_hash_tmp(new uint64_t[blocks.size()]);
     std::unique_ptr<uint64_t[]> reverse_hash_tmp(new uint64_t[blocks.size()]);
+    std::memcpy(fh_no_monomers_tmp.get(),
+                forward_hash.get(),
+                blocks.size() * sizeof(uint64_t));
+    std::memcpy(rh_no_monomers_tmp.get(),
+                reverse_hash.get(),
+                blocks.size() * sizeof(uint64_t));
     std::memcpy(forward_hash_tmp.get(),
                 forward_hash.get(),
                 blocks.size() * sizeof(uint64_t));
@@ -1064,9 +1087,12 @@ BTLLIB_NTHASH_PEEK(
     ntmsm64l(nthash.seq + nthash.pos - 1,
              char_in,
              blocks,
+             monomers,
              nthash.k,
              blocks.size(),
              hash_num_per_seed,
+             fh_no_monomers_tmp.get(),
+             rh_no_monomers_tmp.get(),
              forward_hash_tmp.get(),
              reverse_hash_tmp.get(),
              nthash.hashes_array.get());
