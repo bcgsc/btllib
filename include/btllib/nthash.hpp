@@ -19,7 +19,7 @@
 
 namespace btllib {
 
-static const char* const NTHASH_FN_NAME = "ntHash_v1";
+static const char* const NTHASH_FN_NAME = "ntHash_v2";
 
 // This lets us minimize NtHash object size. Good for performance if it's copied
 // in, e.g., DBG traversal
