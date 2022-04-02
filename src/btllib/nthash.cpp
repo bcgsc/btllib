@@ -3,10 +3,10 @@
 namespace btllib {
 
 NtHash::NtHash(const char* seq,
-                      size_t seq_len,
-                      unsigned hash_num,
-                      unsigned k,
-                      size_t pos)
+               size_t seq_len,
+               unsigned hash_num,
+               unsigned k,
+               size_t pos)
   : seq(seq)
   , seq_len(seq_len)
   , hash_num(hash_num)
@@ -30,9 +30,9 @@ NtHash::NtHash(const char* seq,
 }
 
 NtHash::NtHash(const std::string& seq,
-                      unsigned hash_num,
-                      unsigned k,
-                      size_t pos)
+               unsigned hash_num,
+               unsigned k,
+               size_t pos)
   : NtHash(seq.c_str(), seq.size(), hash_num, k, pos)
 {}
 
@@ -52,10 +52,10 @@ NtHash::NtHash(const NtHash& nthash)
 }
 
 BlindNtHash::BlindNtHash(const char* seq,
-                                size_t seq_len,
-                                unsigned hash_num,
-                                unsigned k,
-                                size_t pos)
+                         size_t seq_len,
+                         unsigned hash_num,
+                         unsigned k,
+                         size_t pos)
   : seq(new char[seq_len])
   , seq_len(seq_len)
   , hash_num(hash_num)
@@ -84,9 +84,9 @@ BlindNtHash::BlindNtHash(const char* seq,
 }
 
 BlindNtHash::BlindNtHash(const std::string& seq,
-                                unsigned hash_num,
-                                unsigned k,
-                                size_t pos)
+                         unsigned hash_num,
+                         unsigned k,
+                         size_t pos)
   : BlindNtHash(seq.c_str(), seq.size(), hash_num, k, pos)
 {}
 
@@ -107,11 +107,11 @@ BlindNtHash::BlindNtHash(const BlindNtHash& nthash)
 }
 
 SeedNtHash::SeedNtHash(const char* seq,
-                              size_t seq_len,
-                              const std::vector<SpacedSeed>& seeds,
-                              unsigned hash_num_per_seed,
-                              unsigned k,
-                              size_t pos)
+                       size_t seq_len,
+                       const std::vector<SpacedSeed>& seeds,
+                       unsigned hash_num_per_seed,
+                       unsigned k,
+                       size_t pos)
   : nthash(seq, seq_len, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
   , fh_no_monomers(new uint64_t[seeds.size()])
@@ -123,10 +123,10 @@ SeedNtHash::SeedNtHash(const char* seq,
 }
 
 SeedNtHash::SeedNtHash(const std::string& seq,
-                              const std::vector<SpacedSeed>& seeds,
-                              unsigned hash_num_per_seed,
-                              unsigned k,
-                              size_t pos)
+                       const std::vector<SpacedSeed>& seeds,
+                       unsigned hash_num_per_seed,
+                       unsigned k,
+                       size_t pos)
   : nthash(seq, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
   , fh_no_monomers(new uint64_t[seeds.size()])
@@ -138,11 +138,11 @@ SeedNtHash::SeedNtHash(const std::string& seq,
 }
 
 SeedNtHash::SeedNtHash(const char* seq,
-                              size_t seq_len,
-                              const std::vector<std::string>& seeds,
-                              unsigned hash_num_per_seed,
-                              unsigned k,
-                              size_t pos)
+                       size_t seq_len,
+                       const std::vector<std::string>& seeds,
+                       unsigned hash_num_per_seed,
+                       unsigned k,
+                       size_t pos)
   : nthash(seq, seq_len, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
   , fh_no_monomers(new uint64_t[seeds.size()])
@@ -154,10 +154,10 @@ SeedNtHash::SeedNtHash(const char* seq,
 }
 
 SeedNtHash::SeedNtHash(const std::string& seq,
-                              const std::vector<std::string>& seeds,
-                              unsigned hash_num_per_seed,
-                              unsigned k,
-                              size_t pos)
+                       const std::vector<std::string>& seeds,
+                       unsigned hash_num_per_seed,
+                       unsigned k,
+                       size_t pos)
   : nthash(seq, seeds.size() * hash_num_per_seed, k, pos)
   , hash_num_per_seed(hash_num_per_seed)
   , fh_no_monomers(new uint64_t[seeds.size()])

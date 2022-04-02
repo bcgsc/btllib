@@ -31259,22 +31259,6 @@ SWIGINTERN PyObject *Swig_var_MS_TAB_31L_get(void) {
 }
 
 
-SWIGINTERN int Swig_var_RC_CONVERT_TAB_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable RC_CONVERT_TAB is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_RC_CONVERT_TAB_get(void) {
-  PyObject *pyobj = 0;
-  PyObject *self = 0;
-  
-  (void)self;
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::RC_CONVERT_TAB), SWIGTYPE_p_unsigned_char,  0 );
-  return pyobj;
-}
-
-
 SWIGINTERN int Swig_var_CONVERT_TAB_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable CONVERT_TAB is read-only.");
   return 1;
@@ -31287,6 +31271,22 @@ SWIGINTERN PyObject *Swig_var_CONVERT_TAB_get(void) {
   
   (void)self;
   pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::CONVERT_TAB), SWIGTYPE_p_unsigned_char,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_RC_CONVERT_TAB_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable RC_CONVERT_TAB is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_RC_CONVERT_TAB_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::RC_CONVERT_TAB), SWIGTYPE_p_unsigned_char,  0 );
   return pyobj;
 }
 
@@ -31571,8 +31571,8 @@ SWIGINTERN PyObject *_wrap_ntf64(PyObject *self, PyObject *args) {
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntf64'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::ntf64(char const *,unsigned int const)\n"
-    "    btllib::ntf64(uint64_t const,unsigned int const,unsigned char const,unsigned char const)\n");
+    "    btllib::ntf64(char const *,unsigned int)\n"
+    "    btllib::ntf64(uint64_t,unsigned int,unsigned char,unsigned char)\n");
   return 0;
 }
 
@@ -31644,8 +31644,8 @@ SWIGINTERN PyObject *_wrap_ntr64(PyObject *self, PyObject *args) {
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntr64'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::ntr64(char const *,unsigned int const)\n"
-    "    btllib::ntr64(uint64_t const,unsigned int const,unsigned char const,unsigned char const)\n");
+    "    btllib::ntr64(char const *,unsigned int)\n"
+    "    btllib::ntr64(uint64_t,unsigned int,unsigned char,unsigned char)\n");
   return 0;
 }
 
@@ -32490,11 +32490,11 @@ check_2:
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntc64'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::ntc64(char const *,unsigned int const)\n"
-    "    btllib::ntc64(char const *,unsigned int const,uint64_t &,uint64_t &)\n"
-    "    btllib::ntc64(unsigned char const,unsigned char const,unsigned int const,uint64_t &,uint64_t &)\n"
-    "    btllib::ntc64(char const *,unsigned int const,uint64_t &,unsigned int &)\n"
-    "    btllib::ntc64(char const *,unsigned int const,uint64_t &,uint64_t &,uint64_t &,unsigned int &)\n");
+    "    btllib::ntc64(char const *,unsigned int)\n"
+    "    btllib::ntc64(char const *,unsigned int,uint64_t &,uint64_t &)\n"
+    "    btllib::ntc64(unsigned char,unsigned char,unsigned int,uint64_t &,uint64_t &)\n"
+    "    btllib::ntc64(char const *,unsigned int,uint64_t &,unsigned int &)\n"
+    "    btllib::ntc64(char const *,unsigned int,uint64_t &,uint64_t &,uint64_t &,unsigned int &)\n");
   return 0;
 }
 
@@ -32864,13 +32864,13 @@ check_6:
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntmc64'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::ntmc64(char const *,unsigned int const,unsigned int const,uint64_t *)\n"
-    "    btllib::ntmc64(char const *,unsigned int const,unsigned int const,uint64_t &,uint64_t &,uint64_t *)\n"
-    "    btllib::ntmc64(unsigned char const,unsigned char const,unsigned int const,unsigned int const,uint64_t &,uint64_t &,uint64_t *)\n"
-    "    btllib::ntmc64(char const *,unsigned int const,unsigned int const,unsigned int &,uint64_t *)\n"
-    "    btllib::ntmc64(char const *,unsigned int const,unsigned int const,uint64_t &,uint64_t &,unsigned int &,uint64_t *)\n"
-    "    btllib::ntmc64(char const *,unsigned int const,unsigned int const,uint64_t &,uint64_t &,unsigned int &,uint64_t *,bool &)\n"
-    "    btllib::ntmc64(unsigned char const,unsigned char const,unsigned int const,unsigned int const,uint64_t &,uint64_t &,uint64_t *,bool &)\n");
+    "    btllib::ntmc64(char const *,unsigned int,unsigned int,uint64_t *)\n"
+    "    btllib::ntmc64(char const *,unsigned int,unsigned int,uint64_t &,uint64_t &,uint64_t *)\n"
+    "    btllib::ntmc64(unsigned char,unsigned char,unsigned int,unsigned int,uint64_t &,uint64_t &,uint64_t *)\n"
+    "    btllib::ntmc64(char const *,unsigned int,unsigned int,unsigned int &,uint64_t *)\n"
+    "    btllib::ntmc64(char const *,unsigned int,unsigned int,uint64_t &,uint64_t &,unsigned int &,uint64_t *)\n"
+    "    btllib::ntmc64(char const *,unsigned int,unsigned int,uint64_t &,uint64_t &,unsigned int &,uint64_t *,bool &)\n"
+    "    btllib::ntmc64(unsigned char,unsigned char,unsigned int,unsigned int,uint64_t &,uint64_t &,uint64_t *,bool &)\n");
   return 0;
 }
 
@@ -33562,9 +33562,9 @@ check_2:
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntmsm64'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeedBlocks,std::allocator< btllib::SpacedSeedBlocks > > const &,std::vector< btllib::SpacedSeedMonomers,std::allocator< btllib::SpacedSeedMonomers > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *,uint64_t *,unsigned int &,uint64_t *)\n"
-    "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeedBlocks,std::allocator< btllib::SpacedSeedBlocks > > const &,std::vector< btllib::SpacedSeedMonomers,std::allocator< btllib::SpacedSeedMonomers > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n"
-    "    btllib::ntmsm64(char const *,char const,std::vector< btllib::SpacedSeedBlocks,std::allocator< btllib::SpacedSeedBlocks > > const &,std::vector< btllib::SpacedSeedMonomers,std::allocator< btllib::SpacedSeedMonomers > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n");
+    "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeedBlocks,std::allocator< btllib::SpacedSeedBlocks > > const &,std::vector< btllib::SpacedSeedMonomers,std::allocator< btllib::SpacedSeedMonomers > > const &,unsigned int,unsigned int,unsigned int,uint64_t *,uint64_t *,uint64_t *,uint64_t *,unsigned int &,uint64_t *)\n"
+    "    btllib::ntmsm64(char const *,std::vector< btllib::SpacedSeedBlocks,std::allocator< btllib::SpacedSeedBlocks > > const &,std::vector< btllib::SpacedSeedMonomers,std::allocator< btllib::SpacedSeedMonomers > > const &,unsigned int,unsigned int,unsigned int,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n"
+    "    btllib::ntmsm64(char const *,char,std::vector< btllib::SpacedSeedBlocks,std::allocator< btllib::SpacedSeedBlocks > > const &,std::vector< btllib::SpacedSeedMonomers,std::allocator< btllib::SpacedSeedMonomers > > const &,unsigned int,unsigned int,unsigned int,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n");
   return 0;
 }
 
@@ -33712,8 +33712,8 @@ SWIGINTERN PyObject *_wrap_ntmsm64l(PyObject *self, PyObject *args) {
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntmsm64l'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::ntmsm64l(char const *,std::vector< btllib::SpacedSeedBlocks,std::allocator< btllib::SpacedSeedBlocks > > const &,std::vector< btllib::SpacedSeedMonomers,std::allocator< btllib::SpacedSeedMonomers > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n"
-    "    btllib::ntmsm64l(char const *,char const,std::vector< btllib::SpacedSeedBlocks,std::allocator< btllib::SpacedSeedBlocks > > const &,std::vector< btllib::SpacedSeedMonomers,std::allocator< btllib::SpacedSeedMonomers > > const &,unsigned int const,unsigned int const,unsigned int const,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n");
+    "    btllib::ntmsm64l(char const *,std::vector< btllib::SpacedSeedBlocks,std::allocator< btllib::SpacedSeedBlocks > > const &,std::vector< btllib::SpacedSeedMonomers,std::allocator< btllib::SpacedSeedMonomers > > const &,unsigned int,unsigned int,unsigned int,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n"
+    "    btllib::ntmsm64l(char const *,char,std::vector< btllib::SpacedSeedBlocks,std::allocator< btllib::SpacedSeedBlocks > > const &,std::vector< btllib::SpacedSeedMonomers,std::allocator< btllib::SpacedSeedMonomers > > const &,unsigned int,unsigned int,unsigned int,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n");
   return 0;
 }
 
@@ -46528,12 +46528,12 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "MS_TAB_31L", Swig_var_MS_TAB_31L_get, Swig_var_MS_TAB_31L_set);
   PyDict_SetItemString(md, "MS_TAB_31L", PyObject_GetAttrString(globals, "MS_TAB_31L"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "MS_TAB_31L");
-  SWIG_addvarlink(globals, "RC_CONVERT_TAB", Swig_var_RC_CONVERT_TAB_get, Swig_var_RC_CONVERT_TAB_set);
-  PyDict_SetItemString(md, "RC_CONVERT_TAB", PyObject_GetAttrString(globals, "RC_CONVERT_TAB"));
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "RC_CONVERT_TAB");
   SWIG_addvarlink(globals, "CONVERT_TAB", Swig_var_CONVERT_TAB_get, Swig_var_CONVERT_TAB_set);
   PyDict_SetItemString(md, "CONVERT_TAB", PyObject_GetAttrString(globals, "CONVERT_TAB"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "CONVERT_TAB");
+  SWIG_addvarlink(globals, "RC_CONVERT_TAB", Swig_var_RC_CONVERT_TAB_get, Swig_var_RC_CONVERT_TAB_set);
+  PyDict_SetItemString(md, "RC_CONVERT_TAB", PyObject_GetAttrString(globals, "RC_CONVERT_TAB"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "RC_CONVERT_TAB");
   SWIG_addvarlink(globals, "DIMER_TAB", Swig_var_DIMER_TAB_get, Swig_var_DIMER_TAB_set);
   PyDict_SetItemString(md, "DIMER_TAB", PyObject_GetAttrString(globals, "DIMER_TAB"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "DIMER_TAB");

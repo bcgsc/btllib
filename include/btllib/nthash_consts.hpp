@@ -8,8 +8,8 @@
 #ifndef BTLLIB_NTHASH_CONSTS_HPP
 #define BTLLIB_NTHASH_CONSTS_HPP
 
-#include <cstdint>
 #include <cmath>
+#include <cstdint>
 
 namespace btllib {
 

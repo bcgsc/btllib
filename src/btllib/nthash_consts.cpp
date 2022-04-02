@@ -129,19 +129,19 @@ const uint64_t T31L[31] = {
   0x14aaa4fa00000000
 };
 
-const uint64_t N33R[33] = {
-  SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
-  SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
-  SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
-  SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N
-};
+const uint64_t N33R[33] = { SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
+                            SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
+                            SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
+                            SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
+                            SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
+                            SEED_N, SEED_N, SEED_N };
 
-const uint64_t N31L[31] = {
-  SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
-  SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
-  SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
-  SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N
-};
+const uint64_t N31L[31] = { SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
+                            SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
+                            SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
+                            SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
+                            SEED_N, SEED_N, SEED_N, SEED_N, SEED_N, SEED_N,
+                            SEED_N };
 
 const uint64_t* const MS_TAB_33R[ASCII_SIZE] = {
   N33R, T33R, N33R, G33R, A33R, A33R, N33R, C33R, // 0..7

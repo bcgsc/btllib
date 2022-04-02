@@ -160,10 +160,7 @@ ntc64(const char* kmer_seq, unsigned k);
  * @return Canonical hash value of k-mer_0.
  */
 uint64_t
-ntc64(const char* kmer_seq,
-      unsigned k,
-      uint64_t& fh_val,
-      uint64_t& rh_val);
+ntc64(const char* kmer_seq, unsigned k, uint64_t& fh_val, uint64_t& rh_val);
 
 /**
  * Perform a roll operation on the sequence and generate a canonical hash value.
@@ -243,10 +240,7 @@ ntc64l(unsigned char char_out,
  * @param h_val Array of size h for storing the output hashes.
  */
 void
-nte64(uint64_t bh_val,
-      unsigned k,
-      unsigned h,
-      uint64_t* h_val);
+nte64(uint64_t bh_val, unsigned k, unsigned h, uint64_t* h_val);
 
 /**
  * Generate multiple canonical hash values for the first k-mer.
@@ -257,10 +251,7 @@ nte64(uint64_t bh_val,
  * @param h_val Array of size m for storing the hash values.
  */
 void
-ntmc64(const char* kmer_seq,
-       unsigned k,
-       unsigned m,
-       uint64_t* h_val);
+ntmc64(const char* kmer_seq, unsigned k, unsigned m, uint64_t* h_val);
 
 /**
  * Generate multiple canonical hash values for the first k-mer and return
