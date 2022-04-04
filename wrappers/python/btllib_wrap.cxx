@@ -34787,6 +34787,42 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_check_seeds(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< std::string,std::allocator< std::string > > *arg1 = 0 ;
+  unsigned int arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "check_seeds", 2, 2, swig_obj)) SWIG_fail;
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "check_seeds" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "check_seeds" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "check_seeds" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  btllib::check_seeds((std::vector< std::string,std::allocator< std::string > > const &)*arg1,arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_NtHash_roll(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
@@ -36747,6 +36783,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "check_stream", _wrap_check_stream, METH_VARARGS, NULL},
 	 { "parse_seeds", _wrap_parse_seeds, METH_VARARGS, NULL},
 	 { "parsed_seeds_to_blocks", _wrap_parsed_seeds_to_blocks, METH_VARARGS, NULL},
+	 { "check_seeds", _wrap_check_seeds, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -36831,6 +36868,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "check_stream", _wrap_check_stream, METH_VARARGS, NULL},
 	 { "parse_seeds", _wrap_parse_seeds, METH_VARARGS, NULL},
 	 { "parsed_seeds_to_blocks", _wrap_parsed_seeds_to_blocks, METH_VARARGS, NULL},
+	 { "check_seeds", _wrap_check_seeds, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

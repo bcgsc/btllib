@@ -461,7 +461,7 @@ main()
       "11111111111111111111111111111111111111111111111111",
     };
 
-    const unsigned h = 1;
+    const unsigned h = 4;
 
     btllib::SeedNtHash nthash1(seq_fwd, seeds, h, seeds[0].length());
     btllib::SeedNtHash nthash2(seq_rev, seeds, h, seeds[0].length());
