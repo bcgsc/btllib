@@ -34,7 +34,8 @@ NtHash::NtHash(const std::string& seq,
                unsigned k,
                size_t pos)
   : NtHash(seq.c_str(), seq.size(), hash_num, k, pos)
-{}
+{
+}
 
 NtHash::NtHash(const NtHash& nthash)
   : seq(nthash.seq)
@@ -215,11 +216,12 @@ parse_seeds(const std::vector<std::string>& seed_strings,
             std::vector<SpacedSeedMonomers>& out_monomers)
 {
   for (const auto& seed_string : seed_strings) {
-    const std::string padded_string = seed_string + '0';
+    char pad = seed_string[seed_string.length() - 1] == '1' ? '0' : '1';
+    const std::string padded_string = seed_string + pad;
     SpacedSeedBlocks care_blocks, ignore_blocks;
     std::vector<unsigned> care_monos, ignore_monos;
     unsigned i_start = 0;
-    bool is_care_block = true;
+    bool is_care_block = padded_string[0] == '1';
     for (unsigned pos = 0; pos < padded_string.length(); pos++) {
       if (is_care_block && padded_string[pos] == '0') {
         if (pos - i_start == 1) {
