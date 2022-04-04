@@ -34,8 +34,7 @@ NtHash::NtHash(const std::string& seq,
                unsigned k,
                size_t pos)
   : NtHash(seq.c_str(), seq.size(), hash_num, k, pos)
-{
-}
+{}
 
 NtHash::NtHash(const NtHash& nthash)
   : seq(nthash.seq)
