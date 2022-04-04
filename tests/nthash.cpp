@@ -1,4 +1,5 @@
 #include "btllib/nthash.hpp"
+#include "btllib/seq.hpp"
 #include "helpers.hpp"
 
 #include <iostream>
@@ -440,6 +441,29 @@ main()
       TEST_ASSERT_EQ(hashes1.front(), hashes2.front());
       hashes1.pop();
       hashes2.pop();
+    }
+  }
+
+  {
+    PRINT_TEST_NAME("canonical hashing in spaced seeds")
+
+    std::string seq_fwd = "CACTCGGCCACACACACACACACACACCCTCACACACACAAAACGCACAC";
+    std::string seq_rev = btllib::get_reverse_complement(seq_fwd);
+
+    std::vector<std::string> seeds = {
+      "11011000001100101101011000011010110100110000011011",
+      "01010000101001110100111011011100101110010100001010",
+      "11100000100111010111000100100011101011100100000111",
+      "01111000011000111101000011000010111100011000011110"
+    };
+
+    const unsigned h = 1;
+
+    btllib::SeedNtHash nthash1(seq_fwd, seeds, h, seeds[0].length());
+    btllib::SeedNtHash nthash2(seq_rev, seeds, h, seeds[0].length());
+
+    while (nthash1.roll() & nthash2.roll()) {
+      TEST_ASSERT_ARRAY_EQ(nthash1.hashes(), nthash2.hashes(), h);
     }
   }
 
