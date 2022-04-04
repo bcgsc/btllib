@@ -150,6 +150,7 @@ SeedNtHash::SeedNtHash(const char* seq,
   , forward_hash(new uint64_t[seeds.size()])
   , reverse_hash(new uint64_t[seeds.size()])
 {
+  check_seeds(seeds, k);
   parse_seeds(seeds, blocks, monomers);
 }
 
@@ -165,6 +166,7 @@ SeedNtHash::SeedNtHash(const std::string& seq,
   , forward_hash(new uint64_t[seeds.size()])
   , reverse_hash(new uint64_t[seeds.size()])
 {
+  check_seeds(seeds, k);
   parse_seeds(seeds, blocks, monomers);
 }
 
@@ -189,6 +191,21 @@ SeedNtHash::SeedNtHash(const SeedNtHash& seed_nthash)
   std::memcpy(reverse_hash.get(),
               seed_nthash.reverse_hash.get(),
               seed_nthash.blocks.size() * sizeof(uint64_t));
+}
+
+void
+check_seeds(const std::vector<std::string>& seeds, unsigned k)
+{
+  for (const auto& seed : seeds) {
+    check_error(seed.length() != k,
+                "Spaced seed string length (" + std::to_string(seed.length()) +
+                  ") not equal to k=" + std::to_string(k) + " in " + seed);
+    std::string reversed(seed.rbegin(), seed.rend());
+    check_warning(
+      seed != reversed,
+      "Seed " + seed +
+        " is not symmetric, reverse-complement hashing will be inconsistent");
+  }
 }
 
 std::vector<SpacedSeed>
