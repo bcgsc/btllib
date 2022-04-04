@@ -83,22 +83,31 @@ Download</h2>
 Usage</h2>
 <ul>
 <li>Dependencies<ul>
-<li>GCC 5+ or Clang 4+ with OpenMP</li>
+<li>Build<ul>
+<li>GCC 6+ or Clang 5+ with OpenMP</li>
 <li>Python 3.5+</li>
 <li>Meson and Ninja Python3 packages, and CMake (optional &ndash; if they are missing, they will be automatically downloaded to a temporary directory)</li>
+</ul>
+</li>
+<li>Run time<ul>
+<li>SAMtools for reading SAM, BAM, and CRAM files.</li>
+<li>gzip, tar, pigz, bzip2, xz, lrzip, zip, and/or 7zip for compressing/decompressing files. Not all of these are necessary, only the ones whose compressions you'll be using.</li>
+<li>wget for downloading sequences from a URL.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Copy the root <code>btllib</code> directory into your project</li>
 <li>Run <code>btllib/compile</code></li>
 <li>C++<ul>
-<li>Link your code with <code>btllib/lib/libbtllib.a</code> (pass <code>-L btllib/lib -l btllib</code> flags to the compiler).</li>
-<li><code>#include</code> any header from the <code>btllib/include</code> directory (pass <code>-I btllib/include</code> flag to the compiler).</li>
+<li>Link your code with <code>btllib/lib/libbtllib.a</code> (pass <code>-L /path/to/btllib/lib -l btllib</code> flags to the compiler).</li>
+<li><code>#include</code> any header from the <code>btllib/include</code> directory (pass <code>-I /path/to/btllib/include</code> flag to the compiler).</li>
 <li><code>btllib</code> uses <code>C++11</code> features, so that standard should be enabled at a minimum.</li>
 </ul>
 </li>
 <li>Python wrappers<ul>
 <li>The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. <code><a class="el" href="structbtllib_1_1SeqReader_1_1Flag.html">btllib::SeqReader::Flag</a></code> in C++ versus <code>btllib.SeqReaderFlag</code> in Python).</li>
-<li>Use Python's <code>sys.path.append()</code> to include <code>btllib/python</code> directory</li>
+<li>Use <code>PYTHONPATH</code> environment variable or <code>sys.path.append()</code> in your Python code to include <code>/path/to/btllib/python</code> directory</li>
 <li>Include the library with <code>import btllib</code></li>
 </ul>
 </li>
@@ -107,8 +116,8 @@ Usage</h2>
 Contributing</h2>
 <ul>
 <li>Initial setup:<ul>
-<li><code>meson build</code> to create a build directory.</li>
-<li><code>cd build</code> and <code>ninja build-sdsl</code> to build the <code>sdsl</code> dependency.</li>
+<li><code>git clone --recurse-submodules <a href="https://github.com/bcgsc/btllib">https://github.com/bcgsc/btllib</a></code> in order to obtain all the code.</li>
+<li>In <code>btllib</code> dir, run <code>meson build</code> to create a build directory.</li>
 </ul>
 </li>
 <li>Every time you want to run tests, in the <code>build</code> dir:<ul>
@@ -118,6 +127,7 @@ Contributing</h2>
 </li>
 <li>Before making a pull request, in the <code>build</code> dir:<ul>
 <li><code>ninja quality-assurance</code> to make sure all CI tests pass.</li>
+<li>Make a commit after the above step, in case it has made any changes to wrappers or formatting. Don't commit the changes made to the <code>sdsl-lite</code> subproject. Meson config file adjusts the <code>sdsl-lite</code> config in order for it to work for <code>btllib</code>, but this is done ad hoc and is not necessary to be committed. By doing it ad hoc we keep a list of differences compared to the upstream repository.</li>
 </ul>
 </li>
 <li>Before making a release, in the <code>build</code> dir:<ul>
@@ -127,24 +137,22 @@ Contributing</h2>
 </li>
 </ul>
 <p >The following are all the available <code>ninja</code> commands which can be run within <code>build</code> directory:</p><ul>
-<li><code>ninja build-sdsl</code> builds the sdsl-lite dependency library.</li>
 <li><code>ninja format</code> formats the whitespace in code (requires clang-format 8+).</li>
 <li><code>ninja wrap</code> wraps C++ code for Python (requires SWIG 4.0+).</li>
-<li><code>ninja tidycheck</code> runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+).</li>
-<li><code>ninja cppcheck</code> runs cppcheck on C++ code and makes sure it passes (requires cppcheck).</li>
+<li><code>ninja clang-tidy</code> runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+).</li>
 <li><code>ninja</code> builds the tests and wrapper libraries / makes sure they compile.</li>
 <li><code>ninja test</code> runs the tests.</li>
 <li><code>ninja sanitize-undefined</code> runs undefined sanitization.</li>
 <li><code>ninja test-wrappers</code> tests whether wrappers work.</li>
 <li><code>ninja docs</code> generates code documentation from comments (requires Doxygen).</li>
-<li><code>ninja quality-assurance</code> runs <code>format</code>, <code>wrap</code>, <code>tidycheck</code>, <code>cppcheck</code>, <code>test</code>, <code>sanitize-undefined</code>, and <code>test-wrappers</code>. These are all checked at the CI test.</li>
+<li><code>ninja quality-assurance</code> runs <code>format</code>, <code>wrap</code>, <code>clang-tidy</code>, <code>test</code>, <code>sanitize-undefined</code>, and <code>test-wrappers</code>. These are all checked at the CI test.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Credits</h2>
 <ul>
 <li>Author: <a href="https://github.com/vlad0x00">Vladimir Nikolic</a></li>
 <li>Components:<ul>
-<li><a href="https://github.com/mohamadi">Hamid Mohamadi</a> for <a href="https://github.com/bcgsc/ntHash">ntHash</a></li>
+<li><a href="https://github.com/mohamadi">Hamid Mohamadi</a> and <a href="https://github.com/parham-k">Parham Kazemi</a> for <a href="https://github.com/bcgsc/ntHash">ntHash</a></li>
 <li><a href="https://github.com/JustinChu">Justin Chu</a> for <a href="https://github.com/bcgsc/btl_bloomfilter">MIBloomFilter</a></li>
 <li><a href="https://github.com/skystrife">Chase Geigle</a> for <a href="https://github.com/skystrife/cpptoml">cpptoml</a></li>
 <li>Simon Gog, Timo Beller, Alistair Moffat, and Matthias Petri for <a href="https://github.com/simongog/sdsl-lite">sdsl-lite</a> </li>
