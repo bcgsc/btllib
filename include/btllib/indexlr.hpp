@@ -315,6 +315,8 @@ inline Indexlr::Indexlr(std::string seqfile,
   check_error(!short_mode() && !long_mode(),
               "Indexlr: no mode selected, either short or long mode flag must "
               "be provided.");
+  check_error(short_mode() && long_mode(),
+              "Indexlr: short and long mode are mutually exclusive.");
   check_error(threads == 0,
               "Indexlr: Number of processing threads cannot be 0.");
   int id_counter = 0;
