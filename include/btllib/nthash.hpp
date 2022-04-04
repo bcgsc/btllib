@@ -47,6 +47,9 @@ parsed_seeds_to_blocks(const std::vector<SpacedSeed>& seeds,
                        std::vector<SpacedSeedBlocks>& blocks,
                        std::vector<SpacedSeedMonomers>& monomers);
 
+void
+check_seeds(const std::vector<std::string>& seeds, unsigned k);
+
 class NtHash
 {
 
