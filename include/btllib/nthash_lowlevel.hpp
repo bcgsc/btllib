@@ -8,7 +8,7 @@
 #ifndef BTLLIB_NTHASH_LOWLEVEL_HPP
 #define BTLLIB_NTHASH_LOWLEVEL_HPP
 
-#include "nthash_consts.hpp"
+#include "btllib/nthash_consts.hpp"
 #include <array>
 #include <cstddef>
 #include <cstdint>
