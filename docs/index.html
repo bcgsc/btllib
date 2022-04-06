@@ -80,13 +80,12 @@ Documentation</h2>
 Download</h2>
 <p >The recommended way is to download the <a href="https://github.com/bcgsc/btllib/releases/latest">latest release</a>.</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
-Usage</h2>
+Dependencies</h2>
 <ul>
-<li>Dependencies<ul>
 <li>Build<ul>
 <li>GCC 6+ or Clang 5+ with OpenMP</li>
 <li>Python 3.5+</li>
-<li>Meson and Ninja Python3 packages, and CMake (optional &ndash; if they are missing, they will be automatically downloaded to a temporary directory)</li>
+<li>Meson and Ninja Python3 packages, CMake (If you are a user and not a developer, these will be automatically installed to a temporary directory)</li>
 </ul>
 </li>
 <li>Run time<ul>
@@ -96,24 +95,30 @@ Usage</h2>
 </ul>
 </li>
 </ul>
-</li>
+<h2><a class="anchor" id="autotoc_md4"></a>
+For users</h2>
+<ul>
 <li>Copy the root <code>btllib</code> directory into your project</li>
 <li>Run <code>btllib/compile</code></li>
 <li>C++<ul>
-<li>Link your code with <code>btllib/lib/libbtllib.a</code> (pass <code>-L /path/to/btllib/lib -l btllib</code> flags to the compiler).</li>
-<li><code>#include</code> any header from the <code>btllib/include</code> directory (pass <code>-I /path/to/btllib/include</code> flag to the compiler).</li>
+<li>Link your code with <code>btllib/install/lib/libbtllib.a</code> (pass <code>-L /path/to/btllib/install/lib -l btllib</code> flags to the compiler).</li>
+<li><code>#include</code> any header from the <code>btllib/install/include</code> directory (pass <code>-I /path/to/btllib/install/include</code> flag to the compiler).</li>
 <li><code>btllib</code> uses <code>C++11</code> features, so that standard should be enabled at a minimum.</li>
 </ul>
 </li>
 <li>Python wrappers<ul>
 <li>The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. <code><a class="el" href="structbtllib_1_1SeqReader_1_1Flag.html">btllib::SeqReader::Flag</a></code> in C++ versus <code>btllib.SeqReaderFlag</code> in Python).</li>
-<li>Use <code>PYTHONPATH</code> environment variable or <code>sys.path.append()</code> in your Python code to include <code>/path/to/btllib/python</code> directory</li>
+<li>Use <code>PYTHONPATH</code> environment variable or <code>sys.path.append()</code> in your Python code to include <code>/path/to/btllib/install/python</code> directory</li>
 <li>Include the library with <code>import btllib</code></li>
 </ul>
 </li>
+<li>Executables<ul>
+<li>btllib generated executables can be found in <code>/path/to/btllib/install/bin</code> directory. Append that path to the <code>PATH</code> environment variable to make it available to your shell.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md4"></a>
-Contributing</h2>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md5"></a>
+For developers</h2>
 <ul>
 <li>Initial setup:<ul>
 <li><code>git clone --recurse-submodules <a href="https://github.com/bcgsc/btllib">https://github.com/bcgsc/btllib</a></code> in order to obtain all the code.</li>
@@ -132,7 +137,8 @@ Contributing</h2>
 </li>
 <li>Before making a release, in the <code>build</code> dir:<ul>
 <li>Do the same as for a pull request and</li>
-<li><code>ninja docs</code> to regenerate docs to reflect the release.</li>
+<li><code>ninja docs</code> to regenerate docs to reflect the release and then commit the changes.</li>
+<li><code>meson dist --allow-dirty</code> to generate a self-contained package based on the last commit. <code>--allow-dirty</code> permits making a distributable with uncommited changes. This is necessary as <code>sdsl-lite</code> dependency has ad hoc changes made during the build process. The resulting distributable will be compressed with xz. For easier use, decompress it and then compress with gzip. Attach the resulting file to the release.</li>
 </ul>
 </li>
 </ul>
@@ -147,7 +153,7 @@ Contributing</h2>
 <li><code>ninja docs</code> generates code documentation from comments (requires Doxygen).</li>
 <li><code>ninja quality-assurance</code> runs <code>clang-format</code>, <code>wrap</code>, <code>clang-tidy</code>, <code>test</code>, <code>sanitize-undefined</code>, and <code>test-wrappers</code>. These are all checked at the CI test.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Credits</h2>
 <ul>
 <li>Author: <a href="https://github.com/vlad0x00">Vladimir Nikolic</a></li>
