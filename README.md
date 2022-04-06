@@ -17,29 +17,33 @@ Download
 ---
 The recommended way is to download the [latest release](https://github.com/bcgsc/btllib/releases/latest).
 
-Usage
+Dependencies
 ---
-- Dependencies
-  - Build
-    * GCC 6+ or Clang 5+ with OpenMP
-    * Python 3.5+
-    * Meson and Ninja Python3 packages, and CMake (optional -- if they are missing, they will be automatically downloaded to a temporary directory)
-  - Run time
-    * SAMtools for reading SAM, BAM, and CRAM files.
-    * gzip, tar, pigz, bzip2, xz, lrzip, zip, and/or 7zip for compressing/decompressing files. Not all of these are necessary, only the ones whose compressions you'll be using. 
-    * wget for downloading sequences from a URL.
+- Build
+  * GCC 6+ or Clang 5+ with OpenMP
+  * Python 3.5+
+  * Meson and Ninja Python3 packages, CMake (If you are a user and not a developer, these will be automatically installed to a temporary directory)
+- Run time
+  * SAMtools for reading SAM, BAM, and CRAM files.
+  * gzip, tar, pigz, bzip2, xz, lrzip, zip, and/or 7zip for compressing/decompressing files. Not all of these are necessary, only the ones whose compressions you'll be using. 
+  * wget for downloading sequences from a URL.
+
+For users
+---
 - Copy the root `btllib` directory into your project
 - Run `btllib/compile`
 - C++
-  * Link your code with `btllib/lib/libbtllib.a` (pass `-L /path/to/btllib/lib -l btllib` flags to the compiler).
-  * `#include` any header from the `btllib/include` directory (pass `-I /path/to/btllib/include` flag to the compiler).
+  * Link your code with `btllib/install/lib/libbtllib.a` (pass `-L /path/to/btllib/install/lib -l btllib` flags to the compiler).
+  * `#include` any header from the `btllib/install/include` directory (pass `-I /path/to/btllib/install/include` flag to the compiler).
   * `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
 - Python wrappers
   * The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. `btllib::SeqReader::Flag` in C++ versus `btllib.SeqReaderFlag` in Python).
-  * Use `PYTHONPATH` environment variable or `sys.path.append()` in your Python code to include `/path/to/btllib/python` directory
+  * Use `PYTHONPATH` environment variable or `sys.path.append()` in your Python code to include `/path/to/btllib/install/python` directory
   * Include the library with `import btllib`
+- Executables
+  * btllib generated executables can be found in `/path/to/btllib/install/bin` directory. Append that path to the `PATH` environment variable to make it available to your shell.
 
-Contributing
+For developers
 ---
 - Initial setup:
   * `git clone --recurse-submodules https://github.com/bcgsc/btllib` in order to obtain all the code.

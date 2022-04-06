@@ -1,7 +1,2 @@
-*.class
-*.jar
-/python/
-!/wrappers/python/
-/bin/
-/lib/
+/install/
 /Doxyfile.bak

@@ -4,8 +4,8 @@
 #include "btllib/nthash.hpp"
 #include "btllib/status.hpp"
 
-#include <sdsl/bit_vector_il.hpp>
-#include <sdsl/rank_support.hpp>
+#include "sdsl/bit_vector_il.hpp"
+#include "sdsl/rank_support.hpp"
 
 #include <algorithm> // std::random_shuffle
 #include <cassert>

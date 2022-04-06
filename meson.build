@@ -1,5 +1,5 @@
 project('btllib', 'cpp',
-        version : '1.4.0',
+        version : '1.4.1',
         license : 'GPL3',
         default_options : [ 'cpp_std=c++11', 'warning_level=3', 'werror=true' ])
 
@@ -40,24 +40,38 @@ endif
 add_global_arguments(global_args, language : 'cpp')
 add_global_link_arguments(global_link_args, language : 'cpp')
 
-# Dependencies and subprojects
+# Build dependencies and subprojects
 # ===========================================================
 
 threads_dep = dependency('threads')
 openmp_dep = dependency('openmp', required : false)
 
-cpptoml_subproject = cmake.subproject('cpptoml')
+cmake_options = cmake.subproject_options()
+cmake_options.set_override_option('werror', 'false')
+cmake_options.set_install(false)
+
+cpptoml_subproject = cmake.subproject('cpptoml', options : cmake_options)
 cpptomp_dep = cpptoml_subproject.dependency('cpptoml')
 
 run_command(meson.source_root() + '/scripts/prepare-sdsl')
-
-cmake_options = cmake.subproject_options()
-cmake_options.set_override_option('werror', 'false')
 
 sdsl_subproject = cmake.subproject('sdsl-lite', options : cmake_options)
 sdsl_dep = sdsl_subproject.dependency('sdsl')
 
 deps = [ threads_dep, openmp_dep, cpptomp_dep, sdsl_dep ]
+
+# These are unfortunate hacks. Currently, neither cpptoml nor sdsl-lite install their headers (even when set_install(true) is called), and so we need to do it manually
+meson.add_install_script('scripts/install-cpptoml')
+meson.add_install_script('scripts/install-sdsl-lite')
+
+# Run time dependencies
+# ===========================================================
+
+samtools = find_program('samtools', required : false)
+gzip = find_program('gzip', required : false)
+xz = find_program('xz', required : false)
+bzip2 = find_program('bzip2', required : false)
+tar = find_program('tar', required : false)
 
 # Custom run commands
 # ===========================================================
@@ -113,6 +127,7 @@ btllib_dep = declare_dependency(
   include_directories : btllib_include
 )
 
+subdir('include')
 subdir('wrappers')
 subdir('recipes')
 if get_option('buildtype') != 'release'
