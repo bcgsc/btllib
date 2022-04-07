@@ -31,9 +31,10 @@ NtHash::NtHash(const char* seq,
   check_error(seq_len < k,
               "NtHash: sequence length (" + std::to_string(seq_len) +
                 ") is smaller than k (" + std::to_string(k) + ").");
-  check_error(pos >= seq_len, "NtHash: passed position (" + std::to_string(pos) +
-                                 ") is larger than sequence length (" +
-                                 std::to_string(seq_len) + ").");
+  check_error(pos >= seq_len,
+              "NtHash: passed position (" + std::to_string(pos) +
+                ") is larger than sequence length (" + std::to_string(seq_len) +
+                ").");
 }
 
 NtHash::NtHash(const std::string& seq,
