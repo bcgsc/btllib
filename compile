@@ -2,7 +2,7 @@
 
 import argparse
 import os
-from os.path import basename, dirname, join
+from os.path import basename, dirname, join, isdir
 import subprocess as sp
 import shutil
 import sys
@@ -17,7 +17,7 @@ def get_cli_args():
   # Add "prefix" argument
   script_dir = dirname(__file__)
   default_install_dir = join(script_dir, DEFAULT_INSTALL_DIR)
-  parser.add_argument('--prefix', '-p', type=str, default=default_install_dir, help='Prefix to install to')
+  parser.add_argument('--prefix', '-p', type=str, default=default_install_dir, help='Prefix of the installation path.')
 
   return parser.parse_args()
 
@@ -40,7 +40,9 @@ def install_temp_deps(venv_path):
     os.makedirs(f'{os.path.dirname(venv_path)}', exist_ok=True)
 
     # Create virtual environment
-    if not os.path.isdir(venv_path):
+    if isdir(venv_path):
+      print(f'Using already existing virtual environment: {venv_path}')
+    else:
       sp.run([ f'python3 -m venv {venv_path}' ], shell=True)
 
     sp.run([ f'''
@@ -56,6 +58,10 @@ def export_python_flags():
   cflags = sp.run([ f'{python3_config} --cflags' ], shell=True, capture_output=True, check=True, text=True).stdout.strip()
   ldflags = sp.run([ f'{python3_config} --ldflags' ], shell=True, capture_output=True, check=True, text=True).stdout.strip()
 
+  # Print flags
+  print(f'Passing the following CFLAGS to Python: {cflags}')
+  print(f'Passing the following LDFLAGS to Python: {ldflags}')
+
   # Export flags
   os.environ['BTLLIB_PYTHON_CFLAGS'] = cflags
   os.environ['BTLLIB_PYTHON_LDFLAGS'] = ldflags
@@ -66,7 +72,10 @@ if __name__ == "__main__":
   script_dir = dirname(__file__)
   os.chdir(script_dir)
 
-  shutil.rmtree(BUILD_DIR, ignore_errors=True)
+  # Check if previous build dir exists and remove it
+  if isdir(BUILD_DIR):
+    print(f'Removing previous build dir: {BUILD_DIR}')
+    shutil.rmtree(BUILD_DIR, ignore_errors=True)
 
   venv_path = join(BUILD_DIR, 'venv')
   install_temp_deps(venv_path)
