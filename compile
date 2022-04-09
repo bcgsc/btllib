@@ -22,7 +22,7 @@ def get_cli_args():
   return parser.parse_args()
 
 def program_exists(program):
-  return sp.run([ f'command -v {program}' ], shell=True).returncode == 0
+  return sp.run([ f'command -v {program} &>/dev/null' ], shell=True).returncode == 0
 
 def install_temp_deps(venv_path):
   deps = [ 'meson', 'ninja', 'cmake' ]
