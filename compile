@@ -2,7 +2,7 @@
 
 import argparse
 import os
-from os.path import basename, dirname, join, isdir
+from os.path import basename, dirname, join, isdir, abspath
 import subprocess as sp
 import shutil
 import sys
@@ -10,6 +10,7 @@ import base64
 import uuid
 import signal
 import threading
+import time
 
 DEFAULT_INSTALL_DIR = 'install'
 
@@ -18,7 +19,7 @@ def get_cli_args():
   parser = argparse.ArgumentParser(description='Compile btllib.')
 
   # Add "prefix" argument
-  script_dir = dirname(__file__)
+  script_dir = abspath(dirname(__file__))
   default_install_dir = join(script_dir, DEFAULT_INSTALL_DIR)
   parser.add_argument('--prefix', '-p', type=str, default=default_install_dir, help='Prefix of the installation path.')
 
@@ -79,7 +80,7 @@ def watch_process(process):
   threading.Thread(target=_watch_process, args=(process,), daemon=True).start()
 
 def autoclean(to_clean):
-  script_dir = dirname(__file__)
+  script_dir = abspath(dirname(__file__))
   process = sp.Popen([ join(script_dir, 'auto-cleanup'), to_clean ])
   watch_process(process)
 
@@ -99,11 +100,14 @@ def get_build_dir():
 if __name__ == "__main__":
   args = get_cli_args()
 
-  script_dir = dirname(__file__)
+  script_dir = abspath(dirname(__file__))
   os.chdir(script_dir)
 
   build_dir = get_build_dir()
   autoclean(build_dir)
+
+  # Print build dir
+  print(f'Building btllib at: {build_dir}')
 
   # Check if previous build dir exists and remove it
   if isdir(build_dir):
@@ -114,6 +118,8 @@ if __name__ == "__main__":
   install_temp_deps(venv_path)
 
   export_python_flags()
+
+  time.sleep(3)
 
   sp.run([ f'''
     if [[ -f {venv_path}/bin/activate ]]; then
