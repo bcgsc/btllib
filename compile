@@ -6,8 +6,11 @@ from os.path import basename, dirname, join, isdir
 import subprocess as sp
 import shutil
 import sys
+import base64
+import uuid
+import signal
+import threading
 
-BUILD_DIR = '__build-compile'
 DEFAULT_INSTALL_DIR = 'install'
 
 def get_cli_args():
@@ -66,18 +69,48 @@ def export_python_flags():
   os.environ['BTLLIB_PYTHON_CFLAGS'] = cflags
   os.environ['BTLLIB_PYTHON_LDFLAGS'] = ldflags
 
+def _watch_process(process):
+  process.wait()
+  if process.returncode != 0:
+    print(f"{process.args} failed!")
+    os.kill(os.getpid(), signal.SIGTERM)
+
+def watch_process(process):
+  threading.Thread(target=_watch_process, args=(process,), daemon=True).start()
+
+def autoclean(to_clean):
+  script_dir = dirname(__file__)
+  process = sp.Popen([ join(script_dir, 'auto-cleanup'), to_clean ])
+  watch_process(process)
+
+def get_random_name():
+  return base64.urlsafe_b64encode(uuid.uuid4().bytes).rstrip(b'=').replace(b'-', b'').decode('ascii')
+
+def get_build_dir():
+  build_dir_name = f'btllib-build-{get_random_name()}'
+  if 'TMPDIR' in os.environ:
+    prefix = os.environ['TMPDIR']
+  elif isdir('/tmp'):
+    prefix = '/tmp'
+  else:
+    prefix = ''
+  return join(prefix, build_dir_name)
+
 if __name__ == "__main__":
   args = get_cli_args()
 
   script_dir = dirname(__file__)
   os.chdir(script_dir)
 
-  # Check if previous build dir exists and remove it
-  if isdir(BUILD_DIR):
-    print(f'Removing previous build dir: {BUILD_DIR}')
-    shutil.rmtree(BUILD_DIR, ignore_errors=True)
+  build_dir = get_build_dir()
+  autoclean(build_dir)
 
-  venv_path = join(BUILD_DIR, 'venv')
+  # Check if previous build dir exists and remove it
+  if isdir(build_dir):
+    print(f'Removing previous build dir: {build_dir}')
+    shutil.rmtree(build_dir, ignore_errors=True)
+
+  venv_path = join(build_dir, 'venv')
   install_temp_deps(venv_path)
 
   export_python_flags()
@@ -86,8 +119,8 @@ if __name__ == "__main__":
     if [[ -f {venv_path}/bin/activate ]]; then
       source {venv_path}/bin/activate;
     fi &&
-    meson setup --buildtype release --prefix={args.prefix} {BUILD_DIR} &&
-    cd {BUILD_DIR} &&
+    meson setup --buildtype release --prefix={args.prefix} {build_dir} &&
+    cd {build_dir} &&
     ninja install &&
     cd .. &&
     if [[ -f {venv_path}/bin/activate ]]; then
