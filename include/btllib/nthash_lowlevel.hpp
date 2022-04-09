@@ -18,9 +18,15 @@
 namespace btllib {
 
 template<typename T>
-inline T canonical(const T fwd, const T rev) { return fwd + rev; };
+inline T
+canonical(const T fwd, const T rev)
+{
+  return fwd + rev;
+};
 
-static_assert(std::numeric_limits<unsigned>::max() + 1 == 0, "Integers don't overflow on this platform which is necessary for ntHash canonical hash computation.");
+static_assert(std::numeric_limits<unsigned>::max() + 1 == 0,
+              "Integers don't overflow on this platform which is necessary for "
+              "ntHash canonical hash computation.");
 
 // Data structures for spaced seeds
 
