@@ -2,7 +2,7 @@
 
 import argparse
 import os
-from os.path import basename, dirname, join, isdir, abspath
+from os.path import dirname, join, isdir, abspath
 import subprocess as sp
 import shutil
 import sys
