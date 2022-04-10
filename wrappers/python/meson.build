@@ -28,8 +28,8 @@ btllib_py = shared_module('_btllib',
                            cpp_args : cpp_extra_args,
                            link_args : link_extra_args,
                            install : true,
-                           install_dir : 'lib/btllib',
+                           install_dir : 'lib/btllib/python',
                            name_prefix : '')
 
 python_files = ['btllib.py']
-install_data(python_files, install_dir : 'lib/btllib')
+install_data(python_files, install_dir : 'lib/btllib/python')
