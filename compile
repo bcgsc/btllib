@@ -31,14 +31,12 @@ def program_exists(program):
 def install_temp_deps(venv_path):
   deps = [ 'meson', 'ninja', 'cmake' ]
   missing_deps = []
-  build_venv = False
   for dep in deps:
     if not program_exists(dep):
       missing_deps.append(dep)
-      build_venv = True
   missing_deps = ' '.join(missing_deps)
 
-  if build_venv:
+  if len(missing_deps) > 0:
     print(f'Building virtual environment for missing dependencies: {missing_deps}')
 
     os.makedirs(f'{os.path.dirname(venv_path)}', exist_ok=True)
@@ -54,6 +52,8 @@ def install_temp_deps(venv_path):
       pip3 install {missing_deps} &&
       deactivate;
     ''' ], shell=True, check=True)
+  else:
+    print("All build dependencies are present.")
 
 def export_python_flags():
   python3_config = join(sys.exec_prefix, 'bin', 'python3-config')
