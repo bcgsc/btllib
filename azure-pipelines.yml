@@ -80,6 +80,9 @@ jobs:
       set -o errexit -o pipefail
       sudo pip3 uninstall -y meson # Let compile script install meson
       ./compile
+      # Compile installs dependencies only temporarily for its own use.
+      # We need to reinstall meson to test the wrappers.
+      sudo pip3 install meson
       cd build && ninja test-wrappers
     displayName: 'Test wrappers'
 
@@ -131,5 +134,8 @@ jobs:
       set -o errexit -o pipefail
       sudo pip3 uninstall -y meson # Let compile script install meson
       ./compile
+      # Compile installs dependencies only temporarily for its own use.
+      # We need to reinstall meson to test the wrappers.
+      sudo pip3 install meson
       cd build && ninja test-wrappers
     displayName: 'Test wrappers'
