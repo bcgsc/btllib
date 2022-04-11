@@ -43,13 +43,13 @@ public:
   void close();
 
   /**
-    * Write a sequence.
-    *
-    * @param id Sequence ID or name.
-    * @param comment Optional comment after the ID/name.
-    * @param seq The sequence to write.
-    * @param qual Optional quality scores, mandatory if format is FASTQ.
-    */
+   * Write a sequence.
+   *
+   * @param id Sequence ID or name.
+   * @param comment Optional comment after the ID/name.
+   * @param seq The sequence to write.
+   * @param qual Optional quality scores, mandatory if format is FASTQ.
+   */
   void write(const std::string& id,
              const std::string& comment,
              const std::string& seq,
