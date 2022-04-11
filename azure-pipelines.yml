@@ -78,6 +78,7 @@ jobs:
 
   - script: |
       set -o errexit -o pipefail
+      sudo pip3 uninstall -y meson # Let compile script install meson
       ./compile
       cd build && ninja test-wrappers
     displayName: 'Test wrappers'
@@ -128,6 +129,7 @@ jobs:
 
   - script: |
       set -o errexit -o pipefail
+      sudo pip3 uninstall -y meson # Let compile script install meson
       ./compile
       cd build && ninja test-wrappers
     displayName: 'Test wrappers'
