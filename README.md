@@ -25,7 +25,7 @@ Dependencies
 ---
 - Build
   * GCC 6+ or Clang 5+ with OpenMP
-  * Python 3.6+
+  * Python 3.7+
   * Meson and Ninja Python3 packages, CMake (If you are a user and not a developer, these will be automatically installed to a temporary directory)
 - Run time
   * SAMtools for reading SAM, BAM, and CRAM files.
