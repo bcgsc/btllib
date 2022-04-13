@@ -66,7 +66,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_README"></a> <a href="http://www.birollab.ca/">Bioinformatics Technology Lab</a> common code library in C++ with Python wrappers.</p>
-<p ><a href="https://dev.azure.com/bcgsc/btl_public/_build/latest?definitionId=1"><img src="https://dev.azure.com/bcgsc/btl_public/_apis/build/status/bcgsc.btllib" alt="Build Status" class="inline"/></a> <a href="https://lgtm.com/projects/g/bcgsc/btllib/context:cpp"><img src="https://img.shields.io/lgtm/grade/cpp/g/bcgsc/btllib.svg?logo=lgtm&amp;logoWidth=18" alt="Language grade: C/C++" style="pointer-events: none;" class="inline"/></a> <a href="https://lgtm.com/projects/g/bcgsc/btllib/alerts/"><img src="https://img.shields.io/lgtm/alerts/g/bcgsc/btllib.svg?logo=lgtm&amp;logoWidth=18" alt="Total alerts" style="pointer-events: none;" class="inline"/></a></p>
+<p ><a href="https://anaconda.org/bioconda/btllib"><img src="https://anaconda.org/bioconda/btllib/badges/version.svg" alt="Anaconda-Server Badge" style="pointer-events: none;" class="inline"/></a> <a href="https://lgtm.com/projects/g/bcgsc/btllib/context:cpp"><img src="https://img.shields.io/lgtm/grade/cpp/g/bcgsc/btllib.svg?logo=lgtm&amp;logoWidth=18" alt="Language grade: C/C++" style="pointer-events: none;" class="inline"/></a> <a href="https://lgtm.com/projects/g/bcgsc/btllib/alerts/"><img src="https://img.shields.io/lgtm/alerts/g/bcgsc/btllib.svg?logo=lgtm&amp;logoWidth=18" alt="Total alerts" style="pointer-events: none;" class="inline"/></a> <a href="https://dev.azure.com/bcgsc/btl_public/_build/latest?definitionId=1"><img src="https://dev.azure.com/bcgsc/btl_public/_apis/build/status/bcgsc.btllib" alt="Build Status" class="inline"/></a></p>
 <h2><a class="anchor" id="autotoc_md0"></a>
 Platforms</h2>
 <ul>
@@ -78,13 +78,15 @@ Documentation</h2>
 <p ><a href="https://bcgsc.github.io/btllib/">Docs page</a></p>
 <h2><a class="anchor" id="autotoc_md2"></a>
 Download</h2>
-<p >The recommended way is to download the <a href="https://github.com/bcgsc/btllib/releases/latest">latest release</a>.</p>
+<p >The recommended way is to download using <a href="https://docs.conda.io/en/latest/">Conda</a> package manager: <br  />
+ <code>conda install -c bioconda btllib</code></p>
+<p >Alternatively, download the GitHub <a href="https://github.com/bcgsc/btllib/releases/latest">latest release</a>.</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
 Dependencies</h2>
 <ul>
 <li>Build<ul>
 <li>GCC 6+ or Clang 5+ with OpenMP</li>
-<li>Python 3.5+</li>
+<li>Python 3.6+</li>
 <li>Meson and Ninja Python3 packages, CMake (If you are a user and not a developer, these will be automatically installed to a temporary directory)</li>
 </ul>
 </li>
