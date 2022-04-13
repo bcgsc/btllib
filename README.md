@@ -3,6 +3,8 @@
 [![Build Status](https://dev.azure.com/bcgsc/btl_public/_apis/build/status/bcgsc.btllib)](https://dev.azure.com/bcgsc/btl_public/_build/latest?definitionId=1)
 [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/bcgsc/btllib.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bcgsc/btllib/context:cpp)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/bcgsc/btllib.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bcgsc/btllib/alerts/)
+[![Anaconda-Server Badge](https://anaconda.org/bioconda/btllib/badges/platforms.svg)](https://anaconda.org/bioconda/btllib)
+[![Anaconda-Server Badge](https://anaconda.org/bioconda/btllib/badges/version.svg)](https://anaconda.org/bioconda/btllib)
 
 Platforms
 ---
@@ -15,7 +17,10 @@ Documentation
 
 Download
 ---
-The recommended way is to download the [latest release](https://github.com/bcgsc/btllib/releases/latest).
+The recommended way is to download using [Conda](https://docs.conda.io/en/latest/) package manager:
+`conda install -c bioconda btllib`
+
+Alternatively, download the GitHub [latest release](https://github.com/bcgsc/btllib/releases/latest).
 
 Dependencies
 ---
