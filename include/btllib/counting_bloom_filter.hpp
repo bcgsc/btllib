@@ -2,6 +2,7 @@
 #define BTLLIB_COUNTING_BLOOM_FILTER_HPP
 
 #include "btllib/bloom_filter.hpp"
+#include "btllib/counting_bloom_filter.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/status.hpp"
 
@@ -18,8 +19,10 @@
 
 namespace btllib {
 
+// NOLINTNEXTLINE(clang-diagnostic-unneeded-internal-declaration)
 static const char* const COUNTING_BLOOM_FILTER_SIGNATURE =
   "[BTLCountingBloomFilter_v5]";
+// NOLINTNEXTLINE(clang-diagnostic-unneeded-internal-declaration)
 static const char* const KMER_COUNTING_BLOOM_FILTER_SIGNATURE =
   "[BTLKmerCountingBloomFilter_v5]";
 
@@ -773,7 +776,10 @@ inline uint64_t
 CountingBloomFilter<T>::get_pop_cnt(const T threshold) const
 {
   uint64_t pop_cnt = 0;
-#pragma omp parallel for default(none) reduction(+ : pop_cnt) shared(threshold)
+  // OpenMP make up your mind man. Using default(none) here causes errors on
+  // some compilers and not others.
+  // NOLINTNEXTLINE(openmp-use-default-none,-warnings-as-errors)
+#pragma omp parallel for reduction(+ : pop_cnt)
   for (size_t i = 0; i < array_size; ++i) {
     if (array[i] >= threshold) {
       ++pop_cnt;
