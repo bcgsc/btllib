@@ -600,7 +600,7 @@ public:
    *
    * @return The false positive rate.
    */
-  double get_fpr(T threshold) const
+  double get_fpr(T threshold = 1) const
   {
     return counting_bloom_filter.get_fpr(threshold);
   }
@@ -773,7 +773,7 @@ inline uint64_t
 CountingBloomFilter<T>::get_pop_cnt(const T threshold) const
 {
   uint64_t pop_cnt = 0;
-#pragma omp parallel for default(none) reduction(+ : pop_cnt)
+#pragma omp parallel for default(none) reduction(+ : pop_cnt) shared(threshold)
   for (size_t i = 0; i < array_size; ++i) {
     if (array[i] >= threshold) {
       ++pop_cnt;
