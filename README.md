@@ -23,7 +23,7 @@ Alternatively, you can compile the code from source. Download the GitHub [latest
 - Run `btllib/compile`
   * This will install btllib in the `btllib/install` directory. You can provide the `--prefix` parameter to change this.
   * The C++ compiler must be the same as the one used for compiling Python. E.g. if you installed Python using a package manager, you should use the C++ compiler from the same package manager. You can change the compiler by exporting the `CXX` environment variable to point to the compiler before running `btllib/compile`.
-  * You can optionally run `python3 -m pip install install/lib/btllib/python` to install the Python package. The Python wrappers are usable even without this step.
+  * You can optionally run `python3 -m pip install install/lib/btllib/python` afterwards to install the Python package. The Python wrappers are usable even without this step.
 
 Using the library
 ---
@@ -37,7 +37,7 @@ Using the library
   * `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
 - Running Python code:
   * The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. `btllib::SeqReader::Flag` in C++ versus `btllib.SeqReaderFlag` in Python).
-  * Use `PYTHONPATH` environment variable or `sys.path.append()` in your Python code to include `/path/to/btllib/install/lib/btllib/python/btllib` directory
+  * If you compiled btllib from source code and didn't install the Python wrappers, you can use `PYTHONPATH` environment variable or `sys.path.append()` in your Python code to include `/path/to/btllib/install/lib/btllib/python/btllib` directory to make btllib available to the interpreter.
   * Include the library with `import btllib`
 - Executables
   * btllib generated executables can be found in `/path/to/btllib/install/bin` directory. Append that path to the `PATH` environment variable to make it available to your shell.
