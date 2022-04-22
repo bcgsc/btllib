@@ -22,7 +22,7 @@ Alternatively, you can compile the code from source. Download the GitHub [latest
   * Meson and Ninja Python3 packages, CMake (If not available, these will be automatically installed to a temporary directory.)
 - Run `btllib/compile`
   * This will install btllib in the `btllib/install` directory. You can provide the `--prefix` parameter to change this.
-  * The C++ compiler must be the same as the one used for compiling Python. E.g. if you installed Python using a package manager, you should use the C++ compiler from the same package manager. You can change the compiler by exporting the `CXX` environment variable to point to the compiler.
+  * The C++ compiler must be the same as the one used for compiling Python. E.g. if you installed Python using a package manager, you should use the C++ compiler from the same package manager. You can change the compiler by exporting the `CXX` environment variable to point to the compiler before running `btllib/compile`.
   * You can optionally run `python3 -m pip install install/lib/btllib/python` to install the Python package. The Python wrappers are usable even without this step.
 
 Using the library
