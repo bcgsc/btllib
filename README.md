@@ -23,7 +23,7 @@ Alternatively, you can compile the code from source. Download the GitHub [latest
 - Run `btllib/compile`
   * This will install btllib in the `btllib/install` directory. You can provide the `--prefix` parameter to change this.
   * The C++ compiler must be the same as the one used for compiling Python. E.g. if you installed Python using a package manager, you should use the C++ compiler from the same package manager. You can change the compiler by exporting the `CXX` environment variable to point to the compiler before running `btllib/compile`.
-  * You can optionally run `python3 -m pip install install/lib/btllib/python` afterwards to install the Python package. The Python wrappers are usable even without this step.
+  * You can optionally run `python3 -m pip install $PREFIX/lib/btllib/python` afterwards to install the Python package. The Python wrappers are usable even without this step. `$PREFIX` is the path where btllib is installed.
 
 Using the library
 ---
@@ -31,16 +31,16 @@ Using the library
   * SAMtools for reading SAM, BAM, and CRAM files.
   * gzip, tar, pigz, bzip2, xz, lrzip, zip, and/or 7zip for compressing/decompressing files. Not all of these are necessary, only the ones whose compressions you'll be using. 
   * wget for downloading sequences from a URL.
-- Building C++ code:
-  * Link your code with `btllib/install/lib/libbtllib.a` (pass `-L /path/to/btllib/install/lib -l btllib` flags to the compiler).
-  * `#include` any header from the `btllib/install/include` directory (pass `-I /path/to/btllib/install/include` flag to the compiler).
+- Building C++ code (`$PREFIX` is the path where btllib is installed):
+  * Link your code with `$PREFIX/lib/libbtllib.a` (pass `-L $PREFIX/lib -l btllib` flags to the compiler).
+  * `#include` any header from the `$PREFIX/include` directory (pass `-I $PREFIX/include` flag to the compiler).
   * `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
 - Running Python code:
   * The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. `btllib::SeqReader::Flag` in C++ versus `btllib.SeqReaderFlag` in Python).
-  * If you compiled btllib from source code and didn't install the Python wrappers, you can use `PYTHONPATH` environment variable or `sys.path.append()` in your Python code to include `/path/to/btllib/install/lib/btllib/python/btllib` directory to make btllib available to the interpreter.
+  * If you compiled btllib from source code and didn't install the Python wrappers, you can use `PYTHONPATH` environment variable or `sys.path.append()` in your Python code to include `$PREFIX/lib/btllib/python/btllib` directory to make btllib available to the interpreter.
   * Include the library with `import btllib`
 - Executables
-  * btllib generated executables can be found in `/path/to/btllib/install/bin` directory. Append that path to the `PATH` environment variable to make it available to your shell.
+  * btllib generated executables can be found in `$PREFIX/bin` directory. Append that path to the `PATH` environment variable to make it available to your shell.
 
 Documentation
 ---
