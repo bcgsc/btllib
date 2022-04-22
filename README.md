@@ -10,44 +10,43 @@ Platforms
 - Linux
 - MacOS
 
-Documentation
----
-[Docs page](https://bcgsc.github.io/btllib/)
-
-Download
+Installation for users
 ---
 The recommended way is to download using [Conda](https://docs.conda.io/en/latest/) package manager:  
 `conda install -c bioconda btllib`
 
-Alternatively, download the GitHub [latest release](https://github.com/bcgsc/btllib/releases/latest).
-
-Dependencies
----
-- Build
+Alternatively, you can compile the code from source. Download the GitHub [latest release](https://github.com/bcgsc/btllib/releases/latest) and do the following:
+- Have the dependencies ready:
   * GCC 6+ or Clang 5+ with OpenMP
   * Python 3.7+
   * Meson and Ninja Python3 packages, CMake (If you are a user and not a developer, these will be automatically installed to a temporary directory)
-- Run time
+- Run `btllib/compile`
+  * This will install btllib in the `btllib/install` directory. You can provide the `--prefix` parameter to change this.
+  * The C++ compiler must be the same as the one used for compiling Python. E.g. if you installed Python using a package manager, you should use the C++ compiler from the same package manager. You can change the compiler by exporting the `CXX` environment variable to point to the compiler.
+  * You can optionally run `python3 -m pip install install/lib/btllib/python` to install the Python package. The Python wrappers are usable even without this step.
+
+Using the library
+---
+- Run time dependencies:
   * SAMtools for reading SAM, BAM, and CRAM files.
   * gzip, tar, pigz, bzip2, xz, lrzip, zip, and/or 7zip for compressing/decompressing files. Not all of these are necessary, only the ones whose compressions you'll be using. 
   * wget for downloading sequences from a URL.
-
-For users
----
-- Copy the root `btllib` directory into your project
-- Run `btllib/compile`
-- C++
+- Building C++ code:
   * Link your code with `btllib/install/lib/libbtllib.a` (pass `-L /path/to/btllib/install/lib -l btllib` flags to the compiler).
   * `#include` any header from the `btllib/install/include` directory (pass `-I /path/to/btllib/install/include` flag to the compiler).
   * `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
-- Python wrappers
+- Running Python code:
   * The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. `btllib::SeqReader::Flag` in C++ versus `btllib.SeqReaderFlag` in Python).
   * Use `PYTHONPATH` environment variable or `sys.path.append()` in your Python code to include `/path/to/btllib/install/lib/btllib/python/btllib` directory
   * Include the library with `import btllib`
 - Executables
   * btllib generated executables can be found in `/path/to/btllib/install/bin` directory. Append that path to the `PATH` environment variable to make it available to your shell.
 
-For developers
+Documentation
+---
+[Docs page](https://bcgsc.github.io/btllib/)
+
+For btllib developers
 ---
 - Initial setup:
   * `git clone --recurse-submodules https://github.com/bcgsc/btllib` in order to obtain all the code.
