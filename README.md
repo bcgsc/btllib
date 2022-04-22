@@ -19,7 +19,7 @@ Alternatively, you can compile the code from source. Download the GitHub [latest
 - Have the dependencies ready:
   * GCC 6+ or Clang 5+ with OpenMP
   * Python 3.7+
-  * Meson and Ninja Python3 packages, CMake (If you are a user and not a developer, these will be automatically installed to a temporary directory)
+  * Meson and Ninja Python3 packages, CMake (If not available, these will be automatically installed to a temporary directory.)
 - Run `btllib/compile`
   * This will install btllib in the `btllib/install` directory. You can provide the `--prefix` parameter to change this.
   * The C++ compiler must be the same as the one used for compiling Python. E.g. if you installed Python using a package manager, you should use the C++ compiler from the same package manager. You can change the compiler by exporting the `CXX` environment variable to point to the compiler.
