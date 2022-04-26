@@ -77,9 +77,10 @@ Platforms</h2>
 Installation for users</h2>
 <p >The recommended way is to download using <a href="https://docs.conda.io/en/latest/">Conda</a> package manager: <br  />
  <code>conda install -c bioconda btllib</code></p>
-<p >Alternatively, you can compile the code from source. Download the GitHub <a href="https://github.com/bcgsc/btllib/releases/latest">latest release</a> and do the following:</p><ul>
+<p >Alternatively, you can compile the code from source. Download <code>btllib-$VERSION.tar.gz</code> from the GitHub <a href="https://github.com/bcgsc/btllib/releases/latest">latest release</a> where <code>$VERSION</code> is the latest btllib version and do the following:</p><ul>
+<li><code>tar xzf btllib-$VERSION.tar.gz</code> to extract the source code.</li>
 <li>Have the dependencies ready:<ul>
-<li>GCC 6+ or Clang 5+ with OpenMP</li>
+<li>GCC 6+ or Clang 5+ (optionally with OpenMP support)</li>
 <li>Python 3.7+</li>
 <li>Meson and Ninja Python3 packages, CMake (If not available, these will be automatically installed to a temporary directory.)</li>
 </ul>
