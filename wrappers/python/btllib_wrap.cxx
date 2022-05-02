@@ -34576,6 +34576,35 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_check_file_accessibility(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "check_file_accessibility" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "check_file_accessibility" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  btllib::check_file_accessibility((std::string const &)*arg1);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
 SWIGINTERN int Swig_var_NTHASH_FN_NAME_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable NTHASH_FN_NAME is read-only.");
   return 1;
@@ -36781,6 +36810,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "check_error", _wrap_check_error, METH_VARARGS, NULL},
 	 { "get_strerror", _wrap_get_strerror, METH_NOARGS, NULL},
 	 { "check_stream", _wrap_check_stream, METH_VARARGS, NULL},
+	 { "check_file_accessibility", _wrap_check_file_accessibility, METH_O, NULL},
 	 { "parse_seeds", _wrap_parse_seeds, METH_VARARGS, NULL},
 	 { "parsed_seeds_to_blocks", _wrap_parsed_seeds_to_blocks, METH_VARARGS, NULL},
 	 { "check_seeds", _wrap_check_seeds, METH_VARARGS, NULL},
@@ -36866,6 +36896,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "check_error", _wrap_check_error, METH_VARARGS, NULL},
 	 { "get_strerror", _wrap_get_strerror, METH_NOARGS, NULL},
 	 { "check_stream", _wrap_check_stream, METH_VARARGS, NULL},
+	 { "check_file_accessibility", _wrap_check_file_accessibility, METH_O, NULL},
 	 { "parse_seeds", _wrap_parse_seeds, METH_VARARGS, NULL},
 	 { "parsed_seeds_to_blocks", _wrap_parsed_seeds_to_blocks, METH_VARARGS, NULL},
 	 { "check_seeds", _wrap_check_seeds, METH_VARARGS, NULL},

@@ -13,8 +13,6 @@
 #include <string>
 #include <vector>
 
-#include <sys/stat.h>
-
 namespace btllib {
 
 static unsigned
@@ -118,11 +116,7 @@ BloomFilterInitializer::check_file_signature(
 std::shared_ptr<cpptoml::table>
 BloomFilterInitializer::parse_header(const std::string& expected_signature)
 {
-  struct stat buffer
-  {};
-  btllib::check_error(stat(path.c_str(), &buffer) != 0,
-                      "BloomFilterInitializer: " + get_strerror() + ": " +
-                        path);
+  check_file_accessibility(path);
   btllib::check_error(ifs.fail(),
                       "BloomFilterInitializer: failed to open " + path);
 

@@ -86,6 +86,15 @@ get_strerror();
 void
 check_stream(const std::ios& stream, const std::string& name);
 
+/**
+ * Check whether the file at the given path is accessible (exists, permissions
+ * are good, etc.).
+ *
+ * @param filepath Path to the file to check.
+ */
+void
+check_file_accessibility(const std::string& filepath);
+
 } // namespace btllib
 
 #endif

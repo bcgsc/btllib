@@ -24,15 +24,67 @@
 namespace btllib {
 
 // clang-format off
-const Datatype DATATYPES[12] {
-  { { "http://", "https://", "ftp://" }, {}, { "command -v wget" }, { "wget -O-" }, { "" }, { "" } }, { {}, { ".url" }, { "command -v wget" }, { "wget -O- -i" }, { "" }, { "" } }, { {}, { ".ar" }, { "command -v ar" }, { "ar -p" }, { "" }, { "" } }, { {}, { ".tar" }, { "command -v tar" }, { "tar -xOf" }, { "" }, { "" } }, { {}, { ".tgz" }, { "command -v tar" }, { "tar -zxOf" }, { "" }, { "" } }, { {}, { ".gz", ".z" }, { "command -v pigz",
-  "command -v gzip" }, { "pigz -dc", "gzip -dc" }, { "pigz >", "gzip >" }, {
-  "pigz >>", "gzip >>" } }, { {}, { ".bz2" }, { "command -v bzip2" }, {
-  "bunzip2 -dc" }, { "bzip2 >" }, { "bzip2 >>" } }, { {}, { ".xz" }, {
-  "command -v xz" }, { "unxz -dc" }, { "xz -T0 >" }, { "xz -T0 >>" } }, { {},
-  { ".7z" }, { "command -v 7z" }, { "7z -so e" }, { "7z -si a" }, { "7z -si a" } }, { {}, { ".zip" }, { "command -v zip" }, { "unzip -p" }, { "" }, {
-  "" } }, { {}, { ".lrz" }, { "command -v lrzip" }, { "lrzip -q -d -o -" }, {
-  "lrzip -q >" }, { "" } }, { {}, { ".bam", ".cram" }, { "command -v samtools" }, { "samtools view -h" }, { "samtools -Sb - >" }, { "samtools -Sb - >>" } },
+const Datatype DATATYPES[12]{
+  { { "http://", "https://", "ftp://" }, {},
+    { "command -v wget" },
+    { "wget -O-" },
+    { "" },
+    { "" } },
+  { {}, { ".url" },
+    { "command -v wget" },
+    { "wget -O- -i" },
+    { "" },
+    { "" } },
+  { {}, { ".ar" },
+    { "command -v ar" },
+    { "ar -p" },
+    { "" },
+    { "" } },
+  { {}, { ".tar" },
+    { "command -v tar" },
+    { "tar -xOf" },
+    { "" },
+    { "" } },
+  { {}, { ".tgz" },
+    { "command -v tar" },
+    { "tar -zxOf" },
+    { "" },
+    { "" } },
+  { {}, { ".gz", ".z" },
+    { "command -v pigz", "command -v gzip" },
+    { "pigz -dc", "gzip -dc" },
+    { "pigz >", "gzip >" },
+    { "pigz >>", "gzip >>" } },
+  { {}, { ".bz2" },
+    { "command -v bzip2" },
+    { "bunzip2 -dc" },
+    { "bzip2 >" },
+    { "bzip2 >>" } },
+  { {}, { ".xz" },
+    { "command -v xz" },
+    { "unxz -dc" },
+    { "xz -T0 >" },
+    { "xz -T0 >>" } },
+  { {}, { ".7z" },
+    { "command -v 7z" },
+    { "7z -so e" },
+    { "7z -si a" },
+    { "7z -si a" } },
+  { {}, { ".zip" },
+    { "command -v zip" },
+    { "unzip -p" },
+    { "" },
+    { "" } },
+  { {}, { ".lrz" },
+    { "command -v lrzip" },
+    { "lrzip -q -d -o -" },
+    { "lrzip -q >" },
+    { "" } },
+  { {}, { ".bam", ".cram" },
+    { "command -v samtools" },
+    { "samtools view -h" },
+    { "samtools -Sb - >" },
+    { "samtools -Sb - >>" } },
 };
 // clang-format on
 
@@ -172,6 +224,9 @@ peel_datatype(const std::string& path, DataStream::Operation op)
     }
   }
   if (cmd_layers.empty()) {
+    if (op == DataStream::Operation::READ) {
+      check_file_accessibility(path);
+    }
     cmd_layers.push_back(default_cmd);
   }
   if (op == DataStream::Operation::WRITE ||

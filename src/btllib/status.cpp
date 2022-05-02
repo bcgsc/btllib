@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include <sys/stat.h>
+
 namespace btllib {
 
 std::string
@@ -88,6 +90,15 @@ check_stream(const std::ios& stream, const std::string& name)
     log_error("'" + name + "' stream error: " + get_strerror());
     std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
+}
+
+void
+check_file_accessibility(const std::string& filepath)
+{
+  struct stat buffer
+  {};
+  const auto ret = stat(filepath.c_str(), &buffer);
+  btllib::check_error(ret != 0, get_strerror() + ": " + filepath);
 }
 
 } // namespace btllib

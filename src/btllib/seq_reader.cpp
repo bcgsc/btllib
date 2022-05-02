@@ -351,6 +351,15 @@ SeqReader::start_processors()
                 break;
             }
 
+            if (!qual.empty()) {
+              check_error(qual.size() != seq.size(),
+                          "SeqReader: Quality string length (" +
+                            std::to_string(qual.size()) +
+                            ") does not match "
+                            "sequence length (" +
+                            std::to_string(seq.size()) + ").");
+            }
+
             if (first_whitespace == nullptr) {
               records_out.data[i].id =
                 std::string(records_in.data[i].header + id_start,
