@@ -1,6 +1,7 @@
 [Bioinformatics Technology Lab](http://www.birollab.ca/) common code library in C++ with Python wrappers.
 
-[![Anaconda-Server Badge](https://anaconda.org/bioconda/btllib/badges/version.svg)](https://anaconda.org/bioconda/btllib)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/bcgsc/btllib)](https://github.com/bcgsc/btllib/releases/latest)
+[![Conda](https://img.shields.io/conda/dn/bioconda/btllib?label=Conda)](https://anaconda.org/bioconda/btllib)
 [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/bcgsc/btllib.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bcgsc/btllib/context:cpp)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/bcgsc/btllib.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bcgsc/btllib/alerts/)
 [![Build Status](https://dev.azure.com/bcgsc/btl_public/_apis/build/status/bcgsc.btllib)](https://dev.azure.com/bcgsc/btl_public/_build/latest?definitionId=1)

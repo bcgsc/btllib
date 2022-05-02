@@ -320,6 +320,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_strerror</
 <tr class="separator:ad2a24a23a678ed3c76484d86299efab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90573e7060c9c97d74316adf8faa75b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a90573e7060c9c97d74316adf8faa75b0">check_stream</a> (const std::ios &amp;stream, const std::string &amp;name)</td></tr>
 <tr class="separator:a90573e7060c9c97d74316adf8faa75b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacf70cd44ded264af4f30ce3a4a4726a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#aacf70cd44ded264af4f30ce3a4a4726a">check_file_accessibility</a> (const std::string &amp;filepath)</td></tr>
+<tr class="separator:aacf70cd44ded264af4f30ce3a4a4726a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e1f7d38461cd2a81d5b070ae8a146fa"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a6e1f7d38461cd2a81d5b070ae8a146fa">split</a> (const std::string &amp;s, const std::string &amp;delim)</td></tr>
 <tr class="separator:a6e1f7d38461cd2a81d5b070ae8a146fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3136b2f8753378b2712fb2c815c98a92"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebtllib.html#a3136b2f8753378b2712fb2c815c98a92">join</a> (const std::vector&lt; std::string &gt; &amp;s, const std::string &amp;delim)</td></tr>
@@ -470,6 +472,31 @@ constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><b>PRI
   <table class="params">
     <tr><td class="paramname">condition</td><td>If this is true, the message is printed and the program exits. </td></tr>
     <tr><td class="paramname">msg</td><td>Message to print. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aacf70cd44ded264af4f30ce3a4a4726a" name="aacf70cd44ded264af4f30ce3a4a4726a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacf70cd44ded264af4f30ce3a4a4726a">&#9670;&nbsp;</a></span>check_file_accessibility()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::check_file_accessibility </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filepath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Check whether the file at the given path is accessible (exists, permissions are good, etc.).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filepath</td><td>Path to the file to check. </td></tr>
   </table>
   </dd>
 </dl>
