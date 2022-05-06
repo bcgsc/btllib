@@ -26,6 +26,8 @@
 %rename (SeqReaderRecord) btllib::SeqReader::Record;
 %rename (SeqReaderRecordIterator) btllib::SeqReader::RecordIterator;
 %rename (SeqReaderFlag) btllib::SeqReader::Flag;
+%rename (SeqReaderFormat) btllib::SeqReader::Format;
+%rename (SeqWriterFormat) btllib::SeqWriter::Format;
 %rename (IndexlrRecord) btllib::Indexlr::Record;
 %rename (IndexlrRecordIterator) btllib::Indexlr::RecordIterator;
 %rename (IndexlrFlag) btllib::Indexlr::Flag;
