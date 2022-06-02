@@ -78,6 +78,20 @@ main()
 
   std::remove(filename.c_str());
 
+  btllib::KmerCountingBloomFilter8 kbf3(1024 * 1024, 3, 64);
+
+  uint64_t kbf3_hashes1[] = { 1, 10, 100 };
+  uint64_t kbf3_hashes2[] = { 100, 200, 300 };
+  uint64_t kbf3_hashes3[] = { 1, 20, 100 };
+
+  kbf3.insert(kbf3_hashes1);
+  kbf3.insert(kbf3_hashes1);
+  kbf3.insert(kbf3_hashes2);
+
+  TEST_ASSERT_EQ(kbf3.contains(kbf3_hashes1), 2);
+  TEST_ASSERT_EQ(kbf3.contains(kbf3_hashes2), 1);
+  TEST_ASSERT_EQ(kbf3.contains(kbf3_hashes3), 0);
+
   std::cerr << "Testing KmerCountingBloomfilter with multiple threads"
             << std::endl;
 

@@ -54,7 +54,7 @@ cmake_options.set_install(false)
 cpptoml_subproject = cmake.subproject('cpptoml', options : cmake_options)
 cpptomp_dep = cpptoml_subproject.dependency('cpptoml')
 
-run_command(meson.source_root() + '/scripts/prepare-sdsl')
+run_command(meson.project_source_root() + '/scripts/prepare-sdsl')
 
 sdsl_subproject = cmake.subproject('sdsl-lite', options : cmake_options)
 sdsl_dep = sdsl_subproject.dependency('sdsl')
@@ -77,7 +77,7 @@ tar = find_program('tar', required : false)
 # Custom run commands
 # ===========================================================
 
-rootpath = meson.source_root()
+rootpath = meson.project_source_root()
 
 swig = find_program('swig', required : false)
 if swig.found()
