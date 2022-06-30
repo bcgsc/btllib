@@ -1,4 +1,4 @@
-#include "../include/btllib/nthash.hpp"
+#include "btllib/nthash.hpp"
 
 #include <iostream>
 #include <string>

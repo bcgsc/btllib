@@ -1,4 +1,4 @@
-#include "../include/btllib/seq_writer.hpp"
+#include "btllib/seq_writer.hpp"
 
 #include <iostream>
 
