@@ -116,7 +116,8 @@ SeqReaderMultilineFastqModule::read_transition(ReaderType& reader,
   if (std::ferror(reader.source) == 0 && std::feof(reader.source) == 0) {
     const auto p = std::fgetc(reader.source);
     if (p != EOF) {
-      std::ungetc(p, reader.source);
+      const auto ret = std::ungetc(p, reader.source);
+      check_error(ret == EOF, "SeqReaderMultilineFastqModule: ungetc failed.");
       int c;
       for (;;) {
         switch (stage) {
@@ -136,7 +137,9 @@ SeqReaderMultilineFastqModule::read_transition(ReaderType& reader,
             if (c == EOF) {
               return false;
             }
-            std::ungetc(c, reader.source);
+            const auto ret = std::ungetc(c, reader.source);
+            check_error(ret == EOF,
+                        "SeqReaderMultilineFastqModule: ungetc failed.");
             if (c == '+') {
               stage = Stage::SEP;
             } else {
@@ -186,7 +189,8 @@ SeqReaderMultilineFastqModule::read_file(ReaderType& reader, RecordType& record)
       c = std::fgetc(reader.source);
       check_error(c == EOF,
                   "SeqReader: Multiline FASTQ reader: Unexpected end.");
-      std::ungetc(c, reader.source);
+      const auto ret = std::ungetc(c, reader.source);
+      check_error(ret == EOF, "SeqReaderMultilineFastqModule: ungetc failed.");
       if (c == '+') {
         reader.readline_file(tmp, reader.source);
         reader.readline_file(record.qual, reader.source);

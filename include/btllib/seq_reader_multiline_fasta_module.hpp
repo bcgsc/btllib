@@ -91,7 +91,8 @@ SeqReaderMultilineFastaModule::read_transition(ReaderType& reader,
   if (std::ferror(reader.source) == 0 && std::feof(reader.source) == 0) {
     const auto p = std::fgetc(reader.source);
     if (p != EOF) {
-      std::ungetc(p, reader.source);
+      const auto ret = std::ungetc(p, reader.source);
+      check_error(ret == EOF, "SeqReaderMultilineFastaModule: ungetc failed.");
       int c;
       for (;;) {
         switch (stage) {
@@ -111,7 +112,9 @@ SeqReaderMultilineFastaModule::read_transition(ReaderType& reader,
             if (c == EOF) {
               return false;
             }
-            std::ungetc(c, reader.source);
+            const auto ret = std::ungetc(c, reader.source);
+            check_error(ret == EOF,
+                        "SeqReaderMultilineFastaModule: ungetc failed.");
             if (c == '>') {
               stage = Stage::HEADER;
               return true;
@@ -144,7 +147,8 @@ SeqReaderMultilineFastaModule::read_file(ReaderType& reader, RecordType& record)
       if (c == EOF) {
         return true;
       }
-      std::ungetc(c, reader.source);
+      const auto ret = std::ungetc(c, reader.source);
+      check_error(ret == EOF, "SeqReaderMultilineFastaModule: ungetc failed.");
       if (c == '>') {
         return true;
       }

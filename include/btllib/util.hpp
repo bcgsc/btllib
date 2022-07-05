@@ -118,19 +118,18 @@ class Barrier
 
 public:
   Barrier(const unsigned count)
-    : counter(0)
-    , counter_default(count)
-    , waiting(0)
-  {}
+    : counter_default(count)
+  {
+  }
 
   void wait();
 
 private:
   std::mutex m;
   std::condition_variable cv;
-  unsigned counter;
+  unsigned counter{ 0 };
   unsigned counter_default;
-  unsigned waiting;
+  unsigned waiting{ 0 };
 };
 /// @endcond
 

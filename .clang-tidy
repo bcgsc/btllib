@@ -53,7 +53,8 @@
     -altera-unroll-loops,
     -altera-id-dependent-backward-branch,
     -clang-diagnostic-unused-command-line-argument,
-    -clang-diagnostic-unneeded-internal-declaration',
+    -clang-diagnostic-unneeded-internal-declaration,
+    -readability-identifier-length',
   WarningsAsErrors: '*',
   CheckOptions: [
       { key: readability-identifier-naming.ClassCase,                 value: CamelCase },

@@ -164,11 +164,12 @@ bool
 SeqReader::file_at_end(FILE* f)
 {
   if (std::ferror(f) == 0) {
-    auto c = std::fgetc(f);
+    const auto c = std::fgetc(f);
     if (c == EOF) {
       return true;
     }
-    std::ungetc(c, f);
+    const auto ret = std::ungetc(c, f);
+    check_error(ret == EOF, "SeqReader: ungetc failed: " + get_strerror());
     return false;
   }
   return true;

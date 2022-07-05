@@ -15,7 +15,8 @@ SeqWriter::SeqWriter(const std::string& sink_path, Format format, bool append)
   , closed(false)
   , format(format)
   , headerchar(format == FASTA ? '>' : '@')
-{}
+{
+}
 
 void
 SeqWriter::close()

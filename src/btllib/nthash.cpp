@@ -43,7 +43,8 @@ NtHash::NtHash(const std::string& seq,
                unsigned k,
                size_t pos)
   : NtHash(seq.c_str(), seq.size(), hash_num, k, pos)
-{}
+{
+}
 
 NtHash::NtHash(const NtHash& nthash)
   : seq(nthash.seq)
@@ -97,7 +98,8 @@ BlindNtHash::BlindNtHash(const std::string& seq,
                          unsigned k,
                          size_t pos)
   : BlindNtHash(seq.c_str(), seq.size(), hash_num, k, pos)
-{}
+{
+}
 
 BlindNtHash::BlindNtHash(const BlindNtHash& nthash)
   : seq(new char[nthash.seq_len])

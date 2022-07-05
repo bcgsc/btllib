@@ -70,7 +70,8 @@ SeqReaderFastaModule::read_transition(ReaderType& reader, RecordType& record)
   if (std::ferror(reader.source) == 0 && std::feof(reader.source) == 0) {
     const auto p = std::fgetc(reader.source);
     if (p != EOF) {
-      std::ungetc(p, reader.source);
+      const auto ret = std::ungetc(p, reader.source);
+      check_error(ret == EOF, "SeqReaderFastaModule: ungetc failed.");
       switch (stage) {
         case Stage::HEADER: {
           reader.readline_file_append(record.header, reader.source);

@@ -40,7 +40,8 @@ public:
     : path(path)
     , ifs(path)
     , table(parse_header(signature))
-  {}
+  {
+  }
 
   static bool check_file_signature(std::ifstream& ifs,
                                    const std::string& expected_signature,

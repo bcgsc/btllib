@@ -355,7 +355,9 @@ main(int argc, char* argv[])
     }
   }
   if (out != stdout) {
-    fclose(out);
+    const auto ret = fclose(out);
+    btllib::check_error(ret != 0,
+                        "Indexlr: fclose failed: " + btllib::get_strerror());
   }
 
   return 0;

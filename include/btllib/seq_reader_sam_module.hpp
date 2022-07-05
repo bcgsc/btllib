@@ -77,7 +77,8 @@ SeqReaderSamModule::read_buffer(ReaderType& reader, RecordType& record)
       if (std::ferror(reader.source) == 0 && std::feof(reader.source) == 0) {
         const auto p = std::fgetc(reader.source);
         if (p != EOF) {
-          std::ungetc(p, reader.source);
+          const auto ret = std::ungetc(p, reader.source);
+          check_error(ret == EOF, "SeqReaderSamModule: ungetc failed.");
           while (std::ferror(reader.source) == 0 &&
                  std::feof(reader.source) == 0) {
             const size_t bufsize = LOADER_BLOCK_SIZE;
