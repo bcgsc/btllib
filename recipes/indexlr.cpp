@@ -83,159 +83,151 @@ print_usage()
 int
 main(int argc, char* argv[])
 {
-  int c;
-  int optindex = 0;
-  int help = 0, version = 0;
-  bool verbose = false;
-  unsigned k = 0, w = 0, t = DEFAULT_THREADS;
-  bool w_set = false;
-  bool k_set = false;
-  int with_id = 0, with_bx = 0, with_len = 0, with_pos = 0, with_strand = 0,
-      with_seq = 0;
-  std::unique_ptr<btllib::KmerBloomFilter> repeat_bf, solid_bf;
-  bool with_repeat = false, with_solid = false;
-  int long_mode = 0;
-  std::string outfile("-");
-  bool failed = false;
-  static const struct option longopts[] = {
-    { "id", no_argument, &with_id, 1 },
-    { "bx", no_argument, &with_bx, 1 },
-    { "len", no_argument, &with_len, 1 },
-    { "pos", no_argument, &with_pos, 1 },
-    { "strand", no_argument, &with_strand, 1 },
-    { "seq", no_argument, &with_seq, 1 },
-    { "long", no_argument, &long_mode, 1 },
-    { "help", no_argument, &help, 1 },
-    { "version", no_argument, &version, 1 },
-    { nullptr, 0, nullptr, 0 }
-  };
-  while ((c = getopt_long(argc, // NOLINT(concurrency-mt-unsafe)
-                          argv,
-                          "k:w:o:t:vr:s:",
-                          longopts,
-                          &optindex)) != -1) {
-    switch (c) {
-      case 0:
-        break;
-      case 'k':
-        k_set = true;
-        k = std::stoul(optarg);
-        break;
-      case 'w':
-        w_set = true;
-        w = std::stoul(optarg);
-        break;
-      case 'o':
-        outfile = optarg;
-        break;
-      case 't':
-        t = std::stoul(optarg);
-        break;
-      case 'v':
-        verbose = true;
-        break;
-      case 'r': {
-        with_repeat = true;
-        std::cerr << "Loading repeat Bloom filter from " << optarg << std::endl;
-        try {
+  try {
+    int c;
+    int optindex = 0;
+    int help = 0, version = 0;
+    bool verbose = false;
+    unsigned k = 0, w = 0, t = DEFAULT_THREADS;
+    bool w_set = false;
+    bool k_set = false;
+    int with_id = 0, with_bx = 0, with_len = 0, with_pos = 0, with_strand = 0,
+        with_seq = 0;
+    std::unique_ptr<btllib::KmerBloomFilter> repeat_bf, solid_bf;
+    bool with_repeat = false, with_solid = false;
+    int long_mode = 0;
+    std::string outfile("-");
+    bool failed = false;
+    static const struct option longopts[] = {
+      { "id", no_argument, &with_id, 1 },
+      { "bx", no_argument, &with_bx, 1 },
+      { "len", no_argument, &with_len, 1 },
+      { "pos", no_argument, &with_pos, 1 },
+      { "strand", no_argument, &with_strand, 1 },
+      { "seq", no_argument, &with_seq, 1 },
+      { "long", no_argument, &long_mode, 1 },
+      { "help", no_argument, &help, 1 },
+      { "version", no_argument, &version, 1 },
+      { nullptr, 0, nullptr, 0 }
+    };
+    while ((c = getopt_long(argc, // NOLINT(concurrency-mt-unsafe)
+                            argv,
+                            "k:w:o:t:vr:s:",
+                            longopts,
+                            &optindex)) != -1) {
+      switch (c) {
+        case 0:
+          break;
+        case 'k':
+          k_set = true;
+          k = std::stoul(optarg);
+          break;
+        case 'w':
+          w_set = true;
+          w = std::stoul(optarg);
+          break;
+        case 'o':
+          outfile = optarg;
+          break;
+        case 't':
+          t = std::stoul(optarg);
+          break;
+        case 'v':
+          verbose = true;
+          break;
+        case 'r': {
+          with_repeat = true;
+          std::cerr << "Loading repeat Bloom filter from " << optarg
+                    << std::endl;
           repeat_bf = std::unique_ptr<btllib::KmerBloomFilter>(
             new btllib::KmerBloomFilter(optarg));
-        } catch (const std::exception& e) {
-          std::cerr << e.what() << '\n';
-          std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+          std::cerr << "Finished loading repeat Bloom filter" << std::endl;
+          break;
         }
-        std::cerr << "Finished loading repeat Bloom filter" << std::endl;
-        break;
-      }
-      case 's': {
-        with_solid = true;
-        std::cerr << "Loading solid Bloom filter from " << optarg << std::endl;
-        try {
+        case 's': {
+          with_solid = true;
+          std::cerr << "Loading solid Bloom filter from " << optarg
+                    << std::endl;
           solid_bf = std::unique_ptr<btllib::KmerBloomFilter>(
             new btllib::KmerBloomFilter(optarg));
-        } catch (const std::exception& e) {
-          std::cerr << e.what() << '\n';
-          std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+          std::cerr << "Finished loading solid Bloom filter" << std::endl;
+          break;
         }
-        std::cerr << "Finished loading solid Bloom filter" << std::endl;
-        break;
+        default:
+          std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
       }
-      default:
-        std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
-  }
-  if (t > MAX_THREADS) {
-    t = MAX_THREADS;
-    std::cerr << (PROGNAME + ' ' + VERSION + ": Using more than " +
-                  std::to_string(MAX_THREADS) +
-                  " threads does not scale, reverting to 5.\n")
-              << std::flush;
-  }
-  std::vector<std::string> infiles(&argv[optind], &argv[argc]);
-  if (argc < 2) {
-    print_usage();
-    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
-  }
-  if (help != 0) {
-    print_usage();
-    std::exit(EXIT_SUCCESS); // NOLINT(concurrency-mt-unsafe)
-  } else if (version != 0) {
-    std::cerr << PROGNAME << ' ' << VERSION << std::endl;
-    std::exit(EXIT_SUCCESS); // NOLINT(concurrency-mt-unsafe)
-  }
-  if (!k_set) {
-    print_error_msg("missing option -- 'k'");
-    failed = true;
-  } else if (k == 0) {
-    print_error_msg("option has incorrect value -- 'k'");
-    failed = true;
-  }
-  if (!w_set) {
-    print_error_msg("missing option -- 'w'");
-    failed = true;
-  } else if (w == 0) {
-    print_error_msg("option has incorrect value -- 'w'");
-    failed = true;
-  }
-  if (infiles.empty()) {
-    print_error_msg("missing file operand");
-    failed = true;
-  }
-  if (failed) {
-    std::cerr << "Try '" << PROGNAME << " --help' for more information.\n";
-    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
-  }
+    if (t > MAX_THREADS) {
+      t = MAX_THREADS;
+      std::cerr << (PROGNAME + ' ' + VERSION + ": Using more than " +
+                    std::to_string(MAX_THREADS) +
+                    " threads does not scale, reverting to 5.\n")
+                << std::flush;
+    }
+    std::vector<std::string> infiles(&argv[optind], &argv[argc]);
+    if (argc < 2) {
+      print_usage();
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+    }
+    if (help != 0) {
+      print_usage();
+      std::exit(EXIT_SUCCESS); // NOLINT(concurrency-mt-unsafe)
+    } else if (version != 0) {
+      std::cerr << PROGNAME << ' ' << VERSION << std::endl;
+      std::exit(EXIT_SUCCESS); // NOLINT(concurrency-mt-unsafe)
+    }
+    if (!k_set) {
+      print_error_msg("missing option -- 'k'");
+      failed = true;
+    } else if (k == 0) {
+      print_error_msg("option has incorrect value -- 'k'");
+      failed = true;
+    }
+    if (!w_set) {
+      print_error_msg("missing option -- 'w'");
+      failed = true;
+    } else if (w == 0) {
+      print_error_msg("option has incorrect value -- 'w'");
+      failed = true;
+    }
+    if (infiles.empty()) {
+      print_error_msg("missing file operand");
+      failed = true;
+    }
+    if (failed) {
+      std::cerr << "Try '" << PROGNAME << " --help' for more information.\n";
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+    }
 
-  unsigned flags = 0;
-  if (bool(with_bx) && !bool(with_id)) {
-    flags |= btllib::Indexlr::Flag::NO_ID;
-  }
-  if (bool(with_bx)) {
-    flags |= btllib::Indexlr::Flag::BX;
-  }
-  if (bool(with_seq)) {
-    flags |= btllib::Indexlr::Flag::SEQ;
-  }
-  if (bool(long_mode)) {
-    flags |= btllib::Indexlr::Flag::LONG_MODE;
-  } else {
-    flags |= btllib::Indexlr::Flag::SHORT_MODE;
-  }
+    unsigned flags = 0;
+    if (bool(with_bx) && !bool(with_id)) {
+      flags |= btllib::Indexlr::Flag::NO_ID;
+    }
+    if (bool(with_bx)) {
+      flags |= btllib::Indexlr::Flag::BX;
+    }
+    if (bool(with_seq)) {
+      flags |= btllib::Indexlr::Flag::SEQ;
+    }
+    if (bool(long_mode)) {
+      flags |= btllib::Indexlr::Flag::LONG_MODE;
+    } else {
+      flags |= btllib::Indexlr::Flag::SHORT_MODE;
+    }
 
-  btllib::Indexlr::Record record;
-  FILE* out;
-  if (outfile == "-") {
-    out = stdout;
-  } else {
+    btllib::Indexlr::Record record;
+    FILE* out;
+    if (outfile == "-") {
+      out = stdout;
+    } else {
 #ifdef __linux__
-    out = fopen(outfile.c_str(), "we");
+      out = fopen(outfile.c_str(), "we");
 #else
-    out = fopen(outfile.c_str(), "w"); // NOLINT(android-cloexec-fopen)
+      out = fopen(outfile.c_str(), "w"); // NOLINT(android-cloexec-fopen)
 #endif
-  }
-  for (auto& infile : infiles) {
-    std::unique_ptr<btllib::Indexlr> indexlr;
-    try {
+    }
+    for (auto& infile : infiles) {
+      std::unique_ptr<btllib::Indexlr> indexlr;
       if (with_repeat && with_solid) {
         flags |= btllib::Indexlr::Flag::FILTER_IN;
         flags |= btllib::Indexlr::Flag::FILTER_OUT;
@@ -260,17 +252,12 @@ main(int argc, char* argv[])
         indexlr = std::unique_ptr<btllib::Indexlr>(
           new btllib::Indexlr(infile, k, w, flags, t, verbose));
       }
-    } catch (const std::exception& e) {
-      std::cerr << e.what() << '\n';
-      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
-    }
-    std::queue<std::string> output_queue;
-    std::mutex output_queue_mutex;
-    std::condition_variable queue_empty, queue_full;
-    size_t max_seen_output_size = INITIAL_OUTPUT_STREAM_SIZE;
-    const size_t output_period =
-      bool(long_mode) ? OUTPUT_PERIOD_LONG : OUTPUT_PERIOD_SHORT;
-    try {
+      std::queue<std::string> output_queue;
+      std::mutex output_queue_mutex;
+      std::condition_variable queue_empty, queue_full;
+      size_t max_seen_output_size = INITIAL_OUTPUT_STREAM_SIZE;
+      const size_t output_period =
+        bool(long_mode) ? OUTPUT_PERIOD_LONG : OUTPUT_PERIOD_SHORT;
       std::unique_ptr<std::thread> info_compiler(new std::thread([&]() {
         std::stringstream ss;
         while ((record = indexlr->read())) {
@@ -349,20 +336,15 @@ main(int argc, char* argv[])
       }));
       info_compiler->join();
       output_worker->join();
-    } catch (const std::exception& e) {
-      std::cerr << e.what() << '\n';
-      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
-  }
-  if (out != stdout) {
-    try {
+    if (out != stdout) {
       const auto ret = fclose(out);
       btllib::check_error(ret != 0,
                           "Indexlr: fclose failed: " + btllib::get_strerror());
-    } catch (const std::exception& e) {
-      std::cerr << e.what() << '\n';
-      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
+  } catch (const std::exception& e) {
+    std::cerr << e.what() << '\n';
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
 
   return 0;
