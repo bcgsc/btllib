@@ -1,5 +1,6 @@
 #include "btllib/status.hpp"
 
+#include <cstdlib>
 #include <iostream>
 #include <string>
 
@@ -14,13 +15,15 @@ get_time()
   const auto timeret = time(&now);
   if (timeret == (time_t)(-1)) {
     std::cerr << "btllib: time() failed." << std::endl;
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
   char buf[sizeof("2011-10-08T07:07:09Z")];
   std::tm tm_result = {};
   localtime_r(&now, &tm_result);
   const auto ret = std::strftime(buf, sizeof(buf), "%F %T", &tm_result);
-  if (ret != sizeof(buf)) {
+  if (ret < sizeof(buf) - 2) {
     std::cerr << "btllib: strftime failed." << std::endl;
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
   return std::string(buf);
 }

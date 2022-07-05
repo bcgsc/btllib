@@ -188,3 +188,9 @@ if __name__ == "__main__":
         shell=True,
         check=True,
     )
+
+    print(
+        f"""
+Build finished successfully!
+btllib installation can be found at: {args.prefix}"""
+    )
