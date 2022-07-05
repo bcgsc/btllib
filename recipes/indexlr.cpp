@@ -355,9 +355,14 @@ main(int argc, char* argv[])
     }
   }
   if (out != stdout) {
-    const auto ret = fclose(out);
-    btllib::check_error(ret != 0,
-                        "Indexlr: fclose failed: " + btllib::get_strerror());
+    try {
+      const auto ret = fclose(out);
+      btllib::check_error(ret != 0,
+                          "Indexlr: fclose failed: " + btllib::get_strerror());
+    } catch (const std::exception& e) {
+      std::cerr << e.what() << '\n';
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+    }
   }
 
   return 0;
