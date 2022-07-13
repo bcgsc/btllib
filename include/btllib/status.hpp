@@ -17,6 +17,9 @@ constexpr const char* PRINT_COLOR_WARNING = "\33[33m";
 constexpr const char* PRINT_COLOR_ERROR = "\33[31m";
 constexpr const char* PRINT_COLOR_END = "\33[0m";
 
+/**
+ * Return current time as a string.
+ */
 std::string
 get_time();
 

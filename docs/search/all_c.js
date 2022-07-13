@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['read_0',['read',['../classbtllib_1_1SeqReader.html#a1907e95f5d6727bde1d3377b12d7d6e3',1,'btllib::SeqReader']]],
+  ['read_0',['read',['../classbtllib_1_1Indexlr.html#a88e89c2c60ff3dea0a151f2fe8cccd00',1,'btllib::Indexlr::read()'],['../classbtllib_1_1SeqReader.html#a1907e95f5d6727bde1d3377b12d7d6e3',1,'btllib::SeqReader::read()']]],
   ['read_5fblock_1',['read_block',['../classbtllib_1_1SeqReader.html#a0f33152ad7aad4e093947fb3eba86fce',1,'btllib::SeqReader']]],
   ['record_2',['Record',['../structbtllib_1_1Indexlr_1_1Record.html',1,'btllib::Indexlr::Record'],['../structbtllib_1_1SeqReader_1_1Record.html',1,'btllib::SeqReader::Record']]],
   ['reverse_5fcomplement_3',['reverse_complement',['../namespacebtllib.html#a0c9cb0705283e0519330f79629cdc738',1,'btllib']]],

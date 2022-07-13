@@ -114,10 +114,14 @@ public:
     }
   };
 
+  /**
+   * Read the next Indexlr record, containing read
+   * information and a list of minimizers.
+   */
   Record read();
 
   /**
-   * Construct a SeqReader to read sequences from a given path.
+   * Construct Indexlr to calculate minimizers from sequences at the given path.
    *
    * @param seqfile Filepath to read sequences from. Pass "-" to read from
    * stdin.
