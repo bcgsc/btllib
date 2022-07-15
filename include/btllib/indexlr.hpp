@@ -133,7 +133,7 @@ public:
    * stdin.
    * @param k k-mer size for the minimizer.
    * @param w window size when selecting minimizers.
-   * @param q quality threshold to ignore minimizers.
+   * @param q quality threshold to ignore potential minimizers.
    * @param flags Modifier flags. Specifiying either short or long mode flag is
    * mandatory; other flags are optional.
    * @param threads Maximum number of processing threads to use. Must be at
@@ -208,7 +208,7 @@ private:
                                  const BloomFilter& filter_in_bf,
                                  const BloomFilter& filter_out_bf);
   static void filter_kmer_qual(Indexlr::HashedKmer& hk,
-                                 const std::string& qual);
+                                 const std::string& kmer_qual);
   static void calc_kmer_quality(const std::string& qual);
   static void calc_minimizer(
     const std::vector<Indexlr::HashedKmer>& hashed_kmers_buffer,
@@ -446,9 +446,9 @@ Indexlr::filter_hashed_kmer(Indexlr::HashedKmer& hk,
 
 inline void
 Indexlr::filter_kmer_qual(Indexlr::HashedKmer& hk,
-                          const std::string& qual)
+                          const std::string& kmer_qual)
 {
-  if (calc_kmer_quality(qual) < qual) {
+  if (calc_kmer_quality(kmer_qual) < q) {
     hk.min_hash = std::numeric_limits<uint64_t>::max();
   }
 }
@@ -535,7 +535,7 @@ Indexlr::minimize(const std::string& seq, const std::string& qual) const
       hk, filter_in(), filter_out(), filter_in_bf.get(), filter_out_bf.get());
 
     if (q > 0) {
-      filter_kmer_qual(hk, qual);
+      filter_kmer_qual(hk, qual.substr(nh.get_pos(), k));
     }
     
     if (idx + 1 >= w) {
