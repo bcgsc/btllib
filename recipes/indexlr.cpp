@@ -40,11 +40,12 @@ static void
 print_usage()
 {
   std::cerr << "Usage: " << PROGNAME
-            << " -k K -w W [-r repeat_bf_path] [-s solid_bf_path] [--id] "
-               "[--bx] [--pos] [--seq] "
+            << " -k K -w W [-q Q]  [-r repeat_bf_path] [-s solid_bf_path] [--id] "
+               "[--bx] [--pos] [--seq] [--qual]"
                "[-o FILE] FILE...\n\n"
                "  -k K        Use K as k-mer size.\n"
                "  -w W        Use W as sliding-window size.\n"
+               "  -q Q        Use Q as quality (Phred score) threshold to filter kmers.\n"
                "  --id        Include input sequence ids in the output. "
                "(Default if --bx is not "
                "provided)\n"
@@ -59,9 +60,12 @@ print_usage()
                "  --seq       Include minimizer sequences in the output "
                "(appended with : after "
                "minimizer value).\n"
-               "              If a combination of --pos, --strand, and --seq "
+               "  --qual      Include minimizer sequences Phred score in the output"
+               "(appended with : after "
+               "minimizer value).\n"
+               "              If a combination of --pos, --strand, --seq, and --qual "
                "options are provided, "
-               "they're appended in the --pos, --strand, --seq order after the "
+               "they're appended in the --pos, --strand, --seq, --qual order after the "
                "minimizer value.\n"
                "  --long      Enable long mode which is more efficient for "
                "long sequences (e.g. long "
@@ -92,7 +96,7 @@ main(int argc, char* argv[])
     bool w_set = false;
     bool k_set = false;
     int with_id = 0, with_bx = 0, with_len = 0, with_pos = 0, with_strand = 0,
-        with_seq = 0;
+        with_seq = 0, with_qual=0;
     std::unique_ptr<btllib::KmerBloomFilter> repeat_bf, solid_bf;
     bool with_repeat = false, with_solid = false;
     int long_mode = 0;
@@ -105,6 +109,7 @@ main(int argc, char* argv[])
       { "pos", no_argument, &with_pos, 1 },
       { "strand", no_argument, &with_strand, 1 },
       { "seq", no_argument, &with_seq, 1 },
+      { "qual", no_argument, &with_qual, 1 },
       { "long", no_argument, &long_mode, 1 },
       { "help", no_argument, &help, 1 },
       { "version", no_argument, &version, 1 },
@@ -112,7 +117,7 @@ main(int argc, char* argv[])
     };
     while ((c = getopt_long(argc, // NOLINT(concurrency-mt-unsafe)
                             argv,
-                            "k:w:o:t:vr:s:",
+                            "k:w:q:o:t:vr:s:",
                             longopts,
                             &optindex)) != -1) {
       switch (c) {
@@ -125,6 +130,10 @@ main(int argc, char* argv[])
         case 'w':
           w_set = true;
           w = std::stoul(optarg);
+          break;
+        case 'q':
+          q_set = true;
+          q = std::stoul(optarg);
           break;
         case 'o':
           outfile = optarg;
@@ -190,6 +199,12 @@ main(int argc, char* argv[])
       print_error_msg("option has incorrect value -- 'w'");
       failed = true;
     }
+    if (!q_set) {
+      q = 0;
+    } else if (q < 0) {
+      print_error_msg("option has incorrect value -- 'q'");
+      failed = true;
+    }
     if (infiles.empty()) {
       print_error_msg("missing file operand");
       failed = true;
@@ -208,6 +223,9 @@ main(int argc, char* argv[])
     }
     if (bool(with_seq)) {
       flags |= btllib::Indexlr::Flag::SEQ;
+    }
+    if (bool(with_qual)) {
+      flags |= btllib::Indexlr::Flag::QUAL;
     }
     if (bool(long_mode)) {
       flags |= btllib::Indexlr::Flag::LONG_MODE;
@@ -235,6 +253,7 @@ main(int argc, char* argv[])
           new btllib::Indexlr(infile,
                               k,
                               w,
+                              q,
                               flags,
                               t,
                               verbose,
@@ -243,14 +262,14 @@ main(int argc, char* argv[])
       } else if (with_repeat) {
         flags |= btllib::Indexlr::Flag::FILTER_OUT;
         indexlr = std::unique_ptr<btllib::Indexlr>(new btllib::Indexlr(
-          infile, k, w, flags, t, verbose, repeat_bf->get_bloom_filter()));
+          infile, k, w, q, flags, t, verbose, repeat_bf->get_bloom_filter()));
       } else if (with_solid) {
         flags |= btllib::Indexlr::Flag::FILTER_IN;
         indexlr = std::unique_ptr<btllib::Indexlr>(new btllib::Indexlr(
-          infile, k, w, flags, t, verbose, solid_bf->get_bloom_filter()));
+          infile, k, w, q, flags, t, verbose, solid_bf->get_bloom_filter()));
       } else {
         indexlr = std::unique_ptr<btllib::Indexlr>(
-          new btllib::Indexlr(infile, k, w, flags, t, verbose));
+          new btllib::Indexlr(infile, k, w, q, flags, t, verbose));
       }
       std::queue<std::string> output_queue;
       std::mutex output_queue_mutex;
@@ -284,6 +303,9 @@ main(int argc, char* argv[])
             }
             if (bool(with_seq)) {
               ss << ':' << min.seq;
+            }
+            if (bool(with_qual)) {
+              ss << ':' << min.qual;
             }
             j++;
           }
