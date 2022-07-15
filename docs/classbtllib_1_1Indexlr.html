@@ -114,8 +114,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>short_mode</b> () con
 <tr class="memitem:a59987ee510a420c9d10f86691b2f36f7"><td class="memItemLeft" align="right" valign="top"><a id="a59987ee510a420c9d10f86691b2f36f7" name="a59987ee510a420c9d10f86691b2f36f7"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>long_mode</b> () const</td></tr>
 <tr class="separator:a59987ee510a420c9d10f86691b2f36f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88e89c2c60ff3dea0a151f2fe8cccd00"><td class="memItemLeft" align="right" valign="top"><a id="a88e89c2c60ff3dea0a151f2fe8cccd00" name="a88e89c2c60ff3dea0a151f2fe8cccd00"></a>
-<a class="el" href="structbtllib_1_1Indexlr_1_1Record.html">Record</a>&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> ()</td></tr>
+<tr class="memitem:a88e89c2c60ff3dea0a151f2fe8cccd00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structbtllib_1_1Indexlr_1_1Record.html">Record</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1Indexlr.html#a88e89c2c60ff3dea0a151f2fe8cccd00">read</a> ()</td></tr>
 <tr class="separator:a88e89c2c60ff3dea0a151f2fe8cccd00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16eaf1402422f88cd3a66d03e9e11b85"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1Indexlr.html#a16eaf1402422f88cd3a66d03e9e11b85">Indexlr</a> (std::string seqfile, size_t k, size_t w, unsigned flags=0, unsigned threads=5, bool verbose=false, const <a class="el" href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a> &amp;bf1=Indexlr::dummy_bf(), const <a class="el" href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a> &amp;bf2=Indexlr::dummy_bf())</td></tr>
 <tr class="separator:a16eaf1402422f88cd3a66d03e9e11b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,7 +203,7 @@ static const size_t&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_SI
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Construct a <a class="el" href="classbtllib_1_1SeqReader.html">SeqReader</a> to read sequences from a given path.</p>
+<p >Construct <a class="el" href="classbtllib_1_1Indexlr.html">Indexlr</a> to calculate minimizers from sequences at the given path.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">seqfile</td><td>Filepath to read sequences from. Pass "-" to read from stdin. </td></tr>
@@ -245,6 +244,32 @@ static const size_t&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_SI
 </table>
 </div><div class="memdoc">
 <p >For range-based for loop only. </p>
+
+</div>
+</div>
+<a id="a88e89c2c60ff3dea0a151f2fe8cccd00" name="a88e89c2c60ff3dea0a151f2fe8cccd00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88e89c2c60ff3dea0a151f2fe8cccd00">&#9670;&nbsp;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structbtllib_1_1Indexlr_1_1Record.html">Indexlr::Record</a> btllib::Indexlr::read </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Read the next <a class="el" href="classbtllib_1_1Indexlr.html">Indexlr</a> record, containing read information and a list of minimizers. </p>
 
 </div>
 </div>

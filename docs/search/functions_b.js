@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['read_0',['read',['../classbtllib_1_1SeqReader.html#a1907e95f5d6727bde1d3377b12d7d6e3',1,'btllib::SeqReader']]],
+  ['read_0',['read',['../classbtllib_1_1Indexlr.html#a88e89c2c60ff3dea0a151f2fe8cccd00',1,'btllib::Indexlr::read()'],['../classbtllib_1_1SeqReader.html#a1907e95f5d6727bde1d3377b12d7d6e3',1,'btllib::SeqReader::read()']]],
   ['read_5fblock_1',['read_block',['../classbtllib_1_1SeqReader.html#a0f33152ad7aad4e093947fb3eba86fce',1,'btllib::SeqReader']]],
   ['reverse_5fcomplement_2',['reverse_complement',['../namespacebtllib.html#a0c9cb0705283e0519330f79629cdc738',1,'btllib']]],
   ['roll_3',['roll',['../classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05',1,'btllib::NtHash::roll()'],['../classbtllib_1_1BlindNtHash.html#a66d6aa9dc7dbe7321f97bfe77e1050c0',1,'btllib::BlindNtHash::roll()'],['../classbtllib_1_1SeedNtHash.html#aa817b8acaf7c57d7be8ce47fcf5ac758',1,'btllib::SeedNtHash::roll()']]],
