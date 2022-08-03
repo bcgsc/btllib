@@ -47,7 +47,7 @@ Bioinformaticians often do not have software engineering training or background,
 
 btllib is implemented in C++ with Python bindings available for a high level interface and ease of use. What sets it apart from other libraries is its focus on specialized algorithms with efficiency and scalability in mind as its origins are sequence processing for large genomes. The goal of btllib is not to compete, but to complement other available libraries.
 
-btllib has helped enabled a number of bioinformatics scientific publications, including ntJoin [@10.1093/bioinformatics/btaa253], LongStitch [@Coombe2021], and Physlr [@dna2020009]. Thanks to its focus on scalable algorithms and efficient implementation, btllib is a valuable tool for genomic applications, especially in the context of large genomes.
+btllib has helped enabled bioinformatics scientific publications, including ntJoin [@10.1093/bioinformatics/btaa253] and LongStitch [@Coombe2021]. Thanks to its focus on scalable algorithms and efficient implementation, btllib is a valuable tool for genomic applications, especially in the context of large genomes.
 
 # Design & implementation
 
