@@ -1,2 +1,11 @@
-- name: Open Journals PDF Generator
-  uses: openjournals/openjournals-draft-action@v.1.0
+name: Paper
+
+on: push
+
+jobs:
+  build_paper:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Open Journals PDF Generator
+        uses: openjournals/openjournals-draft-action@v.1.0
