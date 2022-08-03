@@ -1,0 +1,132 @@
+@article{fu_mi_publications2103,
+ abstract = {Background
+
+The use of novel algorithmic techniques is pivotal to many important problems in life science. For example the sequencing of the human genome (Venter et al., 2001) would not have been possible without advanced assembly algorithms and the development of practical BWT based read mappers have been instrumental for NGS analysis. However, owing to the high speed of technological progress and the urgent need for bioinformatics tools, there was a widening gap between state-of-the-art algorithmic techniques and the actual algorithmic components of tools that are in widespread use. We previously addressed this by introducing the SeqAn library of efficient data types and algorithms in 2008 (D{\"o}ring et al., 2008).
+
+Results
+
+The SeqAn library has matured considerably since its first publication 9 years ago. In this article we review its status as an established resource for programmers in the field of sequence analysis and its contributions to many analysis tools.
+
+Conclusions
+
+We anticipate that SeqAn will continue to be a valuable resource, especially since it started to actively support various hardware acceleration techniques in a systematic manner.
+
+Keywords
+
+NGS analysis; Software libraries; C++; Data structures},
+ author = {Knut Reinert and Temesgen Hailemariam Dadi and Marcel Ehrhardt and Hannes Hauswedell and Svenja Mehringer and Ren{\'e} Rahn and Jongkyu Kim and Christopher Pockrandt and J{\"o}rg Winkler and Enrico Siragusa and Gianvito Urgese and David Weese},
+ journal = {Journal of Biotechnology},
+ keywords = {NGS analysis; Software libraries; C++; Data structures},
+ month = {November},
+ pages = {157--168},
+ publisher = {ELSEVIER},
+ title = {The SeqAn C++ template library for efficient sequence analysis: A resource for programmers},
+ url = {http://publications.imp.fu-berlin.de/2103/},
+ volume = {261},
+ year = {2017}
+}
+
+@article{10.1093/bioinformatics/btp163,
+    author = {Cock, Peter J. A. and Antao, Tiago and Chang, Jeffrey T. and Chapman, Brad A. and Cox, Cymon J. and Dalke, Andrew and Friedberg, Iddo and Hamelryck, Thomas and Kauff, Frank and Wilczynski, Bartek and de Hoon, Michiel J. L.},
+    title = "{Biopython: freely available Python tools for computational molecular biology and bioinformatics}",
+    journal = {Bioinformatics},
+    volume = {25},
+    number = {11},
+    pages = {1422-1423},
+    year = {2009},
+    month = {03},
+    abstract = "{Summary: The Biopython project is a mature open source international collaboration of volunteer developers, providing Python libraries for a wide range of bioinformatics problems. Biopython includes modules for reading and writing different sequence file formats and multiple sequence alignments, dealing with 3D macro molecular structures, interacting with common tools such as BLAST, ClustalW and EMBOSS, accessing key online databases, as well as providing numerical methods for statistical learning.Availability: Biopython is freely available, with documentation and source code at www.biopython.org under the Biopython license.Contact: All queries should be directed to the Biopython mailing lists, see www.biopython.org/wiki/\_Mailing\_listspeter.cock@scri.ac.uk.}",
+    issn = {1367-4803},
+    doi = {10.1093/bioinformatics/btp163},
+    url = {https://doi.org/10.1093/bioinformatics/btp163},
+    eprint = {https://academic.oup.com/bioinformatics/article-pdf/25/11/1422/944180/btp163.pdf},
+}
+
+@article{10.1093/bioinformatics/btw397,
+    author = {Mohamadi, Hamid and Chu, Justin and Vandervalk, Benjamin P. and Birol, Inanc},
+    title = "{ntHash: recursive nucleotide hashing}",
+    journal = {Bioinformatics},
+    volume = {32},
+    number = {22},
+    pages = {3492-3494},
+    year = {2016},
+    month = {07},
+    abstract = "{Hashing has been widely used for indexing, querying and rapid similarity search in many bioinformatics applications, including sequence alignment, genome and transcriptome assembly, k-mer counting and error correction. Hence, expediting hashing operations would have a substantial impact in the field, making bioinformatics applications faster and more efficient.We present ntHash, a hashing algorithm tuned for processing DNA/RNA sequences. It performs the best when calculating hash values for adjacent k-mers in an input sequence, operating an order of magnitude faster than the best performing alternatives in typical use cases.ntHash is available online at http://www.bcgsc.ca/platform/bioinfo/software/nthash and is free for academic use.hmohamadi@bcgsc.ca or ibirol@bcgsc.caSupplementary data are available at Bioinformatics online.}",
+    issn = {1367-4803},
+    doi = {10.1093/bioinformatics/btw397},
+    url = {https://doi.org/10.1093/bioinformatics/btw397},
+    eprint = {https://academic.oup.com/bioinformatics/article-pdf/32/22/3492/19397492/btw397.pdf},
+}
+
+@article{
+doi:10.1073/pnas.1903436117,
+author = {Justin Chu  and Hamid Mohamadi  and Emre Erhan  and Jeffery Tse  and Readman Chiu  and Sarah Yeo  and Inanc Birol },
+title = {Mismatch-tolerant, alignment-free sequence classification using multiple spaced seeds and multiindex Bloom filters},
+journal = {Proceedings of the National Academy of Sciences},
+volume = {117},
+number = {29},
+pages = {16961-16968},
+year = {2020},
+doi = {10.1073/pnas.1903436117},
+URL = {https://www.pnas.org/doi/abs/10.1073/pnas.1903436117},
+eprint = {https://www.pnas.org/doi/pdf/10.1073/pnas.1903436117},
+abstract = {The sustained growth in data throughput in DNA sequencing platforms surpasses the capacity growth in computing infrastructure. For many biological studies, faster alignment algorithms alleviated some of the computational burden, although not all genomics projects require alignments. Accordingly, recent alignment-free methods are enabling a range of tasks from transcript expression analysis, to metagenome characterization, to local de novo assembly. Although faster than alignment-based methods, these methods are often limited in their sensitivity and memory requirements. We demonstrate that by using spaced-seeds and probabilistic data structures, the sensitivity of alignment-free classification methods can be improved, with memory requirements independent of the seed design and linear to the indexed target size. Furthermore, we showcase the scalable parallelism of this approach. Alignment-free classification tools have enabled high-throughput processing of sequencing data in many bioinformatics analysis pipelines primarily due to their computational efficiency. Originally k-mer based, such tools often lack sensitivity when faced with sequencing errors and polymorphisms. In response, some tools have been augmented with spaced seeds, which are capable of tolerating mismatches. However, spaced seeds have seen little practical use in classification because they bring increased computational and memory costs compared to methods that use k-mers. These limitations have also caused the design and length of practical spaced seeds to be constrained, since storing spaced seeds can be costly. To address these challenges, we have designed a probabilistic data structure called a multiindex Bloom Filter (miBF), which can store multiple spaced seed sequences with a low memory cost that remains static regardless of seed length or seed design. We formalize how to minimize the false-positive rate of miBFs when classifying sequences from multiple targets or references. Available within BioBloom Tools, we illustrate the utility of miBF in two use cases: read-binning for targeted assembly, and taxonomic read assignment. In our benchmarks, an analysis pipeline based on miBF shows higher sensitivity and specificity for read-binning than sequence alignment-based methods, also executing in less time. Similarly, for taxonomic classification, miBF enables higher sensitivity than a conventional spaced seed-based approach, while using half the memory and an order of magnitude less computational time.}}
+
+@article{10.1093/bioinformatics/btaa253,
+    author = {Coombe, Lauren and Nikolić, Vladimir and Chu, Justin and Birol, Inanc and Warren, René L},
+    title = "{ntJoin: Fast and lightweight assembly-guided scaffolding using minimizer graphs}",
+    journal = {Bioinformatics},
+    volume = {36},
+    number = {12},
+    pages = {3885-3887},
+    year = {2020},
+    month = {04},
+    abstract = "{The ability to generate high-quality genome sequences is cornerstone to modern biological research. Even with recent advancements in sequencing technologies, many genome assemblies are still not achieving reference-grade. Here, we introduce ntJoin, a tool that leverages structural synteny between a draft assembly and reference sequence(s) to contiguate and correct the former with respect to the latter. Instead of alignments, ntJoin uses a lightweight mapping approach based on a graph data structure generated from ordered minimizer sketches. The tool can be used in a variety of different applications, including improving a draft assembly with a reference-grade genome, a short-read assembly with a draft long-read assembly and a draft assembly with an assembly from a closely related species. When scaffolding a human short-read assembly using the reference human genome or a long-read assembly, ntJoin improves the NGA50 length 23- and 13-fold, respectively, in under 13 m, using \\&lt;11 GB of RAM. Compared to existing reference-guided scaffolders, ntJoin generates highly contiguous assemblies faster and using less memory.ntJoin is written in C++ and Python and is freely available at https://github.com/bcgsc/ntjoin.Supplementary data are available at Bioinformatics online.}",
+    issn = {1367-4803},
+    doi = {10.1093/bioinformatics/btaa253},
+    url = {https://doi.org/10.1093/bioinformatics/btaa253},
+    eprint = {https://academic.oup.com/bioinformatics/article-pdf/36/12/3885/33437454/btaa253.pdf},
+}
+
+@article{Coombe2021,
+  doi = {10.1186/s12859-021-04451-7},
+  url = {https://doi.org/10.1186/s12859-021-04451-7},
+  year = {2021},
+  month = oct,
+  publisher = {Springer Science and Business Media {LLC}},
+  volume = {22},
+  number = {1},
+  author = {Lauren Coombe and Janet X. Li and Theodora Lo and Johnathan Wong and Vladimir Nikolic and Ren{\'{e}} L. Warren and Inanc Birol},
+  title = {{LongStitch}: high-quality genome assembly correction and scaffolding using long reads},
+  journal = {{BMC} Bioinformatics}
+}
+
+@Article{dna2020009,
+AUTHOR = {Afshinfard, Amirhossein and Jackman, Shaun D. and Wong, Johnathan and Coombe, Lauren and Chu, Justin and Nikolic, Vladimir and Dilek, Gokce and Malkoç, Yaman and Warren, René L. and Birol, Inanc},
+TITLE = {Physlr: Next-Generation Physical Maps},
+JOURNAL = {DNA},
+VOLUME = {2},
+YEAR = {2022},
+NUMBER = {2},
+PAGES = {116--130},
+URL = {https://www.mdpi.com/2673-8856/2/2/9},
+ISSN = {2673-8856},
+ABSTRACT = {While conventional physical maps helped build most of the reference genomes we use today, generating the maps was prohibitively expensive, and the technology was abandoned in favor of whole-genome shotgun sequencing (WGS). However, genome assemblies generated using WGS data are often less contiguous. We introduce Physlr, a tool that leverages long-range information provided by some WGS technologies to construct next-generation physical maps. These maps have many potential applications in genome assembly and analysis, including, but not limited to, scaffolding. In this study, using experimental linked-read datasets from two humans, we used Physlr to construct chromosome-scale physical maps (NGA50s of 52 Mbp and 70 Mbp). We also demonstrated how these physical maps can help scaffold human genome assemblies generated using various sequencing technologies and assembly tools. Across all experiments, Physlr substantially improved the contiguity of baseline assemblies over state-of-the-art linked-read scaffolders.},
+DOI = {10.3390/dna2020009}
+}
+
+@article{10.1093/gigascience/giz109,
+    author = {Georgeson, Peter and Syme, Anna and Sloggett, Clare and Chung, Jessica and Dashnow, Harriet and Milton, Michael and Lonsdale, Andrew and Powell, David and Seemann, Torsten and Pope, Bernard},
+    title = "{Bionitio: demonstrating and facilitating best practices for bioinformatics command-line software}",
+    journal = {GigaScience},
+    volume = {8},
+    number = {9},
+    year = {2019},
+    month = {09},
+    abstract = "{Bioinformatics software tools are often created ad hoc, frequently by people without extensive training in software development. In particular, for beginners, the barrier to entry in bioinformatics software development is high, especially if they want to adopt good programming practices. Even experienced developers do not always follow best practices. This results in the proliferation of poorer-quality bioinformatics software, leading to limited scalability and inefficient use of resources; lack of reproducibility, usability, adaptability, and interoperability; and erroneous or inaccurate results.We have developed Bionitio, a tool that automates the process of starting new bioinformatics software projects following recommended best practices. With a single command, the user can create a new well-structured project in 1 of 12 programming languages. The resulting software is functional, carrying out a prototypical bioinformatics task, and thus serves as both a working example and a template for building new tools. Key features include command-line argument parsing, error handling, progress logging, defined exit status values, a test suite, a version number, standardized building and packaging, user documentation, code documentation, a standard open source software license, software revision control, and containerization.Bionitio serves as a learning aid for beginner-to-intermediate bioinformatics programmers and provides an excellent starting point for new projects. This helps developers adopt good programming practices from the beginning of a project and encourages high-quality tools to be developed more rapidly. This also benefits users because tools are more easily installed and consistent in their usage. Bionitio is released as open source software under the MIT License and is available at https://github.com/bionitio-team/bionitio.}",
+    issn = {2047-217X},
+    doi = {10.1093/gigascience/giz109},
+    url = {https://doi.org/10.1093/gigascience/giz109},
+    note = {giz109},
+    eprint = {https://academic.oup.com/gigascience/article-pdf/8/9/giz109/30043086/giz109.pdf},
+}
