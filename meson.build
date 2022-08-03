@@ -38,7 +38,7 @@ if compiler_id == 'clang'
   global_link_args += [ '-lstdc++', '-lm' ]
 endif
 
-add_global_arguments(global_args, language : 'cpp')
+add_global_arguments(global_args,['-Wno-ignored-qualifiers'], language : 'cpp')
 add_global_link_arguments(global_link_args, language : 'cpp')
 
 # Build dependencies and subprojects
