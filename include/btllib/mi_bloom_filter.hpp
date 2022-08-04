@@ -16,6 +16,11 @@ public:
   static const T MASK = T(1) << (sizeof(T) * 8 - 1);
   static const T ANTI_MASK = (T)~MASK;
 
+  static const T STRAND = T(1) << (sizeof(T) * 8 - 2);
+  static const T ANTI_STRAND = (T)~STRAND;
+
+  static const T ID_MASK = ANTI_STRAND & ANTI_MASK;
+
   static const unsigned BLOCKSIZE = 512;
 
   /** Construct a dummy multi-indexed Bloom filter (e.g. as a default argument).
@@ -77,10 +82,30 @@ public:
     return bv_contains(hashes.data());
   }
 
+  /**
+    * Insert an element's hash values.
+       *
+          * @param hashes Integer array of hash values. Array size should equal the
+             * hash_num argument used when the Bloom filter was constructed.
+                */
+  void insert_id(const uint64_t* hashes, T& ID);
+
+	/**
+	* Insert an element's hash values.
+	*
+	* @param hashes Integer vector of hash values.
+	*/
+	void insert_id(const std::vector<uint64_t>& hashes, T& ID) { insert_id(hashes.data(), ID); }
+
   /** Get population count, i.e. the number of 1 bits in the filter. */
   uint64_t get_pop_cnt();
 
 private:
+  std::vector<uint64_t> get_rank_pos(const uint64_t* hashes) const;
+  uint64_t get_rank_pos(const uint64_t hash) const { return bv_rank_support(hash % il_bit_vector.size()); }
+  //std::vector<T> get_data(const std::vector<uint64_t>& rank_pos) const;
+  void set_data(uint64_t pos, T id);
+
   size_t bytes = 0;
   unsigned k = 0;
   unsigned hash_num;
@@ -89,6 +114,7 @@ private:
   sdsl::bit_vector bit_vector;
   sdsl::bit_vector_il<BLOCKSIZE> il_bit_vector;
   sdsl::rank_support_il<1> bv_rank_support;
+  std::vector<T> counts_array;
   T* id_array;
 
   bool bv_insertion_completed, id_insertion_completed = false;
@@ -140,8 +166,46 @@ MIBloomFilter<T>::complete_bv_insertion()
   il_bit_vector = sdsl::bit_vector_il<BLOCKSIZE>(bit_vector);
   bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
   id_array = new T[get_pop_cnt()]();
+  counts_array = std::vector<T>(get_pop_cnt(), 0);
   return true;
 }
+template<typename T>
+inline void 
+MIBloomFilter<T>::insert_id(const uint64_t* hashes, T& ID){
+    assert(bv_insertion_completed && !id_insertion_completed);
+    //hashSet values;
+    //values.set_empty_key(il_bit_vector.size());
+    for (unsigned i = 0; i < hash_num; ++i) {
+      uint64_t random_seed = hashes[i] ^ ID;
+      uint64_t rank = get_rank_pos(hashes[i]);
+      T count = __sync_add_and_fetch(&counts_array[rank], 1);
+      T random_num = std::hash<T>{}(random_seed) % count;
+      if (random_num == count - 1) {
+        set_data(rank, ID);
+      }
+    }
+}
+template<typename T>
+inline void MIBloomFilter<T>::set_data(uint64_t pos, T ID){
+	T old_value;
+	do {
+		old_value = id_array[pos];
+		if (old_value > MASK) { // if the bucket was saturated, insert but keep saturation
+			ID |= MASK;
+		}
+	} while (!__sync_bool_compare_and_swap(&id_array[pos], old_value, ID)); 
+}
+template<typename T>
+inline std::vector<uint64_t> MIBloomFilter<T>::get_rank_pos(const uint64_t* hashes) const{
+    std::vector<uint64_t> rank_pos(hash_num);
+    for (unsigned i = 0; i < hash_num; ++i) {
+      uint64_t pos = hashes[i] % il_bit_vector.size();
+      rank_pos[i] = bv_rank_support(pos);
+    }
+    return rank_pos;
+  }
+
+
 template<typename T>
 inline uint64_t
 MIBloomFilter<T>::get_pop_cnt()
@@ -152,8 +216,6 @@ MIBloomFilter<T>::get_pop_cnt()
     --index;
   }
   return bv_rank_support(index) + 1;
-
-  return 32;
 }
 
 } // namespace btllib

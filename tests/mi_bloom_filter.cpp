@@ -21,5 +21,8 @@ main()
   TEST_ASSERT(mi_bf.bv_contains({ 100, 200, 300 }));
   TEST_ASSERT(!mi_bf.bv_contains({ 1, 20, 100 }));
 
+  uint8_t ID = 12;
+  mi_bf.insert_id({ 1, 10, 100 }, ID);
+  
   return 0;
 }
