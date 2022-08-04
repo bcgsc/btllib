@@ -22,7 +22,7 @@ authors:
     affiliation: 1
   - name: Amirhossein Afshinfard
     affiliation: "1, 2"
-  - orcid: 0000-0002-6875-4939
+    orcid: 0000-0002-6875-4939
   - name: Justin Chu
     affiliation: "1, 2"
   - name: René Warren
