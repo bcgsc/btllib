@@ -83,27 +83,42 @@ public:
   }
 
   /**
-    * Insert an element's hash values.
-       *
-          * @param hashes Integer array of hash values. Array size should equal the
-             * hash_num argument used when the Bloom filter was constructed.
-                */
+  * Insert an element's hash values.
+  *
+  * @param hashes Integer array of hash values. Array size should equal the
+  * hash_num argument used when the Bloom filter was constructed.
+  */
   void insert_id(const uint64_t* hashes, T& ID);
 
-	/**
-	* Insert an element's hash values.
-	*
-	* @param hashes Integer vector of hash values.
-	*/
-	void insert_id(const std::vector<uint64_t>& hashes, T& ID) { insert_id(hashes.data(), ID); }
+  /**
+  * Insert an element's hash values.
+  *
+  * @param hashes Integer vector of hash values.
+  */
+  void insert_id(const std::vector<uint64_t>& hashes, T& ID) { insert_id(hashes.data(), ID); }
 
+  /**
+  * Get the ID's for corresponding to the hashes.
+  *
+  * @param hashes Integer vector of hash values.
+  */
+  std::vector<T> get_id(const uint64_t* hashes);
+
+  /**
+  * Get the ID's for corresponding to the hashes.
+  *
+  * @param hashes Integer vector of hash values.
+  */
+  std::vector<T> get_id(const std::vector<uint64_t>& hashes) { return get_id(hashes.data());}
+  
   /** Get population count, i.e. the number of 1 bits in the filter. */
   uint64_t get_pop_cnt();
 
 private:
   std::vector<uint64_t> get_rank_pos(const uint64_t* hashes) const;
   uint64_t get_rank_pos(const uint64_t hash) const { return bv_rank_support(hash % il_bit_vector.size()); }
-  //std::vector<T> get_data(const std::vector<uint64_t>& rank_pos) const;
+  std::vector<T> get_data(const std::vector<uint64_t>& rank_pos) const;
+  T get_data(uint64_t rank) const { return id_array[rank]; }
   void set_data(uint64_t pos, T id);
 
   size_t bytes = 0;
@@ -186,6 +201,10 @@ MIBloomFilter<T>::insert_id(const uint64_t* hashes, T& ID){
     }
 }
 template<typename T>
+inline std::vector<T> MIBloomFilter<T>::get_id(const uint64_t* hashes){
+	return get_data(get_rank_pos(hashes));
+}
+template<typename T>
 inline void MIBloomFilter<T>::set_data(uint64_t pos, T ID){
 	T old_value;
 	do {
@@ -203,8 +222,15 @@ inline std::vector<uint64_t> MIBloomFilter<T>::get_rank_pos(const uint64_t* hash
       rank_pos[i] = bv_rank_support(pos);
     }
     return rank_pos;
-  }
-
+}
+template<typename T>
+inline std::vector<T> MIBloomFilter<T>::get_data(const std::vector<uint64_t>& rank_pos) const{
+    std::vector<T> results(hash_num);
+    for (unsigned i = 0; i < hash_num; ++i) {
+    	results[i] = id_array[rank_pos[i]];
+    }
+    return results;
+}
 
 template<typename T>
 inline uint64_t

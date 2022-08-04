@@ -23,6 +23,10 @@ main()
 
   uint8_t ID = 12;
   mi_bf.insert_id({ 1, 10, 100 }, ID);
-  
+
+  std::vector<uint8_t> results = mi_bf.get_id({ 1, 10, 100 });
+  for(auto& id : results) {
+  	TEST_ASSERT_EQ(id, ID);
+  }
   return 0;
 }
