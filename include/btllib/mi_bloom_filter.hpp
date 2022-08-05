@@ -3,6 +3,7 @@
 
 #include "nthash.hpp"
 #include "status.hpp"
+#include <stdlib.h>
 
 #include <sdsl/bit_vector_il.hpp>
 #include <sdsl/rank_support.hpp>
@@ -132,7 +133,7 @@ private:
   std::vector<T> counts_array;
   T* id_array;
 
-  bool bv_insertion_completed, id_insertion_completed = false;
+  bool bv_insertion_completed = false, id_insertion_completed = false;
 };
 
 template<typename T>
@@ -191,10 +192,9 @@ MIBloomFilter<T>::insert_id(const uint64_t* hashes, T& ID){
     //hashSet values;
     //values.set_empty_key(il_bit_vector.size());
     for (unsigned i = 0; i < hash_num; ++i) {
-      uint64_t random_seed = hashes[i] ^ ID;
       uint64_t rank = get_rank_pos(hashes[i]);
       T count = __sync_add_and_fetch(&counts_array[rank], 1);
-      T random_num = std::hash<T>{}(random_seed) % count;
+      T random_num = rand() % count;
       if (random_num == count - 1) {
         set_data(rank, ID);
       }
