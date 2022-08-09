@@ -24,6 +24,22 @@ public:
 
   static const unsigned BLOCKSIZE = 512;
 
+  /// @cond HIDDEN_SYMBOLS
+#pragma pack(1) // to maintain consistent values across platforms
+  struct FileHeader
+  {
+    char magic[8]; // NOLINT
+    uint32_t hlen; // header length (including spaced seeds)
+    uint64_t size;
+    uint32_t nhash;
+    uint32_t kmer;
+    uint32_t version;
+    uint32_t bucket_size;
+    uint32_t ID_size;
+    uint8_t allowed_miss;
+  };
+  /// @endcond
+
   /** Construct a dummy multi-indexed Bloom filter (e.g. as a default argument).
    */
   MIBloomFilter() {}
@@ -31,10 +47,17 @@ public:
   /**
    * Construct an empty Bloom filter of given size.
    *
-   * @param bytes Filter size in bytes.
+   * @param bv_size Filter size in bv_size.
    * @param hash_fn Name of the hash function used. Used for metadata. Optional.
    */
-  MIBloomFilter(size_t bytes, unsigned hash_num, std::string hash_fn = "");
+  MIBloomFilter(size_t bv_size, unsigned hash_num, std::string hash_fn = "");
+
+  /**
+  * Load a Bloom filter from a file.
+  *
+  * @param path Filepath to load from.
+  */
+  explicit MIBloomFilter(const std::string& path);
 
   /**
    * Transform bit vector to interleaved bit vector and create ID array of size
@@ -111,7 +134,14 @@ public:
   * @param hashes Integer vector of hash values.
   */
   std::vector<T> get_id(const std::vector<uint64_t>& hashes) { return get_id(hashes.data());}
-  
+ 
+  /**
+  * Save the Bloom filter to a file that can be loaded in the future.
+  *
+  * @param path Filepath to store filter at.
+  */
+  void save(const std::string& path);
+ 
   /** Get population count, i.e. the number of 1 bits in the filter. */
   uint64_t get_pop_cnt();
 
@@ -122,8 +152,8 @@ private:
   T get_data(uint64_t rank) const { return id_array[rank]; }
   void set_data(uint64_t pos, T id);
 
-  size_t bytes = 0;
-  unsigned k = 0;
+  size_t bv_size = 0;
+  unsigned kmer_size = 0;
   unsigned hash_num;
   std::string hash_fn;
 
@@ -134,17 +164,111 @@ private:
   T* id_array;
 
   bool bv_insertion_completed = false, id_insertion_completed = false;
+  static const uint32_t MI_BLOOM_FILTER_VERSION = 1;
 };
 
 template<typename T>
-inline MIBloomFilter<T>::MIBloomFilter(size_t bytes,
+inline MIBloomFilter<T>::MIBloomFilter(size_t bv_size,
                                        unsigned hash_num,
                                        std::string hash_fn)
-  : bytes(bytes)
+  : bv_size(bv_size)
   , hash_num(hash_num)
   , hash_fn(hash_fn)
 {
-  bit_vector = sdsl::bit_vector(bytes);
+  bit_vector = sdsl::bit_vector(bv_size);
+}
+
+template<typename T>
+MIBloomFilter<T>::MIBloomFilter(const std::string& filter_file_path)
+     // TODO: make more streamlined
+  {
+    std::cout << "-----xololo1" << std::flush;
+#pragma omp parallel for default(none) shared(filter_file_path)
+    for (unsigned i = 0; i < 2; ++i) {
+      if (i == 0) {
+        FILE* file = fopen(filter_file_path.c_str(), "rbe");
+        check_error(file == nullptr,
+                    "MIBloomFilter: File " + filter_file_path +
+                      " could not be read.");
+
+        FileHeader header;
+        check_error(fread(&header, sizeof(struct FileHeader), 1, file) != 1,
+                    "MIBloomFilter: Failed to load header.");
+        log_info("/: Loading header...");
+
+        const int magic_nine = 9;
+        char magic[magic_nine];
+        const int magic_eight = 8;
+        memcpy(magic, header.magic, magic_eight);
+        magic[magic_eight] = '\0';
+
+        log_info("MIBloomFilter: Loaded header\nmagic: " + std::string(magic) +
+                 "\nhlen: " + std::to_string(header.hlen) +
+                 "\nsize: " + std::to_string(header.size) +
+                 "\nnhash: " + std::to_string(header.nhash) +
+                 "\nkmer: " + std::to_string(header.kmer));
+        hash_num = header.nhash;
+        kmer_size = header.kmer;
+        bv_size = header.size;
+        id_array = new T[bv_size]();
+
+	// TOD: Doesnt read spaced seeds!!!
+	/*
+	check_error(
+          header.hlen != (sizeof(FileHeader) + kmer_size * m_sseeds.size()),
+          "MIBloomFilter: header length: " + std::to_string(header.hlen) +
+            " does not match expected length: " +
+            std::to_string(sizeof(FileHeader) + kmer_size * m_sseeds.size()) +
+            " (likely version mismatch).");
+	*/
+
+        check_error(
+          header.hlen != sizeof(FileHeader),
+          "MIBloomFilter: header length: " + std::to_string(header.hlen) +
+            " does not match expected length: " +
+            std::to_string(sizeof(FileHeader)) +
+            " (likely version mismatch).");
+
+        check_error(strcmp(magic, "MIBLOOMF") != 0,
+                    "MIBloomFilter: Bloom filter type does not matc.");
+
+        check_error(header.version != MI_BLOOM_FILTER_VERSION,
+                    "MIBloomFilter: Bloom filter version does not match: " +
+                      std::to_string(header.version) + " expected " +
+                      std::to_string(MI_BLOOM_FILTER_VERSION) + ".");
+
+        log_info("MIBloomFilter: Loading data vector");
+
+        long int l_cur_pos = ftell(file);
+        fseek(file, 0, 2);
+        size_t file_size = ftell(file) - header.hlen;
+        fseek(file, l_cur_pos, 0);
+
+        check_error(file_size != bv_size * sizeof(T),
+                    "MIBloomFilter: " + filter_file_path +
+                      " does not match size given by its header. Size: " +
+                      std::to_string(file_size) + " vs " +
+                      std::to_string(bv_size * sizeof(T)) + " bytes.");
+
+        size_t count_read = fread(id_array, file_size, 1, file);
+
+        check_error(count_read != 1 && fclose(file) != 0,
+                    "MIBloomFilter: File " + filter_file_path +
+                      " could not be read.");
+      }
+
+      else {
+        std::string bv_filename = filter_file_path + ".sdsl";
+        log_info("MIBloomFilter: Loading sdsl interleaved bit vector from: " +
+                 bv_filename);
+        load_from_file(il_bit_vector, bv_filename);
+        bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
+      }
+    }
+
+    log_info("MIBloomFilter: Bit vector size: " + std::to_string(il_bit_vector.size()) +
+             "\nPopcount: " + std::to_string(get_pop_cnt()));
+    //m_prob_saturated = pow(double(get_pop_saturated()) / double(get_pop_cnt()), hash_num);
 }
 
 template<typename T>
@@ -181,7 +305,8 @@ MIBloomFilter<T>::complete_bv_insertion()
 
   il_bit_vector = sdsl::bit_vector_il<BLOCKSIZE>(bit_vector);
   bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
-  id_array = new T[get_pop_cnt()]();
+  bv_size = get_pop_cnt();
+  id_array = new T[bv_size]();
   counts_array = std::vector<T>(get_pop_cnt(), 0);
   return true;
 }
@@ -194,7 +319,7 @@ MIBloomFilter<T>::insert_id(const uint64_t* hashes, T& ID){
     for (unsigned i = 0; i < hash_num; ++i) {
       uint64_t rank = get_rank_pos(hashes[i]);
       T count = __sync_add_and_fetch(&counts_array[rank], 1);
-      T random_num = rand() % count;
+      T random_num = std::rand() % count;
       if (random_num == count - 1) {
         set_data(rank, ID);
       }
@@ -230,6 +355,11 @@ inline std::vector<T> MIBloomFilter<T>::get_data(const std::vector<uint64_t>& ra
     	results[i] = id_array[rank_pos[i]];
     }
     return results;
+}
+template<typename T>
+inline void save(const std::string& path){
+	////////////////
+	std::cout << "to be printed" << std::endl;
 }
 
 template<typename T>
