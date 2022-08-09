@@ -152,6 +152,8 @@ private:
   T get_data(uint64_t rank) const { return id_array[rank]; }
   void set_data(uint64_t pos, T id);
 
+  void write_header(std::ofstream& out) const;
+
   size_t bv_size = 0;
   unsigned kmer_size = 0;
   unsigned hash_num;
@@ -357,10 +359,58 @@ inline std::vector<T> MIBloomFilter<T>::get_data(const std::vector<uint64_t>& ra
     return results;
 }
 template<typename T>
-inline void save(const std::string& path){
-	////////////////
-	std::cout << "to be printed" << std::endl;
+inline void MIBloomFilter<T>::write_header(std::ofstream& out) const
+{
+    FileHeader header;
+    const int magic_num = 8;
+    memcpy(header.magic, "MIBLOOMF", magic_num);
+
+    //header.hlen = sizeof(struct FileHeader) + m_kmer_size * m_sseeds.size();
+    header.hlen = sizeof(struct FileHeader);
+    header.kmer = kmer_size;
+    header.size = bv_size;
+    header.nhash = hash_num;
+    header.version = MI_BLOOM_FILTER_VERSION;
+
+
+    out.write(reinterpret_cast<char*>(&header), sizeof(struct FileHeader));
+
+    /*for (const auto& s : m_sseeds) {
+      out.write(s.c_str(), m_kmer_size);
+    }*/
 }
+/*
+ *    * Stores the filter as a binary file to the path specified
+ *       * Stores uncompressed because the random data tends to
+ *          * compress poorly anyway
+ *             */
+template<typename T>
+inline void MIBloomFilter<T>::save(const std::string& filter_file_path){
+#pragma omp parallel for default(none) shared(filter_file_path)
+    for (unsigned i = 0; i < 2; ++i) {
+      if (i == 0) {
+        std::ofstream my_file(filter_file_path.c_str(),
+                              std::ios::out | std::ios::binary);
+
+        assert(my_file);
+        write_header(my_file);
+
+        my_file.write(reinterpret_cast<char*>(id_array), bv_size * sizeof(T));
+
+        my_file.close();
+        assert(my_file);
+
+        FILE* file = fopen(filter_file_path.c_str(), "rbe");
+        check_error(file == nullptr,
+                    "MIBloomFilter: " + filter_file_path +
+                      " could not be read.");
+      } else {
+        std::string bv_filename = filter_file_path + ".sdsl";
+        store_to_file(il_bit_vector, bv_filename);
+      }
+    }
+}
+
 
 template<typename T>
 inline uint64_t
