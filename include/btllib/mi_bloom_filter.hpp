@@ -53,6 +53,14 @@ public:
   MIBloomFilter(size_t bv_size, unsigned hash_num, std::string hash_fn = "");
 
   /**
+  * Construct a Bloom filter with a prebuilt interleaved bit vector.
+  *
+  * @param bv_size Filter size in bv_size.
+  * @param hash_fn Name of the hash function used. Used for metadata. Optional.
+  */
+  MIBloomFilter(sdsl::bit_vector& bit_vector, unsigned hash_num, std::string hash_fn = "");
+
+  /**
   * Load a Bloom filter from a file.
   *
   * @param path Filepath to load from.
@@ -181,10 +189,20 @@ inline MIBloomFilter<T>::MIBloomFilter(size_t bv_size,
 }
 
 template<typename T>
+inline MIBloomFilter<T>::MIBloomFilter(sdsl::bit_vector& bit_vector,
+							unsigned hash_num,
+							std::string hash_fn)
+  : bit_vector(bit_vector)
+  , hash_num(hash_num)
+  , hash_fn(hash_fn)
+{
+  complete_bv_insertion();
+}
+
+template<typename T>
 MIBloomFilter<T>::MIBloomFilter(const std::string& filter_file_path)
      // TODO: make more streamlined
   {
-    std::cout << "-----xololo1" << std::flush;
 #pragma omp parallel for default(none) shared(filter_file_path)
     for (unsigned i = 0; i < 2; ++i) {
       if (i == 0) {
@@ -265,6 +283,7 @@ MIBloomFilter<T>::MIBloomFilter(const std::string& filter_file_path)
                  bv_filename);
         load_from_file(il_bit_vector, bv_filename);
         bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
+	bv_insertion_completed = true;
       }
     }
 
