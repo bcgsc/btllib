@@ -82,5 +82,35 @@ main()
 	TEST_ASSERT(count > expected_id_count - (expected_id_count * tolerance));
   }
   std::cerr << "Testing multi-indexed BloomFilter random sampling successful" << std::endl;
+  
+ 
+
+  std::cerr << "Testing multi-indexed BloomFilter saving." << std::endl; 
+ 
+  mi_bf_2.save("test.mibf");
+ 
+  std::cerr << "Testing multi-indexed BloomFilter saving successfull." << std::endl;
+  
+  
+
+ std::cerr << "Testing multi-indexed BloomFilter reading." << std::endl;
+  
+  btllib::MIBloomFilter<uint8_t> mi_bf_3("test.mibf");
+  
+  std::vector<uint32_t> total_counter_2(4, 0);
+  for(btllib::NtHash nthash(random_dna, 1, 15); nthash.roll(); counter++){
+        results_2 = mi_bf_2.get_id(nthash.hashes());
+        for(auto& res : results_2){
+                total_counter_2[res]++;
+        }
+  }
+  
+  for(uint k=0; k < total_counter_2.size(); k++){
+	TEST_ASSERT(total_counter_2[k] == total_counter[k]);
+  }
+  std::cerr << "Testing multi-indexed BloomFilter reading successful." << std::endl;
+
+
+  // TODO: Test MIBloomFilter(sdsl::bit_vector& bit_vector, unsigned hash_num, std::string hash_fn = "");  
   return 0;
 }
