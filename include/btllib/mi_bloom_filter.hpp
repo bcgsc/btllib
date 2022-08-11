@@ -170,7 +170,7 @@ private:
   sdsl::bit_vector bit_vector;
   sdsl::bit_vector_il<BLOCKSIZE> il_bit_vector;
   sdsl::rank_support_il<1> bv_rank_support;
-  std::vector<T> counts_array;
+  std::vector<uint32_t> counts_array;
   T* id_array;
 
   bool bv_insertion_completed = false, id_insertion_completed = false;
@@ -282,8 +282,11 @@ MIBloomFilter<T>::MIBloomFilter(const std::string& filter_file_path)
         log_info("MIBloomFilter: Loading sdsl interleaved bit vector from: " +
                  bv_filename);
         load_from_file(il_bit_vector, bv_filename);
-        bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
-	bv_insertion_completed = true;
+        bv_insertion_completed = true;
+	bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
+  	bv_size = get_pop_cnt();
+  	id_array = new T[bv_size]();
+  	counts_array = std::vector<uint32_t>(get_pop_cnt(), 0);
       }
     }
 
@@ -328,7 +331,7 @@ MIBloomFilter<T>::complete_bv_insertion()
   bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
   bv_size = get_pop_cnt();
   id_array = new T[bv_size]();
-  counts_array = std::vector<T>(get_pop_cnt(), 0);
+  counts_array = std::vector<uint32_t>(get_pop_cnt(), 0);
   return true;
 }
 template<typename T>
@@ -337,10 +340,11 @@ MIBloomFilter<T>::insert_id(const uint64_t* hashes, T& ID){
     assert(bv_insertion_completed && !id_insertion_completed);
     //hashSet values;
     //values.set_empty_key(il_bit_vector.size());
+    uint rand = std::rand();
     for (unsigned i = 0; i < hash_num; ++i) {
       uint64_t rank = get_rank_pos(hashes[i]);
-      T count = __sync_add_and_fetch(&counts_array[rank], 1);
-      T random_num = std::rand() % count;
+      uint32_t count = __sync_add_and_fetch(&counts_array[rank], 1);
+      T random_num = (rand ^ hashes[i]) % count;
       if (random_num == count - 1) {
         set_data(rank, ID);
       }
@@ -405,7 +409,7 @@ inline void MIBloomFilter<T>::write_header(std::ofstream& out) const
  *             */
 template<typename T>
 inline void MIBloomFilter<T>::save(const std::string& filter_file_path){
-#pragma omp parallel for default(none) shared(filter_file_path)
+//#pragma omp parallel for default(none) shared(filter_file_path)
     for (unsigned i = 0; i < 2; ++i) {
       if (i == 0) {
         std::ofstream my_file(filter_file_path.c_str(),
