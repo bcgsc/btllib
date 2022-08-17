@@ -3,6 +3,7 @@
 
 #include "helpers.hpp"
 
+#include <cmath>
 #include <algorithm>
 #include <cstdio>
 #include <iostream>
@@ -29,6 +30,8 @@ main()
   	TEST_ASSERT_EQ(id, ID_1);
   }
   std::cerr << "multi-indexed BloomFilter insertion successful" << std::endl;
+
+
 
   std::cerr << "Testing multi-indexed BloomFilter random sampling" << std::endl;  
   std::string random_dna = "";
@@ -90,16 +93,14 @@ main()
   mi_bf_2.save("test.mibf");
  
   std::cerr << "Testing multi-indexed BloomFilter saving successfull." << std::endl;
-  
-  
 
- std::cerr << "Testing multi-indexed BloomFilter reading." << std::endl;
+  std::cerr << "Testing multi-indexed BloomFilter reading." << std::endl;
   
   btllib::MIBloomFilter<uint8_t> mi_bf_3("test.mibf");
   
   std::vector<uint32_t> total_counter_2(4, 0);
   for(btllib::NtHash nthash(random_dna, 1, 15); nthash.roll(); counter++){
-        results_2 = mi_bf_2.get_id(nthash.hashes());
+        results_2 = mi_bf_3.get_id(nthash.hashes());
         for(auto& res : results_2){
                 total_counter_2[res]++;
         }
@@ -108,9 +109,14 @@ main()
   for(uint k=0; k < total_counter_2.size(); k++){
 	TEST_ASSERT(total_counter_2[k] == total_counter[k]);
   }
+  uint8_t ID = 3;
+  for(btllib::NtHash nthash(random_dna, 1, 15); nthash.roll(); counter++){
+  	mi_bf_3.insert_id(nthash.hashes(), ID);
+  }
+
   std::cerr << "Testing multi-indexed BloomFilter reading successful." << std::endl;
 
-
   // TODO: Test MIBloomFilter(sdsl::bit_vector& bit_vector, unsigned hash_num, std::string hash_fn = "");  
+
   return 0;
 }
