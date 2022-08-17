@@ -162,6 +162,7 @@ private:
 
   void write_header(std::ofstream& out) const;
 
+  size_t id_array_size = 0;
   size_t bv_size = 0;
   unsigned kmer_size = 0;
   unsigned hash_num;
@@ -229,8 +230,8 @@ MIBloomFilter<T>::MIBloomFilter(const std::string& filter_file_path)
                  "\nkmer: " + std::to_string(header.kmer));
         hash_num = header.nhash;
         kmer_size = header.kmer;
-        bv_size = header.size;
-        id_array = new T[bv_size]();
+        id_array_size = header.size;
+        id_array = new T[id_array_size]();
 
 	// TOD: Doesnt read spaced seeds!!!
 	/*
@@ -264,11 +265,11 @@ MIBloomFilter<T>::MIBloomFilter(const std::string& filter_file_path)
         size_t file_size = ftell(file) - header.hlen;
         fseek(file, l_cur_pos, 0);
 
-        check_error(file_size != bv_size * sizeof(T),
+        check_error(file_size != id_array_size * sizeof(T),
                     "MIBloomFilter: " + filter_file_path +
                       " does not match size given by its header. Size: " +
                       std::to_string(file_size) + " vs " +
-                      std::to_string(bv_size * sizeof(T)) + " bytes.");
+                      std::to_string(id_array_size * sizeof(T)) + " bytes.");
 
         size_t count_read = fread(id_array, file_size, 1, file);
 
@@ -284,9 +285,8 @@ MIBloomFilter<T>::MIBloomFilter(const std::string& filter_file_path)
         load_from_file(il_bit_vector, bv_filename);
         bv_insertion_completed = true;
 	bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
-  	bv_size = get_pop_cnt();
-  	id_array = new T[bv_size]();
-  	counts_array = std::vector<uint32_t>(get_pop_cnt(), 0);
+  	counts_array = std::vector<uint32_t>(id_array_size, 0);
+	// TODO have id insertion completed in header and dont create counts array if its true.
       }
     }
 
@@ -314,7 +314,8 @@ MIBloomFilter<T>::bv_contains(const uint64_t* hashes)
 {
   assert(bv_insertion_completed);
   for (unsigned i = 0; i < hash_num; i++) {
-    if (il_bit_vector[hashes[i]] == 0) {
+    uint64_t pos = hashes[i] % il_bit_vector.size();
+    if (il_bit_vector[pos] == 0) {
       return false;
     }
   }
@@ -329,8 +330,8 @@ MIBloomFilter<T>::complete_bv_insertion()
 
   il_bit_vector = sdsl::bit_vector_il<BLOCKSIZE>(bit_vector);
   bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
-  bv_size = get_pop_cnt();
-  id_array = new T[bv_size]();
+  id_array_size = get_pop_cnt();
+  id_array = new T[id_array_size]();
   counts_array = std::vector<uint32_t>(get_pop_cnt(), 0);
   return true;
 }
@@ -391,7 +392,7 @@ inline void MIBloomFilter<T>::write_header(std::ofstream& out) const
     //header.hlen = sizeof(struct FileHeader) + m_kmer_size * m_sseeds.size();
     header.hlen = sizeof(struct FileHeader);
     header.kmer = kmer_size;
-    header.size = bv_size;
+    header.size = id_array_size;
     header.nhash = hash_num;
     header.version = MI_BLOOM_FILTER_VERSION;
 
@@ -418,7 +419,7 @@ inline void MIBloomFilter<T>::save(const std::string& filter_file_path){
         assert(my_file);
         write_header(my_file);
 
-        my_file.write(reinterpret_cast<char*>(id_array), bv_size * sizeof(T));
+        my_file.write(reinterpret_cast<char*>(id_array), id_array_size * sizeof(T));
 
         my_file.close();
         assert(my_file);
