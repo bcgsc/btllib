@@ -170,7 +170,7 @@ public:
   Indexlr(std::string seqfile,
           size_t k,
           size_t w,
-          size_t q,
+          double q,
           unsigned flags = 0,
           unsigned threads = 5,
           bool verbose = false,
@@ -232,7 +232,7 @@ private:
 
   static void filter_kmer_qual(Indexlr::HashedKmer& hk,
                                const std::string& kmer_qual,
-                               size_t q);
+                               double q);
   static double calc_kmer_quality(const std::string& qual);
   static void calc_minimizer(
     const std::vector<Indexlr::HashedKmer>& hashed_kmers_buffer,
@@ -247,7 +247,8 @@ private:
                                   const std::string& qual) const;
 
   const std::string seqfile;
-  const size_t k, w, q;
+  const size_t k, w;
+  double q;
   const unsigned flags;
   const bool verbose;
   const long id;
@@ -335,7 +336,7 @@ private:
 inline Indexlr::Indexlr(std::string seqfile,
                         const size_t k,
                         const size_t w,
-                        const size_t q,
+                        const double q,
                         const unsigned flags,
                         const unsigned threads,
                         const bool verbose,
@@ -512,7 +513,7 @@ Indexlr::filter_hashed_kmer(Indexlr::HashedKmer& hk,
 inline void
 Indexlr::filter_kmer_qual(Indexlr::HashedKmer& hk,
                           const std::string& kmer_qual,
-                          size_t q)
+                          double q)
 {
   if (calc_kmer_quality(kmer_qual) < q) {
     hk.min_hash = std::numeric_limits<uint64_t>::max();
@@ -524,12 +525,13 @@ Indexlr::calc_kmer_quality(const std::string& qual)
 {
   // convert the quality scores to integers
   std::vector<int> qual_ints;
+  const int thirty_three = 33;
   qual_ints.reserve(qual.size());
   for (auto c : qual) {
-    qual_ints.push_back(c - 33);
+    qual_ints.push_back(c - thirty_three);
   }
   // calculate the mean (potential improvement: use other statistics)
-  int sum = 0;
+  long double sum = 0;
   for (auto q : qual_ints) {
     sum += q;
   }
