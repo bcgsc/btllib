@@ -39,48 +39,50 @@ print_error_msg(const std::string& msg)
 static void
 print_usage()
 {
-  std::cerr << "Usage: " << PROGNAME
-            << " -k K -w W [-q Q]  [-r repeat_bf_path] [-s solid_bf_path] [--id] "
-               "[--bx] [--pos] [--seq] [--qual]"
-               "[-o FILE] FILE...\n\n"
-               "  -k K        Use K as k-mer size.\n"
-               "  -w W        Use W as sliding-window size.\n"
-               "  -q Q        Filter kmers with average quality (Phred score) lower than Q.\n"
-               "  --id        Include input sequence ids in the output. "
-               "(Default if --bx is not provided)\n"
-               "  --bx        Include input sequence barcodes in the output.\n"
-               "  --len       Include input sequence length in the output.\n"
-               "  --pos       Include minimizer positions in the output "
-               "(appended with : after "
-               "minimizer value).\n"
-               "  --strand    Include minimizer strands in the output "
-               "(appended with : after minimizer "
-               "value).\n"
-               "  --seq       Include minimizer sequences in the output "
-               "(appended with : after "
-               "minimizer value).\n"
-               "  --qual      Include minimizer sequences Phred score in the output"
-               "(appended with : after "
-               "minimizer value).\n"
-               "              If a combination of --pos, --strand, --seq, and --qual "
-               "options are provided, "
-               "they're appended in the --pos, --strand, --seq, --qual order after the "
-               "minimizer value.\n"
-               "  --long      Enable long mode which is more efficient for "
-               "long sequences (e.g. long "
-               "reads, contigs, reference).\n"
-               "  -r repeat_bf_path  Use a Bloom filter to filter out "
-               "repetitive minimizers.\n"
-               "  -s solid_bf_path  Use a Bloom filter to only select solid "
-               "minimizers.\n"
-               "  -o FILE     Write output to FILE, default is stdout.\n"
-               "  -t T        Use T number of threads (default 5, max 5) per "
-               "input file.\n"
-               "  -v          Show verbose output.\n"
-               "  --help      Display this help and exit.\n"
-               "  --version   Display version and exit.\n"
-               "  FILE        Space separated list of FASTA/Q files."
-            << std::endl;
+  std::cerr
+    << "Usage: " << PROGNAME
+    << " -k K -w W [-q Q]  [-r repeat_bf_path] [-s solid_bf_path] [--id] "
+       "[--bx] [--pos] [--seq] [--qual]"
+       "[-o FILE] FILE...\n\n"
+       "  -k K        Use K as k-mer size.\n"
+       "  -w W        Use W as sliding-window size.\n"
+       "  -q Q        Filter kmers with average quality (Phred score) lower "
+       "than Q.\n"
+       "  --id        Include input sequence ids in the output. "
+       "(Default if --bx is not provided)\n"
+       "  --bx        Include input sequence barcodes in the output.\n"
+       "  --len       Include input sequence length in the output.\n"
+       "  --pos       Include minimizer positions in the output "
+       "(appended with : after "
+       "minimizer value).\n"
+       "  --strand    Include minimizer strands in the output "
+       "(appended with : after minimizer "
+       "value).\n"
+       "  --seq       Include minimizer sequences in the output "
+       "(appended with : after "
+       "minimizer value).\n"
+       "  --qual      Include minimizer sequences Phred score in the output"
+       "(appended with : after "
+       "minimizer value).\n"
+       "              If a combination of --pos, --strand, --seq, and --qual "
+       "options are provided, "
+       "they're appended in the --pos, --strand, --seq, --qual order after the "
+       "minimizer value.\n"
+       "  --long      Enable long mode which is more efficient for "
+       "long sequences (e.g. long "
+       "reads, contigs, reference).\n"
+       "  -r repeat_bf_path  Use a Bloom filter to filter out "
+       "repetitive minimizers.\n"
+       "  -s solid_bf_path  Use a Bloom filter to only select solid "
+       "minimizers.\n"
+       "  -o FILE     Write output to FILE, default is stdout.\n"
+       "  -t T        Use T number of threads (default 5, max 5) per "
+       "input file.\n"
+       "  -v          Show verbose output.\n"
+       "  --help      Display this help and exit.\n"
+       "  --version   Display version and exit.\n"
+       "  FILE        Space separated list of FASTA/Q files."
+    << std::endl;
 }
 
 int
@@ -97,7 +99,7 @@ main(int argc, char* argv[])
     bool k_set = false;
     bool q_set = false;
     int with_id = 0, with_bx = 0, with_len = 0, with_pos = 0, with_strand = 0,
-        with_seq = 0, with_qual=0;
+        with_seq = 0, with_qual = 0;
     std::unique_ptr<btllib::KmerBloomFilter> repeat_bf, solid_bf;
     bool with_repeat = false, with_solid = false;
     int long_mode = 0;

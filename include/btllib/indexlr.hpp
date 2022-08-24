@@ -71,6 +71,19 @@ public:
               uint64_t out_hash,
               size_t pos,
               bool forward,
+              std::string seq)
+      : min_hash(min_hash)
+      , out_hash(out_hash)
+      , pos(pos)
+      , forward(forward)
+      , seq(std::move(seq))
+    {
+    }
+
+    Minimizer(uint64_t min_hash,
+              uint64_t out_hash,
+              size_t pos,
+              bool forward,
               std::string seq,
               std::string qual)
       : min_hash(min_hash)
@@ -216,9 +229,10 @@ private:
                                  bool filter_out,
                                  const BloomFilter& filter_in_bf,
                                  const BloomFilter& filter_out_bf);
-  
+
   static void filter_kmer_qual(Indexlr::HashedKmer& hk,
-                        const std::string& kmer_qual, size_t q);
+                               const std::string& kmer_qual,
+                               size_t q);
   static double calc_kmer_quality(const std::string& qual);
   static void calc_minimizer(
     const std::vector<Indexlr::HashedKmer>& hashed_kmers_buffer,
@@ -229,7 +243,8 @@ private:
     ssize_t& min_pos_prev,
     size_t w,
     std::vector<Indexlr::Minimizer>& minimizers);
-  std::vector<Minimizer> minimize(const std::string& seq, const std::string& qual) const;
+  std::vector<Minimizer> minimize(const std::string& seq,
+                                  const std::string& qual) const;
 
   const std::string seqfile;
   const size_t k, w, q;
@@ -496,7 +511,8 @@ Indexlr::filter_hashed_kmer(Indexlr::HashedKmer& hk,
 
 inline void
 Indexlr::filter_kmer_qual(Indexlr::HashedKmer& hk,
-                          const std::string& kmer_qual, size_t q)
+                          const std::string& kmer_qual,
+                          size_t q)
 {
   if (calc_kmer_quality(kmer_qual) < q) {
     hk.min_hash = std::numeric_limits<uint64_t>::max();
@@ -519,8 +535,6 @@ Indexlr::calc_kmer_quality(const std::string& qual)
   }
   return (sum / qual_ints.size());
 }
-
-
 
 inline void
 Indexlr::calc_minimizer(
@@ -587,7 +601,7 @@ Indexlr::minimize(const std::string& seq, const std::string& qual) const
     if (q > 0) {
       filter_kmer_qual(hk, qual.substr(nh.get_pos(), k), q);
     }
-    
+
     if (idx + 1 >= w) {
       calc_minimizer(hashed_kmers_buffer,
                      min_current,
@@ -678,7 +692,8 @@ Indexlr::Worker::work()
 
       if (indexlr.k <= record.readlen &&
           indexlr.w <= record.readlen - indexlr.k + 1) {
-        record.minimizers = indexlr.minimize(reader_record.seq, reader_record.qual);
+        record.minimizers =
+          indexlr.minimize(reader_record.seq, reader_record.qual);
       } else {
         record.minimizers = {};
       }

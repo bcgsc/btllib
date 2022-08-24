@@ -977,12 +977,8 @@ SWIG_Python_RaiseOrModifyTypeError(const char *message)
 #    define SWIG_PYTHON_USE_GIL
 #  endif
 #  if defined(SWIG_PYTHON_USE_GIL) /* Use PyGILState threads calls */
-#    if !defined(SWIG_PYTHON_INITIALIZE_THREADS)
-#      if PY_VERSION_HEX < 0x03070000
-#        define SWIG_PYTHON_INITIALIZE_THREADS PyEval_InitThreads()
-#      else
-#        define SWIG_PYTHON_INITIALIZE_THREADS
-#      endif
+#    ifndef SWIG_PYTHON_INITIALIZE_THREADS
+#     define SWIG_PYTHON_INITIALIZE_THREADS  PyEval_InitThreads() 
 #    endif
 #    ifdef __cplusplus /* C++ code */
        class SWIG_Python_Thread_Block {
