@@ -119,6 +119,7 @@ main()
   btllib::Indexlr indexlr3(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
+                           0,
                            btllib::Indexlr::Flag::FILTER_IN |
                              btllib::Indexlr::Flag::LONG_MODE,
                            3,
@@ -143,6 +144,7 @@ main()
   btllib::Indexlr indexlr4(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
+                           0,
                            btllib::Indexlr::Flag::FILTER_OUT |
                              btllib::Indexlr::Flag::LONG_MODE,
                            3,
@@ -162,6 +164,7 @@ main()
   btllib::Indexlr indexlr5(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
+                           0,
                            btllib::Indexlr::Flag::FILTER_IN |
                              btllib::Indexlr::Flag::FILTER_OUT |
                              btllib::Indexlr::Flag::SHORT_MODE,

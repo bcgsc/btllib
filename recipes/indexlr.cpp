@@ -45,10 +45,9 @@ print_usage()
                "[-o FILE] FILE...\n\n"
                "  -k K        Use K as k-mer size.\n"
                "  -w W        Use W as sliding-window size.\n"
-               "  -q Q        Use Q as quality (Phred score) threshold to filter kmers.\n"
+               "  -q Q        Filter kmers with average quality (Phred score) lower than Q.\n"
                "  --id        Include input sequence ids in the output. "
-               "(Default if --bx is not "
-               "provided)\n"
+               "(Default if --bx is not provided)\n"
                "  --bx        Include input sequence barcodes in the output.\n"
                "  --len       Include input sequence length in the output.\n"
                "  --pos       Include minimizer positions in the output "
@@ -93,8 +92,10 @@ main(int argc, char* argv[])
     int help = 0, version = 0;
     bool verbose = false;
     unsigned k = 0, w = 0, t = DEFAULT_THREADS;
+    size_t q = 0;
     bool w_set = false;
     bool k_set = false;
+    bool q_set = false;
     int with_id = 0, with_bx = 0, with_len = 0, with_pos = 0, with_strand = 0,
         with_seq = 0, with_qual=0;
     std::unique_ptr<btllib::KmerBloomFilter> repeat_bf, solid_bf;
@@ -201,9 +202,6 @@ main(int argc, char* argv[])
     }
     if (!q_set) {
       q = 0;
-    } else if (q < 0) {
-      print_error_msg("option has incorrect value -- 'q'");
-      failed = true;
     }
     if (infiles.empty()) {
       print_error_msg("missing file operand");
