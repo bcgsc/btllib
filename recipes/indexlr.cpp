@@ -94,7 +94,7 @@ main(int argc, char* argv[])
     int help = 0, version = 0;
     bool verbose = false;
     unsigned k = 0, w = 0, t = DEFAULT_THREADS;
-    double q = 0;
+    size_t q = 0;
     bool w_set = false;
     bool k_set = false;
     bool q_set = false;

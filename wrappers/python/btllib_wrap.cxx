@@ -32145,7 +32145,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_6(PyObject *self, Py_ssize_t nobjs, PyObj
   std::string arg1 ;
   size_t arg2 ;
   size_t arg3 ;
-  double arg4 ;
+  size_t arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
   bool arg7 ;
@@ -32155,7 +32155,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_6(PyObject *self, Py_ssize_t nobjs, PyObj
   int ecode2 = 0 ;
   size_t val3 ;
   int ecode3 = 0 ;
-  double val4 ;
+  size_t val4 ;
   int ecode4 = 0 ;
   unsigned int val5 ;
   int ecode5 = 0 ;
@@ -32189,11 +32189,11 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_6(PyObject *self, Py_ssize_t nobjs, PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Indexlr" "', argument " "3"" of type '" "size_t""'");
   } 
   arg3 = static_cast< size_t >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "size_t""'");
   } 
-  arg4 = static_cast< double >(val4);
+  arg4 = static_cast< size_t >(val4);
   ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Indexlr" "', argument " "5"" of type '" "unsigned int""'");
@@ -32238,7 +32238,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_7(PyObject *self, Py_ssize_t nobjs, PyObj
   std::string arg1 ;
   size_t arg2 ;
   size_t arg3 ;
-  double arg4 ;
+  size_t arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
   bool arg7 ;
@@ -32247,7 +32247,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_7(PyObject *self, Py_ssize_t nobjs, PyObj
   int ecode2 = 0 ;
   size_t val3 ;
   int ecode3 = 0 ;
-  double val4 ;
+  size_t val4 ;
   int ecode4 = 0 ;
   unsigned int val5 ;
   int ecode5 = 0 ;
@@ -32279,11 +32279,11 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_7(PyObject *self, Py_ssize_t nobjs, PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Indexlr" "', argument " "3"" of type '" "size_t""'");
   } 
   arg3 = static_cast< size_t >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "size_t""'");
   } 
-  arg4 = static_cast< double >(val4);
+  arg4 = static_cast< size_t >(val4);
   ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Indexlr" "', argument " "5"" of type '" "unsigned int""'");
@@ -32320,7 +32320,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_8(PyObject *self, Py_ssize_t nobjs, PyObj
   std::string arg1 ;
   size_t arg2 ;
   size_t arg3 ;
-  double arg4 ;
+  size_t arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
   bool arg7 ;
@@ -32328,7 +32328,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_8(PyObject *self, Py_ssize_t nobjs, PyObj
   int ecode2 = 0 ;
   size_t val3 ;
   int ecode3 = 0 ;
-  double val4 ;
+  size_t val4 ;
   int ecode4 = 0 ;
   unsigned int val5 ;
   int ecode5 = 0 ;
@@ -32358,11 +32358,11 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_8(PyObject *self, Py_ssize_t nobjs, PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Indexlr" "', argument " "3"" of type '" "size_t""'");
   } 
   arg3 = static_cast< size_t >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "size_t""'");
   } 
-  arg4 = static_cast< double >(val4);
+  arg4 = static_cast< size_t >(val4);
   ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Indexlr" "', argument " "5"" of type '" "unsigned int""'");
@@ -32391,14 +32391,14 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_9(PyObject *self, Py_ssize_t nobjs, PyObj
   std::string arg1 ;
   size_t arg2 ;
   size_t arg3 ;
-  double arg4 ;
+  size_t arg4 ;
   unsigned int arg5 ;
   unsigned int arg6 ;
   size_t val2 ;
   int ecode2 = 0 ;
   size_t val3 ;
   int ecode3 = 0 ;
-  double val4 ;
+  size_t val4 ;
   int ecode4 = 0 ;
   unsigned int val5 ;
   int ecode5 = 0 ;
@@ -32426,11 +32426,11 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_9(PyObject *self, Py_ssize_t nobjs, PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Indexlr" "', argument " "3"" of type '" "size_t""'");
   } 
   arg3 = static_cast< size_t >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "size_t""'");
   } 
-  arg4 = static_cast< double >(val4);
+  arg4 = static_cast< size_t >(val4);
   ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Indexlr" "', argument " "5"" of type '" "unsigned int""'");
@@ -32454,13 +32454,13 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_10(PyObject *self, Py_ssize_t nobjs, PyOb
   std::string arg1 ;
   size_t arg2 ;
   size_t arg3 ;
-  double arg4 ;
+  size_t arg4 ;
   unsigned int arg5 ;
   size_t val2 ;
   int ecode2 = 0 ;
   size_t val3 ;
   int ecode3 = 0 ;
-  double val4 ;
+  size_t val4 ;
   int ecode4 = 0 ;
   unsigned int val5 ;
   int ecode5 = 0 ;
@@ -32486,11 +32486,11 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_10(PyObject *self, Py_ssize_t nobjs, PyOb
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Indexlr" "', argument " "3"" of type '" "size_t""'");
   } 
   arg3 = static_cast< size_t >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "size_t""'");
   } 
-  arg4 = static_cast< double >(val4);
+  arg4 = static_cast< size_t >(val4);
   ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Indexlr" "', argument " "5"" of type '" "unsigned int""'");
@@ -32509,12 +32509,12 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_11(PyObject *self, Py_ssize_t nobjs, PyOb
   std::string arg1 ;
   size_t arg2 ;
   size_t arg3 ;
-  double arg4 ;
+  size_t arg4 ;
   size_t val2 ;
   int ecode2 = 0 ;
   size_t val3 ;
   int ecode3 = 0 ;
-  double val4 ;
+  size_t val4 ;
   int ecode4 = 0 ;
   btllib::Indexlr *result = 0 ;
   
@@ -32538,11 +32538,11 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_11(PyObject *self, Py_ssize_t nobjs, PyOb
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Indexlr" "', argument " "3"" of type '" "size_t""'");
   } 
   arg3 = static_cast< size_t >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Indexlr" "', argument " "4"" of type '" "size_t""'");
   } 
-  arg4 = static_cast< double >(val4);
+  arg4 = static_cast< size_t >(val4);
   result = (btllib::Indexlr *)new btllib::Indexlr(arg1,arg2,arg3,arg4);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__Indexlr, SWIG_BUILTIN_INIT |  0 );
   return resultobj == Py_None ? -1 : 0;
@@ -32705,12 +32705,12 @@ fail:
     "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,unsigned int,unsigned int)\n"
     "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,unsigned int)\n"
     "    btllib::Indexlr::Indexlr(std::string,size_t,size_t)\n"
-    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,double,unsigned int,unsigned int,bool,btllib::BloomFilter const &,btllib::BloomFilter const &)\n"
-    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,double,unsigned int,unsigned int,bool,btllib::BloomFilter const &)\n"
-    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,double,unsigned int,unsigned int,bool)\n"
-    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,double,unsigned int,unsigned int)\n"
-    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,double,unsigned int)\n"
-    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,double)\n");
+    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,size_t,unsigned int,unsigned int,bool,btllib::BloomFilter const &,btllib::BloomFilter const &)\n"
+    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,size_t,unsigned int,unsigned int,bool,btllib::BloomFilter const &)\n"
+    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,size_t,unsigned int,unsigned int,bool)\n"
+    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,size_t,unsigned int,unsigned int)\n"
+    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,size_t,unsigned int)\n"
+    "    btllib::Indexlr::Indexlr(std::string,size_t,size_t,size_t)\n");
   return -1;
 }
 
