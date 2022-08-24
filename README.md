@@ -6,6 +6,8 @@
 
 [Bioinformatics Technology Lab](http://www.birollab.ca/) common code library in C++ with Python wrappers.
 
+Testing to see if master with a small change to the readme would pass the CI
+
 Platforms
 ---
 - Linux
