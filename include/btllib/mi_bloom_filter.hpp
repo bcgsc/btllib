@@ -149,7 +149,7 @@ public:
   * @param hashes Integer array of hash values. Array size should equal the
   * @param ID is the ID to look for.
   */
-  bool insert_saturation(const uint64_t* hashes, T& ID);
+  void insert_saturation(const uint64_t* hashes, T& ID);
 
  /**
  * Inserts saturation if ID is not represented after trying to survive.
@@ -157,7 +157,7 @@ public:
  * @param hashes Integer vector of hash values.
  * @param ID is the ID to look for.
  */
-  bool insert_saturation(const std::vector<uint64_t>& hashes, T& ID) { return insert_saturation(hashes.data(), ID); }
+  void insert_saturation(const std::vector<uint64_t>& hashes, T& ID) { insert_saturation(hashes.data(), ID); }
  
   /**
   * Save the Bloom filter to a file that can be loaded in the future.
@@ -372,13 +372,53 @@ inline std::vector<T> MIBloomFilter<T>::get_id(const uint64_t* hashes){
 	return get_data(get_rank_pos(hashes));
 }
 template<typename T>
-inline bool MIBloomFilter<T>::insert_saturation(const uint64_t* hashes, T& ID){
-      std::vector<uint64_t> rank_pos = get_rank_pos(hashes);
-      std::vector<T> results = get_data(rank_pos);
-      std::vector<T> replacementIDs(hash_num);
-      bool value_found = false;
-      std::vector<T> seenSet(hash_num);
-      return false;
+inline void MIBloomFilter<T>::insert_saturation(const uint64_t* hashes, T& ID){
+	std::vector<uint64_t> rank_pos = get_rank_pos(hashes);
+	std::vector<T> results = get_data(rank_pos);
+	std::vector<T> replacementIDs(hash_num);
+	bool value_found = false;
+	std::vector<T> seenSet(hash_num);
+	
+	for(int i = 0; i < hash_num; i++){
+		T current_result = results[i] &
+					(btllib::MIBloomFilter<T>::ANTI_MASK &
+					btllib::MIBloomFilter<T>::ANTI_STRAND);
+		// break if ID exists
+		if (current_result == ID) {
+			value_found = true;
+			break;
+		}
+		// if haven't seen before add to seen set
+	        if (find(seenSet.begin(), seenSet.end(), current_result) ==
+			seenSet.end()) {
+			seenSet.push_back(current_result);
+		}
+		// if have seen before add to replacement IDs 
+		else {
+			replacementIDs.push_back(current_result);
+		}
+	}
+	// if value not found try to survive
+	if (!value_found) {
+		uint64_t replacement_pos = counts_array.size();
+		T min_count = std::numeric_limits<T>::min();
+		for (unsigned i = 0; i < hash_num; ++i) {
+			T current_result = results[i] & btllib::MIBloomFilter<T>::ANTI_MASK;
+			if (find(replacementIDs.begin(), replacementIDs.end(), current_result) != replacementIDs.end()) {
+				if (min_count < counts_array[rank_pos[i]]) {
+            				min_count = counts_array[rank_pos[i]];
+            				replacement_pos = rank_pos[i];
+            			}
+			}
+		}
+		if (replacement_pos != counts_array.size()) {
+			set_data(replacement_pos, ID);
+			++counts_array[replacement_pos];
+		}
+		else {
+			set_saturated(hashes);	
+		}
+	}
 }
 template<typename T>
 inline void MIBloomFilter<T>::set_data(uint64_t pos, T ID){
