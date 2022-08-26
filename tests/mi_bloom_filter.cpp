@@ -116,6 +116,66 @@ main()
 
   std::cerr << "Testing multi-indexed BloomFilter reading successful." << std::endl;
 
+  std::cerr << "Testing multi-indexed BloomFilter saturation" << std::endl;
+  btllib::MIBloomFilter<uint8_t> mi_bf_4(1024 * 1024, 3, "ntHash");
+  mi_bf_4.insert_bv({ 1, 10, 100 });
+  mi_bf_4.insert_bv({ 100, 200, 300 });
+  mi_bf_4.insert_bv({ 500, 1000, 2000 });
+  mi_bf_4.complete_bv_insertion();
+
+  ID_1 = 1;
+  uint8_t  ID_2 = 2, ID_3 = 3, ID_4 = 4;
+  mi_bf_4.insert_id({ 1, 10, 100 }, ID_1);
+  mi_bf_4.insert_id({ 1, 10, 100 }, ID_2);
+  mi_bf_4.insert_id({ 500, 1000, 2000 }, ID_1);
+  mi_bf_4.insert_id({ 500, 1000, 2000 }, ID_2);
+  mi_bf_4.insert_id({ 500, 1000, 2000 }, ID_3);
+  mi_bf_4.insert_id({ 500, 1000, 2000 }, ID_4);
+
+  mi_bf_4.insert_saturation({ 1, 10, 100 }, ID_1);
+  mi_bf_4.insert_saturation({ 1, 10, 100 }, ID_2);
+  mi_bf_4.insert_saturation({ 500, 1000, 2000 }, ID_1);
+  mi_bf_4.insert_saturation({ 500, 1000, 2000 }, ID_2);
+  mi_bf_4.insert_saturation({ 500, 1000, 2000 }, ID_3);
+  mi_bf_4.insert_saturation({ 500, 1000, 2000 }, ID_4);
+  
+  // both should be represented unsaturated
+  bool ID_1_found = false, ID_2_found = false, ID_3_found = false, ID_4_found = false;
+  std::vector<uint8_t> results_3;
+  results_3 =  mi_bf_4.get_id({ 1, 10, 100 });
+  
+  for(auto& id : results_3){
+  	ID_1_found = id == ID_1 ? true : ID_1_found;
+	ID_2_found = id == ID_1 ? true : ID_2_found;
+  }
+
+  TEST_ASSERT(ID_1_found);
+  TEST_ASSERT(ID_2_found);
+
+  // all should be saturated
+  ID_1_found = false, ID_2_found = false;
+  results_3 =  mi_bf_4.get_id({ 500, 1000, 2000 });
+
+  for(auto& id : results_3){
+	if(id < mi_bf_4.MASK){continue;}
+        ID_1_found = (id & mi_bf_4.ANTI_MASK) == ID_1 ? true : ID_1_found;
+        ID_2_found = (id & mi_bf_4.ANTI_MASK) == ID_2 ? true : ID_2_found;
+	ID_3_found = (id & mi_bf_4.ANTI_MASK) == ID_3 ? true : ID_3_found;
+	ID_4_found = (id & mi_bf_4.ANTI_MASK) == ID_4 ? true : ID_4_found;
+  }
+  std::cout << "ID_1_found: " << ID_1_found << std::endl;
+  std::cout << "ID_2_found: " << ID_2_found << std::endl;
+  std::cout << "ID_3_found: " << ID_3_found << std::endl;
+  std::cout << "ID_4_found: " << ID_4_found << std::endl;
+  
+  TEST_ASSERT(
+		(!ID_1_found && (ID_2_found && ID_3_found && ID_4_found))
+		|| (!ID_2_found && (ID_3_found && ID_4_found && ID_1_found))
+		|| (!ID_3_found && (ID_4_found && ID_1_found && ID_2_found))
+		|| (!ID_4_found && (ID_1_found && ID_2_found && ID_3_found))
+  );
+  std::cerr << "multi-indexed BloomFilter saturation test success." << std::endl;
+
   // TODO: Test MIBloomFilter(sdsl::bit_vector& bit_vector, unsigned hash_num, std::string hash_fn = "");  
 
   return 0;

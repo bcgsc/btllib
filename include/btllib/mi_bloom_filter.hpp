@@ -379,7 +379,7 @@ inline void MIBloomFilter<T>::insert_saturation(const uint64_t* hashes, T& ID){
 	bool value_found = false;
 	std::vector<T> seenSet(hash_num);
 	
-	for(int i = 0; i < hash_num; i++){
+	for(unsigned i = 0; i < hash_num; i++){
 		T current_result = results[i] &
 					(btllib::MIBloomFilter<T>::ANTI_MASK &
 					btllib::MIBloomFilter<T>::ANTI_STRAND);
@@ -402,7 +402,7 @@ inline void MIBloomFilter<T>::insert_saturation(const uint64_t* hashes, T& ID){
 	if (!value_found) {
 		uint64_t replacement_pos = counts_array.size();
 		T min_count = std::numeric_limits<T>::min();
-		for (unsigned i = 0; i < hash_num; ++i) {
+		for (unsigned i = 0; i < hash_num; i++) {
 			T current_result = results[i] & btllib::MIBloomFilter<T>::ANTI_MASK;
 			if (find(replacementIDs.begin(), replacementIDs.end(), current_result) != replacementIDs.end()) {
 				if (min_count < counts_array[rank_pos[i]]) {
