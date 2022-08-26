@@ -168,7 +168,8 @@ public:
  
   /** Get population count, i.e. the number of 1 bits in the filter. */
   uint64_t get_pop_cnt();
-
+  /** Get saturation count, i.e. the number of ID's having 1 on leftest-bit in the filter. */
+  uint64_t get_pop_saturated_cnt();
 private:
   std::vector<uint64_t> get_rank_pos(const uint64_t* hashes) const;
   uint64_t get_rank_pos(const uint64_t hash) const { return bv_rank_support(hash % il_bit_vector.size()); }
@@ -518,6 +519,17 @@ MIBloomFilter<T>::get_pop_cnt()
   }
   return bv_rank_support(index) + 1;
 }
-
+template<typename T>
+inline uint64_t
+MIBloomFilter<T>::get_pop_saturated_cnt()
+{
+    size_t count = 0;
+    for (size_t i = 0; i < id_array_size; ++i) {
+      if (id_array[i] >= MASK) {
+        ++count;
+      }
+    }
+    return count;
+}
 } // namespace btllib
 #endif

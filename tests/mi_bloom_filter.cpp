@@ -174,6 +174,7 @@ main()
 		|| (!ID_3_found && (ID_4_found && ID_1_found && ID_2_found))
 		|| (!ID_4_found && (ID_1_found && ID_2_found && ID_3_found))
   );
+  TEST_ASSERT(mi_bf_4.get_pop_saturated_cnt());
   std::cerr << "multi-indexed BloomFilter saturation test success." << std::endl;
 
   // TODO: Test MIBloomFilter(sdsl::bit_vector& bit_vector, unsigned hash_num, std::string hash_fn = "");  
