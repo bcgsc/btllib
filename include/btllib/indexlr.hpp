@@ -38,8 +38,6 @@ public:
     static const unsigned BX = 2;
     /** Include read sequence along with minimizer information. */
     static const unsigned SEQ = 4;
-    /** Include read sequence Phred score along with minimizer information. */
-    static const unsigned QUAL = 4;
     /** Only include minimizers found in the first Bloom filter argument.
      */
     static const unsigned FILTER_IN = 8;
@@ -52,6 +50,8 @@ public:
     static const unsigned SHORT_MODE = 32;
     /** Optimizes performance for long sequences (approx. >5kbp) */
     static const unsigned LONG_MODE = 64;
+    /** Include read sequence Phred score along with minimizer information. */
+    static const unsigned QUAL = 128;
   };
 
   bool output_id() const { return bool(~flags & Flag::NO_ID); }
