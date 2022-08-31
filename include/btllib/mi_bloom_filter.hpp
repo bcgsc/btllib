@@ -120,14 +120,14 @@ public:
   * @param hashes Integer array of hash values. Array size should equal the
   * hash_num argument used when the Bloom filter was constructed.
   */
-  void insert_id(const uint64_t* hashes, T& ID);
+  void insert_id(const uint64_t* hashes, const T& ID);
 
   /**
   * Insert an element's hash values.
   *
   * @param hashes Integer vector of hash values.
   */
-  void insert_id(const std::vector<uint64_t>& hashes, T& ID) { insert_id(hashes.data(), ID); }
+  void insert_id(const std::vector<uint64_t>& hashes, const T& ID) { insert_id(hashes.data(), ID); }
 
   /**
   * Get the ID's for corresponding to the hashes.
@@ -149,7 +149,7 @@ public:
   * @param hashes Integer array of hash values. Array size should equal the
   * @param ID is the ID to look for.
   */
-  void insert_saturation(const uint64_t* hashes, T& ID);
+  void insert_saturation(const uint64_t* hashes, const T& ID);
 
  /**
  * Inserts saturation if ID is not represented after trying to survive.
@@ -157,7 +157,7 @@ public:
  * @param hashes Integer vector of hash values.
  * @param ID is the ID to look for.
  */
-  void insert_saturation(const std::vector<uint64_t>& hashes, T& ID) { insert_saturation(hashes.data(), ID); }
+  void insert_saturation(const std::vector<uint64_t>& hashes, const T& ID) { insert_saturation(hashes.data(), ID); }
  
   /**
   * Save the Bloom filter to a file that can be loaded in the future.
@@ -170,12 +170,14 @@ public:
   uint64_t get_pop_cnt();
   /** Get saturation count, i.e. the number of ID's having 1 on leftest-bit in the filter. */
   uint64_t get_pop_saturated_cnt();
+  /** Returns the occurence count for each ID in the miBF */
+  std::vector<size_t> get_ID_occurence_count(const bool& include_saturated);
 private:
   std::vector<uint64_t> get_rank_pos(const uint64_t* hashes) const;
   uint64_t get_rank_pos(const uint64_t hash) const { return bv_rank_support(hash % il_bit_vector.size()); }
   std::vector<T> get_data(const std::vector<uint64_t>& rank_pos) const;
-  T get_data(uint64_t rank) const { return id_array[rank]; }
-  void set_data(uint64_t pos, T id);
+  T get_data(const uint64_t& rank) const { return id_array[rank]; }
+  void set_data(const uint64_t& pos, const T& id);
   void set_saturated(const uint64_t* hashes);
   void write_header(std::ofstream& out) const;
 
@@ -354,7 +356,7 @@ MIBloomFilter<T>::complete_bv_insertion()
 }
 template<typename T>
 inline void 
-MIBloomFilter<T>::insert_id(const uint64_t* hashes, T& ID){
+MIBloomFilter<T>::insert_id(const uint64_t* hashes, const T& ID){
     assert(bv_insertion_completed && !id_insertion_completed);
     //hashSet values;
     //values.set_empty_key(il_bit_vector.size());
@@ -373,7 +375,7 @@ inline std::vector<T> MIBloomFilter<T>::get_id(const uint64_t* hashes){
 	return get_data(get_rank_pos(hashes));
 }
 template<typename T>
-inline void MIBloomFilter<T>::insert_saturation(const uint64_t* hashes, T& ID){
+inline void MIBloomFilter<T>::insert_saturation(const uint64_t* hashes, const T& ID){
 	std::vector<uint64_t> rank_pos = get_rank_pos(hashes);
 	std::vector<T> results = get_data(rank_pos);
 	std::vector<T> replacementIDs(hash_num);
@@ -422,14 +424,14 @@ inline void MIBloomFilter<T>::insert_saturation(const uint64_t* hashes, T& ID){
 	}
 }
 template<typename T>
-inline void MIBloomFilter<T>::set_data(uint64_t pos, T ID){
+inline void MIBloomFilter<T>::set_data(const uint64_t& pos, const T& ID){
 	T old_value;
 	do {
 		old_value = id_array[pos];
-		if (old_value > MASK) { // if the bucket was saturated, insert but keep saturation
-			ID |= MASK;
-		}
-	} while (!__sync_bool_compare_and_swap(&id_array[pos], old_value, ID)); 
+		//if (old_value > MASK) { // if the bucket was saturated, insert but keep saturation
+		//	ID |= MASK;
+		//}
+	} while (!__sync_bool_compare_and_swap(&id_array[pos], old_value, old_value > MASK ? (ID | MASK) : ID)); 
 }
 template<typename T>
 inline void MIBloomFilter<T>::set_saturated(const uint64_t* hashes){
@@ -530,6 +532,19 @@ MIBloomFilter<T>::get_pop_saturated_cnt()
       }
     }
     return count;
+}
+template<typename T>
+inline std::vector<size_t>
+MIBloomFilter<T>::get_ID_occurence_count(const bool& include_saturated)
+{
+	assert(bv_insertion_completed);
+        std::vector<size_t> ret_vec(MASK - 1,0);
+#pragma omp for
+        for(size_t k = 0; k < id_array_size; k++){
+		if(!include_saturated && id_array[k] > ANTI_MASK){continue;}
+                ret_vec[id_array[k] & ANTI_MASK]++;
+        }
+	return ret_vec;	
 }
 } // namespace btllib
 #endif

@@ -30,8 +30,11 @@ main()
   	TEST_ASSERT_EQ(id, ID_1);
   }
   std::cerr << "multi-indexed BloomFilter insertion successful" << std::endl;
-
-
+  
+  std::cerr << "Testing ID counting" << std::endl;
+  bool include_saturated = true;
+  TEST_ASSERT(mi_bf.get_ID_occurence_count(include_saturated)[ID_1] == 3)
+  std::cerr << "Testing ID counting successfull" << std::endl;
 
   std::cerr << "Testing multi-indexed BloomFilter random sampling" << std::endl;  
   std::string random_dna = "";
@@ -177,7 +180,6 @@ main()
   );
   TEST_ASSERT(mi_bf_4.get_pop_saturated_cnt() > 0);
   std::cerr << "multi-indexed BloomFilter saturation test success." << std::endl;
-
   // TODO: Test MIBloomFilter(sdsl::bit_vector& bit_vector, unsigned hash_num, std::string hash_fn = "");  
 
   return 0;
