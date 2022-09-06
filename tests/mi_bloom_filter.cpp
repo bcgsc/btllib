@@ -120,7 +120,6 @@ main()
   mi_bf_4.insert_saturation({ 500, 1000, 2000 }, ID_3);
   mi_bf_4.insert_saturation({ 500, 1000, 2000 }, ID_4);
   
-  // both should be represented unsaturated
   bool ID_1_found = false, ID_2_found = false, ID_3_found = false, ID_4_found = false;
   std::vector<uint8_t> results_3;
   results_3 =  mi_bf_4.get_id({ 1, 10, 100 });
@@ -128,13 +127,12 @@ main()
   // both of ID's should be found.
   for(auto& id : results_3){
   	ID_1_found = id == ID_1 ? true : ID_1_found;
-	ID_2_found = id == ID_1 ? true : ID_2_found;
+	ID_2_found = id == ID_2 ? true : ID_2_found;
   }
 
   TEST_ASSERT(ID_1_found);
   TEST_ASSERT(ID_2_found);
 
-  // all should be saturated
   ID_1_found = false, ID_2_found = false;
   results_3 =  mi_bf_4.get_id({ 500, 1000, 2000 });
 
