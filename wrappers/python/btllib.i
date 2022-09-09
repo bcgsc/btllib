@@ -67,3 +67,4 @@
 %include "btllib/mi_bloom_filter.hpp"
 %include "btllib/cstring.hpp"
 %include "btllib/nthash.hpp"
+%include "../extra_templates.i"

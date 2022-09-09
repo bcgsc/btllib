@@ -39,7 +39,7 @@ Using the library
   * `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
 - Running Python code:
   * The Python used to import btllib _must_ be the same as the one used to compile the library. Specifically, btllib uses `python3-config` to determine the flags used for compilation. Running `python3-config --exec-prefix` will give the path to the Python installation that needs to be used. The `python3` executable can be found at `$(python3-config --exec-prefix)/bin/python3`.
-  * The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. `btllib::SeqReader::Flag` in C++ versus `btllib.SeqReaderFlag` in Python).
+  * The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exceptions are nested classes which are prefixed with outer class name (e.g. `btllib::SeqReader::Flag` in C++ versus `btllib.SeqReaderFlag` in Python), and (Kmer)CountingBloomFilter which provides `CountingBloomFilter8`, `CountingBloomFilter16`, `CountingBloomFilter32`, `KmerCountingBloomFilter8`, `KmerCountingBloomFilter16`, `CountingBloomFilter32` with counters 8, 16, and 32 bits wide.
   * If you compiled btllib from source code and didn't install the Python wrappers, you can use `PYTHONPATH` environment variable or `sys.path.append()` in your Python code to include `$PREFIX/lib/btllib/python/btllib` directory to make btllib available to the interpreter.
   * Include the library with `import btllib`
 - Executables
