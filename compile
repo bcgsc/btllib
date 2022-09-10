@@ -176,7 +176,7 @@ if __name__ == "__main__":
     if [ -f {venv_path}/bin/activate ]; then
       . {venv_path}/bin/activate;
     fi &&
-    meson setup --buildtype release --prefix={args.prefix} {build_dir} &&
+    meson setup --buildtype release -Db_lto=true -Db_ndebug=true --prefix={args.prefix} {build_dir} &&
     cd {build_dir} &&
     ninja install &&
     cd .. &&
