@@ -6,7 +6,7 @@
 #include <chrono>
 #include <thread>
 
-std::chrono::milliseconds WORK_TIME(5);
+std::chrono::milliseconds WORK_TIME(2);
 
 void work()
 {
@@ -21,7 +21,7 @@ main(int argc, char** argv)
     std::exit(-1);
   }
 
-  btllib::SeqReader reader(argv[1], btllib::SeqReader::Flag::SHORT_MODE);
+  btllib::SeqReader reader(argv[1], btllib::SeqReader::Flag::LONG_MODE);
   omp_set_num_threads(std::atoi(argv[2]));
 
   int n = 0, slen = 0, qlen = 0;

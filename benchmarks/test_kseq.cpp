@@ -10,7 +10,7 @@ KSEQ_INIT(gzFile, gzread)
 #include <chrono>
 #include <thread>
 
-std::chrono::milliseconds WORK_TIME(5);
+std::chrono::milliseconds WORK_TIME(2);
 
 void work()
 {

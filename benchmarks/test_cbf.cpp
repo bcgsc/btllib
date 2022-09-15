@@ -8,9 +8,9 @@
 #include <type_traits>
 #include <string>
 
-const size_t                  CBF_SIZE = 10ULL * 1024ULL * 1024ULL * 1024ULL;
+const size_t                  CBF_SIZE = 3ULL * 1024ULL * 1024ULL * 1024ULL;
 const size_t                  SEEN_KMERS_BF_SIZE = 50ULL * 1024ULL * 1024ULL * 1024ULL;
-const unsigned long           MAX_READS = 250000;
+const unsigned long           MAX_READS = 50000;
 const unsigned                HASH_NUM = 4;
 const unsigned                K = 25;
 const std::vector<unsigned>   THREADS_NUMS = { 1, 16, 32, 64, 128 };

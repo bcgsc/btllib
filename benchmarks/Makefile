@@ -1,17 +1,18 @@
 READS_URL=ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR666/004/ERR6668574/ERR6668574.fastq.gz
 READS_TEST=reads.fq
 READS_LINES=1000000 # 250,000 reads
+BTLLIB_VERSION
 
 .PHONY: clean
 
 all:
-	$(MAKE) cbf_plot.png
 	$(MAKE) input_plot.png
+	$(MAKE) cbf_plot.png
 
 btllib:
-	wget https://github.com/bcgsc/btllib/releases/download/v1.4.6/btllib-1.4.6.tar.gz
-	tar zxf btllib-1.4.6.tar.gz
-	mv btllib-1.4.6 btllib
+	wget https://github.com/bcgsc/btllib/releases/download/v1.4.7/btllib-1.4.7.tar.gz
+	tar zxf btllib-1.4.7.tar.gz
+	mv btllib-1.4.7 btllib
 	export AR=gcc-ar
 	btllib/compile
 
