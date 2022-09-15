@@ -1,0 +1,19 @@
+#!/usr/bin/env Rscript
+
+library(tidyverse)
+library(reshape2)
+library(dplyr)
+library(grid)
+library(gridExtra)
+
+data <- read.csv('cbf_data.csv')
+
+ggplot(data, aes(x=threads, y=avg.counter.diff)) +
+  geom_point(size=6) +
+  theme_bw() + theme(text=element_text(size=30)) +
+  # Y-axis title should be "Average counter difference"
+  ylab("Average counter difference") +
+  # X-axis title should be "Number of threads"
+  xlab("Threads") +
+  scale_x_continuous(breaks=c(1, 25, 50, 75, 100, 125))
+ggsave('cbf_plot.png', width=8.75, height=8)

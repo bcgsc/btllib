@@ -1,0 +1,22 @@
+#!/bin/bash
+
+seqfile=$1
+threads=(16 32 64 128)
+repeats=3
+outfile=input_data.csv
+
+counter=0
+echo ",code,threads,time" >$outfile
+for i in $(seq 0 $((${#threads[@]}-1))); do
+  for j in $(seq $repeats); do
+    echo -n "${counter},seqreader,${threads[$i]}," >>$outfile
+    echo $(/usr/bin/time -pv ./test_seqreader $seqfile ${threads[$i]} 2>&1 | grep "Elapsed" | awk '{ print $8 }') >>$outfile
+
+    ((counter++))
+
+    echo -n "${counter},kseq,${threads[$i]}," >>$outfile
+    echo $(/usr/bin/time -pv bash -c "./test_kseq $seqfile ${threads[$i]}" 2>&1 | grep "Elapsed" | awk '{ print $8 }') >>$outfile
+
+    ((counter++))
+  done
+done

@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+
+import pandas as pd
+import sys
+
+def approx(f1, f2):
+  return abs(f1 - f2) < 0.0001
+
+data = { 'avg counter diff' : [], 'threads' : [], 'code' : [] }
+
+code = 'btllib'
+CBF_FPRs = -1
+seen_kmers_BF_FPR = -1
+with open(sys.argv[1]) as f:
+  for line in f:
+    line = line.strip()
+
+    tokens = line.split(' = ')
+    left = tokens[0]
+    right = ''
+    if len(tokens) >= 2: right = tokens[1]
+
+    if left == 'CBF FPRs':
+      fprs = [ float(x) for x in right.split(',') ]
+      if CBF_FPRs == -1:
+        CBF_FPRs = fprs
+      else:
+        for idx in range(len(CBF_FPRs)):
+          assert(approx(fprs[idx], CBF_FPRs[idx]))
+    elif left == 'Seen kmers BF FPR':
+      if seen_kmers_BF_FPR == -1:
+        seen_kmers_BF_FPR = float(right)
+      else:
+        assert(approx(float(right), seen_kmers_BF_FPR))
+      continue
+    elif left == 'Threads':
+      data['threads'].append(int(right))
+      data['code'].append(code)
+    elif left == 'Avg counter diff':
+      data['avg counter diff'].append(float(right))
+
+pd.DataFrame(data).to_csv(sys.argv[2])
