@@ -1,0 +1,38 @@
+Filling...
+CBF FPRs = 0.575369, 0.260833, 0.0918625
+Filled
+Running multithreaded scenarios...
+Threads = 64
+Filling...
+CBF FPRs = 0.575369, 0.260834, 0.0918645
+Filled
+Comparing...
+Seen kmers BF FPR = 3.42238e-09
+Total counters = 1610612736
+Diff counters = 6723606
+Diff sum = 10155886
+Avg counter diff = 0.0063056
+Compared
+	Command being timed: "./test_cbf 64 reads.fq"
+	User time (seconds): 89454.51
+	System time (seconds): 3083.57
+	Percent of CPU this job got: 2668%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 57:48.28
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 58736156
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1738151340
+	Voluntary context switches: 320674
+	Involuntary context switches: 40715
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 48
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

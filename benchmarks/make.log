@@ -1,0 +1,79 @@
+nohup: ignoring input
+make input_plot.png
+make[1]: Entering directory '/projects/btl/vnikolic/projects/2022/btllib/benchmarks'
+g++ -std=c++17 -fopenmp -pthread -march=native -O3 -flto -lz -lm test_kseq.cpp -o test_kseq -I/projects/btl/vnikolic/miniconda/include -L/projects/btl/vnikolic/miniconda/lib
+g++ -std=c++17 -fopenmp -pthread -march=native -O3 -flto test_seqreader.cpp -o test_seqreader -Ibtllib/install/include -Lbtllib/install/lib -lbtllib
+./run-test-input reads.fq
+./plot-input-data
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘lubridate’
+
+The following objects are masked from ‘package:base’:
+
+    date, intersect, setdiff, union
+
+make[1]: Leaving directory '/projects/btl/vnikolic/projects/2022/btllib/benchmarks'
+make cbf_plot.png
+make[1]: Entering directory '/projects/btl/vnikolic/projects/2022/btllib/benchmarks'
+g++ -std=c++17 -fopenmp -pthread -march=native -O3 -flto test_cbf.cpp -o test_cbf -Ibtllib/install/include -Lbtllib/install/lib -lbtllib
+./run-test-cbf reads.fq
+./join-cbf-logs test_cbf.log
+./gather-cbf-data test_cbf.log cbf_data.csv
+./plot-cbf-data
+── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+✔ tibble  3.1.8      ✔ dplyr   1.0.10
+✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+✔ readr   2.1.2      ✔ forcats 0.5.2 
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+
+Attaching package: ‘reshape2’
+
+The following object is masked from ‘package:tidyr’:
+
+    smiths
+
+
+Attaching package: ‘gridExtra’
+
+The following object is masked from ‘package:dplyr’:
+
+    combine
+
+make[1]: Leaving directory '/projects/btl/vnikolic/projects/2022/btllib/benchmarks'
+	Command being timed: "make"
+	User time (seconds): 451265.86
+	System time (seconds): 15842.18
+	Percent of CPU this job got: 2586%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:00:59
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 58736820
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 86
+	Minor (reclaiming a frame) page faults: 8718699345
+	Voluntary context switches: 14885099
+	Involuntary context switches: 252393
+	Swaps: 0
+	File system inputs: 115352
+	File system outputs: 17560
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,75 @@
+Filling...
+CBF FPRs = 0.575369, 0.260833, 0.0918625
+Filled
+Running multithreaded scenarios...
+Threads = 1
+Filling...
+CBF FPRs = 0.575369, 0.260833, 0.0918625
+Filled
+Comparing...
+Seen kmers BF FPR = 3.42238e-09
+Total counters = 1610612736
+Diff counters = 0
+Diff sum = 0
+Avg counter diff = 0
+Compared
+Filling...
+CBF FPRs = 0.575369, 0.260833, 0.0918625
+Filled
+Running multithreaded scenarios...
+Threads = 16
+Filling...
+CBF FPRs = 0.575369, 0.260834, 0.0918631
+Filled
+Comparing...
+Seen kmers BF FPR = 3.42238e-09
+Total counters = 1610612736
+Diff counters = 1653763
+Diff sum = 2446554
+Avg counter diff = 0.00151902
+Compared
+Filling...
+CBF FPRs = 0.575369, 0.260833, 0.0918625
+Filled
+Running multithreaded scenarios...
+Threads = 32
+Filling...
+CBF FPRs = 0.575369, 0.260834, 0.0918633
+Filled
+Comparing...
+Seen kmers BF FPR = 3.42238e-09
+Total counters = 1610612736
+Diff counters = 3381767
+Diff sum = 5066428
+Avg counter diff = 0.00314565
+Compared
+Filling...
+CBF FPRs = 0.575369, 0.260833, 0.0918625
+Filled
+Running multithreaded scenarios...
+Threads = 64
+Filling...
+CBF FPRs = 0.575369, 0.260834, 0.0918645
+Filled
+Comparing...
+Seen kmers BF FPR = 3.42238e-09
+Total counters = 1610612736
+Diff counters = 6723606
+Diff sum = 10155886
+Avg counter diff = 0.0063056
+Compared
+Filling...
+CBF FPRs = 0.575369, 0.260833, 0.0918625
+Filled
+Running multithreaded scenarios...
+Threads = 128
+Filling...
+CBF FPRs = 0.575369, 0.260838, 0.0918674
+Filled
+Comparing...
+Seen kmers BF FPR = 3.42238e-09
+Total counters = 1610612736
+Diff counters = 13159366
+Diff sum = 20160852
+Avg counter diff = 0.0125175
+Compared

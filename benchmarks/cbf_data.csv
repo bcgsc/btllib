@@ -1,0 +1,6 @@
+,avg counter diff,threads,code
+0,0.0,1,btllib
+1,0.00151902,16,btllib
+2,0.00314565,32,btllib
+3,0.0063056,64,btllib
+4,0.0125175,128,btllib

@@ -30,5 +30,5 @@ ggplot(timing, aes(x = threads, y = tm, color = Code)) +
   scale_color_manual(values=c("#56B4E9", "#E69F00")) +
   scale_x_continuous(breaks=c(1, 25, 50, 75, 100, 125), limits = c(0, 128)) +
   scale_y_time(labels = function(l) strftime(l, '%M:%S')) +
-  theme(legend.position = "top")
-ggsave("input_plot.png", width=8, height=8)
+  theme(legend.position = "top", plot.margin=unit(c(0.2, 2, 0.2, 0.2), 'cm'))
+ggsave("input_plot.png", width=8.75, height=8)

@@ -10,7 +10,8 @@ data <- read.csv('cbf_data.csv')
 
 ggplot(data, aes(x=threads, y=avg.counter.diff)) +
   geom_point(size=6) +
-  theme_bw() + theme(text=element_text(size=30)) +
+  theme_bw() + 
+  theme(text=element_text(size=30), plot.margin=unit(c(2, 1.25, 0.2, 0.2), 'cm')) +
   # Y-axis title should be "Average counter difference"
   ylab("Average counter difference") +
   # X-axis title should be "Number of threads"

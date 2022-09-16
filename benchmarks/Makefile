@@ -1,18 +1,18 @@
 READS_URL=ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR666/004/ERR6668574/ERR6668574.fastq.gz
 READS_TEST=reads.fq
 READS_LINES=1000000 # 250,000 reads
-BTLLIB_VERSION
+BTLLIB_VERSION=1.4.7
 
-.PHONY: clean
+.PHONY: clean scalability.png
 
 all:
 	$(MAKE) input_plot.png
 	$(MAKE) cbf_plot.png
 
 btllib:
-	wget https://github.com/bcgsc/btllib/releases/download/v1.4.7/btllib-1.4.7.tar.gz
-	tar zxf btllib-1.4.7.tar.gz
-	mv btllib-1.4.7 btllib
+	wget https://github.com/bcgsc/btllib/releases/download/v$(BTLLIB_VERSION)/btllib-$(BTLLIB_VERSION).tar.gz
+	tar zxf btllib-$(BTLLIB_VERSION).tar.gz
+	mv btllib-$(BTLLIB_VERSION) btllib
 	export AR=gcc-ar
 	btllib/compile
 
@@ -41,6 +41,9 @@ cbf_data.csv: $(READS_TEST) test_cbf
 
 cbf_plot.png: cbf_data.csv
 	./plot-cbf-data
+
+scalability.png:
+	convert cbf_plot.png input_plot.png +append $@
 
 clean:
 	$(RM) *.png *.csv *.log $(READS_TEST) test_kseq test_seqreader test_cbf
