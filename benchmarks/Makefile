@@ -1,7 +1,7 @@
 READS_URL=ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR666/004/ERR6668574/ERR6668574.fastq.gz
 READS_TEST=reads.fq
 READS_LINES=1000000 # 250,000 reads
-BTLLIB_VERSION=1.4.7
+BTLLIB_VERSION=1.4.8
 
 .PHONY: clean scalability.png
 
