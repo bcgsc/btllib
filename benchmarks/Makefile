@@ -26,7 +26,7 @@ test_seqreader: test_seqreader.cpp btllib
 	g++ -std=c++17 -fopenmp -pthread -march=native -O3 -flto $< -o $@ -Ibtllib/install/include -Lbtllib/install/lib -lbtllib
 
 test_kseq: test_kseq.cpp
-	g++ -std=c++17 -fopenmp -pthread -march=native -O3 -flto -lz -lm $< -o $@ -I/projects/btl/vnikolic/miniconda/include -L/projects/btl/vnikolic/miniconda/lib
+	g++ -std=c++17 -fopenmp -pthread -march=native -O3 -flto -lz -lm $< -o $@
 
 input_data.csv: $(READS_TEST) test_kseq test_seqreader
 	./run-test-input $<
