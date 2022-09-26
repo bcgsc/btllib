@@ -265,11 +265,13 @@ open_comm_pipes(
         unlink(pipepath.c_str());
       }
       auto ret = mkfifo(pipepath.c_str(), OPEN_MODE);
-      check_error(ret != 0, "Process pipeline: mkfifo error: " + get_strerror());
+      check_error(ret != 0,
+                  "Process pipeline: mkfifo error: " + get_strerror());
 
       len = pipepath.size() + 1;
-      check_error(len > COMM_BUFFER_SIZE,
-                  "Process pipeline: Pipe path length too large for the buffer.");
+      check_error(
+        len > COMM_BUFFER_SIZE,
+        "Process pipeline: Pipe path length too large for the buffer.");
       check_error(!write_to_user(&len, sizeof(len)) ||
                     !write_to_user(pipepath.c_str(), len),
                   "Process pipeline: Communication failure.");
@@ -314,8 +316,7 @@ redirect_io(const int in_fd, const int out_fd, const int err_fd)
 {
   if (in_fd != STDIN_FILENO) {
     auto ret = dup2(in_fd, STDIN_FILENO);
-    check_error(ret == -1,
-                "Process pipeline: dup2 failed: " + get_strerror());
+    check_error(ret == -1, "Process pipeline: dup2 failed: " + get_strerror());
     ret = close(in_fd);
     check_error(ret != 0,
                 "Process pipeline: File descriptor close error: " +
@@ -323,17 +324,15 @@ redirect_io(const int in_fd, const int out_fd, const int err_fd)
   }
   if (out_fd != STDOUT_FILENO) {
     auto ret = dup2(out_fd, STDOUT_FILENO);
-    check_error(ret == -1,
-                "Process pipeline: dup2 failed: " + get_strerror());
-    ret = close(out_fd); 
+    check_error(ret == -1, "Process pipeline: dup2 failed: " + get_strerror());
+    ret = close(out_fd);
     check_error(ret != 0,
                 "Process pipeline: File descriptor close error: " +
                   get_strerror());
   }
   if (err_fd != STDERR_FILENO) {
     auto ret = dup2(err_fd, STDERR_FILENO);
-    check_error(ret == -1,
-                "Process pipeline: dup2 failed: " + get_strerror());
+    check_error(ret == -1, "Process pipeline: dup2 failed: " + get_strerror());
     ret = close(err_fd);
     check_error(ret != 0,
                 "Process pipeline: File descriptor close error: " +
@@ -603,12 +602,10 @@ run_cmd()
       check_error(pipe(chainpipe_in_fd) == -1,
                   "Process pipeline: Error opening a pipe.");
       auto ret = fcntl(chainpipe_in_fd[PIPE_READ_END], F_SETFD, FD_CLOEXEC);
-      check_error(ret ==
-                    -1,
+      check_error(ret == -1,
                   "Process pipeline: fcntl error: " + get_strerror());
       ret = fcntl(chainpipe_in_fd[PIPE_WRITE_END], F_SETFD, FD_CLOEXEC);
-      check_error(ret ==
-                    -1,
+      check_error(ret == -1,
                   "Process pipeline: fcntl error: " + get_strerror());
     }
 
