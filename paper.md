@@ -55,15 +55,43 @@ btllib has helped enable bioinformatics scientific publications, including ntJoi
 
 The library has the implementation of the following algorithms and data structures:
 
-- **ntHash** [@10.1093/bioinformatics/btw397] A very efficient DNA/RNA rolling hash function, an order of magnitude faster than the best performing alternatives in typical use cases. The implementation  includes hashing sequences with spaced seeds as well as feeding arbitrary nucleotides for implicit hash-based graph traversal.
+- **ntHash** [@10.1093/bioinformatics/btw397] A very efficient DNA/RNA rolling hash function, an order of magnitude faster than the best performing alternatives in typical use cases. The implementation  includes hashing sequences with spaced seeds as well as feeding arbitrary nucleotides for implicit hash-based graph traversal. The following example produces 4 hashes per 6-mer for the `seq` sequence:
+```
+    std::string seq = "ACTAGCTATGC";
+    int hash_num = 4;
+    int k = 6;
+    btllib::NtHash nthash(seq, hash_num, k);
+    while (nthash.roll()) {
+        for (int i = 0; i < hash_num; i++) {
+            std::cout << nthash.hashes()[i] << '\n';
+        }
+    }
+```
 - **Bloom filter** A generic Bloom filter data structure. Thread safe and allows insertion of an array of hash values per element. Allows saving to disk with the associated metadata.
-- **Counting Bloom filter** A Bloom filter data structure that allows counting the number of times an element has been inserted. Allows multithreaded insertion of elements while minimizing the effect of race conditions and preserving data integrity at a statistical level. This design was motivated by the need to maximize performance, as a fully thread safe counting Bloom filter would be unnecessarily slow. \autoref{fig:scalability} A) shows the effect of race condition mitigation. Allows saving to disk with the associated metadata.
+- **Counting Bloom filter** A Bloom filter data structure that allows counting the number of times an element has been inserted. Allows multithreaded insertion of elements while minimizing the effect of race conditions and preserving data integrity at a statistical level. This design was motivated by the need to maximize performance, as a fully thread safe counting Bloom filter would be unnecessarily slow. \autoref{fig:scalability} A) shows the effect of race condition mitigation. Allows saving to disk with the associated metadata. The following example stores all 6-mers from `seq` into the counting Bloom filter and then checks for their presence:
+```
+    std::string seq = "ACTAGCTATGC";
+    int hash_num = 4;
+    int k = 6;
+    int bytes = 1024;
+    btllib::KmerCountingBloomFilter8 kcbf(bytes, hash_num, k);
+    kcbf.insert(seq);
+    assert(kcbf.contains(seq) == seq.size() - k + 1);
+```
 - **Multi-index Bloom filter** [@doi:10.1073/pnas.1903436117] A Bloom filter data structure that associates integer indices/IDs with the inserted elements. Like the counting Bloom filter, the race conditions are minimized for multithreaded insertion.
 - **Indexlr** An optimized and versatile minimizer calculator, originally part of the Physlr tool [@dna2020009]. For a given sequence file, Indexlr produces minimizer hash values given a k-mer size and a window size. Optionally outputs minimizer sequence, sequence length, position, and strand. The library also includes an indexlr executable that produces minimizers from a given sequence file.
-- **Sequence I/O** SeqReader and SeqWriter classes provide efficient and flexible I/O for sequence files. SeqReader is capable of reading sequences in different formats such as FASTA and FASTQ including multiline, and SAM format. The format is automatically detected even without file extension or if the data is piped. SeqReader also supports multiple threads to read in parallel, each thread receiving a copy of the sequence that can be modified as well as ad-hoc compression and decompression of the data in common formats (gzip, bzip2, xz, lrzip, zip, 7zip). \autoref{fig:scalability} B) shows the scalability of using multiple threads to load and process sequences.
+- **Sequence I/O** SeqReader and SeqWriter classes provide efficient and flexible I/O for sequence files. SeqReader is capable of reading sequences in different formats such as FASTA and FASTQ including multiline, and SAM format. The format is automatically detected even without file extension or if the data is piped. SeqReader also supports multiple threads to read in parallel, each thread receiving a copy of the sequence that can be modified as well as ad-hoc compression and decompression of the data in common formats (gzip, bzip2, xz, lrzip, zip, 7zip). \autoref{fig:scalability} B) shows the scalability of using multiple threads to load and process sequences. The following example demonstrates the ease of use of SeqReader in a multithreaded environment using OpenMP. The sequences are loaded from `my_reads.fq.gz` in a mode optimized for long reads:
+```
+    int flags = btllib::SeqReader::Flag::LONG_MODE;
+    btllib::SeqReader reader("my_reads.fq.gz", flags);
+    #pragma omp parallel
+    for (const auto record : reader) {
+        std::cout << record.seq << '\n';
+    }
+```
 - **Utility functions** Various functions for common tasks such as reverse complementation, string manipulation, and logging.
 
-![**A)** The average counter difference between 3GiB Counting Bloom Filters with single threaded and multithreaded insertion of k-mers of 50,000 long reads. The single threaded version does not suffer from race conditions and thus has the ground truth. The more threads we add the more visible is the effect of race conditions, but thanks to the mitigation mechanism, the differences are small. **B)** Wall-clock time it takes to read in and run a simulated workload of 2ms per read on 250,000 long reads. The blue data points use efficient sequence reading code, kseq [@kseq], surrounded by a naive implementation of a critical section,  while the orange data points use SeqReader. Unlike the critical section implementation which plateaus after a number of threads, SeqReader scales well and keeps benefitting even from higher number of threads.\label{fig:scalability}](scalability.png){ width=100% }
+![**A)** The average counter difference between 3GiB Counting Bloom Filters with single threaded and multithreaded insertion of k-mers of 50,000 long reads. The single threaded version does not suffer from race conditions and thus has the ground truth. The more threads we add the more visible is the effect of race conditions, but thanks to the mitigation mechanism, the differences are small. **B)** Wall-clock time it takes to read in and run a simulated workload of 2ms per read on 250,000 long reads. The blue data points use efficient sequence reading code, kseq [@kseq], surrounded by a naive implementation of a critical section,  while the orange data points use SeqReader. Unlike the critical section implementation which plateaus after a number of threads, SeqReader scales well and keeps benefitting even from higher number of threads. SeqReader performs particularly well if used by multiple threads when loading long reads, as their length increases the time spent in I/O and thus in the critical section as well.\label{fig:scalability}](scalability.png){ width=100% }
 
 # Acknowledgements
 
