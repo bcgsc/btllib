@@ -55,7 +55,7 @@ btllib has helped enable bioinformatics scientific publications, including ntJoi
 
 The library has the implementation of the following algorithms and data structures:
 
-- **ntHash** [@10.1093/bioinformatics/btw397] A very efficient DNA/RNA rolling hash function, an order of magnitude faster than the best performing alternatives in typical use cases. The implementation  includes hashing sequences with spaced seeds as well as feeding arbitrary nucleotides for implicit hash-based graph traversal. The following example produces 4 hashes per 6-mer for the `seq` sequence:
+- **ntHash** A very efficient DNA/RNA rolling hash function, an order of magnitude faster than the best performing alternatives in typical use cases. The implementation  includes hashing sequences with spaced seeds as well as feeding arbitrary nucleotides for implicit hash-based graph traversal. Code adapted from the ntHash publication [@10.1093/bioinformatics/btw397]. The following example produces 4 hashes per 6-mer for the `seq` sequence:
 ```
     std::string seq = "ACTAGCTATGC";
     int hash_num = 4;
@@ -78,8 +78,8 @@ The library has the implementation of the following algorithms and data structur
     kcbf.insert(seq);
     assert(kcbf.contains(seq) == seq.size() - k + 1);
 ```
-- **Multi-index Bloom filter** [@doi:10.1073/pnas.1903436117] A Bloom filter data structure that associates integer indices/IDs with the inserted elements. Like the counting Bloom filter, the race conditions are minimized for multithreaded insertion.
-- **Indexlr** An optimized and versatile minimizer calculator, originally part of the Physlr tool [@dna2020009]. For a given sequence file, Indexlr produces minimizer hash values given a k-mer size and a window size. Optionally outputs minimizer sequence, sequence length, position, and strand. The library also includes an indexlr executable that produces minimizers from a given sequence file.
+- **Multi-index Bloom filter** A Bloom filter data structure that associates integer indices/IDs with the inserted elements. Like the counting Bloom filter, the race conditions are minimized for multithreaded insertion. Code adapted from the Multi-index Bloom filter publication [@doi:10.1073/pnas.1903436117].
+- **Indexlr** An optimized and versatile minimizer calculator. For a given sequence file, Indexlr produces minimizer hash values given a k-mer size and a window size. Optionally outputs minimizer sequence, sequence length, position, and strand. The library also includes an indexlr executable that produces minimizers from a given sequence file. Code adapted from the Physlr publication [@dna2020009].
 - **Sequence I/O** SeqReader and SeqWriter classes provide efficient and flexible I/O for sequence files. SeqReader is capable of reading sequences in different formats such as FASTA and FASTQ including multiline, and SAM format. The format is automatically detected even without file extension or if the data is piped. SeqReader also supports multiple threads to read in parallel, each thread receiving a copy of the sequence that can be modified as well as ad-hoc compression and decompression of the data in common formats (gzip, bzip2, xz, lrzip, zip, 7zip). \autoref{fig:scalability} B) shows the scalability of using multiple threads to load and process sequences. The following example demonstrates the ease of use of SeqReader in a multithreaded environment using OpenMP. The sequences are loaded from `my_reads.fq.gz` in a mode optimized for long reads:
 ```
     int flags = btllib::SeqReader::Flag::LONG_MODE;
