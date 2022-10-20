@@ -207,6 +207,12 @@ main()
     TEST_ASSERT_EQ(cbf.contains(hashes), 1);
     cbf.remove(hashes);
     TEST_ASSERT_EQ(cbf.contains(hashes), 0);
+    cbf.insert(hashes);
+    cbf.insert(hashes);
+    cbf.insert(hashes);
+    TEST_ASSERT_EQ(cbf.contains(hashes), 3);
+    cbf.clear(hashes);
+    TEST_ASSERT_EQ(cbf.contains(hashes), 0);
   }
 
   return 0;

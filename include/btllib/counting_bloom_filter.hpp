@@ -90,11 +90,26 @@ public:
   void remove(const uint64_t* hashes);
 
   /**
-   * @brief Delete an element.
+   * Delete an element.
    *
    * @param hashes Integer vector of the element's hash values.
    */
   void remove(const std::vector<uint64_t>& hashes) { remove(hashes.data()); }
+
+  /**
+   * Set the count of an element to zero.
+   *
+   * @param hashes Integer array of the element's hash values. Array size should
+   * equal the hash_num argument used when the Bloom filter was constructed.
+   */
+  void clear(const uint64_t* hashes) { remove(hashes, 0); }
+
+  /**
+   * Set the count of an element to zero.
+   *
+   * @param hashes Integer vector of the element's hash values.
+   */
+  void clear(const std::vector<uint64_t>& hashes) { clear(hashes.data()); }
 
   /**
    * Get the count of an element.
@@ -262,6 +277,7 @@ private:
   CountingBloomFilter(const std::shared_ptr<BloomFilterInitializer>& bfi);
 
   void insert(const uint64_t* hashes, T min_val);
+  void remove(const uint64_t* hashes, T new_val);
 
   friend class KmerCountingBloomFilter<T>;
 
@@ -341,7 +357,7 @@ public:
   }
 
   /**
-   * Delete a sequence's k-mer from the filter.
+   * Decrease the counts of a sequence's k-mers from the filter.
    *
    * @param seq Sequence to k-merize.
    * @param seq_len Length of seq.
@@ -349,15 +365,14 @@ public:
   void remove(const char* seq, size_t seq_len);
 
   /**
-   * Delete a sequence's k-mer from the filter.
+   * Decrease the counts of a sequence's k-mers from the filter.
    *
-   * @param hashes Integer array of the k-mer's hash values. Array size should
-   * equal the hash_num argument used when the Bloom filter was constructed.
+   * @param seq Sequence to k-merize.
    */
   void remove(const std::string& seq) { remove(seq.c_str(), seq.size()); }
 
   /**
-   * Delete a sequence's k-mer from the filter.
+   * Decrease the counts of a sequence's k-mers from the filter.
    *
    * @param hashes Integer array of the k-mer's hash values. Array size should
    * equal the hash_num argument used when the Bloom filter was constructed.
@@ -365,13 +380,46 @@ public:
   void remove(const uint64_t* hashes) { counting_bloom_filter.remove(hashes); }
 
   /**
-   * Delete a sequence's k-mer from the filter.
+   * Decrease the counts of a sequence's k-mers from the filter.
    *
    * @param hashes Integer vector of the k-mer's hash values.
    */
   void remove(const std::vector<uint64_t>& hashes)
   {
     counting_bloom_filter.remove(hashes);
+  }
+
+  /**
+   * Set the counts of a sequence's k-mers to zero in the filter.
+   *
+   * @param seq Sequence to k-merize.
+   * @param seq_len Length of seq.
+   */
+  void clear(const char* seq, size_t seq_len);
+
+  /**
+   * Set the counts of a sequence's k-mers to zero in the filter.
+   *
+   * @param seq Sequence to k-merize.
+   */
+  void clear(const std::string& seq) { clear(seq.c_str(), seq.size()); }
+
+  /**
+   * Set the counts of a sequence's k-mers to zero in the filter.
+   *
+   * @param hashes Integer array of the k-mer's hash values. Array size should
+   * equal the hash_num argument used when the Bloom filter was constructed.
+   */
+  void clear(const uint64_t* hashes) { counting_bloom_filter.clear(hashes); }
+
+  /**
+   * Set the counts of a sequence's k-mers to zero in the filter.
+   *
+   * @param hashes Integer vector of the k-mer's hash values.
+   */
+  void clear(const std::vector<uint64_t>& hashes)
+  {
+    counting_bloom_filter.clear(hashes);
   }
 
   /**
@@ -763,13 +811,12 @@ CountingBloomFilter<T>::insert(const uint64_t* hashes)
 
 template<typename T>
 inline void
-CountingBloomFilter<T>::remove(const uint64_t* hashes)
+CountingBloomFilter<T>::remove(const uint64_t* hashes, T new_val)
 {
   const auto count = contains(hashes);
   bool update_done = false;
-  T new_val, tmp_max_val, max_val = count;
+  T tmp_max_val, max_val = count;
   while (true) {
-    new_val = count - 1;
     for (size_t i = 0; i < hash_num; ++i) {
       tmp_max_val = count;
       update_done = array[hashes[i] % array_size].compare_exchange_strong(
@@ -779,6 +826,13 @@ CountingBloomFilter<T>::remove(const uint64_t* hashes)
       break;
     }
   }
+}
+
+template<typename T>
+inline void
+CountingBloomFilter<T>::remove(const uint64_t* hashes)
+{
+  remove(hashes, contains(hashes) - 1);
 }
 
 template<typename T>
@@ -962,6 +1016,16 @@ KmerCountingBloomFilter<T>::remove(const char* seq, size_t seq_len)
   NtHash nthash(seq, seq_len, get_hash_num(), get_k());
   while (nthash.roll()) {
     counting_bloom_filter.remove(nthash.hashes());
+  }
+}
+
+template<typename T>
+inline void
+KmerCountingBloomFilter<T>::clear(const char* seq, size_t seq_len)
+{
+  NtHash nthash(seq, seq_len, get_hash_num(), get_k());
+  while (nthash.roll()) {
+    counting_bloom_filter.clear(nthash.hashes());
   }
 }
 
