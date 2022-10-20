@@ -814,17 +814,9 @@ inline void
 CountingBloomFilter<T>::remove(const uint64_t* hashes, T new_val)
 {
   const auto count = contains(hashes);
-  bool update_done = false;
-  T tmp_max_val, max_val = count;
-  while (true) {
-    for (size_t i = 0; i < hash_num; ++i) {
-      tmp_max_val = count;
-      update_done = array[hashes[i] % array_size].compare_exchange_strong(
-        tmp_max_val, new_val);
-    }
-    if (update_done || (max_val = contains(hashes)) == 0) {
-      break;
-    }
+  for (size_t i = 0; i < hash_num; ++i) {
+    T tmp_max_val = count;
+    array[hashes[i] % array_size].compare_exchange_strong(tmp_max_val, new_val);
   }
 }
 
