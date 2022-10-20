@@ -194,5 +194,20 @@ main()
   std::cerr << "Seqs with more than 1 presence = " << more_than_1 << std::endl;
   TEST_ASSERT_GT(more_than_1, 5);
 
+  {
+    std::cerr << "Testing CBF element deletion" << std::endl;
+    std::vector<uint64_t> hashes = { 0x47c80ef7eab,
+                                     0x8b4a469ef6,
+                                     0x32e7ab5203 };
+    btllib::CountingBloomFilter8 cbf(64, hashes.size());
+    cbf.insert(hashes);
+    cbf.insert(hashes);
+    TEST_ASSERT_EQ(cbf.contains(hashes), 2);
+    cbf.remove(hashes);
+    TEST_ASSERT_EQ(cbf.contains(hashes), 1);
+    cbf.remove(hashes);
+    TEST_ASSERT_EQ(cbf.contains(hashes), 0);
+  }
+
   return 0;
 }

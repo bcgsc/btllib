@@ -82,6 +82,21 @@ public:
   void insert(const std::vector<uint64_t>& hashes) { insert(hashes.data()); }
 
   /**
+   * Delete an element.
+   *
+   * @param hashes Integer array of the element's hash values. Array size should
+   * equal the hash_num argument used when the Bloom filter was constructed.
+   */
+  void remove(const uint64_t* hashes);
+
+  /**
+   * @brief Delete an element.
+   *
+   * @param hashes Integer vector of the element's hash values.
+   */
+  void remove(const std::vector<uint64_t>& hashes) { remove(hashes.data()); }
+
+  /**
    * Get the count of an element.
    *
    * @param hashes Integer array of the element's hash values. Array size should
@@ -323,6 +338,40 @@ public:
   void insert(const std::vector<uint64_t>& hashes)
   {
     counting_bloom_filter.insert(hashes);
+  }
+
+  /**
+   * Delete a sequence's k-mer from the filter.
+   *
+   * @param seq Sequence to k-merize.
+   * @param seq_len Length of seq.
+   */
+  void remove(const char* seq, size_t seq_len);
+
+  /**
+   * Delete a sequence's k-mer from the filter.
+   *
+   * @param hashes Integer array of the k-mer's hash values. Array size should
+   * equal the hash_num argument used when the Bloom filter was constructed.
+   */
+  void remove(const std::string& seq) { remove(seq.c_str(), seq.size()); }
+
+  /**
+   * Delete a sequence's k-mer from the filter.
+   *
+   * @param hashes Integer array of the k-mer's hash values. Array size should
+   * equal the hash_num argument used when the Bloom filter was constructed.
+   */
+  void remove(const uint64_t* hashes) { counting_bloom_filter.remove(hashes); }
+
+  /**
+   * Delete a sequence's k-mer from the filter.
+   *
+   * @param hashes Integer vector of the k-mer's hash values.
+   */
+  void remove(const std::vector<uint64_t>& hashes)
+  {
+    counting_bloom_filter.remove(hashes);
   }
 
   /**
@@ -713,6 +762,26 @@ CountingBloomFilter<T>::insert(const uint64_t* hashes)
 }
 
 template<typename T>
+inline void
+CountingBloomFilter<T>::remove(const uint64_t* hashes)
+{
+  const auto count = contains(hashes);
+  bool update_done = false;
+  T new_val, tmp_max_val, max_val = count;
+  while (true) {
+    new_val = count - 1;
+    for (size_t i = 0; i < hash_num; ++i) {
+      tmp_max_val = count;
+      update_done = array[hashes[i] % array_size].compare_exchange_strong(
+        tmp_max_val, new_val);
+    }
+    if (update_done || (max_val = contains(hashes)) == 0) {
+      break;
+    }
+  }
+}
+
+template<typename T>
 inline T
 CountingBloomFilter<T>::contains(const uint64_t* hashes) const
 {
@@ -883,6 +952,16 @@ KmerCountingBloomFilter<T>::insert(const char* seq, size_t seq_len)
   NtHash nthash(seq, seq_len, get_hash_num(), get_k());
   while (nthash.roll()) {
     counting_bloom_filter.insert(nthash.hashes());
+  }
+}
+
+template<typename T>
+inline void
+KmerCountingBloomFilter<T>::remove(const char* seq, size_t seq_len)
+{
+  NtHash nthash(seq, seq_len, get_hash_num(), get_k());
+  while (nthash.roll()) {
+    counting_bloom_filter.remove(nthash.hashes());
   }
 }
 
