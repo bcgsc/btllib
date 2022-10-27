@@ -87,7 +87,7 @@ public:
    * @param hashes Integer array of the element's hash values. Array size should
    * equal the hash_num argument used when the Bloom filter was constructed.
    */
-  void remove(const uint64_t* hashes);
+  void remove(const uint64_t* hashes) { update(hashes, contains(hashes) - 1); }
 
   /**
    * Delete an element.
@@ -277,7 +277,7 @@ private:
   CountingBloomFilter(const std::shared_ptr<BloomFilterInitializer>& bfi);
 
   void insert(const uint64_t* hashes, T min_val);
-  void remove(const uint64_t* hashes, T new_val);
+  void update(const uint64_t* hashes, T new_val);
 
   friend class KmerCountingBloomFilter<T>;
 
@@ -811,20 +811,12 @@ CountingBloomFilter<T>::insert(const uint64_t* hashes)
 
 template<typename T>
 inline void
-CountingBloomFilter<T>::remove(const uint64_t* hashes, T new_val)
+CountingBloomFilter<T>::update(const uint64_t* hashes, T new_val)
 {
   const auto count = contains(hashes);
   for (size_t i = 0; i < hash_num; ++i) {
-    T tmp_max_val = count;
-    array[hashes[i] % array_size].compare_exchange_strong(tmp_max_val, new_val);
+    array[hashes[i] % array_size].compare_exchange_strong(count, new_val);
   }
-}
-
-template<typename T>
-inline void
-CountingBloomFilter<T>::remove(const uint64_t* hashes)
-{
-  remove(hashes, contains(hashes) - 1);
 }
 
 template<typename T>
