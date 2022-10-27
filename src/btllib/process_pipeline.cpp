@@ -805,7 +805,7 @@ process_spawner_init()
 
 ProcessPipeline::ProcessPipeline(const std::string& cmd)
 {
-  std::unique_lock<std::mutex> lock(process_spawner_comm_mutex);
+  const std::unique_lock<std::mutex> lock(process_spawner_comm_mutex);
 
   const auto op = PipelineOperation::RUN;
   check_error(!write_to_spawner(&op, sizeof(op)),
@@ -903,7 +903,7 @@ ProcessPipeline::end()
     close_in();
     close_out();
 
-    std::unique_lock<std::mutex> lock(process_spawner_comm_mutex);
+    const std::unique_lock<std::mutex> lock(process_spawner_comm_mutex);
 
     const auto op = PipelineOperation::END;
     check_error(!write_to_spawner(&op, sizeof(op)) ||

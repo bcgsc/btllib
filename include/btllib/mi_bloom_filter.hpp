@@ -84,9 +84,9 @@ public:
     unsigned colli_count = 0;
     for (unsigned i = 0; i < hash_num; ++i) {
       const int magic = 0x3f;
-      uint64_t pos = hash_values[i] % bv.size();
+      const uint64_t pos = hash_values[i] % bv.size();
       uint64_t* data_index = bv.data() + (pos >> 6); // NOLINT
-      uint64_t bit_mask_value = (uint64_t)1 << (pos & magic);
+      const uint64_t bit_mask_value = (uint64_t)1 << (pos & magic);
       colli_count +=
         __sync_fetch_and_or(data_index, bit_mask_value) >> (pos & magic) & 1;
     }
@@ -208,7 +208,7 @@ public:
 
         log_info("MIBloomFilter: Loading data vector");
 
-        long int l_cur_pos = ftell(file);
+        const long int l_cur_pos = ftell(file);
         auto ret = fseek(file, 0, 2);
         check_error(ret != 0,
                     "MIBloomFilter: Failed to seek to end of file: " +
@@ -233,7 +233,7 @@ public:
       }
 
       else {
-        std::string bv_filename = filter_file_path + ".sdsl";
+        const std::string bv_filename = filter_file_path + ".sdsl";
         log_info("MIBloomFilter: Loading sdsl interleaved bit vector from: " +
                  bv_filename);
         load_from_file(m_bv, bv_filename);
@@ -280,7 +280,7 @@ public:
                     "MIBloomFilter: " + filter_file_path +
                       " could not be read.");
       } else {
-        std::string bv_filename = filter_file_path + ".sdsl";
+        const std::string bv_filename = filter_file_path + ".sdsl";
         //				std::cerr << "Storing sdsl interleaved
         // bit
         // vector to: " << bv_filename

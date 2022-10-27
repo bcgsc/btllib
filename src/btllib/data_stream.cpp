@@ -133,7 +133,7 @@ get_datatype_cmd(const std::string& path,
   for (const auto& existence_cmd : datatype.cmds_check_existence) {
     const pid_t pid = fork();
     if (pid == 0) {
-      int null_fd = open("/dev/null", O_WRONLY, 0);
+      const int null_fd = open("/dev/null", O_WRONLY, 0);
       dup2(null_fd, STDOUT_FILENO);
       dup2(null_fd, STDERR_FILENO);
       close(null_fd);

@@ -695,8 +695,11 @@ CountingBloomFilter<T>::insert(const uint64_t* hashes, T min_val)
       update_done = array[hashes[i] % array_size].compare_exchange_strong(
         tmp_min_val, new_val);
     }
-    if (update_done ||
-        (min_val = contains(hashes)) == std::numeric_limits<T>::max()) {
+    if (update_done) {
+      break;
+    }
+    min_val = contains(hashes);
+    if (min_val == std::numeric_limits<T>::max()) {
       break;
     }
   }

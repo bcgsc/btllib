@@ -97,7 +97,7 @@ bool
 SeqReader::load_buffer()
 {
   buffer.start = 0;
-  char last = buffer.end > 0 ? buffer.data[buffer.end - 1] : char(0);
+  const char last = buffer.end > 0 ? buffer.data[buffer.end - 1] : char(0);
   buffer.end = 0;
   do {
     buffer.end += fread(buffer.data.data() + buffer.end,
@@ -224,7 +224,7 @@ void
 SeqReader::determine_format()
 {
   load_buffer();
-  bool empty = buffer.end - buffer.start == 1;
+  const bool empty = buffer.end - buffer.start == 1;
   check_warning(empty, std::string(source_path) + " is empty.");
 
   if (empty) {
@@ -254,7 +254,7 @@ SeqReader::start_reader()
 {
   reader_thread = std::unique_ptr<std::thread>(new std::thread([this]() {
     {
-      std::unique_lock<std::mutex> lock(format_mutex);
+      const std::unique_lock<std::mutex> lock(format_mutex);
       determine_format();
       format_cv.notify_all();
     }
@@ -330,10 +330,11 @@ SeqReader::start_processors()
                 break;
               }
             }
-            size_t id_start = (format == Format::FASTA ||
-                               format == Format::FASTQ || format == Format::SAM)
-                                ? 1
-                                : 0;
+            const size_t id_start =
+              (format == Format::FASTA || format == Format::FASTQ ||
+               format == Format::SAM)
+                ? 1
+                : 0;
 
             switch (format) {
               case Format::FASTA:
@@ -400,7 +401,7 @@ SeqReader::start_processors()
             }
             if (fold_case()) {
               for (auto& c : seq) {
-                char old = c;
+                const char old = c;
                 c = CAPITALS[(unsigned char)(c)];
                 if (!bool(c)) {
                   log_error(std::string("A sequence contains invalid "

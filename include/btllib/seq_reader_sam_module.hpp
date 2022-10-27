@@ -46,7 +46,8 @@ SeqReaderSamModule::read_buffer(ReaderType& reader, RecordType& record)
   (void)reader;
   (void)record;
   {
-    ProcessPipeline version_test("samtools --version 2>/dev/stdout | head -n2");
+    const ProcessPipeline version_test(
+      "samtools --version 2>/dev/stdout | head -n2");
     char* line = nullptr;
     size_t n = 0;
     std::string version = "\n";

@@ -67,7 +67,7 @@ SeqWriter::write(const std::string& id,
   }
 
   {
-    std::unique_lock<std::mutex> lock(mutex);
+    const std::unique_lock<std::mutex> lock(mutex);
     if (fwrite(output.c_str(), 1, output.size(), sink) != output.size()) {
       log_error("SeqWriter: fwrite failed: " + get_strerror());
     }
