@@ -97,10 +97,10 @@ jobs:
   - script: |
       set -o errexit -o pipefail
       brew update
-      brew install llvm libomp boost samtools coreutils xz lrzip
+      brew install llvm clang-format libomp boost samtools coreutils xz lrzip
       brew tap adoptopenjdk/openjdk
       brew install --cask adoptopenjdk11
-      sudo ln -sf $(brew --prefix llvm)/bin/clang-format /usr/local/bin/clang-format
+      #sudo ln -sf $(brew --prefix llvm)/bin/clang-format /usr/local/bin/clang-format
       sudo ln -sf $(brew --prefix llvm)/bin/clang-tidy /usr/local/bin/clang-tidy
       sudo pip3 install ninja meson cmake
     displayName: 'Install required software'
