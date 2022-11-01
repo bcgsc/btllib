@@ -87,7 +87,7 @@ public:
    * @param hashes Integer array of the element's hash values. Array size should
    * equal the hash_num argument used when the Bloom filter was constructed.
    */
-  void remove(const uint64_t* hashes) { update(hashes, contains(hashes) - 1); }
+  void remove(const uint64_t* hashes);
 
   /**
    * Delete an element.
@@ -102,7 +102,7 @@ public:
    * @param hashes Integer array of the element's hash values. Array size should
    * equal the hash_num argument used when the Bloom filter was constructed.
    */
-  void clear(const uint64_t* hashes) { remove(hashes, 0); }
+  void clear(const uint64_t* hashes);
 
   /**
    * Set the count of an element to zero.
@@ -277,7 +277,6 @@ private:
   CountingBloomFilter(const std::shared_ptr<BloomFilterInitializer>& bfi);
 
   void insert(const uint64_t* hashes, T min_val);
-  void update(const uint64_t* hashes, T new_val);
 
   friend class KmerCountingBloomFilter<T>;
 
@@ -789,7 +788,7 @@ CountingBloomFilter<T>::insert(const uint64_t* hashes, T min_val)
     new_val = min_val + 1;
     for (size_t i = 0; i < hash_num; ++i) {
       tmp_min_val = min_val;
-      update_done = array[hashes[i] % array_size].compare_exchange_strong(
+      update_done |= array[hashes[i] % array_size].compare_exchange_strong(
         tmp_min_val, new_val);
     }
     if (update_done) {
@@ -811,11 +810,51 @@ CountingBloomFilter<T>::insert(const uint64_t* hashes)
 
 template<typename T>
 inline void
-CountingBloomFilter<T>::update(const uint64_t* hashes, T new_val)
+CountingBloomFilter<T>::remove(const uint64_t* hashes)
 {
-  const auto count = contains(hashes);
-  for (size_t i = 0; i < hash_num; ++i) {
-    array[hashes[i] % array_size].compare_exchange_strong(count, new_val);
+  // Update flag to track if increment is done on at least one counter
+  bool update_done = false;
+  T min_val = contains(hashes);
+  T new_val, tmp_min_val;
+  while (true) {
+    new_val = min_val - 1;
+    for (size_t i = 0; i < hash_num; ++i) {
+      tmp_min_val = min_val;
+      update_done |= array[hashes[i] % array_size].compare_exchange_strong(
+        tmp_min_val, new_val);
+    }
+    if (update_done) {
+      break;
+    }
+    min_val = contains(hashes);
+    if (min_val == std::numeric_limits<T>::max()) {
+      break;
+    }
+  }
+}
+
+template<typename T>
+inline void
+CountingBloomFilter<T>::clear(const uint64_t* hashes)
+{
+  // Update flag to track if increment is done on at least one counter
+  bool update_done = false;
+  T min_val = contains(hashes);
+  T new_val, tmp_min_val;
+  while (true) {
+    new_val = 0;
+    for (size_t i = 0; i < hash_num; ++i) {
+      tmp_min_val = min_val;
+      update_done |= array[hashes[i] % array_size].compare_exchange_strong(
+        tmp_min_val, new_val);
+    }
+    if (update_done) {
+      break;
+    }
+    min_val = contains(hashes);
+    if (min_val == std::numeric_limits<T>::max()) {
+      break;
+    }
   }
 }
 
