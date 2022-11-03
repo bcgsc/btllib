@@ -32,9 +32,9 @@ authors:
     affiliation: 1
     orcid: 0000-0003-0950-7839
 affiliations:
- - name: Canada's Michael Smith Genome Sciences Centre at BC Cancer, Vancouver, BC V5Z 4S6, Canada
+ - name: Canada's Michael Smith Genome Sciences Centre at BC Cancer, Vancouver, BC, Canada
    index: 1
- - name: Bioinformatics Graduate Program, The University of British Columbia, Vancouver, BC V6T 1Z4, Canada
+ - name: Bioinformatics Graduate Program, The University of British Columbia, Vancouver, BC, Canada
    index: 2
 date: 31 July 2022
 bibliography: paper.bib
@@ -43,7 +43,7 @@ bibliography: paper.bib
 
 # Summary
 
-Bioinformaticians often do not have software engineering training or background, and software quality is not the top priority of research groups due to limited time and funding [@10.1093/gigascience/giz109]. Additionally, one-off scripts or code is frequently written to perform a specific task instead of reusing existing code. This could be because the pre-existing computer programming code is either not well written, widely available, documented, efficient nor general enough. This practice leads to lower quality and non-reusable code. As bioinformatics analyses are increasingly complex and deal with ever more data, high quality code is needed to handle the complexities of the analyses reliably and productively. The solution to this is well designed and documented libraries. For example, SeqAn [@fu_mi_publications2103] is a C++ library that implements algorithms and data structures commonly used in bioinformatics. Not all programmers are well versed in C++, so for users of widely used and accessible higher level programming languages such as Python, Biopython [@10.1093/bioinformatics/btp163] is available as a set of Python modules with implementations of commonly needed algorithms. Here, we present the btllib library as an addition to this ecosystem with the goal of providing highly eﬀicient, scalable, and ergonomic implementations of bioinformatics algorithms and data structures.
+Bioinformaticians often do not have software engineering training or background, and software quality is not the top priority of research groups due to limited time and funding [@10.1093/gigascience/giz109]. Additionally, one-off scripts or code is frequently written to perform a specific task instead of reusing existing code. This could be because the pre-existing computer programming code is either not well written, not widely available, insufficiently documented, inefficient, or not general enough. This practice leads to lower quality and non-reusable code. As bioinformatics analyses are increasingly complex and deal with ever more data, high quality code is needed to handle the complexities of the analyses reliably and productively. The solution to this is well designed and documented libraries. For example, SeqAn [@fu_mi_publications2103] is a C++ library that implements algorithms and data structures commonly used in bioinformatics. Not all programmers are well versed in C++, so for users of widely used and accessible higher level programming languages such as Python, Biopython [@10.1093/bioinformatics/btp163] is available as a set of Python modules with implementations of commonly needed algorithms. Here, we present the btllib library as an addition to this ecosystem with the goal of providing highly eﬀicient, scalable, and ergonomic implementations of bioinformatics algorithms and data structures.
 
 # Statement of need
 
