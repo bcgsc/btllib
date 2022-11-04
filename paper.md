@@ -95,6 +95,6 @@ The library has the implementation of the following algorithms and data structur
 
 # Acknowledgements
 
-This work was supported by GenomeBC and Genome Canada [281ANV]; the National Institutes of Health [2R01HG007182-04A1]; the Canadian Institutes of Health Research (CIHR) [PJT-183608]; and the Natural Sciences and Engineering Research Council of Canada. The content of this paper is solely the responsibility of the authors, and does not necessarily represent the official views of the funding organizations.
+This work was supported by Genome BC and Genome Canada [281ANV]; the National Institutes of Health [2R01HG007182-04A1]; the Canadian Institutes of Health Research (CIHR) [PJT-183608]; and the Natural Sciences and Engineering Research Council of Canada. The content of this paper is solely the responsibility of the authors, and does not necessarily represent the official views of the funding organizations.
 
 # References
