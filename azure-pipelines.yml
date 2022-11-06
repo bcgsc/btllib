@@ -50,7 +50,7 @@ jobs:
 
 - job: macos
   pool:
-    vmImage: 'macOS-latest'
+    vmImage: 'macOS-12'
 
   steps:
   - checkout: self
