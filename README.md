@@ -83,6 +83,7 @@ Credits
 - Components:
   - [Hamid Mohamadi](https://github.com/mohamadi) and [Parham Kazemi](https://github.com/parham-k) for [ntHash](https://github.com/bcgsc/ntHash)
   - [Justin Chu](https://github.com/JustinChu) for [MIBloomFilter](https://github.com/bcgsc/btl_bloomfilter)
+- Included dependencies:
   - [Chase Geigle](https://github.com/skystrife) for [cpptoml](https://github.com/skystrife/cpptoml)
   - Simon Gog, Timo Beller, Alistair Moffat, and Matthias Petri for [sdsl-lite](https://github.com/simongog/sdsl-lite)
 
