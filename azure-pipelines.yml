@@ -66,10 +66,8 @@ jobs:
   - script: |
       set -o errexit -o pipefail
       brew update
-      brew install llvm@14 boost samtools coreutils xz lrzip meson ninja cmake
+      brew install llvm@14 clang-format boost samtools coreutils xz lrzip meson ninja cmake
       export PATH="$(brew --prefix llvm)/bin:$PATH"
-      alias clang-format=clang-format-14
-      alias clang-tidy=clang-tidy-14
     displayName: 'Install required software'
 
   - script: meson setup build && cd build && ninja
