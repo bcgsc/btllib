@@ -5,7 +5,7 @@ jobs:
 
 - job: linux
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-22.04'
 
   steps:
   - checkout: self
@@ -13,8 +13,6 @@ jobs:
 
   - script: |
       set -o errexit -o pipefail
-      wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-      sudo apt-add-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-14 main"
       sudo apt-get update
       sudo apt-get install --yes --no-install-recommends llvm clang-format clang-tidy clang libomp-dev python3 python3-setuptools libboost-dev samtools xz-utils bzip2 lrzip cmake meson ninja-build
     displayName: 'Install required software'
@@ -61,7 +59,7 @@ jobs:
   - script: |
       set -o errexit -o pipefail
       brew update
-      brew install llvm@14 libomp boost samtools coreutils xz lrzip meson ninja cmake
+      brew install llvm@14 boost samtools coreutils xz lrzip meson ninja cmake
     displayName: 'Install required software'
 
   - script: meson setup build && cd build && ninja
