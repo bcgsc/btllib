@@ -51,19 +51,7 @@ cmake_options = cmake.subproject_options()
 cmake_options.set_override_option('werror', 'false')
 cmake_options.set_install(false)
 
-cpptoml_subproject = cmake.subproject('cpptoml', options : cmake_options)
-cpptomp_dep = cpptoml_subproject.dependency('cpptoml')
-
-run_command(meson.project_source_root() + '/scripts/prepare-sdsl')
-
-sdsl_subproject = cmake.subproject('sdsl-lite', options : cmake_options)
-sdsl_dep = sdsl_subproject.dependency('sdsl')
-
-deps = [ threads_dep, openmp_dep, cpptomp_dep, sdsl_dep ]
-
-# These are unfortunate hacks. Currently, neither cpptoml nor sdsl-lite install their headers (even when set_install(true) is called), and so we need to do it manually
-meson.add_install_script('scripts/install-cpptoml')
-meson.add_install_script('scripts/install-sdsl-lite')
+deps = [ threads_dep, openmp_dep ]
 
 # Run time dependencies
 # ===========================================================
@@ -78,37 +66,6 @@ tar = find_program('tar', required : false)
 # ===========================================================
 
 rootpath = meson.project_source_root()
-
-swig = find_program('swig', required : false)
-if swig.found()
-  run_target('wrap', command: join_paths(rootpath, 'scripts/wrap'))
-endif
-
-run_target('sanitize-address', command: [
-  join_paths(rootpath, 'scripts/sanitize'),
-  'address'
-])
-run_target('sanitize-memory', command: [
-  join_paths(rootpath, 'scripts/sanitize'),
-  'memory'
-])
-run_target('sanitize-thread', command: [
-  join_paths(rootpath, 'scripts/sanitize'),
-  'thread'
-])
-run_target('sanitize-undefined', command: [
-  join_paths(rootpath, 'scripts/sanitize'),
-  'undefined'
-])
-
-doxygen = find_program('doxygen', required : false)
-if doxygen.found()
-  run_target('docs', command: join_paths(rootpath, 'scripts/docs'))
-endif
-
-run_target('quality-assurance', command: join_paths(rootpath, 'scripts/quality-assurance'))
-
-run_target('test-wrappers', command: join_paths(rootpath, 'scripts/test-wrappers'))
 
 # The library
 # ===========================================================
@@ -129,8 +86,4 @@ btllib_dep = declare_dependency(
 )
 
 subdir('include')
-subdir('wrappers')
-subdir('recipes')
-if get_option('buildtype') != 'release'
-  subdir('tests')
-endif
+subdir('tests')
