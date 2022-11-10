@@ -334,7 +334,7 @@ SeqReader::start_processors()
             }
             const size_t id_start =
               (format == Format::FASTA || format == Format::FASTQ ||
-               format == Format::FAA || format == Format::SAM)
+               format == Format::SAM || format == Format::FAA)
                 ? 1
                 : 0;
 
@@ -353,7 +353,7 @@ SeqReader::start_processors()
                 break;
               case Format::FAA:
                 check_error(records_in.data[i].header.empty(),
-                            "SeqReader: Invalid FASTA header");
+                            "SeqReader: Invalid FAA header");
                 check_error(records_in.data[i].header[0] != '>',
                             "SeqReader: Unexpected character in a FAA file.");
                 break;
