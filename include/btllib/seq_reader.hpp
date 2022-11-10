@@ -9,6 +9,7 @@
 #include "btllib/seq_reader_fasta_module.hpp"
 #include "btllib/seq_reader_fastq_module.hpp"
 #include "btllib/seq_reader_gfa2_module.hpp"
+#include "btllib/seq_reader_multiline_faa_module.hpp"
 #include "btllib/seq_reader_multiline_fasta_module.hpp"
 #include "btllib/seq_reader_multiline_fastq_module.hpp"
 #include "btllib/seq_reader_sam_module.hpp"
@@ -282,6 +283,9 @@ private:
 
   friend class SeqReaderFaaModule;
   SeqReaderFaaModule faa_module;
+
+  friend class SeqReaderMultilineFaaModule;
+  SeqReaderMultilineFaaModule multiline_faa_module;
 
   int module_in_use = 0;
 
