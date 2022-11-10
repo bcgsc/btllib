@@ -5,6 +5,7 @@
 #include "btllib/data_stream.hpp"
 #include "btllib/order_queue.hpp"
 #include "btllib/seq.hpp"
+#include "btllib/seq_reader_faa_module.hpp"
 #include "btllib/seq_reader_fasta_module.hpp"
 #include "btllib/seq_reader_fastq_module.hpp"
 #include "btllib/seq_reader_gfa2_module.hpp"
@@ -93,6 +94,7 @@ public:
     FASTQ,
     SAM,
     GFA2,
+    FAA,
     INVALID
   };
 
@@ -277,6 +279,9 @@ private:
 
   friend class SeqReaderGfa2Module;
   SeqReaderGfa2Module gfa2_module;
+
+  friend class SeqReaderFaaModule;
+  SeqReaderFaaModule faa_module;
 
   int module_in_use = 0;
 

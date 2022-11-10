@@ -242,6 +242,7 @@ SeqReader::determine_format()
   BTLLIB_SEQREADER_FORMAT_CHECK(FASTQ, multiline_fastq_module)
   BTLLIB_SEQREADER_FORMAT_CHECK(SAM, sam_module)
   BTLLIB_SEQREADER_FORMAT_CHECK(GFA2, gfa2_module)
+  BTLLIB_SEQREADER_FORMAT_CHECK(FAA, faa_module)
   {
     format = Format::INVALID;
     log_error(std::string(source_path) + " source file is in invalid format!");
@@ -271,6 +272,7 @@ SeqReader::start_reader()
       BTLLIB_SEQREADER_FORMAT_READ(multiline_fastq_module)
       BTLLIB_SEQREADER_FORMAT_READ(sam_module)
       BTLLIB_SEQREADER_FORMAT_READ(gfa2_module)
+      BTLLIB_SEQREADER_FORMAT_READ(faa_module)
       {
         log_error("SeqReader: No reading module was enabled.");
         std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
@@ -332,7 +334,7 @@ SeqReader::start_processors()
             }
             const size_t id_start =
               (format == Format::FASTA || format == Format::FASTQ ||
-               format == Format::SAM)
+               format == Format::FAA || format == Format::SAM)
                 ? 1
                 : 0;
 
@@ -348,6 +350,12 @@ SeqReader::start_processors()
                             "SeqReader: Invalid FASTQ header");
                 check_error(records_in.data[i].header[0] != '@',
                             "SeqReader: Unexpected character in a FASTQ file.");
+                break;
+              case Format::FAA:
+                check_error(records_in.data[i].header.empty(),
+                            "SeqReader: Invalid FASTA header");
+                check_error(records_in.data[i].header[0] != '>',
+                            "SeqReader: Unexpected character in a FAA file.");
                 break;
               default:
                 break;
