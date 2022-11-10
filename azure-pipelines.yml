@@ -69,10 +69,9 @@ jobs:
     displayName: Create Anaconda environment
 
   - script: |
-      set -o errexit -o pipefail
       source activate btllib_CI
-      conda install -c conda-forge -c bioconda python mamba
-      mamba install -c conda-forge -c bioconda llvm clang-format boost samtools coreutils xz lrzip meson ninja cmake
+      conda install --yes -c conda-forge -c bioconda mamba
+      mamba install --yes -c conda-forge -c bioconda python llvm clang-format boost samtools coreutils xz lrzip meson ninja cmake
     displayName: 'Install required software'
 
   - script: |
