@@ -62,6 +62,20 @@ get_random_seq(const size_t size)
 }
 
 inline std::string
+get_random_seq_aa(const size_t size)
+{
+  static std::default_random_engine random_generator(
+    std::chrono::system_clock::now().time_since_epoch().count() + 9999999);
+  static std::uniform_int_distribution<int> distribution_aa(0, 19);
+  static auto gen_random_aa = std::bind(distribution_aa, random_generator);
+  std::string seq;
+  for (size_t i = 0; i < size; i++) {
+    seq += "ACDEFGHIKLMNPQRSTVWY"[gen_random_aa()];
+  }
+  return seq;
+}
+
+inline std::string
 split_seq_multiline(std::string seq)
 {
   static std::default_random_engine random_generator2(
