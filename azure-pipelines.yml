@@ -61,26 +61,34 @@ jobs:
 
   steps:
   - checkout: self
-    submodules: recursive
+    persistCredentials: true
+    submodules: true
+  - script: echo "##vso[task.prependpath]$CONDA/bin"
+    displayName: Add conda to PATH
+  - script: conda create --yes --quiet --name btllib_CI
+    displayName: Create Anaconda environment
 
   - script: |
       set -o errexit -o pipefail
-      brew update
-      brew install python llvm@14 clang-format boost samtools coreutils xz lrzip meson ninja cmake
-      export PATH="$(brew --prefix llvm@14)/bin:$PATH"
+      source activate btllib_CI
+      conda install -c conda-forge -c bioconda python llvm clang-format boost samtools coreutils xz lrzip meson ninja cmake
     displayName: 'Install required software'
 
-  - script: meson setup build && cd build && ninja
+  - script: |
+      source activate btllib_CI
+      meson setup build && cd build && ninja
     displayName: 'Build the project'
 
-  - script: cd build && ninja clang-format-check
+  - script: |
+      source activate btllib_CI
+      cd build && ninja clang-format-check
     displayName: 'Run clang-format'
 
-  - script: cd build && ninja clang-tidy
+  - script: source activate btllib_CI && cd build && ninja clang-tidy
     displayName: 'Run clang-tidy'
 
   - script: |
-      cd build && meson test --repeat=5
+      source activate btllib_CI && cd build && meson test --repeat=5
       if [[ $? -ne 0 ]]; then
         cat meson-logs/testlog.txt
         exit 1
@@ -88,7 +96,7 @@ jobs:
     displayName: 'Run tests'
 
   - script: |
-      cd build && ninja sanitize-undefined
+      source activate btllib_CI && cd build && ninja sanitize-undefined
       if [[ $? -ne 0 ]]; then
         cat __build-sanitize-undefined/meson-logs/testlog.txt
         exit 1
@@ -96,6 +104,7 @@ jobs:
     displayName: 'Sanitize undefined'
 
   - script: |
+      source activate btllib_CI
       set -o errexit -o pipefail
       ./compile
       cd build && ninja test-wrappers
