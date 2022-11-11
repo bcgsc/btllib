@@ -8,8 +8,8 @@
 int
 main()
 {
-  const char* ids[] = { "asdf", "ghjk" };
-  const char* seqs[] = { "ACDEFGHIKLMNPQRSTVWY", "YWVTSRQPNMLKIHGFEDCA" };
+  const char* ids[] = { "asdf", "ghjk" , "wert" , "yuio" };
+  const char* seqs[] = { "ACDEFGHIKLMNOPQRSTUVWY", "YWVUTSRQPONMLKIHGFEDCA", "acdefghiklmnopqrstuvwy" , "ywvutsrqponmlkihgfedca" };
 
   for (int iteration = 0; iteration < 3; iteration++) {
     std::cerr << "Iteration " << iteration + 1 << std::endl;
@@ -28,7 +28,7 @@ main()
       TEST_ASSERT_EQ(record.qual, "");
       i++;
     }
-    TEST_ASSERT_EQ(i, 2);
+    TEST_ASSERT_EQ(i, 4);
   }
 
   return 0;
