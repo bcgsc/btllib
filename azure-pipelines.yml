@@ -71,7 +71,7 @@ jobs:
   - script: |
       source activate btllib_CI
       conda install --yes -c conda-forge -c bioconda mamba
-      mamba install --yes -c conda-forge -c bioconda python cxx-compiler clang=14 clangxx=14 clang-tools=14 clang-format=14 llvm=14 boost samtools coreutils xz lrzip meson ninja cmake
+      mamba install --yes -c conda-forge -c bioconda python cxx-compiler libcxx=14 clang=14 clangxx=14 clang-tools=14 clang-format=14 llvm=14 boost samtools coreutils xz lrzip meson ninja cmake
     displayName: 'Install required software'
 
   - script: |
