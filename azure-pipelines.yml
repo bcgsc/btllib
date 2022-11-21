@@ -76,6 +76,9 @@ jobs:
 
   - script: |
       source activate btllib_CI
+      export CC=$(which clang)
+      export CXX=$(which clang++)
+      export AR=$(which ar)
       meson setup build && cd build && ninja
     displayName: 'Build the project'
 
