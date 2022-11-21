@@ -75,7 +75,7 @@ jobs:
     displayName: 'Install required software'
 
   - script: |
-      source activate btllib_CI
+      conda activate btllib_CI
       meson setup build && cd build && ninja
     displayName: 'Build the project'
 
