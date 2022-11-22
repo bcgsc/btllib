@@ -63,7 +63,9 @@ jobs:
   - checkout: self
     persistCredentials: true
     submodules: true
-  - script: echo "##vso[task.prependpath]$CONDA/bin"
+  - script: |
+      echo "##vso[task.prependpath]$CONDA/bin"
+      conda update -n base -c defaults conda
     displayName: Add conda to PATH
   - script: conda create --yes --quiet --name btllib_CI
     displayName: Create Anaconda environment
