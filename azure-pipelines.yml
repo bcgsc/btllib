@@ -72,15 +72,12 @@ jobs:
 
   - script: |
       source activate btllib_CI
-      conda install --yes -c conda-forge -c bioconda python cxx-compiler libcxx=14 clang=14 clangxx=14 clang-tools=14 clang-format=14 llvm=14 libcxxabi boost samtools coreutils xz lrzip meson ninja cmake
+      conda install --yes -c conda-forge -c bioconda python cxx-compiler libcxx clang clangxx clang-tools clang-format llvm libcxxabi boost samtools coreutils xz lrzip meson ninja cmake
     displayName: 'Install required software'
 
   - script: |
       source activate btllib_CI
-      export CMAKE_PREFIX_PATH=/usr/local/miniconda/envs/btllib_CI
       meson setup build && cd build && ninja
-      ls /usr/local/miniconda/envs/btllib_CI/lib
-      cat /Users/runner/work/1/s/build/meson-logs/meson-log.txt
     displayName: 'Build the project'
 
   - script: |
