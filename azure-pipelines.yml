@@ -79,7 +79,7 @@ jobs:
       source activate btllib_CI
       export CMAKE_PREFIX_PATH=/usr/local/miniconda/envs/btllib_CI
       meson setup build && cd build && ninja
-      cat /Users/runner/work/1/s/build/subprojects/cpptoml/__CMake_build/CMakeFiles/CMakeOutput.log
+      ls /usr/local/miniconda/envs/btllib_CI/lib
       cat /Users/runner/work/1/s/build/meson-logs/meson-log.txt
     displayName: 'Build the project'
 
