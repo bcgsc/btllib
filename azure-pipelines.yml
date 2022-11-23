@@ -77,8 +77,6 @@ jobs:
 
   - script: |
       source activate btllib_CI
-      export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/usr/local/miniconda/envs/btllib_CI/
-      echo $CMAKE_PREFIX_PATH
       meson setup build && cd build && ninja
     displayName: 'Build the project'
 
