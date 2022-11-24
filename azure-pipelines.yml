@@ -62,7 +62,7 @@ jobs:
   steps:
   - checkout: self
     persistCredentials: true
-    submodules: true
+    submodules: recursive
   - script: |
       echo "##vso[task.prependpath]$CONDA/bin"
       conda update -n base -y -c defaults conda
