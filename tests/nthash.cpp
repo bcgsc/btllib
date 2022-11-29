@@ -465,9 +465,14 @@ main()
 
     btllib::SeedNtHash nthash1(seq_fwd, seeds, h, seeds[0].length());
     btllib::SeedNtHash nthash2(seq_rev, seeds, h, seeds[0].length());
+    
+    bool r1 = nthash1.roll();
+    bool r2 = nthash2.roll();
 
-    while (nthash1.roll() & nthash2.roll()) {
+    while (r1 && r2) {
       TEST_ASSERT_ARRAY_EQ(nthash1.hashes(), nthash2.hashes(), h);
+      r1 = nthash1.roll();
+      r2 = nthash2.roll();
     }
   }
 
