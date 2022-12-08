@@ -78,11 +78,7 @@ jobs:
     displayName: 'Run clang-tidy'
 
   - script: |
-      source activate btllib_CI && cd build && meson test --repeat=5
-      if [[ $? -ne 0 ]]; then
-        cat meson-logs/testlog.txt
-        exit 1
-      fi
+      source activate btllib_CI && cd build && meson test --repeat=5 --print-errorlogs
     displayName: 'Run tests'
 
   - script: |
