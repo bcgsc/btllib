@@ -4,8 +4,7 @@
 namespace btllib {
 
 bool
-SeqReaderMultilineFaaModule::buffer_valid(const char* buffer,
-                                            const size_t size)
+SeqReaderMultilineFaaModule::buffer_valid(const char* buffer, const size_t size)
 {
   size_t current = 0;
   unsigned char c;

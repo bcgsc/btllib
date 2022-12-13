@@ -35,8 +35,7 @@ private:
 
 template<typename ReaderType, typename RecordType>
 inline bool
-SeqReaderMultilineFaaModule::read_buffer(ReaderType& reader,
-                                           RecordType& record)
+SeqReaderMultilineFaaModule::read_buffer(ReaderType& reader, RecordType& record)
 {
   record.header.clear();
   record.seq.clear();
@@ -86,7 +85,7 @@ SeqReaderMultilineFaaModule::read_buffer(ReaderType& reader,
 template<typename ReaderType, typename RecordType>
 inline bool
 SeqReaderMultilineFaaModule::read_transition(ReaderType& reader,
-                                               RecordType& record)
+                                             RecordType& record)
 {
   if (std::ferror(reader.source) == 0 && std::feof(reader.source) == 0) {
     const auto p = std::fgetc(reader.source);
