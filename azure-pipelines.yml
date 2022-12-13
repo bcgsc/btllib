@@ -11,26 +11,37 @@ jobs:
   - checkout: self
     submodules: recursive
 
-  - script: |
-      set -o errexit -o pipefail
-      sudo apt-get update
-      sudo apt-get install --yes --no-install-recommends llvm clang-format clang-tidy clang libomp-dev python3 python3-setuptools libboost-dev xz-utils bzip2 lrzip cmake meson ninja-build samtools
-    displayName: 'Install required software'
+  - script: echo "##vso[task.prependpath]$CONDA/bin"
+    displayName: Add conda to PATH
 
-  - script: meson setup build && cd build && ninja
+  - script: conda create --yes --quiet --name btllib_CI
+    displayName: Create Anaconda environment
+
+  - script: |
+      source activate btllib_CI
+      conda install --yes -c conda-forge -c bioconda libcxx compilers llvm clang-format=14 clang-tools boost samtools coreutils xz lrzip meson ninja cmake
+    displayName: Install dependencies
+
+  - script: |
+      source activate btllib_CI
+      meson setup build && cd build && ninja
     displayName: 'Build the project'
 
-  - script: cd build && ninja clang-format-check
+  - script: |
+      source activate btllib_CI
+      cd build && ninja clang-format-check
     displayName: 'Run clang-format'
 
   - script: cd build && ninja clang-tidy
     displayName: 'Run clang-tidy'
 
   - script: |
+      source activate btllib_CI
       cd build && meson test --repeat=5 --print-errorlogs
     displayName: 'Run tests'
 
   - script: |
+      source activate btllib_CI
       cd build && ninja sanitize-undefined
       if [[ $? -ne 0 ]]; then
         cat __build-sanitize-undefined/meson-logs/testlog.txt
@@ -39,6 +50,7 @@ jobs:
     displayName: 'Sanitize undefined'
 
   - script: |
+      source activate btllib_CI
       set -o errexit -o pipefail
       ./compile
       cd build && ninja test-wrappers
