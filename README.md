@@ -36,6 +36,9 @@ Using the library
   * wget for downloading sequences from a URL.
 - Building C++ code (`$PREFIX` is the path where btllib is installed):
   * Link your code with `$PREFIX/lib/libbtllib.a` (pass `-L $PREFIX/lib -l btllib` flags to the compiler).
+      * You can do so by typing the following in your console:
+          * `export CPPFLAGS="-isystem /path/to/btllib/install/include $CPPFLAGS"`
+          * `export LDFLAGS="-L/path/to/btllib/install//lib -lbtllib $LDFLAGS"`
   * `#include` any header from the `$PREFIX/include` directory (pass `-I $PREFIX/include` flag to the compiler).
   * `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
 - Running Python code:
@@ -67,7 +70,7 @@ For btllib developers
   * `meson dist --allow-dirty` to generate a self-contained package based on the last commit. `--allow-dirty` permits making a distributable with uncommited changes. This is necessary as `sdsl-lite` dependency has ad hoc changes made during the build process. The resulting distributable will be compressed with xz. For easier use, decompress it and then compress with gzip. Attach the resulting file to the release.
 
 The following are all the available `ninja` commands which can be run within `build` directory:
-- `ninja format` formats the whitespace in code (requires clang-format 8+).
+- `ninja clang-format` formats the whitespace in code (requires clang-format 8+).
 - `ninja wrap` wraps C++ code for Python (requires SWIG 4.0+).
 - `ninja clang-tidy` runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+).
 - `ninja` builds the tests and wrapper libraries / makes sure they compile.
