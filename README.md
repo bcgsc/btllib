@@ -36,6 +36,9 @@ Using the library
   * wget for downloading sequences from a URL.
 - Building C++ code (`$PREFIX` is the path where btllib is installed):
   * Link your code with `$PREFIX/lib/libbtllib.a` (pass `-L $PREFIX/lib -l btllib` flags to the compiler).
+      * You can do so by typing the following in your console:
+          * `export CPPFLAGS="-isystem /path/to/btllib/install/include $CPPFLAGS"`
+          * `export LDFLAGS="-L/path/to/btllib/install//lib -lbtllib $LDFLAGS"`
   * `#include` any header from the `$PREFIX/include` directory (pass `-I $PREFIX/include` flag to the compiler).
   * `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
 - Running Python code:
