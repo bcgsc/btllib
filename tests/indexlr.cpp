@@ -32,7 +32,7 @@ main()
                              btllib::Indexlr::Flag::SEQ |
                              btllib::Indexlr::Flag::SHORT_MODE);
   btllib::Indexlr indexlr3(btllib::get_dirname(__FILE__) + "/indexlr.stlfr.fq",
-                           100,
+                           75,
                            5,
                            btllib::Indexlr::Flag::BX |
                              btllib::Indexlr::Flag::SHORT_MODE |
@@ -63,10 +63,10 @@ main()
                                      "/indexlr.stlfr.fq.correct");
   std::string correct_output3;
   correct_output_file3.seekg(0, std::ios::end);
-  correct_output3.reserve(correct_output_file2.tellg());
+  correct_output3.reserve(correct_output_file3.tellg());
   correct_output_file3.seekg(0, std::ios::beg);
 
-  correct_output3.assign(std::istreambuf_iterator<char>(correct_output_file2),
+  correct_output3.assign(std::istreambuf_iterator<char>(correct_output_file3),
                          std::istreambuf_iterator<char>());
 
   std::stringstream ss;
@@ -107,15 +107,15 @@ main()
     }
     if ((success_indexlr3 = (record = indexlr3.read()))) {
       if (i > 0) {
-        ss << '\n';
+        ss3 << '\n';
       }
-      ss << record.barcode << '\t';
+      ss3 << record.barcode << '\t';
       int j = 0;
       for (const auto& min : record.minimizers) {
         if (j > 0) {
-          ss << ' ';
+          ss3 << ' ';
         }
-        ss << min.out_hash;
+        ss3 << min.out_hash;
         j++;
       }
     }
