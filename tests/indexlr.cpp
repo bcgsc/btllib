@@ -151,7 +151,7 @@ main()
     filter_out_bf.insert({ h });
   }
 
-  btllib::Indexlr indexlr3(btllib::get_dirname(__FILE__) + "/indexlr.fq",
+  btllib::Indexlr indexlr4(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
                            btllib::Indexlr::Flag::FILTER_IN |
@@ -160,7 +160,7 @@ main()
                            true,
                            filter_in_bf);
   size_t mins_found = 0;
-  while ((record = indexlr3.read())) {
+  while ((record = indexlr4.read())) {
     for (const auto& min : record.minimizers) {
       bool found = false;
       for (const auto h : filter_in_hashes) {
@@ -175,7 +175,7 @@ main()
   }
   TEST_ASSERT_GE(mins_found, filter_in_hashes.size());
 
-  btllib::Indexlr indexlr4(btllib::get_dirname(__FILE__) + "/indexlr.fq",
+  btllib::Indexlr indexlr5(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
                            btllib::Indexlr::Flag::FILTER_OUT |
@@ -184,7 +184,7 @@ main()
                            true,
                            filter_out_bf);
   mins_found = 0;
-  while ((record = indexlr4.read())) {
+  while ((record = indexlr5.read())) {
     for (const auto& min : record.minimizers) {
       for (const auto h : filter_out_hashes) {
         TEST_ASSERT_NE(min.min_hash, h);
@@ -194,7 +194,7 @@ main()
   }
   TEST_ASSERT_GE(mins_found, filter_in_hashes.size());
 
-  btllib::Indexlr indexlr5(btllib::get_dirname(__FILE__) + "/indexlr.fq",
+  btllib::Indexlr indexlr6(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
                            btllib::Indexlr::Flag::FILTER_IN |
@@ -205,7 +205,7 @@ main()
                            filter_in_bf,
                            filter_out_bf);
   mins_found = 0;
-  while ((record = indexlr5.read())) {
+  while ((record = indexlr6.read())) {
     for (const auto& min : record.minimizers) {
       bool found = false;
       for (const auto h : filter_in_hashes) {
