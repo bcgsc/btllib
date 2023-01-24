@@ -549,13 +549,14 @@ Indexlr::Worker::work()
       Record record;
       auto& reader_record = input_block.data[idx];
       record.num = reader_record.num;
+      if (indexlr.output_bx()) {
+        record.barcode =
+          indexlr.extract_barcode(reader_record.id, reader_record.comment);
+      }
       if (indexlr.output_id()) {
         record.id = std::move(reader_record.id);
       }
-      if (indexlr.output_bx()) {
-        record.barcode =
-          indexlr.extract_barcode(record.id, reader_record.comment);
-      }
+
       record.readlen = reader_record.seq.size();
 
       check_info(indexlr.verbose && indexlr.k > record.readlen,
