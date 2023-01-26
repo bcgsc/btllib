@@ -31,13 +31,6 @@ main()
                            btllib::Indexlr::Flag::BX |
                              btllib::Indexlr::Flag::SEQ |
                              btllib::Indexlr::Flag::SHORT_MODE);
-  btllib::Indexlr indexlr3(btllib::get_dirname(__FILE__) + "/indexlr.stlfr.fq",
-                           75,
-                           5,
-                           btllib::Indexlr::Flag::BX |
-                             btllib::Indexlr::Flag::SHORT_MODE |
-                             btllib::Indexlr::Flag::NO_ID);
-  
 
   std::ifstream correct_output_file(btllib::get_dirname(__FILE__) +
                                     "/indexlr.fa.correct");
@@ -59,22 +52,11 @@ main()
   correct_output2.assign(std::istreambuf_iterator<char>(correct_output_file2),
                          std::istreambuf_iterator<char>());
 
-  std::ifstream correct_output_file3(btllib::get_dirname(__FILE__) +
-                                     "/indexlr.stlfr.fq.correct");
-  std::string correct_output3;
-  correct_output_file3.seekg(0, std::ios::end);
-  correct_output3.reserve(correct_output_file3.tellg());
-  correct_output_file3.seekg(0, std::ios::beg);
-
-  correct_output3.assign(std::istreambuf_iterator<char>(correct_output_file3),
-                         std::istreambuf_iterator<char>());
-
   std::stringstream ss;
   std::stringstream ss2;
-  std::stringstream ss3;
 
   decltype(indexlr)::Record record;
-  bool success_indexlr = false, success_indexlr2 = false, success_indexlr3 = false;
+  bool success_indexlr = false, success_indexlr2 = false;
   for (int i = 0;; i++) {
     if ((success_indexlr = (record = indexlr.read()))) {
       if (i > 0) {
@@ -105,33 +87,16 @@ main()
         j++;
       }
     }
-    if ((success_indexlr3 = (record = indexlr3.read()))) {
-      if (i > 0) {
-        ss3 << '\n';
-      }
-      ss3 << record.barcode << '\t';
-      int j = 0;
-      for (const auto& min : record.minimizers) {
-        if (j > 0) {
-          ss3 << ' ';
-        }
-        ss3 << min.out_hash;
-        j++;
-      }
-    }
-    if (!success_indexlr && !success_indexlr2 && !success_indexlr3) {
+    if (!success_indexlr && !success_indexlr2) {
       break;
     }
   }
 
   ss << std::endl;
   ss2 << std::endl;
-  ss3 << std::endl;
 
   TEST_ASSERT_EQ(ss.str(), correct_output);
   TEST_ASSERT_EQ(ss2.str(), correct_output2);
-  TEST_ASSERT_EQ(ss3.str(), correct_output3);
-
 
   std::cerr << "Testing with Bloom filters" << std::endl;
   btllib::BloomFilter filter_in_bf(1024 * 1024 * 32, 1);
@@ -151,16 +116,17 @@ main()
     filter_out_bf.insert({ h });
   }
 
-  btllib::Indexlr indexlr4(btllib::get_dirname(__FILE__) + "/indexlr.fq",
+  btllib::Indexlr indexlr3(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
+                           0,
                            btllib::Indexlr::Flag::FILTER_IN |
                              btllib::Indexlr::Flag::LONG_MODE,
                            3,
                            true,
                            filter_in_bf);
   size_t mins_found = 0;
-  while ((record = indexlr4.read())) {
+  while ((record = indexlr3.read())) {
     for (const auto& min : record.minimizers) {
       bool found = false;
       for (const auto h : filter_in_hashes) {
@@ -175,16 +141,17 @@ main()
   }
   TEST_ASSERT_GE(mins_found, filter_in_hashes.size());
 
-  btllib::Indexlr indexlr5(btllib::get_dirname(__FILE__) + "/indexlr.fq",
+  btllib::Indexlr indexlr4(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
+                           0,
                            btllib::Indexlr::Flag::FILTER_OUT |
                              btllib::Indexlr::Flag::LONG_MODE,
                            3,
                            true,
                            filter_out_bf);
   mins_found = 0;
-  while ((record = indexlr5.read())) {
+  while ((record = indexlr4.read())) {
     for (const auto& min : record.minimizers) {
       for (const auto h : filter_out_hashes) {
         TEST_ASSERT_NE(min.min_hash, h);
@@ -194,9 +161,10 @@ main()
   }
   TEST_ASSERT_GE(mins_found, filter_in_hashes.size());
 
-  btllib::Indexlr indexlr6(btllib::get_dirname(__FILE__) + "/indexlr.fq",
+  btllib::Indexlr indexlr5(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
+                           0,
                            btllib::Indexlr::Flag::FILTER_IN |
                              btllib::Indexlr::Flag::FILTER_OUT |
                              btllib::Indexlr::Flag::SHORT_MODE,
@@ -205,7 +173,7 @@ main()
                            filter_in_bf,
                            filter_out_bf);
   mins_found = 0;
-  while ((record = indexlr6.read())) {
+  while ((record = indexlr5.read())) {
     for (const auto& min : record.minimizers) {
       bool found = false;
       for (const auto h : filter_in_hashes) {
