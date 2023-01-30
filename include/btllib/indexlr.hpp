@@ -50,11 +50,14 @@ public:
     static const unsigned SHORT_MODE = 32;
     /** Optimizes performance for long sequences (approx. >5kbp) */
     static const unsigned LONG_MODE = 64;
+    /** Include read sequence Phred score along with minimizer information. */
+    static const unsigned QUAL = 128;
   };
 
   bool output_id() const { return bool(~flags & Flag::NO_ID); }
   bool output_bx() const { return bool(flags & Flag::BX); }
   bool output_seq() const { return bool(flags & Flag::SEQ); }
+  bool output_qual() const { return bool(flags & Flag::QUAL); }
   bool filter_in() const { return bool(flags & Flag::FILTER_IN); }
   bool filter_out() const { return bool(flags & Flag::FILTER_OUT); }
   bool short_mode() const { return bool(flags & Flag::SHORT_MODE); }
@@ -77,10 +80,26 @@ public:
     {
     }
 
+    Minimizer(uint64_t min_hash,
+              uint64_t out_hash,
+              size_t pos,
+              bool forward,
+              std::string seq,
+              std::string qual)
+      : min_hash(min_hash)
+      , out_hash(out_hash)
+      , pos(pos)
+      , forward(forward)
+      , seq(std::move(seq))
+      , qual(std::move(qual))
+    {
+    }
+    
     uint64_t min_hash = 0, out_hash = 0;
     size_t pos = 0;
     bool forward = false;
     std::string seq;
+    std::string qual;
   };
 
   using HashedKmer = Minimizer;
@@ -127,6 +146,7 @@ public:
    * stdin.
    * @param k k-mer size for the minimizer.
    * @param w window size when selecting minimizers.
+   * @param q quality threshold to ignore potential minimizers.
    * @param flags Modifier flags. Specifiying either short or long mode flag is
    * mandatory; other flags are optional.
    * @param threads Maximum number of processing threads to use. Must be at
@@ -141,6 +161,16 @@ public:
   Indexlr(std::string seqfile,
           size_t k,
           size_t w,
+          unsigned flags = 0,
+          unsigned threads = 5,
+          bool verbose = false,
+          const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
+          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf());
+
+  Indexlr(std::string seqfile,
+          size_t k,
+          size_t w,
+          size_t q,
           unsigned flags = 0,
           unsigned threads = 5,
           bool verbose = false,
@@ -199,6 +229,12 @@ private:
                                  bool filter_out,
                                  const BloomFilter& filter_in_bf,
                                  const BloomFilter& filter_out_bf);
+
+  static void filter_kmer_qual(Indexlr::HashedKmer& hk,
+                               const std::string& kmer_qual,
+                               size_t q);
+  static size_t calc_kmer_quality(const std::string& qual);
+
   static void calc_minimizer(
     const std::vector<Indexlr::HashedKmer>& hashed_kmers_buffer,
     const Indexlr::Minimizer*& min_current,
@@ -212,6 +248,7 @@ private:
 
   const std::string seqfile;
   const size_t k, w;
+  size_t q;
   const unsigned flags;
   const bool verbose;
   const long id;
@@ -299,6 +336,47 @@ private:
 inline Indexlr::Indexlr(std::string seqfile,
                         const size_t k,
                         const size_t w,
+                        const size_t q,
+                        const unsigned flags,
+                        const unsigned threads,
+                        const bool verbose,
+                        const BloomFilter& bf1,
+                        const BloomFilter& bf2)
+  : seqfile(std::move(seqfile))
+  , k(k)
+  , w(w)
+  , q(q)
+  , flags(flags)
+  , verbose(verbose)
+  , id(++last_id())
+  , filter_in_bf(filter_in() ? bf1 : Indexlr::dummy_bf())
+  , filter_out_bf(filter_out() ? filter_in() ? bf2 : bf1 : Indexlr::dummy_bf())
+  , filter_in_enabled(filter_in())
+  , filter_out_enabled(filter_out())
+  , reader(this->seqfile,
+           short_mode() ? SeqReader::Flag::SHORT_MODE
+                        : SeqReader::Flag::LONG_MODE)
+  , output_queue(reader.get_buffer_size(), reader.get_block_size())
+  , workers(std::vector<Worker>(threads, Worker(*this)))
+  , end_barrier(threads)
+{
+  check_error(!short_mode() && !long_mode(),
+              "Indexlr: no mode selected, either short or long mode flag must "
+              "be provided.");
+  check_error(short_mode() && long_mode(),
+              "Indexlr: short and long mode are mutually exclusive.");
+  check_error(threads == 0,
+              "Indexlr: Number of processing threads cannot be 0.");
+  int id_counter = 0;
+  for (auto& worker : workers) {
+    worker.set_id(id_counter++);
+    worker.start();
+  }
+}
+
+inline Indexlr::Indexlr(std::string seqfile,
+                        const size_t k,
+                        const size_t w,
                         const unsigned flags,
                         const unsigned threads,
                         const bool verbose,
@@ -308,6 +386,7 @@ inline Indexlr::Indexlr(std::string seqfile,
   , k(k)
   , w(w)
   , flags(flags)
+  , q(0)
   , verbose(verbose)
   , id(++last_id())
   , filter_in_bf(filter_in() ? bf1 : Indexlr::dummy_bf())
@@ -432,6 +511,34 @@ Indexlr::filter_hashed_kmer(Indexlr::HashedKmer& hk,
 }
 
 inline void
+Indexlr::filter_kmer_qual(Indexlr::HashedKmer& hk,
+                          const std::string& kmer_qual,
+                          size_t q)
+{
+  if (calc_kmer_quality(kmer_qual) < q) {
+    hk.min_hash = std::numeric_limits<uint64_t>::max();
+  }
+}
+
+inline size_t
+Indexlr::calc_kmer_quality(const std::string& qual)
+{
+  // convert the quality scores to integers
+  std::vector<int> qual_ints;
+  const int thirty_three = 33;
+  qual_ints.reserve(qual.size());
+  for (auto c : qual) {
+    qual_ints.push_back(c - thirty_three);
+  }
+  // calculate the mean (potential improvement: use other statistics)
+  size_t sum = 0;
+  for (auto q : qual_ints) {
+    sum += q;
+  }
+  return (sum / qual_ints.size());
+}
+
+inline void
 Indexlr::calc_minimizer(
   const std::vector<Indexlr::HashedKmer>& hashed_kmers_buffer,
   const Indexlr::Minimizer*& min_current,
@@ -469,7 +576,7 @@ Indexlr::calc_minimizer(
 }
 
 inline std::vector<Indexlr::Minimizer>
-Indexlr::minimize(const std::string& seq) const
+Indexlr::minimize(const std::string& seq, const std::string& qual) const
 {
   if ((k > seq.size()) || (w > seq.size() - k + 1)) {
     return {};
@@ -487,11 +594,16 @@ Indexlr::minimize(const std::string& seq) const
                     nh.hashes()[1],
                     nh.get_pos(),
                     nh.forward(),
-                    output_seq() ? seq.substr(nh.get_pos(), k) : "");
+                    output_seq() ? seq.substr(nh.get_pos(), k) : "",
+                    output_qual() ? qual.substr(nh.get_pos(), k) : "");
 
     filter_hashed_kmer(
       hk, filter_in(), filter_out(), filter_in_bf.get(), filter_out_bf.get());
 
+    if (q > 0) {
+      filter_kmer_qual(hk, qual.substr(nh.get_pos(), k), q);
+    }
+    
     if (idx + 1 >= w) {
       calc_minimizer(hashed_kmers_buffer,
                      min_current,
@@ -583,7 +695,8 @@ Indexlr::Worker::work()
 
       if (indexlr.k <= record.readlen &&
           indexlr.w <= record.readlen - indexlr.k + 1) {
-        record.minimizers = indexlr.minimize(reader_record.seq);
+        record.minimizers =
+          indexlr.minimize(reader_record.seq, reader_record.qual);
       } else {
         record.minimizers = {};
       }
