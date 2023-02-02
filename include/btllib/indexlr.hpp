@@ -244,7 +244,8 @@ private:
     ssize_t& min_pos_prev,
     size_t w,
     std::vector<Indexlr::Minimizer>& minimizers);
-  std::vector<Minimizer> minimize(const std::string& seq) const;
+  std::vector<Minimizer> minimize(const std::string& seq,
+                                  const std::string& qual) const;
 
   const std::string seqfile;
   const size_t k, w;
