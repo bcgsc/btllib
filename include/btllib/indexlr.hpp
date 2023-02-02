@@ -94,7 +94,7 @@ public:
       , qual(std::move(qual))
     {
     }
-    
+
     uint64_t min_hash = 0, out_hash = 0;
     size_t pos = 0;
     bool forward = false;
@@ -604,7 +604,7 @@ Indexlr::minimize(const std::string& seq, const std::string& qual) const
     if (q > 0) {
       filter_kmer_qual(hk, qual.substr(nh.get_pos(), k), q);
     }
-    
+
     if (idx + 1 >= w) {
       calc_minimizer(hashed_kmers_buffer,
                      min_current,
