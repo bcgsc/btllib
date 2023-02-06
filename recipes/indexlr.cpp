@@ -47,7 +47,7 @@ print_usage()
        "  -k K        Use K as k-mer size.\n"
        "  -w W        Use W as sliding-window size.\n"
        "  -q Q        Filter kmers with average quality (Phred score) lower "
-       "than Q.\n"
+       "than Q [0] (Q < 33).  \n"
        "  --id        Include input sequence ids in the output. "
        "(Default if --bx is not provided)\n"
        "  --bx        Include input sequence barcodes in the output.\n"
@@ -204,6 +204,12 @@ main(int argc, char* argv[])
     }
     if (!q_set) {
       q = 0;
+    } else if ( q > 32 ) {
+      print_error_msg("option has incorrect value -- 'q'");
+      failed = true;
+    } else if ( q > 25 ) {
+      print_error_msg("option value is too restrictive -- 'q'");
+      failed = true;
     }
     if (infiles.empty()) {
       print_error_msg("missing file operand");
