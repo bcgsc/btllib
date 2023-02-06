@@ -62,7 +62,7 @@ print_usage()
        "  --seq       Include minimizer sequences in the output "
        "(appended with : after "
        "minimizer value).\n"
-       "  --qual      Include minimizer sequences Phred score in the output"
+       "  --qual      Include minimizer Phred quality string in the output"
        "(appended with : after "
        "minimizer value).\n"
        "              If a combination of --pos, --strand, --seq, and --qual "
