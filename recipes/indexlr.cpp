@@ -204,7 +204,7 @@ main(int argc, char* argv[])
     }
     if (!q_set) {
       q = 0;
-    } else if ( q > 32 ) {
+    } else if (q > 32) {
       print_error_msg("option has incorrect value -- 'q'");
       failed = true;
     }
