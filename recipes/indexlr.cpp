@@ -29,6 +29,7 @@ const static size_t INITIAL_OUTPUT_STREAM_SIZE = 100;
 const static size_t QUEUE_SIZE = 64;
 const static size_t MAX_THREADS = 5;
 const static size_t DEFAULT_THREADS = MAX_THREADS;
+const static size_t MAX_QUALITY = 32;
 
 static void
 print_error_msg(const std::string& msg)
@@ -204,7 +205,7 @@ main(int argc, char* argv[])
     }
     if (!q_set) {
       q = 0;
-    } else if (q > 32) {
+    } else if (q > MAX_QUALITY) {
       print_error_msg("option has incorrect value -- 'q'");
       failed = true;
     }
