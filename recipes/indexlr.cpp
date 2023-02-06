@@ -207,9 +207,6 @@ main(int argc, char* argv[])
     } else if ( q > 32 ) {
       print_error_msg("option has incorrect value -- 'q'");
       failed = true;
-    } else if ( q > 25 ) {
-      print_error_msg("option value is too restrictive -- 'q'");
-      failed = true;
     }
     if (infiles.empty()) {
       print_error_msg("missing file operand");
