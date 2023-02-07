@@ -212,9 +212,7 @@ main(int argc, char* argv[])
     if (!q_set) {
       q = 0;
     } else if (q >= MAX_QUALITY) {
-      print_warning_msg(
-        "Option with large value may cause "
-        "extensive minimizer filtering -- 'q'");
+      print_warning_msg("Option with large value may cause extensive minimizer filtering -- 'q'");
     }
     if (infiles.empty()) {
       print_error_msg("missing file operand");
