@@ -38,8 +38,9 @@ print_error_msg(const std::string& msg)
 }
 
 static void
-print_warning_msg(const std::string& msg) {
-    std::cerr << "\033[1;33m" << "Warning: " << "\033[0m" << msg << std::endl;
+print_warning_msg(const std::string& msg)
+{
+  std::cerr << "\033[1;33mWarning: \033[0m" << msg << std::endl;
 }
 
 static void
@@ -212,7 +213,7 @@ main(int argc, char* argv[])
       q = 0;
     } else if (q >= MAX_QUALITY) {
       print_warning_msg(
-        "Option with large value may cause " 
+        "Option with large value may cause "
         "extensive minimizer filtering -- 'q'");
     }
     if (infiles.empty()) {
