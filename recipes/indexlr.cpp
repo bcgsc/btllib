@@ -54,7 +54,7 @@ print_usage()
        "  -k K        Use K as k-mer size.\n"
        "  -w W        Use W as sliding-window size.\n"
        "  -q Q        Filter kmers with average quality (Phred score) lower "
-       "than Q [0] (Q < 33).  \n"
+       "than Q [0].  \n"
        "  --id        Include input sequence ids in the output. "
        "(Default if --bx is not provided)\n"
        "  --bx        Include input sequence barcodes in the output.\n"
