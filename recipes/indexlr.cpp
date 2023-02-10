@@ -38,12 +38,6 @@ print_error_msg(const std::string& msg)
 }
 
 static void
-print_warning_msg(const std::string& msg)
-{
-  std::cerr << "\033[1;33mWarning: \033[0m" << msg << std::endl;
-}
-
-static void
 print_usage()
 {
   std::cerr
@@ -212,8 +206,8 @@ main(int argc, char* argv[])
     if (!q_set) {
       q = 0;
     } else if (q >= MAX_QUALITY) {
-      print_warning_msg("Option with large value may cause \
-                        extensive minimizer filtering -- 'q'");
+      btllib::check_warning(true,"Option with large value may cause \
+                                  extensive minimizer filtering -- 'q'");
     }
     if (infiles.empty()) {
       print_error_msg("missing file operand");

@@ -334,6 +334,7 @@ private:
   bool last_block_num_valid = false;
 };
 
+// Constructor for Indexlr class when q is specified
 inline Indexlr::Indexlr(std::string seqfile,
                         const size_t k,
                         const size_t w,
@@ -375,6 +376,7 @@ inline Indexlr::Indexlr(std::string seqfile,
   }
 }
 
+// Constructor for Indexlr class when q is not specified
 inline Indexlr::Indexlr(std::string seqfile,
                         const size_t k,
                         const size_t w,
@@ -382,37 +384,9 @@ inline Indexlr::Indexlr(std::string seqfile,
                         const unsigned threads,
                         const bool verbose,
                         const BloomFilter& bf1,
-                        const BloomFilter& bf2)
-  : seqfile(std::move(seqfile))
-  , k(k)
-  , w(w)
-  , q(0)
-  , flags(flags)
-  , verbose(verbose)
-  , id(++last_id())
-  , filter_in_bf(filter_in() ? bf1 : Indexlr::dummy_bf())
-  , filter_out_bf(filter_out() ? filter_in() ? bf2 : bf1 : Indexlr::dummy_bf())
-  , filter_in_enabled(filter_in())
-  , filter_out_enabled(filter_out())
-  , reader(this->seqfile,
-           short_mode() ? SeqReader::Flag::SHORT_MODE
-                        : SeqReader::Flag::LONG_MODE)
-  , output_queue(reader.get_buffer_size(), reader.get_block_size())
-  , workers(std::vector<Worker>(threads, Worker(*this)))
-  , end_barrier(threads)
+                        const BloomFilter& bf2) 
+  : Indexlr(seqfile, k, w, 0, flags, threads, verbose, bf1, bf2)
 {
-  check_error(!short_mode() && !long_mode(),
-              "Indexlr: no mode selected, either short or long mode flag must "
-              "be provided.");
-  check_error(short_mode() && long_mode(),
-              "Indexlr: short and long mode are mutually exclusive.");
-  check_error(threads == 0,
-              "Indexlr: Number of processing threads cannot be 0.");
-  int id_counter = 0;
-  for (auto& worker : workers) {
-    worker.set_id(id_counter++);
-    worker.start();
-  }
 }
 
 inline Indexlr::~Indexlr()
