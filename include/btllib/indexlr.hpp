@@ -384,8 +384,8 @@ inline Indexlr::Indexlr(std::string seqfile,
                         const unsigned threads,
                         const bool verbose,
                         const BloomFilter& bf1,
-                        const BloomFilter& bf2) 
-  : Indexlr(seqfile, k, w, 0, flags, threads, verbose, bf1, bf2)
+                        const BloomFilter& bf2)
+    : Indexlr(seqfile, k, w, 0, flags, threads, verbose, bf1, bf2)
 {
 }
 

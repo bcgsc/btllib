@@ -206,7 +206,7 @@ main(int argc, char* argv[])
     if (!q_set) {
       q = 0;
     } else if (q >= MAX_QUALITY) {
-      btllib::check_warning(true,"Option with large value may cause \
+      btllib::check_warning(true, "Option with large value may cause \
                                   extensive minimizer filtering -- 'q'");
     }
     if (infiles.empty()) {
