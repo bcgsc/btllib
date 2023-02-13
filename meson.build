@@ -65,6 +65,9 @@ deps = [ threads_dep, openmp_dep, cpptomp_dep, sdsl_dep ]
 meson.add_install_script('scripts/install-cpptoml')
 meson.add_install_script('scripts/install-sdsl-lite')
 
+argparse_subproject = cmake.subproject('argparse', options : cmake_options)
+argparse_dep = argparse_subproject.dependency('argparse')
+
 # Run time dependencies
 # ===========================================================
 
