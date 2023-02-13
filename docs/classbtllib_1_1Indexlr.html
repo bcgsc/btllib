@@ -109,6 +109,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>output_bx</b> () cons
 <tr class="memitem:ad65e88d1d8e801ca68e0e77393616bed"><td class="memItemLeft" align="right" valign="top"><a id="ad65e88d1d8e801ca68e0e77393616bed" name="ad65e88d1d8e801ca68e0e77393616bed"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>output_seq</b> () const</td></tr>
 <tr class="separator:ad65e88d1d8e801ca68e0e77393616bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b2e6b574f1bd1a78fc4df2ba0b833ca"><td class="memItemLeft" align="right" valign="top"><a id="a6b2e6b574f1bd1a78fc4df2ba0b833ca" name="a6b2e6b574f1bd1a78fc4df2ba0b833ca"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>output_qual</b> () const</td></tr>
+<tr class="separator:a6b2e6b574f1bd1a78fc4df2ba0b833ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a846cce4c041f03ce93b695ce3b48c803"><td class="memItemLeft" align="right" valign="top"><a id="a846cce4c041f03ce93b695ce3b48c803" name="a846cce4c041f03ce93b695ce3b48c803"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>filter_in</b> () const</td></tr>
 <tr class="separator:a846cce4c041f03ce93b695ce3b48c803"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,6 +128,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>long_mode</b> () cons
 <tr class="separator:a88e89c2c60ff3dea0a151f2fe8cccd00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16eaf1402422f88cd3a66d03e9e11b85"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1Indexlr.html#a16eaf1402422f88cd3a66d03e9e11b85">Indexlr</a> (std::string seqfile, size_t k, size_t w, unsigned flags=0, unsigned threads=5, bool verbose=false, const <a class="el" href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a> &amp;bf1=Indexlr::dummy_bf(), const <a class="el" href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a> &amp;bf2=Indexlr::dummy_bf())</td></tr>
 <tr class="separator:a16eaf1402422f88cd3a66d03e9e11b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6263c42688b02c79d5f98da83c08831"><td class="memItemLeft" align="right" valign="top"><a id="ad6263c42688b02c79d5f98da83c08831" name="ad6263c42688b02c79d5f98da83c08831"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Indexlr</b> (std::string seqfile, size_t k, size_t w, size_t q, unsigned flags=0, unsigned threads=5, bool verbose=false, const <a class="el" href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a> &amp;bf1=Indexlr::dummy_bf(), const <a class="el" href="classbtllib_1_1BloomFilter.html">btllib::BloomFilter</a> &amp;bf2=Indexlr::dummy_bf())</td></tr>
+<tr class="separator:ad6263c42688b02c79d5f98da83c08831"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0d2093026f5ad59c2f05d739e82f815"><td class="memItemLeft" align="right" valign="top"><a id="ad0d2093026f5ad59c2f05d739e82f815" name="ad0d2093026f5ad59c2f05d739e82f815"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> () noexcept</td></tr>
 <tr class="separator:ad0d2093026f5ad59c2f05d739e82f815"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,6 +222,7 @@ static const size_t&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_SI
     <tr><td class="paramname">seqfile</td><td>Filepath to read sequences from. Pass "-" to read from stdin. </td></tr>
     <tr><td class="paramname">k</td><td>k-mer size for the minimizer. </td></tr>
     <tr><td class="paramname">w</td><td>window size when selecting minimizers. </td></tr>
+    <tr><td class="paramname">q</td><td>quality threshold to ignore potential minimizers. </td></tr>
     <tr><td class="paramname">flags</td><td>Modifier flags. Specifiying either short or long mode flag is mandatory; other flags are optional. </td></tr>
     <tr><td class="paramname">threads</td><td>Maximum number of processing threads to use. Must be at least 1. </td></tr>
     <tr><td class="paramname">verbose</td><td>Whether to output informational messages during processing. </td></tr>
