@@ -15,7 +15,7 @@ struct Arguments
   btllib::RandomSequenceGenerator::SequenceType seq_type;
   btllib::RandomSequenceGenerator::Masking mask;
   unsigned num_sequences;
-  unsigned num_threads;
+  int num_threads;
   size_t min_length, max_length;
   std::string out_path;
 
@@ -45,7 +45,7 @@ struct Arguments
     parser.add_argument("-t")
       .help("Number of parallel threads")
       .default_value(1U)
-      .scan<'u', unsigned>();
+      .scan<'i', int>();
 
     parser.add_argument("-o")
       .help("Path to output file. Use '-' to write to stdout.")
@@ -56,7 +56,7 @@ struct Arguments
     } catch (const std::runtime_error& err) {
       std::cerr << err.what() << std::endl;
       std::cerr << parser;
-      std::exit(1);
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
 
     auto seq_type_str = parser.get("-s");
@@ -86,7 +86,7 @@ struct Arguments
     }
 
     auto length_range = parser.get("-l");
-    auto i_sep = length_range.find(":");
+    auto i_sep = length_range.find(':');
     if (i_sep == std::string::npos) {
       min_length = std::stoull(length_range);
       max_length = std::stoull(length_range);
@@ -98,7 +98,7 @@ struct Arguments
     }
 
     num_sequences = parser.get<unsigned>("-n");
-    num_threads = parser.get<unsigned>("-t");
+    num_threads = parser.get<int>("-t");
     out_path = parser.get("-o");
   }
 };
@@ -107,20 +107,16 @@ class Logger
 {
   static constexpr double LOG_DELAY_SECONDS = 0.1;
   std::chrono::time_point<std::chrono::system_clock> start_time, last_log;
-  uint64_t generated_bp, last_generated_bp;
-  unsigned generated_seqs, total_seqs;
-  size_t last_line_length;
-  std::string unit;
+  uint64_t generated_bp = 0, last_generated_bp = 0;
+  unsigned generated_seqs = 0, total_seqs;
+  size_t last_line_length = 0;
+  const std::string& unit;
 
 public:
-  Logger(unsigned num_sequences, std::string unit)
+  Logger(unsigned num_sequences, const std::string& unit)
     : start_time(std::chrono::system_clock::now())
     , last_log(std::chrono::system_clock::now())
-    , generated_bp(0)
-    , last_generated_bp(0)
-    , generated_seqs(0)
     , total_seqs(num_sequences)
-    , last_line_length(0)
     , unit(unit)
   {
   }
@@ -132,13 +128,14 @@ public:
     auto current_time = std::chrono::system_clock::now();
     std::chrono::duration<double> elapsed = (current_time - last_log);
     if (elapsed.count() > LOG_DELAY_SECONDS) {
-      unsigned progress = (double)generated_seqs / (double)total_seqs * 100.0;
-      double diff_bp = generated_bp - last_generated_bp;
-      unsigned speed = diff_bp / elapsed.count();
+      long double diff_bp = generated_bp - last_generated_bp;
+      auto speed = std::llround(diff_bp / elapsed.count());
+      auto progress =
+        std::lround((double)generated_seqs / (double)total_seqs * 100.0);
       double seq_ratio =
         ((double)total_seqs - (double)generated_seqs) / (double)generated_seqs;
       std::chrono::duration<double> total_elapsed = (current_time - start_time);
-      unsigned remaining = seq_ratio * total_elapsed.count() + 1;
+      auto remaining = std::lround(seq_ratio * total_elapsed.count() + 1);
       std::string line = "[" + std::to_string(generated_seqs) + "/" +
                          std::to_string(total_seqs) + "] Generated " +
                          std::to_string(generated_bp) + unit + " @" +
@@ -166,28 +163,34 @@ public:
 int
 main(int argc, char** argv)
 {
-  Arguments args(argc, argv);
-  omp_set_num_threads(args.num_threads);
+  try {
+    Arguments args(argc, argv);
+    omp_set_num_threads(args.num_threads);
 
-  std::random_device rd;
-  std::default_random_engine rng(rd());
-  std::uniform_int_distribution<size_t> dist(args.min_length, args.max_length);
-  btllib::SeqWriter writer(args.out_path);
-  btllib::RandomSequenceGenerator rnd(args.seq_type, args.mask);
+    std::random_device rd;
+    std::default_random_engine rng(rd());
+    std::uniform_int_distribution<size_t> dist(args.min_length,
+                                               args.max_length);
+    btllib::SeqWriter writer(args.out_path);
+    btllib::RandomSequenceGenerator rnd(args.seq_type, args.mask);
 
-  std::string unit =
-    args.seq_type == btllib::RandomSequenceGenerator::PROTEIN ? "aa" : "bp";
-  Logger log(args.num_sequences, unit);
+    std::string unit =
+      args.seq_type == btllib::RandomSequenceGenerator::PROTEIN ? "aa" : "bp";
+    Logger log(args.num_sequences, unit);
 
-#pragma omp parallel for
-  for (unsigned i = 0; i < args.num_sequences; i++) {
-    std::string seq = rnd.generate(dist(rng));
-    writer.write(std::to_string(i + 1), "", seq, "");
+#pragma omp parallel for shared(args, rnd, rng, dist, writer, log) default(none)
+    for (unsigned i = 0; i < args.num_sequences; i++) {
+      std::string seq = rnd.generate(dist(rng));
+      writer.write(std::to_string(i + 1), "", seq, "");
 #pragma omp critical
-    log.add_sequence(seq.size());
+      log.add_sequence(seq.size());
+    }
+
+    log.stop();
+  } catch (const std::exception& e) {
+    std::cerr << e.what() << '\n';
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
-
-  log.stop();
-
+  
   return 0;
 }

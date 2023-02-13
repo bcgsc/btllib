@@ -1,7 +1,7 @@
 #ifndef BTLLIB_RANDOM_SEQ_HPP
 #define BTLLIB_RANDOM_SEQ_HPP
 
-#include <stddef.h>
+#include <cstddef>
 #include <string>
 
 namespace btllib {
@@ -34,9 +34,9 @@ public:
 
   /**
    * Generate a new random sequence.
-   * 
+   *
    * @param length Sequence length
-  */
+   */
   std::string generate(size_t length);
 
 private:
