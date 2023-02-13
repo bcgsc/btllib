@@ -23,8 +23,20 @@ public:
     HARD
   };
 
+  /**
+   * Construct a random sequence generator object.
+   *
+   * @param type Sequence type (DNA, RNA, or protein)
+   * @param masking If set to SOFT, lower-case values will also be generated. If
+   * HARD, the sequences will include N/X positions.
+   */
   RandomSequenceGenerator(SequenceType type, Masking masking = NONE);
 
+  /**
+   * Generate a new random sequence.
+   * 
+   * @param length Sequence length
+  */
   std::string generate(size_t length);
 
 private:
