@@ -37,7 +37,7 @@ RandomSequenceGenerator::generate(size_t length)
   seq.reserve(length);
   std::random_device rd;
   std::default_random_engine rng(rd());
-  std::uniform_int_distribution<> dist(0, chars.size() - 1);
+  std::uniform_int_distribution<size_t> dist(0, chars.size() - 1);
   for (size_t i = 0; i < length; i++) {
     seq.append(std::string(1, chars[dist(rng)]));
   }
