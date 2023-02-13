@@ -110,9 +110,10 @@ class Logger
   uint64_t generated_bp, last_generated_bp;
   unsigned generated_seqs, total_seqs;
   size_t last_line_length;
+  std::string unit;
 
 public:
-  Logger(unsigned num_sequences)
+  Logger(unsigned num_sequences, std::string unit)
     : start_time(std::chrono::system_clock::now())
     , last_log(std::chrono::system_clock::now())
     , generated_bp(0)
@@ -120,6 +121,7 @@ public:
     , generated_seqs(0)
     , total_seqs(num_sequences)
     , last_line_length(0)
+    , unit(unit)
   {
   }
 
@@ -139,8 +141,8 @@ public:
       unsigned remaining = seq_ratio * total_elapsed.count() + 1;
       std::string line = "[" + std::to_string(generated_seqs) + "/" +
                          std::to_string(total_seqs) + "] Generated " +
-                         std::to_string(generated_bp) + "bp @" +
-                         std::to_string(speed) + "bp/s (" +
+                         std::to_string(generated_bp) + unit + " @" +
+                         std::to_string(speed) + unit + "/s (" +
                          std::to_string(progress) + "%, ~" +
                          std::to_string(remaining) + "s remaining)";
       std::cerr << line << "\r";
@@ -156,7 +158,7 @@ public:
     std::chrono::duration<double> elapsed = (end_time - start_time);
     std::cerr << std::string(last_line_length, ' ') << "\r";
     std::cerr << "Generated " << generated_seqs << " sequence(s) (total "
-              << generated_bp << "bp) in " << elapsed.count() << "s"
+              << generated_bp << unit << ") in " << elapsed.count() << "s"
               << std::endl;
   }
 };
@@ -173,7 +175,9 @@ main(int argc, char** argv)
   btllib::SeqWriter writer(args.out_path);
   btllib::RandomSequenceGenerator rnd(args.seq_type, args.mask);
 
-  Logger log(args.num_sequences);
+  std::string unit =
+    args.seq_type == btllib::RandomSequenceGenerator::PROTEIN ? "aa" : "bp";
+  Logger log(args.num_sequences, unit);
 
 #pragma omp parallel for
   for (unsigned i = 0; i < args.num_sequences; i++) {
