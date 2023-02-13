@@ -32502,9 +32502,9 @@ SWIGINTERN PyObject *_wrap_Indexlr_output_qual(PyObject *self, PyObject *args) {
   btllib::Indexlr *arg1 = (btllib::Indexlr *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   bool result;
   
+  (void)self;
   if (!SWIG_Python_UnpackTuple(args, "Indexlr_output_qual", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Indexlr, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
@@ -32924,6 +32924,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_4(PyObject *self, Py_ssize_t nobjs, PyObj
   int ecode4 = 0 ;
   btllib::Indexlr *result = 0 ;
   
+  (void)self;
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
@@ -32968,6 +32969,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_5(PyObject *self, Py_ssize_t nobjs, PyObj
   int ecode3 = 0 ;
   btllib::Indexlr *result = 0 ;
   
+  (void)self;
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
@@ -33025,6 +33027,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_6(PyObject *self, Py_ssize_t nobjs, PyObj
   int res9 = 0 ;
   btllib::Indexlr *result = 0 ;
   
+  (void)self;
   if ((nobjs < 9) || (nobjs > 9)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
@@ -33115,6 +33118,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_7(PyObject *self, Py_ssize_t nobjs, PyObj
   int res8 = 0 ;
   btllib::Indexlr *result = 0 ;
   
+  (void)self;
   if ((nobjs < 8) || (nobjs > 8)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
@@ -33194,6 +33198,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_8(PyObject *self, Py_ssize_t nobjs, PyObj
   int ecode7 = 0 ;
   btllib::Indexlr *result = 0 ;
   
+  (void)self;
   if ((nobjs < 7) || (nobjs > 7)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
@@ -33262,6 +33267,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_9(PyObject *self, Py_ssize_t nobjs, PyObj
   int ecode6 = 0 ;
   btllib::Indexlr *result = 0 ;
   
+  (void)self;
   if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
@@ -33322,6 +33328,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_10(PyObject *self, Py_ssize_t nobjs, PyOb
   int ecode5 = 0 ;
   btllib::Indexlr *result = 0 ;
   
+  (void)self;
   if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
@@ -33374,6 +33381,7 @@ SWIGINTERN int _wrap_new_Indexlr__SWIG_11(PyObject *self, Py_ssize_t nobjs, PyOb
   int ecode4 = 0 ;
   btllib::Indexlr *result = 0 ;
   
+  (void)self;
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
@@ -33816,6 +33824,7 @@ SWIGINTERN int _wrap_new_Minimizer__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyO
   int ecode4 = 0 ;
   btllib::Indexlr::Minimizer *result = 0 ;
   
+  (void)self;
   if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
@@ -34180,6 +34189,7 @@ SWIGINTERN PyObject *_wrap_Minimizer_qual_set(PyObject *self, PyObject *args) {
   int res2 = SWIG_OLDOBJ ;
   PyObject *swig_obj[2] ;
   
+  (void)self;
   if (!args) SWIG_fail;
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Indexlr__Minimizer, 0 |  0 );
@@ -34213,9 +34223,9 @@ SWIGINTERN PyObject *_wrap_Minimizer_qual_get(PyObject *self, PyObject *args) {
   btllib::Indexlr::Minimizer *arg1 = (btllib::Indexlr::Minimizer *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   std::string *result = 0 ;
   
+  (void)self;
   if (!SWIG_Python_UnpackTuple(args, "Minimizer_qual_get", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Indexlr__Minimizer, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
@@ -53660,6 +53670,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__Indexlr_methods[] = {
   { "output_id", _wrap_Indexlr_output_id, METH_NOARGS, "" },
   { "output_bx", _wrap_Indexlr_output_bx, METH_NOARGS, "" },
   { "output_seq", _wrap_Indexlr_output_seq, METH_NOARGS, "" },
+  { "output_qual", _wrap_Indexlr_output_qual, METH_NOARGS, "" },
   { "filter_in", _wrap_Indexlr_filter_in, METH_NOARGS, "" },
   { "filter_out", _wrap_Indexlr_filter_out, METH_NOARGS, "" },
   { "short_mode", _wrap_Indexlr_short_mode, METH_NOARGS, "" },
@@ -54110,6 +54121,7 @@ static SwigPyGetSet Minimizer_seq_getset = { _wrap_Minimizer_seq_get, _wrap_Mini
 static SwigPyGetSet Minimizer_out_hash_getset = { _wrap_Minimizer_out_hash_get, _wrap_Minimizer_out_hash_set };
 static SwigPyGetSet Minimizer_forward_getset = { _wrap_Minimizer_forward_get, _wrap_Minimizer_forward_set };
 static SwigPyGetSet Minimizer_pos_getset = { _wrap_Minimizer_pos_get, _wrap_Minimizer_pos_set };
+static SwigPyGetSet Minimizer_qual_getset = { _wrap_Minimizer_qual_get, _wrap_Minimizer_qual_set };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__Indexlr__Minimizer_getset[] = {
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &Minimizer___dict___getset },
     { (char *)"min_hash", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_min_hash_getset },
@@ -54117,6 +54129,7 @@ SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__Indexlr__Minimizer_getset[] = {
     { (char *)"out_hash", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_out_hash_getset },
     { (char *)"forward", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_forward_getset },
     { (char *)"pos", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_pos_getset },
+    { (char *)"qual", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_qual_getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };
 
@@ -54134,20 +54147,7 @@ SwigPyBuiltin__btllib__Indexlr__Minimizer_richcompare(PyObject *self, PyObject *
   return result;
 }
 
-SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__Indexlr_methods[] = {
-  { "output_id", _wrap_Indexlr_output_id, METH_NOARGS, "" },
-  { "output_bx", _wrap_Indexlr_output_bx, METH_NOARGS, "" },
-  { "output_seq", _wrap_Indexlr_output_seq, METH_NOARGS, "" },
-  { "output_qual", _wrap_Indexlr_output_qual, METH_NOARGS, "" },
-  { "filter_in", _wrap_Indexlr_filter_in, METH_NOARGS, "" },
-  { "filter_out", _wrap_Indexlr_filter_out, METH_NOARGS, "" },
-  { "short_mode", _wrap_Indexlr_short_mode, METH_NOARGS, "" },
-  { "long_mode", _wrap_Indexlr_long_mode, METH_NOARGS, "" },
-  { "read", _wrap_Indexlr_read, METH_NOARGS, "" },
-  { "close", _wrap_Indexlr_close, METH_NOARGS, "" },
-  { "__iter__", _wrap_Indexlr___iter__, METH_NOARGS, "" },
-  { "__enter__", _wrap_Indexlr___enter__, METH_NOARGS, "" },
-  { "__exit__", _wrap_Indexlr___exit__, METH_VARARGS, "" },
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__Indexlr__Minimizer_methods[] = {
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -54594,21 +54594,9 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__Indexlr__Record_type = {
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__Indexlr__Record_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__Indexlr__Record_type};
 
-static SwigPyGetSet Minimizer_pos_getset = { _wrap_Minimizer_pos_get, _wrap_Minimizer_pos_set };
-static SwigPyGetSet Minimizer_forward_getset = { _wrap_Minimizer_forward_get, _wrap_Minimizer_forward_set };
-static SwigPyGetSet Minimizer_out_hash_getset = { _wrap_Minimizer_out_hash_get, _wrap_Minimizer_out_hash_set };
-static SwigPyGetSet Minimizer_qual_getset = { _wrap_Minimizer_qual_get, _wrap_Minimizer_qual_set };
-static SwigPyGetSet Minimizer___dict___getset = { SwigPyObject_get___dict__, 0 };
-static SwigPyGetSet Minimizer_min_hash_getset = { _wrap_Minimizer_min_hash_get, _wrap_Minimizer_min_hash_set };
-static SwigPyGetSet Minimizer_seq_getset = { _wrap_Minimizer_seq_get, _wrap_Minimizer_seq_set };
-SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__Indexlr__Minimizer_getset[] = {
-    { (char *)"pos", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_pos_getset },
-    { (char *)"forward", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_forward_getset },
-    { (char *)"out_hash", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_out_hash_getset },
-    { (char *)"qual", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_qual_getset },
-    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &Minimizer___dict___getset },
-    { (char *)"min_hash", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_min_hash_getset },
-    { (char *)"seq", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Minimizer_seq_getset },
+static SwigPyGetSet IndexlrRecordIterator___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__Indexlr__RecordIterator_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &IndexlrRecordIterator___dict___getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };
 

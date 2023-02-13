@@ -425,7 +425,7 @@ $(function() {
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>                        <span class="keyword">const</span> <span class="keywordtype">bool</span> verbose,</div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>                        <span class="keyword">const</span> <a class="code hl_class" href="classbtllib_1_1BloomFilter.html">BloomFilter</a>&amp; bf1,</div>
 <div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>                        <span class="keyword">const</span> <a class="code hl_class" href="classbtllib_1_1BloomFilter.html">BloomFilter</a>&amp; bf2)</div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>  : <a class="code hl_class" href="classbtllib_1_1Indexlr.html">Indexlr</a>(seqfile, k, w, 0, flags, threads, verbose, bf1, bf2)</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>  : <a class="code hl_class" href="classbtllib_1_1Indexlr.html">Indexlr</a>(std::move(seqfile), k, w, 0, flags, threads, verbose, bf1, bf2)</div>
 <div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>{</div>
 <div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>}</div>
 <div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
