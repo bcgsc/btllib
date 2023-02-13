@@ -191,6 +191,6 @@ main(int argc, char** argv)
     std::cerr << e.what() << '\n';
     std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
-  
+
   return 0;
 }
