@@ -24,7 +24,7 @@ struct Arguments
     argparse::ArgumentParser parser("seqgen", btllib::PROJECT_VERSION);
 
     parser.add_argument("-s")
-      .help("Sequence type (dna | rna | protein)")
+      .help("Sequence type (dna | rna)")
       .default_value(std::string("dna"));
 
     parser.add_argument("-m")
@@ -44,7 +44,7 @@ struct Arguments
 
     parser.add_argument("-t")
       .help("Number of parallel threads")
-      .default_value(1U)
+      .default_value(1)
       .scan<'i', int>();
 
     parser.add_argument("-o")
@@ -64,12 +64,10 @@ struct Arguments
       seq_type = btllib::RandomSequenceGenerator::SequenceType::DNA;
     } else if (seq_type_str == "rna") {
       seq_type = btllib::RandomSequenceGenerator::SequenceType::RNA;
-    } else if (seq_type_str == "protein") {
-      seq_type = btllib::RandomSequenceGenerator::SequenceType::PROTEIN;
     } else {
       btllib::check_error(true,
                           "Invalid sequence type: " + seq_type_str +
-                            ". Should be 'dna', 'rna', or 'protein'.");
+                            ". Should be 'dna' or 'rna'.");
     }
 
     auto mask_str = parser.get("-m");
