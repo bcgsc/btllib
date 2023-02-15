@@ -59374,12 +59374,12 @@ SWIG_init(void) {
   /* type 'btllib::RandomSequenceGenerator' */
   builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__RandomSequenceGenerator_type;
   builtin_pytype->tp_dict = d = PyDict_New();
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "DNA",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::DNA)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "RNA",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::RNA)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "PROTEIN",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::PROTEIN)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "NONE",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::NONE)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SOFT",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::SOFT)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "HARD",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::HARD)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SequenceType_DNA",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::SequenceType::DNA)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SequenceType_RNA",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::SequenceType::RNA)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SequenceType_PROTEIN",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::SequenceType::PROTEIN)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Masking_NONE",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::Masking::NONE)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Masking_SOFT",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::Masking::SOFT)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Masking_HARD",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::Masking::HARD)));
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;

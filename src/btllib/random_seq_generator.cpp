@@ -9,24 +9,22 @@ namespace btllib {
 RandomSequenceGenerator::RandomSequenceGenerator(SequenceType seq_type,
                                                  Masking masking)
 {
-  if (seq_type == DNA) {
+  if (seq_type == SequenceType::DNA) {
     chars = "ACGT";
-  } else if (seq_type == RNA) {
+  } else if (seq_type == SequenceType::RNA) {
     chars = "ACGU";
-  } else if (seq_type == PROTEIN) {
+  } else if (seq_type == SequenceType::PROTEIN) {
     chars = "ACDEFGHIKLMNPQRSTVWY";
-  } else {
-    check_error(true, CLASS_NAME + ": Invalid SequenceType");
   }
-  if (masking == SOFT) {
+  if (masking == Masking::SOFT) {
     std::string lowers = chars;
     std::transform(lowers.begin(),
                    lowers.end(),
                    lowers.begin(),
                    [](unsigned char c) { return std::tolower(c); });
     chars += lowers;
-  } else if (masking == HARD) {
-    chars += seq_type == PROTEIN ? 'X' : 'N';
+  } else if (masking == Masking::HARD) {
+    chars += seq_type == SequenceType::PROTEIN ? 'X' : 'N';
   }
 }
 

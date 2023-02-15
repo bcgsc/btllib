@@ -9,14 +9,14 @@ namespace btllib {
 class RandomSequenceGenerator
 {
 public:
-  enum SequenceType
+  enum class SequenceType
   {
     DNA,
     RNA,
     PROTEIN
   };
 
-  enum Masking
+  enum class Masking
   {
     NONE,
     SOFT,
@@ -30,7 +30,7 @@ public:
    * @param masking If set to SOFT, lower-case values will also be generated. If
    * HARD, the sequences will include N/X positions.
    */
-  RandomSequenceGenerator(SequenceType type, Masking masking = NONE);
+  RandomSequenceGenerator(SequenceType type, Masking masking = Masking::NONE);
 
   /**
    * Generate a new random sequence.
@@ -40,7 +40,6 @@ public:
   std::string generate(size_t length);
 
 private:
-  const std::string CLASS_NAME = "RandomSequenceGenerator";
   std::string chars;
 };
 
