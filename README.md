@@ -21,7 +21,7 @@ Alternatively, you can compile the code from source. Download `btllib-$VERSION.t
 - `tar xzf btllib-$VERSION.tar.gz` to extract the source code.
 - Have the dependencies ready:
   * GCC 6+ or Clang 5+ (with OpenMP and C++17 support)
-  * Python 3.10
+  * Python 3.9+
   * Meson and Ninja Python3 packages, CMake (If not available, these will be automatically installed to a temporary directory.)
 - Run `btllib/compile`
   * This will install btllib in the `btllib/install` directory. You can provide the `--prefix` parameter to change this.
