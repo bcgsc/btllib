@@ -173,7 +173,9 @@ main(int argc, char** argv)
     btllib::RandomSequenceGenerator rnd(args.seq_type, args.mask);
 
     std::string unit =
-      args.seq_type == btllib::RandomSequenceGenerator::SequenceType::PROTEIN ? "aa" : "bp";
+      args.seq_type == btllib::RandomSequenceGenerator::SequenceType::PROTEIN
+        ? "aa"
+        : "bp";
     Logger log(args.num_sequences, unit);
 
 #pragma omp parallel for shared(args, rnd, rng, dist, writer, log) default(none)
