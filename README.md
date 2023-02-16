@@ -20,8 +20,8 @@ The recommended way is to download using [Conda](https://docs.conda.io/en/latest
 Alternatively, you can compile the code from source. Download `btllib-$VERSION.tar.gz` from the GitHub [latest release](https://github.com/bcgsc/btllib/releases/latest) where `$VERSION` is the latest btllib version and do the following:
 - `tar xzf btllib-$VERSION.tar.gz` to extract the source code.
 - Have the dependencies ready:
-  * GCC 6+ or Clang 5+ (optionally with OpenMP support)
-  * Python 3.7+
+  * GCC 6+ or Clang 5+ (with OpenMP and C++17 support)
+  * Python 3.9+
   * Meson and Ninja Python3 packages, CMake (If not available, these will be automatically installed to a temporary directory.)
 - Run `btllib/compile`
   * This will install btllib in the `btllib/install` directory. You can provide the `--prefix` parameter to change this.

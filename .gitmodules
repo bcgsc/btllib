@@ -4,3 +4,6 @@
 [submodule "subprojects/cpptoml"]
 	path = subprojects/cpptoml
 	url = https://github.com/skystrife/cpptoml
+[submodule "subprojects/argparse"]
+	path = subprojects/argparse
+	url = https://github.com/p-ranav/argparse.git
