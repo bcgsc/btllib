@@ -38752,6 +38752,208 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_CountingBloomFilter8_remove__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::CountingBloomFilter< uint8_t > *arg1 = (btllib::CountingBloomFilter< uint8_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CountingBloomFilter8_remove" "', argument " "1"" of type '" "btllib::CountingBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::CountingBloomFilter< uint8_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CountingBloomFilter8_remove" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->remove((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter8_remove__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::CountingBloomFilter< uint8_t > *arg1 = (btllib::CountingBloomFilter< uint8_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CountingBloomFilter8_remove" "', argument " "1"" of type '" "btllib::CountingBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::CountingBloomFilter< uint8_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CountingBloomFilter8_remove" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CountingBloomFilter8_remove" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->remove((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter8_remove(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "CountingBloomFilter8_remove", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_CountingBloomFilter8_remove__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_CountingBloomFilter8_remove__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'CountingBloomFilter8_remove'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::CountingBloomFilter< uint8_t >::remove(uint64_t const *)\n"
+    "    btllib::CountingBloomFilter< uint8_t >::remove(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter8_clear__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::CountingBloomFilter< uint8_t > *arg1 = (btllib::CountingBloomFilter< uint8_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CountingBloomFilter8_clear" "', argument " "1"" of type '" "btllib::CountingBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::CountingBloomFilter< uint8_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CountingBloomFilter8_clear" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->clear((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter8_clear__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::CountingBloomFilter< uint8_t > *arg1 = (btllib::CountingBloomFilter< uint8_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CountingBloomFilter8_clear" "', argument " "1"" of type '" "btllib::CountingBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::CountingBloomFilter< uint8_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CountingBloomFilter8_clear" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CountingBloomFilter8_clear" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->clear((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter8_clear(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "CountingBloomFilter8_clear", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_CountingBloomFilter8_clear__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_CountingBloomFilter8_clear__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'CountingBloomFilter8_clear'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::CountingBloomFilter< uint8_t >::clear(uint64_t const *)\n"
+    "    btllib::CountingBloomFilter< uint8_t >::clear(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_CountingBloomFilter8_contains__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   btllib::CountingBloomFilter< uint8_t > *arg1 = (btllib::CountingBloomFilter< uint8_t > *) 0 ;
@@ -39960,6 +40162,208 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_CountingBloomFilter16_remove__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::CountingBloomFilter< uint16_t > *arg1 = (btllib::CountingBloomFilter< uint16_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CountingBloomFilter16_remove" "', argument " "1"" of type '" "btllib::CountingBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::CountingBloomFilter< uint16_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CountingBloomFilter16_remove" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->remove((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter16_remove__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::CountingBloomFilter< uint16_t > *arg1 = (btllib::CountingBloomFilter< uint16_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CountingBloomFilter16_remove" "', argument " "1"" of type '" "btllib::CountingBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::CountingBloomFilter< uint16_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CountingBloomFilter16_remove" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CountingBloomFilter16_remove" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->remove((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter16_remove(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "CountingBloomFilter16_remove", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_CountingBloomFilter16_remove__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_CountingBloomFilter16_remove__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'CountingBloomFilter16_remove'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::CountingBloomFilter< uint16_t >::remove(uint64_t const *)\n"
+    "    btllib::CountingBloomFilter< uint16_t >::remove(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter16_clear__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::CountingBloomFilter< uint16_t > *arg1 = (btllib::CountingBloomFilter< uint16_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CountingBloomFilter16_clear" "', argument " "1"" of type '" "btllib::CountingBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::CountingBloomFilter< uint16_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CountingBloomFilter16_clear" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->clear((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter16_clear__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::CountingBloomFilter< uint16_t > *arg1 = (btllib::CountingBloomFilter< uint16_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CountingBloomFilter16_clear" "', argument " "1"" of type '" "btllib::CountingBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::CountingBloomFilter< uint16_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CountingBloomFilter16_clear" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CountingBloomFilter16_clear" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->clear((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter16_clear(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "CountingBloomFilter16_clear", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_CountingBloomFilter16_clear__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_CountingBloomFilter16_clear__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'CountingBloomFilter16_clear'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::CountingBloomFilter< uint16_t >::clear(uint64_t const *)\n"
+    "    btllib::CountingBloomFilter< uint16_t >::clear(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_CountingBloomFilter16_contains__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   btllib::CountingBloomFilter< uint16_t > *arg1 = (btllib::CountingBloomFilter< uint16_t > *) 0 ;
@@ -41164,6 +41568,208 @@ fail:
     "  Possible C/C++ prototypes are:\n"
     "    btllib::CountingBloomFilter< uint32_t >::insert(uint64_t const *)\n"
     "    btllib::CountingBloomFilter< uint32_t >::insert(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter32_remove__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::CountingBloomFilter< uint32_t > *arg1 = (btllib::CountingBloomFilter< uint32_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CountingBloomFilter32_remove" "', argument " "1"" of type '" "btllib::CountingBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::CountingBloomFilter< uint32_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CountingBloomFilter32_remove" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->remove((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter32_remove__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::CountingBloomFilter< uint32_t > *arg1 = (btllib::CountingBloomFilter< uint32_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CountingBloomFilter32_remove" "', argument " "1"" of type '" "btllib::CountingBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::CountingBloomFilter< uint32_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CountingBloomFilter32_remove" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CountingBloomFilter32_remove" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->remove((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter32_remove(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "CountingBloomFilter32_remove", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_CountingBloomFilter32_remove__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_CountingBloomFilter32_remove__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'CountingBloomFilter32_remove'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::CountingBloomFilter< uint32_t >::remove(uint64_t const *)\n"
+    "    btllib::CountingBloomFilter< uint32_t >::remove(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter32_clear__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::CountingBloomFilter< uint32_t > *arg1 = (btllib::CountingBloomFilter< uint32_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CountingBloomFilter32_clear" "', argument " "1"" of type '" "btllib::CountingBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::CountingBloomFilter< uint32_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CountingBloomFilter32_clear" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->clear((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter32_clear__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::CountingBloomFilter< uint32_t > *arg1 = (btllib::CountingBloomFilter< uint32_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CountingBloomFilter32_clear" "', argument " "1"" of type '" "btllib::CountingBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::CountingBloomFilter< uint32_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CountingBloomFilter32_clear" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CountingBloomFilter32_clear" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->clear((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CountingBloomFilter32_clear(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "CountingBloomFilter32_clear", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_CountingBloomFilter32_clear__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_CountingBloomFilter32_clear__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'CountingBloomFilter32_clear'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::CountingBloomFilter< uint32_t >::clear(uint64_t const *)\n"
+    "    btllib::CountingBloomFilter< uint32_t >::clear(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
   return 0;
 }
 
@@ -42428,6 +43034,396 @@ fail:
     "    btllib::KmerCountingBloomFilter< uint8_t >::insert(std::string const &)\n"
     "    btllib::KmerCountingBloomFilter< uint8_t >::insert(uint64_t const *)\n"
     "    btllib::KmerCountingBloomFilter< uint8_t >::insert(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter8_remove__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint8_t > *arg1 = (btllib::KmerCountingBloomFilter< uint8_t > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter8_remove" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint8_t > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter8_remove" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KmerCountingBloomFilter8_remove" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  (arg1)->remove((char const *)arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter8_remove__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint8_t > *arg1 = (btllib::KmerCountingBloomFilter< uint8_t > *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter8_remove" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint8_t > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter8_remove" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerCountingBloomFilter8_remove" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->remove((std::string const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter8_remove__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint8_t > *arg1 = (btllib::KmerCountingBloomFilter< uint8_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter8_remove" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint8_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter8_remove" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->remove((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter8_remove__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint8_t > *arg1 = (btllib::KmerCountingBloomFilter< uint8_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter8_remove" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint8_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter8_remove" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerCountingBloomFilter8_remove" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->remove((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter8_remove(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "KmerCountingBloomFilter8_remove", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_KmerCountingBloomFilter8_remove__SWIG_2(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_2;
+    return _wrap_KmerCountingBloomFilter8_remove__SWIG_1(self, argc, argv);
+  }
+check_2:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_KmerCountingBloomFilter8_remove__SWIG_3(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 3) {
+    PyObject *retobj = _wrap_KmerCountingBloomFilter8_remove__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'KmerCountingBloomFilter8_remove'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::KmerCountingBloomFilter< uint8_t >::remove(char const *,size_t)\n"
+    "    btllib::KmerCountingBloomFilter< uint8_t >::remove(std::string const &)\n"
+    "    btllib::KmerCountingBloomFilter< uint8_t >::remove(uint64_t const *)\n"
+    "    btllib::KmerCountingBloomFilter< uint8_t >::remove(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter8_clear__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint8_t > *arg1 = (btllib::KmerCountingBloomFilter< uint8_t > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter8_clear" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint8_t > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter8_clear" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KmerCountingBloomFilter8_clear" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  (arg1)->clear((char const *)arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter8_clear__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint8_t > *arg1 = (btllib::KmerCountingBloomFilter< uint8_t > *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter8_clear" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint8_t > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter8_clear" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerCountingBloomFilter8_clear" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->clear((std::string const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter8_clear__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint8_t > *arg1 = (btllib::KmerCountingBloomFilter< uint8_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter8_clear" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint8_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter8_clear" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->clear((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter8_clear__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint8_t > *arg1 = (btllib::KmerCountingBloomFilter< uint8_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter8_clear" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint8_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter8_clear" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerCountingBloomFilter8_clear" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->clear((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter8_clear(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "KmerCountingBloomFilter8_clear", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_KmerCountingBloomFilter8_clear__SWIG_2(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_2;
+    return _wrap_KmerCountingBloomFilter8_clear__SWIG_1(self, argc, argv);
+  }
+check_2:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_KmerCountingBloomFilter8_clear__SWIG_3(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 3) {
+    PyObject *retobj = _wrap_KmerCountingBloomFilter8_clear__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'KmerCountingBloomFilter8_clear'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::KmerCountingBloomFilter< uint8_t >::clear(char const *,size_t)\n"
+    "    btllib::KmerCountingBloomFilter< uint8_t >::clear(std::string const &)\n"
+    "    btllib::KmerCountingBloomFilter< uint8_t >::clear(uint64_t const *)\n"
+    "    btllib::KmerCountingBloomFilter< uint8_t >::clear(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
   return 0;
 }
 
@@ -44256,6 +45252,396 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter16_remove__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint16_t > *arg1 = (btllib::KmerCountingBloomFilter< uint16_t > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter16_remove" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint16_t > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter16_remove" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KmerCountingBloomFilter16_remove" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  (arg1)->remove((char const *)arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter16_remove__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint16_t > *arg1 = (btllib::KmerCountingBloomFilter< uint16_t > *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter16_remove" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint16_t > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter16_remove" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerCountingBloomFilter16_remove" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->remove((std::string const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter16_remove__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint16_t > *arg1 = (btllib::KmerCountingBloomFilter< uint16_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter16_remove" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint16_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter16_remove" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->remove((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter16_remove__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint16_t > *arg1 = (btllib::KmerCountingBloomFilter< uint16_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter16_remove" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint16_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter16_remove" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerCountingBloomFilter16_remove" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->remove((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter16_remove(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "KmerCountingBloomFilter16_remove", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_KmerCountingBloomFilter16_remove__SWIG_2(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_2;
+    return _wrap_KmerCountingBloomFilter16_remove__SWIG_1(self, argc, argv);
+  }
+check_2:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_KmerCountingBloomFilter16_remove__SWIG_3(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 3) {
+    PyObject *retobj = _wrap_KmerCountingBloomFilter16_remove__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'KmerCountingBloomFilter16_remove'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::KmerCountingBloomFilter< uint16_t >::remove(char const *,size_t)\n"
+    "    btllib::KmerCountingBloomFilter< uint16_t >::remove(std::string const &)\n"
+    "    btllib::KmerCountingBloomFilter< uint16_t >::remove(uint64_t const *)\n"
+    "    btllib::KmerCountingBloomFilter< uint16_t >::remove(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter16_clear__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint16_t > *arg1 = (btllib::KmerCountingBloomFilter< uint16_t > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter16_clear" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint16_t > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter16_clear" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KmerCountingBloomFilter16_clear" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  (arg1)->clear((char const *)arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter16_clear__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint16_t > *arg1 = (btllib::KmerCountingBloomFilter< uint16_t > *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter16_clear" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint16_t > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter16_clear" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerCountingBloomFilter16_clear" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->clear((std::string const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter16_clear__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint16_t > *arg1 = (btllib::KmerCountingBloomFilter< uint16_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter16_clear" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint16_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter16_clear" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->clear((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter16_clear__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint16_t > *arg1 = (btllib::KmerCountingBloomFilter< uint16_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter16_clear" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint16_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter16_clear" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerCountingBloomFilter16_clear" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->clear((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter16_clear(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "KmerCountingBloomFilter16_clear", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_KmerCountingBloomFilter16_clear__SWIG_2(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_2;
+    return _wrap_KmerCountingBloomFilter16_clear__SWIG_1(self, argc, argv);
+  }
+check_2:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_KmerCountingBloomFilter16_clear__SWIG_3(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 3) {
+    PyObject *retobj = _wrap_KmerCountingBloomFilter16_clear__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'KmerCountingBloomFilter16_clear'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::KmerCountingBloomFilter< uint16_t >::clear(char const *,size_t)\n"
+    "    btllib::KmerCountingBloomFilter< uint16_t >::clear(std::string const &)\n"
+    "    btllib::KmerCountingBloomFilter< uint16_t >::clear(uint64_t const *)\n"
+    "    btllib::KmerCountingBloomFilter< uint16_t >::clear(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter16_contains__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   btllib::KmerCountingBloomFilter< uint16_t > *arg1 = (btllib::KmerCountingBloomFilter< uint16_t > *) 0 ;
@@ -46076,6 +47462,396 @@ fail:
     "    btllib::KmerCountingBloomFilter< uint32_t >::insert(std::string const &)\n"
     "    btllib::KmerCountingBloomFilter< uint32_t >::insert(uint64_t const *)\n"
     "    btllib::KmerCountingBloomFilter< uint32_t >::insert(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter32_remove__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint32_t > *arg1 = (btllib::KmerCountingBloomFilter< uint32_t > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter32_remove" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint32_t > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter32_remove" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KmerCountingBloomFilter32_remove" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  (arg1)->remove((char const *)arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter32_remove__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint32_t > *arg1 = (btllib::KmerCountingBloomFilter< uint32_t > *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter32_remove" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint32_t > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter32_remove" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerCountingBloomFilter32_remove" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->remove((std::string const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter32_remove__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint32_t > *arg1 = (btllib::KmerCountingBloomFilter< uint32_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter32_remove" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint32_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter32_remove" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->remove((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter32_remove__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint32_t > *arg1 = (btllib::KmerCountingBloomFilter< uint32_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter32_remove" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint32_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter32_remove" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerCountingBloomFilter32_remove" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->remove((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter32_remove(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "KmerCountingBloomFilter32_remove", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_KmerCountingBloomFilter32_remove__SWIG_2(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_2;
+    return _wrap_KmerCountingBloomFilter32_remove__SWIG_1(self, argc, argv);
+  }
+check_2:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_KmerCountingBloomFilter32_remove__SWIG_3(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 3) {
+    PyObject *retobj = _wrap_KmerCountingBloomFilter32_remove__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'KmerCountingBloomFilter32_remove'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::KmerCountingBloomFilter< uint32_t >::remove(char const *,size_t)\n"
+    "    btllib::KmerCountingBloomFilter< uint32_t >::remove(std::string const &)\n"
+    "    btllib::KmerCountingBloomFilter< uint32_t >::remove(uint64_t const *)\n"
+    "    btllib::KmerCountingBloomFilter< uint32_t >::remove(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter32_clear__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint32_t > *arg1 = (btllib::KmerCountingBloomFilter< uint32_t > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter32_clear" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint32_t > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter32_clear" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KmerCountingBloomFilter32_clear" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  (arg1)->clear((char const *)arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter32_clear__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint32_t > *arg1 = (btllib::KmerCountingBloomFilter< uint32_t > *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter32_clear" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint32_t > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter32_clear" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerCountingBloomFilter32_clear" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->clear((std::string const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter32_clear__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint32_t > *arg1 = (btllib::KmerCountingBloomFilter< uint32_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter32_clear" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint32_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter32_clear" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->clear((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter32_clear__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::KmerCountingBloomFilter< uint32_t > *arg1 = (btllib::KmerCountingBloomFilter< uint32_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KmerCountingBloomFilter32_clear" "', argument " "1"" of type '" "btllib::KmerCountingBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::KmerCountingBloomFilter< uint32_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KmerCountingBloomFilter32_clear" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KmerCountingBloomFilter32_clear" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->clear((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KmerCountingBloomFilter32_clear(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "KmerCountingBloomFilter32_clear", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_KmerCountingBloomFilter32_clear__SWIG_2(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_2;
+    return _wrap_KmerCountingBloomFilter32_clear__SWIG_1(self, argc, argv);
+  }
+check_2:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_KmerCountingBloomFilter32_clear__SWIG_3(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 3) {
+    PyObject *retobj = _wrap_KmerCountingBloomFilter32_clear__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'KmerCountingBloomFilter32_clear'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::KmerCountingBloomFilter< uint32_t >::clear(char const *,size_t)\n"
+    "    btllib::KmerCountingBloomFilter< uint32_t >::clear(std::string const &)\n"
+    "    btllib::KmerCountingBloomFilter< uint32_t >::clear(uint64_t const *)\n"
+    "    btllib::KmerCountingBloomFilter< uint32_t >::clear(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
   return 0;
 }
 
@@ -56026,6 +57802,8 @@ SwigPyBuiltin__btllib__CountingBloomFilterT_uint8_t_t_richcompare(PyObject *self
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__CountingBloomFilterT_uint8_t_t_methods[] = {
   { "insert", _wrap_CountingBloomFilter8_insert, METH_VARARGS, "" },
+  { "remove", _wrap_CountingBloomFilter8_remove, METH_VARARGS, "" },
+  { "clear", _wrap_CountingBloomFilter8_clear, METH_VARARGS, "" },
   { "contains", _wrap_CountingBloomFilter8_contains, METH_VARARGS, "" },
   { "contains_insert", _wrap_CountingBloomFilter8_contains_insert, METH_VARARGS, "" },
   { "insert_contains", _wrap_CountingBloomFilter8_insert_contains, METH_VARARGS, "" },
@@ -56268,6 +58046,8 @@ SwigPyBuiltin__btllib__CountingBloomFilterT_uint16_t_t_richcompare(PyObject *sel
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__CountingBloomFilterT_uint16_t_t_methods[] = {
   { "insert", _wrap_CountingBloomFilter16_insert, METH_VARARGS, "" },
+  { "remove", _wrap_CountingBloomFilter16_remove, METH_VARARGS, "" },
+  { "clear", _wrap_CountingBloomFilter16_clear, METH_VARARGS, "" },
   { "contains", _wrap_CountingBloomFilter16_contains, METH_VARARGS, "" },
   { "contains_insert", _wrap_CountingBloomFilter16_contains_insert, METH_VARARGS, "" },
   { "insert_contains", _wrap_CountingBloomFilter16_insert_contains, METH_VARARGS, "" },
@@ -56510,6 +58290,8 @@ SwigPyBuiltin__btllib__CountingBloomFilterT_uint32_t_t_richcompare(PyObject *sel
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__CountingBloomFilterT_uint32_t_t_methods[] = {
   { "insert", _wrap_CountingBloomFilter32_insert, METH_VARARGS, "" },
+  { "remove", _wrap_CountingBloomFilter32_remove, METH_VARARGS, "" },
+  { "clear", _wrap_CountingBloomFilter32_clear, METH_VARARGS, "" },
   { "contains", _wrap_CountingBloomFilter32_contains, METH_VARARGS, "" },
   { "contains_insert", _wrap_CountingBloomFilter32_contains_insert, METH_VARARGS, "" },
   { "insert_contains", _wrap_CountingBloomFilter32_insert_contains, METH_VARARGS, "" },
@@ -56752,6 +58534,8 @@ SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint8_t_t_richcompare(PyObject *
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint8_t_t_methods[] = {
   { "insert", _wrap_KmerCountingBloomFilter8_insert, METH_VARARGS, "" },
+  { "remove", _wrap_KmerCountingBloomFilter8_remove, METH_VARARGS, "" },
+  { "clear", _wrap_KmerCountingBloomFilter8_clear, METH_VARARGS, "" },
   { "contains", _wrap_KmerCountingBloomFilter8_contains, METH_VARARGS, "" },
   { "contains_insert", _wrap_KmerCountingBloomFilter8_contains_insert, METH_VARARGS, "" },
   { "insert_contains", _wrap_KmerCountingBloomFilter8_insert_contains, METH_VARARGS, "" },
@@ -56996,6 +58780,8 @@ SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint16_t_t_richcompare(PyObject 
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint16_t_t_methods[] = {
   { "insert", _wrap_KmerCountingBloomFilter16_insert, METH_VARARGS, "" },
+  { "remove", _wrap_KmerCountingBloomFilter16_remove, METH_VARARGS, "" },
+  { "clear", _wrap_KmerCountingBloomFilter16_clear, METH_VARARGS, "" },
   { "contains", _wrap_KmerCountingBloomFilter16_contains, METH_VARARGS, "" },
   { "contains_insert", _wrap_KmerCountingBloomFilter16_contains_insert, METH_VARARGS, "" },
   { "insert_contains", _wrap_KmerCountingBloomFilter16_insert_contains, METH_VARARGS, "" },
@@ -57240,6 +59026,8 @@ SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint32_t_t_richcompare(PyObject 
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint32_t_t_methods[] = {
   { "insert", _wrap_KmerCountingBloomFilter32_insert, METH_VARARGS, "" },
+  { "remove", _wrap_KmerCountingBloomFilter32_remove, METH_VARARGS, "" },
+  { "clear", _wrap_KmerCountingBloomFilter32_clear, METH_VARARGS, "" },
   { "contains", _wrap_KmerCountingBloomFilter32_contains, METH_VARARGS, "" },
   { "contains_insert", _wrap_KmerCountingBloomFilter32_contains_insert, METH_VARARGS, "" },
   { "insert_contains", _wrap_KmerCountingBloomFilter32_insert_contains, METH_VARARGS, "" },
