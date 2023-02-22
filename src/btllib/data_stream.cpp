@@ -12,6 +12,7 @@
 #include <cstring>
 #include <map>
 #include <memory>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -133,7 +134,7 @@ get_datatype_cmd(const std::string& path,
   for (const auto& existence_cmd : datatype.cmds_check_existence) {
     const pid_t pid = fork();
     if (pid == 0) {
-      int null_fd = open("/dev/null", O_WRONLY, 0);
+      const int null_fd = open("/dev/null", O_WRONLY, 0);
       dup2(null_fd, STDOUT_FILENO);
       dup2(null_fd, STDERR_FILENO);
       close(null_fd);
@@ -238,13 +239,13 @@ peel_datatype(const std::string& path, DataStream::Operation op)
 }
 
 static std::string
-form_string_cmd(std::vector<std::string>& cmd_layers,
-                DataStream::Operation op,
+form_string_cmd(const std::vector<std::string>& cmd_layers,
+                const DataStream::Operation op,
                 const std::string& path)
 {
-  std::string result_cmd;
+  std::stringstream result_cmd_ss;
   for (size_t i = 0; i < cmd_layers.size(); i++) {
-    auto& cmd = cmd_layers[i];
+    std::string cmd = cmd_layers[i];
     if (op == DataStream::Operation::WRITE ||
         op == DataStream::Operation::APPEND) {
       if (i == cmd_layers.size() - 1) {
@@ -278,10 +279,11 @@ form_string_cmd(std::vector<std::string>& cmd_layers,
       }
     }
     if (i > 0) {
-      result_cmd += " | ";
+      result_cmd_ss << " | ";
     }
-    result_cmd += cmd;
+    result_cmd_ss << cmd;
   }
+  std::string result_cmd = result_cmd_ss.str();
 
   check_error(result_cmd.empty(),
               (op == DataStream::Operation::READ ? "Error loading from "

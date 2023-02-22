@@ -311,7 +311,7 @@ SeqReader::read_transition(Module& module,
     if (!reader_record->seq.empty()) {
       update_cstring_records(records, counter);
     }
-  } else if (!reader_record->seq.empty()) {
+  } else if (reader_record != nullptr && !reader_record->seq.empty()) {
     update_cstring_records(records, counter);
   }
 }

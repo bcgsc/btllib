@@ -25,6 +25,13 @@ private:
     ALIGNMENTS
   };
 
+  ~SeqReaderSamModule()
+  {
+    if (loader_thread) {
+      loader_thread->join();
+    }
+  }
+
   std::unique_ptr<ProcessPipeline> samtools_process;
   std::unique_ptr<std::thread> loader_thread;
   CString tmp;
@@ -46,7 +53,8 @@ SeqReaderSamModule::read_buffer(ReaderType& reader, RecordType& record)
   (void)reader;
   (void)record;
   {
-    ProcessPipeline version_test("samtools --version 2>/dev/stdout | head -n2");
+    const ProcessPipeline version_test(
+      "samtools --version 2>/dev/stdout | head -n2");
     char* line = nullptr;
     size_t n = 0;
     std::string version = "\n";
@@ -92,7 +100,6 @@ SeqReaderSamModule::read_buffer(ReaderType& reader, RecordType& record)
       }
       samtools_process->close_in();
     }));
-  loader_thread->detach();
   return false;
 }
 

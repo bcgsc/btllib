@@ -52,6 +52,8 @@ for file in ${include_files}; do
   echo "%include \"$path\"" >> wrappers/python/btllib.i
 done
 
+echo "%include \"../extra_templates.i\"" >> wrappers/python/btllib.i
+
 ln -sf $PWD/include wrappers/python/
 cd wrappers/python
 swig -python -py3 -fastproxy -fastdispatch -builtin -c++ -Iinclude btllib.i

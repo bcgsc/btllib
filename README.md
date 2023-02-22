@@ -3,6 +3,7 @@
 [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/bcgsc/btllib.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bcgsc/btllib/context:cpp)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/bcgsc/btllib.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bcgsc/btllib/alerts/)
 [![Build Status](https://dev.azure.com/bcgsc/btl_public/_apis/build/status/bcgsc.btllib)](https://dev.azure.com/bcgsc/btl_public/_build/latest?definitionId=1)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.04720/status.svg)](https://doi.org/10.21105/joss.04720)
 
 [Bioinformatics Technology Lab](http://www.birollab.ca/) common code library in C++ with Python wrappers.
 
@@ -19,8 +20,8 @@ The recommended way is to download using [Conda](https://docs.conda.io/en/latest
 Alternatively, you can compile the code from source. Download `btllib-$VERSION.tar.gz` from the GitHub [latest release](https://github.com/bcgsc/btllib/releases/latest) where `$VERSION` is the latest btllib version and do the following:
 - `tar xzf btllib-$VERSION.tar.gz` to extract the source code.
 - Have the dependencies ready:
-  * GCC 6+ or Clang 5+ (optionally with OpenMP support)
-  * Python 3.7+
+  * GCC 6+ or Clang 5+ (with OpenMP and C++17 support)
+  * Python 3.9+
   * Meson and Ninja Python3 packages, CMake (If not available, these will be automatically installed to a temporary directory.)
 - Run `btllib/compile`
   * This will install btllib in the `btllib/install` directory. You can provide the `--prefix` parameter to change this.
@@ -35,11 +36,14 @@ Using the library
   * wget for downloading sequences from a URL.
 - Building C++ code (`$PREFIX` is the path where btllib is installed):
   * Link your code with `$PREFIX/lib/libbtllib.a` (pass `-L $PREFIX/lib -l btllib` flags to the compiler).
+      * You can do so by typing the following in your console:
+          * `export CPPFLAGS="-isystem /path/to/btllib/install/include $CPPFLAGS"`
+          * `export LDFLAGS="-L/path/to/btllib/install//lib -lbtllib $LDFLAGS"`
   * `#include` any header from the `$PREFIX/include` directory (pass `-I $PREFIX/include` flag to the compiler).
   * `btllib` uses `C++11` features, so that standard should be enabled at a minimum.
 - Running Python code:
   * The Python used to import btllib _must_ be the same as the one used to compile the library. Specifically, btllib uses `python3-config` to determine the flags used for compilation. Running `python3-config --exec-prefix` will give the path to the Python installation that needs to be used. The `python3` executable can be found at `$(python3-config --exec-prefix)/bin/python3`.
-  * The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exception are nested classes which are prefixed with outer class name (e.g. `btllib::SeqReader::Flag` in C++ versus `btllib.SeqReaderFlag` in Python).
+  * The wrappers correspond one-to-one with C++ code so any functions and classes can be used under the same name. The only exceptions are nested classes which are prefixed with outer class name (e.g. `btllib::SeqReader::Flag` in C++ versus `btllib.SeqReaderFlag` in Python), and (Kmer)CountingBloomFilter which provides `CountingBloomFilter8`, `CountingBloomFilter16`, `CountingBloomFilter32`, `KmerCountingBloomFilter8`, `KmerCountingBloomFilter16`, `CountingBloomFilter32` with counters 8, 16, and 32 bits wide.
   * If you compiled btllib from source code and didn't install the Python wrappers, you can use `PYTHONPATH` environment variable or `sys.path.append()` in your Python code to include `$PREFIX/lib/btllib/python/btllib` directory to make btllib available to the interpreter.
   * Include the library with `import btllib`
 - Executables
@@ -66,7 +70,7 @@ For btllib developers
   * `meson dist --allow-dirty` to generate a self-contained package based on the last commit. `--allow-dirty` permits making a distributable with uncommited changes. This is necessary as `sdsl-lite` dependency has ad hoc changes made during the build process. The resulting distributable will be compressed with xz. For easier use, decompress it and then compress with gzip. Attach the resulting file to the release.
 
 The following are all the available `ninja` commands which can be run within `build` directory:
-- `ninja format` formats the whitespace in code (requires clang-format 8+).
+- `ninja clang-format` formats the whitespace in code (requires clang-format 8+).
 - `ninja wrap` wraps C++ code for Python (requires SWIG 4.0+).
 - `ninja clang-tidy` runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+).
 - `ninja` builds the tests and wrapper libraries / makes sure they compile.
@@ -82,5 +86,12 @@ Credits
 - Components:
   - [Hamid Mohamadi](https://github.com/mohamadi) and [Parham Kazemi](https://github.com/parham-k) for [ntHash](https://github.com/bcgsc/ntHash)
   - [Justin Chu](https://github.com/JustinChu) for [MIBloomFilter](https://github.com/bcgsc/btl_bloomfilter)
+- Included dependencies:
   - [Chase Geigle](https://github.com/skystrife) for [cpptoml](https://github.com/skystrife/cpptoml)
   - Simon Gog, Timo Beller, Alistair Moffat, and Matthias Petri for [sdsl-lite](https://github.com/simongog/sdsl-lite)
+
+Citing
+---
+If you use btllib in your research, please cite:
+
+Nikolić et al., (2022). btllib: A C++ library with Python interface for efficient genomic sequence processing. Journal of Open Source Software, 7(79), 4720, https://doi.org/10.21105/joss.04720

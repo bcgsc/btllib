@@ -170,13 +170,23 @@ if __name__ == "__main__":
 
     time.sleep(3)
 
+    ar = ''
+    lto = ''
+    if program_exists('gcc-ar'):
+        ar = 'export AR=gcc-ar &&'
+    elif program_exists('llvm-ar'):
+        ar = 'export AR=llvm-ar &&'
+    if len(ar) > 0:
+        lto = '-Db_lto=true'
+
     sp.run(
         [
             f"""
     if [ -f {venv_path}/bin/activate ]; then
       . {venv_path}/bin/activate;
     fi &&
-    meson setup --buildtype release --prefix={args.prefix} {build_dir} &&
+    {ar}
+    meson setup --buildtype release {lto} -Db_ndebug=true --prefix={args.prefix} {build_dir} &&
     cd {build_dir} &&
     ninja install &&
     cd .. &&

@@ -1,5 +1,5 @@
 project('btllib', 'cpp',
-        version : '1.4.5',
+        version : '1.5.0',
         license : 'GPL3',
         default_options : [ 'cpp_std=c++11', 'warning_level=3', 'werror=true' ],
         meson_version : '>= 0.60.0')
@@ -64,6 +64,9 @@ deps = [ threads_dep, openmp_dep, cpptomp_dep, sdsl_dep ]
 # These are unfortunate hacks. Currently, neither cpptoml nor sdsl-lite install their headers (even when set_install(true) is called), and so we need to do it manually
 meson.add_install_script('scripts/install-cpptoml')
 meson.add_install_script('scripts/install-sdsl-lite')
+
+argparse_subproject = cmake.subproject('argparse', options : cmake_options)
+argparse_dep = argparse_subproject.dependency('argparse')
 
 # Run time dependencies
 # ===========================================================

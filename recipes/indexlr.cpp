@@ -29,6 +29,7 @@ const static size_t INITIAL_OUTPUT_STREAM_SIZE = 100;
 const static size_t QUEUE_SIZE = 64;
 const static size_t MAX_THREADS = 5;
 const static size_t DEFAULT_THREADS = MAX_THREADS;
+const static size_t MAX_QUALITY = 30;
 
 static void
 print_error_msg(const std::string& msg)
@@ -39,45 +40,50 @@ print_error_msg(const std::string& msg)
 static void
 print_usage()
 {
-  std::cerr << "Usage: " << PROGNAME
-            << " -k K -w W [-r repeat_bf_path] [-s solid_bf_path] [--id] "
-               "[--bx] [--pos] [--seq] "
-               "[-o FILE] FILE...\n\n"
-               "  -k K        Use K as k-mer size.\n"
-               "  -w W        Use W as sliding-window size.\n"
-               "  --id        Include input sequence ids in the output. "
-               "(Default if --bx is not "
-               "provided)\n"
-               "  --bx        Include input sequence barcodes in the output.\n"
-               "  --len       Include input sequence length in the output.\n"
-               "  --pos       Include minimizer positions in the output "
-               "(appended with : after "
-               "minimizer value).\n"
-               "  --strand    Include minimizer strands in the output "
-               "(appended with : after minimizer "
-               "value).\n"
-               "  --seq       Include minimizer sequences in the output "
-               "(appended with : after "
-               "minimizer value).\n"
-               "              If a combination of --pos, --strand, and --seq "
-               "options are provided, "
-               "they're appended in the --pos, --strand, --seq order after the "
-               "minimizer value.\n"
-               "  --long      Enable long mode which is more efficient for "
-               "long sequences (e.g. long "
-               "reads, contigs, reference).\n"
-               "  -r repeat_bf_path  Use a Bloom filter to filter out "
-               "repetitive minimizers.\n"
-               "  -s solid_bf_path  Use a Bloom filter to only select solid "
-               "minimizers.\n"
-               "  -o FILE     Write output to FILE, default is stdout.\n"
-               "  -t T        Use T number of threads (default 5, max 5) per "
-               "input file.\n"
-               "  -v          Show verbose output.\n"
-               "  --help      Display this help and exit.\n"
-               "  --version   Display version and exit.\n"
-               "  FILE        Space separated list of FASTA/Q files."
-            << std::endl;
+  std::cerr
+    << "Usage: " << PROGNAME
+    << " -k K -w W [-q Q]  [-r repeat_bf_path] [-s solid_bf_path] [--id] "
+       "[--bx] [--pos] [--seq] [--qual]"
+       "[-o FILE] FILE...\n\n"
+       "  -k K        Use K as k-mer size.\n"
+       "  -w W        Use W as sliding-window size.\n"
+       "  -q Q        Filter kmers with average quality (Phred score) lower "
+       "than Q [0].  \n"
+       "  --id        Include input sequence ids in the output. "
+       "(Default if --bx is not provided)\n"
+       "  --bx        Include input sequence barcodes in the output.\n"
+       "  --len       Include input sequence length in the output.\n"
+       "  --pos       Include minimizer positions in the output "
+       "(appended with : after "
+       "minimizer value).\n"
+       "  --strand    Include minimizer strands in the output "
+       "(appended with : after minimizer "
+       "value).\n"
+       "  --seq       Include minimizer sequences in the output "
+       "(appended with : after "
+       "minimizer value).\n"
+       "  --qual      Include minimizer Phred quality string in the output"
+       "(appended with : after "
+       "minimizer value).\n"
+       "              If a combination of --pos, --strand, --seq, and --qual "
+       "options are provided, "
+       "they're appended in the --pos, --strand, --seq, --qual order after the "
+       "minimizer value.\n"
+       "  --long      Enable long mode which is more efficient for "
+       "long sequences (e.g. long "
+       "reads, contigs, reference).\n"
+       "  -r repeat_bf_path  Use a Bloom filter to filter out "
+       "repetitive minimizers.\n"
+       "  -s solid_bf_path  Use a Bloom filter to only select solid "
+       "minimizers.\n"
+       "  -o FILE     Write output to FILE, default is stdout.\n"
+       "  -t T        Use T number of threads (default 5, max 5) per "
+       "input file.\n"
+       "  -v          Show verbose output.\n"
+       "  --help      Display this help and exit.\n"
+       "  --version   Display version and exit.\n"
+       "  FILE        Space separated list of FASTA/Q files."
+    << std::endl;
 }
 
 int
@@ -89,10 +95,12 @@ main(int argc, char* argv[])
     int help = 0, version = 0;
     bool verbose = false;
     unsigned k = 0, w = 0, t = DEFAULT_THREADS;
+    size_t q = 0;
     bool w_set = false;
     bool k_set = false;
+    bool q_set = false;
     int with_id = 0, with_bx = 0, with_len = 0, with_pos = 0, with_strand = 0,
-        with_seq = 0;
+        with_seq = 0, with_qual = 0;
     std::unique_ptr<btllib::KmerBloomFilter> repeat_bf, solid_bf;
     bool with_repeat = false, with_solid = false;
     int long_mode = 0;
@@ -105,6 +113,7 @@ main(int argc, char* argv[])
       { "pos", no_argument, &with_pos, 1 },
       { "strand", no_argument, &with_strand, 1 },
       { "seq", no_argument, &with_seq, 1 },
+      { "qual", no_argument, &with_qual, 1 },
       { "long", no_argument, &long_mode, 1 },
       { "help", no_argument, &help, 1 },
       { "version", no_argument, &version, 1 },
@@ -112,7 +121,7 @@ main(int argc, char* argv[])
     };
     while ((c = getopt_long(argc, // NOLINT(concurrency-mt-unsafe)
                             argv,
-                            "k:w:o:t:vr:s:",
+                            "k:w:q:o:t:vr:s:",
                             longopts,
                             &optindex)) != -1) {
       switch (c) {
@@ -125,6 +134,10 @@ main(int argc, char* argv[])
         case 'w':
           w_set = true;
           w = std::stoul(optarg);
+          break;
+        case 'q':
+          q_set = true;
+          q = std::stoul(optarg);
           break;
         case 'o':
           outfile = optarg;
@@ -190,6 +203,12 @@ main(int argc, char* argv[])
       print_error_msg("option has incorrect value -- 'w'");
       failed = true;
     }
+    if (!q_set) {
+      q = 0;
+    } else if (q >= MAX_QUALITY) {
+      btllib::check_warning(true, "Option with large value may cause \
+                                  extensive minimizer filtering -- 'q'");
+    }
     if (infiles.empty()) {
       print_error_msg("missing file operand");
       failed = true;
@@ -208,6 +227,9 @@ main(int argc, char* argv[])
     }
     if (bool(with_seq)) {
       flags |= btllib::Indexlr::Flag::SEQ;
+    }
+    if (bool(with_qual)) {
+      flags |= btllib::Indexlr::Flag::QUAL;
     }
     if (bool(long_mode)) {
       flags |= btllib::Indexlr::Flag::LONG_MODE;
@@ -235,6 +257,7 @@ main(int argc, char* argv[])
           new btllib::Indexlr(infile,
                               k,
                               w,
+                              q,
                               flags,
                               t,
                               verbose,
@@ -243,14 +266,14 @@ main(int argc, char* argv[])
       } else if (with_repeat) {
         flags |= btllib::Indexlr::Flag::FILTER_OUT;
         indexlr = std::unique_ptr<btllib::Indexlr>(new btllib::Indexlr(
-          infile, k, w, flags, t, verbose, repeat_bf->get_bloom_filter()));
+          infile, k, w, q, flags, t, verbose, repeat_bf->get_bloom_filter()));
       } else if (with_solid) {
         flags |= btllib::Indexlr::Flag::FILTER_IN;
         indexlr = std::unique_ptr<btllib::Indexlr>(new btllib::Indexlr(
-          infile, k, w, flags, t, verbose, solid_bf->get_bloom_filter()));
+          infile, k, w, q, flags, t, verbose, solid_bf->get_bloom_filter()));
       } else {
         indexlr = std::unique_ptr<btllib::Indexlr>(
-          new btllib::Indexlr(infile, k, w, flags, t, verbose));
+          new btllib::Indexlr(infile, k, w, q, flags, t, verbose));
       }
       std::queue<std::string> output_queue;
       std::mutex output_queue_mutex;
@@ -284,6 +307,9 @@ main(int argc, char* argv[])
             }
             if (bool(with_seq)) {
               ss << ':' << min.seq;
+            }
+            if (bool(with_qual)) {
+              ss << ':' << min.qual;
             }
             j++;
           }

@@ -18,7 +18,7 @@ SeqReaderGfa2Module::buffer_valid(const char* buffer, const size_t size)
 
   auto is_a_spec = [&](unsigned char c) {
     bool found = false;
-    for (unsigned char spec : specs) {
+    for (const unsigned char spec : specs) {
       if (c == spec) {
         found = true;
         break;

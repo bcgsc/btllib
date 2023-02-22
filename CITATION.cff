@@ -1,0 +1,59 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Nikolić"
+    given-names: "Vladimir"
+    orcid: "https://orcid.org/0000-0002-2992-9935"
+  - family-names: Kazemi
+    given-names: Parham
+  - family-names: Coombe
+    given-names: Lauren
+    orcid: "https://orcid.org/0000-0002-7518-2326"
+  - family-names: Wong
+    given-names: Johnathan
+  - family-names: Afshinfard
+    given-names: Amirhossein
+    orcid: "https://orcid.org/0000-0002-6875-4939"
+  - family-names: Chu
+    given-names: Justin
+  - family-names: Warren
+    given-names: René L.
+    orcid: "https://orcid.org/0000-0002-9890-2293"
+  - family-names: Birol
+    given-names: Inanç
+    orcid: "https://orcid.org/0000-0003-0950-7839"
+title: "btllib"
+url: "https://github.com/bcgsc/btllib"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Nikolić"
+      given-names: "Vladimir"
+      orcid: "https://orcid.org/0000-0002-2992-9935"
+    - family-names: Kazemi
+      given-names: Parham
+    - family-names: Coombe
+      given-names: Lauren
+      orcid: "https://orcid.org/0000-0002-7518-2326"
+    - family-names: Wong
+      given-names: Johnathan
+    - family-names: Afshinfard
+      given-names: Amirhossein
+      orcid: "https://orcid.org/0000-0002-6875-4939"
+    - family-names: Chu
+      given-names: Justin
+    - family-names: Warren
+      given-names: René L.
+      orcid: "https://orcid.org/0000-0002-9890-2293"
+    - family-names: Birol
+      given-names: Inanç
+      orcid: "https://orcid.org/0000-0003-0950-7839"
+  doi: "10.21105/joss.04720"
+  url: "https://doi.org/10.21105/joss.04720"
+  year: 2022
+  publisher: "The Open Journal"
+  volume: 7
+  number: 79
+  pages: 4720
+  title: "btllib: A C++ library with Python interface for efficient genomic sequence processing"
+  journal: "Journal of Open Source Software"

@@ -39,6 +39,7 @@ public:
 
   /** Construct a dummy multi-indexed Bloom filter (e.g. as a default argument).
    */
+<<<<<<< HEAD
   MIBloomFilter() {}
 
   /**

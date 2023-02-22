@@ -264,11 +264,14 @@ open_comm_pipes(
       if (access(pipepath.c_str(), F_OK) != -1) {
         unlink(pipepath.c_str());
       }
-      mkfifo(pipepath.c_str(), OPEN_MODE);
+      auto ret = mkfifo(pipepath.c_str(), OPEN_MODE);
+      check_error(ret != 0,
+                  "Process pipeline: mkfifo error: " + get_strerror());
 
       len = pipepath.size() + 1;
-      check_error(len > COMM_BUFFER_SIZE,
-                  "Pipe path length too large for the buffer.");
+      check_error(
+        len > COMM_BUFFER_SIZE,
+        "Process pipeline: Pipe path length too large for the buffer.");
       check_error(!write_to_user(&len, sizeof(len)) ||
                     !write_to_user(pipepath.c_str(), len),
                   "Process pipeline: Communication failure.");
@@ -295,7 +298,8 @@ open_comm_pipes(
       const auto status_flags = fcntl(pipe_fd, F_GETFL);
       check_error(status_flags == -1,
                   "Process pipeline: fcntl error: " + get_strerror());
-      check_error(fcntl(pipe_fd, F_SETFL, status_flags & ~O_NONBLOCK) == -1,
+      ret = fcntl(pipe_fd, F_SETFL, status_flags & ~O_NONBLOCK);
+      check_error(ret == -1,
                   "Process pipeline: fcntl error: " + get_strerror());
       check_error(!write_to_user(&confirmation, sizeof(confirmation)),
                   "Process pipeline: Communication failure.");
@@ -311,23 +315,26 @@ static void
 redirect_io(const int in_fd, const int out_fd, const int err_fd)
 {
   if (in_fd != STDIN_FILENO) {
-    check_error(dup2(in_fd, STDIN_FILENO) == -1,
-                "Process pipeline: dup2 failed: " + get_strerror());
-    check_error(close(in_fd) != 0,
+    auto ret = dup2(in_fd, STDIN_FILENO);
+    check_error(ret == -1, "Process pipeline: dup2 failed: " + get_strerror());
+    ret = close(in_fd);
+    check_error(ret != 0,
                 "Process pipeline: File descriptor close error: " +
                   get_strerror());
   }
   if (out_fd != STDOUT_FILENO) {
-    check_error(dup2(out_fd, STDOUT_FILENO) == -1,
-                "Process pipeline: dup2 failed: " + get_strerror());
-    check_error(close(out_fd) != 0,
+    auto ret = dup2(out_fd, STDOUT_FILENO);
+    check_error(ret == -1, "Process pipeline: dup2 failed: " + get_strerror());
+    ret = close(out_fd);
+    check_error(ret != 0,
                 "Process pipeline: File descriptor close error: " +
                   get_strerror());
   }
   if (err_fd != STDERR_FILENO) {
-    check_error(dup2(err_fd, STDERR_FILENO) == -1,
-                "Process pipeline: dup2 failed: " + get_strerror());
-    check_error(close(err_fd) != 0,
+    auto ret = dup2(err_fd, STDERR_FILENO);
+    check_error(ret == -1, "Process pipeline: dup2 failed: " + get_strerror());
+    ret = close(err_fd);
+    check_error(ret != 0,
                 "Process pipeline: File descriptor close error: " +
                   get_strerror());
   }
@@ -594,11 +601,11 @@ run_cmd()
     if (idx > 0) {
       check_error(pipe(chainpipe_in_fd) == -1,
                   "Process pipeline: Error opening a pipe.");
-      check_error(fcntl(chainpipe_in_fd[PIPE_READ_END], F_SETFD, FD_CLOEXEC) ==
-                    -1,
+      auto ret = fcntl(chainpipe_in_fd[PIPE_READ_END], F_SETFD, FD_CLOEXEC);
+      check_error(ret == -1,
                   "Process pipeline: fcntl error: " + get_strerror());
-      check_error(fcntl(chainpipe_in_fd[PIPE_WRITE_END], F_SETFD, FD_CLOEXEC) ==
-                    -1,
+      ret = fcntl(chainpipe_in_fd[PIPE_WRITE_END], F_SETFD, FD_CLOEXEC);
+      check_error(ret == -1,
                   "Process pipeline: fcntl error: " + get_strerror());
     }
 
@@ -622,9 +629,11 @@ run_cmd()
     pipeline.cmds.emplace_back(original_cmds[idx], pid);
 
     if (idx < last_idx) {
-      check_error(close(chainpipe_out_fd[PIPE_READ_END]) != 0,
+      auto ret = close(chainpipe_out_fd[PIPE_READ_END]);
+      check_error(ret != 0,
                   "Process pipeline: Pipe close error: " + get_strerror());
-      check_error(close(chainpipe_out_fd[PIPE_WRITE_END]) != 0,
+      ret = close(chainpipe_out_fd[PIPE_WRITE_END]);
+      check_error(ret != 0,
                   "Process pipeline: Pipe close error: " + get_strerror());
     }
 
@@ -636,7 +645,8 @@ run_cmd()
 
   for (const int pipe_fd : comm_pipe_fd) {
     if (pipe_fd != -1) {
-      check_error(close(pipe_fd) != 0,
+      const auto ret = close(pipe_fd);
+      check_error(ret != 0,
                   "Process pipeline: Pipe close error: " + get_strerror());
     }
   }
@@ -686,21 +696,26 @@ process_spawner_operation()
 static void
 set_pipepath_prefix()
 {
-  const auto* const tmpdir =
-    std::getenv("TMPDIR"); // NOLINT(concurrency-mt-unsafe)
-  if (tmpdir != nullptr) {
-    pipepath_prefix = tmpdir;
-    const auto tmpdirlen = std::strlen(tmpdir);
-    if (tmpdirlen > 0 && tmpdir[tmpdirlen - 1] != '/') {
-      pipepath_prefix += '/';
-    }
+  struct stat info
+  {};
+  if ((stat("/dev/shm", &info) == 0) && ((info.st_mode & S_IFMT) == S_IFDIR)) {
+    pipepath_prefix = "/dev/shm/";
   } else {
-    struct stat info
-    {};
-    if ((stat("/tmp", &info) == 0) && ((info.st_mode & S_IFMT) == S_IFDIR)) {
-      pipepath_prefix = "/tmp/";
+    const auto* const tmpdir =
+      std::getenv("TMPDIR"); // NOLINT(concurrency-mt-unsafe)
+    if (tmpdir != nullptr) {
+      pipepath_prefix = tmpdir;
+      const auto tmpdirlen = std::strlen(tmpdir);
+      if (tmpdirlen > 0 && tmpdir[tmpdirlen - 1] != '/') {
+        pipepath_prefix += '/';
+      }
     } else {
-      pipepath_prefix = "";
+      info = {};
+      if ((stat("/tmp", &info) == 0) && ((info.st_mode & S_IFMT) == S_IFDIR)) {
+        pipepath_prefix = "/tmp/";
+      } else {
+        pipepath_prefix = "";
+      }
     }
   }
 }
@@ -750,11 +765,14 @@ process_spawner_init()
       check_error(setpgid(0, 0) != 0,
                   "Process pipeline: setpgid failed in spawner process.");
 
-      check_error(close(process_spawner_user2spawner_fd[PIPE_WRITE_END]) != 0,
+      auto ret = close(process_spawner_user2spawner_fd[PIPE_WRITE_END]);
+      check_error(ret != 0,
                   "Process pipeline: Pipe close error: " + get_strerror());
-      check_error(close(process_spawner_spawner2user_fd[PIPE_READ_END]) != 0,
+      ret = close(process_spawner_spawner2user_fd[PIPE_READ_END]);
+      check_error(ret != 0,
                   "Process pipeline: Pipe close error: " + get_strerror());
-      check_error(close(watchdog_pipe[PIPE_READ_END]) != 0,
+      ret = close(watchdog_pipe[PIPE_READ_END]);
+      check_error(ret != 0,
                   "Process pipeline: Pipe close error: " + get_strerror());
 
       install_signal_handlers_spawner();
@@ -770,11 +788,14 @@ process_spawner_init()
     check_error(setpgid(pid, pid) < 0 && errno != EACCES,
                 "Process pipeline: setpgid failed in parent process.");
 
-    check_error(close(process_spawner_user2spawner_fd[PIPE_READ_END]) != 0,
+    auto ret = close(process_spawner_user2spawner_fd[PIPE_READ_END]);
+    check_error(ret != 0,
                 "Process pipeline: Pipe close error: " + get_strerror());
-    check_error(close(process_spawner_spawner2user_fd[PIPE_WRITE_END]) != 0,
+    ret = close(process_spawner_spawner2user_fd[PIPE_WRITE_END]);
+    check_error(ret != 0,
                 "Process pipeline: Pipe close error: " + get_strerror());
-    check_error(close(watchdog_pipe[PIPE_WRITE_END]) != 0,
+    ret = close(watchdog_pipe[PIPE_WRITE_END]);
+    check_error(ret != 0,
                 "Process pipeline: Pipe close error: " + get_strerror());
 
     process_spawner_initialized = true;
@@ -784,7 +805,7 @@ process_spawner_init()
 
 ProcessPipeline::ProcessPipeline(const std::string& cmd)
 {
-  std::unique_lock<std::mutex> lock(process_spawner_comm_mutex);
+  const std::unique_lock<std::mutex> lock(process_spawner_comm_mutex);
 
   const auto op = PipelineOperation::RUN;
   check_error(!write_to_spawner(&op, sizeof(op)),
@@ -831,7 +852,8 @@ ProcessPipeline::ProcessPipeline(const std::string& cmd)
       const auto status_flags = fcntl(pipe_fd, F_GETFL);
       check_error(status_flags == -1,
                   "Process pipeline: fcntl error: " + get_strerror());
-      check_error(fcntl(pipe_fd, F_SETFL, status_flags & ~O_NONBLOCK) == -1,
+      const auto ret = fcntl(pipe_fd, F_SETFL, status_flags & ~O_NONBLOCK);
+      check_error(ret == -1,
                   "Process pipeline: fcntl error: " + get_strerror());
       check_error(!read_from_spawner(&confirmation, sizeof(confirmation)),
                   "Process pipeline: Communication failure.");
@@ -848,7 +870,8 @@ static void
 closefile(FILE*& f)
 {
   if (f != nullptr) {
-    check_error(std::fclose(f) != 0,
+    const auto ret = std::fclose(f);
+    check_error(ret != 0,
                 "Process spawner: Error closing file: " + get_strerror());
     f = nullptr;
   }
@@ -880,7 +903,7 @@ ProcessPipeline::end()
     close_in();
     close_out();
 
-    std::unique_lock<std::mutex> lock(process_spawner_comm_mutex);
+    const std::unique_lock<std::mutex> lock(process_spawner_comm_mutex);
 
     const auto op = PipelineOperation::END;
     check_error(!write_to_spawner(&op, sizeof(op)) ||

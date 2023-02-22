@@ -674,10 +674,14 @@ BTLLIB_NTHASH_PEEK(
   peek(),
 
   {
-    std::unique_ptr<uint64_t[]> fh_no_monomers_tmp(new uint64_t[blocks.size()]);
-    std::unique_ptr<uint64_t[]> rh_no_monomers_tmp(new uint64_t[blocks.size()]);
-    std::unique_ptr<uint64_t[]> forward_hash_tmp(new uint64_t[blocks.size()]);
-    std::unique_ptr<uint64_t[]> reverse_hash_tmp(new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> fh_no_monomers_tmp(
+      new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> rh_no_monomers_tmp(
+      new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> forward_hash_tmp(
+      new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> reverse_hash_tmp(
+      new uint64_t[blocks.size()]);
     std::memcpy(fh_no_monomers_tmp.get(),
                 forward_hash.get(),
                 blocks.size() * sizeof(uint64_t));
@@ -708,10 +712,14 @@ BTLLIB_NTHASH_PEEK(
   peek(char char_in),
 
   {
-    std::unique_ptr<uint64_t[]> fh_no_monomers_tmp(new uint64_t[blocks.size()]);
-    std::unique_ptr<uint64_t[]> rh_no_monomers_tmp(new uint64_t[blocks.size()]);
-    std::unique_ptr<uint64_t[]> forward_hash_tmp(new uint64_t[blocks.size()]);
-    std::unique_ptr<uint64_t[]> reverse_hash_tmp(new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> fh_no_monomers_tmp(
+      new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> rh_no_monomers_tmp(
+      new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> forward_hash_tmp(
+      new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> reverse_hash_tmp(
+      new uint64_t[blocks.size()]);
     std::memcpy(fh_no_monomers_tmp.get(),
                 forward_hash.get(),
                 blocks.size() * sizeof(uint64_t));
@@ -743,10 +751,14 @@ BTLLIB_NTHASH_PEEK(
   peek_back(),
 
   {
-    std::unique_ptr<uint64_t[]> fh_no_monomers_tmp(new uint64_t[blocks.size()]);
-    std::unique_ptr<uint64_t[]> rh_no_monomers_tmp(new uint64_t[blocks.size()]);
-    std::unique_ptr<uint64_t[]> forward_hash_tmp(new uint64_t[blocks.size()]);
-    std::unique_ptr<uint64_t[]> reverse_hash_tmp(new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> fh_no_monomers_tmp(
+      new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> rh_no_monomers_tmp(
+      new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> forward_hash_tmp(
+      new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> reverse_hash_tmp(
+      new uint64_t[blocks.size()]);
     std::memcpy(fh_no_monomers_tmp.get(),
                 forward_hash.get(),
                 blocks.size() * sizeof(uint64_t));
@@ -777,10 +789,14 @@ BTLLIB_NTHASH_PEEK(
   peek_back(char char_in),
 
   {
-    std::unique_ptr<uint64_t[]> fh_no_monomers_tmp(new uint64_t[blocks.size()]);
-    std::unique_ptr<uint64_t[]> rh_no_monomers_tmp(new uint64_t[blocks.size()]);
-    std::unique_ptr<uint64_t[]> forward_hash_tmp(new uint64_t[blocks.size()]);
-    std::unique_ptr<uint64_t[]> reverse_hash_tmp(new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> fh_no_monomers_tmp(
+      new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> rh_no_monomers_tmp(
+      new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> forward_hash_tmp(
+      new uint64_t[blocks.size()]);
+    const std::unique_ptr<uint64_t[]> reverse_hash_tmp(
+      new uint64_t[blocks.size()]);
     std::memcpy(fh_no_monomers_tmp.get(),
                 forward_hash.get(),
                 blocks.size() * sizeof(uint64_t));
