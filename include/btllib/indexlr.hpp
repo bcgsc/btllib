@@ -100,6 +100,7 @@ public:
     bool forward = false;
     std::string seq;
     std::string qual;
+    bool valid = true;
   };
 
   using HashedKmer = Minimizer;
@@ -232,7 +233,8 @@ private:
 
   static void filter_kmer_qual(Indexlr::HashedKmer& hk,
                                const std::string& kmer_qual,
-                               size_t q);
+                               size_t q,
+                               const std::string& filter_mode = "mask");
   static size_t calc_kmer_quality(const std::string& qual);
 
   static void calc_minimizer(
@@ -488,11 +490,16 @@ Indexlr::filter_hashed_kmer(Indexlr::HashedKmer& hk,
 inline void
 Indexlr::filter_kmer_qual(Indexlr::HashedKmer& hk,
                           const std::string& kmer_qual,
-                          size_t q)
+                          size_t q,
+                          const std::string& filter_mode)
 {
   if (calc_kmer_quality(kmer_qual) < q) {
-    hk.min_hash = std::numeric_limits<uint64_t>::max();
-  }
+    if (filter_mode == "mask") {
+      hk.min_hash = std::numeric_limits<uint64_t>::max();
+    } else if (filter_mode == "drop") {
+      hk.valid = false;
+    }
+  } 
 }
 
 inline size_t
@@ -546,7 +553,10 @@ Indexlr::calc_minimizer(
   if (ssize_t(min_current->pos) > min_pos_prev &&
       min_current->min_hash != std::numeric_limits<uint64_t>::max()) {
     min_pos_prev = ssize_t(min_current->pos);
-    minimizers.push_back(*min_current);
+    
+    if (min_current->valid) { // if the kmer is valid (not suppressed by filters  )
+      minimizers.push_back(*min_current);
+    }
   }
 }
 
@@ -576,7 +586,7 @@ Indexlr::minimize(const std::string& seq, const std::string& qual) const
       hk, filter_in(), filter_out(), filter_in_bf.get(), filter_out_bf.get());
 
     if (q > 0) {
-      filter_kmer_qual(hk, qual.substr(nh.get_pos(), k), q);
+      filter_kmer_qual(hk, qual.substr(nh.get_pos(), k), q, "drop");
     }
 
     if (idx + 1 >= w) {
