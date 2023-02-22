@@ -198,6 +198,12 @@ public:
    * the filter. */
   uint64_t get_pop_saturated_cnt();
 
+  /** Get the number of hash values per element. */
+  unsigned get_hash_num() const { return hash_num; }
+
+  /** Get the k-mer size used. */
+  unsigned get_k() const { return kmer_size; }
+
   /** Returns the occurence count for each ID in the miBF */
   std::vector<size_t> get_ID_occurence_count(const bool& include_saturated);
 
@@ -222,7 +228,7 @@ private:
 
   size_t id_array_size = 0;
   size_t bv_size = 0;
-  unsigned kmer_size = 0;
+  unsigned kmer_size;
   unsigned hash_num;
   std::string hash_fn;
 
