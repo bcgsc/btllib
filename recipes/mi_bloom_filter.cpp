@@ -1,6 +1,7 @@
 #include "btllib/mi_bloom_filter.hpp"
 #include "btllib/status.hpp"
 #include "btllib/seq_reader.hpp"
+#include "btllib/nthash.hpp" //parse_seeds
 
 #include <getopt.h>
 
@@ -9,8 +10,10 @@
 
 const static std::string PROGNAME = "mi_bloom_filter";
 const static std::string VERSION = "1.0";
-const static size_t MAX_THREADS = 5;
+const static size_t MAX_THREADS = 32;
 const static size_t DEFAULT_THREADS = MAX_THREADS;
+
+using SpacedSeed = std::vector<unsigned>;
 
 static void
 print_error_msg(const std::string& msg)
@@ -22,19 +25,33 @@ static void
 print_usage()
 {
   std::cerr << "Usage: " << PROGNAME
-	<< "-k K -h H -o output"
-	<< "[-i id_file] [-m mi_bf_size] FILE...\n\n"
-		"  -k K        k-mer size.\n"
-		"  -h H        hash number.\n"
-		"  -o output   Path of mi_bf."
-		"  -i id_file  Get IDs from file. Default is by file order."
-		"  -m mi_bf_size  Output mi_bf bit vector size in bits. Default is 10^9."
-		"  -t T        Use T number of threads (default 5, max 5) per "
-		"  -v          Show verbose output.\n"
-		"  --help      Display this help and exit.\n"
-		"  --version   Display version and exit.\n"
-		"  FILE        Space separated list of FASTA/Q files."    
+	<< "-p MIBF_ID [OPTION]... [FILE]"
+		"  -p file_prefix     filter prefix and filter ID. Required option.\n"
+		"  -k kmer_size       k-mer size.\n"
+		"  -g hash_num        hash number.\n"
+		"  -s spaced_seeds    expects list of seed 1s & 0s separated by spaces.\n"
+		"  -f by_file         get IDs from file. Default is by file order.\n"
+		"  -m mi_bf_size      output mi_bf bit vector size in bits. Default is 10^9.\n"
+		"  -n number_of_elems the number of expected distinct k-mer frames.\n"
+		"  -t threads         number of threads (default 5, max 32)\n"
+		"  -v verbose         show verbose output.\n"
+		"  --help             display this help and exit.\n"
+		"  --version          display version and exit.\n"
+		"  FILE               space separated list of FASTA/Q files."    
 	<< std::endl;
+}
+
+static vector<string>
+split_string_by_space(const string &input_string)
+{
+	vector<string> current_string;
+	string temp;
+	stringstream converter(input_string);
+	while (converter >> temp) {
+		current_string.push_back(temp);
+	}
+	assert(current_string.size() > 0);
+	return current_string;
 }
 
 template<typename T>
@@ -55,20 +72,24 @@ main(int argc, char* argv[])
 {
   try {
     int c;
+    bool failed = false;
     int optindex = 0;
     int help = 0, version = 0;
     bool verbose = false;
     int mi_bf_size = 1000000000;
 
-    unsigned k = 0, h = 0, t = DEFAULT_THREADS;
-    bool k_set = false;
-    bool h_set = false;
-    bool output_bf_set = false;
+    unsigned k_mer_size = 0, hash_num = 0, t = DEFAULT_THREADS;
+
+    bool kmer_size_set = false;
+    bool hash_num_set = false;
     bool spaced_seed_set = false;
+    bool output_bf_set = false;
+    bool id_file_set = false;
+
     std::string output_path, id_file;
     
     std::vector<std::string> spaced_seeds_string;
-    std::vector<btllib::SpacedSeed> spaced_seeds;
+    std::vector<SpacedSeed> spaced_seeds;
 
     static const struct option longopts[] = {
       { "help", no_argument, &help, 1 },
@@ -76,32 +97,41 @@ main(int argc, char* argv[])
       { nullptr, 0, nullptr, 0 }
     };
 
-      while ((c = getopt_long(argc, // NOLINT(concurrency-mt-unsafe)
+    while ((c = getopt_long(argc, // NOLINT(concurrency-mt-unsafe)
                             argv,
-                            "k:h:o:i:m:t:v",
+                            "p:k:g:s:f:m:n:t:v",
                             longopts,
                             &optindex)) != -1) {
       switch (c) {
         case 0:
           break;
-        case 'k':
+        case 'p':
+          output_path = optarg;
+          output_bf_set = true;
+          break;
+	case 'k':
           k_set = true;
           k = std::stoul(optarg);
           break;
-        case 'h':
-          h_set = true;
-          h = std::stoul(optarg);
+        case 'g':
+          hash_num_set = true;
+          hash_num = std::stoul(optarg);
           break;
-        case 'o':
-          output_path = optarg;
-          output_bf_set = true;
-	  break;
-        case 'i':
+        case 's':
+	  spaced_seed_set = true;
+          spaced_seeds_string = optarg;
+	  spaced_seeds = parse_seeds(split_string_by_space(spaced_seeds_string));
+          break;
+        case 'f':
           id_file = optarg;
-          break;
+          id_file_set = true;
+	  break;
         case 'm':
           mi_bf_size = std::stoul(optarg);
           break;
+	case 'n':
+	  expected_elements = std::stoul(optarg);
+	  break;
         case 't':
           t = std::stoul(optarg);
           break;
@@ -114,20 +144,20 @@ main(int argc, char* argv[])
     }
     if (!k_set) {
       print_error_msg("missing option -- 'k'");
-    //  failed = true;
+      failed = true;
     }
-    if (!output_bf_set) {
+    if (!failed && !output_bf_set) {
       print_error_msg("missing option -- 'o'");
-    //  failed = true;
+      failed = true;
     }
-    if (!h_set) {
+    if (!failed && !h_set) {
       print_error_msg("missing option -- 'h'");
-    //  failed = true;
+      failed = true;
     }
     if(verbose){std::cout << "verbose" << std::endl;}
-    t = t ? t : t;
+
     std::vector<std::string> read_paths(&argv[optind], &argv[argc]);
-    if (argc < 2) {
+    if (argc < 2 || failed) {
       print_usage();
       std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
