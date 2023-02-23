@@ -52,12 +52,18 @@ public:
     static const unsigned LONG_MODE = 64;
     /** Include read sequence Phred score along with minimizer information. */
     static const unsigned QUAL = 128;
+    /** Exclude kmers with quality score below the threshold. */
+    static const unsigned Q_DROP = 256;
+    /** Consider only 10% of the base quality scores for averaging. */
+    static const unsigned PART_AVG = 512;
   };
 
   bool output_id() const { return bool(~flags & Flag::NO_ID); }
   bool output_bx() const { return bool(flags & Flag::BX); }
   bool output_seq() const { return bool(flags & Flag::SEQ); }
   bool output_qual() const { return bool(flags & Flag::QUAL); }
+  bool q_drop() const { return bool(flags & Flag::Q_DROP); }
+  bool part_avg() const { return bool(flags & Flag::PART_AVG); }
   bool filter_in() const { return bool(flags & Flag::FILTER_IN); }
   bool filter_out() const { return bool(flags & Flag::FILTER_OUT); }
   bool short_mode() const { return bool(flags & Flag::SHORT_MODE); }
@@ -229,13 +235,15 @@ private:
                                  bool filter_in,
                                  bool filter_out,
                                  const BloomFilter& filter_in_bf,
-                                 const BloomFilter& filter_out_bf);
+                                 const BloomFilter& filter_out_bf,
+                                 bool drop);
 
   static void filter_kmer_qual(Indexlr::HashedKmer& hk,
                                const std::string& kmer_qual,
                                size_t q,
-                               const std::string& filter_mode = "mask");
-  static size_t calc_kmer_quality(const std::string& qual);
+                               bool drop,
+                               bool partial);
+  static size_t calc_kmer_quality(const std::string& qual, bool partial = false);
 
   static void calc_minimizer(
     const std::vector<Indexlr::HashedKmer>& hashed_kmers_buffer,
@@ -468,21 +476,35 @@ Indexlr::filter_hashed_kmer(Indexlr::HashedKmer& hk,
                             bool filter_in,
                             bool filter_out,
                             const BloomFilter& filter_in_bf,
-                            const BloomFilter& filter_out_bf)
+                            const BloomFilter& filter_out_bf,
+                            bool drop)
 {
   if (filter_in && filter_out) {
     std::vector<uint64_t> tmp;
     tmp = { hk.min_hash };
     if (!filter_in_bf.contains(tmp) || filter_out_bf.contains(tmp)) {
-      hk.min_hash = std::numeric_limits<uint64_t>::max();
+      //hk.min_hash = std::numeric_limits<uint64_t>::max();
+      if (drop) {
+        hk.valid = false;
+      } else {
+        hk.min_hash = std::numeric_limits<uint64_t>::max();
+      }
     }
   } else if (filter_in) {
     if (!filter_in_bf.contains({ hk.min_hash })) {
-      hk.min_hash = std::numeric_limits<uint64_t>::max();
+      if (drop) {
+        hk.valid = false;
+      } else {
+        hk.min_hash = std::numeric_limits<uint64_t>::max();
+      }
     }
   } else if (filter_out) {
     if (filter_out_bf.contains({ hk.min_hash })) {
-      hk.min_hash = std::numeric_limits<uint64_t>::max();
+      if (drop) {
+        hk.valid = false;
+      } else {
+        hk.min_hash = std::numeric_limits<uint64_t>::max();
+      }
     }
   }
 }
@@ -491,19 +513,20 @@ inline void
 Indexlr::filter_kmer_qual(Indexlr::HashedKmer& hk,
                           const std::string& kmer_qual,
                           size_t q,
-                          const std::string& filter_mode)
+                          bool drop,
+                          bool partial)
 {
-  if (calc_kmer_quality(kmer_qual) < q) {
-    if (filter_mode == "mask") {
-      hk.min_hash = std::numeric_limits<uint64_t>::max();
-    } else if (filter_mode == "drop") {
+  if (calc_kmer_quality(kmer_qual, partial) < q) {
+    if (drop) {
       hk.valid = false;
+    } else {
+      hk.min_hash = std::numeric_limits<uint64_t>::max();
     }
   } 
 }
 
 inline size_t
-Indexlr::calc_kmer_quality(const std::string& qual)
+Indexlr::calc_kmer_quality(const std::string& qual, bool partial)
 {
   // convert the quality scores to integers
   std::vector<int> qual_ints;
@@ -512,12 +535,16 @@ Indexlr::calc_kmer_quality(const std::string& qual)
   for (auto c : qual) {
     qual_ints.push_back(c - thirty_three);
   }
-  // calculate the mean (potential improvement: use other statistics)
+  // sort the quality scores
+  std::sort(qual_ints.begin(), qual_ints.end());
+
+  // calculate the mean quality score (consider only 10% of the lowest scores if partial)
   size_t sum = 0;
-  for (auto q : qual_ints) {
-    sum += q;
+  size_t n = (partial ? qual_ints.size() / 10 : qual_ints.size());
+  for (size_t i = 0; i < n; ++i) {
+    sum += qual_ints[i];
   }
-  return (sum / qual_ints.size());
+  return sum / n; 
 }
 
 inline void
@@ -583,10 +610,10 @@ Indexlr::minimize(const std::string& seq, const std::string& qual) const
                     output_qual() ? qual.substr(nh.get_pos(), k) : "");
 
     filter_hashed_kmer(
-      hk, filter_in(), filter_out(), filter_in_bf.get(), filter_out_bf.get());
+      hk, filter_in(), filter_out(), filter_in_bf.get(), filter_out_bf.get(), q_drop());
 
     if (q > 0) {
-      filter_kmer_qual(hk, qual.substr(nh.get_pos(), k), q, "drop");
+      filter_kmer_qual(hk, qual.substr(nh.get_pos(), k), q, q_drop(), part_avg());
     }
 
     if (idx + 1 >= w) {
