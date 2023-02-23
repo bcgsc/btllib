@@ -483,7 +483,6 @@ Indexlr::filter_hashed_kmer(Indexlr::HashedKmer& hk,
     std::vector<uint64_t> tmp;
     tmp = { hk.min_hash };
     if (!filter_in_bf.contains(tmp) || filter_out_bf.contains(tmp)) {
-      //hk.min_hash = std::numeric_limits<uint64_t>::max();
       if (drop) {
         hk.valid = false;
       } else {
@@ -538,13 +537,13 @@ Indexlr::calc_kmer_quality(const std::string& qual, bool partial)
   // sort the quality scores
   std::sort(qual_ints.begin(), qual_ints.end());
 
-  // calculate the mean quality score (consider only 10% of the lowest scores if partial)
+  // calculate the mean quality score
   size_t sum = 0;
   size_t n = (partial ? qual_ints.size() / 10 : qual_ints.size());
   for (size_t i = 0; i < n; ++i) {
     sum += qual_ints[i];
   }
-  return sum / n; 
+  return sum / n;
 }
 
 inline void
@@ -610,7 +609,9 @@ Indexlr::minimize(const std::string& seq, const std::string& qual) const
                     output_qual() ? qual.substr(nh.get_pos(), k) : "");
 
     filter_hashed_kmer(
-      hk, filter_in(), filter_out(), filter_in_bf.get(), filter_out_bf.get(), q_drop());
+      hk, filter_in(), filter_out(),
+      filter_in_bf.get(), filter_out_bf.get(),
+      q_drop());
 
     if (q > 0) {
       filter_kmer_qual(hk, qual.substr(nh.get_pos(), k), q, q_drop(), part_avg());
