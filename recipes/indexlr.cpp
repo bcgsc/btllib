@@ -98,7 +98,6 @@ main(int argc, char* argv[])
     bool verbose = false;
     unsigned k = 0, w = 0, t = DEFAULT_THREADS;
     size_t q = 0;
-    std::string filter_mode("");
     bool w_set = false;
     bool k_set = false;
     bool q_set = false;
