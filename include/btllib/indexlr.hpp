@@ -531,6 +531,7 @@ Indexlr::calc_kmer_quality(const std::string& qual, bool partial)
   // convert the quality scores to integers
   std::vector<int> qual_ints;
   const int thirty_three = 33;
+  const size_t ten = 10;
   qual_ints.reserve(qual.size());
   for (auto c : qual) {
     qual_ints.push_back(c - thirty_three);
@@ -540,7 +541,7 @@ Indexlr::calc_kmer_quality(const std::string& qual, bool partial)
 
   // calculate the mean quality score
   size_t sum = 0;
-  size_t n = (partial ? qual_ints.size() / 10 : qual_ints.size());
+  size_t n = (partial ? qual_ints.size() / ten : qual_ints.size());
   for (size_t i = 0; i < n; ++i) {
     sum += qual_ints[i];
   }
