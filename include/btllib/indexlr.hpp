@@ -543,7 +543,7 @@ Indexlr::calc_kmer_quality(const std::string& qual, bool partial)
   size_t sum = 0;
   size_t n = (partial ? qual_ints.size() / ten : qual_ints.size());
   if (n == 0) {
-    if (qual_ints.size() != 0) {
+    if (!qual_ints.empty()) {
       n = 1;
     } else {
       return 0;
