@@ -542,6 +542,13 @@ Indexlr::calc_kmer_quality(const std::string& qual, bool partial)
   // calculate the mean quality score
   size_t sum = 0;
   size_t n = (partial ? qual_ints.size() / ten : qual_ints.size());
+  if (n == 0) {
+    if (qual_ints.size() != 0) {
+      n = 1;
+    } else {
+      return 0;
+    }
+  }
   for (size_t i = 0; i < n; ++i) {
     sum += qual_ints[i];
   }
