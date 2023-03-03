@@ -43,7 +43,7 @@ print_usage()
   std::cerr
     << "Usage: " << PROGNAME
     << " -k K -w W [-q Q]  [-r repeat_bf_path] [-s solid_bf_path] [--id] "
-       "[--bx] [--pos] [--seq] [--qual] [--q-drop]"
+       "[--bx] [--pos] [--seq] [--qual] [--q-drop] [--part-avg]"
        "[-o FILE] FILE...\n\n"
        "  -k K        Use K as k-mer size.\n"
        "  -w W        Use W as sliding-window size.\n"
