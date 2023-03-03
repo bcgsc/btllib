@@ -49,7 +49,7 @@ print_usage()
        "  -w W        Use W as sliding-window size.\n"
        "  -q Q        Filter kmers with average quality (Phred score) lower "
        "than Q [0].  \n"
-       "  --q-drop    Drop filtered kemrs instead of disqualifying them"
+       "  --q-drop    Drop filtered kmers instead of disqualifying them"
        "from generating minimizers. \n"
        "  --part-avg  Consider only 1/10 of the (lowest value) base quality "
        "scores for averaging. \n"
