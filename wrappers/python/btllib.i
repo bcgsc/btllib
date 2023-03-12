@@ -26,6 +26,7 @@
 #include "btllib/mi_bloom_filter.hpp"
 #include "btllib/cstring.hpp"
 #include "btllib/nthash.hpp"
+#include "btllib/random_seq_generator.hpp"
 %}
 
 %include <stdint.i>
@@ -67,4 +68,6 @@
 %include "btllib/mi_bloom_filter.hpp"
 %include "btllib/cstring.hpp"
 %include "btllib/nthash.hpp"
+%include "btllib/random_seq_generator.hpp"
+
 %include "../extra_templates.i"
