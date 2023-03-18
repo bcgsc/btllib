@@ -29,16 +29,22 @@ static void
 print_usage()
 {
   std::cerr << "Usage: " << PROGNAME
-	<< "-p MIBF_ID [OPTION]... [FILE]"
-		"  -p file_prefix     filter prefix and filter ID. Required option.\n"
+	<< " -p MIBF_ID [OPTION]... [FILE]\n"
+		"  -p file_prefix     filter prefix and filter ID, required option.\n"
+		"--------------------------------------------------------------\n"
 		"  -k kmer_size       k-mer size.\n"
 		"  -g hash_num        hash number.\n"
+		"  or\n"
 		"  -s spaced_seeds    expects list of seed 1s & 0s separated by spaces.\n"
-		"		      required if '-k' and '-g' are not given.\n"
-		"  -m mi_bf_size      output mi_bf bit vector size in bits. Default is 10^9.\n"
-		"  -b occupancy       occupancy of Bloom filter. Used if '-m' not given. Default is 0.5.\n"
-		"  -n number_of_elems the number of expected distinct k-mer frames. Used if '-m' not given. By default counts total k-mers in input files.\n"
-		"		      by default determined from sequences within files.\n"
+		"                     required if '-k' and '-g' are not given.\n"
+		"--------------------------------------------------------------\n"
+		"  -m mi_bf_size      output mi_bf bit vector size in bits, default is 10^9.\n"
+		"  or\n"
+		"  -b occupancy       occupancy of Bloom filter, default is 0.5.\n"
+		"                     required if '-m' is not given.\n"
+		"  -n number_of_elems the number of expected distinct k-mer frames, used if '-m' not given.\n"
+		"                     by default determined from sequences within files.\n"
+		"--------------------------------------------------------------\n"
 		"  -f by_file         assign IDs by file rather than by fasta header.\n"
 		"  -t threads         number of threads (default 5, max 32)\n"
 		"  -v verbose         show verbose output.\n"
@@ -124,6 +130,7 @@ main(int argc, char* argv[])
     bool spaced_seed_set = false;
     bool output_path_set = false;
     bool by_file = false;
+    bool occupancy_set = false;
 
     std::string output_path;
     
@@ -135,8 +142,6 @@ main(int argc, char* argv[])
       { "version", no_argument, &version, 1 },
       { nullptr, 0, nullptr, 0 }
     };
-
-    std::cout << "here 1" << std::endl;
 
     while ((c = getopt_long(argc, // NOLINT(concurrency-mt-unsafe)
                             argv,
@@ -165,6 +170,7 @@ main(int argc, char* argv[])
 	  break;
         case 'b':
 	  occupancy = std::stod(optarg);
+	  occupancy_set = true;
 	  break;
 	case 'f':
 	  by_file = true;
@@ -186,30 +192,29 @@ main(int argc, char* argv[])
       }
     }
     if (kmer_size == 0) {
-      print_error_msg("missing option -- 'k'");
+      btllib::log_error("missing option -- 'k'");
       failed = true;
     }
     if (!failed && hash_num == 0) {
-      print_error_msg("missing option -- 'h'");
+      btllib::log_error("missing option -- 'h'");
       failed = true;
     }
     if (!failed && !output_path_set) {
-      print_error_msg("missing option -- 'p'");
+      btllib::log_error("missing option -- 'p'");
       failed = true;
     }
     if(verbose){std::cout << "verbose" << std::endl;}
 
     std::vector<std::string> read_paths(&argv[optind], &argv[argc]);
     if (argc < 2 || failed) {
+      std::cout << std::endl;
       print_usage();
       std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
-    expected_elements = occupancy;
-    occupancy = expected_elements;
     std::map<std::string, ID_type> read_IDs;
     unsigned kmer_count = assert_ID_size_and_count_kmers(read_paths, by_file, kmer_size);
 
-    if(expected_elements > 0){
+    if(expected_elements > 0 || occupancy_set){
 	mi_bf_size = btllib::MIBloomFilter<ID_type>::calc_optimal_size(kmer_count, hash_num, occupancy);
    	btllib::log_info("Optimal size is calculated: " + std::to_string(mi_bf_size));
     }
