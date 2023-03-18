@@ -4,6 +4,8 @@
 #include <omp.h>
 #include "btllib/mi_bloom_filter.hpp"
 #include <getopt.h>
+#include <iostream>
+#include <fstream>
 
 #include <string>
 #include <vector>
@@ -206,8 +208,6 @@ main(int argc, char* argv[])
     occupancy = expected_elements;
     std::map<std::string, ID_type> read_IDs;
     unsigned kmer_count = assert_ID_size_and_count_kmers(read_paths, by_file, kmer_size);
-    
-    btllib::SeqReader reader_1(read_paths[0], btllib::SeqReader::Flag::LONG_MODE);
 
     if(expected_elements > 0){
 	mi_bf_size = btllib::MIBloomFilter<ID_type>::calc_optimal_size(kmer_count, hash_num, occupancy);
@@ -223,22 +223,26 @@ main(int argc, char* argv[])
     btllib::MIBloomFilter<ID_type>mi_bf(mi_bf_size, hash_num);
     const char* stages[3] = {"BV Insertion", "ID Insertion", "Saturation"};
     ID_type ID_counter = 0;
-    for(int mi_bf_stage = 0; mi_bf_stage < 2; mi_bf_stage++){
+    std::map<std::string, ID_type> ids;
+    for(int mi_bf_stage = 0; mi_bf_stage < 3; mi_bf_stage++){
 		btllib::log_info(stages[mi_bf_stage] + std::string(" stage started"));
 		
 		for(auto& read_path : read_paths){
 			btllib::SeqReader reader(read_path, btllib::SeqReader::Flag::SHORT_MODE, 6);
-
+#pragma omp parallel shared(reader)
 			for (const auto record : reader) {
+#pragma omp atomic
+				{			
+					if(ids.find(record.id) == ids.end()){
+						ids[record.id] = !by_file ? ID_counter++ : ID_counter;
+					}
+				}
 				if(spaced_seed_set){
 					btllib::SeedNtHash nthash(record.seq, spaced_seeds, 1, kmer_size);
-        	       	                insert_to_bv<btllib::SeedNtHash>(mi_bf, nthash, mi_bf_stage, ID_counter);
+        	       	                insert_to_bv<btllib::SeedNtHash>(mi_bf, nthash, mi_bf_stage, ids[record.id]);
 				} else {
 					btllib::NtHash nthash(record.seq, hash_num, kmer_size);
-        	       	                insert_to_bv<btllib::NtHash>(mi_bf, nthash, mi_bf_stage, ID_counter);
-				}
-				if(!by_file){
-					ID_counter++;
+        	       	                insert_to_bv<btllib::NtHash>(mi_bf, nthash, mi_bf_stage, ids[record.id]);
 				}
 			}
 			if(by_file){
@@ -246,8 +250,17 @@ main(int argc, char* argv[])
 			}
 		}
 		if(mi_bf_stage == 0){ mi_bf.complete_bv_insertion();}
+		if(mi_bf_stage == 1){ mi_bf.complete_id_insertion();}
    }
 	mi_bf.save(output_path);
+        
+	std::ofstream ids_file;
+	ids_file.open(output_path + ".ids");
+	for(auto& elem : ids){
+		ids_file << elem.first << "\t" << elem.second << std::endl;
+	}	
+	ids_file.close();
+	return 0;
    }    
    catch (const std::exception& e) {
     std::cerr << e.what() << '\n';
