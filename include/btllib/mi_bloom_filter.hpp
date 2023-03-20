@@ -22,7 +22,7 @@ class MIBloomFilterInitializer
 public:
   MIBloomFilterInitializer(const std::string& path, const std::string& signature)
     : path(path)
-    , ifs(path)
+    , ifs_id_arr(path)
     , table(parse_header(signature))
   {
   }
@@ -32,7 +32,7 @@ public:
                                    std::string& file_signature);
 
   std::string path;
-  std::ifstream ifs;
+  std::ifstream ifs_id_arr;
   std::shared_ptr<cpptoml::table> table;
 
   MIBloomFilterInitializer(const MIBloomFilterInitializer&) = delete;
@@ -248,6 +248,9 @@ public:
     return kmer_size;
   }
 
+  /** Get the name of the hash function used. */
+  const std::string& get_hash_fn() const { return hash_fn; }
+
   /** Returns the occurence count for each ID in the miBF */
   std::vector<size_t> get_ID_occurence_count(const bool& include_saturated);
 
@@ -259,6 +262,10 @@ public:
 
 private:
   MIBloomFilter(const std::shared_ptr<MIBloomFilterInitializer>& mibfi);
+  static void save(const std::string& path,
+                   const cpptoml::table& table,
+                   const char* data,
+                   const size_t n);
   std::vector<uint64_t> get_rank_pos(const uint64_t* hashes) const;
   uint64_t get_rank_pos(const uint64_t hash) const
   {
@@ -303,11 +310,11 @@ std::shared_ptr<cpptoml::table>
 MIBloomFilterInitializer::parse_header(const std::string& expected_signature)
 {
   check_file_accessibility(path);
-  btllib::check_error(ifs.fail(),
+  btllib::check_error(ifs_id_arr.fail(),
                       "MIBloomFilterInitializer: failed to open " + path);
 
   std::string file_signature;
-  if (!check_file_signature(ifs, expected_signature, file_signature)) {
+  if (!check_file_signature(ifs_id_arr, expected_signature, file_signature)) {
     log_error(std::string("File signature does not match (possibly version "
                           "mismatch) for file:\n") +
               path + '\n' + "Expected signature:\t" + expected_signature +
@@ -321,7 +328,7 @@ MIBloomFilterInitializer::parse_header(const std::string& expected_signature)
   std::string toml_buffer(file_signature + '\n');
   std::string line;
   bool header_end_found = false;
-  while (bool(std::getline(ifs, line))) {
+  while (bool(std::getline(ifs_id_arr, line))) {
     toml_buffer.append(line + '\n');
     if (line == "[HeaderEnd]") {
       header_end_found = true;
@@ -333,7 +340,7 @@ MIBloomFilterInitializer::parse_header(const std::string& expected_signature)
     std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
   for (unsigned i = 0; i < PLACEHOLDER_NEWLINES_MIBF; i++) {
-    std::getline(ifs, line);
+    std::getline(ifs_id_arr, line);
   }
 
      // Send the char array to a stringstream for the cpptoml parser to parse
@@ -364,9 +371,20 @@ inline MIBloomFilter<T>::MIBloomFilter(const std::shared_ptr<MIBloomFilterInitia
               : "")
   , id_array(new T[id_array_size])
 {
-  
-    mibfi->ifs.read((char*)id_array,
+    // read id array
+    mibfi->ifs_id_arr.read((char*)id_array,
                 std::streamsize(id_array_size * sizeof(T)));
+    // read bv and bv rank support
+    sdsl::load_from_file(il_bit_vector, mibfi->path + ".sdsl");
+    bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
+   
+    bv_insertion_completed = true;
+
+    // init counts array 
+    counts_array = std::unique_ptr<std::atomic<uint16_t>[]>(
+    new std::atomic<uint16_t>[id_array_size]);
+    std::memset(
+        (void*)counts_array.get(), 0, id_array_size * sizeof(counts_array[0]));
 }
 
 template<typename T>
@@ -680,9 +698,10 @@ MIBloomFilter<T>::write_header(std::ofstream& out) const
  *       * Stores uncompressed because the random data tends to
  *          * compress poorly anyway
  *             */
-template<typename T>
+/*template<typename T>
 inline void
 MIBloomFilter<T>::save(const std::string& filter_file_path)
+
 {
   //#pragma omp parallel for default(none) shared(filter_file_path)
   for (unsigned i = 0; i < 2; ++i) {
@@ -707,6 +726,53 @@ MIBloomFilter<T>::save(const std::string& filter_file_path)
       store_to_file(il_bit_vector, bv_filename);
     }
   }
+}
+*/
+template<typename T>
+inline void
+MIBloomFilter<T>::save(const std::string& path,
+                  const cpptoml::table& table,
+                  const char* data,
+                  const size_t n)
+{
+  std::ofstream ofs(path.c_str(), std::ios::out | std::ios::binary);
+
+  ofs << table << "[HeaderEnd]\n";
+  for (unsigned i = 0; i < PLACEHOLDER_NEWLINES_MIBF; i++) {
+    if (i == 1) {
+      ofs << "  <binary data>";
+    }
+    ofs << '\n';
+  }
+
+  ofs.write(data, std::streamsize(n));
+}
+
+template<typename T>
+inline void
+MIBloomFilter<T>::save(const std::string& path)
+{
+  /* Initialize cpptoml root table
+ *     Note: Tables and fields are unordered
+ *         Ordering of table is maintained by directing the table
+ *             to the output stream immediately after completion  */
+  auto root = cpptoml::make_table();
+
+  /* Initialize bloom filter section and insert fields
+ *       and output to ostream */
+  auto header = cpptoml::make_table();
+  header->insert("id_array_size", id_array_size);
+  header->insert("hash_num", get_hash_num());
+  header->insert("kmer_size", get_k());
+  if (!hash_fn.empty()) {
+    header->insert("hash_fn", get_hash_fn());
+  }
+  std::string header_string = MI_BLOOM_FILTER_SIGNATURE;
+  header_string =
+    header_string.substr(1, header_string.size() - 2); // Remove [ ]
+  root->insert(header_string, header);
+  save(path, *root, (char*)id_array, id_array_size * sizeof(id_array[0]));
+  sdsl::store_to_file(il_bit_vector, path + ".sdsl");
 }
 
 template<typename T>
