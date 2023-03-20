@@ -4,11 +4,49 @@
 #include "nthash.hpp"
 #include "status.hpp"
 #include <stdlib.h>
+#include "cpptoml.h"
 
 #include <sdsl/bit_vector_il.hpp>
 #include <sdsl/rank_support.hpp>
 
 namespace btllib {
+
+static const char* const MI_BLOOM_FILTER_SIGNATURE = "[BTLMIBloomFilter_v2]";
+
+static const unsigned PLACEHOLDER_NEWLINES_MIBF = 50;
+
+class MIBloomFilterInitializer
+{
+
+/// @cond HIDDEN_SYMBOLS
+public:
+  MIBloomFilterInitializer(const std::string& path, const std::string& signature)
+    : path(path)
+    , ifs(path)
+    , table(parse_header(signature))
+  {
+  }
+
+  static bool check_file_signature(std::ifstream& ifs,
+                                   const std::string& expected_signature,
+                                   std::string& file_signature);
+
+  std::string path;
+  std::ifstream ifs;
+  std::shared_ptr<cpptoml::table> table;
+
+  MIBloomFilterInitializer(const MIBloomFilterInitializer&) = delete;
+  MIBloomFilterInitializer(MIBloomFilterInitializer&&) = default;
+
+  MIBloomFilterInitializer& operator=(const MIBloomFilterInitializer&) = delete;
+  MIBloomFilterInitializer& operator=(MIBloomFilterInitializer&&) = default;
+
+private:
+  /** Parse a Bloom filter file header. Useful for implementing Bloom filter
+   * variants. */
+  std::shared_ptr<cpptoml::table> parse_header(const std::string& signature);
+};
+/// @endcond
 
 template<typename T>
 class MIBloomFilter
@@ -220,6 +258,7 @@ public:
                                   double occupancy);
 
 private:
+  MIBloomFilter(const std::shared_ptr<MIBloomFilterInitializer>& mibfi);
   std::vector<uint64_t> get_rank_pos(const uint64_t* hashes) const;
   uint64_t get_rank_pos(const uint64_t hash) const
   {
@@ -236,8 +275,8 @@ private:
 
   size_t id_array_size = 0;
   size_t bv_size = 0;
-  unsigned kmer_size;
-  unsigned hash_num;
+  unsigned kmer_size = 0;
+  unsigned hash_num = 0;
   std::string hash_fn;
 
   sdsl::bit_vector bit_vector;
@@ -249,6 +288,86 @@ private:
   bool bv_insertion_completed = false, id_insertion_completed = false;
   static const uint32_t MI_BLOOM_FILTER_VERSION = 1;
 };
+
+bool
+MIBloomFilterInitializer::check_file_signature(
+  std::ifstream& ifs,
+  const std::string& expected_signature,
+  std::string& file_signature)
+{
+  std::getline(ifs, file_signature);
+  return file_signature == expected_signature;
+}
+
+std::shared_ptr<cpptoml::table>
+MIBloomFilterInitializer::parse_header(const std::string& expected_signature)
+{
+  check_file_accessibility(path);
+  btllib::check_error(ifs.fail(),
+                      "MIBloomFilterInitializer: failed to open " + path);
+
+  std::string file_signature;
+  if (!check_file_signature(ifs, expected_signature, file_signature)) {
+    log_error(std::string("File signature does not match (possibly version "
+                          "mismatch) for file:\n") +
+              path + '\n' + "Expected signature:\t" + expected_signature +
+              '\n' + "File signature:    \t" + file_signature);
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+  }
+
+  /* Read bloom filter line by line until it sees "[HeaderEnd]"
+ *   which is used to mark the end of the header section and
+ *     assigns the header to a char array*/
+  std::string toml_buffer(file_signature + '\n');
+  std::string line;
+  bool header_end_found = false;
+  while (bool(std::getline(ifs, line))) {
+    toml_buffer.append(line + '\n');
+    if (line == "[HeaderEnd]") {
+      header_end_found = true;
+      break;
+    }
+  }
+  if (!header_end_found) {
+    log_error("Pre-built multi-index Bloom filter does not have the correct header end.");
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+  }
+  for (unsigned i = 0; i < PLACEHOLDER_NEWLINES_MIBF; i++) {
+    std::getline(ifs, line);
+  }
+
+     // Send the char array to a stringstream for the cpptoml parser to parse
+     std::istringstream toml_stream(toml_buffer);
+     cpptoml::parser toml_parser(toml_stream);
+     const auto header_config = toml_parser.parse();
+  
+     // Obtain header values from toml parser and assign them to class members
+     const auto header_string =
+     file_signature.substr(1, file_signature.size() - 2); // Remove [ ]
+     return header_config->get_table(header_string);
+}
+
+template<typename T>
+MIBloomFilter<T>::MIBloomFilter(const std::string& path)
+  : MIBloomFilter<T>::MIBloomFilter(
+      std::make_shared<MIBloomFilterInitializer>(path, MI_BLOOM_FILTER_SIGNATURE))
+{
+}
+
+template<typename T>
+inline MIBloomFilter<T>::MIBloomFilter(const std::shared_ptr<MIBloomFilterInitializer>& mibfi)
+  : id_array_size(*(mibfi->table->get_as<unsigned>("id_array_size")))
+  , kmer_size(*(mibfi->table->get_as<decltype(kmer_size)>("kmer_size")))
+  , hash_num(*(mibfi->table->get_as<decltype(hash_num)>("hash_num")))
+  , hash_fn(mibfi->table->contains("hash_fn")
+              ? *(mibfi->table->get_as<decltype(hash_fn)>("hash_fn"))
+              : "")
+  , id_array(new T[id_array_size])
+{
+  
+    mibfi->ifs.read((char*)id_array,
+                std::streamsize(id_array_size * sizeof(T)));
+}
 
 template<typename T>
 inline MIBloomFilter<T>::MIBloomFilter(size_t bv_size,
@@ -272,6 +391,7 @@ inline MIBloomFilter<T>::MIBloomFilter(sdsl::bit_vector& bit_vector,
   complete_bv_insertion();
 }
 
+/*
 template<typename T>
 MIBloomFilter<T>::MIBloomFilter(const std::string& filter_file_path)
 // TODO: make more streamlined
@@ -304,7 +424,7 @@ MIBloomFilter<T>::MIBloomFilter(const std::string& filter_file_path)
       kmer_size = header.kmer;
       id_array_size = header.size;
       id_array = new T[id_array_size]();
-
+*/
       // TOD: Doesnt read spaced seeds!!!
       /*
       check_error(
@@ -314,7 +434,7 @@ MIBloomFilter<T>::MIBloomFilter(const std::string& filter_file_path)
           std::to_string(sizeof(FileHeader) + kmer_size * m_sseeds.size()) +
           " (likely version mismatch).");
       */
-
+/*
       check_error(
         header.hlen != sizeof(FileHeader),
         "MIBloomFilter: header length: " + std::to_string(header.hlen) +
@@ -371,6 +491,7 @@ MIBloomFilter<T>::MIBloomFilter(const std::string& filter_file_path)
   // m_prob_saturated = pow(double(get_pop_saturated()) / double(get_pop_cnt()),
   // hash_num);
 }
+*/
 
 template<typename T>
 inline void
