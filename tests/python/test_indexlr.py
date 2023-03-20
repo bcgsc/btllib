@@ -3,7 +3,7 @@ import btllib
 import unittest
 
 
-class SeqReaderTests(unittest.TestCase):
+class IndexlrTests(unittest.TestCase):
 
     def setUp(self):
         self.base_dir = os.path.dirname(__file__)

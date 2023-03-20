@@ -4,7 +4,7 @@ import re
 import unittest
 
 
-class SeqReaderTests(unittest.TestCase):
+class RandomSeqGenTests(unittest.TestCase):
 
     def setUp(self):
         self.base_dir = os.path.dirname(__file__)
