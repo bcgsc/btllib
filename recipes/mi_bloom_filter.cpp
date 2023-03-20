@@ -19,12 +19,6 @@ using ID_type = uint16_t;
 using SpacedSeed = std::vector<unsigned>;
 
 static void
-print_error_msg(const std::string& msg)
-{
-  std::cerr << PROGNAME << ' ' << VERSION << ": " << msg << std::endl;
-}
-
-static void
 print_usage()
 {
   std::cerr
@@ -254,7 +248,7 @@ main(int argc, char* argv[])
           read_path, btllib::SeqReader::Flag::SHORT_MODE, 6);
 #pragma omp parallel shared(reader)
         for (const auto record : reader) {
-#pragma omp atomic
+#pragma omp critical 
           {
             if (ids.find(record.id) == ids.end()) {
               ids[record.id] = !by_file ? ID_counter++ : ID_counter;
