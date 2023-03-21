@@ -58,12 +58,13 @@ class PythonWrapper:
             current_lines = list(map(str.strip, f.readlines()))
         # Add include statements only for newly added files.
         # This will prevent changing the ordering of the includes.
+        include_dir_files = self._load_include_file_names()
         include_files = []
         for line in current_lines:
-            include_match = re.match(r'#include "(.*)"', line)
-            if include_match:
-                include_files.append(include_match.group(1))
-        for file in self._load_include_file_names():
+            match = re.match(r'#include "(.*)"', line)
+            if match and match.group(1) in include_dir_files:
+                include_files.append(match.group(1))
+        for file in include_dir_files:
             if file not in include_files:
                 include_files.append(file)
         cpp = os.linesep.join(f'#include "{f}"' for f in include_files)
