@@ -1,4 +1,4 @@
-#include "btllib/random_seq_generator.hpp"
+#include "btllib/randseq.hpp"
 #include "btllib/status.hpp"
 
 #include <algorithm>
@@ -6,14 +6,13 @@
 
 namespace btllib {
 
-RandomSequenceGenerator::RandomSequenceGenerator(SequenceType seq_type,
-                                                 Masking masking)
+RandSeq::RandSeq(SeqType seq_type, Masking masking)
 {
-  if (seq_type == SequenceType::DNA) {
+  if (seq_type == SeqType::DNA) {
     chars = "ACGT";
-  } else if (seq_type == SequenceType::RNA) {
+  } else if (seq_type == SeqType::RNA) {
     chars = "ACGU";
-  } else if (seq_type == SequenceType::PROTEIN) {
+  } else if (seq_type == SeqType::PROTEIN) {
     chars = "ACDEFGHIKLMNPQRSTVWY";
   }
   if (masking == Masking::SOFT) {
@@ -24,12 +23,12 @@ RandomSequenceGenerator::RandomSequenceGenerator(SequenceType seq_type,
                    [](unsigned char c) { return std::tolower(c); });
     chars += lowers;
   } else if (masking == Masking::HARD) {
-    chars += seq_type == SequenceType::PROTEIN ? 'X' : 'N';
+    chars += seq_type == SeqType::PROTEIN ? 'X' : 'N';
   }
 }
 
 std::string
-RandomSequenceGenerator::generate(size_t length)
+RandSeq::generate(size_t length)
 {
   std::string seq;
   seq.reserve(length);

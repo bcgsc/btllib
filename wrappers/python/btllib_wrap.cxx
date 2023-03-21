@@ -3773,7 +3773,7 @@ SwigPyBuiltin_iternextfunc_closure(SwigPyWrapperFunction wrapper, PyObject *a) {
 #define SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_int_t swig_types[22]
 #define SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_short_t swig_types[23]
 #define SWIGTYPE_p_btllib__NtHash swig_types[24]
-#define SWIGTYPE_p_btllib__RandomSequenceGenerator swig_types[25]
+#define SWIGTYPE_p_btllib__RandSeq swig_types[25]
 #define SWIGTYPE_p_btllib__SeedBloomFilter swig_types[26]
 #define SWIGTYPE_p_btllib__SeedNtHash swig_types[27]
 #define SWIGTYPE_p_btllib__SeqReader swig_types[28]
@@ -4033,7 +4033,7 @@ namespace swig {
 #include "btllib/mi_bloom_filter.hpp"
 #include "btllib/cstring.hpp"
 #include "btllib/nthash.hpp"
-#include "btllib/random_seq_generator.hpp"
+#include "btllib/randseq.hpp"
 
 
 #include <stdint.h>		// Use the C99 official header
@@ -38359,91 +38359,91 @@ fail:
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeedNtHash) /* defines _wrap_delete_SeedNtHash_destructor_closure */
 
-SWIGINTERN int _wrap_new_RandomSequenceGenerator__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_RandSeq__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  btllib::RandomSequenceGenerator::SequenceType arg1 ;
-  btllib::RandomSequenceGenerator::Masking arg2 ;
+  btllib::RandSeq::SeqType arg1 ;
+  btllib::RandSeq::Masking arg2 ;
   int val1 ;
   int ecode1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  btllib::RandomSequenceGenerator *result = 0 ;
+  btllib::RandSeq *result = 0 ;
   
   (void)self;
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_RandomSequenceGenerator" "', argument " "1"" of type '" "btllib::RandomSequenceGenerator::SequenceType""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_RandSeq" "', argument " "1"" of type '" "btllib::RandSeq::SeqType""'");
   } 
-  arg1 = static_cast< btllib::RandomSequenceGenerator::SequenceType >(val1);
+  arg1 = static_cast< btllib::RandSeq::SeqType >(val1);
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_RandomSequenceGenerator" "', argument " "2"" of type '" "btllib::RandomSequenceGenerator::Masking""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_RandSeq" "', argument " "2"" of type '" "btllib::RandSeq::Masking""'");
   } 
-  arg2 = static_cast< btllib::RandomSequenceGenerator::Masking >(val2);
-  result = (btllib::RandomSequenceGenerator *)new btllib::RandomSequenceGenerator(arg1,arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__RandomSequenceGenerator, SWIG_BUILTIN_INIT |  0 );
+  arg2 = static_cast< btllib::RandSeq::Masking >(val2);
+  result = (btllib::RandSeq *)new btllib::RandSeq(arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__RandSeq, SWIG_BUILTIN_INIT |  0 );
   return resultobj == Py_None ? -1 : 0;
 fail:
   return -1;
 }
 
 
-SWIGINTERN int _wrap_new_RandomSequenceGenerator__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_RandSeq__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  btllib::RandomSequenceGenerator::SequenceType arg1 ;
+  btllib::RandSeq::SeqType arg1 ;
   int val1 ;
   int ecode1 = 0 ;
-  btllib::RandomSequenceGenerator *result = 0 ;
+  btllib::RandSeq *result = 0 ;
   
   (void)self;
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_RandomSequenceGenerator" "', argument " "1"" of type '" "btllib::RandomSequenceGenerator::SequenceType""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_RandSeq" "', argument " "1"" of type '" "btllib::RandSeq::SeqType""'");
   } 
-  arg1 = static_cast< btllib::RandomSequenceGenerator::SequenceType >(val1);
-  result = (btllib::RandomSequenceGenerator *)new btllib::RandomSequenceGenerator(arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__RandomSequenceGenerator, SWIG_BUILTIN_INIT |  0 );
+  arg1 = static_cast< btllib::RandSeq::SeqType >(val1);
+  result = (btllib::RandSeq *)new btllib::RandSeq(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__RandSeq, SWIG_BUILTIN_INIT |  0 );
   return resultobj == Py_None ? -1 : 0;
 fail:
   return -1;
 }
 
 
-SWIGINTERN int _wrap_new_RandomSequenceGenerator(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN int _wrap_new_RandSeq(PyObject *self, PyObject *args, PyObject *kwargs) {
   Py_ssize_t argc;
   PyObject *argv[3] = {
     0
   };
   
   (void)self;
-  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_RandomSequenceGenerator")) SWIG_fail;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_RandomSequenceGenerator", 0, 2, argv))) SWIG_fail;
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_RandSeq")) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_RandSeq", 0, 2, argv))) SWIG_fail;
   --argc;
   if (argc == 1) {
-    int retval = _wrap_new_RandomSequenceGenerator__SWIG_1(self, argc, argv);
+    int retval = _wrap_new_RandSeq__SWIG_1(self, argc, argv);
     if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
     SWIG_fail;
   }
   if (argc == 2) {
-    int retval = _wrap_new_RandomSequenceGenerator__SWIG_0(self, argc, argv);
+    int retval = _wrap_new_RandSeq__SWIG_0(self, argc, argv);
     if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
     SWIG_fail;
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_RandomSequenceGenerator'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_RandSeq'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::RandomSequenceGenerator::RandomSequenceGenerator(btllib::RandomSequenceGenerator::SequenceType,btllib::RandomSequenceGenerator::Masking)\n"
-    "    btllib::RandomSequenceGenerator::RandomSequenceGenerator(btllib::RandomSequenceGenerator::SequenceType)\n");
+    "    btllib::RandSeq::RandSeq(btllib::RandSeq::SeqType,btllib::RandSeq::Masking)\n"
+    "    btllib::RandSeq::RandSeq(btllib::RandSeq::SeqType)\n");
   return -1;
 }
 
 
-SWIGINTERN PyObject *_wrap_RandomSequenceGenerator_generate(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_RandSeq_generate(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btllib::RandomSequenceGenerator *arg1 = (btllib::RandomSequenceGenerator *) 0 ;
+  btllib::RandSeq *arg1 = (btllib::RandSeq *) 0 ;
   size_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -38455,14 +38455,14 @@ SWIGINTERN PyObject *_wrap_RandomSequenceGenerator_generate(PyObject *self, PyOb
   (void)self;
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__RandomSequenceGenerator, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__RandSeq, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomSequenceGenerator_generate" "', argument " "1"" of type '" "btllib::RandomSequenceGenerator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandSeq_generate" "', argument " "1"" of type '" "btllib::RandSeq *""'"); 
   }
-  arg1 = reinterpret_cast< btllib::RandomSequenceGenerator * >(argp1);
+  arg1 = reinterpret_cast< btllib::RandSeq * >(argp1);
   ecode2 = SWIG_AsVal_size_t(swig_obj[0], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RandomSequenceGenerator_generate" "', argument " "2"" of type '" "size_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RandSeq_generate" "', argument " "2"" of type '" "size_t""'");
   } 
   arg2 = static_cast< size_t >(val2);
   result = (arg1)->generate(arg2);
@@ -38473,19 +38473,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_RandomSequenceGenerator(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_RandSeq(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  btllib::RandomSequenceGenerator *arg1 = (btllib::RandomSequenceGenerator *) 0 ;
+  btllib::RandSeq *arg1 = (btllib::RandSeq *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   
   (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "delete_RandomSequenceGenerator", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__RandomSequenceGenerator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "delete_RandSeq", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__RandSeq, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RandomSequenceGenerator" "', argument " "1"" of type '" "btllib::RandomSequenceGenerator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RandSeq" "', argument " "1"" of type '" "btllib::RandSeq *""'"); 
   }
-  arg1 = reinterpret_cast< btllib::RandomSequenceGenerator * >(argp1);
+  arg1 = reinterpret_cast< btllib::RandSeq * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -38494,7 +38494,7 @@ fail:
 }
 
 
-SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_RandomSequenceGenerator) /* defines _wrap_delete_RandomSequenceGenerator_destructor_closure */
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_RandSeq) /* defines _wrap_delete_RandSeq_destructor_closure */
 
 SWIGINTERN int _wrap_new_CountingBloomFilter8__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
@@ -57551,14 +57551,14 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__SeedNtHash_type = {
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeedNtHash_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__SeedNtHash_type};
 
-static SwigPyGetSet RandomSequenceGenerator___dict___getset = { SwigPyObject_get___dict__, 0 };
-SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__RandomSequenceGenerator_getset[] = {
-    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &RandomSequenceGenerator___dict___getset },
+static SwigPyGetSet RandSeq___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__RandSeq_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &RandSeq___dict___getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };
 
 SWIGINTERN PyObject *
-SwigPyBuiltin__btllib__RandomSequenceGenerator_richcompare(PyObject *self, PyObject *other, int op) {
+SwigPyBuiltin__btllib__RandSeq_richcompare(PyObject *self, PyObject *other, int op) {
   PyObject *result = NULL;
   if (!result) {
     if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
@@ -57571,12 +57571,12 @@ SwigPyBuiltin__btllib__RandomSequenceGenerator_richcompare(PyObject *self, PyObj
   return result;
 }
 
-SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__RandomSequenceGenerator_methods[] = {
-  { "generate", _wrap_RandomSequenceGenerator_generate, METH_O, "" },
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__RandSeq_methods[] = {
+  { "generate", _wrap_RandSeq_generate, METH_O, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
-static PyHeapTypeObject SwigPyBuiltin__btllib__RandomSequenceGenerator_type = {
+static PyHeapTypeObject SwigPyBuiltin__btllib__RandSeq_type = {
   {
 #if PY_VERSION_HEX >= 0x03000000
     PyVarObject_HEAD_INIT(NULL, 0)
@@ -57584,10 +57584,10 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__RandomSequenceGenerator_type = {
     PyObject_HEAD_INIT(NULL)
     0,                                        /* ob_size */
 #endif
-    "btllib.RandomSequenceGenerator",         /* tp_name */
+    "btllib.RandSeq",                         /* tp_name */
     sizeof(SwigPyObject),                     /* tp_basicsize */
     0,                                        /* tp_itemsize */
-    _wrap_delete_RandomSequenceGenerator_destructor_closure,      /* tp_dealloc */
+    _wrap_delete_RandSeq_destructor_closure,  /* tp_dealloc */
 #if PY_VERSION_HEX < 0x030800b4
     (printfunc) 0,                            /* tp_print */
 #else
@@ -57601,36 +57601,36 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__RandomSequenceGenerator_type = {
     (cmpfunc) 0,                              /* tp_compare */
 #endif
     (reprfunc) 0,                             /* tp_repr */
-    &SwigPyBuiltin__btllib__RandomSequenceGenerator_type.as_number,/* tp_as_number */
-    &SwigPyBuiltin__btllib__RandomSequenceGenerator_type.as_sequence,/* tp_as_sequence */
-    &SwigPyBuiltin__btllib__RandomSequenceGenerator_type.as_mapping,/* tp_as_mapping */
+    &SwigPyBuiltin__btllib__RandSeq_type.as_number,               /* tp_as_number */
+    &SwigPyBuiltin__btllib__RandSeq_type.as_sequence,             /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__RandSeq_type.as_mapping,              /* tp_as_mapping */
     SwigPyObject_hash,                        /* tp_hash */
     (ternaryfunc) 0,                          /* tp_call */
     (reprfunc) 0,                             /* tp_str */
     (getattrofunc) 0,                         /* tp_getattro */
     (setattrofunc) 0,                         /* tp_setattro */
-    &SwigPyBuiltin__btllib__RandomSequenceGenerator_type.as_buffer,/* tp_as_buffer */
+    &SwigPyBuiltin__btllib__RandSeq_type.as_buffer,               /* tp_as_buffer */
 #if PY_VERSION_HEX >= 0x03000000
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
 #else
     Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
 #endif
-    "btllib::RandomSequenceGenerator",        /* tp_doc */
+    "btllib::RandSeq",                        /* tp_doc */
     (traverseproc) 0,                         /* tp_traverse */
     (inquiry) 0,                              /* tp_clear */
-    SwigPyBuiltin__btllib__RandomSequenceGenerator_richcompare,   /* tp_richcompare */
+    SwigPyBuiltin__btllib__RandSeq_richcompare,                   /* tp_richcompare */
     0,                                        /* tp_weaklistoffset */
     (getiterfunc) 0,                          /* tp_iter */
     (iternextfunc) 0,                         /* tp_iternext */
-    SwigPyBuiltin__btllib__RandomSequenceGenerator_methods,       /* tp_methods */
+    SwigPyBuiltin__btllib__RandSeq_methods,   /* tp_methods */
     0,                                        /* tp_members */
-    SwigPyBuiltin__btllib__RandomSequenceGenerator_getset,        /* tp_getset */
+    SwigPyBuiltin__btllib__RandSeq_getset,    /* tp_getset */
     0,                                        /* tp_base */
     0,                                        /* tp_dict */
     (descrgetfunc) 0,                         /* tp_descr_get */
     (descrsetfunc) 0,                         /* tp_descr_set */
     offsetof(SwigPyObject, dict),             /* tp_dictoffset */
-    _wrap_new_RandomSequenceGenerator,        /* tp_init */
+    _wrap_new_RandSeq,                        /* tp_init */
     (allocfunc) 0,                            /* tp_alloc */
     (newfunc) 0,                              /* tp_new */
     (freefunc) 0,                             /* tp_free */
@@ -57778,7 +57778,7 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__RandomSequenceGenerator_type = {
 #endif
 };
 
-SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__RandomSequenceGenerator_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__RandomSequenceGenerator_type};
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__RandSeq_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__RandSeq_type};
 
 static SwigPyGetSet CountingBloomFilter8___dict___getset = { SwigPyObject_get___dict__, 0 };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__CountingBloomFilterT_uint8_t_t_getset[] = {
@@ -59338,7 +59338,7 @@ static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_char_t
 static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_int_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_int_t", "btllib::KmerCountingBloomFilter32 *|btllib::KmerCountingBloomFilter< uint32_t > *|btllib::KmerCountingBloomFilter< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint32_t_t_clientdata, 0};
 static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_short_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_short_t", "btllib::KmerCountingBloomFilter16 *|btllib::KmerCountingBloomFilter< uint16_t > *|btllib::KmerCountingBloomFilter< unsigned short > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint16_t_t_clientdata, 0};
 static swig_type_info _swigt__p_btllib__NtHash = {"_p_btllib__NtHash", "btllib::NtHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__NtHash_clientdata, 0};
-static swig_type_info _swigt__p_btllib__RandomSequenceGenerator = {"_p_btllib__RandomSequenceGenerator", "btllib::RandomSequenceGenerator *", 0, 0, (void*)&SwigPyBuiltin__btllib__RandomSequenceGenerator_clientdata, 0};
+static swig_type_info _swigt__p_btllib__RandSeq = {"_p_btllib__RandSeq", "btllib::RandSeq *", 0, 0, (void*)&SwigPyBuiltin__btllib__RandSeq_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeedBloomFilter = {"_p_btllib__SeedBloomFilter", "btllib::SeedBloomFilter *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeedBloomFilter_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeedNtHash = {"_p_btllib__SeedNtHash", "btllib::SeedNtHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeedNtHash_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeqReader = {"_p_btllib__SeqReader", "btllib::SeqReader *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqReader_clientdata, 0};
@@ -59448,7 +59448,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_btllib__KmerCountingBloomFilterT_unsigned_int_t,
   &_swigt__p_btllib__KmerCountingBloomFilterT_unsigned_short_t,
   &_swigt__p_btllib__NtHash,
-  &_swigt__p_btllib__RandomSequenceGenerator,
+  &_swigt__p_btllib__RandSeq,
   &_swigt__p_btllib__SeedBloomFilter,
   &_swigt__p_btllib__SeedNtHash,
   &_swigt__p_btllib__SeqReader,
@@ -59558,7 +59558,7 @@ static swig_cast_info _swigc__p_btllib__KmerCountingBloomFilterT_unsigned_char_t
 static swig_cast_info _swigc__p_btllib__KmerCountingBloomFilterT_unsigned_int_t[] = {  {&_swigt__p_btllib__KmerCountingBloomFilterT_unsigned_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__KmerCountingBloomFilterT_unsigned_short_t[] = {  {&_swigt__p_btllib__KmerCountingBloomFilterT_unsigned_short_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__NtHash[] = {  {&_swigt__p_btllib__NtHash, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_btllib__RandomSequenceGenerator[] = {  {&_swigt__p_btllib__RandomSequenceGenerator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__RandSeq[] = {  {&_swigt__p_btllib__RandSeq, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeedBloomFilter[] = {  {&_swigt__p_btllib__SeedBloomFilter, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeedNtHash[] = {  {&_swigt__p_btllib__SeedNtHash, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeqReader[] = {  {&_swigt__p_btllib__SeqReader, 0, 0, 0},{0, 0, 0, 0}};
@@ -59668,7 +59668,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_btllib__KmerCountingBloomFilterT_unsigned_int_t,
   _swigc__p_btllib__KmerCountingBloomFilterT_unsigned_short_t,
   _swigc__p_btllib__NtHash,
-  _swigc__p_btllib__RandomSequenceGenerator,
+  _swigc__p_btllib__RandSeq,
   _swigc__p_btllib__SeedBloomFilter,
   _swigc__p_btllib__SeedNtHash,
   _swigc__p_btllib__SeqReader,
@@ -61359,15 +61359,15 @@ SWIG_init(void) {
   SwigPyBuiltin_AddPublicSymbol(public_interface, "SeedNtHash");
   d = md;
   
-  /* type 'btllib::RandomSequenceGenerator' */
-  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__RandomSequenceGenerator_type;
+  /* type 'btllib::RandSeq' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__RandSeq_type;
   builtin_pytype->tp_dict = d = PyDict_New();
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SequenceType_DNA",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::SequenceType::DNA)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SequenceType_RNA",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::SequenceType::RNA)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SequenceType_PROTEIN",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::SequenceType::PROTEIN)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Masking_NONE",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::Masking::NONE)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Masking_SOFT",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::Masking::SOFT)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Masking_HARD",SWIG_From_int(static_cast< int >(btllib::RandomSequenceGenerator::Masking::HARD)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SeqType_DNA",SWIG_From_int(static_cast< int >(btllib::RandSeq::SeqType::DNA)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SeqType_RNA",SWIG_From_int(static_cast< int >(btllib::RandSeq::SeqType::RNA)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SeqType_PROTEIN",SWIG_From_int(static_cast< int >(btllib::RandSeq::SeqType::PROTEIN)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Masking_NONE",SWIG_From_int(static_cast< int >(btllib::RandSeq::Masking::NONE)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Masking_SOFT",SWIG_From_int(static_cast< int >(btllib::RandSeq::Masking::SOFT)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "Masking_HARD",SWIG_From_int(static_cast< int >(btllib::RandSeq::Masking::HARD)));
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;
@@ -61376,7 +61376,7 @@ SWIG_init(void) {
   PyDict_SetItemString(d, "this", this_descr);
   PyDict_SetItemString(d, "thisown", thisown_descr);
   if (PyType_Ready(builtin_pytype) < 0) {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'RandomSequenceGenerator'.");
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'RandSeq'.");
 #if PY_VERSION_HEX >= 0x03000000
     return NULL;
 #else
@@ -61384,8 +61384,8 @@ SWIG_init(void) {
 #endif
   }
   Py_INCREF(builtin_pytype);
-  PyModule_AddObject(m, "RandomSequenceGenerator", (PyObject *)builtin_pytype);
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "RandomSequenceGenerator");
+  PyModule_AddObject(m, "RandSeq", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "RandSeq");
   d = md;
   
   /* type 'btllib::CountingBloomFilter< uint8_t >' */
