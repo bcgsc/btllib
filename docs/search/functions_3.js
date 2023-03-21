@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['generate_0',['generate',['../classbtllib_1_1RandomSequenceGenerator.html#a38515aaa3da32b71c866dfc58a3eac4b',1,'btllib::RandomSequenceGenerator']]],
+  ['generate_0',['generate',['../classbtllib_1_1RandSeq.html#a8d530883472e225d971cac14b40a0571',1,'btllib::RandSeq']]],
   ['get_5fbasename_1',['get_basename',['../namespacebtllib.html#a68b2069643d786fbf1036dc642ac788c',1,'btllib']]],
   ['get_5fbloom_5ffilter_2',['get_bloom_filter',['../classbtllib_1_1KmerBloomFilter.html#a03785bb98deb94d59e01aa2410af76da',1,'btllib::KmerBloomFilter']]],
   ['get_5fbytes_3',['get_bytes',['../classbtllib_1_1SeedBloomFilter.html#a984bda5e8ac31071c9ab61b2b2f1ab8e',1,'btllib::SeedBloomFilter::get_bytes()'],['../classbtllib_1_1CountingBloomFilter.html#a757657b6cdee481025be9535d003e7d6',1,'btllib::CountingBloomFilter::get_bytes()'],['../classbtllib_1_1KmerCountingBloomFilter.html#a5d7bcfa3c35a0bee90426ce139e2dc4a',1,'btllib::KmerCountingBloomFilter::get_bytes()'],['../classbtllib_1_1KmerBloomFilter.html#acaf81467d9dd71a89be9c43b05b6b33d',1,'btllib::KmerBloomFilter::get_bytes()'],['../classbtllib_1_1BloomFilter.html#ab555271b219e326c52871dcba236493f',1,'btllib::BloomFilter::get_bytes()']]],
