@@ -1,4 +1,4 @@
-#include "btllib/random_seq_generator.hpp"
+#include "btllib/randseq.hpp"
 #include "btllib/seq_writer.hpp"
 #include "btllib/status.hpp"
 #include "config.hpp"
@@ -12,8 +12,8 @@
 
 struct Arguments
 {
-  btllib::RandomSequenceGenerator::SequenceType seq_type;
-  btllib::RandomSequenceGenerator::Masking mask;
+  btllib::RandSeq::SeqType seq_type;
+  btllib::RandSeq::Masking mask;
   unsigned num_sequences;
   int num_threads;
   size_t min_length, max_length;
@@ -21,7 +21,7 @@ struct Arguments
 
   Arguments(int argc, char** argv)
   {
-    argparse::ArgumentParser parser("seqgen", btllib::PROJECT_VERSION);
+    argparse::ArgumentParser parser("randseq", btllib::PROJECT_VERSION);
 
     parser.add_argument("-s")
       .help("Sequence type (dna | rna)")
@@ -61,9 +61,9 @@ struct Arguments
 
     auto seq_type_str = parser.get("-s");
     if (seq_type_str == "dna") {
-      seq_type = btllib::RandomSequenceGenerator::SequenceType::DNA;
+      seq_type = btllib::RandSeq::SeqType::DNA;
     } else if (seq_type_str == "rna") {
-      seq_type = btllib::RandomSequenceGenerator::SequenceType::RNA;
+      seq_type = btllib::RandSeq::SeqType::RNA;
     } else {
       btllib::check_error(true,
                           "Invalid sequence type: " + seq_type_str +
@@ -72,11 +72,11 @@ struct Arguments
 
     auto mask_str = parser.get("-m");
     if (mask_str == "none") {
-      mask = btllib::RandomSequenceGenerator::Masking::NONE;
+      mask = btllib::RandSeq::Masking::NONE;
     } else if (mask_str == "soft") {
-      mask = btllib::RandomSequenceGenerator::Masking::SOFT;
+      mask = btllib::RandSeq::Masking::SOFT;
     } else if (mask_str == "hard") {
-      mask = btllib::RandomSequenceGenerator::Masking::HARD;
+      mask = btllib::RandSeq::Masking::HARD;
     } else {
       btllib::check_error(true,
                           "Invalid masking option: " + mask_str +
@@ -170,12 +170,10 @@ main(int argc, char** argv)
     std::uniform_int_distribution<size_t> dist(args.min_length,
                                                args.max_length);
     btllib::SeqWriter writer(args.out_path);
-    btllib::RandomSequenceGenerator rnd(args.seq_type, args.mask);
+    btllib::RandSeq rnd(args.seq_type, args.mask);
 
     std::string unit =
-      args.seq_type == btllib::RandomSequenceGenerator::SequenceType::PROTEIN
-        ? "aa"
-        : "bp";
+      args.seq_type == btllib::RandSeq::SeqType::PROTEIN ? "aa" : "bp";
     Logger log(args.num_sequences, unit);
 
 #pragma omp parallel for shared(args, rnd, rng, dist, writer, log) default(none)

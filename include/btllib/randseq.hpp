@@ -1,15 +1,15 @@
-#ifndef BTLLIB_RANDOM_SEQ_HPP
-#define BTLLIB_RANDOM_SEQ_HPP
+#ifndef BTLLIB_RANDSEQ_HPP
+#define BTLLIB_RANDSEQ_HPP
 
 #include <cstddef>
 #include <string>
 
 namespace btllib {
 
-class RandomSequenceGenerator
+class RandSeq
 {
 public:
-  enum class SequenceType
+  enum class SeqType
   {
     DNA,
     RNA,
@@ -30,7 +30,7 @@ public:
    * @param masking If set to SOFT, lower-case values will also be generated. If
    * HARD, the sequences will include N/X positions.
    */
-  RandomSequenceGenerator(SequenceType type, Masking masking = Masking::NONE);
+  RandSeq(SeqType type, Masking masking = Masking::NONE);
 
   /**
    * Generate a new random sequence.

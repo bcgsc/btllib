@@ -111,6 +111,22 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adc2f3a85164945f01093f1c2fee77194"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c4f2854a42215fd948720459d93066f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#a9c4f2854a42215fd948720459d93066f">insert</a> (const std::vector&lt; uint64_t &gt; &amp;hashes)</td></tr>
 <tr class="separator:a9c4f2854a42215fd948720459d93066f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f330092fd78f1b47c6398691305be6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#a4f330092fd78f1b47c6398691305be6d">remove</a> (const char *seq, size_t seq_len)</td></tr>
+<tr class="separator:a4f330092fd78f1b47c6398691305be6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad32a8b8ddabef7bbfefe2bdbb0f91082"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#ad32a8b8ddabef7bbfefe2bdbb0f91082">remove</a> (const std::string &amp;seq)</td></tr>
+<tr class="separator:ad32a8b8ddabef7bbfefe2bdbb0f91082"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae18ad2b82359f15394ea5889431d1bdf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#ae18ad2b82359f15394ea5889431d1bdf">remove</a> (const uint64_t *hashes)</td></tr>
+<tr class="separator:ae18ad2b82359f15394ea5889431d1bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a803b659a527609d0ab7e6a6dabbdc7e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#a803b659a527609d0ab7e6a6dabbdc7e8">remove</a> (const std::vector&lt; uint64_t &gt; &amp;hashes)</td></tr>
+<tr class="separator:a803b659a527609d0ab7e6a6dabbdc7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1593f904f0bd79534b1527ae20fe375f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#a1593f904f0bd79534b1527ae20fe375f">clear</a> (const char *seq, size_t seq_len)</td></tr>
+<tr class="separator:a1593f904f0bd79534b1527ae20fe375f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eefbeb0e4e37cb620a090b175162b4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#a0eefbeb0e4e37cb620a090b175162b4a">clear</a> (const std::string &amp;seq)</td></tr>
+<tr class="separator:a0eefbeb0e4e37cb620a090b175162b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d8ec4c4b40295bfd7b027204da28df6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#a0d8ec4c4b40295bfd7b027204da28df6">clear</a> (const uint64_t *hashes)</td></tr>
+<tr class="separator:a0d8ec4c4b40295bfd7b027204da28df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4f3c6a31fa89014e08ff78d3e23a423"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#ae4f3c6a31fa89014e08ff78d3e23a423">clear</a> (const std::vector&lt; uint64_t &gt; &amp;hashes)</td></tr>
+<tr class="separator:ae4f3c6a31fa89014e08ff78d3e23a423"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00dedb8babe37a3c5e86a9e2bcaed86e"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#a00dedb8babe37a3c5e86a9e2bcaed86e">contains</a> (const char *seq, size_t seq_len) const</td></tr>
 <tr class="separator:a00dedb8babe37a3c5e86a9e2bcaed86e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adba8bea01031c479a8fc930881c4e981"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html#adba8bea01031c479a8fc930881c4e981">contains</a> (const std::string &amp;seq) const</td></tr>
@@ -296,6 +312,157 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1593f904f0bd79534b1527ae20fe375f" name="a1593f904f0bd79534b1527ae20fe375f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1593f904f0bd79534b1527ae20fe375f">&#9670;&#160;</a></span>clear() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html">btllib::KmerCountingBloomFilter</a>&lt; T &gt;::clear </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>seq_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Set the counts of a sequence's k-mers to zero in the filter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>Sequence to k-merize. </td></tr>
+    <tr><td class="paramname">seq_len</td><td>Length of seq. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0eefbeb0e4e37cb620a090b175162b4a" name="a0eefbeb0e4e37cb620a090b175162b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eefbeb0e4e37cb620a090b175162b4a">&#9670;&#160;</a></span>clear() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html">btllib::KmerCountingBloomFilter</a>&lt; T &gt;::clear </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>seq</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Set the counts of a sequence's k-mers to zero in the filter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>Sequence to k-merize. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae4f3c6a31fa89014e08ff78d3e23a423" name="ae4f3c6a31fa89014e08ff78d3e23a423"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4f3c6a31fa89014e08ff78d3e23a423">&#9670;&#160;</a></span>clear() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html">btllib::KmerCountingBloomFilter</a>&lt; T &gt;::clear </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint64_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Set the counts of a sequence's k-mers to zero in the filter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer vector of the k-mer's hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0d8ec4c4b40295bfd7b027204da28df6" name="a0d8ec4c4b40295bfd7b027204da28df6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d8ec4c4b40295bfd7b027204da28df6">&#9670;&#160;</a></span>clear() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html">btllib::KmerCountingBloomFilter</a>&lt; T &gt;::clear </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Set the counts of a sequence's k-mers to zero in the filter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer array of the k-mer's hash values. Array size should equal the hash_num argument used when the Bloom filter was constructed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a00dedb8babe37a3c5e86a9e2bcaed86e" name="a00dedb8babe37a3c5e86a9e2bcaed86e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a00dedb8babe37a3c5e86a9e2bcaed86e">&#9670;&#160;</a></span>contains() <span class="overload">[1/4]</span></h2>
 
@@ -1565,6 +1732,157 @@ template&lt;typename T &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>Filepath to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4f330092fd78f1b47c6398691305be6d" name="a4f330092fd78f1b47c6398691305be6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f330092fd78f1b47c6398691305be6d">&#9670;&#160;</a></span>remove() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html">btllib::KmerCountingBloomFilter</a>&lt; T &gt;::remove </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>seq_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Decrease the counts of a sequence's k-mers from the filter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>Sequence to k-merize. </td></tr>
+    <tr><td class="paramname">seq_len</td><td>Length of seq. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad32a8b8ddabef7bbfefe2bdbb0f91082" name="ad32a8b8ddabef7bbfefe2bdbb0f91082"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad32a8b8ddabef7bbfefe2bdbb0f91082">&#9670;&#160;</a></span>remove() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html">btllib::KmerCountingBloomFilter</a>&lt; T &gt;::remove </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>seq</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Decrease the counts of a sequence's k-mers from the filter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>Sequence to k-merize. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a803b659a527609d0ab7e6a6dabbdc7e8" name="a803b659a527609d0ab7e6a6dabbdc7e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a803b659a527609d0ab7e6a6dabbdc7e8">&#9670;&#160;</a></span>remove() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html">btllib::KmerCountingBloomFilter</a>&lt; T &gt;::remove </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint64_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Decrease the counts of a sequence's k-mers from the filter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer vector of the k-mer's hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae18ad2b82359f15394ea5889431d1bdf" name="ae18ad2b82359f15394ea5889431d1bdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae18ad2b82359f15394ea5889431d1bdf">&#9670;&#160;</a></span>remove() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbtllib_1_1KmerCountingBloomFilter.html">btllib::KmerCountingBloomFilter</a>&lt; T &gt;::remove </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Decrease the counts of a sequence's k-mers from the filter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer array of the k-mer's hash values. Array size should equal the hash_num argument used when the Bloom filter was constructed. </td></tr>
   </table>
   </dd>
 </dl>
