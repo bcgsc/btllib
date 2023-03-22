@@ -1,3 +1,4 @@
+#include "btllib/mi_bloom_filter.hpp"
 #include "btllib/nthash.hpp" //parse_seeds
 #include "btllib/seq_reader.hpp"
 #include "btllib/status.hpp"
@@ -5,7 +6,6 @@
 #include <getopt.h>
 #include <iostream>
 #include <omp.h>
-#include "btllib/mi_bloom_filter.hpp"
 
 #include <string>
 #include <vector>
@@ -14,6 +14,8 @@ const static std::string PROGNAME = "mi_bloom_filter";
 const static std::string VERSION = "1.0";
 const static size_t MAX_THREADS = 32;
 const static size_t DEFAULT_THREADS = 5;
+const static size_t DEFAULT_SIZE = 1000000000;
+const static double DEFAULT_OCCUPANCY = 0.5;
 
 using ID_type = uint16_t;
 using SpacedSeed = std::vector<unsigned>;
@@ -65,7 +67,7 @@ split_string_by_space(const std::string& input_string)
 }
 
 static unsigned
-assert_ID_size_and_count_kmers(const std::vector<std::string>& read_paths,
+assert_id_size_and_count_kmers(const std::vector<std::string>& read_paths,
                                const bool& by_file,
                                const unsigned& kmer_size)
 {
@@ -106,15 +108,15 @@ inline void
 insert_to_bv(btllib::MIBloomFilter<ID_type>& mi_bf,
              T& nthash,
              int& mi_bf_stage,
-             ID_type& ID)
+             ID_type& id)
 {
   while (nthash.roll()) {
     if (mi_bf_stage == 0) {
       mi_bf.insert_bv(nthash.hashes());
     } else if (mi_bf_stage == 1) {
-      mi_bf.insert_id(nthash.hashes(), ID);
+      mi_bf.insert_id(nthash.hashes(), id);
     } else if (mi_bf_stage == 2) {
-      mi_bf.insert_saturation(nthash.hashes(), ID);
+      mi_bf.insert_saturation(nthash.hashes(), id);
     }
   }
 }
@@ -128,10 +130,9 @@ main(int argc, char* argv[])
     int optindex = 0;
     int help = 0, version = 0;
     bool verbose = false;
-    int mi_bf_size = 1000000000;
-    double occupancy = 0.5;
-    unsigned kmer_size = 0, hash_num = 0, expected_elements = 0,
-             thread_count = DEFAULT_THREADS;
+    int mi_bf_size = DEFAULT_SIZE, thread_count = DEFAULT_THREADS;
+    double occupancy = DEFAULT_OCCUPANCY;
+    unsigned kmer_size = 0, hash_num = 0, expected_elements = 0;
 
     bool spaced_seed_set = false;
     bool output_path_set = false;
@@ -182,13 +183,13 @@ main(int argc, char* argv[])
           by_file = true;
           break;
         case 'm':
-          mi_bf_size = std::stoul(optarg);
+          mi_bf_size = std::stoi(optarg);
           break;
         case 'n':
           expected_elements = std::stoul(optarg);
           break;
         case 't':
-          thread_count = std::stoul(optarg);
+          thread_count = std::stoi(optarg);
           break;
         case 'v':
           verbose = true;
@@ -219,9 +220,9 @@ main(int argc, char* argv[])
       print_usage();
       std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
-    std::map<std::string, ID_type> read_IDs;
+    std::map<std::string, ID_type> read_ids;
     unsigned kmer_count =
-      assert_ID_size_and_count_kmers(read_paths, by_file, kmer_size);
+      assert_id_size_and_count_kmers(read_paths, by_file, kmer_size);
 
     if (expected_elements > 0 || occupancy_set) {
       mi_bf_size = btllib::MIBloomFilter<ID_type>::calc_optimal_size(
@@ -232,13 +233,14 @@ main(int argc, char* argv[])
 
     // set thread number configuration
 #if defined(_OPENMP)
-    if (thread_count > 0)
+    if (thread_count > 0) {
       omp_set_num_threads(thread_count);
+    }
 #endif
 
     btllib::MIBloomFilter<ID_type> mi_bf(mi_bf_size, hash_num);
     const char* stages[3] = { "BV Insertion", "ID Insertion", "Saturation" };
-    ID_type ID_counter = 0;
+    ID_type id_counter = 0;
     std::map<std::string, ID_type> ids;
     for (int mi_bf_stage = 0; mi_bf_stage < 3; mi_bf_stage++) {
       btllib::log_info(stages[mi_bf_stage] + std::string(" stage started"));
@@ -248,10 +250,10 @@ main(int argc, char* argv[])
           read_path, btllib::SeqReader::Flag::SHORT_MODE, 6);
 #pragma omp parallel shared(reader)
         for (const auto record : reader) {
-#pragma omp critical 
+#pragma omp critical
           {
             if (ids.find(record.id) == ids.end()) {
-              ids[record.id] = !by_file ? ID_counter++ : ID_counter;
+              ids[record.id] = !by_file ? id_counter++ : id_counter;
             }
           }
           if (spaced_seed_set) {
@@ -265,7 +267,7 @@ main(int argc, char* argv[])
           }
         }
         if (by_file) {
-          ID_counter++;
+          id_counter++;
         }
       }
       if (mi_bf_stage == 0) {

@@ -1,10 +1,10 @@
 #ifndef BTLLIB_MI_BLOOM_FILTER_HPP
 #define BTLLIB_MI_BLOOM_FILTER_HPP
 
+#include "cpptoml.h"
 #include "nthash.hpp"
 #include "status.hpp"
-#include <stdlib.h>
-#include "cpptoml.h"
+#include <cstdlib.h>
 
 #include <sdsl/bit_vector_il.hpp>
 #include <sdsl/rank_support.hpp>
@@ -18,9 +18,10 @@ static const unsigned PLACEHOLDER_NEWLINES_MIBF = 50;
 class MIBloomFilterInitializer
 {
 
-/// @cond HIDDEN_SYMBOLS
+  /// @cond HIDDEN_SYMBOLS
 public:
-  MIBloomFilterInitializer(const std::string& path, const std::string& signature)
+  MIBloomFilterInitializer(const std::string& path,
+                           const std::string& signature)
     : path(path)
     , ifs_id_arr(path)
     , table(parse_header(signature))
@@ -170,7 +171,7 @@ public:
    * hash_num argument used when the Bloom filter was constructed.
    * @param ID The ID that will be inserted into the ID array.
    */
-  void insert_id(const uint64_t* hashes, const T& ID);
+  void insert_id(const uint64_t* hashes, const T& id);
 
   /**
    * Insert ID to ID array corresponding to the buckets calculated by hashes.
@@ -180,9 +181,9 @@ public:
    * @param hashes Integer vector of hash values.
    * @param ID The ID that will be inserted into the ID array.
    */
-  void insert_id(const std::vector<uint64_t>& hashes, const T& ID)
+  void insert_id(const std::vector<uint64_t>& hashes, const T& id)
   {
-    insert_id(hashes.data(), ID);
+    insert_id(hashes.data(), id);
   }
 
   /**
@@ -208,7 +209,7 @@ public:
    * @param hashes Integer array of hash values. Array size should equal the
    * @param ID is the ID to look for.
    */
-  void insert_saturation(const uint64_t* hashes, const T& ID);
+  void insert_saturation(const uint64_t* hashes, const T& id);
 
   /**
    * Inserts saturation if ID is not represented after trying to survive.
@@ -216,9 +217,9 @@ public:
    * @param hashes Integer vector of hash values.
    * @param ID is the ID to look for.
    */
-  void insert_saturation(const std::vector<uint64_t>& hashes, const T& ID)
+  void insert_saturation(const std::vector<uint64_t>& hashes, const T& id)
   {
-    insert_saturation(hashes.data(), ID);
+    insert_saturation(hashes.data(), id);
   }
 
   /**
@@ -249,10 +250,13 @@ public:
   }
 
   /** Get the name of the hash function used. */
-  const std::string& get_hash_fn() const { return hash_fn; }
+  const std::string& get_hash_fn() const
+  {
+    return hash_fn;
+  }
 
   /** Returns the occurence count for each ID in the miBF */
-  std::vector<size_t> get_ID_occurence_count(const bool& include_saturated);
+  std::vector<size_t> get_id_occurence_count(const bool& include_saturated);
 
   /** Returns an a filter size large enough to maintain an occupancy specified
    */
@@ -278,7 +282,6 @@ private:
   }
   void set_data(const uint64_t& pos, const T& id);
   void set_saturated(const uint64_t* hashes);
-  void write_header(std::ofstream& out) const;
 
   size_t id_array_size = 0;
   size_t bv_size = 0;
@@ -323,8 +326,8 @@ MIBloomFilterInitializer::parse_header(const std::string& expected_signature)
   }
 
   /* Read bloom filter line by line until it sees "[HeaderEnd]"
- *   which is used to mark the end of the header section and
- *     assigns the header to a char array*/
+   *   which is used to mark the end of the header section and
+   *     assigns the header to a char array*/
   std::string toml_buffer(file_signature + '\n');
   std::string line;
   bool header_end_found = false;
@@ -336,33 +339,36 @@ MIBloomFilterInitializer::parse_header(const std::string& expected_signature)
     }
   }
   if (!header_end_found) {
-    log_error("Pre-built multi-index Bloom filter does not have the correct header end.");
+    log_error("Pre-built multi-index Bloom filter does not have the correct "
+              "header end.");
     std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
   for (unsigned i = 0; i < PLACEHOLDER_NEWLINES_MIBF; i++) {
     std::getline(ifs_id_arr, line);
   }
 
-     // Send the char array to a stringstream for the cpptoml parser to parse
-     std::istringstream toml_stream(toml_buffer);
-     cpptoml::parser toml_parser(toml_stream);
-     const auto header_config = toml_parser.parse();
-  
-     // Obtain header values from toml parser and assign them to class members
-     const auto header_string =
-     file_signature.substr(1, file_signature.size() - 2); // Remove [ ]
-     return header_config->get_table(header_string);
+  // Send the char array to a stringstream for the cpptoml parser to parse
+  std::istringstream toml_stream(toml_buffer);
+  cpptoml::parser toml_parser(toml_stream);
+  const auto header_config = toml_parser.parse();
+
+  // Obtain header values from toml parser and assign them to class members
+  const auto header_string =
+    file_signature.substr(1, file_signature.size() - 2); // Remove [ ]
+  return header_config->get_table(header_string);
 }
 
 template<typename T>
 MIBloomFilter<T>::MIBloomFilter(const std::string& path)
   : MIBloomFilter<T>::MIBloomFilter(
-      std::make_shared<MIBloomFilterInitializer>(path, MI_BLOOM_FILTER_SIGNATURE))
+      std::make_shared<MIBloomFilterInitializer>(path,
+                                                 MI_BLOOM_FILTER_SIGNATURE))
 {
 }
 
 template<typename T>
-inline MIBloomFilter<T>::MIBloomFilter(const std::shared_ptr<MIBloomFilterInitializer>& mibfi)
+inline MIBloomFilter<T>::MIBloomFilter(
+  const std::shared_ptr<MIBloomFilterInitializer>& mibfi)
   : id_array_size(*(mibfi->table->get_as<unsigned>("id_array_size")))
   , kmer_size(*(mibfi->table->get_as<decltype(kmer_size)>("kmer_size")))
   , hash_num(*(mibfi->table->get_as<decltype(hash_num)>("hash_num")))
@@ -371,20 +377,24 @@ inline MIBloomFilter<T>::MIBloomFilter(const std::shared_ptr<MIBloomFilterInitia
               : "")
   , id_array(new T[id_array_size])
 {
-    // read id array
-    mibfi->ifs_id_arr.read((char*)id_array,
-                std::streamsize(id_array_size * sizeof(T)));
-    // read bv and bv rank support
-    sdsl::load_from_file(il_bit_vector, mibfi->path + ".sdsl");
-    bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
-   
-    bv_insertion_completed = true;
+  // read id array
+  mibfi->ifs_id_arr.read((char*)id_array,
+                         std::streamsize(id_array_size * sizeof(T)));
+  // read bv and bv rank support
+  sdsl::load_from_file(il_bit_vector, mibfi->path + ".sdsl");
+  bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
 
-    // init counts array 
-    counts_array = std::unique_ptr<std::atomic<uint16_t>[]>(
+  bv_insertion_completed = true;
+
+  // init counts array
+  counts_array = std::unique_ptr<std::atomic<uint16_t>[]>(
     new std::atomic<uint16_t>[id_array_size]);
-    std::memset(
-        (void*)counts_array.get(), 0, id_array_size * sizeof(counts_array[0]));
+  std::memset(
+    (void*)counts_array.get(), 0, id_array_size * sizeof(counts_array[0]));
+
+  log_info(
+    "MIBloomFilter: Bit vector size: " + std::to_string(il_bit_vector.size()) +
+    "\nPopcount: " + std::to_string(get_pop_cnt()));
 }
 
 template<typename T>
@@ -404,112 +414,10 @@ inline MIBloomFilter<T>::MIBloomFilter(sdsl::bit_vector& bit_vector,
                                        std::string hash_fn)
   : bit_vector(bit_vector)
   , hash_num(hash_num)
-  , hash_fn(hash_fn)
+  , hash_fn(std::move(hash_fn))
 {
   complete_bv_insertion();
 }
-
-/*
-template<typename T>
-MIBloomFilter<T>::MIBloomFilter(const std::string& filter_file_path)
-// TODO: make more streamlined
-{
-#pragma omp parallel for default(none) shared(filter_file_path)
-  for (unsigned i = 0; i < 2; ++i) {
-    if (i == 0) {
-      FILE* file = fopen(filter_file_path.c_str(), "rbe");
-      check_error(file == nullptr,
-                  "MIBloomFilter: File " + filter_file_path +
-                    " could not be read.");
-
-      FileHeader header;
-      check_error(fread(&header, sizeof(struct FileHeader), 1, file) != 1,
-                  "MIBloomFilter: Failed to load header.");
-      log_info("/: Loading header...");
-
-      const int magic_nine = 9;
-      char magic[magic_nine];
-      const int magic_eight = 8;
-      memcpy(magic, header.magic, magic_eight);
-      magic[magic_eight] = '\0';
-
-      log_info("MIBloomFilter: Loaded header\nmagic: " + std::string(magic) +
-               "\nhlen: " + std::to_string(header.hlen) +
-               "\nsize: " + std::to_string(header.size) +
-               "\nnhash: " + std::to_string(header.nhash) +
-               "\nkmer: " + std::to_string(header.kmer));
-      hash_num = header.nhash;
-      kmer_size = header.kmer;
-      id_array_size = header.size;
-      id_array = new T[id_array_size]();
-*/
-      // TOD: Doesnt read spaced seeds!!!
-      /*
-      check_error(
-        header.hlen != (sizeof(FileHeader) + kmer_size * m_sseeds.size()),
-        "MIBloomFilter: header length: " + std::to_string(header.hlen) +
-          " does not match expected length: " +
-          std::to_string(sizeof(FileHeader) + kmer_size * m_sseeds.size()) +
-          " (likely version mismatch).");
-      */
-/*
-      check_error(
-        header.hlen != sizeof(FileHeader),
-        "MIBloomFilter: header length: " + std::to_string(header.hlen) +
-          " does not match expected length: " +
-          std::to_string(sizeof(FileHeader)) + " (likely version mismatch).");
-
-      check_error(strcmp(magic, "MIBLOOMF") != 0,
-                  "MIBloomFilter: Bloom filter type does not matc.");
-
-      check_error(header.version != MI_BLOOM_FILTER_VERSION,
-                  "MIBloomFilter: Bloom filter version does not match: " +
-                    std::to_string(header.version) + " expected " +
-                    std::to_string(MI_BLOOM_FILTER_VERSION) + ".");
-
-      log_info("MIBloomFilter: Loading data vector");
-
-      long int l_cur_pos = ftell(file);
-      fseek(file, 0, 2);
-      size_t file_size = ftell(file) - header.hlen;
-      fseek(file, l_cur_pos, 0);
-
-      check_error(file_size != id_array_size * sizeof(T),
-                  "MIBloomFilter: " + filter_file_path +
-                    " does not match size given by its header. Size: " +
-                    std::to_string(file_size) + " vs " +
-                    std::to_string(id_array_size * sizeof(T)) + " bytes.");
-
-      size_t count_read = fread(id_array, file_size, 1, file);
-
-      check_error(count_read != 1 && fclose(file) != 0,
-                  "MIBloomFilter: File " + filter_file_path +
-                    " could not be read.");
-    }
-
-    else {
-      std::string bv_filename = filter_file_path + ".sdsl";
-      log_info("MIBloomFilter: Loading sdsl interleaved bit vector from: " +
-               bv_filename);
-      load_from_file(il_bit_vector, bv_filename);
-      bv_insertion_completed = true;
-      bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
-      counts_array = std::unique_ptr<std::atomic<uint16_t>[]>(
-        new std::atomic<uint16_t>[id_array_size]);
-      std::memset(
-        (void*)counts_array.get(), 0, id_array_size * sizeof(counts_array[0]));
-      // TODO have id insertion completed in header and dont create counts array
-      // if its true.
-    }
-  }
-
-  log_info(
-    "MIBloomFilter: Bit vector size: " + std::to_string(il_bit_vector.size()) +
-    "\nPopcount: " + std::to_string(get_pop_cnt()));
-  // m_prob_saturated = pow(double(get_pop_saturated()) / double(get_pop_cnt()),
-  // hash_num);
-}
-*/
 
 template<typename T>
 inline void
@@ -556,7 +464,7 @@ MIBloomFilter<T>::complete_bv_insertion()
 }
 template<typename T>
 inline void
-MIBloomFilter<T>::insert_id(const uint64_t* hashes, const T& ID)
+MIBloomFilter<T>::insert_id(const uint64_t* hashes, const T& id)
 {
   assert(bv_insertion_completed && !id_insertion_completed);
   // hashSet values;
@@ -569,7 +477,7 @@ MIBloomFilter<T>::insert_id(const uint64_t* hashes, const T& ID)
     // uint32_t count = __sync_add_and_fetch(&counts_array[rank], 1);
     T random_num = (rand ^ hashes[i]) % count;
     if (random_num == count - 1) {
-      set_data(rank, ID);
+      set_data(rank, id);
     }
   }
 }
@@ -581,30 +489,31 @@ MIBloomFilter<T>::get_id(const uint64_t* hashes)
 }
 template<typename T>
 inline void
-MIBloomFilter<T>::insert_saturation(const uint64_t* hashes, const T& ID)
+MIBloomFilter<T>::insert_saturation(const uint64_t* hashes, const T& id)
 {
   assert(id_insertion_completed);
   std::vector<uint64_t> rank_pos = get_rank_pos(hashes);
   std::vector<T> results = get_data(rank_pos);
-  std::vector<T> replacementIDs(hash_num);
+  std::vector<T> replacement_ids(hash_num);
   bool value_found = false;
-  std::vector<T> seenSet(hash_num);
+  std::vector<T> seen_set(hash_num);
 
   for (unsigned i = 0; i < hash_num; i++) {
     T current_result = results[i] & (btllib::MIBloomFilter<T>::ANTI_MASK &
                                      btllib::MIBloomFilter<T>::ANTI_STRAND);
     // break if ID exists
-    if (current_result == ID) {
+    if (current_result == id) {
       value_found = true;
       break;
     }
     // if haven't seen before add to seen set
-    if (find(seenSet.begin(), seenSet.end(), current_result) == seenSet.end()) {
-      seenSet.push_back(current_result);
+    if (find(seen_set.begin(), seen_set.end(), current_result) ==
+        seen_set.end()) {
+      seen_set.push_back(current_result);
     }
     // if have seen before add to replacement IDs
     else {
-      replacementIDs.push_back(current_result);
+      replacement_ids.push_back(current_result);
     }
   }
   // if value not found try to survive
@@ -613,8 +522,9 @@ MIBloomFilter<T>::insert_saturation(const uint64_t* hashes, const T& ID)
     T min_count = std::numeric_limits<T>::min();
     for (unsigned i = 0; i < hash_num; i++) {
       T current_result = results[i] & btllib::MIBloomFilter<T>::ANTI_MASK;
-      if (find(replacementIDs.begin(), replacementIDs.end(), current_result) !=
-          replacementIDs.end()) {
+      if (find(replacement_ids.begin(),
+               replacement_ids.end(),
+               current_result) != replacement_ids.end()) {
         if (min_count < counts_array[rank_pos[i]]) {
           min_count = counts_array[rank_pos[i]];
           replacement_pos = rank_pos[i];
@@ -622,7 +532,7 @@ MIBloomFilter<T>::insert_saturation(const uint64_t* hashes, const T& ID)
       }
     }
     if (replacement_pos != id_array_size) {
-      set_data(replacement_pos, ID);
+      set_data(replacement_pos, id);
       ++counts_array[replacement_pos];
     } else {
       set_saturated(hashes);
@@ -631,7 +541,7 @@ MIBloomFilter<T>::insert_saturation(const uint64_t* hashes, const T& ID)
 }
 template<typename T>
 inline void
-MIBloomFilter<T>::set_data(const uint64_t& pos, const T& ID)
+MIBloomFilter<T>::set_data(const uint64_t& pos, const T& id)
 {
   T old_value;
   do {
@@ -640,7 +550,7 @@ MIBloomFilter<T>::set_data(const uint64_t& pos, const T& ID)
     // saturation 	ID |= MASK;
     // }
   } while (!__sync_bool_compare_and_swap(
-    &id_array[pos], old_value, old_value > MASK ? (ID | MASK) : ID));
+    &id_array[pos], old_value, old_value > MASK ? (id | MASK) : id));
 }
 template<typename T>
 inline void
@@ -674,66 +584,10 @@ MIBloomFilter<T>::get_data(const std::vector<uint64_t>& rank_pos) const
 }
 template<typename T>
 inline void
-MIBloomFilter<T>::write_header(std::ofstream& out) const
-{
-  FileHeader header;
-  const int magic_num = 8;
-  memcpy(header.magic, "MIBLOOMF", magic_num);
-
-  // header.hlen = sizeof(struct FileHeader) + m_kmer_size * m_sseeds.size();
-  header.hlen = sizeof(struct FileHeader);
-  header.kmer = kmer_size;
-  header.size = id_array_size;
-  header.nhash = hash_num;
-  header.version = MI_BLOOM_FILTER_VERSION;
-
-  out.write(reinterpret_cast<char*>(&header), sizeof(struct FileHeader));
-
-  /*for (const auto& s : m_sseeds) {
-    out.write(s.c_str(), m_kmer_size);
-  }*/
-}
-/*
- *    * Stores the filter as a binary file to the path specified
- *       * Stores uncompressed because the random data tends to
- *          * compress poorly anyway
- *             */
-/*template<typename T>
-inline void
-MIBloomFilter<T>::save(const std::string& filter_file_path)
-
-{
-  //#pragma omp parallel for default(none) shared(filter_file_path)
-  for (unsigned i = 0; i < 2; ++i) {
-    if (i == 0) {
-      std::ofstream my_file(filter_file_path.c_str(),
-                            std::ios::out | std::ios::binary);
-
-      assert(my_file);
-      write_header(my_file);
-
-      my_file.write(reinterpret_cast<char*>(id_array),
-                    id_array_size * sizeof(T));
-
-      my_file.close();
-      assert(my_file);
-
-      FILE* file = fopen(filter_file_path.c_str(), "rbe");
-      check_error(file == nullptr,
-                  "MIBloomFilter: " + filter_file_path + " could not be read.");
-    } else {
-      std::string bv_filename = filter_file_path + ".sdsl";
-      store_to_file(il_bit_vector, bv_filename);
-    }
-  }
-}
-*/
-template<typename T>
-inline void
 MIBloomFilter<T>::save(const std::string& path,
-                  const cpptoml::table& table,
-                  const char* data,
-                  const size_t n)
+                       const cpptoml::table& table,
+                       const char* data,
+                       const size_t n)
 {
   std::ofstream ofs(path.c_str(), std::ios::out | std::ios::binary);
 
@@ -753,13 +607,13 @@ inline void
 MIBloomFilter<T>::save(const std::string& path)
 {
   /* Initialize cpptoml root table
- *     Note: Tables and fields are unordered
- *         Ordering of table is maintained by directing the table
- *             to the output stream immediately after completion  */
+   *     Note: Tables and fields are unordered
+   *         Ordering of table is maintained by directing the table
+   *             to the output stream immediately after completion  */
   auto root = cpptoml::make_table();
 
   /* Initialize bloom filter section and insert fields
- *       and output to ostream */
+   *       and output to ostream */
   auto header = cpptoml::make_table();
   header->insert("id_array_size", id_array_size);
   header->insert("hash_num", get_hash_num());
@@ -800,7 +654,7 @@ MIBloomFilter<T>::get_pop_saturated_cnt()
 }
 template<typename T>
 inline std::vector<size_t>
-MIBloomFilter<T>::get_ID_occurence_count(const bool& include_saturated)
+MIBloomFilter<T>::get_id_occurence_count(const bool& include_saturated)
 {
   assert(bv_insertion_completed);
   std::vector<size_t> ret_vec(MASK - 1, 0);
