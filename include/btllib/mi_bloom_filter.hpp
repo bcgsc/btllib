@@ -419,7 +419,7 @@ MIBloomFilter<T>::insert_bv(const uint64_t* hashes)
     uint64_t pos = hashes[i] % bit_vector.size();
     uint64_t* data_index = bit_vector.data() + (pos >> 6); // NOLINT
     uint64_t bit_mask_value = (uint64_t)1 << (pos & 0x3F); // NOLINT
-    (void)(__sync_fetch_and_or(data_index, bit_mask_value) >> (pos & 0x3F) &
+    (void)(__sync_fetch_and_or(data_index, bit_mask_value) >> (pos & 0x3F) & // NOLINT
            1); // NOLINT
   }
 }
