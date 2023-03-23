@@ -7,15 +7,16 @@
 #include <iostream>
 #include <omp.h>
 
+#include <limits>
 #include <string>
 #include <vector>
 
 const static std::string PROGNAME = "mi_bloom_filter";
 const static std::string VERSION = "1.0";
-const static size_t MAX_THREADS = 32;
 const static size_t DEFAULT_THREADS = 5;
 const static size_t DEFAULT_SIZE = 1000000000;
 const static double DEFAULT_OCCUPANCY = 0.5;
+const static size_t DEFAULT_SEQ_READER_THREADS = 6;
 
 using ID_type = uint16_t;
 using SpacedSeed = std::vector<unsigned>;
@@ -74,22 +75,21 @@ assert_id_size_and_count_kmers(const std::vector<std::string>& read_paths,
   unsigned total_id = 0;
   unsigned expected_elements = 0;
 
-  for (auto& read_path : read_paths) {
-    std::cout << read_path << std::endl;
+  for (const auto& read_path : read_paths) {
     btllib::SeqReader reader(read_path, btllib::SeqReader::Flag::SHORT_MODE);
-    for (const auto record : reader) {
-      if (!by_file) {
+    for (const auto& record : reader) {
+      if (!by_file && !record.seq.empty()){
         total_id++;
       }
     }
   }
 
-  for (auto& read_path : read_paths) {
-    btllib::SeqReader reader(read_path, btllib::SeqReader::Flag::SHORT_MODE, 6);
+  for (const auto& read_path : read_paths) {
+    btllib::SeqReader reader(read_path, btllib::SeqReader::Flag::SHORT_MODE);
     if (by_file) {
       total_id++;
     }
-    for (const auto record : reader) {
+    for (const auto& record : reader) {
       if (!by_file) {
         total_id++;
       }
@@ -128,11 +128,12 @@ main(int argc, char* argv[])
     int c;
     bool failed = false;
     int optindex = 0;
-    int help = 0, version = 0;
+    //static int version = 0;
+    static int help = 0, version = 0;
     bool verbose = false;
-    int mi_bf_size = DEFAULT_SIZE, thread_count = DEFAULT_THREADS;
+    int thread_count = DEFAULT_THREADS;
     double occupancy = DEFAULT_OCCUPANCY;
-    unsigned kmer_size = 0, hash_num = 0, expected_elements = 0;
+    unsigned mi_bf_size = DEFAULT_SIZE, kmer_size = 0, hash_num = 0, expected_elements = 0;
 
     bool spaced_seed_set = false;
     bool output_path_set = false;
@@ -183,7 +184,7 @@ main(int argc, char* argv[])
           by_file = true;
           break;
         case 'm':
-          mi_bf_size = std::stoi(optarg);
+          mi_bf_size = std::stoul(optarg);
           break;
         case 'n':
           expected_elements = std::stoul(optarg);
@@ -247,9 +248,9 @@ main(int argc, char* argv[])
 
       for (auto& read_path : read_paths) {
         btllib::SeqReader reader(
-          read_path, btllib::SeqReader::Flag::SHORT_MODE, 6);
-#pragma omp parallel shared(reader)
-        for (const auto record : reader) {
+          read_path, btllib::SeqReader::Flag::SHORT_MODE, DEFAULT_SEQ_READER_THREADS);
+#pragma omp parallel default(none) shared(ids, id_counter, mi_bf, mi_bf_stage, hash_num, kmer_size, by_file, spaced_seed_set, spaced_seeds, reader)        
+	for (const auto record : reader) {
 #pragma omp critical
           {
             if (ids.find(record.id) == ids.end()) {

@@ -35,7 +35,7 @@ main()
   std::cerr << "Testing ID counting" << std::endl;
   bool include_saturated = true;
 
-  TEST_ASSERT(mi_bf_1.get_ID_occurence_count(include_saturated)[ID_1] == 3)
+  TEST_ASSERT(mi_bf_1.get_id_occurence_count(include_saturated)[ID_1] == 3)
 
 
   std::cerr << "Testing multi-indexed BloomFilter random sampling" << std::endl;  

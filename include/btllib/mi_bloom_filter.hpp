@@ -1,10 +1,13 @@
 #ifndef BTLLIB_MI_BLOOM_FILTER_HPP
 #define BTLLIB_MI_BLOOM_FILTER_HPP
 
-#include "cpptoml.h"
 #include "nthash.hpp"
 #include "status.hpp"
-#include <cstdlib.h>
+
+#include <climits>
+#include <cstdlib>
+
+#include "cpptoml.h"
 
 #include <sdsl/bit_vector_il.hpp>
 #include <sdsl/rank_support.hpp>
@@ -64,7 +67,7 @@ public:
   static const unsigned BLOCKSIZE = 512;
 
   /// @cond HIDDEN_SYMBOLS
-#pragma pack(1) // to maintain consistent values across platforms
+//#pragma pack(1) // to maintain consistent values across platforms
   struct FileHeader
   {
     char magic[8]; // NOLINT
@@ -269,7 +272,7 @@ private:
   static void save(const std::string& path,
                    const cpptoml::table& table,
                    const char* data,
-                   const size_t n);
+                   size_t n);
   std::vector<uint64_t> get_rank_pos(const uint64_t* hashes) const;
   uint64_t get_rank_pos(const uint64_t hash) const
   {
@@ -296,7 +299,6 @@ private:
   T* id_array;
 
   bool bv_insertion_completed = false, id_insertion_completed = false;
-  static const uint32_t MI_BLOOM_FILTER_VERSION = 1;
 };
 
 bool
@@ -375,7 +377,10 @@ inline MIBloomFilter<T>::MIBloomFilter(
   , hash_fn(mibfi->table->contains("hash_fn")
               ? *(mibfi->table->get_as<decltype(hash_fn)>("hash_fn"))
               : "")
+  
   , id_array(new T[id_array_size])
+  , bv_insertion_completed(*(mibfi->table->get_as<bool>("bv_insertion_completed")))
+  , id_insertion_completed(*(mibfi->table->get_as<bool>("id_insertion_completed")))
 {
   // read id array
   mibfi->ifs_id_arr.read((char*)id_array,
@@ -383,8 +388,6 @@ inline MIBloomFilter<T>::MIBloomFilter(
   // read bv and bv rank support
   sdsl::load_from_file(il_bit_vector, mibfi->path + ".sdsl");
   bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
-
-  bv_insertion_completed = true;
 
   // init counts array
   counts_array = std::unique_ptr<std::atomic<uint16_t>[]>(
@@ -403,7 +406,7 @@ inline MIBloomFilter<T>::MIBloomFilter(size_t bv_size,
                                        std::string hash_fn)
   : bv_size(bv_size)
   , hash_num(hash_num)
-  , hash_fn(hash_fn)
+  , hash_fn(std::move(hash_fn))
 {
   bit_vector = sdsl::bit_vector(bv_size);
 }
@@ -427,9 +430,9 @@ MIBloomFilter<T>::insert_bv(const uint64_t* hashes)
   // check array size = hash_num
   for (unsigned i = 0; i < hash_num; ++i) {
     uint64_t pos = hashes[i] % bit_vector.size();
-    uint64_t* data_index = bit_vector.data() + (pos >> 6);
-    uint64_t bit_mask_value = (uint64_t)1 << (pos & 0x3F);
-    (void)(__sync_fetch_and_or(data_index, bit_mask_value) >> (pos & 0x3F) & 1);
+    uint64_t* data_index = bit_vector.data() + (pos >> 6); // NOLINT
+    uint64_t bit_mask_value = (uint64_t)1 << (pos & 0x3F); // NOLINT
+    (void)(__sync_fetch_and_or(data_index, bit_mask_value) >> (pos & 0x3F) & 1); // NOLINT
   }
 }
 template<typename T>
@@ -467,9 +470,8 @@ inline void
 MIBloomFilter<T>::insert_id(const uint64_t* hashes, const T& id)
 {
   assert(bv_insertion_completed && !id_insertion_completed);
-  // hashSet values;
-  // values.set_empty_key(il_bit_vector.size());
-  uint rand = std::rand();
+  
+  uint rand = std::rand(); //NOLINT
   for (unsigned i = 0; i < hash_num; ++i) {
     uint64_t rank = get_rank_pos(hashes[i]);
     // uint16_t count = 1;
@@ -587,7 +589,7 @@ inline void
 MIBloomFilter<T>::save(const std::string& path,
                        const cpptoml::table& table,
                        const char* data,
-                       const size_t n)
+                       size_t n)
 {
   std::ofstream ofs(path.c_str(), std::ios::out | std::ios::binary);
 
@@ -618,6 +620,9 @@ MIBloomFilter<T>::save(const std::string& path)
   header->insert("id_array_size", id_array_size);
   header->insert("hash_num", get_hash_num());
   header->insert("kmer_size", get_k());
+  header->insert("bv_insertion_completed",bv_insertion_completed);
+  header->insert("id_insertion_completed",id_insertion_completed);
+
   if (!hash_fn.empty()) {
     header->insert("hash_fn", get_hash_fn());
   }
