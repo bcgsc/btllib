@@ -67,7 +67,7 @@ public:
   static const unsigned BLOCKSIZE = 512;
 
   /// @cond HIDDEN_SYMBOLS
-//#pragma pack(1) // to maintain consistent values across platforms
+  //#pragma pack(1) // to maintain consistent values across platforms
   struct FileHeader
   {
     char magic[8]; // NOLINT
@@ -120,10 +120,7 @@ public:
   /**
    * Required to pass to saturation stage.
    */
-  void complete_id_insertion()
-  {
-    id_insertion_completed = true;
-  }
+  void complete_id_insertion() { id_insertion_completed = true; }
 
   /**
    * Insert an element's hash values to bit vector.
@@ -241,22 +238,13 @@ public:
   uint64_t get_pop_saturated_cnt();
 
   /** Get the number of hash values per element. */
-  unsigned get_hash_num() const
-  {
-    return hash_num;
-  }
+  unsigned get_hash_num() const { return hash_num; }
 
   /** Get the k-mer size used. */
-  unsigned get_k() const
-  {
-    return kmer_size;
-  }
+  unsigned get_k() const { return kmer_size; }
 
   /** Get the name of the hash function used. */
-  const std::string& get_hash_fn() const
-  {
-    return hash_fn;
-  }
+  const std::string& get_hash_fn() const { return hash_fn; }
 
   /** Returns the occurence count for each ID in the miBF */
   std::vector<size_t> get_id_occurence_count(const bool& include_saturated);
@@ -279,10 +267,7 @@ private:
     return bv_rank_support(hash % il_bit_vector.size());
   }
   std::vector<T> get_data(const std::vector<uint64_t>& rank_pos) const;
-  T get_data(const uint64_t& rank) const
-  {
-    return id_array[rank];
-  }
+  T get_data(const uint64_t& rank) const { return id_array[rank]; }
   void set_data(const uint64_t& pos, const T& id);
   void set_saturated(const uint64_t* hashes);
 
@@ -377,10 +362,12 @@ inline MIBloomFilter<T>::MIBloomFilter(
   , hash_fn(mibfi->table->contains("hash_fn")
               ? *(mibfi->table->get_as<decltype(hash_fn)>("hash_fn"))
               : "")
-  
+
   , id_array(new T[id_array_size])
-  , bv_insertion_completed(*(mibfi->table->get_as<bool>("bv_insertion_completed")))
-  , id_insertion_completed(*(mibfi->table->get_as<bool>("id_insertion_completed")))
+  , bv_insertion_completed(
+      *(mibfi->table->get_as<bool>("bv_insertion_completed")))
+  , id_insertion_completed(
+      *(mibfi->table->get_as<bool>("id_insertion_completed")))
 {
   // read id array
   mibfi->ifs_id_arr.read((char*)id_array,
@@ -432,7 +419,8 @@ MIBloomFilter<T>::insert_bv(const uint64_t* hashes)
     uint64_t pos = hashes[i] % bit_vector.size();
     uint64_t* data_index = bit_vector.data() + (pos >> 6); // NOLINT
     uint64_t bit_mask_value = (uint64_t)1 << (pos & 0x3F); // NOLINT
-    (void)(__sync_fetch_and_or(data_index, bit_mask_value) >> (pos & 0x3F) & 1); // NOLINT
+    (void)(__sync_fetch_and_or(data_index, bit_mask_value) >> (pos & 0x3F) &
+           1); // NOLINT
   }
 }
 template<typename T>
@@ -470,8 +458,8 @@ inline void
 MIBloomFilter<T>::insert_id(const uint64_t* hashes, const T& id)
 {
   assert(bv_insertion_completed && !id_insertion_completed);
-  
-  uint rand = std::rand(); //NOLINT
+
+  uint rand = std::rand(); // NOLINT
   for (unsigned i = 0; i < hash_num; ++i) {
     uint64_t rank = get_rank_pos(hashes[i]);
     // uint16_t count = 1;
@@ -620,8 +608,8 @@ MIBloomFilter<T>::save(const std::string& path)
   header->insert("id_array_size", id_array_size);
   header->insert("hash_num", get_hash_num());
   header->insert("kmer_size", get_k());
-  header->insert("bv_insertion_completed",bv_insertion_completed);
-  header->insert("id_insertion_completed",id_insertion_completed);
+  header->insert("bv_insertion_completed", bv_insertion_completed);
+  header->insert("id_insertion_completed", id_insertion_completed);
 
   if (!hash_fn.empty()) {
     header->insert("hash_fn", get_hash_fn());

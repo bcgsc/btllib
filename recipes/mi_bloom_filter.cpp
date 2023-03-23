@@ -78,7 +78,7 @@ assert_id_size_and_count_kmers(const std::vector<std::string>& read_paths,
   for (const auto& read_path : read_paths) {
     btllib::SeqReader reader(read_path, btllib::SeqReader::Flag::SHORT_MODE);
     for (const auto& record : reader) {
-      if (!by_file && !record.seq.empty()){
+      if (!by_file && !record.seq.empty()) {
         total_id++;
       }
     }
@@ -128,12 +128,13 @@ main(int argc, char* argv[])
     int c;
     bool failed = false;
     int optindex = 0;
-    //static int version = 0;
+    // static int version = 0;
     static int help = 0, version = 0;
     bool verbose = false;
     int thread_count = DEFAULT_THREADS;
     double occupancy = DEFAULT_OCCUPANCY;
-    unsigned mi_bf_size = DEFAULT_SIZE, kmer_size = 0, hash_num = 0, expected_elements = 0;
+    unsigned mi_bf_size = DEFAULT_SIZE, kmer_size = 0, hash_num = 0,
+             expected_elements = 0;
 
     bool spaced_seed_set = false;
     bool output_path_set = false;
@@ -247,10 +248,20 @@ main(int argc, char* argv[])
       btllib::log_info(stages[mi_bf_stage] + std::string(" stage started"));
 
       for (auto& read_path : read_paths) {
-        btllib::SeqReader reader(
-          read_path, btllib::SeqReader::Flag::SHORT_MODE, DEFAULT_SEQ_READER_THREADS);
-#pragma omp parallel default(none) shared(ids, id_counter, mi_bf, mi_bf_stage, hash_num, kmer_size, by_file, spaced_seed_set, spaced_seeds, reader)        
-	for (const auto record : reader) {
+        btllib::SeqReader reader(read_path,
+                                 btllib::SeqReader::Flag::SHORT_MODE,
+                                 DEFAULT_SEQ_READER_THREADS);
+#pragma omp parallel default(none) shared(ids,                                 \
+                                          id_counter,                          \
+                                          mi_bf,                               \
+                                          mi_bf_stage,                         \
+                                          hash_num,                            \
+                                          kmer_size,                           \
+                                          by_file,                             \
+                                          spaced_seed_set,                     \
+                                          spaced_seeds,                        \
+                                          reader)
+        for (const auto record : reader) {
 #pragma omp critical
           {
             if (ids.find(record.id) == ids.end()) {
