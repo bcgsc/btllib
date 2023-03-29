@@ -261,25 +261,30 @@ main(int argc, char* argv[])
                                           spaced_seed_set,                     \
                                           spaced_seeds,                        \
                                           reader)
-        for (const auto record : reader) {
+        try {
+          for (const auto record : reader) {
 #pragma omp critical
-          {
-            if (ids.find(record.id) == ids.end()) {
-              ids[record.id] = !by_file ? id_counter++ : id_counter;
+            {
+              if (ids.find(record.id) == ids.end()) {
+                ids[record.id] = !by_file ? id_counter++ : id_counter;
+              }
+            }
+            if (spaced_seed_set) {
+              btllib::SeedNtHash nthash(record.seq, spaced_seeds, 1, kmer_size);
+              insert_to_bv<btllib::SeedNtHash>(
+                mi_bf, nthash, mi_bf_stage, ids[record.id]);
+            } else {
+              btllib::NtHash nthash(record.seq, hash_num, kmer_size);
+              insert_to_bv<btllib::NtHash>(
+                mi_bf, nthash, mi_bf_stage, ids[record.id]);
             }
           }
-          if (spaced_seed_set) {
-            btllib::SeedNtHash nthash(record.seq, spaced_seeds, 1, kmer_size);
-            insert_to_bv<btllib::SeedNtHash>(
-              mi_bf, nthash, mi_bf_stage, ids[record.id]);
-          } else {
-            btllib::NtHash nthash(record.seq, hash_num, kmer_size);
-            insert_to_bv<btllib::NtHash>(
-              mi_bf, nthash, mi_bf_stage, ids[record.id]);
+          if (by_file) {
+            id_counter++;
           }
-        }
-        if (by_file) {
-          id_counter++;
+        } catch (const std::exception& e) {
+          btllib::log_error(e.what());
+          std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
         }
       }
       if (mi_bf_stage == 0) {
