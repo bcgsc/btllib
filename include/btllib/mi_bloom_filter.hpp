@@ -4,10 +4,10 @@
 #include "nthash.hpp"
 #include "status.hpp"
 
+#include "cpptoml.h"
+
 #include <climits>
 #include <cstdlib>
-
-#include "cpptoml.h"
 
 #include <sdsl/bit_vector_il.hpp>
 #include <sdsl/rank_support.hpp>
@@ -356,7 +356,8 @@ MIBloomFilter<T>::MIBloomFilter(const std::string& path)
 template<typename T>
 inline MIBloomFilter<T>::MIBloomFilter(
   const std::shared_ptr<MIBloomFilterInitializer>& mibfi)
-  : id_array_size(*(mibfi->table->get_as<unsigned>("id_array_size")))
+  : id_array_size(
+      *(mibfi->table->get_as<decltype(id_array_size)>("id_array_size")))
   , kmer_size(*(mibfi->table->get_as<decltype(kmer_size)>("kmer_size")))
   , hash_num(*(mibfi->table->get_as<decltype(hash_num)>("hash_num")))
   , hash_fn(mibfi->table->contains("hash_fn")
@@ -365,9 +366,9 @@ inline MIBloomFilter<T>::MIBloomFilter(
 
   , id_array(new T[id_array_size])
   , bv_insertion_completed(
-      *(mibfi->table->get_as<bool>("bv_insertion_completed")))
+      static_cast<bool>(*(mibfi->table->get_as<int>("bv_insertion_completed"))))
   , id_insertion_completed(
-      *(mibfi->table->get_as<bool>("id_insertion_completed")))
+      static_cast<bool>(*(mibfi->table->get_as<int>("id_insertion_completed"))))
 {
   // read id array
   mibfi->ifs_id_arr.read((char*)id_array,

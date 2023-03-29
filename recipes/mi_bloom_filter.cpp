@@ -63,7 +63,7 @@ split_string_by_space(const std::string& input_string)
   while (converter >> temp) {
     current_string.push_back(temp);
   }
-  assert(current_string.size() > 0);
+  assert(!current_string.empty());
   return current_string;
 }
 
