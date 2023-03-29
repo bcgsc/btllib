@@ -610,8 +610,10 @@ MIBloomFilter<T>::save(const std::string& path)
   header->insert("id_array_size", id_array_size);
   header->insert("hash_num", get_hash_num());
   header->insert("kmer_size", get_k());
-  header->insert("bv_insertion_completed", bv_insertion_completed);
-  header->insert("id_insertion_completed", id_insertion_completed);
+  header->insert("bv_insertion_completed",
+                 static_cast<bool>(bv_insertion_completed));
+  header->insert("id_insertion_completed",
+                 static_cast<bool>(id_insertion_completed));
 
   if (!hash_fn.empty()) {
     header->insert("hash_fn", get_hash_fn());
