@@ -38,7 +38,7 @@ if compiler_id == 'clang'
   global_link_args += [ '-lstdc++', '-lm' ]
 endif
 
-add_global_arguments(global_args,['-Wno-ignored-qualifiers'], language : 'cpp')
+add_global_arguments(global_args, language : 'cpp')
 add_global_link_arguments(global_link_args, language : 'cpp')
 
 # Build dependencies and subprojects
@@ -57,7 +57,7 @@ cpptomp_dep = cpptoml_subproject.dependency('cpptoml')
 run_command(meson.project_source_root() + '/scripts/prepare-sdsl')
 
 sdsl_subproject = cmake.subproject('sdsl-lite', options : cmake_options)
-sdsl_dep = sdsl_subproject.dependency('sdsl')
+sdsl_dep = sdsl_subproject.dependency('sdsl', include_type: 'system')
 
 deps = [ threads_dep, openmp_dep, cpptomp_dep, sdsl_dep ]
 
