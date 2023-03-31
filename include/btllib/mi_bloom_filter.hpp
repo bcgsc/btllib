@@ -281,7 +281,7 @@ private:
   sdsl::bit_vector_il<BLOCKSIZE> il_bit_vector;
   sdsl::rank_support_il<1> bv_rank_support;
   std::unique_ptr<std::atomic<uint16_t>[]> counts_array;
-  T* id_array;
+  std::unique_ptr<std::atomic<T>[]> id_array;
 
   bool bv_insertion_completed = false, id_insertion_completed = false;
 };
@@ -364,14 +364,14 @@ inline MIBloomFilter<T>::MIBloomFilter(
               ? *(mibfi->table->get_as<decltype(hash_fn)>("hash_fn"))
               : "")
 
-  , id_array(new T[id_array_size])
+  , id_array(new std::atomic<T>[id_array_size])
   , bv_insertion_completed(
       static_cast<bool>(*(mibfi->table->get_as<int>("bv_insertion_completed"))))
   , id_insertion_completed(
       static_cast<bool>(*(mibfi->table->get_as<int>("id_insertion_completed"))))
 {
   // read id array
-  mibfi->ifs_id_arr.read((char*)id_array,
+  mibfi->ifs_id_arr.read((char*)id_array.get(),
                          std::streamsize(id_array_size * sizeof(T)));
   // read bv and bv rank support
   sdsl::load_from_file(il_bit_vector, mibfi->path + ".sdsl");
@@ -448,12 +448,13 @@ MIBloomFilter<T>::complete_bv_insertion()
   il_bit_vector = sdsl::bit_vector_il<BLOCKSIZE>(bit_vector);
   bv_rank_support = sdsl::rank_support_il<1>(&il_bit_vector);
   id_array_size = get_pop_cnt();
-  id_array = new T[id_array_size]();
+  id_array =
+    std::unique_ptr<std::atomic<T>[]>(new std::atomic<T>[id_array_size]);
+  std::memset((void*)id_array.get(), 0, id_array_size * sizeof(std::atomic<T>));
   counts_array = std::unique_ptr<std::atomic<uint16_t>[]>(
     new std::atomic<uint16_t>[id_array_size]);
   std::memset(
     (void*)counts_array.get(), 0, id_array_size * sizeof(counts_array[0]));
-  // counts_array = new std::atomic<uint16_t>[get_pop_cnt()];
 }
 template<typename T>
 inline void
@@ -464,9 +465,7 @@ MIBloomFilter<T>::insert_id(const uint64_t* hashes, const T& id)
   uint rand = std::rand(); // NOLINT
   for (unsigned i = 0; i < hash_num; ++i) {
     uint64_t rank = get_rank_pos(hashes[i]);
-    // uint16_t count = 1;
     uint16_t count = ++counts_array[rank];
-    // uint32_t count = __sync_add_and_fetch(&counts_array[rank], 1);
     T random_num = (rand ^ hashes[i]) % count;
     if (random_num == count - 1) {
       set_data(rank, id);
@@ -538,11 +537,8 @@ MIBloomFilter<T>::set_data(const uint64_t& pos, const T& id)
   T old_value;
   do {
     old_value = id_array[pos];
-    // if (old_value > MASK) { // if the bucket was saturated, insert but keep
-    // saturation 	ID |= MASK;
-    // }
-  } while (!__sync_bool_compare_and_swap(
-    &id_array[pos], old_value, old_value > MASK ? (id | MASK) : id));
+  } while (!(id_array[pos].compare_exchange_strong(
+    old_value, old_value > MASK ? (id | MASK) : id)));
 }
 template<typename T>
 inline void
@@ -550,7 +546,7 @@ MIBloomFilter<T>::set_saturated(const uint64_t* hashes)
 {
   for (unsigned i = 0; i < hash_num; ++i) {
     uint64_t pos = bv_rank_support(hashes[i] % il_bit_vector.size());
-    __sync_or_and_fetch(&id_array[pos], MASK);
+    id_array[pos].fetch_or(MASK);
   }
 }
 template<typename T>
@@ -622,7 +618,7 @@ MIBloomFilter<T>::save(const std::string& path)
   header_string =
     header_string.substr(1, header_string.size() - 2); // Remove [ ]
   root->insert(header_string, header);
-  save(path, *root, (char*)id_array, id_array_size * sizeof(id_array[0]));
+  save(path, *root, (char*)id_array.get(), id_array_size * sizeof(id_array[0]));
   sdsl::store_to_file(il_bit_vector, path + ".sdsl");
 }
 
