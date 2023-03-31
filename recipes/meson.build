@@ -7,8 +7,8 @@ executable('indexlr',
             install : true,
             install_dir : 'bin')
 
-executable('seqgen',
-            meson.project_source_root() + '/recipes/seqgen.cpp',
+executable('randseq',
+            meson.project_source_root() + '/recipes/randseq.cpp',
             include_directories : btllib_include,
             dependencies : deps + [ btllib_dep, argparse_dep ],
             install : true,

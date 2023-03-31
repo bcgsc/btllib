@@ -1,33 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
-if [ -z "${MESON_SOURCE_ROOT}" ]; then
-  echo "[ERROR] This script can only be ran with meson!"
-  exit 1
-fi
+import os
+import re
+import functools
+import subprocess
 
-set -e
 
-# Remove old wrapper files
-rm -f ${MESON_SOURCE_ROOT}/wrappers/python/btllib.py
+class PythonWrapper:
 
-# Generate python swig files
-cd ${MESON_SOURCE_ROOT}
+    INTERFACE_TEMPLATE = """%module btllib
 
-include_files=$(scripts/get-files include)
-
-echo "%module btllib
-
-%{
+%{{
 #define SWIG_FILE_WITH_INIT
-" > wrappers/python/btllib.i
 
-for file in ${include_files}; do
-  relative=$(scripts/get-include-relative ${file})
-  path="${relative}/$(basename ${file})"
-  echo "#include \"$path\"" >> wrappers/python/btllib.i
-done
-
-echo "%}
+{cpp_includes}
+%}}
 
 %include <stdint.i>
 %include <typemaps.i>
@@ -42,23 +29,102 @@ echo "%}
 %include <std_vector.i>
 %include <stl.i>
 
-%include \"../extra_common.i\"
-%include \"extra.i\"
-" >> wrappers/python/btllib.i
+%include "../extra_common.i"
+%include "extra.i"
 
-for file in ${include_files}; do
-  relative=$(scripts/get-include-relative ${file})
-  path="${relative}/$(basename ${file})"
-  echo "%include \"$path\"" >> wrappers/python/btllib.i
-done
+{swig_includes}
 
-echo "%include \"../extra_templates.i\"" >> wrappers/python/btllib.i
+%include "../extra_templates.i"
+"""
 
-ln -sf $PWD/include wrappers/python/
-cd wrappers/python
-swig -python -py3 -fastproxy -fastdispatch -builtin -c++ -Iinclude btllib.i
-rm -f include
+    def __init__(self, out_path: str, include_path: str):
+        self._out_path = out_path
+        self._include_path = include_path
 
-# The following line is necessary because SWIG produces inconsistent code that cannot be compiled on all platforms. On some platforms, uint64_t is unsigned long int and unsigned long long int on others.
-sed -i'.tmp' 's~unsigned long long~uint64_t~g' btllib_wrap.cxx
-rm -f btllib_wrap.cxx.tmp
+    def _remove_old_files(self):
+        if os.path.exists(os.path.join(self._out_path, 'btllib.py')):
+            os.remove(os.path.join(self._out_path, 'btllib.py'))
+
+    def _load_include_file_names(self):
+        include_files = os.listdir(os.path.join(self._include_path, 'btllib'))
+        code_filter = functools.partial(re.match, r'.*\.(h|hpp|cpp|cxx)$')
+        code_files = filter(code_filter, include_files)
+        path_fixer = functools.partial(os.path.join, 'btllib')
+        include_files = map(path_fixer, code_files)
+        return list(include_files)
+
+    def _update_interface_file(self):
+        with open(os.path.join(self._out_path, 'btllib.i')) as f:
+            current_lines = list(map(str.strip, f.readlines()))
+        # Add include statements only for newly added files.
+        # This will prevent changing the ordering of the includes.
+        include_dir_files = self._load_include_file_names()
+        include_files = []
+        for line in current_lines:
+            match = re.match(r'#include "(.*)"', line)
+            if match and match.group(1) in include_dir_files:
+                include_files.append(match.group(1))
+        for file in include_dir_files:
+            if file not in include_files:
+                include_files.append(file)
+        cpp = os.linesep.join(f'#include "{f}"' for f in include_files)
+        swig = os.linesep.join(f'%include "{f}"' for f in include_files)
+        interface = PythonWrapper.INTERFACE_TEMPLATE.format(cpp_includes=cpp,
+                                                            swig_includes=swig)
+        with open(os.path.join(self._out_path, 'btllib.i'), 'w') as f:
+            f.write(interface)
+
+    def _call_swig(self):
+        swig_cmd = [
+            'swig', '-python', '-fastproxy', '-fastdispatch', '-builtin',
+            '-c++', f'-I{self._include_path}', 'btllib.i'
+        ]
+        return subprocess.run(swig_cmd,
+                              capture_output=True,
+                              text=True,
+                              cwd=self._out_path)
+
+    def _fix_unsigned_long_long(self):
+        # The following is necessary because SWIG produces inconsistent code that cannot be compiled on all platforms.
+        # On some platforms, uint64_t is unsigned long int and unsigned long long int on others.
+        cxx_path = os.path.join(self._out_path, 'btllib_wrap.cxx')
+        with open(cxx_path) as f:
+            cxx_contents = f.read()
+        cxx_contents = cxx_contents.replace('unsigned long long', 'uint64_t')
+        with open(cxx_path, 'w') as f:
+            f.write(cxx_contents)
+
+    def generate(self):
+        self._remove_old_files()
+        self._update_interface_file()
+        swig_result = self._call_swig()
+        self._fix_unsigned_long_long()
+        return swig_result
+
+
+def check_meson_env():
+    if 'MESON_SOURCE_ROOT' not in os.environ:
+        print("[ERROR] This script can only be ran with meson!")
+        exit(1)
+
+
+def check_swig_result(swig_result, wrapper_language: str):
+    lang = wrapper_language.capitalize()
+    if swig_result.returncode == 0:
+        print(f"{lang} wrappers generated successfully")
+    elif swig_result.returncode == 1:
+        print(f"Error when calling SWIG for {lang}, stderr:")
+        print(swig_result.stderr)
+
+
+def main():
+    check_meson_env()
+    project_root = os.environ['MESON_SOURCE_ROOT']
+    include_path = os.path.join(project_root, 'include')
+    python_dir = os.path.join(project_root, 'wrappers', 'python')
+    swig_result_py = PythonWrapper(python_dir, include_path).generate()
+    check_swig_result(swig_result_py, 'python')
+
+
+if __name__ == '__main__':
+    main()

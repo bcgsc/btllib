@@ -108,6 +108,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad11f2a8c8dbc742f35726f57f7181760"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a154fa80d30a1019a71a2206ff15fc8fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a154fa80d30a1019a71a2206ff15fc8fe">insert</a> (const std::vector&lt; uint64_t &gt; &amp;hashes)</td></tr>
 <tr class="separator:a154fa80d30a1019a71a2206ff15fc8fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d73900df10374cbc08a8eb5f8e0ffa3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a1d73900df10374cbc08a8eb5f8e0ffa3">remove</a> (const uint64_t *hashes)</td></tr>
+<tr class="separator:a1d73900df10374cbc08a8eb5f8e0ffa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f2bbe4c7e7dc4d831b063ab61537937"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a6f2bbe4c7e7dc4d831b063ab61537937">remove</a> (const std::vector&lt; uint64_t &gt; &amp;hashes)</td></tr>
+<tr class="separator:a6f2bbe4c7e7dc4d831b063ab61537937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad9eaecef9ce52020ce4a96b17f24268"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#aad9eaecef9ce52020ce4a96b17f24268">clear</a> (const uint64_t *hashes)</td></tr>
+<tr class="separator:aad9eaecef9ce52020ce4a96b17f24268"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0a7e33e709ff008ac531a908df33ad8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#aa0a7e33e709ff008ac531a908df33ad8">clear</a> (const std::vector&lt; uint64_t &gt; &amp;hashes)</td></tr>
+<tr class="separator:aa0a7e33e709ff008ac531a908df33ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a951e4a020cc28cf1e4e1cf6cc09d314b"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a951e4a020cc28cf1e4e1cf6cc09d314b">contains</a> (const uint64_t *hashes) const</td></tr>
 <tr class="separator:a951e4a020cc28cf1e4e1cf6cc09d314b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bfc4da639fae3746c7fd66eba756bf8"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1CountingBloomFilter.html#a6bfc4da639fae3746c7fd66eba756bf8">contains</a> (const std::vector&lt; uint64_t &gt; &amp;hashes) const</td></tr>
@@ -275,6 +283,76 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa0a7e33e709ff008ac531a908df33ad8" name="aa0a7e33e709ff008ac531a908df33ad8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0a7e33e709ff008ac531a908df33ad8">&#9670;&#160;</a></span>clear() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbtllib_1_1CountingBloomFilter.html">btllib::CountingBloomFilter</a>&lt; T &gt;::clear </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint64_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Set the count of an element to zero.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer vector of the element's hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aad9eaecef9ce52020ce4a96b17f24268" name="aad9eaecef9ce52020ce4a96b17f24268"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad9eaecef9ce52020ce4a96b17f24268">&#9670;&#160;</a></span>clear() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbtllib_1_1CountingBloomFilter.html">btllib::CountingBloomFilter</a>&lt; T &gt;::clear </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Set the count of an element to zero.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer array of the element's hash values. Array size should equal the hash_num argument used when the Bloom filter was constructed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a6bfc4da639fae3746c7fd66eba756bf8" name="a6bfc4da639fae3746c7fd66eba756bf8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6bfc4da639fae3746c7fd66eba756bf8">&#9670;&#160;</a></span>contains() <span class="overload">[1/2]</span></h2>
 
@@ -956,6 +1034,76 @@ template&lt;typename T &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>Filepath to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6f2bbe4c7e7dc4d831b063ab61537937" name="a6f2bbe4c7e7dc4d831b063ab61537937"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f2bbe4c7e7dc4d831b063ab61537937">&#9670;&#160;</a></span>remove() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbtllib_1_1CountingBloomFilter.html">btllib::CountingBloomFilter</a>&lt; T &gt;::remove </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint64_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Delete an element.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer vector of the element's hash values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1d73900df10374cbc08a8eb5f8e0ffa3" name="a1d73900df10374cbc08a8eb5f8e0ffa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d73900df10374cbc08a8eb5f8e0ffa3">&#9670;&#160;</a></span>remove() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbtllib_1_1CountingBloomFilter.html">btllib::CountingBloomFilter</a>&lt; T &gt;::remove </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Delete an element.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hashes</td><td>Integer array of the element's hash values. Array size should equal the hash_num argument used when the Bloom filter was constructed. </td></tr>
   </table>
   </dd>
 </dl>
