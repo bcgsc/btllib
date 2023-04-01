@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-const static std::string PROGNAME = "mi_bloom_filter";
+const static std::string PROGNAME = "mibf";
 const static std::string VERSION = "1.0";
 const static size_t DEFAULT_THREADS = 5;
 const static size_t DEFAULT_SIZE = 1000000000;

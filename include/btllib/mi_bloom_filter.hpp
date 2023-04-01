@@ -66,19 +66,6 @@ public:
 
   static const unsigned BLOCKSIZE = 512;
 
-  /// @cond HIDDEN_SYMBOLS
-  //#pragma pack(1) // to maintain consistent values across platforms
-  struct FileHeader
-  {
-    char magic[8]; // NOLINT
-    uint32_t hlen; // header length (including spaced seeds)
-    uint64_t size;
-    uint32_t nhash;
-    uint32_t kmer;
-    uint32_t version;
-  };
-  /// @endcond
-
   /** Construct a dummy multi-indexed Bloom filter (e.g. as a default argument).
    */
   MIBloomFilter() {}
@@ -86,7 +73,7 @@ public:
   /**
    * Construct an empty multi-indexed Bloom filter of given size.
    *
-   * @param bv_size Filter size in bv_size.
+   * @param bv_size Filter size in bytes.
    * @param hash_num Number of hash functions to be used.
    * @param hash_fn Name of the hash function used. Used for metadata. Optional.
    */
@@ -651,7 +638,7 @@ MIBloomFilter<T>::get_id_occurence_count(const bool& include_saturated)
 {
   assert(bv_insertion_completed);
   std::vector<size_t> ret_vec(MASK - 1, 0);
-#pragma omp for
+#pragma omp parallel for
   for (size_t k = 0; k < id_array_size; k++) {
     if (!include_saturated && id_array[k] > ANTI_MASK) {
       continue;
