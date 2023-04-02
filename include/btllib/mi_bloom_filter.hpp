@@ -638,7 +638,8 @@ MIBloomFilter<T>::get_id_occurence_count(const bool& include_saturated)
 {
   assert(bv_insertion_completed);
   std::vector<size_t> ret_vec(MASK - 1, 0);
-#pragma omp parallel for default(none)
+#pragma omp parallel for default(none)                                         \
+  shared(id_array_size, include_saturated, id_array, ret_vec)
   for (size_t k = 0; k < id_array_size; k++) {
     if (!include_saturated && id_array[k] > ANTI_MASK) {
       continue;
