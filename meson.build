@@ -44,7 +44,6 @@ add_global_link_arguments(global_link_args, language : 'cpp')
 # Code coverage flags
 if get_option('buildtype') != 'release'
     add_project_arguments('-g', '-O0', '-fprofile-arcs', '-ftest-coverage', language : 'cpp')
-    add_project_link_arguments('-lgcov', language : 'cpp')
 endif
 
 # Build dependencies and subprojects
