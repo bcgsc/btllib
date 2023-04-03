@@ -44,6 +44,11 @@ jobs:
 
   - script: |
       source activate btllib_CI
+      cd build && meson code-coverage
+    displayName: 'Run code coverage tests'
+
+  - script: |
+      source activate btllib_CI
       cd build && ninja sanitize-undefined
       if [[ $? -ne 0 ]]; then
         cat __build-sanitize-undefined/meson-logs/testlog.txt
