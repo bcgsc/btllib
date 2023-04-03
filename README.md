@@ -75,6 +75,7 @@ The following are all the available `ninja` commands which can be run within `bu
 - `ninja clang-tidy` runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+).
 - `ninja` builds the tests and wrapper libraries / makes sure they compile.
 - `ninja test` runs the tests.
+- `ninja code-coverage` assures tests satisfy code coverage threshold (25% of lines). (requires gcovr before building)
 - `ninja sanitize-undefined` runs undefined sanitization.
 - `ninja test-wrappers` tests whether wrappers work.
 - `ninja docs` generates code documentation from comments (requires Doxygen).
