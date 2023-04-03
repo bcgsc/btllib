@@ -9,7 +9,7 @@ set -e
 
 cd "${MESON_BUILD_ROOT}"
 
-ninja coverage
+ninja coverage --quiet
 
 # Set your desired coverage threshold (e.g., 80%)
 COVERAGE_THRESHOLD=20
@@ -31,7 +31,7 @@ done < ../build/meson-logs/coverage.txt
 
 # Print the results and exit with an appropriate status code
 if [ -n "$failed_files" ]; then
-    echo -e "The following files do not meet the coverage threshold:"
+    echo -e "\n\e[31mRed The following files do not meet the coverage threshold:\e[0m"
     echo -e "$failed_files"
     exit 1
 else
