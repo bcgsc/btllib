@@ -82,6 +82,11 @@ xz = find_program('xz', required : false)
 bzip2 = find_program('bzip2', required : false)
 tar = find_program('tar', required : false)
 
+# Code coverage testing dependencies
+# ===========================================================
+
+gcovr = find_program('gcovr', required : false)
+
 # Custom run commands
 # ===========================================================
 
