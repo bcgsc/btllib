@@ -1,7 +1,7 @@
 project('btllib', 'cpp',
         version : '1.5.1',
         license : 'GPL3',
-        default_options : [ 'cpp_std=c++11', 'warning_level=3', 'werror=true' ],
+        default_options : [ 'cpp_std=c++11', 'warning_level=3', 'werror=true', 'b_coverage=true' ],
         meson_version : '>= 0.60.0')
 
 # Configuration
@@ -41,6 +41,12 @@ endif
 add_global_arguments(global_args, language : 'cpp')
 add_global_link_arguments(global_link_args, language : 'cpp')
 
+# Code coverage flags
+if get_option('buildtype') != 'release'
+    add_project_arguments('-g', '-O0', '-fprofile-arcs', '-ftest-coverage', language : 'cpp')
+    add_project_link_arguments('-lgcov', language : 'cpp')
+endif
+
 # Build dependencies and subprojects
 # ===========================================================
 
@@ -57,7 +63,7 @@ cpptomp_dep = cpptoml_subproject.dependency('cpptoml')
 run_command(meson.project_source_root() + '/scripts/prepare-sdsl')
 
 sdsl_subproject = cmake.subproject('sdsl-lite', options : cmake_options)
-sdsl_dep = sdsl_subproject.dependency('sdsl')
+sdsl_dep = sdsl_subproject.dependency('sdsl', include_type: 'system')
 
 deps = [ threads_dep, openmp_dep, cpptomp_dep, sdsl_dep ]
 
@@ -110,6 +116,8 @@ if doxygen.found()
 endif
 
 run_target('quality-assurance', command: join_paths(rootpath, 'scripts/quality-assurance'))
+
+run_target('code-coverage', command: join_paths(rootpath, 'scripts/code-coverage'))
 
 run_target('test-wrappers', command: join_paths(rootpath, 'scripts/test-wrappers'))
 
