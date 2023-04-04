@@ -44,7 +44,7 @@ jobs:
 
   - script: |
       source activate btllib_CI
-      cd build && meson code-coverage
+      cd build && ninja code-coverage
     displayName: 'Run code coverage tests'
 
   - script: |
