@@ -3772,92 +3772,98 @@ SwigPyBuiltin_iternextfunc_closure(SwigPyWrapperFunction wrapper, PyObject *a) {
 #define SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_char_t swig_types[21]
 #define SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_int_t swig_types[22]
 #define SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_short_t swig_types[23]
-#define SWIGTYPE_p_btllib__NtHash swig_types[24]
-#define SWIGTYPE_p_btllib__RandSeq swig_types[25]
-#define SWIGTYPE_p_btllib__SeedBloomFilter swig_types[26]
-#define SWIGTYPE_p_btllib__SeedNtHash swig_types[27]
-#define SWIGTYPE_p_btllib__SeqReader swig_types[28]
-#define SWIGTYPE_p_btllib__SeqReader__Flag swig_types[29]
-#define SWIGTYPE_p_btllib__SeqReader__Record swig_types[30]
-#define SWIGTYPE_p_btllib__SeqReader__RecordIterator swig_types[31]
-#define SWIGTYPE_p_btllib__SeqWriter swig_types[32]
-#define SWIGTYPE_p_char swig_types[33]
-#define SWIGTYPE_p_char_type swig_types[34]
-#define SWIGTYPE_p_cpptoml__table swig_types[35]
-#define SWIGTYPE_p_difference_type swig_types[36]
-#define SWIGTYPE_p_double swig_types[37]
-#define SWIGTYPE_p_f_enum_std__ios_base__event_r_std__ios_base_int__void swig_types[38]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[39]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[40]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[41]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[42]
-#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[43]
-#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[44]
-#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[45]
-#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[46]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[47]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[48]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[49]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[50]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__ios_base swig_types[51]
-#define SWIGTYPE_p_float swig_types[52]
-#define SWIGTYPE_p_fmtflags swig_types[53]
-#define SWIGTYPE_p_int swig_types[54]
-#define SWIGTYPE_p_int_type swig_types[55]
-#define SWIGTYPE_p_iostate swig_types[56]
-#define SWIGTYPE_p_long swig_types[57]
-#define SWIGTYPE_p_long_double swig_types[58]
-#define SWIGTYPE_p_long_long swig_types[59]
-#define SWIGTYPE_p_off_type swig_types[60]
-#define SWIGTYPE_p_openmode swig_types[61]
-#define SWIGTYPE_p_p_PyObject swig_types[62]
-#define SWIGTYPE_p_p_unsigned_long_long swig_types[63]
-#define SWIGTYPE_p_p_void swig_types[64]
-#define SWIGTYPE_p_pos_type swig_types[65]
-#define SWIGTYPE_p_seekdir swig_types[66]
-#define SWIGTYPE_p_short swig_types[67]
-#define SWIGTYPE_p_signed_char swig_types[68]
-#define SWIGTYPE_p_size_t swig_types[69]
-#define SWIGTYPE_p_size_type swig_types[70]
-#define SWIGTYPE_p_state_type swig_types[71]
-#define SWIGTYPE_p_std__allocatorT_btllib__Indexlr__Minimizer_t swig_types[72]
-#define SWIGTYPE_p_std__allocatorT_double_t swig_types[73]
-#define SWIGTYPE_p_std__allocatorT_int_t swig_types[74]
-#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[75]
-#define SWIGTYPE_p_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t swig_types[76]
-#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[77]
-#define SWIGTYPE_p_std__allocatorT_unsigned_long_long_t swig_types[78]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[79]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[80]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[81]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[82]
-#define SWIGTYPE_p_std__basic_streambufT_char_std__char_traitsT_char_t_t swig_types[83]
-#define SWIGTYPE_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t swig_types[84]
-#define SWIGTYPE_p_std__ios_base swig_types[85]
-#define SWIGTYPE_p_std__locale swig_types[86]
-#define SWIGTYPE_p_std__string swig_types[87]
-#define SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t swig_types[88]
-#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[89]
-#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[90]
-#define SWIGTYPE_p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t swig_types[91]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[92]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t swig_types[93]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[94]
-#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[95]
-#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[96]
-#define SWIGTYPE_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t swig_types[97]
-#define SWIGTYPE_p_streamoff swig_types[98]
-#define SWIGTYPE_p_streampos swig_types[99]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[100]
-#define SWIGTYPE_p_traits_type swig_types[101]
-#define SWIGTYPE_p_unsigned_char swig_types[102]
-#define SWIGTYPE_p_unsigned_int swig_types[103]
-#define SWIGTYPE_p_unsigned_long swig_types[104]
-#define SWIGTYPE_p_unsigned_long_long swig_types[105]
-#define SWIGTYPE_p_unsigned_short swig_types[106]
-#define SWIGTYPE_p_value_type swig_types[107]
-static swig_type_info *swig_types[109];
-static swig_module_info swig_module = {swig_types, 108, 0, 0, 0, 0};
+#define SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t swig_types[24]
+#define SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t swig_types[25]
+#define SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t swig_types[26]
+#define SWIGTYPE_p_btllib__NtHash swig_types[27]
+#define SWIGTYPE_p_btllib__RandSeq swig_types[28]
+#define SWIGTYPE_p_btllib__SeedBloomFilter swig_types[29]
+#define SWIGTYPE_p_btllib__SeedNtHash swig_types[30]
+#define SWIGTYPE_p_btllib__SeqReader swig_types[31]
+#define SWIGTYPE_p_btllib__SeqReader__Flag swig_types[32]
+#define SWIGTYPE_p_btllib__SeqReader__Record swig_types[33]
+#define SWIGTYPE_p_btllib__SeqReader__RecordIterator swig_types[34]
+#define SWIGTYPE_p_btllib__SeqWriter swig_types[35]
+#define SWIGTYPE_p_char swig_types[36]
+#define SWIGTYPE_p_char_type swig_types[37]
+#define SWIGTYPE_p_cpptoml__table swig_types[38]
+#define SWIGTYPE_p_difference_type swig_types[39]
+#define SWIGTYPE_p_double swig_types[40]
+#define SWIGTYPE_p_f_enum_std__ios_base__event_r_std__ios_base_int__void swig_types[41]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[42]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[43]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[44]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[45]
+#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[46]
+#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[47]
+#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[48]
+#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[49]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[50]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[51]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[52]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[53]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__ios_base swig_types[54]
+#define SWIGTYPE_p_float swig_types[55]
+#define SWIGTYPE_p_fmtflags swig_types[56]
+#define SWIGTYPE_p_int swig_types[57]
+#define SWIGTYPE_p_int_type swig_types[58]
+#define SWIGTYPE_p_iostate swig_types[59]
+#define SWIGTYPE_p_long swig_types[60]
+#define SWIGTYPE_p_long_double swig_types[61]
+#define SWIGTYPE_p_long_long swig_types[62]
+#define SWIGTYPE_p_off_type swig_types[63]
+#define SWIGTYPE_p_openmode swig_types[64]
+#define SWIGTYPE_p_p_PyObject swig_types[65]
+#define SWIGTYPE_p_p_unsigned_long_long swig_types[66]
+#define SWIGTYPE_p_p_void swig_types[67]
+#define SWIGTYPE_p_pos_type swig_types[68]
+#define SWIGTYPE_p_sdsl__bit_vector swig_types[69]
+#define SWIGTYPE_p_seekdir swig_types[70]
+#define SWIGTYPE_p_short swig_types[71]
+#define SWIGTYPE_p_signed_char swig_types[72]
+#define SWIGTYPE_p_size_t swig_types[73]
+#define SWIGTYPE_p_size_type swig_types[74]
+#define SWIGTYPE_p_state_type swig_types[75]
+#define SWIGTYPE_p_std__allocatorT_btllib__Indexlr__Minimizer_t swig_types[76]
+#define SWIGTYPE_p_std__allocatorT_double_t swig_types[77]
+#define SWIGTYPE_p_std__allocatorT_int_t swig_types[78]
+#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[79]
+#define SWIGTYPE_p_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t swig_types[80]
+#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[81]
+#define SWIGTYPE_p_std__allocatorT_unsigned_long_long_t swig_types[82]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[83]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[84]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[85]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[86]
+#define SWIGTYPE_p_std__basic_streambufT_char_std__char_traitsT_char_t_t swig_types[87]
+#define SWIGTYPE_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t swig_types[88]
+#define SWIGTYPE_p_std__ios_base swig_types[89]
+#define SWIGTYPE_p_std__locale swig_types[90]
+#define SWIGTYPE_p_std__string swig_types[91]
+#define SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t swig_types[92]
+#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[93]
+#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[94]
+#define SWIGTYPE_p_std__vectorT_size_t_std__allocatorT_size_t_t_t swig_types[95]
+#define SWIGTYPE_p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t swig_types[96]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[97]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t swig_types[98]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[99]
+#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[100]
+#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[101]
+#define SWIGTYPE_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t swig_types[102]
+#define SWIGTYPE_p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t swig_types[103]
+#define SWIGTYPE_p_streamoff swig_types[104]
+#define SWIGTYPE_p_streampos swig_types[105]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[106]
+#define SWIGTYPE_p_traits_type swig_types[107]
+#define SWIGTYPE_p_unsigned_char swig_types[108]
+#define SWIGTYPE_p_unsigned_int swig_types[109]
+#define SWIGTYPE_p_unsigned_long swig_types[110]
+#define SWIGTYPE_p_unsigned_long_long swig_types[111]
+#define SWIGTYPE_p_unsigned_short swig_types[112]
+#define SWIGTYPE_p_value_type swig_types[113]
+static swig_type_info *swig_types[115];
+static swig_module_info swig_module = {swig_types, 114, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -36192,6 +36198,38 @@ fail:
 }
 
 
+SWIGINTERN int Swig_var_MI_BLOOM_FILTER_SIGNATURE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable MI_BLOOM_FILTER_SIGNATURE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_MI_BLOOM_FILTER_SIGNATURE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_FromCharPtr(btllib::MI_BLOOM_FILTER_SIGNATURE);
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_PLACEHOLDER_NEWLINES_MIBF_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable PLACEHOLDER_NEWLINES_MIBF is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_PLACEHOLDER_NEWLINES_MIBF_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::PLACEHOLDER_NEWLINES_MIBF));
+  return pyobj;
+}
+
+
 SWIGINTERN int Swig_var_NTHASH_FN_NAME_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable NTHASH_FN_NAME is read-only.");
   return 1;
@@ -49368,6 +49406,3306 @@ fail:
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_KmerCountingBloomFilter32) /* defines _wrap_delete_KmerCountingBloomFilter32_destructor_closure */
 
+SWIGINTERN int _wrap_new_MIBloomFilter8__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  result = (btllib::MIBloomFilter< uint8_t > *)new btllib::MIBloomFilter< uint8_t >();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter8__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  size_t arg1 ;
+  unsigned int arg2 ;
+  std::string arg3 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  btllib::MIBloomFilter< uint8_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_MIBloomFilter8" "', argument " "1"" of type '" "size_t""'");
+  } 
+  arg1 = static_cast< size_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MIBloomFilter8" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_MIBloomFilter8" "', argument " "3"" of type '" "std::string""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (btllib::MIBloomFilter< uint8_t > *)new btllib::MIBloomFilter< uint8_t >(arg1,arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter8__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  size_t arg1 ;
+  unsigned int arg2 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  btllib::MIBloomFilter< uint8_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_MIBloomFilter8" "', argument " "1"" of type '" "size_t""'");
+  } 
+  arg1 = static_cast< size_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MIBloomFilter8" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = (btllib::MIBloomFilter< uint8_t > *)new btllib::MIBloomFilter< uint8_t >(arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter8__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  sdsl::bit_vector *arg1 = 0 ;
+  unsigned int arg2 ;
+  std::string arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  btllib::MIBloomFilter< uint8_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_sdsl__bit_vector,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MIBloomFilter8" "', argument " "1"" of type '" "sdsl::bit_vector &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MIBloomFilter8" "', argument " "1"" of type '" "sdsl::bit_vector &""'"); 
+  }
+  arg1 = reinterpret_cast< sdsl::bit_vector * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MIBloomFilter8" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_MIBloomFilter8" "', argument " "3"" of type '" "std::string""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (btllib::MIBloomFilter< uint8_t > *)new btllib::MIBloomFilter< uint8_t >(*arg1,arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter8__SWIG_4(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  sdsl::bit_vector *arg1 = 0 ;
+  unsigned int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  btllib::MIBloomFilter< uint8_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_sdsl__bit_vector,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MIBloomFilter8" "', argument " "1"" of type '" "sdsl::bit_vector &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MIBloomFilter8" "', argument " "1"" of type '" "sdsl::bit_vector &""'"); 
+  }
+  arg1 = reinterpret_cast< sdsl::bit_vector * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MIBloomFilter8" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = (btllib::MIBloomFilter< uint8_t > *)new btllib::MIBloomFilter< uint8_t >(*arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter8__SWIG_5(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  btllib::MIBloomFilter< uint8_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MIBloomFilter8" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MIBloomFilter8" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = (btllib::MIBloomFilter< uint8_t > *)new btllib::MIBloomFilter< uint8_t >((std::string const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter8(PyObject *self, PyObject *args, PyObject *kwargs) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_MIBloomFilter8")) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_MIBloomFilter8", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    int retval = _wrap_new_MIBloomFilter8__SWIG_0(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 1) {
+    int retval = _wrap_new_MIBloomFilter8__SWIG_5(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_sdsl__bit_vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_3;
+    int retval = _wrap_new_MIBloomFilter8__SWIG_4(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_3:
+  
+  if (argc == 2) {
+    int retval = _wrap_new_MIBloomFilter8__SWIG_2(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 3) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_sdsl__bit_vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_5;
+    int retval = _wrap_new_MIBloomFilter8__SWIG_3(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_5:
+  
+  if (argc == 3) {
+    int retval = _wrap_new_MIBloomFilter8__SWIG_1(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_MIBloomFilter8'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint8_t >::MIBloomFilter()\n"
+    "    btllib::MIBloomFilter< uint8_t >::MIBloomFilter(size_t,unsigned int,std::string)\n"
+    "    btllib::MIBloomFilter< uint8_t >::MIBloomFilter(size_t,unsigned int)\n"
+    "    btllib::MIBloomFilter< uint8_t >::MIBloomFilter(sdsl::bit_vector &,unsigned int,std::string)\n"
+    "    btllib::MIBloomFilter< uint8_t >::MIBloomFilter(sdsl::bit_vector &,unsigned int)\n"
+    "    btllib::MIBloomFilter< uint8_t >::MIBloomFilter(std::string const &)\n");
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_complete_bv_insertion(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter8_complete_bv_insertion", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_complete_bv_insertion" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  (arg1)->complete_bv_insertion();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_complete_id_insertion(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter8_complete_id_insertion", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_complete_id_insertion" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  (arg1)->complete_id_insertion();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_insert_bv__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_insert_bv" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter8_insert_bv" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->insert_bv((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_insert_bv__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_insert_bv" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter8_insert_bv" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter8_insert_bv" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->insert_bv((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_insert_bv(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter8_insert_bv", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_MIBloomFilter8_insert_bv__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_MIBloomFilter8_insert_bv__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter8_insert_bv'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint8_t >::insert_bv(uint64_t const *)\n"
+    "    btllib::MIBloomFilter< uint8_t >::insert_bv(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_bv_contains__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_bv_contains" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter8_bv_contains" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  result = (bool)(arg1)->bv_contains((uint64_t const *)arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_bv_contains__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_bv_contains" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter8_bv_contains" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter8_bv_contains" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)(arg1)->bv_contains((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_bv_contains(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter8_bv_contains", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_MIBloomFilter8_bv_contains__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_MIBloomFilter8_bv_contains__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter8_bv_contains'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint8_t >::bv_contains(uint64_t const *)\n"
+    "    btllib::MIBloomFilter< uint8_t >::bv_contains(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_insert_id__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  unsigned char *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  unsigned char temp3 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_insert_id" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter8_insert_id" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter8_insert_id" "', argument " "3"" of type '" "unsigned char""'");
+  } 
+  temp3 = static_cast< unsigned char >(val3);
+  arg3 = &temp3;
+  (arg1)->insert_id((uint64_t const *)arg2,(unsigned char const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_insert_id__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  unsigned char *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned char temp3 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_insert_id" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter8_insert_id" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter8_insert_id" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter8_insert_id" "', argument " "3"" of type '" "unsigned char""'");
+  } 
+  temp3 = static_cast< unsigned char >(val3);
+  arg3 = &temp3;
+  (arg1)->insert_id((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2,(unsigned char const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_insert_id(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter8_insert_id", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 3) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    PyObject *retobj = _wrap_MIBloomFilter8_insert_id__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+check_1:
+  
+  if (argc == 3) {
+    PyObject *retobj = _wrap_MIBloomFilter8_insert_id__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter8_insert_id'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint8_t >::insert_id(uint64_t const *,unsigned char const &)\n"
+    "    btllib::MIBloomFilter< uint8_t >::insert_id(std::vector< uint64_t,std::allocator< uint64_t > > const &,unsigned char const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_id__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  SwigValueWrapper< std::vector< unsigned char,std::allocator< unsigned char > > > result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_get_id" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter8_get_id" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  result = (arg1)->get_id((uint64_t const *)arg2);
+  resultobj = SWIG_NewPointerObj((new std::vector< unsigned char,std::allocator< unsigned char > >(result)), SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_id__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  SwigValueWrapper< std::vector< unsigned char,std::allocator< unsigned char > > > result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_get_id" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter8_get_id" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter8_get_id" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->get_id((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_NewPointerObj((new std::vector< unsigned char,std::allocator< unsigned char > >(result)), SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_id(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter8_get_id", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_MIBloomFilter8_get_id__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_MIBloomFilter8_get_id__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter8_get_id'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint8_t >::get_id(uint64_t const *)\n"
+    "    btllib::MIBloomFilter< uint8_t >::get_id(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_insert_saturation__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  unsigned char *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  unsigned char temp3 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_insert_saturation" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter8_insert_saturation" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter8_insert_saturation" "', argument " "3"" of type '" "unsigned char""'");
+  } 
+  temp3 = static_cast< unsigned char >(val3);
+  arg3 = &temp3;
+  (arg1)->insert_saturation((uint64_t const *)arg2,(unsigned char const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_insert_saturation__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  unsigned char *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned char temp3 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_insert_saturation" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter8_insert_saturation" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter8_insert_saturation" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter8_insert_saturation" "', argument " "3"" of type '" "unsigned char""'");
+  } 
+  temp3 = static_cast< unsigned char >(val3);
+  arg3 = &temp3;
+  (arg1)->insert_saturation((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2,(unsigned char const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_insert_saturation(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter8_insert_saturation", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 3) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    PyObject *retobj = _wrap_MIBloomFilter8_insert_saturation__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+check_1:
+  
+  if (argc == 3) {
+    PyObject *retobj = _wrap_MIBloomFilter8_insert_saturation__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter8_insert_saturation'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint8_t >::insert_saturation(uint64_t const *,unsigned char const &)\n"
+    "    btllib::MIBloomFilter< uint8_t >::insert_saturation(std::vector< uint64_t,std::allocator< uint64_t > > const &,unsigned char const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_save(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_save" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter8_save" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter8_save" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->save((std::string const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_pop_cnt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter8_get_pop_cnt", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_get_pop_cnt" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  result = (uint64_t)(arg1)->get_pop_cnt();
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_pop_saturated_cnt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter8_get_pop_saturated_cnt", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_get_pop_saturated_cnt" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  result = (uint64_t)(arg1)->get_pop_saturated_cnt();
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_hash_num(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter8_get_hash_num", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_get_hash_num" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  result = (unsigned int)((btllib::MIBloomFilter< uint8_t > const *)arg1)->get_hash_num();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_k(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter8_get_k", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_get_k" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  result = (unsigned int)((btllib::MIBloomFilter< uint8_t > const *)arg1)->get_k();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_hash_fn(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter8_get_hash_fn", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_get_hash_fn" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  result = (std::string *) &((btllib::MIBloomFilter< uint8_t > const *)arg1)->get_hash_fn();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_id_occurence_count(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  bool *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool temp2 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  SwigValueWrapper< std::vector< size_t,std::allocator< size_t > > > result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter8_get_id_occurence_count" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MIBloomFilter8_get_id_occurence_count" "', argument " "2"" of type '" "bool""'");
+  } 
+  temp2 = static_cast< bool >(val2);
+  arg2 = &temp2;
+  result = (arg1)->get_id_occurence_count((bool const &)*arg2);
+  resultobj = SWIG_NewPointerObj((new std::vector< size_t,std::allocator< size_t > >(result)), SWIGTYPE_p_std__vectorT_size_t_std__allocatorT_size_t_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter8_calc_optimal_size(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  size_t arg1 ;
+  unsigned int arg2 ;
+  double arg3 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  size_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter8_calc_optimal_size", 3, 3, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "MIBloomFilter8_calc_optimal_size" "', argument " "1"" of type '" "size_t""'");
+  } 
+  arg1 = static_cast< size_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MIBloomFilter8_calc_optimal_size" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter8_calc_optimal_size" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  result = btllib::MIBloomFilter< uint8_t >::SWIGTEMPLATEDISAMBIGUATOR calc_optimal_size(SWIG_STD_MOVE(arg1),arg2,arg3);
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_MIBloomFilter8(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint8_t > *arg1 = (btllib::MIBloomFilter< uint8_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "delete_MIBloomFilter8", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MIBloomFilter8" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint8_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint8_t > * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_MIBloomFilter8) /* defines _wrap_delete_MIBloomFilter8_destructor_closure */
+
+SWIGINTERN int _wrap_new_MIBloomFilter16__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  result = (btllib::MIBloomFilter< uint16_t > *)new btllib::MIBloomFilter< uint16_t >();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter16__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  size_t arg1 ;
+  unsigned int arg2 ;
+  std::string arg3 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  btllib::MIBloomFilter< uint16_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_MIBloomFilter16" "', argument " "1"" of type '" "size_t""'");
+  } 
+  arg1 = static_cast< size_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MIBloomFilter16" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_MIBloomFilter16" "', argument " "3"" of type '" "std::string""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (btllib::MIBloomFilter< uint16_t > *)new btllib::MIBloomFilter< uint16_t >(arg1,arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter16__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  size_t arg1 ;
+  unsigned int arg2 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  btllib::MIBloomFilter< uint16_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_MIBloomFilter16" "', argument " "1"" of type '" "size_t""'");
+  } 
+  arg1 = static_cast< size_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MIBloomFilter16" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = (btllib::MIBloomFilter< uint16_t > *)new btllib::MIBloomFilter< uint16_t >(arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter16__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  sdsl::bit_vector *arg1 = 0 ;
+  unsigned int arg2 ;
+  std::string arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  btllib::MIBloomFilter< uint16_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_sdsl__bit_vector,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MIBloomFilter16" "', argument " "1"" of type '" "sdsl::bit_vector &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MIBloomFilter16" "', argument " "1"" of type '" "sdsl::bit_vector &""'"); 
+  }
+  arg1 = reinterpret_cast< sdsl::bit_vector * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MIBloomFilter16" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_MIBloomFilter16" "', argument " "3"" of type '" "std::string""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (btllib::MIBloomFilter< uint16_t > *)new btllib::MIBloomFilter< uint16_t >(*arg1,arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter16__SWIG_4(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  sdsl::bit_vector *arg1 = 0 ;
+  unsigned int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  btllib::MIBloomFilter< uint16_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_sdsl__bit_vector,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MIBloomFilter16" "', argument " "1"" of type '" "sdsl::bit_vector &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MIBloomFilter16" "', argument " "1"" of type '" "sdsl::bit_vector &""'"); 
+  }
+  arg1 = reinterpret_cast< sdsl::bit_vector * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MIBloomFilter16" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = (btllib::MIBloomFilter< uint16_t > *)new btllib::MIBloomFilter< uint16_t >(*arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter16__SWIG_5(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  btllib::MIBloomFilter< uint16_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MIBloomFilter16" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MIBloomFilter16" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = (btllib::MIBloomFilter< uint16_t > *)new btllib::MIBloomFilter< uint16_t >((std::string const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter16(PyObject *self, PyObject *args, PyObject *kwargs) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_MIBloomFilter16")) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_MIBloomFilter16", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    int retval = _wrap_new_MIBloomFilter16__SWIG_0(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 1) {
+    int retval = _wrap_new_MIBloomFilter16__SWIG_5(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_sdsl__bit_vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_3;
+    int retval = _wrap_new_MIBloomFilter16__SWIG_4(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_3:
+  
+  if (argc == 2) {
+    int retval = _wrap_new_MIBloomFilter16__SWIG_2(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 3) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_sdsl__bit_vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_5;
+    int retval = _wrap_new_MIBloomFilter16__SWIG_3(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_5:
+  
+  if (argc == 3) {
+    int retval = _wrap_new_MIBloomFilter16__SWIG_1(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_MIBloomFilter16'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint16_t >::MIBloomFilter()\n"
+    "    btllib::MIBloomFilter< uint16_t >::MIBloomFilter(size_t,unsigned int,std::string)\n"
+    "    btllib::MIBloomFilter< uint16_t >::MIBloomFilter(size_t,unsigned int)\n"
+    "    btllib::MIBloomFilter< uint16_t >::MIBloomFilter(sdsl::bit_vector &,unsigned int,std::string)\n"
+    "    btllib::MIBloomFilter< uint16_t >::MIBloomFilter(sdsl::bit_vector &,unsigned int)\n"
+    "    btllib::MIBloomFilter< uint16_t >::MIBloomFilter(std::string const &)\n");
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_complete_bv_insertion(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter16_complete_bv_insertion", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_complete_bv_insertion" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  (arg1)->complete_bv_insertion();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_complete_id_insertion(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter16_complete_id_insertion", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_complete_id_insertion" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  (arg1)->complete_id_insertion();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_insert_bv__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_insert_bv" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter16_insert_bv" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->insert_bv((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_insert_bv__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_insert_bv" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter16_insert_bv" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter16_insert_bv" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->insert_bv((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_insert_bv(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter16_insert_bv", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_MIBloomFilter16_insert_bv__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_MIBloomFilter16_insert_bv__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter16_insert_bv'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint16_t >::insert_bv(uint64_t const *)\n"
+    "    btllib::MIBloomFilter< uint16_t >::insert_bv(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_bv_contains__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_bv_contains" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter16_bv_contains" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  result = (bool)(arg1)->bv_contains((uint64_t const *)arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_bv_contains__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_bv_contains" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter16_bv_contains" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter16_bv_contains" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)(arg1)->bv_contains((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_bv_contains(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter16_bv_contains", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_MIBloomFilter16_bv_contains__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_MIBloomFilter16_bv_contains__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter16_bv_contains'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint16_t >::bv_contains(uint64_t const *)\n"
+    "    btllib::MIBloomFilter< uint16_t >::bv_contains(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_insert_id__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  unsigned short *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  unsigned short temp3 ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_insert_id" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter16_insert_id" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter16_insert_id" "', argument " "3"" of type '" "unsigned short""'");
+  } 
+  temp3 = static_cast< unsigned short >(val3);
+  arg3 = &temp3;
+  (arg1)->insert_id((uint64_t const *)arg2,(unsigned short const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_insert_id__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  unsigned short *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned short temp3 ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_insert_id" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter16_insert_id" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter16_insert_id" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter16_insert_id" "', argument " "3"" of type '" "unsigned short""'");
+  } 
+  temp3 = static_cast< unsigned short >(val3);
+  arg3 = &temp3;
+  (arg1)->insert_id((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2,(unsigned short const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_insert_id(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter16_insert_id", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 3) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    PyObject *retobj = _wrap_MIBloomFilter16_insert_id__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+check_1:
+  
+  if (argc == 3) {
+    PyObject *retobj = _wrap_MIBloomFilter16_insert_id__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter16_insert_id'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint16_t >::insert_id(uint64_t const *,unsigned short const &)\n"
+    "    btllib::MIBloomFilter< uint16_t >::insert_id(std::vector< uint64_t,std::allocator< uint64_t > > const &,unsigned short const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_id__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  SwigValueWrapper< std::vector< unsigned short,std::allocator< unsigned short > > > result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_get_id" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter16_get_id" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  result = (arg1)->get_id((uint64_t const *)arg2);
+  resultobj = SWIG_NewPointerObj((new std::vector< unsigned short,std::allocator< unsigned short > >(result)), SWIGTYPE_p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_id__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  SwigValueWrapper< std::vector< unsigned short,std::allocator< unsigned short > > > result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_get_id" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter16_get_id" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter16_get_id" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->get_id((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_NewPointerObj((new std::vector< unsigned short,std::allocator< unsigned short > >(result)), SWIGTYPE_p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_id(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter16_get_id", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_MIBloomFilter16_get_id__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_MIBloomFilter16_get_id__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter16_get_id'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint16_t >::get_id(uint64_t const *)\n"
+    "    btllib::MIBloomFilter< uint16_t >::get_id(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_insert_saturation__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  unsigned short *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  unsigned short temp3 ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_insert_saturation" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter16_insert_saturation" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter16_insert_saturation" "', argument " "3"" of type '" "unsigned short""'");
+  } 
+  temp3 = static_cast< unsigned short >(val3);
+  arg3 = &temp3;
+  (arg1)->insert_saturation((uint64_t const *)arg2,(unsigned short const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_insert_saturation__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  unsigned short *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned short temp3 ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_insert_saturation" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter16_insert_saturation" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter16_insert_saturation" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter16_insert_saturation" "', argument " "3"" of type '" "unsigned short""'");
+  } 
+  temp3 = static_cast< unsigned short >(val3);
+  arg3 = &temp3;
+  (arg1)->insert_saturation((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2,(unsigned short const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_insert_saturation(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter16_insert_saturation", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 3) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    PyObject *retobj = _wrap_MIBloomFilter16_insert_saturation__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+check_1:
+  
+  if (argc == 3) {
+    PyObject *retobj = _wrap_MIBloomFilter16_insert_saturation__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter16_insert_saturation'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint16_t >::insert_saturation(uint64_t const *,unsigned short const &)\n"
+    "    btllib::MIBloomFilter< uint16_t >::insert_saturation(std::vector< uint64_t,std::allocator< uint64_t > > const &,unsigned short const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_save(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_save" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter16_save" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter16_save" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->save((std::string const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_pop_cnt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter16_get_pop_cnt", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_get_pop_cnt" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  result = (uint64_t)(arg1)->get_pop_cnt();
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_pop_saturated_cnt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter16_get_pop_saturated_cnt", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_get_pop_saturated_cnt" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  result = (uint64_t)(arg1)->get_pop_saturated_cnt();
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_hash_num(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter16_get_hash_num", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_get_hash_num" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  result = (unsigned int)((btllib::MIBloomFilter< uint16_t > const *)arg1)->get_hash_num();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_k(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter16_get_k", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_get_k" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  result = (unsigned int)((btllib::MIBloomFilter< uint16_t > const *)arg1)->get_k();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_hash_fn(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter16_get_hash_fn", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_get_hash_fn" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  result = (std::string *) &((btllib::MIBloomFilter< uint16_t > const *)arg1)->get_hash_fn();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_id_occurence_count(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  bool *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool temp2 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  SwigValueWrapper< std::vector< size_t,std::allocator< size_t > > > result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter16_get_id_occurence_count" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MIBloomFilter16_get_id_occurence_count" "', argument " "2"" of type '" "bool""'");
+  } 
+  temp2 = static_cast< bool >(val2);
+  arg2 = &temp2;
+  result = (arg1)->get_id_occurence_count((bool const &)*arg2);
+  resultobj = SWIG_NewPointerObj((new std::vector< size_t,std::allocator< size_t > >(result)), SWIGTYPE_p_std__vectorT_size_t_std__allocatorT_size_t_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter16_calc_optimal_size(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  size_t arg1 ;
+  unsigned int arg2 ;
+  double arg3 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  size_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter16_calc_optimal_size", 3, 3, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "MIBloomFilter16_calc_optimal_size" "', argument " "1"" of type '" "size_t""'");
+  } 
+  arg1 = static_cast< size_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MIBloomFilter16_calc_optimal_size" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter16_calc_optimal_size" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  result = btllib::MIBloomFilter< uint16_t >::SWIGTEMPLATEDISAMBIGUATOR calc_optimal_size(SWIG_STD_MOVE(arg1),arg2,arg3);
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_MIBloomFilter16(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint16_t > *arg1 = (btllib::MIBloomFilter< uint16_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "delete_MIBloomFilter16", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MIBloomFilter16" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint16_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint16_t > * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_MIBloomFilter16) /* defines _wrap_delete_MIBloomFilter16_destructor_closure */
+
+SWIGINTERN int _wrap_new_MIBloomFilter32__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  result = (btllib::MIBloomFilter< uint32_t > *)new btllib::MIBloomFilter< uint32_t >();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter32__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  size_t arg1 ;
+  unsigned int arg2 ;
+  std::string arg3 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  btllib::MIBloomFilter< uint32_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_MIBloomFilter32" "', argument " "1"" of type '" "size_t""'");
+  } 
+  arg1 = static_cast< size_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MIBloomFilter32" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_MIBloomFilter32" "', argument " "3"" of type '" "std::string""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (btllib::MIBloomFilter< uint32_t > *)new btllib::MIBloomFilter< uint32_t >(arg1,arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter32__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  size_t arg1 ;
+  unsigned int arg2 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  btllib::MIBloomFilter< uint32_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_MIBloomFilter32" "', argument " "1"" of type '" "size_t""'");
+  } 
+  arg1 = static_cast< size_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MIBloomFilter32" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = (btllib::MIBloomFilter< uint32_t > *)new btllib::MIBloomFilter< uint32_t >(arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter32__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  sdsl::bit_vector *arg1 = 0 ;
+  unsigned int arg2 ;
+  std::string arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  btllib::MIBloomFilter< uint32_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_sdsl__bit_vector,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MIBloomFilter32" "', argument " "1"" of type '" "sdsl::bit_vector &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MIBloomFilter32" "', argument " "1"" of type '" "sdsl::bit_vector &""'"); 
+  }
+  arg1 = reinterpret_cast< sdsl::bit_vector * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MIBloomFilter32" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_MIBloomFilter32" "', argument " "3"" of type '" "std::string""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (btllib::MIBloomFilter< uint32_t > *)new btllib::MIBloomFilter< uint32_t >(*arg1,arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter32__SWIG_4(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  sdsl::bit_vector *arg1 = 0 ;
+  unsigned int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  btllib::MIBloomFilter< uint32_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_sdsl__bit_vector,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MIBloomFilter32" "', argument " "1"" of type '" "sdsl::bit_vector &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MIBloomFilter32" "', argument " "1"" of type '" "sdsl::bit_vector &""'"); 
+  }
+  arg1 = reinterpret_cast< sdsl::bit_vector * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MIBloomFilter32" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = (btllib::MIBloomFilter< uint32_t > *)new btllib::MIBloomFilter< uint32_t >(*arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter32__SWIG_5(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  btllib::MIBloomFilter< uint32_t > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MIBloomFilter32" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MIBloomFilter32" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = (btllib::MIBloomFilter< uint32_t > *)new btllib::MIBloomFilter< uint32_t >((std::string const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_MIBloomFilter32(PyObject *self, PyObject *args, PyObject *kwargs) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_MIBloomFilter32")) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_MIBloomFilter32", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    int retval = _wrap_new_MIBloomFilter32__SWIG_0(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 1) {
+    int retval = _wrap_new_MIBloomFilter32__SWIG_5(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_sdsl__bit_vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_3;
+    int retval = _wrap_new_MIBloomFilter32__SWIG_4(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_3:
+  
+  if (argc == 2) {
+    int retval = _wrap_new_MIBloomFilter32__SWIG_2(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 3) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_sdsl__bit_vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_5;
+    int retval = _wrap_new_MIBloomFilter32__SWIG_3(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_5:
+  
+  if (argc == 3) {
+    int retval = _wrap_new_MIBloomFilter32__SWIG_1(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_MIBloomFilter32'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint32_t >::MIBloomFilter()\n"
+    "    btllib::MIBloomFilter< uint32_t >::MIBloomFilter(size_t,unsigned int,std::string)\n"
+    "    btllib::MIBloomFilter< uint32_t >::MIBloomFilter(size_t,unsigned int)\n"
+    "    btllib::MIBloomFilter< uint32_t >::MIBloomFilter(sdsl::bit_vector &,unsigned int,std::string)\n"
+    "    btllib::MIBloomFilter< uint32_t >::MIBloomFilter(sdsl::bit_vector &,unsigned int)\n"
+    "    btllib::MIBloomFilter< uint32_t >::MIBloomFilter(std::string const &)\n");
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_complete_bv_insertion(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter32_complete_bv_insertion", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_complete_bv_insertion" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  (arg1)->complete_bv_insertion();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_complete_id_insertion(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter32_complete_id_insertion", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_complete_id_insertion" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  (arg1)->complete_id_insertion();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_insert_bv__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_insert_bv" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter32_insert_bv" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  (arg1)->insert_bv((uint64_t const *)arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_insert_bv__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_insert_bv" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter32_insert_bv" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter32_insert_bv" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->insert_bv((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_insert_bv(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter32_insert_bv", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_MIBloomFilter32_insert_bv__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_MIBloomFilter32_insert_bv__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter32_insert_bv'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint32_t >::insert_bv(uint64_t const *)\n"
+    "    btllib::MIBloomFilter< uint32_t >::insert_bv(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_bv_contains__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_bv_contains" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter32_bv_contains" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  result = (bool)(arg1)->bv_contains((uint64_t const *)arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_bv_contains__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_bv_contains" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter32_bv_contains" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter32_bv_contains" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)(arg1)->bv_contains((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_bv_contains(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter32_bv_contains", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_MIBloomFilter32_bv_contains__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_MIBloomFilter32_bv_contains__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter32_bv_contains'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint32_t >::bv_contains(uint64_t const *)\n"
+    "    btllib::MIBloomFilter< uint32_t >::bv_contains(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_insert_id__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  unsigned int *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  unsigned int temp3 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_insert_id" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter32_insert_id" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter32_insert_id" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  temp3 = static_cast< unsigned int >(val3);
+  arg3 = &temp3;
+  (arg1)->insert_id((uint64_t const *)arg2,(unsigned int const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_insert_id__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  unsigned int *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int temp3 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_insert_id" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter32_insert_id" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter32_insert_id" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter32_insert_id" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  temp3 = static_cast< unsigned int >(val3);
+  arg3 = &temp3;
+  (arg1)->insert_id((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2,(unsigned int const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_insert_id(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter32_insert_id", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 3) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    PyObject *retobj = _wrap_MIBloomFilter32_insert_id__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+check_1:
+  
+  if (argc == 3) {
+    PyObject *retobj = _wrap_MIBloomFilter32_insert_id__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter32_insert_id'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint32_t >::insert_id(uint64_t const *,unsigned int const &)\n"
+    "    btllib::MIBloomFilter< uint32_t >::insert_id(std::vector< uint64_t,std::allocator< uint64_t > > const &,unsigned int const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_id__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  std::vector< unsigned int,std::allocator< unsigned int > > result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_get_id" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter32_get_id" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  result = (arg1)->get_id((uint64_t const *)arg2);
+  resultobj = swig::from(static_cast< std::vector< unsigned int,std::allocator< unsigned int > > >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_id__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  std::vector< unsigned int,std::allocator< unsigned int > > result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_get_id" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter32_get_id" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter32_get_id" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->get_id((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
+  resultobj = swig::from(static_cast< std::vector< unsigned int,std::allocator< unsigned int > > >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_id(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter32_get_id", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_MIBloomFilter32_get_id__SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    PyObject *retobj = _wrap_MIBloomFilter32_get_id__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter32_get_id'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint32_t >::get_id(uint64_t const *)\n"
+    "    btllib::MIBloomFilter< uint32_t >::get_id(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_insert_saturation__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  uint64_t *arg2 = (uint64_t *) 0 ;
+  unsigned int *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  unsigned int temp3 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_insert_saturation" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter32_insert_saturation" "', argument " "2"" of type '" "uint64_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint64_t * >(argp2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter32_insert_saturation" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  temp3 = static_cast< unsigned int >(val3);
+  arg3 = &temp3;
+  (arg1)->insert_saturation((uint64_t const *)arg2,(unsigned int const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_insert_saturation__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  std::vector< uint64_t,std::allocator< uint64_t > > *arg2 = 0 ;
+  unsigned int *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int temp3 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_insert_saturation" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  {
+    std::vector< uint64_t,std::allocator< uint64_t > > *ptr = (std::vector< uint64_t,std::allocator< uint64_t > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter32_insert_saturation" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter32_insert_saturation" "', argument " "2"" of type '" "std::vector< uint64_t,std::allocator< uint64_t > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter32_insert_saturation" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  temp3 = static_cast< unsigned int >(val3);
+  arg3 = &temp3;
+  (arg1)->insert_saturation((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2,(unsigned int const &)*arg3);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_insert_saturation(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "MIBloomFilter32_insert_saturation", 0, 3, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 3) {
+    int _v = 0;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    PyObject *retobj = _wrap_MIBloomFilter32_insert_saturation__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+check_1:
+  
+  if (argc == 3) {
+    PyObject *retobj = _wrap_MIBloomFilter32_insert_saturation__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MIBloomFilter32_insert_saturation'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::MIBloomFilter< uint32_t >::insert_saturation(uint64_t const *,unsigned int const &)\n"
+    "    btllib::MIBloomFilter< uint32_t >::insert_saturation(std::vector< uint64_t,std::allocator< uint64_t > > const &,unsigned int const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_save(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_save" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MIBloomFilter32_save" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MIBloomFilter32_save" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->save((std::string const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_pop_cnt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter32_get_pop_cnt", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_get_pop_cnt" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  result = (uint64_t)(arg1)->get_pop_cnt();
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_pop_saturated_cnt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter32_get_pop_saturated_cnt", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_get_pop_saturated_cnt" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  result = (uint64_t)(arg1)->get_pop_saturated_cnt();
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_hash_num(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter32_get_hash_num", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_get_hash_num" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  result = (unsigned int)((btllib::MIBloomFilter< uint32_t > const *)arg1)->get_hash_num();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_k(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter32_get_k", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_get_k" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  result = (unsigned int)((btllib::MIBloomFilter< uint32_t > const *)arg1)->get_k();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_hash_fn(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter32_get_hash_fn", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_get_hash_fn" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  result = (std::string *) &((btllib::MIBloomFilter< uint32_t > const *)arg1)->get_hash_fn();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_id_occurence_count(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  bool *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool temp2 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  SwigValueWrapper< std::vector< size_t,std::allocator< size_t > > > result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MIBloomFilter32_get_id_occurence_count" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MIBloomFilter32_get_id_occurence_count" "', argument " "2"" of type '" "bool""'");
+  } 
+  temp2 = static_cast< bool >(val2);
+  arg2 = &temp2;
+  result = (arg1)->get_id_occurence_count((bool const &)*arg2);
+  resultobj = SWIG_NewPointerObj((new std::vector< size_t,std::allocator< size_t > >(result)), SWIGTYPE_p_std__vectorT_size_t_std__allocatorT_size_t_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MIBloomFilter32_calc_optimal_size(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  size_t arg1 ;
+  unsigned int arg2 ;
+  double arg3 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  size_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MIBloomFilter32_calc_optimal_size", 3, 3, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "MIBloomFilter32_calc_optimal_size" "', argument " "1"" of type '" "size_t""'");
+  } 
+  arg1 = static_cast< size_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MIBloomFilter32_calc_optimal_size" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MIBloomFilter32_calc_optimal_size" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  result = btllib::MIBloomFilter< uint32_t >::SWIGTEMPLATEDISAMBIGUATOR calc_optimal_size(SWIG_STD_MOVE(arg1),arg2,arg3);
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_MIBloomFilter32(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::MIBloomFilter< uint32_t > *arg1 = (btllib::MIBloomFilter< uint32_t > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "delete_MIBloomFilter32", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MIBloomFilter32" "', argument " "1"" of type '" "btllib::MIBloomFilter< uint32_t > *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::MIBloomFilter< uint32_t > * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_MIBloomFilter32) /* defines _wrap_delete_MIBloomFilter32_destructor_closure */
+
 static PyMethodDef SwigMethods[] = {
 	 { "ios_base_boolalpha_get", _wrap_ios_base_boolalpha_get, METH_VARARGS, NULL},
 	 { "ios_base_dec_get", _wrap_ios_base_dec_get, METH_VARARGS, NULL},
@@ -59250,6 +62588,735 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint32_t
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint32_t_t_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint32_t_t_type};
 
+static SwigPyGetSet MIBloomFilter8___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &MIBloomFilter8___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_methods[] = {
+  { "complete_bv_insertion", _wrap_MIBloomFilter8_complete_bv_insertion, METH_NOARGS, "" },
+  { "complete_id_insertion", _wrap_MIBloomFilter8_complete_id_insertion, METH_NOARGS, "" },
+  { "insert_bv", _wrap_MIBloomFilter8_insert_bv, METH_VARARGS, "" },
+  { "bv_contains", _wrap_MIBloomFilter8_bv_contains, METH_VARARGS, "" },
+  { "insert_id", _wrap_MIBloomFilter8_insert_id, METH_VARARGS, "" },
+  { "get_id", _wrap_MIBloomFilter8_get_id, METH_VARARGS, "" },
+  { "insert_saturation", _wrap_MIBloomFilter8_insert_saturation, METH_VARARGS, "" },
+  { "save", _wrap_MIBloomFilter8_save, METH_O, "" },
+  { "get_pop_cnt", _wrap_MIBloomFilter8_get_pop_cnt, METH_NOARGS, "" },
+  { "get_pop_saturated_cnt", _wrap_MIBloomFilter8_get_pop_saturated_cnt, METH_NOARGS, "" },
+  { "get_hash_num", _wrap_MIBloomFilter8_get_hash_num, METH_NOARGS, "" },
+  { "get_k", _wrap_MIBloomFilter8_get_k, METH_NOARGS, "" },
+  { "get_hash_fn", _wrap_MIBloomFilter8_get_hash_fn, METH_NOARGS, "" },
+  { "get_id_occurence_count", _wrap_MIBloomFilter8_get_id_occurence_count, METH_O, "" },
+  { "calc_optimal_size", (PyCFunction)(void(*)(void))_wrap_MIBloomFilter8_calc_optimal_size, METH_STATIC|METH_VARARGS, "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.MIBloomFilter8",                  /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_MIBloomFilter8_destructor_closure,               /* tp_dealloc */
+#if PY_VERSION_HEX < 0x030800b4
+    (printfunc) 0,                            /* tp_print */
+#else
+    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
+#endif
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_type.as_number,/* tp_as_number */
+    &SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_type.as_sequence,/* tp_as_sequence */
+    &SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_type.as_mapping,/* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_type.as_buffer,/* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::MIBloomFilter< uint8_t >",       /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_richcompare,  /* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_methods,      /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_getset,       /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_MIBloomFilter8,                 /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+# if PY_VERSION_HEX >= 0x030a0000
+    (sendfunc) 0,                             /* am_send */
+# endif
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+#if PY_VERSION_HEX >= 0x03090000
+    (PyObject *) 0,                           /* ht_module */
+#endif
+#if PY_VERSION_HEX >= 0x030b0000
+    (char *) 0,                               /* _ht_tpname */
+  {
+    (PyObject *) 0,                           /* getitem */
+  }
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_type};
+
+static SwigPyGetSet MIBloomFilter16___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &MIBloomFilter16___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_methods[] = {
+  { "complete_bv_insertion", _wrap_MIBloomFilter16_complete_bv_insertion, METH_NOARGS, "" },
+  { "complete_id_insertion", _wrap_MIBloomFilter16_complete_id_insertion, METH_NOARGS, "" },
+  { "insert_bv", _wrap_MIBloomFilter16_insert_bv, METH_VARARGS, "" },
+  { "bv_contains", _wrap_MIBloomFilter16_bv_contains, METH_VARARGS, "" },
+  { "insert_id", _wrap_MIBloomFilter16_insert_id, METH_VARARGS, "" },
+  { "get_id", _wrap_MIBloomFilter16_get_id, METH_VARARGS, "" },
+  { "insert_saturation", _wrap_MIBloomFilter16_insert_saturation, METH_VARARGS, "" },
+  { "save", _wrap_MIBloomFilter16_save, METH_O, "" },
+  { "get_pop_cnt", _wrap_MIBloomFilter16_get_pop_cnt, METH_NOARGS, "" },
+  { "get_pop_saturated_cnt", _wrap_MIBloomFilter16_get_pop_saturated_cnt, METH_NOARGS, "" },
+  { "get_hash_num", _wrap_MIBloomFilter16_get_hash_num, METH_NOARGS, "" },
+  { "get_k", _wrap_MIBloomFilter16_get_k, METH_NOARGS, "" },
+  { "get_hash_fn", _wrap_MIBloomFilter16_get_hash_fn, METH_NOARGS, "" },
+  { "get_id_occurence_count", _wrap_MIBloomFilter16_get_id_occurence_count, METH_O, "" },
+  { "calc_optimal_size", (PyCFunction)(void(*)(void))_wrap_MIBloomFilter16_calc_optimal_size, METH_STATIC|METH_VARARGS, "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.MIBloomFilter16",                 /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_MIBloomFilter16_destructor_closure,              /* tp_dealloc */
+#if PY_VERSION_HEX < 0x030800b4
+    (printfunc) 0,                            /* tp_print */
+#else
+    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
+#endif
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_type.as_number,/* tp_as_number */
+    &SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_type.as_sequence,/* tp_as_sequence */
+    &SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_type.as_mapping,/* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_type.as_buffer,/* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::MIBloomFilter< uint16_t >",      /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_richcompare, /* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_methods,     /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_getset,      /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_MIBloomFilter16,                /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+# if PY_VERSION_HEX >= 0x030a0000
+    (sendfunc) 0,                             /* am_send */
+# endif
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+#if PY_VERSION_HEX >= 0x03090000
+    (PyObject *) 0,                           /* ht_module */
+#endif
+#if PY_VERSION_HEX >= 0x030b0000
+    (char *) 0,                               /* _ht_tpname */
+  {
+    (PyObject *) 0,                           /* getitem */
+  }
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_type};
+
+static SwigPyGetSet MIBloomFilter32___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &MIBloomFilter32___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_methods[] = {
+  { "complete_bv_insertion", _wrap_MIBloomFilter32_complete_bv_insertion, METH_NOARGS, "" },
+  { "complete_id_insertion", _wrap_MIBloomFilter32_complete_id_insertion, METH_NOARGS, "" },
+  { "insert_bv", _wrap_MIBloomFilter32_insert_bv, METH_VARARGS, "" },
+  { "bv_contains", _wrap_MIBloomFilter32_bv_contains, METH_VARARGS, "" },
+  { "insert_id", _wrap_MIBloomFilter32_insert_id, METH_VARARGS, "" },
+  { "get_id", _wrap_MIBloomFilter32_get_id, METH_VARARGS, "" },
+  { "insert_saturation", _wrap_MIBloomFilter32_insert_saturation, METH_VARARGS, "" },
+  { "save", _wrap_MIBloomFilter32_save, METH_O, "" },
+  { "get_pop_cnt", _wrap_MIBloomFilter32_get_pop_cnt, METH_NOARGS, "" },
+  { "get_pop_saturated_cnt", _wrap_MIBloomFilter32_get_pop_saturated_cnt, METH_NOARGS, "" },
+  { "get_hash_num", _wrap_MIBloomFilter32_get_hash_num, METH_NOARGS, "" },
+  { "get_k", _wrap_MIBloomFilter32_get_k, METH_NOARGS, "" },
+  { "get_hash_fn", _wrap_MIBloomFilter32_get_hash_fn, METH_NOARGS, "" },
+  { "get_id_occurence_count", _wrap_MIBloomFilter32_get_id_occurence_count, METH_O, "" },
+  { "calc_optimal_size", (PyCFunction)(void(*)(void))_wrap_MIBloomFilter32_calc_optimal_size, METH_STATIC|METH_VARARGS, "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.MIBloomFilter32",                 /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_MIBloomFilter32_destructor_closure,              /* tp_dealloc */
+#if PY_VERSION_HEX < 0x030800b4
+    (printfunc) 0,                            /* tp_print */
+#else
+    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
+#endif
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_type.as_number,/* tp_as_number */
+    &SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_type.as_sequence,/* tp_as_sequence */
+    &SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_type.as_mapping,/* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_type.as_buffer,/* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::MIBloomFilter< uint32_t >",      /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_richcompare, /* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_methods,     /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_getset,      /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_MIBloomFilter32,                /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+# if PY_VERSION_HEX >= 0x030a0000
+    (sendfunc) 0,                             /* am_send */
+# endif
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+#if PY_VERSION_HEX >= 0x03090000
+    (PyObject *) 0,                           /* ht_module */
+#endif
+#if PY_VERSION_HEX >= 0x030b0000
+    (char *) 0,                               /* _ht_tpname */
+  {
+    (PyObject *) 0,                           /* getitem */
+  }
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_type};
+
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
@@ -59337,6 +63404,9 @@ static swig_type_info _swigt__p_btllib__KmerBloomFilter = {"_p_btllib__KmerBloom
 static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_char_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_char_t", "btllib::KmerCountingBloomFilter8 *|btllib::KmerCountingBloomFilter< uint8_t > *|btllib::KmerCountingBloomFilter< unsigned char > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint8_t_t_clientdata, 0};
 static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_int_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_int_t", "btllib::KmerCountingBloomFilter32 *|btllib::KmerCountingBloomFilter< uint32_t > *|btllib::KmerCountingBloomFilter< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint32_t_t_clientdata, 0};
 static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_short_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_short_t", "btllib::KmerCountingBloomFilter16 *|btllib::KmerCountingBloomFilter< uint16_t > *|btllib::KmerCountingBloomFilter< unsigned short > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint16_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__MIBloomFilterT_unsigned_char_t = {"_p_btllib__MIBloomFilterT_unsigned_char_t", "btllib::MIBloomFilter< uint8_t > *|btllib::MIBloomFilter< unsigned char > *", 0, 0, (void*)&SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__MIBloomFilterT_unsigned_int_t = {"_p_btllib__MIBloomFilterT_unsigned_int_t", "btllib::MIBloomFilter< uint32_t > *|btllib::MIBloomFilter< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__MIBloomFilterT_unsigned_short_t = {"_p_btllib__MIBloomFilterT_unsigned_short_t", "btllib::MIBloomFilter< uint16_t > *|btllib::MIBloomFilter< unsigned short > *", 0, 0, (void*)&SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_clientdata, 0};
 static swig_type_info _swigt__p_btllib__NtHash = {"_p_btllib__NtHash", "btllib::NtHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__NtHash_clientdata, 0};
 static swig_type_info _swigt__p_btllib__RandSeq = {"_p_btllib__RandSeq", "btllib::RandSeq *", 0, 0, (void*)&SwigPyBuiltin__btllib__RandSeq_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeedBloomFilter = {"_p_btllib__SeedBloomFilter", "btllib::SeedBloomFilter *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeedBloomFilter_clientdata, 0};
@@ -59379,6 +63449,7 @@ static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0,
 static swig_type_info _swigt__p_p_unsigned_long_long = {"_p_p_unsigned_long_long", "uint64_t **|uint64_t **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_void = {"_p_p_void", "void **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pos_type = {"_p_pos_type", "pos_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_sdsl__bit_vector = {"_p_sdsl__bit_vector", "sdsl::bit_vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seekdir = {"_p_seekdir", "seekdir *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_short = {"_p_short", "int16_t *|int_least16_t *|short *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_signed_char = {"_p_signed_char", "int8_t *|int_fast8_t *|int_least8_t *|signed char *", 0, 0, (void*)0, 0};
@@ -59404,6 +63475,7 @@ static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *"
 static swig_type_info _swigt__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t = {"_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t", "std::vector< btllib::Indexlr::Minimizer,std::allocator< btllib::Indexlr::Minimizer > > *|std::vector< btllib::Indexlr::Minimizer > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_btllib__Indexlr__Minimizer_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_double_std__allocatorT_double_t_t = {"_p_std__vectorT_double_std__allocatorT_double_t_t", "std::vector< double,std::allocator< double > > *|std::vector< double > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_double_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_int_std__allocatorT_int_t_t = {"_p_std__vectorT_int_std__allocatorT_int_t_t", "std::vector< int,std::allocator< int > > *|std::vector< int > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_int_t_clientdata, 0};
+static swig_type_info _swigt__p_std__vectorT_size_t_std__allocatorT_size_t_t_t = {"_p_std__vectorT_size_t_std__allocatorT_size_t_t_t", "std::vector< size_t,std::allocator< size_t > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t = {"_p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t", "btllib::SpacedSeedBlocks *|std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__string_std__allocatorT_std__string_t_t = {"_p_std__vectorT_std__string_std__allocatorT_std__string_t_t", "std::vector< std::string,std::allocator< std::string > > *|std::vector< std::string > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_std__string_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t = {"_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t", "std::vector< btllib::SpacedSeedBlocks,std::allocator< btllib::SpacedSeedBlocks > > *|std::vector< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > >,std::allocator< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > > > *", 0, 0, (void*)0, 0};
@@ -59411,6 +63483,7 @@ static swig_type_info _swigt__p_std__vectorT_std__vectorT_unsigned_int_std__allo
 static swig_type_info _swigt__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t = {"_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t", "std::vector< unsigned char,std::allocator< unsigned char > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t = {"_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t", "btllib::SpacedSeed *|btllib::SpacedSeedMonomers *|std::vector< unsigned int,std::allocator< unsigned int > > *|std::vector< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_unsigned_int_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t = {"_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t", "std::vector< uint64_t > *|std::vector< uint64_t,std::allocator< uint64_t > > *|std::vector< uint64_t > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_uint64_t_t_clientdata, 0};
+static swig_type_info _swigt__p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t = {"_p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t", "std::vector< unsigned short,std::allocator< unsigned short > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_streamoff = {"_p_streamoff", "std::basic_istream< char >::off_type *|std::basic_ostream< char >::off_type *|streamoff *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_streampos = {"_p_streampos", "std::basic_istream< char >::pos_type *|std::basic_ostream< char >::pos_type *|streampos *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)&SwigPyBuiltin__swig__SwigPyIterator_clientdata, 0};
@@ -59447,6 +63520,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_btllib__KmerCountingBloomFilterT_unsigned_char_t,
   &_swigt__p_btllib__KmerCountingBloomFilterT_unsigned_int_t,
   &_swigt__p_btllib__KmerCountingBloomFilterT_unsigned_short_t,
+  &_swigt__p_btllib__MIBloomFilterT_unsigned_char_t,
+  &_swigt__p_btllib__MIBloomFilterT_unsigned_int_t,
+  &_swigt__p_btllib__MIBloomFilterT_unsigned_short_t,
   &_swigt__p_btllib__NtHash,
   &_swigt__p_btllib__RandSeq,
   &_swigt__p_btllib__SeedBloomFilter,
@@ -59489,6 +63565,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_unsigned_long_long,
   &_swigt__p_p_void,
   &_swigt__p_pos_type,
+  &_swigt__p_sdsl__bit_vector,
   &_swigt__p_seekdir,
   &_swigt__p_short,
   &_swigt__p_signed_char,
@@ -59514,6 +63591,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t,
   &_swigt__p_std__vectorT_double_std__allocatorT_double_t_t,
   &_swigt__p_std__vectorT_int_std__allocatorT_int_t_t,
+  &_swigt__p_std__vectorT_size_t_std__allocatorT_size_t_t_t,
   &_swigt__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t,
   &_swigt__p_std__vectorT_std__string_std__allocatorT_std__string_t_t,
   &_swigt__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,
@@ -59521,6 +63599,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t,
   &_swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t,
   &_swigt__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t,
+  &_swigt__p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t,
   &_swigt__p_streamoff,
   &_swigt__p_streampos,
   &_swigt__p_swig__SwigPyIterator,
@@ -59557,6 +63636,9 @@ static swig_cast_info _swigc__p_btllib__KmerBloomFilter[] = {  {&_swigt__p_btlli
 static swig_cast_info _swigc__p_btllib__KmerCountingBloomFilterT_unsigned_char_t[] = {  {&_swigt__p_btllib__KmerCountingBloomFilterT_unsigned_char_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__KmerCountingBloomFilterT_unsigned_int_t[] = {  {&_swigt__p_btllib__KmerCountingBloomFilterT_unsigned_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__KmerCountingBloomFilterT_unsigned_short_t[] = {  {&_swigt__p_btllib__KmerCountingBloomFilterT_unsigned_short_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__MIBloomFilterT_unsigned_char_t[] = {  {&_swigt__p_btllib__MIBloomFilterT_unsigned_char_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__MIBloomFilterT_unsigned_int_t[] = {  {&_swigt__p_btllib__MIBloomFilterT_unsigned_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__MIBloomFilterT_unsigned_short_t[] = {  {&_swigt__p_btllib__MIBloomFilterT_unsigned_short_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__NtHash[] = {  {&_swigt__p_btllib__NtHash, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__RandSeq[] = {  {&_swigt__p_btllib__RandSeq, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeedBloomFilter[] = {  {&_swigt__p_btllib__SeedBloomFilter, 0, 0, 0},{0, 0, 0, 0}};
@@ -59599,6 +63681,7 @@ static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 
 static swig_cast_info _swigc__p_p_unsigned_long_long[] = {  {&_swigt__p_p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_void[] = {  {&_swigt__p_p_void, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pos_type[] = {  {&_swigt__p_pos_type, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_sdsl__bit_vector[] = {  {&_swigt__p_sdsl__bit_vector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seekdir[] = {  {&_swigt__p_seekdir, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -59624,6 +63707,7 @@ static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0
 static swig_cast_info _swigc__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t[] = {  {&_swigt__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_double_std__allocatorT_double_t_t[] = {  {&_swigt__p_std__vectorT_double_std__allocatorT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_int_std__allocatorT_int_t_t[] = {  {&_swigt__p_std__vectorT_int_std__allocatorT_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_size_t_std__allocatorT_size_t_t_t[] = {  {&_swigt__p_std__vectorT_size_t_std__allocatorT_size_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t[] = {  {&_swigt__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__string_std__allocatorT_std__string_t_t[] = {  {&_swigt__p_std__vectorT_std__string_std__allocatorT_std__string_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t[] = {  {&_swigt__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -59631,6 +63715,7 @@ static swig_cast_info _swigc__p_std__vectorT_std__vectorT_unsigned_int_std__allo
 static swig_cast_info _swigc__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_streamoff[] = {  {&_swigt__p_streamoff, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_streampos[] = {  {&_swigt__p_streampos, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
@@ -59667,6 +63752,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_btllib__KmerCountingBloomFilterT_unsigned_char_t,
   _swigc__p_btllib__KmerCountingBloomFilterT_unsigned_int_t,
   _swigc__p_btllib__KmerCountingBloomFilterT_unsigned_short_t,
+  _swigc__p_btllib__MIBloomFilterT_unsigned_char_t,
+  _swigc__p_btllib__MIBloomFilterT_unsigned_int_t,
+  _swigc__p_btllib__MIBloomFilterT_unsigned_short_t,
   _swigc__p_btllib__NtHash,
   _swigc__p_btllib__RandSeq,
   _swigc__p_btllib__SeedBloomFilter,
@@ -59709,6 +63797,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_p_unsigned_long_long,
   _swigc__p_p_void,
   _swigc__p_pos_type,
+  _swigc__p_sdsl__bit_vector,
   _swigc__p_seekdir,
   _swigc__p_short,
   _swigc__p_signed_char,
@@ -59734,6 +63823,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t,
   _swigc__p_std__vectorT_double_std__allocatorT_double_t_t,
   _swigc__p_std__vectorT_int_std__allocatorT_int_t_t,
+  _swigc__p_std__vectorT_size_t_std__allocatorT_size_t_t_t,
   _swigc__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t,
   _swigc__p_std__vectorT_std__string_std__allocatorT_std__string_t_t,
   _swigc__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,
@@ -59741,6 +63831,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t,
   _swigc__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t,
   _swigc__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t,
+  _swigc__p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t,
   _swigc__p_streamoff,
   _swigc__p_streampos,
   _swigc__p_swig__SwigPyIterator,
@@ -61280,6 +65371,12 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "PRINT_COLOR_END", Swig_var_PRINT_COLOR_END_get, Swig_var_PRINT_COLOR_END_set);
   PyDict_SetItemString(md, "PRINT_COLOR_END", PyObject_GetAttrString(globals, "PRINT_COLOR_END"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "PRINT_COLOR_END");
+  SWIG_addvarlink(globals, "MI_BLOOM_FILTER_SIGNATURE", Swig_var_MI_BLOOM_FILTER_SIGNATURE_get, Swig_var_MI_BLOOM_FILTER_SIGNATURE_set);
+  PyDict_SetItemString(md, "MI_BLOOM_FILTER_SIGNATURE", PyObject_GetAttrString(globals, "MI_BLOOM_FILTER_SIGNATURE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MI_BLOOM_FILTER_SIGNATURE");
+  SWIG_addvarlink(globals, "PLACEHOLDER_NEWLINES_MIBF", Swig_var_PLACEHOLDER_NEWLINES_MIBF_get, Swig_var_PLACEHOLDER_NEWLINES_MIBF_set);
+  PyDict_SetItemString(md, "PLACEHOLDER_NEWLINES_MIBF", PyObject_GetAttrString(globals, "PLACEHOLDER_NEWLINES_MIBF"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "PLACEHOLDER_NEWLINES_MIBF");
   SWIG_addvarlink(globals, "NTHASH_FN_NAME", Swig_var_NTHASH_FN_NAME_get, Swig_var_NTHASH_FN_NAME_set);
   PyDict_SetItemString(md, "NTHASH_FN_NAME", PyObject_GetAttrString(globals, "NTHASH_FN_NAME"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "NTHASH_FN_NAME");
@@ -61524,6 +65621,93 @@ SWIG_init(void) {
   Py_INCREF(builtin_pytype);
   PyModule_AddObject(m, "KmerCountingBloomFilter32", (PyObject *)builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "KmerCountingBloomFilter32");
+  d = md;
+  
+  /* type 'btllib::MIBloomFilter< uint8_t >' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__MIBloomFilterT_uint8_t_t_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "MASK",SWIG_From_unsigned_SS_char(static_cast< unsigned char >(btllib::MIBloomFilter< uint8_t >::MASK)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "ANTI_MASK",SWIG_From_unsigned_SS_char(static_cast< unsigned char >(btllib::MIBloomFilter< uint8_t >::ANTI_MASK)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "STRAND",SWIG_From_unsigned_SS_char(static_cast< unsigned char >(btllib::MIBloomFilter< uint8_t >::STRAND)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "ANTI_STRAND",SWIG_From_unsigned_SS_char(static_cast< unsigned char >(btllib::MIBloomFilter< uint8_t >::ANTI_STRAND)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "ID_MASK",SWIG_From_unsigned_SS_char(static_cast< unsigned char >(btllib::MIBloomFilter< uint8_t >::ID_MASK)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "BLOCKSIZE",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::MIBloomFilter< uint8_t >::BLOCKSIZE)));
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'MIBloomFilter8'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "MIBloomFilter8", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MIBloomFilter8");
+  d = md;
+  
+  /* type 'btllib::MIBloomFilter< uint16_t >' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "MASK",SWIG_From_unsigned_SS_short(static_cast< unsigned short >(btllib::MIBloomFilter< uint16_t >::MASK)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "ANTI_MASK",SWIG_From_unsigned_SS_short(static_cast< unsigned short >(btllib::MIBloomFilter< uint16_t >::ANTI_MASK)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "STRAND",SWIG_From_unsigned_SS_short(static_cast< unsigned short >(btllib::MIBloomFilter< uint16_t >::STRAND)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "ANTI_STRAND",SWIG_From_unsigned_SS_short(static_cast< unsigned short >(btllib::MIBloomFilter< uint16_t >::ANTI_STRAND)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "ID_MASK",SWIG_From_unsigned_SS_short(static_cast< unsigned short >(btllib::MIBloomFilter< uint16_t >::ID_MASK)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "BLOCKSIZE",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::MIBloomFilter< uint16_t >::BLOCKSIZE)));
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'MIBloomFilter16'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "MIBloomFilter16", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MIBloomFilter16");
+  d = md;
+  
+  /* type 'btllib::MIBloomFilter< uint32_t >' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__MIBloomFilterT_uint32_t_t_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "MASK",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::MIBloomFilter< uint32_t >::MASK)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "ANTI_MASK",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::MIBloomFilter< uint32_t >::ANTI_MASK)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "STRAND",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::MIBloomFilter< uint32_t >::STRAND)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "ANTI_STRAND",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::MIBloomFilter< uint32_t >::ANTI_STRAND)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "ID_MASK",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::MIBloomFilter< uint32_t >::ID_MASK)));
+  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "BLOCKSIZE",SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::MIBloomFilter< uint32_t >::BLOCKSIZE)));
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'MIBloomFilter32'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "MIBloomFilter32", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MIBloomFilter32");
   d = md;
   SWIG_Python_FixMethods(SwigMethods_proxydocs, swig_const_table, swig_types, swig_type_initial);
   
