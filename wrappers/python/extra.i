@@ -98,3 +98,12 @@
     PyList_SetItem($result, i, item);
   }
 %}
+
+%typemap(out) std::vector<uint8_t> {
+  const std::vector<uint8_t>& vec = $1; // Get a reference to the vector
+  $result = PyList_New(vec.size());
+  for (unsigned i = 0; i < vec.size(); ++i) {
+    PyObject *item = PyLong_FromUnsignedLong(vec[i]);
+    PyList_SetItem($result, i, item);
+  }
+}

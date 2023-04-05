@@ -50059,7 +50059,14 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_id__SWIG_0(PyObject *self, Py_ssiz
   }
   arg2 = reinterpret_cast< uint64_t * >(argp2);
   result = (arg1)->get_id((uint64_t const *)arg2);
-  resultobj = SWIG_NewPointerObj((new std::vector< unsigned char,std::allocator< unsigned char > >(result)), SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t, SWIG_POINTER_OWN |  0 );
+  {
+    const std::vector<uint8_t>& vec = result; // Get a reference to the vector
+    resultobj = PyList_New(vec.size());
+    for (unsigned i = 0; i < vec.size(); ++i) {
+      PyObject *item = PyLong_FromUnsignedLong(vec[i]);
+      PyList_SetItem(resultobj, i, item);
+    }
+  }
   return resultobj;
 fail:
   return NULL;
@@ -50094,7 +50101,14 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_id__SWIG_1(PyObject *self, Py_ssiz
     arg2 = ptr;
   }
   result = (arg1)->get_id((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
-  resultobj = SWIG_NewPointerObj((new std::vector< unsigned char,std::allocator< unsigned char > >(result)), SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t, SWIG_POINTER_OWN |  0 );
+  {
+    const std::vector<uint8_t>& vec = result; // Get a reference to the vector
+    resultobj = PyList_New(vec.size());
+    for (unsigned i = 0; i < vec.size(); ++i) {
+      PyObject *item = PyLong_FromUnsignedLong(vec[i]);
+      PyList_SetItem(resultobj, i, item);
+    }
+  }
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
