@@ -3843,27 +3843,25 @@ SwigPyBuiltin_iternextfunc_closure(SwigPyWrapperFunction wrapper, PyObject *a) {
 #define SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t swig_types[92]
 #define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[93]
 #define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[94]
-#define SWIGTYPE_p_std__vectorT_size_t_std__allocatorT_size_t_t_t swig_types[95]
-#define SWIGTYPE_p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t swig_types[96]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[97]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t swig_types[98]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[99]
-#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[100]
-#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[101]
-#define SWIGTYPE_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t swig_types[102]
-#define SWIGTYPE_p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t swig_types[103]
-#define SWIGTYPE_p_streamoff swig_types[104]
-#define SWIGTYPE_p_streampos swig_types[105]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[106]
-#define SWIGTYPE_p_traits_type swig_types[107]
-#define SWIGTYPE_p_unsigned_char swig_types[108]
-#define SWIGTYPE_p_unsigned_int swig_types[109]
-#define SWIGTYPE_p_unsigned_long swig_types[110]
-#define SWIGTYPE_p_unsigned_long_long swig_types[111]
-#define SWIGTYPE_p_unsigned_short swig_types[112]
-#define SWIGTYPE_p_value_type swig_types[113]
-static swig_type_info *swig_types[115];
-static swig_module_info swig_module = {swig_types, 114, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t swig_types[95]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[96]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t swig_types[97]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[98]
+#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[99]
+#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[100]
+#define SWIGTYPE_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t swig_types[101]
+#define SWIGTYPE_p_streamoff swig_types[102]
+#define SWIGTYPE_p_streampos swig_types[103]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[104]
+#define SWIGTYPE_p_traits_type swig_types[105]
+#define SWIGTYPE_p_unsigned_char swig_types[106]
+#define SWIGTYPE_p_unsigned_int swig_types[107]
+#define SWIGTYPE_p_unsigned_long swig_types[108]
+#define SWIGTYPE_p_unsigned_long_long swig_types[109]
+#define SWIGTYPE_p_unsigned_short swig_types[110]
+#define SWIGTYPE_p_value_type swig_types[111]
+static swig_type_info *swig_types[113];
+static swig_module_info swig_module = {swig_types, 112, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -50060,7 +50058,7 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_id__SWIG_0(PyObject *self, Py_ssiz
   arg2 = reinterpret_cast< uint64_t * >(argp2);
   result = (arg1)->get_id((uint64_t const *)arg2);
   {
-    const std::vector<uint8_t>& vec = result; // Get a reference to the vector
+    const std::vector<uint8_t>& vec = result;
     resultobj = PyList_New(vec.size());
     for (unsigned i = 0; i < vec.size(); ++i) {
       PyObject *item = PyLong_FromUnsignedLong(vec[i]);
@@ -50102,7 +50100,7 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_id__SWIG_1(PyObject *self, Py_ssiz
   }
   result = (arg1)->get_id((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
   {
-    const std::vector<uint8_t>& vec = result; // Get a reference to the vector
+    const std::vector<uint8_t>& vec = result;
     resultobj = PyList_New(vec.size());
     for (unsigned i = 0; i < vec.size(); ++i) {
       PyObject *item = PyLong_FromUnsignedLong(vec[i]);
@@ -50451,7 +50449,14 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_id_occurence_count(PyObject *self,
   temp2 = static_cast< bool >(val2);
   arg2 = &temp2;
   result = (arg1)->get_id_occurence_count((bool const &)*arg2);
-  resultobj = SWIG_NewPointerObj((new std::vector< size_t,std::allocator< size_t > >(result)), SWIGTYPE_p_std__vectorT_size_t_std__allocatorT_size_t_t_t, SWIG_POINTER_OWN |  0 );
+  {
+    const std::vector<size_t>& vec = result; // Get a reference to the vector
+    resultobj = PyList_New(vec.size());
+    for (unsigned i = 0; i < vec.size(); ++i) {
+      PyObject *item = PyLong_FromUnsignedLong(vec[i]);
+      PyList_SetItem(resultobj, i, item);
+    }
+  }
   return resultobj;
 fail:
   return NULL;
@@ -51173,7 +51178,14 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_id__SWIG_0(PyObject *self, Py_ssi
   }
   arg2 = reinterpret_cast< uint64_t * >(argp2);
   result = (arg1)->get_id((uint64_t const *)arg2);
-  resultobj = SWIG_NewPointerObj((new std::vector< unsigned short,std::allocator< unsigned short > >(result)), SWIGTYPE_p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t, SWIG_POINTER_OWN |  0 );
+  {
+    const std::vector<uint16_t>& vec = result;
+    resultobj = PyList_New(vec.size());
+    for (unsigned i = 0; i < vec.size(); ++i) {
+      PyObject *item = PyLong_FromUnsignedLong(vec[i]);
+      PyList_SetItem(resultobj, i, item);
+    }
+  }
   return resultobj;
 fail:
   return NULL;
@@ -51208,7 +51220,14 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_id__SWIG_1(PyObject *self, Py_ssi
     arg2 = ptr;
   }
   result = (arg1)->get_id((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
-  resultobj = SWIG_NewPointerObj((new std::vector< unsigned short,std::allocator< unsigned short > >(result)), SWIGTYPE_p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t, SWIG_POINTER_OWN |  0 );
+  {
+    const std::vector<uint16_t>& vec = result;
+    resultobj = PyList_New(vec.size());
+    for (unsigned i = 0; i < vec.size(); ++i) {
+      PyObject *item = PyLong_FromUnsignedLong(vec[i]);
+      PyList_SetItem(resultobj, i, item);
+    }
+  }
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
@@ -51551,7 +51570,14 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_id_occurence_count(PyObject *self
   temp2 = static_cast< bool >(val2);
   arg2 = &temp2;
   result = (arg1)->get_id_occurence_count((bool const &)*arg2);
-  resultobj = SWIG_NewPointerObj((new std::vector< size_t,std::allocator< size_t > >(result)), SWIGTYPE_p_std__vectorT_size_t_std__allocatorT_size_t_t_t, SWIG_POINTER_OWN |  0 );
+  {
+    const std::vector<size_t>& vec = result; // Get a reference to the vector
+    resultobj = PyList_New(vec.size());
+    for (unsigned i = 0; i < vec.size(); ++i) {
+      PyObject *item = PyLong_FromUnsignedLong(vec[i]);
+      PyList_SetItem(resultobj, i, item);
+    }
+  }
   return resultobj;
 fail:
   return NULL;
@@ -52273,7 +52299,14 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_id__SWIG_0(PyObject *self, Py_ssi
   }
   arg2 = reinterpret_cast< uint64_t * >(argp2);
   result = (arg1)->get_id((uint64_t const *)arg2);
-  resultobj = swig::from(static_cast< std::vector< unsigned int,std::allocator< unsigned int > > >(result));
+  {
+    const std::vector<uint32_t>& vec = result;
+    resultobj = PyList_New(vec.size());
+    for (unsigned i = 0; i < vec.size(); ++i) {
+      PyObject *item = PyLong_FromUnsignedLong(vec[i]);
+      PyList_SetItem(resultobj, i, item);
+    }
+  }
   return resultobj;
 fail:
   return NULL;
@@ -52308,7 +52341,14 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_id__SWIG_1(PyObject *self, Py_ssi
     arg2 = ptr;
   }
   result = (arg1)->get_id((std::vector< uint64_t,std::allocator< uint64_t > > const &)*arg2);
-  resultobj = swig::from(static_cast< std::vector< unsigned int,std::allocator< unsigned int > > >(result));
+  {
+    const std::vector<uint32_t>& vec = result;
+    resultobj = PyList_New(vec.size());
+    for (unsigned i = 0; i < vec.size(); ++i) {
+      PyObject *item = PyLong_FromUnsignedLong(vec[i]);
+      PyList_SetItem(resultobj, i, item);
+    }
+  }
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
@@ -52651,7 +52691,14 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_id_occurence_count(PyObject *self
   temp2 = static_cast< bool >(val2);
   arg2 = &temp2;
   result = (arg1)->get_id_occurence_count((bool const &)*arg2);
-  resultobj = SWIG_NewPointerObj((new std::vector< size_t,std::allocator< size_t > >(result)), SWIGTYPE_p_std__vectorT_size_t_std__allocatorT_size_t_t_t, SWIG_POINTER_OWN |  0 );
+  {
+    const std::vector<size_t>& vec = result; // Get a reference to the vector
+    resultobj = PyList_New(vec.size());
+    for (unsigned i = 0; i < vec.size(); ++i) {
+      PyObject *item = PyLong_FromUnsignedLong(vec[i]);
+      PyList_SetItem(resultobj, i, item);
+    }
+  }
   return resultobj;
 fail:
   return NULL;
@@ -63489,7 +63536,6 @@ static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *"
 static swig_type_info _swigt__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t = {"_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t", "std::vector< btllib::Indexlr::Minimizer,std::allocator< btllib::Indexlr::Minimizer > > *|std::vector< btllib::Indexlr::Minimizer > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_btllib__Indexlr__Minimizer_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_double_std__allocatorT_double_t_t = {"_p_std__vectorT_double_std__allocatorT_double_t_t", "std::vector< double,std::allocator< double > > *|std::vector< double > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_double_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_int_std__allocatorT_int_t_t = {"_p_std__vectorT_int_std__allocatorT_int_t_t", "std::vector< int,std::allocator< int > > *|std::vector< int > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_int_t_clientdata, 0};
-static swig_type_info _swigt__p_std__vectorT_size_t_std__allocatorT_size_t_t_t = {"_p_std__vectorT_size_t_std__allocatorT_size_t_t_t", "std::vector< size_t,std::allocator< size_t > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t = {"_p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t", "btllib::SpacedSeedBlocks *|std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__string_std__allocatorT_std__string_t_t = {"_p_std__vectorT_std__string_std__allocatorT_std__string_t_t", "std::vector< std::string,std::allocator< std::string > > *|std::vector< std::string > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_std__string_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t = {"_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t", "std::vector< btllib::SpacedSeedBlocks,std::allocator< btllib::SpacedSeedBlocks > > *|std::vector< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > >,std::allocator< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > > > *", 0, 0, (void*)0, 0};
@@ -63497,7 +63543,6 @@ static swig_type_info _swigt__p_std__vectorT_std__vectorT_unsigned_int_std__allo
 static swig_type_info _swigt__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t = {"_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t", "std::vector< unsigned char,std::allocator< unsigned char > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t = {"_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t", "btllib::SpacedSeed *|btllib::SpacedSeedMonomers *|std::vector< unsigned int,std::allocator< unsigned int > > *|std::vector< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_unsigned_int_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t = {"_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t", "std::vector< uint64_t > *|std::vector< uint64_t,std::allocator< uint64_t > > *|std::vector< uint64_t > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_uint64_t_t_clientdata, 0};
-static swig_type_info _swigt__p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t = {"_p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t", "std::vector< unsigned short,std::allocator< unsigned short > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_streamoff = {"_p_streamoff", "std::basic_istream< char >::off_type *|std::basic_ostream< char >::off_type *|streamoff *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_streampos = {"_p_streampos", "std::basic_istream< char >::pos_type *|std::basic_ostream< char >::pos_type *|streampos *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)&SwigPyBuiltin__swig__SwigPyIterator_clientdata, 0};
@@ -63605,7 +63650,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t,
   &_swigt__p_std__vectorT_double_std__allocatorT_double_t_t,
   &_swigt__p_std__vectorT_int_std__allocatorT_int_t_t,
-  &_swigt__p_std__vectorT_size_t_std__allocatorT_size_t_t_t,
   &_swigt__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t,
   &_swigt__p_std__vectorT_std__string_std__allocatorT_std__string_t_t,
   &_swigt__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,
@@ -63613,7 +63657,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t,
   &_swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t,
   &_swigt__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t,
-  &_swigt__p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t,
   &_swigt__p_streamoff,
   &_swigt__p_streampos,
   &_swigt__p_swig__SwigPyIterator,
@@ -63721,7 +63764,6 @@ static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0
 static swig_cast_info _swigc__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t[] = {  {&_swigt__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_double_std__allocatorT_double_t_t[] = {  {&_swigt__p_std__vectorT_double_std__allocatorT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_int_std__allocatorT_int_t_t[] = {  {&_swigt__p_std__vectorT_int_std__allocatorT_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_size_t_std__allocatorT_size_t_t_t[] = {  {&_swigt__p_std__vectorT_size_t_std__allocatorT_size_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t[] = {  {&_swigt__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__string_std__allocatorT_std__string_t_t[] = {  {&_swigt__p_std__vectorT_std__string_std__allocatorT_std__string_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t[] = {  {&_swigt__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -63729,7 +63771,6 @@ static swig_cast_info _swigc__p_std__vectorT_std__vectorT_unsigned_int_std__allo
 static swig_cast_info _swigc__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_streamoff[] = {  {&_swigt__p_streamoff, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_streampos[] = {  {&_swigt__p_streampos, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
@@ -63837,7 +63878,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t,
   _swigc__p_std__vectorT_double_std__allocatorT_double_t_t,
   _swigc__p_std__vectorT_int_std__allocatorT_int_t_t,
-  _swigc__p_std__vectorT_size_t_std__allocatorT_size_t_t_t,
   _swigc__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t,
   _swigc__p_std__vectorT_std__string_std__allocatorT_std__string_t_t,
   _swigc__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,
@@ -63845,7 +63885,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t,
   _swigc__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t,
   _swigc__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t,
-  _swigc__p_std__vectorT_unsigned_short_std__allocatorT_unsigned_short_t_t,
   _swigc__p_streamoff,
   _swigc__p_streampos,
   _swigc__p_swig__SwigPyIterator,
