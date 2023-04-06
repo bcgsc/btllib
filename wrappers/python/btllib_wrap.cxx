@@ -50450,7 +50450,7 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter8_get_id_occurence_count(PyObject *self,
   arg2 = &temp2;
   result = (arg1)->get_id_occurence_count((bool const &)*arg2);
   {
-    const std::vector<size_t>& vec = result; // Get a reference to the vector
+    const std::vector<size_t>& vec = result;
     resultobj = PyList_New(vec.size());
     for (unsigned i = 0; i < vec.size(); ++i) {
       PyObject *item = PyLong_FromUnsignedLong(vec[i]);
@@ -51571,7 +51571,7 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter16_get_id_occurence_count(PyObject *self
   arg2 = &temp2;
   result = (arg1)->get_id_occurence_count((bool const &)*arg2);
   {
-    const std::vector<size_t>& vec = result; // Get a reference to the vector
+    const std::vector<size_t>& vec = result;
     resultobj = PyList_New(vec.size());
     for (unsigned i = 0; i < vec.size(); ++i) {
       PyObject *item = PyLong_FromUnsignedLong(vec[i]);
@@ -52692,7 +52692,7 @@ SWIGINTERN PyObject *_wrap_MIBloomFilter32_get_id_occurence_count(PyObject *self
   arg2 = &temp2;
   result = (arg1)->get_id_occurence_count((bool const &)*arg2);
   {
-    const std::vector<size_t>& vec = result; // Get a reference to the vector
+    const std::vector<size_t>& vec = result;
     resultobj = PyList_New(vec.size());
     for (unsigned i = 0; i < vec.size(); ++i) {
       PyObject *item = PyLong_FromUnsignedLong(vec[i]);
