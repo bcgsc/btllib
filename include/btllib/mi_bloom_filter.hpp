@@ -632,22 +632,44 @@ MIBloomFilter<T>::get_pop_saturated_cnt()
   }
   return count;
 }
+
 template<typename T>
 inline std::vector<size_t>
 MIBloomFilter<T>::get_id_occurence_count(const bool& include_saturated)
 {
+// Ensure the bloom filter has been initialized
   assert(bv_insertion_completed);
-  std::vector<size_t> ret_vec(MASK - 1, 0);
+
+  // Initialize a temporary vector to store counts
+  std::vector<std::atomic<size_t>> count_vec(MASK - 1);
+
+  // Iterate over the id_array in parallel, incrementing the counts in count_vec
 #pragma omp parallel for default(none)                                         \
-  shared(id_array_size, include_saturated, id_array, ret_vec)
+  shared(id_array_size, include_saturated, id_array, count_vec)
   for (size_t k = 0; k < id_array_size; k++) {
     if (!include_saturated && id_array[k] > ANTI_MASK) {
       continue;
     }
-    ret_vec[id_array[k] & ANTI_MASK]++;
+    count_vec[id_array[k] & ANTI_MASK].fetch_add(1);
   }
-  return ret_vec;
+
+  // Convert the atomic count_vec to a non-atomic result vector,
+  // excluding trailing zeros
+  std::vector<size_t> result;
+  bool has_trailing_zeros = true;
+  for (size_t i = MASK - 2; i != SIZE_MAX; i--) {
+    if (count_vec[i] != 0) {
+      has_trailing_zeros = false;
+    }
+    if (!has_trailing_zeros) {
+      result.insert(result.begin(),count_vec[i].load());
+    }
+  }
+
+  return result;
 }
+
+
 template<typename T>
 inline size_t
 MIBloomFilter<T>::calc_optimal_size(size_t entries,
