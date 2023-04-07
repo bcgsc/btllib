@@ -637,7 +637,7 @@ template<typename T>
 inline std::vector<size_t>
 MIBloomFilter<T>::get_id_occurence_count(const bool& include_saturated)
 {
-// Ensure the bloom filter has been initialized
+  // Ensure the bloom filter has been initialized
   assert(bv_insertion_completed);
 
   // Initialize a temporary vector to store counts
@@ -662,13 +662,12 @@ MIBloomFilter<T>::get_id_occurence_count(const bool& include_saturated)
       has_trailing_zeros = false;
     }
     if (!has_trailing_zeros) {
-      result.insert(result.begin(),count_vec[i].load());
+      result.insert(result.begin(), count_vec[i].load());
     }
   }
 
   return result;
 }
-
 
 template<typename T>
 inline size_t
