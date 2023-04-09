@@ -22,6 +22,7 @@ private:
   size_t seq_len;
   const uint8_t hash_num;
   const uint16_t k;
+  unsigned level;
 
   size_t pos;
   bool initialized;
@@ -32,10 +33,11 @@ private:
    *
    * @param kmer_seq C array containing the sequence's characters.
    * @param k k-mer size.
+   * @param level seed level to generate hash.
    *
    * @return Hash value of k-mer_0.
    */
-  uint64_t base_hash(const char* kmer_seq, unsigned k, unsigned level = 1);
+  uint64_t base_hash(const char* kmer_seq, unsigned k, unsigned level);
 
   /**
    * Perform a roll operation on the hash value by removing char_out and
@@ -45,6 +47,7 @@ private:
    * @param k k-mer size.
    * @param char_out Character to be removed.
    * @param char_in Character to be included.
+   * @param level seed level to perform roll operation.
    *
    * @return Rolled forward hash value.
    */
@@ -52,7 +55,7 @@ private:
                         unsigned k,
                         unsigned char char_out,
                         unsigned char char_in,
-                        unsigned level = 1);
+                        unsigned level);
 
   /**
    * Extend hash array using a base hash value.
@@ -75,12 +78,30 @@ public:
    * @param hash_num Number of hashes to produce per k-mer.
    * @param k K-mer size.
    * @param pos Position in seq to start hashing from.
+   * @param level seed level to generate hash.
    */
   AAHash(const std::string& seq, uint8_t hash_num, uint16_t k, size_t pos = 0)
     : seq(seq.data())
     , seq_len(seq.size())
     , hash_num(hash_num)
     , k(k)
+    , pos(pos)
+    , initialized(false)
+    , hashes_array(new uint64_t[hash_num])
+  {
+    level = 1;
+  }
+
+  AAHash(const std::string& seq,
+         uint8_t hash_num,
+         uint16_t k,
+         unsigned level,
+         size_t pos = 0)
+    : seq(seq.data())
+    , seq_len(seq.size())
+    , hash_num(hash_num)
+    , k(k)
+    , level(level)
     , pos(pos)
     , initialized(false)
     , hashes_array(new uint64_t[hash_num])
