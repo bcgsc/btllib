@@ -70,7 +70,7 @@
 %template(VectorDouble) std::vector<double>;
 %template(VectorUint8t) std::vector<uint8_t>;
 %template(VectorUint16t) std::vector<uint16_t>;
-%template(VectorUint16t) std::vector<uint32_t>;
+%template(VectorUint32t) std::vector<uint32_t>;
 %template(VectorUint64t) std::vector<uint64_t>;
 %template(VectorMinimizer) std::vector<btllib::Indexlr::Minimizer>;
 
