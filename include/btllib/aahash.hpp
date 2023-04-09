@@ -2,6 +2,7 @@
 #define BTLLIB_AAHASH_HPP
 
 #include <cstdint>
+#include <cstring>
 #include <limits>
 #include <memory>
 #include <string>
@@ -94,6 +95,9 @@ public:
     , initialized(aahash.initialized)
     , hashes_array(new uint64_t[hash_num])
   {
+    std::memcpy(hashes_array.get(),
+                aahash.hashes_array.get(),
+                hash_num * sizeof(uint64_t));
   }
 
   AAHash(AAHash&&) = default;
