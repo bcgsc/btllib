@@ -27,6 +27,8 @@
 #include "btllib/cstring.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/randseq.hpp"
+#include "btllib/aahash_consts.hpp"
+#include "btllib/aahash.hpp"
 %}
 
 %include <stdint.i>
@@ -69,5 +71,7 @@
 %include "btllib/cstring.hpp"
 %include "btllib/nthash.hpp"
 %include "btllib/randseq.hpp"
+%include "btllib/aahash_consts.hpp"
+%include "btllib/aahash.hpp"
 
 %include "../extra_templates.i"
