@@ -8,7 +8,34 @@
 #include <string>
 #include <vector>
 
+#include "aahash_consts.hpp"
+#include "nthash_lowlevel.hpp"
+
 namespace btllib {
+
+inline uint64_t
+aahash_base(const char* kmer_seq, unsigned k, unsigned level = 1)
+{
+  uint64_t hash_value = 0;
+  for (unsigned i = 0; i < k; i++) {
+    hash_value = srol(hash_value);
+    hash_value ^= LEVEL_X_AA_SEED_TABLE[level][(unsigned char)kmer_seq[i]];
+  }
+  return hash_value;
+}
+
+inline uint64_t
+aahash_roll(uint64_t hash_value,
+            unsigned k,
+            unsigned char char_out,
+            unsigned char char_in,
+            unsigned level = 1)
+{
+  hash_value = srol(hash_value);
+  hash_value ^= LEVEL_X_AA_SEED_TABLE[level][char_in];
+  hash_value ^= AA_ROLL_TABLE(char_out, level, k);
+  return hash_value;
+}
 
 class AAHash
 {
@@ -27,49 +54,6 @@ private:
   size_t pos;
   bool initialized;
   std::unique_ptr<uint64_t[]> hashes_array;
-
-  /**
-   * Generate a hash value for the first k-mer in the sequence.
-   *
-   * @param kmer_seq C array containing the sequence's characters.
-   * @param k k-mer size.
-   * @param level seed level to generate hash.
-   *
-   * @return Hash value of k-mer_0.
-   */
-  uint64_t base_hash(const char* kmer_seq, unsigned k, unsigned level);
-
-  /**
-   * Perform a roll operation on the hash value by removing char_out and
-   * including char_in.
-   *
-   * @param hash_value Previous hash value computed for the sequence.
-   * @param k k-mer size.
-   * @param char_out Character to be removed.
-   * @param char_in Character to be included.
-   * @param level seed level to perform roll operation.
-   *
-   * @return Rolled forward hash value.
-   */
-  uint64_t roll_forward(uint64_t hash_value,
-                        unsigned k,
-                        unsigned char char_out,
-                        unsigned char char_in,
-                        unsigned level);
-
-  /**
-   * Extend hash array using a base hash value.
-   *
-   * @param hash_value Base hash value.
-   * @param k k-mer size.
-   * @param h Size of the resulting hash array (number of extra hashes minus
-   * one).
-   * @param hash_array Array of size h for storing the output hashes.
-   */
-  void extend_hashes(uint64_t hash_value,
-                     unsigned k,
-                     unsigned h,
-                     uint64_t* hash_array);
 
 public:
   /**
