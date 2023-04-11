@@ -13,6 +13,8 @@
 %feature("python:slot", "tp_iter", functype="getiterfunc") btllib::Indexlr::begin;
 %feature("python:slot", "tp_iternext", functype="iternextfunc") btllib::Indexlr::RecordIterator::next;
 
+%ignore btllib::BloomFilter::save(std::string const &, cpptoml::table const &, char const *, size_t);
+
 %extend btllib::SeqReader {
   btllib::SeqReader* __enter__() {
     return $self;
