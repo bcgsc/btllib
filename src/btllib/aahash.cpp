@@ -30,7 +30,7 @@ AAHash::roll()
   if (pos >= seq_len - k) {
     return false;
   }
-  if (AA_SEED_Table[(unsigned char)(seq[pos + k])] == AA_SEED__) {
+  if (AA_SEED_TABLE[(unsigned char)(seq[pos + k])] == AA_SEED__) {
     pos += k;
     return init();
   }
@@ -41,4 +41,4 @@ AAHash::roll()
   return true;
 }
 
-}
+} // namespace btllib

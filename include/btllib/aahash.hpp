@@ -52,7 +52,7 @@ private:
   unsigned level;
 
   size_t pos;
-  bool initialized;
+  bool initialized = false;
   std::unique_ptr<uint64_t[]> hashes_array;
 
 public:
@@ -64,18 +64,6 @@ public:
    * @param pos Position in seq to start hashing from.
    * @param level seed level to generate hash.
    */
-  AAHash(const std::string& seq, uint8_t hash_num, uint16_t k, size_t pos = 0)
-    : seq(seq.data())
-    , seq_len(seq.size())
-    , hash_num(hash_num)
-    , k(k)
-    , pos(pos)
-    , initialized(false)
-    , hashes_array(new uint64_t[hash_num])
-  {
-    level = 1;
-  }
-
   AAHash(const std::string& seq,
          uint8_t hash_num,
          uint16_t k,
@@ -87,7 +75,6 @@ public:
     , k(k)
     , level(level)
     , pos(pos)
-    , initialized(false)
     , hashes_array(new uint64_t[hash_num])
   {
   }
@@ -97,6 +84,8 @@ public:
     , seq_len(aahash.seq_len)
     , hash_num(aahash.hash_num)
     , k(aahash.k)
+    , level(aahash.level)
+    , pos(aahash.pos)
     , initialized(aahash.initialized)
     , hashes_array(new uint64_t[hash_num])
   {
