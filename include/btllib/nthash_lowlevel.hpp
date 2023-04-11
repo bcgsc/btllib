@@ -248,8 +248,20 @@ ntc64l(unsigned char char_out,
  * @param h Size of the resulting hash array (number of extra hashes minus one).
  * @param h_val Array of size h for storing the output hashes.
  */
-void
-nte64(uint64_t bh_val, unsigned k, unsigned h, uint64_t* h_val);
+inline void
+nte64(const uint64_t bh_val,
+      const unsigned k,
+      const unsigned h,
+      uint64_t* h_val)
+{
+  uint64_t t_val;
+  h_val[0] = bh_val;
+  for (unsigned i = 1; i < h; i++) {
+    t_val = bh_val * (i ^ k * MULTISEED);
+    t_val ^= t_val >> MULTISHIFT;
+    h_val[i] = t_val;
+  }
+}
 
 /**
  * Generate multiple canonical hash values for the first k-mer.

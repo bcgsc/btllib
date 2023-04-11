@@ -34,7 +34,8 @@ AAHash::roll()
     pos += k;
     return init();
   }
-  uint64_t hash_value = aahash_roll(hashes_array[0], k, seq[pos], seq[pos + k], level);
+  uint64_t hash_value =
+    aahash_roll(hashes_array[0], k, seq[pos], seq[pos + k], level);
   nte64(hash_value, k, hash_num, hashes_array.get());
   ++pos;
   return true;
