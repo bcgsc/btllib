@@ -55,7 +55,6 @@ class BloomFilterTests(unittest.TestCase):
         bf.insert([100, 200, 300])
 
         file_path = os.path.join(self.base_dir, "test.bf")
-        print(file_path)
         bf.save(file_path)
 
         try:
