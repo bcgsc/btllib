@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['log_5ferror_0',['log_error',['../namespacebtllib.html#aae48e6ebdbbde9836cd2c20347b85606',1,'btllib']]],
-  ['log_5finfo_1',['log_info',['../namespacebtllib.html#aa0d6ecae33b5e60b5c285f5358a9ad6a',1,'btllib']]],
-  ['log_5fwarning_2',['log_warning',['../namespacebtllib.html#a3d4af2317963b43668700a59fb8c67a6',1,'btllib']]],
-  ['long_5fmode_3',['LONG_MODE',['../structbtllib_1_1Indexlr_1_1Flag.html#a1d0c959beee8c7d4f27a84fdcd32bc0f',1,'btllib::Indexlr::Flag::LONG_MODE()'],['../structbtllib_1_1SeqReader_1_1Flag.html#acadd9255385912461a0ff9b5faca068c',1,'btllib::SeqReader::Flag::LONG_MODE()']]],
-  ['ltrim_4',['ltrim',['../namespacebtllib.html#ad74639e10aa8a303fc78973078e870dd',1,'btllib']]]
+  ['kmerbloomfilter_0',['KmerBloomFilter',['../classbtllib_1_1KmerBloomFilter.html',1,'btllib::KmerBloomFilter'],['../classbtllib_1_1KmerBloomFilter.html#a76683977f97d802b7ebe3e09884fb4e6',1,'btllib::KmerBloomFilter::KmerBloomFilter()'],['../classbtllib_1_1KmerBloomFilter.html#aebcf0f91e72aa2212a6d0f744789fb86',1,'btllib::KmerBloomFilter::KmerBloomFilter(size_t bytes, unsigned hash_num, unsigned k)'],['../classbtllib_1_1KmerBloomFilter.html#a56046ef890ff084f943f13989f69d504',1,'btllib::KmerBloomFilter::KmerBloomFilter(const std::string &amp;path)']]],
+  ['kmercountingbloomfilter_1',['KmerCountingBloomFilter',['../classbtllib_1_1KmerCountingBloomFilter.html',1,'btllib::KmerCountingBloomFilter&lt; T &gt;'],['../classbtllib_1_1KmerCountingBloomFilter.html#af5073e09146d1b029e4f6be38ec644bc',1,'btllib::KmerCountingBloomFilter::KmerCountingBloomFilter()'],['../classbtllib_1_1KmerCountingBloomFilter.html#af37258d1404ee3fc3779e8e0555b23d9',1,'btllib::KmerCountingBloomFilter::KmerCountingBloomFilter(size_t bytes, unsigned hash_num, unsigned k)'],['../classbtllib_1_1KmerCountingBloomFilter.html#a14fc342e9b8988127d45fa8710e772ba',1,'btllib::KmerCountingBloomFilter::KmerCountingBloomFilter(const std::string &amp;path)']]]
 ];
