@@ -36191,6 +36191,38 @@ fail:
 }
 
 
+SWIGINTERN int Swig_var_MI_BLOOM_FILTER_SIGNATURE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable MI_BLOOM_FILTER_SIGNATURE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_MI_BLOOM_FILTER_SIGNATURE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_FromCharPtr(btllib::MI_BLOOM_FILTER_SIGNATURE);
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_PLACEHOLDER_NEWLINES_MIBF_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable PLACEHOLDER_NEWLINES_MIBF is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_PLACEHOLDER_NEWLINES_MIBF_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(btllib::PLACEHOLDER_NEWLINES_MIBF));
+  return pyobj;
+}
+
+
 SWIGINTERN int Swig_var_NTHASH_FN_NAME_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable NTHASH_FN_NAME is read-only.");
   return 1;
@@ -59320,9 +59352,9 @@ static swig_type_info _swigt__p_btllib__Barrier = {"_p_btllib__Barrier", "btllib
 static swig_type_info _swigt__p_btllib__BlindNtHash = {"_p_btllib__BlindNtHash", "btllib::BlindNtHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__BlindNtHash_clientdata, 0};
 static swig_type_info _swigt__p_btllib__BloomFilter = {"_p_btllib__BloomFilter", "btllib::BloomFilter *", 0, 0, (void*)&SwigPyBuiltin__btllib__BloomFilter_clientdata, 0};
 static swig_type_info _swigt__p_btllib__CString = {"_p_btllib__CString", "btllib::CString *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_btllib__CountingBloomFilterT_unsigned_char_t = {"_p_btllib__CountingBloomFilterT_unsigned_char_t", "btllib::CountingBloomFilter8 *|btllib::CountingBloomFilter< uint8_t > *|btllib::CountingBloomFilter< unsigned char > *", 0, 0, (void*)&SwigPyBuiltin__btllib__CountingBloomFilterT_uint8_t_t_clientdata, 0};
-static swig_type_info _swigt__p_btllib__CountingBloomFilterT_unsigned_int_t = {"_p_btllib__CountingBloomFilterT_unsigned_int_t", "btllib::CountingBloomFilter32 *|btllib::CountingBloomFilter< uint32_t > *|btllib::CountingBloomFilter< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__btllib__CountingBloomFilterT_uint32_t_t_clientdata, 0};
-static swig_type_info _swigt__p_btllib__CountingBloomFilterT_unsigned_short_t = {"_p_btllib__CountingBloomFilterT_unsigned_short_t", "btllib::CountingBloomFilter16 *|btllib::CountingBloomFilter< uint16_t > *|btllib::CountingBloomFilter< unsigned short > *", 0, 0, (void*)&SwigPyBuiltin__btllib__CountingBloomFilterT_uint16_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__CountingBloomFilterT_unsigned_char_t = {"_p_btllib__CountingBloomFilterT_unsigned_char_t", "btllib::CountingBloomFilter< uint8_t > *|btllib::CountingBloomFilter< unsigned char > *", 0, 0, (void*)&SwigPyBuiltin__btllib__CountingBloomFilterT_uint8_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__CountingBloomFilterT_unsigned_int_t = {"_p_btllib__CountingBloomFilterT_unsigned_int_t", "btllib::CountingBloomFilter< uint32_t > *|btllib::CountingBloomFilter< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__btllib__CountingBloomFilterT_uint32_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__CountingBloomFilterT_unsigned_short_t = {"_p_btllib__CountingBloomFilterT_unsigned_short_t", "btllib::CountingBloomFilter< uint16_t > *|btllib::CountingBloomFilter< unsigned short > *", 0, 0, (void*)&SwigPyBuiltin__btllib__CountingBloomFilterT_uint16_t_t_clientdata, 0};
 static swig_type_info _swigt__p_btllib__DataSink = {"_p_btllib__DataSink", "btllib::DataSink *", 0, 0, (void*)&SwigPyBuiltin__btllib__DataSink_clientdata, 0};
 static swig_type_info _swigt__p_btllib__DataSource = {"_p_btllib__DataSource", "btllib::DataSource *", 0, 0, (void*)&SwigPyBuiltin__btllib__DataSource_clientdata, 0};
 static swig_type_info _swigt__p_btllib__DataStream = {"_p_btllib__DataStream", "btllib::DataStream *", 0, 0, (void*)0, 0};
@@ -59333,9 +59365,9 @@ static swig_type_info _swigt__p_btllib__Indexlr__Minimizer = {"_p_btllib__Indexl
 static swig_type_info _swigt__p_btllib__Indexlr__Record = {"_p_btllib__Indexlr__Record", "btllib::Indexlr::Record *", 0, 0, (void*)&SwigPyBuiltin__btllib__Indexlr__Record_clientdata, 0};
 static swig_type_info _swigt__p_btllib__Indexlr__RecordIterator = {"_p_btllib__Indexlr__RecordIterator", "btllib::Indexlr::RecordIterator *", 0, 0, (void*)&SwigPyBuiltin__btllib__Indexlr__RecordIterator_clientdata, 0};
 static swig_type_info _swigt__p_btllib__KmerBloomFilter = {"_p_btllib__KmerBloomFilter", "btllib::KmerBloomFilter *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerBloomFilter_clientdata, 0};
-static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_char_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_char_t", "btllib::KmerCountingBloomFilter8 *|btllib::KmerCountingBloomFilter< uint8_t > *|btllib::KmerCountingBloomFilter< unsigned char > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint8_t_t_clientdata, 0};
-static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_int_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_int_t", "btllib::KmerCountingBloomFilter32 *|btllib::KmerCountingBloomFilter< uint32_t > *|btllib::KmerCountingBloomFilter< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint32_t_t_clientdata, 0};
-static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_short_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_short_t", "btllib::KmerCountingBloomFilter16 *|btllib::KmerCountingBloomFilter< uint16_t > *|btllib::KmerCountingBloomFilter< unsigned short > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint16_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_char_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_char_t", "btllib::KmerCountingBloomFilter< uint8_t > *|btllib::KmerCountingBloomFilter< unsigned char > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint8_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_int_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_int_t", "btllib::KmerCountingBloomFilter< uint32_t > *|btllib::KmerCountingBloomFilter< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint32_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_short_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_short_t", "btllib::KmerCountingBloomFilter< uint16_t > *|btllib::KmerCountingBloomFilter< unsigned short > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint16_t_t_clientdata, 0};
 static swig_type_info _swigt__p_btllib__NtHash = {"_p_btllib__NtHash", "btllib::NtHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__NtHash_clientdata, 0};
 static swig_type_info _swigt__p_btllib__RandSeq = {"_p_btllib__RandSeq", "btllib::RandSeq *", 0, 0, (void*)&SwigPyBuiltin__btllib__RandSeq_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeedBloomFilter = {"_p_btllib__SeedBloomFilter", "btllib::SeedBloomFilter *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeedBloomFilter_clientdata, 0};
@@ -61278,6 +61310,12 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "PRINT_COLOR_END", Swig_var_PRINT_COLOR_END_get, Swig_var_PRINT_COLOR_END_set);
   PyDict_SetItemString(md, "PRINT_COLOR_END", PyObject_GetAttrString(globals, "PRINT_COLOR_END"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "PRINT_COLOR_END");
+  SWIG_addvarlink(globals, "MI_BLOOM_FILTER_SIGNATURE", Swig_var_MI_BLOOM_FILTER_SIGNATURE_get, Swig_var_MI_BLOOM_FILTER_SIGNATURE_set);
+  PyDict_SetItemString(md, "MI_BLOOM_FILTER_SIGNATURE", PyObject_GetAttrString(globals, "MI_BLOOM_FILTER_SIGNATURE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MI_BLOOM_FILTER_SIGNATURE");
+  SWIG_addvarlink(globals, "PLACEHOLDER_NEWLINES_MIBF", Swig_var_PLACEHOLDER_NEWLINES_MIBF_get, Swig_var_PLACEHOLDER_NEWLINES_MIBF_set);
+  PyDict_SetItemString(md, "PLACEHOLDER_NEWLINES_MIBF", PyObject_GetAttrString(globals, "PLACEHOLDER_NEWLINES_MIBF"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "PLACEHOLDER_NEWLINES_MIBF");
   SWIG_addvarlink(globals, "NTHASH_FN_NAME", Swig_var_NTHASH_FN_NAME_get, Swig_var_NTHASH_FN_NAME_set);
   PyDict_SetItemString(md, "NTHASH_FN_NAME", PyObject_GetAttrString(globals, "NTHASH_FN_NAME"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "NTHASH_FN_NAME");
