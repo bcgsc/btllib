@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 #include "btllib/aahash.hpp"
 #include "btllib/aahash_consts.hpp"
 #include "btllib/nthash_lowlevel.hpp"
@@ -73,5 +75,27 @@ SeedAAHash::roll()
   }
 
   return true;
+}
+
+bool
+SeedAAHash::verify_seed()
+{
+  for (const auto& seed : seeds) {
+    for (const auto& c : seed) {
+      if (c != 0 && c != 1 && c != 2 && c != 3) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+void
+SeedAAHash::init()
+{
+  if (!verify_seed()) {
+    throw std::runtime_error(
+      "Invalid seed. Seed values must be 0, 1, 2, or 3.");
+  }
 }
 } // namespace btllib

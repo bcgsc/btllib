@@ -157,6 +157,9 @@ private:
   const unsigned hash_num_per_seed;
   std::unique_ptr<uint64_t[]> hashes_array;
   std::vector<SpacedSeed> seeds;
+  bool verify_seed();
+  /** Verify internal state of iterator */
+  void init();
 
 public:
   /**
@@ -177,6 +180,7 @@ public:
     , hashes_array(new uint64_t[hash_num_per_seed * seeds.size()])
     , seeds(seeds)
   {
+    init();
   }
   SeedAAHash(const std::string& seq,
              const std::vector<SpacedSeed>& seeds,
@@ -188,6 +192,7 @@ public:
     , hashes_array(new uint64_t[hash_num_per_seed * seeds.size()])
     , seeds(seeds)
   {
+    init();
   }
   SeedAAHash(const char* seq,
              const std::vector<std::string>& seeds,
@@ -199,6 +204,7 @@ public:
     , hashes_array(new uint64_t[hash_num_per_seed * seeds.size()])
     , seeds(aa_parse_seeds(seeds))
   {
+    init();
   }
   SeedAAHash(const std::string& seq,
              const std::vector<std::string>& seeds,
@@ -210,6 +216,7 @@ public:
     , hashes_array(new uint64_t[hash_num_per_seed * seeds.size()])
     , seeds(aa_parse_seeds(seeds))
   {
+    init();
   }
 
   SeedAAHash(const SeedAAHash& seed_aahash)
