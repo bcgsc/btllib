@@ -89,8 +89,8 @@ int main()
   std::string string_seed8 = "30122103";
   std::vector<std::string> seeds2 = {string_seed5, string_seed6, string_seed7, string_seed8};
   std::vector<btllib::SpacedSeed> parsed_seeds2 = btllib::aa_parse_seeds(seeds2);
-  btllib::seedAAHash seedaahash(seq, parsed_seeds2, h, k);
-  btllib::seedAAHash seedaahash2(seq, parsed_seeds2, h, k);
+  btllib::SeedAAHash seedaahash(seq, parsed_seeds2, h, k);
+  btllib::SeedAAHash seedaahash2(seq, parsed_seeds2, h, k);
   num_kmers = seq.size() - k + 2;
   seedaahash.roll();
   seedaahash2.roll();

@@ -57,7 +57,7 @@ AAHash::roll()
 }
 
 bool
-seedAAHash::roll()
+SeedAAHash::roll()
 {
   if (!aahash.roll()) {
     return false;

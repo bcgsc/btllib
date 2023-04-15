@@ -65,14 +65,14 @@ aa_modify_base_with_seed(uint64_t hash_value,
 
 std::vector<SpacedSeed>
 aa_parse_seeds(const std::vector<std::string>& seeds);
-class seedAAHash;
+class SeedAAHash;
 
 class AAHash
 {
   static constexpr const char* HASH_FN_NAME = "aahash1";
 
 private:
-  friend class seedAAHash;
+  friend class SeedAAHash;
 
   /** Initialize internal state of iterator */
   bool init();
@@ -150,7 +150,7 @@ public:
   uint64_t get_forward_hash() const { return hashes_array[0]; }
 };
 
-class seedAAHash
+class SeedAAHash
 {
 private:
   AAHash aahash;
@@ -167,7 +167,7 @@ public:
    * @param k K-mer size.
    * @param pos Position in seq to start hashing from.
    */
-  seedAAHash(const char* seq,
+  SeedAAHash(const char* seq,
              const std::vector<SpacedSeed>& seeds,
              unsigned hash_num_per_seed,
              unsigned k,
@@ -178,7 +178,7 @@ public:
     , seeds(seeds)
   {
   }
-  seedAAHash(const std::string& seq,
+  SeedAAHash(const std::string& seq,
              const std::vector<SpacedSeed>& seeds,
              unsigned hash_num_per_seed,
              unsigned k,
@@ -189,7 +189,7 @@ public:
     , seeds(seeds)
   {
   }
-  seedAAHash(const char* seq,
+  SeedAAHash(const char* seq,
              const std::vector<std::string>& seeds,
              unsigned hash_num_per_seed,
              unsigned k,
@@ -200,7 +200,7 @@ public:
     , seeds(aa_parse_seeds(seeds))
   {
   }
-  seedAAHash(const std::string& seq,
+  SeedAAHash(const std::string& seq,
              const std::vector<std::string>& seeds,
              unsigned hash_num_per_seed,
              unsigned k,
@@ -212,7 +212,7 @@ public:
   {
   }
 
-  seedAAHash(const seedAAHash& seed_aahash)
+  SeedAAHash(const SeedAAHash& seed_aahash)
     : aahash(seed_aahash.aahash)
     , hash_num_per_seed(seed_aahash.hash_num_per_seed)
     , hashes_array(new uint64_t[hash_num_per_seed * seed_aahash.seeds.size()])
@@ -222,11 +222,11 @@ public:
                 seed_aahash.hashes_array.get(),
                 hash_num_per_seed * seeds.size() * sizeof(uint64_t));
   }
-  seedAAHash(seedAAHash&&) = default;
+  SeedAAHash(SeedAAHash&&) = default;
 
   /**
    * Calculate the hash values of current k-mer based on the seed(s) and advance
-   * to the next. seedAAHash advances one amino acid at a time until it finds a
+   * to the next. SeedAAHash advances one amino acid at a time until it finds a
    * k-mer with valid characters and skips over those with invalid characters.
    * This method must be called before hashes() is accessed, for
    * the first and every subsequent hashed kmer. get_pos() may be called at any
