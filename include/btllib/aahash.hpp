@@ -166,6 +166,9 @@ public:
    * Constructor.
    * @param seq String of DNA sequence to be hashed.
    * @param seeds Multi-level seeds to use for hashing.
+   * The seed(s) must be of the same length as k and supplied to the constructor
+   * in either a vector of unsigned or string.
+   * Valid levels in the seed(s) are 0, 1, 2, or 3.
    * @param hash_num_per_seed Number of hashes to produce per seed.
    * @param k K-mer size.
    * @param pos Position in seq to start hashing from.
