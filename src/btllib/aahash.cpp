@@ -93,6 +93,11 @@ SeedAAHash::verify_seed()
 void
 SeedAAHash::init()
 {
+  for (const auto& seed : seeds) {
+    if (seed.size() != aahash.k) {
+      throw std::runtime_error("Invalid seed. Seed length must be equal to k.");
+    }
+  }
   if (!verify_seed()) {
     throw std::runtime_error(
       "Invalid seed. Seed values must be 0, 1, 2, or 3.");
