@@ -173,6 +173,14 @@ int main()
   TEST_ASSERT_EQ(aahashlvl2W.hashes()[0], aahashlvl2F.hashes()[0]);
   TEST_ASSERT_EQ(aahashlvl2W.hashes()[0], aahashlvl2Y.hashes()[0]);
 
+  std::string seqCGATNDQVWHP = "CGATNDQVWHP";
+  std::string seqCGASNEKIFHP = "CGASNEKIFHP";
+  btllib::AAHash aahashlvl2CGATNDQVWHP(seqCGATNDQVWHP, 1, 11, 2);
+  btllib::AAHash aahashlvl2CGASNEKIFHP(seqCGASNEKIFHP, 1, 11, 2);
+  aahashlvl2CGATNDQVWHP.roll();
+  aahashlvl2CGASNEKIFHP.roll();
+  TEST_ASSERT_EQ(aahashlvl2CGATNDQVWHP.hashes()[0], aahashlvl2CGASNEKIFHP.hashes()[0]);
+
   PRINT_TEST_NAME("Level 3 equivalence")
   std::string seqA = "A";
   btllib::AAHash aahashlvl3T(seqT, 1, 1, 3);
@@ -219,6 +227,14 @@ int main()
   aahashlvl3Y.roll();
   TEST_ASSERT_EQ(aahashlvl3W.hashes()[0], aahashlvl3F.hashes()[0]);
   TEST_ASSERT_EQ(aahashlvl3W.hashes()[0], aahashlvl3Y.hashes()[0]);
+
+  std::string seqCGANQVWHP = "CGANQVWHP";
+  std::string seqCGTDKIFHP = "CGTDKIFHP";
+  btllib::AAHash aahashlvl3CGANQVWHP(seqCGANQVWHP, 1, 9, 3);
+  btllib::AAHash aahashlvl3CGTDKIFHP(seqCGTDKIFHP, 1, 9, 3);
+  aahashlvl3CGANQVWHP.roll();
+  aahashlvl3CGTDKIFHP.roll();
+  TEST_ASSERT_EQ(aahashlvl3CGANQVWHP.hashes()[0], aahashlvl3CGTDKIFHP.hashes()[0]);
 
   return 0;
 }
