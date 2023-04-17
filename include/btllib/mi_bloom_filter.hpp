@@ -275,6 +275,6 @@ private:
 
 } // namespace btllib
 
-#include "src/btllib/mi_bloom_filter.tpp"
+#include "mi_bloom_filter.tpp"
 
 #endif
