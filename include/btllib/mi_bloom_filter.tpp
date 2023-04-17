@@ -1,6 +1,6 @@
+#include "btllib/mi_bloom_filter.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/status.hpp"
-#include "btllib/mi_bloom_filter.hpp"
 
 #include "cpptoml.h"
 
@@ -398,4 +398,3 @@ MIBloomFilter<T>::calc_optimal_size(size_t entries,
   return non_64_approx_val + (magic - non_64_approx_val % magic);
 }
 } // namespace btllib
-
