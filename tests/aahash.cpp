@@ -8,19 +8,28 @@
 #include <string>
 #include <vector>
 
-int main()
+int
+main()
 {
   const std::string seq = "RITMLYTIRITMLYTI";
   const unsigned k = 8, h = 3;
   PRINT_TEST_NAME("Level 1 hashing")
   btllib::AAHash aahash(seq, h, k, 1);
+  std::vector<uint64_t> lvl1_hashes = {
+    4971716992320218996UL, 2124324262552088491UL, 8599050776293572050UL,
+    4162540294170059916UL, 4246229847304014199UL, 3577776033547863068UL,
+    7629354742360239848UL, 337326900406420216UL,  4971716992320218996UL
+  };
   unsigned num_kmers = seq.size() - k + 2;
   aahash.roll();
   --num_kmers;
   uint64_t first_hash = aahash.hashes()[0];
-  while (--num_kmers)
-  {
+  unsigned idx = 0;
+  TEST_ASSERT_EQ(aahash.hashes()[0], lvl1_hashes[idx]);
+  while (--num_kmers) {
     TEST_ASSERT(aahash.roll());
+    ++idx;
+    TEST_ASSERT_EQ(aahash.hashes()[0], lvl1_hashes[idx]);
   }
   TEST_ASSERT(!aahash.roll());
   uint64_t last_hash = aahash.hashes()[0];
@@ -28,13 +37,21 @@ int main()
 
   PRINT_TEST_NAME("Level 2 hashing")
   btllib::AAHash aahash2(seq, h, k, 2);
+  std::vector<uint64_t> lvl2_hashes = {
+    16984239531076160731UL, 2122538798213336131UL,  1181634448219258361UL,
+    18364025942200420499UL, 15509211063111791705UL, 9581438197916650957UL,
+    16088538885945095129UL, 6961954824987972818UL,  16984239531076160731UL
+  };
   num_kmers = seq.size() - k + 2;
   aahash2.roll();
   --num_kmers;
   first_hash = aahash2.hashes()[0];
-  while (--num_kmers)
-  {
+  idx = 0;
+  TEST_ASSERT_EQ(aahash2.hashes()[0], lvl2_hashes[idx]);
+  while (--num_kmers) {
     TEST_ASSERT(aahash2.roll());
+    ++idx;
+    TEST_ASSERT_EQ(aahash2.hashes()[0], lvl2_hashes[idx]);
   }
   TEST_ASSERT(!aahash2.roll());
   last_hash = aahash2.hashes()[0];
@@ -42,13 +59,21 @@ int main()
 
   PRINT_TEST_NAME("Level 3 hashing")
   btllib::AAHash aahash3(seq, h, k, 3);
+  std::vector<uint64_t> lvl3_hashes = {
+    14204475232333016996UL, 7411036844653579932UL,  4010182074210619839UL,
+    12162032840376646189UL, 12359534317481130205UL, 12474504577607761213UL,
+    12397957167802074209UL, 11500784329128563089UL, 14204475232333016996UL
+  };
   num_kmers = seq.size() - k + 2;
   aahash3.roll();
   --num_kmers;
+  idx = 0;
+  TEST_ASSERT_EQ(aahash3.hashes()[0], lvl3_hashes[idx]);
   first_hash = aahash3.hashes()[0];
-  while (--num_kmers)
-  {
+  while (--num_kmers) {
     TEST_ASSERT(aahash3.roll());
+    ++idx;
+    TEST_ASSERT_EQ(aahash3.hashes()[0], lvl3_hashes[idx]);
   }
   TEST_ASSERT(!aahash3.roll());
   last_hash = aahash3.hashes()[0];
@@ -61,23 +86,25 @@ int main()
   std::string string_seed3 = "2301";
   std::string string_seed4 = "3012";
 
-  std::vector<std::string> seeds = {string_seed1, string_seed2, string_seed3, string_seed4};
+  std::vector<std::string> seeds = {
+    string_seed1, string_seed2, string_seed3, string_seed4
+  };
 
-  btllib::SpacedSeed unsigned_seed1 = {0, 1, 2, 3};
-  btllib::SpacedSeed unsigned_seed2 = {1, 2, 3, 0};
-  btllib::SpacedSeed unsigned_seed3 = {2, 3, 0, 1};
-  btllib::SpacedSeed unsigned_seed4 = {3, 0, 1, 2};
+  btllib::SpacedSeed unsigned_seed1 = { 0, 1, 2, 3 };
+  btllib::SpacedSeed unsigned_seed2 = { 1, 2, 3, 0 };
+  btllib::SpacedSeed unsigned_seed3 = { 2, 3, 0, 1 };
+  btllib::SpacedSeed unsigned_seed4 = { 3, 0, 1, 2 };
 
-  std::vector<btllib::SpacedSeed> seeds_ss = {unsigned_seed1, unsigned_seed2, unsigned_seed3, unsigned_seed4};
+  std::vector<btllib::SpacedSeed> seeds_ss = {
+    unsigned_seed1, unsigned_seed2, unsigned_seed3, unsigned_seed4
+  };
 
   std::vector<btllib::SpacedSeed> parsed_seeds = btllib::aa_parse_seeds(seeds);
 
   TEST_ASSERT_EQ(parsed_seeds.size(), seeds_ss.size());
 
-  for (size_t i = 0; i < parsed_seeds.size(); ++i)
-  {
-    for (size_t j = 0; j < parsed_seeds[i].size(); ++j)
-    {
+  for (size_t i = 0; i < parsed_seeds.size(); ++i) {
+    for (size_t j = 0; j < parsed_seeds[i].size(); ++j) {
       TEST_ASSERT_EQ(parsed_seeds[i][j], seeds_ss[i][j]);
     }
   }
@@ -87,21 +114,22 @@ int main()
   std::string string_seed6 = "12300321";
   std::string string_seed7 = "23011032";
   std::string string_seed8 = "30122103";
-  std::vector<std::string> seeds2 = {string_seed5, string_seed6, string_seed7, string_seed8};
-  std::vector<btllib::SpacedSeed> parsed_seeds2 = btllib::aa_parse_seeds(seeds2);
+  std::vector<std::string> seeds2 = {
+    string_seed5, string_seed6, string_seed7, string_seed8
+  };
+  std::vector<btllib::SpacedSeed> parsed_seeds2 =
+    btllib::aa_parse_seeds(seeds2);
   btllib::SeedAAHash seedaahash(seq, parsed_seeds2, h, k);
   btllib::SeedAAHash seedaahash2(seq, parsed_seeds2, h, k);
   num_kmers = seq.size() - k + 2;
   seedaahash.roll();
   seedaahash2.roll();
   --num_kmers;
-  while (--num_kmers)
-  {
+  while (--num_kmers) {
     TEST_ASSERT(seedaahash.roll());
   }
   TEST_ASSERT(!seedaahash.roll());
-  for (size_t i = 0; i < seeds2.size() * h; ++i)
-  {
+  for (size_t i = 0; i < seeds2.size() * h; ++i) {
     TEST_ASSERT_EQ(seedaahash.hashes()[i], seedaahash2.hashes()[i]);
   }
   TEST_ASSERT_EQ(first_hash, last_hash)
@@ -115,8 +143,7 @@ int main()
   aahash5.roll();
   TEST_ASSERT_NE(aahash4.hashes()[0], aahash5.hashes()[0]);
   --num_kmers;
-  while (--num_kmers)
-  {
+  while (--num_kmers) {
     TEST_ASSERT_NE(aahash4.hashes()[0], aahash5.hashes()[0]);
   }
 
@@ -179,7 +206,8 @@ int main()
   btllib::AAHash aahashlvl2CGASNEKIFHP(seqCGASNEKIFHP, 1, 11, 2);
   aahashlvl2CGATNDQVWHP.roll();
   aahashlvl2CGASNEKIFHP.roll();
-  TEST_ASSERT_EQ(aahashlvl2CGATNDQVWHP.hashes()[0], aahashlvl2CGASNEKIFHP.hashes()[0]);
+  TEST_ASSERT_EQ(aahashlvl2CGATNDQVWHP.hashes()[0],
+                 aahashlvl2CGASNEKIFHP.hashes()[0]);
 
   PRINT_TEST_NAME("Level 3 equivalence")
   std::string seqA = "A";
@@ -234,7 +262,8 @@ int main()
   btllib::AAHash aahashlvl3CGTDKIFHP(seqCGTDKIFHP, 1, 9, 3);
   aahashlvl3CGANQVWHP.roll();
   aahashlvl3CGTDKIFHP.roll();
-  TEST_ASSERT_EQ(aahashlvl3CGANQVWHP.hashes()[0], aahashlvl3CGTDKIFHP.hashes()[0]);
+  TEST_ASSERT_EQ(aahashlvl3CGANQVWHP.hashes()[0],
+                 aahashlvl3CGTDKIFHP.hashes()[0]);
 
   return 0;
 }
