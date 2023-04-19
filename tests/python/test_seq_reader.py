@@ -31,6 +31,24 @@ class SeqReaderTests(unittest.TestCase):
                 self.assertEqual(record.qual, "")
                 i += 1
             self.assertEqual(i, 2)
+            
+    def test_multiline_fasta(self):
+        ids = ["asdf", "ghjk"]
+        seqs = ["ACTG", "TGCA"]
+       
+        for iteration in range(3):
+            reader = btllib.SeqReader(os.path.join(self.base_dir, "../input_multiline.fa"),
+                            btllib.SeqReaderFlag.SHORT_MODE)
+
+            self.assertEqual(reader.get_format(), btllib.SeqReader.SeqReaderFormat_FASTA)
+
+            i = 0
+            for record in reader:
+                self.assertEqual(record.id, ids[i])
+                self.assertEqual(record.seq, seqs[i])
+                i += 1
+
+            self.assertEqual(i, 2)
     
     def test_fastq(self):
         ids = ["asdf", "ghjk"]
