@@ -15,7 +15,7 @@ class SeqReaderTests(unittest.TestCase):
             read = [record.seq for record in reader]
         self.assertListEqual([seq], read)
         
-    def test_fasta(self):
+    def test_fasta_reader(self):
         ids = ["asdf", "ghjk"]
         seqs = ["ACTG", "TGCA"]
 
@@ -32,7 +32,7 @@ class SeqReaderTests(unittest.TestCase):
                 i += 1
             self.assertEqual(i, 2)
             
-    def test_multiline_fasta(self):
+    def test_multiline_fasta_reader(self):
         ids = ["asdf", "ghjk"]
         seqs = ["ACTG", "TGCA"]
        
@@ -50,7 +50,7 @@ class SeqReaderTests(unittest.TestCase):
 
             self.assertEqual(i, 2)
     
-    def test_fastq(self):
+    def test_fastq_reader(self):
         ids = ["asdf", "ghjk"]
         seqs = ["ACTG", "TGCA"]
         quals = ["!@^&", "(#&$"]
@@ -68,7 +68,7 @@ class SeqReaderTests(unittest.TestCase):
                 i += 1
             self.assertEqual(i, 2)
     
-    def test_multiline_fastq(self):
+    def test_multiline_fastq_reader(self):
         ids = ["asdf", "ghjk"]
         seqs = ["ACTG", "TGCA"]
         quals = ["!@^&", "(#&$"]
@@ -85,4 +85,22 @@ class SeqReaderTests(unittest.TestCase):
                 self.assertEqual(record.seq, seqs[i])
                 i += 1
 
+            self.assertEqual(i, 2)
+            
+    def test_SAM_reader(self):
+        ids = ["q1", "q2"]
+        seqs = ["ACTG", "TGCA"]
+        quals = ["!@^&", "(#&$"]
+
+        for iteration in range(3):
+            reader = btllib.SeqReader(os.path.join(self.base_dir, "../input.bam"),
+                                      btllib.SeqReaderFlag.SHORT_MODE)
+            self.assertEqual(reader.get_format(), btllib.SeqReader.SeqReaderFormat_SAM)
+
+            i = 0
+            for record in reader:
+                self.assertEqual(record.id, ids[i])
+                self.assertEqual(record.seq, seqs[i])
+                self.assertEqual(record.qual, quals[i])
+                i += 1
             self.assertEqual(i, 2)
