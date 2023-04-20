@@ -21,6 +21,10 @@ jobs:
       source activate btllib_CI
       conda install --yes -c conda-forge -c bioconda libcxx compilers clang llvm clang-format=14 clang-tools boost samtools coreutils xz lrzip meson ninja cmake openmp
     displayName: Install dependencies
+  
+  - script: |
+    samtools --version || echo "samtools not found"
+  displayName: 'Check samtools presence and version'
 
   - script: |
       source activate btllib_CI
