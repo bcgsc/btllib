@@ -237,7 +237,7 @@ class TestNtHash(unittest.TestCase):
             nthash.roll()
             self.assertEqual(nthash.get_pos(),index)
 
-def test_kmer_peeking(self):
+    def test_kmer_peeking(self):
         seq = "ACTGATCAG"
         h = 3
         k = 6
@@ -247,6 +247,7 @@ def test_kmer_peeking(self):
 
         steps = 3
         while steps:
+            nthash.peek()
             h_current = list(nthash.hashes())
             _ = nthash.peek(seq[nthash.get_pos() + k])
             h_peek_next = list(nthash.hashes())
