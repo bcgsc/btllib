@@ -106,7 +106,8 @@ jobs:
   - script: |
       source activate btllib_CI
       set -o errexit -o pipefail
-      samtools --version 2>/dev/stdout | head -n2
+      samtools --version 
+      echo "samtools"
       ./compile
       cd build && ninja test-wrappers
     displayName: 'Test wrappers'
