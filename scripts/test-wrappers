@@ -11,4 +11,4 @@ cd "${MESON_SOURCE_ROOT}"
 
 export PYTHONPATH="$(pwd)/install/lib/btllib/python"
 cd tests/python
-python -m unittest
+python -m unittest -vvv
