@@ -227,6 +227,16 @@ class TestNtHash(unittest.TestCase):
         for i in range(nthash.get_hash_num()):
             self.assertEqual(nthash.hashes()[i], nthash_subbed.hashes()[i])
 
+    def test_kmer_pos(self):
+        seq = "CCCTATTAGTACAGTAGTGCCTTCATCGGC"
+        h = 3
+        k = 6
+        nthash = btllib.NtHash(seq, h, k)
+        
+        for index in range(len(seq) - k):
+            nthash.roll()
+            self.assertEqual(nthash.get_pos(),index)
+
 def test_kmer_peeking(self):
         seq = "ACTGATCAG"
         h = 3
@@ -244,4 +254,3 @@ def test_kmer_peeking(self):
             nthash.roll()
             self.assertEqual(list(nthash.hashes()), h_current)
             steps -= 1
-                
