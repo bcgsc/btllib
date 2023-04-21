@@ -5,7 +5,7 @@ jobs:
 
 - job: linux
   pool:
-    vmImage: 'ubuntu-22.04'
+    vmImage: 'ubuntu-latest'
 
   steps:
   - checkout: self
