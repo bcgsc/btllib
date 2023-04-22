@@ -1,6 +1,4 @@
 import os
-import random
-import string
 import btllib
 import unittest
 
@@ -116,8 +114,8 @@ class MIBloomFilterTests(unittest.TestCase):
             expected_id_occurences = self.mi_bf_2.get_id_occurence_count(True)
             id_occurences_loaded = loaded_mi_bf.get_id_occurence_count(True)
             
-            for i in range(len(expected_id_occurences)):
-                self.assertEqual(id_occurences_loaded[i], expected_id_occurences[i])
+            for i, val in enumerate(expected_id_occurences):
+                self.assertEqual(id_occurences_loaded[i], val)
         finally:
             os.remove(file_path)
             os.remove(file_path+".sdsl")
@@ -128,7 +126,7 @@ class MIBloomFilterTests(unittest.TestCase):
         
         id_found = {i:False for i in self.id_array_3}
         
-        results =  self.mi_bf_3.get_id(self.test_hashes_3[0]);
+        results =  self.mi_bf_3.get_id(self.test_hashes_3[0])
         
         for res in results:
             self.assertTrue(res > self.mi_bf_3.MASK)

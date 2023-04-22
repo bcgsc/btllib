@@ -37,7 +37,7 @@ class SeqWriterTests(unittest.TestCase):
             reader_fasta.close()
             os.remove(random_filename)
             
-    def test_fasta(self):
+    def test_fastq(self):
         ids = [ "1", "2" ]
         comments = [ "comment1", "comment2" ]
         seqs = [ "ACTG", "TGCA" ]
@@ -47,16 +47,16 @@ class SeqWriterTests(unittest.TestCase):
         for iteration in range(3):
             random_filename = ''.join(random.choice(letters) for i in range(64))
 
-            writer_fasta = btllib.SeqWriter(random_filename, btllib.SeqWriter.FASTQ)
+            writer_fastq = btllib.SeqWriter(random_filename, btllib.SeqWriter.FASTQ)
             for i in range(2):
-                writer_fasta.write(ids[i], comments[i], seqs[i], quals[i])
-            writer_fasta.close()
+                writer_fastq.write(ids[i], comments[i], seqs[i], quals[i])
+            writer_fastq.close()
 
-            reader_fasta = btllib.SeqReader(random_filename, btllib.SeqReaderFlag.SHORT_MODE)
-            self.assertEqual(reader_fasta.get_format(), btllib.SeqReader.SeqReaderFormat_FASTQ)
+            reader_fastq = btllib.SeqReader(random_filename, btllib.SeqReaderFlag.SHORT_MODE)
+            self.assertEqual(reader_fastq.get_format(), btllib.SeqReader.SeqReaderFormat_FASTQ)
 
             i = 0
-            for record in reader_fasta:
+            for record in reader_fastq:
                 self.assertEqual(record.id, ids[i])
                 self.assertEqual(record.comment, comments[i])
                 self.assertEqual(record.seq, seqs[i])
@@ -65,5 +65,5 @@ class SeqWriterTests(unittest.TestCase):
                 i += 1
             self.assertEqual(i, 2)
 
-            reader_fasta.close()
+            reader_fastq.close()
             os.remove(random_filename)

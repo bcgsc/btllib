@@ -1,8 +1,6 @@
 import os
 import unittest
 import btllib
-import random
-import string
 
 class TestCountingBloomFilter8(unittest.TestCase):
 
