@@ -37,4 +37,17 @@ class TestCountingBloomFilter8(unittest.TestCase):
             self.assertEqual(loaded_cbf.contains(element), 2)
         finally:
             os.remove(file_path)
+    
+    def test_kmer_counting_bloom_filter(self): 
+        seq = "CACTATCGACGATCATTCGAGCATCAGCGACTG"
+        seq2 = "GTAGTACGATCAGCGACTATCGAGCTACGAGCA"
         
+        self.assertEqual(len(seq), len(seq2))
+       
+        kmer_cbf = btllib.KmerCountingBloomFilter8(1024 * 1024, 4, len(seq) // 2)
+        
+        kmer_cbf.insert(seq)
+        expected = len(seq) - len(seq) // 2 + 1
+        
+        self.assertEqual(kmer_cbf.contains(seq), expected)
+        self.assertLess(kmer_cbf.contains(seq2), 1)
