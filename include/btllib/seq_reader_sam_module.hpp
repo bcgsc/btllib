@@ -72,7 +72,8 @@ SeqReaderSamModule::read_buffer(ReaderType& reader, RecordType& record)
     log_info(version);
   }
   samtools_process =
-    std::unique_ptr<ProcessPipeline>(new ProcessPipeline("samtools fastq"));
+    std::unique_ptr<ProcessPipeline>( // NOLINT(modernize-make-unique)
+      new ProcessPipeline("samtools fastq"));
   loader_thread =
     std::unique_ptr<std::thread>(new std::thread([this, &reader]() {
       check_error(fwrite(reader.buffer.data.data() + reader.buffer.start,

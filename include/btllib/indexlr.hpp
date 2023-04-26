@@ -598,7 +598,8 @@ Indexlr::read()
 {
   if (ready_blocks_owners()[id % MAX_SIMULTANEOUS_INDEXLRS] != id) {
     ready_blocks_array()[id % MAX_SIMULTANEOUS_INDEXLRS] =
-      std::unique_ptr<decltype(output_queue)::Block>(
+      std::unique_ptr< // NOLINT(modernize-make-unique)
+        decltype(output_queue)::Block>(
         new decltype(output_queue)::Block(reader.get_block_size()));
     ready_blocks_owners()[id % MAX_SIMULTANEOUS_INDEXLRS] = id;
     ready_blocks_current()[id % MAX_SIMULTANEOUS_INDEXLRS] = 0;
