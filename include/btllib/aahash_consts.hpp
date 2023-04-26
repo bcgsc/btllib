@@ -16,29 +16,29 @@ namespace btllib {
                                           [(ROT) < 33 ? (ROT) : (ROT) % 33])
 
 // 64-bit random seeds corresponding to 20 amino acids
-static const uint64_t AA_SEED_A = 0xf56d6192468323df;
-static const uint64_t AA_SEED_C = 0x9b0b2fd724e1e1d2;
-static const uint64_t AA_SEED_D = 0xe8c583296b03c7af;
-static const uint64_t AA_SEED_E = 0x6d8186850ee2f67;
-static const uint64_t AA_SEED_F = 0x921e1da156b717ad;
-static const uint64_t AA_SEED_G = 0xa70dc450015e3ffe;
-static const uint64_t AA_SEED_H = 0x2242263a9d5638ff;
-static const uint64_t AA_SEED_I = 0x2469ca06d519cdef;
-static const uint64_t AA_SEED_K = 0xd4e7f06ac0593d3b;
-static const uint64_t AA_SEED_L = 0xa5e19c0b1b40a97f;
-static const uint64_t AA_SEED_M = 0xfab3d6d4dd74c000;
-static const uint64_t AA_SEED_N = 0x4b363f2cf7bc5200;
-static const uint64_t AA_SEED_P = 0x21ac8af2adb65ce4;
-static const uint64_t AA_SEED_Q = 0x1d3baae9ab7cd800;
-static const uint64_t AA_SEED_R = 0x49015253a9dbedf;
-static const uint64_t AA_SEED_S = 0x5bf1f1d7ae699000;
-static const uint64_t AA_SEED_T = 0xdb0c63dd7282cf90;
-static const uint64_t AA_SEED_V = 0x7df64ddf78874000;
-static const uint64_t AA_SEED_W = 0xee9e700cae6aa279;
-static const uint64_t AA_SEED_Y = 0x5852ffb781a97610;
-static const uint64_t AA_SEED__ = 0x0000000000000000; // NOLINT
+constexpr inline uint64_t AA_SEED_A = 0xf56d6192468323df;
+constexpr inline uint64_t AA_SEED_C = 0x9b0b2fd724e1e1d2;
+constexpr inline uint64_t AA_SEED_D = 0xe8c583296b03c7af;
+constexpr inline uint64_t AA_SEED_E = 0x6d8186850ee2f67;
+constexpr inline uint64_t AA_SEED_F = 0x921e1da156b717ad;
+constexpr inline uint64_t AA_SEED_G = 0xa70dc450015e3ffe;
+constexpr inline uint64_t AA_SEED_H = 0x2242263a9d5638ff;
+constexpr inline uint64_t AA_SEED_I = 0x2469ca06d519cdef;
+constexpr inline uint64_t AA_SEED_K = 0xd4e7f06ac0593d3b;
+constexpr inline uint64_t AA_SEED_L = 0xa5e19c0b1b40a97f;
+constexpr inline uint64_t AA_SEED_M = 0xfab3d6d4dd74c000;
+constexpr inline uint64_t AA_SEED_N = 0x4b363f2cf7bc5200;
+constexpr inline uint64_t AA_SEED_P = 0x21ac8af2adb65ce4;
+constexpr inline uint64_t AA_SEED_Q = 0x1d3baae9ab7cd800;
+constexpr inline uint64_t AA_SEED_R = 0x49015253a9dbedf;
+constexpr inline uint64_t AA_SEED_S = 0x5bf1f1d7ae699000;
+constexpr inline uint64_t AA_SEED_T = 0xdb0c63dd7282cf90;
+constexpr inline uint64_t AA_SEED_V = 0x7df64ddf78874000;
+constexpr inline uint64_t AA_SEED_W = 0xee9e700cae6aa279;
+constexpr inline uint64_t AA_SEED_Y = 0x5852ffb781a97610;
+constexpr inline uint64_t AA_SEED__ = 0x0000000000000000; // NOLINT
 
-static const uint64_t AA_SEED_TABLE[ASCII_SIZE] = {
+constexpr inline uint64_t AA_SEED_TABLE[ASCII_SIZE] = {
   AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__,
   AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, // 0..7
   AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__,
@@ -105,7 +105,7 @@ static const uint64_t AA_SEED_TABLE[ASCII_SIZE] = {
   AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__ // 248..255
 };
 
-static const uint64_t AA_SEED_A_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_A_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x468323df,  0x8d0647be,  0x11a0c8f7c, 0x34191ef9,  0x68323df2,  0xd0647be4,
   0x1a0c8f7c8, 0x14191ef91, 0x8323df23,  0x10647be46, 0xc8f7c8d,   0x191ef91a,
   0x323df234,  0x647be468,  0xc8f7c8d0,  0x191ef91a0, 0x123df2341, 0x47be4683,
@@ -113,7 +113,7 @@ static const uint64_t AA_SEED_A_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x1df234191, 0x1be468323, 0x17c8d0647, 0xf91a0c8f,  0x1f234191e, 0x1e468323d,
   0x1c8d0647b, 0x191a0c8f7, 0x1234191ef
 };
-static const uint64_t AA_SEED_A_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_A_LEFT_31BITS_ROLL_TABLE[31] = {
   0xf56d619200000000, 0xeadac32600000000, 0xd5b5864e00000000,
   0xab6b0c9e00000000, 0x56d6193e00000000, 0xadac327c00000000,
   0x5b5864fa00000000, 0xb6b0c9f400000000, 0x6d6193ea00000000,
@@ -126,7 +126,7 @@ static const uint64_t AA_SEED_A_LEFT_31BITS_ROLL_TABLE[31] = {
   0x9f56d61800000000, 0x3eadac3200000000, 0x7d5b586400000000,
   0xfab6b0c800000000
 };
-static const uint64_t AA_SEED_C_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_C_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x124e1e1d2, 0x49c3c3a5,  0x9387874a,  0x1270f0e94, 0x4e1e1d29,  0x9c3c3a52,
   0x1387874a4, 0x70f0e949,  0xe1e1d292,  0x1c3c3a524, 0x187874a49, 0x10f0e9493,
   0x1e1d2927,  0x3c3a524e,  0x7874a49c,  0xf0e94938,  0x1e1d29270, 0x1c3a524e1,
@@ -134,7 +134,7 @@ static const uint64_t AA_SEED_C_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x1d29270f0, 0x1a524e1e1, 0x14a49c3c3, 0x94938787,  0x129270f0e, 0x524e1e1d,
   0xa49c3c3a,  0x149387874, 0x9270f0e9
 };
-static const uint64_t AA_SEED_C_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_C_LEFT_31BITS_ROLL_TABLE[31] = {
   0x9b0b2fd600000000, 0x36165fae00000000, 0x6c2cbf5c00000000,
   0xd8597eb800000000, 0xb0b2fd7200000000, 0x6165fae600000000,
   0xc2cbf5cc00000000, 0x8597eb9a00000000, 0xb2fd73600000000,
@@ -147,7 +147,7 @@ static const uint64_t AA_SEED_C_LEFT_31BITS_ROLL_TABLE[31] = {
   0xb9b0b2fc00000000, 0x736165fa00000000, 0xe6c2cbf400000000,
   0xcd8597ea00000000
 };
-static const uint64_t AA_SEED_D_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_D_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x16b03c7af, 0xd6078f5f,  0x1ac0f1ebe, 0x1581e3d7d, 0xb03c7afb,  0x16078f5f6,
   0xc0f1ebed,  0x181e3d7da, 0x103c7afb5, 0x78f5f6b,   0xf1ebed6,   0x1e3d7dac,
   0x3c7afb58,  0x78f5f6b0,  0xf1ebed60,  0x1e3d7dac0, 0x1c7afb581, 0x18f5f6b03,
@@ -155,7 +155,7 @@ static const uint64_t AA_SEED_D_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x1afb581e3, 0x15f6b03c7, 0xbed6078f,  0x17dac0f1e, 0xfb581e3d,  0x1f6b03c7a,
   0x1ed6078f5, 0x1dac0f1eb, 0x1b581e3d7
 };
-static const uint64_t AA_SEED_D_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_D_LEFT_31BITS_ROLL_TABLE[31] = {
   0xe8c5832800000000, 0xd18b065200000000, 0xa3160ca600000000,
   0x462c194e00000000, 0x8c58329c00000000, 0x18b0653a00000000,
   0x3160ca7400000000, 0x62c194e800000000, 0xc58329d000000000,
@@ -168,7 +168,7 @@ static const uint64_t AA_SEED_D_LEFT_31BITS_ROLL_TABLE[31] = {
   0x4e8c583200000000, 0x9d18b06400000000, 0x3a3160ca00000000,
   0x7462c19400000000
 };
-static const uint64_t AA_SEED_E_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_E_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x50ee2f67,  0xa1dc5ece,  0x143b8bd9c, 0x87717b39,  0x10ee2f672, 0x1dc5ece5,
   0x3b8bd9ca,  0x7717b394,  0xee2f6728,  0x1dc5ece50, 0x1b8bd9ca1, 0x1717b3943,
   0xe2f67287,  0x1c5ece50e, 0x18bd9ca1d, 0x117b3943b, 0x2f672877,  0x5ece50ee,
@@ -176,7 +176,7 @@ static const uint64_t AA_SEED_E_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x167287717, 0xce50ee2f,  0x19ca1dc5e, 0x13943b8bd, 0x7287717b,  0xe50ee2f6,
   0x1ca1dc5ec, 0x1943b8bd9, 0x1287717b3
 };
-static const uint64_t AA_SEED_E_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_E_LEFT_31BITS_ROLL_TABLE[31] = {
   0x6d8186800000000,  0xdb030d000000000,  0x1b6061a000000000,
   0x36c0c34000000000, 0x6d81868000000000, 0xdb030d0000000000,
   0xb6061a0200000000, 0x6c0c340600000000, 0xd818680c00000000,
@@ -189,7 +189,7 @@ static const uint64_t AA_SEED_E_LEFT_31BITS_ROLL_TABLE[31] = {
   0x406d818600000000, 0x80db030c00000000, 0x1b6061a00000000,
   0x36c0c3400000000
 };
-static const uint64_t AA_SEED_F_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_F_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x156b717ad, 0xad6e2f5b,  0x15adc5eb6, 0xb5b8bd6d,  0x16b717ada, 0xd6e2f5b5,
   0x1adc5eb6a, 0x15b8bd6d5, 0xb717adab,  0x16e2f5b56, 0xdc5eb6ad,  0x1b8bd6d5a,
   0x1717adab5, 0xe2f5b56b,  0x1c5eb6ad6, 0x18bd6d5ad, 0x117adab5b, 0x2f5b56b7,
@@ -197,7 +197,7 @@ static const uint64_t AA_SEED_F_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x1adab5b8b, 0x15b56b717, 0xb6ad6e2f,  0x16d5adc5e, 0xdab5b8bd,  0x1b56b717a,
   0x16ad6e2f5, 0xd5adc5eb,  0x1ab5b8bd6
 };
-static const uint64_t AA_SEED_F_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_F_LEFT_31BITS_ROLL_TABLE[31] = {
   0x921e1da000000000, 0x243c3b4200000000, 0x4878768400000000,
   0x90f0ed0800000000, 0x21e1da1200000000, 0x43c3b42400000000,
   0x8787684800000000, 0xf0ed09200000000,  0x1e1da12400000000,
@@ -210,7 +210,7 @@ static const uint64_t AA_SEED_F_LEFT_31BITS_ROLL_TABLE[31] = {
   0x921e1da00000000,  0x1243c3b400000000, 0x2487876800000000,
   0x490f0ed000000000
 };
-static const uint64_t AA_SEED_G_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_G_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x15e3ffe,   0x2bc7ffc,   0x578fff8,   0xaf1fff0,   0x15e3ffe0,  0x2bc7ffc0,
   0x578fff80,  0xaf1fff00,  0x15e3ffe00, 0xbc7ffc01,  0x178fff802, 0xf1fff005,
   0x1e3ffe00a, 0x1c7ffc015, 0x18fff802b, 0x11fff0057, 0x3ffe00af,  0x7ffc015e,
@@ -218,7 +218,7 @@ static const uint64_t AA_SEED_G_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x1fe00af1f, 0x1fc015e3f, 0x1f802bc7f, 0x1f00578ff, 0x1e00af1ff, 0x1c015e3ff,
   0x1802bc7ff, 0x100578fff, 0xaf1fff
 };
-static const uint64_t AA_SEED_G_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_G_LEFT_31BITS_ROLL_TABLE[31] = {
   0xa70dc45000000000, 0x4e1b88a200000000, 0x9c37114400000000,
   0x386e228a00000000, 0x70dc451400000000, 0xe1b88a2800000000,
   0xc371145200000000, 0x86e228a600000000, 0xdc4514e00000000,
@@ -231,7 +231,7 @@ static const uint64_t AA_SEED_G_LEFT_31BITS_ROLL_TABLE[31] = {
   0x8a70dc4400000000, 0x14e1b88a00000000, 0x29c3711400000000,
   0x5386e22800000000
 };
-static const uint64_t AA_SEED_H_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_H_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x9d5638ff,  0x13aac71fe, 0x7558e3fd,  0xeab1c7fa,  0x1d5638ff4, 0x1aac71fe9,
   0x1558e3fd3, 0xab1c7fa7,  0x15638ff4e, 0xac71fe9d,  0x158e3fd3a, 0xb1c7fa75,
   0x1638ff4ea, 0xc71fe9d5,  0x18e3fd3aa, 0x11c7fa755, 0x38ff4eab,  0x71fe9d56,
@@ -239,7 +239,7 @@ static const uint64_t AA_SEED_H_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xff4eab1c,  0x1fe9d5638, 0x1fd3aac71, 0x1fa7558e3, 0x1f4eab1c7, 0x1e9d5638f,
   0x1d3aac71f, 0x1a7558e3f, 0x14eab1c7f
 };
-static const uint64_t AA_SEED_H_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_H_LEFT_31BITS_ROLL_TABLE[31] = {
   0x2242263a00000000, 0x44844c7400000000, 0x890898e800000000,
   0x121131d200000000, 0x242263a400000000, 0x4844c74800000000,
   0x90898e9000000000, 0x21131d2200000000, 0x42263a4400000000,
@@ -252,7 +252,7 @@ static const uint64_t AA_SEED_H_LEFT_31BITS_ROLL_TABLE[31] = {
   0xd224226200000000, 0xa44844c600000000, 0x4890898e00000000,
   0x9121131c00000000
 };
-static const uint64_t AA_SEED_I_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_I_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xd519cdef,  0x1aa339bde, 0x1546737bd, 0xa8ce6f7b,  0x1519cdef6, 0xa339bded,
   0x146737bda, 0x8ce6f7b5,  0x119cdef6a, 0x339bded5,  0x6737bdaa,  0xce6f7b54,
   0x19cdef6a8, 0x139bded51, 0x737bdaa3,  0xe6f7b546,  0x1cdef6a8c, 0x19bded519,
@@ -260,7 +260,7 @@ static const uint64_t AA_SEED_I_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x1ef6a8ce6, 0x1ded519cd, 0x1bdaa339b, 0x17b546737, 0xf6a8ce6f,  0x1ed519cde,
   0x1daa339bd, 0x1b546737b, 0x16a8ce6f7
 };
-static const uint64_t AA_SEED_I_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_I_LEFT_31BITS_ROLL_TABLE[31] = {
   0x2469ca0600000000, 0x48d3940c00000000, 0x91a7281800000000,
   0x234e503200000000, 0x469ca06400000000, 0x8d3940c800000000,
   0x1a72819200000000, 0x34e5032400000000, 0x69ca064800000000,
@@ -273,7 +273,7 @@ static const uint64_t AA_SEED_I_LEFT_31BITS_ROLL_TABLE[31] = {
   0x32469ca000000000, 0x648d394000000000, 0xc91a728000000000,
   0x9234e50200000000
 };
-static const uint64_t AA_SEED_K_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_K_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xc0593d3b,  0x180b27a76, 0x10164f4ed, 0x2c9e9db,   0x593d3b6,   0xb27a76c,
   0x164f4ed8,  0x2c9e9db0,  0x593d3b60,  0xb27a76c0,  0x164f4ed80, 0xc9e9db01,
   0x193d3b602, 0x127a76c05, 0x4f4ed80b,  0x9e9db016,  0x13d3b602c, 0x7a76c059,
@@ -281,7 +281,7 @@ static const uint64_t AA_SEED_K_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x13b602c9e, 0x76c0593d,  0xed80b27a,  0x1db0164f4, 0x1b602c9e9, 0x16c0593d3,
   0xd80b27a7,  0x1b0164f4e, 0x1602c9e9d
 };
-static const uint64_t AA_SEED_K_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_K_LEFT_31BITS_ROLL_TABLE[31] = {
   0xd4e7f06a00000000, 0xa9cfe0d600000000, 0x539fc1ae00000000,
   0xa73f835c00000000, 0x4e7f06ba00000000, 0x9cfe0d7400000000,
   0x39fc1aea00000000, 0x73f835d400000000, 0xe7f06ba800000000,
@@ -294,7 +294,7 @@ static const uint64_t AA_SEED_K_LEFT_31BITS_ROLL_TABLE[31] = {
   0x5d4e7f0600000000, 0xba9cfe0c00000000, 0x7539fc1a00000000,
   0xea73f83400000000
 };
-static const uint64_t AA_SEED_L_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_L_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x11b40a97f, 0x368152ff,  0x6d02a5fe,  0xda054bfc,  0x1b40a97f8, 0x168152ff1,
   0xd02a5fe3,  0x1a054bfc6, 0x140a97f8d, 0x8152ff1b,  0x102a5fe36, 0x54bfc6d,
   0xa97f8da,   0x152ff1b4,  0x2a5fe368,  0x54bfc6d0,  0xa97f8da0,  0x152ff1b40,
@@ -302,7 +302,7 @@ static const uint64_t AA_SEED_L_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x17f8da054, 0xff1b40a9,  0x1fe368152, 0x1fc6d02a5, 0x1f8da054b, 0x1f1b40a97,
   0x1e368152f, 0x1c6d02a5f, 0x18da054bf
 };
-static const uint64_t AA_SEED_L_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_L_LEFT_31BITS_ROLL_TABLE[31] = {
   0xa5e19c0a00000000, 0x4bc3381600000000, 0x9786702c00000000,
   0x2f0ce05a00000000, 0x5e19c0b400000000, 0xbc33816800000000,
   0x786702d200000000, 0xf0ce05a400000000, 0xe19c0b4a00000000,
@@ -315,7 +315,7 @@ static const uint64_t AA_SEED_L_LEFT_31BITS_ROLL_TABLE[31] = {
   0x5a5e19c000000000, 0xb4bc338000000000, 0x6978670200000000,
   0xd2f0ce0400000000
 };
-static const uint64_t AA_SEED_M_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_M_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xdd74c000,  0x1bae98000, 0x175d30001, 0xeba60003, 0x1d74c0006, 0x1ae98000d,
   0x15d30001b, 0xba600037,  0x174c0006e, 0xe98000dd, 0x1d30001ba, 0x1a6000375,
   0x14c0006eb, 0x98000dd7,  0x130001bae, 0x6000375d, 0xc0006eba,  0x18000dd74,
@@ -323,7 +323,7 @@ static const uint64_t AA_SEED_M_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x6eba60,    0xdd74c0,    0x1bae980,   0x375d300,  0x6eba600,   0xdd74c00,
   0x1bae9800,  0x375d3000,  0x6eba6000
 };
-static const uint64_t AA_SEED_M_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_M_LEFT_31BITS_ROLL_TABLE[31] = {
   0xfab3d6d400000000, 0xf567adaa00000000, 0xeacf5b5600000000,
   0xd59eb6ae00000000, 0xab3d6d5e00000000, 0x567adabe00000000,
   0xacf5b57c00000000, 0x59eb6afa00000000, 0xb3d6d5f400000000,
@@ -336,7 +336,7 @@ static const uint64_t AA_SEED_M_LEFT_31BITS_ROLL_TABLE[31] = {
   0xafab3d6c00000000, 0x5f567ada00000000, 0xbeacf5b400000000,
   0x7d59eb6a00000000
 };
-static const uint64_t AA_SEED_N_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_N_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xf7bc5200,  0x1ef78a400, 0x1def14801, 0x1bde29003, 0x17bc52007, 0xf78a400f,
   0x1ef14801e, 0x1de29003d, 0x1bc52007b, 0x178a400f7, 0xf14801ef,  0x1e29003de,
   0x1c52007bd, 0x18a400f7b, 0x114801ef7, 0x29003def,  0x52007bde,  0xa400f7bc,
@@ -344,7 +344,7 @@ static const uint64_t AA_SEED_N_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x7bde29,    0xf7bc52,    0x1ef78a4,   0x3def148,   0x7bde290,   0xf7bc520,
   0x1ef78a40,  0x3def1480,  0x7bde2900
 };
-static const uint64_t AA_SEED_N_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_N_LEFT_31BITS_ROLL_TABLE[31] = {
   0x4b363f2c00000000, 0x966c7e5800000000, 0x2cd8fcb200000000,
   0x59b1f96400000000, 0xb363f2c800000000, 0x66c7e59200000000,
   0xcd8fcb2400000000, 0x9b1f964a00000000, 0x363f2c9600000000,
@@ -357,7 +357,7 @@ static const uint64_t AA_SEED_N_LEFT_31BITS_ROLL_TABLE[31] = {
   0x64b363f200000000, 0xc966c7e400000000, 0x92cd8fca00000000,
   0x259b1f9600000000
 };
-static const uint64_t AA_SEED_P_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_P_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xadb65ce4,  0x15b6cb9c8, 0xb6d97391,  0x16db2e722, 0xdb65ce45,  0x1b6cb9c8a,
   0x16d973915, 0xdb2e722b,  0x1b65ce456, 0x16cb9c8ad, 0xd973915b,  0x1b2e722b6,
   0x165ce456d, 0xcb9c8adb,  0x1973915b6, 0x12e722b6d, 0x5ce456db,  0xb9c8adb6,
@@ -365,7 +365,7 @@ static const uint64_t AA_SEED_P_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xe456db2e,  0x1c8adb65c, 0x1915b6cb9, 0x122b6d973, 0x456db2e7,  0x8adb65ce,
   0x115b6cb9c, 0x2b6d9739,  0x56db2e72
 };
-static const uint64_t AA_SEED_P_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_P_LEFT_31BITS_ROLL_TABLE[31] = {
   0x21ac8af200000000, 0x435915e400000000, 0x86b22bc800000000,
   0xd64579200000000,  0x1ac8af2400000000, 0x35915e4800000000,
   0x6b22bc9000000000, 0xd645792000000000, 0xac8af24200000000,
@@ -378,7 +378,7 @@ static const uint64_t AA_SEED_P_LEFT_31BITS_ROLL_TABLE[31] = {
   0x921ac8ae00000000, 0x2435915e00000000, 0x486b22bc00000000,
   0x90d6457800000000
 };
-static const uint64_t AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x1ab7cd800, 0x156f9b001, 0xadf36003,  0x15be6c006, 0xb7cd800d,  0x16f9b001a,
   0xdf360035,  0x1be6c006a, 0x17cd800d5, 0xf9b001ab,  0x1f3600356, 0x1e6c006ad,
   0x1cd800d5b, 0x19b001ab7, 0x13600356f, 0x6c006adf,  0xd800d5be,  0x1b001ab7c,
@@ -386,7 +386,7 @@ static const uint64_t AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xd5be6c,    0x1ab7cd8,   0x356f9b0,   0x6adf360,   0xd5be6c0,   0x1ab7cd80,
   0x356f9b00,  0x6adf3600,  0xd5be6c00
 };
-static const uint64_t AA_SEED_Q_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_Q_LEFT_31BITS_ROLL_TABLE[31] = {
   0x1d3baae800000000, 0x3a7755d000000000, 0x74eeaba000000000,
   0xe9dd574000000000, 0xd3baae8200000000, 0xa7755d0600000000,
   0x4eeaba0e00000000, 0x9dd5741c00000000, 0x3baae83a00000000,
@@ -399,7 +399,7 @@ static const uint64_t AA_SEED_Q_LEFT_31BITS_ROLL_TABLE[31] = {
   0x41d3baae00000000, 0x83a7755c00000000, 0x74eeaba00000000,
   0xe9dd57400000000
 };
-static const uint64_t AA_SEED_R_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_R_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x13a9dbedf, 0x753b7dbf,  0xea76fb7e,  0x1d4edf6fc, 0x1a9dbedf9, 0x153b7dbf3,
   0xa76fb7e7,  0x14edf6fce, 0x9dbedf9d,  0x13b7dbf3a, 0x76fb7e75,  0xedf6fcea,
   0x1dbedf9d4, 0x1b7dbf3a9, 0x16fb7e753, 0xdf6fcea7,  0x1bedf9d4e, 0x17dbf3a9d,
@@ -407,7 +407,7 @@ static const uint64_t AA_SEED_R_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xdf9d4edf,  0x1bf3a9dbe, 0x17e753b7d, 0xfcea76fb,  0x1f9d4edf6, 0x1f3a9dbed,
   0x1e753b7db, 0x1cea76fb7, 0x19d4edf6f
 };
-static const uint64_t AA_SEED_R_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_R_LEFT_31BITS_ROLL_TABLE[31] = {
   0x490152400000000,  0x9202a4800000000,  0x1240549000000000,
   0x2480a92000000000, 0x4901524000000000, 0x9202a48000000000,
   0x2405490200000000, 0x480a920400000000, 0x9015240800000000,
@@ -420,7 +420,7 @@ static const uint64_t AA_SEED_R_LEFT_31BITS_ROLL_TABLE[31] = {
   0x2049015200000000, 0x409202a400000000, 0x8124054800000000,
   0x2480a9200000000
 };
-static const uint64_t AA_SEED_S_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_S_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x1ae699000, 0x15cd32001, 0xb9a64003,  0x1734c8006, 0xe699000d,  0x1cd32001a,
   0x19a640035, 0x134c8006b, 0x699000d7,  0xd32001ae,  0x1a640035c, 0x14c8006b9,
   0x99000d73,  0x132001ae6, 0x640035cd,  0xc8006b9a,  0x19000d734, 0x12001ae69,
@@ -428,7 +428,7 @@ static const uint64_t AA_SEED_S_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xd734c8,    0x1ae6990,   0x35cd320,   0x6b9a640,   0xd734c80,   0x1ae69900,
   0x35cd3200,  0x6b9a6400,  0xd734c800
 };
-static const uint64_t AA_SEED_S_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_S_LEFT_31BITS_ROLL_TABLE[31] = {
   0x5bf1f1d600000000, 0xb7e3e3ac00000000, 0x6fc7c75a00000000,
   0xdf8f8eb400000000, 0xbf1f1d6a00000000, 0x7e3e3ad600000000,
   0xfc7c75ac00000000, 0xf8f8eb5a00000000, 0xf1f1d6b600000000,
@@ -441,7 +441,7 @@ static const uint64_t AA_SEED_S_LEFT_31BITS_ROLL_TABLE[31] = {
   0xb5bf1f1c00000000, 0x6b7e3e3a00000000, 0xd6fc7c7400000000,
   0xadf8f8ea00000000
 };
-static const uint64_t AA_SEED_T_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_T_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x17282cf90, 0xe5059f21,  0x1ca0b3e42, 0x194167c85, 0x1282cf90b, 0x5059f217,
   0xa0b3e42e,  0x14167c85c, 0x82cf90b9,  0x1059f2172, 0xb3e42e5,   0x167c85ca,
   0x2cf90b94,  0x59f21728,  0xb3e42e50,  0x167c85ca0, 0xcf90b941,  0x19f217282,
@@ -449,7 +449,7 @@ static const uint64_t AA_SEED_T_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x190b94167, 0x1217282cf, 0x42e5059f,  0x85ca0b3e,  0x10b94167c, 0x17282cf9,
   0x2e5059f2,  0x5ca0b3e4,  0xb94167c8
 };
-static const uint64_t AA_SEED_T_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_T_LEFT_31BITS_ROLL_TABLE[31] = {
   0xdb0c63dc00000000, 0xb618c7ba00000000, 0x6c318f7600000000,
   0xd8631eec00000000, 0xb0c63dda00000000, 0x618c7bb600000000,
   0xc318f76c00000000, 0x8631eeda00000000, 0xc63ddb600000000,
@@ -462,7 +462,7 @@ static const uint64_t AA_SEED_T_LEFT_31BITS_ROLL_TABLE[31] = {
   0xedb0c63c00000000, 0xdb618c7a00000000, 0xb6c318f600000000,
   0x6d8631ee00000000
 };
-static const uint64_t AA_SEED_V_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_V_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x178874000, 0xf10e8001, 0x1e21d0002, 0x1c43a0005, 0x18874000b, 0x110e80017,
   0x21d0002f,  0x43a0005e, 0x874000bc,  0x10e800178, 0x1d0002f1,  0x3a0005e2,
   0x74000bc4,  0xe8001788, 0x1d0002f10, 0x1a0005e21, 0x14000bc43, 0x80017887,
@@ -470,7 +470,7 @@ static const uint64_t AA_SEED_V_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xbc43a0,    0x1788740,  0x2f10e80,   0x5e21d00,   0xbc43a00,   0x17887400,
   0x2f10e800,  0x5e21d000, 0xbc43a000
 };
-static const uint64_t AA_SEED_V_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_V_LEFT_31BITS_ROLL_TABLE[31] = {
   0x7df64dde00000000, 0xfbec9bbc00000000, 0xf7d9377a00000000,
   0xefb26ef600000000, 0xdf64ddee00000000, 0xbec9bbde00000000,
   0x7d9377be00000000, 0xfb26ef7c00000000, 0xf64ddefa00000000,
@@ -483,7 +483,7 @@ static const uint64_t AA_SEED_V_LEFT_31BITS_ROLL_TABLE[31] = {
   0xf7df64dc00000000, 0xefbec9ba00000000, 0xdf7d937600000000,
   0xbefb26ee00000000
 };
-static const uint64_t AA_SEED_W_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_W_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xae6aa279,  0x15cd544f2, 0xb9aa89e5,  0x1735513ca, 0xe6aa2795,  0x1cd544f2a,
   0x19aa89e55, 0x135513cab, 0x6aa27957,  0xd544f2ae,  0x1aa89e55c, 0x15513cab9,
   0xaa279573,  0x1544f2ae6, 0xa89e55cd,  0x1513cab9a, 0xa2795735,  0x144f2ae6a,
@@ -491,7 +491,7 @@ static const uint64_t AA_SEED_W_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x79573551,  0xf2ae6aa2,  0x1e55cd544, 0x1cab9aa89, 0x195735513, 0x12ae6aa27,
   0x55cd544f,  0xab9aa89e,  0x15735513c
 };
-static const uint64_t AA_SEED_W_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_W_LEFT_31BITS_ROLL_TABLE[31] = {
   0xee9e700c00000000, 0xdd3ce01a00000000, 0xba79c03600000000,
   0x74f3806e00000000, 0xe9e700dc00000000, 0xd3ce01ba00000000,
   0xa79c037600000000, 0x4f3806ee00000000, 0x9e700ddc00000000,
@@ -504,7 +504,7 @@ static const uint64_t AA_SEED_W_LEFT_31BITS_ROLL_TABLE[31] = {
   0x6ee9e70000000000, 0xddd3ce0000000000, 0xbba79c0200000000,
   0x774f380600000000
 };
-static const uint64_t AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x181a97610, 0x10352ec21, 0x6a5d843,   0xd4bb086,   0x1a97610c,  0x352ec218,
   0x6a5d8430,  0xd4bb0860,  0x1a97610c0, 0x152ec2181, 0xa5d84303,  0x14bb08606,
   0x97610c0d,  0x12ec2181a, 0x5d843035,  0xbb08606a,  0x17610c0d4, 0xec2181a9,
@@ -512,7 +512,7 @@ static const uint64_t AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x10c0d4bb,  0x2181a976,  0x430352ec,  0x8606a5d8,  0x10c0d4bb0, 0x181a9761,
   0x30352ec2,  0x606a5d84,  0xc0d4bb08
 };
-static const uint64_t AA_SEED_Y_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t AA_SEED_Y_LEFT_31BITS_ROLL_TABLE[31] = {
   0x5852ffb600000000, 0xb0a5ff6c00000000, 0x614bfeda00000000,
   0xc297fdb400000000, 0x852ffb6a00000000, 0xa5ff6d600000000,
   0x14bfedac00000000, 0x297fdb5800000000, 0x52ffb6b000000000,
@@ -525,14 +525,14 @@ static const uint64_t AA_SEED_Y_LEFT_31BITS_ROLL_TABLE[31] = {
   0xb5852ffa00000000, 0x6b0a5ff600000000, 0xd614bfec00000000,
   0xac297fda00000000
 };
-static const uint64_t AA_SEED___RIGHT_33BITS_ROLL_TABLE[33]{ // NOLINT
+constexpr inline uint64_t AA_SEED___RIGHT_33BITS_ROLL_TABLE[33]{ // NOLINT
   AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__,
   AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__,
   AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__,
   AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__,
   AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__
 };
-static const uint64_t AA_SEED___LEFT_31BITS_ROLL_TABLE[31]{ // NOLINT
+constexpr inline uint64_t AA_SEED___LEFT_31BITS_ROLL_TABLE[31]{ // NOLINT
   AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__,
   AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__,
   AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__, AA_SEED__,
@@ -540,7 +540,7 @@ static const uint64_t AA_SEED___LEFT_31BITS_ROLL_TABLE[31]{ // NOLINT
   AA_SEED__, AA_SEED__, AA_SEED__
 };
 
-static const uint64_t* AA_SEED_RIGHT_33BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
+constexpr inline const uint64_t* AA_SEED_RIGHT_33BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
   AA_SEED___RIGHT_33BITS_ROLL_TABLE, AA_SEED___RIGHT_33BITS_ROLL_TABLE,
   AA_SEED___RIGHT_33BITS_ROLL_TABLE, AA_SEED___RIGHT_33BITS_ROLL_TABLE,
   AA_SEED___RIGHT_33BITS_ROLL_TABLE, AA_SEED___RIGHT_33BITS_ROLL_TABLE,
@@ -703,7 +703,7 @@ static const uint64_t* AA_SEED_RIGHT_33BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
   AA_SEED___RIGHT_33BITS_ROLL_TABLE // 248..255
 };
 
-static const uint64_t* AA_SEED_LEFT_31BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
+constexpr inline const uint64_t* AA_SEED_LEFT_31BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
   AA_SEED___LEFT_31BITS_ROLL_TABLE, AA_SEED___LEFT_31BITS_ROLL_TABLE,
   AA_SEED___LEFT_31BITS_ROLL_TABLE, AA_SEED___LEFT_31BITS_ROLL_TABLE,
   AA_SEED___LEFT_31BITS_ROLL_TABLE, AA_SEED___LEFT_31BITS_ROLL_TABLE,
@@ -866,20 +866,20 @@ static const uint64_t* AA_SEED_LEFT_31BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
   AA_SEED___LEFT_31BITS_ROLL_TABLE // 248..255
 };
 
-static const uint64_t LEVEL_2_AA_SEED_C___ = 0x1d07fd644abe9962; // NOLINT
-static const uint64_t LEVEL_2_AA_SEED_G___ = 0xf59c50929bdf4360; // NOLINT
-static const uint64_t LEVEL_2_AA_SEED_A___ = 0x6f735c82fe9c6c03; // NOLINT
-static const uint64_t LEVEL_2_AA_SEED_TS__ = 0xe7392f0ba1dbc3b0; // NOLINT
-static const uint64_t LEVEL_2_AA_SEED_N___ = 0x956ddcfcd4b3961f; // NOLINT
-static const uint64_t LEVEL_2_AA_SEED_DE__ = 0x4ec0ef1bac4f5efa; // NOLINT
-static const uint64_t LEVEL_2_AA_SEED_QKR_ = 0x1cd6ca491872ed78; // NOLINT
-static const uint64_t LEVEL_2_AA_SEED_VILM = 0x547ef17894921035; // NOLINT
-static const uint64_t LEVEL_2_AA_SEED_WFY_ = 0x419722edb87bf79f; // NOLINT
-static const uint64_t LEVEL_2_AA_SEED_H___ = 0xdd5cce5bfdc32de1; // NOLINT
-static const uint64_t LEVEL_2_AA_SEED_P___ = 0x90e0c5e0c07d6598; // NOLINT
-static const uint64_t& LEVEL_2_AA_SEED_____ = AA_SEED__; // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_C___ = 0x1d07fd644abe9962; // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_G___ = 0xf59c50929bdf4360; // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_A___ = 0x6f735c82fe9c6c03; // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_TS__ = 0xe7392f0ba1dbc3b0; // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_N___ = 0x956ddcfcd4b3961f; // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_DE__ = 0x4ec0ef1bac4f5efa; // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_QKR_ = 0x1cd6ca491872ed78; // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_VILM = 0x547ef17894921035; // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_WFY_ = 0x419722edb87bf79f; // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_H___ = 0xdd5cce5bfdc32de1; // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_P___ = 0x90e0c5e0c07d6598; // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_____ = AA_SEED__; // NOLINT
 
-static const uint64_t LEVEL_2_AA_SEED_TABLE[ASCII_SIZE] = {
+constexpr inline uint64_t LEVEL_2_AA_SEED_TABLE[ASCII_SIZE] = {
   LEVEL_2_AA_SEED_____, LEVEL_2_AA_SEED_____, LEVEL_2_AA_SEED_____,
   LEVEL_2_AA_SEED_____, LEVEL_2_AA_SEED_____, LEVEL_2_AA_SEED_____,
   LEVEL_2_AA_SEED_____, LEVEL_2_AA_SEED_____, // 0..7
@@ -978,7 +978,7 @@ static const uint64_t LEVEL_2_AA_SEED_TABLE[ASCII_SIZE] = {
   LEVEL_2_AA_SEED_____, LEVEL_2_AA_SEED_____ // 248..255
 };
 
-static const uint64_t LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x4abe9962,  0x957d32c4,  0x12afa6588, 0x55f4cb11,  0xabe99622, 0x157d32c44,
   0xafa65889,  0x15f4cb112, 0xbe996225,  0x17d32c44a, 0xfa658895, 0x1f4cb112a,
   0x1e9962255, 0x1d32c44ab, 0x1a6588957, 0x14cb112af, 0x9962255f, 0x132c44abe,
@@ -986,7 +986,7 @@ static const uint64_t LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x162255f4c, 0xc44abe99,  0x188957d32, 0x1112afa65, 0x2255f4cb, 0x44abe996,
   0x8957d32c,  0x112afa658, 0x255f4cb1
 };
-static const uint64_t LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x1d07fd6400000000, 0x3a0ffac800000000, 0x741ff59000000000,
   0xe83feb2000000000, 0xd07fd64200000000, 0xa0ffac8600000000,
   0x41ff590e00000000, 0x83feb21c00000000, 0x7fd643a00000000,
@@ -999,7 +999,7 @@ static const uint64_t LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x21d07fd600000000, 0x43a0ffac00000000, 0x8741ff5800000000,
   0xe83feb200000000
 };
-static const uint64_t LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x9bdf4360,  0x137be86c0, 0x6f7d0d81,  0xdefa1b02,  0x1bdf43604, 0x17be86c09,
   0xf7d0d813,  0x1efa1b026, 0x1df43604d, 0x1be86c09b, 0x17d0d8137, 0xfa1b026f,
   0x1f43604de, 0x1e86c09bd, 0x1d0d8137b, 0x1a1b026f7, 0x143604def, 0x86c09bdf,
@@ -1007,7 +1007,7 @@ static const uint64_t LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x1604defa1, 0xc09bdf43,  0x18137be86, 0x1026f7d0d, 0x4defa1b,   0x9bdf436,
   0x137be86c,  0x26f7d0d8,  0x4defa1b0
 };
-static const uint64_t LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0xf59c509200000000, 0xeb38a12600000000, 0xd671424e00000000,
   0xace2849e00000000, 0x59c5093e00000000, 0xb38a127c00000000,
   0x671424fa00000000, 0xce2849f400000000, 0x9c5093ea00000000,
@@ -1020,7 +1020,7 @@ static const uint64_t LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x9f59c50800000000, 0x3eb38a1200000000, 0x7d67142400000000,
   0xface284800000000
 };
-static const uint64_t LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0xfe9c6c03,  0x1fd38d806, 0x1fa71b00d, 0x1f4e3601b, 0x1e9c6c037, 0x1d38d806f,
   0x1a71b00df, 0x14e3601bf, 0x9c6c037f,  0x138d806fe, 0x71b00dfd,  0xe3601bfa,
   0x1c6c037f4, 0x18d806fe9, 0x11b00dfd3, 0x3601bfa7,  0x6c037f4e,  0xd806fe9c,
@@ -1028,7 +1028,7 @@ static const uint64_t LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x37f4e36,   0x6fe9c6c,   0xdfd38d8,   0x1bfa71b0,  0x37f4e360,  0x6fe9c6c0,
   0xdfd38d80,  0x1bfa71b00, 0x17f4e3601
 };
-static const uint64_t LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x6f735c8200000000, 0xdee6b90400000000, 0xbdcd720a00000000,
   0x7b9ae41600000000, 0xf735c82c00000000, 0xee6b905a00000000,
   0xdcd720b600000000, 0xb9ae416e00000000, 0x735c82de00000000,
@@ -1041,7 +1041,7 @@ static const uint64_t LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x16f735c800000000, 0x2dee6b9000000000, 0x5bdcd72000000000,
   0xb7b9ae4000000000
 };
-static const uint64_t LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x1a1dbc3b0, 0x143b78761, 0x876f0ec3,  0x10ede1d86, 0x1dbc3b0d,  0x3b78761a,
   0x76f0ec34,  0xede1d868,  0x1dbc3b0d0, 0x1b78761a1, 0x16f0ec343, 0xde1d8687,
   0x1bc3b0d0e, 0x178761a1d, 0xf0ec343b,  0x1e1d86876, 0x1c3b0d0ed, 0x18761a1db,
@@ -1049,7 +1049,7 @@ static const uint64_t LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x1b0d0ede1, 0x161a1dbc3, 0xc343b787,  0x186876f0e, 0x10d0ede1d, 0x1a1dbc3b,
   0x343b7876,  0x6876f0ec,  0xd0ede1d8
 };
-static const uint64_t LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0xe7392f0a00000000, 0xce725e1600000000, 0x9ce4bc2e00000000,
   0x39c9785e00000000, 0x7392f0bc00000000, 0xe725e17800000000,
   0xce4bc2f200000000, 0x9c9785e600000000, 0x392f0bce00000000,
@@ -1062,7 +1062,7 @@ static const uint64_t LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x5e7392f000000000, 0xbce725e000000000, 0x79ce4bc200000000,
   0xf39c978400000000
 };
-static const uint64_t LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0xd4b3961f,  0x1a9672c3e, 0x152ce587d, 0xa59cb0fb,  0x14b3961f6, 0x9672c3ed,
   0x12ce587da, 0x59cb0fb5,  0xb3961f6a,  0x1672c3ed4, 0xce587da9,  0x19cb0fb52,
   0x13961f6a5, 0x72c3ed4b,  0xe587da96,  0x1cb0fb52c, 0x1961f6a59, 0x12c3ed4b3,
@@ -1070,7 +1070,7 @@ static const uint64_t LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x1f6a59cb,  0x3ed4b396,  0x7da9672c,  0xfb52ce58,  0x1f6a59cb0, 0x1ed4b3961,
   0x1da9672c3, 0x1b52ce587, 0x16a59cb0f
 };
-static const uint64_t LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x956ddcfc00000000, 0x2adbb9fa00000000, 0x55b773f400000000,
   0xab6ee7e800000000, 0x56ddcfd200000000, 0xadbb9fa400000000,
   0x5b773f4a00000000, 0xb6ee7e9400000000, 0x6ddcfd2a00000000,
@@ -1083,7 +1083,7 @@ static const uint64_t LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0xe956ddce00000000, 0xd2adbb9e00000000, 0xa55b773e00000000,
   0x4ab6ee7e00000000
 };
-static const uint64_t LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x1ac4f5efa, 0x1589ebdf5, 0xb13d7beb,  0x1627af7d6, 0xc4f5efad,  0x189ebdf5a,
   0x113d7beb5, 0x27af7d6b,  0x4f5efad6,  0x9ebdf5ac,  0x13d7beb58, 0x7af7d6b1,
   0xf5efad62,  0x1ebdf5ac4, 0x1d7beb589, 0x1af7d6b13, 0x15efad627, 0xbdf5ac4f,
@@ -1091,7 +1091,7 @@ static const uint64_t LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0xfad627af,  0x1f5ac4f5e, 0x1eb589ebd, 0x1d6b13d7b, 0x1ad627af7, 0x15ac4f5ef,
   0xb589ebdf,  0x16b13d7be, 0xd627af7d
 };
-static const uint64_t LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x4ec0ef1a00000000, 0x9d81de3400000000, 0x3b03bc6a00000000,
   0x760778d400000000, 0xec0ef1a800000000, 0xd81de35200000000,
   0xb03bc6a600000000, 0x60778d4e00000000, 0xc0ef1a9c00000000,
@@ -1104,7 +1104,7 @@ static const uint64_t LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0xd4ec0ef000000000, 0xa9d81de200000000, 0x53b03bc600000000,
   0xa760778c00000000
 };
-static const uint64_t LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x11872ed78, 0x30e5daf1,  0x61cbb5e2,  0xc3976bc4,  0x1872ed788, 0x10e5daf11,
   0x1cbb5e23,  0x3976bc46,  0x72ed788c,  0xe5daf118,  0x1cbb5e230, 0x1976bc461,
   0x12ed788c3, 0x5daf1187,  0xbb5e230e,  0x176bc461c, 0xed788c39,  0x1daf11872,
@@ -1112,7 +1112,7 @@ static const uint64_t LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x1788c3976, 0xf11872ed,  0x1e230e5da, 0x1c461cbb5, 0x188c3976b, 0x111872ed7,
   0x230e5daf,  0x461cbb5e,  0x8c3976bc
 };
-static const uint64_t LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x1cd6ca4800000000, 0x39ad949000000000, 0x735b292000000000,
   0xe6b6524000000000, 0xcd6ca48200000000, 0x9ad9490600000000,
   0x35b2920e00000000, 0x6b65241c00000000, 0xd6ca483800000000,
@@ -1125,7 +1125,7 @@ static const uint64_t LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x41cd6ca400000000, 0x839ad94800000000, 0x735b29200000000,
   0xe6b652400000000
 };
-static const uint64_t LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x94921035,  0x12924206a, 0x524840d5,  0xa49081aa,  0x149210354, 0x924206a9,
   0x124840d52, 0x49081aa5,  0x9210354a,  0x124206a94, 0x4840d529,  0x9081aa52,
   0x1210354a4, 0x4206a949,  0x840d5292,  0x1081aa524, 0x10354a49,  0x206a9492,
@@ -1133,7 +1133,7 @@ static const uint64_t LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x354a4908,  0x6a949210,  0xd5292420,  0x1aa524840, 0x154a49081, 0xa9492103,
   0x152924206, 0xa524840d,  0x14a49081a
 };
-static const uint64_t LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE[31] = {
   0x547ef17800000000, 0xa8fde2f000000000, 0x51fbc5e200000000,
   0xa3f78bc400000000, 0x47ef178a00000000, 0x8fde2f1400000000,
   0x1fbc5e2a00000000, 0x3f78bc5400000000, 0x7ef178a800000000,
@@ -1146,7 +1146,7 @@ static const uint64_t LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE[31] = {
   0xc547ef1600000000, 0x8a8fde2e00000000, 0x151fbc5e00000000,
   0x2a3f78bc00000000
 };
-static const uint64_t LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x1b87bf79f, 0x170f7ef3f, 0xe1efde7f,  0x1c3dfbcfe, 0x187bf79fd, 0x10f7ef3fb,
   0x1efde7f7,  0x3dfbcfee,  0x7bf79fdc,  0xf7ef3fb8,  0x1efde7f70, 0x1dfbcfee1,
   0x1bf79fdc3, 0x17ef3fb87, 0xfde7f70f,  0x1fbcfee1e, 0x1f79fdc3d, 0x1ef3fb87b,
@@ -1154,7 +1154,7 @@ static const uint64_t LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x19fdc3dfb, 0x13fb87bf7, 0x7f70f7ef,  0xfee1efde,  0x1fdc3dfbc, 0x1fb87bf79,
   0x1f70f7ef3, 0x1ee1efde7, 0x1dc3dfbcf
 };
-static const uint64_t LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x419722ec00000000, 0x832e45d800000000, 0x65c8bb200000000,
   0xcb9176400000000,  0x19722ec800000000, 0x32e45d9000000000,
   0x65c8bb2000000000, 0xcb91764000000000, 0x9722ec8200000000,
@@ -1167,7 +1167,7 @@ static const uint64_t LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x6419722e00000000, 0xc832e45c00000000, 0x9065c8ba00000000,
   0x20cb917600000000
 };
-static const uint64_t LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x1fdc32de1, 0x1fb865bc3, 0x1f70cb787, 0x1ee196f0f, 0x1dc32de1f, 0x1b865bc3f,
   0x170cb787f, 0xe196f0ff,  0x1c32de1fe, 0x1865bc3fd, 0x10cb787fb, 0x196f0ff7,
   0x32de1fee,  0x65bc3fdc,  0xcb787fb8,  0x196f0ff70, 0x12de1fee1, 0x5bc3fdc3,
@@ -1175,7 +1175,7 @@ static const uint64_t LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x1e1fee196, 0x1c3fdc32d, 0x187fb865b, 0x10ff70cb7, 0x1fee196f,  0x3fdc32de,
   0x7fb865bc,  0xff70cb78,  0x1fee196f0
 };
-static const uint64_t LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0xdd5cce5a00000000, 0xbab99cb600000000, 0x7573396e00000000,
   0xeae672dc00000000, 0xd5cce5ba00000000, 0xab99cb7600000000,
   0x573396ee00000000, 0xae672ddc00000000, 0x5cce5bba00000000,
@@ -1188,7 +1188,7 @@ static const uint64_t LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0xddd5cce400000000, 0xbbab99ca00000000, 0x7757339600000000,
   0xeeae672c00000000
 };
-static const uint64_t LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0xc07d6598,  0x180facb30, 0x101f59661, 0x3eb2cc3,  0x7d65986,   0xfacb30c,
   0x1f596618,  0x3eb2cc30,  0x7d659860,  0xfacb30c0, 0x1f5966180, 0x1eb2cc301,
   0x1d6598603, 0x1acb30c07, 0x15966180f, 0xb2cc301f, 0x16598603e, 0xcb30c07d,
@@ -1196,7 +1196,7 @@ static const uint64_t LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x198603eb2, 0x130c07d65, 0x6180facb,  0xc301f596, 0x18603eb2c, 0x10c07d659,
   0x180facb3,  0x301f5966,  0x603eb2cc
 };
-static const uint64_t LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x90e0c5e000000000, 0x21c18bc200000000, 0x4383178400000000,
   0x87062f0800000000, 0xe0c5e1200000000,  0x1c18bc2400000000,
   0x3831784800000000, 0x7062f09000000000, 0xe0c5e12000000000,
@@ -1210,12 +1210,12 @@ static const uint64_t LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x487062f000000000
 };
 
-static const uint64_t* LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE = // NOLINT
+constexpr inline const uint64_t* LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE = // NOLINT
   AA_SEED___RIGHT_33BITS_ROLL_TABLE;
-static const uint64_t* LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE = // NOLINT
+constexpr inline const uint64_t* LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE = // NOLINT
   AA_SEED___LEFT_31BITS_ROLL_TABLE;
 
-static const uint64_t* LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
+constexpr inline const uint64_t* LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
   LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE,
   LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE,
   LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE,
@@ -1474,7 +1474,7 @@ static const uint64_t* LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE[ASCII_SIZE] = { /
   LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE // 248..255
 };
 
-static const uint64_t* LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
+constexpr inline const uint64_t* LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
   LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE,
   LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE,
   LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE,
@@ -1733,18 +1733,18 @@ static const uint64_t* LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE[ASCII_SIZE] = { //
   LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE // 248..255
 };
 
-static const uint64_t LEVEL_3_AA_SEED_C___ = 0x5713e4c10cebbfa3; // NOLINT
-static const uint64_t LEVEL_3_AA_SEED_G___ = 0xbe084b869537379b; // NOLINT
-static const uint64_t LEVEL_3_AA_SEED_ATS_ = 0x985fd9efa0fe5b82; // NOLINT
-static const uint64_t LEVEL_3_AA_SEED_NDE_ = 0x9aca6c4f4ef69df0; // NOLINT
-static const uint64_t LEVEL_3_AA_SEED_QKR_ = 0x917de473b721df0e; // NOLINT
-static const uint64_t LEVEL_3_AA_SEED_VILM = 0x37cdd84aa07c5bd7;
-static const uint64_t LEVEL_3_AA_SEED_WFY_ = 0x51a7955f1a67a896; // NOLINT
-static const uint64_t LEVEL_3_AA_SEED_H___ = 0x1d2a0ba493708fbf; // NOLINT
-static const uint64_t LEVEL_3_AA_SEED_P___ = 0xfe4c47da16611245; // NOLINT
-static const uint64_t& LEVEL_3_AA_SEED_____ = AA_SEED__; // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_C___ = 0x5713e4c10cebbfa3; // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_G___ = 0xbe084b869537379b; // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_ATS_ = 0x985fd9efa0fe5b82; // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_NDE_ = 0x9aca6c4f4ef69df0; // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_QKR_ = 0x917de473b721df0e; // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_VILM = 0x37cdd84aa07c5bd7;
+constexpr inline uint64_t LEVEL_3_AA_SEED_WFY_ = 0x51a7955f1a67a896; // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_H___ = 0x1d2a0ba493708fbf; // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_P___ = 0xfe4c47da16611245; // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_____ = AA_SEED__; // NOLINT
 
-static const uint64_t LEVEL_3_AA_SEED_TABLE[ASCII_SIZE] = {
+constexpr inline uint64_t LEVEL_3_AA_SEED_TABLE[ASCII_SIZE] = {
   LEVEL_3_AA_SEED_____, LEVEL_3_AA_SEED_____, LEVEL_3_AA_SEED_____,
   LEVEL_3_AA_SEED_____, LEVEL_3_AA_SEED_____, LEVEL_3_AA_SEED_____,
   LEVEL_3_AA_SEED_____, LEVEL_3_AA_SEED_____, // 0..7
@@ -1843,7 +1843,7 @@ static const uint64_t LEVEL_3_AA_SEED_TABLE[ASCII_SIZE] = {
   LEVEL_3_AA_SEED_____, LEVEL_3_AA_SEED_____ // 248..255
 };
 
-static const uint64_t LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x10cebbfa3, 0x19d77f47,  0x33aefe8e,  0x675dfd1c,  0xcebbfa38,  0x19d77f470,
   0x13aefe8e1, 0x75dfd1c3,  0xebbfa386,  0x1d77f470c, 0x1aefe8e19, 0x15dfd1c33,
   0xbbfa3867,  0x177f470ce, 0xefe8e19d,  0x1dfd1c33a, 0x1bfa38675, 0x17f470ceb,
@@ -1851,7 +1851,7 @@ static const uint64_t LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x1a38675df, 0x1470cebbf, 0x8e19d77f,  0x11c33aefe, 0x38675dfd,  0x70cebbfa,
   0xe19d77f4,  0x1c33aefe8, 0x18675dfd1
 };
-static const uint64_t LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x5713e4c000000000, 0xae27c98000000000, 0x5c4f930200000000,
   0xb89f260400000000, 0x713e4c0a00000000, 0xe27c981400000000,
   0xc4f9302a00000000, 0x89f2605600000000, 0x13e4c0ae00000000,
@@ -1864,7 +1864,7 @@ static const uint64_t LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x5713e4c00000000,  0xae27c9800000000,  0x15c4f93000000000,
   0x2b89f26000000000
 };
-static const uint64_t LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x9537379b,  0x12a6e6f36, 0x54dcde6d,  0xa9b9bcda,  0x1537379b4, 0xa6e6f369,
   0x14dcde6d2, 0x9b9bcda5,  0x137379b4a, 0x6e6f3695,  0xdcde6d2a,  0x1b9bcda54,
   0x17379b4a9, 0xe6f36953,  0x1cde6d2a6, 0x19bcda54d, 0x1379b4a9b, 0x6f369537,
@@ -1872,7 +1872,7 @@ static const uint64_t LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x19b4a9b9b, 0x136953737, 0x6d2a6e6f,  0xda54dcde,  0x1b4a9b9bc, 0x169537379,
   0xd2a6e6f3,  0x1a54dcde6, 0x14a9b9bcd
 };
-static const uint64_t LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0xbe084b8600000000, 0x7c10970e00000000, 0xf8212e1c00000000,
   0xf0425c3a00000000, 0xe084b87600000000, 0xc10970ee00000000,
   0x8212e1de00000000, 0x425c3be00000000,  0x84b877c00000000,
@@ -1885,7 +1885,7 @@ static const uint64_t LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x3be084b800000000, 0x77c1097000000000, 0xef8212e000000000,
   0xdf0425c200000000
 };
-static const uint64_t LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x1a0fe5b82, 0x141fcb705, 0x83f96e0b,  0x107f2dc16, 0xfe5b82d,   0x1fcb705a,
   0x3f96e0b4,  0x7f2dc168,  0xfe5b82d0,  0x1fcb705a0, 0x1f96e0b41, 0x1f2dc1683,
   0x1e5b82d07, 0x1cb705a0f, 0x196e0b41f, 0x12dc1683f, 0x5b82d07f,  0xb705a0fe,
@@ -1893,7 +1893,7 @@ static const uint64_t LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x182d07f2d, 0x105a0fe5b, 0xb41fcb7,   0x1683f96e,  0x2d07f2dc,  0x5a0fe5b8,
   0xb41fcb70,  0x1683f96e0, 0xd07f2dc1
 };
-static const uint64_t LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x985fd9ee00000000, 0x30bfb3de00000000, 0x617f67bc00000000,
   0xc2fecf7800000000, 0x85fd9ef200000000, 0xbfb3de600000000,
   0x17f67bcc00000000, 0x2fecf79800000000, 0x5fd9ef3000000000,
@@ -1906,7 +1906,7 @@ static const uint64_t LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x7985fd9e00000000, 0xf30bfb3c00000000, 0xe617f67a00000000,
   0xcc2fecf600000000
 };
-static const uint64_t LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x14ef69df0, 0x9ded3be1,  0x13bda77c2, 0x77b4ef85,  0xef69df0a,  0x1ded3be14,
   0x1bda77c29, 0x17b4ef853, 0xf69df0a7,  0x1ed3be14e, 0x1da77c29d, 0x1b4ef853b,
   0x169df0a77, 0xd3be14ef,  0x1a77c29de, 0x14ef853bd, 0x9df0a77b,  0x13be14ef6,
@@ -1914,7 +1914,7 @@ static const uint64_t LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x1f0a77b4e, 0x1e14ef69d, 0x1c29ded3b, 0x1853bda77, 0x10a77b4ef, 0x14ef69df,
   0x29ded3be,  0x53bda77c,  0xa77b4ef8
 };
-static const uint64_t LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x9aca6c4e00000000, 0x3594d89e00000000, 0x6b29b13c00000000,
   0xd653627800000000, 0xaca6c4f200000000, 0x594d89e600000000,
   0xb29b13cc00000000, 0x6536279a00000000, 0xca6c4f3400000000,
@@ -1927,7 +1927,7 @@ static const uint64_t LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x79aca6c400000000, 0xf3594d8800000000, 0xe6b29b1200000000,
   0xcd65362600000000
 };
-static const uint64_t LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x1b721df0e, 0x16e43be1d, 0xdc877c3b,  0x1b90ef876, 0x1721df0ed, 0xe43be1db,
   0x1c877c3b6, 0x190ef876d, 0x121df0edb, 0x43be1db7,  0x877c3b6e,  0x10ef876dc,
   0x1df0edb9,  0x3be1db72,  0x77c3b6e4,  0xef876dc8,  0x1df0edb90, 0x1be1db721,
@@ -1935,7 +1935,7 @@ static const uint64_t LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x10edb90ef, 0x1db721df,  0x3b6e43be,  0x76dc877c,  0xedb90ef8,  0x1db721df0,
   0x1b6e43be1, 0x16dc877c3, 0xdb90ef87
 };
-static const uint64_t LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x917de47200000000, 0x22fbc8e600000000, 0x45f791cc00000000,
   0x8bef239800000000, 0x17de473200000000, 0x2fbc8e6400000000,
   0x5f791cc800000000, 0xbef2399000000000, 0x7de4732200000000,
@@ -1948,7 +1948,7 @@ static const uint64_t LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x9917de4600000000, 0x322fbc8e00000000, 0x645f791c00000000,
   0xc8bef23800000000
 };
-static const uint64_t LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE[33] = {
+constexpr inline uint64_t LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE[33] = {
   0xa07c5bd7,  0x140f8b7ae, 0x81f16f5d,  0x103e2deba, 0x7c5bd75,   0xf8b7aea,
   0x1f16f5d4,  0x3e2deba8,  0x7c5bd750,  0xf8b7aea0,  0x1f16f5d40, 0x1e2deba81,
   0x1c5bd7503, 0x18b7aea07, 0x116f5d40f, 0x2deba81f,  0x5bd7503e,  0xb7aea07c,
@@ -1956,7 +1956,7 @@ static const uint64_t LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE[33] = {
   0x1d7503e2d, 0x1aea07c5b, 0x15d40f8b7, 0xba81f16f,  0x17503e2de, 0xea07c5bd,
   0x1d40f8b7a, 0x1a81f16f5, 0x1503e2deb
 };
-static const uint64_t LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE[31] = {
+constexpr inline uint64_t LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE[31] = {
   0x37cdd84a00000000, 0x6f9bb09400000000, 0xdf37612800000000,
   0xbe6ec25200000000, 0x7cdd84a600000000, 0xf9bb094c00000000,
   0xf376129a00000000, 0xe6ec253600000000, 0xcdd84a6e00000000,
@@ -1969,7 +1969,7 @@ static const uint64_t LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE[31] = {
   0x537cdd8400000000, 0xa6f9bb0800000000, 0x4df3761200000000,
   0x9be6ec2400000000
 };
-static const uint64_t LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x11a67a896, 0x34cf512d,  0x699ea25a,  0xd33d44b4,  0x1a67a8968, 0x14cf512d1,
   0x99ea25a3,  0x133d44b46, 0x67a8968d,  0xcf512d1a,  0x19ea25a34, 0x13d44b469,
   0x7a8968d3,  0xf512d1a6,  0x1ea25a34c, 0x1d44b4699, 0x1a8968d33, 0x1512d1a67,
@@ -1977,7 +1977,7 @@ static const uint64_t LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x968d33d4,  0x12d1a67a8, 0x5a34cf51,  0xb4699ea2,  0x168d33d44, 0xd1a67a89,
   0x1a34cf512, 0x14699ea25, 0x8d33d44b
 };
-static const uint64_t LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x51a7955e00000000, 0xa34f2abc00000000, 0x469e557a00000000,
   0x8d3caaf400000000, 0x1a7955ea00000000, 0x34f2abd400000000,
   0x69e557a800000000, 0xd3caaf5000000000, 0xa7955ea200000000,
@@ -1990,7 +1990,7 @@ static const uint64_t LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0xf51a795400000000, 0xea34f2aa00000000, 0xd469e55600000000,
   0xa8d3caae00000000
 };
-static const uint64_t LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x93708fbf,  0x126e11f7e, 0x4dc23efd,  0x9b847dfa,  0x13708fbf4, 0x6e11f7e9,
   0xdc23efd2,  0x1b847dfa4, 0x1708fbf49, 0xe11f7e93,  0x1c23efd26, 0x1847dfa4d,
   0x108fbf49b, 0x11f7e937,  0x23efd26e,  0x47dfa4dc,  0x8fbf49b8,  0x11f7e9370,
@@ -1998,7 +1998,7 @@ static const uint64_t LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x1bf49b847, 0x17e93708f, 0xfd26e11f,  0x1fa4dc23e, 0x1f49b847d, 0x1e93708fb,
   0x1d26e11f7, 0x1a4dc23ef, 0x149b847df
 };
-static const uint64_t LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0x1d2a0ba400000000, 0x3a54174800000000, 0x74a82e9000000000,
   0xe9505d2000000000, 0xd2a0ba4200000000, 0xa541748600000000,
   0x4a82e90e00000000, 0x9505d21c00000000, 0x2a0ba43a00000000,
@@ -2011,7 +2011,7 @@ static const uint64_t LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0x21d2a0ba00000000, 0x43a5417400000000, 0x874a82e800000000,
   0xe9505d200000000
 };
-static const uint64_t LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE[33] = { // NOLINT
   0x16611245,  0x2cc2248a,  0x59844914,  0xb3089228, 0x166112450, 0xcc2248a1,
   0x198449142, 0x130892285, 0x6112450b,  0xc2248a16, 0x18449142c, 0x108922859,
   0x112450b3,  0x2248a166,  0x449142cc,  0x89228598, 0x112450b30, 0x248a1661,
@@ -2019,7 +2019,7 @@ static const uint64_t LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE[33] = { // NO
   0x450b3089,  0x8a166112,  0x1142cc224, 0x28598449, 0x50b30892,  0xa1661124,
   0x142cc2248, 0x85984491,  0x10b308922
 };
-static const uint64_t LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
+constexpr inline uint64_t LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE[31] = { // NOLINT
   0xfe4c47da00000000, 0xfc988fb600000000, 0xf9311f6e00000000,
   0xf2623ede00000000, 0xe4c47dbe00000000, 0xc988fb7e00000000,
   0x9311f6fe00000000, 0x2623edfe00000000, 0x4c47dbfc00000000,
@@ -2033,12 +2033,12 @@ static const uint64_t LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE[31] = { // NOL
   0xff2623ec00000000
 };
 
-static const uint64_t* LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE = // NOLINT
+constexpr inline const uint64_t* LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE = // NOLINT
   AA_SEED___RIGHT_33BITS_ROLL_TABLE;
-static const uint64_t* LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE = // NOLINT
+constexpr inline const uint64_t* LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE = // NOLINT
   AA_SEED___LEFT_31BITS_ROLL_TABLE;
 
-static const uint64_t* LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
+constexpr inline const uint64_t* LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
   LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE,
   LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE,
   LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE,
@@ -2297,7 +2297,7 @@ static const uint64_t* LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE[ASCII_SIZE] = { /
   LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE // 248..255
 };
 
-static const uint64_t* LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
+constexpr inline const uint64_t* LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE[ASCII_SIZE] = { // NOLINT
   LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE,
   LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE,
   LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE,
@@ -2556,19 +2556,19 @@ static const uint64_t* LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE[ASCII_SIZE] = { //
   LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE // 248..255
 };
 
-static const uint64_t* const LEVEL_X_AA_SEED_TABLE[4] = {
+constexpr inline const uint64_t* const LEVEL_X_AA_SEED_TABLE[4] = {
   nullptr,
   AA_SEED_TABLE,
   LEVEL_2_AA_SEED_TABLE,
   LEVEL_3_AA_SEED_TABLE
 };
-static const uint64_t** const LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE[4] = {
+constexpr inline const uint64_t* const* LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE[4] = {
   nullptr,
   AA_SEED_RIGHT_33BITS_ROLL_TABLE,
   LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE,
   LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE
 };
-static const uint64_t** const LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE[4] = {
+constexpr inline const uint64_t* const* LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE[4] = {
   nullptr,
   AA_SEED_LEFT_31BITS_ROLL_TABLE,
   LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE,
