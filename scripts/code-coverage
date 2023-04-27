@@ -19,7 +19,7 @@ failed_files=""
 
 # Iterate through the lines and check the coverage for the specified directories
 while read -r line; do
-    if echo "$line" | grep -E "src/btllib/|include/btllib/.*\.tpp" > /dev/null; then
+    if echo "$line" | grep -E "src/btllib/|include/btllib/.*\-inl.hpp" > /dev/null; then
         file_name=$(echo "$line" | awk '{print $1}')
         coverage_percent=$(echo "$line" | awk '{print $4}' | tr -d '%')
 

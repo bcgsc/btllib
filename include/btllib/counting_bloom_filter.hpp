@@ -744,6 +744,6 @@ private:
 
 } // namespace btllib
 
-#include "counting_bloom_filter.tpp"
+#include "counting_bloom_filter-inl.hpp"
 
 #endif
