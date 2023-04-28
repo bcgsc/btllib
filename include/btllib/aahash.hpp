@@ -77,6 +77,7 @@ private:
   /** Initialize internal state of iterator */
   bool init();
 
+  std::string seq_copy;
   const char* seq;
   size_t seq_len;
   const uint8_t hash_num;
@@ -88,6 +89,23 @@ private:
   std::unique_ptr<uint64_t[]> hashes_array;
 
 public:
+  AAHash(const char* seq_p,
+         size_t seq_len,
+         uint8_t hash_num,
+         uint16_t k,
+         unsigned level,
+         size_t pos)
+    : seq_copy(seq_p, seq_len)
+    , seq(seq_copy.c_str())
+    , seq_len(seq_len)
+    , hash_num(hash_num)
+    , k(k)
+    , level(level)
+    , pos(pos)
+    , hashes_array(new uint64_t[hash_num])
+  {
+  }
+
   /**
    * Constructor.
    * @param seq String of DNA sequence to be hashed.
@@ -96,18 +114,12 @@ public:
    * @param pos Position in seq to start hashing from.
    * @param level seed level to generate hash.
    */
-  AAHash(const std::string& seq,
+  AAHash(const std::string& seq_str,
          uint8_t hash_num,
          uint16_t k,
          unsigned level,
          size_t pos = 0)
-    : seq(seq.data())
-    , seq_len(seq.size())
-    , hash_num(hash_num)
-    , k(k)
-    , level(level)
-    , pos(pos)
-    , hashes_array(new uint64_t[hash_num])
+    : AAHash(seq_str.c_str(), seq_str.size(), hash_num, k, level, pos)
   {
   }
 
@@ -147,7 +159,7 @@ public:
   size_t get_pos() const { return pos; }
   unsigned get_hash_num() const { return hash_num; }
   unsigned get_k() const { return k; }
-  uint64_t get_forward_hash() const { return hashes_array[0]; }
+  unsigned get_level() const { return level; }
 };
 
 class SeedAAHash
