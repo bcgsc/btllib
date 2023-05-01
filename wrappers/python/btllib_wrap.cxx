@@ -3752,116 +3752,120 @@ SwigPyBuiltin_iternextfunc_closure(SwigPyWrapperFunction wrapper, PyObject *a) {
 #define SWIGTYPE_p_SwigPyObject swig_types[1]
 #define SWIGTYPE_p_allocator_type swig_types[2]
 #define SWIGTYPE_p_bool swig_types[3]
-#define SWIGTYPE_p_btllib__Barrier swig_types[4]
-#define SWIGTYPE_p_btllib__BlindNtHash swig_types[5]
-#define SWIGTYPE_p_btllib__BloomFilter swig_types[6]
-#define SWIGTYPE_p_btllib__CString swig_types[7]
-#define SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_char_t swig_types[8]
-#define SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_int_t swig_types[9]
-#define SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_short_t swig_types[10]
-#define SWIGTYPE_p_btllib__DataSink swig_types[11]
-#define SWIGTYPE_p_btllib__DataSource swig_types[12]
-#define SWIGTYPE_p_btllib__DataStream swig_types[13]
-#define SWIGTYPE_p_btllib__Datatype swig_types[14]
-#define SWIGTYPE_p_btllib__Indexlr swig_types[15]
-#define SWIGTYPE_p_btllib__Indexlr__Flag swig_types[16]
-#define SWIGTYPE_p_btllib__Indexlr__Minimizer swig_types[17]
-#define SWIGTYPE_p_btllib__Indexlr__Record swig_types[18]
-#define SWIGTYPE_p_btllib__Indexlr__RecordIterator swig_types[19]
-#define SWIGTYPE_p_btllib__KmerBloomFilter swig_types[20]
-#define SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_char_t swig_types[21]
-#define SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_int_t swig_types[22]
-#define SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_short_t swig_types[23]
-#define SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t swig_types[24]
-#define SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t swig_types[25]
-#define SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t swig_types[26]
-#define SWIGTYPE_p_btllib__NtHash swig_types[27]
-#define SWIGTYPE_p_btllib__RandSeq swig_types[28]
-#define SWIGTYPE_p_btllib__SeedBloomFilter swig_types[29]
-#define SWIGTYPE_p_btllib__SeedNtHash swig_types[30]
-#define SWIGTYPE_p_btllib__SeqReader swig_types[31]
-#define SWIGTYPE_p_btllib__SeqReader__Flag swig_types[32]
-#define SWIGTYPE_p_btllib__SeqReader__Record swig_types[33]
-#define SWIGTYPE_p_btllib__SeqReader__RecordIterator swig_types[34]
-#define SWIGTYPE_p_btllib__SeqWriter swig_types[35]
-#define SWIGTYPE_p_char swig_types[36]
-#define SWIGTYPE_p_char_type swig_types[37]
-#define SWIGTYPE_p_difference_type swig_types[38]
-#define SWIGTYPE_p_double swig_types[39]
-#define SWIGTYPE_p_f_enum_std__ios_base__event_r_std__ios_base_int__void swig_types[40]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[41]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[42]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[43]
-#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[44]
-#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[45]
-#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[46]
-#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[47]
-#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[48]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[49]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[50]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[51]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[52]
-#define SWIGTYPE_p_f_r_std__ios_base__r_std__ios_base swig_types[53]
-#define SWIGTYPE_p_float swig_types[54]
-#define SWIGTYPE_p_fmtflags swig_types[55]
-#define SWIGTYPE_p_int swig_types[56]
-#define SWIGTYPE_p_int_type swig_types[57]
-#define SWIGTYPE_p_iostate swig_types[58]
-#define SWIGTYPE_p_long swig_types[59]
-#define SWIGTYPE_p_long_double swig_types[60]
-#define SWIGTYPE_p_long_long swig_types[61]
-#define SWIGTYPE_p_off_type swig_types[62]
-#define SWIGTYPE_p_openmode swig_types[63]
-#define SWIGTYPE_p_p_PyObject swig_types[64]
-#define SWIGTYPE_p_p_unsigned_long_long swig_types[65]
-#define SWIGTYPE_p_p_void swig_types[66]
-#define SWIGTYPE_p_pos_type swig_types[67]
-#define SWIGTYPE_p_sdsl__bit_vector swig_types[68]
-#define SWIGTYPE_p_seekdir swig_types[69]
-#define SWIGTYPE_p_short swig_types[70]
-#define SWIGTYPE_p_signed_char swig_types[71]
-#define SWIGTYPE_p_size_t swig_types[72]
-#define SWIGTYPE_p_size_type swig_types[73]
-#define SWIGTYPE_p_state_type swig_types[74]
-#define SWIGTYPE_p_std__allocatorT_btllib__Indexlr__Minimizer_t swig_types[75]
-#define SWIGTYPE_p_std__allocatorT_double_t swig_types[76]
-#define SWIGTYPE_p_std__allocatorT_int_t swig_types[77]
-#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[78]
-#define SWIGTYPE_p_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t swig_types[79]
-#define SWIGTYPE_p_std__allocatorT_unsigned_char_t swig_types[80]
-#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[81]
-#define SWIGTYPE_p_std__allocatorT_unsigned_long_long_t swig_types[82]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[83]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[84]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[85]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[86]
-#define SWIGTYPE_p_std__basic_streambufT_char_std__char_traitsT_char_t_t swig_types[87]
-#define SWIGTYPE_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t swig_types[88]
-#define SWIGTYPE_p_std__ios_base swig_types[89]
-#define SWIGTYPE_p_std__locale swig_types[90]
-#define SWIGTYPE_p_std__string swig_types[91]
-#define SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t swig_types[92]
-#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[93]
-#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[94]
-#define SWIGTYPE_p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t swig_types[95]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[96]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t swig_types[97]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[98]
-#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[99]
-#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[100]
-#define SWIGTYPE_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t swig_types[101]
-#define SWIGTYPE_p_streamoff swig_types[102]
-#define SWIGTYPE_p_streampos swig_types[103]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[104]
-#define SWIGTYPE_p_traits_type swig_types[105]
-#define SWIGTYPE_p_unsigned_char swig_types[106]
-#define SWIGTYPE_p_unsigned_int swig_types[107]
-#define SWIGTYPE_p_unsigned_long swig_types[108]
-#define SWIGTYPE_p_unsigned_long_long swig_types[109]
-#define SWIGTYPE_p_unsigned_short swig_types[110]
-#define SWIGTYPE_p_value_type swig_types[111]
-static swig_type_info *swig_types[113];
-static swig_module_info swig_module = {swig_types, 112, 0, 0, 0, 0};
+#define SWIGTYPE_p_btllib__AAHash swig_types[4]
+#define SWIGTYPE_p_btllib__Barrier swig_types[5]
+#define SWIGTYPE_p_btllib__BlindNtHash swig_types[6]
+#define SWIGTYPE_p_btllib__BloomFilter swig_types[7]
+#define SWIGTYPE_p_btllib__CString swig_types[8]
+#define SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_char_t swig_types[9]
+#define SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_int_t swig_types[10]
+#define SWIGTYPE_p_btllib__CountingBloomFilterT_unsigned_short_t swig_types[11]
+#define SWIGTYPE_p_btllib__DataSink swig_types[12]
+#define SWIGTYPE_p_btllib__DataSource swig_types[13]
+#define SWIGTYPE_p_btllib__DataStream swig_types[14]
+#define SWIGTYPE_p_btllib__Datatype swig_types[15]
+#define SWIGTYPE_p_btllib__Indexlr swig_types[16]
+#define SWIGTYPE_p_btllib__Indexlr__Flag swig_types[17]
+#define SWIGTYPE_p_btllib__Indexlr__Minimizer swig_types[18]
+#define SWIGTYPE_p_btllib__Indexlr__Record swig_types[19]
+#define SWIGTYPE_p_btllib__Indexlr__RecordIterator swig_types[20]
+#define SWIGTYPE_p_btllib__KmerBloomFilter swig_types[21]
+#define SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_char_t swig_types[22]
+#define SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_int_t swig_types[23]
+#define SWIGTYPE_p_btllib__KmerCountingBloomFilterT_unsigned_short_t swig_types[24]
+#define SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_char_t swig_types[25]
+#define SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_int_t swig_types[26]
+#define SWIGTYPE_p_btllib__MIBloomFilterT_unsigned_short_t swig_types[27]
+#define SWIGTYPE_p_btllib__NtHash swig_types[28]
+#define SWIGTYPE_p_btllib__RandSeq swig_types[29]
+#define SWIGTYPE_p_btllib__SeedAAHash swig_types[30]
+#define SWIGTYPE_p_btllib__SeedBloomFilter swig_types[31]
+#define SWIGTYPE_p_btllib__SeedNtHash swig_types[32]
+#define SWIGTYPE_p_btllib__SeqReader swig_types[33]
+#define SWIGTYPE_p_btllib__SeqReader__Flag swig_types[34]
+#define SWIGTYPE_p_btllib__SeqReader__Record swig_types[35]
+#define SWIGTYPE_p_btllib__SeqReader__RecordIterator swig_types[36]
+#define SWIGTYPE_p_btllib__SeqWriter swig_types[37]
+#define SWIGTYPE_p_char swig_types[38]
+#define SWIGTYPE_p_char_type swig_types[39]
+#define SWIGTYPE_p_difference_type swig_types[40]
+#define SWIGTYPE_p_double swig_types[41]
+#define SWIGTYPE_p_f_enum_std__ios_base__event_r_std__ios_base_int__void swig_types[42]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[43]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[44]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[45]
+#define SWIGTYPE_p_f_r_std__basic_ios__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[46]
+#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[47]
+#define SWIGTYPE_p_f_r_std__basic_istream__char_std__char_traits__char______r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[48]
+#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[49]
+#define SWIGTYPE_p_f_r_std__basic_ostream__char_std__char_traits__char______r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[50]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[51]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[52]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[53]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[54]
+#define SWIGTYPE_p_f_r_std__ios_base__r_std__ios_base swig_types[55]
+#define SWIGTYPE_p_float swig_types[56]
+#define SWIGTYPE_p_fmtflags swig_types[57]
+#define SWIGTYPE_p_int swig_types[58]
+#define SWIGTYPE_p_int_type swig_types[59]
+#define SWIGTYPE_p_iostate swig_types[60]
+#define SWIGTYPE_p_long swig_types[61]
+#define SWIGTYPE_p_long_double swig_types[62]
+#define SWIGTYPE_p_long_long swig_types[63]
+#define SWIGTYPE_p_off_type swig_types[64]
+#define SWIGTYPE_p_openmode swig_types[65]
+#define SWIGTYPE_p_p_PyObject swig_types[66]
+#define SWIGTYPE_p_p_p_unsigned_long_long swig_types[67]
+#define SWIGTYPE_p_p_unsigned_long_long swig_types[68]
+#define SWIGTYPE_p_p_void swig_types[69]
+#define SWIGTYPE_p_pos_type swig_types[70]
+#define SWIGTYPE_p_sdsl__bit_vector swig_types[71]
+#define SWIGTYPE_p_seekdir swig_types[72]
+#define SWIGTYPE_p_short swig_types[73]
+#define SWIGTYPE_p_signed_char swig_types[74]
+#define SWIGTYPE_p_size_t swig_types[75]
+#define SWIGTYPE_p_size_type swig_types[76]
+#define SWIGTYPE_p_state_type swig_types[77]
+#define SWIGTYPE_p_std__allocatorT_btllib__Indexlr__Minimizer_t swig_types[78]
+#define SWIGTYPE_p_std__allocatorT_double_t swig_types[79]
+#define SWIGTYPE_p_std__allocatorT_int_t swig_types[80]
+#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[81]
+#define SWIGTYPE_p_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t swig_types[82]
+#define SWIGTYPE_p_std__allocatorT_unsigned_char_t swig_types[83]
+#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[84]
+#define SWIGTYPE_p_std__allocatorT_unsigned_long_long_t swig_types[85]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[86]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[87]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[88]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[89]
+#define SWIGTYPE_p_std__basic_streambufT_char_std__char_traitsT_char_t_t swig_types[90]
+#define SWIGTYPE_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t swig_types[91]
+#define SWIGTYPE_p_std__ios_base swig_types[92]
+#define SWIGTYPE_p_std__locale swig_types[93]
+#define SWIGTYPE_p_std__string swig_types[94]
+#define SWIGTYPE_p_std__string_view swig_types[95]
+#define SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t swig_types[96]
+#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[97]
+#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[98]
+#define SWIGTYPE_p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t swig_types[99]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[100]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t swig_types[101]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[102]
+#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[103]
+#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[104]
+#define SWIGTYPE_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t swig_types[105]
+#define SWIGTYPE_p_streamoff swig_types[106]
+#define SWIGTYPE_p_streampos swig_types[107]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[108]
+#define SWIGTYPE_p_traits_type swig_types[109]
+#define SWIGTYPE_p_unsigned_char swig_types[110]
+#define SWIGTYPE_p_unsigned_int swig_types[111]
+#define SWIGTYPE_p_unsigned_long swig_types[112]
+#define SWIGTYPE_p_unsigned_long_long swig_types[113]
+#define SWIGTYPE_p_unsigned_short swig_types[114]
+#define SWIGTYPE_p_value_type swig_types[115]
+static swig_type_info *swig_types[117];
+static swig_module_info swig_module = {swig_types, 116, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4038,6 +4042,8 @@ namespace swig {
 #include "btllib/cstring.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/randseq.hpp"
+#include "btllib/aahash_consts.hpp"
+#include "btllib/aahash.hpp"
 
 
 #include <stdint.h>		// Use the C99 official header
@@ -7304,6 +7310,21 @@ SWIGINTERN void delete_btllib_SeedNtHash(btllib::SeedNtHash *self){
     nthash_strings.erase(nthash_ids[(void*)self]);
     nthash_ids.erase((void*)self);
   }
+SWIGINTERN btllib::AAHash *new_btllib_AAHash__SWIG_2(std::string seq,unsigned int hash_num,unsigned int k,unsigned int level,size_t pos=0){
+    std::unique_lock<std::mutex> lock(nthash_mutex);
+    nthash_strings[++nthash_last_id] = std::move(seq);
+    auto *nthash = new btllib::AAHash(nthash_strings[nthash_last_id], hash_num, k, level);
+    nthash_ids[(void*)nthash] = nthash_last_id;
+    return nthash;
+  }
+SWIGINTERN void delete_btllib_AAHash(btllib::AAHash *self){
+    std::unique_lock<std::mutex> lock(nthash_mutex);
+    nthash_strings.erase(nthash_ids[(void*)self]);
+    nthash_ids.erase((void*)self);
+  }
+
+#include <memory>
+
 
 SWIGINTERNINLINE PyObject *
 SWIG_From_unsigned_SS_short  (unsigned short value)
@@ -34128,6 +34149,28 @@ SWIGINTERN PyObject *Swig_var_COMPLEMENTS_get(void) {
 }
 
 
+SWIGINTERN int Swig_var_AMINO_ACIDS_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AMINO_ACIDS is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AMINO_ACIDS_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  {
+    size_t size = SWIG_strnlen(btllib::AMINO_ACIDS, 256);
+    
+    
+    
+    pyobj = SWIG_FromCharPtrAndSize(btllib::AMINO_ACIDS, size);
+  }
+  return pyobj;
+}
+
+
 SWIGINTERN int Swig_var_CAPITALS_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable CAPITALS is read-only.");
   return 1;
@@ -40311,6 +40354,3951 @@ fail:
 
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_RandSeq) /* defines _wrap_delete_RandSeq_destructor_closure */
+
+SWIGINTERN int Swig_var_AA_SEED_A_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_A is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_A_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_A));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_C_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_C is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_C_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_C));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_D_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_D is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_D_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_D));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_E_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_E is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_E_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_E));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_F_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_F is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_F_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_F));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_G_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_G is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_G_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_G));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_H_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_H is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_H_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_H));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_I_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_I is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_I_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_I));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_K_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_K is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_K_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_K));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_L_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_L is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_L_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_L));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_M_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_M is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_M_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_M));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_N_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_N is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_N_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_N));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_P_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_P is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_P_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_P));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_Q_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_Q is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_Q_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_Q));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_R_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_R is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_R_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_R));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_S_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_S is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_S_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_S));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_T_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_T is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_T_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_T));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_V_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_V is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_V_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_V));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_W_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_W is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_W_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_W));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_Y_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_Y is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_Y_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED_Y));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED___set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED__ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED___get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::AA_SEED__));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_A_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_A_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_A_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_A_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_A_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_A_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_A_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_A_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_C_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_C_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_C_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_C_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_C_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_C_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_C_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_C_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_D_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_D_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_D_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_D_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_D_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_D_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_D_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_D_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_E_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_E_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_E_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_E_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_E_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_E_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_E_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_E_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_F_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_F_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_F_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_F_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_F_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_F_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_F_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_F_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_G_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_G_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_G_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_G_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_G_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_G_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_G_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_G_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_H_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_H_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_H_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_H_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_H_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_H_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_H_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_H_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_I_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_I_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_I_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_I_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_I_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_I_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_I_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_I_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_K_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_K_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_K_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_K_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_K_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_K_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_K_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_K_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_L_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_L_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_L_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_L_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_L_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_L_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_L_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_L_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_M_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_M_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_M_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_M_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_M_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_M_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_M_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_M_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_N_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_N_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_N_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_N_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_N_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_N_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_N_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_N_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_P_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_P_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_P_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_P_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_P_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_P_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_P_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_P_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_Q_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_Q_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_Q_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_Q_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_R_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_R_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_R_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_R_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_R_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_R_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_R_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_R_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_S_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_S_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_S_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_S_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_S_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_S_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_S_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_S_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_T_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_T_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_T_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_T_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_T_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_T_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_T_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_T_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_V_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_V_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_V_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_V_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_V_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_V_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_V_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_V_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_W_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_W_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_W_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_W_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_W_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_W_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_W_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_W_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_Y_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_Y_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_Y_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_Y_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED___RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED___RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED___RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED___RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED___LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED___LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED___LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED___LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::AA_SEED_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_C____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_C___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_C____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_2_AA_SEED_C___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_G____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_G___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_G____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_2_AA_SEED_G___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_A____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_A___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_A____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_2_AA_SEED_A___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_TS___set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_TS__ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_TS___get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_2_AA_SEED_TS__));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_N____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_N___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_N____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_2_AA_SEED_N___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_DE___set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_DE__ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_DE___get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_2_AA_SEED_DE__));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_QKR__set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_QKR_ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_QKR__get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_2_AA_SEED_QKR_));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_VILM_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_VILM is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_VILM_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_2_AA_SEED_VILM));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_WFY__set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_WFY_ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_WFY__get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_2_AA_SEED_WFY_));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_H____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_H___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_H____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_2_AA_SEED_H___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_P____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_P___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_P____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_2_AA_SEED_P___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED______set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_____ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED______get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_2_AA_SEED_____));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_C____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_C___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_C____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_3_AA_SEED_C___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_G____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_G___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_G____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_3_AA_SEED_G___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_ATS__set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_ATS_ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_ATS__get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_3_AA_SEED_ATS_));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_NDE__set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_NDE_ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_NDE__get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_3_AA_SEED_NDE_));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_QKR__set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_QKR_ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_QKR__get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_3_AA_SEED_QKR_));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_VILM_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_VILM is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_VILM_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_3_AA_SEED_VILM));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_WFY__set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_WFY_ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_WFY__get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_3_AA_SEED_WFY_));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_H____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_H___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_H____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_3_AA_SEED_H___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_P____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_P___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_P____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_3_AA_SEED_P___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED______set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_____ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED______get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::LEVEL_3_AA_SEED_____));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_X_AA_SEED_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_X_AA_SEED_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_X_AA_SEED_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_X_AA_SEED_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_aahash_base__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "aahash_base" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "aahash_base" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "aahash_base" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  result = (uint64_t)btllib::aahash_base((char const *)arg1,arg2,arg3);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_aahash_base__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  unsigned int arg2 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "aahash_base" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "aahash_base" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = (uint64_t)btllib::aahash_base((char const *)arg1,arg2);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_aahash_base(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "aahash_base", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    PyObject *retobj = _wrap_aahash_base__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 3) {
+    PyObject *retobj = _wrap_aahash_base__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'aahash_base'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::aahash_base(char const *,unsigned int,unsigned int)\n"
+    "    btllib::aahash_base(char const *,unsigned int)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_aahash_roll__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  unsigned int arg2 ;
+  unsigned char arg3 ;
+  unsigned char arg4 ;
+  unsigned int arg5 ;
+  uint64_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned char val4 ;
+  int ecode4 = 0 ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "aahash_roll" "', argument " "1"" of type '" "uint64_t""'");
+  } 
+  arg1 = static_cast< uint64_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "aahash_roll" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "aahash_roll" "', argument " "3"" of type '" "unsigned char""'");
+  } 
+  arg3 = static_cast< unsigned char >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "aahash_roll" "', argument " "4"" of type '" "unsigned char""'");
+  } 
+  arg4 = static_cast< unsigned char >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "aahash_roll" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  result = (uint64_t)btllib::aahash_roll(arg1,arg2,arg3,arg4,arg5);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_aahash_roll__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  unsigned int arg2 ;
+  unsigned char arg3 ;
+  unsigned char arg4 ;
+  uint64_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned char val4 ;
+  int ecode4 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "aahash_roll" "', argument " "1"" of type '" "uint64_t""'");
+  } 
+  arg1 = static_cast< uint64_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "aahash_roll" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "aahash_roll" "', argument " "3"" of type '" "unsigned char""'");
+  } 
+  arg3 = static_cast< unsigned char >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "aahash_roll" "', argument " "4"" of type '" "unsigned char""'");
+  } 
+  arg4 = static_cast< unsigned char >(val4);
+  result = (uint64_t)btllib::aahash_roll(arg1,arg2,arg3,arg4);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_aahash_roll(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "aahash_roll", 0, 5, argv))) SWIG_fail;
+  --argc;
+  if (argc == 4) {
+    PyObject *retobj = _wrap_aahash_roll__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 5) {
+    PyObject *retobj = _wrap_aahash_roll__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'aahash_roll'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::aahash_roll(uint64_t,unsigned int,unsigned char,unsigned char,unsigned int)\n"
+    "    btllib::aahash_roll(uint64_t,unsigned int,unsigned char,unsigned char)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_aa_modify_base_with_seed(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  btllib::SpacedSeed *arg2 = 0 ;
+  char *arg3 = (char *) 0 ;
+  unsigned int arg4 ;
+  uint64_t val1 ;
+  int ecode1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[4] ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "aa_modify_base_with_seed", 4, 4, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "aa_modify_base_with_seed" "', argument " "1"" of type '" "uint64_t""'");
+  } 
+  arg1 = static_cast< uint64_t >(val1);
+  {
+    std::vector< unsigned int,std::allocator< unsigned int > > *ptr = (std::vector< unsigned int,std::allocator< unsigned int > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "aa_modify_base_with_seed" "', argument " "2"" of type '" "btllib::SpacedSeed const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "aa_modify_base_with_seed" "', argument " "2"" of type '" "btllib::SpacedSeed const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  res3 = SWIG_AsCharPtrAndSize(swig_obj[2], &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "aa_modify_base_with_seed" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "aa_modify_base_with_seed" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  result = (uint64_t)btllib::aa_modify_base_with_seed(arg1,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg2,(char const *)arg3,arg4);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_aa_parse_seeds(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< std::string,std::allocator< std::string > > *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[1] ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "aa_parse_seeds" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "aa_parse_seeds" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = btllib::aa_parse_seeds((std::vector< std::string,std::allocator< std::string > > const &)*arg1);
+  resultobj = swig::from(static_cast< std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_AAHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string_view arg1 ;
+  uint8_t arg2 ;
+  uint16_t arg3 ;
+  unsigned int arg4 ;
+  size_t arg5 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  size_t val5 ;
+  int ecode5 = 0 ;
+  btllib::AAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  {
+    res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__string_view,  0  | 0);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_AAHash" "', argument " "1"" of type '" "std::string_view""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_AAHash" "', argument " "1"" of type '" "std::string_view""'");
+    } else {
+      std::string_view * temp = reinterpret_cast< std::string_view * >(argp1);
+      arg1 = *temp;
+      if (SWIG_IsNewObj(res1)) delete temp;
+    }
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_AAHash" "', argument " "2"" of type '" "uint8_t""'");
+  } 
+  arg2 = static_cast< uint8_t >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_AAHash" "', argument " "3"" of type '" "uint16_t""'");
+  } 
+  arg3 = static_cast< uint16_t >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_AAHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_AAHash" "', argument " "5"" of type '" "size_t""'");
+  } 
+  arg5 = static_cast< size_t >(val5);
+  result = (btllib::AAHash *)new btllib::AAHash(arg1,arg2,arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__AAHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_AAHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string_view arg1 ;
+  uint8_t arg2 ;
+  uint16_t arg3 ;
+  unsigned int arg4 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  btllib::AAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__string_view,  0  | 0);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_AAHash" "', argument " "1"" of type '" "std::string_view""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_AAHash" "', argument " "1"" of type '" "std::string_view""'");
+    } else {
+      std::string_view * temp = reinterpret_cast< std::string_view * >(argp1);
+      arg1 = *temp;
+      if (SWIG_IsNewObj(res1)) delete temp;
+    }
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_AAHash" "', argument " "2"" of type '" "uint8_t""'");
+  } 
+  arg2 = static_cast< uint8_t >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_AAHash" "', argument " "3"" of type '" "uint16_t""'");
+  } 
+  arg3 = static_cast< uint16_t >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_AAHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  result = (btllib::AAHash *)new btllib::AAHash(arg1,arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__AAHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_AAHash_roll(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::AAHash *arg1 = (btllib::AAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "AAHash_roll", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__AAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AAHash_roll" "', argument " "1"" of type '" "btllib::AAHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::AAHash * >(argp1);
+  result = (bool)(arg1)->roll();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AAHash_hashes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::AAHash *arg1 = (btllib::AAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "AAHash_hashes", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__AAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AAHash_hashes" "', argument " "1"" of type '" "btllib::AAHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::AAHash * >(argp1);
+  result = (uint64_t *)((btllib::AAHash const *)arg1)->hashes();
+  
+  resultobj = PyTuple_New(arg1->get_hash_num());
+  for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
+    PyTuple_SetItem(resultobj, i, PyLong_FromUnsignedLong(result[i]));
+  }
+  
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AAHash_get_pos(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::AAHash *arg1 = (btllib::AAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "AAHash_get_pos", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__AAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AAHash_get_pos" "', argument " "1"" of type '" "btllib::AAHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::AAHash * >(argp1);
+  result = ((btllib::AAHash const *)arg1)->get_pos();
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AAHash_get_hash_num(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::AAHash *arg1 = (btllib::AAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "AAHash_get_hash_num", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__AAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AAHash_get_hash_num" "', argument " "1"" of type '" "btllib::AAHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::AAHash * >(argp1);
+  result = (unsigned int)((btllib::AAHash const *)arg1)->get_hash_num();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AAHash_get_k(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::AAHash *arg1 = (btllib::AAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "AAHash_get_k", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__AAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AAHash_get_k" "', argument " "1"" of type '" "btllib::AAHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::AAHash * >(argp1);
+  result = (unsigned int)((btllib::AAHash const *)arg1)->get_k();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AAHash_get_forward_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::AAHash *arg1 = (btllib::AAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "AAHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__AAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AAHash_get_forward_hash" "', argument " "1"" of type '" "btllib::AAHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::AAHash * >(argp1);
+  result = (uint64_t)((btllib::AAHash const *)arg1)->get_forward_hash();
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AAHash_get_level(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::AAHash *arg1 = (btllib::AAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "AAHash_get_level", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__AAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AAHash_get_level" "', argument " "1"" of type '" "btllib::AAHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::AAHash * >(argp1);
+  result = (unsigned int)((btllib::AAHash const *)arg1)->get_level();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AAHash_get_seq(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::AAHash *arg1 = (btllib::AAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "AAHash_get_seq", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__AAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AAHash_get_seq" "', argument " "1"" of type '" "btllib::AAHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::AAHash * >(argp1);
+  result = (char *)((btllib::AAHash const *)arg1)->get_seq();
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_AAHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  size_t arg5 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  size_t val5 ;
+  int ecode5 = 0 ;
+  btllib::AAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_AAHash" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_AAHash" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_AAHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_AAHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_AAHash" "', argument " "5"" of type '" "size_t""'");
+  } 
+  arg5 = static_cast< size_t >(val5);
+  result = (btllib::AAHash *)new_btllib_AAHash__SWIG_2(SWIG_STD_MOVE(arg1),arg2,arg3,arg4,SWIG_STD_MOVE(arg5));
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__AAHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_AAHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  btllib::AAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_AAHash" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_AAHash" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_AAHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_AAHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  result = (btllib::AAHash *)new_btllib_AAHash__SWIG_2(SWIG_STD_MOVE(arg1),arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__AAHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_AAHash(PyObject *self, PyObject *args, PyObject *kwargs) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  
+  (void)self;
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_AAHash")) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_AAHash", 0, 5, argv))) SWIG_fail;
+  --argc;
+  if (argc == 4) {
+    int _v = 0;
+    {
+      int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__string_view, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_char(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_1;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_short(argv[2], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_1;
+    int retval = _wrap_new_AAHash__SWIG_1(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_1:
+  
+  if (argc == 4) {
+    int retval = _wrap_new_AAHash__SWIG_3(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 5) {
+    int _v = 0;
+    {
+      int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__string_view, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_3;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_char(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_3;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_short(argv[2], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_3;
+    int retval = _wrap_new_AAHash__SWIG_0(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_3:
+  
+  if (argc == 5) {
+    int retval = _wrap_new_AAHash__SWIG_2(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_AAHash'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::AAHash::AAHash(std::string_view,uint8_t,uint16_t,unsigned int,size_t)\n"
+    "    btllib::AAHash::AAHash(std::string_view,uint8_t,uint16_t,unsigned int)\n"
+    "    btllib::AAHash::AAHash(std::string,unsigned int,unsigned int,unsigned int,size_t)\n"
+    "    btllib::AAHash::AAHash(std::string,unsigned int,unsigned int,unsigned int)\n");
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AAHash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::AAHash *arg1 = (btllib::AAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "delete_AAHash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__AAHash, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AAHash" "', argument " "1"" of type '" "btllib::AAHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::AAHash * >(argp1);
+  delete_btllib_AAHash(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_AAHash) /* defines _wrap_delete_AAHash_destructor_closure */
+
+SWIGINTERN int _wrap_new_SeedAAHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  size_t arg5 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  size_t val5 ;
+  int ecode5 = 0 ;
+  btllib::SeedAAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedAAHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedAAHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedAAHash" "', argument " "5"" of type '" "size_t""'");
+  } 
+  arg5 = static_cast< size_t >(val5);
+  result = (btllib::SeedAAHash *)new btllib::SeedAAHash((char const *)arg1,(std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &)*arg2,arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedAAHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedAAHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  btllib::SeedAAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedAAHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedAAHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  result = (btllib::SeedAAHash *)new btllib::SeedAAHash((char const *)arg1,(std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &)*arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedAAHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedAAHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  size_t arg5 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  size_t val5 ;
+  int ecode5 = 0 ;
+  btllib::SeedAAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedAAHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedAAHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedAAHash" "', argument " "5"" of type '" "size_t""'");
+  } 
+  arg5 = static_cast< size_t >(val5);
+  result = (btllib::SeedAAHash *)new btllib::SeedAAHash((std::string const &)*arg1,(std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &)*arg2,arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedAAHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedAAHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  btllib::SeedAAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedAAHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedAAHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  result = (btllib::SeedAAHash *)new btllib::SeedAAHash((std::string const &)*arg1,(std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &)*arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedAAHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedAAHash__SWIG_4(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  size_t arg5 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  size_t val5 ;
+  int ecode5 = 0 ;
+  btllib::SeedAAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedAAHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedAAHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedAAHash" "', argument " "5"" of type '" "size_t""'");
+  } 
+  arg5 = static_cast< size_t >(val5);
+  result = (btllib::SeedAAHash *)new btllib::SeedAAHash((char const *)arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2,arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedAAHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedAAHash__SWIG_5(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  btllib::SeedAAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedAAHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedAAHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  result = (btllib::SeedAAHash *)new btllib::SeedAAHash((char const *)arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedAAHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedAAHash__SWIG_6(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  size_t arg5 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  size_t val5 ;
+  int ecode5 = 0 ;
+  btllib::SeedAAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedAAHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedAAHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedAAHash" "', argument " "5"" of type '" "size_t""'");
+  } 
+  arg5 = static_cast< size_t >(val5);
+  result = (btllib::SeedAAHash *)new btllib::SeedAAHash((std::string const &)*arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2,arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedAAHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedAAHash__SWIG_7(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  btllib::SeedAAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedAAHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedAAHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  result = (btllib::SeedAAHash *)new btllib::SeedAAHash((std::string const &)*arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedAAHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedAAHash__SWIG_8(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::SeedAAHash *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  btllib::SeedAAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_btllib__SeedAAHash,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "btllib::SeedAAHash const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "btllib::SeedAAHash const &""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedAAHash * >(argp1);
+  result = (btllib::SeedAAHash *)new btllib::SeedAAHash((btllib::SeedAAHash const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedAAHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedAAHash__SWIG_9(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::SeedAAHash *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::unique_ptr< btllib::SeedAAHash > rvrdeleter1 ;
+  btllib::SeedAAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_btllib__SeedAAHash, SWIG_POINTER_RELEASE |  0 );
+  if (!SWIG_IsOK(res1)) {
+    if (res1 == SWIG_ERROR_RELEASE_NOT_OWNED) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedAAHash" "', cannot release ownership as memory is not owned for argument " "1"" of type '" "btllib::SeedAAHash &&""'");
+    } else {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "btllib::SeedAAHash &&""'"); 
+    }
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedAAHash" "', argument " "1"" of type '" "btllib::SeedAAHash &&""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedAAHash * >(argp1);
+  rvrdeleter1.reset(arg1);
+  result = (btllib::SeedAAHash *)new btllib::SeedAAHash((btllib::SeedAAHash &&)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedAAHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedAAHash(PyObject *self, PyObject *args, PyObject *kwargs) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  
+  (void)self;
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_SeedAAHash")) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_SeedAAHash", 0, 5, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v = 0;
+    {
+      int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_btllib__SeedAAHash, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_new_SeedAAHash__SWIG_8(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 1) {
+    int retval = _wrap_new_SeedAAHash__SWIG_9(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 4) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_3;
+    {
+      int res = swig::asptr(argv[1], (std::vector< std::string,std::allocator< std::string > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_3;
+    int retval = _wrap_new_SeedAAHash__SWIG_7(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_3:
+  
+  if (argc == 4) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_4;
+    {
+      int res = swig::asptr(argv[1], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_4;
+    int retval = _wrap_new_SeedAAHash__SWIG_3(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_4:
+  
+  if (argc == 4) {
+    int _v = 0;
+    {
+      int res = swig::asptr(argv[1], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_5;
+    int retval = _wrap_new_SeedAAHash__SWIG_1(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_5:
+  
+  if (argc == 4) {
+    int retval = _wrap_new_SeedAAHash__SWIG_5(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 5) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_7;
+    {
+      int res = swig::asptr(argv[1], (std::vector< std::string,std::allocator< std::string > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_7;
+    int retval = _wrap_new_SeedAAHash__SWIG_6(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_7:
+  
+  if (argc == 5) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_8;
+    {
+      int res = swig::asptr(argv[1], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_8;
+    int retval = _wrap_new_SeedAAHash__SWIG_2(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_8:
+  
+  if (argc == 5) {
+    int _v = 0;
+    {
+      int res = swig::asptr(argv[1], (std::vector< std::string,std::allocator< std::string > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_9;
+    int retval = _wrap_new_SeedAAHash__SWIG_4(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_9:
+  
+  if (argc == 5) {
+    int retval = _wrap_new_SeedAAHash__SWIG_0(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_SeedAAHash'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::SeedAAHash::SeedAAHash(char const *,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int,unsigned int,size_t)\n"
+    "    btllib::SeedAAHash::SeedAAHash(char const *,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int,unsigned int)\n"
+    "    btllib::SeedAAHash::SeedAAHash(std::string const &,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int,unsigned int,size_t)\n"
+    "    btllib::SeedAAHash::SeedAAHash(std::string const &,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int,unsigned int)\n"
+    "    btllib::SeedAAHash::SeedAAHash(char const *,std::vector< std::string,std::allocator< std::string > > const &,unsigned int,unsigned int,size_t)\n"
+    "    btllib::SeedAAHash::SeedAAHash(char const *,std::vector< std::string,std::allocator< std::string > > const &,unsigned int,unsigned int)\n"
+    "    btllib::SeedAAHash::SeedAAHash(std::string const &,std::vector< std::string,std::allocator< std::string > > const &,unsigned int,unsigned int,size_t)\n"
+    "    btllib::SeedAAHash::SeedAAHash(std::string const &,std::vector< std::string,std::allocator< std::string > > const &,unsigned int,unsigned int)\n"
+    "    btllib::SeedAAHash::SeedAAHash(btllib::SeedAAHash const &)\n"
+    "    btllib::SeedAAHash::SeedAAHash(btllib::SeedAAHash &&)\n");
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedAAHash_roll(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedAAHash *arg1 = (btllib::SeedAAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedAAHash_roll", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedAAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedAAHash_roll" "', argument " "1"" of type '" "btllib::SeedAAHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedAAHash * >(argp1);
+  result = (bool)(arg1)->roll();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedAAHash_hashes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedAAHash *arg1 = (btllib::SeedAAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedAAHash_hashes", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedAAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedAAHash_hashes" "', argument " "1"" of type '" "btllib::SeedAAHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedAAHash * >(argp1);
+  result = (uint64_t *)((btllib::SeedAAHash const *)arg1)->hashes();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedAAHash_get_pos(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedAAHash *arg1 = (btllib::SeedAAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedAAHash_get_pos", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedAAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedAAHash_get_pos" "', argument " "1"" of type '" "btllib::SeedAAHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedAAHash * >(argp1);
+  result = ((btllib::SeedAAHash const *)arg1)->get_pos();
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedAAHash_get_hash_num(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedAAHash *arg1 = (btllib::SeedAAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedAAHash_get_hash_num", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedAAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedAAHash_get_hash_num" "', argument " "1"" of type '" "btllib::SeedAAHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedAAHash * >(argp1);
+  result = (unsigned int)((btllib::SeedAAHash const *)arg1)->get_hash_num();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedAAHash_get_hash_num_per_seed(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedAAHash *arg1 = (btllib::SeedAAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedAAHash_get_hash_num_per_seed", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedAAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedAAHash_get_hash_num_per_seed" "', argument " "1"" of type '" "btllib::SeedAAHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedAAHash * >(argp1);
+  result = (unsigned int)((btllib::SeedAAHash const *)arg1)->get_hash_num_per_seed();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedAAHash_get_k(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedAAHash *arg1 = (btllib::SeedAAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedAAHash_get_k", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedAAHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedAAHash_get_k" "', argument " "1"" of type '" "btllib::SeedAAHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedAAHash * >(argp1);
+  result = (unsigned int)((btllib::SeedAAHash const *)arg1)->get_k();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SeedAAHash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedAAHash *arg1 = (btllib::SeedAAHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "delete_SeedAAHash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedAAHash, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeedAAHash" "', argument " "1"" of type '" "btllib::SeedAAHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedAAHash * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeedAAHash) /* defines _wrap_delete_SeedAAHash_destructor_closure */
 
 SWIGINTERN int _wrap_new_CountingBloomFilter8__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
@@ -54621,6 +58609,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "parse_seeds", _wrap_parse_seeds, METH_VARARGS, NULL},
 	 { "parsed_seeds_to_blocks", _wrap_parsed_seeds_to_blocks, METH_VARARGS, NULL},
 	 { "check_seeds", _wrap_check_seeds, METH_VARARGS, NULL},
+	 { "aahash_base", _wrap_aahash_base, METH_VARARGS, NULL},
+	 { "aahash_roll", _wrap_aahash_roll, METH_VARARGS, NULL},
+	 { "aa_modify_base_with_seed", _wrap_aa_modify_base_with_seed, METH_VARARGS, NULL},
+	 { "aa_parse_seeds", _wrap_aa_parse_seeds, METH_O, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -54698,6 +58690,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "parse_seeds", _wrap_parse_seeds, METH_VARARGS, NULL},
 	 { "parsed_seeds_to_blocks", _wrap_parsed_seeds_to_blocks, METH_VARARGS, NULL},
 	 { "check_seeds", _wrap_check_seeds, METH_VARARGS, NULL},
+	 { "aahash_base", _wrap_aahash_base, METH_VARARGS, NULL},
+	 { "aahash_roll", _wrap_aahash_roll, METH_VARARGS, NULL},
+	 { "aa_modify_base_with_seed", _wrap_aa_modify_base_with_seed, METH_VARARGS, NULL},
+	 { "aa_parse_seeds", _wrap_aa_parse_seeds, METH_O, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -63218,6 +67214,476 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__RandSeq_type = {
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__RandSeq_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__RandSeq_type};
 
+static SwigPyGetSet AAHash___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__AAHash_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &AAHash___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__AAHash_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__AAHash_methods[] = {
+  { "roll", _wrap_AAHash_roll, METH_NOARGS, "" },
+  { "hashes", _wrap_AAHash_hashes, METH_NOARGS, "" },
+  { "get_pos", _wrap_AAHash_get_pos, METH_NOARGS, "" },
+  { "get_hash_num", _wrap_AAHash_get_hash_num, METH_NOARGS, "" },
+  { "get_k", _wrap_AAHash_get_k, METH_NOARGS, "" },
+  { "get_forward_hash", _wrap_AAHash_get_forward_hash, METH_NOARGS, "" },
+  { "get_level", _wrap_AAHash_get_level, METH_NOARGS, "" },
+  { "get_seq", _wrap_AAHash_get_seq, METH_NOARGS, "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__AAHash_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.AAHash",                          /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_AAHash_destructor_closure,   /* tp_dealloc */
+#if PY_VERSION_HEX < 0x030800b4
+    (printfunc) 0,                            /* tp_print */
+#else
+    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
+#endif
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__AAHash_type.as_number,                /* tp_as_number */
+    &SwigPyBuiltin__btllib__AAHash_type.as_sequence,              /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__AAHash_type.as_mapping,               /* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__AAHash_type.as_buffer,                /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::AAHash",                         /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__AAHash_richcompare,/* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__AAHash_methods,    /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__AAHash_getset,     /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_AAHash,                         /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+# if PY_VERSION_HEX >= 0x030a0000
+    (sendfunc) 0,                             /* am_send */
+# endif
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+#if PY_VERSION_HEX >= 0x03090000
+    (PyObject *) 0,                           /* ht_module */
+#endif
+#if PY_VERSION_HEX >= 0x030b0000
+    (char *) 0,                               /* _ht_tpname */
+  {
+    (PyObject *) 0,                           /* getitem */
+  }
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__AAHash_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__AAHash_type};
+
+static SwigPyGetSet SeedAAHash___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__SeedAAHash_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &SeedAAHash___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__SeedAAHash_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedAAHash_methods[] = {
+  { "roll", _wrap_SeedAAHash_roll, METH_NOARGS, "" },
+  { "hashes", _wrap_SeedAAHash_hashes, METH_NOARGS, "" },
+  { "get_pos", _wrap_SeedAAHash_get_pos, METH_NOARGS, "" },
+  { "get_hash_num", _wrap_SeedAAHash_get_hash_num, METH_NOARGS, "" },
+  { "get_hash_num_per_seed", _wrap_SeedAAHash_get_hash_num_per_seed, METH_NOARGS, "" },
+  { "get_k", _wrap_SeedAAHash_get_k, METH_NOARGS, "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__SeedAAHash_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.SeedAAHash",                      /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_SeedAAHash_destructor_closure,                   /* tp_dealloc */
+#if PY_VERSION_HEX < 0x030800b4
+    (printfunc) 0,                            /* tp_print */
+#else
+    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
+#endif
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__SeedAAHash_type.as_number,            /* tp_as_number */
+    &SwigPyBuiltin__btllib__SeedAAHash_type.as_sequence,          /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__SeedAAHash_type.as_mapping,           /* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__SeedAAHash_type.as_buffer,            /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::SeedAAHash",                     /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__SeedAAHash_richcompare,                /* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__SeedAAHash_methods,/* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__SeedAAHash_getset, /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_SeedAAHash,                     /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+# if PY_VERSION_HEX >= 0x030a0000
+    (sendfunc) 0,                             /* am_send */
+# endif
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+#if PY_VERSION_HEX >= 0x03090000
+    (PyObject *) 0,                           /* ht_module */
+#endif
+#if PY_VERSION_HEX >= 0x030b0000
+    (char *) 0,                               /* _ht_tpname */
+  {
+    (PyObject *) 0,                           /* getitem */
+  }
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeedAAHash_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__SeedAAHash_type};
+
 static SwigPyGetSet CountingBloomFilter8___dict___getset = { SwigPyObject_get___dict__, 0 };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__CountingBloomFilterT_uint8_t_t_getset[] = {
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &CountingBloomFilter8___dict___getset },
@@ -65484,6 +69950,7 @@ static swig_type_info _swigt__p_HashedKmer = {"_p_HashedKmer", "HashedKmer *", 0
 static swig_type_info _swigt__p_SwigPyObject = {"_p_SwigPyObject", "SwigPyObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_btllib__AAHash = {"_p_btllib__AAHash", "btllib::AAHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__AAHash_clientdata, 0};
 static swig_type_info _swigt__p_btllib__Barrier = {"_p_btllib__Barrier", "btllib::Barrier *", 0, 0, (void*)&SwigPyBuiltin__btllib__Barrier_clientdata, 0};
 static swig_type_info _swigt__p_btllib__BlindNtHash = {"_p_btllib__BlindNtHash", "btllib::BlindNtHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__BlindNtHash_clientdata, 0};
 static swig_type_info _swigt__p_btllib__BloomFilter = {"_p_btllib__BloomFilter", "btllib::BloomFilter *", 0, 0, (void*)&SwigPyBuiltin__btllib__BloomFilter_clientdata, 0};
@@ -65509,6 +69976,7 @@ static swig_type_info _swigt__p_btllib__MIBloomFilterT_unsigned_int_t = {"_p_btl
 static swig_type_info _swigt__p_btllib__MIBloomFilterT_unsigned_short_t = {"_p_btllib__MIBloomFilterT_unsigned_short_t", "btllib::MIBloomFilter< uint16_t > *|btllib::MIBloomFilter< unsigned short > *", 0, 0, (void*)&SwigPyBuiltin__btllib__MIBloomFilterT_uint16_t_t_clientdata, 0};
 static swig_type_info _swigt__p_btllib__NtHash = {"_p_btllib__NtHash", "btllib::NtHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__NtHash_clientdata, 0};
 static swig_type_info _swigt__p_btllib__RandSeq = {"_p_btllib__RandSeq", "btllib::RandSeq *", 0, 0, (void*)&SwigPyBuiltin__btllib__RandSeq_clientdata, 0};
+static swig_type_info _swigt__p_btllib__SeedAAHash = {"_p_btllib__SeedAAHash", "btllib::SeedAAHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeedAAHash_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeedBloomFilter = {"_p_btllib__SeedBloomFilter", "btllib::SeedBloomFilter *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeedBloomFilter_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeedNtHash = {"_p_btllib__SeedNtHash", "btllib::SeedNtHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeedNtHash_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeqReader = {"_p_btllib__SeqReader", "btllib::SeqReader *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeqReader_clientdata, 0};
@@ -65545,6 +70013,7 @@ static swig_type_info _swigt__p_long_long = {"_p_long_long", "int64_t *|int_fast
 static swig_type_info _swigt__p_off_type = {"_p_off_type", "off_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_openmode = {"_p_openmode", "openmode *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_p_unsigned_long_long = {"_p_p_p_unsigned_long_long", "uint64_t ***|uint64_t ***", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_unsigned_long_long = {"_p_p_unsigned_long_long", "uint64_t **|uint64_t **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_void = {"_p_p_void", "void **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pos_type = {"_p_pos_type", "pos_type *", 0, 0, (void*)0, 0};
@@ -65572,6 +70041,7 @@ static swig_type_info _swigt__p_std__basic_stringT_char_std__char_traitsT_char_t
 static swig_type_info _swigt__p_std__ios_base = {"_p_std__ios_base", "std::ios_base *", 0, 0, (void*)&SwigPyBuiltin__std__ios_base_clientdata, 0};
 static swig_type_info _swigt__p_std__locale = {"_p_std__locale", "std::locale *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__string_view = {"_p_std__string_view", "std::string_view *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t = {"_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t", "std::vector< btllib::Indexlr::Minimizer,std::allocator< btllib::Indexlr::Minimizer > > *|std::vector< btllib::Indexlr::Minimizer > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_btllib__Indexlr__Minimizer_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_double_std__allocatorT_double_t_t = {"_p_std__vectorT_double_std__allocatorT_double_t_t", "std::vector< double,std::allocator< double > > *|std::vector< double > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_double_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_int_std__allocatorT_int_t_t = {"_p_std__vectorT_int_std__allocatorT_int_t_t", "std::vector< int,std::allocator< int > > *|std::vector< int > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_int_t_clientdata, 0};
@@ -65598,6 +70068,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_SwigPyObject,
   &_swigt__p_allocator_type,
   &_swigt__p_bool,
+  &_swigt__p_btllib__AAHash,
   &_swigt__p_btllib__Barrier,
   &_swigt__p_btllib__BlindNtHash,
   &_swigt__p_btllib__BloomFilter,
@@ -65623,6 +70094,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_btllib__MIBloomFilterT_unsigned_short_t,
   &_swigt__p_btllib__NtHash,
   &_swigt__p_btllib__RandSeq,
+  &_swigt__p_btllib__SeedAAHash,
   &_swigt__p_btllib__SeedBloomFilter,
   &_swigt__p_btllib__SeedNtHash,
   &_swigt__p_btllib__SeqReader,
@@ -65659,6 +70131,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_off_type,
   &_swigt__p_openmode,
   &_swigt__p_p_PyObject,
+  &_swigt__p_p_p_unsigned_long_long,
   &_swigt__p_p_unsigned_long_long,
   &_swigt__p_p_void,
   &_swigt__p_pos_type,
@@ -65686,6 +70159,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__ios_base,
   &_swigt__p_std__locale,
   &_swigt__p_std__string,
+  &_swigt__p_std__string_view,
   &_swigt__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t,
   &_swigt__p_std__vectorT_double_std__allocatorT_double_t_t,
   &_swigt__p_std__vectorT_int_std__allocatorT_int_t_t,
@@ -65712,6 +70186,7 @@ static swig_cast_info _swigc__p_HashedKmer[] = {  {&_swigt__p_HashedKmer, 0, 0, 
 static swig_cast_info _swigc__p_SwigPyObject[] = {  {&_swigt__p_SwigPyObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__AAHash[] = {  {&_swigt__p_btllib__AAHash, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__Barrier[] = {  {&_swigt__p_btllib__Barrier, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__BlindNtHash[] = {  {&_swigt__p_btllib__BlindNtHash, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__BloomFilter[] = {  {&_swigt__p_btllib__BloomFilter, 0, 0, 0},{0, 0, 0, 0}};
@@ -65737,6 +70212,7 @@ static swig_cast_info _swigc__p_btllib__MIBloomFilterT_unsigned_int_t[] = {  {&_
 static swig_cast_info _swigc__p_btllib__MIBloomFilterT_unsigned_short_t[] = {  {&_swigt__p_btllib__MIBloomFilterT_unsigned_short_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__NtHash[] = {  {&_swigt__p_btllib__NtHash, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__RandSeq[] = {  {&_swigt__p_btllib__RandSeq, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_btllib__SeedAAHash[] = {  {&_swigt__p_btllib__SeedAAHash, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeedBloomFilter[] = {  {&_swigt__p_btllib__SeedBloomFilter, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeedNtHash[] = {  {&_swigt__p_btllib__SeedNtHash, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_btllib__SeqReader[] = {  {&_swigt__p_btllib__SeqReader, 0, 0, 0},{0, 0, 0, 0}};
@@ -65773,6 +70249,7 @@ static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0}
 static swig_cast_info _swigc__p_off_type[] = {  {&_swigt__p_off_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_openmode[] = {  {&_swigt__p_openmode, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_p_unsigned_long_long[] = {  {&_swigt__p_p_p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_unsigned_long_long[] = {  {&_swigt__p_p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_void[] = {  {&_swigt__p_p_void, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pos_type[] = {  {&_swigt__p_pos_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -65800,6 +70277,7 @@ static swig_cast_info _swigc__p_std__basic_stringT_char_std__char_traitsT_char_t
 static swig_cast_info _swigc__p_std__ios_base[] = {  {&_swigt__p_std__ios_base, 0, 0, 0},  {&_swigt__p_std__basic_iosT_char_std__char_traitsT_char_t_t, _p_std__basic_iosT_char_std__char_traitsT_char_t_tTo_p_std__ios_base, 0, 0},  {&_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__ios_base, 0, 0},  {&_swigt__p_std__basic_istreamT_char_std__char_traitsT_char_t_t, _p_std__basic_istreamT_char_std__char_traitsT_char_t_tTo_p_std__ios_base, 0, 0},  {&_swigt__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_ostreamT_char_std__char_traitsT_char_t_tTo_p_std__ios_base, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__locale[] = {  {&_swigt__p_std__locale, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__string_view[] = {  {&_swigt__p_std__string_view, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t[] = {  {&_swigt__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_double_std__allocatorT_double_t_t[] = {  {&_swigt__p_std__vectorT_double_std__allocatorT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_int_std__allocatorT_int_t_t[] = {  {&_swigt__p_std__vectorT_int_std__allocatorT_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -65826,6 +70304,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_SwigPyObject,
   _swigc__p_allocator_type,
   _swigc__p_bool,
+  _swigc__p_btllib__AAHash,
   _swigc__p_btllib__Barrier,
   _swigc__p_btllib__BlindNtHash,
   _swigc__p_btllib__BloomFilter,
@@ -65851,6 +70330,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_btllib__MIBloomFilterT_unsigned_short_t,
   _swigc__p_btllib__NtHash,
   _swigc__p_btllib__RandSeq,
+  _swigc__p_btllib__SeedAAHash,
   _swigc__p_btllib__SeedBloomFilter,
   _swigc__p_btllib__SeedNtHash,
   _swigc__p_btllib__SeqReader,
@@ -65887,6 +70367,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_off_type,
   _swigc__p_openmode,
   _swigc__p_p_PyObject,
+  _swigc__p_p_p_unsigned_long_long,
   _swigc__p_p_unsigned_long_long,
   _swigc__p_p_void,
   _swigc__p_pos_type,
@@ -65914,6 +70395,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__ios_base,
   _swigc__p_std__locale,
   _swigc__p_std__string,
+  _swigc__p_std__string_view,
   _swigc__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t,
   _swigc__p_std__vectorT_double_std__allocatorT_double_t_t,
   _swigc__p_std__vectorT_int_std__allocatorT_int_t_t,
@@ -67318,6 +71800,9 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "COMPLEMENTS", Swig_var_COMPLEMENTS_get, Swig_var_COMPLEMENTS_set);
   PyDict_SetItemString(md, "COMPLEMENTS", PyObject_GetAttrString(globals, "COMPLEMENTS"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "COMPLEMENTS");
+  SWIG_addvarlink(globals, "AMINO_ACIDS", Swig_var_AMINO_ACIDS_get, Swig_var_AMINO_ACIDS_set);
+  PyDict_SetItemString(md, "AMINO_ACIDS", PyObject_GetAttrString(globals, "AMINO_ACIDS"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AMINO_ACIDS");
   SWIG_addvarlink(globals, "CAPITALS", Swig_var_CAPITALS_get, Swig_var_CAPITALS_set);
   PyDict_SetItemString(md, "CAPITALS", PyObject_GetAttrString(globals, "CAPITALS"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "CAPITALS");
@@ -67598,6 +72083,475 @@ SWIG_init(void) {
   Py_INCREF(builtin_pytype);
   PyModule_AddObject(m, "RandSeq", (PyObject *)builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "RandSeq");
+  d = md;
+  SWIG_addvarlink(globals, "AA_SEED_A", Swig_var_AA_SEED_A_get, Swig_var_AA_SEED_A_set);
+  PyDict_SetItemString(md, "AA_SEED_A", PyObject_GetAttrString(globals, "AA_SEED_A"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_A");
+  SWIG_addvarlink(globals, "AA_SEED_C", Swig_var_AA_SEED_C_get, Swig_var_AA_SEED_C_set);
+  PyDict_SetItemString(md, "AA_SEED_C", PyObject_GetAttrString(globals, "AA_SEED_C"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_C");
+  SWIG_addvarlink(globals, "AA_SEED_D", Swig_var_AA_SEED_D_get, Swig_var_AA_SEED_D_set);
+  PyDict_SetItemString(md, "AA_SEED_D", PyObject_GetAttrString(globals, "AA_SEED_D"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_D");
+  SWIG_addvarlink(globals, "AA_SEED_E", Swig_var_AA_SEED_E_get, Swig_var_AA_SEED_E_set);
+  PyDict_SetItemString(md, "AA_SEED_E", PyObject_GetAttrString(globals, "AA_SEED_E"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_E");
+  SWIG_addvarlink(globals, "AA_SEED_F", Swig_var_AA_SEED_F_get, Swig_var_AA_SEED_F_set);
+  PyDict_SetItemString(md, "AA_SEED_F", PyObject_GetAttrString(globals, "AA_SEED_F"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_F");
+  SWIG_addvarlink(globals, "AA_SEED_G", Swig_var_AA_SEED_G_get, Swig_var_AA_SEED_G_set);
+  PyDict_SetItemString(md, "AA_SEED_G", PyObject_GetAttrString(globals, "AA_SEED_G"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_G");
+  SWIG_addvarlink(globals, "AA_SEED_H", Swig_var_AA_SEED_H_get, Swig_var_AA_SEED_H_set);
+  PyDict_SetItemString(md, "AA_SEED_H", PyObject_GetAttrString(globals, "AA_SEED_H"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_H");
+  SWIG_addvarlink(globals, "AA_SEED_I", Swig_var_AA_SEED_I_get, Swig_var_AA_SEED_I_set);
+  PyDict_SetItemString(md, "AA_SEED_I", PyObject_GetAttrString(globals, "AA_SEED_I"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_I");
+  SWIG_addvarlink(globals, "AA_SEED_K", Swig_var_AA_SEED_K_get, Swig_var_AA_SEED_K_set);
+  PyDict_SetItemString(md, "AA_SEED_K", PyObject_GetAttrString(globals, "AA_SEED_K"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_K");
+  SWIG_addvarlink(globals, "AA_SEED_L", Swig_var_AA_SEED_L_get, Swig_var_AA_SEED_L_set);
+  PyDict_SetItemString(md, "AA_SEED_L", PyObject_GetAttrString(globals, "AA_SEED_L"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_L");
+  SWIG_addvarlink(globals, "AA_SEED_M", Swig_var_AA_SEED_M_get, Swig_var_AA_SEED_M_set);
+  PyDict_SetItemString(md, "AA_SEED_M", PyObject_GetAttrString(globals, "AA_SEED_M"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_M");
+  SWIG_addvarlink(globals, "AA_SEED_N", Swig_var_AA_SEED_N_get, Swig_var_AA_SEED_N_set);
+  PyDict_SetItemString(md, "AA_SEED_N", PyObject_GetAttrString(globals, "AA_SEED_N"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_N");
+  SWIG_addvarlink(globals, "AA_SEED_P", Swig_var_AA_SEED_P_get, Swig_var_AA_SEED_P_set);
+  PyDict_SetItemString(md, "AA_SEED_P", PyObject_GetAttrString(globals, "AA_SEED_P"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_P");
+  SWIG_addvarlink(globals, "AA_SEED_Q", Swig_var_AA_SEED_Q_get, Swig_var_AA_SEED_Q_set);
+  PyDict_SetItemString(md, "AA_SEED_Q", PyObject_GetAttrString(globals, "AA_SEED_Q"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_Q");
+  SWIG_addvarlink(globals, "AA_SEED_R", Swig_var_AA_SEED_R_get, Swig_var_AA_SEED_R_set);
+  PyDict_SetItemString(md, "AA_SEED_R", PyObject_GetAttrString(globals, "AA_SEED_R"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_R");
+  SWIG_addvarlink(globals, "AA_SEED_S", Swig_var_AA_SEED_S_get, Swig_var_AA_SEED_S_set);
+  PyDict_SetItemString(md, "AA_SEED_S", PyObject_GetAttrString(globals, "AA_SEED_S"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_S");
+  SWIG_addvarlink(globals, "AA_SEED_T", Swig_var_AA_SEED_T_get, Swig_var_AA_SEED_T_set);
+  PyDict_SetItemString(md, "AA_SEED_T", PyObject_GetAttrString(globals, "AA_SEED_T"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_T");
+  SWIG_addvarlink(globals, "AA_SEED_V", Swig_var_AA_SEED_V_get, Swig_var_AA_SEED_V_set);
+  PyDict_SetItemString(md, "AA_SEED_V", PyObject_GetAttrString(globals, "AA_SEED_V"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_V");
+  SWIG_addvarlink(globals, "AA_SEED_W", Swig_var_AA_SEED_W_get, Swig_var_AA_SEED_W_set);
+  PyDict_SetItemString(md, "AA_SEED_W", PyObject_GetAttrString(globals, "AA_SEED_W"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_W");
+  SWIG_addvarlink(globals, "AA_SEED_Y", Swig_var_AA_SEED_Y_get, Swig_var_AA_SEED_Y_set);
+  PyDict_SetItemString(md, "AA_SEED_Y", PyObject_GetAttrString(globals, "AA_SEED_Y"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_Y");
+  SWIG_addvarlink(globals, "AA_SEED__", Swig_var_AA_SEED___get, Swig_var_AA_SEED___set);
+  PyDict_SetItemString(md, "AA_SEED__", PyObject_GetAttrString(globals, "AA_SEED__"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED__");
+  SWIG_addvarlink(globals, "AA_SEED_TABLE", Swig_var_AA_SEED_TABLE_get, Swig_var_AA_SEED_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_TABLE", PyObject_GetAttrString(globals, "AA_SEED_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_A_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_A_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_A_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_A_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_A_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_A_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_A_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_A_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_A_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_A_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_A_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_A_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_C_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_C_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_C_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_C_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_C_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_C_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_C_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_C_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_C_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_C_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_C_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_C_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_D_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_D_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_D_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_D_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_D_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_D_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_D_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_D_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_D_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_D_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_D_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_D_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_E_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_E_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_E_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_E_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_E_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_E_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_E_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_E_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_E_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_E_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_E_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_E_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_F_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_F_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_F_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_F_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_F_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_F_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_F_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_F_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_F_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_F_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_F_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_F_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_G_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_G_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_G_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_G_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_G_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_G_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_G_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_G_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_G_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_G_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_G_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_G_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_H_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_H_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_H_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_H_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_H_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_H_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_H_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_H_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_H_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_H_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_H_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_H_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_I_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_I_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_I_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_I_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_I_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_I_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_I_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_I_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_I_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_I_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_I_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_I_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_K_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_K_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_K_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_K_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_K_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_K_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_K_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_K_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_K_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_K_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_K_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_K_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_L_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_L_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_L_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_L_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_L_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_L_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_L_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_L_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_L_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_L_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_L_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_L_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_M_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_M_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_M_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_M_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_M_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_M_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_M_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_M_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_M_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_M_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_M_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_M_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_N_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_N_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_N_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_N_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_N_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_N_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_N_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_N_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_N_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_N_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_N_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_N_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_P_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_P_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_P_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_P_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_P_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_P_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_P_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_P_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_P_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_P_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_P_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_P_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_Q_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_Q_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_Q_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_Q_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_Q_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_Q_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_R_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_R_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_R_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_R_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_R_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_R_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_R_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_R_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_R_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_R_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_R_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_R_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_S_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_S_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_S_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_S_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_S_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_S_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_S_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_S_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_S_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_S_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_S_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_S_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_T_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_T_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_T_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_T_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_T_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_T_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_T_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_T_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_T_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_T_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_T_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_T_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_V_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_V_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_V_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_V_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_V_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_V_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_V_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_V_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_V_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_V_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_V_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_V_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_W_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_W_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_W_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_W_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_W_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_W_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_W_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_W_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_W_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_W_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_W_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_W_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_Y_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_Y_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_Y_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_Y_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_Y_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_Y_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED___RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED___RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED___RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED___RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED___RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED___RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED___LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED___LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED___LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED___LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED___LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED___LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_C___", Swig_var_LEVEL_2_AA_SEED_C____get, Swig_var_LEVEL_2_AA_SEED_C____set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_C___", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_C___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_C___");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_G___", Swig_var_LEVEL_2_AA_SEED_G____get, Swig_var_LEVEL_2_AA_SEED_G____set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_G___", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_G___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_G___");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_A___", Swig_var_LEVEL_2_AA_SEED_A____get, Swig_var_LEVEL_2_AA_SEED_A____set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_A___", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_A___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_A___");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_TS__", Swig_var_LEVEL_2_AA_SEED_TS___get, Swig_var_LEVEL_2_AA_SEED_TS___set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_TS__", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_TS__"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_TS__");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_N___", Swig_var_LEVEL_2_AA_SEED_N____get, Swig_var_LEVEL_2_AA_SEED_N____set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_N___", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_N___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_N___");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_DE__", Swig_var_LEVEL_2_AA_SEED_DE___get, Swig_var_LEVEL_2_AA_SEED_DE___set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_DE__", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_DE__"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_DE__");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_QKR_", Swig_var_LEVEL_2_AA_SEED_QKR__get, Swig_var_LEVEL_2_AA_SEED_QKR__set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_QKR_", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_QKR_"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_QKR_");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_VILM", Swig_var_LEVEL_2_AA_SEED_VILM_get, Swig_var_LEVEL_2_AA_SEED_VILM_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_VILM", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_VILM"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_VILM");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_WFY_", Swig_var_LEVEL_2_AA_SEED_WFY__get, Swig_var_LEVEL_2_AA_SEED_WFY__set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_WFY_", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_WFY_"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_WFY_");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_H___", Swig_var_LEVEL_2_AA_SEED_H____get, Swig_var_LEVEL_2_AA_SEED_H____set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_H___", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_H___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_H___");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_P___", Swig_var_LEVEL_2_AA_SEED_P____get, Swig_var_LEVEL_2_AA_SEED_P____set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_P___", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_P___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_P___");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_____", Swig_var_LEVEL_2_AA_SEED______get, Swig_var_LEVEL_2_AA_SEED______set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_____", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_____"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_____");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_TABLE", Swig_var_LEVEL_2_AA_SEED_TABLE_get, Swig_var_LEVEL_2_AA_SEED_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_C___", Swig_var_LEVEL_3_AA_SEED_C____get, Swig_var_LEVEL_3_AA_SEED_C____set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_C___", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_C___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_C___");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_G___", Swig_var_LEVEL_3_AA_SEED_G____get, Swig_var_LEVEL_3_AA_SEED_G____set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_G___", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_G___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_G___");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_ATS_", Swig_var_LEVEL_3_AA_SEED_ATS__get, Swig_var_LEVEL_3_AA_SEED_ATS__set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_ATS_", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_ATS_"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_ATS_");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_NDE_", Swig_var_LEVEL_3_AA_SEED_NDE__get, Swig_var_LEVEL_3_AA_SEED_NDE__set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_NDE_", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_NDE_"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_NDE_");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_QKR_", Swig_var_LEVEL_3_AA_SEED_QKR__get, Swig_var_LEVEL_3_AA_SEED_QKR__set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_QKR_", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_QKR_"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_QKR_");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_VILM", Swig_var_LEVEL_3_AA_SEED_VILM_get, Swig_var_LEVEL_3_AA_SEED_VILM_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_VILM", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_VILM"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_VILM");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_WFY_", Swig_var_LEVEL_3_AA_SEED_WFY__get, Swig_var_LEVEL_3_AA_SEED_WFY__set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_WFY_", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_WFY_"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_WFY_");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_H___", Swig_var_LEVEL_3_AA_SEED_H____get, Swig_var_LEVEL_3_AA_SEED_H____set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_H___", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_H___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_H___");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_P___", Swig_var_LEVEL_3_AA_SEED_P____get, Swig_var_LEVEL_3_AA_SEED_P____set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_P___", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_P___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_P___");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_____", Swig_var_LEVEL_3_AA_SEED______get, Swig_var_LEVEL_3_AA_SEED______set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_____", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_____"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_____");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_TABLE", Swig_var_LEVEL_3_AA_SEED_TABLE_get, Swig_var_LEVEL_3_AA_SEED_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_X_AA_SEED_TABLE", Swig_var_LEVEL_X_AA_SEED_TABLE_get, Swig_var_LEVEL_X_AA_SEED_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_X_AA_SEED_TABLE", PyObject_GetAttrString(globals, "LEVEL_X_AA_SEED_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_X_AA_SEED_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE");
+  
+  /* type 'btllib::AAHash' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__AAHash_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'AAHash'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "AAHash", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AAHash");
+  d = md;
+  
+  /* type 'btllib::SeedAAHash' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__SeedAAHash_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'SeedAAHash'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "SeedAAHash", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SeedAAHash");
   d = md;
   
   /* type 'btllib::CountingBloomFilter< uint8_t >' */

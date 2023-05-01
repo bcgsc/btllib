@@ -11,6 +11,7 @@
 namespace btllib {
 
 extern const char COMPLEMENTS[256];
+extern const char AMINO_ACIDS[256];
 extern const char CAPITALS[256];
 
 /**

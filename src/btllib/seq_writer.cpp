@@ -35,7 +35,8 @@ SeqWriter::write(const std::string& id,
 {
   check_error(seq.empty(), "Attempted to write empty sequence.");
   for (const auto& c : seq) {
-    if (!bool(COMPLEMENTS[(unsigned char)(c)])) {
+    if (!(bool(COMPLEMENTS[(unsigned char)(c)]) ||
+          bool(AMINO_ACIDS[(unsigned char)(c)]))) {
       log_error(std::string("A sequence contains invalid IUPAC character: ") +
                 c);
       std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)

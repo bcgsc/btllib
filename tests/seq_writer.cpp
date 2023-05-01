@@ -9,9 +9,11 @@
 int
 main()
 {
-  const char* ids[] = { "1", "2" };
-  const char* comments[] = { "comment1", "comment2" };
-  const char* seqs[] = { "ACTG", "TGCA" };
+  const char* ids[] = { "1", "2", "3", "4" };
+  const char* comments[] = { "comment1", "comment2", "comment3", "comment4" };
+  const char* seqs[] = {
+    "ACTG", "TGCA", "ACDEFGHIKLMNPQRSTVWY", "YWVTSRQPNMLKIHGFEDCA"
+  };
   const char* quals[] = { "!@^&", "(#&$" };
   std::string random_filename;
 
@@ -46,6 +48,33 @@ main()
     TEST_ASSERT_EQ(i, 2);
 
     reader_fasta.close();
+    std::remove(random_filename.c_str());
+
+    random_filename = get_random_name(64);
+    std::cerr << "Test FASTA amino acid" << std::endl;
+    btllib::SeqWriter writer_fasta_aa(random_filename,
+                                      btllib::SeqWriter::FASTA);
+    for (int i = 2; i < 4; i++) {
+      writer_fasta_aa.write(ids[i], comments[i], seqs[i], "");
+    }
+    writer_fasta_aa.close();
+
+    btllib::SeqReader reader_fasta_aa(random_filename,
+                                      btllib::SeqReader::Flag::SHORT_MODE);
+    TEST_ASSERT_EQ(reader_fasta.get_format(), btllib::SeqReader::Format::FASTA);
+
+    i = 2;
+    while ((record = reader_fasta_aa.read())) {
+      TEST_ASSERT_EQ(record.id, ids[i]);
+      TEST_ASSERT_EQ(record.comment, comments[i]);
+      TEST_ASSERT_EQ(record.seq, seqs[i]);
+      TEST_ASSERT(record.qual.empty());
+
+      i++;
+    }
+    TEST_ASSERT_EQ(i, 4);
+
+    reader_fasta_aa.close();
     std::remove(random_filename.c_str());
 
     // Test FASTQ

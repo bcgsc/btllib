@@ -93,6 +93,13 @@
   }
 %}
 
+%typemap(out) uint64_t* btllib::AAHash::hashes %{
+  $result = PyTuple_New(arg1->get_hash_num());
+  for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
+    PyTuple_SetItem($result, i, PyLong_FromUnsignedLong($1[i]));
+  }
+%}
+
 %typemap(out) std::vector<btllib::Indexlr::Minimizer>* %{
   $result = PyList_New($1->size());
   for (unsigned i = 0; i < $1->size(); ++i) {

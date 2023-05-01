@@ -35,7 +35,8 @@ SeqReaderMultilineFastaModule::buffer_valid(const char* buffer,
       case IN_SEQ:
         if (c == '\n') {
           state = IN_TRANSITION;
-        } else if (c != '\r' && !bool(COMPLEMENTS[c])) {
+        } else if (c != '\r' &&
+                   !(bool(COMPLEMENTS[c]) || bool(AMINO_ACIDS[c]))) {
           return false;
         }
         break;
@@ -43,7 +44,8 @@ SeqReaderMultilineFastaModule::buffer_valid(const char* buffer,
         if (c == '>') {
           state = IN_HEADER_2;
           break;
-        } else if (c != '\r' && !bool(COMPLEMENTS[c])) {
+        } else if (c != '\r' &&
+                   !(bool(COMPLEMENTS[c]) || bool(AMINO_ACIDS[c]))) {
           return false;
         }
         state = IN_SEQ;
