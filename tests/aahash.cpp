@@ -15,6 +15,7 @@ main()
   const unsigned k = 8, h = 3;
   PRINT_TEST_NAME("Level 1 hashing")
   btllib::AAHash aahash(seq, h, k, 1);
+  TEST_ASSERT_EQ(aahash.get_level(), 1);
   std::vector<uint64_t> lvl1_hashes = {
     4971716992320218996UL, 2124324262552088491UL, 8599050776293572050UL,
     4162540294170059916UL, 4246229847304014199UL, 3577776033547863068UL,
@@ -264,6 +265,35 @@ main()
   aahashlvl3CGTDKIFHP.roll();
   TEST_ASSERT_EQ(aahashlvl3CGANQVWHP.hashes()[0],
                  aahashlvl3CGTDKIFHP.hashes()[0]);
+
+  PRINT_TEST_NAME("Mutli-level equivalence")
+  std::string seqACDEFGHIKLMNPQRSTVWYCGATNDQVWHPCGANQVWHP =
+    "ACDEFGHIKLMNPQRSTVWYCGATNDQVWHPCGANQVWHP";
+  std::string seqACDEFGHIKLMNPQRSTVWYCGASNEKIFHPCGTDKIFHP =
+    "ACDEFGHIKLMNPQRSTVWYCGASNEKIFHPCGTDKIFHP";
+  std::string string_seed9 = "1111111111111111111122222222222333333333";
+  std::vector<std::string> seeds3 = { string_seed9,
+                                      string_seed9,
+                                      string_seed9 };
+  std::vector<btllib::SpacedSeed> parsed_seeds3 =
+    btllib::aa_parse_seeds(seeds3);
+  btllib::SeedAAHash seedaahashmultilvlACDEFGHIKLMNPQRSTVWYCGATNDQVWHPCGANQVWHP(
+    seqACDEFGHIKLMNPQRSTVWYCGATNDQVWHPCGANQVWHP,
+    parsed_seeds3,
+    3,
+    seqACDEFGHIKLMNPQRSTVWYCGATNDQVWHPCGANQVWHP.size());
+  btllib::SeedAAHash seedaahashmultilvlACDEFGHIKLMNPQRSTVWYCGASNEKIFHPCGTDKIFHP(
+    seqACDEFGHIKLMNPQRSTVWYCGASNEKIFHPCGTDKIFHP,
+    parsed_seeds3,
+    3,
+    seqACDEFGHIKLMNPQRSTVWYCGASNEKIFHPCGTDKIFHP.size());
+  seedaahashmultilvlACDEFGHIKLMNPQRSTVWYCGATNDQVWHPCGANQVWHP.roll();
+  seedaahashmultilvlACDEFGHIKLMNPQRSTVWYCGASNEKIFHPCGTDKIFHP.roll();
+  for (size_t i = 0; i < seeds3.size() * 3; ++i) {
+    TEST_ASSERT_EQ(
+      seedaahashmultilvlACDEFGHIKLMNPQRSTVWYCGATNDQVWHPCGANQVWHP.hashes()[i],
+      seedaahashmultilvlACDEFGHIKLMNPQRSTVWYCGASNEKIFHPCGTDKIFHP.hashes()[i]);
+  }
 
   return 0;
 }
