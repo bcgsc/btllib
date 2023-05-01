@@ -152,7 +152,6 @@ public:
   size_t get_pos() const { return pos; }
   unsigned get_hash_num() const { return hash_num; }
   unsigned get_k() const { return k; }
-  uint64_t get_forward_hash() const { return hashes_array[0]; }
   unsigned get_level() const { return level; }
   const char* get_seq() const { return seq; }
 };

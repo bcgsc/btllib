@@ -43224,28 +43224,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_AAHash_get_forward_hash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::AAHash *arg1 = (btllib::AAHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "AAHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__AAHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AAHash_get_forward_hash" "', argument " "1"" of type '" "btllib::AAHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::AAHash * >(argp1);
-  result = (uint64_t)((btllib::AAHash const *)arg1)->get_forward_hash();
-  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_AAHash_get_level(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::AAHash *arg1 = (btllib::AAHash *) 0 ;
@@ -67298,7 +67276,6 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__AAHash_methods[] = {
   { "get_pos", _wrap_AAHash_get_pos, METH_NOARGS, "" },
   { "get_hash_num", _wrap_AAHash_get_hash_num, METH_NOARGS, "" },
   { "get_k", _wrap_AAHash_get_k, METH_NOARGS, "" },
-  { "get_forward_hash", _wrap_AAHash_get_forward_hash, METH_NOARGS, "" },
   { "get_level", _wrap_AAHash_get_level, METH_NOARGS, "" },
   { "get_seq", _wrap_AAHash_get_seq, METH_NOARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
