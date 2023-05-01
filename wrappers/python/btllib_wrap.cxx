@@ -7181,7 +7181,7 @@ SWIGINTERN void delete_btllib_SeedNtHash(btllib::SeedNtHash *self){
     nthash_strings.erase(nthash_ids[(void*)self]);
     nthash_ids.erase((void*)self);
   }
-SWIGINTERN btllib::AAHash *new_btllib_AAHash__SWIG_2(std::string seq,unsigned int hash_num,unsigned int k,unsigned int level,size_t pos=0){
+SWIGINTERN btllib::AAHash *new_btllib_AAHash__SWIG_3(std::string seq,unsigned int hash_num,unsigned int k,unsigned int level,size_t pos=0){
     std::unique_lock<std::mutex> lock(nthash_mutex);
     nthash_strings[++nthash_last_id] = std::move(seq);
     auto *nthash = new btllib::AAHash(nthash_strings[nthash_last_id], hash_num, k, level);
@@ -41148,6 +41148,71 @@ fail:
 
 SWIGINTERN int _wrap_new_AAHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  uint8_t arg3 ;
+  uint16_t arg4 ;
+  unsigned int arg5 ;
+  size_t arg6 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned short val4 ;
+  int ecode4 = 0 ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  size_t val6 ;
+  int ecode6 = 0 ;
+  btllib::AAHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_AAHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_AAHash" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_AAHash" "', argument " "3"" of type '" "uint8_t""'");
+  } 
+  arg3 = static_cast< uint8_t >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_AAHash" "', argument " "4"" of type '" "uint16_t""'");
+  } 
+  arg4 = static_cast< uint16_t >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_AAHash" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  ecode6 = SWIG_AsVal_size_t(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_AAHash" "', argument " "6"" of type '" "size_t""'");
+  } 
+  arg6 = static_cast< size_t >(val6);
+  result = (btllib::AAHash *)new btllib::AAHash((char const *)arg1,arg2,arg3,arg4,arg5,arg6);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__AAHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_AAHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
   uint8_t arg2 ;
   uint16_t arg3 ;
@@ -41207,7 +41272,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_AAHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_AAHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
   uint8_t arg2 ;
@@ -41441,7 +41506,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_AAHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_AAHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::string arg1 ;
   unsigned int arg2 ;
@@ -41489,7 +41554,7 @@ SWIGINTERN int _wrap_new_AAHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObje
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_AAHash" "', argument " "5"" of type '" "size_t""'");
   } 
   arg5 = static_cast< size_t >(val5);
-  result = (btllib::AAHash *)new_btllib_AAHash__SWIG_2(SWIG_STD_MOVE(arg1),arg2,arg3,arg4,SWIG_STD_MOVE(arg5));
+  result = (btllib::AAHash *)new_btllib_AAHash__SWIG_3(SWIG_STD_MOVE(arg1),arg2,arg3,arg4,SWIG_STD_MOVE(arg5));
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__AAHash, SWIG_BUILTIN_INIT |  0 );
   return resultobj == Py_None ? -1 : 0;
 fail:
@@ -41497,7 +41562,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_AAHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_AAHash__SWIG_4(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::string arg1 ;
   unsigned int arg2 ;
@@ -41537,7 +41602,7 @@ SWIGINTERN int _wrap_new_AAHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObje
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_AAHash" "', argument " "4"" of type '" "unsigned int""'");
   } 
   arg4 = static_cast< unsigned int >(val4);
-  result = (btllib::AAHash *)new_btllib_AAHash__SWIG_2(SWIG_STD_MOVE(arg1),arg2,arg3,arg4);
+  result = (btllib::AAHash *)new_btllib_AAHash__SWIG_3(SWIG_STD_MOVE(arg1),arg2,arg3,arg4);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__AAHash, SWIG_BUILTIN_INIT |  0 );
   return resultobj == Py_None ? -1 : 0;
 fail:
@@ -41547,13 +41612,13 @@ fail:
 
 SWIGINTERN int _wrap_new_AAHash(PyObject *self, PyObject *args, PyObject *kwargs) {
   Py_ssize_t argc;
-  PyObject *argv[6] = {
+  PyObject *argv[7] = {
     0
   };
   
   (void)self;
   if (!SWIG_Python_CheckNoKeywords(kwargs, "new_AAHash")) SWIG_fail;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_AAHash", 0, 5, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_AAHash", 0, 6, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v = 0;
@@ -41571,14 +41636,14 @@ SWIGINTERN int _wrap_new_AAHash(PyObject *self, PyObject *args, PyObject *kwargs
       }
     }
     if (!_v) goto check_1;
-    int retval = _wrap_new_AAHash__SWIG_1(self, argc, argv);
+    int retval = _wrap_new_AAHash__SWIG_2(self, argc, argv);
     if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
     SWIG_fail;
   }
 check_1:
   
   if (argc == 4) {
-    int retval = _wrap_new_AAHash__SWIG_3(self, argc, argv);
+    int retval = _wrap_new_AAHash__SWIG_4(self, argc, argv);
     if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
     SWIG_fail;
   }
@@ -41598,14 +41663,19 @@ check_1:
       }
     }
     if (!_v) goto check_3;
-    int retval = _wrap_new_AAHash__SWIG_0(self, argc, argv);
+    int retval = _wrap_new_AAHash__SWIG_1(self, argc, argv);
     if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
     SWIG_fail;
   }
 check_3:
   
   if (argc == 5) {
-    int retval = _wrap_new_AAHash__SWIG_2(self, argc, argv);
+    int retval = _wrap_new_AAHash__SWIG_3(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 6) {
+    int retval = _wrap_new_AAHash__SWIG_0(self, argc, argv);
     if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
     SWIG_fail;
   }
@@ -41613,6 +41683,7 @@ check_3:
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_AAHash'.\n"
     "  Possible C/C++ prototypes are:\n"
+    "    btllib::AAHash::AAHash(char const *,size_t,uint8_t,uint16_t,unsigned int,size_t)\n"
     "    btllib::AAHash::AAHash(std::string const &,uint8_t,uint16_t,unsigned int,size_t)\n"
     "    btllib::AAHash::AAHash(std::string const &,uint8_t,uint16_t,unsigned int)\n"
     "    btllib::AAHash::AAHash(std::string,unsigned int,unsigned int,unsigned int,size_t)\n"
