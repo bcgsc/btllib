@@ -1,3 +1,4 @@
+#include <iostream>
 #include <stdexcept>
 
 #include "btllib/aahash.hpp"
@@ -64,11 +65,11 @@ SeedAAHash::roll()
   if (!aahash.roll()) {
     return false;
   }
-  uint64_t hash_value = aahash.hashes_array[0];
+
   for (size_t i = 0; i < seeds.size(); ++i) {
     hashes_array[i * hash_num_per_seed] = aa_modify_base_with_seed(
-      hash_value, seeds[i], aahash.seq + aahash.pos, aahash.k);
-    nte64(hash_value,
+      aahash.hashes_array[0], seeds[i], aahash.seq + aahash.pos, aahash.k);
+    nte64(hashes_array[i * hash_num_per_seed],
           aahash.k,
           hash_num_per_seed,
           hashes_array.get() + i * hash_num_per_seed);

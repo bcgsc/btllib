@@ -45,18 +45,11 @@ aa_modify_base_with_seed(uint64_t hash_value,
 {
   for (unsigned i = 0; i < k; i++) {
     if (seed[i] != 1) {
-      hash_value ^=
-        (LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE[1][(unsigned char)kmer_seq[i]]
-                                               [(k - 1 - i) % 31] | // NOLINT
-         LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE[1][(unsigned char)kmer_seq[i]]
-                                                [(k - 1 - i) % 33]); // NOLINT
+      hash_value ^= AA_ROLL_TABLE((unsigned char)kmer_seq[i], 1, k - 1 - i);
       if (seed[i] != 0) {
         unsigned level = seed[i];
         hash_value ^=
-          (LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE[level][(
-             unsigned char)kmer_seq[i]][(k - 1 - i) % 31] | // NOLINT
-           LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE[level][(
-             unsigned char)kmer_seq[i]][(k - 1 - i) % 33]); // NOLINT
+          AA_ROLL_TABLE((unsigned char)kmer_seq[i], level, k - 1 - i);
       }
     }
   }
@@ -77,7 +70,6 @@ private:
   /** Initialize internal state of iterator */
   bool init();
 
-  std::string seq_copy;
   const char* seq;
   size_t seq_len;
   const uint8_t hash_num;
@@ -89,23 +81,6 @@ private:
   std::unique_ptr<uint64_t[]> hashes_array;
 
 public:
-  AAHash(const char* seq_p,
-         size_t seq_len,
-         uint8_t hash_num,
-         uint16_t k,
-         unsigned level,
-         size_t pos)
-    : seq_copy(seq_p, seq_len)
-    , seq(seq_copy.c_str())
-    , seq_len(seq_len)
-    , hash_num(hash_num)
-    , k(k)
-    , level(level)
-    , pos(pos)
-    , hashes_array(new uint64_t[hash_num])
-  {
-  }
-
   /**
    * Constructor.
    * @param seq String of DNA sequence to be hashed.
@@ -114,12 +89,18 @@ public:
    * @param pos Position in seq to start hashing from.
    * @param level seed level to generate hash.
    */
-  AAHash(const std::string& seq_str,
+  AAHash(const std::string& seq,
          uint8_t hash_num,
          uint16_t k,
          unsigned level,
          size_t pos = 0)
-    : AAHash(seq_str.c_str(), seq_str.size(), hash_num, k, level, pos)
+    : seq(seq.c_str())
+    , seq_len(seq.size())
+    , hash_num(hash_num)
+    , k(k)
+    , level(level)
+    , pos(pos)
+    , hashes_array(new uint64_t[hash_num])
   {
   }
 
@@ -159,7 +140,9 @@ public:
   size_t get_pos() const { return pos; }
   unsigned get_hash_num() const { return hash_num; }
   unsigned get_k() const { return k; }
+  uint64_t get_forward_hash() const { return hashes_array[0]; }
   unsigned get_level() const { return level; }
+  const char* get_seq() const { return seq; }
 };
 
 class SeedAAHash
