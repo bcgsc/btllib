@@ -64,6 +64,7 @@
 %ignore btllib::MIBloomFilterInitializer;
 %ignore btllib::MIBloomFilterInitializer::operator=;
 
+%template(UCharVector) std::vector<unsigned char>;
 %template(VectorString) std::vector<std::string>;
 %template(VectorInt) std::vector<int>;
 %template(VectorUnsigned) std::vector<unsigned>;
@@ -171,3 +172,4 @@ using SpacedSeed = std::vector<unsigned>;
     nthash_ids.erase((void*)self);
   }
 }
+
