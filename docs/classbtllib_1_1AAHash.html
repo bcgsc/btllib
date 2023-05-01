@@ -83,11 +83,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6b0636f599c4643562e1f2cb5c69f784"><td class="memItemLeft" align="right" valign="top"><a id="a6b0636f599c4643562e1f2cb5c69f784" name="a6b0636f599c4643562e1f2cb5c69f784"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>AAHash</b> (const char *seq_p, size_t seq_len, uint8_t hash_num, uint16_t k, unsigned level, size_t pos)</td></tr>
-<tr class="separator:a6b0636f599c4643562e1f2cb5c69f784"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b34e66b73d76625fe21f94473bf9d36"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1AAHash.html#a1b34e66b73d76625fe21f94473bf9d36">AAHash</a> (const std::string &amp;seq_str, uint8_t hash_num, uint16_t k, unsigned level, size_t pos=0)</td></tr>
-<tr class="separator:a1b34e66b73d76625fe21f94473bf9d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2edba2dba416e5913a9867fec2fd5444"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1AAHash.html#a2edba2dba416e5913a9867fec2fd5444">AAHash</a> (std::string_view seq, uint8_t hash_num, uint16_t k, unsigned level, size_t pos=0)</td></tr>
+<tr class="separator:a2edba2dba416e5913a9867fec2fd5444"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0f4e49197cf9822a1d44795fe992de9"><td class="memItemLeft" align="right" valign="top"><a id="ac0f4e49197cf9822a1d44795fe992de9" name="ac0f4e49197cf9822a1d44795fe992de9"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>AAHash</b> (const <a class="el" href="classbtllib_1_1AAHash.html">AAHash</a> &amp;aahash)</td></tr>
 <tr class="separator:ac0f4e49197cf9822a1d44795fe992de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,8 +122,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeedAAHash</b></td><
 <tr class="separator:a60676b3e75c863f4a3276e15cc5a5583"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a1b34e66b73d76625fe21f94473bf9d36" name="a1b34e66b73d76625fe21f94473bf9d36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b34e66b73d76625fe21f94473bf9d36">&#9670;&#160;</a></span>AAHash()</h2>
+<a id="a2edba2dba416e5913a9867fec2fd5444" name="a2edba2dba416e5913a9867fec2fd5444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2edba2dba416e5913a9867fec2fd5444">&#9670;&#160;</a></span>AAHash()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,8 +134,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeedAAHash</b></td><
         <tr>
           <td class="memname">btllib::AAHash::AAHash </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>seq_str</em>, </td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>seq</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -178,7 +175,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>SeedAAHash</b></td><
 </div><div class="memdoc">
 <p>Constructor. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">seq_str</td><td>String of DNA sequence to be hashed. </td></tr>
+    <tr><td class="paramname">seq</td><td>String of DNA sequence to be hashed. </td></tr>
     <tr><td class="paramname">hash_num</td><td>Number of hashes to produce per k-mer. </td></tr>
     <tr><td class="paramname">k</td><td>K-mer size. </td></tr>
     <tr><td class="paramname">pos</td><td>Position in seq to start hashing from. </td></tr>

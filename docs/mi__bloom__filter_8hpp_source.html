@@ -597,36 +597,57 @@ $(function() {
 <div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>  }</div>
 <div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>  <span class="keywordflow">return</span> count;</div>
 <div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>}</div>
-<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span><span class="keyword">inline</span> std::vector&lt;size_t&gt;</div>
-<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>MIBloomFilter&lt;T&gt;::get_id_occurence_count(<span class="keyword">const</span> <span class="keywordtype">bool</span>&amp; include_saturated)</div>
-<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>{</div>
-<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>  assert(bv_insertion_completed);</div>
-<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>  std::vector&lt;size_t&gt; ret_vec(MASK - 1, 0);</div>
-<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span><span class="preprocessor">#pragma omp parallel for default(none)                                         \</span></div>
-<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span><span class="preprocessor">  shared(id_array_size, include_saturated, id_array, ret_vec)</span></div>
-<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0; k &lt; id_array_size; k++) {</div>
-<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>    <span class="keywordflow">if</span> (!include_saturated &amp;&amp; id_array[k] &gt; ANTI_MASK) {</div>
-<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>    }</div>
-<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>    ret_vec[id_array[k] &amp; ANTI_MASK]++;</div>
-<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span>  }</div>
-<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>  <span class="keywordflow">return</span> ret_vec;</div>
-<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>}</div>
-<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span><span class="keyword">inline</span> <span class="keywordtype">size_t</span></div>
-<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>MIBloomFilter&lt;T&gt;::calc_optimal_size(<span class="keywordtype">size_t</span> entries,</div>
-<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>                                    <span class="keywordtype">unsigned</span> hash_num,</div>
-<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>                                    <span class="keywordtype">double</span> occupancy)</div>
-<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>{</div>
-<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>  <span class="keyword">auto</span> non_64_approx_val =</div>
-<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>    size_t(-<span class="keywordtype">double</span>(entries) * <span class="keywordtype">double</span>(hash_num) / log(1.0 - occupancy));</div>
-<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> magic = 64;</div>
-<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>  <span class="keywordflow">return</span> non_64_approx_val + (magic - non_64_approx_val % magic);</div>
-<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>}</div>
-<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>} <span class="comment">// namespace btllib</span></div>
-<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="anamespacebtllib_html"><div class="ttname"><a href="namespacebtllib.html">btllib</a></div><div class="ttdef"><b>Definition:</b> aahash.hpp:14</div></div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span> </div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span><span class="keyword">inline</span> std::vector&lt;size_t&gt;</div>
+<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>MIBloomFilter&lt;T&gt;::get_id_occurence_count(<span class="keyword">const</span> <span class="keywordtype">bool</span>&amp; include_saturated)</div>
+<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>{</div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>  <span class="comment">// Ensure the bloom filter has been initialized</span></div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>  assert(bv_insertion_completed);</div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span> </div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>  <span class="comment">// Initialize a temporary vector to store counts</span></div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>  std::vector&lt;std::atomic&lt;size_t&gt;&gt; count_vec(MASK - 1);</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span> </div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>  <span class="comment">// Iterate over the id_array in parallel, incrementing the counts in count_vec</span></div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span><span class="preprocessor">#pragma omp parallel for default(none)                                         \</span></div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span><span class="preprocessor">  shared(id_array_size, include_saturated, id_array, count_vec)</span></div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0; k &lt; id_array_size; k++) {</div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>    <span class="keywordflow">if</span> (!include_saturated &amp;&amp; id_array[k] &gt; ANTI_MASK) {</div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>    }</div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>    count_vec[id_array[k] &amp; ANTI_MASK].fetch_add(1);</div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>  }</div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span> </div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>  <span class="comment">// Convert the atomic count_vec to a non-atomic result vector,</span></div>
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>  <span class="comment">// excluding trailing zeros</span></div>
+<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>  std::vector&lt;size_t&gt; result;</div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>  <span class="keywordtype">bool</span> has_trailing_zeros = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = MASK - 2; i != SIZE_MAX; i--) {</div>
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>    <span class="keywordflow">if</span> (count_vec[i] != 0) {</div>
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>      has_trailing_zeros = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>    }</div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>    <span class="keywordflow">if</span> (!has_trailing_zeros) {</div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>      result.insert(result.begin(), count_vec[i].load());</div>
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>    }</div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>  }</div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span> </div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>}</div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span> </div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span><span class="keyword">inline</span> <span class="keywordtype">size_t</span></div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>MIBloomFilter&lt;T&gt;::calc_optimal_size(<span class="keywordtype">size_t</span> entries,</div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>                                    <span class="keywordtype">unsigned</span> hash_num,</div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>                                    <span class="keywordtype">double</span> occupancy)</div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>{</div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>  <span class="keyword">auto</span> non_64_approx_val =</div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>    size_t(-<span class="keywordtype">double</span>(entries) * <span class="keywordtype">double</span>(hash_num) / log(1.0 - occupancy));</div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> magic = 64;</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>  <span class="keywordflow">return</span> non_64_approx_val + (magic - non_64_approx_val % magic);</div>
+<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>}</div>
+<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>} <span class="comment">// namespace btllib</span></div>
+<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="anamespacebtllib_html"><div class="ttname"><a href="namespacebtllib.html">btllib</a></div><div class="ttdef"><b>Definition:</b> aahash.hpp:15</div></div>
 <div class="ttc" id="anamespacebtllib_html_a540bce0213b7718e519ddc4466361bf7"><div class="ttname"><a href="namespacebtllib.html#a540bce0213b7718e519ddc4466361bf7">btllib::check_error</a></div><div class="ttdeci">void check_error(bool condition, const std::string &amp;msg)</div></div>
 <div class="ttc" id="anamespacebtllib_html_aa0d6ecae33b5e60b5c285f5358a9ad6a"><div class="ttname"><a href="namespacebtllib.html#aa0d6ecae33b5e60b5c285f5358a9ad6a">btllib::log_info</a></div><div class="ttdeci">void log_info(const std::string &amp;msg)</div></div>
 <div class="ttc" id="anamespacebtllib_html_aacf70cd44ded264af4f30ce3a4a4726a"><div class="ttname"><a href="namespacebtllib.html#aacf70cd44ded264af4f30ce3a4a4726a">btllib::check_file_accessibility</a></div><div class="ttdeci">void check_file_accessibility(const std::string &amp;filepath)</div></div>
