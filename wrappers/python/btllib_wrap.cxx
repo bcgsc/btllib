@@ -4033,6 +4033,8 @@ namespace swig {
 #include "btllib/cstring.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/randseq.hpp"
+#include "btllib/mi_bloom_filter-inl.hpp"
+#include "btllib/counting_bloom_filter-inl.hpp"
 
 
 #include <stdint.h>		// Use the C99 official header
@@ -59352,9 +59354,9 @@ static swig_type_info _swigt__p_btllib__Barrier = {"_p_btllib__Barrier", "btllib
 static swig_type_info _swigt__p_btllib__BlindNtHash = {"_p_btllib__BlindNtHash", "btllib::BlindNtHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__BlindNtHash_clientdata, 0};
 static swig_type_info _swigt__p_btllib__BloomFilter = {"_p_btllib__BloomFilter", "btllib::BloomFilter *", 0, 0, (void*)&SwigPyBuiltin__btllib__BloomFilter_clientdata, 0};
 static swig_type_info _swigt__p_btllib__CString = {"_p_btllib__CString", "btllib::CString *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_btllib__CountingBloomFilterT_unsigned_char_t = {"_p_btllib__CountingBloomFilterT_unsigned_char_t", "btllib::CountingBloomFilter< uint8_t > *|btllib::CountingBloomFilter< unsigned char > *", 0, 0, (void*)&SwigPyBuiltin__btllib__CountingBloomFilterT_uint8_t_t_clientdata, 0};
-static swig_type_info _swigt__p_btllib__CountingBloomFilterT_unsigned_int_t = {"_p_btllib__CountingBloomFilterT_unsigned_int_t", "btllib::CountingBloomFilter< uint32_t > *|btllib::CountingBloomFilter< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__btllib__CountingBloomFilterT_uint32_t_t_clientdata, 0};
-static swig_type_info _swigt__p_btllib__CountingBloomFilterT_unsigned_short_t = {"_p_btllib__CountingBloomFilterT_unsigned_short_t", "btllib::CountingBloomFilter< uint16_t > *|btllib::CountingBloomFilter< unsigned short > *", 0, 0, (void*)&SwigPyBuiltin__btllib__CountingBloomFilterT_uint16_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__CountingBloomFilterT_unsigned_char_t = {"_p_btllib__CountingBloomFilterT_unsigned_char_t", "btllib::CountingBloomFilter8 *|btllib::CountingBloomFilter< uint8_t > *|btllib::CountingBloomFilter< unsigned char > *", 0, 0, (void*)&SwigPyBuiltin__btllib__CountingBloomFilterT_uint8_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__CountingBloomFilterT_unsigned_int_t = {"_p_btllib__CountingBloomFilterT_unsigned_int_t", "btllib::CountingBloomFilter32 *|btllib::CountingBloomFilter< uint32_t > *|btllib::CountingBloomFilter< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__btllib__CountingBloomFilterT_uint32_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__CountingBloomFilterT_unsigned_short_t = {"_p_btllib__CountingBloomFilterT_unsigned_short_t", "btllib::CountingBloomFilter16 *|btllib::CountingBloomFilter< uint16_t > *|btllib::CountingBloomFilter< unsigned short > *", 0, 0, (void*)&SwigPyBuiltin__btllib__CountingBloomFilterT_uint16_t_t_clientdata, 0};
 static swig_type_info _swigt__p_btllib__DataSink = {"_p_btllib__DataSink", "btllib::DataSink *", 0, 0, (void*)&SwigPyBuiltin__btllib__DataSink_clientdata, 0};
 static swig_type_info _swigt__p_btllib__DataSource = {"_p_btllib__DataSource", "btllib::DataSource *", 0, 0, (void*)&SwigPyBuiltin__btllib__DataSource_clientdata, 0};
 static swig_type_info _swigt__p_btllib__DataStream = {"_p_btllib__DataStream", "btllib::DataStream *", 0, 0, (void*)0, 0};
@@ -59365,9 +59367,9 @@ static swig_type_info _swigt__p_btllib__Indexlr__Minimizer = {"_p_btllib__Indexl
 static swig_type_info _swigt__p_btllib__Indexlr__Record = {"_p_btllib__Indexlr__Record", "btllib::Indexlr::Record *", 0, 0, (void*)&SwigPyBuiltin__btllib__Indexlr__Record_clientdata, 0};
 static swig_type_info _swigt__p_btllib__Indexlr__RecordIterator = {"_p_btllib__Indexlr__RecordIterator", "btllib::Indexlr::RecordIterator *", 0, 0, (void*)&SwigPyBuiltin__btllib__Indexlr__RecordIterator_clientdata, 0};
 static swig_type_info _swigt__p_btllib__KmerBloomFilter = {"_p_btllib__KmerBloomFilter", "btllib::KmerBloomFilter *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerBloomFilter_clientdata, 0};
-static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_char_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_char_t", "btllib::KmerCountingBloomFilter< uint8_t > *|btllib::KmerCountingBloomFilter< unsigned char > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint8_t_t_clientdata, 0};
-static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_int_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_int_t", "btllib::KmerCountingBloomFilter< uint32_t > *|btllib::KmerCountingBloomFilter< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint32_t_t_clientdata, 0};
-static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_short_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_short_t", "btllib::KmerCountingBloomFilter< uint16_t > *|btllib::KmerCountingBloomFilter< unsigned short > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint16_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_char_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_char_t", "btllib::KmerCountingBloomFilter8 *|btllib::KmerCountingBloomFilter< uint8_t > *|btllib::KmerCountingBloomFilter< unsigned char > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint8_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_int_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_int_t", "btllib::KmerCountingBloomFilter32 *|btllib::KmerCountingBloomFilter< uint32_t > *|btllib::KmerCountingBloomFilter< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint32_t_t_clientdata, 0};
+static swig_type_info _swigt__p_btllib__KmerCountingBloomFilterT_unsigned_short_t = {"_p_btllib__KmerCountingBloomFilterT_unsigned_short_t", "btllib::KmerCountingBloomFilter16 *|btllib::KmerCountingBloomFilter< uint16_t > *|btllib::KmerCountingBloomFilter< unsigned short > *", 0, 0, (void*)&SwigPyBuiltin__btllib__KmerCountingBloomFilterT_uint16_t_t_clientdata, 0};
 static swig_type_info _swigt__p_btllib__NtHash = {"_p_btllib__NtHash", "btllib::NtHash *", 0, 0, (void*)&SwigPyBuiltin__btllib__NtHash_clientdata, 0};
 static swig_type_info _swigt__p_btllib__RandSeq = {"_p_btllib__RandSeq", "btllib::RandSeq *", 0, 0, (void*)&SwigPyBuiltin__btllib__RandSeq_clientdata, 0};
 static swig_type_info _swigt__p_btllib__SeedBloomFilter = {"_p_btllib__SeedBloomFilter", "btllib::SeedBloomFilter *", 0, 0, (void*)&SwigPyBuiltin__btllib__SeedBloomFilter_clientdata, 0};
