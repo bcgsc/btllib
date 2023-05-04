@@ -1,3 +1,6 @@
+#ifndef BTLLIB_COUNTING_BLOOM_FILTER_INL_HPP
+#define BTLLIB_COUNTING_BLOOM_FILTER_INL_HPP
+
 #include "btllib/bloom_filter.hpp"
 #include "btllib/counting_bloom_filter.hpp"
 #include "btllib/nthash.hpp"
@@ -108,7 +111,7 @@ CountingBloomFilter<T>::remove(const uint64_t* hashes)
 }
 
 template<typename T>
-inline void
+void
 CountingBloomFilter<T>::clear(const uint64_t* hashes)
 {
   // Update flag to track if increment is done on at least one counter
@@ -446,3 +449,5 @@ KmerCountingBloomFilter<T>::save(const std::string& path)
                       sizeof(counting_bloom_filter.array[0]));
 }
 } // namespace btllib
+
+#endif
