@@ -19,7 +19,8 @@ jobs:
 
   - script: |
       source activate btllib_CI
-      conda install --yes -c conda-forge -c bioconda libcxx compilers clang llvm clang-format=14 clang-tools boost samtools coreutils xz lrzip meson ninja cmake openmp
+      conda install --yes -c mamba
+      mamba install --yes -c conda-forge -c bioconda libcxx compilers clang llvm clang-format=14 clang-tools boost samtools coreutils xz lrzip meson ninja cmake openmp
     displayName: Install dependencies
   
   - script: |
@@ -74,8 +75,9 @@ jobs:
     displayName: Create Anaconda environment
 
   - script: |
-      source activate btllib_CI
-      conda install --yes -c conda-forge -c bioconda libcxx compilers llvm clang-format=14 clang-tools boost 'samtools>=1.14' coreutils xz lrzip meson ninja cmake openmp
+      source activate btllib_CI      
+      conda install --yes -c mamba
+      mamba install --yes -c conda-forge -c bioconda libcxx compilers llvm clang-format=14 clang-tools boost 'samtools>=1.14' coreutils xz lrzip meson ninja cmake openmp
     displayName: 'Install required software'
 
   - script: |
