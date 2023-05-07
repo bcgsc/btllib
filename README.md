@@ -79,7 +79,7 @@ The following are all the available `ninja` commands which can be run within `bu
 - `ninja sanitize-undefined` runs undefined sanitization.
 - `ninja test-wrappers` tests whether wrappers work.
 - `ninja docs` generates code documentation from comments (requires Doxygen).
-- `ninja quality-assurance` runs `clang-format`, `wrap`, `clang-tidy`, `test`, `sanitize-undefined`, and `test-wrappers`. These are all checked at the CI test.
+- `ninja quality-assurance` runs `clang-format`, `wrap`, `clang-tidy`, `test`, `code-coverage`, `sanitize-undefined`, and `test-wrappers`. These are all checked at the CI test.
 
 Credits
 ---
