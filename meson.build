@@ -1,7 +1,7 @@
 project('btllib', 'cpp',
         version : '1.6.0',
         license : 'GPL3',
-        default_options : [ 'cpp_std=c++17', 'warning_level=3', 'werror=true' ],
+        default_options : [ 'cpp_std=c++17', 'warning_level=3', 'werror=true', 'b_coverage=true' ],
         meson_version : '>= 0.60.0')
 
 # Configuration
@@ -77,6 +77,11 @@ xz = find_program('xz', required : false)
 bzip2 = find_program('bzip2', required : false)
 tar = find_program('tar', required : false)
 
+# Code coverage testing dependencies
+# ===========================================================
+
+gcovr = find_program('gcovr', required : false)
+
 # Custom run commands
 # ===========================================================
 
@@ -110,6 +115,8 @@ if doxygen.found()
 endif
 
 run_target('quality-assurance', command: join_paths(rootpath, 'scripts/quality-assurance'))
+
+run_target('code-coverage', command: join_paths(rootpath, 'scripts/code-coverage'))
 
 run_target('test-wrappers', command: join_paths(rootpath, 'scripts/test-wrappers'))
 

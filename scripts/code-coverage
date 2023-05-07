@@ -1,0 +1,40 @@
+#!/bin/bash
+
+if [ -z "${MESON_BUILD_ROOT}" ]; then
+  echo "[ERROR] This script can only be ran with meson!"
+  exit 1
+fi
+
+set -e
+
+cd "${MESON_BUILD_ROOT}"
+
+ninja coverage --quiet
+
+# Set your desired coverage threshold (e.g., 80%)
+COVERAGE_THRESHOLD=20
+
+# Initialize the failed files list
+failed_files=""
+
+# Iterate through the lines and check the coverage for the specified directories
+while read -r line; do
+    if echo "$line" | grep -E "src/btllib/|include/btllib/.*\-inl.hpp" > /dev/null; then
+        file_name=$(echo "$line" | awk '{print $1}')
+        coverage_percent=$(echo "$line" | awk '{print $4}' | tr -d '%')
+
+        if [[ -n "$coverage_percent" ]] && [ "$coverage_percent" -lt "$COVERAGE_THRESHOLD" ]; then
+            failed_files+="$file_name: $coverage_percent% (threshold: $COVERAGE_THRESHOLD%)\n"
+        fi
+    fi
+done < ../build/meson-logs/coverage.txt
+
+# Print the results and exit with an appropriate status code
+if [ -n "$failed_files" ]; then
+    echo -e "\n\e[31mRed The following files do not meet the coverage threshold:\e[0m"
+    echo -e "$failed_files"
+    exit 1
+else
+    echo "All files meet the coverage threshold ($COVERAGE_THRESHOLD%)."
+    exit 0
+fi

@@ -7,7 +7,6 @@
 #include "btllib/seq.hpp"
 #include "btllib/seq_reader_fasta_module.hpp"
 #include "btllib/seq_reader_fastq_module.hpp"
-#include "btllib/seq_reader_gfa2_module.hpp"
 #include "btllib/seq_reader_multiline_fasta_module.hpp"
 #include "btllib/seq_reader_multiline_fastq_module.hpp"
 #include "btllib/seq_reader_sam_module.hpp"
@@ -34,7 +33,7 @@ namespace btllib {
  * An example of reading a gzipped fastq file.
  */
 
-/** Read a FASTA, FASTQ, SAM, or GFA2 file. When reading SAM files,
+/** Read a FASTA, FASTQ or SAM file. When reading SAM files,
  * `samtools fastq` is used to convert from the SAM format to the
  * FASTQ format. Capable of reading gzip (.gz), bzip2 (.bz2), xz (.xz),
  * zip (.zip), 7zip (.7z), lrzip (.lrz), BAM (.bam) and CRAM (.cram),
@@ -92,7 +91,6 @@ public:
     FASTA,
     FASTQ,
     SAM,
-    GFA2,
     INVALID
   };
 
@@ -274,9 +272,6 @@ private:
 
   friend class SeqReaderSamModule;
   SeqReaderSamModule sam_module;
-
-  friend class SeqReaderGfa2Module;
-  SeqReaderGfa2Module gfa2_module;
 
   int module_in_use = 0;
 

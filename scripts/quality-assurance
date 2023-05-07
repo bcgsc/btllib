@@ -11,6 +11,7 @@ cd "${MESON_BUILD_ROOT}"
 
 ninja clang-format wrap clang-tidy
 ninja test
+ninja code-coverage
 ninja sanitize-undefined
 cd "${MESON_SOURCE_ROOT}"
 ./compile

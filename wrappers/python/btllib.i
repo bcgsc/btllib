@@ -7,7 +7,6 @@
 #include "btllib/graph.hpp"
 #include "btllib/order_queue.hpp"
 #include "btllib/bloom_filter.hpp"
-#include "btllib/seq_reader_gfa2_module.hpp"
 #include "btllib/seq_reader_fasta_module.hpp"
 #include "btllib/counting_bloom_filter.hpp"
 #include "btllib/seq_reader.hpp"
@@ -27,6 +26,8 @@
 #include "btllib/cstring.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/randseq.hpp"
+#include "btllib/mi_bloom_filter-inl.hpp"
+#include "btllib/counting_bloom_filter-inl.hpp"
 #include "btllib/aahash_consts.hpp"
 #include "btllib/aahash.hpp"
 %}
@@ -51,7 +52,6 @@
 %include "btllib/graph.hpp"
 %include "btllib/order_queue.hpp"
 %include "btllib/bloom_filter.hpp"
-%include "btllib/seq_reader_gfa2_module.hpp"
 %include "btllib/seq_reader_fasta_module.hpp"
 %include "btllib/counting_bloom_filter.hpp"
 %include "btllib/seq_reader.hpp"
@@ -71,6 +71,8 @@
 %include "btllib/cstring.hpp"
 %include "btllib/nthash.hpp"
 %include "btllib/randseq.hpp"
+%include "btllib/mi_bloom_filter-inl.hpp"
+%include "btllib/counting_bloom_filter-inl.hpp"
 %include "btllib/aahash_consts.hpp"
 %include "btllib/aahash.hpp"
 

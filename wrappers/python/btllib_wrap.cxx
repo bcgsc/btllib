@@ -4022,7 +4022,6 @@ namespace swig {
 #include "btllib/graph.hpp"
 #include "btllib/order_queue.hpp"
 #include "btllib/bloom_filter.hpp"
-#include "btllib/seq_reader_gfa2_module.hpp"
 #include "btllib/seq_reader_fasta_module.hpp"
 #include "btllib/counting_bloom_filter.hpp"
 #include "btllib/seq_reader.hpp"
@@ -4042,6 +4041,8 @@ namespace swig {
 #include "btllib/cstring.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/randseq.hpp"
+#include "btllib/mi_bloom_filter-inl.hpp"
+#include "btllib/counting_bloom_filter-inl.hpp"
 #include "btllib/aahash_consts.hpp"
 #include "btllib/aahash.hpp"
 
@@ -71649,7 +71650,6 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SeqReaderFormat_FASTA",SWIG_From_int(static_cast< int >(btllib::SeqReader::Format::FASTA)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SeqReaderFormat_FASTQ",SWIG_From_int(static_cast< int >(btllib::SeqReader::Format::FASTQ)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SeqReaderFormat_SAM",SWIG_From_int(static_cast< int >(btllib::SeqReader::Format::SAM)));
-  SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SeqReaderFormat_GFA2",SWIG_From_int(static_cast< int >(btllib::SeqReader::Format::GFA2)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SeqReaderFormat_INVALID",SWIG_From_int(static_cast< int >(btllib::SeqReader::Format::INVALID)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "MAX_SIMULTANEOUS_SEQREADERS",SWIG_From_size_t(static_cast< size_t >(btllib::SeqReader::MAX_SIMULTANEOUS_SEQREADERS)));
   SWIG_Python_SetConstant(d, d == md ? public_interface : NULL, "SHORT_MODE_BUFFER_SIZE",SWIG_From_size_t(static_cast< size_t >(btllib::SeqReader::SHORT_MODE_BUFFER_SIZE)));
