@@ -159,21 +159,6 @@ ntc64l(const unsigned char char_out,
 }
 
 void
-nte64(const uint64_t bh_val,
-      const unsigned k,
-      const unsigned h,
-      uint64_t* h_val)
-{
-  uint64_t t_val;
-  h_val[0] = bh_val;
-  for (unsigned i = 1; i < h; i++) {
-    t_val = bh_val * (i ^ k * MULTISEED);
-    t_val ^= t_val >> MULTISHIFT;
-    h_val[i] = t_val;
-  }
-}
-
-void
 ntmc64(const char* kmer_seq,
        const unsigned k,
        const unsigned m,

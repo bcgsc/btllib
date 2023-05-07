@@ -251,45 +251,46 @@ SeqReader::determine_format()
 void
 SeqReader::start_reader()
 {
-  reader_thread = std::unique_ptr<std::thread>(new std::thread([this]() {
-    {
-      const std::unique_lock<std::mutex> lock(format_mutex);
-      determine_format();
-      format_cv.notify_all();
-    }
-
-    size_t counter = 0;
-    decltype(cstring_queue)::Block records(block_size);
-
-    if (get_format() != Format::UNDETERMINED) {
-      int module_counter = 0;
-
-      BTLLIB_SEQREADER_FORMAT_READ(fasta_module)
-      BTLLIB_SEQREADER_FORMAT_READ(multiline_fasta_module)
-      BTLLIB_SEQREADER_FORMAT_READ(fastq_module)
-      BTLLIB_SEQREADER_FORMAT_READ(multiline_fastq_module)
-      BTLLIB_SEQREADER_FORMAT_READ(sam_module)
+  reader_thread = std::unique_ptr<std::thread>( // NOLINT(modernize-make-unique)
+    new std::thread([this]() {
       {
-        log_error("SeqReader: No reading module was enabled.");
-        std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+        const std::unique_lock<std::mutex> lock(format_mutex);
+        determine_format();
+        format_cv.notify_all();
       }
-    }
 
-    reader_end = true;
-    if (records.count > 0) {
-      records.num = counter++;
-      cstring_queue.write(records);
-    }
-    for (unsigned i = 0; i < threads; i++) {
-      if (i == 0) {
-        dummy_block_num = counter;
+      size_t counter = 0;
+      decltype(cstring_queue)::Block records(block_size);
+
+      if (get_format() != Format::UNDETERMINED) {
+        int module_counter = 0;
+
+        BTLLIB_SEQREADER_FORMAT_READ(fasta_module)
+        BTLLIB_SEQREADER_FORMAT_READ(multiline_fasta_module)
+        BTLLIB_SEQREADER_FORMAT_READ(fastq_module)
+        BTLLIB_SEQREADER_FORMAT_READ(multiline_fastq_module)
+        BTLLIB_SEQREADER_FORMAT_READ(sam_module)
+        {
+          log_error("SeqReader: No reading module was enabled.");
+          std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+        }
       }
-      decltype(cstring_queue)::Block dummy(block_size);
-      dummy.num = counter++;
-      dummy.count = 0;
-      cstring_queue.write(dummy);
-    }
-  }));
+
+      reader_end = true;
+      if (records.count > 0) {
+        records.num = counter++;
+        cstring_queue.write(records);
+      }
+      for (unsigned i = 0; i < threads; i++) {
+        if (i == 0) {
+          dummy_block_num = counter;
+        }
+        decltype(cstring_queue)::Block dummy(block_size);
+        dummy.num = counter++;
+        dummy.count = 0;
+        cstring_queue.write(dummy);
+      }
+    }));
 }
 
 #undef BTLLIB_SEQREADER_FORMAT_CHECK
@@ -301,127 +302,130 @@ SeqReader::start_processors()
   processor_threads.reserve(threads);
   for (unsigned i = 0; i < threads; i++) {
     processor_threads.push_back(
-      std::unique_ptr<std::thread>(new std::thread([this]() {
-        decltype(cstring_queue)::Block records_in(block_size);
-        decltype(output_queue)::Block records_out(block_size);
-        for (;;) {
-          cstring_queue.read(records_in);
-          for (size_t i = 0; i < records_in.count; i++) {
-            records_out.data[i].seq = std::string(
-              records_in.data[i].seq, records_in.data[i].seq.size());
-            auto& seq = records_out.data[i].seq;
-            rtrim(seq);
+      std::unique_ptr<std::thread>( // NOLINT(modernize-make-unique)
+        new std::thread([this]() {
+          decltype(cstring_queue)::Block records_in(block_size);
+          decltype(output_queue)::Block records_out(block_size);
+          for (;;) {
+            cstring_queue.read(records_in);
+            for (size_t i = 0; i < records_in.count; i++) {
+              records_out.data[i].seq = std::string(
+                records_in.data[i].seq, records_in.data[i].seq.size());
+              auto& seq = records_out.data[i].seq;
+              rtrim(seq);
 
-            records_out.data[i].qual = std::string(
-              records_in.data[i].qual, records_in.data[i].qual.size());
-            auto& qual = records_out.data[i].qual;
-            rtrim(qual);
+              records_out.data[i].qual = std::string(
+                records_in.data[i].qual, records_in.data[i].qual.size());
+              auto& qual = records_out.data[i].qual;
+              rtrim(qual);
 
-            char *first_whitespace = nullptr, *last_whitespace = nullptr;
-            for (size_t j = 0; j < records_in.data[i].header.size(); j++) {
-              if (bool(std::isspace(records_in.data[i].header[j]))) {
-                if (first_whitespace == nullptr) {
-                  first_whitespace = records_in.data[i].header + j;
+              char *first_whitespace = nullptr, *last_whitespace = nullptr;
+              for (size_t j = 0; j < records_in.data[i].header.size(); j++) {
+                if (bool(std::isspace(records_in.data[i].header[j]))) {
+                  if (first_whitespace == nullptr) {
+                    first_whitespace = records_in.data[i].header + j;
+                  }
+                  last_whitespace = records_in.data[i].header + j;
+                } else if (last_whitespace != nullptr) {
+                  break;
                 }
-                last_whitespace = records_in.data[i].header + j;
-              } else if (last_whitespace != nullptr) {
-                break;
               }
-            }
-            const size_t id_start =
-              (format == Format::FASTA || format == Format::FASTQ ||
-               format == Format::SAM)
-                ? 1
-                : 0;
+              const size_t id_start =
+                (format == Format::FASTA || format == Format::FASTQ ||
+                 format == Format::SAM)
+                  ? 1
+                  : 0;
 
-            switch (format) {
-              case Format::FASTA:
-                check_error(records_in.data[i].header.empty(),
-                            "SeqReader: Invalid FASTA header");
-                check_error(records_in.data[i].header[0] != '>',
-                            "SeqReader: Unexpected character in a FASTA file.");
-                break;
-              case Format::FASTQ:
-                check_error(records_in.data[i].header.empty(),
-                            "SeqReader: Invalid FASTQ header");
-                check_error(records_in.data[i].header[0] != '@',
-                            "SeqReader: Unexpected character in a FASTQ file.");
-                break;
-              default:
-                break;
-            }
-
-            if (!qual.empty()) {
-              check_error(qual.size() != seq.size(),
-                          "SeqReader: Quality string length (" +
-                            std::to_string(qual.size()) +
-                            ") does not match "
-                            "sequence length (" +
-                            std::to_string(seq.size()) + ").");
-            }
-
-            if (first_whitespace == nullptr) {
-              records_out.data[i].id =
-                std::string(records_in.data[i].header + id_start,
-                            records_in.data[i].header.size() - id_start);
-              records_out.data[i].comment = "";
-            } else {
-              records_out.data[i].id = std::string(
-                records_in.data[i].header + id_start,
-                first_whitespace - records_in.data[i].header - id_start);
-              records_out.data[i].comment = std::string(
-                last_whitespace + 1,
-                records_in.data[i].header.size() -
-                  (last_whitespace - records_in.data[i].header) - 1);
-            }
-            records_in.data[i].header.clear();
-
-            auto& id = records_out.data[i].id;
-            auto& comment = records_out.data[i].comment;
-            rtrim(id);
-            rtrim(comment);
-
-            if (trim_masked()) {
-              const auto len = seq.length();
-              size_t trim_start = 0, trim_end = seq.length();
-              while (trim_start <= len && bool(islower(seq[trim_start]))) {
-                trim_start++;
+              switch (format) {
+                case Format::FASTA:
+                  check_error(records_in.data[i].header.empty(),
+                              "SeqReader: Invalid FASTA header");
+                  check_error(
+                    records_in.data[i].header[0] != '>',
+                    "SeqReader: Unexpected character in a FASTA file.");
+                  break;
+                case Format::FASTQ:
+                  check_error(records_in.data[i].header.empty(),
+                              "SeqReader: Invalid FASTQ header");
+                  check_error(
+                    records_in.data[i].header[0] != '@',
+                    "SeqReader: Unexpected character in a FASTQ file.");
+                  break;
+                default:
+                  break;
               }
-              while (trim_end > 0 && bool(islower(seq[trim_end - 1]))) {
-                trim_end--;
-              }
-              seq.erase(trim_end);
-              seq.erase(0, trim_start);
+
               if (!qual.empty()) {
-                qual.erase(trim_end);
-                qual.erase(0, trim_start);
+                check_error(qual.size() != seq.size(),
+                            "SeqReader: Quality string length (" +
+                              std::to_string(qual.size()) +
+                              ") does not match "
+                              "sequence length (" +
+                              std::to_string(seq.size()) + ").");
               }
-            }
-            if (fold_case()) {
-              for (auto& c : seq) {
-                const char old = c;
-                c = CAPITALS[(unsigned char)(c)];
-                if (!bool(c)) {
-                  log_error(std::string("A sequence contains invalid "
-                                        "IUPAC character: ") +
-                            old);
-                  std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+
+              if (first_whitespace == nullptr) {
+                records_out.data[i].id =
+                  std::string(records_in.data[i].header + id_start,
+                              records_in.data[i].header.size() - id_start);
+                records_out.data[i].comment = "";
+              } else {
+                records_out.data[i].id = std::string(
+                  records_in.data[i].header + id_start,
+                  first_whitespace - records_in.data[i].header - id_start);
+                records_out.data[i].comment = std::string(
+                  last_whitespace + 1,
+                  records_in.data[i].header.size() -
+                    (last_whitespace - records_in.data[i].header) - 1);
+              }
+              records_in.data[i].header.clear();
+
+              auto& id = records_out.data[i].id;
+              auto& comment = records_out.data[i].comment;
+              rtrim(id);
+              rtrim(comment);
+
+              if (trim_masked()) {
+                const auto len = seq.length();
+                size_t trim_start = 0, trim_end = seq.length();
+                while (trim_start <= len && bool(islower(seq[trim_start]))) {
+                  trim_start++;
+                }
+                while (trim_end > 0 && bool(islower(seq[trim_end - 1]))) {
+                  trim_end--;
+                }
+                seq.erase(trim_end);
+                seq.erase(0, trim_start);
+                if (!qual.empty()) {
+                  qual.erase(trim_end);
+                  qual.erase(0, trim_start);
                 }
               }
+              if (fold_case()) {
+                for (auto& c : seq) {
+                  const char old = c;
+                  c = CAPITALS[(unsigned char)(c)];
+                  if (!bool(c)) {
+                    log_error(std::string("A sequence contains invalid "
+                                          "IUPAC character: ") +
+                              old);
+                    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+                  }
+                }
+              }
+              records_out.data[i].num = records_in.num * block_size + i;
             }
-            records_out.data[i].num = records_in.num * block_size + i;
-          }
-          records_out.count = records_in.count;
-          records_out.num = records_in.num;
-          if (records_out.count == 0) {
-            if (records_out.num == dummy_block_num) {
-              output_queue.write(records_out);
+            records_out.count = records_in.count;
+            records_out.num = records_in.num;
+            if (records_out.count == 0) {
+              if (records_out.num == dummy_block_num) {
+                output_queue.write(records_out);
+              }
+              break;
             }
-            break;
+            output_queue.write(records_out);
           }
-          output_queue.write(records_out);
-        }
-      })));
+        })));
   }
 }
 
@@ -430,7 +434,8 @@ SeqReader::read()
 {
   if (ready_records_owners[id % MAX_SIMULTANEOUS_SEQREADERS] != id) {
     ready_records_array[id % MAX_SIMULTANEOUS_SEQREADERS] =
-      std::unique_ptr<decltype(output_queue)::Block>(
+      std::unique_ptr< // NOLINT(modernize-make-unique)
+        decltype(output_queue)::Block>(
         new decltype(output_queue)::Block(block_size));
     ready_records_owners[id % MAX_SIMULTANEOUS_SEQREADERS] = id;
     ready_records_current[id % MAX_SIMULTANEOUS_SEQREADERS] = 0;

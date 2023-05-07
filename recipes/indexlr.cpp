@@ -152,8 +152,8 @@ main(int argc, char* argv[])
           with_repeat = true;
           std::cerr << "Loading repeat Bloom filter from " << optarg
                     << std::endl;
-          repeat_bf = std::unique_ptr<btllib::KmerBloomFilter>(
-            new btllib::KmerBloomFilter(optarg));
+          repeat_bf = std::unique_ptr< // NOLINT(modernize-make-unique)
+            btllib::KmerBloomFilter>(new btllib::KmerBloomFilter(optarg));
           std::cerr << "Finished loading repeat Bloom filter" << std::endl;
           break;
         }
@@ -161,8 +161,8 @@ main(int argc, char* argv[])
           with_solid = true;
           std::cerr << "Loading solid Bloom filter from " << optarg
                     << std::endl;
-          solid_bf = std::unique_ptr<btllib::KmerBloomFilter>(
-            new btllib::KmerBloomFilter(optarg));
+          solid_bf = std::unique_ptr< // NOLINT(modernize-make-unique)
+            btllib::KmerBloomFilter>(new btllib::KmerBloomFilter(optarg));
           std::cerr << "Finished loading solid Bloom filter" << std::endl;
           break;
         }
@@ -253,27 +253,31 @@ main(int argc, char* argv[])
       if (with_repeat && with_solid) {
         flags |= btllib::Indexlr::Flag::FILTER_IN;
         flags |= btllib::Indexlr::Flag::FILTER_OUT;
-        indexlr = std::unique_ptr<btllib::Indexlr>(
-          new btllib::Indexlr(infile,
-                              k,
-                              w,
-                              q,
-                              flags,
-                              t,
-                              verbose,
-                              solid_bf->get_bloom_filter(),
-                              repeat_bf->get_bloom_filter()));
+        indexlr =
+          std::unique_ptr<btllib::Indexlr>( // NOLINT(modernize-make-unique)
+            new btllib::Indexlr(infile,
+                                k,
+                                w,
+                                q,
+                                flags,
+                                t,
+                                verbose,
+                                solid_bf->get_bloom_filter(),
+                                repeat_bf->get_bloom_filter()));
       } else if (with_repeat) {
         flags |= btllib::Indexlr::Flag::FILTER_OUT;
-        indexlr = std::unique_ptr<btllib::Indexlr>(new btllib::Indexlr(
+        indexlr = std::unique_ptr< // NOLINT(modernize-make-unique)
+          btllib::Indexlr>(new btllib::Indexlr(
           infile, k, w, q, flags, t, verbose, repeat_bf->get_bloom_filter()));
       } else if (with_solid) {
         flags |= btllib::Indexlr::Flag::FILTER_IN;
-        indexlr = std::unique_ptr<btllib::Indexlr>(new btllib::Indexlr(
+        indexlr = std::unique_ptr< // NOLINT(modernize-make-unique)
+          btllib::Indexlr>(new btllib::Indexlr(
           infile, k, w, q, flags, t, verbose, solid_bf->get_bloom_filter()));
       } else {
-        indexlr = std::unique_ptr<btllib::Indexlr>(
-          new btllib::Indexlr(infile, k, w, q, flags, t, verbose));
+        indexlr =
+          std::unique_ptr<btllib::Indexlr>( // NOLINT(modernize-make-unique)
+            new btllib::Indexlr(infile, k, w, q, flags, t, verbose));
       }
       std::queue<std::string> output_queue;
       std::mutex output_queue_mutex;

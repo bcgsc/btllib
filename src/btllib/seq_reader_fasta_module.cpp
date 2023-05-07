@@ -33,7 +33,8 @@ SeqReaderFastaModule::buffer_valid(const char* buffer, const size_t size)
       case IN_SEQ:
         if (c == '\n') {
           state = IN_HEADER_1;
-        } else if (c != '\r' && !bool(COMPLEMENTS[c])) {
+        } else if (c != '\r' &&
+                   !(bool(COMPLEMENTS[c]) || bool(AMINO_ACIDS[c]))) {
           return false;
         }
         break;

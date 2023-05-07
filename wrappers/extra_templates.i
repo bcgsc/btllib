@@ -4,3 +4,6 @@
 %template(KmerCountingBloomFilter8) btllib::KmerCountingBloomFilter<uint8_t>;
 %template(KmerCountingBloomFilter16) btllib::KmerCountingBloomFilter<uint16_t>;
 %template(KmerCountingBloomFilter32) btllib::KmerCountingBloomFilter<uint32_t>;
+%template(MIBloomFilter8) btllib::MIBloomFilter<uint8_t>;
+%template(MIBloomFilter16) btllib::MIBloomFilter<uint16_t>;
+%template(MIBloomFilter32) btllib::MIBloomFilter<uint32_t>;

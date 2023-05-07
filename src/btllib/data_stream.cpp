@@ -103,8 +103,9 @@ DataStream::DataStream(const std::string& path, Operation op)
       file = stdout;
     }
   } else {
-    pipeline = std::unique_ptr<ProcessPipeline>(
-      new ProcessPipeline(get_pipeline_cmd(path, op)));
+    pipeline =
+      std::unique_ptr<ProcessPipeline>( // NOLINT(modernize-make-unique)
+        new ProcessPipeline(get_pipeline_cmd(path, op)));
     if (op == READ) {
       file = pipeline->out;
     } else {

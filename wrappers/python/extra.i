@@ -13,6 +13,8 @@
 %feature("python:slot", "tp_iter", functype="getiterfunc") btllib::Indexlr::begin;
 %feature("python:slot", "tp_iternext", functype="iternextfunc") btllib::Indexlr::RecordIterator::next;
 
+%ignore btllib::BloomFilter::save(std::string const &, cpptoml::table const &, char const *, size_t);
+
 %extend btllib::SeqReader {
   btllib::SeqReader* __enter__() {
     return $self;
@@ -91,6 +93,13 @@
   }
 %}
 
+%typemap(out) uint64_t* btllib::AAHash::hashes %{
+  $result = PyTuple_New(arg1->get_hash_num());
+  for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
+    PyTuple_SetItem($result, i, PyLong_FromUnsignedLong($1[i]));
+  }
+%}
+
 %typemap(out) std::vector<btllib::Indexlr::Minimizer>* %{
   $result = PyList_New($1->size());
   for (unsigned i = 0; i < $1->size(); ++i) {
@@ -98,3 +107,20 @@
     PyList_SetItem($result, i, item);
   }
 %}
+
+%define VECTOR_OUT_TYPEMAP(TYPE)
+%typemap(out) std::vector<TYPE> {
+  const std::vector<TYPE>& vec = $1;
+  $result = PyList_New(vec.size());
+  for (unsigned i = 0; i < vec.size(); ++i) {
+    PyObject *item = PyLong_FromUnsignedLong(vec[i]);
+    PyList_SetItem($result, i, item);
+  }
+}
+%enddef
+
+VECTOR_OUT_TYPEMAP(uint8_t)
+VECTOR_OUT_TYPEMAP(uint16_t)
+VECTOR_OUT_TYPEMAP(uint32_t)
+VECTOR_OUT_TYPEMAP(size_t)
+

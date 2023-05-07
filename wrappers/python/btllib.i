@@ -28,6 +28,8 @@
 #include "btllib/randseq.hpp"
 #include "btllib/mi_bloom_filter-inl.hpp"
 #include "btllib/counting_bloom_filter-inl.hpp"
+#include "btllib/aahash_consts.hpp"
+#include "btllib/aahash.hpp"
 %}
 
 %include <stdint.i>
@@ -71,5 +73,7 @@
 %include "btllib/randseq.hpp"
 %include "btllib/mi_bloom_filter-inl.hpp"
 %include "btllib/counting_bloom_filter-inl.hpp"
+%include "btllib/aahash_consts.hpp"
+%include "btllib/aahash.hpp"
 
 %include "../extra_templates.i"

@@ -8,8 +8,10 @@
 int
 main()
 {
-  const char* ids[] = { "asdf", "ghjk" };
-  const char* seqs[] = { "ACTG", "TGCA" };
+  const char* ids[] = { "asdf", "ghjk", "asdf", "ghjk" };
+  const char* seqs[] = {
+    "ACTG", "TGCA", "ACDEFGHIKLMNPQRSTVWY", "YWVTSRQPNMLKIHGFEDCA"
+  };
   std::string random_filename;
 
   for (int iteration = 0; iteration < 3; iteration++) {
@@ -73,6 +75,26 @@ main()
 
     random_reader.close();
     std::remove(random_filename.c_str());
+  }
+
+  for (int iteration = 0; iteration < 3; iteration++) {
+    std::cerr << "Iteration " << iteration + 1 << std::endl;
+
+    std::cerr << "Test multiline FAA" << std::endl;
+    btllib::SeqReader reader(btllib::get_dirname(__FILE__) +
+                               "/input_multiline.faa",
+                             btllib::SeqReader::Flag::SHORT_MODE);
+
+    TEST_ASSERT_EQ(reader.get_format(), btllib::SeqReader::Format::FASTA);
+
+    size_t i = 2;
+    for (const auto record : reader) {
+      TEST_ASSERT_EQ(record.id, ids[i]);
+      TEST_ASSERT_EQ(record.seq, seqs[i]);
+      i++;
+    }
+    TEST_ASSERT_EQ(i, 4);
+    reader.close();
   }
 
   return 0;

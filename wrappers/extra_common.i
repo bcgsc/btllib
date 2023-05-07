@@ -64,6 +64,7 @@
 %ignore btllib::MIBloomFilterInitializer;
 %ignore btllib::MIBloomFilterInitializer::operator=;
 
+%template(UCharVector) std::vector<unsigned char>;
 %template(VectorString) std::vector<std::string>;
 %template(VectorInt) std::vector<int>;
 %template(VectorUnsigned) std::vector<unsigned>;
@@ -93,6 +94,7 @@ using SpacedSeed = std::vector<unsigned>;
 %ignore btllib::BlindNtHash::BlindNtHash(const std::string&, unsigned, unsigned, size_t pos = 0);
 %ignore btllib::SeedNtHash::SeedNtHash(const std::string&, const std::vector<SpacedSeed>&, unsigned, unsigned, size_t pos = 0);
 %ignore btllib::SeedNtHash::SeedNtHash(const std::string&, const std::vector<std::string>&, unsigned, unsigned, size_t pos = 0);
+%ignore btllib::AAHash::AAHash(const std::string&, unsigned, unsigned, unsigned, size_t pos = 0);
 
 %ignore btllib::NtHash::NtHash(NtHash&&);
 %ignore btllib::NtHash::NtHash(const NtHash&);
@@ -100,6 +102,8 @@ using SpacedSeed = std::vector<unsigned>;
 %ignore btllib::BlindNtHash::BlindNtHash(const BlindNtHash&);
 %ignore btllib::SeedNtHash::SeedNtHash(SeedNtHash&&);
 %ignore btllib::SeedNtHash::SeedNtHash(const SeedNtHash&);
+%ignore btllib::AAHash::AAHash(AAHash&&);
+%ignore btllib::AAHash::AAHash(const AAHash&);
 
 %extend btllib::NtHash {
   NtHash(std::string seq, unsigned hash_num, unsigned k, size_t pos = 0)
@@ -151,3 +155,21 @@ using SpacedSeed = std::vector<unsigned>;
     nthash_ids.erase((void*)self);
   }
 }
+
+%extend btllib::AAHash {
+  AAHash(std::string seq, unsigned hash_num, unsigned k, unsigned level, size_t pos = 0)
+  {
+    std::unique_lock<std::mutex> lock(nthash_mutex);
+    nthash_strings[++nthash_last_id] = std::move(seq);
+    auto *nthash = new btllib::AAHash(nthash_strings[nthash_last_id], hash_num, k, level);
+    nthash_ids[(void*)nthash] = nthash_last_id;
+    return nthash;
+  }
+
+  ~AAHash() {
+    std::unique_lock<std::mutex> lock(nthash_mutex);
+    nthash_strings.erase(nthash_ids[(void*)self]);
+    nthash_ids.erase((void*)self);
+  }
+}
+

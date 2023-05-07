@@ -1,7 +1,7 @@
 project('btllib', 'cpp',
-        version : '1.5.1',
+        version : '1.6.0',
         license : 'GPL3',
-        default_options : [ 'cpp_std=c++11', 'warning_level=3', 'werror=true', 'b_coverage=true' ],
+        default_options : [ 'cpp_std=c++17', 'warning_level=3', 'werror=true', 'b_coverage=true' ],
         meson_version : '>= 0.60.0')
 
 # Configuration

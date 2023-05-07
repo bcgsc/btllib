@@ -86,7 +86,7 @@ main()
         }
   }
   
-  for(uint k=0; k < total_counter_2.size(); k++){
+  for(unsigned k=0; k < total_counter_2.size(); k++){
 	TEST_ASSERT(total_counter_2[k] == total_counter[k]);
   }
   // Test mi-Bf is still insertable.
