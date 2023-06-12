@@ -476,5 +476,25 @@ main()
     }
   }
 
+  {
+    PRINT_TEST_NAME("copying SeedNtHash objects")
+
+    std::string seq = "AACGTGACTACTGACTAGCTAGCTAGCTGATCGT";
+    std::vector<std::string> seeds = { "111111111101111111111",
+                                       "110111010010010111011" };
+
+    const unsigned h = 4;
+
+    btllib::SeedNtHash h1(seq, seeds, h, seeds[0].length());
+    btllib::SeedNtHash h2(h1);
+
+    bool can_roll = true;
+    while (can_roll) {
+      can_roll = h1.roll();
+      can_roll &= h2.roll();
+      TEST_ASSERT_ARRAY_EQ(h1.hashes(), h2.hashes(), h);
+    }
+  }
+
   return 0;
 }
