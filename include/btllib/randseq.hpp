@@ -49,7 +49,7 @@ public:
 private:
   std::string chars;
   bool has_seed = false;
-  unsigned long seed = 42;
+  unsigned long seed = 0;
 };
 
 } // namespace btllib
