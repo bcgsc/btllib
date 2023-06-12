@@ -15,6 +15,8 @@ struct Arguments
   btllib::RandSeq::SeqType seq_type;
   btllib::RandSeq::Masking mask;
   unsigned num_sequences;
+  unsigned long seed;
+  bool has_seed;
   int num_threads;
   size_t min_length, max_length;
   std::string out_path;
@@ -41,6 +43,10 @@ struct Arguments
         "Sequence length. To generate sequences with random lengths from the "
         "range [a, b], use a:b")
       .required();
+
+    parser.add_argument("-r")
+      .help("Random seed. Use to generate consistent sequences between runs.")
+      .scan<'u', unsigned long>();
 
     parser.add_argument("-t")
       .help("Number of parallel threads")
@@ -93,6 +99,13 @@ struct Arguments
       auto b = length_range.substr(i_sep + 1, length_range.size() - i_sep - 1);
       min_length = std::stoull(a);
       max_length = std::stoull(b);
+    }
+
+    if (parser.is_used("-r")) {
+      has_seed = true;
+      seed = parser.get<unsigned long>("-r");
+    } else {
+      has_seed = false;
     }
 
     num_sequences = parser.get<unsigned>("-n");
@@ -165,12 +178,18 @@ main(int argc, char** argv)
     Arguments args(argc, argv);
     omp_set_num_threads(args.num_threads);
 
+    // Random generator for sequence lengths
     std::random_device rd;
     std::default_random_engine rng(rd());
     std::uniform_int_distribution<size_t> dist(args.min_length,
                                                args.max_length);
+
     btllib::SeqWriter writer(args.out_path);
+
     btllib::RandSeq rnd(args.seq_type, args.mask);
+    if (args.has_seed) {
+      rnd.set_seed(args.seed);
+    }
 
     std::string unit =
       args.seq_type == btllib::RandSeq::SeqType::PROTEIN ? "aa" : "bp";
