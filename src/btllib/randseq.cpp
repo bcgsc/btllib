@@ -27,6 +27,13 @@ RandSeq::RandSeq(SeqType seq_type, Masking masking)
   }
 }
 
+void
+RandSeq::set_seed(unsigned long seed)
+{
+  has_seed = true;
+  this->seed = seed;
+}
+
 std::string
 RandSeq::generate(size_t length)
 {
@@ -34,6 +41,9 @@ RandSeq::generate(size_t length)
   seq.reserve(length);
   std::random_device rd;
   std::default_random_engine rng(rd());
+  if (has_seed) {
+    rng.seed(seed);
+  }
   std::uniform_int_distribution<size_t> dist(0, chars.size() - 1);
   for (size_t i = 0; i < length; i++) {
     seq.append(std::string(1, chars[dist(rng)]));

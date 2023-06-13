@@ -40301,6 +40301,37 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_RandSeq_set_seed(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::RandSeq *arg1 = (btllib::RandSeq *) 0 ;
+  unsigned long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__RandSeq, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandSeq_set_seed" "', argument " "1"" of type '" "btllib::RandSeq *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::RandSeq * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_long(swig_obj[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RandSeq_set_seed" "', argument " "2"" of type '" "unsigned long""'");
+  } 
+  arg2 = static_cast< unsigned long >(val2);
+  (arg1)->set_seed(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_RandSeq_generate(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::RandSeq *arg1 = (btllib::RandSeq *) 0 ;
@@ -67007,6 +67038,7 @@ SwigPyBuiltin__btllib__RandSeq_richcompare(PyObject *self, PyObject *other, int 
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__RandSeq_methods[] = {
+  { "set_seed", _wrap_RandSeq_set_seed, METH_O, "" },
   { "generate", _wrap_RandSeq_generate, METH_O, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };

@@ -1,4 +1,5 @@
 #include "btllib/nthash.hpp"
+#include "btllib/status.hpp"
 
 namespace btllib {
 
@@ -185,6 +186,7 @@ SeedNtHash::SeedNtHash(const SeedNtHash& seed_nthash)
   : nthash(seed_nthash.nthash)
   , hash_num_per_seed(seed_nthash.hash_num_per_seed)
   , blocks(seed_nthash.blocks)
+  , monomers(seed_nthash.monomers)
   , fh_no_monomers(new uint64_t[seed_nthash.blocks.size()])
   , rh_no_monomers(new uint64_t[seed_nthash.blocks.size()])
   , forward_hash(new uint64_t[seed_nthash.blocks.size()])
@@ -243,7 +245,7 @@ parse_seeds(const std::vector<std::string>& seed_strings,
             std::vector<SpacedSeedMonomers>& out_monomers)
 {
   for (const auto& seed_string : seed_strings) {
-    const char pad = seed_string[seed_string.length() - 1] == '1' ? '0' : '1';
+    char pad = seed_string[seed_string.length() - 1] == '1' ? '0' : '1';
     const std::string padded_string = seed_string + pad;
     SpacedSeedBlocks care_blocks, ignore_blocks;
     std::vector<unsigned> care_monos, ignore_monos;
@@ -254,7 +256,7 @@ parse_seeds(const std::vector<std::string>& seed_strings,
         if (pos - i_start == 1) {
           care_monos.push_back(i_start);
         } else {
-          const std::array<unsigned, 2> block{ { i_start, pos } };
+          std::array<unsigned, 2> block{ { i_start, pos } };
           care_blocks.push_back(block);
         }
         i_start = pos;
@@ -263,19 +265,18 @@ parse_seeds(const std::vector<std::string>& seed_strings,
         if (pos - i_start == 1) {
           ignore_monos.push_back(i_start);
         } else {
-          const std::array<unsigned, 2> block{ { i_start, pos } };
+          std::array<unsigned, 2> block{ { i_start, pos } };
           ignore_blocks.push_back(block);
         }
         i_start = pos;
         is_care_block = true;
       }
     }
-    const unsigned num_cares = care_blocks.size() * 2 + care_monos.size();
-    const unsigned num_ignores =
-      ignore_blocks.size() * 2 + ignore_monos.size() + 2;
+    unsigned num_cares = care_blocks.size() * 2 + care_monos.size();
+    unsigned num_ignores = ignore_blocks.size() * 2 + ignore_monos.size() + 2;
     if (num_ignores < num_cares) {
       unsigned string_end = seed_string.length();
-      const std::array<unsigned, 2> block{ { 0, string_end } };
+      std::array<unsigned, 2> block{ { 0, string_end } };
       ignore_blocks.push_back(block);
       out_blocks.push_back(ignore_blocks);
       out_monomers.push_back(ignore_monos);

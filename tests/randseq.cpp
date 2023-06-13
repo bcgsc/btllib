@@ -1,63 +1,36 @@
 #include "btllib/randseq.hpp"
-#include "btllib/status.hpp"
 
-#include <algorithm>
-#include <cctype>
-#include <unordered_set>
+#include "helpers.hpp"
 
-using namespace btllib;
+#include <iostream>
+#include <regex>
 
-void test_DNASequence() {
-  RandSeq generator(RandSeq::SeqType::DNA);
-  std::string seq = generator.generate(100);
-
-  check_error(seq.size() != 100, "DNA sequence length is incorrect.");
-  for (char c : seq) {
-    check_error(!(c == 'A' || c == 'C' || c == 'G' || c == 'T'), "Invalid character in DNA sequence.");
+int
+main()
+{
+  {
+    PRINT_TEST_NAME("DNA sequence generation")
+    btllib::RandSeq rnd(btllib::RandSeq::SeqType::DNA,
+                        btllib::RandSeq::Masking::NONE);
+    TEST_ASSERT(std::regex_search(rnd.generate(100), std::regex("^[ACGT]*$")))
   }
-  log_info("DNA sequence test passed.");
-}
-
-void test_RNASequence() {
-  RandSeq generator(RandSeq::SeqType::RNA);
-  std::string seq = generator.generate(100);
-
-  check_error(seq.size() != 100, "RNA sequence length is incorrect.");
-  for (char c : seq) {
-    check_error(!(c == 'A' || c == 'C' || c == 'G' || c == 'U'), "Invalid character in RNA sequence.");
+  {
+    PRINT_TEST_NAME("RNA sequence generation")
+    btllib::RandSeq rnd(btllib::RandSeq::SeqType::RNA,
+                        btllib::RandSeq::Masking::NONE);
+    TEST_ASSERT(std::regex_search(rnd.generate(100), std::regex("^[ACGU]*$")))
   }
-  log_info("RNA sequence test passed.");
-}
-
-void test_PROTEINSequence() {
-  RandSeq generator(RandSeq::SeqType::PROTEIN);
-  std::string seq = generator.generate(100);
-
-  check_error(seq.size() != 100, "Protein sequence length is incorrect.");
-  for (char c : seq) {
-    check_error(!std::isupper(c) ||
-    !(std::unordered_set<char>{'A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y'}.count(c)),
-               "Invalid character in Protein sequence.");
+  {
+    PRINT_TEST_NAME("random seed functionality")
+    btllib::RandSeq rnd1(btllib::RandSeq::SeqType::DNA,
+                         btllib::RandSeq::Masking::NONE);
+    btllib::RandSeq rnd2(btllib::RandSeq::SeqType::DNA,
+                         btllib::RandSeq::Masking::NONE);
+    TEST_ASSERT(rnd1.generate(100) != rnd2.generate(100))
+    rnd1.set_seed(42);
+    rnd2.set_seed(42);
+    TEST_ASSERT_EQ(rnd1.generate(100), rnd2.generate(100))
+    rnd1.set_seed(1024);
+    TEST_ASSERT(rnd1.generate(100) != rnd2.generate(100))
   }
-  log_info("Protein sequence test passed.");
-}
-
-void test_Masking() {
-  RandSeq generator(RandSeq::SeqType::DNA, RandSeq::Masking::SOFT);
-  std::string seq = generator.generate(100);
-
-  check_error(seq.size() != 100, "DNA sequence with soft masking length is incorrect.");
-  for (char c : seq) {
-    check_error(!(std::toupper(c) == 'A' || std::toupper(c) == 'C' || std::toupper(c) == 'G' || std::toupper(c) == 'T'),
-               "Invalid character in DNA sequence with soft masking.");
-  }
-  log_info("Soft masking test passed.");
-}
-
-int main() {
-  test_DNASequence();
-  test_RNASequence();
-  test_PROTEINSequence();
-  test_Masking();
-  return 0;
 }

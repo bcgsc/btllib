@@ -33,6 +33,13 @@ public:
   RandSeq(SeqType type, Masking masking = Masking::NONE);
 
   /**
+   * Set the seed of the random string generator
+   *
+   * @param seed Random generator seed
+   */
+  void set_seed(unsigned long seed);
+
+  /**
    * Generate a new random sequence.
    *
    * @param length Sequence length
@@ -41,6 +48,8 @@ public:
 
 private:
   std::string chars;
+  bool has_seed = false;
+  unsigned long seed = 0;
 };
 
 } // namespace btllib
