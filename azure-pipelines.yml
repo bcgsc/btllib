@@ -33,7 +33,7 @@ jobs:
       set -o errexit -o pipefail
       ./compile
       cd examples
-      g++ nthash_spacedseeds.cpp -I../install/include -L../install/lib -lbtllib && ./a.out
+      g++ nthash_spacedseeds.cpp -std=c++11 -I../install/include -L../install/lib -lbtllib && ./a.out
     displayName: 'Compile example'
 
   - script: |
@@ -103,7 +103,7 @@ jobs:
       set -o errexit -o pipefail
       ./compile
       cd examples
-      g++ nthash_spacedseeds.cpp -I../install/include -L../install/lib -lbtllib && ./a.out
+      g++ nthash_spacedseeds.cpp -std=c++11 -I../install/include -L../install/lib -lbtllib && ./a.out
     displayName: 'Compile example'
 
   - script: |
