@@ -30,6 +30,14 @@ jobs:
 
   - script: |
       source activate btllib_CI
+      set -o errexit -o pipefail
+      ./compile
+      cd examples
+      g++ nthash_spacedseeds.cpp -I../install/include -L../install/lib -lbtllib && ./a
+    displayName: 'Compile example'
+
+  - script: |
+      source activate btllib_CI
       cd build && ninja clang-format-check
     displayName: 'Run clang-format'
 
@@ -89,6 +97,14 @@ jobs:
       source activate btllib_CI
       meson setup build && cd build && ninja
     displayName: 'Build the project'
+  
+  - script: |
+      source activate btllib_CI
+      set -o errexit -o pipefail
+      ./compile
+      cd examples
+      g++ nthash_spacedseeds.cpp -I../install/include -L../install/lib -lbtllib && ./a.out
+    displayName: 'Compile example'
 
   - script: |
       source activate btllib_CI
