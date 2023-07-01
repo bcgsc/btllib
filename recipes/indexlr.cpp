@@ -248,7 +248,7 @@ main(int argc, char* argv[])
       out = fopen(outfile.c_str(), "w"); // NOLINT(android-cloexec-fopen)
 #endif
     }
-    for (auto& infile : infiles) {
+    for (const auto& infile : infiles) {
       std::unique_ptr<btllib::Indexlr> indexlr;
       if (with_repeat && with_solid) {
         flags |= btllib::Indexlr::Flag::FILTER_IN;

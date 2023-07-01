@@ -123,7 +123,7 @@ ntf64(const char* kmer_seq, unsigned k)
     h_val ^= TRIMER_TAB[trimer_loc];
   } else if (remainder == 2) {
     const uint8_t dimer_loc = 4 * CONVERT_TAB[(unsigned char)kmer_seq[k - 2]] +
-                        CONVERT_TAB[(unsigned char)kmer_seq[k - 1]];
+                              CONVERT_TAB[(unsigned char)kmer_seq[k - 1]];
     h_val ^= DIMER_TAB[dimer_loc];
   } else if (remainder == 1) {
     h_val ^= SEED_TAB[(unsigned char)kmer_seq[k - 1]];
@@ -152,8 +152,9 @@ ntr64(const char* kmer_seq, unsigned k)
       RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 3]];
     h_val ^= TRIMER_TAB[trimer_loc];
   } else if (remainder == 2) {
-    const uint8_t dimer_loc = 4 * RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 1]] +
-                        RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 2]];
+    const uint8_t dimer_loc =
+      4 * RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 1]] +
+      RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 2]];
     h_val ^= DIMER_TAB[dimer_loc];
   } else if (remainder == 1) {
     h_val ^= SEED_TAB[(unsigned char)kmer_seq[k - 1] & CP_OFF];

@@ -273,7 +273,8 @@ parse_seeds(const std::vector<std::string>& seed_strings,
       }
     }
     const unsigned num_cares = care_blocks.size() * 2 + care_monos.size();
-    const unsigned num_ignores = ignore_blocks.size() * 2 + ignore_monos.size() + 2;
+    const unsigned num_ignores =
+      ignore_blocks.size() * 2 + ignore_monos.size() + 2;
     if (num_ignores < num_cares) {
       unsigned string_end = seed_string.length();
       const std::array<unsigned, 2> block{ { 0, string_end } };

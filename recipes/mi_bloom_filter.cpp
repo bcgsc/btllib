@@ -247,7 +247,7 @@ main(int argc, char* argv[])
     for (int mi_bf_stage = 0; mi_bf_stage < 3; mi_bf_stage++) {
       btllib::log_info(stages[mi_bf_stage] + std::string(" stage started"));
 
-      for (auto& read_path : read_paths) {
+      for (const auto& read_path : read_paths) {
         btllib::SeqReader reader(read_path,
                                  btllib::SeqReader::Flag::SHORT_MODE,
                                  DEFAULT_SEQ_READER_THREADS);

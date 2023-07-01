@@ -145,14 +145,15 @@ public:
         std::lround((double)generated_seqs / (double)total_seqs * 100.0);
       const double seq_ratio =
         ((double)total_seqs - (double)generated_seqs) / (double)generated_seqs;
-      const std::chrono::duration<double> total_elapsed = (current_time - start_time);
+      const std::chrono::duration<double> total_elapsed =
+        (current_time - start_time);
       auto remaining = std::lround(seq_ratio * total_elapsed.count() + 1);
       const std::string line = "[" + std::to_string(generated_seqs) + "/" +
-                         std::to_string(total_seqs) + "] Generated " +
-                         std::to_string(generated_bp) + unit + " @" +
-                         std::to_string(speed) + unit + "/s (" +
-                         std::to_string(progress) + "%, ~" +
-                         std::to_string(remaining) + "s remaining)";
+                               std::to_string(total_seqs) + "] Generated " +
+                               std::to_string(generated_bp) + unit + " @" +
+                               std::to_string(speed) + unit + "/s (" +
+                               std::to_string(progress) + "%, ~" +
+                               std::to_string(remaining) + "s remaining)";
       std::cerr << line << "\r";
       last_log = current_time;
       last_line_length = line.size();
