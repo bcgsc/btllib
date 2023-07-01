@@ -245,7 +245,7 @@ parse_seeds(const std::vector<std::string>& seed_strings,
             std::vector<SpacedSeedMonomers>& out_monomers)
 {
   for (const auto& seed_string : seed_strings) {
-    char pad = seed_string[seed_string.length() - 1] == '1' ? '0' : '1';
+    const char pad = seed_string[seed_string.length() - 1] == '1' ? '0' : '1';
     const std::string padded_string = seed_string + pad;
     SpacedSeedBlocks care_blocks, ignore_blocks;
     std::vector<unsigned> care_monos, ignore_monos;
@@ -256,7 +256,7 @@ parse_seeds(const std::vector<std::string>& seed_strings,
         if (pos - i_start == 1) {
           care_monos.push_back(i_start);
         } else {
-          std::array<unsigned, 2> block{ { i_start, pos } };
+          const std::array<unsigned, 2> block{ { i_start, pos } };
           care_blocks.push_back(block);
         }
         i_start = pos;
@@ -265,18 +265,18 @@ parse_seeds(const std::vector<std::string>& seed_strings,
         if (pos - i_start == 1) {
           ignore_monos.push_back(i_start);
         } else {
-          std::array<unsigned, 2> block{ { i_start, pos } };
+          const std::array<unsigned, 2> block{ { i_start, pos } };
           ignore_blocks.push_back(block);
         }
         i_start = pos;
         is_care_block = true;
       }
     }
-    unsigned num_cares = care_blocks.size() * 2 + care_monos.size();
-    unsigned num_ignores = ignore_blocks.size() * 2 + ignore_monos.size() + 2;
+    const unsigned num_cares = care_blocks.size() * 2 + care_monos.size();
+    const unsigned num_ignores = ignore_blocks.size() * 2 + ignore_monos.size() + 2;
     if (num_ignores < num_cares) {
       unsigned string_end = seed_string.length();
-      std::array<unsigned, 2> block{ { 0, string_end } };
+      const std::array<unsigned, 2> block{ { 0, string_end } };
       ignore_blocks.push_back(block);
       out_blocks.push_back(ignore_blocks);
       out_monomers.push_back(ignore_monos);

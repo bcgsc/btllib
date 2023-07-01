@@ -105,24 +105,24 @@ ntf64(const char* kmer_seq, unsigned k)
   uint64_t h_val = 0;
   for (unsigned i = 0; i < k / 4; i++) {
     h_val = srol(h_val, 4);
-    uint8_t curr_offset = 4 * i;
-    uint8_t tetramer_loc =
+    const uint8_t curr_offset = 4 * i;
+    const uint8_t tetramer_loc =
       64 * CONVERT_TAB[(unsigned char)kmer_seq[curr_offset]] +     // NOLINT
       16 * CONVERT_TAB[(unsigned char)kmer_seq[curr_offset + 1]] + // NOLINT
       4 * CONVERT_TAB[(unsigned char)kmer_seq[curr_offset + 2]] +
       CONVERT_TAB[(unsigned char)kmer_seq[curr_offset + 3]];
     h_val ^= TETRAMER_TAB[tetramer_loc];
   }
-  unsigned remainder = k % 4;
+  const unsigned remainder = k % 4;
   h_val = srol(h_val, remainder);
   if (remainder == 3) {
-    uint8_t trimer_loc =
+    const uint8_t trimer_loc =
       16 * CONVERT_TAB[(unsigned char)kmer_seq[k - 3]] + // NOLINT
       4 * CONVERT_TAB[(unsigned char)kmer_seq[k - 2]] +
       CONVERT_TAB[(unsigned char)kmer_seq[k - 1]];
     h_val ^= TRIMER_TAB[trimer_loc];
   } else if (remainder == 2) {
-    uint8_t dimer_loc = 4 * CONVERT_TAB[(unsigned char)kmer_seq[k - 2]] +
+    const uint8_t dimer_loc = 4 * CONVERT_TAB[(unsigned char)kmer_seq[k - 2]] +
                         CONVERT_TAB[(unsigned char)kmer_seq[k - 1]];
     h_val ^= DIMER_TAB[dimer_loc];
   } else if (remainder == 1) {
@@ -144,15 +144,15 @@ inline uint64_t
 ntr64(const char* kmer_seq, unsigned k)
 {
   uint64_t h_val = 0;
-  unsigned remainder = k % 4;
+  const unsigned remainder = k % 4;
   if (remainder == 3) {
-    uint8_t trimer_loc =
+    const uint8_t trimer_loc =
       16 * RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 1]] + // NOLINT
       4 * RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 2]] +
       RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 3]];
     h_val ^= TRIMER_TAB[trimer_loc];
   } else if (remainder == 2) {
-    uint8_t dimer_loc = 4 * RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 1]] +
+    const uint8_t dimer_loc = 4 * RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 1]] +
                         RC_CONVERT_TAB[(unsigned char)kmer_seq[k - 2]];
     h_val ^= DIMER_TAB[dimer_loc];
   } else if (remainder == 1) {
@@ -160,8 +160,8 @@ ntr64(const char* kmer_seq, unsigned k)
   }
   for (unsigned i = 0; i < k / 4; i++) {
     h_val = srol(h_val, 4);
-    uint8_t curr_offset = 4 * (k / 4 - i) - 1;
-    uint8_t tetramer_loc =
+    const uint8_t curr_offset = 4 * (k / 4 - i) - 1;
+    const uint8_t tetramer_loc =
       64 * RC_CONVERT_TAB[(unsigned char)kmer_seq[curr_offset]] +     // NOLINT
       16 * RC_CONVERT_TAB[(unsigned char)kmer_seq[curr_offset - 1]] + // NOLINT
       4 * RC_CONVERT_TAB[(unsigned char)kmer_seq[curr_offset - 2]] +
@@ -376,7 +376,7 @@ nte64(uint64_t bh_val, unsigned k, unsigned h, uint64_t* h_val)
 inline void
 ntmc64(const char* kmer_seq, unsigned k, unsigned m, uint64_t* h_val)
 {
-  uint64_t b_val = ntc64(kmer_seq, k);
+  const uint64_t b_val = ntc64(kmer_seq, k);
   nte64(b_val, k, m, h_val);
 }
 
@@ -399,7 +399,7 @@ ntmc64(const char* kmer_seq,
        uint64_t& rh_val,
        uint64_t* h_val)
 {
-  uint64_t b_val = ntc64(kmer_seq, k, fh_val, rh_val);
+  const uint64_t b_val = ntc64(kmer_seq, k, fh_val, rh_val);
   nte64(b_val, k, m, h_val);
 }
 
@@ -423,7 +423,7 @@ ntmc64(unsigned char char_out,
        uint64_t& rh_val,
        uint64_t* h_val)
 {
-  uint64_t b_val = ntc64(char_out, char_in, k, fh_val, rh_val);
+  const uint64_t b_val = ntc64(char_out, char_in, k, fh_val, rh_val);
   nte64(b_val, k, m, h_val);
 }
 
@@ -447,7 +447,7 @@ ntmc64l(unsigned char char_out,
         uint64_t& rh_val,
         uint64_t* h_val)
 {
-  uint64_t b_val = ntc64l(char_out, char_in, k, fh_val, rh_val);
+  const uint64_t b_val = ntc64l(char_out, char_in, k, fh_val, rh_val);
   nte64(b_val, k, m, h_val);
 }
 
@@ -674,7 +674,7 @@ ntmc64(unsigned char char_out,
        uint64_t* h_val,
        bool& h_stn)
 {
-  uint64_t b_val = ntc64(char_out, char_in, k, fh_val, rh_val);
+  const uint64_t b_val = ntc64(char_out, char_in, k, fh_val, rh_val);
   h_stn = rh_val < fh_val;
   nte64(b_val, k, m, h_val);
 }
@@ -806,7 +806,7 @@ ntmsm64(const char* kmer_seq,
     }
     fh_nomonos[i_seed] = fh_seed;
     rh_nomonos[i_seed] = rh_seed;
-    for (unsigned pos : seeds_monomers[i_seed]) {
+    for (const unsigned pos : seeds_monomers[i_seed]) {
       fh_seed ^= MS_TAB((unsigned char)kmer_seq[pos], k - 1 - pos);
       rh_seed ^= MS_TAB((unsigned char)kmer_seq[pos] & CP_OFF, pos);
     }

@@ -216,14 +216,14 @@ main(int argc, char* argv[])
       std::cout << "verbose" << std::endl;
     }
 
-    std::vector<std::string> read_paths(&argv[optind], &argv[argc]);
+    const std::vector<std::string> read_paths(&argv[optind], &argv[argc]);
     if (argc < 2 || failed) {
       std::cout << std::endl;
       print_usage();
       std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
-    std::map<std::string, ID_type> read_ids;
-    unsigned kmer_count =
+    const std::map<std::string, ID_type> read_ids;
+    const unsigned kmer_count =
       assert_id_size_and_count_kmers(read_paths, by_file, kmer_size);
 
     if (expected_elements > 0 || occupancy_set) {
