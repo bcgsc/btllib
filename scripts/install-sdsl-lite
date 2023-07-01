@@ -5,6 +5,8 @@ if [ -z "${MESON_SOURCE_ROOT}" ]; then
   exit 1
 fi
 
+set -euo pipefail
+
 mkdir -p "${DESTDIR}/${MESON_INSTALL_PREFIX}/include"
 
 cp -r "${MESON_SOURCE_ROOT}/subprojects/sdsl-lite/include/sdsl" "${DESTDIR}/${MESON_INSTALL_PREFIX}/include/btllib/"

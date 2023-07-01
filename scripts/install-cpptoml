@@ -5,6 +5,8 @@ if [ -z "${MESON_SOURCE_ROOT}" ]; then
   exit 1
 fi
 
+set -euo pipefail
+
 mkdir -p "${DESTDIR}/${MESON_INSTALL_PREFIX}/include"
 
 cp "${MESON_SOURCE_ROOT}/subprojects/cpptoml/include/cpptoml.h" "${DESTDIR}/${MESON_INSTALL_PREFIX}/include/btllib/"

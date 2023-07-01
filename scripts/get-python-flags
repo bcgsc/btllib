@@ -30,7 +30,7 @@ get_libs() {
   echo "$libsfound"
 }
 
-set -e
+set -euo pipefail
 
 cd "${MESON_SOURCE_ROOT}"
 

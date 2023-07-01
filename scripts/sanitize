@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 if [ -z "${MESON_SOURCE_ROOT}" ]; then
   echo "[ERROR] This script can only be ran with meson!"
