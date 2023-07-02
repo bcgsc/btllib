@@ -48,7 +48,7 @@ aa_modify_base_with_seed(uint64_t hash_value,
     if (seed[i] != 1) {
       hash_value ^= AA_ROLL_TABLE((unsigned char)kmer_seq[i], 1, k - 1 - i);
       if (seed[i] != 0) {
-        unsigned level = seed[i];
+        const unsigned level = seed[i];
         hash_value ^=
           AA_ROLL_TABLE((unsigned char)kmer_seq[i], level, k - 1 - i);
       }

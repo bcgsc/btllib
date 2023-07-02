@@ -32,7 +32,7 @@ AAHash::init()
     pos = std::numeric_limits<std::size_t>::max();
     return false;
   }
-  uint64_t hash_value = aahash_base(seq + pos, k, level);
+  const uint64_t hash_value = aahash_base(seq + pos, k, level);
   nte64(hash_value, k, hash_num, hashes_array.get());
   initialized = true;
   return true;
@@ -51,7 +51,7 @@ AAHash::roll()
     pos += k;
     return init();
   }
-  uint64_t hash_value =
+  const uint64_t hash_value =
     aahash_roll(hashes_array[0], k, seq[pos], seq[pos + k], level);
   nte64(hash_value, k, hash_num, hashes_array.get());
   ++pos;

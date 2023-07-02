@@ -137,22 +137,23 @@ public:
     generated_bp += seq_len;
     ++generated_seqs;
     auto current_time = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed = (current_time - last_log);
+    const std::chrono::duration<double> elapsed = (current_time - last_log);
     if (elapsed.count() > LOG_DELAY_SECONDS) {
-      long double diff_bp = generated_bp - last_generated_bp;
+      const long double diff_bp = generated_bp - last_generated_bp;
       auto speed = std::llround(diff_bp / elapsed.count());
       auto progress =
         std::lround((double)generated_seqs / (double)total_seqs * 100.0);
-      double seq_ratio =
+      const double seq_ratio =
         ((double)total_seqs - (double)generated_seqs) / (double)generated_seqs;
-      std::chrono::duration<double> total_elapsed = (current_time - start_time);
+      const std::chrono::duration<double> total_elapsed =
+        (current_time - start_time);
       auto remaining = std::lround(seq_ratio * total_elapsed.count() + 1);
-      std::string line = "[" + std::to_string(generated_seqs) + "/" +
-                         std::to_string(total_seqs) + "] Generated " +
-                         std::to_string(generated_bp) + unit + " @" +
-                         std::to_string(speed) + unit + "/s (" +
-                         std::to_string(progress) + "%, ~" +
-                         std::to_string(remaining) + "s remaining)";
+      const std::string line = "[" + std::to_string(generated_seqs) + "/" +
+                               std::to_string(total_seqs) + "] Generated " +
+                               std::to_string(generated_bp) + unit + " @" +
+                               std::to_string(speed) + unit + "/s (" +
+                               std::to_string(progress) + "%, ~" +
+                               std::to_string(remaining) + "s remaining)";
       std::cerr << line << "\r";
       last_log = current_time;
       last_line_length = line.size();
@@ -163,7 +164,7 @@ public:
   void stop()
   {
     auto end_time = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed = (end_time - start_time);
+    const std::chrono::duration<double> elapsed = (end_time - start_time);
     std::cerr << std::string(last_line_length, ' ') << "\r";
     std::cerr << "Generated " << generated_seqs << " sequence(s) (total "
               << generated_bp << unit << ") in " << elapsed.count() << "s"
@@ -175,7 +176,7 @@ int
 main(int argc, char** argv)
 {
   try {
-    Arguments args(argc, argv);
+    const Arguments args(argc, argv);
     omp_set_num_threads(args.num_threads);
 
     // Random generator for sequence lengths
@@ -191,13 +192,13 @@ main(int argc, char** argv)
       rnd.set_seed(args.seed);
     }
 
-    std::string unit =
+    const std::string unit =
       args.seq_type == btllib::RandSeq::SeqType::PROTEIN ? "aa" : "bp";
     Logger log(args.num_sequences, unit);
 
 #pragma omp parallel for shared(args, rnd, rng, dist, writer, log) default(none)
     for (unsigned i = 0; i < args.num_sequences; i++) {
-      std::string seq = rnd.generate(dist(rng));
+      const std::string seq = rnd.generate(dist(rng));
       writer.write(std::to_string(i + 1), "", seq, "");
 #pragma omp critical
       log.add_sequence(seq.size());

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # MacOS does not necessarily have coreutils installed, but Python should be as btllib requires it
 function portable_realpath() {
   python3 -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' $1

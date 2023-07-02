@@ -177,7 +177,7 @@ main(int argc, char* argv[])
                     " threads does not scale, reverting to 5.\n")
                 << std::flush;
     }
-    std::vector<std::string> infiles(&argv[optind], &argv[argc]);
+    const std::vector<std::string> infiles(&argv[optind], &argv[argc]);
     if (argc < 2) {
       print_usage();
       std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
@@ -248,7 +248,7 @@ main(int argc, char* argv[])
       out = fopen(outfile.c_str(), "w"); // NOLINT(android-cloexec-fopen)
 #endif
     }
-    for (auto& infile : infiles) {
+    for (const auto& infile : infiles) {
       std::unique_ptr<btllib::Indexlr> indexlr;
       if (with_repeat && with_solid) {
         flags |= btllib::Indexlr::Flag::FILTER_IN;
@@ -335,7 +335,7 @@ main(int argc, char* argv[])
           }
         }
         {
-          std::unique_lock<std::mutex> lock(output_queue_mutex);
+          const std::unique_lock<std::mutex> lock(output_queue_mutex);
           if (!ss.str().empty()) {
             output_queue.push(ss.str());
           }

@@ -30,11 +30,11 @@ get_libs() {
   echo "$libsfound"
 }
 
-set -e
+set -euo pipefail
 
 cd "${MESON_SOURCE_ROOT}"
 
-if [[ -n "$BTLLIB_PYTHON_CFLAGS" ]]; then
+if [[ -n "${BTLLIB_PYTHON_CFLAGS+x}" ]]; then
   cflags="$BTLLIB_PYTHON_CFLAGS"
   ldflags="$BTLLIB_PYTHON_LDFLAGS"
 else
