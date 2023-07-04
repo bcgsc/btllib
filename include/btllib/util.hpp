@@ -116,13 +116,16 @@ get_dirname(const std::string& path);
  * depending on the start position and length.
  *
  * @param qual The quality string to calculate the average from.
- * @param start_pos The start position of the substring.
- * @param len The length of the substring.
+ * @param start_pos The start position of the substring. Defaults to 0.
+ * @param len The length of the substring. Defaults to 0. If 0, the whole string
+ * is used.
  *
  * @return The average phred score of the substring.
  */
 double
-calc_phred_avg(const std::string& qual, size_t start_pos, size_t len);
+calc_phred_avg(const std::string& qual,
+               const size_t start_pos = 0,
+               size_t len = 0);
 
 // This exists in C++20, but we don't support that yet
 /// @cond HIDDEN_SYMBOLS

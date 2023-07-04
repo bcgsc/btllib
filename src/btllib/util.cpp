@@ -158,7 +158,7 @@ get_basename(const std::string& path)
 }
 
 double
-calc_phred_avg(const std::string& qual, const size_t start_pos = 0, const size_t len = 0)
+calc_phred_avg(const std::string& qual, const size_t start_pos, size_t len)
 {
   if (len == 0) {
     len = qual.size() - start_pos;
