@@ -157,6 +157,26 @@ get_basename(const std::string& path)
   return path.substr(p + 1);
 }
 
+double
+calc_phred_avg(const std::string& qual, size_t start_pos = 0, size_t len = 0)
+{
+  if (len == 0) {
+    len = qual.size();
+  }
+
+  if (start_pos + len > qual.size()) {
+    len = qual.size() - start_pos;
+  }
+
+  size_t phred_sum = 0;
+
+  for (size_t i = start_pos; i < len; ++i) {
+    phred_sum += (size_t)qual.at(i);
+  }
+
+  return ((double)phred_sum / len) - 33;
+}
+
 void
 Barrier::wait()
 {
