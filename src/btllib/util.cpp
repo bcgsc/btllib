@@ -158,19 +158,19 @@ get_basename(const std::string& path)
 }
 
 double
-calc_phred_avg(const std::string& qual, size_t start_pos = 0, size_t len = 0)
+calc_phred_avg(const std::string& qual, const size_t start_pos = 0, const size_t len = 0)
 {
   if (len == 0) {
-    len = qual.size();
+    len = qual.size() - start_pos;
   }
 
   if (start_pos + len > qual.size()) {
-    len = qual.size() - start_pos;
+    return 0;
   }
 
   size_t phred_sum = 0;
 
-  for (size_t i = start_pos; i < len; ++i) {
+  for (size_t i = start_pos; i < start_pos + len; ++i) {
     phred_sum += (size_t)qual.at(i);
   }
 
