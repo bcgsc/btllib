@@ -165,7 +165,8 @@ calc_phred_avg(const std::string& qual, const size_t start_pos, size_t len)
   }
 
   if (start_pos + len > qual.size()) {
-    return 0;
+    throw std::invalid_argument(
+      "calc_phred_avg: start_pos + len > qual.size()");
   }
 
   size_t phred_sum = 0;

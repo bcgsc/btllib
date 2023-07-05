@@ -30,12 +30,10 @@ main()
   std::string qual = "123456789";
   double avg = btllib::calc_phred_avg(qual, 0, 9);
   double avg1 = btllib::calc_phred_avg(qual);
-  double avg2 = btllib::calc_phred_avg(qual, 0, 10);
-  double avg3 = btllib::calc_phred_avg(qual, 0, 4);
+  double avg2 = btllib::calc_phred_avg(qual, 0, 4);
   TEST_ASSERT_EQ(avg, 20.0);
   TEST_ASSERT_EQ(avg1, 20.0);
-  TEST_ASSERT_EQ(avg2, 20.0);
-  TEST_ASSERT_EQ(avg3, 17.5);
+  TEST_ASSERT_EQ(avg2, 17.5);
 
 
   return 0;
