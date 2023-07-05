@@ -8,7 +8,7 @@ var searchData=
   ['seqreader_5',['SeqReader',['../classbtllib_1_1SeqReader.html',1,'btllib::SeqReader'],['../classbtllib_1_1SeqReader.html#a03cc4e39fffc556a2f05c30bc6d3731d',1,'btllib::SeqReader::SeqReader()']]],
   ['seqwriter_6',['SeqWriter',['../classbtllib_1_1SeqWriter.html',1,'btllib::SeqWriter'],['../classbtllib_1_1SeqWriter.html#a6271cffe77701558f0997532a7e58d43',1,'btllib::SeqWriter::SeqWriter()']]],
   ['set_5fseed_7',['set_seed',['../classbtllib_1_1RandSeq.html#a0a481fe231a3ca8021aa807f2bd7d97b',1,'btllib::RandSeq']]],
-  ['short_5fmode_8',['SHORT_MODE',['../structbtllib_1_1Indexlr_1_1Flag.html#ad901a6d96362ce4b250fa144fe9a76ef',1,'btllib::Indexlr::Flag::SHORT_MODE()'],['../structbtllib_1_1SeqReader_1_1Flag.html#ab0aba3f99ab4159205621e2242c6e18f',1,'btllib::SeqReader::Flag::SHORT_MODE()']]],
+  ['short_5fmode_8',['SHORT_MODE',['../structbtllib_1_1Indexlr_1_1Flag.html#ad901a6d96362ce4b250fa144fe9a76ef',1,'btllib::Indexlr::Flag::SHORT_MODE'],['../structbtllib_1_1SeqReader_1_1Flag.html#ab0aba3f99ab4159205621e2242c6e18f',1,'btllib::SeqReader::Flag::SHORT_MODE']]],
   ['split_9',['split',['../namespacebtllib.html#a6e1f7d38461cd2a81d5b070ae8a146fa',1,'btllib']]],
   ['srol_10',['srol',['../namespacebtllib.html#a3d172327f4a061736fa3788a476da88f',1,'btllib::srol(const uint64_t x)'],['../namespacebtllib.html#a8adee205e2a9bc7509250a46f01a2c40',1,'btllib::srol(const uint64_t x, const unsigned d)']]],
   ['sror_11',['sror',['../namespacebtllib.html#a731d4ddcd44c63f3b6bfa6c33a0eedb8',1,'btllib']]],
