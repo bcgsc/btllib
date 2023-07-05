@@ -123,9 +123,7 @@ get_dirname(const std::string& path);
  * @return The average phred score of the substring.
  */
 double
-calc_phred_avg(const std::string& qual,
-               size_t start_pos = 0,
-               size_t len = 0);
+calc_phred_avg(const std::string& qual, size_t start_pos = 0, size_t len = 0);
 
 // This exists in C++20, but we don't support that yet
 /// @cond HIDDEN_SYMBOLS
