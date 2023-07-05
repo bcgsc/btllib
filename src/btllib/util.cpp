@@ -1,5 +1,6 @@
 #include "btllib/util.hpp"
 #include "btllib/cstring.hpp"
+#include "btllib/status.hpp"
 
 #include <algorithm>
 #include <condition_variable>
@@ -165,8 +166,8 @@ calc_phred_avg(const std::string& qual, const size_t start_pos, size_t len)
   }
 
   if (start_pos + len > qual.size()) {
-    throw std::invalid_argument(
-      "calc_phred_avg: start_pos + len > qual.size()");
+    log_error("calc_phred_avg: start_pos + len > qual.size()");
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
 
   size_t phred_sum = 0;
