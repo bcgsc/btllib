@@ -1,5 +1,6 @@
 #include "btllib/util.hpp"
 #include "btllib/cstring.hpp"
+#include "btllib/status.hpp"
 
 #include <algorithm>
 #include <condition_variable>
@@ -155,6 +156,28 @@ get_basename(const std::string& path)
     return path;
   }
   return path.substr(p + 1);
+}
+
+double
+calc_phred_avg(const std::string& qual, const size_t start_pos, size_t len)
+{
+  if (len == 0) {
+    len = qual.size() - start_pos;
+  }
+
+  if (start_pos + len > qual.size()) {
+    log_error("calc_phred_avg: start_pos + len > qual.size()");
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+  }
+
+  size_t phred_sum = 0;
+
+  for (size_t i = start_pos; i < start_pos + len; ++i) {
+    phred_sum += (size_t)qual.at(i);
+  }
+
+  static constexpr double PHRED_OFFSET = 33.0;
+  return ((double)phred_sum / (double)len) - PHRED_OFFSET;
 }
 
 void
