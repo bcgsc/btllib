@@ -27,14 +27,15 @@ main()
   TEST_ASSERT(btllib::startswith(actg_join, "A/C"));
   TEST_ASSERT(btllib::endswith(actg_join, "/T/G"));
 
-  std::string qual = "123456789";
-  double avg = btllib::calc_phred_avg(qual, 0, 9);
+  std::string qual = "$$%%)*0)'%%&$$%&$&'''*)(((((()55561--.12356577-++**++,////.*))((()+))**010/..--+**++*+++)++++78883";
+  double avg = btllib::calc_phred_avg(qual, 0, 10);
   double avg1 = btllib::calc_phred_avg(qual);
   double avg2 = btllib::calc_phred_avg(qual, 0, 4);
-  TEST_ASSERT_EQ(avg, 20.0);
-  TEST_ASSERT_EQ(avg1, 20.0);
-  TEST_ASSERT_EQ(avg2, 17.5);
-
+  double avg3 = btllib::calc_phred_avg(qual, 5, 20);
+  TEST_ASSERT_EQ(avg, (double)6.4);
+  TEST_ASSERT_EQ(avg1, (double)10.949);
+  TEST_ASSERT_EQ(avg2, (double)3.5);
+  TEST_ASSERT_EQ(avg3, (double)6.15);
 
   return 0;
 }
