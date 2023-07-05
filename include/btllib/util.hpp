@@ -124,7 +124,7 @@ get_dirname(const std::string& path);
  */
 double
 calc_phred_avg(const std::string& qual,
-               const size_t start_pos = 0,
+               size_t start_pos = 0,
                size_t len = 0);
 
 // This exists in C++20, but we don't support that yet
