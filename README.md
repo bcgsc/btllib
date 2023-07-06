@@ -1,7 +1,5 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/bcgsc/btllib?label=Release)](https://github.com/bcgsc/btllib/releases/latest)
 [![Conda](https://img.shields.io/conda/dn/bioconda/btllib?label=Conda%20downloads)](https://anaconda.org/bioconda/btllib)
-[![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/bcgsc/btllib.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bcgsc/btllib/context:cpp)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/bcgsc/btllib.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bcgsc/btllib/alerts/)
 [![Build Status](https://dev.azure.com/bcgsc/btl_public/_apis/build/status/bcgsc.btllib)](https://dev.azure.com/bcgsc/btl_public/_build/latest?definitionId=1)
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.04720/status.svg)](https://doi.org/10.21105/joss.04720)
 
