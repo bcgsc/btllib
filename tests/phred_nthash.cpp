@@ -32,6 +32,10 @@ main()
       TEST_ASSERT_ARRAY_EQ(h_vals, phred_nthash.hashes(), h);
     }
 
+    phred_nthash.roll_back();
+    TEST_ASSERT_EQ(phred_nthash.get_pos(), 0);
+    TEST_ASSERT_ARRAY_EQ(hashes[0], phred_nthash.hashes(), h);
+
   }
 
   {
