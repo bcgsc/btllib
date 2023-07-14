@@ -29,7 +29,7 @@ public:
               size_t seq_len,
               unsigned hash_num,
               unsigned k,
-              unsigned char phred_min,
+              size_t phred_min,
               std::string_view quality_string,
               size_t pos = 0);
 
@@ -46,7 +46,7 @@ public:
   PhredNtHash(const std::string& seq,
               unsigned hash_num,
               unsigned k,
-              unsigned char phred_min,
+              size_t phred_min,
               std::string_view quality_string,
               size_t pos = 0);
 
@@ -65,7 +65,7 @@ public:
               size_t seq_len,
               unsigned hash_num,
               unsigned k,
-              unsigned char phred_min,
+              size_t phred_min,
               const char* quality_string,
               size_t pos = 0);
 
@@ -82,7 +82,7 @@ public:
   PhredNtHash(const std::string& seq,
               unsigned hash_num,
               unsigned k,
-              unsigned char phred_min,
+              size_t phred_min,
               const char* quality_string,
               size_t pos = 0);
 

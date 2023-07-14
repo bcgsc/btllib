@@ -5,12 +5,12 @@ PhredNtHash::PhredNtHash(const char* seq,
                          size_t seq_len,
                          unsigned hash_num,
                          unsigned k,
-                         unsigned char phred_min,
+                         size_t phred_min,
                          std::string_view quality_string,
                          size_t pos)
   : NtHash(seq, seq_len, hash_num, k, pos)
   , qual_seq(quality_string.data())
-  , phred_min(phred_min + (size_t)PHRED_OFFSET)
+  , phred_min((unsigned char)(phred_min + (size_t)PHRED_OFFSET))
   , rmq(quality_string, seq_len)
 {
 }
@@ -18,12 +18,12 @@ PhredNtHash::PhredNtHash(const char* seq,
 PhredNtHash::PhredNtHash(const std::string& seq,
                          unsigned hash_num,
                          unsigned k,
-                         unsigned char phred_min,
+                         size_t phred_min,
                          std::string_view quality_string,
                          size_t pos)
   : NtHash(seq, hash_num, k, pos)
   , qual_seq(quality_string.data())
-  , phred_min(phred_min + (size_t)PHRED_OFFSET)
+  , phred_min((unsigned char)(phred_min + (size_t)PHRED_OFFSET))
   , rmq(quality_string, seq.length())
 {
 }
@@ -32,12 +32,12 @@ PhredNtHash::PhredNtHash(const char* seq,
                          size_t seq_len,
                          unsigned hash_num,
                          unsigned k,
-                         unsigned char phred_min,
+                         size_t phred_min,
                          const char* quality_string,
                          size_t pos)
   : NtHash(seq, seq_len, hash_num, k, pos)
   , qual_seq(quality_string)
-  , phred_min(phred_min + (size_t)PHRED_OFFSET)
+  , phred_min((unsigned char)(phred_min + (size_t)PHRED_OFFSET))
   , rmq(quality_string, seq_len)
 {
 }
@@ -45,12 +45,12 @@ PhredNtHash::PhredNtHash(const char* seq,
 PhredNtHash::PhredNtHash(const std::string& seq,
                          unsigned hash_num,
                          unsigned k,
-                         unsigned char phred_min,
+                         size_t phred_min,
                          const char* quality_string,
                          size_t pos)
   : NtHash(seq, hash_num, k, pos)
   , qual_seq(quality_string)
-  , phred_min(phred_min + (size_t)PHRED_OFFSET)
+  , phred_min((unsigned char)(phred_min + (size_t)PHRED_OFFSET))
   , rmq(quality_string, seq.length())
 {
 }
