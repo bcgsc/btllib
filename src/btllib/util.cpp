@@ -176,7 +176,6 @@ calc_phred_avg(const std::string& qual, const size_t start_pos, size_t len)
     phred_sum += (size_t)qual.at(i);
   }
 
-  static constexpr double PHRED_OFFSET = 33.0;
   return ((double)phred_sum / (double)len) - PHRED_OFFSET;
 }
 

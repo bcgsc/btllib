@@ -2,6 +2,7 @@
 #include "helpers.hpp"
 
 #include <iostream>
+#include <vector>
 
 int
 main()
@@ -35,7 +36,13 @@ main()
   TEST_ASSERT_LT(std::abs(avg - 6.4), 1e-4);
   TEST_ASSERT_LT(std::abs(avg1 - 10.949), 1e-4);
   TEST_ASSERT_LT(std::abs(avg2 - 3.5), 1e-4);
-  TEST_ASSERT_LT(std::abs(avg3 - 6.15), 1e-4);
+  TEST_ASSERT_LT(std::abs(avg3 - 6.15), 1e-4);\
+
+  std::vector<size_t> test_vec{ 7, 2, 3, 0, 5, 10, 3, 12, 18 };
+  btllib::RangeMinimumQuery<std::vector<size_t>> rmq(test_vec, test_vec.size());
+  TEST_ASSERT_EQ(test_vec.at(rmq.query(0, 4)), 0);
+  TEST_ASSERT_EQ(test_vec.at(rmq.query(4, 7)), 3);
+  TEST_ASSERT_EQ(test_vec.at(rmq.query(7, 8)), 12);
 
   return 0;
 }
