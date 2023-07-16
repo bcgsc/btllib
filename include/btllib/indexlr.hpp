@@ -1,6 +1,7 @@
 #ifndef BTLLIB_INDEXLR_HPP
 #define BTLLIB_INDEXLR_HPP
 
+#include "btllib/aahash.hpp"
 #include "btllib/bloom_filter.hpp"
 #include "btllib/nthash.hpp"
 #include "btllib/order_queue.hpp"
@@ -22,6 +23,7 @@
 
 namespace btllib {
 
+template<class T>
 class Indexlr
 {
 
@@ -164,8 +166,8 @@ public:
           unsigned flags = 0,
           unsigned threads = 5,
           bool verbose = false,
-          const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
-          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf());
+          const btllib::BloomFilter& bf1 = Indexlr<T>::dummy_bf(),
+          const btllib::BloomFilter& bf2 = Indexlr<T>::dummy_bf());
 
   Indexlr(std::string seqfile,
           size_t k,
@@ -174,8 +176,8 @@ public:
           unsigned flags = 0,
           unsigned threads = 5,
           bool verbose = false,
-          const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
-          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf());
+          const btllib::BloomFilter& bf1 = Indexlr<T>::dummy_bf(),
+          const btllib::BloomFilter& bf2 = Indexlr<T>::dummy_bf());
 
   ~Indexlr();
 
@@ -203,9 +205,9 @@ public:
     }
 
   private:
-    friend Indexlr;
+    friend Indexlr<T>;
 
-    RecordIterator(Indexlr& indexlr, bool end)
+    RecordIterator(Indexlr<T>& indexlr, bool end)
       : indexlr(indexlr)
     {
       if (!end) {
@@ -213,7 +215,7 @@ public:
       }
     }
 
-    Indexlr& indexlr;
+    Indexlr<T>& indexlr;
     Record record;
   };
   /// @endcond
@@ -224,28 +226,30 @@ public:
 private:
   static std::string extract_barcode(const std::string& id,
                                      const std::string& comment);
-  static void filter_hashed_kmer(Indexlr::HashedKmer& hk,
+  static void filter_hashed_kmer(Indexlr<T>::HashedKmer& hk,
                                  bool filter_in,
                                  bool filter_out,
                                  const BloomFilter& filter_in_bf,
                                  const BloomFilter& filter_out_bf);
 
-  static void filter_kmer_qual(Indexlr::HashedKmer& hk,
+  static void filter_kmer_qual(Indexlr<T>::HashedKmer& hk,
                                const std::string& kmer_qual,
                                size_t q);
   static size_t calc_kmer_quality(const std::string& qual);
 
   static void calc_minimizer(
-    const std::vector<Indexlr::HashedKmer>& hashed_kmers_buffer,
-    const Indexlr::Minimizer*& min_current,
+    const std::vector<Indexlr<T>::HashedKmer>& hashed_kmers_buffer,
+    const Indexlr<T>::Minimizer*& min_current,
     size_t idx,
     ssize_t& min_idx_left,
     ssize_t& min_idx_right,
     ssize_t& min_pos_prev,
     size_t w,
-    std::vector<Indexlr::Minimizer>& minimizers);
+    std::vector<Indexlr<T>::Minimizer>& minimizers);
   std::vector<Minimizer> minimize(const std::string& seq,
                                   const std::string& qual) const;
+
+  T hash_itr(const std::string& seq, size_t k) const;
 
   const std::string seqfile;
   const size_t k, w;
@@ -270,9 +274,9 @@ private:
   OrderQueueMPSC<Record> output_queue;
 
   using OutputQueueType = decltype(output_queue);
-  static std::unique_ptr<OutputQueueType::Block>* ready_blocks_array()
+  static std::unique_ptr<typename OutputQueueType::Block>* ready_blocks_array()
   {
-    thread_local static std::unique_ptr<decltype(output_queue)::Block>
+    thread_local static std::unique_ptr<typename decltype(output_queue)::Block>
       var[MAX_SIMULTANEOUS_INDEXLRS];
     return var;
   }
@@ -305,7 +309,7 @@ private:
     Worker& operator=(const Worker& worker) = delete;
     Worker& operator=(Worker&& worker) = delete;
 
-    Worker(Indexlr& indexlr)
+    Worker(Indexlr<T>& indexlr)
       : indexlr(indexlr)
     {
     }
@@ -323,7 +327,7 @@ private:
     static void do_work(Worker* worker) { worker->work(); }
 
     int id = -1;
-    Indexlr& indexlr;
+    Indexlr<T>& indexlr;
     std::thread t;
   };
 
@@ -335,15 +339,16 @@ private:
 };
 
 // Constructor for Indexlr class when q is specified
-inline Indexlr::Indexlr(std::string seqfile,
-                        const size_t k,
-                        const size_t w,
-                        const size_t q,
-                        const unsigned flags,
-                        const unsigned threads,
-                        const bool verbose,
-                        const BloomFilter& bf1,
-                        const BloomFilter& bf2)
+template<class T>
+inline Indexlr<T>::Indexlr(std::string seqfile,
+                           const size_t k,
+                           const size_t w,
+                           const size_t q,
+                           const unsigned flags,
+                           const unsigned threads,
+                           const bool verbose,
+                           const BloomFilter& bf1,
+                           const BloomFilter& bf2)
   : seqfile(std::move(seqfile))
   , k(k)
   , w(w)
@@ -351,8 +356,9 @@ inline Indexlr::Indexlr(std::string seqfile,
   , flags(flags)
   , verbose(verbose)
   , id(++last_id())
-  , filter_in_bf(filter_in() ? bf1 : Indexlr::dummy_bf())
-  , filter_out_bf(filter_out() ? filter_in() ? bf2 : bf1 : Indexlr::dummy_bf())
+  , filter_in_bf(filter_in() ? bf1 : Indexlr<T>::dummy_bf())
+  , filter_out_bf(filter_out() ? filter_in() ? bf2 : bf1
+                               : Indexlr<T>::dummy_bf())
   , filter_in_enabled(filter_in())
   , filter_out_enabled(filter_out())
   , reader(this->seqfile,
@@ -377,25 +383,29 @@ inline Indexlr::Indexlr(std::string seqfile,
 }
 
 // Constructor for Indexlr class when q is not specified
-inline Indexlr::Indexlr(std::string seqfile,
-                        const size_t k,
-                        const size_t w,
-                        const unsigned flags,
-                        const unsigned threads,
-                        const bool verbose,
-                        const BloomFilter& bf1,
-                        const BloomFilter& bf2)
-  : Indexlr(std::move(seqfile), k, w, 0, flags, threads, verbose, bf1, bf2)
+template< // NOLINT(cppcoreguidelines-pro-type-member-init,hicpp-member-init)
+  class T>
+inline Indexlr<T>::Indexlr(std::string seqfile,
+                           const size_t k,
+                           const size_t w,
+                           const unsigned flags,
+                           const unsigned threads,
+                           const bool verbose,
+                           const BloomFilter& bf1,
+                           const BloomFilter& bf2)
+  : Indexlr<T>(std::move(seqfile), k, w, 0, flags, threads, verbose, bf1, bf2)
 {
 }
 
-inline Indexlr::~Indexlr()
+template<class T>
+inline Indexlr<T>::~Indexlr()
 {
   close();
 }
 
+template<class T>
 inline void
-Indexlr::close() noexcept
+Indexlr<T>::close() noexcept
 {
   bool closed_expected = false;
   if (closed.compare_exchange_strong(closed_expected, true)) {
@@ -439,8 +449,9 @@ r min = v[i] if (i != prev) { prev = i M <- M + m
     r = l + w - 1    Set window's right bound
 }*/
 
+template<class T>
 inline std::string
-Indexlr::extract_barcode(const std::string& id, const std::string& comment)
+Indexlr<T>::extract_barcode(const std::string& id, const std::string& comment)
 {
   const static std::string barcode_prefix = "BX:Z:";
   if (startswith(comment, barcode_prefix)) {
@@ -461,12 +472,13 @@ Indexlr::extract_barcode(const std::string& id, const std::string& comment)
   return "NA";
 }
 
+template<class T>
 inline void
-Indexlr::filter_hashed_kmer(Indexlr::HashedKmer& hk,
-                            bool filter_in,
-                            bool filter_out,
-                            const BloomFilter& filter_in_bf,
-                            const BloomFilter& filter_out_bf)
+Indexlr<T>::filter_hashed_kmer(Indexlr<T>::HashedKmer& hk,
+                               bool filter_in,
+                               bool filter_out,
+                               const BloomFilter& filter_in_bf,
+                               const BloomFilter& filter_out_bf)
 {
   if (filter_in && filter_out) {
     std::vector<uint64_t> tmp;
@@ -485,18 +497,20 @@ Indexlr::filter_hashed_kmer(Indexlr::HashedKmer& hk,
   }
 }
 
+template<class T>
 inline void
-Indexlr::filter_kmer_qual(Indexlr::HashedKmer& hk,
-                          const std::string& kmer_qual,
-                          size_t q)
+Indexlr<T>::filter_kmer_qual(Indexlr<T>::HashedKmer& hk,
+                             const std::string& kmer_qual,
+                             size_t q)
 {
   if (calc_kmer_quality(kmer_qual) < q) {
     hk.min_hash = std::numeric_limits<uint64_t>::max();
   }
 }
 
+template<class T>
 inline size_t
-Indexlr::calc_kmer_quality(const std::string& qual)
+Indexlr<T>::calc_kmer_quality(const std::string& qual)
 {
   // convert the quality scores to integers
   std::vector<int> qual_ints;
@@ -513,16 +527,17 @@ Indexlr::calc_kmer_quality(const std::string& qual)
   return (sum / qual_ints.size());
 }
 
+template<class T>
 inline void
-Indexlr::calc_minimizer(
-  const std::vector<Indexlr::HashedKmer>& hashed_kmers_buffer,
-  const Indexlr::Minimizer*& min_current,
+Indexlr<T>::calc_minimizer(
+  const std::vector<Indexlr<T>::HashedKmer>& hashed_kmers_buffer,
+  const Indexlr<T>::Minimizer*& min_current,
   const size_t idx,
   ssize_t& min_idx_left,
   ssize_t& min_idx_right,
   ssize_t& min_pos_prev,
   const size_t w,
-  std::vector<Indexlr::Minimizer>& minimizers)
+  std::vector<Indexlr<T>::Minimizer>& minimizers)
 {
   min_idx_left = ssize_t(idx + 1 - w);
   min_idx_right = ssize_t(idx + 1);
@@ -550,8 +565,30 @@ Indexlr::calc_minimizer(
   }
 }
 
-inline std::vector<Indexlr::Minimizer>
-Indexlr::minimize(const std::string& seq, const std::string& qual) const
+template<class T>
+T
+Indexlr<T>::hash_itr(const std::string& seq, size_t k) const
+{
+  return T(seq, k);
+}
+
+template<>
+btllib::NtHash
+Indexlr<btllib::NtHash>::hash_itr(const std::string& seq, size_t k) const
+{
+  return btllib::NtHash(seq, 2, k);
+}
+
+template<>
+btllib::AAHash
+Indexlr<btllib::AAHash>::hash_itr(const std::string& seq, size_t k) const
+{
+  return btllib::AAHash(seq, 2, k, 1);
+}
+
+template<class T>
+inline std::vector<typename Indexlr<T>::Minimizer>
+Indexlr<T>::minimize(const std::string& seq, const std::string& qual) const
 {
   if ((k > seq.size()) || (w > seq.size() - k + 1)) {
     return {};
@@ -562,21 +599,22 @@ Indexlr::minimize(const std::string& seq, const std::string& qual) const
   ssize_t min_idx_left, min_idx_right, min_pos_prev = -1;
   const Minimizer* min_current = nullptr;
   size_t idx = 0;
-  for (NtHash nh(seq, 2, k); nh.roll(); ++idx) {
+  T hash_itr = this->hash_itr(seq, k);
+  for (; hash_itr.roll(); ++idx) {
     auto& hk = hashed_kmers_buffer[idx % hashed_kmers_buffer.size()];
 
-    hk = HashedKmer(nh.hashes()[0],
-                    nh.hashes()[1],
-                    nh.get_pos(),
-                    nh.forward(),
-                    output_seq() ? seq.substr(nh.get_pos(), k) : "",
-                    output_qual() ? qual.substr(nh.get_pos(), k) : "");
+    hk = HashedKmer(hash_itr.hashes()[0],
+                    hash_itr.hashes()[1],
+                    hash_itr.get_pos(),
+                    hash_itr.forward(),
+                    output_seq() ? seq.substr(hash_itr.get_pos(), k) : "",
+                    output_qual() ? qual.substr(hash_itr.get_pos(), k) : "");
 
     filter_hashed_kmer(
       hk, filter_in(), filter_out(), filter_in_bf.get(), filter_out_bf.get());
 
     if (q > 0) {
-      filter_kmer_qual(hk, qual.substr(nh.get_pos(), k), q);
+      filter_kmer_qual(hk, qual.substr(hash_itr.get_pos(), k), q);
     }
 
     if (idx + 1 >= w) {
@@ -593,14 +631,15 @@ Indexlr::minimize(const std::string& seq, const std::string& qual) const
   return minimizers;
 }
 
-inline Indexlr::Record
-Indexlr::read()
+template<class T>
+inline typename Indexlr<T>::Record
+Indexlr<T>::read()
 {
   if (ready_blocks_owners()[id % MAX_SIMULTANEOUS_INDEXLRS] != id) {
     ready_blocks_array()[id % MAX_SIMULTANEOUS_INDEXLRS] =
       std::unique_ptr< // NOLINT(modernize-make-unique)
-        decltype(output_queue)::Block>(
-        new decltype(output_queue)::Block(reader.get_block_size()));
+        typename decltype(output_queue)::Block>(
+        new typename decltype(output_queue)::Block(reader.get_block_size()));
     ready_blocks_owners()[id % MAX_SIMULTANEOUS_INDEXLRS] = id;
     ready_blocks_current()[id % MAX_SIMULTANEOUS_INDEXLRS] = 0;
   }
@@ -611,7 +650,7 @@ Indexlr::read()
     output_queue.read(block);
     if (block.count == 0) {
       output_queue.close();
-      block = decltype(output_queue)::Block(reader.get_block_size());
+      block = typename decltype(output_queue)::Block(reader.get_block_size());
       return Record();
     }
     current = 0;
@@ -619,10 +658,11 @@ Indexlr::read()
   return std::move(block.data[current++]);
 }
 
+template<class T>
 inline void
-Indexlr::Worker::work()
+Indexlr<T>::Worker::work()
 {
-  decltype(indexlr.output_queue)::Block output_block(
+  typename decltype(indexlr.output_queue)::Block output_block(
     indexlr.reader.get_block_size());
   uint64_t last_block_num = 0;
   bool last_block_num_valid = false;
