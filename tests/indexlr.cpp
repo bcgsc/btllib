@@ -10,10 +10,10 @@ int
 main()
 {
   std::cerr << "Testing on empty file" << std::endl;
-  btllib::Indexlr indexlr_empty(btllib::get_dirname(__FILE__) + "/empty.fa",
+  btllib::Indexlr<btllib::NtHash> indexlr_empty(btllib::get_dirname(__FILE__) + "/empty.fa",
                                 20,
                                 50,
-                                btllib::Indexlr::Flag::LONG_MODE);
+                                btllib::Indexlr<btllib::NtHash>::Flag::LONG_MODE);
   int i = 0;
   for (auto minimizers : indexlr_empty) {
     i++;
@@ -21,29 +21,29 @@ main()
   TEST_ASSERT_EQ(i, 0);
 
   std::cerr << "Testing without Bloom filters" << std::endl;
-  btllib::Indexlr indexlr(btllib::get_dirname(__FILE__) + "/indexlr.fa",
+  btllib::Indexlr<btllib::NtHash> indexlr(btllib::get_dirname(__FILE__) + "/indexlr.fa",
                           100,
                           5,
-                          btllib::Indexlr::Flag::SHORT_MODE);
-  btllib::Indexlr indexlr2(btllib::get_dirname(__FILE__) + "/indexlr.fq",
+                          btllib::Indexlr<btllib::NtHash>::Flag::SHORT_MODE);
+  btllib::Indexlr<btllib::NtHash> indexlr2(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
-                           btllib::Indexlr::Flag::BX |
-                             btllib::Indexlr::Flag::SEQ |
-                             btllib::Indexlr::Flag::SHORT_MODE);
-  btllib::Indexlr indexlr3(btllib::get_dirname(__FILE__) + "/indexlr.stlfr.fq",
+                           btllib::Indexlr<btllib::NtHash>::Flag::BX |
+                             btllib::Indexlr<btllib::NtHash>::Flag::SEQ |
+                             btllib::Indexlr<btllib::NtHash>::Flag::SHORT_MODE);
+  btllib::Indexlr<btllib::NtHash> indexlr3(btllib::get_dirname(__FILE__) + "/indexlr.stlfr.fq",
                            75,
                            5,
-                           btllib::Indexlr::Flag::BX |
-                             btllib::Indexlr::Flag::SHORT_MODE |
-                             btllib::Indexlr::Flag::NO_ID);
+                           btllib::Indexlr<btllib::NtHash>::Flag::BX |
+                             btllib::Indexlr<btllib::NtHash>::Flag::SHORT_MODE |
+                             btllib::Indexlr<btllib::NtHash>::Flag::NO_ID);
   
   std::cerr << "Testing quality filtering" << std::endl;
-  btllib::Indexlr indexlr4(btllib::get_dirname(__FILE__) + "/indexlr.quality.fq",
+  btllib::Indexlr<btllib::NtHash> indexlr4(btllib::get_dirname(__FILE__) + "/indexlr.quality.fq",
                             50,
                             20,
                             size_t(25),
-                             btllib::Indexlr::Flag::SHORT_MODE);
+                             btllib::Indexlr<btllib::NtHash>::Flag::SHORT_MODE);
                                                           
 
   std::ifstream correct_output_file(btllib::get_dirname(__FILE__) +
@@ -185,11 +185,11 @@ main()
     filter_out_bf.insert({ h });
   }
 
-  btllib::Indexlr indexlr5(btllib::get_dirname(__FILE__) + "/indexlr.fq",
+  btllib::Indexlr<btllib::NtHash> indexlr5(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
-                           btllib::Indexlr::Flag::FILTER_IN |
-                             btllib::Indexlr::Flag::LONG_MODE,
+                           btllib::Indexlr<btllib::NtHash>::Flag::FILTER_IN |
+                             btllib::Indexlr<btllib::NtHash>::Flag::LONG_MODE,
                            3,
                            true,
                            filter_in_bf);
@@ -209,11 +209,11 @@ main()
   }
   TEST_ASSERT_GE(mins_found, filter_in_hashes.size());
 
-  btllib::Indexlr indexlr6(btllib::get_dirname(__FILE__) + "/indexlr.fq",
+  btllib::Indexlr<btllib::NtHash> indexlr6(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
-                           btllib::Indexlr::Flag::FILTER_OUT |
-                             btllib::Indexlr::Flag::LONG_MODE,
+                           btllib::Indexlr<btllib::NtHash>::Flag::FILTER_OUT |
+                             btllib::Indexlr<btllib::NtHash>::Flag::LONG_MODE,
                            3,
                            true,
                            filter_out_bf);
@@ -228,12 +228,12 @@ main()
   }
   TEST_ASSERT_GE(mins_found, filter_in_hashes.size());
 
-  btllib::Indexlr indexlr7(btllib::get_dirname(__FILE__) + "/indexlr.fq",
+  btllib::Indexlr<btllib::NtHash> indexlr7(btllib::get_dirname(__FILE__) + "/indexlr.fq",
                            100,
                            5,
-                           btllib::Indexlr::Flag::FILTER_IN |
-                             btllib::Indexlr::Flag::FILTER_OUT |
-                             btllib::Indexlr::Flag::SHORT_MODE,
+                           btllib::Indexlr<btllib::NtHash>::Flag::FILTER_IN |
+                             btllib::Indexlr<btllib::NtHash>::Flag::FILTER_OUT |
+                             btllib::Indexlr<btllib::NtHash>::Flag::SHORT_MODE,
                            3,
                            true,
                            filter_in_bf,
