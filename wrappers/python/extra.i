@@ -4,14 +4,14 @@
 %rename(__iter__) btllib::SeqReader::begin;
 %ignore btllib::SeqReader::end;
 %rename(__next__) btllib::SeqReader::RecordIterator::next;
-%rename(__iter__) btllib::Indexlr::begin;
-%ignore btllib::Indexlr::end;
-%rename(__next__) btllib::Indexlr::RecordIterator::next;
+%rename(__iter__) btllib::Indexlr<btllib::NtHash>::begin;
+%ignore btllib::Indexlr<btllib::NtHash>::end;
+%rename(__next__) btllib::Indexlr<btllib::NtHash>::RecordIterator::next;
 
 %feature("python:slot", "tp_iter", functype="getiterfunc") btllib::SeqReader::begin;
 %feature("python:slot", "tp_iternext", functype="iternextfunc") btllib::SeqReader::RecordIterator::next;
-%feature("python:slot", "tp_iter", functype="getiterfunc") btllib::Indexlr::begin;
-%feature("python:slot", "tp_iternext", functype="iternextfunc") btllib::Indexlr::RecordIterator::next;
+%feature("python:slot", "tp_iter", functype="getiterfunc") btllib::Indexlr<btllib::NtHash>::begin;
+%feature("python:slot", "tp_iternext", functype="iternextfunc") btllib::Indexlr<btllib::NtHash>::RecordIterator::next;
 
 %ignore btllib::BloomFilter::save(std::string const &, cpptoml::table const &, char const *, size_t);
 
@@ -43,8 +43,8 @@
   }
 }
 
-%extend btllib::Indexlr {
-  btllib::Indexlr* __enter__() {
+%extend btllib::Indexlr<btllib::NtHash> {
+  btllib::Indexlr<btllib::NtHash>* __enter__() {
     return $self;
   }
 
@@ -53,7 +53,7 @@
   }
 }
 
-%exception btllib::Indexlr::RecordIterator::next {
+%exception btllib::Indexlr<btllib::NtHash>::RecordIterator::next {
   $action
   if (!bool(result)) {
     PyErr_SetNone(PyExc_StopIteration);
@@ -100,10 +100,10 @@
   }
 %}
 
-%typemap(out) std::vector<btllib::Indexlr::Minimizer>* %{
+%typemap(out) std::vector<btllib::Indexlr<btllib::NtHash>::Minimizer>* %{
   $result = PyList_New($1->size());
   for (unsigned i = 0; i < $1->size(); ++i) {
-    PyObject *item = SWIG_NewPointerObj(new btllib::Indexlr::Minimizer((*($1))[i]), SWIGTYPE_p_btllib__Indexlr__Minimizer, SWIG_POINTER_OWN);
+    PyObject *item = SWIG_NewPointerObj(new btllib::Indexlr<btllib::NtHash>::Minimizer((*($1))[i]), SWIGTYPE_p_btllib__IndexlrT_btllib__NtHash_t, SWIG_POINTER_OWN);
     PyList_SetItem($result, i, item);
   }
 %}
