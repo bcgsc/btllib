@@ -91,7 +91,7 @@ main()
   std::stringstream ss3;
   std::stringstream ss4;
 
-  decltype(indexlr)::Record record;
+  btllib::Record record;
   bool success_indexlr = false, success_indexlr2 = false, success_indexlr3 = false, success_indexlr4 = false;
   for (int i = 0;; i++) {
     if ((success_indexlr = (record = indexlr.read()))) {
