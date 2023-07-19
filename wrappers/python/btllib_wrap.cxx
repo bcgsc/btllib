@@ -27584,7 +27584,7 @@ fail:
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Minimizer) /* defines _wrap_delete_Minimizer_destructor_closure */
 
-SWIGINTERN int _wrap_new_Record__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+SWIGINTERN int _wrap_new_IndexlrRecord__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
   btllib::Record *result = 0 ;
   
@@ -27598,7 +27598,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_Record__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_IndexlrRecord__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   size_t arg1 ;
   std::string arg2 ;
@@ -27615,14 +27615,14 @@ SWIGINTERN int _wrap_new_Record__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObje
   if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
   ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Record" "', argument " "1"" of type '" "size_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_IndexlrRecord" "', argument " "1"" of type '" "size_t""'");
   } 
   arg1 = static_cast< size_t >(val1);
   {
     std::string *ptr = (std::string *)0;
     int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_Record" "', argument " "2"" of type '" "std::string""'"); 
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_IndexlrRecord" "', argument " "2"" of type '" "std::string""'"); 
     }
     arg2 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
@@ -27631,21 +27631,21 @@ SWIGINTERN int _wrap_new_Record__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObje
     std::string *ptr = (std::string *)0;
     int res = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_Record" "', argument " "3"" of type '" "std::string""'"); 
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_IndexlrRecord" "', argument " "3"" of type '" "std::string""'"); 
     }
     arg3 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
   }
   ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Record" "', argument " "4"" of type '" "size_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_IndexlrRecord" "', argument " "4"" of type '" "size_t""'");
   } 
   arg4 = static_cast< size_t >(val4);
   {
     std::vector< btllib::Minimizer,std::allocator< btllib::Minimizer > > *ptr = (std::vector< btllib::Minimizer,std::allocator< btllib::Minimizer > > *)0;
     int res = swig::asptr(swig_obj[4], &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_Record" "', argument " "5"" of type '" "std::vector< btllib::Minimizer,std::allocator< btllib::Minimizer > >""'"); 
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_IndexlrRecord" "', argument " "5"" of type '" "std::vector< btllib::Minimizer,std::allocator< btllib::Minimizer > >""'"); 
     }
     arg5 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
@@ -27658,29 +27658,29 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_Record(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN int _wrap_new_IndexlrRecord(PyObject *self, PyObject *args, PyObject *kwargs) {
   Py_ssize_t argc;
   PyObject *argv[6] = {
     0
   };
   
   (void)self;
-  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_Record")) SWIG_fail;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_Record", 0, 5, argv))) SWIG_fail;
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_IndexlrRecord")) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_IndexlrRecord", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 0) {
-    int retval = _wrap_new_Record__SWIG_0(self, argc, argv);
+    int retval = _wrap_new_IndexlrRecord__SWIG_0(self, argc, argv);
     if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
     SWIG_fail;
   }
   if (argc == 5) {
-    int retval = _wrap_new_Record__SWIG_1(self, argc, argv);
+    int retval = _wrap_new_IndexlrRecord__SWIG_1(self, argc, argv);
     if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
     SWIG_fail;
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Record'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_IndexlrRecord'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    btllib::Record::Record()\n"
     "    btllib::Record::Record(size_t,std::string,std::string,size_t,std::vector< btllib::Minimizer,std::allocator< btllib::Minimizer > >)\n");
@@ -27688,7 +27688,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Record_num_set(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_IndexlrRecord_num_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Record *arg1 = (btllib::Record *) 0 ;
   size_t arg2 ;
@@ -27703,12 +27703,12 @@ SWIGINTERN PyObject *_wrap_Record_num_set(PyObject *self, PyObject *args) {
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record_num_set" "', argument " "1"" of type '" "btllib::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord_num_set" "', argument " "1"" of type '" "btllib::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Record * >(argp1);
   ecode2 = SWIG_AsVal_size_t(swig_obj[0], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Record_num_set" "', argument " "2"" of type '" "size_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IndexlrRecord_num_set" "', argument " "2"" of type '" "size_t""'");
   } 
   arg2 = static_cast< size_t >(val2);
   if (arg1) (arg1)->num = arg2;
@@ -27719,7 +27719,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Record_num_get(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_IndexlrRecord_num_get(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Record *arg1 = (btllib::Record *) 0 ;
   void *argp1 = 0 ;
@@ -27727,10 +27727,10 @@ SWIGINTERN PyObject *_wrap_Record_num_get(PyObject *self, PyObject *args) {
   size_t result;
   
   (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "Record_num_get", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "IndexlrRecord_num_get", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record_num_get" "', argument " "1"" of type '" "btllib::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord_num_get" "', argument " "1"" of type '" "btllib::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Record * >(argp1);
   result =  ((arg1)->num);
@@ -27741,7 +27741,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Record_id_set(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_IndexlrRecord_id_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Record *arg1 = (btllib::Record *) 0 ;
   std::string *arg2 = 0 ;
@@ -27755,17 +27755,17 @@ SWIGINTERN PyObject *_wrap_Record_id_set(PyObject *self, PyObject *args) {
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record_id_set" "', argument " "1"" of type '" "btllib::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord_id_set" "', argument " "1"" of type '" "btllib::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Record * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Record_id_set" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IndexlrRecord_id_set" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Record_id_set" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IndexlrRecord_id_set" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
@@ -27779,7 +27779,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Record_id_get(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_IndexlrRecord_id_get(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Record *arg1 = (btllib::Record *) 0 ;
   void *argp1 = 0 ;
@@ -27787,10 +27787,10 @@ SWIGINTERN PyObject *_wrap_Record_id_get(PyObject *self, PyObject *args) {
   std::string *result = 0 ;
   
   (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "Record_id_get", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "IndexlrRecord_id_get", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record_id_get" "', argument " "1"" of type '" "btllib::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord_id_get" "', argument " "1"" of type '" "btllib::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Record * >(argp1);
   result = (std::string *) & ((arg1)->id);
@@ -27801,7 +27801,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Record_barcode_set(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_IndexlrRecord_barcode_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Record *arg1 = (btllib::Record *) 0 ;
   std::string *arg2 = 0 ;
@@ -27815,17 +27815,17 @@ SWIGINTERN PyObject *_wrap_Record_barcode_set(PyObject *self, PyObject *args) {
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record_barcode_set" "', argument " "1"" of type '" "btllib::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord_barcode_set" "', argument " "1"" of type '" "btllib::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Record * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Record_barcode_set" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IndexlrRecord_barcode_set" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Record_barcode_set" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IndexlrRecord_barcode_set" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
@@ -27839,7 +27839,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Record_barcode_get(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_IndexlrRecord_barcode_get(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Record *arg1 = (btllib::Record *) 0 ;
   void *argp1 = 0 ;
@@ -27847,10 +27847,10 @@ SWIGINTERN PyObject *_wrap_Record_barcode_get(PyObject *self, PyObject *args) {
   std::string *result = 0 ;
   
   (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "Record_barcode_get", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "IndexlrRecord_barcode_get", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record_barcode_get" "', argument " "1"" of type '" "btllib::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord_barcode_get" "', argument " "1"" of type '" "btllib::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Record * >(argp1);
   result = (std::string *) & ((arg1)->barcode);
@@ -27861,7 +27861,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Record_readlen_set(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_IndexlrRecord_readlen_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Record *arg1 = (btllib::Record *) 0 ;
   size_t arg2 ;
@@ -27876,12 +27876,12 @@ SWIGINTERN PyObject *_wrap_Record_readlen_set(PyObject *self, PyObject *args) {
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record_readlen_set" "', argument " "1"" of type '" "btllib::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord_readlen_set" "', argument " "1"" of type '" "btllib::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Record * >(argp1);
   ecode2 = SWIG_AsVal_size_t(swig_obj[0], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Record_readlen_set" "', argument " "2"" of type '" "size_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IndexlrRecord_readlen_set" "', argument " "2"" of type '" "size_t""'");
   } 
   arg2 = static_cast< size_t >(val2);
   if (arg1) (arg1)->readlen = arg2;
@@ -27892,7 +27892,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Record_readlen_get(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_IndexlrRecord_readlen_get(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Record *arg1 = (btllib::Record *) 0 ;
   void *argp1 = 0 ;
@@ -27900,10 +27900,10 @@ SWIGINTERN PyObject *_wrap_Record_readlen_get(PyObject *self, PyObject *args) {
   size_t result;
   
   (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "Record_readlen_get", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "IndexlrRecord_readlen_get", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record_readlen_get" "', argument " "1"" of type '" "btllib::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord_readlen_get" "', argument " "1"" of type '" "btllib::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Record * >(argp1);
   result =  ((arg1)->readlen);
@@ -27914,7 +27914,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Record_minimizers_set(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_IndexlrRecord_minimizers_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Record *arg1 = (btllib::Record *) 0 ;
   std::vector< btllib::Minimizer,std::allocator< btllib::Minimizer > > *arg2 = (std::vector< btllib::Minimizer,std::allocator< btllib::Minimizer > > *) 0 ;
@@ -27929,12 +27929,12 @@ SWIGINTERN PyObject *_wrap_Record_minimizers_set(PyObject *self, PyObject *args)
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record_minimizers_set" "', argument " "1"" of type '" "btllib::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord_minimizers_set" "', argument " "1"" of type '" "btllib::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Record * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[0], &argp2,SWIGTYPE_p_std__vectorT_btllib__Minimizer_std__allocatorT_btllib__Minimizer_t_t, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Record_minimizers_set" "', argument " "2"" of type '" "std::vector< btllib::Minimizer,std::allocator< btllib::Minimizer > > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IndexlrRecord_minimizers_set" "', argument " "2"" of type '" "std::vector< btllib::Minimizer,std::allocator< btllib::Minimizer > > *""'"); 
   }
   arg2 = reinterpret_cast< std::vector< btllib::Minimizer,std::allocator< btllib::Minimizer > > * >(argp2);
   if (arg1) (arg1)->minimizers = *arg2;
@@ -27945,7 +27945,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Record_minimizers_get(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_IndexlrRecord_minimizers_get(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Record *arg1 = (btllib::Record *) 0 ;
   void *argp1 = 0 ;
@@ -27953,10 +27953,10 @@ SWIGINTERN PyObject *_wrap_Record_minimizers_get(PyObject *self, PyObject *args)
   std::vector< btllib::Minimizer,std::allocator< btllib::Minimizer > > *result = 0 ;
   
   (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "Record_minimizers_get", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "IndexlrRecord_minimizers_get", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record_minimizers_get" "', argument " "1"" of type '" "btllib::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord_minimizers_get" "', argument " "1"" of type '" "btllib::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Record * >(argp1);
   result = (std::vector< btllib::Minimizer,std::allocator< btllib::Minimizer > > *)& ((arg1)->minimizers);
@@ -27973,7 +27973,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Record___nonzero__(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_IndexlrRecord___nonzero__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Record *arg1 = (btllib::Record *) 0 ;
   void *argp1 = 0 ;
@@ -27981,10 +27981,10 @@ SWIGINTERN PyObject *_wrap_Record___nonzero__(PyObject *self, PyObject *args) {
   bool result;
   
   (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "Record___nonzero__", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "IndexlrRecord___nonzero__", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Record, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Record___nonzero__" "', argument " "1"" of type '" "btllib::Record const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IndexlrRecord___nonzero__" "', argument " "1"" of type '" "btllib::Record const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Record * >(argp1);
   result = (bool)((btllib::Record const *)arg1)->operator bool();
@@ -27997,17 +27997,17 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_Record(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_IndexlrRecord(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   btllib::Record *arg1 = (btllib::Record *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   
   (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "delete_Record", 0, 0, 0)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "delete_IndexlrRecord", 0, 0, 0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__Record, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Record" "', argument " "1"" of type '" "btllib::Record *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_IndexlrRecord" "', argument " "1"" of type '" "btllib::Record *""'"); 
   }
   arg1 = reinterpret_cast< btllib::Record * >(argp1);
   delete arg1;
@@ -28018,9 +28018,9 @@ fail:
 }
 
 
-SWIGPY_INQUIRY_CLOSURE(_wrap_Record___nonzero__) /* defines _wrap_Record___nonzero___inquiry_closure */
+SWIGPY_INQUIRY_CLOSURE(_wrap_IndexlrRecord___nonzero__) /* defines _wrap_IndexlrRecord___nonzero___inquiry_closure */
 
-SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Record) /* defines _wrap_delete_Record_destructor_closure */
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_IndexlrRecord) /* defines _wrap_delete_IndexlrRecord_destructor_closure */
 
 SWIGINTERN int Swig_var_BIT_MASKS_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable BIT_MASKS is read-only.");
@@ -62707,19 +62707,19 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__Minimizer_type = {
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__Minimizer_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__Minimizer_type};
 
-static SwigPyGetSet Record_num_getset = { _wrap_Record_num_get, _wrap_Record_num_set };
-static SwigPyGetSet Record___dict___getset = { SwigPyObject_get___dict__, 0 };
-static SwigPyGetSet Record_minimizers_getset = { _wrap_Record_minimizers_get, _wrap_Record_minimizers_set };
-static SwigPyGetSet Record_readlen_getset = { _wrap_Record_readlen_get, _wrap_Record_readlen_set };
-static SwigPyGetSet Record_id_getset = { _wrap_Record_id_get, _wrap_Record_id_set };
-static SwigPyGetSet Record_barcode_getset = { _wrap_Record_barcode_get, _wrap_Record_barcode_set };
+static SwigPyGetSet IndexlrRecord_num_getset = { _wrap_IndexlrRecord_num_get, _wrap_IndexlrRecord_num_set };
+static SwigPyGetSet IndexlrRecord___dict___getset = { SwigPyObject_get___dict__, 0 };
+static SwigPyGetSet IndexlrRecord_minimizers_getset = { _wrap_IndexlrRecord_minimizers_get, _wrap_IndexlrRecord_minimizers_set };
+static SwigPyGetSet IndexlrRecord_readlen_getset = { _wrap_IndexlrRecord_readlen_get, _wrap_IndexlrRecord_readlen_set };
+static SwigPyGetSet IndexlrRecord_id_getset = { _wrap_IndexlrRecord_id_get, _wrap_IndexlrRecord_id_set };
+static SwigPyGetSet IndexlrRecord_barcode_getset = { _wrap_IndexlrRecord_barcode_get, _wrap_IndexlrRecord_barcode_set };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__Record_getset[] = {
-    { (char *)"num", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Record_num_getset },
-    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &Record___dict___getset },
-    { (char *)"minimizers", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Record_minimizers_getset },
-    { (char *)"readlen", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Record_readlen_getset },
-    { (char *)"id", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Record_id_getset },
-    { (char *)"barcode", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &Record_barcode_getset },
+    { (char *)"num", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &IndexlrRecord_num_getset },
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &IndexlrRecord___dict___getset },
+    { (char *)"minimizers", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &IndexlrRecord_minimizers_getset },
+    { (char *)"readlen", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &IndexlrRecord_readlen_getset },
+    { (char *)"id", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &IndexlrRecord_id_getset },
+    { (char *)"barcode", SwigPyBuiltin_FunpackGetterClosure, SwigPyBuiltin_FunpackSetterClosure, (char *)"", &IndexlrRecord_barcode_getset },
     { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
 };
 
@@ -62738,7 +62738,7 @@ SwigPyBuiltin__btllib__Record_richcompare(PyObject *self, PyObject *other, int o
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__Record_methods[] = {
-  { "__nonzero__", _wrap_Record___nonzero__, METH_NOARGS, "" },
+  { "__nonzero__", _wrap_IndexlrRecord___nonzero__, METH_NOARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -62750,10 +62750,10 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__Record_type = {
     PyObject_HEAD_INIT(NULL)
     0,                                        /* ob_size */
 #endif
-    "btllib.Record",                          /* tp_name */
+    "btllib.IndexlrRecord",                   /* tp_name */
     sizeof(SwigPyObject),                     /* tp_basicsize */
     0,                                        /* tp_itemsize */
-    _wrap_delete_Record_destructor_closure,   /* tp_dealloc */
+    _wrap_delete_IndexlrRecord_destructor_closure,                /* tp_dealloc */
 #if PY_VERSION_HEX < 0x030800b4
     (printfunc) 0,                            /* tp_print */
 #else
@@ -62796,7 +62796,7 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__Record_type = {
     (descrgetfunc) 0,                         /* tp_descr_get */
     (descrsetfunc) 0,                         /* tp_descr_set */
     offsetof(SwigPyObject, dict),             /* tp_dictoffset */
-    _wrap_new_Record,                         /* tp_init */
+    _wrap_new_IndexlrRecord,                  /* tp_init */
     (allocfunc) 0,                            /* tp_alloc */
     (newfunc) 0,                              /* tp_new */
     (freefunc) 0,                             /* tp_free */
@@ -62848,7 +62848,7 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__Record_type = {
     (unaryfunc) 0,                            /* nb_negative */
     (unaryfunc) 0,                            /* nb_positive */
     (unaryfunc) 0,                            /* nb_absolute */
-    _wrap_Record___nonzero___inquiry_closure, /* nb_nonzero */
+    _wrap_IndexlrRecord___nonzero___inquiry_closure,              /* nb_nonzero */
     (unaryfunc) 0,                            /* nb_invert */
     (binaryfunc) 0,                           /* nb_lshift */
     (binaryfunc) 0,                           /* nb_rshift */
@@ -71655,7 +71655,7 @@ SWIG_init(void) {
   PyDict_SetItemString(d, "this", this_descr);
   PyDict_SetItemString(d, "thisown", thisown_descr);
   if (PyType_Ready(builtin_pytype) < 0) {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'Record'.");
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'IndexlrRecord'.");
 #if PY_VERSION_HEX >= 0x03000000
     return NULL;
 #else
@@ -71663,8 +71663,8 @@ SWIG_init(void) {
 #endif
   }
   Py_INCREF(builtin_pytype);
-  PyModule_AddObject(m, "Record", (PyObject *)builtin_pytype);
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "Record");
+  PyModule_AddObject(m, "IndexlrRecord", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "IndexlrRecord");
   d = md;
   SWIG_addvarlink(globals, "BIT_MASKS", Swig_var_BIT_MASKS_get, Swig_var_BIT_MASKS_set);
   PyDict_SetItemString(md, "BIT_MASKS", PyObject_GetAttrString(globals, "BIT_MASKS"));
