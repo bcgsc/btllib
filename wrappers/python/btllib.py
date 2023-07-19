@@ -105,7 +105,6 @@ class _SwigNonDynamicMeta(type):
 
 
 
-Record = new_Record
 
 
 

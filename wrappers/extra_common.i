@@ -70,10 +70,10 @@
 %template(VectorUnsigned) std::vector<unsigned>;
 %template(VectorDouble) std::vector<double>;
 %template(VectorUint64t) std::vector<uint64_t>;
-%template(VectorMinimizer) std::vector<btllib::Indexlr<btllib::NtHash>::Minimizer>;
+%template(VectorMinimizer) std::vector<btllib::Minimizer>;
 
 namespace btllib {
-using SpacedSeed = std::vector< unsigned >;
+using SpacedSeed = std::vector<unsigned>;
 }
 %template(VectorSpacedSeed) std::vector<btllib::SpacedSeed>;
 

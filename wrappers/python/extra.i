@@ -100,10 +100,10 @@
   }
 %}
 
-%typemap(out) std::vector<btllib::Indexlr<btllib::NtHash>::Minimizer>* %{
+%typemap(out) std::vector<btllib::Minimizer>* %{
   $result = PyList_New($1->size());
   for (unsigned i = 0; i < $1->size(); ++i) {
-    PyObject *item = SWIG_NewPointerObj(new btllib::Indexlr<btllib::NtHash>::Minimizer((*($1))[i]), SWIGTYPE_p_btllib__IndexlrT_btllib__NtHash_t, SWIG_POINTER_OWN);
+    PyObject *item = SWIG_NewPointerObj(new btllib::Minimizer((*($1))[i]),  SWIGTYPE_p_btllib__Minimizer, SWIG_POINTER_OWN);
     PyList_SetItem($result, i, item);
   }
 %}
