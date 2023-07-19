@@ -240,7 +240,7 @@ main(int argc, char* argv[])
       flags |= btllib::Indexlr<btllib::NtHash>::Flag::SHORT_MODE;
     }
 
-    btllib::Indexlr<btllib::NtHash>::Record record;
+    btllib::Record record;
     FILE* out;
     if (outfile == "-") {
       out = stdout;
@@ -352,7 +352,7 @@ main(int argc, char* argv[])
         bool(long_mode) ? OUTPUT_PERIOD_LONG : OUTPUT_PERIOD_SHORT;
       std::unique_ptr<std::thread> info_compiler(new std::thread([&]() {
         std::stringstream ss;
-        record = std::get<unique_indexlr_nt_ptr>(indexlr)->read();
+        record = std::visit([](auto& ptr) { return ptr->read(); }, indexlr);
         while (record) {
           if (bool(with_id) || (!bool(with_id) && !bool(with_bx))) {
             ss << record.id << '\t';
@@ -399,7 +399,7 @@ main(int argc, char* argv[])
             newstring.reserve(max_seen_output_size);
             ss.str(newstring);
           }
-          record = std::get<unique_indexlr_nt_ptr>(indexlr)->read();
+          record = std::visit([](auto& ptr) { return ptr->read(); }, indexlr);
         }
         {
           const std::unique_lock<std::mutex> lock(output_queue_mutex);
