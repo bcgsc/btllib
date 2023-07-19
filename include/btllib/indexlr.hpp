@@ -23,6 +23,76 @@
 
 namespace btllib {
 
+struct Minimizer
+{
+  Minimizer() = default;
+
+  Minimizer(uint64_t min_hash,
+            uint64_t out_hash,
+            size_t pos,
+            bool forward,
+            std::string seq)
+    : min_hash(min_hash)
+    , out_hash(out_hash)
+    , pos(pos)
+    , forward(forward)
+    , seq(std::move(seq))
+  {
+  }
+
+  Minimizer(uint64_t min_hash,
+            uint64_t out_hash,
+            size_t pos,
+            bool forward,
+            std::string seq,
+            std::string qual)
+    : min_hash(min_hash)
+    , out_hash(out_hash)
+    , pos(pos)
+    , forward(forward)
+    , seq(std::move(seq))
+    , qual(std::move(qual))
+  {
+  }
+
+  uint64_t min_hash = 0, out_hash = 0;
+  size_t pos = 0;
+  bool forward = false;
+  std::string seq;
+  std::string qual;
+};
+
+using HashedKmer = Minimizer;
+
+struct Record
+{
+  Record() {}
+
+  Record(size_t num,
+         std::string id,
+         std::string barcode,
+         size_t readlen,
+         std::vector<Minimizer> minimizers)
+    : num(num)
+    , id(std::move(id))
+    , barcode(std::move(barcode))
+    , readlen(readlen)
+    , minimizers(std::move(minimizers))
+  {
+  }
+
+  size_t num = 0;
+  std::string id;
+  std::string barcode;
+  size_t readlen = 0;
+  std::vector<Minimizer> minimizers;
+
+  operator bool() const
+  {
+    return !id.empty() || !barcode.empty() || !minimizers.empty();
+  }
+};
+
 template<class T>
 class Indexlr
 {
@@ -64,76 +134,6 @@ public:
   bool filter_out() const { return bool(flags & Flag::FILTER_OUT); }
   bool short_mode() const { return bool(flags & Flag::SHORT_MODE); }
   bool long_mode() const { return bool(flags & Flag::LONG_MODE); }
-
-  struct Minimizer
-  {
-    Minimizer() = default;
-
-    Minimizer(uint64_t min_hash,
-              uint64_t out_hash,
-              size_t pos,
-              bool forward,
-              std::string seq)
-      : min_hash(min_hash)
-      , out_hash(out_hash)
-      , pos(pos)
-      , forward(forward)
-      , seq(std::move(seq))
-    {
-    }
-
-    Minimizer(uint64_t min_hash,
-              uint64_t out_hash,
-              size_t pos,
-              bool forward,
-              std::string seq,
-              std::string qual)
-      : min_hash(min_hash)
-      , out_hash(out_hash)
-      , pos(pos)
-      , forward(forward)
-      , seq(std::move(seq))
-      , qual(std::move(qual))
-    {
-    }
-
-    uint64_t min_hash = 0, out_hash = 0;
-    size_t pos = 0;
-    bool forward = false;
-    std::string seq;
-    std::string qual;
-  };
-
-  using HashedKmer = Minimizer;
-
-  struct Record
-  {
-    Record() {}
-
-    Record(size_t num,
-           std::string id,
-           std::string barcode,
-           size_t readlen,
-           std::vector<Minimizer> minimizers)
-      : num(num)
-      , id(std::move(id))
-      , barcode(std::move(barcode))
-      , readlen(readlen)
-      , minimizers(std::move(minimizers))
-    {
-    }
-
-    size_t num = 0;
-    std::string id;
-    std::string barcode;
-    size_t readlen = 0;
-    std::vector<Minimizer> minimizers;
-
-    operator bool() const
-    {
-      return !id.empty() || !barcode.empty() || !minimizers.empty();
-    }
-  };
 
   /**
    * Read the next Indexlr record, containing read
@@ -226,26 +226,25 @@ public:
 private:
   static std::string extract_barcode(const std::string& id,
                                      const std::string& comment);
-  static void filter_hashed_kmer(Indexlr<T>::HashedKmer& hk,
+  static void filter_hashed_kmer(HashedKmer& hk,
                                  bool filter_in,
                                  bool filter_out,
                                  const BloomFilter& filter_in_bf,
                                  const BloomFilter& filter_out_bf);
 
-  static void filter_kmer_qual(Indexlr<T>::HashedKmer& hk,
+  static void filter_kmer_qual(HashedKmer& hk,
                                const std::string& kmer_qual,
                                size_t q);
   static size_t calc_kmer_quality(const std::string& qual);
 
-  static void calc_minimizer(
-    const std::vector<Indexlr<T>::HashedKmer>& hashed_kmers_buffer,
-    const Indexlr<T>::Minimizer*& min_current,
-    size_t idx,
-    ssize_t& min_idx_left,
-    ssize_t& min_idx_right,
-    ssize_t& min_pos_prev,
-    size_t w,
-    std::vector<Indexlr<T>::Minimizer>& minimizers);
+  static void calc_minimizer(const std::vector<HashedKmer>& hashed_kmers_buffer,
+                             const Minimizer*& min_current,
+                             size_t idx,
+                             ssize_t& min_idx_left,
+                             ssize_t& min_idx_right,
+                             ssize_t& min_pos_prev,
+                             size_t w,
+                             std::vector<Minimizer>& minimizers);
   std::vector<Minimizer> minimize(const std::string& seq,
                                   const std::string& qual) const;
 
@@ -474,7 +473,7 @@ Indexlr<T>::extract_barcode(const std::string& id, const std::string& comment)
 
 template<class T>
 inline void
-Indexlr<T>::filter_hashed_kmer(Indexlr<T>::HashedKmer& hk,
+Indexlr<T>::filter_hashed_kmer(HashedKmer& hk,
                                bool filter_in,
                                bool filter_out,
                                const BloomFilter& filter_in_bf,
@@ -499,7 +498,7 @@ Indexlr<T>::filter_hashed_kmer(Indexlr<T>::HashedKmer& hk,
 
 template<class T>
 inline void
-Indexlr<T>::filter_kmer_qual(Indexlr<T>::HashedKmer& hk,
+Indexlr<T>::filter_kmer_qual(HashedKmer& hk,
                              const std::string& kmer_qual,
                              size_t q)
 {
@@ -529,15 +528,14 @@ Indexlr<T>::calc_kmer_quality(const std::string& qual)
 
 template<class T>
 inline void
-Indexlr<T>::calc_minimizer(
-  const std::vector<Indexlr<T>::HashedKmer>& hashed_kmers_buffer,
-  const Indexlr<T>::Minimizer*& min_current,
-  const size_t idx,
-  ssize_t& min_idx_left,
-  ssize_t& min_idx_right,
-  ssize_t& min_pos_prev,
-  const size_t w,
-  std::vector<Indexlr<T>::Minimizer>& minimizers)
+Indexlr<T>::calc_minimizer(const std::vector<HashedKmer>& hashed_kmers_buffer,
+                           const Minimizer*& min_current,
+                           const size_t idx,
+                           ssize_t& min_idx_left,
+                           ssize_t& min_idx_right,
+                           ssize_t& min_pos_prev,
+                           const size_t w,
+                           std::vector<Minimizer>& minimizers)
 {
   min_idx_left = ssize_t(idx + 1 - w);
   min_idx_right = ssize_t(idx + 1);
@@ -587,7 +585,7 @@ Indexlr<btllib::AAHash>::hash_itr(const std::string& seq, size_t k) const
 }
 
 template<class T>
-inline std::vector<typename Indexlr<T>::Minimizer>
+inline std::vector<Minimizer>
 Indexlr<T>::minimize(const std::string& seq, const std::string& qual) const
 {
   if ((k > seq.size()) || (w > seq.size() - k + 1)) {
@@ -632,7 +630,7 @@ Indexlr<T>::minimize(const std::string& seq, const std::string& qual) const
 }
 
 template<class T>
-inline typename Indexlr<T>::Record
+Record
 Indexlr<T>::read()
 {
   if (ready_blocks_owners()[id % MAX_SIMULTANEOUS_INDEXLRS] != id) {
