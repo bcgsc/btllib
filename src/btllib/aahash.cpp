@@ -45,6 +45,7 @@ AAHash::roll()
     return init();
   }
   if (pos >= seq_len - k) {
+    pos = std::numeric_limits<std::size_t>::max();
     return false;
   }
   if (AA_SEED_TABLE[(unsigned char)(seq[pos + k])] == AA_SEED__) {
