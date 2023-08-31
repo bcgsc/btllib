@@ -13,7 +13,7 @@ Platforms
 Installation for users
 ---
 The recommended way is to download using [Conda](https://docs.conda.io/en/latest/) package manager:  
-`conda install -c bioconda btllib`
+`conda install -c bioconda -c conda-forge btllib`
 
 Alternatively, you can compile the code from source. Download `btllib-$VERSION.tar.gz` from the GitHub [latest release](https://github.com/bcgsc/btllib/releases/latest) where `$VERSION` is the latest btllib version and do the following:
 - `tar xzf btllib-$VERSION.tar.gz` to extract the source code.
