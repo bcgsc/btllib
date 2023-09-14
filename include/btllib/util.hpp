@@ -5,13 +5,17 @@
 #define BTLLIB_UTIL_HPP
 
 #include "btllib/cstring.hpp"
+#include "btllib/status.hpp"
 
+#include <cmath>
 #include <condition_variable>
 #include <mutex>
 #include <string>
 #include <vector>
 
 namespace btllib {
+
+static constexpr double PHRED_OFFSET = 33.0;
 
 /**
  * Split a string into component substrings with a delimiter.
@@ -124,6 +128,93 @@ get_dirname(const std::string& path);
  */
 double
 calc_phred_avg(const std::string& qual, size_t start_pos = 0, size_t len = 0);
+
+/**
+ * Range minimum query class.
+ * Finds the index of the minimum value in a range of any iterable that can be
+ * indexed via [x] where x is the index corresponding to the element in the
+ * iterable.
+ * @tparam T The type of the iterable.
+ */
+template<class T>
+class RangeMinimumQuery
+{
+public:
+  /**
+   * Constructor for RangeMinimumQuery.
+   * @param array The iterable to be queried.
+   * @param size_of_array The size of the iterable.
+   */
+  RangeMinimumQuery(const T& array, size_t size_of_array);
+  /**
+   * Query the index of the minimum value in the range [start, end].
+   * @param start The start index of the range.
+   * @param end The end index of the range.
+   * @return The index of the minimum value in the range.
+   * @pre start <= end
+   * @pre end < size_of_array
+   * @pre start >= 0
+   *
+   * @post The return value is in the range [start, end]
+   * @post The return value is the index of the minimum value in the range.
+   */
+  size_t query(size_t start, size_t end);
+
+private:
+  //* The lookup table for the query.
+  std::vector<std::vector<size_t>> lookup_table;
+};
+
+// adapted from
+// https://www.geeksforgeeks.org/range-minimum-query-for-static-array/
+template<class T>
+RangeMinimumQuery<T>::RangeMinimumQuery(const T& array, size_t size_of_array)
+{
+  size_t log_size =
+    (size_t)(log2(
+      size_of_array)) + // NOLINT(bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions)
+    1;
+  lookup_table.resize(log_size, std::vector<size_t>(size_of_array));
+  for (size_t i = 0; i < size_of_array; i++) {
+    lookup_table[0][i] = i;
+  }
+  for (size_t j = 1; j < log_size; j++) {
+    for (size_t i = 0; i + (1 << j) - 1 < size_of_array; i++) {
+      if (array[lookup_table[j - 1][i]] <
+          array[lookup_table[j - 1][i + (1 << (j - 1))]]) {
+        lookup_table[j][i] = lookup_table[j - 1][i];
+      } else {
+        lookup_table[j][i] = lookup_table[j - 1][i + (1 << (j - 1))];
+      }
+    }
+  }
+}
+
+template<class T>
+size_t
+RangeMinimumQuery<T>::query(size_t start, size_t end)
+{
+  if (start > end) {
+    log_error("RangeMinimumQuery::query: start > end");
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+  }
+  if (end >= lookup_table[0].size()) {
+    log_error("RangeMinimumQuery::query: end >= lookup_table[0].size()");
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+  }
+  if (start >= lookup_table[0].size()) {
+    log_error("RangeMinimumQuery::query: start >= lookup_table[0].size()");
+    std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+  }
+
+  auto j = (size_t)(log2(
+    end - // NOLINT(bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions)
+    start + 1));
+  if (lookup_table[j][start] <= lookup_table[j][end - (1 << j) + 1]) {
+    return lookup_table[j][start];
+  }
+  return lookup_table[j][end - (1 << j) + 1];
+}
 
 // This exists in C++20, but we don't support that yet
 /// @cond HIDDEN_SYMBOLS
