@@ -28,9 +28,9 @@
 %rename (SeqReaderFlag) btllib::SeqReader::Flag;
 %rename (SeqReaderFormat) btllib::SeqReader::Format;
 %rename (SeqWriterFormat) btllib::SeqWriter::Format;
-%rename (IndexlrRecord) btllib::Indexlr::Record;
-%rename (IndexlrRecordIterator) btllib::Indexlr::RecordIterator;
-%rename (IndexlrFlag) btllib::Indexlr::Flag;
+%rename (IndexlrRecord) btllib::Record;
+%rename (IndexlrRecordIterator) btllib::Indexlr<btllib::NtHash>::RecordIterator;
+%rename (IndexlrFlag) btllib::Indexlr<btllib::NtHash>::Flag;
 
 %ignore btllib::SeqReader::read_block;
 
@@ -52,9 +52,9 @@
 %ignore btllib::SeqReader::RecordIterator::operator!=;
 %ignore btllib::SeqReader::RecordIterator::operator*;
 
-%ignore btllib::Indexlr::RecordIterator::operator++;
-%ignore btllib::Indexlr::RecordIterator::operator!=;
-%ignore btllib::Indexlr::RecordIterator::operator*;
+%ignore btllib::Indexlr<btllib::NtHash>::RecordIterator::operator++;
+%ignore btllib::Indexlr<btllib::NtHash>::RecordIterator::operator!=;
+%ignore btllib::Indexlr<btllib::NtHash>::RecordIterator::operator*;
 
 %ignore btllib::parse_blocks(const std::vector<SpacedSeed>&, unsigned);
 
@@ -70,7 +70,7 @@
 %template(VectorUnsigned) std::vector<unsigned>;
 %template(VectorDouble) std::vector<double>;
 %template(VectorUint64t) std::vector<uint64_t>;
-%template(VectorMinimizer) std::vector<btllib::Indexlr::Minimizer>;
+%template(VectorMinimizer) std::vector<btllib::Minimizer>;
 
 namespace btllib {
 using SpacedSeed = std::vector<unsigned>;

@@ -7,3 +7,4 @@
 %template(MIBloomFilter8) btllib::MIBloomFilter<uint8_t>;
 %template(MIBloomFilter16) btllib::MIBloomFilter<uint16_t>;
 %template(MIBloomFilter32) btllib::MIBloomFilter<uint32_t>;
+%template(Indexlr) btllib::Indexlr<btllib::NtHash>;

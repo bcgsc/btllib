@@ -19,6 +19,7 @@
 #include <queue>
 #include <sstream>
 #include <string>
+#include <variant>
 #include <vector>
 
 const static std::string PROGNAME = "indexlr";
@@ -62,6 +63,7 @@ print_usage()
        "  --seq       Include minimizer sequences in the output "
        "(appended with : after "
        "minimizer value).\n"
+       "  --amino_acid       use amino acid hash function\n"
        "  --qual      Include minimizer Phred quality string in the output"
        "(appended with : after "
        "minimizer value).\n"
@@ -100,13 +102,14 @@ main(int argc, char* argv[])
     bool k_set = false;
     bool q_set = false;
     int with_id = 0, with_bx = 0, with_len = 0, with_pos = 0, with_strand = 0,
-        with_seq = 0, with_qual = 0;
+        with_seq = 0, with_qual = 0, with_amino_acid = 0;
     std::unique_ptr<btllib::KmerBloomFilter> repeat_bf, solid_bf;
     bool with_repeat = false, with_solid = false;
     int long_mode = 0;
     std::string outfile("-");
     bool failed = false;
     static const struct option longopts[] = {
+      { "amino_acid", no_argument, &with_amino_acid, 1 },
       { "id", no_argument, &with_id, 1 },
       { "bx", no_argument, &with_bx, 1 },
       { "len", no_argument, &with_len, 1 },
@@ -220,24 +223,24 @@ main(int argc, char* argv[])
 
     unsigned flags = 0;
     if (bool(with_bx) && !bool(with_id)) {
-      flags |= btllib::Indexlr::Flag::NO_ID;
+      flags |= btllib::Indexlr<btllib::NtHash>::Flag::NO_ID;
     }
     if (bool(with_bx)) {
-      flags |= btllib::Indexlr::Flag::BX;
+      flags |= btllib::Indexlr<btllib::NtHash>::Flag::BX;
     }
     if (bool(with_seq)) {
-      flags |= btllib::Indexlr::Flag::SEQ;
+      flags |= btllib::Indexlr<btllib::NtHash>::Flag::SEQ;
     }
     if (bool(with_qual)) {
-      flags |= btllib::Indexlr::Flag::QUAL;
+      flags |= btllib::Indexlr<btllib::NtHash>::Flag::QUAL;
     }
     if (bool(long_mode)) {
-      flags |= btllib::Indexlr::Flag::LONG_MODE;
+      flags |= btllib::Indexlr<btllib::NtHash>::Flag::LONG_MODE;
     } else {
-      flags |= btllib::Indexlr::Flag::SHORT_MODE;
+      flags |= btllib::Indexlr<btllib::NtHash>::Flag::SHORT_MODE;
     }
 
-    btllib::Indexlr::Record record;
+    btllib::Record record;
     FILE* out;
     if (outfile == "-") {
       out = stdout;
@@ -248,36 +251,98 @@ main(int argc, char* argv[])
       out = fopen(outfile.c_str(), "w"); // NOLINT(android-cloexec-fopen)
 #endif
     }
+
+    using unique_indexlr_nt_ptr = std::unique_ptr<
+      btllib::Indexlr<btllib::NtHash>>; // NOLINT(modernize-make-unique)
+    using unique_indexlr_aa_ptr = std::unique_ptr<
+      btllib::Indexlr<btllib::AAHash>>; // NOLINT(modernize-make-unique)
+    using variant_indexlr_ptr =
+      std::variant<unique_indexlr_nt_ptr, unique_indexlr_aa_ptr>;
     for (const auto& infile : infiles) {
-      std::unique_ptr<btllib::Indexlr> indexlr;
+
+      variant_indexlr_ptr indexlr;
       if (with_repeat && with_solid) {
-        flags |= btllib::Indexlr::Flag::FILTER_IN;
-        flags |= btllib::Indexlr::Flag::FILTER_OUT;
-        indexlr =
-          std::unique_ptr<btllib::Indexlr>( // NOLINT(modernize-make-unique)
-            new btllib::Indexlr(infile,
-                                k,
-                                w,
-                                q,
-                                flags,
-                                t,
-                                verbose,
-                                solid_bf->get_bloom_filter(),
-                                repeat_bf->get_bloom_filter()));
+        flags |= btllib::Indexlr<btllib::NtHash>::Flag::FILTER_IN;
+        flags |= btllib::Indexlr<btllib::NtHash>::Flag::FILTER_OUT;
+        if (with_amino_acid == 0) {
+          indexlr = unique_indexlr_nt_ptr( // NOLINT(modernize-make-unique)
+            new btllib::Indexlr<btllib::NtHash>(infile,
+                                                k,
+                                                w,
+                                                q,
+                                                flags,
+                                                t,
+                                                verbose,
+                                                solid_bf->get_bloom_filter(),
+                                                repeat_bf->get_bloom_filter()));
+        } else {
+          indexlr = unique_indexlr_aa_ptr( // NOLINT(modernize-make-unique)
+            new btllib::Indexlr<btllib::AAHash>(infile,
+                                                k,
+                                                w,
+                                                q,
+                                                flags,
+                                                t,
+                                                verbose,
+                                                solid_bf->get_bloom_filter(),
+                                                repeat_bf->get_bloom_filter()));
+        }
       } else if (with_repeat) {
-        flags |= btllib::Indexlr::Flag::FILTER_OUT;
-        indexlr = std::unique_ptr< // NOLINT(modernize-make-unique)
-          btllib::Indexlr>(new btllib::Indexlr(
-          infile, k, w, q, flags, t, verbose, repeat_bf->get_bloom_filter()));
+        flags |= btllib::Indexlr<btllib::NtHash>::Flag::FILTER_OUT;
+        if (with_amino_acid == 0) {
+          indexlr = unique_indexlr_nt_ptr( // NOLINT(modernize-make-unique)
+            new btllib::Indexlr<btllib::NtHash>(infile,
+                                                k,
+                                                w,
+                                                q,
+                                                flags,
+                                                t,
+                                                verbose,
+                                                repeat_bf->get_bloom_filter()));
+        } else {
+          indexlr = unique_indexlr_aa_ptr( // NOLINT(modernize-make-unique)
+            new btllib::Indexlr<btllib::AAHash>(infile,
+                                                k,
+                                                w,
+                                                q,
+                                                flags,
+                                                t,
+                                                verbose,
+                                                repeat_bf->get_bloom_filter()));
+        }
       } else if (with_solid) {
-        flags |= btllib::Indexlr::Flag::FILTER_IN;
-        indexlr = std::unique_ptr< // NOLINT(modernize-make-unique)
-          btllib::Indexlr>(new btllib::Indexlr(
-          infile, k, w, q, flags, t, verbose, solid_bf->get_bloom_filter()));
+        flags |= btllib::Indexlr<btllib::NtHash>::Flag::FILTER_IN;
+        if (with_amino_acid == 0) {
+          indexlr = unique_indexlr_nt_ptr( // NOLINT(modernize-make-unique)
+            new btllib::Indexlr<btllib::NtHash>(infile,
+                                                k,
+                                                w,
+                                                q,
+                                                flags,
+                                                t,
+                                                verbose,
+                                                solid_bf->get_bloom_filter()));
+        } else {
+          indexlr = unique_indexlr_aa_ptr( // NOLINT(modernize-make-unique)
+            new btllib::Indexlr<btllib::AAHash>(infile,
+                                                k,
+                                                w,
+                                                q,
+                                                flags,
+                                                t,
+                                                verbose,
+                                                solid_bf->get_bloom_filter()));
+        }
       } else {
-        indexlr =
-          std::unique_ptr<btllib::Indexlr>( // NOLINT(modernize-make-unique)
-            new btllib::Indexlr(infile, k, w, q, flags, t, verbose));
+        if (with_amino_acid == 0) {
+          indexlr = unique_indexlr_nt_ptr( // NOLINT(modernize-make-unique)
+            new btllib::Indexlr<btllib::NtHash>(
+              infile, k, w, q, flags, t, verbose));
+        } else {
+          indexlr = unique_indexlr_aa_ptr( // NOLINT(modernize-make-unique)
+            new btllib::Indexlr<btllib::AAHash>(
+              infile, k, w, q, flags, t, verbose));
+        }
       }
       std::queue<std::string> output_queue;
       std::mutex output_queue_mutex;
@@ -287,7 +352,8 @@ main(int argc, char* argv[])
         bool(long_mode) ? OUTPUT_PERIOD_LONG : OUTPUT_PERIOD_SHORT;
       std::unique_ptr<std::thread> info_compiler(new std::thread([&]() {
         std::stringstream ss;
-        while ((record = indexlr->read())) {
+        while ((record =
+                  std::visit([](auto& ptr) { return ptr->read(); }, indexlr))) {
           if (bool(with_id) || (!bool(with_id) && !bool(with_bx))) {
             ss << record.id << '\t';
           }
