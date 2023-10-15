@@ -4,7 +4,10 @@
 #include "nthash.hpp"
 #include "status.hpp"
 
+// clang-format off
+#include <limits>
 #include "cpptoml.h"
+// clang-format on
 
 #include <climits>
 #include <cstdlib>

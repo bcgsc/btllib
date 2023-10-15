@@ -9,56 +9,26 @@
 #include <string_view>
 #include <vector>
 
-#include "aahash_consts.hpp"
-#include "nthash_lowlevel.hpp"
-
 namespace btllib {
 
-inline uint64_t
-aahash_base(const char* kmer_seq, unsigned k, unsigned level = 1)
-{
-  uint64_t hash_value = 0;
-  for (unsigned i = 0; i < k; i++) {
-    hash_value = srol(hash_value);
-    hash_value ^= LEVEL_X_AA_SEED_TABLE[level][(unsigned char)kmer_seq[i]];
-  }
-  return hash_value;
-}
+using SpacedSeed = std::vector<unsigned>;
 
-inline uint64_t
-aahash_roll(uint64_t hash_value,
-            unsigned k,
-            unsigned char char_out,
-            unsigned char char_in,
-            unsigned level = 1)
+inline std::vector<SpacedSeed>
+aa_parse_seeds(const std::vector<std::string>& seeds)
 {
-  hash_value = srol(hash_value);
-  hash_value ^= LEVEL_X_AA_SEED_TABLE[level][char_in];
-  hash_value ^= AA_ROLL_TABLE(char_out, level, k);
-  return hash_value;
-}
-
-inline uint64_t
-aa_modify_base_with_seed(uint64_t hash_value,
-                         const SpacedSeed& seed,
-                         const char* kmer_seq,
-                         const unsigned k)
-{
-  for (unsigned i = 0; i < k; i++) {
-    if (seed[i] != 1) {
-      hash_value ^= AA_ROLL_TABLE((unsigned char)kmer_seq[i], 1, k - 1 - i);
-      if (seed[i] != 0) {
-        const unsigned level = seed[i];
-        hash_value ^=
-          AA_ROLL_TABLE((unsigned char)kmer_seq[i], level, k - 1 - i);
-      }
+  std::vector<SpacedSeed> seed_vec;
+  for (const auto& seed : seeds) {
+    SpacedSeed seed_vec_tmp;
+    for (const auto& c : seed) {
+      seed_vec_tmp.push_back((unsigned)(c - '0'));
     }
+    seed_vec.push_back(seed_vec_tmp);
   }
-  return hash_value;
+  return seed_vec;
 }
 
-std::vector<SpacedSeed>
-aa_parse_seeds(const std::vector<std::string>& seeds);
+class AAHash;
+
 class SeedAAHash;
 
 class AAHash

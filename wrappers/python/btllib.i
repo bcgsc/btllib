@@ -15,8 +15,6 @@
 #include "btllib/util.hpp"
 #include "btllib/seq_writer.hpp"
 #include "btllib/seq.hpp"
-#include "btllib/nthash_consts.hpp"
-#include "btllib/nthash_lowlevel.hpp"
 #include "btllib/data_stream.hpp"
 #include "btllib/process_pipeline.hpp"
 #include "btllib/seq_reader_multiline_fastq_module.hpp"
@@ -28,7 +26,6 @@
 #include "btllib/randseq.hpp"
 #include "btllib/mi_bloom_filter-inl.hpp"
 #include "btllib/counting_bloom_filter-inl.hpp"
-#include "btllib/aahash_consts.hpp"
 #include "btllib/aahash.hpp"
 %}
 
@@ -60,8 +57,6 @@
 %include "btllib/util.hpp"
 %include "btllib/seq_writer.hpp"
 %include "btllib/seq.hpp"
-%include "btllib/nthash_consts.hpp"
-%include "btllib/nthash_lowlevel.hpp"
 %include "btllib/data_stream.hpp"
 %include "btllib/process_pipeline.hpp"
 %include "btllib/seq_reader_multiline_fastq_module.hpp"
@@ -73,7 +68,6 @@
 %include "btllib/randseq.hpp"
 %include "btllib/mi_bloom_filter-inl.hpp"
 %include "btllib/counting_bloom_filter-inl.hpp"
-%include "btllib/aahash_consts.hpp"
 %include "btllib/aahash.hpp"
 
 %include "../extra_templates.i"

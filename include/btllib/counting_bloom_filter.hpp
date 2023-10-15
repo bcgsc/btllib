@@ -6,7 +6,10 @@
 #include "btllib/nthash.hpp"
 #include "btllib/status.hpp"
 
+// clang-format off
+#include <limits>
 #include "cpptoml.h"
+// clang-format on
 
 #include <atomic>
 #include <cmath>
