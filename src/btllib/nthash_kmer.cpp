@@ -325,11 +325,11 @@ BlindNtHash::BlindNtHash(const std::string& seq,
   : seq(seq.data() + pos, seq.data() + pos + k)
   , num_hashes(num_hashes)
   , pos(pos)
+  , fwd_hash(base_forward_hash(seq.data(), k))
+  , rev_hash(base_reverse_hash(seq.data(), k))
   , hash_arr(new uint64_t[num_hashes])
 {
   check_error(k == 0, "BlindNtHash: k must be greater than 0");
-  fwd_hash = base_forward_hash(seq.data(), k);
-  rev_hash = base_reverse_hash(seq.data(), k);
   extend_hashes(fwd_hash, rev_hash, k, num_hashes, hash_arr.get());
 }
 

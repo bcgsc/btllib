@@ -307,8 +307,8 @@ private:
   std::deque<char> seq;
   typedefs::NUM_HASHES_TYPE num_hashes;
   ssize_t pos;
-  uint64_t fwd_hash = 0;
-  uint64_t rev_hash = 0;
+  uint64_t fwd_hash;
+  uint64_t rev_hash;
   std::unique_ptr<uint64_t[]> hash_arr;
 };
 

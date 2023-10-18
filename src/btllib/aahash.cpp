@@ -48,7 +48,7 @@ modify_base_with_seed(uint64_t hash_value,
   return hash_value;
 }
 
-}
+} // namespace
 
 namespace btllib {
 
