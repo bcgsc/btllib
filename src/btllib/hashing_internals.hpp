@@ -108,10 +108,7 @@ extend_hashes(uint64_t fwd_hash,
  * @param h_val Array of size h for storing the output hashes
  */
 inline void
-extend_hashes(uint64_t base_hash,
-              unsigned k,
-              unsigned h,
-              uint64_t* hash_array)
+extend_hashes(uint64_t base_hash, unsigned k, unsigned h, uint64_t* hash_array)
 {
   uint64_t t_val;
   hash_array[0] = base_hash;
