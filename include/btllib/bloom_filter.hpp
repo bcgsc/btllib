@@ -605,7 +605,7 @@ public:
   const std::vector<std::string>& get_seeds() const { return seeds; }
   /** Get the seeds used in parsed format. Parsed format is a vector of indices
    * of 0s in the seed. */
-  const std::vector<btllib::typedefs::SpacedSeed>& get_parsed_seeds() const
+  const std::vector<btllib::hashing_internals::SpacedSeed>& get_parsed_seeds() const
   {
     return parsed_seeds;
   }
@@ -646,7 +646,7 @@ private:
   SeedBloomFilter(const std::shared_ptr<BloomFilterInitializer>& bfi);
 
   std::vector<std::string> seeds;
-  std::vector<btllib::typedefs::SpacedSeed> parsed_seeds;
+  std::vector<btllib::hashing_internals::SpacedSeed> parsed_seeds;
   KmerBloomFilter kmer_bloom_filter;
 };
 

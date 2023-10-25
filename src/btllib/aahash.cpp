@@ -1,9 +1,14 @@
 #include <stdexcept>
 
 #include "btllib/aahash.hpp"
-#include "hashing_internals.hpp"
+#include <btllib/hashing_internals.hpp>
 
 namespace {
+
+using btllib::hashing_internals::LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE;
+using btllib::hashing_internals::LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE;
+using btllib::hashing_internals::LEVEL_X_AA_SEED_TABLE;
+using btllib::hashing_internals::srol;
 
 inline uint64_t
 base_hash(const char* kmer_seq, unsigned k, unsigned level = 1)
@@ -51,6 +56,10 @@ modify_base_with_seed(uint64_t hash_value,
 } // namespace
 
 namespace btllib {
+
+using hashing_internals::AA_SEED__;
+using hashing_internals::AA_SEED_TABLE;
+using hashing_internals::extend_hashes;
 
 bool
 AAHash::init()

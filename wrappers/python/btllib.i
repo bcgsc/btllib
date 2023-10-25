@@ -27,6 +27,9 @@
 #include "btllib/mi_bloom_filter-inl.hpp"
 #include "btllib/counting_bloom_filter-inl.hpp"
 #include "btllib/aahash.hpp"
+#include "btllib/nthash_seed.hpp"
+#include "btllib/hashing_internals.hpp"
+#include "btllib/nthash_kmer.hpp"
 %}
 
 %include <stdint.i>
@@ -69,5 +72,8 @@
 %include "btllib/mi_bloom_filter-inl.hpp"
 %include "btllib/counting_bloom_filter-inl.hpp"
 %include "btllib/aahash.hpp"
+%include "btllib/nthash_seed.hpp"
+%include "btllib/hashing_internals.hpp"
+%include "btllib/nthash_kmer.hpp"
 
 %include "../extra_templates.i"

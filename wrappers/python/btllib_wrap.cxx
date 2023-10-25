@@ -3816,55 +3816,59 @@ SwigPyBuiltin_iternextfunc_closure(SwigPyWrapperFunction wrapper, PyObject *a) {
 #define SWIGTYPE_p_off_type swig_types[65]
 #define SWIGTYPE_p_openmode swig_types[66]
 #define SWIGTYPE_p_p_PyObject swig_types[67]
-#define SWIGTYPE_p_p_void swig_types[68]
-#define SWIGTYPE_p_pos_type swig_types[69]
-#define SWIGTYPE_p_sdsl__bit_vector swig_types[70]
-#define SWIGTYPE_p_seekdir swig_types[71]
-#define SWIGTYPE_p_short swig_types[72]
-#define SWIGTYPE_p_signed_char swig_types[73]
-#define SWIGTYPE_p_size_t swig_types[74]
-#define SWIGTYPE_p_size_type swig_types[75]
-#define SWIGTYPE_p_ssize_t swig_types[76]
-#define SWIGTYPE_p_state_type swig_types[77]
-#define SWIGTYPE_p_std__allocatorT_btllib__Indexlr__Minimizer_t swig_types[78]
-#define SWIGTYPE_p_std__allocatorT_double_t swig_types[79]
-#define SWIGTYPE_p_std__allocatorT_int_t swig_types[80]
-#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[81]
-#define SWIGTYPE_p_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t swig_types[82]
-#define SWIGTYPE_p_std__allocatorT_unsigned_char_t swig_types[83]
-#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[84]
-#define SWIGTYPE_p_std__allocatorT_unsigned_long_long_t swig_types[85]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[86]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[87]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[88]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[89]
-#define SWIGTYPE_p_std__basic_streambufT_char_std__char_traitsT_char_t_t swig_types[90]
-#define SWIGTYPE_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t swig_types[91]
-#define SWIGTYPE_p_std__ios_base swig_types[92]
-#define SWIGTYPE_p_std__locale swig_types[93]
-#define SWIGTYPE_p_std__string swig_types[94]
-#define SWIGTYPE_p_std__string_view swig_types[95]
-#define SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t swig_types[96]
-#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[97]
-#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[98]
-#define SWIGTYPE_p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t swig_types[99]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[100]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[101]
-#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[102]
-#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[103]
-#define SWIGTYPE_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t swig_types[104]
-#define SWIGTYPE_p_streamoff swig_types[105]
-#define SWIGTYPE_p_streampos swig_types[106]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[107]
-#define SWIGTYPE_p_traits_type swig_types[108]
-#define SWIGTYPE_p_unsigned_char swig_types[109]
-#define SWIGTYPE_p_unsigned_int swig_types[110]
-#define SWIGTYPE_p_unsigned_long swig_types[111]
-#define SWIGTYPE_p_unsigned_long_long swig_types[112]
-#define SWIGTYPE_p_unsigned_short swig_types[113]
-#define SWIGTYPE_p_value_type swig_types[114]
-static swig_type_info *swig_types[116];
-static swig_module_info swig_module = {swig_types, 115, 0, 0, 0, 0};
+#define SWIGTYPE_p_p_p_unsigned_long_long swig_types[68]
+#define SWIGTYPE_p_p_unsigned_long_long swig_types[69]
+#define SWIGTYPE_p_p_void swig_types[70]
+#define SWIGTYPE_p_pos_type swig_types[71]
+#define SWIGTYPE_p_sdsl__bit_vector swig_types[72]
+#define SWIGTYPE_p_seekdir swig_types[73]
+#define SWIGTYPE_p_short swig_types[74]
+#define SWIGTYPE_p_signed_char swig_types[75]
+#define SWIGTYPE_p_size_t swig_types[76]
+#define SWIGTYPE_p_size_type swig_types[77]
+#define SWIGTYPE_p_ssize_t swig_types[78]
+#define SWIGTYPE_p_state_type swig_types[79]
+#define SWIGTYPE_p_std__allocatorT_btllib__Indexlr__Minimizer_t swig_types[80]
+#define SWIGTYPE_p_std__allocatorT_double_t swig_types[81]
+#define SWIGTYPE_p_std__allocatorT_int_t swig_types[82]
+#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[83]
+#define SWIGTYPE_p_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t swig_types[84]
+#define SWIGTYPE_p_std__allocatorT_unsigned_char_t swig_types[85]
+#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[86]
+#define SWIGTYPE_p_std__allocatorT_unsigned_long_long_t swig_types[87]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[88]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[89]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[90]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[91]
+#define SWIGTYPE_p_std__basic_streambufT_char_std__char_traitsT_char_t_t swig_types[92]
+#define SWIGTYPE_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t swig_types[93]
+#define SWIGTYPE_p_std__dequeT_char_t swig_types[94]
+#define SWIGTYPE_p_std__ios_base swig_types[95]
+#define SWIGTYPE_p_std__locale swig_types[96]
+#define SWIGTYPE_p_std__string swig_types[97]
+#define SWIGTYPE_p_std__string_view swig_types[98]
+#define SWIGTYPE_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t swig_types[99]
+#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[100]
+#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[101]
+#define SWIGTYPE_p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t swig_types[102]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[103]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t swig_types[104]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t swig_types[105]
+#define SWIGTYPE_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t swig_types[106]
+#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[107]
+#define SWIGTYPE_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t swig_types[108]
+#define SWIGTYPE_p_streamoff swig_types[109]
+#define SWIGTYPE_p_streampos swig_types[110]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[111]
+#define SWIGTYPE_p_traits_type swig_types[112]
+#define SWIGTYPE_p_unsigned_char swig_types[113]
+#define SWIGTYPE_p_unsigned_int swig_types[114]
+#define SWIGTYPE_p_unsigned_long swig_types[115]
+#define SWIGTYPE_p_unsigned_long_long swig_types[116]
+#define SWIGTYPE_p_unsigned_short swig_types[117]
+#define SWIGTYPE_p_value_type swig_types[118]
+static swig_type_info *swig_types[120];
+static swig_module_info swig_module = {swig_types, 119, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4041,6 +4045,9 @@ namespace swig {
 #include "btllib/mi_bloom_filter-inl.hpp"
 #include "btllib/counting_bloom_filter-inl.hpp"
 #include "btllib/aahash.hpp"
+#include "btllib/nthash_seed.hpp"
+#include "btllib/hashing_internals.hpp"
+#include "btllib/nthash_kmer.hpp"
 
 
 #include <stdint.h>		// Use the C99 official header
@@ -7271,6 +7278,21 @@ SWIG_strnlen(const char* s, size_t maxlen)
   return p - s;
 }
 
+SWIGINTERN btllib::AAHash *new_btllib_AAHash__SWIG_2(std::string seq,unsigned int hash_num,unsigned int k,unsigned int level,size_t pos=0){
+    std::unique_lock<std::mutex> lock(nthash_mutex);
+    nthash_strings[++nthash_last_id] = std::move(seq);
+    auto *nthash = new btllib::AAHash(nthash_strings[nthash_last_id], hash_num, k, level);
+    nthash_ids[(void*)nthash] = nthash_last_id;
+    return nthash;
+  }
+SWIGINTERN void delete_btllib_AAHash(btllib::AAHash *self){
+    std::unique_lock<std::mutex> lock(nthash_mutex);
+    nthash_strings.erase(nthash_ids[(void*)self]);
+    nthash_ids.erase((void*)self);
+  }
+
+#include <memory>
+
 
 SWIGINTERNINLINE PyObject *
 SWIG_From_unsigned_SS_short  (unsigned short value)
@@ -7278,6 +7300,18 @@ SWIG_From_unsigned_SS_short  (unsigned short value)
   return SWIG_From_unsigned_SS_long  (value);
 }
 
+SWIGINTERN btllib::SeedNtHash *new_btllib_SeedNtHash__SWIG_8(std::string seq,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &seeds,unsigned int hash_num_per_seed,unsigned int k,size_t pos=0){
+    std::unique_lock<std::mutex> lock(nthash_mutex);
+    nthash_strings[++nthash_last_id] = std::move(seq);
+    auto *nthash = new btllib::SeedNtHash(nthash_strings[nthash_last_id], seeds, hash_num_per_seed, k);
+    nthash_ids[(void*)nthash] = nthash_last_id;
+    return nthash;
+  }
+SWIGINTERN void delete_btllib_SeedNtHash(btllib::SeedNtHash *self){
+    std::unique_lock<std::mutex> lock(nthash_mutex);
+    nthash_strings.erase(nthash_ids[(void*)self]);
+    nthash_ids.erase((void*)self);
+  }
 SWIGINTERN btllib::NtHash *new_btllib_NtHash__SWIG_4(std::string seq,unsigned int hash_num,unsigned int k,size_t pos=0){
     std::unique_lock<std::mutex> lock(nthash_mutex);
     nthash_strings[++nthash_last_id] = std::move(seq);
@@ -7298,33 +7332,6 @@ SWIGINTERN btllib::BlindNtHash *new_btllib_BlindNtHash__SWIG_2(std::string seq,u
     return nthash;
   }
 SWIGINTERN void delete_btllib_BlindNtHash(btllib::BlindNtHash *self){
-    std::unique_lock<std::mutex> lock(nthash_mutex);
-    nthash_strings.erase(nthash_ids[(void*)self]);
-    nthash_ids.erase((void*)self);
-  }
-SWIGINTERN btllib::SeedNtHash *new_btllib_SeedNtHash__SWIG_8(std::string seq,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &seeds,unsigned int hash_num_per_seed,unsigned int k,size_t pos=0){
-    std::unique_lock<std::mutex> lock(nthash_mutex);
-    nthash_strings[++nthash_last_id] = std::move(seq);
-    auto *nthash = new btllib::SeedNtHash(nthash_strings[nthash_last_id], seeds, hash_num_per_seed, k);
-    nthash_ids[(void*)nthash] = nthash_last_id;
-    return nthash;
-  }
-SWIGINTERN void delete_btllib_SeedNtHash(btllib::SeedNtHash *self){
-    std::unique_lock<std::mutex> lock(nthash_mutex);
-    nthash_strings.erase(nthash_ids[(void*)self]);
-    nthash_ids.erase((void*)self);
-  }
-
-#include <memory>
-
-SWIGINTERN btllib::AAHash *new_btllib_AAHash__SWIG_2(std::string seq,unsigned int hash_num,unsigned int k,unsigned int level,size_t pos=0){
-    std::unique_lock<std::mutex> lock(nthash_mutex);
-    nthash_strings[++nthash_last_id] = std::move(seq);
-    auto *nthash = new btllib::AAHash(nthash_strings[nthash_last_id], hash_num, k, level);
-    nthash_ids[(void*)nthash] = nthash_last_id;
-    return nthash;
-  }
-SWIGINTERN void delete_btllib_AAHash(btllib::AAHash *self){
     std::unique_lock<std::mutex> lock(nthash_mutex);
     nthash_strings.erase(nthash_ids[(void*)self]);
     nthash_ids.erase((void*)self);
@@ -32082,7 +32089,7 @@ SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_parsed_seeds(PyObject *self, PyOb
   btllib::SeedBloomFilter *arg1 = (btllib::SeedBloomFilter *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  std::vector< btllib::typedefs::SpacedSeed,std::allocator< btllib::typedefs::SpacedSeed > > *result = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeed,std::allocator< btllib::hashing_internals::SpacedSeed > > *result = 0 ;
   
   (void)self;
   if (!SWIG_Python_UnpackTuple(args, "SeedBloomFilter_get_parsed_seeds", 0, 0, 0)) SWIG_fail;
@@ -32091,7 +32098,7 @@ SWIGINTERN PyObject *_wrap_SeedBloomFilter_get_parsed_seeds(PyObject *self, PyOb
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedBloomFilter_get_parsed_seeds" "', argument " "1"" of type '" "btllib::SeedBloomFilter const *""'"); 
   }
   arg1 = reinterpret_cast< btllib::SeedBloomFilter * >(argp1);
-  result = (std::vector< btllib::typedefs::SpacedSeed,std::allocator< btllib::typedefs::SpacedSeed > > *) &((btllib::SeedBloomFilter const *)arg1)->get_parsed_seeds();
+  result = (std::vector< btllib::hashing_internals::SpacedSeed,std::allocator< btllib::hashing_internals::SpacedSeed > > *) &((btllib::SeedBloomFilter const *)arg1)->get_parsed_seeds();
   resultobj = swig::from(static_cast< std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > >(*result));
   return resultobj;
 fail:
@@ -35349,3103 +35356,6 @@ SWIGINTERN PyObject *Swig_var_NTHASH_FN_NAME_get(void) {
 }
 
 
-SWIGINTERN PyObject *_wrap_parse_seeds(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  std::vector< std::string,std::allocator< std::string > > *arg1 = 0 ;
-  int res1 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[1] ;
-  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > result;
-  
-  (void)self;
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
-    res1 = swig::asptr(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "parse_seeds" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "parse_seeds" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  result = btllib::parse_seeds((std::vector< std::string,std::allocator< std::string > > const &)*arg1);
-  resultobj = swig::from(static_cast< std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > >(result));
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return NULL;
-}
-
-
-SWIGINTERN int _wrap_new_NtHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  char *arg1 = (char *) 0 ;
-  size_t arg2 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg3 ;
-  btllib::typedefs::K_TYPE arg4 ;
-  size_t arg5 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  size_t val2 ;
-  int ecode2 = 0 ;
-  unsigned char val3 ;
-  int ecode3 = 0 ;
-  unsigned short val4 ;
-  int ecode4 = 0 ;
-  size_t val5 ;
-  int ecode5 = 0 ;
-  btllib::NtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NtHash" "', argument " "1"" of type '" "char const *""'");
-  }
-  arg1 = reinterpret_cast< char * >(buf1);
-  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NtHash" "', argument " "2"" of type '" "size_t""'");
-  } 
-  arg2 = static_cast< size_t >(val2);
-  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg3 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_NtHash" "', argument " "4"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg4 = static_cast< btllib::typedefs::K_TYPE >(val4);
-  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_NtHash" "', argument " "5"" of type '" "size_t""'");
-  } 
-  arg5 = static_cast< size_t >(val5);
-  result = (btllib::NtHash *)new btllib::NtHash((char const *)arg1,arg2,arg3,arg4,arg5);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_NtHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  char *arg1 = (char *) 0 ;
-  size_t arg2 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg3 ;
-  btllib::typedefs::K_TYPE arg4 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  size_t val2 ;
-  int ecode2 = 0 ;
-  unsigned char val3 ;
-  int ecode3 = 0 ;
-  unsigned short val4 ;
-  int ecode4 = 0 ;
-  btllib::NtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NtHash" "', argument " "1"" of type '" "char const *""'");
-  }
-  arg1 = reinterpret_cast< char * >(buf1);
-  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NtHash" "', argument " "2"" of type '" "size_t""'");
-  } 
-  arg2 = static_cast< size_t >(val2);
-  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg3 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_NtHash" "', argument " "4"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg4 = static_cast< btllib::typedefs::K_TYPE >(val4);
-  result = (btllib::NtHash *)new btllib::NtHash((char const *)arg1,arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_NtHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg2 ;
-  btllib::typedefs::K_TYPE arg3 ;
-  size_t arg4 ;
-  int res1 = SWIG_OLDOBJ ;
-  unsigned char val2 ;
-  int ecode2 = 0 ;
-  unsigned short val3 ;
-  int ecode3 = 0 ;
-  size_t val4 ;
-  int ecode4 = 0 ;
-  btllib::NtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  ecode2 = SWIG_AsVal_unsigned_SS_char(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NtHash" "', argument " "2"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg2 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val2);
-  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg3 = static_cast< btllib::typedefs::K_TYPE >(val3);
-  ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_NtHash" "', argument " "4"" of type '" "size_t""'");
-  } 
-  arg4 = static_cast< size_t >(val4);
-  result = (btllib::NtHash *)new btllib::NtHash((std::string const &)*arg1,arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_NtHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg2 ;
-  btllib::typedefs::K_TYPE arg3 ;
-  int res1 = SWIG_OLDOBJ ;
-  unsigned char val2 ;
-  int ecode2 = 0 ;
-  unsigned short val3 ;
-  int ecode3 = 0 ;
-  btllib::NtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  ecode2 = SWIG_AsVal_unsigned_SS_char(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NtHash" "', argument " "2"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg2 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val2);
-  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg3 = static_cast< btllib::typedefs::K_TYPE >(val3);
-  result = (btllib::NtHash *)new btllib::NtHash((std::string const &)*arg1,arg2,arg3);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return -1;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_roll(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "NtHash_roll", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_roll" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  result = (bool)(arg1)->roll();
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_roll_back(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "NtHash_roll_back", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_roll_back" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  result = (bool)(arg1)->roll_back();
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_peek__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  (void)self;
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_peek" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  result = (bool)(arg1)->peek();
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_peek_back__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  (void)self;
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_peek_back" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  result = (bool)(arg1)->peek_back();
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_peek__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  char arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  char val2 ;
-  int ecode2 = 0 ;
-  bool result;
-  
-  (void)self;
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_peek" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NtHash_peek" "', argument " "2"" of type '" "char""'");
-  } 
-  arg2 = static_cast< char >(val2);
-  result = (bool)(arg1)->peek(arg2);
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_peek(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  (void)self;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "NtHash_peek", 0, 2, argv+1))) SWIG_fail;
-  argv[0] = self;
-  if (argc == 1) {
-    PyObject *retobj = _wrap_NtHash_peek__SWIG_0(self, argc, argv);
-    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
-    SWIG_fail;
-  }
-  if (argc == 2) {
-    PyObject *retobj = _wrap_NtHash_peek__SWIG_1(self, argc, argv);
-    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
-    SWIG_fail;
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NtHash_peek'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    btllib::NtHash::peek()\n"
-    "    btllib::NtHash::peek(char)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_peek_back__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  char arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  char val2 ;
-  int ecode2 = 0 ;
-  bool result;
-  
-  (void)self;
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_peek_back" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NtHash_peek_back" "', argument " "2"" of type '" "char""'");
-  } 
-  arg2 = static_cast< char >(val2);
-  result = (bool)(arg1)->peek_back(arg2);
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_peek_back(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  (void)self;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "NtHash_peek_back", 0, 2, argv+1))) SWIG_fail;
-  argv[0] = self;
-  if (argc == 1) {
-    PyObject *retobj = _wrap_NtHash_peek_back__SWIG_0(self, argc, argv);
-    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
-    SWIG_fail;
-  }
-  if (argc == 2) {
-    PyObject *retobj = _wrap_NtHash_peek_back__SWIG_1(self, argc, argv);
-    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
-    SWIG_fail;
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NtHash_peek_back'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    btllib::NtHash::peek_back()\n"
-    "    btllib::NtHash::peek_back(char)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_hashes(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t *result = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "NtHash_hashes", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_hashes" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  result = (uint64_t *)((btllib::NtHash const *)arg1)->hashes();
-  
-  resultobj = PyTuple_New(arg1->get_hash_num());
-  for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
-    PyTuple_SetItem(resultobj, i, PyLong_FromUnsignedLong(result[i]));
-  }
-  
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_get_pos(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  size_t result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "NtHash_get_pos", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_get_pos" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  result = ((btllib::NtHash const *)arg1)->get_pos();
-  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_get_hash_num(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "NtHash_get_hash_num", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_get_hash_num" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  result = (btllib::typedefs::NUM_HASHES_TYPE)((btllib::NtHash const *)arg1)->get_hash_num();
-  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_get_k(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  btllib::typedefs::K_TYPE result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "NtHash_get_k", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_get_k" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  result = (btllib::typedefs::K_TYPE)((btllib::NtHash const *)arg1)->get_k();
-  resultobj = SWIG_From_unsigned_SS_short(static_cast< unsigned short >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_get_forward_hash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "NtHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_get_forward_hash" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  result = (uint64_t)((btllib::NtHash const *)arg1)->get_forward_hash();
-  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NtHash_get_reverse_hash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "NtHash_get_reverse_hash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_get_reverse_hash" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  result = (uint64_t)((btllib::NtHash const *)arg1)->get_reverse_hash();
-  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN int _wrap_new_NtHash__SWIG_4(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string arg1 ;
-  unsigned int arg2 ;
-  unsigned int arg3 ;
-  size_t arg4 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  size_t val4 ;
-  int ecode4 = 0 ;
-  btllib::NtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_NtHash" "', argument " "1"" of type '" "std::string""'"); 
-    }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NtHash" "', argument " "2"" of type '" "unsigned int""'");
-  } 
-  arg2 = static_cast< unsigned int >(val2);
-  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "unsigned int""'");
-  } 
-  arg3 = static_cast< unsigned int >(val3);
-  ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_NtHash" "', argument " "4"" of type '" "size_t""'");
-  } 
-  arg4 = static_cast< size_t >(val4);
-  result = (btllib::NtHash *)new_btllib_NtHash__SWIG_4(SWIG_STD_MOVE(arg1),arg2,arg3,SWIG_STD_MOVE(arg4));
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_NtHash__SWIG_5(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string arg1 ;
-  unsigned int arg2 ;
-  unsigned int arg3 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  btllib::NtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_NtHash" "', argument " "1"" of type '" "std::string""'"); 
-    }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NtHash" "', argument " "2"" of type '" "unsigned int""'");
-  } 
-  arg2 = static_cast< unsigned int >(val2);
-  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "unsigned int""'");
-  } 
-  arg3 = static_cast< unsigned int >(val3);
-  result = (btllib::NtHash *)new_btllib_NtHash__SWIG_4(SWIG_STD_MOVE(arg1),arg2,arg3);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_NtHash(PyObject *self, PyObject *args, PyObject *kwargs) {
-  Py_ssize_t argc;
-  PyObject *argv[6] = {
-    0
-  };
-  
-  (void)self;
-  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_NtHash")) SWIG_fail;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_NtHash", 0, 5, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v = 0;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_char(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_1;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_short(argv[2], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_1;
-    return _wrap_new_NtHash__SWIG_3(self, argc, argv);
-  }
-check_1:
-  
-  if (argc == 3) {
-    int retval = _wrap_new_NtHash__SWIG_5(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-  if (argc == 4) {
-    int _v = 0;
-    {
-      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_3;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_char(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_3;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_short(argv[2], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_3;
-    {
-      {
-        int res = SWIG_AsVal_size_t(argv[3], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_3;
-    return _wrap_new_NtHash__SWIG_2(self, argc, argv);
-  }
-check_3:
-  
-  if (argc == 4) {
-    int _v = 0;
-    {
-      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_4;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_4;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_int(argv[2], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_4;
-    {
-      {
-        int res = SWIG_AsVal_size_t(argv[3], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_4;
-    return _wrap_new_NtHash__SWIG_4(self, argc, argv);
-  }
-check_4:
-  
-  if (argc == 4) {
-    int retval = _wrap_new_NtHash__SWIG_1(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-  if (argc == 5) {
-    int retval = _wrap_new_NtHash__SWIG_0(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_NtHash'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    btllib::NtHash::NtHash(char const *,size_t,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE,size_t)\n"
-    "    btllib::NtHash::NtHash(char const *,size_t,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE)\n"
-    "    btllib::NtHash::NtHash(std::string const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE,size_t)\n"
-    "    btllib::NtHash::NtHash(std::string const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE)\n"
-    "    btllib::NtHash::NtHash(std::string,unsigned int,unsigned int,size_t)\n"
-    "    btllib::NtHash::NtHash(std::string,unsigned int,unsigned int)\n");
-  return -1;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_NtHash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "delete_NtHash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_NtHash" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
-  delete_btllib_NtHash(arg1);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_NtHash) /* defines _wrap_delete_NtHash_destructor_closure */
-
-SWIGINTERN int _wrap_new_BlindNtHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg2 ;
-  btllib::typedefs::K_TYPE arg3 ;
-  ssize_t arg4 ;
-  int res1 = SWIG_OLDOBJ ;
-  unsigned char val2 ;
-  int ecode2 = 0 ;
-  unsigned short val3 ;
-  int ecode3 = 0 ;
-  void *argp4 ;
-  int res4 = 0 ;
-  btllib::BlindNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  ecode2 = SWIG_AsVal_unsigned_SS_char(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BlindNtHash" "', argument " "2"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg2 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val2);
-  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlindNtHash" "', argument " "3"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg3 = static_cast< btllib::typedefs::K_TYPE >(val3);
-  {
-    res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_ssize_t,  0  | 0);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_BlindNtHash" "', argument " "4"" of type '" "ssize_t""'"); 
-    }  
-    if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindNtHash" "', argument " "4"" of type '" "ssize_t""'");
-    } else {
-      ssize_t * temp = reinterpret_cast< ssize_t * >(argp4);
-      arg4 = *temp;
-      if (SWIG_IsNewObj(res4)) delete temp;
-    }
-  }
-  result = (btllib::BlindNtHash *)new btllib::BlindNtHash((std::string const &)*arg1,arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_BlindNtHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg2 ;
-  btllib::typedefs::K_TYPE arg3 ;
-  int res1 = SWIG_OLDOBJ ;
-  unsigned char val2 ;
-  int ecode2 = 0 ;
-  unsigned short val3 ;
-  int ecode3 = 0 ;
-  btllib::BlindNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  ecode2 = SWIG_AsVal_unsigned_SS_char(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BlindNtHash" "', argument " "2"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg2 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val2);
-  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlindNtHash" "', argument " "3"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg3 = static_cast< btllib::typedefs::K_TYPE >(val3);
-  result = (btllib::BlindNtHash *)new btllib::BlindNtHash((std::string const &)*arg1,arg2,arg3);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return -1;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindNtHash_roll(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
-  char arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  char val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  (void)self;
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_roll" "', argument " "1"" of type '" "btllib::BlindNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
-  ecode2 = SWIG_AsVal_char(swig_obj[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlindNtHash_roll" "', argument " "2"" of type '" "char""'");
-  } 
-  arg2 = static_cast< char >(val2);
-  (arg1)->roll(arg2);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindNtHash_roll_back(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
-  char arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  char val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  (void)self;
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_roll_back" "', argument " "1"" of type '" "btllib::BlindNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
-  ecode2 = SWIG_AsVal_char(swig_obj[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlindNtHash_roll_back" "', argument " "2"" of type '" "char""'");
-  } 
-  arg2 = static_cast< char >(val2);
-  (arg1)->roll_back(arg2);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindNtHash_peek(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
-  char arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  char val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  (void)self;
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_peek" "', argument " "1"" of type '" "btllib::BlindNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
-  ecode2 = SWIG_AsVal_char(swig_obj[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlindNtHash_peek" "', argument " "2"" of type '" "char""'");
-  } 
-  arg2 = static_cast< char >(val2);
-  (arg1)->peek(arg2);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindNtHash_peek_back(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
-  char arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  char val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  (void)self;
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_peek_back" "', argument " "1"" of type '" "btllib::BlindNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
-  ecode2 = SWIG_AsVal_char(swig_obj[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlindNtHash_peek_back" "', argument " "2"" of type '" "char""'");
-  } 
-  arg2 = static_cast< char >(val2);
-  (arg1)->peek_back(arg2);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindNtHash_hashes(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t *result = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindNtHash_hashes", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_hashes" "', argument " "1"" of type '" "btllib::BlindNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
-  result = (uint64_t *)((btllib::BlindNtHash const *)arg1)->hashes();
-  
-  resultobj = PyTuple_New(arg1->get_hash_num());
-  for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
-    PyTuple_SetItem(resultobj, i, PyLong_FromUnsignedLong(result[i]));
-  }
-  
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindNtHash_get_pos(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  ssize_t result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindNtHash_get_pos", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_get_pos" "', argument " "1"" of type '" "btllib::BlindNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
-  result = ((btllib::BlindNtHash const *)arg1)->get_pos();
-  resultobj = SWIG_NewPointerObj((new ssize_t(result)), SWIGTYPE_p_ssize_t, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindNtHash_get_hash_num(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindNtHash_get_hash_num", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_get_hash_num" "', argument " "1"" of type '" "btllib::BlindNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
-  result = (btllib::typedefs::NUM_HASHES_TYPE)((btllib::BlindNtHash const *)arg1)->get_hash_num();
-  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindNtHash_get_k(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  btllib::typedefs::K_TYPE result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindNtHash_get_k", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_get_k" "', argument " "1"" of type '" "btllib::BlindNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
-  result = (btllib::typedefs::K_TYPE)((btllib::BlindNtHash const *)arg1)->get_k();
-  resultobj = SWIG_From_unsigned_SS_short(static_cast< unsigned short >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindNtHash_get_forward_hash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindNtHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_get_forward_hash" "', argument " "1"" of type '" "btllib::BlindNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
-  result = (uint64_t)((btllib::BlindNtHash const *)arg1)->get_forward_hash();
-  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindNtHash_get_reverse_hash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindNtHash_get_reverse_hash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_get_reverse_hash" "', argument " "1"" of type '" "btllib::BlindNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
-  result = (uint64_t)((btllib::BlindNtHash const *)arg1)->get_reverse_hash();
-  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN int _wrap_new_BlindNtHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string arg1 ;
-  unsigned int arg2 ;
-  unsigned int arg3 ;
-  size_t arg4 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  size_t val4 ;
-  int ecode4 = 0 ;
-  btllib::BlindNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_BlindNtHash" "', argument " "1"" of type '" "std::string""'"); 
-    }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BlindNtHash" "', argument " "2"" of type '" "unsigned int""'");
-  } 
-  arg2 = static_cast< unsigned int >(val2);
-  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlindNtHash" "', argument " "3"" of type '" "unsigned int""'");
-  } 
-  arg3 = static_cast< unsigned int >(val3);
-  ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_BlindNtHash" "', argument " "4"" of type '" "size_t""'");
-  } 
-  arg4 = static_cast< size_t >(val4);
-  result = (btllib::BlindNtHash *)new_btllib_BlindNtHash__SWIG_2(SWIG_STD_MOVE(arg1),arg2,arg3,SWIG_STD_MOVE(arg4));
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindNtHash, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_BlindNtHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string arg1 ;
-  unsigned int arg2 ;
-  unsigned int arg3 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  btllib::BlindNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_BlindNtHash" "', argument " "1"" of type '" "std::string""'"); 
-    }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BlindNtHash" "', argument " "2"" of type '" "unsigned int""'");
-  } 
-  arg2 = static_cast< unsigned int >(val2);
-  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlindNtHash" "', argument " "3"" of type '" "unsigned int""'");
-  } 
-  arg3 = static_cast< unsigned int >(val3);
-  result = (btllib::BlindNtHash *)new_btllib_BlindNtHash__SWIG_2(SWIG_STD_MOVE(arg1),arg2,arg3);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindNtHash, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_BlindNtHash(PyObject *self, PyObject *args, PyObject *kwargs) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  (void)self;
-  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_BlindNtHash")) SWIG_fail;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_BlindNtHash", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v = 0;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_char(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_1;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_short(argv[2], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_1;
-    return _wrap_new_BlindNtHash__SWIG_1(self, argc, argv);
-  }
-check_1:
-  
-  if (argc == 3) {
-    int retval = _wrap_new_BlindNtHash__SWIG_3(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-  if (argc == 4) {
-    int _v = 0;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_char(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_3;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_short(argv[2], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_3;
-    {
-      int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_ssize_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_3;
-    return _wrap_new_BlindNtHash__SWIG_0(self, argc, argv);
-  }
-check_3:
-  
-  if (argc == 4) {
-    int retval = _wrap_new_BlindNtHash__SWIG_2(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_BlindNtHash'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    btllib::BlindNtHash::BlindNtHash(std::string const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE,ssize_t)\n"
-    "    btllib::BlindNtHash::BlindNtHash(std::string const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE)\n"
-    "    btllib::BlindNtHash::BlindNtHash(std::string,unsigned int,unsigned int,size_t)\n"
-    "    btllib::BlindNtHash::BlindNtHash(std::string,unsigned int,unsigned int)\n");
-  return -1;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_BlindNtHash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "delete_BlindNtHash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_BlindNtHash" "', argument " "1"" of type '" "btllib::BlindNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
-  delete_btllib_BlindNtHash(arg1);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_BlindNtHash) /* defines _wrap_delete_BlindNtHash_destructor_closure */
-
-SWIGINTERN int _wrap_new_SeedNtHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  char *arg1 = (char *) 0 ;
-  size_t arg2 ;
-  std::vector< std::string,std::allocator< std::string > > *arg3 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg4 ;
-  btllib::typedefs::K_TYPE arg5 ;
-  size_t arg6 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  size_t val2 ;
-  int ecode2 = 0 ;
-  int res3 = SWIG_OLDOBJ ;
-  unsigned char val4 ;
-  int ecode4 = 0 ;
-  unsigned short val5 ;
-  int ecode5 = 0 ;
-  size_t val6 ;
-  int ecode6 = 0 ;
-  btllib::SeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
-  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "char const *""'");
-  }
-  arg1 = reinterpret_cast< char * >(buf1);
-  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "size_t""'");
-  } 
-  arg2 = static_cast< size_t >(val2);
-  {
-    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
-    res3 = swig::asptr(swig_obj[2], &ptr);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    arg3 = ptr;
-  }
-  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg4 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val4);
-  ecode5 = SWIG_AsVal_unsigned_SS_short(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg5 = static_cast< btllib::typedefs::K_TYPE >(val5);
-  ecode6 = SWIG_AsVal_size_t(swig_obj[5], &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_SeedNtHash" "', argument " "6"" of type '" "size_t""'");
-  } 
-  arg6 = static_cast< size_t >(val6);
-  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((char const *)arg1,arg2,(std::vector< std::string,std::allocator< std::string > > const &)*arg3,arg4,arg5,arg6);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  if (SWIG_IsNewObj(res3)) delete arg3;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  if (SWIG_IsNewObj(res3)) delete arg3;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_SeedNtHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  char *arg1 = (char *) 0 ;
-  size_t arg2 ;
-  std::vector< std::string,std::allocator< std::string > > *arg3 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg4 ;
-  btllib::typedefs::K_TYPE arg5 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  size_t val2 ;
-  int ecode2 = 0 ;
-  int res3 = SWIG_OLDOBJ ;
-  unsigned char val4 ;
-  int ecode4 = 0 ;
-  unsigned short val5 ;
-  int ecode5 = 0 ;
-  btllib::SeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "char const *""'");
-  }
-  arg1 = reinterpret_cast< char * >(buf1);
-  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "size_t""'");
-  } 
-  arg2 = static_cast< size_t >(val2);
-  {
-    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
-    res3 = swig::asptr(swig_obj[2], &ptr);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    arg3 = ptr;
-  }
-  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg4 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val4);
-  ecode5 = SWIG_AsVal_unsigned_SS_short(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg5 = static_cast< btllib::typedefs::K_TYPE >(val5);
-  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((char const *)arg1,arg2,(std::vector< std::string,std::allocator< std::string > > const &)*arg3,arg4,arg5);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  if (SWIG_IsNewObj(res3)) delete arg3;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  if (SWIG_IsNewObj(res3)) delete arg3;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_SeedNtHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg3 ;
-  btllib::typedefs::K_TYPE arg4 ;
-  size_t arg5 ;
-  int res1 = SWIG_OLDOBJ ;
-  int res2 = SWIG_OLDOBJ ;
-  unsigned char val3 ;
-  int ecode3 = 0 ;
-  unsigned short val4 ;
-  int ecode4 = 0 ;
-  size_t val5 ;
-  int ecode5 = 0 ;
-  btllib::SeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  {
-    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
-    res2 = swig::asptr(swig_obj[1], &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg3 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg4 = static_cast< btllib::typedefs::K_TYPE >(val4);
-  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "size_t""'");
-  } 
-  arg5 = static_cast< size_t >(val5);
-  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((std::string const &)*arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2,arg3,arg4,arg5);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_SeedNtHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg3 ;
-  btllib::typedefs::K_TYPE arg4 ;
-  int res1 = SWIG_OLDOBJ ;
-  int res2 = SWIG_OLDOBJ ;
-  unsigned char val3 ;
-  int ecode3 = 0 ;
-  unsigned short val4 ;
-  int ecode4 = 0 ;
-  btllib::SeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  {
-    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
-    res2 = swig::asptr(swig_obj[1], &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg3 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg4 = static_cast< btllib::typedefs::K_TYPE >(val4);
-  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((std::string const &)*arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_SeedNtHash__SWIG_4(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  char *arg1 = (char *) 0 ;
-  size_t arg2 ;
-  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *arg3 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg4 ;
-  btllib::typedefs::K_TYPE arg5 ;
-  size_t arg6 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  size_t val2 ;
-  int ecode2 = 0 ;
-  int res3 = SWIG_OLDOBJ ;
-  unsigned char val4 ;
-  int ecode4 = 0 ;
-  unsigned short val5 ;
-  int ecode5 = 0 ;
-  size_t val6 ;
-  int ecode6 = 0 ;
-  btllib::SeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
-  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "char const *""'");
-  }
-  arg1 = reinterpret_cast< char * >(buf1);
-  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "size_t""'");
-  } 
-  arg2 = static_cast< size_t >(val2);
-  {
-    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
-    res3 = swig::asptr(swig_obj[2], &ptr);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
-    }
-    arg3 = ptr;
-  }
-  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg4 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val4);
-  ecode5 = SWIG_AsVal_unsigned_SS_short(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg5 = static_cast< btllib::typedefs::K_TYPE >(val5);
-  ecode6 = SWIG_AsVal_size_t(swig_obj[5], &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_SeedNtHash" "', argument " "6"" of type '" "size_t""'");
-  } 
-  arg6 = static_cast< size_t >(val6);
-  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((char const *)arg1,arg2,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg3,arg4,arg5,arg6);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  if (SWIG_IsNewObj(res3)) delete arg3;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  if (SWIG_IsNewObj(res3)) delete arg3;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_SeedNtHash__SWIG_5(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  char *arg1 = (char *) 0 ;
-  size_t arg2 ;
-  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *arg3 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg4 ;
-  btllib::typedefs::K_TYPE arg5 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  size_t val2 ;
-  int ecode2 = 0 ;
-  int res3 = SWIG_OLDOBJ ;
-  unsigned char val4 ;
-  int ecode4 = 0 ;
-  unsigned short val5 ;
-  int ecode5 = 0 ;
-  btllib::SeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "char const *""'");
-  }
-  arg1 = reinterpret_cast< char * >(buf1);
-  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "size_t""'");
-  } 
-  arg2 = static_cast< size_t >(val2);
-  {
-    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
-    res3 = swig::asptr(swig_obj[2], &ptr);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
-    }
-    arg3 = ptr;
-  }
-  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg4 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val4);
-  ecode5 = SWIG_AsVal_unsigned_SS_short(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg5 = static_cast< btllib::typedefs::K_TYPE >(val5);
-  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((char const *)arg1,arg2,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg3,arg4,arg5);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  if (SWIG_IsNewObj(res3)) delete arg3;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  if (SWIG_IsNewObj(res3)) delete arg3;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_SeedNtHash__SWIG_6(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *arg2 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg3 ;
-  btllib::typedefs::K_TYPE arg4 ;
-  size_t arg5 ;
-  int res1 = SWIG_OLDOBJ ;
-  int res2 = SWIG_OLDOBJ ;
-  unsigned char val3 ;
-  int ecode3 = 0 ;
-  unsigned short val4 ;
-  int ecode4 = 0 ;
-  size_t val5 ;
-  int ecode5 = 0 ;
-  btllib::SeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  {
-    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
-    res2 = swig::asptr(swig_obj[1], &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg3 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg4 = static_cast< btllib::typedefs::K_TYPE >(val4);
-  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "size_t""'");
-  } 
-  arg5 = static_cast< size_t >(val5);
-  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((std::string const &)*arg1,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg2,arg3,arg4,arg5);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_SeedNtHash__SWIG_7(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *arg2 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg3 ;
-  btllib::typedefs::K_TYPE arg4 ;
-  int res1 = SWIG_OLDOBJ ;
-  int res2 = SWIG_OLDOBJ ;
-  unsigned char val3 ;
-  int ecode3 = 0 ;
-  unsigned short val4 ;
-  int ecode4 = 0 ;
-  btllib::SeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  {
-    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
-    res2 = swig::asptr(swig_obj[1], &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg3 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg4 = static_cast< btllib::typedefs::K_TYPE >(val4);
-  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((std::string const &)*arg1,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return -1;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_roll(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_roll", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_roll" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (bool)(arg1)->roll();
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_roll_back(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_roll_back", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_roll_back" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (bool)(arg1)->roll_back();
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_peek__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  (void)self;
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_peek" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (bool)(arg1)->peek();
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_peek_back__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  (void)self;
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_peek_back" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (bool)(arg1)->peek_back();
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_peek__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  char arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  char val2 ;
-  int ecode2 = 0 ;
-  bool result;
-  
-  (void)self;
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_peek" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SeedNtHash_peek" "', argument " "2"" of type '" "char""'");
-  } 
-  arg2 = static_cast< char >(val2);
-  result = (bool)(arg1)->peek(arg2);
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_peek(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  (void)self;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "SeedNtHash_peek", 0, 2, argv+1))) SWIG_fail;
-  argv[0] = self;
-  if (argc == 1) {
-    PyObject *retobj = _wrap_SeedNtHash_peek__SWIG_0(self, argc, argv);
-    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
-    SWIG_fail;
-  }
-  if (argc == 2) {
-    PyObject *retobj = _wrap_SeedNtHash_peek__SWIG_1(self, argc, argv);
-    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
-    SWIG_fail;
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'SeedNtHash_peek'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    btllib::SeedNtHash::peek()\n"
-    "    btllib::SeedNtHash::peek(char)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_peek_back__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  char arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  char val2 ;
-  int ecode2 = 0 ;
-  bool result;
-  
-  (void)self;
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_peek_back" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SeedNtHash_peek_back" "', argument " "2"" of type '" "char""'");
-  } 
-  arg2 = static_cast< char >(val2);
-  result = (bool)(arg1)->peek_back(arg2);
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_peek_back(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  (void)self;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "SeedNtHash_peek_back", 0, 2, argv+1))) SWIG_fail;
-  argv[0] = self;
-  if (argc == 1) {
-    PyObject *retobj = _wrap_SeedNtHash_peek_back__SWIG_0(self, argc, argv);
-    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
-    SWIG_fail;
-  }
-  if (argc == 2) {
-    PyObject *retobj = _wrap_SeedNtHash_peek_back__SWIG_1(self, argc, argv);
-    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
-    SWIG_fail;
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'SeedNtHash_peek_back'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    btllib::SeedNtHash::peek_back()\n"
-    "    btllib::SeedNtHash::peek_back(char)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_hashes(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t *result = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_hashes", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_hashes" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (uint64_t *)((btllib::SeedNtHash const *)arg1)->hashes();
-  
-  resultobj = PyTuple_New(arg1->get_hash_num());
-  for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
-    PyTuple_SetItem(resultobj, i, PyLong_FromUnsignedLong(result[i]));
-  }
-  
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_get_pos(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  size_t result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_pos", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_pos" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = ((btllib::SeedNtHash const *)arg1)->get_pos();
-  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_get_hash_num(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_hash_num", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_hash_num" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (unsigned int)((btllib::SeedNtHash const *)arg1)->get_hash_num();
-  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_get_hash_num_per_seed(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_hash_num_per_seed", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_hash_num_per_seed" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (btllib::typedefs::NUM_HASHES_TYPE)((btllib::SeedNtHash const *)arg1)->get_hash_num_per_seed();
-  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_get_k(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  btllib::typedefs::K_TYPE result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_k", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_k" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (btllib::typedefs::K_TYPE)((btllib::SeedNtHash const *)arg1)->get_k();
-  resultobj = SWIG_From_unsigned_SS_short(static_cast< unsigned short >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_get_forward_hash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t *result = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_forward_hash" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (uint64_t *)((btllib::SeedNtHash const *)arg1)->get_forward_hash();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SeedNtHash_get_reverse_hash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t *result = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_reverse_hash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_reverse_hash" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  result = (uint64_t *)((btllib::SeedNtHash const *)arg1)->get_reverse_hash();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN int _wrap_new_SeedNtHash__SWIG_8(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string arg1 ;
-  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
-  unsigned int arg3 ;
-  unsigned int arg4 ;
-  size_t arg5 ;
-  int res2 = SWIG_OLDOBJ ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  unsigned int val4 ;
-  int ecode4 = 0 ;
-  size_t val5 ;
-  int ecode5 = 0 ;
-  btllib::SeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string""'"); 
-    }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  {
-    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
-    res2 = swig::asptr(swig_obj[1], &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "unsigned int""'");
-  } 
-  arg3 = static_cast< unsigned int >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "unsigned int""'");
-  } 
-  arg4 = static_cast< unsigned int >(val4);
-  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "size_t""'");
-  } 
-  arg5 = static_cast< size_t >(val5);
-  result = (btllib::SeedNtHash *)new_btllib_SeedNtHash__SWIG_8(SWIG_STD_MOVE(arg1),(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg2,arg3,arg4,SWIG_STD_MOVE(arg5));
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_SeedNtHash__SWIG_9(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string arg1 ;
-  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
-  unsigned int arg3 ;
-  unsigned int arg4 ;
-  int res2 = SWIG_OLDOBJ ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  unsigned int val4 ;
-  int ecode4 = 0 ;
-  btllib::SeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string""'"); 
-    }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  {
-    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
-    res2 = swig::asptr(swig_obj[1], &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "unsigned int""'");
-  } 
-  arg3 = static_cast< unsigned int >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "unsigned int""'");
-  } 
-  arg4 = static_cast< unsigned int >(val4);
-  result = (btllib::SeedNtHash *)new_btllib_SeedNtHash__SWIG_8(SWIG_STD_MOVE(arg1),(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_SeedNtHash(PyObject *self, PyObject *args, PyObject *kwargs) {
-  Py_ssize_t argc;
-  PyObject *argv[7] = {
-    0
-  };
-  
-  (void)self;
-  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_SeedNtHash")) SWIG_fail;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_SeedNtHash", 0, 6, argv))) SWIG_fail;
-  --argc;
-  if (argc == 4) {
-    int _v = 0;
-    {
-      int res = swig::asptr(argv[1], (std::vector< std::string,std::allocator< std::string > >**)(0));
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_1;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_char(argv[2], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_1;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_short(argv[3], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_1;
-    return _wrap_new_SeedNtHash__SWIG_3(self, argc, argv);
-  }
-check_1:
-  
-  if (argc == 4) {
-    int _v = 0;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_char(argv[2], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_2;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_short(argv[3], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_2;
-    return _wrap_new_SeedNtHash__SWIG_7(self, argc, argv);
-  }
-check_2:
-  
-  if (argc == 4) {
-    int retval = _wrap_new_SeedNtHash__SWIG_9(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-  if (argc == 5) {
-    int _v = 0;
-    {
-      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_4;
-    {
-      int res = swig::asptr(argv[1], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_4;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_char(argv[2], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_4;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_short(argv[3], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_4;
-    {
-      {
-        int res = SWIG_AsVal_size_t(argv[4], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_4;
-    return _wrap_new_SeedNtHash__SWIG_6(self, argc, argv);
-  }
-check_4:
-  
-  if (argc == 5) {
-    int _v = 0;
-    {
-      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_5;
-    {
-      int res = swig::asptr(argv[1], (std::vector< std::string,std::allocator< std::string > >**)(0));
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_5;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_char(argv[2], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_5;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_short(argv[3], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_5;
-    {
-      {
-        int res = SWIG_AsVal_size_t(argv[4], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_5;
-    return _wrap_new_SeedNtHash__SWIG_2(self, argc, argv);
-  }
-check_5:
-  
-  if (argc == 5) {
-    int _v = 0;
-    {
-      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_6;
-    {
-      int res = swig::asptr(argv[1], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_6;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_int(argv[2], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_6;
-    {
-      {
-        int res = SWIG_AsVal_unsigned_SS_int(argv[3], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_6;
-    {
-      {
-        int res = SWIG_AsVal_size_t(argv[4], NULL);
-        _v = SWIG_CheckState(res);
-      }
-    }
-    if (!_v) goto check_6;
-    return _wrap_new_SeedNtHash__SWIG_8(self, argc, argv);
-  }
-check_6:
-  
-  if (argc == 5) {
-    int _v = 0;
-    {
-      int res = swig::asptr(argv[2], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_7;
-    int retval = _wrap_new_SeedNtHash__SWIG_5(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-check_7:
-  
-  if (argc == 5) {
-    int retval = _wrap_new_SeedNtHash__SWIG_1(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-  if (argc == 6) {
-    int _v = 0;
-    {
-      int res = swig::asptr(argv[2], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_9;
-    int retval = _wrap_new_SeedNtHash__SWIG_4(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-check_9:
-  
-  if (argc == 6) {
-    int retval = _wrap_new_SeedNtHash__SWIG_0(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_SeedNtHash'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    btllib::SeedNtHash::SeedNtHash(char const *,size_t,std::vector< std::string,std::allocator< std::string > > const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE,size_t)\n"
-    "    btllib::SeedNtHash::SeedNtHash(char const *,size_t,std::vector< std::string,std::allocator< std::string > > const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE)\n"
-    "    btllib::SeedNtHash::SeedNtHash(std::string const &,std::vector< std::string,std::allocator< std::string > > const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE,size_t)\n"
-    "    btllib::SeedNtHash::SeedNtHash(std::string const &,std::vector< std::string,std::allocator< std::string > > const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE)\n"
-    "    btllib::SeedNtHash::SeedNtHash(char const *,size_t,std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE,size_t)\n"
-    "    btllib::SeedNtHash::SeedNtHash(char const *,size_t,std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE)\n"
-    "    btllib::SeedNtHash::SeedNtHash(std::string const &,std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE,size_t)\n"
-    "    btllib::SeedNtHash::SeedNtHash(std::string const &,std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE)\n"
-    "    btllib::SeedNtHash::SeedNtHash(std::string,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int,unsigned int,size_t)\n"
-    "    btllib::SeedNtHash::SeedNtHash(std::string,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int,unsigned int)\n");
-  return -1;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_SeedNtHash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "delete_SeedNtHash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeedNtHash" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
-  delete_btllib_SeedNtHash(arg1);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeedNtHash) /* defines _wrap_delete_SeedNtHash_destructor_closure */
-
-SWIGINTERN int _wrap_new_BlindSeedNtHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  char *arg1 = (char *) 0 ;
-  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg3 ;
-  btllib::typedefs::K_TYPE arg4 ;
-  ssize_t arg5 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  unsigned char val3 ;
-  int ecode3 = 0 ;
-  unsigned short val4 ;
-  int ecode4 = 0 ;
-  void *argp5 ;
-  int res5 = 0 ;
-  btllib::BlindSeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindSeedNtHash" "', argument " "1"" of type '" "char const *""'");
-  }
-  arg1 = reinterpret_cast< char * >(buf1);
-  {
-    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
-    res2 = swig::asptr(swig_obj[1], &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_BlindSeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindSeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlindSeedNtHash" "', argument " "3"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg3 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_BlindSeedNtHash" "', argument " "4"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg4 = static_cast< btllib::typedefs::K_TYPE >(val4);
-  {
-    res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_ssize_t,  0  | 0);
-    if (!SWIG_IsOK(res5)) {
-      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "new_BlindSeedNtHash" "', argument " "5"" of type '" "ssize_t""'"); 
-    }  
-    if (!argp5) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindSeedNtHash" "', argument " "5"" of type '" "ssize_t""'");
-    } else {
-      ssize_t * temp = reinterpret_cast< ssize_t * >(argp5);
-      arg5 = *temp;
-      if (SWIG_IsNewObj(res5)) delete temp;
-    }
-  }
-  result = (btllib::BlindSeedNtHash *)new btllib::BlindSeedNtHash((char const *)arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2,arg3,arg4,arg5);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_BlindSeedNtHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  char *arg1 = (char *) 0 ;
-  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE arg3 ;
-  btllib::typedefs::K_TYPE arg4 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  unsigned char val3 ;
-  int ecode3 = 0 ;
-  unsigned short val4 ;
-  int ecode4 = 0 ;
-  btllib::BlindSeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindSeedNtHash" "', argument " "1"" of type '" "char const *""'");
-  }
-  arg1 = reinterpret_cast< char * >(buf1);
-  {
-    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
-    res2 = swig::asptr(swig_obj[1], &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_BlindSeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindSeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlindSeedNtHash" "', argument " "3"" of type '" "btllib::typedefs::NUM_HASHES_TYPE""'");
-  } 
-  arg3 = static_cast< btllib::typedefs::NUM_HASHES_TYPE >(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_BlindSeedNtHash" "', argument " "4"" of type '" "btllib::typedefs::K_TYPE""'");
-  } 
-  arg4 = static_cast< btllib::typedefs::K_TYPE >(val4);
-  result = (btllib::BlindSeedNtHash *)new btllib::BlindSeedNtHash((char const *)arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_BlindSeedNtHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  btllib::BlindSeedNtHash *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  btllib::BlindSeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_btllib__BlindSeedNtHash,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindSeedNtHash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindSeedNtHash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const &""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
-  result = (btllib::BlindSeedNtHash *)new btllib::BlindSeedNtHash((btllib::BlindSeedNtHash const &)*arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_BlindSeedNtHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  btllib::BlindSeedNtHash *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  std::unique_ptr< btllib::BlindSeedNtHash > rvrdeleter1 ;
-  btllib::BlindSeedNtHash *result = 0 ;
-  
-  (void)self;
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_POINTER_RELEASE |  0 );
-  if (!SWIG_IsOK(res1)) {
-    if (res1 == SWIG_ERROR_RELEASE_NOT_OWNED) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindSeedNtHash" "', cannot release ownership as memory is not owned for argument " "1"" of type '" "btllib::BlindSeedNtHash &&""'");
-    } else {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindSeedNtHash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash &&""'"); 
-    }
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindSeedNtHash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash &&""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
-  rvrdeleter1.reset(arg1);
-  result = (btllib::BlindSeedNtHash *)new btllib::BlindSeedNtHash((btllib::BlindSeedNtHash &&)*arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? -1 : 0;
-fail:
-  return -1;
-}
-
-
-SWIGINTERN int _wrap_new_BlindSeedNtHash(PyObject *self, PyObject *args, PyObject *kwargs) {
-  Py_ssize_t argc;
-  PyObject *argv[6] = {
-    0
-  };
-  
-  (void)self;
-  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_BlindSeedNtHash")) SWIG_fail;
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_BlindSeedNtHash", 0, 5, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v = 0;
-    {
-      int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-    }
-    if (!_v) goto check_1;
-    return _wrap_new_BlindSeedNtHash__SWIG_2(self, argc, argv);
-  }
-check_1:
-  
-  if (argc == 1) {
-    int retval = _wrap_new_BlindSeedNtHash__SWIG_3(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-  if (argc == 4) {
-    int retval = _wrap_new_BlindSeedNtHash__SWIG_1(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-  if (argc == 5) {
-    int retval = _wrap_new_BlindSeedNtHash__SWIG_0(self, argc, argv);
-    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
-    SWIG_fail;
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_BlindSeedNtHash'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    btllib::BlindSeedNtHash::BlindSeedNtHash(char const *,std::vector< std::string,std::allocator< std::string > > const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE,ssize_t)\n"
-    "    btllib::BlindSeedNtHash::BlindSeedNtHash(char const *,std::vector< std::string,std::allocator< std::string > > const &,btllib::typedefs::NUM_HASHES_TYPE,btllib::typedefs::K_TYPE)\n"
-    "    btllib::BlindSeedNtHash::BlindSeedNtHash(btllib::BlindSeedNtHash const &)\n"
-    "    btllib::BlindSeedNtHash::BlindSeedNtHash(btllib::BlindSeedNtHash &&)\n");
-  return -1;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindSeedNtHash_roll(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
-  char arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  char val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  (void)self;
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_roll" "', argument " "1"" of type '" "btllib::BlindSeedNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
-  ecode2 = SWIG_AsVal_char(swig_obj[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlindSeedNtHash_roll" "', argument " "2"" of type '" "char""'");
-  } 
-  arg2 = static_cast< char >(val2);
-  (arg1)->roll(arg2);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindSeedNtHash_roll_back(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
-  char arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  char val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  (void)self;
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_roll_back" "', argument " "1"" of type '" "btllib::BlindSeedNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
-  ecode2 = SWIG_AsVal_char(swig_obj[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlindSeedNtHash_roll_back" "', argument " "2"" of type '" "char""'");
-  } 
-  arg2 = static_cast< char >(val2);
-  (arg1)->roll_back(arg2);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindSeedNtHash_hashes(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t *result = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_hashes", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_hashes" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
-  result = (uint64_t *)((btllib::BlindSeedNtHash const *)arg1)->hashes();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindSeedNtHash_get_pos(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  ssize_t result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_get_pos", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_get_pos" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
-  result = ((btllib::BlindSeedNtHash const *)arg1)->get_pos();
-  resultobj = SWIG_NewPointerObj((new ssize_t(result)), SWIGTYPE_p_ssize_t, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindSeedNtHash_get_hash_num(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_get_hash_num", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_get_hash_num" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
-  result = (unsigned int)((btllib::BlindSeedNtHash const *)arg1)->get_hash_num();
-  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindSeedNtHash_get_hash_num_per_seed(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  btllib::typedefs::NUM_HASHES_TYPE result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_get_hash_num_per_seed", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_get_hash_num_per_seed" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
-  result = (btllib::typedefs::NUM_HASHES_TYPE)((btllib::BlindSeedNtHash const *)arg1)->get_hash_num_per_seed();
-  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindSeedNtHash_get_k(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  btllib::typedefs::K_TYPE result;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_get_k", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_get_k" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
-  result = (btllib::typedefs::K_TYPE)((btllib::BlindSeedNtHash const *)arg1)->get_k();
-  resultobj = SWIG_From_unsigned_SS_short(static_cast< unsigned short >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindSeedNtHash_get_forward_hash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t *result = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_get_forward_hash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
-  result = (uint64_t *)((btllib::BlindSeedNtHash const *)arg1)->get_forward_hash();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlindSeedNtHash_get_reverse_hash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t *result = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_get_reverse_hash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_get_reverse_hash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
-  result = (uint64_t *)((btllib::BlindSeedNtHash const *)arg1)->get_reverse_hash();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_BlindSeedNtHash(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "delete_BlindSeedNtHash", 0, 0, 0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_BlindSeedNtHash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash *""'"); 
-  }
-  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
-  delete arg1;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_BlindSeedNtHash) /* defines _wrap_delete_BlindSeedNtHash_destructor_closure */
-
 SWIGINTERN int _wrap_new_RandSeq__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   btllib::RandSeq::SeqType arg1 ;
@@ -40013,6 +36923,7452 @@ fail:
 
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeedAAHash) /* defines _wrap_delete_SeedAAHash_destructor_closure */
+
+SWIGINTERN PyObject *_wrap_get_blocks(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< std::string,std::allocator< std::string > > *arg1 = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > *arg2 = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > *arg3 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "get_blocks", 3, 3, swig_obj)) SWIG_fail;
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "get_blocks" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "get_blocks" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "get_blocks" "', argument " "2"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "get_blocks" "', argument " "2"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "get_blocks" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "get_blocks" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > &""'"); 
+  }
+  arg3 = reinterpret_cast< std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > * >(argp3);
+  btllib::hashing_internals::get_blocks((std::vector< std::string,std::allocator< std::string > > const &)*arg1,*arg2,*arg3);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_parsed_seeds_to_blocks(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *arg1 = 0 ;
+  unsigned int arg2 ;
+  std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > *arg3 = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > *arg4 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject *swig_obj[4] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "parsed_seeds_to_blocks", 4, 4, swig_obj)) SWIG_fail;
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "parsed_seeds_to_blocks" "', argument " "1"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "parsed_seeds_to_blocks" "', argument " "1"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "parsed_seeds_to_blocks" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "parsed_seeds_to_blocks" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "parsed_seeds_to_blocks" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > &""'"); 
+  }
+  arg3 = reinterpret_cast< std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "parsed_seeds_to_blocks" "', argument " "4"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "parsed_seeds_to_blocks" "', argument " "4"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > &""'"); 
+  }
+  arg4 = reinterpret_cast< std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > * >(argp4);
+  btllib::hashing_internals::parsed_seeds_to_blocks((std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg1,arg2,*arg3,*arg4);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_check_seeds(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< std::string,std::allocator< std::string > > *arg1 = 0 ;
+  unsigned int arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "check_seeds", 2, 2, swig_obj)) SWIG_fail;
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "check_seeds" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "check_seeds" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "check_seeds" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  btllib::hashing_internals::check_seeds((std::vector< std::string,std::allocator< std::string > > const &)*arg1,arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > *arg2 = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > *arg3 = 0 ;
+  unsigned int arg4 ;
+  unsigned int arg5 ;
+  unsigned int arg6 ;
+  uint64_t *arg7 = (uint64_t *) 0 ;
+  uint64_t *arg8 = (uint64_t *) 0 ;
+  uint64_t *arg9 = (uint64_t *) 0 ;
+  uint64_t *arg10 = (uint64_t *) 0 ;
+  unsigned int *arg11 = 0 ;
+  uint64_t *arg12 = (uint64_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  unsigned int val6 ;
+  int ecode6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  void *argp9 = 0 ;
+  int res9 = 0 ;
+  void *argp10 = 0 ;
+  int res10 = 0 ;
+  void *argp11 = 0 ;
+  int res11 = 0 ;
+  void *argp12 = 0 ;
+  int res12 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 12) || (nobjs > 12)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ntmsm64" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > * >(argp2);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ntmsm64" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ntmsm64" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ntmsm64" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  ecode6 = SWIG_AsVal_unsigned_SS_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "ntmsm64" "', argument " "6"" of type '" "unsigned int""'");
+  } 
+  arg6 = static_cast< unsigned int >(val6);
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ntmsm64" "', argument " "7"" of type '" "uint64_t *""'"); 
+  }
+  arg7 = reinterpret_cast< uint64_t * >(argp7);
+  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64" "', argument " "8"" of type '" "uint64_t *""'"); 
+  }
+  arg8 = reinterpret_cast< uint64_t * >(argp8);
+  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res9)) {
+    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "ntmsm64" "', argument " "9"" of type '" "uint64_t *""'"); 
+  }
+  arg9 = reinterpret_cast< uint64_t * >(argp9);
+  res10 = SWIG_ConvertPtr(swig_obj[9], &argp10,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res10)) {
+    SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "ntmsm64" "', argument " "10"" of type '" "uint64_t *""'"); 
+  }
+  arg10 = reinterpret_cast< uint64_t * >(argp10);
+  res11 = SWIG_ConvertPtr(swig_obj[10], &argp11, SWIGTYPE_p_unsigned_int,  0 );
+  if (!SWIG_IsOK(res11)) {
+    SWIG_exception_fail(SWIG_ArgError(res11), "in method '" "ntmsm64" "', argument " "11"" of type '" "unsigned int &""'"); 
+  }
+  if (!argp11) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "11"" of type '" "unsigned int &""'"); 
+  }
+  arg11 = reinterpret_cast< unsigned int * >(argp11);
+  res12 = SWIG_ConvertPtr(swig_obj[11], &argp12,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res12)) {
+    SWIG_exception_fail(SWIG_ArgError(res12), "in method '" "ntmsm64" "', argument " "12"" of type '" "uint64_t *""'"); 
+  }
+  arg12 = reinterpret_cast< uint64_t * >(argp12);
+  result = (bool)btllib::hashing_internals::ntmsm64((char const *)arg1,(std::vector< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > >,std::allocator< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > > > const &)*arg2,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,*arg11,arg12);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > *arg2 = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > *arg3 = 0 ;
+  unsigned int arg4 ;
+  unsigned int arg5 ;
+  unsigned int arg6 ;
+  uint64_t *arg7 = (uint64_t *) 0 ;
+  uint64_t *arg8 = (uint64_t *) 0 ;
+  uint64_t *arg9 = (uint64_t *) 0 ;
+  uint64_t *arg10 = (uint64_t *) 0 ;
+  uint64_t *arg11 = (uint64_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  unsigned int val6 ;
+  int ecode6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  void *argp9 = 0 ;
+  int res9 = 0 ;
+  void *argp10 = 0 ;
+  int res10 = 0 ;
+  void *argp11 = 0 ;
+  int res11 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 11) || (nobjs > 11)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ntmsm64" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > * >(argp2);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ntmsm64" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ntmsm64" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ntmsm64" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  ecode6 = SWIG_AsVal_unsigned_SS_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "ntmsm64" "', argument " "6"" of type '" "unsigned int""'");
+  } 
+  arg6 = static_cast< unsigned int >(val6);
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ntmsm64" "', argument " "7"" of type '" "uint64_t *""'"); 
+  }
+  arg7 = reinterpret_cast< uint64_t * >(argp7);
+  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64" "', argument " "8"" of type '" "uint64_t *""'"); 
+  }
+  arg8 = reinterpret_cast< uint64_t * >(argp8);
+  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res9)) {
+    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "ntmsm64" "', argument " "9"" of type '" "uint64_t *""'"); 
+  }
+  arg9 = reinterpret_cast< uint64_t * >(argp9);
+  res10 = SWIG_ConvertPtr(swig_obj[9], &argp10,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res10)) {
+    SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "ntmsm64" "', argument " "10"" of type '" "uint64_t *""'"); 
+  }
+  arg10 = reinterpret_cast< uint64_t * >(argp10);
+  res11 = SWIG_ConvertPtr(swig_obj[10], &argp11,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res11)) {
+    SWIG_exception_fail(SWIG_ArgError(res11), "in method '" "ntmsm64" "', argument " "11"" of type '" "uint64_t *""'"); 
+  }
+  arg11 = reinterpret_cast< uint64_t * >(argp11);
+  btllib::hashing_internals::ntmsm64((char const *)arg1,(std::vector< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > >,std::allocator< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > > > const &)*arg2,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11);
+  resultobj = SWIG_Py_Void();
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::deque< char > *arg1 = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > *arg2 = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > *arg3 = 0 ;
+  unsigned int arg4 ;
+  unsigned int arg5 ;
+  unsigned int arg6 ;
+  uint64_t *arg7 = (uint64_t *) 0 ;
+  uint64_t *arg8 = (uint64_t *) 0 ;
+  uint64_t *arg9 = (uint64_t *) 0 ;
+  uint64_t *arg10 = (uint64_t *) 0 ;
+  uint64_t *arg11 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  unsigned int val6 ;
+  int ecode6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  void *argp9 = 0 ;
+  int res9 = 0 ;
+  void *argp10 = 0 ;
+  int res10 = 0 ;
+  void *argp11 = 0 ;
+  int res11 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 11) || (nobjs > 11)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__dequeT_char_t,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ntmsm64" "', argument " "1"" of type '" "std::deque< char > const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "1"" of type '" "std::deque< char > const &""'"); 
+  }
+  arg1 = reinterpret_cast< std::deque< char > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "2"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > * >(argp2);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ntmsm64" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ntmsm64" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ntmsm64" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  ecode6 = SWIG_AsVal_unsigned_SS_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "ntmsm64" "', argument " "6"" of type '" "unsigned int""'");
+  } 
+  arg6 = static_cast< unsigned int >(val6);
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ntmsm64" "', argument " "7"" of type '" "uint64_t *""'"); 
+  }
+  arg7 = reinterpret_cast< uint64_t * >(argp7);
+  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64" "', argument " "8"" of type '" "uint64_t *""'"); 
+  }
+  arg8 = reinterpret_cast< uint64_t * >(argp8);
+  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res9)) {
+    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "ntmsm64" "', argument " "9"" of type '" "uint64_t *""'"); 
+  }
+  arg9 = reinterpret_cast< uint64_t * >(argp9);
+  res10 = SWIG_ConvertPtr(swig_obj[9], &argp10,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res10)) {
+    SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "ntmsm64" "', argument " "10"" of type '" "uint64_t *""'"); 
+  }
+  arg10 = reinterpret_cast< uint64_t * >(argp10);
+  res11 = SWIG_ConvertPtr(swig_obj[10], &argp11,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res11)) {
+    SWIG_exception_fail(SWIG_ArgError(res11), "in method '" "ntmsm64" "', argument " "11"" of type '" "uint64_t *""'"); 
+  }
+  arg11 = reinterpret_cast< uint64_t * >(argp11);
+  btllib::hashing_internals::ntmsm64((std::deque< char > const &)*arg1,(std::vector< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > >,std::allocator< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > > > const &)*arg2,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64l__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > *arg2 = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > *arg3 = 0 ;
+  unsigned int arg4 ;
+  unsigned int arg5 ;
+  unsigned int arg6 ;
+  uint64_t *arg7 = (uint64_t *) 0 ;
+  uint64_t *arg8 = (uint64_t *) 0 ;
+  uint64_t *arg9 = (uint64_t *) 0 ;
+  uint64_t *arg10 = (uint64_t *) 0 ;
+  uint64_t *arg11 = (uint64_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  unsigned int val6 ;
+  int ecode6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  void *argp9 = 0 ;
+  int res9 = 0 ;
+  void *argp10 = 0 ;
+  int res10 = 0 ;
+  void *argp11 = 0 ;
+  int res11 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 11) || (nobjs > 11)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ntmsm64l" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ntmsm64l" "', argument " "2"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64l" "', argument " "2"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > * >(argp2);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ntmsm64l" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64l" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ntmsm64l" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ntmsm64l" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  ecode6 = SWIG_AsVal_unsigned_SS_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "ntmsm64l" "', argument " "6"" of type '" "unsigned int""'");
+  } 
+  arg6 = static_cast< unsigned int >(val6);
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ntmsm64l" "', argument " "7"" of type '" "uint64_t *""'"); 
+  }
+  arg7 = reinterpret_cast< uint64_t * >(argp7);
+  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64l" "', argument " "8"" of type '" "uint64_t *""'"); 
+  }
+  arg8 = reinterpret_cast< uint64_t * >(argp8);
+  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res9)) {
+    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "ntmsm64l" "', argument " "9"" of type '" "uint64_t *""'"); 
+  }
+  arg9 = reinterpret_cast< uint64_t * >(argp9);
+  res10 = SWIG_ConvertPtr(swig_obj[9], &argp10,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res10)) {
+    SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "ntmsm64l" "', argument " "10"" of type '" "uint64_t *""'"); 
+  }
+  arg10 = reinterpret_cast< uint64_t * >(argp10);
+  res11 = SWIG_ConvertPtr(swig_obj[10], &argp11,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res11)) {
+    SWIG_exception_fail(SWIG_ArgError(res11), "in method '" "ntmsm64l" "', argument " "11"" of type '" "uint64_t *""'"); 
+  }
+  arg11 = reinterpret_cast< uint64_t * >(argp11);
+  btllib::hashing_internals::ntmsm64l((char const *)arg1,(std::vector< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > >,std::allocator< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > > > const &)*arg2,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11);
+  resultobj = SWIG_Py_Void();
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64l__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::deque< char > *arg1 = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > *arg2 = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > *arg3 = 0 ;
+  unsigned int arg4 ;
+  unsigned int arg5 ;
+  unsigned int arg6 ;
+  uint64_t *arg7 = (uint64_t *) 0 ;
+  uint64_t *arg8 = (uint64_t *) 0 ;
+  uint64_t *arg9 = (uint64_t *) 0 ;
+  uint64_t *arg10 = (uint64_t *) 0 ;
+  uint64_t *arg11 = (uint64_t *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  unsigned int val6 ;
+  int ecode6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  void *argp9 = 0 ;
+  int res9 = 0 ;
+  void *argp10 = 0 ;
+  int res10 = 0 ;
+  void *argp11 = 0 ;
+  int res11 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 11) || (nobjs > 11)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__dequeT_char_t,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ntmsm64l" "', argument " "1"" of type '" "std::deque< char > const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64l" "', argument " "1"" of type '" "std::deque< char > const &""'"); 
+  }
+  arg1 = reinterpret_cast< std::deque< char > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ntmsm64l" "', argument " "2"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64l" "', argument " "2"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > * >(argp2);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ntmsm64l" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64l" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ntmsm64l" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ntmsm64l" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  ecode6 = SWIG_AsVal_unsigned_SS_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "ntmsm64l" "', argument " "6"" of type '" "unsigned int""'");
+  } 
+  arg6 = static_cast< unsigned int >(val6);
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ntmsm64l" "', argument " "7"" of type '" "uint64_t *""'"); 
+  }
+  arg7 = reinterpret_cast< uint64_t * >(argp7);
+  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64l" "', argument " "8"" of type '" "uint64_t *""'"); 
+  }
+  arg8 = reinterpret_cast< uint64_t * >(argp8);
+  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res9)) {
+    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "ntmsm64l" "', argument " "9"" of type '" "uint64_t *""'"); 
+  }
+  arg9 = reinterpret_cast< uint64_t * >(argp9);
+  res10 = SWIG_ConvertPtr(swig_obj[9], &argp10,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res10)) {
+    SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "ntmsm64l" "', argument " "10"" of type '" "uint64_t *""'"); 
+  }
+  arg10 = reinterpret_cast< uint64_t * >(argp10);
+  res11 = SWIG_ConvertPtr(swig_obj[10], &argp11,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res11)) {
+    SWIG_exception_fail(SWIG_ArgError(res11), "in method '" "ntmsm64l" "', argument " "11"" of type '" "uint64_t *""'"); 
+  }
+  arg11 = reinterpret_cast< uint64_t * >(argp11);
+  btllib::hashing_internals::ntmsm64l((std::deque< char > const &)*arg1,(std::vector< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > >,std::allocator< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > > > const &)*arg2,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  char arg2 ;
+  std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > *arg3 = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > *arg4 = 0 ;
+  unsigned int arg5 ;
+  unsigned int arg6 ;
+  unsigned int arg7 ;
+  uint64_t *arg8 = (uint64_t *) 0 ;
+  uint64_t *arg9 = (uint64_t *) 0 ;
+  uint64_t *arg10 = (uint64_t *) 0 ;
+  uint64_t *arg11 = (uint64_t *) 0 ;
+  uint64_t *arg12 = (uint64_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  int res4 = SWIG_OLDOBJ ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  unsigned int val6 ;
+  int ecode6 = 0 ;
+  unsigned int val7 ;
+  int ecode7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  void *argp9 = 0 ;
+  int res9 = 0 ;
+  void *argp10 = 0 ;
+  int res10 = 0 ;
+  void *argp11 = 0 ;
+  int res11 = 0 ;
+  void *argp12 = 0 ;
+  int res12 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 12) || (nobjs > 12)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ntmsm64" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ntmsm64" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ntmsm64" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  arg3 = reinterpret_cast< std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > * >(argp3);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res4 = swig::asptr(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ntmsm64" "', argument " "4"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64" "', argument " "4"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ntmsm64" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  ecode6 = SWIG_AsVal_unsigned_SS_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "ntmsm64" "', argument " "6"" of type '" "unsigned int""'");
+  } 
+  arg6 = static_cast< unsigned int >(val6);
+  ecode7 = SWIG_AsVal_unsigned_SS_int(swig_obj[6], &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "ntmsm64" "', argument " "7"" of type '" "unsigned int""'");
+  } 
+  arg7 = static_cast< unsigned int >(val7);
+  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64" "', argument " "8"" of type '" "uint64_t *""'"); 
+  }
+  arg8 = reinterpret_cast< uint64_t * >(argp8);
+  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res9)) {
+    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "ntmsm64" "', argument " "9"" of type '" "uint64_t *""'"); 
+  }
+  arg9 = reinterpret_cast< uint64_t * >(argp9);
+  res10 = SWIG_ConvertPtr(swig_obj[9], &argp10,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res10)) {
+    SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "ntmsm64" "', argument " "10"" of type '" "uint64_t *""'"); 
+  }
+  arg10 = reinterpret_cast< uint64_t * >(argp10);
+  res11 = SWIG_ConvertPtr(swig_obj[10], &argp11,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res11)) {
+    SWIG_exception_fail(SWIG_ArgError(res11), "in method '" "ntmsm64" "', argument " "11"" of type '" "uint64_t *""'"); 
+  }
+  arg11 = reinterpret_cast< uint64_t * >(argp11);
+  res12 = SWIG_ConvertPtr(swig_obj[11], &argp12,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res12)) {
+    SWIG_exception_fail(SWIG_ArgError(res12), "in method '" "ntmsm64" "', argument " "12"" of type '" "uint64_t *""'"); 
+  }
+  arg12 = reinterpret_cast< uint64_t * >(argp12);
+  btllib::hashing_internals::ntmsm64((char const *)arg1,arg2,(std::vector< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > >,std::allocator< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > > > const &)*arg3,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12);
+  resultobj = SWIG_Py_Void();
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[13] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ntmsm64", 0, 12, argv))) SWIG_fail;
+  --argc;
+  if (argc == 11) {
+    int _v = 0;
+    {
+      int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__dequeT_char_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    PyObject *retobj = _wrap_ntmsm64__SWIG_2(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+check_1:
+  
+  if (argc == 11) {
+    PyObject *retobj = _wrap_ntmsm64__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 12) {
+    int _v = 0;
+    {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_3;
+    {
+      int res = swig::asptr(argv[2], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_3;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_int(argv[3], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_3;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_unsigned_long_long, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_3;
+    {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[10], &vptr, SWIGTYPE_p_unsigned_int, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_3;
+    PyObject *retobj = _wrap_ntmsm64__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+check_3:
+  
+  if (argc == 12) {
+    PyObject *retobj = _wrap_ntmsm64__SWIG_3(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntmsm64'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::hashing_internals::ntmsm64(char const *,std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &,std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &,unsigned int,unsigned int,unsigned int,uint64_t *,uint64_t *,uint64_t *,uint64_t *,unsigned int &,uint64_t *)\n"
+    "    btllib::hashing_internals::ntmsm64(char const *,std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &,std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &,unsigned int,unsigned int,unsigned int,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n"
+    "    btllib::hashing_internals::ntmsm64(std::deque< char > const &,std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &,std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &,unsigned int,unsigned int,unsigned int,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n"
+    "    btllib::hashing_internals::ntmsm64(char const *,char,std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &,std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &,unsigned int,unsigned int,unsigned int,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64l__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  char arg2 ;
+  std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > *arg3 = 0 ;
+  std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > *arg4 = 0 ;
+  unsigned int arg5 ;
+  unsigned int arg6 ;
+  unsigned int arg7 ;
+  uint64_t *arg8 = (uint64_t *) 0 ;
+  uint64_t *arg9 = (uint64_t *) 0 ;
+  uint64_t *arg10 = (uint64_t *) 0 ;
+  uint64_t *arg11 = (uint64_t *) 0 ;
+  uint64_t *arg12 = (uint64_t *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  int res4 = SWIG_OLDOBJ ;
+  unsigned int val5 ;
+  int ecode5 = 0 ;
+  unsigned int val6 ;
+  int ecode6 = 0 ;
+  unsigned int val7 ;
+  int ecode7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  void *argp9 = 0 ;
+  int res9 = 0 ;
+  void *argp10 = 0 ;
+  int res10 = 0 ;
+  void *argp11 = 0 ;
+  int res11 = 0 ;
+  void *argp12 = 0 ;
+  int res12 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 12) || (nobjs > 12)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ntmsm64l" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ntmsm64l" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ntmsm64l" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64l" "', argument " "3"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &""'"); 
+  }
+  arg3 = reinterpret_cast< std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > * >(argp3);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res4 = swig::asptr(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ntmsm64l" "', argument " "4"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ntmsm64l" "', argument " "4"" of type '" "std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  ecode5 = SWIG_AsVal_unsigned_SS_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ntmsm64l" "', argument " "5"" of type '" "unsigned int""'");
+  } 
+  arg5 = static_cast< unsigned int >(val5);
+  ecode6 = SWIG_AsVal_unsigned_SS_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "ntmsm64l" "', argument " "6"" of type '" "unsigned int""'");
+  } 
+  arg6 = static_cast< unsigned int >(val6);
+  ecode7 = SWIG_AsVal_unsigned_SS_int(swig_obj[6], &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "ntmsm64l" "', argument " "7"" of type '" "unsigned int""'");
+  } 
+  arg7 = static_cast< unsigned int >(val7);
+  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ntmsm64l" "', argument " "8"" of type '" "uint64_t *""'"); 
+  }
+  arg8 = reinterpret_cast< uint64_t * >(argp8);
+  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res9)) {
+    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "ntmsm64l" "', argument " "9"" of type '" "uint64_t *""'"); 
+  }
+  arg9 = reinterpret_cast< uint64_t * >(argp9);
+  res10 = SWIG_ConvertPtr(swig_obj[9], &argp10,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res10)) {
+    SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "ntmsm64l" "', argument " "10"" of type '" "uint64_t *""'"); 
+  }
+  arg10 = reinterpret_cast< uint64_t * >(argp10);
+  res11 = SWIG_ConvertPtr(swig_obj[10], &argp11,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res11)) {
+    SWIG_exception_fail(SWIG_ArgError(res11), "in method '" "ntmsm64l" "', argument " "11"" of type '" "uint64_t *""'"); 
+  }
+  arg11 = reinterpret_cast< uint64_t * >(argp11);
+  res12 = SWIG_ConvertPtr(swig_obj[11], &argp12,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res12)) {
+    SWIG_exception_fail(SWIG_ArgError(res12), "in method '" "ntmsm64l" "', argument " "12"" of type '" "uint64_t *""'"); 
+  }
+  arg12 = reinterpret_cast< uint64_t * >(argp12);
+  btllib::hashing_internals::ntmsm64l((char const *)arg1,arg2,(std::vector< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > >,std::allocator< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > > > const &)*arg3,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12);
+  resultobj = SWIG_Py_Void();
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ntmsm64l(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[13] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ntmsm64l", 0, 12, argv))) SWIG_fail;
+  --argc;
+  if (argc == 11) {
+    int _v = 0;
+    {
+      int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__dequeT_char_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    PyObject *retobj = _wrap_ntmsm64l__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+check_1:
+  
+  if (argc == 11) {
+    PyObject *retobj = _wrap_ntmsm64l__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 12) {
+    PyObject *retobj = _wrap_ntmsm64l__SWIG_2(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ntmsm64l'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::hashing_internals::ntmsm64l(char const *,std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &,std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &,unsigned int,unsigned int,unsigned int,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n"
+    "    btllib::hashing_internals::ntmsm64l(std::deque< char > const &,std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &,std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &,unsigned int,unsigned int,unsigned int,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n"
+    "    btllib::hashing_internals::ntmsm64l(char const *,char,std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > const &,std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > const &,unsigned int,unsigned int,unsigned int,uint64_t *,uint64_t *,uint64_t *,uint64_t *,uint64_t *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_parse_seeds(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< std::string,std::allocator< std::string > > *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[1] ;
+  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "parse_seeds" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "parse_seeds" "', argument " "1"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = btllib::parse_seeds((std::vector< std::string,std::allocator< std::string > > const &)*arg1);
+  resultobj = swig::from(static_cast< std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > >(result));
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_SeedNtHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  std::vector< std::string,std::allocator< std::string > > *arg3 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg4 ;
+  btllib::hashing_internals::K_TYPE arg5 ;
+  size_t arg6 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  unsigned char val4 ;
+  int ecode4 = 0 ;
+  unsigned short val5 ;
+  int ecode5 = 0 ;
+  size_t val6 ;
+  int ecode6 = 0 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg4 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_short(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg5 = static_cast< btllib::hashing_internals::K_TYPE >(val5);
+  ecode6 = SWIG_AsVal_size_t(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_SeedNtHash" "', argument " "6"" of type '" "size_t""'");
+  } 
+  arg6 = static_cast< size_t >(val6);
+  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((char const *)arg1,arg2,(std::vector< std::string,std::allocator< std::string > > const &)*arg3,arg4,arg5,arg6);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedNtHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  std::vector< std::string,std::allocator< std::string > > *arg3 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg4 ;
+  btllib::hashing_internals::K_TYPE arg5 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  unsigned char val4 ;
+  int ecode4 = 0 ;
+  unsigned short val5 ;
+  int ecode5 = 0 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg4 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_short(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg5 = static_cast< btllib::hashing_internals::K_TYPE >(val5);
+  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((char const *)arg1,arg2,(std::vector< std::string,std::allocator< std::string > > const &)*arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedNtHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg3 ;
+  btllib::hashing_internals::K_TYPE arg4 ;
+  size_t arg5 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned short val4 ;
+  int ecode4 = 0 ;
+  size_t val5 ;
+  int ecode5 = 0 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg3 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg4 = static_cast< btllib::hashing_internals::K_TYPE >(val4);
+  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "size_t""'");
+  } 
+  arg5 = static_cast< size_t >(val5);
+  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((std::string const &)*arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2,arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedNtHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg3 ;
+  btllib::hashing_internals::K_TYPE arg4 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned short val4 ;
+  int ecode4 = 0 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg3 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg4 = static_cast< btllib::hashing_internals::K_TYPE >(val4);
+  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((std::string const &)*arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedNtHash__SWIG_4(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *arg3 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg4 ;
+  btllib::hashing_internals::K_TYPE arg5 ;
+  size_t arg6 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  unsigned char val4 ;
+  int ecode4 = 0 ;
+  unsigned short val5 ;
+  int ecode5 = 0 ;
+  size_t val6 ;
+  int ecode6 = 0 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg4 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_short(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg5 = static_cast< btllib::hashing_internals::K_TYPE >(val5);
+  ecode6 = SWIG_AsVal_size_t(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_SeedNtHash" "', argument " "6"" of type '" "size_t""'");
+  } 
+  arg6 = static_cast< size_t >(val6);
+  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((char const *)arg1,arg2,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg3,arg4,arg5,arg6);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedNtHash__SWIG_5(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *arg3 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg4 ;
+  btllib::hashing_internals::K_TYPE arg5 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  unsigned char val4 ;
+  int ecode4 = 0 ;
+  unsigned short val5 ;
+  int ecode5 = 0 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg4 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val4);
+  ecode5 = SWIG_AsVal_unsigned_SS_short(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg5 = static_cast< btllib::hashing_internals::K_TYPE >(val5);
+  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((char const *)arg1,arg2,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedNtHash__SWIG_6(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *arg2 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg3 ;
+  btllib::hashing_internals::K_TYPE arg4 ;
+  size_t arg5 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned short val4 ;
+  int ecode4 = 0 ;
+  size_t val5 ;
+  int ecode5 = 0 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg3 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg4 = static_cast< btllib::hashing_internals::K_TYPE >(val4);
+  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "size_t""'");
+  } 
+  arg5 = static_cast< size_t >(val5);
+  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((std::string const &)*arg1,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg2,arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedNtHash__SWIG_7(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *arg2 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg3 ;
+  btllib::hashing_internals::K_TYPE arg4 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned short val4 ;
+  int ecode4 = 0 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg3 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg4 = static_cast< btllib::hashing_internals::K_TYPE >(val4);
+  result = (btllib::SeedNtHash *)new btllib::SeedNtHash((std::string const &)*arg1,(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_roll(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_roll", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_roll" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (bool)(arg1)->roll();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_roll_back(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_roll_back", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_roll_back" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (bool)(arg1)->roll_back();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_peek__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_peek" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (bool)(arg1)->peek();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_peek_back__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_peek_back" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (bool)(arg1)->peek_back();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_peek__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_peek" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SeedNtHash_peek" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  result = (bool)(arg1)->peek(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_peek(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "SeedNtHash_peek", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 1) {
+    PyObject *retobj = _wrap_SeedNtHash_peek__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    PyObject *retobj = _wrap_SeedNtHash_peek__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'SeedNtHash_peek'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::SeedNtHash::peek()\n"
+    "    btllib::SeedNtHash::peek(char)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_peek_back__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_peek_back" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SeedNtHash_peek_back" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  result = (bool)(arg1)->peek_back(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_peek_back(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "SeedNtHash_peek_back", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 1) {
+    PyObject *retobj = _wrap_SeedNtHash_peek_back__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    PyObject *retobj = _wrap_SeedNtHash_peek_back__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'SeedNtHash_peek_back'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::SeedNtHash::peek_back()\n"
+    "    btllib::SeedNtHash::peek_back(char)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_hashes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_hashes", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_hashes" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (uint64_t *)((btllib::SeedNtHash const *)arg1)->hashes();
+  
+  resultobj = PyTuple_New(arg1->get_hash_num());
+  for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
+    PyTuple_SetItem(resultobj, i, PyLong_FromUnsignedLong(result[i]));
+  }
+  
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_get_pos(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_pos", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_pos" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = ((btllib::SeedNtHash const *)arg1)->get_pos();
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_get_hash_num(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_hash_num", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_hash_num" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (unsigned int)((btllib::SeedNtHash const *)arg1)->get_hash_num();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_get_hash_num_per_seed(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_hash_num_per_seed", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_hash_num_per_seed" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (btllib::hashing_internals::NUM_HASHES_TYPE)((btllib::SeedNtHash const *)arg1)->get_hash_num_per_seed();
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_get_k(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  btllib::hashing_internals::K_TYPE result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_k", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_k" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (btllib::hashing_internals::K_TYPE)((btllib::SeedNtHash const *)arg1)->get_k();
+  resultobj = SWIG_From_unsigned_SS_short(static_cast< unsigned short >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_get_forward_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_forward_hash" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (uint64_t *)((btllib::SeedNtHash const *)arg1)->get_forward_hash();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SeedNtHash_get_reverse_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "SeedNtHash_get_reverse_hash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SeedNtHash_get_reverse_hash" "', argument " "1"" of type '" "btllib::SeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  result = (uint64_t *)((btllib::SeedNtHash const *)arg1)->get_reverse_hash();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_SeedNtHash__SWIG_8(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  size_t arg5 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  size_t val5 ;
+  int ecode5 = 0 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_SeedNtHash" "', argument " "5"" of type '" "size_t""'");
+  } 
+  arg5 = static_cast< size_t >(val5);
+  result = (btllib::SeedNtHash *)new_btllib_SeedNtHash__SWIG_8(SWIG_STD_MOVE(arg1),(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg2,arg3,arg4,SWIG_STD_MOVE(arg5));
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedNtHash__SWIG_9(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > *arg2 = 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  btllib::SeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_SeedNtHash" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *ptr = (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SeedNtHash" "', argument " "2"" of type '" "std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SeedNtHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SeedNtHash" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  result = (btllib::SeedNtHash *)new_btllib_SeedNtHash__SWIG_8(SWIG_STD_MOVE(arg1),(std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &)*arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__SeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_SeedNtHash(PyObject *self, PyObject *args, PyObject *kwargs) {
+  Py_ssize_t argc;
+  PyObject *argv[7] = {
+    0
+  };
+  
+  (void)self;
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_SeedNtHash")) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_SeedNtHash", 0, 6, argv))) SWIG_fail;
+  --argc;
+  if (argc == 4) {
+    int _v = 0;
+    {
+      int res = swig::asptr(argv[1], (std::vector< std::string,std::allocator< std::string > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_char(argv[2], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_1;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_short(argv[3], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_1;
+    return _wrap_new_SeedNtHash__SWIG_3(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 4) {
+    int _v = 0;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_char(argv[2], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_2;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_short(argv[3], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_2;
+    return _wrap_new_SeedNtHash__SWIG_7(self, argc, argv);
+  }
+check_2:
+  
+  if (argc == 4) {
+    int retval = _wrap_new_SeedNtHash__SWIG_9(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 5) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_4;
+    {
+      int res = swig::asptr(argv[1], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_4;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_char(argv[2], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_4;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_short(argv[3], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_4;
+    {
+      {
+        int res = SWIG_AsVal_size_t(argv[4], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_4;
+    return _wrap_new_SeedNtHash__SWIG_6(self, argc, argv);
+  }
+check_4:
+  
+  if (argc == 5) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_5;
+    {
+      int res = swig::asptr(argv[1], (std::vector< std::string,std::allocator< std::string > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_5;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_char(argv[2], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_5;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_short(argv[3], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_5;
+    {
+      {
+        int res = SWIG_AsVal_size_t(argv[4], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_5;
+    return _wrap_new_SeedNtHash__SWIG_2(self, argc, argv);
+  }
+check_5:
+  
+  if (argc == 5) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_6;
+    {
+      int res = swig::asptr(argv[1], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_6;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_int(argv[2], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_6;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_int(argv[3], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_6;
+    {
+      {
+        int res = SWIG_AsVal_size_t(argv[4], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_6;
+    return _wrap_new_SeedNtHash__SWIG_8(self, argc, argv);
+  }
+check_6:
+  
+  if (argc == 5) {
+    int _v = 0;
+    {
+      int res = swig::asptr(argv[2], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_7;
+    int retval = _wrap_new_SeedNtHash__SWIG_5(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_7:
+  
+  if (argc == 5) {
+    int retval = _wrap_new_SeedNtHash__SWIG_1(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 6) {
+    int _v = 0;
+    {
+      int res = swig::asptr(argv[2], (std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_9;
+    int retval = _wrap_new_SeedNtHash__SWIG_4(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+check_9:
+  
+  if (argc == 6) {
+    int retval = _wrap_new_SeedNtHash__SWIG_0(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_SeedNtHash'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::SeedNtHash::SeedNtHash(char const *,size_t,std::vector< std::string,std::allocator< std::string > > const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE,size_t)\n"
+    "    btllib::SeedNtHash::SeedNtHash(char const *,size_t,std::vector< std::string,std::allocator< std::string > > const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE)\n"
+    "    btllib::SeedNtHash::SeedNtHash(std::string const &,std::vector< std::string,std::allocator< std::string > > const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE,size_t)\n"
+    "    btllib::SeedNtHash::SeedNtHash(std::string const &,std::vector< std::string,std::allocator< std::string > > const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE)\n"
+    "    btllib::SeedNtHash::SeedNtHash(char const *,size_t,std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE,size_t)\n"
+    "    btllib::SeedNtHash::SeedNtHash(char const *,size_t,std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE)\n"
+    "    btllib::SeedNtHash::SeedNtHash(std::string const &,std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE,size_t)\n"
+    "    btllib::SeedNtHash::SeedNtHash(std::string const &,std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE)\n"
+    "    btllib::SeedNtHash::SeedNtHash(std::string,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int,unsigned int,size_t)\n"
+    "    btllib::SeedNtHash::SeedNtHash(std::string,std::vector< btllib::SpacedSeed,std::allocator< btllib::SpacedSeed > > const &,unsigned int,unsigned int)\n");
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SeedNtHash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::SeedNtHash *arg1 = (btllib::SeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "delete_SeedNtHash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__SeedNtHash, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SeedNtHash" "', argument " "1"" of type '" "btllib::SeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::SeedNtHash * >(argp1);
+  delete_btllib_SeedNtHash(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_SeedNtHash) /* defines _wrap_delete_SeedNtHash_destructor_closure */
+
+SWIGINTERN int _wrap_new_BlindSeedNtHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg3 ;
+  btllib::hashing_internals::K_TYPE arg4 ;
+  ssize_t arg5 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned short val4 ;
+  int ecode4 = 0 ;
+  void *argp5 ;
+  int res5 = 0 ;
+  btllib::BlindSeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindSeedNtHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_BlindSeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindSeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlindSeedNtHash" "', argument " "3"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg3 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_BlindSeedNtHash" "', argument " "4"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg4 = static_cast< btllib::hashing_internals::K_TYPE >(val4);
+  {
+    res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_ssize_t,  0  | 0);
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "new_BlindSeedNtHash" "', argument " "5"" of type '" "ssize_t""'"); 
+    }  
+    if (!argp5) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindSeedNtHash" "', argument " "5"" of type '" "ssize_t""'");
+    } else {
+      ssize_t * temp = reinterpret_cast< ssize_t * >(argp5);
+      arg5 = *temp;
+      if (SWIG_IsNewObj(res5)) delete temp;
+    }
+  }
+  result = (btllib::BlindSeedNtHash *)new btllib::BlindSeedNtHash((char const *)arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2,arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_BlindSeedNtHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  std::vector< std::string,std::allocator< std::string > > *arg2 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg3 ;
+  btllib::hashing_internals::K_TYPE arg4 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned short val4 ;
+  int ecode4 = 0 ;
+  btllib::BlindSeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindSeedNtHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    std::vector< std::string,std::allocator< std::string > > *ptr = (std::vector< std::string,std::allocator< std::string > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_BlindSeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindSeedNtHash" "', argument " "2"" of type '" "std::vector< std::string,std::allocator< std::string > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlindSeedNtHash" "', argument " "3"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg3 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_BlindSeedNtHash" "', argument " "4"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg4 = static_cast< btllib::hashing_internals::K_TYPE >(val4);
+  result = (btllib::BlindSeedNtHash *)new btllib::BlindSeedNtHash((char const *)arg1,(std::vector< std::string,std::allocator< std::string > > const &)*arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_BlindSeedNtHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::BlindSeedNtHash *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  btllib::BlindSeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_btllib__BlindSeedNtHash,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindSeedNtHash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindSeedNtHash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const &""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
+  result = (btllib::BlindSeedNtHash *)new btllib::BlindSeedNtHash((btllib::BlindSeedNtHash const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_BlindSeedNtHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::BlindSeedNtHash *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::unique_ptr< btllib::BlindSeedNtHash > rvrdeleter1 ;
+  btllib::BlindSeedNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_POINTER_RELEASE |  0 );
+  if (!SWIG_IsOK(res1)) {
+    if (res1 == SWIG_ERROR_RELEASE_NOT_OWNED) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindSeedNtHash" "', cannot release ownership as memory is not owned for argument " "1"" of type '" "btllib::BlindSeedNtHash &&""'");
+    } else {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindSeedNtHash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash &&""'"); 
+    }
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindSeedNtHash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash &&""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
+  rvrdeleter1.reset(arg1);
+  result = (btllib::BlindSeedNtHash *)new btllib::BlindSeedNtHash((btllib::BlindSeedNtHash &&)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_BlindSeedNtHash(PyObject *self, PyObject *args, PyObject *kwargs) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  
+  (void)self;
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_BlindSeedNtHash")) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_BlindSeedNtHash", 0, 5, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v = 0;
+    {
+      int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_new_BlindSeedNtHash__SWIG_2(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 1) {
+    int retval = _wrap_new_BlindSeedNtHash__SWIG_3(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 4) {
+    int retval = _wrap_new_BlindSeedNtHash__SWIG_1(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 5) {
+    int retval = _wrap_new_BlindSeedNtHash__SWIG_0(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_BlindSeedNtHash'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::BlindSeedNtHash::BlindSeedNtHash(char const *,std::vector< std::string,std::allocator< std::string > > const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE,ssize_t)\n"
+    "    btllib::BlindSeedNtHash::BlindSeedNtHash(char const *,std::vector< std::string,std::allocator< std::string > > const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE)\n"
+    "    btllib::BlindSeedNtHash::BlindSeedNtHash(btllib::BlindSeedNtHash const &)\n"
+    "    btllib::BlindSeedNtHash::BlindSeedNtHash(btllib::BlindSeedNtHash &&)\n");
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindSeedNtHash_roll(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_roll" "', argument " "1"" of type '" "btllib::BlindSeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlindSeedNtHash_roll" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  (arg1)->roll(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindSeedNtHash_roll_back(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_roll_back" "', argument " "1"" of type '" "btllib::BlindSeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlindSeedNtHash_roll_back" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  (arg1)->roll_back(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindSeedNtHash_hashes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_hashes", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_hashes" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
+  result = (uint64_t *)((btllib::BlindSeedNtHash const *)arg1)->hashes();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindSeedNtHash_get_pos(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ssize_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_get_pos", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_get_pos" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
+  result = ((btllib::BlindSeedNtHash const *)arg1)->get_pos();
+  resultobj = SWIG_NewPointerObj((new ssize_t(result)), SWIGTYPE_p_ssize_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindSeedNtHash_get_hash_num(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_get_hash_num", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_get_hash_num" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
+  result = (unsigned int)((btllib::BlindSeedNtHash const *)arg1)->get_hash_num();
+  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindSeedNtHash_get_hash_num_per_seed(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_get_hash_num_per_seed", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_get_hash_num_per_seed" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
+  result = (btllib::hashing_internals::NUM_HASHES_TYPE)((btllib::BlindSeedNtHash const *)arg1)->get_hash_num_per_seed();
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindSeedNtHash_get_k(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  btllib::hashing_internals::K_TYPE result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_get_k", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_get_k" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
+  result = (btllib::hashing_internals::K_TYPE)((btllib::BlindSeedNtHash const *)arg1)->get_k();
+  resultobj = SWIG_From_unsigned_SS_short(static_cast< unsigned short >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindSeedNtHash_get_forward_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_get_forward_hash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
+  result = (uint64_t *)((btllib::BlindSeedNtHash const *)arg1)->get_forward_hash();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindSeedNtHash_get_reverse_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindSeedNtHash_get_reverse_hash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindSeedNtHash_get_reverse_hash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
+  result = (uint64_t *)((btllib::BlindSeedNtHash const *)arg1)->get_reverse_hash();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_BlindSeedNtHash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindSeedNtHash *arg1 = (btllib::BlindSeedNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "delete_BlindSeedNtHash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindSeedNtHash, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_BlindSeedNtHash" "', argument " "1"" of type '" "btllib::BlindSeedNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindSeedNtHash * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_BlindSeedNtHash) /* defines _wrap_delete_BlindSeedNtHash_destructor_closure */
+
+SWIGINTERN PyObject *_wrap_srol__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  uint64_t val1 ;
+  int ecode1 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "srol" "', argument " "1"" of type '" "uint64_t""'");
+  } 
+  arg1 = static_cast< uint64_t >(val1);
+  result = (uint64_t)btllib::hashing_internals::srol(arg1);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_srol__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  unsigned int arg2 ;
+  uint64_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "srol" "', argument " "1"" of type '" "uint64_t""'");
+  } 
+  arg1 = static_cast< uint64_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "srol" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = (uint64_t)btllib::hashing_internals::srol(arg1,arg2);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_srol(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "srol", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    PyObject *retobj = _wrap_srol__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    PyObject *retobj = _wrap_srol__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'srol'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::hashing_internals::srol(uint64_t const)\n"
+    "    btllib::hashing_internals::srol(uint64_t const,unsigned int const)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_srol_table(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  unsigned char arg1 ;
+  unsigned int arg2 ;
+  unsigned char val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "srol_table", 2, 2, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_char(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "srol_table" "', argument " "1"" of type '" "unsigned char""'");
+  } 
+  arg1 = static_cast< unsigned char >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "srol_table" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = (uint64_t)btllib::hashing_internals::srol_table(arg1,arg2);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_sror(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  uint64_t val1 ;
+  int ecode1 = 0 ;
+  PyObject *swig_obj[1] ;
+  uint64_t result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "sror" "', argument " "1"" of type '" "uint64_t""'");
+  } 
+  arg1 = static_cast< uint64_t >(val1);
+  result = (uint64_t)btllib::hashing_internals::sror(arg1);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int Swig_var_MULTISHIFT_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable MULTISHIFT is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_MULTISHIFT_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_int(static_cast< int >(btllib::hashing_internals::MULTISHIFT));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_MULTISEED_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable MULTISEED is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_MULTISEED_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::MULTISEED));
+  return pyobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_extend_hashes__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  uint64_t arg2 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  uint64_t *arg5 = (uint64_t *) 0 ;
+  uint64_t val1 ;
+  int ecode1 = 0 ;
+  uint64_t val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "extend_hashes" "', argument " "1"" of type '" "uint64_t""'");
+  } 
+  arg1 = static_cast< uint64_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "extend_hashes" "', argument " "2"" of type '" "uint64_t""'");
+  } 
+  arg2 = static_cast< uint64_t >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "extend_hashes" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "extend_hashes" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "extend_hashes" "', argument " "5"" of type '" "uint64_t *""'"); 
+  }
+  arg5 = reinterpret_cast< uint64_t * >(argp5);
+  btllib::hashing_internals::extend_hashes(arg1,arg2,arg3,arg4,arg5);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_extend_hashes__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  uint64_t *arg4 = (uint64_t *) 0 ;
+  uint64_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "extend_hashes" "', argument " "1"" of type '" "uint64_t""'");
+  } 
+  arg1 = static_cast< uint64_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "extend_hashes" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "extend_hashes" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_unsigned_long_long, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "extend_hashes" "', argument " "4"" of type '" "uint64_t *""'"); 
+  }
+  arg4 = reinterpret_cast< uint64_t * >(argp4);
+  btllib::hashing_internals::extend_hashes(arg1,arg2,arg3,arg4);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_extend_hashes(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "extend_hashes", 0, 5, argv))) SWIG_fail;
+  --argc;
+  if (argc == 4) {
+    PyObject *retobj = _wrap_extend_hashes__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 5) {
+    PyObject *retobj = _wrap_extend_hashes__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'extend_hashes'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::hashing_internals::extend_hashes(uint64_t,uint64_t,unsigned int,unsigned int,uint64_t *)\n"
+    "    btllib::hashing_internals::extend_hashes(uint64_t,unsigned int,unsigned int,uint64_t *)\n");
+  return 0;
+}
+
+
+SWIGINTERN int Swig_var_CP_OFF_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable CP_OFF is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_CP_OFF_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(btllib::hashing_internals::CP_OFF));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_SEED_A_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable SEED_A is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_SEED_A_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::SEED_A));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_SEED_C_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable SEED_C is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_SEED_C_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::SEED_C));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_SEED_G_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable SEED_G is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_SEED_G_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::SEED_G));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_SEED_T_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable SEED_T is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_SEED_T_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::SEED_T));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_SEED_N_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable SEED_N is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_SEED_N_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::SEED_N));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_ASCII_SIZE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable ASCII_SIZE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_ASCII_SIZE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_int(static_cast< int >(btllib::hashing_internals::ASCII_SIZE));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_SEED_TAB_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable SEED_TAB is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_SEED_TAB_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::SEED_TAB), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_A33R_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable A33R is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_A33R_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::A33R), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_A31L_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable A31L is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_A31L_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::A31L), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_C33R_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable C33R is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_C33R_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::C33R), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_C31L_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable C31L is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_C31L_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::C31L), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_G33R_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable G33R is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_G33R_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::G33R), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_G31L_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable G31L is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_G31L_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::G31L), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_T33R_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable T33R is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_T33R_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::T33R), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_T31L_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable T31L is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_T31L_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::T31L), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_N33R_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable N33R is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_N33R_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::N33R), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_N31L_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable N31L is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_N31L_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::N31L), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_MS_TAB_33R_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable MS_TAB_33R is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_MS_TAB_33R_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::MS_TAB_33R), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_MS_TAB_31L_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable MS_TAB_31L is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_MS_TAB_31L_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::MS_TAB_31L), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_CONVERT_TAB_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable CONVERT_TAB is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_CONVERT_TAB_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::CONVERT_TAB), SWIGTYPE_p_unsigned_char,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_RC_CONVERT_TAB_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable RC_CONVERT_TAB is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_RC_CONVERT_TAB_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::RC_CONVERT_TAB), SWIGTYPE_p_unsigned_char,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_DIMER_TAB_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable DIMER_TAB is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_DIMER_TAB_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::DIMER_TAB), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_TRIMER_TAB_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable TRIMER_TAB is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_TRIMER_TAB_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::TRIMER_TAB), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_TETRAMER_TAB_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable TETRAMER_TAB is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_TETRAMER_TAB_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::TETRAMER_TAB), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_A_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_A is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_A_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_A));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_C_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_C is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_C_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_C));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_D_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_D is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_D_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_D));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_E_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_E is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_E_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_E));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_F_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_F is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_F_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_F));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_G_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_G is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_G_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_G));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_H_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_H is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_H_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_H));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_I_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_I is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_I_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_I));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_K_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_K is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_K_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_K));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_L_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_L is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_L_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_L));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_M_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_M is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_M_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_M));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_N_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_N is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_N_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_N));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_P_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_P is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_P_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_P));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_Q_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_Q is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_Q_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_Q));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_R_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_R is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_R_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_R));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_S_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_S is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_S_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_S));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_T_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_T is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_T_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_T));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_V_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_V is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_V_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_V));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_W_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_W is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_W_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_W));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_Y_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_Y is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_Y_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED_Y));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED___set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED__ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED___get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::AA_SEED__));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_A_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_A_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_A_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_A_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_A_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_A_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_A_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_A_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_C_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_C_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_C_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_C_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_C_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_C_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_C_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_C_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_D_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_D_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_D_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_D_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_D_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_D_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_D_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_D_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_E_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_E_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_E_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_E_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_E_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_E_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_E_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_E_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_F_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_F_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_F_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_F_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_F_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_F_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_F_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_F_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_G_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_G_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_G_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_G_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_G_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_G_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_G_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_G_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_H_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_H_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_H_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_H_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_H_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_H_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_H_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_H_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_I_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_I_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_I_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_I_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_I_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_I_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_I_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_I_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_K_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_K_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_K_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_K_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_K_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_K_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_K_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_K_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_L_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_L_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_L_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_L_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_L_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_L_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_L_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_L_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_M_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_M_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_M_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_M_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_M_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_M_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_M_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_M_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_N_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_N_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_N_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_N_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_N_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_N_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_N_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_N_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_P_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_P_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_P_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_P_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_P_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_P_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_P_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_P_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_Q_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_Q_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_Q_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_Q_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_R_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_R_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_R_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_R_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_R_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_R_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_R_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_R_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_S_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_S_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_S_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_S_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_S_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_S_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_S_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_S_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_T_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_T_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_T_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_T_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_T_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_T_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_T_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_T_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_V_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_V_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_V_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_V_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_V_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_V_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_V_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_V_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_W_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_W_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_W_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_W_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_W_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_W_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_W_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_W_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_Y_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_Y_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_Y_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_Y_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED___RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED___RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED___RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED___RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED___LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED___LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED___LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED___LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_AA_SEED_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable AA_SEED_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_AA_SEED_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::AA_SEED_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_C____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_C___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_C____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_2_AA_SEED_C___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_G____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_G___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_G____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_2_AA_SEED_G___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_A____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_A___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_A____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_2_AA_SEED_A___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_TS___set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_TS__ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_TS___get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_2_AA_SEED_TS__));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_N____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_N___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_N____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_2_AA_SEED_N___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_DE___set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_DE__ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_DE___get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_2_AA_SEED_DE__));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_QKR__set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_QKR_ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_QKR__get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_2_AA_SEED_QKR_));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_VILM_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_VILM is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_VILM_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_2_AA_SEED_VILM));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_WFY__set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_WFY_ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_WFY__get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_2_AA_SEED_WFY_));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_H____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_H___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_H____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_2_AA_SEED_H___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_P____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_P___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_P____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_2_AA_SEED_P___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED______set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_____ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED______get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_2_AA_SEED_____));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_C____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_C___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_C____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_3_AA_SEED_C___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_G____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_G___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_G____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_3_AA_SEED_G___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_ATS__set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_ATS_ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_ATS__get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_3_AA_SEED_ATS_));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_NDE__set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_NDE_ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_NDE__get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_3_AA_SEED_NDE_));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_QKR__set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_QKR_ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_QKR__get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_3_AA_SEED_QKR_));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_VILM_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_VILM is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_VILM_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_3_AA_SEED_VILM));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_WFY__set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_WFY_ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_WFY__get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_3_AA_SEED_WFY_));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_H____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_H___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_H____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_3_AA_SEED_H___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_P____set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_P___ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_P____get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_3_AA_SEED_P___));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED______set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_____ is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED______get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(btllib::hashing_internals::LEVEL_3_AA_SEED_____));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_X_AA_SEED_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_X_AA_SEED_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_X_AA_SEED_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_X_AA_SEED_TABLE), SWIGTYPE_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE), SWIGTYPE_p_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE_get(void) {
+  PyObject *pyobj = 0;
+  PyObject *self = 0;
+  
+  (void)self;
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(btllib::hashing_internals::LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE), SWIGTYPE_p_p_p_unsigned_long_long,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_is_invalid_kmer(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  unsigned int arg2 ;
+  size_t *arg3 = 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "is_invalid_kmer", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "is_invalid_kmer" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "is_invalid_kmer" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_size_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "is_invalid_kmer" "', argument " "3"" of type '" "size_t &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "is_invalid_kmer" "', argument " "3"" of type '" "size_t &""'"); 
+  }
+  arg3 = reinterpret_cast< size_t * >(argp3);
+  result = (bool)btllib::hashing_internals::is_invalid_kmer((char const *)arg1,arg2,*arg3);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_base_forward_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  unsigned int arg2 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "base_forward_hash", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "base_forward_hash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "base_forward_hash" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = (uint64_t)btllib::hashing_internals::base_forward_hash((char const *)arg1,arg2);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_next_forward_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  unsigned int arg2 ;
+  unsigned char arg3 ;
+  unsigned char arg4 ;
+  uint64_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned char val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[4] ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "next_forward_hash", 4, 4, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "next_forward_hash" "', argument " "1"" of type '" "uint64_t""'");
+  } 
+  arg1 = static_cast< uint64_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "next_forward_hash" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "next_forward_hash" "', argument " "3"" of type '" "unsigned char""'");
+  } 
+  arg3 = static_cast< unsigned char >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "next_forward_hash" "', argument " "4"" of type '" "unsigned char""'");
+  } 
+  arg4 = static_cast< unsigned char >(val4);
+  result = (uint64_t)btllib::hashing_internals::next_forward_hash(arg1,arg2,arg3,arg4);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_prev_forward_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  unsigned int arg2 ;
+  unsigned char arg3 ;
+  unsigned char arg4 ;
+  uint64_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned char val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[4] ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "prev_forward_hash", 4, 4, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "prev_forward_hash" "', argument " "1"" of type '" "uint64_t""'");
+  } 
+  arg1 = static_cast< uint64_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "prev_forward_hash" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "prev_forward_hash" "', argument " "3"" of type '" "unsigned char""'");
+  } 
+  arg3 = static_cast< unsigned char >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "prev_forward_hash" "', argument " "4"" of type '" "unsigned char""'");
+  } 
+  arg4 = static_cast< unsigned char >(val4);
+  result = (uint64_t)btllib::hashing_internals::prev_forward_hash(arg1,arg2,arg3,arg4);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_base_reverse_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  unsigned int arg2 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "base_reverse_hash", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "base_reverse_hash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "base_reverse_hash" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = (uint64_t)btllib::hashing_internals::base_reverse_hash((char const *)arg1,arg2);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_next_reverse_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  unsigned int arg2 ;
+  unsigned char arg3 ;
+  unsigned char arg4 ;
+  uint64_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned char val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[4] ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "next_reverse_hash", 4, 4, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "next_reverse_hash" "', argument " "1"" of type '" "uint64_t""'");
+  } 
+  arg1 = static_cast< uint64_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "next_reverse_hash" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "next_reverse_hash" "', argument " "3"" of type '" "unsigned char""'");
+  } 
+  arg3 = static_cast< unsigned char >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "next_reverse_hash" "', argument " "4"" of type '" "unsigned char""'");
+  } 
+  arg4 = static_cast< unsigned char >(val4);
+  result = (uint64_t)btllib::hashing_internals::next_reverse_hash(arg1,arg2,arg3,arg4);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_prev_reverse_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  uint64_t arg1 ;
+  unsigned int arg2 ;
+  unsigned char arg3 ;
+  unsigned char arg4 ;
+  uint64_t val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned char val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[4] ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "prev_reverse_hash", 4, 4, swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "prev_reverse_hash" "', argument " "1"" of type '" "uint64_t""'");
+  } 
+  arg1 = static_cast< uint64_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "prev_reverse_hash" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "prev_reverse_hash" "', argument " "3"" of type '" "unsigned char""'");
+  } 
+  arg3 = static_cast< unsigned char >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_char(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "prev_reverse_hash" "', argument " "4"" of type '" "unsigned char""'");
+  } 
+  arg4 = static_cast< unsigned char >(val4);
+  result = (uint64_t)btllib::hashing_internals::prev_reverse_hash(arg1,arg2,arg3,arg4);
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_NtHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg3 ;
+  btllib::hashing_internals::K_TYPE arg4 ;
+  size_t arg5 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned short val4 ;
+  int ecode4 = 0 ;
+  size_t val5 ;
+  int ecode5 = 0 ;
+  btllib::NtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NtHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NtHash" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg3 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_NtHash" "', argument " "4"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg4 = static_cast< btllib::hashing_internals::K_TYPE >(val4);
+  ecode5 = SWIG_AsVal_size_t(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_NtHash" "', argument " "5"" of type '" "size_t""'");
+  } 
+  arg5 = static_cast< size_t >(val5);
+  result = (btllib::NtHash *)new btllib::NtHash((char const *)arg1,arg2,arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_NtHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg3 ;
+  btllib::hashing_internals::K_TYPE arg4 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  unsigned char val3 ;
+  int ecode3 = 0 ;
+  unsigned short val4 ;
+  int ecode4 = 0 ;
+  btllib::NtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NtHash" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NtHash" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_char(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg3 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_short(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_NtHash" "', argument " "4"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg4 = static_cast< btllib::hashing_internals::K_TYPE >(val4);
+  result = (btllib::NtHash *)new btllib::NtHash((char const *)arg1,arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_NtHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg2 ;
+  btllib::hashing_internals::K_TYPE arg3 ;
+  size_t arg4 ;
+  int res1 = SWIG_OLDOBJ ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  size_t val4 ;
+  int ecode4 = 0 ;
+  btllib::NtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NtHash" "', argument " "2"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg2 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg3 = static_cast< btllib::hashing_internals::K_TYPE >(val3);
+  ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_NtHash" "', argument " "4"" of type '" "size_t""'");
+  } 
+  arg4 = static_cast< size_t >(val4);
+  result = (btllib::NtHash *)new btllib::NtHash((std::string const &)*arg1,arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_NtHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg2 ;
+  btllib::hashing_internals::K_TYPE arg3 ;
+  int res1 = SWIG_OLDOBJ ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  btllib::NtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NtHash" "', argument " "2"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg2 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg3 = static_cast< btllib::hashing_internals::K_TYPE >(val3);
+  result = (btllib::NtHash *)new btllib::NtHash((std::string const &)*arg1,arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_roll(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "NtHash_roll", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_roll" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (bool)(arg1)->roll();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_roll_back(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "NtHash_roll_back", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_roll_back" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (bool)(arg1)->roll_back();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_peek__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_peek" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (bool)(arg1)->peek();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_peek_back__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_peek_back" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (bool)(arg1)->peek_back();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_peek__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_peek" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NtHash_peek" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  result = (bool)(arg1)->peek(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_peek(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "NtHash_peek", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 1) {
+    PyObject *retobj = _wrap_NtHash_peek__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    PyObject *retobj = _wrap_NtHash_peek__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NtHash_peek'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::NtHash::peek()\n"
+    "    btllib::NtHash::peek(char)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_peek_back__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_peek_back" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NtHash_peek_back" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  result = (bool)(arg1)->peek_back(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_peek_back(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  (void)self;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "NtHash_peek_back", 0, 2, argv+1))) SWIG_fail;
+  argv[0] = self;
+  if (argc == 1) {
+    PyObject *retobj = _wrap_NtHash_peek_back__SWIG_0(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  if (argc == 2) {
+    PyObject *retobj = _wrap_NtHash_peek_back__SWIG_1(self, argc, argv);
+    if (!SWIG_Python_TypeErrorOccurred(retobj)) return retobj;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NtHash_peek_back'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::NtHash::peek_back()\n"
+    "    btllib::NtHash::peek_back(char)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_hashes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "NtHash_hashes", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_hashes" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (uint64_t *)((btllib::NtHash const *)arg1)->hashes();
+  
+  resultobj = PyTuple_New(arg1->get_hash_num());
+  for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
+    PyTuple_SetItem(resultobj, i, PyLong_FromUnsignedLong(result[i]));
+  }
+  
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_get_pos(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "NtHash_get_pos", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_get_pos" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = ((btllib::NtHash const *)arg1)->get_pos();
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_get_hash_num(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "NtHash_get_hash_num", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_get_hash_num" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (btllib::hashing_internals::NUM_HASHES_TYPE)((btllib::NtHash const *)arg1)->get_hash_num();
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_get_k(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  btllib::hashing_internals::K_TYPE result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "NtHash_get_k", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_get_k" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (btllib::hashing_internals::K_TYPE)((btllib::NtHash const *)arg1)->get_k();
+  resultobj = SWIG_From_unsigned_SS_short(static_cast< unsigned short >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_get_forward_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "NtHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_get_forward_hash" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (uint64_t)((btllib::NtHash const *)arg1)->get_forward_hash();
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NtHash_get_reverse_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "NtHash_get_reverse_hash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NtHash_get_reverse_hash" "', argument " "1"" of type '" "btllib::NtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  result = (uint64_t)((btllib::NtHash const *)arg1)->get_reverse_hash();
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_NtHash__SWIG_4(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  size_t arg4 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  size_t val4 ;
+  int ecode4 = 0 ;
+  btllib::NtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_NtHash" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NtHash" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_NtHash" "', argument " "4"" of type '" "size_t""'");
+  } 
+  arg4 = static_cast< size_t >(val4);
+  result = (btllib::NtHash *)new_btllib_NtHash__SWIG_4(SWIG_STD_MOVE(arg1),arg2,arg3,SWIG_STD_MOVE(arg4));
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_NtHash__SWIG_5(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  btllib::NtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_NtHash" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NtHash" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_NtHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  result = (btllib::NtHash *)new_btllib_NtHash__SWIG_4(SWIG_STD_MOVE(arg1),arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__NtHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_NtHash(PyObject *self, PyObject *args, PyObject *kwargs) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  
+  (void)self;
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_NtHash")) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_NtHash", 0, 5, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v = 0;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_char(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_1;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_short(argv[2], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_1;
+    return _wrap_new_NtHash__SWIG_3(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 3) {
+    int retval = _wrap_new_NtHash__SWIG_5(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 4) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_3;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_char(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_3;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_short(argv[2], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_3;
+    {
+      {
+        int res = SWIG_AsVal_size_t(argv[3], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_3;
+    return _wrap_new_NtHash__SWIG_2(self, argc, argv);
+  }
+check_3:
+  
+  if (argc == 4) {
+    int _v = 0;
+    {
+      int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_4;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_4;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_int(argv[2], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_4;
+    {
+      {
+        int res = SWIG_AsVal_size_t(argv[3], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_4;
+    return _wrap_new_NtHash__SWIG_4(self, argc, argv);
+  }
+check_4:
+  
+  if (argc == 4) {
+    int retval = _wrap_new_NtHash__SWIG_1(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 5) {
+    int retval = _wrap_new_NtHash__SWIG_0(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_NtHash'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::NtHash::NtHash(char const *,size_t,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE,size_t)\n"
+    "    btllib::NtHash::NtHash(char const *,size_t,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE)\n"
+    "    btllib::NtHash::NtHash(std::string const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE,size_t)\n"
+    "    btllib::NtHash::NtHash(std::string const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE)\n"
+    "    btllib::NtHash::NtHash(std::string,unsigned int,unsigned int,size_t)\n"
+    "    btllib::NtHash::NtHash(std::string,unsigned int,unsigned int)\n");
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_NtHash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::NtHash *arg1 = (btllib::NtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "delete_NtHash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__NtHash, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_NtHash" "', argument " "1"" of type '" "btllib::NtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::NtHash * >(argp1);
+  delete_btllib_NtHash(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_NtHash) /* defines _wrap_delete_NtHash_destructor_closure */
+
+SWIGINTERN int _wrap_new_BlindNtHash__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg2 ;
+  btllib::hashing_internals::K_TYPE arg3 ;
+  ssize_t arg4 ;
+  int res1 = SWIG_OLDOBJ ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  void *argp4 ;
+  int res4 = 0 ;
+  btllib::BlindNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BlindNtHash" "', argument " "2"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg2 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlindNtHash" "', argument " "3"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg3 = static_cast< btllib::hashing_internals::K_TYPE >(val3);
+  {
+    res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_ssize_t,  0  | 0);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_BlindNtHash" "', argument " "4"" of type '" "ssize_t""'"); 
+    }  
+    if (!argp4) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindNtHash" "', argument " "4"" of type '" "ssize_t""'");
+    } else {
+      ssize_t * temp = reinterpret_cast< ssize_t * >(argp4);
+      arg4 = *temp;
+      if (SWIG_IsNewObj(res4)) delete temp;
+    }
+  }
+  result = (btllib::BlindNtHash *)new btllib::BlindNtHash((std::string const &)*arg1,arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_BlindNtHash__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE arg2 ;
+  btllib::hashing_internals::K_TYPE arg3 ;
+  int res1 = SWIG_OLDOBJ ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  btllib::BlindNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlindNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlindNtHash" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BlindNtHash" "', argument " "2"" of type '" "btllib::hashing_internals::NUM_HASHES_TYPE""'");
+  } 
+  arg2 = static_cast< btllib::hashing_internals::NUM_HASHES_TYPE >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_short(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlindNtHash" "', argument " "3"" of type '" "btllib::hashing_internals::K_TYPE""'");
+  } 
+  arg3 = static_cast< btllib::hashing_internals::K_TYPE >(val3);
+  result = (btllib::BlindNtHash *)new btllib::BlindNtHash((std::string const &)*arg1,arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindNtHash, SWIG_BUILTIN_INIT |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindNtHash_roll(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_roll" "', argument " "1"" of type '" "btllib::BlindNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlindNtHash_roll" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  (arg1)->roll(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindNtHash_roll_back(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_roll_back" "', argument " "1"" of type '" "btllib::BlindNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlindNtHash_roll_back" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  (arg1)->roll_back(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindNtHash_peek(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_peek" "', argument " "1"" of type '" "btllib::BlindNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlindNtHash_peek" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  (arg1)->peek(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindNtHash_peek_back(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_peek_back" "', argument " "1"" of type '" "btllib::BlindNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
+  ecode2 = SWIG_AsVal_char(swig_obj[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlindNtHash_peek_back" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  (arg1)->peek_back(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindNtHash_hashes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindNtHash_hashes", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_hashes" "', argument " "1"" of type '" "btllib::BlindNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
+  result = (uint64_t *)((btllib::BlindNtHash const *)arg1)->hashes();
+  
+  resultobj = PyTuple_New(arg1->get_hash_num());
+  for (unsigned i = 0; i < arg1->get_hash_num(); ++i) {
+    PyTuple_SetItem(resultobj, i, PyLong_FromUnsignedLong(result[i]));
+  }
+  
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindNtHash_get_pos(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ssize_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindNtHash_get_pos", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_get_pos" "', argument " "1"" of type '" "btllib::BlindNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
+  result = ((btllib::BlindNtHash const *)arg1)->get_pos();
+  resultobj = SWIG_NewPointerObj((new ssize_t(result)), SWIGTYPE_p_ssize_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindNtHash_get_hash_num(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  btllib::hashing_internals::NUM_HASHES_TYPE result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindNtHash_get_hash_num", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_get_hash_num" "', argument " "1"" of type '" "btllib::BlindNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
+  result = (btllib::hashing_internals::NUM_HASHES_TYPE)((btllib::BlindNtHash const *)arg1)->get_hash_num();
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindNtHash_get_k(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  btllib::hashing_internals::K_TYPE result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindNtHash_get_k", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_get_k" "', argument " "1"" of type '" "btllib::BlindNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
+  result = (btllib::hashing_internals::K_TYPE)((btllib::BlindNtHash const *)arg1)->get_k();
+  resultobj = SWIG_From_unsigned_SS_short(static_cast< unsigned short >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindNtHash_get_forward_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindNtHash_get_forward_hash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_get_forward_hash" "', argument " "1"" of type '" "btllib::BlindNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
+  result = (uint64_t)((btllib::BlindNtHash const *)arg1)->get_forward_hash();
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlindNtHash_get_reverse_hash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "BlindNtHash_get_reverse_hash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlindNtHash_get_reverse_hash" "', argument " "1"" of type '" "btllib::BlindNtHash const *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
+  result = (uint64_t)((btllib::BlindNtHash const *)arg1)->get_reverse_hash();
+  resultobj = SWIG_From_unsigned_SS_long_SS_long(static_cast< uint64_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_BlindNtHash__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  size_t arg4 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  size_t val4 ;
+  int ecode4 = 0 ;
+  btllib::BlindNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_BlindNtHash" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BlindNtHash" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlindNtHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_BlindNtHash" "', argument " "4"" of type '" "size_t""'");
+  } 
+  arg4 = static_cast< size_t >(val4);
+  result = (btllib::BlindNtHash *)new_btllib_BlindNtHash__SWIG_2(SWIG_STD_MOVE(arg1),arg2,arg3,SWIG_STD_MOVE(arg4));
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindNtHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_BlindNtHash__SWIG_3(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  btllib::BlindNtHash *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_BlindNtHash" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BlindNtHash" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlindNtHash" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  result = (btllib::BlindNtHash *)new_btllib_BlindNtHash__SWIG_2(SWIG_STD_MOVE(arg1),arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_btllib__BlindNtHash, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? -1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_BlindNtHash(PyObject *self, PyObject *args, PyObject *kwargs) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  (void)self;
+  if (!SWIG_Python_CheckNoKeywords(kwargs, "new_BlindNtHash")) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_BlindNtHash", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v = 0;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_char(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_1;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_short(argv[2], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_1;
+    return _wrap_new_BlindNtHash__SWIG_1(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 3) {
+    int retval = _wrap_new_BlindNtHash__SWIG_3(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  if (argc == 4) {
+    int _v = 0;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_char(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_3;
+    {
+      {
+        int res = SWIG_AsVal_unsigned_SS_short(argv[2], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_3;
+    {
+      int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_ssize_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_3;
+    return _wrap_new_BlindNtHash__SWIG_0(self, argc, argv);
+  }
+check_3:
+  
+  if (argc == 4) {
+    int retval = _wrap_new_BlindNtHash__SWIG_2(self, argc, argv);
+    if (retval == 0 || !SWIG_Python_TypeErrorOccurred(NULL)) return retval;
+    SWIG_fail;
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_BlindNtHash'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    btllib::BlindNtHash::BlindNtHash(std::string const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE,ssize_t)\n"
+    "    btllib::BlindNtHash::BlindNtHash(std::string const &,btllib::hashing_internals::NUM_HASHES_TYPE,btllib::hashing_internals::K_TYPE)\n"
+    "    btllib::BlindNtHash::BlindNtHash(std::string,unsigned int,unsigned int,size_t)\n"
+    "    btllib::BlindNtHash::BlindNtHash(std::string,unsigned int,unsigned int)\n");
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_BlindNtHash(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  btllib::BlindNtHash *arg1 = (btllib::BlindNtHash *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "delete_BlindNtHash", 0, 0, 0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_btllib__BlindNtHash, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_BlindNtHash" "', argument " "1"" of type '" "btllib::BlindNtHash *""'"); 
+  }
+  arg1 = reinterpret_cast< btllib::BlindNtHash * >(argp1);
+  delete_btllib_BlindNtHash(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_BlindNtHash) /* defines _wrap_delete_BlindNtHash_destructor_closure */
 
 SWIGINTERN int _wrap_new_CountingBloomFilter8__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
@@ -54306,8 +58662,24 @@ static PyMethodDef SwigMethods[] = {
 	 { "get_strerror", _wrap_get_strerror, METH_NOARGS, NULL},
 	 { "check_stream", _wrap_check_stream, METH_VARARGS, NULL},
 	 { "check_file_accessibility", _wrap_check_file_accessibility, METH_O, NULL},
-	 { "parse_seeds", _wrap_parse_seeds, METH_O, NULL},
 	 { "aa_parse_seeds", _wrap_aa_parse_seeds, METH_O, NULL},
+	 { "get_blocks", _wrap_get_blocks, METH_VARARGS, NULL},
+	 { "parsed_seeds_to_blocks", _wrap_parsed_seeds_to_blocks, METH_VARARGS, NULL},
+	 { "check_seeds", _wrap_check_seeds, METH_VARARGS, NULL},
+	 { "ntmsm64", _wrap_ntmsm64, METH_VARARGS, NULL},
+	 { "ntmsm64l", _wrap_ntmsm64l, METH_VARARGS, NULL},
+	 { "parse_seeds", _wrap_parse_seeds, METH_O, NULL},
+	 { "srol", _wrap_srol, METH_VARARGS, NULL},
+	 { "srol_table", _wrap_srol_table, METH_VARARGS, NULL},
+	 { "sror", _wrap_sror, METH_O, NULL},
+	 { "extend_hashes", _wrap_extend_hashes, METH_VARARGS, NULL},
+	 { "is_invalid_kmer", _wrap_is_invalid_kmer, METH_VARARGS, NULL},
+	 { "base_forward_hash", _wrap_base_forward_hash, METH_VARARGS, NULL},
+	 { "next_forward_hash", _wrap_next_forward_hash, METH_VARARGS, NULL},
+	 { "prev_forward_hash", _wrap_prev_forward_hash, METH_VARARGS, NULL},
+	 { "base_reverse_hash", _wrap_base_reverse_hash, METH_VARARGS, NULL},
+	 { "next_reverse_hash", _wrap_next_reverse_hash, METH_VARARGS, NULL},
+	 { "prev_reverse_hash", _wrap_prev_reverse_hash, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -54368,8 +58740,24 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "get_strerror", _wrap_get_strerror, METH_NOARGS, NULL},
 	 { "check_stream", _wrap_check_stream, METH_VARARGS, NULL},
 	 { "check_file_accessibility", _wrap_check_file_accessibility, METH_O, NULL},
-	 { "parse_seeds", _wrap_parse_seeds, METH_O, NULL},
 	 { "aa_parse_seeds", _wrap_aa_parse_seeds, METH_O, NULL},
+	 { "get_blocks", _wrap_get_blocks, METH_VARARGS, NULL},
+	 { "parsed_seeds_to_blocks", _wrap_parsed_seeds_to_blocks, METH_VARARGS, NULL},
+	 { "check_seeds", _wrap_check_seeds, METH_VARARGS, NULL},
+	 { "ntmsm64", _wrap_ntmsm64, METH_VARARGS, NULL},
+	 { "ntmsm64l", _wrap_ntmsm64l, METH_VARARGS, NULL},
+	 { "parse_seeds", _wrap_parse_seeds, METH_O, NULL},
+	 { "srol", _wrap_srol, METH_VARARGS, NULL},
+	 { "srol_table", _wrap_srol_table, METH_VARARGS, NULL},
+	 { "sror", _wrap_sror, METH_O, NULL},
+	 { "extend_hashes", _wrap_extend_hashes, METH_VARARGS, NULL},
+	 { "is_invalid_kmer", _wrap_is_invalid_kmer, METH_VARARGS, NULL},
+	 { "base_forward_hash", _wrap_base_forward_hash, METH_VARARGS, NULL},
+	 { "next_forward_hash", _wrap_next_forward_hash, METH_VARARGS, NULL},
+	 { "prev_forward_hash", _wrap_prev_forward_hash, METH_VARARGS, NULL},
+	 { "base_reverse_hash", _wrap_base_reverse_hash, METH_VARARGS, NULL},
+	 { "next_reverse_hash", _wrap_next_reverse_hash, METH_VARARGS, NULL},
+	 { "prev_reverse_hash", _wrap_prev_reverse_hash, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -61938,958 +66326,6 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__DataSink_type = {
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__DataSink_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__DataSink_type};
 
-static SwigPyGetSet NtHash___dict___getset = { SwigPyObject_get___dict__, 0 };
-SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__NtHash_getset[] = {
-    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &NtHash___dict___getset },
-    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
-};
-
-SWIGINTERN PyObject *
-SwigPyBuiltin__btllib__NtHash_richcompare(PyObject *self, PyObject *other, int op) {
-  PyObject *result = NULL;
-  if (!result) {
-    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
-      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
-    } else {
-      result = Py_NotImplemented;
-      Py_INCREF(result);
-    }
-  }
-  return result;
-}
-
-SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__NtHash_methods[] = {
-  { "roll", _wrap_NtHash_roll, METH_NOARGS, "" },
-  { "roll_back", _wrap_NtHash_roll_back, METH_NOARGS, "" },
-  { "peek", _wrap_NtHash_peek, METH_VARARGS, "" },
-  { "peek_back", _wrap_NtHash_peek_back, METH_VARARGS, "" },
-  { "hashes", _wrap_NtHash_hashes, METH_NOARGS, "" },
-  { "get_pos", _wrap_NtHash_get_pos, METH_NOARGS, "" },
-  { "get_hash_num", _wrap_NtHash_get_hash_num, METH_NOARGS, "" },
-  { "get_k", _wrap_NtHash_get_k, METH_NOARGS, "" },
-  { "get_forward_hash", _wrap_NtHash_get_forward_hash, METH_NOARGS, "" },
-  { "get_reverse_hash", _wrap_NtHash_get_reverse_hash, METH_NOARGS, "" },
-  { NULL, NULL, 0, NULL } /* Sentinel */
-};
-
-static PyHeapTypeObject SwigPyBuiltin__btllib__NtHash_type = {
-  {
-#if PY_VERSION_HEX >= 0x03000000
-    PyVarObject_HEAD_INIT(NULL, 0)
-#else
-    PyObject_HEAD_INIT(NULL)
-    0,                                        /* ob_size */
-#endif
-    "btllib.NtHash",                          /* tp_name */
-    sizeof(SwigPyObject),                     /* tp_basicsize */
-    0,                                        /* tp_itemsize */
-    _wrap_delete_NtHash_destructor_closure,   /* tp_dealloc */
-#if PY_VERSION_HEX < 0x030800b4
-    (printfunc) 0,                            /* tp_print */
-#else
-    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
-#endif
-    (getattrfunc) 0,                          /* tp_getattr */
-    (setattrfunc) 0,                          /* tp_setattr */
-#if PY_VERSION_HEX >= 0x03000000
-    0,                                        /* tp_compare */
-#else
-    (cmpfunc) 0,                              /* tp_compare */
-#endif
-    (reprfunc) 0,                             /* tp_repr */
-    &SwigPyBuiltin__btllib__NtHash_type.as_number,                /* tp_as_number */
-    &SwigPyBuiltin__btllib__NtHash_type.as_sequence,              /* tp_as_sequence */
-    &SwigPyBuiltin__btllib__NtHash_type.as_mapping,               /* tp_as_mapping */
-    SwigPyObject_hash,                        /* tp_hash */
-    (ternaryfunc) 0,                          /* tp_call */
-    (reprfunc) 0,                             /* tp_str */
-    (getattrofunc) 0,                         /* tp_getattro */
-    (setattrofunc) 0,                         /* tp_setattro */
-    &SwigPyBuiltin__btllib__NtHash_type.as_buffer,                /* tp_as_buffer */
-#if PY_VERSION_HEX >= 0x03000000
-    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
-#else
-    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
-#endif
-    "btllib::NtHash",                         /* tp_doc */
-    (traverseproc) 0,                         /* tp_traverse */
-    (inquiry) 0,                              /* tp_clear */
-    SwigPyBuiltin__btllib__NtHash_richcompare,/* tp_richcompare */
-    0,                                        /* tp_weaklistoffset */
-    (getiterfunc) 0,                          /* tp_iter */
-    (iternextfunc) 0,                         /* tp_iternext */
-    SwigPyBuiltin__btllib__NtHash_methods,    /* tp_methods */
-    0,                                        /* tp_members */
-    SwigPyBuiltin__btllib__NtHash_getset,     /* tp_getset */
-    0,                                        /* tp_base */
-    0,                                        /* tp_dict */
-    (descrgetfunc) 0,                         /* tp_descr_get */
-    (descrsetfunc) 0,                         /* tp_descr_set */
-    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
-    _wrap_new_NtHash,                         /* tp_init */
-    (allocfunc) 0,                            /* tp_alloc */
-    (newfunc) 0,                              /* tp_new */
-    (freefunc) 0,                             /* tp_free */
-    (inquiry) 0,                              /* tp_is_gc */
-    (PyObject *) 0,                           /* tp_bases */
-    (PyObject *) 0,                           /* tp_mro */
-    (PyObject *) 0,                           /* tp_cache */
-    (PyObject *) 0,                           /* tp_subclasses */
-    (PyObject *) 0,                           /* tp_weaklist */
-    (destructor) 0,                           /* tp_del */
-    (int) 0,                                  /* tp_version_tag */
-#if PY_VERSION_HEX >= 0x03040000
-    (destructor) 0,                           /* tp_finalize */
-#endif
-#if PY_VERSION_HEX >= 0x03080000
-    (vectorcallfunc) 0,                       /* tp_vectorcall */
-#endif
-#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
-    0,                                        /* tp_print */
-#endif
-#ifdef COUNT_ALLOCS
-    (Py_ssize_t) 0,                           /* tp_allocs */
-    (Py_ssize_t) 0,                           /* tp_frees */
-    (Py_ssize_t) 0,                           /* tp_maxalloc */
-    0,                                        /* tp_prev */
-    0,                                        /* tp_next */
-#endif
-  },
-#if PY_VERSION_HEX >= 0x03050000
-  {
-    (unaryfunc) 0,                            /* am_await */
-    (unaryfunc) 0,                            /* am_aiter */
-    (unaryfunc) 0,                            /* am_anext */
-# if PY_VERSION_HEX >= 0x030a0000
-    (sendfunc) 0,                             /* am_send */
-# endif
-  },
-#endif
-  {
-    (binaryfunc) 0,                           /* nb_add */
-    (binaryfunc) 0,                           /* nb_subtract */
-    (binaryfunc) 0,                           /* nb_multiply */
-#if PY_VERSION_HEX < 0x03000000
-    (binaryfunc) 0,                           /* nb_divide */
-#endif
-    (binaryfunc) 0,                           /* nb_remainder */
-    (binaryfunc) 0,                           /* nb_divmod */
-    (ternaryfunc) 0,                          /* nb_power */
-    (unaryfunc) 0,                            /* nb_negative */
-    (unaryfunc) 0,                            /* nb_positive */
-    (unaryfunc) 0,                            /* nb_absolute */
-    (inquiry) 0,                              /* nb_nonzero */
-    (unaryfunc) 0,                            /* nb_invert */
-    (binaryfunc) 0,                           /* nb_lshift */
-    (binaryfunc) 0,                           /* nb_rshift */
-    (binaryfunc) 0,                           /* nb_and */
-    (binaryfunc) 0,                           /* nb_xor */
-    (binaryfunc) 0,                           /* nb_or */
-#if PY_VERSION_HEX < 0x03000000
-    (coercion) 0,                             /* nb_coerce */
-#endif
-    (unaryfunc) 0,                            /* nb_int */
-#if PY_VERSION_HEX >= 0x03000000
-    (void *) 0,                               /* nb_reserved */
-#else
-    (unaryfunc) 0,                            /* nb_long */
-#endif
-    (unaryfunc) 0,                            /* nb_float */
-#if PY_VERSION_HEX < 0x03000000
-    (unaryfunc) 0,                            /* nb_oct */
-    (unaryfunc) 0,                            /* nb_hex */
-#endif
-    (binaryfunc) 0,                           /* nb_inplace_add */
-    (binaryfunc) 0,                           /* nb_inplace_subtract */
-    (binaryfunc) 0,                           /* nb_inplace_multiply */
-#if PY_VERSION_HEX < 0x03000000
-    (binaryfunc) 0,                           /* nb_inplace_divide */
-#endif
-    (binaryfunc) 0,                           /* nb_inplace_remainder */
-    (ternaryfunc) 0,                          /* nb_inplace_power */
-    (binaryfunc) 0,                           /* nb_inplace_lshift */
-    (binaryfunc) 0,                           /* nb_inplace_rshift */
-    (binaryfunc) 0,                           /* nb_inplace_and */
-    (binaryfunc) 0,                           /* nb_inplace_xor */
-    (binaryfunc) 0,                           /* nb_inplace_or */
-    (binaryfunc) 0,                           /* nb_floor_divide */
-    (binaryfunc) 0,                           /* nb_true_divide */
-    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
-    (binaryfunc) 0,                           /* nb_inplace_true_divide */
-    (unaryfunc) 0,                            /* nb_index */
-#if PY_VERSION_HEX >= 0x03050000
-    (binaryfunc) 0,                           /* nb_matrix_multiply */
-    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
-#endif
-  },
-  {
-    (lenfunc) 0,                              /* mp_length */
-    (binaryfunc) 0,                           /* mp_subscript */
-    (objobjargproc) 0,                        /* mp_ass_subscript */
-  },
-  {
-    (lenfunc) 0,                              /* sq_length */
-    (binaryfunc) 0,                           /* sq_concat */
-    (ssizeargfunc) 0,                         /* sq_repeat */
-    (ssizeargfunc) 0,                         /* sq_item */
-#if PY_VERSION_HEX >= 0x03000000
-    (void *) 0,                               /* was_sq_slice */
-#else
-    (ssizessizeargfunc) 0,                    /* sq_slice */
-#endif
-    (ssizeobjargproc) 0,                      /* sq_ass_item */
-#if PY_VERSION_HEX >= 0x03000000
-    (void *) 0,                               /* was_sq_ass_slice */
-#else
-    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
-#endif
-    (objobjproc) 0,                           /* sq_contains */
-    (binaryfunc) 0,                           /* sq_inplace_concat */
-    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
-  },
-  {
-#if PY_VERSION_HEX < 0x03000000
-    (readbufferproc) 0,                       /* bf_getreadbuffer */
-    (writebufferproc) 0,                      /* bf_getwritebuffer */
-    (segcountproc) 0,                         /* bf_getsegcount */
-    (charbufferproc) 0,                       /* bf_getcharbuffer */
-#endif
-    (getbufferproc) 0,                        /* bf_getbuffer */
-    (releasebufferproc) 0,                    /* bf_releasebuffer */
-  },
-    (PyObject *) 0,                           /* ht_name */
-    (PyObject *) 0,                           /* ht_slots */
-#if PY_VERSION_HEX >= 0x03030000
-    (PyObject *) 0,                           /* ht_qualname */
-    0,                                        /* ht_cached_keys */
-#endif
-#if PY_VERSION_HEX >= 0x03090000
-    (PyObject *) 0,                           /* ht_module */
-#endif
-#if PY_VERSION_HEX >= 0x030b0000
-    (char *) 0,                               /* _ht_tpname */
-  {
-    (PyObject *) 0,                           /* getitem */
-  }
-#endif
-};
-
-SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__NtHash_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__NtHash_type};
-
-static SwigPyGetSet BlindNtHash___dict___getset = { SwigPyObject_get___dict__, 0 };
-SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__BlindNtHash_getset[] = {
-    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &BlindNtHash___dict___getset },
-    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
-};
-
-SWIGINTERN PyObject *
-SwigPyBuiltin__btllib__BlindNtHash_richcompare(PyObject *self, PyObject *other, int op) {
-  PyObject *result = NULL;
-  if (!result) {
-    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
-      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
-    } else {
-      result = Py_NotImplemented;
-      Py_INCREF(result);
-    }
-  }
-  return result;
-}
-
-SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__BlindNtHash_methods[] = {
-  { "roll", _wrap_BlindNtHash_roll, METH_O, "" },
-  { "roll_back", _wrap_BlindNtHash_roll_back, METH_O, "" },
-  { "peek", _wrap_BlindNtHash_peek, METH_O, "" },
-  { "peek_back", _wrap_BlindNtHash_peek_back, METH_O, "" },
-  { "hashes", _wrap_BlindNtHash_hashes, METH_NOARGS, "" },
-  { "get_pos", _wrap_BlindNtHash_get_pos, METH_NOARGS, "" },
-  { "get_hash_num", _wrap_BlindNtHash_get_hash_num, METH_NOARGS, "" },
-  { "get_k", _wrap_BlindNtHash_get_k, METH_NOARGS, "" },
-  { "get_forward_hash", _wrap_BlindNtHash_get_forward_hash, METH_NOARGS, "" },
-  { "get_reverse_hash", _wrap_BlindNtHash_get_reverse_hash, METH_NOARGS, "" },
-  { NULL, NULL, 0, NULL } /* Sentinel */
-};
-
-static PyHeapTypeObject SwigPyBuiltin__btllib__BlindNtHash_type = {
-  {
-#if PY_VERSION_HEX >= 0x03000000
-    PyVarObject_HEAD_INIT(NULL, 0)
-#else
-    PyObject_HEAD_INIT(NULL)
-    0,                                        /* ob_size */
-#endif
-    "btllib.BlindNtHash",                     /* tp_name */
-    sizeof(SwigPyObject),                     /* tp_basicsize */
-    0,                                        /* tp_itemsize */
-    _wrap_delete_BlindNtHash_destructor_closure,                  /* tp_dealloc */
-#if PY_VERSION_HEX < 0x030800b4
-    (printfunc) 0,                            /* tp_print */
-#else
-    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
-#endif
-    (getattrfunc) 0,                          /* tp_getattr */
-    (setattrfunc) 0,                          /* tp_setattr */
-#if PY_VERSION_HEX >= 0x03000000
-    0,                                        /* tp_compare */
-#else
-    (cmpfunc) 0,                              /* tp_compare */
-#endif
-    (reprfunc) 0,                             /* tp_repr */
-    &SwigPyBuiltin__btllib__BlindNtHash_type.as_number,           /* tp_as_number */
-    &SwigPyBuiltin__btllib__BlindNtHash_type.as_sequence,         /* tp_as_sequence */
-    &SwigPyBuiltin__btllib__BlindNtHash_type.as_mapping,          /* tp_as_mapping */
-    SwigPyObject_hash,                        /* tp_hash */
-    (ternaryfunc) 0,                          /* tp_call */
-    (reprfunc) 0,                             /* tp_str */
-    (getattrofunc) 0,                         /* tp_getattro */
-    (setattrofunc) 0,                         /* tp_setattro */
-    &SwigPyBuiltin__btllib__BlindNtHash_type.as_buffer,           /* tp_as_buffer */
-#if PY_VERSION_HEX >= 0x03000000
-    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
-#else
-    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
-#endif
-    "btllib::BlindNtHash",                    /* tp_doc */
-    (traverseproc) 0,                         /* tp_traverse */
-    (inquiry) 0,                              /* tp_clear */
-    SwigPyBuiltin__btllib__BlindNtHash_richcompare,               /* tp_richcompare */
-    0,                                        /* tp_weaklistoffset */
-    (getiterfunc) 0,                          /* tp_iter */
-    (iternextfunc) 0,                         /* tp_iternext */
-    SwigPyBuiltin__btllib__BlindNtHash_methods,                   /* tp_methods */
-    0,                                        /* tp_members */
-    SwigPyBuiltin__btllib__BlindNtHash_getset,/* tp_getset */
-    0,                                        /* tp_base */
-    0,                                        /* tp_dict */
-    (descrgetfunc) 0,                         /* tp_descr_get */
-    (descrsetfunc) 0,                         /* tp_descr_set */
-    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
-    _wrap_new_BlindNtHash,                    /* tp_init */
-    (allocfunc) 0,                            /* tp_alloc */
-    (newfunc) 0,                              /* tp_new */
-    (freefunc) 0,                             /* tp_free */
-    (inquiry) 0,                              /* tp_is_gc */
-    (PyObject *) 0,                           /* tp_bases */
-    (PyObject *) 0,                           /* tp_mro */
-    (PyObject *) 0,                           /* tp_cache */
-    (PyObject *) 0,                           /* tp_subclasses */
-    (PyObject *) 0,                           /* tp_weaklist */
-    (destructor) 0,                           /* tp_del */
-    (int) 0,                                  /* tp_version_tag */
-#if PY_VERSION_HEX >= 0x03040000
-    (destructor) 0,                           /* tp_finalize */
-#endif
-#if PY_VERSION_HEX >= 0x03080000
-    (vectorcallfunc) 0,                       /* tp_vectorcall */
-#endif
-#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
-    0,                                        /* tp_print */
-#endif
-#ifdef COUNT_ALLOCS
-    (Py_ssize_t) 0,                           /* tp_allocs */
-    (Py_ssize_t) 0,                           /* tp_frees */
-    (Py_ssize_t) 0,                           /* tp_maxalloc */
-    0,                                        /* tp_prev */
-    0,                                        /* tp_next */
-#endif
-  },
-#if PY_VERSION_HEX >= 0x03050000
-  {
-    (unaryfunc) 0,                            /* am_await */
-    (unaryfunc) 0,                            /* am_aiter */
-    (unaryfunc) 0,                            /* am_anext */
-# if PY_VERSION_HEX >= 0x030a0000
-    (sendfunc) 0,                             /* am_send */
-# endif
-  },
-#endif
-  {
-    (binaryfunc) 0,                           /* nb_add */
-    (binaryfunc) 0,                           /* nb_subtract */
-    (binaryfunc) 0,                           /* nb_multiply */
-#if PY_VERSION_HEX < 0x03000000
-    (binaryfunc) 0,                           /* nb_divide */
-#endif
-    (binaryfunc) 0,                           /* nb_remainder */
-    (binaryfunc) 0,                           /* nb_divmod */
-    (ternaryfunc) 0,                          /* nb_power */
-    (unaryfunc) 0,                            /* nb_negative */
-    (unaryfunc) 0,                            /* nb_positive */
-    (unaryfunc) 0,                            /* nb_absolute */
-    (inquiry) 0,                              /* nb_nonzero */
-    (unaryfunc) 0,                            /* nb_invert */
-    (binaryfunc) 0,                           /* nb_lshift */
-    (binaryfunc) 0,                           /* nb_rshift */
-    (binaryfunc) 0,                           /* nb_and */
-    (binaryfunc) 0,                           /* nb_xor */
-    (binaryfunc) 0,                           /* nb_or */
-#if PY_VERSION_HEX < 0x03000000
-    (coercion) 0,                             /* nb_coerce */
-#endif
-    (unaryfunc) 0,                            /* nb_int */
-#if PY_VERSION_HEX >= 0x03000000
-    (void *) 0,                               /* nb_reserved */
-#else
-    (unaryfunc) 0,                            /* nb_long */
-#endif
-    (unaryfunc) 0,                            /* nb_float */
-#if PY_VERSION_HEX < 0x03000000
-    (unaryfunc) 0,                            /* nb_oct */
-    (unaryfunc) 0,                            /* nb_hex */
-#endif
-    (binaryfunc) 0,                           /* nb_inplace_add */
-    (binaryfunc) 0,                           /* nb_inplace_subtract */
-    (binaryfunc) 0,                           /* nb_inplace_multiply */
-#if PY_VERSION_HEX < 0x03000000
-    (binaryfunc) 0,                           /* nb_inplace_divide */
-#endif
-    (binaryfunc) 0,                           /* nb_inplace_remainder */
-    (ternaryfunc) 0,                          /* nb_inplace_power */
-    (binaryfunc) 0,                           /* nb_inplace_lshift */
-    (binaryfunc) 0,                           /* nb_inplace_rshift */
-    (binaryfunc) 0,                           /* nb_inplace_and */
-    (binaryfunc) 0,                           /* nb_inplace_xor */
-    (binaryfunc) 0,                           /* nb_inplace_or */
-    (binaryfunc) 0,                           /* nb_floor_divide */
-    (binaryfunc) 0,                           /* nb_true_divide */
-    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
-    (binaryfunc) 0,                           /* nb_inplace_true_divide */
-    (unaryfunc) 0,                            /* nb_index */
-#if PY_VERSION_HEX >= 0x03050000
-    (binaryfunc) 0,                           /* nb_matrix_multiply */
-    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
-#endif
-  },
-  {
-    (lenfunc) 0,                              /* mp_length */
-    (binaryfunc) 0,                           /* mp_subscript */
-    (objobjargproc) 0,                        /* mp_ass_subscript */
-  },
-  {
-    (lenfunc) 0,                              /* sq_length */
-    (binaryfunc) 0,                           /* sq_concat */
-    (ssizeargfunc) 0,                         /* sq_repeat */
-    (ssizeargfunc) 0,                         /* sq_item */
-#if PY_VERSION_HEX >= 0x03000000
-    (void *) 0,                               /* was_sq_slice */
-#else
-    (ssizessizeargfunc) 0,                    /* sq_slice */
-#endif
-    (ssizeobjargproc) 0,                      /* sq_ass_item */
-#if PY_VERSION_HEX >= 0x03000000
-    (void *) 0,                               /* was_sq_ass_slice */
-#else
-    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
-#endif
-    (objobjproc) 0,                           /* sq_contains */
-    (binaryfunc) 0,                           /* sq_inplace_concat */
-    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
-  },
-  {
-#if PY_VERSION_HEX < 0x03000000
-    (readbufferproc) 0,                       /* bf_getreadbuffer */
-    (writebufferproc) 0,                      /* bf_getwritebuffer */
-    (segcountproc) 0,                         /* bf_getsegcount */
-    (charbufferproc) 0,                       /* bf_getcharbuffer */
-#endif
-    (getbufferproc) 0,                        /* bf_getbuffer */
-    (releasebufferproc) 0,                    /* bf_releasebuffer */
-  },
-    (PyObject *) 0,                           /* ht_name */
-    (PyObject *) 0,                           /* ht_slots */
-#if PY_VERSION_HEX >= 0x03030000
-    (PyObject *) 0,                           /* ht_qualname */
-    0,                                        /* ht_cached_keys */
-#endif
-#if PY_VERSION_HEX >= 0x03090000
-    (PyObject *) 0,                           /* ht_module */
-#endif
-#if PY_VERSION_HEX >= 0x030b0000
-    (char *) 0,                               /* _ht_tpname */
-  {
-    (PyObject *) 0,                           /* getitem */
-  }
-#endif
-};
-
-SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__BlindNtHash_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__BlindNtHash_type};
-
-static SwigPyGetSet SeedNtHash___dict___getset = { SwigPyObject_get___dict__, 0 };
-SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__SeedNtHash_getset[] = {
-    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &SeedNtHash___dict___getset },
-    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
-};
-
-SWIGINTERN PyObject *
-SwigPyBuiltin__btllib__SeedNtHash_richcompare(PyObject *self, PyObject *other, int op) {
-  PyObject *result = NULL;
-  if (!result) {
-    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
-      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
-    } else {
-      result = Py_NotImplemented;
-      Py_INCREF(result);
-    }
-  }
-  return result;
-}
-
-SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedNtHash_methods[] = {
-  { "roll", _wrap_SeedNtHash_roll, METH_NOARGS, "" },
-  { "roll_back", _wrap_SeedNtHash_roll_back, METH_NOARGS, "" },
-  { "peek", _wrap_SeedNtHash_peek, METH_VARARGS, "" },
-  { "peek_back", _wrap_SeedNtHash_peek_back, METH_VARARGS, "" },
-  { "hashes", _wrap_SeedNtHash_hashes, METH_NOARGS, "" },
-  { "get_pos", _wrap_SeedNtHash_get_pos, METH_NOARGS, "" },
-  { "get_hash_num", _wrap_SeedNtHash_get_hash_num, METH_NOARGS, "" },
-  { "get_hash_num_per_seed", _wrap_SeedNtHash_get_hash_num_per_seed, METH_NOARGS, "" },
-  { "get_k", _wrap_SeedNtHash_get_k, METH_NOARGS, "" },
-  { "get_forward_hash", _wrap_SeedNtHash_get_forward_hash, METH_NOARGS, "" },
-  { "get_reverse_hash", _wrap_SeedNtHash_get_reverse_hash, METH_NOARGS, "" },
-  { NULL, NULL, 0, NULL } /* Sentinel */
-};
-
-static PyHeapTypeObject SwigPyBuiltin__btllib__SeedNtHash_type = {
-  {
-#if PY_VERSION_HEX >= 0x03000000
-    PyVarObject_HEAD_INIT(NULL, 0)
-#else
-    PyObject_HEAD_INIT(NULL)
-    0,                                        /* ob_size */
-#endif
-    "btllib.SeedNtHash",                      /* tp_name */
-    sizeof(SwigPyObject),                     /* tp_basicsize */
-    0,                                        /* tp_itemsize */
-    _wrap_delete_SeedNtHash_destructor_closure,                   /* tp_dealloc */
-#if PY_VERSION_HEX < 0x030800b4
-    (printfunc) 0,                            /* tp_print */
-#else
-    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
-#endif
-    (getattrfunc) 0,                          /* tp_getattr */
-    (setattrfunc) 0,                          /* tp_setattr */
-#if PY_VERSION_HEX >= 0x03000000
-    0,                                        /* tp_compare */
-#else
-    (cmpfunc) 0,                              /* tp_compare */
-#endif
-    (reprfunc) 0,                             /* tp_repr */
-    &SwigPyBuiltin__btllib__SeedNtHash_type.as_number,            /* tp_as_number */
-    &SwigPyBuiltin__btllib__SeedNtHash_type.as_sequence,          /* tp_as_sequence */
-    &SwigPyBuiltin__btllib__SeedNtHash_type.as_mapping,           /* tp_as_mapping */
-    SwigPyObject_hash,                        /* tp_hash */
-    (ternaryfunc) 0,                          /* tp_call */
-    (reprfunc) 0,                             /* tp_str */
-    (getattrofunc) 0,                         /* tp_getattro */
-    (setattrofunc) 0,                         /* tp_setattro */
-    &SwigPyBuiltin__btllib__SeedNtHash_type.as_buffer,            /* tp_as_buffer */
-#if PY_VERSION_HEX >= 0x03000000
-    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
-#else
-    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
-#endif
-    "btllib::SeedNtHash",                     /* tp_doc */
-    (traverseproc) 0,                         /* tp_traverse */
-    (inquiry) 0,                              /* tp_clear */
-    SwigPyBuiltin__btllib__SeedNtHash_richcompare,                /* tp_richcompare */
-    0,                                        /* tp_weaklistoffset */
-    (getiterfunc) 0,                          /* tp_iter */
-    (iternextfunc) 0,                         /* tp_iternext */
-    SwigPyBuiltin__btllib__SeedNtHash_methods,/* tp_methods */
-    0,                                        /* tp_members */
-    SwigPyBuiltin__btllib__SeedNtHash_getset, /* tp_getset */
-    0,                                        /* tp_base */
-    0,                                        /* tp_dict */
-    (descrgetfunc) 0,                         /* tp_descr_get */
-    (descrsetfunc) 0,                         /* tp_descr_set */
-    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
-    _wrap_new_SeedNtHash,                     /* tp_init */
-    (allocfunc) 0,                            /* tp_alloc */
-    (newfunc) 0,                              /* tp_new */
-    (freefunc) 0,                             /* tp_free */
-    (inquiry) 0,                              /* tp_is_gc */
-    (PyObject *) 0,                           /* tp_bases */
-    (PyObject *) 0,                           /* tp_mro */
-    (PyObject *) 0,                           /* tp_cache */
-    (PyObject *) 0,                           /* tp_subclasses */
-    (PyObject *) 0,                           /* tp_weaklist */
-    (destructor) 0,                           /* tp_del */
-    (int) 0,                                  /* tp_version_tag */
-#if PY_VERSION_HEX >= 0x03040000
-    (destructor) 0,                           /* tp_finalize */
-#endif
-#if PY_VERSION_HEX >= 0x03080000
-    (vectorcallfunc) 0,                       /* tp_vectorcall */
-#endif
-#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
-    0,                                        /* tp_print */
-#endif
-#ifdef COUNT_ALLOCS
-    (Py_ssize_t) 0,                           /* tp_allocs */
-    (Py_ssize_t) 0,                           /* tp_frees */
-    (Py_ssize_t) 0,                           /* tp_maxalloc */
-    0,                                        /* tp_prev */
-    0,                                        /* tp_next */
-#endif
-  },
-#if PY_VERSION_HEX >= 0x03050000
-  {
-    (unaryfunc) 0,                            /* am_await */
-    (unaryfunc) 0,                            /* am_aiter */
-    (unaryfunc) 0,                            /* am_anext */
-# if PY_VERSION_HEX >= 0x030a0000
-    (sendfunc) 0,                             /* am_send */
-# endif
-  },
-#endif
-  {
-    (binaryfunc) 0,                           /* nb_add */
-    (binaryfunc) 0,                           /* nb_subtract */
-    (binaryfunc) 0,                           /* nb_multiply */
-#if PY_VERSION_HEX < 0x03000000
-    (binaryfunc) 0,                           /* nb_divide */
-#endif
-    (binaryfunc) 0,                           /* nb_remainder */
-    (binaryfunc) 0,                           /* nb_divmod */
-    (ternaryfunc) 0,                          /* nb_power */
-    (unaryfunc) 0,                            /* nb_negative */
-    (unaryfunc) 0,                            /* nb_positive */
-    (unaryfunc) 0,                            /* nb_absolute */
-    (inquiry) 0,                              /* nb_nonzero */
-    (unaryfunc) 0,                            /* nb_invert */
-    (binaryfunc) 0,                           /* nb_lshift */
-    (binaryfunc) 0,                           /* nb_rshift */
-    (binaryfunc) 0,                           /* nb_and */
-    (binaryfunc) 0,                           /* nb_xor */
-    (binaryfunc) 0,                           /* nb_or */
-#if PY_VERSION_HEX < 0x03000000
-    (coercion) 0,                             /* nb_coerce */
-#endif
-    (unaryfunc) 0,                            /* nb_int */
-#if PY_VERSION_HEX >= 0x03000000
-    (void *) 0,                               /* nb_reserved */
-#else
-    (unaryfunc) 0,                            /* nb_long */
-#endif
-    (unaryfunc) 0,                            /* nb_float */
-#if PY_VERSION_HEX < 0x03000000
-    (unaryfunc) 0,                            /* nb_oct */
-    (unaryfunc) 0,                            /* nb_hex */
-#endif
-    (binaryfunc) 0,                           /* nb_inplace_add */
-    (binaryfunc) 0,                           /* nb_inplace_subtract */
-    (binaryfunc) 0,                           /* nb_inplace_multiply */
-#if PY_VERSION_HEX < 0x03000000
-    (binaryfunc) 0,                           /* nb_inplace_divide */
-#endif
-    (binaryfunc) 0,                           /* nb_inplace_remainder */
-    (ternaryfunc) 0,                          /* nb_inplace_power */
-    (binaryfunc) 0,                           /* nb_inplace_lshift */
-    (binaryfunc) 0,                           /* nb_inplace_rshift */
-    (binaryfunc) 0,                           /* nb_inplace_and */
-    (binaryfunc) 0,                           /* nb_inplace_xor */
-    (binaryfunc) 0,                           /* nb_inplace_or */
-    (binaryfunc) 0,                           /* nb_floor_divide */
-    (binaryfunc) 0,                           /* nb_true_divide */
-    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
-    (binaryfunc) 0,                           /* nb_inplace_true_divide */
-    (unaryfunc) 0,                            /* nb_index */
-#if PY_VERSION_HEX >= 0x03050000
-    (binaryfunc) 0,                           /* nb_matrix_multiply */
-    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
-#endif
-  },
-  {
-    (lenfunc) 0,                              /* mp_length */
-    (binaryfunc) 0,                           /* mp_subscript */
-    (objobjargproc) 0,                        /* mp_ass_subscript */
-  },
-  {
-    (lenfunc) 0,                              /* sq_length */
-    (binaryfunc) 0,                           /* sq_concat */
-    (ssizeargfunc) 0,                         /* sq_repeat */
-    (ssizeargfunc) 0,                         /* sq_item */
-#if PY_VERSION_HEX >= 0x03000000
-    (void *) 0,                               /* was_sq_slice */
-#else
-    (ssizessizeargfunc) 0,                    /* sq_slice */
-#endif
-    (ssizeobjargproc) 0,                      /* sq_ass_item */
-#if PY_VERSION_HEX >= 0x03000000
-    (void *) 0,                               /* was_sq_ass_slice */
-#else
-    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
-#endif
-    (objobjproc) 0,                           /* sq_contains */
-    (binaryfunc) 0,                           /* sq_inplace_concat */
-    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
-  },
-  {
-#if PY_VERSION_HEX < 0x03000000
-    (readbufferproc) 0,                       /* bf_getreadbuffer */
-    (writebufferproc) 0,                      /* bf_getwritebuffer */
-    (segcountproc) 0,                         /* bf_getsegcount */
-    (charbufferproc) 0,                       /* bf_getcharbuffer */
-#endif
-    (getbufferproc) 0,                        /* bf_getbuffer */
-    (releasebufferproc) 0,                    /* bf_releasebuffer */
-  },
-    (PyObject *) 0,                           /* ht_name */
-    (PyObject *) 0,                           /* ht_slots */
-#if PY_VERSION_HEX >= 0x03030000
-    (PyObject *) 0,                           /* ht_qualname */
-    0,                                        /* ht_cached_keys */
-#endif
-#if PY_VERSION_HEX >= 0x03090000
-    (PyObject *) 0,                           /* ht_module */
-#endif
-#if PY_VERSION_HEX >= 0x030b0000
-    (char *) 0,                               /* _ht_tpname */
-  {
-    (PyObject *) 0,                           /* getitem */
-  }
-#endif
-};
-
-SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeedNtHash_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__SeedNtHash_type};
-
-static SwigPyGetSet BlindSeedNtHash___dict___getset = { SwigPyObject_get___dict__, 0 };
-SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__BlindSeedNtHash_getset[] = {
-    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &BlindSeedNtHash___dict___getset },
-    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
-};
-
-SWIGINTERN PyObject *
-SwigPyBuiltin__btllib__BlindSeedNtHash_richcompare(PyObject *self, PyObject *other, int op) {
-  PyObject *result = NULL;
-  if (!result) {
-    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
-      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
-    } else {
-      result = Py_NotImplemented;
-      Py_INCREF(result);
-    }
-  }
-  return result;
-}
-
-SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__BlindSeedNtHash_methods[] = {
-  { "roll", _wrap_BlindSeedNtHash_roll, METH_O, "" },
-  { "roll_back", _wrap_BlindSeedNtHash_roll_back, METH_O, "" },
-  { "hashes", _wrap_BlindSeedNtHash_hashes, METH_NOARGS, "" },
-  { "get_pos", _wrap_BlindSeedNtHash_get_pos, METH_NOARGS, "" },
-  { "get_hash_num", _wrap_BlindSeedNtHash_get_hash_num, METH_NOARGS, "" },
-  { "get_hash_num_per_seed", _wrap_BlindSeedNtHash_get_hash_num_per_seed, METH_NOARGS, "" },
-  { "get_k", _wrap_BlindSeedNtHash_get_k, METH_NOARGS, "" },
-  { "get_forward_hash", _wrap_BlindSeedNtHash_get_forward_hash, METH_NOARGS, "" },
-  { "get_reverse_hash", _wrap_BlindSeedNtHash_get_reverse_hash, METH_NOARGS, "" },
-  { NULL, NULL, 0, NULL } /* Sentinel */
-};
-
-static PyHeapTypeObject SwigPyBuiltin__btllib__BlindSeedNtHash_type = {
-  {
-#if PY_VERSION_HEX >= 0x03000000
-    PyVarObject_HEAD_INIT(NULL, 0)
-#else
-    PyObject_HEAD_INIT(NULL)
-    0,                                        /* ob_size */
-#endif
-    "btllib.BlindSeedNtHash",                 /* tp_name */
-    sizeof(SwigPyObject),                     /* tp_basicsize */
-    0,                                        /* tp_itemsize */
-    _wrap_delete_BlindSeedNtHash_destructor_closure,              /* tp_dealloc */
-#if PY_VERSION_HEX < 0x030800b4
-    (printfunc) 0,                            /* tp_print */
-#else
-    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
-#endif
-    (getattrfunc) 0,                          /* tp_getattr */
-    (setattrfunc) 0,                          /* tp_setattr */
-#if PY_VERSION_HEX >= 0x03000000
-    0,                                        /* tp_compare */
-#else
-    (cmpfunc) 0,                              /* tp_compare */
-#endif
-    (reprfunc) 0,                             /* tp_repr */
-    &SwigPyBuiltin__btllib__BlindSeedNtHash_type.as_number,       /* tp_as_number */
-    &SwigPyBuiltin__btllib__BlindSeedNtHash_type.as_sequence,     /* tp_as_sequence */
-    &SwigPyBuiltin__btllib__BlindSeedNtHash_type.as_mapping,      /* tp_as_mapping */
-    SwigPyObject_hash,                        /* tp_hash */
-    (ternaryfunc) 0,                          /* tp_call */
-    (reprfunc) 0,                             /* tp_str */
-    (getattrofunc) 0,                         /* tp_getattro */
-    (setattrofunc) 0,                         /* tp_setattro */
-    &SwigPyBuiltin__btllib__BlindSeedNtHash_type.as_buffer,       /* tp_as_buffer */
-#if PY_VERSION_HEX >= 0x03000000
-    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
-#else
-    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
-#endif
-    "btllib::BlindSeedNtHash",                /* tp_doc */
-    (traverseproc) 0,                         /* tp_traverse */
-    (inquiry) 0,                              /* tp_clear */
-    SwigPyBuiltin__btllib__BlindSeedNtHash_richcompare,           /* tp_richcompare */
-    0,                                        /* tp_weaklistoffset */
-    (getiterfunc) 0,                          /* tp_iter */
-    (iternextfunc) 0,                         /* tp_iternext */
-    SwigPyBuiltin__btllib__BlindSeedNtHash_methods,               /* tp_methods */
-    0,                                        /* tp_members */
-    SwigPyBuiltin__btllib__BlindSeedNtHash_getset,                /* tp_getset */
-    0,                                        /* tp_base */
-    0,                                        /* tp_dict */
-    (descrgetfunc) 0,                         /* tp_descr_get */
-    (descrsetfunc) 0,                         /* tp_descr_set */
-    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
-    _wrap_new_BlindSeedNtHash,                /* tp_init */
-    (allocfunc) 0,                            /* tp_alloc */
-    (newfunc) 0,                              /* tp_new */
-    (freefunc) 0,                             /* tp_free */
-    (inquiry) 0,                              /* tp_is_gc */
-    (PyObject *) 0,                           /* tp_bases */
-    (PyObject *) 0,                           /* tp_mro */
-    (PyObject *) 0,                           /* tp_cache */
-    (PyObject *) 0,                           /* tp_subclasses */
-    (PyObject *) 0,                           /* tp_weaklist */
-    (destructor) 0,                           /* tp_del */
-    (int) 0,                                  /* tp_version_tag */
-#if PY_VERSION_HEX >= 0x03040000
-    (destructor) 0,                           /* tp_finalize */
-#endif
-#if PY_VERSION_HEX >= 0x03080000
-    (vectorcallfunc) 0,                       /* tp_vectorcall */
-#endif
-#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
-    0,                                        /* tp_print */
-#endif
-#ifdef COUNT_ALLOCS
-    (Py_ssize_t) 0,                           /* tp_allocs */
-    (Py_ssize_t) 0,                           /* tp_frees */
-    (Py_ssize_t) 0,                           /* tp_maxalloc */
-    0,                                        /* tp_prev */
-    0,                                        /* tp_next */
-#endif
-  },
-#if PY_VERSION_HEX >= 0x03050000
-  {
-    (unaryfunc) 0,                            /* am_await */
-    (unaryfunc) 0,                            /* am_aiter */
-    (unaryfunc) 0,                            /* am_anext */
-# if PY_VERSION_HEX >= 0x030a0000
-    (sendfunc) 0,                             /* am_send */
-# endif
-  },
-#endif
-  {
-    (binaryfunc) 0,                           /* nb_add */
-    (binaryfunc) 0,                           /* nb_subtract */
-    (binaryfunc) 0,                           /* nb_multiply */
-#if PY_VERSION_HEX < 0x03000000
-    (binaryfunc) 0,                           /* nb_divide */
-#endif
-    (binaryfunc) 0,                           /* nb_remainder */
-    (binaryfunc) 0,                           /* nb_divmod */
-    (ternaryfunc) 0,                          /* nb_power */
-    (unaryfunc) 0,                            /* nb_negative */
-    (unaryfunc) 0,                            /* nb_positive */
-    (unaryfunc) 0,                            /* nb_absolute */
-    (inquiry) 0,                              /* nb_nonzero */
-    (unaryfunc) 0,                            /* nb_invert */
-    (binaryfunc) 0,                           /* nb_lshift */
-    (binaryfunc) 0,                           /* nb_rshift */
-    (binaryfunc) 0,                           /* nb_and */
-    (binaryfunc) 0,                           /* nb_xor */
-    (binaryfunc) 0,                           /* nb_or */
-#if PY_VERSION_HEX < 0x03000000
-    (coercion) 0,                             /* nb_coerce */
-#endif
-    (unaryfunc) 0,                            /* nb_int */
-#if PY_VERSION_HEX >= 0x03000000
-    (void *) 0,                               /* nb_reserved */
-#else
-    (unaryfunc) 0,                            /* nb_long */
-#endif
-    (unaryfunc) 0,                            /* nb_float */
-#if PY_VERSION_HEX < 0x03000000
-    (unaryfunc) 0,                            /* nb_oct */
-    (unaryfunc) 0,                            /* nb_hex */
-#endif
-    (binaryfunc) 0,                           /* nb_inplace_add */
-    (binaryfunc) 0,                           /* nb_inplace_subtract */
-    (binaryfunc) 0,                           /* nb_inplace_multiply */
-#if PY_VERSION_HEX < 0x03000000
-    (binaryfunc) 0,                           /* nb_inplace_divide */
-#endif
-    (binaryfunc) 0,                           /* nb_inplace_remainder */
-    (ternaryfunc) 0,                          /* nb_inplace_power */
-    (binaryfunc) 0,                           /* nb_inplace_lshift */
-    (binaryfunc) 0,                           /* nb_inplace_rshift */
-    (binaryfunc) 0,                           /* nb_inplace_and */
-    (binaryfunc) 0,                           /* nb_inplace_xor */
-    (binaryfunc) 0,                           /* nb_inplace_or */
-    (binaryfunc) 0,                           /* nb_floor_divide */
-    (binaryfunc) 0,                           /* nb_true_divide */
-    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
-    (binaryfunc) 0,                           /* nb_inplace_true_divide */
-    (unaryfunc) 0,                            /* nb_index */
-#if PY_VERSION_HEX >= 0x03050000
-    (binaryfunc) 0,                           /* nb_matrix_multiply */
-    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
-#endif
-  },
-  {
-    (lenfunc) 0,                              /* mp_length */
-    (binaryfunc) 0,                           /* mp_subscript */
-    (objobjargproc) 0,                        /* mp_ass_subscript */
-  },
-  {
-    (lenfunc) 0,                              /* sq_length */
-    (binaryfunc) 0,                           /* sq_concat */
-    (ssizeargfunc) 0,                         /* sq_repeat */
-    (ssizeargfunc) 0,                         /* sq_item */
-#if PY_VERSION_HEX >= 0x03000000
-    (void *) 0,                               /* was_sq_slice */
-#else
-    (ssizessizeargfunc) 0,                    /* sq_slice */
-#endif
-    (ssizeobjargproc) 0,                      /* sq_ass_item */
-#if PY_VERSION_HEX >= 0x03000000
-    (void *) 0,                               /* was_sq_ass_slice */
-#else
-    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
-#endif
-    (objobjproc) 0,                           /* sq_contains */
-    (binaryfunc) 0,                           /* sq_inplace_concat */
-    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
-  },
-  {
-#if PY_VERSION_HEX < 0x03000000
-    (readbufferproc) 0,                       /* bf_getreadbuffer */
-    (writebufferproc) 0,                      /* bf_getwritebuffer */
-    (segcountproc) 0,                         /* bf_getsegcount */
-    (charbufferproc) 0,                       /* bf_getcharbuffer */
-#endif
-    (getbufferproc) 0,                        /* bf_getbuffer */
-    (releasebufferproc) 0,                    /* bf_releasebuffer */
-  },
-    (PyObject *) 0,                           /* ht_name */
-    (PyObject *) 0,                           /* ht_slots */
-#if PY_VERSION_HEX >= 0x03030000
-    (PyObject *) 0,                           /* ht_qualname */
-    0,                                        /* ht_cached_keys */
-#endif
-#if PY_VERSION_HEX >= 0x03090000
-    (PyObject *) 0,                           /* ht_module */
-#endif
-#if PY_VERSION_HEX >= 0x030b0000
-    (char *) 0,                               /* _ht_tpname */
-  {
-    (PyObject *) 0,                           /* getitem */
-  }
-#endif
-};
-
-SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__BlindSeedNtHash_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__BlindSeedNtHash_type};
-
 static SwigPyGetSet RandSeq___dict___getset = { SwigPyObject_get___dict__, 0 };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__RandSeq_getset[] = {
     { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &RandSeq___dict___getset },
@@ -63589,6 +67025,958 @@ static PyHeapTypeObject SwigPyBuiltin__btllib__SeedAAHash_type = {
 };
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeedAAHash_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__SeedAAHash_type};
+
+static SwigPyGetSet SeedNtHash___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__SeedNtHash_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &SeedNtHash___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__SeedNtHash_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__SeedNtHash_methods[] = {
+  { "roll", _wrap_SeedNtHash_roll, METH_NOARGS, "" },
+  { "roll_back", _wrap_SeedNtHash_roll_back, METH_NOARGS, "" },
+  { "peek", _wrap_SeedNtHash_peek, METH_VARARGS, "" },
+  { "peek_back", _wrap_SeedNtHash_peek_back, METH_VARARGS, "" },
+  { "hashes", _wrap_SeedNtHash_hashes, METH_NOARGS, "" },
+  { "get_pos", _wrap_SeedNtHash_get_pos, METH_NOARGS, "" },
+  { "get_hash_num", _wrap_SeedNtHash_get_hash_num, METH_NOARGS, "" },
+  { "get_hash_num_per_seed", _wrap_SeedNtHash_get_hash_num_per_seed, METH_NOARGS, "" },
+  { "get_k", _wrap_SeedNtHash_get_k, METH_NOARGS, "" },
+  { "get_forward_hash", _wrap_SeedNtHash_get_forward_hash, METH_NOARGS, "" },
+  { "get_reverse_hash", _wrap_SeedNtHash_get_reverse_hash, METH_NOARGS, "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__SeedNtHash_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.SeedNtHash",                      /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_SeedNtHash_destructor_closure,                   /* tp_dealloc */
+#if PY_VERSION_HEX < 0x030800b4
+    (printfunc) 0,                            /* tp_print */
+#else
+    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
+#endif
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__SeedNtHash_type.as_number,            /* tp_as_number */
+    &SwigPyBuiltin__btllib__SeedNtHash_type.as_sequence,          /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__SeedNtHash_type.as_mapping,           /* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__SeedNtHash_type.as_buffer,            /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::SeedNtHash",                     /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__SeedNtHash_richcompare,                /* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__SeedNtHash_methods,/* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__SeedNtHash_getset, /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_SeedNtHash,                     /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+# if PY_VERSION_HEX >= 0x030a0000
+    (sendfunc) 0,                             /* am_send */
+# endif
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+#if PY_VERSION_HEX >= 0x03090000
+    (PyObject *) 0,                           /* ht_module */
+#endif
+#if PY_VERSION_HEX >= 0x030b0000
+    (char *) 0,                               /* _ht_tpname */
+  {
+    (PyObject *) 0,                           /* getitem */
+  }
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__SeedNtHash_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__SeedNtHash_type};
+
+static SwigPyGetSet BlindSeedNtHash___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__BlindSeedNtHash_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &BlindSeedNtHash___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__BlindSeedNtHash_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__BlindSeedNtHash_methods[] = {
+  { "roll", _wrap_BlindSeedNtHash_roll, METH_O, "" },
+  { "roll_back", _wrap_BlindSeedNtHash_roll_back, METH_O, "" },
+  { "hashes", _wrap_BlindSeedNtHash_hashes, METH_NOARGS, "" },
+  { "get_pos", _wrap_BlindSeedNtHash_get_pos, METH_NOARGS, "" },
+  { "get_hash_num", _wrap_BlindSeedNtHash_get_hash_num, METH_NOARGS, "" },
+  { "get_hash_num_per_seed", _wrap_BlindSeedNtHash_get_hash_num_per_seed, METH_NOARGS, "" },
+  { "get_k", _wrap_BlindSeedNtHash_get_k, METH_NOARGS, "" },
+  { "get_forward_hash", _wrap_BlindSeedNtHash_get_forward_hash, METH_NOARGS, "" },
+  { "get_reverse_hash", _wrap_BlindSeedNtHash_get_reverse_hash, METH_NOARGS, "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__BlindSeedNtHash_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.BlindSeedNtHash",                 /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_BlindSeedNtHash_destructor_closure,              /* tp_dealloc */
+#if PY_VERSION_HEX < 0x030800b4
+    (printfunc) 0,                            /* tp_print */
+#else
+    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
+#endif
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__BlindSeedNtHash_type.as_number,       /* tp_as_number */
+    &SwigPyBuiltin__btllib__BlindSeedNtHash_type.as_sequence,     /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__BlindSeedNtHash_type.as_mapping,      /* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__BlindSeedNtHash_type.as_buffer,       /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::BlindSeedNtHash",                /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__BlindSeedNtHash_richcompare,           /* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__BlindSeedNtHash_methods,               /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__BlindSeedNtHash_getset,                /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_BlindSeedNtHash,                /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+# if PY_VERSION_HEX >= 0x030a0000
+    (sendfunc) 0,                             /* am_send */
+# endif
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+#if PY_VERSION_HEX >= 0x03090000
+    (PyObject *) 0,                           /* ht_module */
+#endif
+#if PY_VERSION_HEX >= 0x030b0000
+    (char *) 0,                               /* _ht_tpname */
+  {
+    (PyObject *) 0,                           /* getitem */
+  }
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__BlindSeedNtHash_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__BlindSeedNtHash_type};
+
+static SwigPyGetSet NtHash___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__NtHash_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &NtHash___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__NtHash_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__NtHash_methods[] = {
+  { "roll", _wrap_NtHash_roll, METH_NOARGS, "" },
+  { "roll_back", _wrap_NtHash_roll_back, METH_NOARGS, "" },
+  { "peek", _wrap_NtHash_peek, METH_VARARGS, "" },
+  { "peek_back", _wrap_NtHash_peek_back, METH_VARARGS, "" },
+  { "hashes", _wrap_NtHash_hashes, METH_NOARGS, "" },
+  { "get_pos", _wrap_NtHash_get_pos, METH_NOARGS, "" },
+  { "get_hash_num", _wrap_NtHash_get_hash_num, METH_NOARGS, "" },
+  { "get_k", _wrap_NtHash_get_k, METH_NOARGS, "" },
+  { "get_forward_hash", _wrap_NtHash_get_forward_hash, METH_NOARGS, "" },
+  { "get_reverse_hash", _wrap_NtHash_get_reverse_hash, METH_NOARGS, "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__NtHash_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.NtHash",                          /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_NtHash_destructor_closure,   /* tp_dealloc */
+#if PY_VERSION_HEX < 0x030800b4
+    (printfunc) 0,                            /* tp_print */
+#else
+    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
+#endif
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__NtHash_type.as_number,                /* tp_as_number */
+    &SwigPyBuiltin__btllib__NtHash_type.as_sequence,              /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__NtHash_type.as_mapping,               /* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__NtHash_type.as_buffer,                /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::NtHash",                         /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__NtHash_richcompare,/* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__NtHash_methods,    /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__NtHash_getset,     /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_NtHash,                         /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+# if PY_VERSION_HEX >= 0x030a0000
+    (sendfunc) 0,                             /* am_send */
+# endif
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+#if PY_VERSION_HEX >= 0x03090000
+    (PyObject *) 0,                           /* ht_module */
+#endif
+#if PY_VERSION_HEX >= 0x030b0000
+    (char *) 0,                               /* _ht_tpname */
+  {
+    (PyObject *) 0,                           /* getitem */
+  }
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__NtHash_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__NtHash_type};
+
+static SwigPyGetSet BlindNtHash___dict___getset = { SwigPyObject_get___dict__, 0 };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__BlindNtHash_getset[] = {
+    { (char *)"__dict__", SwigPyBuiltin_FunpackGetterClosure, 0, (char *)"", &BlindNtHash___dict___getset },
+    { NULL, NULL, NULL, NULL, NULL } /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__btllib__BlindNtHash_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__btllib__BlindNtHash_methods[] = {
+  { "roll", _wrap_BlindNtHash_roll, METH_O, "" },
+  { "roll_back", _wrap_BlindNtHash_roll_back, METH_O, "" },
+  { "peek", _wrap_BlindNtHash_peek, METH_O, "" },
+  { "peek_back", _wrap_BlindNtHash_peek_back, METH_O, "" },
+  { "hashes", _wrap_BlindNtHash_hashes, METH_NOARGS, "" },
+  { "get_pos", _wrap_BlindNtHash_get_pos, METH_NOARGS, "" },
+  { "get_hash_num", _wrap_BlindNtHash_get_hash_num, METH_NOARGS, "" },
+  { "get_k", _wrap_BlindNtHash_get_k, METH_NOARGS, "" },
+  { "get_forward_hash", _wrap_BlindNtHash_get_forward_hash, METH_NOARGS, "" },
+  { "get_reverse_hash", _wrap_BlindNtHash_get_reverse_hash, METH_NOARGS, "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__btllib__BlindNtHash_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "btllib.BlindNtHash",                     /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    _wrap_delete_BlindNtHash_destructor_closure,                  /* tp_dealloc */
+#if PY_VERSION_HEX < 0x030800b4
+    (printfunc) 0,                            /* tp_print */
+#else
+    (Py_ssize_t) 0,                           /* tp_vectorcall_offset */
+#endif
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__btllib__BlindNtHash_type.as_number,           /* tp_as_number */
+    &SwigPyBuiltin__btllib__BlindNtHash_type.as_sequence,         /* tp_as_sequence */
+    &SwigPyBuiltin__btllib__BlindNtHash_type.as_mapping,          /* tp_as_mapping */
+    SwigPyObject_hash,                        /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__btllib__BlindNtHash_type.as_buffer,           /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "btllib::BlindNtHash",                    /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    SwigPyBuiltin__btllib__BlindNtHash_richcompare,               /* tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__btllib__BlindNtHash_methods,                   /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__btllib__BlindNtHash_getset,/* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    offsetof(SwigPyObject, dict),             /* tp_dictoffset */
+    _wrap_new_BlindNtHash,                    /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject *) 0,                           /* tp_bases */
+    (PyObject *) 0,                           /* tp_mro */
+    (PyObject *) 0,                           /* tp_cache */
+    (PyObject *) 0,                           /* tp_subclasses */
+    (PyObject *) 0,                           /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+    (int) 0,                                  /* tp_version_tag */
+#if PY_VERSION_HEX >= 0x03040000
+    (destructor) 0,                           /* tp_finalize */
+#endif
+#if PY_VERSION_HEX >= 0x03080000
+    (vectorcallfunc) 0,                       /* tp_vectorcall */
+#endif
+#if (PY_VERSION_HEX >= 0x03080000) && (PY_VERSION_HEX < 0x03090000)
+    0,                                        /* tp_print */
+#endif
+#ifdef COUNT_ALLOCS
+    (Py_ssize_t) 0,                           /* tp_allocs */
+    (Py_ssize_t) 0,                           /* tp_frees */
+    (Py_ssize_t) 0,                           /* tp_maxalloc */
+    0,                                        /* tp_prev */
+    0,                                        /* tp_next */
+#endif
+  },
+#if PY_VERSION_HEX >= 0x03050000
+  {
+    (unaryfunc) 0,                            /* am_await */
+    (unaryfunc) 0,                            /* am_aiter */
+    (unaryfunc) 0,                            /* am_anext */
+# if PY_VERSION_HEX >= 0x030a0000
+    (sendfunc) 0,                             /* am_send */
+# endif
+  },
+#endif
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+    (unaryfunc) 0,                            /* nb_index */
+#if PY_VERSION_HEX >= 0x03050000
+    (binaryfunc) 0,                           /* nb_matrix_multiply */
+    (binaryfunc) 0,                           /* nb_inplace_matrix_multiply */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void *) 0,                               /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+  },
+    (PyObject *) 0,                           /* ht_name */
+    (PyObject *) 0,                           /* ht_slots */
+#if PY_VERSION_HEX >= 0x03030000
+    (PyObject *) 0,                           /* ht_qualname */
+    0,                                        /* ht_cached_keys */
+#endif
+#if PY_VERSION_HEX >= 0x03090000
+    (PyObject *) 0,                           /* ht_module */
+#endif
+#if PY_VERSION_HEX >= 0x030b0000
+    (char *) 0,                               /* _ht_tpname */
+  {
+    (PyObject *) 0,                           /* getitem */
+  }
+#endif
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__btllib__BlindNtHash_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__btllib__BlindNtHash_type};
 
 static SwigPyGetSet CountingBloomFilter8___dict___getset = { SwigPyObject_get___dict__, 0 };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__btllib__CountingBloomFilterT_uint8_t_t_getset[] = {
@@ -65920,6 +70308,8 @@ static swig_type_info _swigt__p_long_long = {"_p_long_long", "int64_t *|int_fast
 static swig_type_info _swigt__p_off_type = {"_p_off_type", "off_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_openmode = {"_p_openmode", "openmode *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_p_unsigned_long_long = {"_p_p_p_unsigned_long_long", "uint64_t ***|uint64_t ***", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_unsigned_long_long = {"_p_p_unsigned_long_long", "uint64_t **|uint64_t **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_void = {"_p_p_void", "void **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pos_type = {"_p_pos_type", "pos_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_sdsl__bit_vector = {"_p_sdsl__bit_vector", "sdsl::bit_vector *", 0, 0, (void*)0, 0};
@@ -65944,6 +70334,7 @@ static swig_type_info _swigt__p_std__basic_istreamT_char_std__char_traitsT_char_
 static swig_type_info _swigt__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t = {"_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t", "std::basic_ostream< char,std::char_traits< char > > *|std::ostream *|std::basic_ostream< char > *", 0, 0, (void*)&SwigPyBuiltin__std__basic_ostreamT_char_t_clientdata, 0};
 static swig_type_info _swigt__p_std__basic_streambufT_char_std__char_traitsT_char_t_t = {"_p_std__basic_streambufT_char_std__char_traitsT_char_t_t", "std::basic_streambuf< char,std::char_traits< char > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t = {"_p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t", "std::basic_string< char,std::char_traits< char >,std::allocator< char > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__dequeT_char_t = {"_p_std__dequeT_char_t", "std::deque< char > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ios_base = {"_p_std__ios_base", "std::ios_base *", 0, 0, (void*)&SwigPyBuiltin__std__ios_base_clientdata, 0};
 static swig_type_info _swigt__p_std__locale = {"_p_std__locale", "std::locale *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
@@ -65951,21 +70342,22 @@ static swig_type_info _swigt__p_std__string_view = {"_p_std__string_view", "std:
 static swig_type_info _swigt__p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t = {"_p_std__vectorT_btllib__Indexlr__Minimizer_std__allocatorT_btllib__Indexlr__Minimizer_t_t", "std::vector< btllib::Indexlr::Minimizer,std::allocator< btllib::Indexlr::Minimizer > > *|std::vector< btllib::Indexlr::Minimizer > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_btllib__Indexlr__Minimizer_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_double_std__allocatorT_double_t_t = {"_p_std__vectorT_double_std__allocatorT_double_t_t", "std::vector< double,std::allocator< double > > *|std::vector< double > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_double_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_int_std__allocatorT_int_t_t = {"_p_std__vectorT_int_std__allocatorT_int_t_t", "std::vector< int,std::allocator< int > > *|std::vector< int > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_int_t_clientdata, 0};
-static swig_type_info _swigt__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t = {"_p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t", "btllib::typedefs::SpacedSeedBlocks *|std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t = {"_p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t", "btllib::hashing_internals::SpacedSeedBlocks *|std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__string_std__allocatorT_std__string_t_t = {"_p_std__vectorT_std__string_std__allocatorT_std__string_t_t", "std::vector< std::string,std::allocator< std::string > > *|std::vector< std::string > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_std__string_t_clientdata, 0};
-static swig_type_info _swigt__p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t = {"_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t", "std::vector< btllib::SpacedSeed > *|std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *|std::vector< std::vector< unsigned int,std::allocator< unsigned int > > > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_btllib__SpacedSeed_t_clientdata, 0};
+static swig_type_info _swigt__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t = {"_p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t", "std::vector< btllib::hashing_internals::SpacedSeedBlocks,std::allocator< btllib::hashing_internals::SpacedSeedBlocks > > *|std::vector< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > >,std::allocator< std::vector< std::array< unsigned int,2 >,std::allocator< std::array< unsigned int,2 > > > > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t = {"_p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t", "std::vector< btllib::SpacedSeed > *|std::vector< btllib::hashing_internals::SpacedSeedMonomers,std::allocator< btllib::hashing_internals::SpacedSeedMonomers > > *|std::vector< std::vector< unsigned int,std::allocator< unsigned int > >,std::allocator< std::vector< unsigned int,std::allocator< unsigned int > > > > *|std::vector< std::vector< unsigned int,std::allocator< unsigned int > > > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_btllib__SpacedSeed_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t = {"_p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t", "std::vector< unsigned char,std::allocator< unsigned char > > *|std::vector< unsigned char > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_unsigned_char_t_clientdata, 0};
-static swig_type_info _swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t = {"_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t", "btllib::SpacedSeed *|btllib::typedefs::SpacedSeed *|btllib::typedefs::SpacedSeedMonomers *|std::vector< unsigned int,std::allocator< unsigned int > > *|std::vector< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_unsigned_int_t_clientdata, 0};
+static swig_type_info _swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t = {"_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t", "btllib::SpacedSeed *|btllib::hashing_internals::SpacedSeed *|btllib::hashing_internals::SpacedSeedMonomers *|std::vector< unsigned int,std::allocator< unsigned int > > *|std::vector< unsigned int > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_unsigned_int_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t = {"_p_std__vectorT_unsigned_long_long_std__allocatorT_unsigned_long_long_t_t", "std::vector< uint64_t > *|std::vector< uint64_t,std::allocator< uint64_t > > *|std::vector< uint64_t > *", 0, 0, (void*)&SwigPyBuiltin__std__vectorT_uint64_t_t_clientdata, 0};
 static swig_type_info _swigt__p_streamoff = {"_p_streamoff", "std::basic_istream< char >::off_type *|std::basic_ostream< char >::off_type *|streamoff *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_streampos = {"_p_streampos", "std::basic_istream< char >::pos_type *|std::basic_ostream< char >::pos_type *|streampos *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)&SwigPyBuiltin__swig__SwigPyIterator_clientdata, 0};
 static swig_type_info _swigt__p_traits_type = {"_p_traits_type", "traits_type *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "btllib::typedefs::NUM_HASHES_TYPE *|uint8_t *|uint_fast8_t *|uint_least8_t *|unsigned char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "btllib::hashing_internals::NUM_HASHES_TYPE *|uint8_t *|uint_fast8_t *|uint_least8_t *|unsigned char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "uint32_t *|uint_fast16_t *|uint_fast32_t *|uint_least32_t *|uintptr_t *|unsigned int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_long = {"_p_unsigned_long", "btllib::PipeId *|btllib::PipelineId *|unsigned long *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "uint64_t *|uint_fast64_t *|uint_least64_t *|uintmax_t *|uint64_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "btllib::typedefs::K_TYPE *|uint16_t *|uint_least16_t *|unsigned short *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "btllib::hashing_internals::K_TYPE *|uint16_t *|uint_least16_t *|unsigned short *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
@@ -66037,6 +70429,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_off_type,
   &_swigt__p_openmode,
   &_swigt__p_p_PyObject,
+  &_swigt__p_p_p_unsigned_long_long,
+  &_swigt__p_p_unsigned_long_long,
   &_swigt__p_p_void,
   &_swigt__p_pos_type,
   &_swigt__p_sdsl__bit_vector,
@@ -66061,6 +70455,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t,
   &_swigt__p_std__basic_streambufT_char_std__char_traitsT_char_t_t,
   &_swigt__p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t,
+  &_swigt__p_std__dequeT_char_t,
   &_swigt__p_std__ios_base,
   &_swigt__p_std__locale,
   &_swigt__p_std__string,
@@ -66070,6 +70465,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_int_std__allocatorT_int_t_t,
   &_swigt__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t,
   &_swigt__p_std__vectorT_std__string_std__allocatorT_std__string_t_t,
+  &_swigt__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,
   &_swigt__p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t,
   &_swigt__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t,
   &_swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t,
@@ -66154,6 +70550,8 @@ static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0}
 static swig_cast_info _swigc__p_off_type[] = {  {&_swigt__p_off_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_openmode[] = {  {&_swigt__p_openmode, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_p_unsigned_long_long[] = {  {&_swigt__p_p_p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_unsigned_long_long[] = {  {&_swigt__p_p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_void[] = {  {&_swigt__p_p_void, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pos_type[] = {  {&_swigt__p_pos_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_sdsl__bit_vector[] = {  {&_swigt__p_sdsl__bit_vector, 0, 0, 0},{0, 0, 0, 0}};
@@ -66178,6 +70576,7 @@ static swig_cast_info _swigc__p_std__basic_istreamT_char_std__char_traitsT_char_
 static swig_cast_info _swigc__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t[] = {  {&_swigt__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t, 0, 0, 0},  {&_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__basic_streambufT_char_std__char_traitsT_char_t_t[] = {  {&_swigt__p_std__basic_streambufT_char_std__char_traitsT_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t[] = {  {&_swigt__p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__dequeT_char_t[] = {  {&_swigt__p_std__dequeT_char_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__ios_base[] = {  {&_swigt__p_std__ios_base, 0, 0, 0},  {&_swigt__p_std__basic_iosT_char_std__char_traitsT_char_t_t, _p_std__basic_iosT_char_std__char_traitsT_char_t_tTo_p_std__ios_base, 0, 0},  {&_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__ios_base, 0, 0},  {&_swigt__p_std__basic_istreamT_char_std__char_traitsT_char_t_t, _p_std__basic_istreamT_char_std__char_traitsT_char_t_tTo_p_std__ios_base, 0, 0},  {&_swigt__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_ostreamT_char_std__char_traitsT_char_t_tTo_p_std__ios_base, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__locale[] = {  {&_swigt__p_std__locale, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
@@ -66187,6 +70586,7 @@ static swig_cast_info _swigc__p_std__vectorT_double_std__allocatorT_double_t_t[]
 static swig_cast_info _swigc__p_std__vectorT_int_std__allocatorT_int_t_t[] = {  {&_swigt__p_std__vectorT_int_std__allocatorT_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t[] = {  {&_swigt__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__string_std__allocatorT_std__string_t_t[] = {  {&_swigt__p_std__vectorT_std__string_std__allocatorT_std__string_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t[] = {  {&_swigt__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t[] = {  {&_swigt__p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -66271,6 +70671,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_off_type,
   _swigc__p_openmode,
   _swigc__p_p_PyObject,
+  _swigc__p_p_p_unsigned_long_long,
+  _swigc__p_p_unsigned_long_long,
   _swigc__p_p_void,
   _swigc__p_pos_type,
   _swigc__p_sdsl__bit_vector,
@@ -66295,6 +70697,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t,
   _swigc__p_std__basic_streambufT_char_std__char_traitsT_char_t_t,
   _swigc__p_std__basic_stringT_char_std__char_traitsT_char_t_std__allocatorT_char_t_t,
+  _swigc__p_std__dequeT_char_t,
   _swigc__p_std__ios_base,
   _swigc__p_std__locale,
   _swigc__p_std__string,
@@ -66304,6 +70707,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_int_std__allocatorT_int_t_t,
   _swigc__p_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t,
   _swigc__p_std__vectorT_std__string_std__allocatorT_std__string_t_t,
+  _swigc__p_std__vectorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_std__allocatorT_std__vectorT_std__arrayT_unsigned_int_2_t_std__allocatorT_std__arrayT_unsigned_int_2_t_t_t_t_t,
   _swigc__p_std__vectorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_std__allocatorT_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t_t_t,
   _swigc__p_std__vectorT_unsigned_char_std__allocatorT_unsigned_char_t_t,
   _swigc__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t,
@@ -67801,98 +72205,6 @@ SWIG_init(void) {
   PyDict_SetItemString(md, "NTHASH_FN_NAME", PyObject_GetAttrString(globals, "NTHASH_FN_NAME"));
   SwigPyBuiltin_AddPublicSymbol(public_interface, "NTHASH_FN_NAME");
   
-  /* type 'btllib::NtHash' */
-  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__NtHash_type;
-  builtin_pytype->tp_dict = d = PyDict_New();
-  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
-  builtin_pytype->tp_new = PyType_GenericNew;
-  builtin_base_count = 0;
-  builtin_bases[builtin_base_count] = NULL;
-  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
-  PyDict_SetItemString(d, "this", this_descr);
-  PyDict_SetItemString(d, "thisown", thisown_descr);
-  if (PyType_Ready(builtin_pytype) < 0) {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'NtHash'.");
-#if PY_VERSION_HEX >= 0x03000000
-    return NULL;
-#else
-    return;
-#endif
-  }
-  Py_INCREF(builtin_pytype);
-  PyModule_AddObject(m, "NtHash", (PyObject *)builtin_pytype);
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "NtHash");
-  d = md;
-  
-  /* type 'btllib::BlindNtHash' */
-  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__BlindNtHash_type;
-  builtin_pytype->tp_dict = d = PyDict_New();
-  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
-  builtin_pytype->tp_new = PyType_GenericNew;
-  builtin_base_count = 0;
-  builtin_bases[builtin_base_count] = NULL;
-  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
-  PyDict_SetItemString(d, "this", this_descr);
-  PyDict_SetItemString(d, "thisown", thisown_descr);
-  if (PyType_Ready(builtin_pytype) < 0) {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'BlindNtHash'.");
-#if PY_VERSION_HEX >= 0x03000000
-    return NULL;
-#else
-    return;
-#endif
-  }
-  Py_INCREF(builtin_pytype);
-  PyModule_AddObject(m, "BlindNtHash", (PyObject *)builtin_pytype);
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "BlindNtHash");
-  d = md;
-  
-  /* type 'btllib::SeedNtHash' */
-  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__SeedNtHash_type;
-  builtin_pytype->tp_dict = d = PyDict_New();
-  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
-  builtin_pytype->tp_new = PyType_GenericNew;
-  builtin_base_count = 0;
-  builtin_bases[builtin_base_count] = NULL;
-  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
-  PyDict_SetItemString(d, "this", this_descr);
-  PyDict_SetItemString(d, "thisown", thisown_descr);
-  if (PyType_Ready(builtin_pytype) < 0) {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'SeedNtHash'.");
-#if PY_VERSION_HEX >= 0x03000000
-    return NULL;
-#else
-    return;
-#endif
-  }
-  Py_INCREF(builtin_pytype);
-  PyModule_AddObject(m, "SeedNtHash", (PyObject *)builtin_pytype);
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "SeedNtHash");
-  d = md;
-  
-  /* type 'btllib::BlindSeedNtHash' */
-  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__BlindSeedNtHash_type;
-  builtin_pytype->tp_dict = d = PyDict_New();
-  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
-  builtin_pytype->tp_new = PyType_GenericNew;
-  builtin_base_count = 0;
-  builtin_bases[builtin_base_count] = NULL;
-  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
-  PyDict_SetItemString(d, "this", this_descr);
-  PyDict_SetItemString(d, "thisown", thisown_descr);
-  if (PyType_Ready(builtin_pytype) < 0) {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'BlindSeedNtHash'.");
-#if PY_VERSION_HEX >= 0x03000000
-    return NULL;
-#else
-    return;
-#endif
-  }
-  Py_INCREF(builtin_pytype);
-  PyModule_AddObject(m, "BlindSeedNtHash", (PyObject *)builtin_pytype);
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "BlindSeedNtHash");
-  d = md;
-  
   /* type 'btllib::RandSeq' */
   builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__RandSeq_type;
   builtin_pytype->tp_dict = d = PyDict_New();
@@ -67966,6 +72278,602 @@ SWIG_init(void) {
   Py_INCREF(builtin_pytype);
   PyModule_AddObject(m, "SeedAAHash", (PyObject *)builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "SeedAAHash");
+  d = md;
+  
+  /* type 'btllib::SeedNtHash' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__SeedNtHash_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'SeedNtHash'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "SeedNtHash", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SeedNtHash");
+  d = md;
+  
+  /* type 'btllib::BlindSeedNtHash' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__BlindSeedNtHash_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'BlindSeedNtHash'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "BlindSeedNtHash", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "BlindSeedNtHash");
+  d = md;
+  SWIG_addvarlink(globals, "MULTISHIFT", Swig_var_MULTISHIFT_get, Swig_var_MULTISHIFT_set);
+  PyDict_SetItemString(md, "MULTISHIFT", PyObject_GetAttrString(globals, "MULTISHIFT"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MULTISHIFT");
+  SWIG_addvarlink(globals, "MULTISEED", Swig_var_MULTISEED_get, Swig_var_MULTISEED_set);
+  PyDict_SetItemString(md, "MULTISEED", PyObject_GetAttrString(globals, "MULTISEED"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MULTISEED");
+  SWIG_addvarlink(globals, "CP_OFF", Swig_var_CP_OFF_get, Swig_var_CP_OFF_set);
+  PyDict_SetItemString(md, "CP_OFF", PyObject_GetAttrString(globals, "CP_OFF"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "CP_OFF");
+  SWIG_addvarlink(globals, "SEED_A", Swig_var_SEED_A_get, Swig_var_SEED_A_set);
+  PyDict_SetItemString(md, "SEED_A", PyObject_GetAttrString(globals, "SEED_A"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SEED_A");
+  SWIG_addvarlink(globals, "SEED_C", Swig_var_SEED_C_get, Swig_var_SEED_C_set);
+  PyDict_SetItemString(md, "SEED_C", PyObject_GetAttrString(globals, "SEED_C"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SEED_C");
+  SWIG_addvarlink(globals, "SEED_G", Swig_var_SEED_G_get, Swig_var_SEED_G_set);
+  PyDict_SetItemString(md, "SEED_G", PyObject_GetAttrString(globals, "SEED_G"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SEED_G");
+  SWIG_addvarlink(globals, "SEED_T", Swig_var_SEED_T_get, Swig_var_SEED_T_set);
+  PyDict_SetItemString(md, "SEED_T", PyObject_GetAttrString(globals, "SEED_T"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SEED_T");
+  SWIG_addvarlink(globals, "SEED_N", Swig_var_SEED_N_get, Swig_var_SEED_N_set);
+  PyDict_SetItemString(md, "SEED_N", PyObject_GetAttrString(globals, "SEED_N"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SEED_N");
+  SWIG_addvarlink(globals, "ASCII_SIZE", Swig_var_ASCII_SIZE_get, Swig_var_ASCII_SIZE_set);
+  PyDict_SetItemString(md, "ASCII_SIZE", PyObject_GetAttrString(globals, "ASCII_SIZE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "ASCII_SIZE");
+  SWIG_addvarlink(globals, "SEED_TAB", Swig_var_SEED_TAB_get, Swig_var_SEED_TAB_set);
+  PyDict_SetItemString(md, "SEED_TAB", PyObject_GetAttrString(globals, "SEED_TAB"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "SEED_TAB");
+  SWIG_addvarlink(globals, "A33R", Swig_var_A33R_get, Swig_var_A33R_set);
+  PyDict_SetItemString(md, "A33R", PyObject_GetAttrString(globals, "A33R"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "A33R");
+  SWIG_addvarlink(globals, "A31L", Swig_var_A31L_get, Swig_var_A31L_set);
+  PyDict_SetItemString(md, "A31L", PyObject_GetAttrString(globals, "A31L"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "A31L");
+  SWIG_addvarlink(globals, "C33R", Swig_var_C33R_get, Swig_var_C33R_set);
+  PyDict_SetItemString(md, "C33R", PyObject_GetAttrString(globals, "C33R"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "C33R");
+  SWIG_addvarlink(globals, "C31L", Swig_var_C31L_get, Swig_var_C31L_set);
+  PyDict_SetItemString(md, "C31L", PyObject_GetAttrString(globals, "C31L"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "C31L");
+  SWIG_addvarlink(globals, "G33R", Swig_var_G33R_get, Swig_var_G33R_set);
+  PyDict_SetItemString(md, "G33R", PyObject_GetAttrString(globals, "G33R"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "G33R");
+  SWIG_addvarlink(globals, "G31L", Swig_var_G31L_get, Swig_var_G31L_set);
+  PyDict_SetItemString(md, "G31L", PyObject_GetAttrString(globals, "G31L"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "G31L");
+  SWIG_addvarlink(globals, "T33R", Swig_var_T33R_get, Swig_var_T33R_set);
+  PyDict_SetItemString(md, "T33R", PyObject_GetAttrString(globals, "T33R"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "T33R");
+  SWIG_addvarlink(globals, "T31L", Swig_var_T31L_get, Swig_var_T31L_set);
+  PyDict_SetItemString(md, "T31L", PyObject_GetAttrString(globals, "T31L"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "T31L");
+  SWIG_addvarlink(globals, "N33R", Swig_var_N33R_get, Swig_var_N33R_set);
+  PyDict_SetItemString(md, "N33R", PyObject_GetAttrString(globals, "N33R"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "N33R");
+  SWIG_addvarlink(globals, "N31L", Swig_var_N31L_get, Swig_var_N31L_set);
+  PyDict_SetItemString(md, "N31L", PyObject_GetAttrString(globals, "N31L"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "N31L");
+  SWIG_addvarlink(globals, "MS_TAB_33R", Swig_var_MS_TAB_33R_get, Swig_var_MS_TAB_33R_set);
+  PyDict_SetItemString(md, "MS_TAB_33R", PyObject_GetAttrString(globals, "MS_TAB_33R"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MS_TAB_33R");
+  SWIG_addvarlink(globals, "MS_TAB_31L", Swig_var_MS_TAB_31L_get, Swig_var_MS_TAB_31L_set);
+  PyDict_SetItemString(md, "MS_TAB_31L", PyObject_GetAttrString(globals, "MS_TAB_31L"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MS_TAB_31L");
+  SWIG_addvarlink(globals, "CONVERT_TAB", Swig_var_CONVERT_TAB_get, Swig_var_CONVERT_TAB_set);
+  PyDict_SetItemString(md, "CONVERT_TAB", PyObject_GetAttrString(globals, "CONVERT_TAB"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "CONVERT_TAB");
+  SWIG_addvarlink(globals, "RC_CONVERT_TAB", Swig_var_RC_CONVERT_TAB_get, Swig_var_RC_CONVERT_TAB_set);
+  PyDict_SetItemString(md, "RC_CONVERT_TAB", PyObject_GetAttrString(globals, "RC_CONVERT_TAB"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "RC_CONVERT_TAB");
+  SWIG_addvarlink(globals, "DIMER_TAB", Swig_var_DIMER_TAB_get, Swig_var_DIMER_TAB_set);
+  PyDict_SetItemString(md, "DIMER_TAB", PyObject_GetAttrString(globals, "DIMER_TAB"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "DIMER_TAB");
+  SWIG_addvarlink(globals, "TRIMER_TAB", Swig_var_TRIMER_TAB_get, Swig_var_TRIMER_TAB_set);
+  PyDict_SetItemString(md, "TRIMER_TAB", PyObject_GetAttrString(globals, "TRIMER_TAB"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "TRIMER_TAB");
+  SWIG_addvarlink(globals, "TETRAMER_TAB", Swig_var_TETRAMER_TAB_get, Swig_var_TETRAMER_TAB_set);
+  PyDict_SetItemString(md, "TETRAMER_TAB", PyObject_GetAttrString(globals, "TETRAMER_TAB"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "TETRAMER_TAB");
+  SWIG_addvarlink(globals, "AA_SEED_A", Swig_var_AA_SEED_A_get, Swig_var_AA_SEED_A_set);
+  PyDict_SetItemString(md, "AA_SEED_A", PyObject_GetAttrString(globals, "AA_SEED_A"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_A");
+  SWIG_addvarlink(globals, "AA_SEED_C", Swig_var_AA_SEED_C_get, Swig_var_AA_SEED_C_set);
+  PyDict_SetItemString(md, "AA_SEED_C", PyObject_GetAttrString(globals, "AA_SEED_C"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_C");
+  SWIG_addvarlink(globals, "AA_SEED_D", Swig_var_AA_SEED_D_get, Swig_var_AA_SEED_D_set);
+  PyDict_SetItemString(md, "AA_SEED_D", PyObject_GetAttrString(globals, "AA_SEED_D"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_D");
+  SWIG_addvarlink(globals, "AA_SEED_E", Swig_var_AA_SEED_E_get, Swig_var_AA_SEED_E_set);
+  PyDict_SetItemString(md, "AA_SEED_E", PyObject_GetAttrString(globals, "AA_SEED_E"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_E");
+  SWIG_addvarlink(globals, "AA_SEED_F", Swig_var_AA_SEED_F_get, Swig_var_AA_SEED_F_set);
+  PyDict_SetItemString(md, "AA_SEED_F", PyObject_GetAttrString(globals, "AA_SEED_F"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_F");
+  SWIG_addvarlink(globals, "AA_SEED_G", Swig_var_AA_SEED_G_get, Swig_var_AA_SEED_G_set);
+  PyDict_SetItemString(md, "AA_SEED_G", PyObject_GetAttrString(globals, "AA_SEED_G"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_G");
+  SWIG_addvarlink(globals, "AA_SEED_H", Swig_var_AA_SEED_H_get, Swig_var_AA_SEED_H_set);
+  PyDict_SetItemString(md, "AA_SEED_H", PyObject_GetAttrString(globals, "AA_SEED_H"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_H");
+  SWIG_addvarlink(globals, "AA_SEED_I", Swig_var_AA_SEED_I_get, Swig_var_AA_SEED_I_set);
+  PyDict_SetItemString(md, "AA_SEED_I", PyObject_GetAttrString(globals, "AA_SEED_I"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_I");
+  SWIG_addvarlink(globals, "AA_SEED_K", Swig_var_AA_SEED_K_get, Swig_var_AA_SEED_K_set);
+  PyDict_SetItemString(md, "AA_SEED_K", PyObject_GetAttrString(globals, "AA_SEED_K"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_K");
+  SWIG_addvarlink(globals, "AA_SEED_L", Swig_var_AA_SEED_L_get, Swig_var_AA_SEED_L_set);
+  PyDict_SetItemString(md, "AA_SEED_L", PyObject_GetAttrString(globals, "AA_SEED_L"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_L");
+  SWIG_addvarlink(globals, "AA_SEED_M", Swig_var_AA_SEED_M_get, Swig_var_AA_SEED_M_set);
+  PyDict_SetItemString(md, "AA_SEED_M", PyObject_GetAttrString(globals, "AA_SEED_M"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_M");
+  SWIG_addvarlink(globals, "AA_SEED_N", Swig_var_AA_SEED_N_get, Swig_var_AA_SEED_N_set);
+  PyDict_SetItemString(md, "AA_SEED_N", PyObject_GetAttrString(globals, "AA_SEED_N"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_N");
+  SWIG_addvarlink(globals, "AA_SEED_P", Swig_var_AA_SEED_P_get, Swig_var_AA_SEED_P_set);
+  PyDict_SetItemString(md, "AA_SEED_P", PyObject_GetAttrString(globals, "AA_SEED_P"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_P");
+  SWIG_addvarlink(globals, "AA_SEED_Q", Swig_var_AA_SEED_Q_get, Swig_var_AA_SEED_Q_set);
+  PyDict_SetItemString(md, "AA_SEED_Q", PyObject_GetAttrString(globals, "AA_SEED_Q"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_Q");
+  SWIG_addvarlink(globals, "AA_SEED_R", Swig_var_AA_SEED_R_get, Swig_var_AA_SEED_R_set);
+  PyDict_SetItemString(md, "AA_SEED_R", PyObject_GetAttrString(globals, "AA_SEED_R"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_R");
+  SWIG_addvarlink(globals, "AA_SEED_S", Swig_var_AA_SEED_S_get, Swig_var_AA_SEED_S_set);
+  PyDict_SetItemString(md, "AA_SEED_S", PyObject_GetAttrString(globals, "AA_SEED_S"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_S");
+  SWIG_addvarlink(globals, "AA_SEED_T", Swig_var_AA_SEED_T_get, Swig_var_AA_SEED_T_set);
+  PyDict_SetItemString(md, "AA_SEED_T", PyObject_GetAttrString(globals, "AA_SEED_T"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_T");
+  SWIG_addvarlink(globals, "AA_SEED_V", Swig_var_AA_SEED_V_get, Swig_var_AA_SEED_V_set);
+  PyDict_SetItemString(md, "AA_SEED_V", PyObject_GetAttrString(globals, "AA_SEED_V"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_V");
+  SWIG_addvarlink(globals, "AA_SEED_W", Swig_var_AA_SEED_W_get, Swig_var_AA_SEED_W_set);
+  PyDict_SetItemString(md, "AA_SEED_W", PyObject_GetAttrString(globals, "AA_SEED_W"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_W");
+  SWIG_addvarlink(globals, "AA_SEED_Y", Swig_var_AA_SEED_Y_get, Swig_var_AA_SEED_Y_set);
+  PyDict_SetItemString(md, "AA_SEED_Y", PyObject_GetAttrString(globals, "AA_SEED_Y"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_Y");
+  SWIG_addvarlink(globals, "AA_SEED__", Swig_var_AA_SEED___get, Swig_var_AA_SEED___set);
+  PyDict_SetItemString(md, "AA_SEED__", PyObject_GetAttrString(globals, "AA_SEED__"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED__");
+  SWIG_addvarlink(globals, "AA_SEED_TABLE", Swig_var_AA_SEED_TABLE_get, Swig_var_AA_SEED_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_TABLE", PyObject_GetAttrString(globals, "AA_SEED_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_A_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_A_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_A_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_A_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_A_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_A_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_A_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_A_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_A_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_A_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_A_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_A_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_C_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_C_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_C_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_C_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_C_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_C_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_C_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_C_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_C_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_C_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_C_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_C_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_D_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_D_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_D_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_D_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_D_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_D_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_D_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_D_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_D_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_D_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_D_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_D_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_E_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_E_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_E_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_E_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_E_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_E_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_E_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_E_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_E_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_E_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_E_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_E_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_F_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_F_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_F_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_F_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_F_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_F_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_F_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_F_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_F_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_F_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_F_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_F_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_G_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_G_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_G_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_G_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_G_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_G_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_G_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_G_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_G_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_G_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_G_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_G_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_H_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_H_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_H_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_H_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_H_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_H_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_H_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_H_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_H_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_H_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_H_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_H_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_I_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_I_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_I_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_I_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_I_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_I_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_I_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_I_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_I_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_I_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_I_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_I_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_K_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_K_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_K_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_K_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_K_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_K_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_K_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_K_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_K_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_K_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_K_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_K_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_L_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_L_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_L_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_L_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_L_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_L_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_L_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_L_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_L_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_L_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_L_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_L_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_M_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_M_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_M_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_M_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_M_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_M_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_M_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_M_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_M_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_M_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_M_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_M_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_N_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_N_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_N_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_N_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_N_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_N_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_N_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_N_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_N_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_N_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_N_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_N_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_P_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_P_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_P_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_P_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_P_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_P_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_P_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_P_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_P_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_P_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_P_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_P_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_Q_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_Q_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_Q_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_Q_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_Q_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_Q_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_Q_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_R_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_R_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_R_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_R_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_R_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_R_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_R_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_R_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_R_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_R_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_R_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_R_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_S_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_S_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_S_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_S_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_S_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_S_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_S_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_S_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_S_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_S_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_S_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_S_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_T_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_T_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_T_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_T_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_T_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_T_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_T_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_T_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_T_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_T_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_T_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_T_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_V_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_V_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_V_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_V_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_V_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_V_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_V_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_V_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_V_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_V_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_V_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_V_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_W_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_W_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_W_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_W_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_W_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_W_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_W_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_W_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_W_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_W_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_W_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_W_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_Y_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_Y_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_Y_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_Y_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_Y_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_Y_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_Y_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED___RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED___RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED___RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED___RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED___RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED___RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED___LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED___LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED___LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED___LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED___LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED___LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_RIGHT_33BITS_ROLL_TABLE", Swig_var_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "AA_SEED_LEFT_31BITS_ROLL_TABLE", Swig_var_AA_SEED_LEFT_31BITS_ROLL_TABLE_get, Swig_var_AA_SEED_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "AA_SEED_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "AA_SEED_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "AA_SEED_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_C___", Swig_var_LEVEL_2_AA_SEED_C____get, Swig_var_LEVEL_2_AA_SEED_C____set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_C___", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_C___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_C___");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_G___", Swig_var_LEVEL_2_AA_SEED_G____get, Swig_var_LEVEL_2_AA_SEED_G____set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_G___", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_G___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_G___");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_A___", Swig_var_LEVEL_2_AA_SEED_A____get, Swig_var_LEVEL_2_AA_SEED_A____set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_A___", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_A___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_A___");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_TS__", Swig_var_LEVEL_2_AA_SEED_TS___get, Swig_var_LEVEL_2_AA_SEED_TS___set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_TS__", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_TS__"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_TS__");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_N___", Swig_var_LEVEL_2_AA_SEED_N____get, Swig_var_LEVEL_2_AA_SEED_N____set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_N___", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_N___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_N___");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_DE__", Swig_var_LEVEL_2_AA_SEED_DE___get, Swig_var_LEVEL_2_AA_SEED_DE___set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_DE__", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_DE__"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_DE__");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_QKR_", Swig_var_LEVEL_2_AA_SEED_QKR__get, Swig_var_LEVEL_2_AA_SEED_QKR__set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_QKR_", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_QKR_"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_QKR_");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_VILM", Swig_var_LEVEL_2_AA_SEED_VILM_get, Swig_var_LEVEL_2_AA_SEED_VILM_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_VILM", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_VILM"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_VILM");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_WFY_", Swig_var_LEVEL_2_AA_SEED_WFY__get, Swig_var_LEVEL_2_AA_SEED_WFY__set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_WFY_", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_WFY_"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_WFY_");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_H___", Swig_var_LEVEL_2_AA_SEED_H____get, Swig_var_LEVEL_2_AA_SEED_H____set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_H___", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_H___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_H___");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_P___", Swig_var_LEVEL_2_AA_SEED_P____get, Swig_var_LEVEL_2_AA_SEED_P____set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_P___", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_P___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_P___");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_____", Swig_var_LEVEL_2_AA_SEED______get, Swig_var_LEVEL_2_AA_SEED______set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_____", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_____"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_____");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_TABLE", Swig_var_LEVEL_2_AA_SEED_TABLE_get, Swig_var_LEVEL_2_AA_SEED_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_C____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_G____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_A____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_A____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_TS___RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_TS___LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_N____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_N____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_DE___RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_DE___LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_H____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_P____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED______RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED______LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_C___", Swig_var_LEVEL_3_AA_SEED_C____get, Swig_var_LEVEL_3_AA_SEED_C____set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_C___", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_C___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_C___");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_G___", Swig_var_LEVEL_3_AA_SEED_G____get, Swig_var_LEVEL_3_AA_SEED_G____set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_G___", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_G___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_G___");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_ATS_", Swig_var_LEVEL_3_AA_SEED_ATS__get, Swig_var_LEVEL_3_AA_SEED_ATS__set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_ATS_", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_ATS_"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_ATS_");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_NDE_", Swig_var_LEVEL_3_AA_SEED_NDE__get, Swig_var_LEVEL_3_AA_SEED_NDE__set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_NDE_", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_NDE_"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_NDE_");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_QKR_", Swig_var_LEVEL_3_AA_SEED_QKR__get, Swig_var_LEVEL_3_AA_SEED_QKR__set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_QKR_", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_QKR_"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_QKR_");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_VILM", Swig_var_LEVEL_3_AA_SEED_VILM_get, Swig_var_LEVEL_3_AA_SEED_VILM_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_VILM", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_VILM"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_VILM");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_WFY_", Swig_var_LEVEL_3_AA_SEED_WFY__get, Swig_var_LEVEL_3_AA_SEED_WFY__set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_WFY_", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_WFY_"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_WFY_");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_H___", Swig_var_LEVEL_3_AA_SEED_H____get, Swig_var_LEVEL_3_AA_SEED_H____set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_H___", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_H___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_H___");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_P___", Swig_var_LEVEL_3_AA_SEED_P____get, Swig_var_LEVEL_3_AA_SEED_P____set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_P___", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_P___"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_P___");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_____", Swig_var_LEVEL_3_AA_SEED______get, Swig_var_LEVEL_3_AA_SEED______set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_____", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_____"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_____");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_TABLE", Swig_var_LEVEL_3_AA_SEED_TABLE_get, Swig_var_LEVEL_3_AA_SEED_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_C____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_C____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_G____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_G____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_ATS__RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_ATS__LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_NDE__RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_NDE__LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_QKR__RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_QKR__LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_VILM_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_VILM_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_WFY__RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_WFY__LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_H____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_H____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_P____RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_P____LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED______RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED______LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_X_AA_SEED_TABLE", Swig_var_LEVEL_X_AA_SEED_TABLE_get, Swig_var_LEVEL_X_AA_SEED_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_X_AA_SEED_TABLE", PyObject_GetAttrString(globals, "LEVEL_X_AA_SEED_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_X_AA_SEED_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE", Swig_var_LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE_get, Swig_var_LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE");
+  SWIG_addvarlink(globals, "LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE", Swig_var_LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE_get, Swig_var_LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE_set);
+  PyDict_SetItemString(md, "LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE", PyObject_GetAttrString(globals, "LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE"));
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE");
+  
+  /* type 'btllib::NtHash' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__NtHash_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'NtHash'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "NtHash", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "NtHash");
+  d = md;
+  
+  /* type 'btllib::BlindNtHash' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__btllib__BlindNtHash_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'BlindNtHash'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "BlindNtHash", (PyObject *)builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "BlindNtHash");
   d = md;
   
   /* type 'btllib::CountingBloomFilter< uint8_t >' */

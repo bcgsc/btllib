@@ -4,6 +4,11 @@
 #include <iostream>
 #include <limits>
 
+namespace btllib::hashing_internals {
+
+using NUM_HASHES_TYPE = uint8_t;
+using K_TYPE = uint16_t;
+
 template<typename T>
 inline T
 canonical(const T fwd, const T rev)
@@ -3171,3 +3176,5 @@ constexpr inline const uint64_t* const*
     LEVEL_2_AA_SEED_LEFT_31BITS_ROLL_TABLE,
     LEVEL_3_AA_SEED_LEFT_31BITS_ROLL_TABLE
   };
+
+} // namespace btllib::hashing_internals
