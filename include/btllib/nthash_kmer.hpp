@@ -6,7 +6,6 @@
 #include <deque>
 #include <memory>
 #include <string>
-#include <string_view>
 #include <vector>
 
 #include <btllib/hashing_internals.hpp>
@@ -192,6 +191,47 @@ prev_reverse_hash(uint64_t rh_val,
   return h_val;
 }
 
+/**
+ * Generate multiple new hash values for the input k-mer by substituting
+ * multiple characters.
+ *
+ * @param fh_val Forward hash value of the k-mer.
+ * @param rh_val Reverse hash value of the k-mer.
+ * @param kmer_seq Array of characters representing the k-mer.
+ * @param positions Indicies of the positions to be substituted.
+ * @param new_bases Characters to be placed in the indicies indicated in
+ * positions.
+ * @param k k-mer size.
+ * @param m Number of hashes per k-mer.
+ * @param h_val Array of size m for storing the output hash values.
+ */
+inline void
+sub_hash(uint64_t fh_val,
+         uint64_t rh_val,
+         const char* kmer_seq,
+         const std::vector<unsigned>& positions,
+         const std::vector<unsigned char>& new_bases,
+         unsigned k,
+         unsigned m,
+         uint64_t* h_val)
+{
+  uint64_t b_val = 0;
+
+  for (size_t i = 0; i < positions.size(); i++) {
+    const auto pos = positions[i];
+    const auto new_base = new_bases[i];
+
+    fh_val ^= srol_table((unsigned char)kmer_seq[pos], k - 1 - pos);
+    fh_val ^= srol_table(new_base, k - 1 - pos);
+
+    rh_val ^= srol_table((unsigned char)kmer_seq[pos] & CP_OFF, pos);
+    rh_val ^= srol_table(new_base & CP_OFF, pos);
+  }
+
+  b_val = canonical(fh_val, rh_val);
+  extend_hashes(b_val, k, m, h_val);
+}
+
 } // namespace btllib::hashing_internals
 
 namespace btllib {
@@ -206,6 +246,7 @@ using hashing_internals::prev_forward_hash;
 using hashing_internals::prev_reverse_hash;
 using hashing_internals::SEED_N;
 using hashing_internals::SEED_TAB;
+using hashing_internals::sub_hash;
 
 /**
  * Normal k-mer hashing.
@@ -227,7 +268,8 @@ public:
          hashing_internals::NUM_HASHES_TYPE num_hashes,
          hashing_internals::K_TYPE k,
          size_t pos = 0)
-    : seq(seq, seq_len)
+    : seq(seq)
+    , seq_len(seq_len)
     , num_hashes(num_hashes)
     , k(k)
     , pos(pos)
@@ -235,13 +277,13 @@ public:
     , hash_arr(new uint64_t[num_hashes])
   {
     check_error(k == 0, "NtHash: k must be greater than 0");
-    check_error(this->seq.size() < k,
-                "NtHash: sequence length (" + std::to_string(this->seq.size()) +
+    check_error(this->seq_len < k,
+                "NtHash: sequence length (" + std::to_string(this->seq_len) +
                   ") is smaller than k (" + std::to_string(k) + ")");
-    check_error(pos > this->seq.size() - k,
+    check_error(pos > this->seq_len - k,
                 "NtHash: passed position (" + std::to_string(pos) +
                   ") is larger than sequence length (" +
-                  std::to_string(this->seq.size()) + ")");
+                  std::to_string(this->seq_len) + ")");
   }
 
   /**
@@ -261,6 +303,7 @@ public:
 
   NtHash(const NtHash& obj)
     : seq(obj.seq)
+    , seq_len(obj.seq_len)
     , num_hashes(obj.num_hashes)
     , k(obj.k)
     , pos(obj.pos)
@@ -292,7 +335,7 @@ public:
     if (!initialized) {
       return init();
     }
-    if (pos >= seq.size() - k) {
+    if (pos >= seq_len - k) {
       return false;
     }
     if (hashing_internals::SEED_TAB[(unsigned char)seq[pos + k]] ==
@@ -341,7 +384,7 @@ public:
    */
   bool peek()
   {
-    if (pos >= seq.size() - k) {
+    if (pos >= seq_len - k) {
       return false;
     }
     return peek(seq[pos + k]);
@@ -398,6 +441,19 @@ public:
     return true;
   }
 
+  void sub(const std::vector<unsigned>& positions,
+           const std::vector<unsigned char>& new_bases)
+  {
+    sub_hash(fwd_hash,
+             rev_hash,
+             seq + pos,
+             positions,
+             new_bases,
+             get_k(),
+             get_hash_num(),
+             hash_arr.get());
+  }
+
   /**
    * Get the array of current canonical hash values (length = \p get_hash_num())
    * @return Pointer to the hash array
@@ -436,7 +492,8 @@ public:
   uint64_t get_reverse_hash() const { return rev_hash; }
 
 private:
-  std::string_view seq;
+  const char* seq;
+  const unsigned seq_len;
   hashing_internals::NUM_HASHES_TYPE num_hashes;
   hashing_internals::K_TYPE k;
   size_t pos;
@@ -452,15 +509,14 @@ private:
   bool init()
   {
     size_t pos_n = 0;
-    while (pos <= seq.size() - k + 1 &&
-           is_invalid_kmer(seq.data() + pos, k, pos_n)) {
+    while (pos <= seq_len - k + 1 && is_invalid_kmer(seq + pos, k, pos_n)) {
       pos += pos_n + 1;
     }
-    if (pos > seq.size() - k) {
+    if (pos > seq_len - k) {
       return false;
     }
-    fwd_hash = base_forward_hash(seq.data() + pos, k);
-    rev_hash = base_reverse_hash(seq.data() + pos, k);
+    fwd_hash = base_forward_hash(seq + pos, k);
+    rev_hash = base_reverse_hash(seq + pos, k);
     extend_hashes(fwd_hash, rev_hash, k, num_hashes, hash_arr.get());
     initialized = true;
     return true;
@@ -488,7 +544,7 @@ public:
   BlindNtHash(const std::string& seq,
               hashing_internals::NUM_HASHES_TYPE num_hashes,
               hashing_internals::K_TYPE k,
-              ssize_t pos = 0)
+              long pos = 0)
     : seq(seq.data() + pos, seq.data() + pos + k)
     , num_hashes(num_hashes)
     , pos(pos)
@@ -576,7 +632,7 @@ public:
    * has never been called on this NtHash object.
    * @return Position of the most recently hashed k-mer's first base-pair
    */
-  ssize_t get_pos() const { return pos; }
+  long get_pos() const { return pos; }
 
   /**
    * Get the number of hashes generated per k-mer.
@@ -605,7 +661,7 @@ public:
 private:
   std::deque<char> seq;
   hashing_internals::NUM_HASHES_TYPE num_hashes;
-  ssize_t pos;
+  long pos;
   uint64_t fwd_hash;
   uint64_t rev_hash;
   std::unique_ptr<uint64_t[]> hash_arr;

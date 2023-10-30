@@ -478,7 +478,8 @@ public:
              hashing_internals::NUM_HASHES_TYPE num_hashes_per_seed,
              hashing_internals::K_TYPE k,
              size_t pos = 0)
-    : seq(seq, seq_len)
+    : seq(seq)
+    , seq_len(seq_len)
     , num_hashes_per_seed(num_hashes_per_seed)
     , k(k)
     , pos(pos)
@@ -529,7 +530,8 @@ public:
              hashing_internals::NUM_HASHES_TYPE num_hashes_per_seed,
              hashing_internals::K_TYPE k,
              size_t pos = 0)
-    : seq(seq, seq_len)
+    : seq(seq)
+    , seq_len(seq_len)
     , num_hashes_per_seed(num_hashes_per_seed)
     , k(k)
     , pos(pos)
@@ -563,6 +565,7 @@ public:
 
   SeedNtHash(const SeedNtHash& obj)
     : seq(obj.seq)
+    , seq_len(obj.seq_len)
     , num_hashes_per_seed(obj.num_hashes_per_seed)
     , k(obj.k)
     , pos(obj.pos)
@@ -602,14 +605,14 @@ public:
     if (!initialized) {
       return init();
     }
-    if (pos >= seq.size() - k) {
+    if (pos >= seq_len - k) {
       return false;
     }
     if (SEED_TAB[(unsigned char)seq[pos + k]] == SEED_N) {
       pos += k;
       return init();
     }
-    ntmsm64(seq.data() + pos,
+    ntmsm64(seq + pos,
             blocks,
             monomers,
             k,
@@ -643,7 +646,7 @@ public:
     if (SEED_TAB[(unsigned char)seq[pos - 1]] == SEED_N) {
       return false;
     }
-    ntmsm64l(seq.data() + pos - 1,
+    ntmsm64l(seq + pos - 1,
              blocks,
              monomers,
              k,
@@ -665,7 +668,7 @@ public:
    */
   bool peek()
   {
-    if (pos >= seq.size() - k) {
+    if (pos >= seq_len - k) {
       return false;
     }
     return peek(seq[pos + k]);
@@ -708,7 +711,7 @@ public:
       fwd_hash_cpy.get(), fwd_hash.get(), blocks.size() * sizeof(uint64_t));
     std::memcpy(
       rev_hash_cpy.get(), rev_hash.get(), blocks.size() * sizeof(uint64_t));
-    ntmsm64(seq.data() + pos,
+    ntmsm64(seq + pos,
             char_in,
             blocks,
             monomers,
@@ -748,7 +751,7 @@ public:
       fwd_hash_cpy.get(), fwd_hash.get(), blocks.size() * sizeof(uint64_t));
     std::memcpy(
       rev_hash_cpy.get(), rev_hash.get(), blocks.size() * sizeof(uint64_t));
-    ntmsm64l(seq.data() + pos - 1,
+    ntmsm64l(seq + pos - 1,
              char_in,
              blocks,
              monomers,
@@ -810,7 +813,8 @@ public:
   uint64_t* get_reverse_hash() const { return rev_hash.get(); }
 
 private:
-  std::string_view seq;
+  const char* seq;
+  const unsigned seq_len;
   hashing_internals::NUM_HASHES_TYPE num_hashes_per_seed;
   hashing_internals::K_TYPE k;
   size_t pos;
@@ -830,21 +834,21 @@ private:
   bool init()
   {
     unsigned pos_n = 0;
-    while (pos < seq.size() - k + 1 && !ntmsm64(seq.data() + pos,
-                                                blocks,
-                                                monomers,
-                                                k,
-                                                blocks.size(),
-                                                num_hashes_per_seed,
-                                                fwd_hash_nomonos.get(),
-                                                rev_hash_nomonos.get(),
-                                                fwd_hash.get(),
-                                                rev_hash.get(),
-                                                pos_n,
-                                                hash_arr.get())) {
+    while (pos < seq_len - k + 1 && !ntmsm64(seq + pos,
+                                             blocks,
+                                             monomers,
+                                             k,
+                                             blocks.size(),
+                                             num_hashes_per_seed,
+                                             fwd_hash_nomonos.get(),
+                                             rev_hash_nomonos.get(),
+                                             fwd_hash.get(),
+                                             rev_hash.get(),
+                                             pos_n,
+                                             hash_arr.get())) {
       pos += pos_n + 1;
     }
-    if (pos > seq.size() - k) {
+    if (pos > seq_len - k) {
       return false;
     }
     initialized = true;
@@ -874,7 +878,7 @@ public:
                   const std::vector<std::string>& seeds,
                   hashing_internals::NUM_HASHES_TYPE num_hashes_per_seed,
                   hashing_internals::K_TYPE k,
-                  ssize_t pos = 0)
+                  long pos = 0)
     : seq(seq + pos, seq + pos + k)
     , num_hashes_per_seed(num_hashes_per_seed)
     , k(k)
@@ -990,7 +994,7 @@ public:
    * has never been called on this NtHash object.
    * @return Position of the most recently hashed k-mer's first base-pair
    */
-  ssize_t get_pos() const { return pos; }
+  long get_pos() const { return pos; }
 
   /**
    * Get the length of the hash array.
@@ -1029,7 +1033,7 @@ private:
   std::deque<char> seq;
   hashing_internals::NUM_HASHES_TYPE num_hashes_per_seed;
   hashing_internals::K_TYPE k;
-  ssize_t pos;
+  long pos;
   std::vector<hashing_internals::SpacedSeedBlocks> blocks;
   std::vector<hashing_internals::SpacedSeedMonomers> monomers;
   std::unique_ptr<uint64_t[]> fwd_hash_nomonos;

@@ -175,6 +175,26 @@ main()
   }
 
   {
+    PRINT_TEST_NAME("base substitution")
+
+    std::string seq = "ACGTACACTGGACTGAGTCT";
+    std::string sub = "ACGCGCACTGGACTGAGTCT";
+
+    btllib::NtHash nthash(seq, 3, seq.size());
+    btllib::NtHash nthash_subbed(sub, 3, sub.size());
+
+    nthash.roll();
+    nthash.sub({ 3, 4 }, { 'C', 'G' });
+    nthash_subbed.roll();
+    TEST_ASSERT_EQ(nthash.get_hash_num(), nthash_subbed.get_hash_num());
+    size_t i;
+    for (i = 0; i < nthash.get_hash_num(); ++i) {
+      TEST_ASSERT_EQ(nthash.hashes()[i], nthash_subbed.hashes()[i]);
+    }
+    TEST_ASSERT_EQ(i, 3);
+  }
+
+  {
     PRINT_TEST_NAME("RNA")
     unsigned h = 3, k = 20;
 
