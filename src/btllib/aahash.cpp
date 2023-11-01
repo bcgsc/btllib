@@ -57,8 +57,6 @@ modify_base_with_seed(uint64_t hash_value,
 
 namespace btllib {
 
-using hashing_internals::AA_SEED__;
-using hashing_internals::AA_SEED_TABLE;
 using hashing_internals::extend_hashes;
 
 bool
@@ -88,7 +86,8 @@ AAHash::roll()
     pos = std::numeric_limits<std::size_t>::max();
     return false;
   }
-  if (AA_SEED_TABLE[(unsigned char)(seq[pos + k])] == AA_SEED__) {
+  if (hashing_internals::AA_SEED_TABLE[(unsigned char)(seq[pos + k])] ==
+      hashing_internals::AA_SEED__) {
     pos += k;
     return init();
   }

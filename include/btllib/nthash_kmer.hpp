@@ -14,25 +14,6 @@
 namespace btllib::hashing_internals {
 
 /**
- * Check the current k-mer for non ACGTU's
- * @param seq C array containing the sequence's characters
- * @param k k-mer size
- * @return `true` if any of the first k characters is not an ACGTU, `false`
- * otherwise
- */
-inline bool
-is_invalid_kmer(const char* seq, unsigned k, size_t& pos_n)
-{
-  for (int i = (int)k - 1; i >= 0; i--) {
-    if (SEED_TAB[(unsigned char)seq[i]] == SEED_N) {
-      pos_n = i;
-      return true;
-    }
-  }
-  return false;
-}
-
-/**
  * Generate the forward-strand hash value of the first k-mer in the sequence.
  * @param seq C array containing the sequence's characters
  * @param k k-mer size
@@ -52,7 +33,9 @@ base_forward_hash(const char* seq, unsigned k)
     h_val ^= TETRAMER_TAB[loc];
   }
   const unsigned remainder = k % 4;
-  h_val = srol(h_val, remainder);
+  if (remainder > 0) {
+    h_val = srol(h_val, remainder);
+  }
   if (remainder == 3) {
     uint8_t trimer_loc = 0;
     trimer_loc += 16 * CONVERT_TAB[(unsigned char)seq[k - 3]]; // NOLINT
@@ -239,7 +222,6 @@ namespace btllib {
 using hashing_internals::base_forward_hash;
 using hashing_internals::base_reverse_hash;
 using hashing_internals::extend_hashes;
-using hashing_internals::is_invalid_kmer;
 using hashing_internals::next_forward_hash;
 using hashing_internals::next_reverse_hash;
 using hashing_internals::prev_forward_hash;
@@ -265,8 +247,8 @@ public:
    */
   NtHash(const char* seq,
          size_t seq_len,
-         hashing_internals::NUM_HASHES_TYPE num_hashes,
-         hashing_internals::K_TYPE k,
+         unsigned num_hashes,
+         unsigned k,
          size_t pos = 0)
     : seq(seq)
     , seq_len(seq_len)
@@ -294,8 +276,8 @@ public:
    * @param pos Position in sequence to start hashing from
    */
   NtHash(const std::string& seq,
-         hashing_internals::NUM_HASHES_TYPE num_hashes,
-         hashing_internals::K_TYPE k,
+         unsigned num_hashes,
+         unsigned k,
          size_t pos = 0)
     : NtHash(seq.data(), seq.size(), num_hashes, k, pos)
   {
@@ -493,7 +475,7 @@ public:
 
 private:
   const char* seq;
-  const unsigned seq_len;
+  const size_t seq_len;
   hashing_internals::NUM_HASHES_TYPE num_hashes;
   hashing_internals::K_TYPE k;
   size_t pos;
@@ -508,9 +490,15 @@ private:
    */
   bool init()
   {
-    size_t pos_n = 0;
-    while (pos <= seq_len - k + 1 && is_invalid_kmer(seq + pos, k, pos_n)) {
-      pos += pos_n + 1;
+    bool has_n = true;
+    while (pos <= seq_len - k + 1 && has_n) {
+      has_n = false;
+      for (unsigned i = 0; i < k; i++) {
+        if (SEED_TAB[(unsigned char)seq[pos + k - i - 1]] == SEED_N) {
+          pos += k - i;
+          has_n = true;
+        }
+      }
     }
     if (pos > seq_len - k) {
       return false;
@@ -542,8 +530,8 @@ public:
    * @param pos Position in sequence to start hashing from
    */
   BlindNtHash(const std::string& seq,
-              hashing_internals::NUM_HASHES_TYPE num_hashes,
-              hashing_internals::K_TYPE k,
+              unsigned num_hashes,
+              unsigned k,
               long pos = 0)
     : seq(seq.data() + pos, seq.data() + pos + k)
     , num_hashes(num_hashes)

@@ -44,9 +44,6 @@ srol(const uint64_t x)
 inline uint64_t
 srol(const uint64_t x, const unsigned d)
 {
-  if (d == 0) {
-    return x;
-  }
   uint64_t v = (x << d) | (x >> (64 - d));                         // NOLINT
   uint64_t y = (v ^ (v >> 33)) &                                   // NOLINT
                (std::numeric_limits<uint64_t>::max() >> (64 - d)); // NOLINT

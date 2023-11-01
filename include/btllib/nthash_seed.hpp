@@ -475,8 +475,8 @@ public:
   SeedNtHash(const char* seq,
              size_t seq_len,
              const std::vector<std::string>& seeds,
-             hashing_internals::NUM_HASHES_TYPE num_hashes_per_seed,
-             hashing_internals::K_TYPE k,
+             unsigned num_hashes_per_seed,
+             unsigned k,
              size_t pos = 0)
     : seq(seq)
     , seq_len(seq_len)
@@ -507,8 +507,8 @@ public:
    */
   SeedNtHash(const std::string& seq,
              const std::vector<std::string>& seeds,
-             hashing_internals::NUM_HASHES_TYPE num_hashes_per_seed,
-             hashing_internals::K_TYPE k,
+             unsigned num_hashes_per_seed,
+             unsigned k,
              size_t pos = 0)
     : SeedNtHash(seq.data(), seq.size(), seeds, num_hashes_per_seed, k, pos)
   {
@@ -527,8 +527,8 @@ public:
   SeedNtHash(const char* seq,
              size_t seq_len,
              const std::vector<std::vector<unsigned>>& seeds,
-             hashing_internals::NUM_HASHES_TYPE num_hashes_per_seed,
-             hashing_internals::K_TYPE k,
+             unsigned num_hashes_per_seed,
+             unsigned k,
              size_t pos = 0)
     : seq(seq)
     , seq_len(seq_len)
@@ -556,8 +556,8 @@ public:
    */
   SeedNtHash(const std::string& seq,
              const std::vector<std::vector<unsigned>>& seeds,
-             hashing_internals::NUM_HASHES_TYPE num_hashes_per_seed,
-             hashing_internals::K_TYPE k,
+             unsigned num_hashes_per_seed,
+             unsigned k,
              size_t pos = 0)
     : SeedNtHash(seq.data(), seq.size(), seeds, num_hashes_per_seed, k, pos)
   {
@@ -814,7 +814,7 @@ public:
 
 private:
   const char* seq;
-  const unsigned seq_len;
+  const size_t seq_len;
   hashing_internals::NUM_HASHES_TYPE num_hashes_per_seed;
   hashing_internals::K_TYPE k;
   size_t pos;
@@ -876,8 +876,8 @@ public:
    */
   BlindSeedNtHash(const char* seq,
                   const std::vector<std::string>& seeds,
-                  hashing_internals::NUM_HASHES_TYPE num_hashes_per_seed,
-                  hashing_internals::K_TYPE k,
+                  unsigned num_hashes_per_seed,
+                  unsigned k,
                   long pos = 0)
     : seq(seq + pos, seq + pos + k)
     , num_hashes_per_seed(num_hashes_per_seed)

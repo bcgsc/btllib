@@ -9,12 +9,12 @@ class TestNtHash(unittest.TestCase):
         h = 3
 
         hashes = [
-            [0xf59ecb45f0e22b9c, 0x4969c33ac240c129, 0x688d616f0d7e08c3],
             [0x38cc00f940aebdae, 0xab7e1b110e086fc6, 0x11a1818bcfdd553],
             [0x603a48c5a11c794a, 0xe66016e61816b9c4, 0xc5b13cb146996ffe]
         ]
 
         nthash = btllib.NtHash(seq, h, k)
+        nthash.roll()
         ntblind = btllib.BlindNtHash(seq, h, k)
 
         for expected_hashes in hashes:

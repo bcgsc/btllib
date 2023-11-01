@@ -7,8 +7,9 @@ fi
 
 set -euo pipefail
 
-cd "${MESON_SOURCE_ROOT}"
-
-export PYTHONPATH="$(pwd)/install/lib/btllib/python"
-cd tests/python
+rm -rf "${MESON_BUILD_ROOT}/wrappers/btllib"
+cp -r "${MESON_BUILD_ROOT}/wrappers/python" "${MESON_BUILD_ROOT}/wrappers/btllib"
+cp "${MESON_SOURCE_ROOT}/wrappers/python/btllib.py" "${MESON_BUILD_ROOT}/wrappers/btllib/__init__.py"
+export PYTHONPATH="${MESON_BUILD_ROOT}/wrappers/"
+cd "${MESON_SOURCE_ROOT}/tests/python"
 python -m unittest

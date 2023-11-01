@@ -88,11 +88,11 @@ using SpacedSeed = std::vector<unsigned>;
 
 %ignore btllib::NtHash::NtHash(const char*, size_t, unsigned, unsigned, size_t pos = 0);
 %ignore btllib::BlindNtHash::BlindNtHash(const char*, size_t, unsigned, unsigned, size_t pos = 0);
-%ignore btllib::SeedNtHash::SeedNtHash(const char*, size_t, const std::vector<SpacedSeed>&, unsigned, unsigned, size_t pos = 0);
+%ignore btllib::SeedNtHash::SeedNtHash(const char*, size_t, const std::vector<std::vector<unsigned>>&, unsigned, unsigned, size_t pos = 0);
 %ignore btllib::SeedNtHash::SeedNtHash(const char*, size_t, const std::vector<std::string>&, unsigned, unsigned, size_t pos = 0);
 %ignore btllib::NtHash::NtHash(const std::string&, unsigned, unsigned, size_t pos = 0);
 %ignore btllib::BlindNtHash::BlindNtHash(const std::string&, unsigned, unsigned, size_t pos = 0);
-%ignore btllib::SeedNtHash::SeedNtHash(const std::string&, const std::vector<SpacedSeed>&, unsigned, unsigned, size_t pos = 0);
+%ignore btllib::SeedNtHash::SeedNtHash(const std::string&, const std::vector<std::vector<unsigned>>&, unsigned, unsigned, size_t pos = 0);
 %ignore btllib::SeedNtHash::SeedNtHash(const std::string&, const std::vector<std::string>&, unsigned, unsigned, size_t pos = 0);
 %ignore btllib::AAHash::AAHash(const std::string&, unsigned, unsigned, unsigned, size_t pos = 0);
 
