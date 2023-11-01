@@ -247,8 +247,8 @@ public:
    */
   NtHash(const char* seq,
          size_t seq_len,
-         unsigned num_hashes,
-         unsigned k,
+         hashing_internals::NUM_HASHES_TYPE num_hashes,
+         hashing_internals::K_TYPE k,
          size_t pos = 0)
     : seq(seq)
     , seq_len(seq_len)
@@ -276,8 +276,8 @@ public:
    * @param pos Position in sequence to start hashing from
    */
   NtHash(const std::string& seq,
-         unsigned num_hashes,
-         unsigned k,
+         hashing_internals::NUM_HASHES_TYPE num_hashes,
+         hashing_internals::K_TYPE k,
          size_t pos = 0)
     : NtHash(seq.data(), seq.size(), num_hashes, k, pos)
   {
@@ -530,8 +530,8 @@ public:
    * @param pos Position in sequence to start hashing from
    */
   BlindNtHash(const std::string& seq,
-              unsigned num_hashes,
-              unsigned k,
+              hashing_internals::NUM_HASHES_TYPE num_hashes,
+              hashing_internals::K_TYPE k,
               long pos = 0)
     : seq(seq.data() + pos, seq.data() + pos + k)
     , num_hashes(num_hashes)
