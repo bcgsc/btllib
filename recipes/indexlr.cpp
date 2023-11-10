@@ -43,12 +43,16 @@ print_usage()
   std::cerr
     << "Usage: " << PROGNAME
     << " -k K -w W [-q Q]  [-r repeat_bf_path] [-s solid_bf_path] [--id] "
-       "[--bx] [--pos] [--seq] [--qual]"
+       "[--bx] [--pos] [--seq] [--qual] [--q-drop] [--part-avg]"
        "[-o FILE] FILE...\n\n"
        "  -k K        Use K as k-mer size.\n"
        "  -w W        Use W as sliding-window size.\n"
        "  -q Q        Filter kmers with average quality (Phred score) lower "
        "than Q [0].  \n"
+       "  --q-drop    Drop filtered kmers instead of disqualifying them"
+       "from generating minimizers. \n"
+       "  --part-avg  Consider only 1/10 of the (lowest value) base quality "
+       "scores for averaging. \n"
        "  --id        Include input sequence ids in the output. "
        "(Default if --bx is not provided)\n"
        "  --bx        Include input sequence barcodes in the output.\n"
@@ -100,7 +104,7 @@ main(int argc, char* argv[])
     bool k_set = false;
     bool q_set = false;
     int with_id = 0, with_bx = 0, with_len = 0, with_pos = 0, with_strand = 0,
-        with_seq = 0, with_qual = 0;
+        with_seq = 0, with_qual = 0, with_q_drop = 0, with_part_avg = 0;
     std::unique_ptr<btllib::KmerBloomFilter> repeat_bf, solid_bf;
     bool with_repeat = false, with_solid = false;
     int long_mode = 0;
@@ -113,6 +117,8 @@ main(int argc, char* argv[])
       { "pos", no_argument, &with_pos, 1 },
       { "strand", no_argument, &with_strand, 1 },
       { "seq", no_argument, &with_seq, 1 },
+      { "q-drop", no_argument, &with_q_drop, 1 },
+      { "part-avg", no_argument, &with_part_avg, 1 },
       { "qual", no_argument, &with_qual, 1 },
       { "long", no_argument, &long_mode, 1 },
       { "help", no_argument, &help, 1 },
@@ -230,6 +236,12 @@ main(int argc, char* argv[])
     }
     if (bool(with_qual)) {
       flags |= btllib::Indexlr::Flag::QUAL;
+    }
+    if (bool(with_q_drop)) {
+      flags |= btllib::Indexlr::Flag::Q_DROP;
+    }
+    if (bool(with_part_avg)) {
+      flags |= btllib::Indexlr::Flag::PART_AVG;
     }
     if (bool(long_mode)) {
       flags |= btllib::Indexlr::Flag::LONG_MODE;
