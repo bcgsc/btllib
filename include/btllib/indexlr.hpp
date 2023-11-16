@@ -568,7 +568,7 @@ Indexlr::minimize(const std::string& seq, const std::string& qual) const
     hk = HashedKmer(nh.hashes()[0],
                     nh.hashes()[1],
                     nh.get_pos(),
-                    nh.forward(),
+                    nh.get_forward_hash() <= nh.get_reverse_hash(),
                     output_seq() ? seq.substr(nh.get_pos(), k) : "",
                     output_qual() ? qual.substr(nh.get_pos(), k) : "");
 

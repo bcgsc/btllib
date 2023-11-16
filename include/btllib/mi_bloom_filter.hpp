@@ -4,7 +4,12 @@
 #include "nthash.hpp"
 #include "status.hpp"
 
+// clang-format off
+// NOLINTBEGIN llvm-include-order
+#include <limits>
 #include "cpptoml.h"
+// NOLINTEND llvm-include-order
+// clang-format on
 
 #include <climits>
 #include <cstdlib>

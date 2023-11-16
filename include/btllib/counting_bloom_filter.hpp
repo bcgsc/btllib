@@ -6,13 +6,17 @@
 #include "btllib/nthash.hpp"
 #include "btllib/status.hpp"
 
+// clang-format off
+// NOLINTBEGIN llvm-include-order
+#include <limits>
 #include "cpptoml.h"
+// NOLINTEND llvm-include-order
+// clang-format on
 
 #include <atomic>
 #include <cmath>
 #include <cstdint>
 #include <fstream>
-#include <limits>
 #include <memory>
 #include <string>
 #include <vector>

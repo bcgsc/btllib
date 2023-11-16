@@ -1,25 +1,63 @@
 #include <stdexcept>
 
 #include "btllib/aahash.hpp"
-#include "btllib/aahash_consts.hpp"
-#include "btllib/nthash_lowlevel.hpp"
+#include <btllib/hashing_internals.hpp>
+
+namespace {
+
+using btllib::hashing_internals::LEVEL_X_AA_SEED_LEFT_31BITS_ROLL_TABLE;
+using btllib::hashing_internals::LEVEL_X_AA_SEED_RIGHT_33BITS_ROLL_TABLE;
+using btllib::hashing_internals::LEVEL_X_AA_SEED_TABLE;
+using btllib::hashing_internals::srol;
+
+inline uint64_t
+base_hash(const char* kmer_seq, unsigned k, unsigned level = 1)
+{
+  uint64_t hash_value = 0;
+  for (unsigned i = 0; i < k; i++) {
+    hash_value = srol(hash_value);
+    hash_value ^= LEVEL_X_AA_SEED_TABLE[level][(unsigned char)kmer_seq[i]];
+  }
+  return hash_value;
+}
+
+inline uint64_t
+roll_hash(uint64_t hash_value,
+          unsigned k,
+          unsigned char char_out,
+          unsigned char char_in,
+          unsigned level = 1)
+{
+  hash_value = srol(hash_value);
+  hash_value ^= LEVEL_X_AA_SEED_TABLE[level][char_in];
+  hash_value ^= AA_ROLL_TABLE(char_out, level, k);
+  return hash_value;
+}
+
+inline uint64_t
+modify_base_with_seed(uint64_t hash_value,
+                      const btllib::SpacedSeed& seed,
+                      const char* kmer_seq,
+                      const unsigned k)
+{
+  for (unsigned i = 0; i < k; i++) {
+    if (seed[i] != 1) {
+      hash_value ^= AA_ROLL_TABLE((unsigned char)kmer_seq[i], 1, k - 1 - i);
+      if (seed[i] != 0) {
+        const unsigned level = seed[i];
+        hash_value ^=
+          AA_ROLL_TABLE((unsigned char)kmer_seq[i], level, k - 1 - i);
+      }
+    }
+  }
+  return hash_value;
+}
+
+} // namespace
 
 namespace btllib {
-std::vector<SpacedSeed>
-aa_parse_seeds(const std::vector<std::string>& seeds)
-{
-  std::vector<SpacedSeed> seed_vec;
-  // convert vector of string to vector of vector of unsigned
-  for (const auto& seed : seeds) {
-    SpacedSeed seed_vec_tmp;
-    for (const auto& c : seed) {
-      // push back the unsigned value of the char by type conversion
-      seed_vec_tmp.push_back((unsigned)(c - '0'));
-    }
-    seed_vec.push_back(seed_vec_tmp);
-  }
-  return seed_vec;
-}
+
+using hashing_internals::extend_hashes;
 
 bool
 AAHash::init()
@@ -32,8 +70,8 @@ AAHash::init()
     pos = std::numeric_limits<std::size_t>::max();
     return false;
   }
-  const uint64_t hash_value = aahash_base(seq + pos, k, level);
-  nte64(hash_value, k, hash_num, hashes_array.get());
+  const uint64_t hash_value = base_hash(seq + pos, k, level);
+  extend_hashes(hash_value, k, hash_num, hashes_array.get());
   initialized = true;
   return true;
 }
@@ -48,13 +86,14 @@ AAHash::roll()
     pos = std::numeric_limits<std::size_t>::max();
     return false;
   }
-  if (AA_SEED_TABLE[(unsigned char)(seq[pos + k])] == AA_SEED__) {
+  if (hashing_internals::AA_SEED_TABLE[(unsigned char)(seq[pos + k])] ==
+      hashing_internals::AA_SEED__) {
     pos += k;
     return init();
   }
   const uint64_t hash_value =
-    aahash_roll(hashes_array[0], k, seq[pos], seq[pos + k], level);
-  nte64(hash_value, k, hash_num, hashes_array.get());
+    roll_hash(hashes_array[0], k, seq[pos], seq[pos + k], level);
+  extend_hashes(hash_value, k, hash_num, hashes_array.get());
   ++pos;
   return true;
 }
@@ -67,12 +106,12 @@ SeedAAHash::roll()
   }
 
   for (size_t i = 0; i < seeds.size(); ++i) {
-    hashes_array[i * hash_num_per_seed] = aa_modify_base_with_seed(
+    hashes_array[i * hash_num_per_seed] = modify_base_with_seed(
       aahash.hashes_array[0], seeds[i], aahash.seq + aahash.pos, aahash.k);
-    nte64(hashes_array[i * hash_num_per_seed],
-          aahash.k,
-          hash_num_per_seed,
-          hashes_array.get() + i * hash_num_per_seed);
+    extend_hashes(hashes_array[i * hash_num_per_seed],
+                  aahash.k,
+                  hash_num_per_seed,
+                  hashes_array.get() + i * hash_num_per_seed);
   }
 
   return true;
