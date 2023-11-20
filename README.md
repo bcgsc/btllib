@@ -94,3 +94,8 @@ Citing
 If you use btllib in your research, please cite:
 
 Nikolić et al., (2022). btllib: A C++ library with Python interface for efficient genomic sequence processing. Journal of Open Source Software, 7(79), 4720, https://doi.org/10.21105/joss.04720
+
+If you use aaHash in your research, please cite:
+
+Wong et al., (2023). aaHash: recursive amino acid sequence hashing. Bioinformatics Advances, vbad162, https://doi.org/10.1093/bioadv/vbad162.
+
