@@ -56,13 +56,12 @@ inline CountingBloomFilter<T>::CountingBloomFilter(size_t bytes,
  */
 template<typename T>
 inline void
-CountingBloomFilter<T>::insert(const uint64_t* hashes, T min_val)
+CountingBloomFilter<T>::set(const uint64_t* hashes, T min_val, T new_val)
 {
   // Update flag to track if increment is done on at least one counter
   bool update_done = false;
-  T new_val, tmp_min_val;
+  T tmp_min_val;
   while (true) {
-    new_val = min_val + 1;
     for (size_t i = 0; i < hash_num; ++i) {
       tmp_min_val = min_val;
       update_done |= array[hashes[i] % array_size].compare_exchange_strong(
@@ -80,59 +79,25 @@ CountingBloomFilter<T>::insert(const uint64_t* hashes, T min_val)
 
 template<typename T>
 inline void
-CountingBloomFilter<T>::insert(const uint64_t* hashes)
+CountingBloomFilter<T>::insert(const uint64_t* hashes, T n)
 {
-  contains_insert(hashes);
+  contains_insert(hashes, n);
 }
 
 template<typename T>
 inline void
 CountingBloomFilter<T>::remove(const uint64_t* hashes)
 {
-  // Update flag to track if increment is done on at least one counter
-  bool update_done = false;
   T min_val = contains(hashes);
-  T new_val, tmp_min_val;
-  while (true) {
-    new_val = min_val - 1;
-    for (size_t i = 0; i < hash_num; ++i) {
-      tmp_min_val = min_val;
-      update_done |= array[hashes[i] % array_size].compare_exchange_strong(
-        tmp_min_val, new_val);
-    }
-    if (update_done) {
-      break;
-    }
-    min_val = contains(hashes);
-    if (min_val == std::numeric_limits<T>::max()) {
-      break;
-    }
-  }
+  set(hashes, min_val, min_val > 1 ? min_val - 1 : 0);
 }
 
 template<typename T>
 void
 CountingBloomFilter<T>::clear(const uint64_t* hashes)
 {
-  // Update flag to track if increment is done on at least one counter
-  bool update_done = false;
   T min_val = contains(hashes);
-  T new_val, tmp_min_val;
-  while (true) {
-    new_val = 0;
-    for (size_t i = 0; i < hash_num; ++i) {
-      tmp_min_val = min_val;
-      update_done |= array[hashes[i] % array_size].compare_exchange_strong(
-        tmp_min_val, new_val);
-    }
-    if (update_done) {
-      break;
-    }
-    min_val = contains(hashes);
-    if (min_val == std::numeric_limits<T>::max()) {
-      break;
-    }
-  }
+  set(hashes, min_val, 0);
 }
 
 template<typename T>
@@ -151,23 +116,23 @@ CountingBloomFilter<T>::contains(const uint64_t* hashes) const
 
 template<typename T>
 inline T
-CountingBloomFilter<T>::contains_insert(const uint64_t* hashes)
+CountingBloomFilter<T>::contains_insert(const uint64_t* hashes, T n)
 {
   const auto count = contains(hashes);
-  if (count < std::numeric_limits<T>::max()) {
-    insert(hashes, count);
+  if (count <= std::numeric_limits<T>::max() - n) {
+    set(hashes, count, count + n);
   }
   return count;
 }
 
 template<typename T>
 inline T
-CountingBloomFilter<T>::insert_contains(const uint64_t* hashes)
+CountingBloomFilter<T>::insert_contains(const uint64_t* hashes, T n)
 {
   const auto count = contains(hashes);
-  if (count < std::numeric_limits<T>::max()) {
-    insert(hashes, count);
-    return count + 1;
+  if (count <= std::numeric_limits<T>::max() + n) {
+    set(hashes, count, count + n);
+    return count + n;
   }
   return std::numeric_limits<T>::max();
 }
@@ -179,7 +144,7 @@ CountingBloomFilter<T>::insert_thresh_contains(const uint64_t* hashes,
 {
   const auto count = contains(hashes);
   if (count < threshold) {
-    insert(hashes, count);
+    set(hashes, count, count + 1);
     return count + 1;
   }
   return count;
@@ -192,7 +157,7 @@ CountingBloomFilter<T>::contains_insert_thresh(const uint64_t* hashes,
 {
   const auto count = contains(hashes);
   if (count < threshold) {
-    insert(hashes, count);
+    set(hashes, count, count + 1);
   }
   return count;
 }
