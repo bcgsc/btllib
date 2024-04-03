@@ -493,7 +493,7 @@ private:
     bool has_n = true;
     while (pos <= seq_len - k + 1 && has_n) {
       has_n = false;
-      for (unsigned i = 0; i < k; i++) {
+      for (unsigned i = 0; i < k && pos <= seq_len - k + 1; i++) {
         if (SEED_TAB[(unsigned char)seq[pos + k - i - 1]] == SEED_N) {
           pos += k - i;
           has_n = true;
