@@ -42964,9 +42964,9 @@ check_3:
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'CountingBloomFilter8_insert'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::CountingBloomFilter< uint8_t >::insert(uint64_t const *,unsigned char const)\n"
+    "    btllib::CountingBloomFilter< uint8_t >::insert(uint64_t const *,unsigned char)\n"
     "    btllib::CountingBloomFilter< uint8_t >::insert(uint64_t const *)\n"
-    "    btllib::CountingBloomFilter< uint8_t >::insert(std::vector< uint64_t,std::allocator< uint64_t > > const &,unsigned char const)\n"
+    "    btllib::CountingBloomFilter< uint8_t >::insert(std::vector< uint64_t,std::allocator< uint64_t > > const &,unsigned char)\n"
     "    btllib::CountingBloomFilter< uint8_t >::insert(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
   return 0;
 }
@@ -44646,9 +44646,9 @@ check_3:
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'CountingBloomFilter16_insert'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::CountingBloomFilter< uint16_t >::insert(uint64_t const *,unsigned short const)\n"
+    "    btllib::CountingBloomFilter< uint16_t >::insert(uint64_t const *,unsigned short)\n"
     "    btllib::CountingBloomFilter< uint16_t >::insert(uint64_t const *)\n"
-    "    btllib::CountingBloomFilter< uint16_t >::insert(std::vector< uint64_t,std::allocator< uint64_t > > const &,unsigned short const)\n"
+    "    btllib::CountingBloomFilter< uint16_t >::insert(std::vector< uint64_t,std::allocator< uint64_t > > const &,unsigned short)\n"
     "    btllib::CountingBloomFilter< uint16_t >::insert(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
   return 0;
 }
@@ -46328,9 +46328,9 @@ check_3:
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'CountingBloomFilter32_insert'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    btllib::CountingBloomFilter< uint32_t >::insert(uint64_t const *,unsigned int const)\n"
+    "    btllib::CountingBloomFilter< uint32_t >::insert(uint64_t const *,unsigned int)\n"
     "    btllib::CountingBloomFilter< uint32_t >::insert(uint64_t const *)\n"
-    "    btllib::CountingBloomFilter< uint32_t >::insert(std::vector< uint64_t,std::allocator< uint64_t > > const &,unsigned int const)\n"
+    "    btllib::CountingBloomFilter< uint32_t >::insert(std::vector< uint64_t,std::allocator< uint64_t > > const &,unsigned int)\n"
     "    btllib::CountingBloomFilter< uint32_t >::insert(std::vector< uint64_t,std::allocator< uint64_t > > const &)\n");
   return 0;
 }
