@@ -77,14 +77,14 @@ public:
    * equal the hash_num argument used when the Bloom filter was constructed.
    * @param n Increment value
    */
-  void insert(const uint64_t* hashes, const T n = 1);
+  void insert(const uint64_t* hashes, T n = 1);
 
   /**
    * Insert an element.
    *
    * @param hashes Integer vector of the element's hash values.
    */
-  void insert(const std::vector<uint64_t>& hashes, const T n = 1)
+  void insert(const std::vector<uint64_t>& hashes, T n = 1)
   {
     insert(hashes.data(), n);
   }
