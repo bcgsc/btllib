@@ -83,6 +83,7 @@ public:
    * Insert an element.
    *
    * @param hashes Integer vector of the element's hash values.
+   * @param n Increment value
    */
   void insert(const std::vector<uint64_t>& hashes, T n = 1)
   {
@@ -146,6 +147,7 @@ public:
    *
    * @param hashes Integer array of the element's hash values. Array size should
    * equal the hash_num argument used when the Bloom filter was constructed.
+   * @param n Increment value
    *
    * @return The count of the queried element before insertion.
    */
@@ -155,6 +157,7 @@ public:
    * Get the count of an element and then increment the count.
    *
    * @param hashes Integer vector of the element's hash values.
+   * @param n Increment value
    *
    * @return The count of the queried element before insertion.
    */
@@ -169,6 +172,7 @@ public:
    * @param hashes Integer array of the element's hash values. Array size
    * should equal the hash_num argument used when the Bloom filter was
    * constructed.
+   * @param n Increment value
    *
    * @return The count of the queried element after insertion.
    */
@@ -178,6 +182,7 @@ public:
    * Increment an element's count and then return the count.
    *
    * @param hashes Integer vector of the element's hash values.
+   * @param n Increment value
    *
    * @return The count of the queried element after insertion.
    */
@@ -350,6 +355,7 @@ public:
    *
    * @param hashes Integer array of the k-mer's hash values. Array size should
    * equal the hash_num argument used when the Bloom filter was constructed.
+   * @param n Increment value
    */
   void insert(const uint64_t* hashes, T n = 1)
   {
@@ -360,6 +366,7 @@ public:
    * Insert a k-mer into the filter.
    *
    * @param hashes Integer vector of the k-mer's hash values.
+   * @param n Increment value
    */
   void insert(const std::vector<uint64_t>& hashes, T n = 1)
   {
@@ -506,6 +513,7 @@ public:
    *
    * @param hashes Integer array of the k-mers's hash values. Array size should
    * equal the hash_num argument used when the Bloom filter was constructed.
+   * @param n Increment value
    *
    * @return The count of the queried k-mer before insertion.
    */
@@ -518,6 +526,7 @@ public:
    * Get the count of a k-mer and then increment the count.
    *
    * @param hashes Integer vector of the k-mer's hash values.
+   * @param n Increment value
    *
    * @return The count of the queried k-mer before insertion.
    */
@@ -554,6 +563,7 @@ public:
    * @param hashes Integer array of the k-mer's hash values. Array size
    * should equal the hash_num argument used when the Bloom filter was
    * constructed.
+   * @param n Increment value
    *
    * @return The count of the queried k-mer after insertion.
    */
@@ -566,6 +576,7 @@ public:
    * Increment a k-mer's count and then return the count.
    *
    * @param hashes Integer vector of the k-mer's hash values.
+   * @param n Increment value
    *
    * @return The count of the queried k-mer after insertion.
    */
