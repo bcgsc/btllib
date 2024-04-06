@@ -75,15 +75,20 @@ public:
    *
    * @param hashes Integer array of the element's hash values. Array size should
    * equal the hash_num argument used when the Bloom filter was constructed.
+   * @param n Increment value
    */
-  void insert(const uint64_t* hashes);
+  void insert(const uint64_t* hashes, T n = 1);
 
   /**
    * Insert an element.
    *
    * @param hashes Integer vector of the element's hash values.
+   * @param n Increment value
    */
-  void insert(const std::vector<uint64_t>& hashes) { insert(hashes.data()); }
+  void insert(const std::vector<uint64_t>& hashes, T n = 1)
+  {
+    insert(hashes.data(), n);
+  }
 
   /**
    * Delete an element.
@@ -142,21 +147,23 @@ public:
    *
    * @param hashes Integer array of the element's hash values. Array size should
    * equal the hash_num argument used when the Bloom filter was constructed.
+   * @param n Increment value
    *
    * @return The count of the queried element before insertion.
    */
-  T contains_insert(const uint64_t* hashes);
+  T contains_insert(const uint64_t* hashes, T n = 1);
 
   /**
    * Get the count of an element and then increment the count.
    *
    * @param hashes Integer vector of the element's hash values.
+   * @param n Increment value
    *
    * @return The count of the queried element before insertion.
    */
-  T contains_insert(const std::vector<uint64_t>& hashes)
+  T contains_insert(const std::vector<uint64_t>& hashes, T n = 1)
   {
-    return contains_insert(hashes.data());
+    return contains_insert(hashes.data(), n);
   }
 
   /**
@@ -165,21 +172,23 @@ public:
    * @param hashes Integer array of the element's hash values. Array size
    * should equal the hash_num argument used when the Bloom filter was
    * constructed.
+   * @param n Increment value
    *
    * @return The count of the queried element after insertion.
    */
-  T insert_contains(const uint64_t* hashes);
+  T insert_contains(const uint64_t* hashes, T n = 1);
 
   /**
    * Increment an element's count and then return the count.
    *
    * @param hashes Integer vector of the element's hash values.
+   * @param n Increment value
    *
    * @return The count of the queried element after insertion.
    */
-  T insert_contains(const std::vector<uint64_t>& hashes)
+  T insert_contains(const std::vector<uint64_t>& hashes, T n = 1)
   {
-    return insert_contains(hashes.data());
+    return insert_contains(hashes.data(), n);
   }
 
   /**
@@ -280,7 +289,7 @@ public:
 private:
   CountingBloomFilter(const std::shared_ptr<BloomFilterInitializer>& bfi);
 
-  void insert(const uint64_t* hashes, T min_val);
+  void set(const uint64_t* hashes, T min_val, T new_val);
 
   friend class KmerCountingBloomFilter<T>;
 
@@ -346,17 +355,22 @@ public:
    *
    * @param hashes Integer array of the k-mer's hash values. Array size should
    * equal the hash_num argument used when the Bloom filter was constructed.
+   * @param n Increment value
    */
-  void insert(const uint64_t* hashes) { counting_bloom_filter.insert(hashes); }
+  void insert(const uint64_t* hashes, T n = 1)
+  {
+    counting_bloom_filter.insert(hashes, n);
+  }
 
   /**
    * Insert a k-mer into the filter.
    *
    * @param hashes Integer vector of the k-mer's hash values.
+   * @param n Increment value
    */
-  void insert(const std::vector<uint64_t>& hashes)
+  void insert(const std::vector<uint64_t>& hashes, T n = 1)
   {
-    counting_bloom_filter.insert(hashes);
+    counting_bloom_filter.insert(hashes, n);
   }
 
   /**
@@ -499,24 +513,26 @@ public:
    *
    * @param hashes Integer array of the k-mers's hash values. Array size should
    * equal the hash_num argument used when the Bloom filter was constructed.
+   * @param n Increment value
    *
    * @return The count of the queried k-mer before insertion.
    */
-  T contains_insert(const uint64_t* hashes)
+  T contains_insert(const uint64_t* hashes, T n = 1)
   {
-    return counting_bloom_filter.contains_insert(hashes);
+    return counting_bloom_filter.contains_insert(hashes, n);
   }
 
   /**
    * Get the count of a k-mer and then increment the count.
    *
    * @param hashes Integer vector of the k-mer's hash values.
+   * @param n Increment value
    *
    * @return The count of the queried k-mer before insertion.
    */
-  T contains_insert(const std::vector<uint64_t>& hashes)
+  T contains_insert(const std::vector<uint64_t>& hashes, T n = 1)
   {
-    return counting_bloom_filter.contains_insert(hashes);
+    return counting_bloom_filter.contains_insert(hashes, n);
   }
 
   /**
@@ -547,24 +563,26 @@ public:
    * @param hashes Integer array of the k-mer's hash values. Array size
    * should equal the hash_num argument used when the Bloom filter was
    * constructed.
+   * @param n Increment value
    *
    * @return The count of the queried k-mer after insertion.
    */
-  T insert_contains(const uint64_t* hashes)
+  T insert_contains(const uint64_t* hashes, T n = 1)
   {
-    return counting_bloom_filter.insert_contains(hashes);
+    return counting_bloom_filter.insert_contains(hashes, n);
   }
 
   /**
    * Increment a k-mer's count and then return the count.
    *
    * @param hashes Integer vector of the k-mer's hash values.
+   * @param n Increment value
    *
    * @return The count of the queried k-mer after insertion.
    */
-  T insert_contains(const std::vector<uint64_t>& hashes)
+  T insert_contains(const std::vector<uint64_t>& hashes, T n = 1)
   {
-    return counting_bloom_filter.insert_contains(hashes);
+    return counting_bloom_filter.insert_contains(hashes, n);
   }
 
   /**

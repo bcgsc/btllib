@@ -215,5 +215,19 @@ main()
     TEST_ASSERT_EQ(cbf.contains(hashes), 0);
   }
 
+  {
+    std::cerr << "Testing CBF element initialization" << std::endl;
+    std::vector<uint64_t> hashes = { 0x47c80ef7eab,
+                                     0x8b4a469ef6,
+                                     0x32e7ab5203 };
+    btllib::CountingBloomFilter8 cbf(64, hashes.size());
+    cbf.insert(hashes, 2);
+    TEST_ASSERT_EQ(cbf.contains(hashes), 2);
+    cbf.insert(hashes, 5);
+    TEST_ASSERT_EQ(cbf.contains(hashes), 7);
+    cbf.insert(hashes);
+    TEST_ASSERT_EQ(cbf.contains(hashes), 8);
+  }
+
   return 0;
 }
