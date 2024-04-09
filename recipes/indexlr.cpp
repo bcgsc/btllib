@@ -221,8 +221,8 @@ main(int argc, char* argv[])
     }
 
     if ( bool(with_nomxs) && !(bool(with_pos) || bool(with_strand) || bool(with_seq) || bool(with_qual))) {
-      print_error_msg("Option --nomxs without any of --pos, --strand, --seq, or --qual" + 
-                      "results in no minimizer information in the output.");
+      print_error_msg("Option --nomxs without any of --pos, --strand, --seq, or --qual"
+                      " results in no minimizer information in the output.");
       std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
 
