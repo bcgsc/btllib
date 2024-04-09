@@ -167,7 +167,7 @@ public:
           bool verbose = false,
           const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
           const btllib::BloomFilter& bf2 = Indexlr::dummy_bf(),
-          const int fsize = 0);
+          size_t fsize = 0);
 
   Indexlr(std::string seqfile,
           size_t k,
