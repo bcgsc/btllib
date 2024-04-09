@@ -281,16 +281,16 @@ main(int argc, char* argv[])
         flags |= btllib::Indexlr::Flag::FILTER_OUT;
         indexlr = std::unique_ptr< // NOLINT(modernize-make-unique)
           btllib::Indexlr>(new btllib::Indexlr(
-          infile, k, w, q, flags, t, verbose, repeat_bf->get_bloom_filter()));
+          infile, k, w, q, flags, t, verbose, repeat_bf->get_bloom_filter(), fsize));
       } else if (with_solid) {
         flags |= btllib::Indexlr::Flag::FILTER_IN;
         indexlr = std::unique_ptr< // NOLINT(modernize-make-unique)
           btllib::Indexlr>(new btllib::Indexlr(
-          infile, k, w, q, flags, t, verbose, solid_bf->get_bloom_filter()));
+          infile, k, w, q, flags, t, verbose, solid_bf->get_bloom_filter(), fsize));
       } else {
         indexlr =
           std::unique_ptr<btllib::Indexlr>( // NOLINT(modernize-make-unique)
-            new btllib::Indexlr(infile, k, w, q, flags, t, verbose));
+            new btllib::Indexlr(infile, k, w, q, flags, t, verbose, fsize));
       }
       std::queue<std::string> output_queue;
       std::mutex output_queue_mutex;
