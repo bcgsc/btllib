@@ -165,7 +165,8 @@ public:
           unsigned threads = 5,
           bool verbose = false,
           const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
-          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf());
+          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf(),
+          const size_t fsize = 0);
 
   Indexlr(std::string seqfile,
           size_t k,
@@ -175,7 +176,8 @@ public:
           unsigned threads = 5,
           bool verbose = false,
           const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
-          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf());
+          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf(),
+          const size_t fsize = 0);
 
   ~Indexlr();
 
@@ -252,6 +254,7 @@ private:
   
   const std::string seqfile;
   const size_t k, w;
+  const size_t fsize;
   size_t q;
   const unsigned flags;
   const bool verbose;
@@ -346,7 +349,8 @@ inline Indexlr::Indexlr(std::string seqfile,
                         const unsigned threads,
                         const bool verbose,
                         const BloomFilter& bf1,
-                        const BloomFilter& bf2)
+                        const BloomFilter& bf2, 
+                        const size_t fsize)
   : seqfile(std::move(seqfile))
   , k(k)
   , w(w)
@@ -364,6 +368,7 @@ inline Indexlr::Indexlr(std::string seqfile,
   , output_queue(reader.get_buffer_size(), reader.get_block_size())
   , workers(std::vector<Worker>(threads, Worker(*this)))
   , end_barrier(threads)
+  , fsize(fsize)
 {
   check_error(!short_mode() && !long_mode(),
               "Indexlr: no mode selected, either short or long mode flag must "
@@ -387,8 +392,9 @@ inline Indexlr::Indexlr(std::string seqfile,
                         const unsigned threads,
                         const bool verbose,
                         const BloomFilter& bf1,
-                        const BloomFilter& bf2)
-  : Indexlr(std::move(seqfile), k, w, 0, flags, threads, verbose, bf1, bf2)
+                        const BloomFilter& bf2,
+                        const size_t fsize)
+  : Indexlr(std::move(seqfile), k, w, 0, flags, threads, verbose, bf1, bf2, fsize)
 {
 }
 
@@ -733,6 +739,13 @@ Indexlr::Worker::work()
 
       if (indexlr.k <= record.readlen &&
           indexlr.w <= record.readlen - indexlr.k + 1) {
+        if (indexlr.fsize > 0) {
+          record.minimizers =
+            indexlr.minimize(reader_record.seq, reader_record.qual, indexlr.fsize);
+        } else {
+          record.minimizers =
+            indexlr.minimize(reader_record.seq, reader_record.qual);
+        }
         record.minimizers =
           indexlr.minimize(reader_record.seq, reader_record.qual);
       } else {
