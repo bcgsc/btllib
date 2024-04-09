@@ -49,7 +49,7 @@ print_usage()
        "  -w W        Use W as sliding-window size.\n"
        "  -q Q        Filter kmers with average quality (Phred score) lower "
        "than Q [0].  \n"
-       "  -f F        Generate minimzers only for left/right flanks of this size. "
+       "  -f F        Generate minimzers only for left/right flanks of this size.\n "
        "  --nomxs     Exclude minimizers values from the output.\n"
        "  --id        Include input sequence ids in the output. "
        "(Default if --bx is not provided)\n"
@@ -126,7 +126,7 @@ main(int argc, char* argv[])
     };
     while ((c = getopt_long(argc, // NOLINT(concurrency-mt-unsafe)
                             argv,
-                            "k:w:q:o:t:vr:s:",
+                            "k:w:q:f:o:t:vr:s:",
                             longopts,
                             &optindex)) != -1) {
       switch (c) {
