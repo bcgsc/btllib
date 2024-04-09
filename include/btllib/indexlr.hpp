@@ -165,9 +165,9 @@ public:
           unsigned flags = 0,
           unsigned threads = 5,
           bool verbose = false,
+          size_t fsize = 0,
           const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
-          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf(),
-          size_t fsize = 0);
+          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf());
 
   Indexlr(std::string seqfile,
           size_t k,
@@ -176,9 +176,9 @@ public:
           unsigned flags = 0,
           unsigned threads = 5,
           bool verbose = false,
+          size_t fsize = 0,
           const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
-          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf(),
-          size_t fsize = 0);
+          const btllib::BloomFilter& bf2 = Indexlr::dummy_bf());
 
   ~Indexlr();
 
@@ -346,15 +346,16 @@ inline Indexlr::Indexlr(std::string seqfile,
                         const unsigned flags,
                         const unsigned threads,
                         const bool verbose,
+                        const size_t fsize,
                         const BloomFilter& bf1,
-                        const BloomFilter& bf2, 
-                        const size_t fsize)
+                        const BloomFilter& bf2)
   : seqfile(std::move(seqfile))
   , k(k)
   , w(w)
   , q(q)
   , flags(flags)
   , verbose(verbose)
+  , fsize(fsize)
   , id(++last_id())
   , filter_in_bf(filter_in() ? bf1 : Indexlr::dummy_bf())
   , filter_out_bf(filter_out() ? filter_in() ? bf2 : bf1 : Indexlr::dummy_bf())
@@ -366,7 +367,6 @@ inline Indexlr::Indexlr(std::string seqfile,
   , output_queue(reader.get_buffer_size(), reader.get_block_size())
   , workers(std::vector<Worker>(threads, Worker(*this)))
   , end_barrier(threads)
-  , fsize(fsize)
 {
   check_error(!short_mode() && !long_mode(),
               "Indexlr: no mode selected, either short or long mode flag must "
@@ -389,10 +389,10 @@ inline Indexlr::Indexlr(std::string seqfile,
                         const unsigned flags,
                         const unsigned threads,
                         const bool verbose,
+                        const size_t fsize,
                         const BloomFilter& bf1,
-                        const BloomFilter& bf2,
-                        const size_t fsize)
-  : Indexlr(std::move(seqfile), k, w, 0, flags, threads, verbose, bf1, bf2, fsize)
+                        const BloomFilter& bf2)
+  : Indexlr(std::move(seqfile), k, w, 0, flags, threads, verbose, fsize, bf1, bf2)
 {
 }
 
