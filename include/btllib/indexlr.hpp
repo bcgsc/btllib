@@ -252,10 +252,10 @@ private:
   
   const std::string seqfile;
   const size_t k, w;
-  size_t fsize;
   size_t q;
   const unsigned flags;
   const bool verbose;
+  size_t fsize;
   const long id;
   std::atomic<bool> closed{ false };
 
