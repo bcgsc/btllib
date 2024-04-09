@@ -246,7 +246,10 @@ private:
     std::vector<Indexlr::Minimizer>& minimizers);
   std::vector<Minimizer> minimize(const std::string& seq,
                                   const std::string& qual) const;
-
+  std::vector<Minimizer> minimize(const std::string& seq,
+                                  const std::string& qual,
+                                  size_t fsize) const;
+  
   const std::string seqfile;
   const size_t k, w;
   size_t q;
@@ -591,6 +594,65 @@ Indexlr::minimize(const std::string& seq, const std::string& qual) const
     }
   }
   return minimizers;
+}
+
+inline std::vector<Indexlr::Minimizer>
+Indexlr::minimize(const std::string& seq, const std::string& qual, size_t fsize) const
+{
+  if ((k > seq.size()) || (w > seq.size() - k + 1) || (fsize * 2 > seq.size()) {
+    return {};
+  }
+  // fsize is the size of the flanking region only for which minimizers are to be calculated
+  // extract left and right flanking regions (fsize+k lenth) and concatenate them
+  std::string flanking_seq = seq.substr(0, fsize + k) + seq.substr(seq.size() - fsize - k, fsize + k);
+  std::string flanking_qual = qual.substr(0, fsize + k) + qual.substr(qual.size() - fsize - k, fsize + k);
+  std::vector<Minimizer> minimizers;
+  size_t trimmed_size = seq.size() - flanking_seq.size();
+  minimizers.reserve(2 * (flanking_seq.size() - k + 1) / w);
+  std::vector<HashedKmer> hashed_kmers_buffer(w + 1);
+  ssize_t min_idx_left, min_idx_right, min_pos_prev = -1;
+  const Minimizer* min_current = nullptr;
+  size_t idx = 0;
+  for (NtHash nh(flanking_seq, 2, k); nh.roll(); ++idx) {
+    auto& hk = hashed_kmers_buffer[idx % hashed_kmers_buffer.size()];
+
+    hk = HashedKmer(nh.hashes()[0],
+                    nh.hashes()[1],
+                    nh.get_pos(),
+                    nh.get_forward_hash() <= nh.get_reverse_hash(),
+                    output_seq() ? flanking_seq.substr(nh.get_pos(), k) : "",
+                    output_qual() ? flanking_qual.substr(nh.get_pos(), k) : "");
+
+    filter_hashed_kmer(
+      hk, filter_in(), filter_out(), filter_in_bf.get(), filter_out_bf.get());
+
+    if (q > 0) {
+      filter_kmer_qual(hk, flanking_qual.substr(nh.get_pos(), k), q);
+    }
+
+    if (idx + 1 >= w) {
+      calc_minimizer(hashed_kmers_buffer,
+                     min_current,
+                     idx,
+                     min_idx_left,
+                     min_idx_right,
+                     min_pos_prev,
+                     w,
+                     minimizers);
+    }
+  }
+  // now go over the minimizers and extract the ones that are in the flanking region, remove the ones that are not and correct the positions
+  std::vector<Minimizer> flanking_minimizers;
+  miminizers.reserve(minimizers.size());
+  for (auto& minimizer : minimizers) {
+    if (minimizer.pos <= fsize) {
+      flanking_minimizers.push_back(minimizer);
+    } else if (minimizer.pos >= fsize + (2 * k)) {
+      minimizer.pos += trimmed_size;
+      flanking_minimizers.push_back(minimizer);
+    }
+  }
+  return flanking_minimizers;
 }
 
 inline Indexlr::Record

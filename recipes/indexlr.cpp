@@ -42,13 +42,14 @@ print_usage()
 {
   std::cerr
     << "Usage: " << PROGNAME
-    << " -k K -w W [-q Q]  [-r repeat_bf_path] [-s solid_bf_path] [--id] "
-       "[--bx] [--pos] [--seq] [--qual]"
+    << " -k K -w W [-q Q]  [-r repeat_bf_path] [-s solid_bf_path] [--nomxs] "
+       "[--id] [--bx] [--pos] [--seq] [--qual]"
        "[-o FILE] FILE...\n\n"
        "  -k K        Use K as k-mer size.\n"
        "  -w W        Use W as sliding-window size.\n"
        "  -q Q        Filter kmers with average quality (Phred score) lower "
        "than Q [0].  \n"
+       "  --nomxs     Exclude minimizers values from the output.\n"
        "  --id        Include input sequence ids in the output. "
        "(Default if --bx is not provided)\n"
        "  --bx        Include input sequence barcodes in the output.\n"
@@ -99,7 +100,7 @@ main(int argc, char* argv[])
     bool w_set = false;
     bool k_set = false;
     bool q_set = false;
-    int with_id = 0, with_bx = 0, with_len = 0, with_pos = 0, with_strand = 0,
+    int with_id = 0, with_bx = 0, with_len = 0, with_nomxs = 0, with_pos = 0, with_strand = 0,
         with_seq = 0, with_qual = 0;
     std::unique_ptr<btllib::KmerBloomFilter> repeat_bf, solid_bf;
     bool with_repeat = false, with_solid = false;
@@ -110,6 +111,7 @@ main(int argc, char* argv[])
       { "id", no_argument, &with_id, 1 },
       { "bx", no_argument, &with_bx, 1 },
       { "len", no_argument, &with_len, 1 },
+      { "nomxs", no_argument, &with_no_mxs, 1},
       { "pos", no_argument, &with_pos, 1 },
       { "strand", no_argument, &with_strand, 1 },
       { "seq", no_argument, &with_seq, 1 },
@@ -218,6 +220,12 @@ main(int argc, char* argv[])
       std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
     }
 
+    if ( bool(with_nomxs) && !(bool(with_pos) || bool(with_strand) || bool(with_seq) || bool(with_qual))) {
+      print_error_msg("Option --nomxs without any of --pos, --strand, --seq, or --qual" + 
+                      "results in no minimizer information in the output.");
+      std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
+    }
+
     unsigned flags = 0;
     if (bool(with_bx) && !bool(with_id)) {
       flags |= btllib::Indexlr::Flag::NO_ID;
@@ -235,7 +243,7 @@ main(int argc, char* argv[])
       flags |= btllib::Indexlr::Flag::LONG_MODE;
     } else {
       flags |= btllib::Indexlr::Flag::SHORT_MODE;
-    }
+    }    
 
     btllib::Indexlr::Record record;
     FILE* out;
@@ -300,7 +308,9 @@ main(int argc, char* argv[])
           int j = 0;
           for (const auto& min : record.minimizers) {
             if (j > 0) {
-              ss << ' ';
+              if (!bool(with_nomxs)) {
+                ss << ' ';
+              }
             }
             ss << min.out_hash;
             if (bool(with_pos)) {
