@@ -643,7 +643,7 @@ Indexlr::minimize(const std::string& seq, const std::string& qual, size_t fsize)
   }
   // now go over the minimizers and extract the ones that are in the flanking region, remove the ones that are not and correct the positions
   std::vector<Minimizer> flanking_minimizers;
-  miminizers.reserve(minimizers.size());
+  flanking_minimizers.reserve(minimizers.size());
   for (auto& minimizer : minimizers) {
     if (minimizer.pos <= fsize) {
       flanking_minimizers.push_back(minimizer);
