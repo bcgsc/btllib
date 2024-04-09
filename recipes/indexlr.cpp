@@ -111,7 +111,7 @@ main(int argc, char* argv[])
       { "id", no_argument, &with_id, 1 },
       { "bx", no_argument, &with_bx, 1 },
       { "len", no_argument, &with_len, 1 },
-      { "nomxs", no_argument, &with_no_mxs, 1},
+      { "nomxs", no_argument, &with_nomxs, 1},
       { "pos", no_argument, &with_pos, 1 },
       { "strand", no_argument, &with_strand, 1 },
       { "seq", no_argument, &with_seq, 1 },
