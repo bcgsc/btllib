@@ -100,7 +100,6 @@ public:
     bool forward = false;
     std::string seq;
     std::string qual;
-    size_t fsize = 0;
   };
 
   using HashedKmer = Minimizer;
@@ -255,6 +254,7 @@ private:
   
   const std::string seqfile;
   const size_t k, w;
+  const size_t fsize;
   //const size_t fsize;
   size_t q;
   const unsigned flags;
