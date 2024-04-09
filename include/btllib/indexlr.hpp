@@ -249,14 +249,10 @@ private:
     std::vector<Indexlr::Minimizer>& minimizers);
   std::vector<Minimizer> minimize(const std::string& seq,
                                   const std::string& qual) const;
-  std::vector<Minimizer> minimize(const std::string& seq,
-                                  const std::string& qual,
-                                  size_t fsize) const;
   
   const std::string seqfile;
   const size_t k, w;
-  const size_t fsize;
-  //const size_t fsize;
+  size_t fsize;
   size_t q;
   const unsigned flags;
   const bool verbose;
