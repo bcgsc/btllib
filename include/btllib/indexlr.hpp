@@ -165,7 +165,7 @@ public:
           unsigned flags = 0,
           unsigned threads = 5,
           bool verbose = false,
-          size_t fsize = 0,
+          size_t fsize,
           const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
           const btllib::BloomFilter& bf2 = Indexlr::dummy_bf());
 
@@ -176,7 +176,7 @@ public:
           unsigned flags = 0,
           unsigned threads = 5,
           bool verbose = false,
-          size_t fsize = 0,
+          size_t fsize,
           const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
           const btllib::BloomFilter& bf2 = Indexlr::dummy_bf());
 
