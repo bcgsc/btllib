@@ -599,7 +599,7 @@ Indexlr::minimize(const std::string& seq, const std::string& qual) const
 inline std::vector<Indexlr::Minimizer>
 Indexlr::minimize(const std::string& seq, const std::string& qual, size_t fsize) const
 {
-  if ((k > seq.size()) || (w > seq.size() - k + 1) || (fsize * 2 > seq.size()) {
+  if ((k > seq.size()) || (w > seq.size() - k + 1) || (fsize * 2 > seq.size())) {
     return {};
   }
   // fsize is the size of the flanking region only for which minimizers are to be calculated
