@@ -147,6 +147,7 @@ public:
    * @param k k-mer size for the minimizer.
    * @param w window size when selecting minimizers.
    * @param q quality threshold to ignore potential minimizers.
+   * @param f size of the flanking region for which minimizers are to be calculated.
    * @param flags Modifier flags. Specifiying either short or long mode flag is
    * mandatory; other flags are optional.
    * @param threads Maximum number of processing threads to use. Must be at
@@ -166,7 +167,7 @@ public:
           bool verbose = false,
           const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
           const btllib::BloomFilter& bf2 = Indexlr::dummy_bf(),
-          const size_t fsize = 0);
+          const int fsize = 0);
 
   Indexlr(std::string seqfile,
           size_t k,
@@ -177,7 +178,7 @@ public:
           bool verbose = false,
           const btllib::BloomFilter& bf1 = Indexlr::dummy_bf(),
           const btllib::BloomFilter& bf2 = Indexlr::dummy_bf(),
-          const size_t fsize = 0);
+          size_t fsize = 0);
 
   ~Indexlr();
 
@@ -603,64 +604,6 @@ Indexlr::minimize(const std::string& seq, const std::string& qual) const
   return minimizers;
 }
 
-inline std::vector<Indexlr::Minimizer>
-Indexlr::minimize(const std::string& seq, const std::string& qual, size_t fsize) const
-{
-  if ((k > seq.size()) || (w > seq.size() - k + 1) || (fsize * 2 > seq.size())) {
-    return {};
-  }
-  // fsize is the size of the flanking region only for which minimizers are to be calculated
-  // extract left and right flanking regions (fsize+k lenth) and concatenate them
-  std::string flanking_seq = seq.substr(0, fsize + k) + seq.substr(seq.size() - fsize - k, fsize + k);
-  std::string flanking_qual = qual.substr(0, fsize + k) + qual.substr(qual.size() - fsize - k, fsize + k);
-  std::vector<Minimizer> minimizers;
-  size_t trimmed_size = seq.size() - flanking_seq.size();
-  minimizers.reserve(2 * (flanking_seq.size() - k + 1) / w);
-  std::vector<HashedKmer> hashed_kmers_buffer(w + 1);
-  ssize_t min_idx_left, min_idx_right, min_pos_prev = -1;
-  const Minimizer* min_current = nullptr;
-  size_t idx = 0;
-  for (NtHash nh(flanking_seq, 2, k); nh.roll(); ++idx) {
-    auto& hk = hashed_kmers_buffer[idx % hashed_kmers_buffer.size()];
-
-    hk = HashedKmer(nh.hashes()[0],
-                    nh.hashes()[1],
-                    nh.get_pos(),
-                    nh.get_forward_hash() <= nh.get_reverse_hash(),
-                    output_seq() ? flanking_seq.substr(nh.get_pos(), k) : "",
-                    output_qual() ? flanking_qual.substr(nh.get_pos(), k) : "");
-
-    filter_hashed_kmer(
-      hk, filter_in(), filter_out(), filter_in_bf.get(), filter_out_bf.get());
-
-    if (q > 0) {
-      filter_kmer_qual(hk, flanking_qual.substr(nh.get_pos(), k), q);
-    }
-
-    if (idx + 1 >= w) {
-      calc_minimizer(hashed_kmers_buffer,
-                     min_current,
-                     idx,
-                     min_idx_left,
-                     min_idx_right,
-                     min_pos_prev,
-                     w,
-                     minimizers);
-    }
-  }
-  // now go over the minimizers and extract the ones that are in the flanking region, remove the ones that are not and correct the positions
-  std::vector<Minimizer> flanking_minimizers;
-  flanking_minimizers.reserve(minimizers.size());
-  for (auto& minimizer : minimizers) {
-    if (minimizer.pos <= fsize) {
-      flanking_minimizers.push_back(minimizer);
-    } else if (minimizer.pos >= fsize + (2 * k)) {
-      minimizer.pos += trimmed_size;
-      flanking_minimizers.push_back(minimizer);
-    }
-  }
-  return flanking_minimizers;
-}
 
 inline Indexlr::Record
 Indexlr::read()
@@ -739,16 +682,31 @@ Indexlr::Worker::work()
                    std::to_string(record.readlen - indexlr.k + 1) + ")");
 
       if (indexlr.k <= record.readlen &&
-          indexlr.w <= record.readlen - indexlr.k + 1) {
+          indexlr.w <= record.readlen - indexlr.k + 1 &&
+          record.readlen >= (2 * (indexlr.fsize + indexlr.k))) {
         if (indexlr.fsize > 0) {
+          std::string flanks_seq = reader_record.seq.substr(0, indexlr.fsize + indexlr.k) +
+                                   reader_record.seq.substr(record.readlen - indexlr.fsize - indexlr.k, indexlr.fsize + indexlr.k);
+          std::string flanks_qual = reader_record.qual.substr(0, indexlr.fsize + indexlr.k) + 
+                                    reader_record.qual.substr(reader_record.qual.size() - indexlr.fsize - indexlr.k, indexlr.fsize + indexlr.k);
+          size_t trimmed_size = record.readlen - flanks_seq.size();
           record.minimizers =
-            indexlr.minimize(reader_record.seq, reader_record.qual, indexlr.fsize);
+            indexlr.minimize(flanks_seq, flanks_qual);
+          std::vector<Minimizer> flanks_minimizers;
+          flanks_minimizers.reserve(record.minimizers.size());
+          for (auto& minimizer : record.minimizers){
+            if (minimizer.pos <= indexlr.fsize) {
+              flanks_minimizers.push_back(minimizer);
+            } else if (minimizer.pos >= indexlr.fsize + (2 * indexlr.k)) {
+              minimizer.pos += trimmed_size;
+              flanks_minimizers.push_back(minimizer);
+            }
+            record.minimizers = flanks_minimizers;
+          }
         } else {
           record.minimizers =
             indexlr.minimize(reader_record.seq, reader_record.qual);
         }
-        record.minimizers =
-          indexlr.minimize(reader_record.seq, reader_record.qual);
       } else {
         record.minimizers = {};
       }

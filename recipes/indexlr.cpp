@@ -49,6 +49,7 @@ print_usage()
        "  -w W        Use W as sliding-window size.\n"
        "  -q Q        Filter kmers with average quality (Phred score) lower "
        "than Q [0].  \n"
+       "  -f F        Generate minimzers only for left/right flanks of this size. "
        "  --nomxs     Exclude minimizers values from the output.\n"
        "  --id        Include input sequence ids in the output. "
        "(Default if --bx is not provided)\n"
@@ -73,7 +74,6 @@ print_usage()
        "  --long      Enable long mode which is more efficient for "
        "long sequences (e.g. long "
        "reads, contigs, reference).\n"
-       "  --fsize     Generate minimzers only from left/right flanks of this size. "
        "Default is 0 (whole-read minimizers).\n"
        "  -r repeat_bf_path  Use a Bloom filter to filter out "
        "repetitive minimizers.\n"
@@ -98,7 +98,7 @@ main(int argc, char* argv[])
     int help = 0, version = 0;
     bool verbose = false;
     unsigned k = 0, w = 0, t = DEFAULT_THREADS;
-    size_t fsize = 0;
+    unsigned fsize = 0;
     size_t q = 0;
     bool w_set = false;
     bool k_set = false;
@@ -120,7 +120,6 @@ main(int argc, char* argv[])
       { "seq", no_argument, &with_seq, 1 },
       { "qual", no_argument, &with_qual, 1 },
       { "long", no_argument, &long_mode, 1 },
-      { "fsize", required_argument, &fsize, 1 },
       { "help", no_argument, &help, 1 },
       { "version", no_argument, &version, 1 },
       { nullptr, 0, nullptr, 0 }
@@ -172,6 +171,9 @@ main(int argc, char* argv[])
           std::cerr << "Finished loading solid Bloom filter" << std::endl;
           break;
         }
+        case 'f':
+          fsize = std::stoul(optarg);
+          break;
         default:
           std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
       }
