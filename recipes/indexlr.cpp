@@ -315,11 +315,11 @@ main(int argc, char* argv[])
           int j = 0;
           for (const auto& min : record.minimizers) {
             if (j > 0) {
-              if (!bool(with_nomxs)) {
-                ss << ' ';
-              }
+              ss << ' ';
             }
-            ss << min.out_hash;
+            if (!bool(with_nomxs)) {
+              ss << min.out_hash;
+            }
             if (bool(with_pos)) {
               ss << ':' << min.pos;
             }
