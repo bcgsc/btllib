@@ -108,6 +108,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a02580f5bf9c028283228e8148ffc10e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a02580f5bf9c028283228e8148ffc10e5"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>NtHash</b> (<a class="el" href="classbtllib_1_1NtHash.html">NtHash</a> &amp;&amp;)=default</td></tr>
 <tr class="separator:a02580f5bf9c028283228e8148ffc10e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a419ba8aaab69033241dece2511082ad7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#a419ba8aaab69033241dece2511082ad7">set_seq</a> (const std::string &amp;seq, size_t pos=0)</td></tr>
+<tr class="separator:a419ba8aaab69033241dece2511082ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a244c0c11655b6e1c52dd7c4528b8ed05"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05">roll</a> ()</td></tr>
 <tr class="separator:a244c0c11655b6e1c52dd7c4528b8ed05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4417f1829a2eaa3a19559ee68df1091"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbtllib_1_1NtHash.html#ae4417f1829a2eaa3a19559ee68df1091">roll_back</a> ()</td></tr>
@@ -558,6 +560,47 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sub</b> (const std::v
 </div><div class="memdoc">
 <p>Like the <a class="el" href="classbtllib_1_1NtHash.html#a244c0c11655b6e1c52dd7c4528b8ed05">roll()</a> function, but advance backwards. </p>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success and <code>false</code> otherwise </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a419ba8aaab69033241dece2511082ad7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void btllib::NtHash::set_seq </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reset iterator on a new sequence. Useful for re-using <a class="el" href="classbtllib_1_1NtHash.html">NtHash</a> objects. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>New sequence for hashing </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -449,5 +449,48 @@ main()
     }
   }
 
+  {
+    PRINT_TEST_NAME("k-mer reset seq")
+    const std::string seq1 = "ATGCTAGTAGCTGAC";
+    const std::string seq2 = "GTGACTAGCTGACTG";
+    const unsigned h = 3, k = 7;
+    btllib::NtHash h1(seq1, h, k);
+    h1.roll();
+    h1.roll();
+    h1.roll();
+    h1.set_seq(seq2);
+    btllib::NtHash h2(seq2, h, k);
+    bool can_roll = true;
+    while (can_roll) {
+      can_roll = h1.roll();
+      can_roll |= h2.roll();
+      TEST_ASSERT_ARRAY_EQ(h1.hashes(), h2.hashes(), h)
+    }
+    TEST_ASSERT(!h1.roll())
+    TEST_ASSERT(!h2.roll())
+  }
+
+  {
+    PRINT_TEST_NAME("seed reset seq")
+    const std::string seq1 = "ATGCTAGTAGCTGAC";
+    const std::string seq2 = "GTGACTAGCTGACTG";
+    const std::vector<std::string> seeds = { "11011" };
+    const unsigned h = 3, k = seeds[0].size();
+    btllib::SeedNtHash h1(seq1, seeds, h, k);
+    h1.roll();
+    h1.roll();
+    h1.roll();
+    h1.set_seq(seq2);
+    btllib::SeedNtHash h2(seq2, seeds, h, k);
+    bool can_roll = true;
+    while (can_roll) {
+      can_roll = h1.roll();
+      can_roll |= h2.roll();
+      TEST_ASSERT_ARRAY_EQ(h1.hashes(), h2.hashes(), h)
+    }
+    TEST_ASSERT(!h1.roll())
+    TEST_ASSERT(!h2.roll())
+  }
+
   return 0;
 }
