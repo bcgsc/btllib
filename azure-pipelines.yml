@@ -101,9 +101,11 @@ jobs:
   - script: |
       source activate btllib_CI
       set -o errexit -o pipefail
+      export CC=clang
+      export CXX=clang++
       ./compile
       cd examples
-      g++ nthash_spacedseeds.cpp -std=c++17 -I../install/include -L../install/lib -lbtllib && ./a.out
+      clang++ nthash_spacedseeds.cpp -std=c++17 -I../install/include -L../install/lib -lbtllib && ./a.out
     displayName: 'Compile example'
 
   - script: |
