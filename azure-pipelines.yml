@@ -43,6 +43,8 @@ jobs:
 
   - script: |
       source activate btllib_CI
+      which g++
+      ls -lah $(which g++)
       export CXX="$(realpath $(which g++))"
       echo $CXX
       cd build && ninja clang-tidy
