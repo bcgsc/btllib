@@ -30,7 +30,8 @@ Using the library
 ---
 - Run time dependencies:
   * SAMtools for reading SAM, BAM, and CRAM files.
-  * gzip, tar, pigz, bzip2, xz, lrzip, zip, and/or 7zip for compressing/decompressing files. Not all of these are necessary, only the ones whose compressions you'll be using. 
+  * gzip, tar, pigz, bzip2, xz, lrzip, zip, and/or 7zip for compressing/decompressing files. Not all of these are necessary, only the ones whose compressions you'll be using.
+    * Note that lrzip is not available on the btllib conda osx-arm64 build
   * wget for downloading sequences from a URL.
 - Building C++ code (`$PREFIX` is the path where btllib is installed):
   * Link your code with `$PREFIX/lib/libbtllib.a` (pass `-L $PREFIX/lib -l btllib` flags to the compiler).
