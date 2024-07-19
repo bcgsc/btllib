@@ -104,7 +104,7 @@ jobs:
       set -o errexit -o pipefail
       ./compile
       cd examples
-      g++ nthash_spacedseeds.cpp -std=c++17 -I../install/include -L../install/lib -lbtllib && ./a.out
+      clang++ nthash_spacedseeds.cpp -std=c++17 -I../install/include -L../install/lib -lbtllib && ./a.out
     displayName: 'Compile example'
 
   - script: |
