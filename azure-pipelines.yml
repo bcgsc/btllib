@@ -5,7 +5,7 @@ jobs:
 
 - job: linux
   pool:
-    vmImage: 'ubuntu-22.04'
+    vmImage: 'ubuntu-latest'
 
   steps:
   - checkout: self
@@ -74,7 +74,7 @@ jobs:
 
 - job: macos
   pool:
-    vmImage: 'macOS-12'
+    vmImage: 'macOS-latest'
 
   steps:
   - checkout: self
@@ -95,6 +95,7 @@ jobs:
 
   - script: |
       source activate btllib_CI
+      export CXXFLAGS="$CXXFLAGS -Wno-error=unused-but-set-variable"
       meson setup build && cd build && ninja
     displayName: 'Build the project'
   
