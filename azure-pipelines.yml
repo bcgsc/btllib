@@ -75,7 +75,7 @@ jobs:
       source activate btllib_CI
       mamba install --yes -c conda-forge meson=1.4.0
       rm -r build && meson setup build && cd build && ninja
-      ninja code-coverage
+      ninja test && ninja code-coverage
     displayName: 'Run code coverage tests'
 
 - job: macos
