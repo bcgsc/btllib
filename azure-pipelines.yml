@@ -76,6 +76,13 @@ jobs:
       cd build && ninja test-wrappers
     displayName: 'Test wrappers'
 
+  - script: |
+      source activate btllib_CI
+      mamba install --yes -c conda-forge meson=1.4.0
+      rm -r build && meson setup build && cd build && ninja
+      ninja code-coverage
+    displayName: 'Run code coverage tests'
+
 - job: macos
   pool:
     vmImage: 'macOS-latest'
@@ -114,10 +121,6 @@ jobs:
   - script: |
       source activate btllib_CI && cd build && meson test --repeat=5 --print-errorlogs
     displayName: 'Run tests'
-
-  - script: |
-      source activate btllib_CI && cd build && ninja code-coverage
-    displayName: 'Run code coverage tests'
     
   - script: |
       source activate btllib_CI && cd build && ninja sanitize-undefined
