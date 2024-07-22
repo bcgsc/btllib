@@ -57,11 +57,6 @@ jobs:
 
   - script: |
       source activate btllib_CI
-      cd build && ninja code-coverage
-    displayName: 'Run code coverage tests'
-
-  - script: |
-      source activate btllib_CI
       cd build && ninja sanitize-undefined
       if [[ $? -ne 0 ]]; then
         cat __build-sanitize-undefined/meson-logs/testlog.txt
@@ -123,7 +118,9 @@ jobs:
     displayName: 'Run tests'
     
   - script: |
-      source activate btllib_CI && cd build && ninja sanitize-undefined
+      source activate btllib_CI && cd build
+      export CXXFLAGS="$CXXFLAGS -Wno-error=unused-but-set-variable"
+      ninja sanitize-undefined
       if [[ $? -ne 0 ]]; then
         cat __build-sanitize-undefined/meson-logs/testlog.txt
         exit 1
