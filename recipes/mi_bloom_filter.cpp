@@ -252,15 +252,15 @@ main(int argc, char* argv[])
                                  btllib::SeqReader::Flag::SHORT_MODE,
                                  DEFAULT_SEQ_READER_THREADS);
 #pragma omp parallel default(none) shared(ids,                                 \
-                                          id_counter,                          \
-                                          mi_bf,                               \
-                                          mi_bf_stage,                         \
-                                          hash_num,                            \
-                                          kmer_size,                           \
-                                          by_file,                             \
-                                          spaced_seed_set,                     \
-                                          spaced_seeds,                        \
-                                          reader)
+                                            id_counter,                        \
+                                            mi_bf,                             \
+                                            mi_bf_stage,                       \
+                                            hash_num,                          \
+                                            kmer_size,                         \
+                                            by_file,                           \
+                                            spaced_seed_set,                   \
+                                            spaced_seeds,                      \
+                                            reader)
         try {
           for (const auto record : reader) {
 #pragma omp critical
