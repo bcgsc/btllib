@@ -190,7 +190,7 @@ MIBloomFilter<T>::insert_id(const uint64_t* hashes, const T& id)
 {
   assert(bv_insertion_completed && !id_insertion_completed);
 
-  uint rand = std::rand(); // NOLINT
+  uint32_t rand = std::rand(); // NOLINT
   for (unsigned i = 0; i < hash_num; ++i) {
     uint64_t rank = get_rank_pos(hashes[i]);
     uint16_t count = ++counts_array[rank];
