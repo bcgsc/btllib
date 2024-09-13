@@ -651,6 +651,29 @@ public:
   SeedNtHash(SeedNtHash&&) = default;
 
   /**
+   * Reset iterator on a new sequence. Useful for re-using NtHash objects.
+   * @param seq New sequence for hashing
+   */
+  void set_seq(const std::string& seq, size_t pos = 0)
+  {
+    this->seq = seq.data();
+    this->seq_len = seq.size();
+    this->pos = pos;
+    this->initialized = false;
+    this->fwd_hash.reset(new uint64_t[blocks.size()]);
+    this->rev_hash.reset(new uint64_t[blocks.size()]);
+    this->hash_arr.reset(new uint64_t[blocks.size() * num_hashes_per_seed]);
+    check_error(this->seq_len < k,
+                "SeedNtHash: sequence length (" +
+                  std::to_string(this->seq_len) + ") is smaller than k (" +
+                  std::to_string(k) + ")");
+    check_error(pos > this->seq_len - k,
+                "SeedNtHash: passed position (" + std::to_string(pos) +
+                  ") is larger than sequence length (" +
+                  std::to_string(this->seq_len) + ")");
+  }
+
+  /**
    * Calculate the next hash value. Refer to \ref NtHash::roll() for more
    * information.
    * @return \p true on success and \p false otherwise.
@@ -869,7 +892,7 @@ public:
 
 private:
   const char* seq;
-  const size_t seq_len;
+  size_t seq_len;
   hashing_internals::NUM_HASHES_TYPE num_hashes_per_seed;
   hashing_internals::K_TYPE k;
   size_t pos;

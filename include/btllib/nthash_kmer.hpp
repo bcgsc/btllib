@@ -301,6 +301,26 @@ public:
   NtHash(NtHash&&) = default;
 
   /**
+   * Reset iterator on a new sequence. Useful for re-using NtHash objects.
+   * @param seq New sequence for hashing
+   */
+  void set_seq(const std::string& seq, size_t pos = 0)
+  {
+    this->seq = seq.data();
+    this->seq_len = seq.size();
+    this->pos = pos;
+    this->initialized = false;
+    this->hash_arr.reset(new uint64_t[num_hashes]);
+    check_error(this->seq_len < k,
+                "NtHash: sequence length (" + std::to_string(this->seq_len) +
+                  ") is smaller than k (" + std::to_string(k) + ")");
+    check_error(pos > this->seq_len - k,
+                "NtHash: passed position (" + std::to_string(pos) +
+                  ") is larger than sequence length (" +
+                  std::to_string(this->seq_len) + ")");
+  }
+
+  /**
    * Calculate the hash values of current k-mer and advance to the next k-mer.
    * NtHash advances one nucleotide at a time until it finds a k-mer with valid
    * characters (ACGTU) and skips over those with invalid characters (non-ACGTU,
@@ -475,7 +495,7 @@ public:
 
 private:
   const char* seq;
-  const size_t seq_len;
+  size_t seq_len;
   hashing_internals::NUM_HASHES_TYPE num_hashes;
   hashing_internals::K_TYPE k;
   size_t pos;
