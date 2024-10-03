@@ -20,7 +20,7 @@ jobs:
   - script: |
       source activate btllib_CI
       conda install --yes -c conda-forge mamba
-      mamba install --yes -c conda-forge -c bioconda libcxx compilers=1.7.0 clang llvm clang-format=18 clang-tools boost samtools coreutils xz lrzip meson ninja cmake openmp gcovr
+      mamba install --yes -c conda-forge -c bioconda libcxx compilers clang llvm clang-format=18 clang-tools boost samtools coreutils xz lrzip meson ninja cmake openmp gcovr
     displayName: Install dependencies
   
   - script: |
@@ -94,7 +94,7 @@ jobs:
 
   - script: |
       source activate btllib_CI      
-      mamba install --yes -c conda-forge -c bioconda libcxx compilers=1.7.0 llvm clang-format clang-tools boost 'samtools>=1.14' coreutils xz lrzip meson ninja cmake openmp gcovr
+      mamba install --yes -c conda-forge -c bioconda libcxx compilers llvm clang-format clang-tools boost 'samtools>=1.14' coreutils xz lrzip meson ninja cmake openmp gcovr
     displayName: 'Install required software'
 
   - script: |
