@@ -31,7 +31,7 @@ get_time()
 void
 log_info(const std::string& msg)
 {
-  std::cerr << "test"
+  std::cerr << msg
             << std::flush;
 }
 
