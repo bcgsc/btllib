@@ -31,7 +31,9 @@ get_time()
 void
 log_info(const std::string& msg)
 {
-  std::cerr << msg
+  std::string test = '[' + get_time() + "]" + PRINT_COLOR_WARNING + "[WARNING] " +
+                PRINT_COLOR_END + msg + '\n';
+  std::cerr << test
             << std::flush;
 }
 
