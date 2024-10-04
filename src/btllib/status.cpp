@@ -31,24 +31,24 @@ get_time()
 void
 log_info(const std::string& msg)
 {
-  std::string info_msg = '[' + get_time() + "]" + PRINT_COLOR_INFO + "[INFO] " +
-                         PRINT_COLOR_END + msg + '\n';
+  std::string info_msg = "[" + get_time() + "]" + PRINT_COLOR_INFO + "[INFO] " +
+                         PRINT_COLOR_END + msg + "\n";
   std::cerr << info_msg << std::flush;
 }
 
 void
 log_warning(const std::string& msg)
 {
-  std::string warning_msg = '[' + get_time() + "]" + PRINT_COLOR_WARNING +
-                            "[WARNING] " + PRINT_COLOR_END + msg + '\n';
+  std::string warning_msg = "[" + get_time() + "]" + PRINT_COLOR_WARNING +
+                            "[WARNING] " + PRINT_COLOR_END + msg + "\n";
   std::cerr << warning_msg << std::flush;
 }
 
 void
 log_error(const std::string& msg)
 {
-  std::string error_msg = '[' + get_time() + "]" + PRINT_COLOR_ERROR +
-                          "[ERROR] " + PRINT_COLOR_END + msg + '\n';
+  std::string error_msg = "[" + get_time() + "]" + PRINT_COLOR_ERROR +
+                          "[ERROR] " + PRINT_COLOR_END + msg + "\n";
   std::cerr << error_msg << std::flush;
 }
 
