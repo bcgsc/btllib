@@ -64,7 +64,7 @@ jobs:
 
   - script: |
       source activate btllib_CI
-      ninja test && ninja code-coverage
+      cd build && ninja test && ninja code-coverage
     displayName: 'Run code coverage tests'
 
 - job: macos
