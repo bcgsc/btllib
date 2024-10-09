@@ -21,6 +21,7 @@ jobs:
       source activate btllib_CI
       conda install --yes -c conda-forge mamba
       mamba install --yes -c conda-forge -c bioconda libcxx compilers clang llvm clang-format=18 clang-tools boost samtools coreutils xz lrzip meson ninja cmake openmp
+      pip install gcovr
     displayName: Install dependencies
   
   - script: |
@@ -64,7 +65,6 @@ jobs:
 
   - script: |
       source activate btllib_CI
-      pip install gcovr
       cd build && ninja test && ninja code-coverage
     displayName: 'Run code coverage tests'
 
