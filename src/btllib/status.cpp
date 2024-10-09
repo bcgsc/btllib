@@ -32,7 +32,7 @@ void
 log_info(const std::string& msg)
 {
   std::string info_msg = "[" + get_time() + "]" + PRINT_COLOR_INFO + "[INFO] " +
-                         PRINT_COLOR_END + msg + "\n";
+                         PRINT_COLOR_END + msg;
   std::cerr << info_msg << std::endl;
 }
 
@@ -40,7 +40,7 @@ void
 log_warning(const std::string& msg)
 {
   std::string warning_msg = "[" + get_time() + "]" + PRINT_COLOR_WARNING +
-                            "[WARNING] " + PRINT_COLOR_END + msg + "\n";
+                            "[WARNING] " + PRINT_COLOR_END + msg;
   std::cerr << warning_msg << std::endl;
 }
 
@@ -48,7 +48,7 @@ void
 log_error(const std::string& msg)
 {
   std::string error_msg = "[" + get_time() + "]" + PRINT_COLOR_ERROR +
-                          "[ERROR] " + PRINT_COLOR_END + msg + "\n";
+                          "[ERROR] " + PRINT_COLOR_END + msg;
   std::cerr << error_msg << std::endl;
 }
 
