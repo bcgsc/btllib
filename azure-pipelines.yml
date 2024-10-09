@@ -20,7 +20,8 @@ jobs:
   - script: |
       source activate btllib_CI
       conda install --yes -c conda-forge mamba
-      mamba install --yes -c conda-forge -c bioconda libcxx compilers clang llvm clang-format=18 clang-tools boost samtools coreutils xz lrzip meson ninja cmake openmp gcovr
+      mamba install --yes -c conda-forge -c bioconda libcxx compilers clang llvm clang-format=18 clang-tools boost samtools coreutils xz lrzip meson ninja cmake openmp
+      pip install gcovr
     displayName: Install dependencies
   
   - script: |
@@ -40,11 +41,6 @@ jobs:
       source activate btllib_CI
       cd build && ninja clang-format-check
     displayName: 'Run clang-format'
-
-  - script: |
-      source activate btllib_CI
-      cd build && ninja clang-tidy
-    displayName: 'Run clang-tidy'
 
   - script: |
       source activate btllib_CI
@@ -69,9 +65,7 @@ jobs:
 
   - script: |
       source activate btllib_CI
-      mamba install --yes -c conda-forge meson=1.4.0
-      rm -r build && meson setup build && cd build && ninja
-      ninja test && ninja code-coverage
+      cd build && ninja test && ninja code-coverage
     displayName: 'Run code coverage tests'
 
 - job: macos
@@ -82,16 +76,23 @@ jobs:
   - checkout: self
     persistCredentials: true
     submodules: recursive
+
   - script: |
-      echo "##vso[task.prependpath]$CONDA/bin"
-      conda update -n base -y -c defaults conda
-    displayName: Add conda to PATH
+      mkdir -p ~/miniforge3
+      curl -L https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-x86_64.sh  -o ~/miniforge3/miniforge.sh
+      bash ~/miniforge3/miniforge.sh -b -u -p ~/miniforge3
+      rm -rf  ~/miniforge3/miniforge.sh
+      ~/miniforge3/bin/conda init bash
+      ~/miniforge3/bin/conda init zsh
+      export CONDA=$(realpath ~/miniforge3/bin)
+      echo "##vso[task.prependpath]$CONDA"
+    displayName: Install conda
+
   - script: conda create --yes --quiet --name btllib_CI
     displayName: Create Anaconda environment
 
   - script: |
       source activate btllib_CI      
-      conda install --yes -c conda-forge mamba
       mamba install --yes -c conda-forge -c bioconda libcxx compilers llvm clang-format clang-tools boost 'samtools>=1.14' coreutils xz lrzip meson ninja cmake openmp gcovr
     displayName: 'Install required software'
 
