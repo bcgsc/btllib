@@ -3,7 +3,9 @@
 #include "btllib/status.hpp"
 
 #include <algorithm>
+#include <cmath>
 #include <condition_variable>
+#include <cstdlib>
 #include <cstring>
 #include <mutex>
 #include <string>
@@ -170,14 +172,21 @@ calc_phred_avg(const std::string& qual, const size_t start_pos, size_t len)
     std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
 
-  size_t phred_sum = 0;
+  double phred_sum = 0.0;
+  static constexpr double PHRED_OFFSET = 33.0;
 
   for (size_t i = start_pos; i < start_pos + len; ++i) {
-    phred_sum += (size_t)qual.at(i);
+    // Convert ASCII character to Phred score
+    int phred_score = (int)(qual.at(i) - PHRED_OFFSET);
+
+    // Delog the Phred score: 10^(-Q/10)
+    double delog_phred = pow(10.0, -phred_score / 10.0);
+
+    phred_sum += delog_phred;
   }
 
-  static constexpr double PHRED_OFFSET = 33.0;
-  return ((double)phred_sum / (double)len) - PHRED_OFFSET;
+  
+  return (uint32_t)(-10 * log10(phred_sum / len));
 }
 
 void
