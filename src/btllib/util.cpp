@@ -185,7 +185,6 @@ calc_phred_avg(const std::string& qual, const size_t start_pos, size_t len)
     phred_sum += delog_phred;
   }
 
-  
   return (uint32_t)(-10 * log10(phred_sum / len));
 }
 
