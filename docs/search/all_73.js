@@ -13,6 +13,7 @@ var searchData=
   ['seqwriter',['SeqWriter',['../classbtllib_1_1SeqWriter.html',1,'btllib']]],
   ['seqwriter',['SeqWriter',['../classbtllib_1_1SeqWriter.html#a6271cffe77701558f0997532a7e58d43',1,'btllib::SeqWriter']]],
   ['set_5fseed',['set_seed',['../classbtllib_1_1RandSeq.html#a0a481fe231a3ca8021aa807f2bd7d97b',1,'btllib::RandSeq']]],
+  ['set_5fseq',['set_seq',['../classbtllib_1_1NtHash.html#a419ba8aaab69033241dece2511082ad7',1,'btllib::NtHash::set_seq()'],['../classbtllib_1_1SeedNtHash.html#a49ff99a34ead2b1571a05806607746d0',1,'btllib::SeedNtHash::set_seq()']]],
   ['short_5fmode',['SHORT_MODE',['../structbtllib_1_1Indexlr_1_1Flag.html#ad901a6d96362ce4b250fa144fe9a76ef',1,'btllib::Indexlr::Flag::SHORT_MODE()'],['../structbtllib_1_1SeqReader_1_1Flag.html#ab0aba3f99ab4159205621e2242c6e18f',1,'btllib::SeqReader::Flag::SHORT_MODE()']]],
   ['split',['split',['../namespacebtllib.html#a47fd4694017baaa6babe345282e2c96b',1,'btllib']]],
   ['startswith',['startswith',['../namespacebtllib.html#acc6df2bfa872c7b1e830cf314d20e306',1,'btllib']]]
