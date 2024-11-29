@@ -161,6 +161,23 @@ get_basename(const std::string& path)
 }
 
 double
+sum_phred(const std::string& qual, const size_t start_pos, size_t len)
+{
+  double phred_sum = 0;
+  static constexpr double PHRED_OFFSET = 33.0;
+  for (size_t i = start_pos; i < start_pos + len; ++i) {
+    // Convert ASCII character to Phred score
+    int phred_score = (int)(qual.at(i) - PHRED_OFFSET);
+
+    // Delog the Phred score: 10^(-Q/10)
+    double delog_phred = pow(10.0, -phred_score / 10.0);
+
+    phred_sum += delog_phred;
+  }
+  return phred_sum;
+}
+
+double
 calc_phred_avg(const std::string& qual, const size_t start_pos, size_t len)
 {
   if (len == 0) {
@@ -172,18 +189,7 @@ calc_phred_avg(const std::string& qual, const size_t start_pos, size_t len)
     std::exit(EXIT_FAILURE); // NOLINT(concurrency-mt-unsafe)
   }
 
-  double phred_sum = 0.0;
-  static constexpr double PHRED_OFFSET = 33.0;
-
-  for (size_t i = start_pos; i < start_pos + len; ++i) {
-    // Convert ASCII character to Phred score
-    int phred_score = (int)(qual.at(i) - PHRED_OFFSET);
-
-    // Delog the Phred score: 10^(-Q/10)
-    double delog_phred = pow(10.0, -phred_score / 10.0);
-
-    phred_sum += delog_phred;
-  }
+  double phred_sum = sum_phred(qual, start_pos, len);
 
   return -10 * log10(phred_sum / len);
 }

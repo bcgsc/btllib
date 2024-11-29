@@ -112,6 +112,19 @@ std::string
 get_dirname(const std::string& path);
 
 /**
+ * Calculate the sum of the phred scores of a string.
+ *
+ * @param qual The quality string to calculate the sum from.
+ * @param start_pos The start position of the substring. Defaults to 0.
+ * @param len The length of the substring. Defaults to 0. If 0, the whole string
+ * is used.
+ *
+ * @return The sum of the phred scores of the substring.
+ */
+double
+sum_phred(const std::string& qual, size_t start_pos = 0, size_t len = 0);
+
+/**
  * Calculate the average phred score of a string,
  * depending on the start position and length.
  *
