@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['endswith_0',['endswith',['../namespacebtllib.html#a0d3f4421a7f9ba97324ad2791a96e2b5',1,'btllib']]]
+  ['developers_0',['For btllib developers',['../index.html#autotoc_md4',1,'']]],
+  ['documentation_1',['Documentation',['../index.html#autotoc_md3',1,'']]]
 ];
