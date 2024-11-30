@@ -59,6 +59,8 @@ SeqReader::SeqReader(const std::string& source_path,
   check_error(short_mode() && long_mode(),
               "SeqReader: short and long mode are mutually exclusive.");
   check_error(threads == 0, "SeqReader: Number of helper threads cannot be 0.");
+  check_error(source_path.find(' ') != std::string::npos,
+              "SeqReader: filename cannot include spaces");
   start_processors();
   {
     std::unique_lock<std::mutex> lock(format_mutex);

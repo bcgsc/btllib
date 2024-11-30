@@ -16,6 +16,8 @@ SeqWriter::SeqWriter(const std::string& sink_path, Format format, bool append)
   , format(format)
   , headerchar(format == FASTA ? '>' : '@')
 {
+  check_error(sink_path.find(' ') != std::string::npos,
+              "SeqWriter: filename cannot include spaces");
 }
 
 void
