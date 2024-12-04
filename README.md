@@ -70,7 +70,7 @@ For btllib developers
 
 The following are all the available `ninja` commands which can be run within `build` directory:
 - `ninja clang-format` formats the whitespace in code (requires clang-format 8+).
-- `ninja wrap` wraps C++ code for Python (requires SWIG ≥4.0 and <4.2).
+- `ninja wrap` wraps C++ code for Python (requires SWIG ≥4.0 and <4.3).
 - `ninja clang-tidy` runs clang-tidy on C++ code and makes sure it passes (requires clang-tidy 8+).
 - `ninja` builds the tests and wrapper libraries / makes sure they compile.
 - `ninja test` runs the tests.
